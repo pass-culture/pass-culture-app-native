@@ -295,7 +295,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
       })
 
       it('should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
@@ -363,7 +363,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
 
       it('should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {

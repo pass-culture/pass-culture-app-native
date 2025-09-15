@@ -53,7 +53,7 @@ describe('<OfferPlaylistList />', () => {
 
         await act(() => {})
 
-        await expect(screen.queryByText('Dans la même catégorie')).not.toBeOnTheScreen()
+        await expect(screen.queryByLabelText('Dans la même catégorie')).not.toBeOnTheScreen()
       })
 
       it('should display same category playlist when offer has it', async () => {
@@ -62,9 +62,9 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
-        await screen.findByText('Dans la même catégorie')
+        await screen.findByLabelText('Dans la même catégorie')
 
-        expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {
@@ -90,7 +90,7 @@ describe('<OfferPlaylistList />', () => {
 
         await act(() => {})
 
-        expect(screen.queryByText('Ça peut aussi te plaire')).not.toBeOnTheScreen()
+        expect(screen.queryByLabelText('Ça peut aussi te plaire')).not.toBeOnTheScreen()
       })
 
       it('should display other categories playlist when offer has it', async () => {
@@ -99,9 +99,9 @@ describe('<OfferPlaylistList />', () => {
           otherCategoriesSimilarOffers: mockSearchHits,
         })
 
-        await screen.findByText('Ça peut aussi te plaire')
+        await screen.findByLabelText('Ça peut aussi te plaire')
 
-        expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {

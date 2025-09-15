@@ -20,10 +20,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
 const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }
-const DEFAULT_PLAYLIST_WITHOUT_HITS = {
-  title: DEFAULT_PLAYLIST_TITLE,
-  offers: { hits: [] },
-}
+const DEFAULT_PLAYLIST_WITHOUT_HITS = { title: DEFAULT_PLAYLIST_TITLE, offers: { hits: [] } }
 
 describe('ThematicSearchPlaylistList', () => {
   beforeEach(() => {
@@ -35,7 +32,7 @@ describe('ThematicSearchPlaylistList', () => {
   it('should render playlist properly', async () => {
     renderThematicSearchPlaylistList([DEFAULT_PLAYLIST])
 
-    await screen.findByText(DEFAULT_PLAYLIST_TITLE)
+    await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)
 
     expect(await screen.findByText('Harry potter à l’école des sorciers')).toBeOnTheScreen()
   })
@@ -43,7 +40,7 @@ describe('ThematicSearchPlaylistList', () => {
   it('should not return a playlist without offers', async () => {
     renderThematicSearchPlaylistList([DEFAULT_PLAYLIST_WITHOUT_HITS])
 
-    expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 
   it('should return skeleton when playlist is loading', async () => {

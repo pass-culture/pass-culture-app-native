@@ -112,7 +112,7 @@ describe('<VenueOffers />', () => {
   it('should display "En voir plus" button if they are more hits to see than the one displayed', async () => {
     renderVenueOffers({ playlists: [] })
 
-    await screen.findByText('Toutes les offres')
+    await screen.findByLabelText('Toutes les offres')
 
     expect(screen.getByText('En voir plus')).toBeOnTheScreen()
   })
@@ -122,7 +122,7 @@ describe('<VenueOffers />', () => {
       venueOffers: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     })
 
-    await screen.findByText('Toutes les offres')
+    await screen.findByLabelText('Toutes les offres')
 
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
@@ -160,7 +160,7 @@ describe('<VenueOffers />', () => {
   it('should not display gtl playlist when gtl playlist is an empty array', async () => {
     renderVenueOffers({ playlists: [] })
 
-    await screen.findByText('Toutes les offres')
+    await screen.findByLabelText('Toutes les offres')
 
     expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
   })
@@ -206,7 +206,7 @@ describe('<VenueOffers />', () => {
       it('should not display artists playlist when venue offers have artists', async () => {
         renderVenueOffers({})
 
-        await screen.findByText('Toutes les offres')
+        await screen.findByLabelText('Toutes les offres')
 
         expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
       })
@@ -218,7 +218,7 @@ describe('<VenueOffers />', () => {
           venueArtists: venueOffersArtistsMock,
         })
 
-        await screen.findByText('Toutes les offres')
+        await screen.findByLabelText('Toutes les offres')
 
         expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
       })

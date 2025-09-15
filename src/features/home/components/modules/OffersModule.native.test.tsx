@@ -83,7 +83,7 @@ describe('OffersModule', () => {
   it('should not render hybrid playlist if no recommended parameters', async () => {
     renderOffersModule({ recommendationParameters: undefined })
 
-    await screen.findByText('Module title')
+    await screen.findByLabelText('Module title')
 
     expect(screen.queryByText('Un lit sous une rivière')).not.toBeOnTheScreen()
   })
@@ -157,7 +157,7 @@ describe('OffersModule', () => {
     it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
       renderOffersModule()
 
-      await screen.findByText('Module title')
+      await screen.findByLabelText('Module title')
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
         call_id: undefined,
@@ -199,7 +199,7 @@ describe('OffersModule', () => {
 
       renderOffersModule({ recommendationParameters: { categories: ['Cinéma'] } })
 
-      await screen.findByText('Module title')
+      await screen.findByLabelText('Module title')
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
         call_id: undefined,
@@ -219,7 +219,7 @@ describe('OffersModule', () => {
         recommendationParameters: { categories: ['Cinéma'] },
       })
 
-      await screen.findByText('Module title')
+      await screen.findByLabelText('Module title')
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
         call_id: undefined,

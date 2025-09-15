@@ -34,7 +34,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   return (
     <Container>
       <StyledTitleContainer>
-        <AccessibleTitle testID="playlistTitle" title={props.title} />
+        <AccessibleTitle title={props.title} />
       </StyledTitleContainer>
       <View testID="mobile-video-module">
         <StyledTouchableHighlight

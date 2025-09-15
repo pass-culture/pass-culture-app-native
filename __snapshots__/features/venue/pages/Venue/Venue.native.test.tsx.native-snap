@@ -755,7 +755,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           withMargin={true}
                         >
                           <Text
-                            accessibilityHidden={true}
                             accessibilityLabel="Toutes les offres"
                             accessibilityRole="header"
                             numberOfLines={2}
@@ -768,7 +767,21 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             }
                           >
-                            Toutes les offres
+                            <Text
+                              accessibilityElementsHidden={true}
+                              accessibilityRole="header"
+                              importantForAccessibility="no"
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 19,
+                                  "lineHeight": 30.4,
+                                }
+                              }
+                            >
+                              Toutes les offres
+                            </Text>
                           </Text>
                         </View>
                       </View>
@@ -3810,7 +3823,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           withMargin={true}
                         >
                           <Text
-                            accessibilityHidden={true}
                             accessibilityLabel="Toutes les offres"
                             accessibilityRole="header"
                             numberOfLines={2}
@@ -3823,7 +3835,21 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               }
                             }
                           >
-                            Toutes les offres
+                            <Text
+                              accessibilityElementsHidden={true}
+                              accessibilityRole="header"
+                              importantForAccessibility="no"
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 19,
+                                  "lineHeight": 30.4,
+                                }
+                              }
+                            >
+                              Toutes les offres
+                            </Text>
                           </Text>
                         </View>
                       </View>

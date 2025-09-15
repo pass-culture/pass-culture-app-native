@@ -54,7 +54,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   return (
     <React.Fragment>
       <StyledTitleContainer>
-        <AccessibleTitle testID="playlistTitle" title={props.title} />
+        <AccessibleTitle title={props.title} />
         {renderTitleSeeMore()}
       </StyledTitleContainer>
       <View testID="desktop-video-module">

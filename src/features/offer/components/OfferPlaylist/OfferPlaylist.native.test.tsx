@@ -22,7 +22,7 @@ describe('<OfferPlaylist />', () => {
       />
     )
 
-    expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Du même auteur')).toBeOnTheScreen()
   })
 
   it('should render the playlist title', () => {
@@ -37,7 +37,7 @@ describe('<OfferPlaylist />', () => {
       />
     )
 
-    expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
   })
 
   it('should call the list with the data from the mock', async () => {
