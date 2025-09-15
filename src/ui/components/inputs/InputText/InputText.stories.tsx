@@ -32,7 +32,7 @@ const variantConfig: Variants<typeof InputText> = [
   },
   {
     label: 'InputText with icon',
-    props: { ...baseProps, leftIcon: SearchIcon },
+    props: { ...baseProps, leftComponent: <SearchIcon /> },
   },
   {
     label: 'Disabled InputText',

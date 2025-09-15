@@ -37,7 +37,7 @@ type CustomInputTextProps = InputProps & {
   disabled?: boolean
   containerStyle?: ViewStyle
   isRequiredField?: boolean
-  leftIcon?: React.FC
+  leftComponent?: React.ReactElement
   showSoftInputOnFocus?: boolean
   rightButton?: {
     icon: FunctionComponent<AccessibleIcon>
@@ -140,7 +140,7 @@ export function getCustomInputTextProps(props: InputTextProps): CustomInputTextP
     disabled: props.disabled,
     containerStyle: props.containerStyle,
     isRequiredField: props.isRequiredField,
-    leftIcon: props.leftIcon,
+    leftComponent: props.leftComponent,
     rightButton: props.rightButton,
     format: props.format,
     characterCount: props.characterCount,

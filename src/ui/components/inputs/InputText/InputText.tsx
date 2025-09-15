@@ -54,7 +54,6 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     .filter(Boolean)
     .join(' - ')
 
-  const LeftIcon = customProps.leftIcon
   const inputLabel = customProps.isRequiredField ? `${customProps.label}\u00A0*` : customProps.label
 
   return (
@@ -70,10 +69,8 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
         isError={!!customProps.errorMessage}
         isDisabled={customProps.disabled}
         style={customProps.containerStyle}>
-        {LeftIcon ? (
-          <IconContainer>
-            <LeftIcon />
-          </IconContainer>
+        {customProps.leftComponent ? (
+          <IconContainer>{customProps.leftComponent}</IconContainer>
         ) : null}
         <BaseTextInput
           {...nativeProps}

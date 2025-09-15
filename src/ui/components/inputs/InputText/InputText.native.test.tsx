@@ -43,7 +43,7 @@ describe('<InputText />', () => {
         placeholder="placeholder"
         onChangeText={jest.fn()}
         ref={myRef}
-        leftIcon={() => <Search testID="leftIcon" />}
+        leftComponent={<Search testID="leftIcon" />}
       />
     )
 
