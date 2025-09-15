@@ -9,10 +9,6 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import {
-  resetCityActions,
-  useIsResetCity,
-} from 'features/identityCheck/pages/profile/store/resetCityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -45,12 +41,9 @@ export const useSubmitChangeAddress = () => {
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
   const storedAddress = useAddress()
+  const initialCity = storedAddress === null ? '' : (storedAddress ?? user?.street ?? '')
 
   const { navigate } = useNavigation<UseNavigationType>()
-
-  const isCityReset = useIsResetCity()
-  const { setResetCity } = resetCityActions
-  const initialCity = isCityReset ? '' : (storedAddress ?? user?.street ?? '')
 
   const {
     control,
@@ -116,7 +109,6 @@ export const useSubmitChangeAddress = () => {
     onSuccess: (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         navigate(...getProfileHookConfig('ChangeStatus', { type }))
-        setResetCity(false)
       } else {
         navigate(...getProfileHookConfig('PersonalData'))
         showSuccessSnackBar({
@@ -145,17 +137,20 @@ export const useSubmitChangeAddress = () => {
 
   useEnterKeyAction(isValid ? handleSubmit(onSubmit) : undefined)
 
+  const hasNonEmptyQuery = query.trim().length > 0
+  const isValidAndNotEmpty = isValid && hasNonEmptyQuery
+
   const isValidAddress = isAddressValid(query)
   const label = idCheckAddressAutocompletion
     ? 'Recherche et sélectionne ton adresse'
     : 'Entre ton adresse'
-  const hasError = !isValidAddress && query.length > 0
+  const hasError = !isValidAddress && hasNonEmptyQuery
 
   return {
     control,
     handleSubmit,
     onSubmit,
-    isValid,
+    isValid: isValidAndNotEmpty,
     label,
     onChangeAddress,
     resetSearch,
