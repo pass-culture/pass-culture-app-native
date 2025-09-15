@@ -316,8 +316,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                 tes réservations seront annulées sauf pour certains cas précisés dans les
                  
                 <Text
-                  accessibilityLabel="conditions générales d’utilisation"
-                  accessibilityRole="button"
+                  accessibilityLabel="conditions générales d’utilisation, lien externe"
+                  accessibilityRole="link"
                   color="#161617"
                   onPress={[Function]}
                   style={

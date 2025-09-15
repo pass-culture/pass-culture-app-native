@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -44,6 +45,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
             as={LinkInsideTextBlack}
             wording="consultant cette page."
             externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </Typo.BodyS>
         <Typo.BodyS>

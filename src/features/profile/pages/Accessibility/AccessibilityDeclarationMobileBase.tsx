@@ -56,7 +56,7 @@ export function AccessibilityDeclarationMobileBase({
             as={LinkInsideText}
             wording={`l’application ${platformName}`}
             externalNav={storeLink}
-            type={AccessibilityRole.LINK}
+            accessibilityRole={AccessibilityRole.LINK}
           />
           {SPACE}version 1.348.8 du pass Culture.
         </Typo.Body>
@@ -174,7 +174,7 @@ export function AccessibilityDeclarationMobileBase({
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             justifyContent="flex-start"
             externalNav={contactSupport.forGenericQuestion}
-            type={AccessibilityRole.LINK}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </Typo.Body>
       </ViewGap>
@@ -196,7 +196,7 @@ export function AccessibilityDeclarationMobileBase({
               as={LinkInsideText}
               wording="Défenseur des droits"
               externalNav={rightsDefenderUrl}
-              type={AccessibilityRole.LINK}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
@@ -205,7 +205,7 @@ export function AccessibilityDeclarationMobileBase({
               as={LinkInsideText}
               wording="Défenseur des droits dans votre région"
               externalNav={rightsDelegateUrl}
-              type={AccessibilityRole.LINK}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>

@@ -224,8 +224,8 @@ exports[`LegalNotices should render correctly 1`] = `
           Éditeur du site :
            
           <Text
-            accessibilityLabel="https://passculture.app/accueil"
-            accessibilityRole="button"
+            accessibilityLabel="https://passculture.app/accueil, lien externe"
+            accessibilityRole="link"
             color="#161617"
             onPress={[Function]}
             style={
@@ -330,8 +330,8 @@ exports[`LegalNotices should render correctly 1`] = `
           Nous contacter :
            
           <Text
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-            accessibilityRole="button"
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityRole="link"
             color="#161617"
             onPress={[Function]}
             style={

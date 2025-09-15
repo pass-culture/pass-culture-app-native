@@ -45,7 +45,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
             wording="politique de gestion des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
             typography="BodyAccentXs"
-            type={AccessibilityRole.LINK}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </StyledBodyAccentXs>
       </ViewGap>

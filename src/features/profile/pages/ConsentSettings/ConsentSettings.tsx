@@ -81,7 +81,7 @@ export const ConsentSettings = () => {
           wording="politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}
           typography="BodyAccentXs"
-          type={AccessibilityRole.LINK}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </StyledBodyAccentXs>
       <SaveButton wording="Enregistrer mes choix" onPress={saveChoice} center />

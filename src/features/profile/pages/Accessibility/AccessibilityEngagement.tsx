@@ -91,7 +91,7 @@ export function AccessibilityEngagement() {
           wording="notre centre d’aide"
           typography="BodyAccentXs"
           externalNav={{ url: env.FAQ_LINK }}
-          type={AccessibilityRole.LINK}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </StyledBodyAccentXs>
       <Spacer.BottomScreen />

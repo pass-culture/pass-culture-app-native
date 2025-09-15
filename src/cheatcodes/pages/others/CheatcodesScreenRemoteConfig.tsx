@@ -4,6 +4,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GenericRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
@@ -62,6 +63,7 @@ export const CheatcodesScreenRemoteConfig = () => {
           externalNav={{
             url: 'https://app.testing.passculture.team/cheatcodes/other/remote-config',
           }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
       {showStagingFeatureFlags ? (
@@ -72,6 +74,7 @@ export const CheatcodesScreenRemoteConfig = () => {
           externalNav={{
             url: 'https://app.staging.passculture.team/cheatcodes/other/remote-config',
           }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
       {showProductionFeatureFlags ? (
@@ -80,6 +83,7 @@ export const CheatcodesScreenRemoteConfig = () => {
           buttonHeight="extraSmall"
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/remote-config' }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
 

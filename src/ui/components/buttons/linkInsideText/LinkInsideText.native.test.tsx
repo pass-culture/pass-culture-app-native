@@ -37,7 +37,7 @@ describe('LinkInsideText', () => {
     })
 
     it('should have correct accessibilityRole role when link type provided', async () => {
-      render(<LinkInsideText wording={wording} type={AccessibilityRole.LINK} />)
+      render(<LinkInsideText wording={wording} accessibilityRole={AccessibilityRole.LINK} />)
 
       const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 

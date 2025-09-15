@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -53,6 +54,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
           wording={wording}
           color={color}
           onBeforeNavigate={onPress}
+          accessibilityRole={AccessibilityRole.BUTTON}
         />
       </ButtonContainer>
     </AuthenticationContainer>

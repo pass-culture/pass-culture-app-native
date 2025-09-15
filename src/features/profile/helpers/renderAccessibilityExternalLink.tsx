@@ -10,7 +10,7 @@ export function renderAccessibilityExternalLink(url: string) {
       as={LinkInsideText}
       wording={url}
       externalNav={{ url }}
-      type={AccessibilityRole.LINK}
+      accessibilityRole={AccessibilityRole.LINK}
     />
   )
 }

@@ -7,6 +7,7 @@ import {
   FeatureFlagAll,
   useCheatcodesFeatureFlagQuery,
 } from 'cheatcodes/queries/useCheatcodesFeatureFlagQuery'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
@@ -45,6 +46,7 @@ export const CheatcodesScreenFeatureFlags = () => {
           externalNav={{
             url: 'https://app.testing.passculture.team/cheatcodes/other/feature-flags',
           }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
       {showStagingFeatureFlags ? (
@@ -55,6 +57,7 @@ export const CheatcodesScreenFeatureFlags = () => {
           externalNav={{
             url: 'https://app.staging.passculture.team/cheatcodes/other/feature-flags',
           }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
       {showProductionFeatureFlags ? (
@@ -63,6 +66,7 @@ export const CheatcodesScreenFeatureFlags = () => {
           buttonHeight="extraSmall"
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/feature-flags' }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
 

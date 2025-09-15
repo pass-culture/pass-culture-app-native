@@ -98,7 +98,7 @@ describe('ConfirmDeleteProfile component', () => {
   it('should open CGU when clicking on "conditions générales d’utilisation"', async () => {
     renderConfirmDeleteProfile()
 
-    await user.press(screen.getByLabelText('conditions générales d’utilisation'))
+    await user.press(screen.getByText('conditions générales d’utilisation'))
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.CGU_LINK, undefined, true)
   })

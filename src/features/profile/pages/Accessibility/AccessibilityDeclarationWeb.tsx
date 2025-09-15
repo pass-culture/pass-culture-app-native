@@ -55,7 +55,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
-                type={AccessibilityRole.BUTTON}
+                accessibilityRole={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -65,7 +65,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Actions réalisées depuis 2022"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
-                type={AccessibilityRole.BUTTON}
+                accessibilityRole={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -75,7 +75,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Plan d’actions 2024"
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
-                type={AccessibilityRole.BUTTON}
+                accessibilityRole={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -87,7 +87,7 @@ export function AccessibilityDeclarationWeb() {
           as={LinkInsideText}
           wording="https://passculture.app/"
           externalNav={webappUrl}
-          type={AccessibilityRole.LINK}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </Typo.Body>
       <StyledSeparator />
@@ -211,7 +211,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Accueil"
                 externalNav={homeUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -221,7 +221,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Connexion"
                 externalNav={loginUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -231,7 +231,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Inscription - Date de naissance"
                 externalNav={signupUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -241,7 +241,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Vérification d’identité"
                 externalNav={identityCheckUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -251,7 +251,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Profil"
                 externalNav={profileUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -261,7 +261,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Modification de mot de passe"
                 externalNav={changePasswordUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -271,7 +271,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Recherche"
                 externalNav={searchUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -281,7 +281,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Filtres"
                 externalNav={filterUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -291,7 +291,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Résultats de recherche"
                 externalNav={searchResultsUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -301,7 +301,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Favoris"
                 externalNav={favoritesUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -311,7 +311,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Détails d’une offre"
                 externalNav={offerUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -321,7 +321,7 @@ export function AccessibilityDeclarationWeb() {
                 as={LinkInsideText}
                 wording="Déclaration d’accessibilité"
                 externalNav={accessibilityUrl}
-                type={AccessibilityRole.LINK}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -346,7 +346,7 @@ export function AccessibilityDeclarationWeb() {
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           justifyContent="flex-start"
           externalNav={contactSupport.forGenericQuestion}
-          type={AccessibilityRole.LINK}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </Typo.Body>
 
@@ -368,7 +368,7 @@ export function AccessibilityDeclarationWeb() {
               as={LinkInsideText}
               wording="Défenseur des droits"
               externalNav={rightsDefenderUrl}
-              type={AccessibilityRole.LINK}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
@@ -377,7 +377,7 @@ export function AccessibilityDeclarationWeb() {
               as={LinkInsideText}
               wording="Défenseur des droits dans votre région"
               externalNav={rightsDelegateUrl}
-              type={AccessibilityRole.LINK}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
