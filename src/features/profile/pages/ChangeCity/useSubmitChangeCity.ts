@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
+import { addressActions } from 'features/identityCheck/pages/profile/store/addressStore'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
@@ -22,6 +23,7 @@ export const useSubmitChangeCity = () => {
 
   const storedCity = useCity()
   const { setCity } = cityActions
+  const { resetAddress } = addressActions
 
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -53,6 +55,7 @@ export const useSubmitChangeCity = () => {
           timeout: SNACK_BAR_TIME_OUT,
         })
       }
+
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',
         oldCity: user?.city ?? '',
@@ -69,6 +72,9 @@ export const useSubmitChangeCity = () => {
   })
 
   const onSubmit = ({ city }: CityForm) => {
+    const hasCityChanged = !!storedCity && storedCity.postalCode !== city.postalCode
+    if (isFromProfileUpdateFlow && hasCityChanged) resetAddress()
+
     setCity(city)
     patchProfile({ city: city.name, postalCode: city.postalCode })
   }

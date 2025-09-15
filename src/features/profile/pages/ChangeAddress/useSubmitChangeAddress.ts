@@ -31,6 +31,7 @@ type AddressForm = {
 export const useSubmitChangeAddress = () => {
   const { params } = useRoute<UseRouteType<'ChangeAddress'>>()
   const type = params?.type
+
   const isMandatoryUpdatePersonalData = type === PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
@@ -40,6 +41,8 @@ export const useSubmitChangeAddress = () => {
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
   const storedAddress = useAddress()
+  const initialCity = storedAddress === null ? '' : (storedAddress ?? user?.street ?? '')
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   const {
@@ -50,7 +53,7 @@ export const useSubmitChangeAddress = () => {
     formState: { isValid },
   } = useForm<AddressForm>({
     mode: 'onChange',
-    defaultValues: { address: storedAddress ?? user?.street ?? '' },
+    defaultValues: { address: initialCity },
   })
 
   const query = watch('address')
@@ -134,17 +137,20 @@ export const useSubmitChangeAddress = () => {
 
   useEnterKeyAction(isValid ? handleSubmit(onSubmit) : undefined)
 
+  const hasNonEmptyQuery = query.trim().length > 0
+  const isValidAndNotEmpty = isValid && hasNonEmptyQuery
+
   const isValidAddress = isAddressValid(query)
   const label = idCheckAddressAutocompletion
     ? 'Recherche et sélectionne ton adresse'
     : 'Entre ton adresse'
-  const hasError = !isValidAddress && query.length > 0
+  const hasError = !isValidAddress && hasNonEmptyQuery
 
   return {
     control,
     handleSubmit,
     onSubmit,
-    isValid,
+    isValid: isValidAndNotEmpty,
     label,
     onChangeAddress,
     resetSearch,
