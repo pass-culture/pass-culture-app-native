@@ -17,7 +17,7 @@ export function LinkInsideText({
   onLongPress,
   href,
   target,
-  type = AccessibilityRole.BUTTON,
+  accessibilityRole = AccessibilityRole.BUTTON,
   accessibilityLabel,
   color,
 }: LinkInsideTextProps) {
@@ -43,7 +43,7 @@ export function LinkInsideText({
     <Text
       onClick={onClick}
       onDoubleClick={onDoubleClick}
-      type={href ? undefined : type}
+      type={href ? undefined : accessibilityRole}
       href={href}
       target={target}
       accessibilityLabel={accessibilityLabel}

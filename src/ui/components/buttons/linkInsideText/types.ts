@@ -9,7 +9,7 @@ export type LinkInsideTextProps = {
   color?: ColorsType
   onLongPress?: AppButtonEventWeb | AppButtonEventNative
   onPress?: AppButtonEventWeb | AppButtonEventNative
-  type?: AccessibilityRole.LINK | AccessibilityRole.BUTTON
+  accessibilityRole?: AccessibilityRole.LINK | AccessibilityRole.BUTTON
   href?: string
   target?: string
 }

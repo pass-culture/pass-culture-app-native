@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -31,6 +32,7 @@ export function LegalNotices() {
             wording="https://passculture.app/accueil"
             externalNav={{ url: 'https://passculture.app/accueil' }}
             icon={ExternalSiteFilled}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </Typo.Body>
         {/* eslint-disable-next-line local-rules/no-currency-symbols */}
@@ -55,6 +57,7 @@ export function LegalNotices() {
             wording="support@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             externalNav={contactSupport.forGenericQuestion}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </Typo.Body>
 

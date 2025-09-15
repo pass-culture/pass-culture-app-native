@@ -98,7 +98,7 @@ export function FeedBackVideo({ offerId, offerSubcategory, userId }: Props) {
           as={LinkInsideText}
           externalNav={{ url }}
           typography="BodyAccentXs"
-          type={AccessibilityRole.LINK}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </Container>
     )

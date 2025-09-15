@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/queries/useSuspendForSuspiciousLoginMutation'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -81,6 +82,7 @@ export const SuspensionChoice = () => {
               as={LinkInsideTextBlack}
               wording="conditions générales d’utilisation"
               externalNav={{ url: env.CGU_LINK }}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
         </BulletListItem>

@@ -307,8 +307,8 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               
 
               <Text
-                accessibilityLabel="conditions générales d’utilisation"
-                accessibilityRole="button"
+                accessibilityLabel="conditions générales d’utilisation, lien externe"
+                accessibilityRole="link"
                 color="#161617"
                 onPress={[Function]}
                 style={

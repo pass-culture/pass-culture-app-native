@@ -36,7 +36,7 @@ export function RecommendedPaths() {
             typography="BodyAccentXs"
             wording="Démarches simplifiées"
             externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}
-            type={AccessibilityRole.LINK}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </BulletListItem>
       </VerticalUl>

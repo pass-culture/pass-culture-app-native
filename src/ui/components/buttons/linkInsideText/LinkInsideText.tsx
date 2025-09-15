@@ -14,17 +14,18 @@ export function LinkInsideText({
   onLongPress,
   accessibilityLabel,
   color,
-  type = AccessibilityRole.BUTTON,
+  accessibilityRole = AccessibilityRole.BUTTON,
 }: LinkInsideTextProps) {
   const Text = typography === 'BodyAccentXs' ? StyledBodyAccentXs : StyledBody
-  const accessibilityLabelLink = type === AccessibilityRole.LINK ? ', lien externe' : ''
+  const accessibilityLabelLink =
+    accessibilityRole === AccessibilityRole.LINK ? ', lien externe' : ''
   const computedAccessibilityLabel = `${accessibilityLabel ?? wording}${accessibilityLabelLink}`
 
   return (
     <Text
       onPress={onPress as AppButtonEventNative}
       onLongPress={onLongPress as AppButtonEventNative}
-      accessibilityRole={type}
+      accessibilityRole={accessibilityRole}
       accessibilityLabel={computedAccessibilityLabel}
       color={color}>
       {wording}
