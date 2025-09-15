@@ -72,9 +72,33 @@ jobs:
           NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "NEW_TAG=testing/v${NEW_VERSION}" >> $GITHUB_ENV
-      - name: Bump patch version, update build number, commit and tag
-        env:
-          NEW_TAG: ${{ env.NEW_TAG }}
+      - name: Bump patch version
         run: |
-          chmod +x ./scripts/update_app_version.sh
-          ./scripts/update_app_version.sh "$NEW_TAG" patch
+          yarn version patch --no-git-tag-version
+          cd server
+          yarn version patch --no-git-tag-version
+          cd ..
+
+      - name: Update build number
+        run: |
+          VERSION=$(jq -r .version package.json)
+          MAJOR=$(echo $VERSION | cut -d. -f1)
+          MINOR=$(echo $VERSION | cut -d. -f2)
+          PATCH=$(echo $VERSION | cut -d. -f3)
+          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
+          jq ".build = $BUILD_NUMBER" package.json > tmp && mv tmp package.json
+          jq ".build = $BUILD_NUMBER" server/package.json > tmp && mv tmp server/package.json
+
+      - name: Commit version and build number
+        run: |
+          VERSION=$(jq -r .version package.json)
+          git add package.json server/package.json
+          git commit -m "testing/v$VERSION"
+          git push origin master
+
+      - name: Create and push testing tag
+        run: |
+          VERSION=$(jq -r .version package.json)
+          TAG="testing/v$VERSION"
+          git tag --annotate "$TAG" --message "🚀 $TAG"
+          git push origin "$TAG"
