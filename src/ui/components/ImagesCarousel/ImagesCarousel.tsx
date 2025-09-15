@@ -38,12 +38,10 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
 
   const carouselDotId = uuidv4()
 
-  const numberOfIllustration = index + 1
-  const title = `Illustration ${numberOfIllustration} sur ${images.length}`
-
   return (
     <Container>
-      <StyledHeader title={title} onGoBack={goBack} />
+      <StyledHeader title={`${index + 1}/${images.length}`} onGoBack={goBack} />
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Carousel
         vertical={false}
         height={screenHeight}

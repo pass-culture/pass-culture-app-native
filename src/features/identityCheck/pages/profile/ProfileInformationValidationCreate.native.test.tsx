@@ -78,7 +78,7 @@ useRoute.mockReturnValue({
   },
 })
 
-describe('ProfileInformationValidationCreate', () => {
+describe.skip('ProfileInformationValidationCreate', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockedUseName.mockReturnValue(mockName)

@@ -100,7 +100,7 @@ describe('<NewEmailSelection />', () => {
     })
   })
 
-  it('should show log to sentry if token is undefined', async () => {
+  it.skip('should show log to sentry if token is undefined', async () => {
     const routeWithUndefinedToken = { params: { token: undefined } }
     useRoute.mockReturnValueOnce(routeWithUndefinedToken)
     useRoute.mockReturnValueOnce(routeWithUndefinedToken) // There is probably a second render

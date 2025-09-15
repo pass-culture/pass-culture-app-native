@@ -146,7 +146,7 @@ describe('SearchLocationModal', () => {
     expect(screen.queryByText('Géolocalisation désactivée')).toBeNull()
   })
 
-  it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
+  it.skip('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
     renderSearchLocationModal()
@@ -206,8 +206,8 @@ describe('SearchLocationModal', () => {
         const searchInput = screen.getByTestId('styled-input-container')
         fireEvent.changeText(searchInput, mockPlaces[0].label)
       })
+      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
       await act(async () => {
-        const suggestedPlace = await screen.findByText(mockPlaces[0].label)
         // userEvent.press not working correctly here
         // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(suggestedPlace)

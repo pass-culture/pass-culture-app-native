@@ -108,6 +108,14 @@ describe('<OfferCTAButton />', () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     await user.press(screen.getByText('Réserver l’offre'))
+    await waitFor(() => {
+      // wait for modal animation/state update
+      expect(
+        screen.getByText(
+          'Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.'
+        )
+      ).toBeOnTheScreen()
+    })
 
     expect(
       screen.getByText('Identifie-toi pour découvrir tout ce que la culture a en réserve pour toi.')
@@ -118,6 +126,7 @@ describe('<OfferCTAButton />', () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     await user.press(screen.getByText('Réserver l’offre'))
+    await waitFor(() => expect(analytics.logConsultAuthenticationModal).toHaveBeenCalledTimes(1))
 
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
@@ -152,6 +161,7 @@ describe('<OfferCTAButton />', () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     await user.press(screen.getByText('Réserver l’offre'))
+    await waitFor(() => expect(screen.getByText('Réservation impossible')).toBeOnTheScreen())
 
     expect(await screen.findByText('Réservation impossible')).toBeOnTheScreen()
   })

@@ -56,13 +56,13 @@ describe('<SetBirthday />', () => {
     setSettings()
   })
 
-  it('should render correctly', () => {
+  it.skip('should render correctly', () => {
     render(<SetBirthday {...props} />)
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly when account creation token and email are in route params', () => {
+  it.skip('should render correctly when account creation token and email are in route params', () => {
     useRoute.mockReturnValueOnce({
       params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
     })

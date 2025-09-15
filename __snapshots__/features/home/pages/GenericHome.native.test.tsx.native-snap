@@ -1,5 +1,129 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`GenericHome With not displayed skeleton by default should display offline page when not connected 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "maxWidth": 360,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        {
+          "height": 16,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
+      }
+    />
+    <View
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={5}
+      style={
+        {
+          "height": 20,
+        }
+      }
+    />
+    <Text
+      style={
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 21,
+          "lineHeight": 33.6,
+          "textAlign": "center",
+        }
+      }
+    >
+      Pas de réseau internet
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        {
+          "height": 16,
+        }
+      }
+    />
+    <Text
+      style={
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "textAlign": "center",
+        }
+      }
+    >
+      Tu n’es pas connecté à internet.
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        {
+          "height": 20,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        }
+      }
+    />
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        {
+          "height": 8,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
 exports[`GenericHome With not displayed skeleton by default should display real content 1`] = `
 <View
   style={

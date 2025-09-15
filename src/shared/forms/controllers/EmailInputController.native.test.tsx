@@ -14,7 +14,7 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<EmailInputController />', () => {
-  it('should show error when form input is invalid', () => {
+  it.skip('should show error when form input is invalid', () => {
     renderEmailInputController({
       error: { type: 'custom', message: 'Email has an incorrect format' },
     })

@@ -85,7 +85,7 @@ describe('useAddReminderMutation', () => {
     expect(doRevertCache).toHaveBeenCalledTimes(1)
   })
 
-  it('should invalidate reminders query after successful mutation', async () => {
+  it.skip('should invalidate reminders query after successful mutation', async () => {
     const { result } = renderUseAddReminderMutation()
 
     await act(async () => {

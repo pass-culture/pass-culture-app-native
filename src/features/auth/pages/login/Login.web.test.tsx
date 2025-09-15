@@ -71,6 +71,7 @@ function renderLogin() {
               isUserLoading: false,
               refetchUser: jest.fn(),
             }}>
+            {/* @ts-expect-error - type incompatibility with React 19 */}
             <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
               <Login />
             </GoogleOAuthProvider>

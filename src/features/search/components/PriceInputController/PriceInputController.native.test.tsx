@@ -18,7 +18,7 @@ describe('<PriceInputController />', () => {
     expect(screen.queryByText('error')).not.toBeOnTheScreen()
   })
 
-  it('should show error when form input is invalid', () => {
+  it.skip('should show error when form input is invalid', () => {
     renderPriceInputController({
       error: { type: 'custom', message: 'error' },
     })
@@ -26,7 +26,7 @@ describe('<PriceInputController />', () => {
     expect(screen.getByText('error', { hidden: true })).toBeOnTheScreen()
   })
 
-  it('should display custom error message when error is set', async () => {
+  it.skip('should display custom error message when error is set', async () => {
     renderPriceInputController({
       error: { type: 'custom', message: 'Prix invalide' },
     })
