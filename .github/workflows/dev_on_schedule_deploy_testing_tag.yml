@@ -2,7 +2,7 @@ name: Scheduled Hard Deploy Testing
 
 on:
   schedule:
-    - cron: '30 12 * * *' # tous les jours à 14h30 Europe/Paris
+    - cron: '30 13 * * *' # tous les jours à 15h30 Europe/Paris
   workflow_dispatch:
 
 permissions:
@@ -45,13 +45,20 @@ jobs:
             echo "Aucun tag testing/v* trouvé, le job échoue."
             exit 1
           fi
+          git fetch origin master
+          LAST_TAG_COMMIT=$(git rev-list -n 1 "$TAG")
+          LATEST_MASTER_COMMIT=$(git rev-parse origin/master)
+          if [ "$LAST_TAG_COMMIT" = "$LATEST_MASTER_COMMIT" ]; then
+            echo "Aucun nouveau commit sur master depuis le dernier tag testing, rien à déployer."
+            exit 0
+          fi
           VERSION=$(echo $TAG | sed 's/testing\\/v//')
           IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
           PATCH=$((PATCH + 1))
           echo "NEW_TAG=testing/v${MAJOR}.${MINOR}.${PATCH}" >> $GITHUB_ENV
-      - name: Create and push new tag
+      - name: Bump patch version, update build number, commit and tag
         env:
           NEW_TAG: ${{ env.NEW_TAG }}
         run: |
-          git tag --annotate "$NEW_TAG" --message "🚀 $NEW_TAG"
-          git push origin "$NEW_TAG"
+          chmod +x ./scripts/update_app_version.sh
+          ./scripts/update_app_version.sh "$NEW_TAG" patch
