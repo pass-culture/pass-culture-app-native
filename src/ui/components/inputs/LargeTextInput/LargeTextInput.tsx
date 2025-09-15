@@ -1,11 +1,9 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
-import styled from 'styled-components/native'
 
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
+import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { TextInputProps } from 'ui/components/inputs/types'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
@@ -36,53 +34,20 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
     : undefined
 
   return (
-    <React.Fragment>
-      <TextInput
-        label={label}
-        value={value}
-        onChangeText={onChangeText}
-        containerStyle={{ height: containerHeight ?? getSpacing(50) }}
-        multiline
-        accessibilityHint={computedErrorMessage}
-        maxLength={maxValueLength + 25}
-        ref={forwardedRef}
-        {...inputProps}
-      />
-      <FooterContainer>
-        <InputErrorContainer>
-          <InputError
-            visible={!!showErrorMessage}
-            errorMessage={computedErrorMessage}
-            numberOfSpacesTop={0}
-          />
-        </InputErrorContainer>
-        <CountContainer>
-          <CaptionNeutralInfo>
-            {value ? value.length : 0} / {maxValueLength}
-          </CaptionNeutralInfo>
-        </CountContainer>
-      </FooterContainer>
-    </React.Fragment>
+    <InputText
+      label={label}
+      value={value}
+      onChangeText={onChangeText}
+      containerStyle={{ height: containerHeight ?? getSpacing(50) }}
+      multiline
+      accessibilityHint={computedErrorMessage}
+      maxLength={maxValueLength + 25}
+      errorMessage={computedErrorMessage}
+      ref={forwardedRef}
+      characterCount={maxValueLength}
+      {...inputProps}
+    />
   )
 }
 
 export const LargeTextInput = forwardRef<RNTextInput, LargeTextInputProps>(WithRefLargeTextInput)
-
-const FooterContainer = styled.View(({ theme }) => ({
-  maxWidth: theme.contentPage.maxWidth,
-  marginVertical: getSpacing(2),
-  flexDirection: 'row',
-}))
-
-const InputErrorContainer = styled.View({
-  flex: 1,
-})
-
-const CountContainer = styled.View({
-  textAlign: 'end',
-  width: getSpacing(18),
-})
-
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))

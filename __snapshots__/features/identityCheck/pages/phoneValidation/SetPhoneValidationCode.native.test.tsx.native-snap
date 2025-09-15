@@ -256,14 +256,12 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                 Valide ton numéro de téléphone
               </Text>
               <View
-                numberOfSpaces={5}
                 style={
                   {
-                    "height": 20,
+                    "marginTop": 24,
                   }
                 }
-              />
-              <View>
+              >
                 <Text
                   style={
                     {
@@ -271,24 +269,18 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginBottom": 24,
                     }
                   }
                 >
                   Saisis le code reçu au +33 6 12 34 56 78.
                 </Text>
                 <View
-                  numberOfSpaces={6}
-                  style={
-                    {
-                      "height": 24,
-                    }
-                  }
-                />
-                <View
                   style={
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "marginBottom": 16,
                       "width": "100%",
                     }
                   }
@@ -313,7 +305,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                             "alignItems": "flex-end",
                             "flexDirection": "row",
                             "justifyContent": "space-between",
-                            "marginBottom": 8,
                             "width": "100%",
                           }
                         }
@@ -331,20 +322,20 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         >
                           Code de validation
                         </Text>
-                        <Text
-                          style={
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                            }
-                          }
-                        >
-                          Format : 6 chiffres
-                        </Text>
                       </View>
                     </View>
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
+                      }
+                    >
+                      Format : 6 chiffres
+                    </Text>
                     <View
                       height="small"
                       isDisabled={false}
@@ -354,18 +345,19 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
-                          "borderColor": "#90949d",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#320096",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -410,14 +402,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    {
-                      "height": 16,
-                    }
-                  }
-                />
                 <View
                   style={
                     {

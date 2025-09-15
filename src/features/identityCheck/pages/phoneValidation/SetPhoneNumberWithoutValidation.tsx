@@ -20,8 +20,7 @@ import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
+import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Info } from 'ui/svg/icons/Info'
@@ -95,10 +94,9 @@ export const SetPhoneNumberWithoutValidation = () => {
               control={control}
               render={({ field, fieldState }) => (
                 <ViewGap gap={2}>
-                  <TextInput
+                  <InputText
                     autoComplete="tel"
                     autoCapitalize="none"
-                    isError={!!fieldState.error}
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
                     format="0639980123"
@@ -124,11 +122,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                       />
                     }
                     testID="Entrée pour le numéro de téléphone"
-                  />
-                  <InputError
-                    visible={!!fieldState.error}
                     errorMessage={fieldState.error?.message}
-                    numberOfSpacesTop={0}
                   />
                 </ViewGap>
               )}

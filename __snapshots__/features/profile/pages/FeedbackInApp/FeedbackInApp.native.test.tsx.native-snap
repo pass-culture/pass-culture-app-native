@@ -294,7 +294,6 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           "alignItems": "flex-end",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
-                          "marginBottom": 8,
                           "width": "100%",
                         }
                       }
@@ -310,19 +309,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           }
                         }
                       >
-                        Ma suggestion
-                      </Text>
-                      <Text
-                        style={
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          }
-                        }
-                      >
-                        Obligatoire
+                        Ma suggestion *
                       </Text>
                     </View>
                   </View>
@@ -336,18 +323,19 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
-                          "borderColor": "#90949d",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#320096",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
                           "paddingTop": 0,
                           "width": "100%",
                         },
@@ -362,7 +350,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       accessibilityRequired={true}
                       editable={true}
                       isEmpty={true}
-                      maxLength={825}
+                      maxLength={800}
                       multiline={true}
                       nativeID="testUuidV4"
                       onBlur={[Function]}
@@ -391,47 +379,37 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       value=""
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "flexDirection": "row",
-                      "marginVertical": 8,
-                      "maxWidth": 500,
-                    }
-                  }
-                >
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  />
-                  <View
-                    style={
-                      {
-                        "textAlign": "end",
-                        "width": 72,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "marginTop": 4,
+                        "width": "100%",
                       }
                     }
                   >
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "alignItems": "center",
+                          "marginLeft": "auto",
                         }
                       }
                     >
-                      0
-                       / 
-                      800
-                    </Text>
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        0/800
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
