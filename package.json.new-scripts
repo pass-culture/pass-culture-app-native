@@ -1,0 +1,11 @@
+# Nouveaux scripts à ajouter au package.json pour supporter T3-T4
+
+# Ajoutez ces scripts dans la section "scripts" de votre package.json :
+
+"test:unit:performance": "jest --testMatch='**/*performance*.test.{ts,tsx}' --verbose",
+"test:a11y:impact": "node scripts/analyze_accessibility_impact.sh",
+"test:bundle:analysis": "node scripts/analyze_bundle_size.sh",
+"test:architecture:complexity": "node scripts/analyze_architecture_complexity.sh",
+"performance:android:deep": "node scripts/android_performance_profile.sh",
+"performance:report": "node scripts/generate_performance_report.sh",
+"t3-t4:monitor": "yarn test:bundle:analysis && yarn test:a11y:impact && yarn test:architecture:complexity && yarn performance:report"

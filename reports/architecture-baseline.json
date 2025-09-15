@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-09-04T12:34:43.746Z",
+  "contexts": {
+    "createContextUsages": 19,
+    "reactCreateContextUsages": 11,
+    "useContextUsages": 20,
+    "providerUsages": 22,
+    "contextsFiles": 0,
+    "totalContextRelatedFiles": 22
+  },
+  "architecture": {
+    "useStateFiles": 171,
+    "useEffectFiles": 190,
+    "useQueryFiles": 88,
+    "useMutationFiles": 36,
+    "zustandFiles": 0,
+    "providerFiles": 69
+  },
+  "codeStats": {
+    "totalLines": 300261,
+    "totalFiles": 4032
+  },
+  "objective": {
+    "contexts": {
+      "current": 0,
+      "target": 10
+    },
+    "performance": {
+      "current": "4s P95",
+      "target": "<2s P95"
+    },
+    "bundle": {
+      "current": "18.7MB",
+      "target": "<15MB"
+    }
+  }
+}

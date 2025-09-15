@@ -2,6 +2,9 @@
 #
 .DS_Store
 
+# Build counter for Firebase App Distribution deployments
+.build_counter
+
 # Xcode
 #
 build/
