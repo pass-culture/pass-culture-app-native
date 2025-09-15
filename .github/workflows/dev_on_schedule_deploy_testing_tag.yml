@@ -2,7 +2,7 @@ name: Scheduled Hard Deploy Testing
 
 on:
   schedule:
-    - cron: '30 13 * * *' # tous les jours à 15h30 Europe/Paris
+    - cron: '00 14 * * *' # tous les jours à 16h00 Europe/Paris
   workflow_dispatch:
 
 permissions:
@@ -52,10 +52,12 @@ jobs:
             echo "Aucun nouveau commit sur master depuis le dernier tag testing, rien à déployer."
             exit 0
           fi
-          VERSION=$(echo $TAG | sed 's/testing\\/v//')
+          VERSION=${TAG#testing/v}
           IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
           PATCH=$((PATCH + 1))
-          echo "NEW_TAG=testing/v${MAJOR}.${MINOR}.${PATCH}" >> $GITHUB_ENV
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "NEW_TAG=testing/v${NEW_VERSION}" >> $GITHUB_ENV
       - name: Bump patch version, update build number, commit and tag
         env:
           NEW_TAG: ${{ env.NEW_TAG }}
