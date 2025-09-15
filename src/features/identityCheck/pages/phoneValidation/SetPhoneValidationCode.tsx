@@ -1,7 +1,6 @@
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useState } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
@@ -18,12 +17,11 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
+import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { useModal } from 'ui/components/modals/useModal'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SetPhoneValidationCode = () => {
@@ -145,17 +143,14 @@ export const SetPhoneValidationCode = () => {
       scrollChildren={
         <Form.MaxWidth>
           <Typo.Title3 {...getHeadingAttrs(2)}>Valide ton numéro de téléphone</Typo.Title3>
-          <Spacer.Column numberOfSpaces={5} />
-          <View>
+          <Container>
             <StyledBody>{enterCodeInstructions}</StyledBody>
-            <Spacer.Column numberOfSpaces={6} />
             <InputContainer>
-              <TextInput
+              <InputText
                 autoCapitalize="none"
-                isError={false}
                 keyboardType="number-pad"
                 label="Code de validation"
-                rightLabel="Format&nbsp;: 6 chiffres"
+                format="Format&nbsp;: 6 chiffres"
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
                 placeholder="012345"
@@ -164,14 +159,9 @@ export const SetPhoneValidationCode = () => {
                 onSubmitEditing={validateCode}
                 accessibilityHint={errorMessage}
                 testID="Entrée pour le code reçu par sms"
+                errorMessage={errorMessage}
               />
             </InputContainer>
-            <InputError
-              visible={!!errorMessage}
-              errorMessage={errorMessage}
-              numberOfSpacesTop={3}
-            />
-            <Spacer.Column numberOfSpaces={4} />
             <ButtonContainer>
               <ButtonTertiaryBlack
                 inline
@@ -184,7 +174,7 @@ export const SetPhoneValidationCode = () => {
               isVisible={isCodeNotReceivedModalVisible}
               dismissModal={hideModal}
             />
-          </View>
+          </Container>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
@@ -205,8 +195,13 @@ export const hasCodeCorrectFormat = (code: string) => {
   return !!code.match(/^\d{6}$/)
 }
 
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
+
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const InputContainer = styled.View(({ theme }) => ({
@@ -214,6 +209,7 @@ const InputContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   width: '100%',
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
 
 const ButtonContainer = styled.View({

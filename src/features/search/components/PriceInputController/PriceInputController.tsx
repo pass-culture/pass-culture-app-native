@@ -1,12 +1,10 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
-import { getSpacing } from 'ui/theme/spacing'
+import { InputText } from 'ui/components/inputs/InputText/InputText'
 
 interface Props<TFieldValues extends FieldValues, TName>
-  extends Omit<React.ComponentProps<typeof TextInput>, 'value' | 'onChangeText'> {
+  extends Omit<React.ComponentProps<typeof InputText>, 'value' | 'onChangeText'> {
   name: TName
   control: Control<TFieldValues>
   label: string
@@ -23,7 +21,7 @@ export const PriceInputController = <
   control,
   label,
   placeholder,
-  rightLabel,
+  format,
   isDisabled,
   ...textInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
@@ -32,29 +30,22 @@ export const PriceInputController = <
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-        <React.Fragment>
-          <TextInput
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-            label={label}
-            placeholder={placeholder}
-            rightLabel={rightLabel}
-            disabled={isDisabled}
-            isError={!!error && value.length > 0}
-            accessibilityHint={error?.message}
-            keyboardType="numeric"
-            autoCapitalize="none"
-            autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
-            textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
-            {...textInputProps}
-          />
-          <InputError
-            visible={!!error}
-            errorMessage={error?.message}
-            numberOfSpacesTop={getSpacing(0.5)}
-          />
-        </React.Fragment>
+        <InputText
+          value={value}
+          onChangeText={onChange}
+          onBlur={onBlur}
+          label={label}
+          placeholder={placeholder}
+          format={format}
+          disabled={isDisabled}
+          accessibilityHint={error?.message}
+          keyboardType="numeric"
+          autoCapitalize="none"
+          autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
+          textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
+          errorMessage={error?.message}
+          {...textInputProps}
+        />
       )}
     />
   )

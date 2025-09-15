@@ -242,19 +242,12 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 19,
                   "lineHeight": 30.4,
+                  "marginBottom": 24,
                 }
               }
             >
               Quel est ton numéro de téléphone ?
             </Text>
-            <View
-              numberOfSpaces={6}
-              style={
-                {
-                  "height": 24,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -271,24 +264,19 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginBottom": 24,
                     }
                   }
                 >
                   Tu vas recevoir un code de validation pour confirmer ton numéro.
                 </Text>
                 <View
-                  numberOfSpaces={6}
-                  style={
-                    {
-                      "height": 24,
-                    }
-                  }
-                />
-                <View
+                  invalidPhoneNumberMessage=""
                   style={
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "marginBottom": 32,
                       "width": "100%",
                     }
                   }
@@ -313,7 +301,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             "alignItems": "flex-end",
                             "flexDirection": "row",
                             "justifyContent": "space-between",
-                            "marginBottom": 8,
                             "width": "100%",
                           }
                         }
@@ -334,26 +321,27 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       </View>
                     </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
-                          "borderColor": "#90949d",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderColor": "#320096",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -363,7 +351,8 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       <View
                         style={
                           {
-                            "marginBottom": 8,
+                            "flexShrink": 0,
+                            "marginRight": 8,
                           }
                         }
                       >
@@ -495,14 +484,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={8}
-                  style={
-                    {
-                      "height": 32,
-                    }
-                  }
-                />
               </View>
             </View>
           </View>
@@ -523,9 +504,11 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           }
         >
           <View
+            gap={2}
             style={
               {
                 "alignItems": "center",
+                "gap": 8,
               }
             }
           >
@@ -574,14 +557,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 de code de validation
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                {
-                  "height": 8,
-                }
-              }
-            />
             <View
               accessibilityLabel="Continuer vers l’étape suivante"
               accessibilityState={

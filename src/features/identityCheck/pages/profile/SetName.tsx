@@ -12,8 +12,7 @@ import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStac
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
+import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -52,7 +51,7 @@ export const SetName = () => {
   const { setName: setStoredName } = nameActions
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
-  const { control, formState, handleSubmit, watch } = useForm<FormValues>({
+  const { control, formState, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       firstName: storedName?.firstName ?? '',
       lastName: storedName?.lastName ?? '',
@@ -60,8 +59,6 @@ export const SetName = () => {
     resolver: yupResolver(setNameSchema),
     mode: 'all',
   })
-
-  const { firstName, lastName } = watch()
 
   const disabled = !formState.isValid
 
@@ -86,25 +83,19 @@ export const SetName = () => {
             control={control}
             name="firstName"
             render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <React.Fragment>
-                <TextInput
-                  label="Prénom"
-                  value={value}
-                  autoFocus
-                  onChangeText={onChange}
-                  placeholder="Ton prénom"
-                  isRequiredField
-                  accessibilityHint={error?.message}
-                  testID="Entrée pour le prénom"
-                  textContentType="givenName"
-                  autoComplete="given-name"
-                />
-                <InputError
-                  visible={firstName.length > 0 && !!error}
-                  errorMessage={error?.message}
-                  numberOfSpacesTop={2}
-                />
-              </React.Fragment>
+              <InputText
+                label="Prénom"
+                value={value}
+                autoFocus
+                onChangeText={onChange}
+                placeholder="Ton prénom"
+                isRequiredField
+                accessibilityHint={error?.message}
+                testID="Entrée pour le prénom"
+                textContentType="givenName"
+                autoComplete="given-name"
+                errorMessage={error?.message}
+              />
             )}
           />
           <Spacer.Column numberOfSpaces={6} />
@@ -112,24 +103,18 @@ export const SetName = () => {
             control={control}
             name="lastName"
             render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <React.Fragment>
-                <TextInput
-                  label="Nom"
-                  value={value}
-                  onChangeText={onChange}
-                  placeholder="Ton nom"
-                  isRequiredField
-                  accessibilityHint={error?.message}
-                  testID="Entrée pour le nom"
-                  textContentType="familyName"
-                  autoComplete="family-name"
-                />
-                <InputError
-                  visible={lastName.length > 0 && !!error}
-                  errorMessage={error?.message}
-                  numberOfSpacesTop={2}
-                />
-              </React.Fragment>
+              <InputText
+                label="Nom"
+                value={value}
+                onChangeText={onChange}
+                placeholder="Ton nom"
+                isRequiredField
+                accessibilityHint={error?.message}
+                testID="Entrée pour le nom"
+                textContentType="familyName"
+                autoComplete="family-name"
+                errorMessage={error?.message}
+              />
             )}
           />
         </Form.MaxWidth>

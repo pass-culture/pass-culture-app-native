@@ -1,0 +1,75 @@
+import type { Meta } from '@storybook/react-vite'
+import React from 'react'
+import { styled } from 'styled-components/native'
+
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { Eye } from 'ui/svg/icons/Eye'
+import { Search } from 'ui/svg/icons/Search'
+
+import { InputText } from './InputText'
+
+const meta: Meta<typeof InputText> = {
+  title: 'design system/inputs/InputText',
+  component: InputText,
+}
+export default meta
+
+const SearchIcon = styled(Search).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.subtle,
+  size: theme.icons.sizes.smaller,
+}))``
+
+const baseProps = {
+  placeholder: 'Placeholder...',
+  label: 'Label',
+  format: 'Format',
+}
+
+const variantConfig: Variants<typeof InputText> = [
+  {
+    label: 'InputText',
+    props: { ...baseProps },
+  },
+  {
+    label: 'InputText with icon',
+    props: { ...baseProps, leftComponent: <SearchIcon /> },
+  },
+  {
+    label: 'Disabled InputText',
+    props: { ...baseProps, disabled: true },
+  },
+  {
+    label: 'Required InputText',
+    props: { ...baseProps, isRequiredField: true },
+  },
+  {
+    label: 'InputText with error',
+    props: { ...baseProps, errorMessage: 'Error message' },
+  },
+  {
+    label: 'InputText with inside rightButton',
+    props: {
+      ...baseProps,
+      rightButton: {
+        icon: Eye,
+        onPress: () => alert('Do nothing'),
+        accessibilityLabel: 'Afficher le mot de passe',
+      },
+    },
+  },
+  {
+    label: 'InputText with character count',
+    props: { ...baseProps, characterCount: 10 },
+  },
+  {
+    label: 'InputText with character count and error message',
+    props: { ...baseProps, characterCount: 10, errorMessage: 'Error message' },
+  },
+]
+
+export const Template: VariantsStory<typeof InputText> = {
+  name: 'InputText',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={InputText} defaultProps={{ ...props }} />
+  ),
+}

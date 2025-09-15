@@ -357,7 +357,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             name="maxPrice"
             label={`Prix maximum (en\u00a0${currencyFull})`}
             placeholder={`${formatInitialCredit}`}
-            rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
+            format={`max\u00a0: ${formatInitialCreditWithCurrency}`}
             testID="Entrée pour le prix maximum"
             isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
           />
