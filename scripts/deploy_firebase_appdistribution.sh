@@ -291,8 +291,10 @@ case "$APP_OS" in
 esac
 
 # Use environment variables if flags not provided
-SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-${SLACK_WEBHOOK_URL:-}}"
-FIREBASE_CREDENTIALS_PATH="${FIREBASE_CREDENTIALS_PATH:-${FIREBASE_CREDENTIALS_PATH:-}}"
+# Use environment variables if flags not provided
+# (No need for nested parameter expansion)
+SLACK_WEBHOOK_URL="${SLACK_WEBHOOK_URL:-}"
+FIREBASE_CREDENTIALS_PATH="${FIREBASE_CREDENTIALS_PATH:-}"
 
 # Main execution
 info "🔥 Firebase App Distribution Deployment Script"

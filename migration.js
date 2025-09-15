@@ -9,7 +9,14 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const chalk = require('chalk');
+let chalk;
+try {
+  chalk = require('chalk');
+} catch (e) {
+  console.error('\x1b[31m%s\x1b[0m', '❌ Missing dependency: chalk');
+  console.error('Please run: npm install chalk');
+  process.exit(1);
+}
 
 // ==================== CONFIGURATION ====================
 

@@ -120,13 +120,17 @@ generate_build_number() {
     fi
     
     # Generate build number: MAJORMINORPATCHCOUNTER
-    # Format counter as 3-digit number (001, 002, etc.)
+    # Build number format: MAJORMINORPATCHCOUNTER, where:
+    #   - MAJOR is not zero-padded
+    #   - MINOR and PATCH are zero-padded to 3 digits each (e.g., 001, 002)
+    #   - COUNTER is zero-padded to 3 digits (e.g., 001, 002)
+    # Example: version 1.357.2, counter 5 => 1357002005
     printf "%d%03d%03d%03d" "$major" "$minor" "$patch" "$counter"
 }
 
-validate_build_number() {
-    local build_number="$1"
-    local max_android_version_code=2147483647  # 2^31 - 1 (Android limit)
+    if (( build_number > max_android_version_code )); then
+        error "Build number $build_number exceeds Android versionCode limit ($max_android_version_code)"
+    fi
     
     if [[ "$build_number" -gt "$max_android_version_code" ]]; then
         error "Build number $build_number exceeds Android versionCode limit ($max_android_version_code)"

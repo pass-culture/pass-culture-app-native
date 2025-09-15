@@ -69,7 +69,9 @@ EOF
 
 # Exécution des tests de performance
 echo "🧪 Running performance module tests..."
-node "$PERF_OUTPUT_DIR/android_performance_test.js" || echo "⚠️ Performance test simulation completed"
+if ! node "$PERF_OUTPUT_DIR/android_performance_test.js"; then
+  echo "⚠️ Performance test simulation failed"
+fi
 
 # Génération du profil de performance
 cat > "$PERF_OUTPUT_DIR/android_profile.json" << EOF

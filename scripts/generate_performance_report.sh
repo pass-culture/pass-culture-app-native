@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Script de génération de rapport de performance global pour T3-T4
+# Script to generate a comprehensive global performance report for T3-T4
 # Agrège toutes les analyses (bundle, performance, accessibilité) en un rapport unique
 
 set -o errexit

@@ -2,7 +2,7 @@ name: '5 [on_pr] Performance & Architecture Impact Monitoring'
 
 # Ce workflow surveille l'impact des travaux T3-T4 :
 # - Refactors architecturaux (AuthWrapper, LocationWrapper, etc.)
-# - Travaux d'accessibilité 
+# - Travaux d'accessibilité
 # - Optimisations de performance Android
 # - Evolution des métriques bundle size
 
@@ -12,7 +12,7 @@ on:
     # Déclenché automatiquement, mais peut être désactivé avec label 'skip-performance'
     paths:
       - 'src/features/auth/context/**'
-      - 'src/libs/location/**'  
+      - 'src/libs/location/**'
       - 'src/features/search/context/**'
       - 'src/features/home/**'
       - 'src/features/offer/helpers/useCtaWordingAndAction/**'
@@ -36,58 +36,58 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     if: "!contains(github.event.pull_request.labels.*.name, 'skip-performance')"
-    
+
     steps:
       - name: Enable Corepack
         run: corepack enable
-        
+
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Nécessaire pour comparer avec la branche master
-          
+          fetch-depth: 0 # Nécessaire pour comparer avec la branche master
+
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          
+
       - name: Install dependencies
         run: yarn install
-        
+
       - name: Setup performance baseline directories
         run: |
           mkdir -p $PERFORMANCE_BASELINE_DIR
           mkdir -p $BUNDLE_ANALYSIS_DIR
-          
+
       - name: Run TTI Performance Tests (react-native-performance)
         run: |
           echo "🚀 Testing TTI performance with current changes..."
           yarn test:unit:performance
-          
+
       - name: Generate Bundle Analysis Report
         run: |
           echo "📦 Analyzing bundle size impact..."
-          ./scripts/analyze_bundle_size.sh > $BUNDLE_ANALYSIS_DIR/current.json
-          
+          ./scripts/analyze_bundle_size.sh > $BUNDLE_ANALYSIS_DIR/report.md 2>&1
+
       - name: Test Accessibility Impact
         run: |
           echo "♿ Testing accessibility compliance..."
           yarn test:a11y:impact
-          
+
       - name: Architecture Complexity Analysis
         run: |
           echo "🏗️ Analyzing architectural complexity changes..."
           ./scripts/analyze_architecture_complexity.sh
-          
+
       - name: Compare Performance with Master
         run: |
           echo "📊 Comparing performance metrics with master branch..."
           ./scripts/compare_performance_with_master.sh
-          
+
       - name: Generate Performance Report
         if: always()
         run: |
           echo "📝 Generating comprehensive performance report..."
           ./scripts/generate_performance_report.sh
-          
+
       - name: Comment PR with Performance Impact
         if: always()
         uses: actions/github-script@v7
@@ -96,33 +96,33 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let reportContent = "## 📊 Performance & Architecture Impact Report\n\n";
-            
+
             try {
               const bundleReport = fs.readFileSync('.bundle-analysis/report.md', 'utf8');
               reportContent += bundleReport + "\n\n";
             } catch (e) {
               reportContent += "❌ Bundle analysis failed\n\n";
             }
-            
+
             try {
               const perfReport = fs.readFileSync('.performance-baseline/report.md', 'utf8');
               reportContent += perfReport + "\n\n";
             } catch (e) {
               reportContent += "❌ Performance analysis failed\n\n";
             }
-            
+
             reportContent += "---\n";
             reportContent += "*🤖 Generated automatically for T3-T4 strategy monitoring*";
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: reportContent
             });
-            
+
       - name: Upload Performance Artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -134,46 +134,46 @@ jobs:
           retention-days: 30
 
   android-performance-deep-check:
-    name: 'Android Performance Deep Analysis'  
+    name: 'Android Performance Deep Analysis'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     if: "contains(github.event.pull_request.labels.*.name, 'android-performance') || contains(github.event.pull_request.title, '[PERF]')"
-    
+
     steps:
       - name: Enable Corepack
         run: corepack enable
-        
+
       - uses: actions/checkout@v4
-        
+
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          
+
       - name: Setup Java for Android builds
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-          
+
       - name: Install dependencies
         run: yarn install
-        
+
       - name: Build Android Bundle for Analysis
         run: |
           echo "🏗️ Building Android bundle for deep performance analysis..."
           cd android
           ./gradlew bundleRelease --info
-          
+
       - name: Analyze Android Bundle Size
         run: |
           echo "📱 Analyzing Android bundle size (target: <15MB)..."
           ./scripts/android_bundle_analysis.sh
-          
+
       - name: Android Performance Profiling
         run: |
           echo "⏱️ Running Android performance profiling..."
           ./scripts/android_performance_profile.sh
-          
+
       - name: Comment Android Performance Results
         uses: actions/github-script@v7
         env:
@@ -181,9 +181,9 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let androidReport = "## 📱 Android Performance Deep Analysis\n\n";
-            
+
             try {
               const bundleSize = fs.readFileSync('android-bundle-size.txt', 'utf8');
               const targetSize = 15; // MB
@@ -197,13 +197,13 @@ jobs:
             } catch (e) {
               androidReport += "❌ Bundle size analysis failed\n\n";
             }
-            
+
             androidReport += "### 🎯 T3-T4 Strategy Tracking\n";
             androidReport += "- Target: P90 35s → 7s on Android Home\n";
             androidReport += "- Bundle target: <15MB Android\n";
             androidReport += "- Architecture: AuthWrapper/LocationWrapper refactors\n\n";
             androidReport += "*Add label `android-performance` to enable this analysis*";
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,

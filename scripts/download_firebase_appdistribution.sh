@@ -242,7 +242,7 @@ download_release_info() {
         .releases // .
         | sort_by(.createTime) 
         | reverse 
-        | limit($count | tonumber; .) 
+        | .[0:($count | tonumber)] 
         | .[] 
         | @json' | while IFS= read -r release; do
         
