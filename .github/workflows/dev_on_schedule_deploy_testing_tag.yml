@@ -1,0 +1,57 @@
+name: Scheduled Hard Deploy Testing
+
+on:
+  schedule:
+    - cron: '30 12 * * *' # tous les jours à 14h30 Europe/Paris
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+jobs:
+  deploy-new-testing-tag:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Authenticate through github app ghactionci
+        uses: actions/create-github-app-token@v2
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-app-native
+          permission-contents: write
+          permission-actions: write
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api \"/users/${{ steps.github-app-token.outputs.app-slug }}[bot]\" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
+      - run: |
+          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
+      - name: Get latest testing tag
+        id: get_tag
+        run: |
+          TAG=$(git tag --list 'testing/v*' --sort=-v:refname | head -n 1)
+          if [ -z "$TAG" ]; then
+            echo "Aucun tag testing/v* trouvé, le job échoue."
+            exit 1
+          fi
+          VERSION=$(echo $TAG | sed 's/testing\\/v//')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+          PATCH=$((PATCH + 1))
+          echo "NEW_TAG=testing/v${MAJOR}.${MINOR}.${PATCH}" >> $GITHUB_ENV
+      - name: Create and push new tag
+        env:
+          NEW_TAG: ${{ env.NEW_TAG }}
+        run: |
+          git tag --annotate "$NEW_TAG" --message "🚀 $NEW_TAG"
+          git push origin "$NEW_TAG"
