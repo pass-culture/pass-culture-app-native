@@ -29,6 +29,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -103,6 +104,9 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('features/auth/context/AuthContext')
+
+const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
+fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
 const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
@@ -663,7 +667,7 @@ describe('<OfferContent />', () => {
 
   describe('movie screening access button', () => {
     describe('with remote config activated', () => {
-      beforeAll(() => {
+      beforeEach(() => {
         useRemoteConfigSpy.mockReturnValue({
           ...remoteConfigResponseFixture,
           data: {

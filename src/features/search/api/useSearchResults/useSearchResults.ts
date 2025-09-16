@@ -92,7 +92,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     // first page is 0
     initialPageParam: 0,
     getNextPageParam: ({ offers: { nbPages, page } }) => {
-      return page + 1 < nbPages ? page + 1 : undefined
+      return page + 1 < nbPages ? page + 1 : null
     },
     enabled: onlineManager.isOnline(),
   })

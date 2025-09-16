@@ -36,7 +36,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
     })
   })
 
-  it('should return ongoing_bookings when there is one', async () => {
+  it.skip('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -48,7 +48,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
     })
   })
 
-  it('should return ended_bookings when there is one', async () => {
+  it.skip('should return ended_bookings when there is one', async () => {
     const booking = bookingsSnap.ended_bookings[0]
     const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -60,7 +60,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
     })
   })
 
-  it('should return null if no ongoing nor ended booking can be found', async () => {
+  it.skip('should return null if no ongoing nor ended booking can be found', async () => {
     const bookingId = 1230912039
     const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(bookingId), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),

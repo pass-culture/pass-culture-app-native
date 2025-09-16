@@ -71,7 +71,7 @@
     "test:perf:update": "yarn test:perf --baseline",
     "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
-    "test:unit": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
+    "test:unit": "TZ=UTC JEST=true node --no-experimental-fetch --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
     "test:unit:ci": "JEST_SILENT_REPORTER_DOTS=true yarn test:unit --maxWorkers=6 --coverage --ci --reporters=jest-junit --reporters=jest-silent-reporter",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
     "test:lighthouse": "lhci autorun",
