@@ -7,6 +7,7 @@ import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensi
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
+import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -23,6 +24,7 @@ type VideoSectionProps = {
   maxWidth?: number
   playerRatio?: number
   userId?: number
+  duration?: number | null
 }
 
 export const VideoSection = ({
@@ -36,6 +38,7 @@ export const VideoSection = ({
   offerId,
   offerSubcategory,
   userId,
+  duration,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
@@ -44,19 +47,22 @@ export const VideoSection = ({
   const renderVideoSection = useCallback(() => {
     return (
       <React.Fragment>
-        <Typo.Title3 {...getHeadingAttrs(3)}>{title}</Typo.Title3>
+        <Typo.Title3 {...getHeadingAttrs(3)}>Vidéo</Typo.Title3>
         {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
         <StyledYoutubePlayer
+          title={title}
           videoId={videoId}
           thumbnail={videoThumbnail}
           height={videoHeight}
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
+          duration={duration ? formatDuration(duration, 'sec') : undefined}
         />
         <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>
     )
   }, [
+    duration,
     maxWidth,
     offerId,
     offerSubcategory,
@@ -93,6 +99,6 @@ const Container = styled(ViewGap)(({ theme }) => ({
 }))
 
 const StyledYoutubePlayer = styled(YoutubePlayer)(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.xl,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   overflow: 'hidden',
 }))

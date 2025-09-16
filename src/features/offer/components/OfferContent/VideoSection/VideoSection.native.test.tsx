@@ -18,7 +18,7 @@ describe('<VideoSection />', () => {
   it('should display Vidéo section', () => {
     render(<VideoSection {...defaultProps} />)
 
-    expect(screen.getByText('Peppa Pig')).toBeOnTheScreen()
+    expect(screen.getByText('Vidéo')).toBeOnTheScreen()
   })
 
   it('should display container without divider on desktop', () => {

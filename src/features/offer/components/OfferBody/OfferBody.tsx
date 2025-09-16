@@ -203,10 +203,11 @@ export const OfferBody: FunctionComponent<Props> = ({
           videoThumbnail={
             <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
           }
-          title="Vidéo"
+          title={offer.video?.title ?? offer.name}
           offerId={offer.id}
           offerSubcategory={offer.subcategoryId}
           userId={userId}
+          duration={offer.video?.durationSeconds}
         />
       ) : null}
 
