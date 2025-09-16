@@ -1,8 +1,8 @@
-name: Scheduled Hard Deploy Testing
+name: '1 [on_schedule] Hard Deploy Testing'
 
 on:
   schedule:
-    - cron: '00 14 * * *' # tous les jours à 16h00 Europe/Paris
+    - cron: '00 9 * 9 *' # tous les jours à 11h00 Europe/Paris (désactivé pour l'instant)
   workflow_dispatch:
 
 permissions:
@@ -31,8 +31,14 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: 'Authentification to Google'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Authenticate through github app ghactionci
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
         id: github-app-token
         with:
           app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
@@ -42,82 +48,10 @@ jobs:
             pass-culture-app-native
           permission-contents: write
           permission-actions: write
-      - name: Get GitHub App User ID
-        id: get-user-id
-        run: echo "user-id=$(gh api \"/users/${{ steps.github-app-token.outputs.app-slug }}[bot]\" --jq .id)" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger hard deploy testing
         env:
           GITHUB_TOKEN: ${{ steps.github-app-token.outputs.token }}
-      - run: |
-          git config --global user.name '${{ steps.github-app-token.outputs.app-slug }}[bot]'
-          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.github-app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ steps.github-app-token.outputs.token }}@github.com/${{ github.repository_owner }}/pass-culture-app-native.git
-      - name: Get latest testing tag
-        id: get_tag
-        run: |
-          TAG=$(git tag --list 'testing/v*' --sort=-v:refname | head -n 1)
-          if [ -z "$TAG" ]; then
-            echo "Aucun tag testing/v* trouvé, le job échoue."
-            exit 1
-          fi
-          git fetch origin master
-          LAST_TAG_COMMIT=$(git rev-list -n 1 "$TAG")
-          LATEST_MASTER_COMMIT=$(git rev-parse origin/master)
-          if [ "$LAST_TAG_COMMIT" = "$LATEST_MASTER_COMMIT" ]; then
-            echo "Aucun nouveau commit sur master depuis le dernier tag testing, rien à déployer."
-            exit 0
-          fi
-          VERSION_TAG=${TAG#testing/v}
-          echo "Dernier tag: $TAG (version: $VERSION_TAG)"
-          VERSION_PKG=$(jq -r .version package.json)
-          echo "Version actuelle dans package.json: $VERSION_PKG"
-          if [ "$VERSION_TAG" != "$VERSION_PKG" ]; then
-            echo "ERREUR: La version du dernier tag ne correspond pas à celle du package.json."
-            exit 1
-          fi
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION_TAG"
-          PATCH=$((PATCH + 1))
-          EXPECTED_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-          echo "Version attendue après bump: $EXPECTED_VERSION"
-          echo "EXPECTED_VERSION=$EXPECTED_VERSION" >> $GITHUB_ENV
-          echo "EXPECTED_TAG=testing/v${EXPECTED_VERSION}" >> $GITHUB_ENV
-      - name: Bump patch version
-        run: |
-          # echo "Avant bump: $(jq -r .version package.json)"
-          # yarn version patch --deferred
-          # yarn version apply
-          # echo "Après bump: $(jq -r .version package.json)"
-
-      - name: Update build number
-        run: |
-          # VERSION=$(jq -r .version package.json)
-          # MAJOR=$(echo $VERSION | cut -d. -f1)
-          # MINOR=$(echo $VERSION | cut -d. -f2)
-          # PATCH=$(echo $VERSION | cut -d. -f3)
-          # BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
-          # jq ".build = $BUILD_NUMBER" package.json > tmp && mv tmp package.json
-
-      - name: Commit version and build number
-        run: |
-          VERSION=$(jq -r .version package.json)
-          # git add package.json server/package.json .yarn/versions || true
-          # git commit -m "testing/v$VERSION"
-          # git push origin master
-          echo "[DRY RUN] Le commit serait : testing/v$VERSION"
-          echo "[DRY RUN] git add package.json server/package.json .yarn/versions || true"
-          echo "[DRY RUN] git commit -m 'testing/v$VERSION'"
-          echo "[DRY RUN] git push origin master"
-
-      - name: Create and push testing tag
-        run: |
-          VERSION=$(jq -r .version package.json)
-          EXPECTED_VERSION=$EXPECTED_VERSION
-          TAG="testing/v$VERSION"
-          if [ "$VERSION" != "$EXPECTED_VERSION" ]; then
-            echo "ERREUR: La version bumpée ($VERSION) ne correspond pas à la version attendue ($EXPECTED_VERSION)."
-            exit 1
-          fi
-          # git tag --annotate "$TAG" --message "🚀 $TAG"
-          # git push origin "$TAG"
-          echo "[DRY RUN] Le tag serait : $TAG"
-          echo "[DRY RUN] git tag --annotate '$TAG' --message '🚀 $TAG'"
-          echo "[DRY RUN] git push origin '$TAG'"
+          PASSCULTURE_GITHUB_ACTION_APP_ID: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+        run: yarn trigger:testing:deploy
