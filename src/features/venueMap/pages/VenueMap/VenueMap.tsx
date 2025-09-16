@@ -14,14 +14,12 @@ import {
   setRegion,
   setVenues,
 } from 'features/venueMap/store/venueMapStore'
-import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 export const VenueMap: FunctionComponent = () => {
   const { geolocPosition, selectedPlace, selectedLocationMode } = useLocation()
   const { width, height } = useWindowDimensions()
-  const { reset } = venuesFilterActions
 
   const location =
     selectedLocationMode === LocationMode.AROUND_ME ? geolocPosition : selectedPlace?.geolocation
@@ -55,7 +53,6 @@ export const VenueMap: FunctionComponent = () => {
   useEffect(
     () => () => {
       clearVenueMapStore()
-      reset()
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

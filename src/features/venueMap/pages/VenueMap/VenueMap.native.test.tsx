@@ -122,14 +122,11 @@ describe('<VenueMap />', () => {
 
   it('Should reset store + filters when unmounting', async () => {
     const spyClearStore = jest.spyOn(venueMapStore, 'clearVenueMapStore')
-    const spyResetFilters = jest.spyOn(venuesFilterActions, 'reset')
 
     const { unmount } = render(reactQueryProviderHOC(<VenueMap />))
 
     unmount()
 
     await waitFor(() => expect(spyClearStore).toHaveBeenCalledWith())
-
-    expect(spyResetFilters).toHaveBeenCalledWith()
   })
 })
