@@ -92,3 +92,8 @@ export type OfferImageContainerDimensions = {
     borderRadius: number
   }
 }
+
+export type Duration = {
+  label: string
+  accessibilityLabel: string
+}

@@ -57,7 +57,7 @@ export const BookingInformations = () => {
     }
 
     if (offer.extraData?.durationMinutes) {
-      message += ` - Durée\u00a0: ${formatDuration(offer.extraData.durationMinutes)}`
+      message += ` - Durée\u00a0: ${formatDuration(offer.extraData.durationMinutes).label}`
     }
 
     return (

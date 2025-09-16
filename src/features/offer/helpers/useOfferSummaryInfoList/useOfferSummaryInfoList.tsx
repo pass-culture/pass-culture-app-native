@@ -31,7 +31,7 @@ export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
   const formattedDate = capitalize(getFormattedDates(dates))
   const locationName = getOfferLocationName(venue, isDigital)
   const duration = extraData?.durationMinutes
-    ? formatDuration(extraData.durationMinutes)
+    ? formatDuration(extraData.durationMinutes).label
     : undefined
 
   const fullAddressOffer = formatFullAddress(address?.street, address?.postalCode, address?.city)
