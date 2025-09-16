@@ -98,6 +98,7 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
+    mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
       ...venueDataTest,
@@ -294,6 +295,58 @@ describe('<Venue />', () => {
 
         expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
       })
+    })
+  })
+
+  describe('wipSearchInVenueModal is on', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE])
+    })
+
+    it('should open the search in venue modal when pressing on "Rechercher une offre"', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      expect(await screen.findByText('Rechercher dans ce lieu')).toBeOnTheScreen()
+    })
+
+    it('should display button "Lancer la recherche" disabled when opening the modal', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      expect(await screen.findByText('Lancer la recherche')).toBeDisabled()
+    })
+
+    it('should display button "Lancer la recherche" not disabled when there is at least on charcter in searchbar', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      await user.type(screen.getByTestId('searchInput'), 'Martine')
+
+      expect(await screen.findByText('Lancer la recherche')).not.toBeDisabled()
+    })
+
+    it('should logVenueSeeAllOffersClicked when pressing on "Lancer la recherche"', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      await user.type(screen.getByTestId('searchInput'), 'Martine')
+
+      await user.press(screen.getByText('Lancer la recherche'))
+
+      expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(5543)
     })
   })
 })

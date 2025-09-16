@@ -7,10 +7,12 @@ import { VenueResponse } from 'api/gen'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { VenueHeaderWrapper } from 'features/venue/components/VenueContent/VenueHeaderWrapper'
-import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
+import { OldVenueCTA } from 'features/venue/components/VenueCTA/OldVenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
+import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { isCloseToBottom } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
@@ -22,17 +24,15 @@ type Props = {
   venue: VenueResponse
   isCTADisplayed?: boolean
   children: React.ReactNode
-  showSearchInVenueModal: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () =>
   BatchProfile.trackEvent(BatchEvent.hasSeenVenueForSurvey)
 
-export const VenueContent: React.FunctionComponent<Props> = ({
+export const OldVenueContent: React.FunctionComponent<Props> = ({
   venue,
   isCTADisplayed,
   children,
-  showSearchInVenueModal,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -73,18 +73,25 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
   const { isButtonVisible, wording } = useOfferCTA()
+  const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
 
   const renderVenueCTA = useCallback(() => {
     if (showAccessScreeningButton && wording.length) {
       return isButtonVisible ? <CineContentCTA /> : null
     }
-    return isCTADisplayed ? <VenueCTA showSearchInVenueModal={showSearchInVenueModal} /> : null
+    return isCTADisplayed ? (
+      <OldVenueCTA
+        searchNavigationConfig={searchNavigationConfig}
+        onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
+      />
+    ) : null
   }, [
     isButtonVisible,
     isCTADisplayed,
     showAccessScreeningButton,
+    venue.id,
     wording.length,
-    showSearchInVenueModal,
+    searchNavigationConfig,
   ])
 
   return (
