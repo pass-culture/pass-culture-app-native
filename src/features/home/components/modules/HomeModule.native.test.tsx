@@ -133,7 +133,7 @@ describe('<HomeModule />', () => {
     await act(async () => {})
 
     await waitFor(async () => {
-      expect(await screen.findByText(' L’offre du moment 💥')).toBeOnTheScreen()
+      expect(await screen.findByLabelText('L’offre du moment')).toBeOnTheScreen()
     })
   })
 
@@ -202,7 +202,7 @@ describe('<HomeModule />', () => {
   it('should display CategoryListModule', async () => {
     renderHomeModule(formattedCategoryListModule)
 
-    expect(await screen.findByText('Cette semaine sur le pass')).toBeOnTheScreen()
+    expect(await screen.findByLabelText('Cette semaine sur le pass')).toBeOnTheScreen()
   })
 
   it('should display RecommendationModule', async () => {
@@ -225,7 +225,7 @@ describe('<HomeModule />', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('Tes évènements en ligne')).toBeOnTheScreen()
+    expect(await screen.findByLabelText('Tes évènements en ligne')).toBeOnTheScreen()
   })
 
   it('should display VideoModule', async () => {
@@ -234,7 +234,7 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(videoModuleFixture)
 
-    await screen.findByText('Découvre Lujipeka')
+    await screen.findByLabelText('Découvre Lujipeka')
 
     await waitFor(async () => {
       expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()

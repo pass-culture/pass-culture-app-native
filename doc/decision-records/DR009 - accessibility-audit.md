@@ -23,6 +23,26 @@
 
 <details>
 
+<summary> 🟠 Critère 1.1 - Android - Chaque élément graphique de décoration est-il ignoré par les technologies d’assistance ?e</summary>
+
+**RAAM** : [Critère 1.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-1)  
+**Ticket** : [PC-37377](https://passculture.atlassian.net/browse/PC-37377)  
+**PR** : [#8676](https://github.com/pass-culture/pass-culture-app-native/pull/8676)
+
+**Problème** 😱  
+- Les emojis étaient vocalisé sur Android car on utilisait `accessibilityHidden` qui ne fonctionne pas. 
+- Les icons qui étaient présent au début des boutons sont vocalisé "zéro" pour la même raison.
+
+**Correction** 💡  
+- Refacto du code de `AccessibleTitle` et utilisation de `accessibilityElementsHidden` (iOS) et `importantForAccessibility` (Android) via `hiddenFromScreenReader()` pour ignorer les emojis. Création d'un composant `AccessibleTitle` spécifique web qui permet de garder `aria-hidden` en web pour éviter les problèmes de compatibilité.
+- Utilisation du nouveau composant `LinkInsideText` qui ne possède pas d'emojis de lien externe. 
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 1.2 - Chaque élément graphique porteur d’information possède-t-il une alternative accessible aux technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 1.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-2)  
@@ -215,6 +235,8 @@ Legend:
 `TextInput` Type Multi-layer = our custom input component `EmailInputController`.
 
 </details>
+
+<br>
 
 <details>
 

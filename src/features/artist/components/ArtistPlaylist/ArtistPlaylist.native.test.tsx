@@ -21,9 +21,9 @@ describe('ArtistPlaylist', () => {
       )
     )
 
-    await screen.findByText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Toutes ses offres disponibles')
 
-    expect(screen.getByText('Toutes ses offres disponibles')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Toutes ses offres disponibles')).toBeOnTheScreen()
     expect(screen.getByText('Manga Série "One piece" - Tome 3')).toBeOnTheScreen()
   })
 
@@ -31,7 +31,7 @@ describe('ArtistPlaylist', () => {
     render(reactQueryProviderHOC(<ArtistPlaylist artistName="Céline Dion" items={[]} />))
 
     await waitFor(() =>
-      expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
+      expect(screen.queryByLabelText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
     )
   })
 
@@ -45,7 +45,7 @@ describe('ArtistPlaylist', () => {
       )
     )
 
-    await screen.findByText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Toutes ses offres disponibles')
 
     expect(screen.getByText('Poche')).toBeOnTheScreen()
   })
@@ -60,7 +60,7 @@ describe('ArtistPlaylist', () => {
       )
     )
 
-    await screen.findByText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Toutes ses offres disponibles')
 
     expect(screen.getAllByText('Livre')[1]).toBeOnTheScreen()
   })

@@ -92,12 +92,7 @@ export const PassPlaylist = ({
     <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
-          <AccessibleTitle
-            withMargin={withMargin}
-            TitleComponent={TitleLevel2}
-            testID="playlistTitle"
-            title={title}
-          />
+          <AccessibleTitle withMargin={withMargin} TitleComponent={TitleLevel2} title={title} />
           {renderTitleSeeMore()}
         </StyledView>
         {subtitle ? <StyledSubtitle withMargin={withMargin}>{subtitle}</StyledSubtitle> : null}

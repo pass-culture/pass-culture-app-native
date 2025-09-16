@@ -1501,7 +1501,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   withMargin={true}
                 >
                   <Text
-                    accessibilityHidden={true}
                     accessibilityLabel="GTL playlist"
                     accessibilityRole="header"
                     numberOfLines={2}
@@ -1514,7 +1513,21 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       }
                     }
                   >
-                    GTL playlist
+                    <Text
+                      accessibilityElementsHidden={true}
+                      accessibilityRole="header"
+                      importantForAccessibility="no"
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                        }
+                      }
+                    >
+                      GTL playlist
+                    </Text>
                   </Text>
                 </View>
               </View>

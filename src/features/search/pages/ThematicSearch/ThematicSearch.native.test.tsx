@@ -195,7 +195,7 @@ describe('<ThematicSearch/>', () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         await screen.findByText('Romans et littérature')
 
-        expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
+        expect(await screen.findByLabelText('GTL playlist')).toBeOnTheScreen()
       })
 
       it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
@@ -223,7 +223,7 @@ describe('<ThematicSearch/>', () => {
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Festivals')
 
-      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+      expect(screen.queryByLabelText('GTL playlist')).not.toBeOnTheScreen()
     })
   })
 

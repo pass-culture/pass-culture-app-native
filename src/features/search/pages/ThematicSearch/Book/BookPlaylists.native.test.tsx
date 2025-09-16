@@ -72,7 +72,7 @@ describe('BookPlaylists', () => {
   it('should render gtl playlists when algolia returns offers', async () => {
     renderBookPlaylists()
 
-    expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
+    expect(await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should render skeleton when playlists are still loading', async () => {
@@ -95,13 +95,13 @@ describe('BookPlaylists', () => {
 
     renderBookPlaylists()
 
-    expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 
   it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME if FF is disabled', async () => {
     renderBookPlaylists()
 
-    await screen.findByText(DEFAULT_PLAYLIST_TITLE)
+    await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -115,7 +115,7 @@ describe('BookPlaylists', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX])
     renderBookPlaylists()
 
-    await screen.findByText(DEFAULT_PLAYLIST_TITLE)
+    await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith(
       expect.objectContaining({
