@@ -1,5 +1,4 @@
 import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
-import { useSharedValue } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -32,7 +31,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
 
-  const progressValue = useSharedValue<number>(0)
+  const progressValue = 0
 
   const Wrapper = useRef(({ children }: PropsWithChildren) =>
     isDesktopViewport ? (

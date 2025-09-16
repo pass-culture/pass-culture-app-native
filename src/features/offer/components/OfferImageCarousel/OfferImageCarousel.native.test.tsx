@@ -1,5 +1,4 @@
 import React from 'react'
-import { SharedValue } from 'react-native-reanimated'
 
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { render, screen, userEvent } from 'tests/utils'
@@ -12,7 +11,7 @@ describe('OfferImageCarousel', () => {
   it('should render one image without pagination', async () => {
     render(
       <OfferImageCarousel
-        progressValue={1 as unknown as SharedValue<number>}
+        progressValue={1}
         offerImages={[{ url: 'https://image1.jpg' }]}
         onItemPress={jest.fn()}
         onLoad={jest.fn()}
@@ -28,7 +27,7 @@ describe('OfferImageCarousel', () => {
   it('should render multiple image with pagination', async () => {
     render(
       <OfferImageCarousel
-        progressValue={1 as unknown as SharedValue<number>}
+        progressValue={1}
         offerImages={[
           { url: 'https://image1.jpg' },
           { url: 'https://image2.jpg' },
@@ -50,7 +49,7 @@ describe('OfferImageCarousel', () => {
     const mockOnItemPress = jest.fn()
     render(
       <OfferImageCarousel
-        progressValue={1 as unknown as SharedValue<number>}
+        progressValue={1}
         offerImages={[
           { url: 'https://image1.jpg' },
           { url: 'https://image2.jpg' },
@@ -72,7 +71,7 @@ describe('OfferImageCarousel', () => {
   it('should display image credit when defined', async () => {
     render(
       <OfferImageCarousel
-        progressValue={1 as unknown as SharedValue<number>}
+        progressValue={1}
         offerImages={[{ url: 'https://image1.jpg', credit: 'Cédric' }]}
         onItemPress={jest.fn()}
         onLoad={jest.fn()}

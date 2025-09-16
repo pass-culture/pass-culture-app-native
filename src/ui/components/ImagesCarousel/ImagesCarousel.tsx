@@ -1,8 +1,5 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
-import { useWindowDimensions } from 'react-native'
-import { useSharedValue } from 'react-native-reanimated'
-import Carousel from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -32,32 +29,19 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
   const headerHeight = useGetHeaderHeight()
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
 
-  const progressValue = useSharedValue<number>(defaultIndex)
-  const [index, setIndex] = React.useState(defaultIndex)
-  const { height: screenHeight, width: screenWidth } = useWindowDimensions()
+  const progressValue = defaultIndex
 
   const carouselDotId = uuidv4()
 
-  const numberOfIllustration = index + 1
+  const numberOfIllustration = defaultIndex + 1
   const title = `Illustration ${numberOfIllustration} sur ${images.length}`
 
   return (
     <Container>
       <StyledHeader title={title} onGoBack={goBack} />
-      <Carousel
-        vertical={false}
-        height={screenHeight}
-        width={screenWidth}
-        loop={false}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-          setIndex(Math.round(absoluteProgress))
-        }}
-        defaultIndex={defaultIndex}
-        data={images}
-        renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
-      />
+      {images.map((image, index) => (
+        <PinchableBox imageUrl={image} key={index} />
+      ))}
       {images.length > 1 ? (
         <React.Fragment>
           <BlurFooter height={footerHeight} />

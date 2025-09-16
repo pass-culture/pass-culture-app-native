@@ -1,8 +1,6 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, useWindowDimensions } from 'react-native'
-import { useSharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled, { useTheme } from 'styled-components/native'
 
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
@@ -40,8 +38,7 @@ export const ImagesCarouselModal = ({
   isVisible = false,
 }: ImagesCarouselModalProps) => {
   const [carouselSize, setCarouselSize] = useState<CarouselSize>()
-  const carouselRef = useRef<ICarouselInstance>(null)
-  const progressValue = useSharedValue<number>(0)
+  const progressValue = defaultIndex
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
   const { isDesktopViewport } = useTheme()
 
@@ -50,7 +47,7 @@ export const ImagesCarouselModal = ({
     [imagesURL]
   )
 
-  const [title, setTitle] = useState(getTitleLabel(progressValue.value))
+  const [title, setTitle] = useState(getTitleLabel(progressValue))
 
   const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : getSpacing(12)
 
@@ -62,23 +59,13 @@ export const ImagesCarouselModal = ({
   const handlePressButton = useCallback(
     (direction: 1 | -1) => {
       const newIndex = calculateCarouselIndex({
-        currentIndex: progressValue.value,
+        currentIndex: progressValue,
         direction,
         maxIndex: imagesURL.length - 1,
       })
-      progressValue.value = newIndex
-      carouselRef.current?.scrollTo({ index: newIndex, animated: true })
       setTitle(getTitleLabel(newIndex))
     },
     [getTitleLabel, imagesURL, progressValue]
-  )
-
-  const handleProgressChange = useCallback(
-    (_: unknown, absoluteProgress: number) => {
-      progressValue.value = absoluteProgress
-      setTitle(getTitleLabel(absoluteProgress))
-    },
-    [getTitleLabel, progressValue]
   )
 
   const displayModalBody = useCallback(() => {
@@ -94,22 +81,9 @@ export const ImagesCarouselModal = ({
             onPress={() => handlePressButton(-1)}
             accessibilityLabel="Image précédente"
           />
-          {carouselSize ? (
-            <Carousel
-              ref={carouselRef}
-              testID="imagesCarouselContainer"
-              vertical={false}
-              width={carouselSize.width}
-              height={carouselSize.height}
-              loop={false}
-              defaultIndex={defaultIndex}
-              enabled={false}
-              scrollAnimationDuration={500}
-              onProgressChange={handleProgressChange}
-              data={imagesURL}
-              renderItem={renderCarouselItem}
-            />
-          ) : null}
+          {carouselSize
+            ? imagesURL.map((imageUrl, index) => renderCarouselItem({ item: imageUrl, index }))
+            : null}
           <RoundedButton
             iconName="next"
             onPress={() => handlePressButton(1)}
@@ -120,7 +94,7 @@ export const ImagesCarouselModal = ({
     }
 
     return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
-  }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange])
+  }, [carouselSize, imagesURL, handlePressButton])
 
   const desktopConstraints = useMemo(
     () => ({

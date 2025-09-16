@@ -1,14 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import { Platform, useWindowDimensions, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import Animated, {
-  cancelAnimation,
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated'
 import YouTubePlayer from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -74,8 +67,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     showErrorView,
     toggleErrorView,
     videoState,
-    getVideoDuration,
-    getCurrentTime,
   } = useVerticalVideoPlayer({
     isPlaying,
     setIsPlaying,
@@ -93,51 +84,12 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     RATIO710
   )
 
-  const animValue = useSharedValue(0)
-
-  const animStyle = useAnimatedStyle(() => {
-    return {
-      width: `${animValue?.value}%`,
-    }
-  }, [animValue])
-
   const handleReplayVideo = () => {
-    animValue.value = 0
     replayVideo()
   }
 
   const handleChangeState = async (event: string) => {
     onChangeState(event)
-
-    switch (event) {
-      case PlayerState.ENDED:
-        animValue.value = 100
-        break
-      case PlayerState.UNSTARTED:
-        animValue.value = 0
-        break
-      case PlayerState.PAUSED:
-      case PlayerState.BUFFERING:
-        cancelAnimation(animValue)
-        break
-      case PlayerState.PLAYING:
-        {
-          const [currentTime, videoDuration] = await Promise.all([
-            getCurrentTime(),
-            getVideoDuration(),
-          ])
-          if (videoDuration && currentTime) {
-            animValue.value = (currentTime / videoDuration) * 100
-            animValue.value = withTiming(100, {
-              duration: (videoDuration - currentTime) * 1000,
-              easing: Easing.linear,
-            })
-          }
-        }
-        break
-      default:
-        break
-    }
   }
 
   const PlayerCalque = () => {
@@ -238,7 +190,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
             />
           </ControlsContainer>
           <ProgressBarWrapper>
-            <ProgressBar style={animStyle} />
+            <ProgressBar />
           </ProgressBarWrapper>
         </StyledProgressContainer>
       ) : null}
@@ -250,13 +202,11 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   )
 }
 
-const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
-
 const ProgressBarWrapper = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.locked,
 }))
 
-const ProgressBar = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
+const ProgressBar = styled(View).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     theme.designSystem.color.background.brandPrimary,
     theme.designSystem.color.background.brandPrimary,

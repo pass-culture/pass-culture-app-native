@@ -1,14 +1,12 @@
 import React, { createRef } from 'react'
-import { SharedValue } from 'react-native-reanimated'
-import { ICarouselInstance } from 'react-native-reanimated-carousel'
 
 import { render, screen } from 'tests/utils'
 import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
 
-const PROGRESS_VALUE = { value: 0 } as SharedValue<number>
+const PROGRESS_VALUE = 0
 
 describe('<CarouselPagination />', () => {
-  const ref = createRef<ICarouselInstance>()
+  const ref = createRef<number>()
 
   it('should display dots', () => {
     render(

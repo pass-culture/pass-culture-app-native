@@ -1,4 +1,3 @@
-import BottomSheet from '@gorhom/bottom-sheet'
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, {
@@ -10,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { LayoutChangeEvent, LayoutRectangle } from 'react-native'
+import { LayoutChangeEvent, LayoutRectangle, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -18,7 +17,6 @@ import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
-import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
@@ -45,7 +43,6 @@ import { LENGTH_L } from 'ui/theme'
 import { VenueMapView } from './VenueMapView'
 
 export const VenueMapViewContainer: FunctionComponent = () => {
-  const offersPlaylistType = useVenueMapStore((state) => state.offersPlaylistType)
   const initialRegion = useVenueMapStore((state) => state.initialRegion)
   const venues = useVenueMapStore((state) => state.venues)
   const currentRegion = useVenueMapStore((state) => state.region)
@@ -62,9 +59,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const isInVenueMapScreen = routeName.toLowerCase() === 'venuemap'
 
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
-  const shouldNavigateToVenueOnFling = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE
-  )
+
   const bottomSheetOffersEnabled = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
   )
@@ -75,9 +70,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
   const isSearchEnabled = isInVenueMapScreen ? showSearchButton : false
   const [mapReady, setMapReady] = useState(false)
-
-  const bottomSheetRef = useRef<BottomSheet>(null)
-  const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
 
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
@@ -165,7 +157,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
       centerOnLocation(
         event.nativeEvent.coordinate.latitude,
         event.nativeEvent.coordinate.longitude,
-        calculatePreviewHeight(snapPoints[bottomSheetIndex])
+        calculatePreviewHeight(snapPoints[1])
       )
     } else {
       navigateToVenue(foundVenue.venueId)
@@ -189,42 +181,11 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     })
   }
 
-  const handleBottomSheetAnimation = useCallback(
-    (fromIndex: number, toIndex: number) => {
-      if (toIndex === 0 && fromIndex < toIndex && selectedVenue) {
-        centerOnLocation(
-          selectedVenue?._geoloc.lat,
-          selectedVenue?._geoloc.lng,
-          calculatePreviewHeight(snapPoints[toIndex])
-        )
-      } else if (toIndex === -1 && selectedVenue) {
-        removeSelectedVenue()
-      }
-    },
-    [centerOnLocation, calculatePreviewHeight, selectedVenue, snapPoints]
-  )
-
   useEffect(() => {
     if (!mapReady) {
       return
     }
-
-    if (selectedVenue) {
-      bottomSheetRef.current?.collapse()
-    } else {
-      bottomSheetRef.current?.close()
-    }
   }, [selectedVenue, mapReady])
-
-  const handleFlingUp = () => {
-    if (
-      shouldNavigateToVenueOnFling &&
-      selectedVenue?.isPermanent &&
-      bottomSheetIndex === snapPoints.length - 1
-    ) {
-      navigateToVenue(selectedVenue.venueId)
-    }
-  }
 
   // Category filters
   const { activeFilters } = useVenueMapFilters()
@@ -236,17 +197,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 
   return initialRegion ? (
     <Container>
-      <VenueMapBottomSheet
-        snapPoints={snapPoints}
-        ref={bottomSheetRef}
-        onClose={removeSelectedVenue}
-        venue={selectedVenue}
-        onFlingUp={handleFlingUp}
-        venueOffers={bottomSheetOffersEnabled ? selectedVenueOffers?.hits : undefined}
-        onAnimate={handleBottomSheetAnimation}
-        onChange={setBottomSheetIndex}
-        offersPlaylistType={offersPlaylistType}
-      />
+      <VenueMapBottomSheet />
       <VenueMapView
         ref={mapViewRef}
         showLabel
@@ -268,3 +219,5 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 const Container = styled.View({
   flex: 1,
 })
+
+const VenueMapBottomSheet = () => <View></View>

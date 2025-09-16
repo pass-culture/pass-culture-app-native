@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
-import Animated, { Layout } from 'react-native-reanimated'
+import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueTypeCodeKey } from 'api/gen'
@@ -109,7 +109,7 @@ export const Venue: FunctionComponent = () => {
       <VenueContent venue={venue} isCTADisplayed={isCTADisplayed}>
         <VenueTopComponent venue={venue} />
         <ViewGap gap={isDesktopViewport ? 10 : 6}>
-          <Animated.View layout={Layout.duration(200)}>
+          <Animated.View>
             <VenueBody
               venue={venue}
               playlists={gtlPlaylists || []}

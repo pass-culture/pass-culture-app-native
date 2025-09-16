@@ -152,27 +152,6 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('@gorhom/bottom-sheet', () => {
-  const { View } = jest.requireActual('react-native')
-
-  class MockBottomSheet extends View {
-    close() {
-      this.props.onAnimate(0, -1)
-    }
-    expand() {
-      this.props.onAnimate(0, 2)
-    }
-    collapse() {
-      this.props.onAnimate(-1, 0)
-    }
-  }
-  return {
-    __esModule: true,
-    ...require('@gorhom/bottom-sheet/mock'),
-    default: MockBottomSheet,
-  }
-})
-
 const mockOnEndReached = jest.fn()
 
 const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {

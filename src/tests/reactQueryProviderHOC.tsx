@@ -1,4 +1,3 @@
-import { notifyManager } from '@tanstack/query-core'
 import { QueryCache, MutationCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 
@@ -10,8 +9,8 @@ export const reactQueryProviderHOC = (
   setup?: (queryClient: QueryClient) => void
 ) => {
   // Configure React Query to batch updates with `act` in tests - can be suppressed with v5
-  const batchNotifyFunctionMock = (fn: () => void) => fn()
-  notifyManager.setBatchNotifyFunction(batchNotifyFunctionMock)
+  // const batchNotifyFunctionMock = (fn: () => void) => fn()
+  // notifyManager.setBatchNotifyFunction(batchNotifyFunctionMock)
 
   const queryClient = new QueryClient({
     defaultOptions: {

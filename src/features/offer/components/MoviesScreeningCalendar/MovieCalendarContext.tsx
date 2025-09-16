@@ -8,9 +8,8 @@ import React, {
   useState,
   PropsWithChildren,
 } from 'react'
-import { Animated, View, ViewStyle } from 'react-native'
+import { Animated, Easing, View, ViewStyle } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import { Easing } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'

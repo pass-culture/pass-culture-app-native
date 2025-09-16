@@ -1,17 +1,14 @@
-import React, { ReactElement, useCallback, useRef, useState } from 'react'
-import { Platform, StyleProp, View, ViewStyle } from 'react-native'
-import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import styled, { useTheme } from 'styled-components/native'
+import React, { ReactElement, useCallback, useRef } from 'react'
+import { Animated, StyleProp, View, ViewStyle } from 'react-native'
+import styled from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
-import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
 import { Typo } from 'ui/theme'
 
 type OfferImageCarouselProps = {
-  progressValue: SharedValue<number>
+  progressValue: number
   offerImages: ImageWithCredit[]
   imageDimensions: OfferImageContainerDimensions
   onItemPress?: (index: number) => void
@@ -27,27 +24,20 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
   onLoad,
   style,
 }) => {
-  const { borderRadius } = useTheme()
-  const carouselStyle = useRef({
-    borderRadius: borderRadius.radius,
-  }).current
   const imagesLoadedCount = useRef(0)
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const carouselRef = useRef<ICarouselInstance>(null)
 
   const handleImageLoad = useCallback(() => {
     imagesLoadedCount.current += 1
 
-    if (imagesLoadedCount.current === offerImages.length) {
+    if (imagesLoadedCount.current === offerImages.length + progressValue) {
       onLoad?.()
     }
-  }, [offerImages.length, onLoad])
+  }, [offerImages.length, onLoad, progressValue])
 
   const renderItem: ({ item, index }: { item: ImageWithCredit; index: number }) => ReactElement =
     useCallback(
       ({ index, item }) => (
-        <Animated.View entering={FadeIn}>
+        <Animated.View>
           <OfferImageCarouselItem
             index={index}
             imageDimensions={imageDimensions}
@@ -61,38 +51,14 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
       [handleImageLoad, imageDimensions, onItemPress]
     )
 
-  const currentCredit = offerImages[Math.round(currentIndex)]?.credit
+  const currentCredit = offerImages[Math.round(0)]?.credit
 
   return (
     <View style={style}>
-      <Carousel
-        ref={carouselRef}
-        testID="offerImageContainerCarousel"
-        vertical={false}
-        height={imageDimensions.imageStyle.height}
-        width={imageDimensions.imageStyle.width}
-        loop={false}
-        enabled={Platform.select({ web: false, default: offerImages.length > 1 })}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-          setCurrentIndex(absoluteProgress)
-        }}
-        data={offerImages}
-        renderItem={renderItem}
-        style={carouselStyle}
-      />
+      {offerImages.map((offerImage, index) => renderItem({ item: offerImage, index }))}
       <Container>
         {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
       </Container>
-      {offerImages.length > 1 && progressValue ? (
-        <StyledCarouselPagination
-          progressValue={progressValue}
-          elementsCount={offerImages.length}
-          gap={2}
-          carouselRef={carouselRef}
-        />
-      ) : undefined}
     </View>
   )
 }
@@ -107,8 +73,3 @@ const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
 const Container = styled.View({
   flexDirection: 'row',
 })
-
-const StyledCarouselPagination = styled(CarouselPagination)(({ theme }) => ({
-  position: 'absolute',
-  bottom: theme.designSystem.size.spacing.l,
-}))

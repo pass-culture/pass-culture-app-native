@@ -8,7 +8,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native'
-import Animated, { FadeOut } from 'react-native-reanimated'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -131,17 +130,17 @@ const ThumbnailOverlay = styled(View)({
   zIndex: 10,
 })
 
-const StyledAnimatedView = styled(Animated.View).attrs({
-  exiting: FadeOut.duration(500),
-})<{ height: number; width?: number | string }>(({ height, width = '100%' }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width,
-  height,
-  zIndex: 5,
-  overflow: 'hidden',
-}))
+const StyledAnimatedView = styled(View).attrs({})<{ height: number; width?: number | string }>(
+  ({ height, width = '100%' }) => ({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width,
+    height,
+    zIndex: 5,
+    overflow: 'hidden',
+  })
+)
 
 const StyledPlayIcon = styled(Play).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,

@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { useSharedValue } from 'react-native-reanimated'
 
 import { CategoryIdEnum } from 'api/gen'
 import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
@@ -27,7 +26,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   imageDimensions,
   onSeeVideoPress,
 }) => {
-  const progressValue = useSharedValue<number>(0)
+  const progressValue = 0
 
   return (
     <OfferImageHeaderWrapper

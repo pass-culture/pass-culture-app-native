@@ -47,7 +47,6 @@ module.exports = {
       '|react-native-qrcode-svg' +
       '|instantsearch.js' +
       '|react-native-intersection-observer' +
-      '|react-native-reanimated' +
       '|@pass-culture/design-system' +
       '|search-insights' +
       '|react-native-gesture-handler' +

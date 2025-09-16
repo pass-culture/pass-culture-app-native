@@ -1,9 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
-import { useSharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
+import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import {
   EnrichedVideoCarouselItem,
@@ -20,13 +17,9 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { CarouselBar } from 'ui/components/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
-
-const CAROUSEL_HEIGHT = getSpacing(35)
-const CAROUSEL_ANIMATION_DURATION = 500
 
 interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
   index: number
@@ -37,11 +30,6 @@ interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
 export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
-
-  const { width: windowWidth } = useWindowDimensions()
-  const carouselRef = React.useRef<ICarouselInstance>(null)
-  const progressValue = useSharedValue<number>(0)
-  const carouselDotId = uuidv4()
 
   const { homeEntryId, items, color, id, autoplay, index } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
@@ -83,10 +71,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     let nextIndex
     if (currentIndex + 1 < itemsWithRelatedData.length) {
       nextIndex = currentIndex + 1
-      carouselRef.current?.next()
     } else {
       nextIndex = 0
-      carouselRef.current?.scrollTo({ index: nextIndex })
     }
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
@@ -174,30 +160,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (
           <React.Fragment>
-            <Carousel
-              ref={carouselRef}
-              mode="parallax"
-              testID="videoCarousel"
-              vertical={false}
-              height={CAROUSEL_HEIGHT}
-              onConfigurePanGesture={(gesture) => {
-                'worklet'
-                gesture.activeOffsetX([-5, 5])
-              }}
-              width={windowWidth}
-              loop={false}
-              scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
-              onProgressChange={(_, absoluteProgress) => {
-                progressValue.value = absoluteProgress
-                setCurrentIndex(Math.round(absoluteProgress))
-              }}
-              data={itemsWithRelatedData}
-              renderItem={renderItem}
-            />
             <DotContainer>
-              {itemsWithRelatedData.map((_, index) => (
-                <CarouselBar animValue={progressValue} index={index} key={index + carouselDotId} />
-              ))}
+              <Text>Dot</Text>
             </DotContainer>
           </React.Fragment>
         ) : (

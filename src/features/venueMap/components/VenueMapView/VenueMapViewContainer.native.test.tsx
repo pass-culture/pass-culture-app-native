@@ -56,29 +56,6 @@ useVenueMapFiltersSpy.mockReturnValue({
   toggleMacroFilter: jest.fn(),
 })
 
-jest.mock('@gorhom/bottom-sheet', () => {
-  const { View } = jest.requireActual('react-native')
-  class MockBottomSheet extends View {
-    close() {
-      this.props.onAnimate(0, -1)
-      this.props.onChange(-1)
-    }
-    expand() {
-      this.props.onAnimate(0, 2)
-      this.props.onChange(2)
-    }
-    collapse() {
-      this.props.onAnimate(-1, 0)
-      this.props.onChange(0)
-    }
-  }
-  return {
-    __esModule: true,
-    ...require('@gorhom/bottom-sheet/mock'),
-    default: MockBottomSheet,
-  }
-})
-
 jest
   .spyOn(useVenueSearchParameters, 'useVenueSearchParameters')
   .mockReturnValue(mockVenueSearchParams)
