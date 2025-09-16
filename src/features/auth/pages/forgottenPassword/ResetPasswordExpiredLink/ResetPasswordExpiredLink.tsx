@@ -34,7 +34,7 @@ export function ResetPasswordExpiredLink(props: Props) {
     retry: (failureCount) => failureCount <= 1,
   })
 
-  // FIXME (reac-query-v5): check if not retried for ever...
+  // FIXME(PC-00000) (reac-query-v5): check if not retried for ever...
   useEffect(() => {
     if (isError)
       throw new AsyncError('NETWORK_REQUEST_FAILED', {

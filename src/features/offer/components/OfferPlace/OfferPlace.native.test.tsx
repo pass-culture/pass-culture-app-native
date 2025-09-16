@@ -7,6 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -104,6 +105,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
+fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
 const user = userEvent.setup()
 jest.useFakeTimers()

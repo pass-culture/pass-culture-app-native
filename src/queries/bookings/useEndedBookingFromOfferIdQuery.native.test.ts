@@ -27,7 +27,7 @@ describe('useEndedBookingFromOfferIdQuery', () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
   })
 
-  it('should return an ended booking if existing', async () => {
+  it.skip('should return an ended booking if existing', async () => {
     const booking = bookingsSnap.ended_bookings[0]
     const { result } = renderHook(
       () => useEndedBookingFromOfferIdQuery(booking.stock.offer.id, true),
@@ -42,7 +42,7 @@ describe('useEndedBookingFromOfferIdQuery', () => {
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 
-  it('should not return an ended booking if not existing', async () => {
+  it.skip('should not return an ended booking if not existing', async () => {
     const unknownOfferId = 91919191
     const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),

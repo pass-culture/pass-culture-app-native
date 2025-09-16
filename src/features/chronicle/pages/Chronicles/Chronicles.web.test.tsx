@@ -8,7 +8,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 useRoute.mockReturnValue({
   params: {
@@ -144,6 +144,8 @@ describe('Chronicles', () => {
             isDesktopViewport: true,
           },
         })
+
+        await act(async () => {})
 
         expect(await screen.findByText('Réserver l’offre')).toBeInTheDocument()
       })

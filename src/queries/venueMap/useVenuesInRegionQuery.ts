@@ -16,7 +16,7 @@ export function useVenuesInRegionQuery<TData = Awaited<ReturnType<typeof fetchVe
   region,
   radius = DEFAULT_RADIUS,
   select,
-}: Props & { select?: (data?: Venue[]) => TData }) {
+}: Props & { select?: (data: Venue[]) => TData }) {
   return useQuery({
     queryKey: [QueryKeys.VENUES, JSON.stringify(region), radius],
     queryFn: () =>

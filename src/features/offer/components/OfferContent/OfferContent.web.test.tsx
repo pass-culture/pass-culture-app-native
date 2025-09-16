@@ -1,4 +1,4 @@
-import * as ReactQueryAPI from '@tanstack/react-query'
+import { QueryClient } from '@tanstack/react-query'
 import React, { ComponentProps } from 'react'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
@@ -44,11 +44,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
-
-useQueryClientSpy.mockReturnValue({
-  getQueryData: () => ({ images: { recto: { url: 'image.jpeg' } } }),
-} as unknown as ReactQueryAPI.QueryClient)
+let queryClient: QueryClient
+const mockedGetQueryData = () => ({ images: { recto: { url: 'image.jpeg' } } })
+const setupQueryClient = (client: QueryClient) => {
+  queryClient = client
+  jest.spyOn(queryClient, 'getQueryData').mockReturnValue(mockedGetQueryData)
+}
 
 jest
   .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
@@ -177,7 +178,8 @@ const renderOfferContent = ({
         subcategory={subcategory}
         chronicleVariantInfo={chronicleVariantInfoFixture}
         onShowChroniclesWritersModal={jest.fn()}
-      />
+      />,
+      setupQueryClient
     ),
     {
       theme: { isDesktopViewport, isMobileViewport },
