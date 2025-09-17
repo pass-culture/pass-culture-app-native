@@ -1,4 +1,4 @@
-import { CheckboxState } from 'ui/components/inputs/Checkbox/types'
+import { CheckboxState } from 'ui/designSystem/Checkbox/types'
 
 export const getCheckboxState = (
   isChecked: boolean,

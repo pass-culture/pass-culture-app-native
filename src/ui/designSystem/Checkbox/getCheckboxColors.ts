@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components/native'
 
-import { CheckboxState, CheckboxVariant } from 'ui/components/inputs/Checkbox/types'
+import { CheckboxState, CheckboxVariant } from 'ui/designSystem/Checkbox/types'
 
 const hasState = (state: CheckboxState[], target: CheckboxState) => state.includes(target)
 

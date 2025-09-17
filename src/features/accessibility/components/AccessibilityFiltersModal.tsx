@@ -13,7 +13,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { capitalize } from 'libs/formatter/capitalize'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

@@ -5,16 +5,16 @@ import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { CheckboxAsset } from 'ui/components/inputs/Checkbox/CheckboxAsset'
-import { getCheckboxColors } from 'ui/components/inputs/Checkbox/getCheckboxColors'
-import { getCheckboxState } from 'ui/components/inputs/Checkbox/getCheckboxState'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { CheckboxAsset } from 'ui/designSystem/Checkbox/CheckboxAsset'
+import { getCheckboxColors } from 'ui/designSystem/Checkbox/getCheckboxColors'
+import { getCheckboxState } from 'ui/designSystem/Checkbox/getCheckboxState'
 import {
   CheckboxAssetProps,
   CheckboxDisplay,
   CheckboxState,
   CheckboxVariant,
-} from 'ui/components/inputs/Checkbox/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+} from 'ui/designSystem/Checkbox/types'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'

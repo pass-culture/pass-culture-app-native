@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { CheckboxAssetProps, SizeProp } from 'ui/components/inputs/Checkbox/types'
+import { CheckboxAssetProps, SizeProp } from 'ui/designSystem/Checkbox/types'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { Typo } from 'ui/theme'
 
