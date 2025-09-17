@@ -11,6 +11,7 @@ import { availableReactionsSnap } from 'features/bookings/fixtures/availableReac
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -72,6 +73,14 @@ describe('Bookings', () => {
     await screen.findByText('Mes réservations')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should send Batch event when the screen is mounted', async () => {
+    renderBookings()
+
+    await screen.findByText('Mes réservations')
+
+    expect(BatchProfile.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.hasSeenBookingPage)
   })
 
   it('should display the empty bookings dedicated view', async () => {
