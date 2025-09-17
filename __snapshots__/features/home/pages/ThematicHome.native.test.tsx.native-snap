@@ -384,10 +384,10 @@ exports[`ThematicHome should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 40,
-            "borderBottomRightRadius": 40,
-            "borderTopLeftRadius": 40,
-            "borderTopRightRadius": 40,
+            "borderBottomLeftRadius": 999,
+            "borderBottomRightRadius": 999,
+            "borderTopLeftRadius": 999,
+            "borderTopRightRadius": 999,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -401,12 +401,12 @@ exports[`ThematicHome should render correctly 1`] = `
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 40,
-              "borderBottomRightRadius": 40,
+              "borderBottomLeftRadius": 999,
+              "borderBottomRightRadius": 999,
               "borderColor": "rgba(255, 255, 255, 1)",
               "borderStyle": "solid",
-              "borderTopLeftRadius": 40,
-              "borderTopRightRadius": 40,
+              "borderTopLeftRadius": 999,
+              "borderTopRightRadius": 999,
               "borderWidth": 1,
               "height": 40,
               "justifyContent": "center",

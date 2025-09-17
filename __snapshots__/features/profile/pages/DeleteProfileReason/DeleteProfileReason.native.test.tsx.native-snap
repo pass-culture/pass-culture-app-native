@@ -447,7 +447,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -572,7 +572,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -697,7 +697,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -822,7 +822,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -947,7 +947,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -1072,7 +1072,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",

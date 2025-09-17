@@ -220,11 +220,11 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
           <View
             style={
               {
-                "borderBottomLeftRadius": 20,
-                "borderBottomRightRadius": 20,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
                 "borderColor": "#cbcdd2",
-                "borderTopLeftRadius": 20,
-                "borderTopRightRadius": 20,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "borderWidth": 2,
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -622,11 +622,11 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
           <View
             style={
               {
-                "borderBottomLeftRadius": 20,
-                "borderBottomRightRadius": 20,
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
                 "borderColor": "#cbcdd2",
-                "borderTopLeftRadius": 20,
-                "borderTopRightRadius": 20,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
                 "borderWidth": 2,
                 "flexBasis": 0,
                 "flexDirection": "row",

@@ -387,12 +387,12 @@ exports[`VenueModal should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 22,
-                      "borderBottomRightRadius": 22,
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
                       "borderColor": "#90949d",
                       "borderStyle": "solid",
-                      "borderTopLeftRadius": 22,
-                      "borderTopRightRadius": 22,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
                       "height": 48,
@@ -407,7 +407,6 @@ exports[`VenueModal should render correctly 1`] = `
                       "borderBottomRightRadius": 24,
                       "borderTopLeftRadius": 24,
                       "borderTopRightRadius": 24,
-                      "outlineOffset": 0,
                     },
                   ]
                 }

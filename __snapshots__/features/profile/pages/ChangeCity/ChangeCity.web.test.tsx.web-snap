@@ -227,7 +227,7 @@ exports[`ChangeCity should render correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderBottomLeftRadius-kj4tcz r-borderBottomRightRadius-wab3e5 r-borderTopLeftRadius-wowrgg r-borderTopRightRadius-oho8x9 r-outlineOffset-2fw26j"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderBottomLeftRadius-kj4tcz r-borderBottomRightRadius-wab3e5 r-borderTopLeftRadius-wowrgg r-borderTopRightRadius-oho8x9"
                     data-testid="styled-input-container"
                   >
                     <input

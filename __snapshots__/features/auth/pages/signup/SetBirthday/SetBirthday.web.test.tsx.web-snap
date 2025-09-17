@@ -71,7 +71,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c3 {
   font-family: Montserrat-Medium;
-  font-size: 1rempx;
+  font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
   width: 100%;
@@ -95,7 +95,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c6 {
   font-family: Montserrat-Medium;
-  font-size: 1rempx;
+  font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
   width: 100%;
@@ -119,7 +119,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c7 {
   font-family: Montserrat-Medium;
-  font-size: 1rempx;
+  font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
   width: 100%;
@@ -1528,7 +1528,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           </label>
         </div>
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5kex9v r-borderBottomRightRadius-1inxgn4 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kj4tcz r-borderBottomRightRadius-wab3e5 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-wowrgg r-borderTopRightRadius-oho8x9 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
           data-testid="styled-input-container"
         >
           <div

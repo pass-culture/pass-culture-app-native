@@ -230,15 +230,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           testID="OfferPlaylistSkeleton"
         >
           <View
-            borderRadius={2}
+            borderRadius={8}
             height={16}
             style={
               {
                 "backgroundColor": "#DDDDDD",
-                "borderBottomLeftRadius": 2,
-                "borderBottomRightRadius": 2,
-                "borderTopLeftRadius": 2,
-                "borderTopRightRadius": 2,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "height": 16,
                 "overflow": "hidden",
                 "width": 200,
@@ -270,7 +270,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               }
               style={
                 {
-                  "borderRadius": 2,
+                  "borderRadius": 8,
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
@@ -400,15 +400,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -440,7 +440,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -456,15 +456,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -496,7 +496,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -599,15 +599,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -639,7 +639,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -655,15 +655,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -695,7 +695,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -798,15 +798,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -838,7 +838,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -854,15 +854,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -894,7 +894,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -997,15 +997,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -1037,7 +1037,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1053,15 +1053,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -1093,7 +1093,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1126,15 +1126,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           testID="OfferPlaylistSkeleton"
         >
           <View
-            borderRadius={2}
+            borderRadius={8}
             height={16}
             style={
               {
                 "backgroundColor": "#DDDDDD",
-                "borderBottomLeftRadius": 2,
-                "borderBottomRightRadius": 2,
-                "borderTopLeftRadius": 2,
-                "borderTopRightRadius": 2,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "height": 16,
                 "overflow": "hidden",
                 "width": 200,
@@ -1166,7 +1166,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               }
               style={
                 {
-                  "borderRadius": 2,
+                  "borderRadius": 8,
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
@@ -1299,15 +1299,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -1339,7 +1339,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1355,15 +1355,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -1395,7 +1395,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1498,15 +1498,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -1538,7 +1538,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1554,15 +1554,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -1594,7 +1594,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1697,15 +1697,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -1737,7 +1737,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1753,15 +1753,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -1793,7 +1793,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1896,15 +1896,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -1936,7 +1936,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1952,15 +1952,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -1992,7 +1992,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2095,15 +2095,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -2135,7 +2135,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2151,15 +2151,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -2191,7 +2191,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2291,15 +2291,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           testID="OfferPlaylistSkeleton"
         >
           <View
-            borderRadius={2}
+            borderRadius={8}
             height={16}
             style={
               {
                 "backgroundColor": "#DDDDDD",
-                "borderBottomLeftRadius": 2,
-                "borderBottomRightRadius": 2,
-                "borderTopLeftRadius": 2,
-                "borderTopRightRadius": 2,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "height": 16,
                 "overflow": "hidden",
                 "width": 200,
@@ -2331,7 +2331,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               }
               style={
                 {
-                  "borderRadius": 2,
+                  "borderRadius": 8,
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
@@ -2464,15 +2464,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -2504,7 +2504,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2520,15 +2520,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -2560,7 +2560,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2663,15 +2663,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -2703,7 +2703,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2719,15 +2719,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -2759,7 +2759,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2862,15 +2862,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -2902,7 +2902,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2918,15 +2918,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -2958,7 +2958,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3061,15 +3061,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -3101,7 +3101,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3117,15 +3117,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -3157,7 +3157,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3260,15 +3260,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 128,
@@ -3300,7 +3300,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3316,15 +3316,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 48,
@@ -3356,7 +3356,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3389,15 +3389,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           testID="OfferPlaylistSkeleton"
         >
           <View
-            borderRadius={2}
+            borderRadius={8}
             height={16}
             style={
               {
                 "backgroundColor": "#DDDDDD",
-                "borderBottomLeftRadius": 2,
-                "borderBottomRightRadius": 2,
-                "borderTopLeftRadius": 2,
-                "borderTopRightRadius": 2,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "height": 16,
                 "overflow": "hidden",
                 "width": 200,
@@ -3429,7 +3429,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               }
               style={
                 {
-                  "borderRadius": 2,
+                  "borderRadius": 8,
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
@@ -3559,15 +3559,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -3599,7 +3599,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3615,15 +3615,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -3655,7 +3655,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3758,15 +3758,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -3798,7 +3798,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3814,15 +3814,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -3854,7 +3854,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3957,15 +3957,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -3997,7 +3997,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -4013,15 +4013,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -4053,7 +4053,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -4156,15 +4156,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 153.60000000000002,
@@ -4196,7 +4196,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -4212,15 +4212,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       />
                     </View>
                     <View
-                      borderRadius={2}
+                      borderRadius={8}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 57.599999999999994,
@@ -4252,7 +4252,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 8,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
