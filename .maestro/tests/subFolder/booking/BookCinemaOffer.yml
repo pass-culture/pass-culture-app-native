@@ -33,9 +33,7 @@ appId: ${MAESTRO_APP_ID}
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
 - tapOn:
-    enabled: true
-    below:
-      id: VenuePreviewImage
+    id: event-card
     label: 'Sélection de la séance'
 
 - runFlow:

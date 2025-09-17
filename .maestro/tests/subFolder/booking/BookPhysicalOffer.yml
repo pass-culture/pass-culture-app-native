@@ -13,9 +13,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn:
-          above:
-            id: searchResultsFlashlist
+      - tapOn: 'Livre'
 
 - waitForAnimationToEnd
 
