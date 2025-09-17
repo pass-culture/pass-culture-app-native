@@ -59,7 +59,7 @@ const SubtitlePlaceholder = styled.View({
 const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
   ({ theme, withGreyContainer }) => ({
     padding: withGreyContainer ? getSpacing(6) : undefined,
-    borderRadius: getSpacing(2),
+    borderRadius: theme.designSystem.size.borderRadius.m,
     backgroundColor: withGreyContainer ? theme.designSystem.color.background.subtle : undefined,
     marginHorizontal: theme.contentPage.marginHorizontal,
     marginBottom: getSpacing(2),

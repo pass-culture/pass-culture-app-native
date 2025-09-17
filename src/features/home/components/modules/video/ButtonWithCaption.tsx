@@ -53,13 +53,13 @@ const ButtonCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   padding: getSpacing(2.5),
   backgroundColor: theme.designSystem.color.background.locked,
 }))
 
 const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   padding: getSpacing(2.5),
   backgroundColor: theme.designSystem.color.background.locked,
 }))

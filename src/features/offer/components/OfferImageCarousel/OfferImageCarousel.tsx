@@ -27,9 +27,9 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
   onLoad,
   style,
 }) => {
-  const { borderRadius } = useTheme()
+  const { designSystem } = useTheme()
   const carouselStyle = useRef({
-    borderRadius: borderRadius.radius,
+    borderRadius: designSystem.size.borderRadius.m,
   }).current
   const imagesLoadedCount = useRef(0)
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -49,11 +49,13 @@ export const VenueInfoHeader: FunctionComponent<VenueInfoHeaderProps> = ({
   )
 }
 
-const VenueThumbnail = styled(Image)<{ height: number; width: number }>(({ height, width }) => ({
-  borderRadius: 4,
-  height,
-  width,
-}))
+const VenueThumbnail = styled(Image)<{ height: number; width: number }>(
+  ({ theme, height, width }) => ({
+    borderRadius: theme.designSystem.size.borderRadius.s,
+    height,
+    width,
+  })
+)
 
 const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,

@@ -78,7 +78,7 @@ const Wrapper = styled(TouchableOpacity)<{
     backgroundColor: disabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.default,
-    borderRadius: getSpacing(2),
+    borderRadius: theme.designSystem.size.borderRadius.m,
     borderStyle: 'solid',
     flexDirection: contentDirection,
     alignItems: contentDirection === 'row' ? 'center' : 'flex-start',
@@ -99,7 +99,7 @@ const InnerWrapper = styled.View<{
 const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   width: theme.designSystem.size.spacing.l,
   height: theme.designSystem.size.spacing.l,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   alignItems: 'center',
   justifyContent: 'center',
   borderWidth: 1,
@@ -115,7 +115,7 @@ const RadioInner = styled.View<{ isSelected?: boolean; disabled?: boolean }>(
     width: disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s,
     height: disabled ? theme.designSystem.size.spacing.l : theme.designSystem.size.spacing.s,
     backgroundColor: getRadioInnerBackgroundColor(theme, isSelected, disabled),
-    borderRadius: getSpacing(4),
+    borderRadius: theme.designSystem.size.borderRadius.l,
   })
 )
 

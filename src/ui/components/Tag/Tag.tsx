@@ -54,11 +54,11 @@ export const Tag: FunctionComponent<TagProps> = ({
 }
 
 const Wrapper = styled(View)<{ backgroundColor: string; withColor?: boolean }>(
-  ({ backgroundColor, withColor }) => ({
+  ({ theme, backgroundColor, withColor }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'flex-start',
-    borderRadius: getSpacing(1),
+    borderRadius: theme.designSystem.size.borderRadius.s,
     backgroundColor,
     paddingVertical: PADDING_VERTICAL,
     ...(withColor ? { paddingHorizontal: getSpacing(2) } : undefined),

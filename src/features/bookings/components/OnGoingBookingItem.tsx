@@ -191,5 +191,5 @@ const ShareContainer = styled.View(({ theme }) => ({
   top: 0,
   right: 0,
   marginRight: theme.contentPage.marginHorizontal,
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))

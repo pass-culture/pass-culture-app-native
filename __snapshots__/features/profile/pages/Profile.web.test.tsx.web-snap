@@ -419,7 +419,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                                 style="margin-left: 2px;"
                               />
                             </div>
@@ -1524,7 +1524,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                                 style="margin-left: 2px;"
                               />
                             </div>

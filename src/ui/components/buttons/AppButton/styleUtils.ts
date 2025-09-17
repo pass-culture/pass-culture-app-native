@@ -32,7 +32,7 @@ export const appButtonStyles = ({
   const defaultPadding = 2
 
   const hasBackground = backgroundColor !== undefined
-  const borderRadius = theme.borderRadius.button
+  const borderRadius = theme.designSystem.size.borderRadius.xl
   const effectiveBorderRadius = getEffectiveBorderRadius({
     borderRadius,
     buttonHeight: heightButton(),

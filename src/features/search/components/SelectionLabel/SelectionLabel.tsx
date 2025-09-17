@@ -47,7 +47,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
   ({ selected, theme }) => ({
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: theme.designSystem.size.spacing.xxxl,
+    borderRadius: theme.designSystem.size.borderRadius.pill,
     borderWidth: 2,
     borderColor: selected
       ? theme.designSystem.color.border.brandPrimary

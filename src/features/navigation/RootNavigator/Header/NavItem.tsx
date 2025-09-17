@@ -63,7 +63,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: b
   borderColor: isSelected
     ? theme.designSystem.color.border.brandPrimary
     : theme.designSystem.color.icon.inverted,
-  borderRadius: theme.borderRadius.button * 2,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))
 
 const Title = styled(Typo.BodyAccent)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({

@@ -30,7 +30,7 @@ const CheatMenuButtonContainer = styled.View<{ topSafeInsets: number }>(
     zIndex: theme.zIndex.cheatCodeButton,
     border: getSpacing(0.5),
     borderColor: theme.designSystem.color.border.default,
-    borderRadius: getSpacing(2),
+    borderRadius: theme.designSystem.size.borderRadius.m,
     paddingHorizontal: getSpacing(1),
   })
 )

@@ -6,7 +6,7 @@ import { useScaleAnimation } from 'features/favorites/hooks/useScaleFavoritesAni
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { Bookings } from 'ui/svg/icons/Bookings'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const BookingsCountV2: React.FC<AccessibleIcon> = ({ size, color, testID, badgeValue }) => {
   const scale = useScaleAnimation(badgeValue)
@@ -42,8 +42,8 @@ const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
 const PastilleContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3.25),
   paddingHorizontal: theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.l,
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({

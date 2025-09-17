@@ -12,7 +12,6 @@ type Props = {
   placeholder: string
   options: string[]
   onChange: (value: string) => void
-  children?: never
   noBorderRadiusRight?: boolean
   noBorderRadiusLeft?: boolean
   accessibilityLabel?: string
@@ -69,26 +68,25 @@ export function DropDown({
   )
 }
 
-const SelectContainer = styled.div`
-  width: 100%;
-  position: relative;
-`
+const SelectContainer = styled.div({
+  width: '100%',
+  position: 'relative',
+})
 
-const IconContainer = styled.div`
-  ${({ theme }) => `
-    padding-right: ${getSpacingString(4)};
-    display: flex;
-    align-items: center;
-    height: 100%;
-    right: 0;
-    top: 0;
-    position: absolute;
-    width: ${theme.icons.sizes.extraSmall}px;
-    pointer-events: none;
-  `}
-`
+const IconContainer = styled.div(({ theme }) => ({
+  paddingRight: getSpacingString(4),
+  display: 'flex',
+  alignItems: 'center',
+  height: '100%',
+  right: 0,
+  top: 0,
+  position: 'absolute',
+  width: `${theme.icons.sizes.extraSmall}px`,
+  pointerEvents: 'none',
+}))
 
 const noBorderRadius = getSpacingString(1)
+
 type SelectProps = {
   noBorderRadiusRight: boolean
   noBorderRadiusLeft: boolean
@@ -96,12 +94,14 @@ type SelectProps = {
   isError: boolean
 }
 
-const StyledSelect = styled.select<SelectProps>`
-  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft, isEmpty, isError }) => {
-    const borderRadiusLeft = noBorderRadiusLeft ? noBorderRadius : `${theme.borderRadius.button}px`
+const StyledSelect = styled.select<SelectProps>(
+  ({ theme, noBorderRadiusRight, noBorderRadiusLeft, isEmpty, isError }) => {
+    const borderRadiusLeft = noBorderRadiusLeft
+      ? noBorderRadius
+      : `${theme.designSystem.size.borderRadius.xl}px`
     const borderRadiusRight = noBorderRadiusRight
       ? noBorderRadius
-      : `${theme.borderRadius.button}px`
+      : `${theme.designSystem.size.borderRadius.xl}px`
 
     const typography = isEmpty
       ? theme.designSystem.typography.bodyItalic
@@ -113,35 +113,37 @@ const StyledSelect = styled.select<SelectProps>`
       ? theme.designSystem.color.text.subtle
       : theme.designSystem.color.text.default
 
-    return `
-      font-family: ${fontFamily};
-      font-size: ${fontSize}px;
-      line-height: ${lineHeight};
-      color: ${textColor}; 
-      width: 100%;
-      padding-right: ${getSpacingString(4)};
-      padding-left: ${getSpacingString(4)};
-      height: ${getSpacingString(10)};
-      border-top-left-radius: ${borderRadiusLeft};
-      border-bottom-left-radius: ${borderRadiusLeft};
-      border-top-right-radius: ${borderRadiusRight};
-      border-bottom-right-radius: ${borderRadiusRight};
-      border: solid 1px ${isError ? theme.designSystem.color.border.error : theme.designSystem.color.border.default};
-      cursor: pointer;
-      background-color: ${theme.designSystem.color.background.default};
-      appearance: none;
-      &:focus-visible, &:active {
-        border-color: ${theme.designSystem.color.border.brandPrimary};
-      }
-    `
-  }}
-`
+    return {
+      fontFamily,
+      fontSize,
+      lineHeight,
+      color: textColor,
+      width: '100%',
+      paddingRight: getSpacingString(4),
+      paddingLeft: getSpacingString(4),
+      height: getSpacingString(10),
+      borderTopLeftRadius: borderRadiusLeft,
+      borderBottomLeftRadius: borderRadiusLeft,
+      borderTopRightRadius: borderRadiusRight,
+      borderBottomRightRadius: borderRadiusRight,
+      border: `solid 1px ${
+        isError ? theme.designSystem.color.border.error : theme.designSystem.color.border.default
+      }`,
+      cursor: 'pointer',
+      backgroundColor: theme.designSystem.color.background.default,
+      appearance: 'none',
+      '&:focus-visible, &:active': {
+        borderColor: theme.designSystem.color.border.brandPrimary,
+      },
+    }
+  }
+)
 
 /*
 The fonts supported by <option/> are native browser fonts.
 That's why we can't use our theme's font.
 Note: Font-Family is only used by Firefox.
 */
-const StyledOption = styled.option`
-  font-family: 'Arial', sans-serif;
-`
+const StyledOption = styled.option({
+  fontFamily: `'Arial', sans-serif`,
+})

@@ -121,8 +121,8 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#90949d",
-                    "borderBottomLeftRadius": 2,
-                    "borderBottomRightRadius": 2,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
                     "borderTopLeftRadius": 2,
                     "borderTopRightRadius": 2,
                     "flexBasis": 0,
@@ -156,10 +156,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#90949d",
-                    "borderBottomLeftRadius": 2,
-                    "borderBottomRightRadius": 2,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -290,10 +290,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 48,
-                          "borderBottomRightRadius": 48,
-                          "borderTopLeftRadius": 48,
-                          "borderTopRightRadius": 48,
+                          "borderBottomLeftRadius": 999,
+                          "borderBottomRightRadius": 999,
+                          "borderTopLeftRadius": 999,
+                          "borderTopRightRadius": 999,
                           "flexDirection": "row",
                           "justifyContent": "center",
                         }
@@ -304,10 +304,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         style={
                           {
                             "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 48,
-                            "borderBottomRightRadius": 48,
-                            "borderTopLeftRadius": 48,
-                            "borderTopRightRadius": 48,
+                            "borderBottomLeftRadius": 999,
+                            "borderBottomRightRadius": 999,
+                            "borderTopLeftRadius": 999,
+                            "borderTopRightRadius": 999,
                             "flexDirection": "row",
                             "height": 18,
                             "width": "100%",
@@ -319,10 +319,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           style={
                             {
                               "backgroundColor": "#f1f1f4",
-                              "borderBottomLeftRadius": 48,
-                              "borderBottomRightRadius": 48,
-                              "borderTopLeftRadius": 48,
-                              "borderTopRightRadius": 48,
+                              "borderBottomLeftRadius": 999,
+                              "borderBottomRightRadius": 999,
+                              "borderTopLeftRadius": 999,
+                              "borderTopRightRadius": 999,
                               "height": "100%",
                               "left": 0,
                               "position": "absolute",
@@ -337,10 +337,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           style={
                             {
                               "backgroundColor": "#eb0055",
-                              "borderBottomLeftRadius": 48,
-                              "borderBottomRightRadius": 48,
-                              "borderTopLeftRadius": 48,
-                              "borderTopRightRadius": 48,
+                              "borderBottomLeftRadius": 999,
+                              "borderBottomRightRadius": 999,
+                              "borderTopLeftRadius": 999,
+                              "borderTopRightRadius": 999,
                               "flexBasis": 0,
                               "flexGrow": 0.5,
                               "flexShrink": 1,
@@ -440,8 +440,8 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#90949d",
-                    "borderBottomLeftRadius": 2,
-                    "borderBottomRightRadius": 2,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
                     "borderTopLeftRadius": 0,
                     "borderTopRightRadius": 0,
                     "flexBasis": 0,
@@ -475,10 +475,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#90949d",
-                    "borderBottomLeftRadius": 2,
-                    "borderBottomRightRadius": 2,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -609,10 +609,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 48,
-                          "borderBottomRightRadius": 48,
-                          "borderTopLeftRadius": 48,
-                          "borderTopRightRadius": 48,
+                          "borderBottomLeftRadius": 999,
+                          "borderBottomRightRadius": 999,
+                          "borderTopLeftRadius": 999,
+                          "borderTopRightRadius": 999,
                           "flexDirection": "row",
                           "justifyContent": "center",
                         }
@@ -623,10 +623,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         style={
                           {
                             "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 48,
-                            "borderBottomRightRadius": 48,
-                            "borderTopLeftRadius": 48,
-                            "borderTopRightRadius": 48,
+                            "borderBottomLeftRadius": 999,
+                            "borderBottomRightRadius": 999,
+                            "borderTopLeftRadius": 999,
+                            "borderTopRightRadius": 999,
                             "flexDirection": "row",
                             "height": 18,
                             "width": "100%",
@@ -638,10 +638,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           style={
                             {
                               "backgroundColor": "#f1f1f4",
-                              "borderBottomLeftRadius": 48,
-                              "borderBottomRightRadius": 48,
-                              "borderTopLeftRadius": 48,
-                              "borderTopRightRadius": 48,
+                              "borderBottomLeftRadius": 999,
+                              "borderBottomRightRadius": 999,
+                              "borderTopLeftRadius": 999,
+                              "borderTopRightRadius": 999,
                               "height": "100%",
                               "left": 0,
                               "position": "absolute",
@@ -656,10 +656,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           style={
                             {
                               "backgroundColor": "#eb0055",
-                              "borderBottomLeftRadius": 48,
-                              "borderBottomRightRadius": 48,
-                              "borderTopLeftRadius": 48,
-                              "borderTopRightRadius": 48,
+                              "borderBottomLeftRadius": 999,
+                              "borderBottomRightRadius": 999,
+                              "borderTopLeftRadius": 999,
+                              "borderTopRightRadius": 999,
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -839,8 +839,8 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#90949d",
-                    "borderBottomLeftRadius": 2,
-                    "borderBottomRightRadius": 2,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
                     "borderTopLeftRadius": 0,
                     "borderTopRightRadius": 0,
                     "flexBasis": 0,
@@ -873,10 +873,10 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#90949d",
-                    "borderBottomLeftRadius": 2,
-                    "borderBottomRightRadius": 2,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -1220,10 +1220,10 @@ Les récents ajustements du dispositif peuvent en être la raison.
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 40,
-            "borderBottomRightRadius": 40,
-            "borderTopLeftRadius": 40,
-            "borderTopRightRadius": 40,
+            "borderBottomLeftRadius": 999,
+            "borderBottomRightRadius": 999,
+            "borderTopLeftRadius": 999,
+            "borderTopRightRadius": 999,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1237,12 +1237,12 @@ Les récents ajustements du dispositif peuvent en être la raison.
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 40,
-              "borderBottomRightRadius": 40,
+              "borderBottomLeftRadius": 999,
+              "borderBottomRightRadius": 999,
               "borderColor": "rgba(255, 255, 255, 1)",
               "borderStyle": "solid",
-              "borderTopLeftRadius": 40,
-              "borderTopRightRadius": 40,
+              "borderTopLeftRadius": 999,
+              "borderTopRightRadius": 999,
               "borderWidth": 1,
               "height": 40,
               "justifyContent": "center",

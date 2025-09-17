@@ -447,10 +447,10 @@ exports[`EndedBookings should render correctly 1`] = `
           <View
             style={
               {
-                "borderBottomLeftRadius": 40,
-                "borderBottomRightRadius": 40,
-                "borderTopLeftRadius": 40,
-                "borderTopRightRadius": 40,
+                "borderBottomLeftRadius": 999,
+                "borderBottomRightRadius": 999,
+                "borderTopLeftRadius": 999,
+                "borderTopRightRadius": 999,
               }
             }
           >
@@ -490,10 +490,10 @@ exports[`EndedBookings should render correctly 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "borderBottomLeftRadius": 40,
-                      "borderBottomRightRadius": 40,
-                      "borderTopLeftRadius": 40,
-                      "borderTopRightRadius": 40,
+                      "borderBottomLeftRadius": 999,
+                      "borderBottomRightRadius": 999,
+                      "borderTopLeftRadius": 999,
+                      "borderTopRightRadius": 999,
                     },
                   ],
                   {
@@ -510,12 +510,12 @@ exports[`EndedBookings should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 40,
-                      "borderBottomRightRadius": 40,
+                      "borderBottomLeftRadius": 999,
+                      "borderBottomRightRadius": 999,
                       "borderColor": "#90949d",
                       "borderStyle": "solid",
-                      "borderTopLeftRadius": 40,
-                      "borderTopRightRadius": 40,
+                      "borderTopLeftRadius": 999,
+                      "borderTopRightRadius": 999,
                       "borderWidth": 1,
                       "height": 40,
                       "justifyContent": "center",
@@ -867,10 +867,10 @@ exports[`EndedBookings should render correctly 1`] = `
           <View
             style={
               {
-                "borderBottomLeftRadius": 40,
-                "borderBottomRightRadius": 40,
-                "borderTopLeftRadius": 40,
-                "borderTopRightRadius": 40,
+                "borderBottomLeftRadius": 999,
+                "borderBottomRightRadius": 999,
+                "borderTopLeftRadius": 999,
+                "borderTopRightRadius": 999,
               }
             }
           >
@@ -910,10 +910,10 @@ exports[`EndedBookings should render correctly 1`] = `
                       "userSelect": "auto",
                     },
                     {
-                      "borderBottomLeftRadius": 40,
-                      "borderBottomRightRadius": 40,
-                      "borderTopLeftRadius": 40,
-                      "borderTopRightRadius": 40,
+                      "borderBottomLeftRadius": 999,
+                      "borderBottomRightRadius": 999,
+                      "borderTopLeftRadius": 999,
+                      "borderTopRightRadius": 999,
                     },
                   ],
                   {
@@ -930,12 +930,12 @@ exports[`EndedBookings should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 40,
-                      "borderBottomRightRadius": 40,
+                      "borderBottomLeftRadius": 999,
+                      "borderBottomRightRadius": 999,
                       "borderColor": "#90949d",
                       "borderStyle": "solid",
-                      "borderTopLeftRadius": 40,
-                      "borderTopRightRadius": 40,
+                      "borderTopLeftRadius": 999,
+                      "borderTopRightRadius": 999,
                       "borderWidth": 1,
                       "height": 40,
                       "justifyContent": "center",

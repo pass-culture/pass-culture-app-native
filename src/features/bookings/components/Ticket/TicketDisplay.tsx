@@ -100,10 +100,10 @@ const ContentBlock = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.xl,
 }))
 
-const FullBlock = styled(ContentBlock)({
-  borderRadius: getSpacing(6),
+const FullBlock = styled(ContentBlock)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   borderWidth: 1,
-})
+}))
 
 const BottomBlock = styled(ContentBlock)({
   justifyContent: 'center',

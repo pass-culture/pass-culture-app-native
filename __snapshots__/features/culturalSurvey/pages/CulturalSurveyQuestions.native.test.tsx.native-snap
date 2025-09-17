@@ -148,12 +148,12 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   height={1.5}
                   style={
                     {
-                      "borderBottomLeftRadius": 48,
-                      "borderBottomRightRadius": 48,
+                      "borderBottomLeftRadius": 999,
+                      "borderBottomRightRadius": 999,
                       "borderColor": "#cbcdd2",
                       "borderStyle": "solid",
-                      "borderTopLeftRadius": 48,
-                      "borderTopRightRadius": 48,
+                      "borderTopLeftRadius": 999,
+                      "borderTopRightRadius": 999,
                       "borderWidth": 1,
                       "flexBasis": 0,
                       "flexDirection": "row",

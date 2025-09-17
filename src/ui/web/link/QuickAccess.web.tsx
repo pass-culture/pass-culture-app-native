@@ -31,7 +31,7 @@ const StyledA: React.FC<{ href: string; children: string }> = displayOnFocus(
       borderWidth: 1,
       borderStyle: 'solid',
       borderColor: theme.designSystem.color.border.brandPrimary,
-      borderRadius: theme.borderRadius.button * 2,
+      borderRadius: theme.designSystem.size.borderRadius.pill,
     },
   }))
 )

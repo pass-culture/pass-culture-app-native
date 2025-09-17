@@ -175,7 +175,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
                       >
                         <div
                           class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
@@ -238,7 +238,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1xfd6ze r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
                       >
                         <div
                           class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"

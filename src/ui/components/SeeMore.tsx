@@ -83,7 +83,7 @@ const RoundContainer = styled.View(({ theme }) => ({
   width: CONTAINER_SIZE,
   height: CONTAINER_SIZE,
   aspectRatio: '1',
-  borderRadius: getSpacing(8),
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
   backgroundColor: theme.designSystem.color.background.default,
   border: 1,
   justifyContent: 'center',

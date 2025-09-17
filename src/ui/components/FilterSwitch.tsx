@@ -92,7 +92,7 @@ const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active 
   backgroundColor: getBackgroundColor(theme, active),
   width: getSpacing(14),
   height: getSpacing(8),
-  borderRadius: getSpacing(4),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   justifyContent: 'center',
 }))
 
@@ -103,7 +103,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme }) =>
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
   backgroundColor: theme.designSystem.color.background.default,
-  borderRadius: getSpacing(7),
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
   alignItems: 'center',
   justifyContent: 'center',
 }))

@@ -95,7 +95,7 @@ const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>
   width: '100%',
   position: 'absolute',
   zIndex: 1,
-  borderRadius: theme.isDesktopViewport ? theme.borderRadius.radius : undefined,
+  borderRadius: theme.isDesktopViewport ? theme.designSystem.size.borderRadius.m : undefined,
 }))
 
 const GoogleLogo = styled.Image(({ theme }) => ({

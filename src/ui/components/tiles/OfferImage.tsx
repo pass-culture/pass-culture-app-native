@@ -65,7 +65,7 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
 }))<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
   ...theme.tiles.sizes[size],
-  borderRadius: borderRadius || theme.tiles.borderRadius,
+  borderRadius: borderRadius || theme.designSystem.size.borderRadius.s,
   ...(withStroke
     ? {
         borderWidth: 1,
@@ -76,11 +76,11 @@ const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, siz
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs<{ size?: number }>(({ theme }) => ({
   size: theme.icons.sizes.standard,
-  borderRadius: theme.tiles.borderRadius,
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))``
 
 const Container = styled.View<StyleProps>(({ theme, size, borderRadius, withStroke }) => ({
-  borderRadius: borderRadius || theme.tiles.borderRadius,
+  borderRadius: borderRadius || theme.designSystem.size.borderRadius.s,
   ...theme.tiles.sizes[size],
   backgroundColor: theme.designSystem.color.background.default,
   ...(withStroke

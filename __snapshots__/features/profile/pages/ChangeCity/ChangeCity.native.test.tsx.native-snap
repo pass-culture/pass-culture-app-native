@@ -334,12 +334,12 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 22,
-                        "borderBottomRightRadius": 22,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
                         "borderColor": "#90949d",
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 22,
-                        "borderTopRightRadius": 22,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
@@ -354,7 +354,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                         "borderBottomRightRadius": 24,
                         "borderTopLeftRadius": 24,
                         "borderTopRightRadius": 24,
-                        "outlineOffset": 0,
                       },
                     ]
                   }
@@ -994,12 +993,12 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 22,
-                        "borderBottomRightRadius": 22,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
                         "borderColor": "#90949d",
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 22,
-                        "borderTopRightRadius": 22,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
@@ -1014,7 +1013,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                         "borderBottomRightRadius": 24,
                         "borderTopLeftRadius": 24,
                         "borderTopRightRadius": 24,
-                        "outlineOffset": 0,
                       },
                     ]
                   }
@@ -1654,12 +1652,12 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 22,
-                        "borderBottomRightRadius": 22,
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
                         "borderColor": "#90949d",
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 22,
-                        "borderTopRightRadius": 22,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
@@ -1674,7 +1672,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                         "borderBottomRightRadius": 24,
                         "borderTopLeftRadius": 24,
                         "borderTopRightRadius": 24,
-                        "outlineOffset": 0,
                       },
                     ]
                   }

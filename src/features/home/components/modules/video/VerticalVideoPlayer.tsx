@@ -263,10 +263,10 @@ const ProgressBar = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ the
   ],
   angle: 90,
   useAngle: true,
-}))({
+}))(({ theme }) => ({
   height: getSpacing(1),
-  borderRadius: getSpacing(12),
-})
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
+}))
 
 const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
@@ -341,7 +341,7 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
   padding: getSpacing(2.5),
   backgroundColor: theme.designSystem.color.background.locked,
 }))
