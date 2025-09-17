@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import { useQueryClient } from '@tanstack/react-query'
 import React, {
   FunctionComponent,
@@ -15,6 +15,7 @@ import {
   ScrollView,
   StyleProp,
   ViewStyle,
+  ViewToken,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
@@ -48,8 +49,13 @@ import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { logPlaylistDebug, logViewItem } from 'shared/analytics/logViewItem'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
+import {
+  setPlaylistTrackingInfo,
+  useOfferPlaylistTrackingStore,
+} from 'store/tracking/playlistTrackingStore'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -99,7 +105,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const theme = useTheme()
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'Offer'>>()
+  const { params, name } = useRoute<UseRouteType<'Offer'>>()
 
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
     ? JSON.parse(params?.apiRecoParams)
@@ -237,6 +243,53 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const { animationState } = getAnimationState(theme, headerTransition)
 
+  // useAppStateChange(undefined, () => {
+  //   const state = useOfferPlaylistTrackingStore.getState()
+  //   console.log({ state })
+  //   if (state.pageLocation === 'Offer') {
+  //     console.log('[Offer] background → logViewItem', {
+  //       playlists: state.playlists.map((p) => ({ id: p.moduleId, count: p.items.length })),
+  //     })
+  //     logViewItem(state)
+  //   }
+  // })
+
+  // useViewItemTracking(name)
+
+  const handlePlaylistViewableItemsChanged = useCallback(
+    (playlistId: string, items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      logPlaylistDebug('OFFER_SCREEN', 'Playlist viewable items changed', {
+        offerId: offer.id,
+        playlistId,
+        itemsCount: items.length,
+        items,
+      })
+
+      setPlaylistTrackingInfo?.({
+        moduleId: playlistId,
+        viewedAt: new Date(),
+        items,
+        extra: {
+          context: 'Offer',
+          playlistId,
+          offerId: String(offer.id),
+        },
+      })
+    },
+    [offer.id]
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        const state = useOfferPlaylistTrackingStore.getState()
+        if (state.playlists.length > 0) {
+          logViewItem(state)
+        }
+      }
+    }, [])
+  )
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
@@ -318,6 +371,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsSameCategory={apiRecoParamsSameCategory}
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+            onPlaylistViewableItemsChanged={handlePlaylistViewableItemsChanged}
           />
           {children}
         </ScrollViewContainer>
