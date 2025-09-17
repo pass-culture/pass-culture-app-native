@@ -122,7 +122,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   const handleArtistLinkPress = () => {
     if (!artists[0]) return
     const mainArtistName = artists[0].name
-    analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName, from: 'offer' })
+    const mainArtistId = artists[0].id
+    analytics.logConsultArtist({
+      offerId: offer.id.toString(),
+      artistId: mainArtistId,
+      artistName: mainArtistName,
+      from: 'offer',
+    })
     navigate('Artist', { id: artists[0].id })
   }
 

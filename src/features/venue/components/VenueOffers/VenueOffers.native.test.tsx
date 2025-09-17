@@ -197,9 +197,10 @@ describe('<VenueOffers />', () => {
         await user.press(screen.getByText('Freida McFadden'))
 
         expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+          artistId: '1',
           artistName: 'Freida McFadden',
           from: 'venue',
-          venueId: venueDataTest.id,
+          venueId: venueDataTest.id.toString(),
         })
       })
 
