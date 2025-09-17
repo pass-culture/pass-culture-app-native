@@ -5,8 +5,8 @@ import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubc
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 type InteractionTagParams = {
   theme: typeof theme

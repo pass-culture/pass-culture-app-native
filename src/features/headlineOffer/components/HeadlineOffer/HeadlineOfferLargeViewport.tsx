@@ -8,7 +8,7 @@ import {
   Title,
 } from 'features/headlineOffer/components/HeadlineOffer/CommonHeadlineOffer.styles'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'

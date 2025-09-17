@@ -1,8 +1,8 @@
 import { DefaultTheme } from 'styled-components/native'
 
 import { theme } from 'theme'
-import { getTagColors } from 'ui/components/Tag/helper/getTagColors'
-import { TagVariant } from 'ui/components/Tag/types'
+import { getTagColors } from 'ui/designSystem/Tag/helper/getTagColors'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 describe('getTagColors', () => {
   const mockTheme: DefaultTheme = {

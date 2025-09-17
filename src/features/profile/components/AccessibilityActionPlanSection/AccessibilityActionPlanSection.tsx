@@ -2,7 +2,7 @@ import React from 'react'
 
 import { AccessibilityActionItem } from 'features/profile/components/AccessibilityActionPlanSection/types'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'

@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueDetail } from 'features/offer/types'
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'

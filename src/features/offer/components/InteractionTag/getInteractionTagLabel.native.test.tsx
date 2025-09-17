@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 
 import { getInteractionTagLabel } from './getInteractionTagLabel'
 

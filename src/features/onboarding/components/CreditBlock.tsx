@@ -6,7 +6,7 @@ import { CreditStatus } from 'features/onboarding/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getTagVariantFromCreditStatus } from 'features/onboarding/helpers/getTagVariantFromCreditStatus'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
 import { getSpacing } from 'ui/theme'
 

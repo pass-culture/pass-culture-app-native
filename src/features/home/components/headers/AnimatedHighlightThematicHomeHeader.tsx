@@ -7,8 +7,8 @@ import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constan
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 

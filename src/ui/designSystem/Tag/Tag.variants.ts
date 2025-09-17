@@ -1,4 +1,4 @@
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { CineClubCertification } from 'ui/svg/CineClubCertification'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'

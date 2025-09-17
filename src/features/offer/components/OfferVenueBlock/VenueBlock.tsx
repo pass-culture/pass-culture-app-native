@@ -2,7 +2,7 @@ import React, { ComponentProps, FunctionComponent, useMemo } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { getSpacing } from 'ui/theme'

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactElement } from 'react'
 
-import { variantIcons } from 'ui/components/Tag/Tag.variants'
-import { TagVariant } from 'ui/components/Tag/types'
+import { variantIcons } from 'ui/designSystem/Tag/Tag.variants'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export function getTagIcon(

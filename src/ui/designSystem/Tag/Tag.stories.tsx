@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { CheckFilled } from 'ui/svg/icons/CheckFilled'

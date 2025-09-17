@@ -1,6 +1,6 @@
-import { getTagIcon } from 'ui/components/Tag/helper/getTagIcon'
-import { variantIcons } from 'ui/components/Tag/Tag.variants'
-import { TagVariant } from 'ui/components/Tag/types'
+import { getTagIcon } from 'ui/designSystem/Tag/helper/getTagIcon'
+import { variantIcons } from 'ui/designSystem/Tag/Tag.variants'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 describe('getFinalTagIcon', () => {
   const CustomIcon = () => null

@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { CheckboxAssetProps, SizeProp } from 'ui/components/inputs/Checkbox/types'
-import { Tag } from 'ui/components/Tag/Tag'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { Typo } from 'ui/theme'
 
 type StyleProps = {

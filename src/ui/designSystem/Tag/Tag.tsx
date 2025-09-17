@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react'
 import { View, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getTagColors } from 'ui/components/Tag/helper/getTagColors'
-import { getTagIcon } from 'ui/components/Tag/helper/getTagIcon'
-import { renderTagIcon } from 'ui/components/Tag/helper/renderTagIcon'
-import { TagProps, TagVariant } from 'ui/components/Tag/types'
+import { getTagColors } from 'ui/designSystem/Tag/helper/getTagColors'
+import { getTagIcon } from 'ui/designSystem/Tag/helper/getTagIcon'
+import { renderTagIcon } from 'ui/designSystem/Tag/helper/renderTagIcon'
+import { TagProps, TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 const PADDING_VERTICAL = getSpacing(1)
