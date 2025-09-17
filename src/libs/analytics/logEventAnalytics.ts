@@ -205,10 +205,12 @@ export const logEventAnalytics = {
   logConsultArticleAccountDeletion: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION }),
   logConsultArtist: (params: {
+    artistId: string
     artistName: string
     from: Referrals
-    offerId?: number
-    venueId?: number
+    offerId?: string
+    venueId?: string
+    searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST }, params),
   logConsultArtistFakeDoor: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST_FAKE_DOOR }),

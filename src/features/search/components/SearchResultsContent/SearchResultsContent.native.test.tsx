@@ -1156,8 +1156,10 @@ describe('SearchResultsContent component', () => {
       await user.press(screen.getByText('Artist 1'))
 
       expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistId: '1',
         artistName: 'Artist 1',
         from: 'search',
+        searchId,
       })
     })
   })

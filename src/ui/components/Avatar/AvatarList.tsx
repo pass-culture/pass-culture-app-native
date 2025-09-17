@@ -11,7 +11,7 @@ import { AVATAR_LARGE } from 'ui/theme/constants'
 type AvatarListProps = {
   data: Artist[]
   avatarConfig?: AvatarProps
-  onItemPress: (artistName: string) => void
+  onItemPress: (id: string, name: string) => void
 }
 
 const AVATAR_DEFAULT_CONFIG = {

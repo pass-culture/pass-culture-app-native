@@ -12,7 +12,7 @@ import { getSpacing, Typo } from 'ui/theme'
 export type AvatarListItemProps = {
   id: number
   name: string
-  onItemPress: (artistName: string) => void
+  onItemPress: (id: string, name: string) => void
   image?: string
 } & AvatarProps
 
@@ -32,7 +32,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
           id,
         },
       }}
-      onBeforeNavigate={() => onItemPress(name)}>
+      onBeforeNavigate={() => onItemPress(id.toString(), name)}>
       <StyledView gap={2}>
         <Avatar borderWidth={6} size={size} {...props}>
           {image ? (

@@ -107,7 +107,7 @@ export const SearchSuggestions = ({
 
   const onArtistPress = (artistId: string, artistName: string) => {
     hideSuggestions()
-    analytics.logConsultArtist({ artistName, from: 'searchAutoComplete' })
+    analytics.logConsultArtist({ artistId, artistName, from: 'searchAutoComplete' })
     navigate('Artist', { id: artistId })
   }
 

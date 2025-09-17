@@ -115,8 +115,13 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     )
   }
 
-  const handleArtistsPlaylistPress = (artistName: string) => {
-    analytics.logConsultArtist({ artistName, from: 'venue', venueId: venue.id })
+  const handleArtistsPlaylistPress = (artistId: string, artistName: string) => {
+    analytics.logConsultArtist({
+      artistId,
+      artistName,
+      from: 'venue',
+      venueId: venue.id.toString(),
+    })
   }
 
   return (

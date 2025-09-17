@@ -346,8 +346,13 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     hideVenueMapLocationModal()
   }
 
-  const handleOnArtistPlaylistItemPress = (artistName: string) => {
-    analytics.logConsultArtist({ artistName, from: 'search' })
+  const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
+    analytics.logConsultArtist({
+      artistId,
+      artistName,
+      searchId: searchState.searchId,
+      from: 'search',
+    })
   }
 
   if (showSkeleton) return <SearchResultsPlaceHolder />

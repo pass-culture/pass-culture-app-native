@@ -546,8 +546,9 @@ describe('<OfferBody />', () => {
     await user.press(await screen.findByText('Stephen King'))
 
     expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
-      offerId: offerResponseSnap.id,
+      offerId: offerResponseSnap.id.toString(),
       artistName: 'Stephen King',
+      artistId: '1',
       from: 'offer',
     })
   })
