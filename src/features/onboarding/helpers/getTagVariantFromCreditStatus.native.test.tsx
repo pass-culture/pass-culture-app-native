@@ -1,6 +1,6 @@
 import { CreditStatus } from 'features/onboarding/enums'
 import { getTagVariantFromCreditStatus } from 'features/onboarding/helpers/getTagVariantFromCreditStatus'
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 describe('getTagVariantFromCreditStatus', () => {
   it('should return DEFAULT when status is GONE', () => {

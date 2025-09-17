@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Tag, TAG_HEIGHT } from 'ui/components/Tag/Tag'
+import { Tag, TAG_HEIGHT } from 'ui/designSystem/Tag/Tag'
 import { getSpacing } from 'ui/theme'
 
 interface Props {

@@ -1,6 +1,6 @@
 import { AccessibilityActionItem } from 'features/profile/components/AccessibilityActionPlanSection/types'
 import { renderAccessibilityExternalLink } from 'features/profile/helpers/renderAccessibilityExternalLink'
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 export const accessibility2023: AccessibilityActionItem[] = [
   {

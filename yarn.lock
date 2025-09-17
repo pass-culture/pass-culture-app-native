@@ -11123,6 +11123,7 @@ __metadata:
     eslint-config-prettier: ^9.1.0
     eslint-import-resolver-alias: ^1.1.2
     eslint-plugin-boundaries: ^5.0.1
+    eslint-plugin-header: ^3.1.1
     eslint-plugin-import: ^2.22.1
     eslint-plugin-jest: ^27.1.4
     eslint-plugin-jest-formatting: ^3.1.0
@@ -15971,6 +15972,15 @@ __metadata:
     "@babel/eslint-parser": ^7.12.0
     eslint: ^8.1.0
   checksum: f9519a9d93c6e883cb1ddf73c18aaff0d40ee555c60fa00f47f24aa73fb255fa6754217fb19a07ec0b1f244f8bc73f539389caa2189a4e9c33a1e8efbe538ec4
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-header@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "eslint-plugin-header@npm:3.1.1"
+  peerDependencies:
+    eslint: ">=7.7.0"
+  checksum: 2353e4ba011be81d5c27fbd79929e18dce118d7673a2f717b1ac5a0bceb33e06ec9a7c80a01dddc5804df75e2cc8eb475d268cd1abef5eab5088ede62e5ad246
   languageName: node
   linkType: hard
 

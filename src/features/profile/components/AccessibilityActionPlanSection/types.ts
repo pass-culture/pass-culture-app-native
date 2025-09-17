@@ -1,4 +1,4 @@
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 export type AccessibilityActionItem = {
   text: string

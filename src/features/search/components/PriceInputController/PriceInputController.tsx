@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-import { InputText } from 'ui/components/inputs/InputText/InputText'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 
 interface Props<TFieldValues extends FieldValues, TName>
   extends Omit<React.ComponentProps<typeof InputText>, 'value' | 'onChangeText'> {

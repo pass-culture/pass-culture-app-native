@@ -1,7 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import { getTagProps } from 'features/offer/components/InteractionTag/InteractionTag'
 import { theme } from 'theme'
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 const subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
 

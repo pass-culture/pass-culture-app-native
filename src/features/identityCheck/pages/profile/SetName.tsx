@@ -12,7 +12,7 @@ import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStac
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { InputText } from 'ui/components/inputs/InputText/InputText'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard } from 'ui/svg/icons/IdCard'

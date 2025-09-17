@@ -11,8 +11,8 @@ import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEur
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { Separator } from 'ui/components/Separator'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 

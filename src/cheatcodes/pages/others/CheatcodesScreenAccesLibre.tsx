@@ -7,9 +7,9 @@ import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { InputText } from 'ui/components/inputs/InputText/InputText'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 
