@@ -304,7 +304,7 @@ export const localizeUTCDate = (someDate: Date | string) => {
   return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffest)
 }
 
-export function getTimeZonedDate({ date, timezone }: { date: Date | string; timezone: string }) {
+export const getTimeZonedDate = ({ date, timezone }: { date: Date | string; timezone: string }) => {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
 }

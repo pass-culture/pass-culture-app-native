@@ -19,7 +19,7 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
-import { useBookingsQueryV2 } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -31,7 +31,7 @@ export const EndedBookings: FunctionComponent<{ isQueryEnabled: boolean }> = ({
   isQueryEnabled,
 }) => {
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { data: bookings } = useBookingsQueryV2(isQueryEnabled)
+  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
 
   const { mutate: addReaction } = useReactionMutation()
 

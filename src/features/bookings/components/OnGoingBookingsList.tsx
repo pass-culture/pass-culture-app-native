@@ -10,7 +10,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQueryV2 } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,
@@ -35,14 +35,13 @@ export const OnGoingBookingsList: FunctionComponent<{ isQueryEnabled: boolean }>
     isInitialLoading: isLoading,
     isFetching,
     refetch,
-  } = useBookingsQueryV2(isQueryEnabled)
+  } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
   const { isInitialLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { ongoingBookings = [] } = bookings ?? {}
-
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({
       message: 'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.',

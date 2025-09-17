@@ -45,7 +45,7 @@ exports[`EndedBookings should render correctly 1`] = `
         "id": 321,
         "quantity": 10,
         "stock": {
-          "beginningDatetime": "2021-03-14T20:00:00",
+          "beginningDatetime": "2021-03-14T21:00:00.000Z",
           "features": [
             "VOSTFR",
             "3D",
@@ -115,7 +115,7 @@ exports[`EndedBookings should render correctly 1`] = `
         "id": 322,
         "quantity": 10,
         "stock": {
-          "beginningDatetime": "2021-03-14T20:00:00",
+          "beginningDatetime": "2021-03-14T21:00:00.000Z",
           "features": [
             "VOSTFR",
             "3D",
@@ -556,7 +556,7 @@ exports[`EndedBookings should render correctly 1`] = `
             "id": 321,
             "quantity": 10,
             "stock": {
-              "beginningDatetime": "2021-03-14T20:00:00",
+              "beginningDatetime": "2021-03-14T21:00:00.000Z",
               "features": [
                 "VOSTFR",
                 "3D",

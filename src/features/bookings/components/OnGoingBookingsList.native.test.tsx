@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQueryV2 } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { act, render, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -15,11 +15,12 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
 jest.mock('queries/bookings/useBookingsQuery')
-const mockUseBookings = jest.mocked(useBookingsQueryV2)
+const mockUseBookings = jest.mocked(useBookingsV2WithConvertedTimezoneQuery)
 mockUseBookings.mockReturnValue({
   data: mockBookings,
   isLoading: false,
   isFetching: false,
+  refetch: jest.fn(),
 } as unknown as UseQueryResult<BookingsResponseV2, Error>)
 
 jest.mock('libs/subcategories/useSubcategories')
@@ -68,18 +69,6 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
   describe('offline', () => {
     it('should allow pull to refetch when netInfo.isConnected && netInfo.isInternetReachable', () => {
-      const refetch = jest.fn()
-      const loadingBookings = {
-        data: {
-          endedBookings: [],
-          ongoingBookings: [],
-          hasBookingsAfter18: false,
-        } as BookingsResponseV2,
-        isLoading: false,
-        isFetching: false,
-        refetch: refetch as unknown,
-      } as UseQueryResult<BookingsResponseV2, Error>
-      mockUseBookings.mockReturnValueOnce(loadingBookings)
       renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
@@ -93,18 +82,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isConnected: false,
         isInternetReachable: false,
       })
-      const refetch = jest.fn()
-      const loadingBookings = {
-        data: {
-          endedBookings: [],
-          ongoingBookings: [],
-          hasBookingsAfter18: false,
-        } as BookingsResponseV2,
-        isLoading: false,
-        isFetching: false,
-        refetch: refetch as unknown,
-      } as UseQueryResult<BookingsResponseV2, Error>
-      mockUseBookings.mockReturnValueOnce(loadingBookings)
+
       renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
