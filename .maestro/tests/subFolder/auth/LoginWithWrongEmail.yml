@@ -12,6 +12,7 @@ appId: ${MAESTRO_APP_ID}
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
+- assertVisible: '.*E-mail ou mot de passe incorrect.*'
 
 - tapOn: 'Revenir en arrière' # Permet de réinitialiser les forms
 
