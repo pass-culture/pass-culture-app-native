@@ -1,3 +1,4 @@
+
 import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { mockServer } from 'tests/mswServer'
