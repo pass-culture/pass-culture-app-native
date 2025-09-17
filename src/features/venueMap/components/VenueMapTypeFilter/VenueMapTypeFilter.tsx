@@ -13,8 +13,8 @@ import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
-import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { getSpacing, Typo } from 'ui/theme'
 
 import { useVenueMapFilters } from '../../hook/useVenueMapFilters'

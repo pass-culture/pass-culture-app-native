@@ -12,8 +12,8 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InputText } from 'ui/designSystem/InputText/InputText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing } from 'ui/theme'
 
 const trustedDeviceCheatcodeCategory: CheatcodeCategory = {

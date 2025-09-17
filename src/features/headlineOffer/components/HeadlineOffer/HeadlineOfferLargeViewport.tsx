@@ -8,9 +8,9 @@ import {
   Title,
 } from 'features/headlineOffer/components/HeadlineOffer/CommonHeadlineOffer.styles'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
-import { Tag } from 'ui/designSystem/Tag/Tag'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { Typo } from 'ui/theme'
 
 export const HeadlineOfferLargeViewport: FunctionComponent<HeadlineOfferData> = ({

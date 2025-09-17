@@ -2,9 +2,9 @@ import React, { Dispatch, SetStateAction } from 'react'
 
 import { env } from 'libs/environment/env'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
 type Props = {
