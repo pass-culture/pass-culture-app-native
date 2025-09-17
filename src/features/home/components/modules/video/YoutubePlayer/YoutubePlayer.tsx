@@ -15,8 +15,8 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { Duration } from 'features/offer/types'
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Play } from 'ui/svg/icons/Play'
 import { Typo, getSpacing } from 'ui/theme'
 
