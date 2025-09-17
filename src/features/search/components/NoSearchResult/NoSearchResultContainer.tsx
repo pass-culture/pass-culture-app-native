@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
+import { NoSearchResult } from 'features/search/components/NoSearchResult/NoSearchResult'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
