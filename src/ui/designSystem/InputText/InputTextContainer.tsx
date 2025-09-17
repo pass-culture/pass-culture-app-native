@@ -26,6 +26,8 @@ type Props = {
   children?: React.ReactNode
 }
 
+const BORDER_FOCUS_INCREASE = 0.25
+
 export const InputTextContainer: React.FC<Props> = ({
   children,
   inputSize = 'small',
@@ -61,7 +63,7 @@ const getBorderColor = (
   if (isError) {
     return theme.designSystem.color.border.error
   }
-  return theme.designSystem.color.border.brandSecondary
+  return theme.designSystem.color.border.default
 }
 
 const StyledView = styled(View)<{
@@ -71,14 +73,19 @@ const StyledView = styled(View)<{
   isDisabled?: boolean
 }>(({ size, isFocused, isError, isDisabled, theme }) => {
   const heights = SIZE_TO_HEIGHT(theme)
-  const horizontalPadding = 3
+  const borderWidth = isFocused
+    ? theme.designSystem.size.spacing.xxs
+    : getSpacing(BORDER_FOCUS_INCREASE)
+  const horizontalPadding = isFocused
+    ? theme.designSystem.size.spacing.xxs
+    : theme.designSystem.size.spacing.xxs + BORDER_FOCUS_INCREASE
 
   return {
     height: heights[size],
     width: '100%',
     flexDirection: 'row',
     borderStyle: 'solid',
-    borderWidth: getSpacing(0.25),
+    borderWidth,
     borderColor: getBorderColor(theme, isFocused, isDisabled, isError),
     backgroundColor: isDisabled
       ? theme.designSystem.color.background.disabled
