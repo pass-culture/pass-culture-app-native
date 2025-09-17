@@ -8,7 +8,6 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
-import { InputTextContainer } from 'ui/components/inputs/InputText/InputTextContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import {
   getCustomInputTextProps,
@@ -16,6 +15,7 @@ import {
   InputTextProps,
 } from 'ui/components/inputs/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { InputTextContainer } from 'ui/designSystem/InputText/InputTextContainer'
 import { ErrorFilled } from 'ui/svg/icons/ErrorFilled'
 import { getSpacing, Typo } from 'ui/theme'
 

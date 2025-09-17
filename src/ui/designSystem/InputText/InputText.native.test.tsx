@@ -2,7 +2,7 @@ import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
 import { render, screen } from 'tests/utils'
-import { InputText } from 'ui/components/inputs/InputText/InputText'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { Search } from 'ui/svg/icons/Search'
 
 describe('<InputText />', () => {

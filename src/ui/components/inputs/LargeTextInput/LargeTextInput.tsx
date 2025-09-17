@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { InputText } from 'ui/components/inputs/InputText/InputText'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { TextInputProps } from 'ui/components/inputs/types'
 import { getSpacing } from 'ui/theme'
 
