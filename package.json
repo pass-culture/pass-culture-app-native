@@ -274,6 +274,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-boundaries": "^5.0.1",
+    "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^27.1.4",
     "eslint-plugin-jest-formatting": "^3.1.0",
