@@ -109,11 +109,7 @@ describe('Bookings', () => {
     expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
   })
 
-<<<<<<< HEAD
   //TODO(PC-37969): fix this test
-=======
-  //TODO(PC-37000): fix this test
->>>>>>> 1cb9836ddb2b ((PC-37546) fix(Bookings): add timezone)
   it.skip('should call updateReactions when switching from COMPLETED tab', async () => {
     renderBookings()
 
@@ -124,11 +120,7 @@ describe('Bookings', () => {
     expect(mockMutate).toHaveBeenCalledTimes(1)
   })
 
-<<<<<<< HEAD
   //TODO(PC-37969): fix this test
-=======
-  //TODO(PC-37000): fix this test
->>>>>>> 1cb9836ddb2b ((PC-37546) fix(Bookings): add timezone)
   it.skip('should update reactions for ended bookings without user reaction', async () => {
     renderBookings()
 
