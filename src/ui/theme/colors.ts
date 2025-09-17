@@ -23,9 +23,4 @@ export enum ColorsEnum {
   WHITE = '#ffffff',
 }
 
-export enum UniqueColors {
-  BACKGROUND_COLOR = '#DDDDDD',
-  FOREGROUND_COLOR = '#EEEEEE',
-}
-
 export const ACTIVE_OPACITY = 0.7

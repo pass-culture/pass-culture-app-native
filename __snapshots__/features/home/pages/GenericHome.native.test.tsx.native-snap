@@ -234,7 +234,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             height={16}
             style={
               {
-                "backgroundColor": "#DDDDDD",
+                "backgroundColor": "#cbcdd2",
                 "borderBottomLeftRadius": 8,
                 "borderBottomRightRadius": 8,
                 "borderTopLeftRadius": 8,
@@ -249,10 +249,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             <BVLinearGradient
               colors={
                 [
-                  4292730333,
-                  4293848814,
-                  4293848814,
-                  4292730333,
+                  4291546578,
+                  4294046196,
+                  4294046196,
+                  4291546578,
                 ]
               }
               endPoint={
@@ -340,7 +340,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -355,10 +355,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -404,7 +404,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -419,10 +419,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -460,7 +460,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -475,10 +475,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -539,7 +539,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -554,10 +554,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -603,7 +603,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -618,10 +618,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -659,7 +659,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -674,10 +674,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -738,7 +738,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -753,10 +753,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -802,7 +802,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -817,10 +817,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -858,7 +858,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -873,10 +873,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -937,7 +937,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -952,10 +952,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -1001,7 +1001,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1016,10 +1016,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1057,7 +1057,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1072,10 +1072,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1130,7 +1130,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             height={16}
             style={
               {
-                "backgroundColor": "#DDDDDD",
+                "backgroundColor": "#cbcdd2",
                 "borderBottomLeftRadius": 8,
                 "borderBottomRightRadius": 8,
                 "borderTopLeftRadius": 8,
@@ -1145,10 +1145,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             <BVLinearGradient
               colors={
                 [
-                  4292730333,
-                  4293848814,
-                  4293848814,
-                  4292730333,
+                  4291546578,
+                  4294046196,
+                  4294046196,
+                  4291546578,
                 ]
               }
               endPoint={
@@ -1239,7 +1239,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -1254,10 +1254,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -1303,7 +1303,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1318,10 +1318,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1359,7 +1359,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1374,10 +1374,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1438,7 +1438,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -1453,10 +1453,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -1502,7 +1502,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1517,10 +1517,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1558,7 +1558,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1573,10 +1573,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1637,7 +1637,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -1652,10 +1652,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -1701,7 +1701,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1716,10 +1716,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1757,7 +1757,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1772,10 +1772,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1836,7 +1836,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -1851,10 +1851,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -1900,7 +1900,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1915,10 +1915,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1956,7 +1956,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -1971,10 +1971,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2035,7 +2035,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -2050,10 +2050,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -2099,7 +2099,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2114,10 +2114,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2155,7 +2155,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2170,10 +2170,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2227,7 +2227,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             height={304}
             style={
               {
-                "backgroundColor": "#DDDDDD",
+                "backgroundColor": "#cbcdd2",
                 "borderBottomLeftRadius": 8,
                 "borderBottomRightRadius": 8,
                 "borderTopLeftRadius": 8,
@@ -2242,10 +2242,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             <BVLinearGradient
               colors={
                 [
-                  4292730333,
-                  4293848814,
-                  4293848814,
-                  4292730333,
+                  4291546578,
+                  4294046196,
+                  4294046196,
+                  4291546578,
                 ]
               }
               endPoint={
@@ -2295,7 +2295,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             height={16}
             style={
               {
-                "backgroundColor": "#DDDDDD",
+                "backgroundColor": "#cbcdd2",
                 "borderBottomLeftRadius": 8,
                 "borderBottomRightRadius": 8,
                 "borderTopLeftRadius": 8,
@@ -2310,10 +2310,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             <BVLinearGradient
               colors={
                 [
-                  4292730333,
-                  4293848814,
-                  4293848814,
-                  4292730333,
+                  4291546578,
+                  4294046196,
+                  4294046196,
+                  4291546578,
                 ]
               }
               endPoint={
@@ -2404,7 +2404,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -2419,10 +2419,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -2468,7 +2468,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2483,10 +2483,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2524,7 +2524,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2539,10 +2539,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2603,7 +2603,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -2618,10 +2618,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -2667,7 +2667,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2682,10 +2682,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2723,7 +2723,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2738,10 +2738,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2802,7 +2802,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -2817,10 +2817,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -2866,7 +2866,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2881,10 +2881,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2922,7 +2922,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -2937,10 +2937,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3001,7 +3001,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -3016,10 +3016,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -3065,7 +3065,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3080,10 +3080,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3121,7 +3121,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3136,10 +3136,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3200,7 +3200,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={240}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -3215,10 +3215,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -3264,7 +3264,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3279,10 +3279,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3320,7 +3320,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3335,10 +3335,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3393,7 +3393,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             height={16}
             style={
               {
-                "backgroundColor": "#DDDDDD",
+                "backgroundColor": "#cbcdd2",
                 "borderBottomLeftRadius": 8,
                 "borderBottomRightRadius": 8,
                 "borderTopLeftRadius": 8,
@@ -3408,10 +3408,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             <BVLinearGradient
               colors={
                 [
-                  4292730333,
-                  4293848814,
-                  4293848814,
-                  4292730333,
+                  4291546578,
+                  4294046196,
+                  4294046196,
+                  4291546578,
                 ]
               }
               endPoint={
@@ -3499,7 +3499,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -3514,10 +3514,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -3563,7 +3563,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3578,10 +3578,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3619,7 +3619,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3634,10 +3634,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3698,7 +3698,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -3713,10 +3713,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -3762,7 +3762,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3777,10 +3777,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3818,7 +3818,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3833,10 +3833,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3897,7 +3897,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -3912,10 +3912,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -3961,7 +3961,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -3976,10 +3976,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -4017,7 +4017,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -4032,10 +4032,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -4096,7 +4096,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     height={288}
                     style={
                       {
-                        "backgroundColor": "#DDDDDD",
+                        "backgroundColor": "#cbcdd2",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "borderTopLeftRadius": 8,
@@ -4111,10 +4111,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                     <BVLinearGradient
                       colors={
                         [
-                          4292730333,
-                          4293848814,
-                          4293848814,
-                          4292730333,
+                          4291546578,
+                          4294046196,
+                          4294046196,
+                          4291546578,
                         ]
                       }
                       endPoint={
@@ -4160,7 +4160,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -4175,10 +4175,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -4216,7 +4216,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
                           "borderTopLeftRadius": 8,
@@ -4231,10 +4231,10 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={

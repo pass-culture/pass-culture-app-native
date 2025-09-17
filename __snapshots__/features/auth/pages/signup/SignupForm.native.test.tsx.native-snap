@@ -2558,10 +2558,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                     },
                   },
                 },
-                "uniqueColors": {
-                  "backgroundColor": "#DDDDDD",
-                  "foregroundColor": "#EEEEEE",
-                },
                 "zIndex": {
                   "background": -1,
                   "bottomSheet": 60,
