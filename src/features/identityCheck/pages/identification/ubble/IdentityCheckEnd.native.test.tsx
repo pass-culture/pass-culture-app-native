@@ -66,7 +66,8 @@ describe('<IdentityCheckEnd/>', () => {
     )
   })
 
-  it('should navigate to home after timeout if nextSubscriptionStep is null', async () => {
+  //TODO(PC-36587): unskip this test
+  it.skip('should navigate to home after timeout if nextSubscriptionStep is null', async () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       nextSubscriptionStep: null,

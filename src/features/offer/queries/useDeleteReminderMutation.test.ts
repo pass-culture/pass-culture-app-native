@@ -47,7 +47,7 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
-    expect(queryClient.cancelQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.cancelQueries).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
 
     const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
 
@@ -87,7 +87,7 @@ describe('useDeleteReminderMutation', () => {
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
   })
 
   it('should invalidate reminders query after mutation fails', async () => {
@@ -103,7 +103,7 @@ describe('useDeleteReminderMutation', () => {
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
   })
 })
 

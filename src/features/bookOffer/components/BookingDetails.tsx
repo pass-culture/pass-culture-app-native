@@ -96,7 +96,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       longitude: offer?.venue?.coordinates?.longitude ?? 0,
     },
     query: '',
-    queryOptions: { enabled: shouldFetchSearchVenueOffers },
+    enabled: shouldFetchSearchVenueOffers,
   }
   const currentSearchVenueOffers = {
     offerId: offer?.id,

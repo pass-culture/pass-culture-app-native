@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { VenueResponse } from 'api/gen'
 import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum, VenueNotFoundError } from 'libs/monitoring/errors'
@@ -25,11 +24,9 @@ const getVenueById = async (venueId: number, logType: LogTypeEnum) => {
 export const useVenueQuery = (venueId: number, options?: { enabled?: boolean }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery<VenueResponse | undefined>(
-    [QueryKeys.VENUE, venueId],
-    () => getVenueById(venueId, logType),
-    {
-      enabled: options?.enabled ?? true,
-    }
-  )
+  return useQuery({
+    queryKey: [QueryKeys.VENUE, venueId],
+    queryFn: () => getVenueById(venueId, logType),
+    enabled: options?.enabled ?? true,
+  })
 }

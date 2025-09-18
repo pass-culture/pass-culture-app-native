@@ -135,7 +135,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     [dismissModal, offerId, showErrorSnackBar]
   )
 
-  const { mutate, isLoading } = useBookOfferMutation({
+  const { mutate, isPending } = useBookOfferMutation({
     onSuccess: onBookOfferSuccess,
     onError: onBookOfferError,
   })
@@ -147,7 +147,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   }
 
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
-    useModalContent(onPressBookOffer, isLoading, isEndedUsedBooking, bookingDataMovieScreening)
+    useModalContent(onPressBookOffer, isPending, isEndedUsedBooking, bookingDataMovieScreening)
 
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
@@ -196,7 +196,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
-    if (isLoading && title.includes('Détails de la réservation')) {
+    if (isPending && title.includes('Détails de la réservation')) {
       showBookingCloseInformationModal()
     }
     analytics.logCancelBookingFunnel(step, offerId)
@@ -205,7 +205,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     bookingState.offerId,
     offerId,
     dispatch,
-    isLoading,
+    isPending,
     title,
     step,
     showBookingCloseInformationModal,

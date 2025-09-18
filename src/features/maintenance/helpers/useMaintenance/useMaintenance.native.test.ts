@@ -2,7 +2,7 @@ import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useM
 import { getMaintenance } from 'libs/firebase/firestore/getMaintenance/getMaintenance'
 import { MAINTENANCE } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
 jest.mock('libs/firebase/firestore/getMaintenance/getMaintenance')
@@ -14,9 +14,11 @@ describe('useMaintenance', () => {
   })
 
   it('should return unknown status when no data from firestore', async () => {
-    mockGetMaintenance.mockReturnValueOnce(undefined)
+    mockGetMaintenance.mockReturnValueOnce({})
 
     const { result } = renderUseMaintenance()
+
+    await act(() => {})
 
     await waitFor(() => {
       expect(result.current).toEqual({ message: undefined, status: MAINTENANCE.UNKNOWN })

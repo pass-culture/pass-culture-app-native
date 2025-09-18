@@ -44,7 +44,7 @@ export const ChangeEmailSetPassword = () => {
     mode: 'onChange',
   })
 
-  const { mutate: setPassword, isLoading } = useChangeEmailSetPasswordMutation({
+  const { mutate: setPassword, isPending } = useChangeEmailSetPasswordMutation({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Ton mot de passe a bien été créé.',
@@ -105,7 +105,7 @@ export const ChangeEmailSetPassword = () => {
           <ButtonPrimary
             wording="Créer mon mot de passe"
             disabled={!isValid}
-            isLoading={isLoading}
+            isLoading={isPending}
             onPress={onSubmit}
           />
         </Form.MaxWidth>

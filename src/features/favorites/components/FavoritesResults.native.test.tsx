@@ -77,7 +77,7 @@ describe('FavoritesResults component', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
       data: undefined,
-      isInitialLoading: true,
+      isLoading: true,
     } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     renderFavoritesResults()

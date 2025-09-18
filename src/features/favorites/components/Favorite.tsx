@@ -84,7 +84,7 @@ export const Favorite: React.FC<Props> = (props) => {
     from: StepperOrigin.FAVORITE,
   })
 
-  const { mutate: removeFavorite, isLoading } = useRemoveFavoriteMutation({
+  const { mutate: removeFavorite, isPending } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',
@@ -227,7 +227,7 @@ export const Favorite: React.FC<Props> = (props) => {
               accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
               onPress={onRemove}
               buttonHeight="tall"
-              disabled={isLoading}
+              disabled={isPending}
             />
           </ButtonContainer>
           {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}

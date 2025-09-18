@@ -7,19 +7,17 @@ type UseAccountSuspendForHackSuspicion = {
   onError?: (error: unknown) => void
 }
 
-export function useAccountSuspendForHackSuspicionMutation({
+export const useAccountSuspendForHackSuspicionMutation = ({
   onSuccess,
   onError,
-}: UseAccountSuspendForHackSuspicion = {}) {
-  const { mutate: accountSuspendForHackSuspicion, isLoading } = useMutation(
-    () => api.postNativeV1AccountSuspendForHackSuspicion(),
-    {
-      onSuccess,
-      onError,
-    }
-  )
+}: UseAccountSuspendForHackSuspicion = {}) => {
+  const { mutate: accountSuspendForHackSuspicion, isPending } = useMutation({
+    mutationFn: () => api.postNativeV1AccountSuspendForHackSuspicion(),
+    onSuccess,
+    onError,
+  })
   return {
     accountSuspendForHackSuspicion,
-    isLoading,
+    isLoading: isPending,
   }
 }

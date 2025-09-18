@@ -61,9 +61,9 @@ export const useSimilarOffersQuery = ({
     [categoryExcluded, categoryIncluded, searchGroupList]
   )
 
-  const { data: apiRecoResponse } = useQuery(
-    [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames],
-    async () => {
+  const { data: apiRecoResponse } = useQuery({
+    queryKey: [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames],
+    queryFn: async () => {
       try {
         return await api.getNativeV1RecommendationSimilarOffersofferId(
           offerId,
@@ -99,11 +99,9 @@ export const useSimilarOffersQuery = ({
         return { params: {}, results: [] }
       }
     },
-    {
-      staleTime: 1000 * 60 * 5,
-      enabled: !!searchGroupNames && onlineManager.isOnline() && shouldFetch,
-    }
-  )
+    staleTime: 1000 * 60 * 5,
+    enabled: !!searchGroupNames && onlineManager.isOnline() && shouldFetch,
+  })
 
   return {
     similarOffers: useAlgoliaSimilarOffersQuery(apiRecoResponse?.results ?? [], true),

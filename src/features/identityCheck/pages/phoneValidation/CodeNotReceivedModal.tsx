@@ -35,9 +35,9 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
     plural: '# demandes',
   })
 
-  const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
+  const { mutate: sendPhoneValidationCode, isPending } = useSendPhoneValidationMutation({
     onSuccess: () => {
-      queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS] })
       props.dismissModal()
     },
     onError: (error: unknown) => {
@@ -89,7 +89,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
             type="submit"
             onPress={requestSendPhoneValidationCode}
             wording="Demander un autre code"
-            isLoading={isLoading}
+            isLoading={isPending}
           />
         </BottomContentContainer>
       </React.Fragment>

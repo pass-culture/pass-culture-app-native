@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import * as ReactQueryAPI from '@tanstack/react-query'
+import { QueryClient } from '@tanstack/react-query'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -14,7 +14,10 @@ import { userEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
-const useQuerySpy = jest.spyOn(ReactQueryAPI, 'useQuery')
+let queryClient: QueryClient
+const setupQueryClient = (client: QueryClient) => {
+  queryClient = client
+}
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -70,7 +73,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
 
     await user.press(screen.getByText(`Renvoyer l’email`))
 
-    expect(useQuerySpy).toThrow()
+    expect(queryClient).toEqual({})
   })
 })
 
@@ -79,5 +82,5 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 function renderResetPasswordExpiredLink() {
-  render(reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />))
+  render(reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />, setupQueryClient))
 }

@@ -50,7 +50,7 @@ export const useHighlightOffer = ({
       })
     }
 
-    if (!offerId) return undefined
+    if (!offerId) return []
 
     return fetchOffersByIds({
       objectIds: [offerId],

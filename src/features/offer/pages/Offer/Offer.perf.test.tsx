@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import {
+  BookingsResponse,
   GetRemindersResponse,
   OfferResponseV2,
   SimilarOffersResponse,
@@ -84,6 +85,7 @@ describe('<Offer />', () => {
     )
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
   })
 
   it('Performance test for Offer page', async () => {

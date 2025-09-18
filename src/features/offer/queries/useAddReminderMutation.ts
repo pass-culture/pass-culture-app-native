@@ -8,9 +8,12 @@ import { QueryKeys } from 'libs/queryKeys'
 export const useAddReminderMutation = (options?: MutationOptions) => {
   const queryClient = useQueryClient()
 
-  return useMutation((offerId: number) => api.postNativeV1MeReminders({ offerId }), {
+  return useMutation({
+    mutationFn: (offerId: number) => api.postNativeV1MeReminders({ offerId }),
     onMutate: async (offerId) => {
-      await queryClient.cancelQueries([QueryKeys.REMINDERS])
+      await queryClient.cancelQueries({
+        queryKey: [QueryKeys.REMINDERS],
+      })
       const previousReminders = queryClient.getQueryData<GetRemindersResponse>([
         QueryKeys.REMINDERS,
       ])
@@ -37,6 +40,9 @@ export const useAddReminderMutation = (options?: MutationOptions) => {
       queryClient.setQueryData([QueryKeys.REMINDERS], context?.previousReminders)
       options?.onError?.(error)
     },
-    onSettled: () => queryClient.invalidateQueries([QueryKeys.REMINDERS]),
+    onSettled: () =>
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.REMINDERS],
+      }),
   })
 }

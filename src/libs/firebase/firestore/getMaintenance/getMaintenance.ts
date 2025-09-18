@@ -5,7 +5,7 @@ import { captureMonitoringError } from 'libs/monitoring/errors'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getMaintenance = async (): Promise<
-  FirebaseFirestoreTypes.DocumentData | undefined
+  FirebaseFirestoreTypes.DocumentData | undefined | null
 > => {
   try {
     const docSnapshot = await firestoreRemoteStore
@@ -13,9 +13,9 @@ export const getMaintenance = async (): Promise<
       .doc(RemoteStoreDocuments.MAINTENANCE)
       .get()
 
-    return docSnapshot.data()
+    return docSnapshot.data() ?? {}
   } catch (error) {
     captureMonitoringError(getErrorMessage(error), 'firestore_not_available')
-    return undefined
+    return null
   }
 }

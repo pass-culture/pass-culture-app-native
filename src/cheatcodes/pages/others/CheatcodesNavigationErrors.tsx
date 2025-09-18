@@ -53,11 +53,12 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const { logType } = useLogTypeFromRemoteConfig()
 
-  const { refetch: errorAsyncQuery, isFetching } = useQuery(
-    [QueryKeys.ERROR_ASYNC],
-    () => errorAsync(),
-    { cacheTime: 0, enabled: false }
-  )
+  const { refetch: errorAsyncQuery, isFetching } = useQuery({
+    queryKey: [QueryKeys.ERROR_ASYNC],
+    queryFn: () => errorAsync(),
+    gcTime: 0,
+    enabled: false,
+  })
 
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)

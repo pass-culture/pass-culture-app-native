@@ -8,9 +8,11 @@ import { QueryKeys } from 'libs/queryKeys'
 const UNKNOWN_MAINTENANCE: Maintenance = { status: MAINTENANCE.UNKNOWN, message: undefined }
 
 export const useMaintenance = (): Maintenance => {
-  const { data } = useQuery([QueryKeys.MAINTENANCE], getMaintenance, {
+  const { data } = useQuery({
+    queryKey: [QueryKeys.MAINTENANCE],
+    queryFn: getMaintenance,
     staleTime: 1000 * 30,
-    cacheTime: 1000 * 30,
+    gcTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
     select: (data: FirebaseFirestoreTypes.DocumentData) => {
       const maintenanceIsOn = data?.[RemoteStoreMaintenance.MAINTENANCE_IS_ON]

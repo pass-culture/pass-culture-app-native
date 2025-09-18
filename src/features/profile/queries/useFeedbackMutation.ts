@@ -8,9 +8,9 @@ type FeedbackMutationOptions = {
   onError?: (error: unknown) => void
 }
 
-export const useFeedbackMutation = ({ onSuccess, onError }: FeedbackMutationOptions) => {
-  return useMutation((body: PostFeedbackBody) => api.postNativeV1Feedback(body), {
+export const useFeedbackMutation = ({ onSuccess, onError }: FeedbackMutationOptions) =>
+  useMutation({
+    mutationFn: (body: PostFeedbackBody) => api.postNativeV1Feedback(body),
     onSuccess,
     onError,
   })
-}

@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
+
 import { useBannerQuery } from 'features/home/queries/useBannerQuery'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 
 export function useActivationBanner() {
@@ -7,7 +10,11 @@ export function useActivationBanner() {
   const { permissionState } = useLocation()
 
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useBannerQuery(isGeolocated)
+  const { data, isError, error } = useBannerQuery(isGeolocated)
+
+  useEffect(() => {
+    if (isError) eventMonitoring.captureException(error)
+  }, [error, isError])
 
   if (shouldBeOverriden) {
     return {

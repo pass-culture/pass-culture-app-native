@@ -3,11 +3,14 @@ import React, { createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import {
+  BookingsResponse,
   OfferResponseV2,
   OffersStocksResponseV2,
+  RefreshResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { bookingsSnap } from 'features/bookings/fixtures'
 import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
@@ -88,6 +91,8 @@ describe('MoviesScreeningCalendar', () => {
       ],
     })
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
+    mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', { accessToken: 'toto' })
+    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
   })
 
   it('should render MoviesScreeningCalendar correctly on mobile', async () => {
@@ -96,6 +101,9 @@ describe('MoviesScreeningCalendar', () => {
     await act(async () => {})
 
     expect((await screen.findAllByText('Mer.'))[0]).toBeOnTheScreen()
+
+    await act(async () => {})
+
     expect(screen.getByText('8')).toBeOnTheScreen()
     expect(screen.getAllByText('Mai')[0]).toBeOnTheScreen()
   })

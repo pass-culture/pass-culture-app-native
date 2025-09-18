@@ -25,8 +25,7 @@ export function SuspendAccountConfirmation({
   route: { params },
   navigation,
 }: SuspendAccountConfirmationProps) {
-  const { data: emailUpdateStatus, isInitialLoading: isLoadingEmailUpdateStatus } =
-    useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)

@@ -9,9 +9,9 @@ export const useChangeEmailSetPasswordMutation = ({
 }: {
   onSuccess: () => void
   onError: () => void
-}) => {
-  return useMutation(
-    (body: ResetPasswordRequest) => api.postNativeV2ProfileEmailUpdateNewPassword(body),
-    { onSuccess, onError }
-  )
-}
+}) =>
+  useMutation({
+    mutationFn: (body: ResetPasswordRequest) => api.postNativeV2ProfileEmailUpdateNewPassword(body),
+    onSuccess,
+    onError,
+  })

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Summary } from 'features/identityCheck/components/Summary'
@@ -24,8 +24,8 @@ export const ProfileInformationValidationUpdate = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
-  const { mutateAsync: postProfile } = usePostProfileMutation({
-    onSuccess: async () => {
+  const { mutateAsync: postProfile, isPending } = usePostProfileMutation({
+    onSuccess: () => {
       reset({
         index: 1,
         routes: [
@@ -40,9 +40,6 @@ export const ProfileInformationValidationUpdate = () => {
       showErrorSnackBar({ message: 'Une erreur est survenue', timeout: SNACK_BAR_TIME_OUT })
     },
   })
-
-  // isLoading from react-query is not support with mutateAsync
-  const [isLoading, setIsLoading] = useState(false)
 
   const onSubmitProfile = useCallback(async () => {
     if (
@@ -70,9 +67,7 @@ export const ProfileInformationValidationUpdate = () => {
       schoolType: null,
     }
 
-    setIsLoading(true)
     await postProfile(profile)
-    setIsLoading(false)
   }, [postProfile, user])
 
   const onChangeInformation = () =>
@@ -98,7 +93,7 @@ export const ProfileInformationValidationUpdate = () => {
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}
-        isLoading={isLoading}
+        isLoading={isPending}
       />
     </ViewGap>
   )
