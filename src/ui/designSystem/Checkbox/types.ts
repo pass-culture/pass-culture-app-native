@@ -13,7 +13,7 @@ export type CheckboxVariant = 'default' | 'detailed'
 
 export type CheckboxState = 'checked' | 'indeterminate' | 'error' | 'disabled' | 'default'
 
-export type CheckboxDisplay = 'hug' | 'fill'
+export type CheckboxSizing = 'hug' | 'fill'
 
 export type CheckboxAssetProps =
   | {
