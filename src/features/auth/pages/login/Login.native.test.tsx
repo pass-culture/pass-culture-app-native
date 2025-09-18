@@ -769,7 +769,7 @@ describe('<Login/>', () => {
 
 const fillInputs = async () => {
   const emailInput = screen.getByTestId('Entrée pour l’email')
-  const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+  const passwordInput = screen.getByTestId('Mot de passe')
   fireEvent.changeText(emailInput, 'email@gmail.com')
   await act(async () => {
     fireEvent.changeText(passwordInput, 'user@AZERTY123')

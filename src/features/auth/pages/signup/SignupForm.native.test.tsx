@@ -92,7 +92,7 @@ const gotoStep2 = async () => {
 }
 
 const gotoStep3 = async () => {
-  await user.type(await screen.findByPlaceholderText('Ton mot de passe'), 'user@AZERTY123')
+  await user.type(await screen.findByTestId('Mot de passe'), 'user@AZERTY123')
 
   await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
   await screen.findByText('Étape 3 sur 5', { includeHiddenElements: true })
@@ -234,7 +234,7 @@ describe('Signup Form', () => {
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
       await user.press(screen.getByText('Continuer'))
 
@@ -264,7 +264,7 @@ describe('Signup Form', () => {
     await user.type(emailInput, 'email@gmail.com')
     await user.press(screen.getByText('Continuer'))
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
     await user.type(passwordInput, 'user@AZERTY123')
     await user.press(screen.getByText('Continuer'))
 
@@ -309,7 +309,7 @@ describe('Signup Form', () => {
         undefined
       )
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
       await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
 
@@ -385,7 +385,7 @@ describe('Signup Form', () => {
 
       await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
       await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
 
@@ -434,7 +434,7 @@ describe('Signup Form', () => {
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
 
       await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
