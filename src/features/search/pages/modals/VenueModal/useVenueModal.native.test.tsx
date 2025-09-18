@@ -7,6 +7,9 @@ import { act, renderHook } from 'tests/utils'
 
 import useVenueModal from './useVenueModal'
 
+type UseVenueModalReturn = ReturnType<typeof useVenueModal>
+type UseVenueModalProps = { dismissModal: VoidFunction }
+
 const venue = mockedSuggestedVenue
 
 jest.useFakeTimers()
@@ -52,7 +55,10 @@ describe('useVenueModal', () => {
     })
 
     it('when start it should return falsy state', () => {
-      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
         result.current
@@ -66,9 +72,10 @@ describe('useVenueModal', () => {
     })
 
     it('when provide a query it should change state for the UI', async () => {
-      const { result } = renderHook(useVenueModal, {
-        initialProps: { dismissModal },
-      })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(async () => {
         result.current.doChangeVenue(venue.label)
@@ -86,7 +93,10 @@ describe('useVenueModal', () => {
     })
 
     it('when select a venue it should change state for the UI', async () => {
-      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(async () => {
         result.current.doChangeVenue(venue.label)
@@ -105,7 +115,10 @@ describe('useVenueModal', () => {
     })
 
     it('when select a venue and reset it should reset the UI', async () => {
-      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(async () => {
         result.current.doChangeVenue(venue.label)
@@ -128,7 +141,10 @@ describe('useVenueModal', () => {
     })
 
     it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
-      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(async () => {
         result.current.doChangeVenue(venue.label)
@@ -143,7 +159,10 @@ describe('useVenueModal', () => {
     })
 
     it('when select a venue and validate it should apply search to the context', async () => {
-      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(async () => {
         result.current.doChangeVenue(venue.label)
@@ -163,7 +182,10 @@ describe('useVenueModal', () => {
     })
 
     it('when nothing is to be search then search cannot be done', async () => {
-      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(async () => {
         result.current.doApplySearch()
@@ -173,11 +195,10 @@ describe('useVenueModal', () => {
     })
 
     it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
-      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-        initialProps: {
-          dismissModal: dismissModal,
-        },
-      })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(() => {
         result.current.doSetSelectedVenue({
@@ -204,11 +225,10 @@ describe('useVenueModal', () => {
         },
       })
 
-      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-        initialProps: {
-          dismissModal: dismissModal,
-        },
-      })
+      const { result } = renderHook<UseVenueModalReturn, UseVenueModalProps>(
+        ({ dismissModal }) => useVenueModal({ dismissModal }),
+        { initialProps: { dismissModal } }
+      )
 
       await act(() => {
         result.current.doResetVenue()
