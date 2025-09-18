@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
@@ -84,7 +84,9 @@ const NoSearchResultsWrapper = styled.View({
 
 const ContainerNoOffer = styled.View(({ theme }) => ({
   flexShrink: 0,
-  ...(theme.isMobileViewport && { marginTop: -(theme.tabBar.height + getSpacing(10)) }),
+  ...(theme.isMobileViewport && {
+    marginTop: -(theme.tabBar.height + theme.designSystem.size.spacing.xxxl),
+  }),
 }))
 
 const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
