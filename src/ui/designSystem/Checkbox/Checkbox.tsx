@@ -178,7 +178,7 @@ type ContainerProps = {
   isFocus?: boolean
 }
 
-const getBoderHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
+const getBorderHoverStyle = ({ theme, state, isHover }: LabelHoverStyleParams) => {
   const disabled = state.includes('disabled')
   const error = state.includes('error')
   if (disabled || error) return {}
@@ -216,7 +216,7 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
       padding: theme.designSystem.size.spacing.l,
     }),
     ...customFocusOutline({ isFocus }),
-    ...getBoderHoverStyle({ state, theme, isHover }),
+    ...getBorderHoverStyle({ state, theme, isHover }),
   }
 })
 
@@ -250,7 +250,7 @@ const LeftBox = styled.View<LeftBoxProps>(({ theme, variant, isHover, state }) =
     border: theme.checkbox.border.size,
     borderColor,
     backgroundColor,
-    ...getBoderHoverStyle({ state, theme, isHover }),
+    ...getBorderHoverStyle({ state, theme, isHover }),
   }
 })
 
