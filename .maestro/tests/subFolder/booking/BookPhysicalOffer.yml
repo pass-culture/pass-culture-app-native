@@ -13,7 +13,9 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: 'Livre'
+      - tapOn:
+          text: 'Livre'
+          index: 2
 
 - waitForAnimationToEnd
 
