@@ -11,12 +11,12 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
-import { CheckboxVariant } from 'ui/designSystem/Checkbox/types'
 import {
   CheckboxGroupDisplay,
   CheckboxGroupOption,
   CheckboxGroupProps,
 } from 'ui/designSystem/CheckboxGroup/types'
+import { SelectableVariant } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
 
 export const CheckboxGroup = ({
@@ -133,7 +133,7 @@ const Description = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-type VariantProps = { variant: CheckboxVariant }
+type VariantProps = { variant: SelectableVariant }
 type DisplayProps = { display: CheckboxGroupDisplay }
 const CheckboxContainer = styled.View<VariantProps & DisplayProps>(
   ({ theme, variant, display }) => {
