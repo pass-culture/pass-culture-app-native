@@ -33,7 +33,6 @@ export const CheatcodesScreenAccesLibre = () => {
     <CheatcodesTemplateScreen title="AccesLibre 🌈" flexDirection="column">
       <InputText
         label="Rentrer un ID de lieu avec AccesLibre"
-        placeholder="859"
         keyboardType="number-pad"
         value={value}
         onChangeText={setValue}
