@@ -25,9 +25,9 @@ permissions:
 
 jobs:
   build_e2e:
-    name: 'Build E2E Staging'
+    name: 'Build & Test iOS Staging'
     runs-on: macos-14
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -108,7 +108,7 @@ jobs:
         run: |
           APP_PATH=$(find /Users/runner/Library/Developer/Xcode/Archives/ -name "*.app" | head -n 1)
           echo "APP_PATH=$APP_PATH" >> $GITHUB_OUTPUT
-      - name: Generate Robin iOS upload name
+      - name: Generate Maestro iOS upload name
         id: generate_name
         run: |
           DATE=$(date +"%d/%m/%Y")
@@ -119,7 +119,7 @@ jobs:
             CUSTOM_NAME="${{ inputs.upload_name_prefix }}[iOS] Staging du ${DATE} (${COMMIT_HASH})"
           fi
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
-      - name: Upload and run ios tests with Robin
+      - name: Upload and run ios tests with Maestro cloud
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
@@ -131,6 +131,7 @@ jobs:
           device-os: iOS-17-5
           device-model: iPhone-11
           include-tags: ${{ inputs.test_tags }}
+          timeout: 120
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
