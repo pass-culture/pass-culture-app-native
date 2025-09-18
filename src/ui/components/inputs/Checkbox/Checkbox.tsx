@@ -42,7 +42,7 @@ type CheckboxBase = {
   disabled?: boolean
 } & (CheckboxBaseCheckedOnly | CheckboxBaseIndeterminateOnly)
 
-type Props = CheckboxBase &
+export type CheckboxProps = CheckboxBase &
   (
     | {
         asset?: never
@@ -67,7 +67,7 @@ type Props = CheckboxBase &
       }
   )
 
-export const Checkbox: FunctionComponent<Props> = ({
+export const Checkbox: FunctionComponent<CheckboxProps> = ({
   asset,
   collapsed,
   description,
