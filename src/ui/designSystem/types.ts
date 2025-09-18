@@ -13,13 +13,6 @@ export type SelectableVariant = 'default' | 'detailed'
 
 export type CheckboxState = 'default' | 'disabled' | 'error' | 'checked' | 'indeterminate'
 
-export type RadioButtonState = {
-  selected: boolean
-  error?: boolean
-  disabled?: boolean
-  default: boolean
-}
-
 export type SelectableDisplay = 'hug' | 'fill'
 
 export type SelectableAssetProps =
