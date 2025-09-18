@@ -42,10 +42,9 @@ export const getFilterButtonListItem = ({
       isApplied: appliedFilters.includes(FILTER_TYPES.DATES_HOURS),
     },
     {
-      label:
-        searchState.venue && searchState.venue.label
-          ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
-          : 'Lieu culturel',
+      label: searchState.venue?.label
+        ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
+        : 'Lieu culturel',
       testID: 'venueButton',
       onPress: showVenueModal,
       isApplied: isVenue,
