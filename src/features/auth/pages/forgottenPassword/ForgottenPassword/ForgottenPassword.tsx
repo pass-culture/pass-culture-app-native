@@ -70,7 +70,7 @@ export const ForgottenPassword = () => {
         </Typo.Body>
       </Container>
       <Form.MaxWidth>
-        <EmailInputController control={control} name="email" autoFocus />
+        <EmailInputController label="Adresse e-mail" control={control} name="email" autoFocus />
         <ButtonContainer>
           <ButtonPrimary
             wording="Valider"

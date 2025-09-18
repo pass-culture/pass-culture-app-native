@@ -291,7 +291,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                       "alignItems": "flex-end",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginBottom": 8,
                       "width": "100%",
                     }
                   }
@@ -311,47 +310,40 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <View
+              <Text
                 style={
                   {
-                    "marginBottom": 8,
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
                   }
                 }
               >
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Exemple : tonadresse@email.com
-                </Text>
-              </View>
+                Exemple : tonadresse@email.com
+              </Text>
               <View
-                height="small"
                 isDisabled={true}
                 isError={false}
-                isFocus={false}
+                isFocused={false}
+                size="small"
                 style={
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#cbcdd2",
                     "borderStyle": "solid",
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 40,
+                    "marginTop": 4,
                     "paddingBottom": 0,
-                    "paddingLeft": 17,
-                    "paddingRight": 17,
+                    "paddingLeft": 9,
+                    "paddingRight": 9,
                     "paddingTop": 0,
                     "width": "100%",
                   }
@@ -365,7 +357,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   editable={false}
                   isEmpty={false}
                   keyboardType="email-address"
-                  maxLength={120}
                   multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}

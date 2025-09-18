@@ -222,7 +222,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             centered
           />
           <Container>
-            <EmailInputController name="email" control={control} isRequiredField />
+            <EmailInputController
+              label="Adresse e-mail"
+              name="email"
+              control={control}
+              isRequiredField
+            />
           </Container>
           <PasswordInputController
             name="password"
