@@ -89,6 +89,8 @@ export const Venue: FunctionComponent = () => {
   const isVenueHeadlineOfferActive = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER
   )
+  const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
+  const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
 
   const headlineOfferData = isVenueHeadlineOfferActive
@@ -127,6 +129,7 @@ export const Venue: FunctionComponent = () => {
             headlineOfferData={headlineOfferData}
             arePlaylistsLoading={arePlaylistsLoading}
             enableAccesLibre={enableAccesLibre}
+            shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />

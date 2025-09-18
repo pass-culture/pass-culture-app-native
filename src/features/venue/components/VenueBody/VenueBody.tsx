@@ -9,8 +9,7 @@ import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
-import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
-import { Tab } from 'features/venue/types'
+import { VenueOffersArtists, VenueOffers as VenueOffersType, Tab } from 'features/venue/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -29,6 +28,7 @@ interface Props {
   headlineOfferData?: HeadlineOfferData | null
   arePlaylistsLoading: boolean
   enableAccesLibre?: boolean
+  shouldDisplayVenueCalendar?: boolean
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -39,6 +39,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   headlineOfferData,
   arePlaylistsLoading,
   enableAccesLibre,
+  shouldDisplayVenueCalendar,
 }) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -86,13 +87,24 @@ export const VenueBody: FunctionComponent<Props> = ({
       </React.Fragment>
     ),
     [Tab.INFOS]: <PracticalInformation venue={venue} enableAccesLibre={enableAccesLibre} />,
+    [Tab.AGENDA]: shouldDisplayVenueCalendar ? (
+      <Typo.Title3>
+        Bientôt&nbsp;: agenda présentant les dates de l’evènement unique de ce lieu
+      </Typo.Title3>
+    ) : null,
   }
+
+  const tabs = [
+    { key: Tab.OFFERS },
+    { key: Tab.INFOS },
+    ...(shouldDisplayVenueCalendar ? [{ key: Tab.AGENDA }] : []),
+  ]
 
   return (
     <SectionContainer visible gap={6}>
       <TabLayout
         tabPanels={tabPanels}
-        tabs={[{ key: Tab.OFFERS }, { key: Tab.INFOS }]}
+        tabs={tabs}
         defaultTab={Tab.OFFERS}
         onTabChange={{
           'Offres disponibles': () =>
