@@ -25,7 +25,6 @@ const SearchIcon = styled(Search).attrs(({ theme }) => ({
 }))``
 
 const baseProps = {
-  placeholder: 'Placeholder...',
   label: 'Label',
   format: 'Format',
 }

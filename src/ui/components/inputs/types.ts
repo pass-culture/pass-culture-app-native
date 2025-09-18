@@ -108,7 +108,7 @@ export type RNTextInputProps = Pick<
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
 
-export type InputTextProps = CustomInputTextProps & RNTextInputProps
+export type InputTextProps = CustomInputTextProps & Omit<RNTextInputProps, 'placeholder'>
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 

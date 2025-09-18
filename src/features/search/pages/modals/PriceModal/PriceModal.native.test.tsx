@@ -107,7 +107,7 @@ describe('<PriceModal/>', () => {
     it('should reset minimum price when pressing reset button', async () => {
       renderSearchPrice()
 
-      const minPriceInput = screen.getByPlaceholderText('0')
+      const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
       await user.type(minPriceInput, '5')
 
       const resetButton = screen.getByText('Réinitialiser')
@@ -119,7 +119,7 @@ describe('<PriceModal/>', () => {
     it('should reset maximum price when pressing reset button', async () => {
       renderSearchPrice()
 
-      const maxPriceInput = screen.getByPlaceholderText('80')
+      const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
       await user.type(maxPriceInput, '20')
 
       const resetButton = screen.getByText('Réinitialiser')
@@ -156,7 +156,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, minPrice: '5' }
       renderSearchPrice()
 
-      const minPriceInput = screen.getByPlaceholderText('0')
+      const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
 
       const resetButton = screen.getByText('Réinitialiser')
       await user.press(resetButton)
@@ -181,7 +181,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, minPrice: '5' }
       renderSearchPrice()
 
-      const minPriceInput = screen.getByPlaceholderText('0')
+      const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
 
       const previousButton = screen.getByTestId('Fermer')
       await user.press(previousButton)
@@ -193,7 +193,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, maxPrice: '15' }
       renderSearchPrice()
 
-      const maxPriceInput = screen.getByPlaceholderText('80')
+      const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
       const resetButton = screen.getByText('Réinitialiser')
       await user.press(resetButton)
@@ -205,7 +205,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, maxPrice: '15' }
       renderSearchPrice()
 
-      const maxPriceInput = screen.getByPlaceholderText('80')
+      const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
       const previousButton = screen.getByTestId('Fermer')
       await user.press(previousButton)
@@ -268,7 +268,7 @@ describe('<PriceModal/>', () => {
     const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
     await user.press(toggleLimitCreditSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.value).toStrictEqual('70')
   })
@@ -279,7 +279,7 @@ describe('<PriceModal/>', () => {
     const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
     await user.press(toggleLimitCreditSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
   })
@@ -291,7 +291,7 @@ describe('<PriceModal/>', () => {
     await user.press(toggleLimitCreditSearch)
     await user.press(toggleLimitCreditSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
@@ -303,7 +303,7 @@ describe('<PriceModal/>', () => {
     const toggleLimitCreditSearch = screen.getByTestId(LIMIT_CREDIT_SEARCH_SWITCH)
     await user.press(toggleLimitCreditSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
@@ -316,7 +316,7 @@ describe('<PriceModal/>', () => {
     await user.press(toggleLimitCreditSearch)
     await user.press(toggleLimitCreditSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.value).toStrictEqual('15')
   })
@@ -352,7 +352,7 @@ describe('<PriceModal/>', () => {
   it('should update the minimum price by 0 when pressing only free offers search toggle', async () => {
     renderSearchPrice()
 
-    const minPriceInput = screen.getByPlaceholderText('0')
+    const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
     await user.type(minPriceInput, '5')
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -369,7 +369,7 @@ describe('<PriceModal/>', () => {
     await user.press(toggleOnlyFreeOffersSearch)
     await user.press(toggleOnlyFreeOffersSearch)
 
-    const minPriceInput = screen.getByPlaceholderText('0')
+    const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
 
     expect(minPriceInput.props.value).toStrictEqual('')
   })
@@ -382,7 +382,7 @@ describe('<PriceModal/>', () => {
     await user.press(toggleOnlyFreeOffersSearch)
     await user.press(toggleOnlyFreeOffersSearch)
 
-    const minPriceInput = screen.getByPlaceholderText('0')
+    const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
 
     expect(minPriceInput.props.value).toStrictEqual('5')
   })
@@ -395,7 +395,7 @@ describe('<PriceModal/>', () => {
     await user.press(toggleOnlyFreeOffersSearch)
     await user.press(toggleOnlyFreeOffersSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
@@ -408,7 +408,7 @@ describe('<PriceModal/>', () => {
     await user.press(toggleOnlyFreeOffersSearch)
     await user.press(toggleOnlyFreeOffersSearch)
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     expect(maxPriceInput.props.value).toStrictEqual('20')
   })
@@ -416,7 +416,7 @@ describe('<PriceModal/>', () => {
   it('should disable the minimum price input when pressing only free offers search toggle', async () => {
     renderSearchPrice()
 
-    const minPriceInput = screen.getByPlaceholderText('0')
+    const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
     await user.press(toggleOnlyFreeOffersSearch)
@@ -427,7 +427,7 @@ describe('<PriceModal/>', () => {
   it('should update the maximum price by 0 when pressing only free offers search toggle', async () => {
     renderSearchPrice()
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
     await user.type(maxPriceInput, '5')
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
@@ -439,7 +439,7 @@ describe('<PriceModal/>', () => {
   it('should disable the maximum price input when pressing only free offers search toggle', async () => {
     renderSearchPrice()
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
     await user.press(toggleOnlyFreeOffersSearch)
@@ -464,7 +464,7 @@ describe('<PriceModal/>', () => {
   it('should display an error when the expected format of minimum price is incorrect', async () => {
     renderSearchPrice()
 
-    const minPriceInput = screen.getByPlaceholderText('0')
+    const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
     await user.type(minPriceInput, '10,559')
 
     const inputError = screen.getByText(
@@ -478,7 +478,7 @@ describe('<PriceModal/>', () => {
   it('should display an error when the expected format of maximum price is incorrect', async () => {
     renderSearchPrice()
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
     await user.type(maxPriceInput, '10,559')
 
     const inputError = screen.getByText(
@@ -487,18 +487,6 @@ describe('<PriceModal/>', () => {
     )
 
     expect(inputError).toBeOnTheScreen()
-  })
-
-  it('should display the initial credit in maximum price input placeholder', async () => {
-    renderSearchPrice()
-
-    await waitFor(() => {
-      expect(screen.getByText('Rechercher')).toBeEnabled()
-    })
-
-    const maxPriceInput = screen.getByPlaceholderText('80')
-
-    expect(maxPriceInput).toBeOnTheScreen()
   })
 
   it('should display the initial credit in right label maximum price input', async () => {
@@ -545,8 +533,8 @@ describe('<PriceModal/>', () => {
   it('should hide minPrice error when onlyFreeOffers is pressed', async () => {
     renderSearchPrice()
 
-    const minPriceInput = screen.getByPlaceholderText('0')
-    const onlyFreeOffersToggle = screen.getByTestId(ONLY_FREE_OFFERS_SWITCH)
+    const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
+    const onlyFreeOffersToggle = screen.getByTestId('Interrupteur onlyFreeOffers')
 
     await user.type(minPriceInput, '9999')
 
@@ -564,7 +552,7 @@ describe('<PriceModal/>', () => {
   it('should hide maxPrice error when onlyFreeOffers is pressed', async () => {
     renderSearchPrice()
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
     await user.type(maxPriceInput, '9999')
 
     expect(
@@ -582,7 +570,7 @@ describe('<PriceModal/>', () => {
   it('should hide maxPrice error when limitCreditSearch is pressed', async () => {
     renderSearchPrice()
 
-    const maxPriceInput = screen.getByPlaceholderText('80')
+    const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
     await user.type(maxPriceInput, '9999')
 
     expect(
@@ -624,20 +612,6 @@ describe('<PriceModal/>', () => {
       const creditBanner = screen.queryByTestId('creditBanner')
 
       expect(creditBanner).not.toBeOnTheScreen()
-    })
-
-    it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
-      renderSearchPrice()
-
-      await waitFor(() => {
-        expect(screen.getByText('Rechercher')).toBeEnabled()
-      })
-
-      const maxPriceInput = screen.getByPlaceholderText(
-        `${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`
-      )
-
-      expect(maxPriceInput).toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in right label maximum price input', async () => {
@@ -687,20 +661,6 @@ describe('<PriceModal/>', () => {
       expect(creditBanner).not.toBeOnTheScreen()
     })
 
-    it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
-      renderSearchPrice()
-
-      await waitFor(() => {
-        expect(screen.getByText('Rechercher')).toBeEnabled()
-      })
-
-      const maxPriceInput = screen.getByPlaceholderText(
-        `${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`
-      )
-
-      expect(maxPriceInput).toBeOnTheScreen()
-    })
-
     it('should display the credit given to 18 year olds in right label maximum price input', async () => {
       renderSearchPrice()
 
@@ -733,7 +693,7 @@ describe('<PriceModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const maxPriceInput = screen.getByPlaceholderText('80')
+      const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
       await user.type(maxPriceInput, '50')
 
       expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
@@ -760,10 +720,10 @@ describe('<PriceModal/>', () => {
       it('when pressing button with minimum and maximum prices entered', async () => {
         renderSearchPrice()
 
-        const minPriceInput = screen.getByPlaceholderText('0')
+        const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
         await user.type(minPriceInput, '5')
 
-        const maxPriceInput = screen.getByPlaceholderText('80')
+        const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
         await user.type(maxPriceInput, '20')
 
         const searchButton = screen.getByText('Rechercher')
@@ -786,10 +746,10 @@ describe('<PriceModal/>', () => {
       it('when pressing button with minimum and maximum prices entered at 0', async () => {
         renderSearchPrice()
 
-        const minPriceInput = screen.getByPlaceholderText('0')
+        const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
         await user.type(minPriceInput, '0')
 
-        const maxPriceInput = screen.getByPlaceholderText('80')
+        const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
         await user.type(maxPriceInput, '0')
 
         const searchButton = screen.getByText('Rechercher')
@@ -837,7 +797,7 @@ describe('<PriceModal/>', () => {
       it('with only free offers when pressing button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
         renderSearchPrice()
 
-        const maxPriceInput = screen.getByPlaceholderText('80')
+        const maxPriceInput = screen.getByTestId('Entrée pour le prix maximum')
         await user.type(maxPriceInput, '0')
 
         const searchButton = screen.getByText('Rechercher')
@@ -860,7 +820,7 @@ describe('<PriceModal/>', () => {
       it('with only a minimum price', async () => {
         renderSearchPrice()
 
-        const minPriceInput = screen.getByPlaceholderText('0')
+        const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
         await user.type(minPriceInput, '1')
 
         const searchButton = screen.getByText('Rechercher')

@@ -8,7 +8,6 @@ interface Props<TFieldValues extends FieldValues, TName>
   name: TName
   control: Control<TFieldValues>
   label: string
-  placeholder?: string
   rightLabel?: string
   isDisabled?: boolean
 }
@@ -20,9 +19,9 @@ export const PriceInputController = <
   name,
   control,
   label,
-  placeholder,
   format,
   isDisabled,
+  testID,
   ...textInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   return (
@@ -35,7 +34,6 @@ export const PriceInputController = <
           onChangeText={onChange}
           onBlur={onBlur}
           label={label}
-          placeholder={placeholder}
           format={format}
           disabled={isDisabled}
           accessibilityHint={error?.message}
@@ -44,6 +42,7 @@ export const PriceInputController = <
           autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
           textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
           errorMessage={error?.message}
+          testID={testID ?? 'Entrée pour un prix'}
           {...textInputProps}
         />
       )}

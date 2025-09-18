@@ -1744,7 +1744,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel=""
+                          accessibilityLabel="videoModuleId"
                           style={
                             {
                               "color": "#161617",
@@ -1753,7 +1753,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                               "lineHeight": 25.6,
                             }
                           }
-                        />
+                        >
+                          videoModuleId
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -1792,7 +1794,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="videoModuleId"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -1810,7 +1812,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un videoModuleId"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2026,7 +2028,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel=""
+                          accessibilityLabel="utm_campaign"
                           style={
                             {
                               "color": "#161617",
@@ -2035,7 +2037,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                               "lineHeight": 25.6,
                             }
                           }
-                        />
+                        >
+                          utm_campaign
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -2074,7 +2078,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_campaign"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2092,7 +2096,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_campaign"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2162,7 +2166,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel=""
+                          accessibilityLabel="utm_source"
                           style={
                             {
                               "color": "#161617",
@@ -2171,7 +2175,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                               "lineHeight": 25.6,
                             }
                           }
-                        />
+                        >
+                          utm_source
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -2210,7 +2216,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_source"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2228,7 +2234,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_source"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2298,7 +2304,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel=""
+                          accessibilityLabel="utm_medium"
                           style={
                             {
                               "color": "#161617",
@@ -2307,7 +2313,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                               "lineHeight": 25.6,
                             }
                           }
-                        />
+                        >
+                          utm_medium
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -2346,7 +2354,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_medium"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2364,7 +2372,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_medium"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2434,7 +2442,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel=""
+                          accessibilityLabel="utm_content"
                           style={
                             {
                               "color": "#161617",
@@ -2443,7 +2451,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                               "lineHeight": 25.6,
                             }
                           }
-                        />
+                        >
+                          utm_content
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -2482,7 +2492,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_content"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2500,7 +2510,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_content"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2570,7 +2580,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel=""
+                          accessibilityLabel="utm_gen (*)"
                           style={
                             {
                               "color": "#161617",
@@ -2579,7 +2589,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                               "lineHeight": 25.6,
                             }
                           }
-                        />
+                        >
+                          utm_gen (*)
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -2619,7 +2631,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_gen (*)"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2637,7 +2649,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_gen"
                         textAlignVertical="center"
                       />
                     </View>

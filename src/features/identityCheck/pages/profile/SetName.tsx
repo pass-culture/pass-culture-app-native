@@ -88,7 +88,6 @@ export const SetName = () => {
                 value={value}
                 autoFocus
                 onChangeText={onChange}
-                placeholder="Ton prénom"
                 isRequiredField
                 accessibilityHint={error?.message}
                 testID="Entrée pour le prénom"
@@ -107,7 +106,6 @@ export const SetName = () => {
                 label="Nom"
                 value={value}
                 onChangeText={onChange}
-                placeholder="Ton nom"
                 isRequiredField
                 accessibilityHint={error?.message}
                 testID="Entrée pour le nom"

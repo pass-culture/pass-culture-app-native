@@ -56,10 +56,10 @@ describe('<DeeplinksGeneratorForm />', () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
 
-    fireEvent.changeText(screen.getByPlaceholderText('utm_gen (*)'), 'product')
-    fireEvent.changeText(screen.getByPlaceholderText('utm_campaign'), 'campaign')
-    fireEvent.changeText(screen.getByPlaceholderText('utm_source'), 'source')
-    fireEvent.changeText(screen.getByPlaceholderText('utm_medium'), 'medium')
+    fireEvent.changeText(screen.getByTestId('Entrée pour un utm_gen'), 'product')
+    fireEvent.changeText(screen.getByTestId('Entrée pour un utm_campaign'), 'campaign')
+    fireEvent.changeText(screen.getByTestId('Entrée pour un utm_source'), 'source')
+    fireEvent.changeText(screen.getByTestId('Entrée pour un utm_medium'), 'medium')
     await user.press(screen.getByText('Générer le lien'))
 
     expect(onCreate).toHaveBeenNthCalledWith(

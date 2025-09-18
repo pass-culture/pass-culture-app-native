@@ -66,7 +66,6 @@ export const CheatcodesScreenNewCaledonia = () => {
         value={inputEuro}
         onChangeText={setInputEuro}
         keyboardType="numeric"
-        placeholder="Entrez le montant en&nbsp;€"
         textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
       />
       <StyledText>Franc Pacifique sans arrondi&nbsp;:</StyledText>

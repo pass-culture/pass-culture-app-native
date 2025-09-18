@@ -190,26 +190,21 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    const placeholder = config.required ? `${name} (*)` : name
+    const label = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
     return (
       <TextInputContainer key={name}>
         {config.type === 'string' ? (
           <InputText
-            label=""
-            placeholder={placeholder}
+            label={label}
             onBlur={onBlurValidate}
             onChangeText={onChangeText}
             defaultValue={screenParams[name] ? String(screenParams[name]) : undefined}
+            testID={`Entrée pour un ${name}`}
           />
         ) : null}
         {config.type === 'stringArray' ? (
-          <InputText
-            label=""
-            placeholder={placeholder}
-            onBlur={onBlurValidate}
-            onChangeText={onChangeStringArray}
-          />
+          <InputText label={label} onBlur={onBlurValidate} onChangeText={onChangeStringArray} />
         ) : null}
         {config.type === 'boolean' ? (
           <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />
