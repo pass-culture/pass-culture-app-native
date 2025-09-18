@@ -51,6 +51,14 @@ const variantConfig: Variants<typeof InputText> = [
     props: { ...baseProps, errorMessage: 'Error message' },
   },
   {
+    label: 'InputText with long error',
+    props: {
+      ...baseProps,
+      errorMessage:
+        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr',
+    },
+  },
+  {
     label: 'InputText with inside rightButton',
     props: {
       ...baseProps,
@@ -68,6 +76,15 @@ const variantConfig: Variants<typeof InputText> = [
   {
     label: 'InputText with character count and error message',
     props: { ...baseProps, characterCount: 10, errorMessage: 'Error message' },
+  },
+  {
+    label: 'InputText with character count and long error message',
+    props: {
+      ...baseProps,
+      characterCount: 10,
+      errorMessage:
+        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr',
+    },
   },
 ]
 
