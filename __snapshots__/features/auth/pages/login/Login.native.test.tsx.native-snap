@@ -248,7 +248,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     "alignItems": "flex-end",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginBottom": 8,
                     "width": "100%",
                   }
                 }
@@ -264,63 +263,44 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     }
                   }
                 >
-                  Adresse e-mail
-                </Text>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Obligatoire
+                  Adresse e-mail *
                 </Text>
               </View>
             </View>
-            <View
+            <Text
               style={
                 {
-                  "marginBottom": 8,
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
                 }
               }
             >
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  }
-                }
-              >
-                Exemple : tonadresse@email.com
-              </Text>
-            </View>
+              Exemple : tonadresse@email.com
+            </Text>
             <View
-              height="small"
               isDisabled={false}
               isError={false}
-              isFocus={false}
+              isFocused={false}
+              size="small"
               style={
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
                   "borderColor": "#90949d",
                   "borderStyle": "solid",
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "height": 40,
+                  "marginTop": 4,
                   "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
+                  "paddingLeft": 9,
+                  "paddingRight": 9,
                   "paddingTop": 0,
                   "width": "100%",
                 }
@@ -334,7 +314,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 editable={true}
                 isEmpty={true}
                 keyboardType="email-address"
-                maxLength={120}
                 multiline={false}
                 nativeID="testUuidV4"
                 onBlur={[Function]}
