@@ -14,7 +14,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
-import { NoSearchResultContainer } from 'features/search/components/NoSearchResults/NoSearchResultContainer'
+import { NoSearchResult } from 'features/search/components/NoSearchResult/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -430,7 +430,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     }
 
     return (
-      <NoSearchResultContainer
+      <NoSearchResult
         searchState={searchState}
         navigateToSearchFilter={navigateToSearchFilter}
         onResetPlace={onResetPlace}
