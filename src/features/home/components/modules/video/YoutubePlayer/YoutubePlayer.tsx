@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { ReactElement, forwardRef, useRef, useState } from 'react'
 import {
   ActivityIndicator,
@@ -8,21 +9,27 @@ import {
   View,
   ViewStyle,
 } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import Animated, { FadeOut } from 'react-native-reanimated'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { Duration } from 'features/offer/types'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { YoutubePlayerRef, YoutubeRendererProps, YoutubeRendererRef } from './types'
 import { YoutubeRenderer } from './YoutubeRenderer'
 
 type YoutubePlayerProps = YoutubeRendererProps & {
+  title?: string
   style?: StyleProp<ViewStyle>
   thumbnail?: ReactElement
   onLayout?: (event: LayoutChangeEvent) => void
   noThumbnail?: boolean
+  duration?: Duration
 }
 
 const PRESSABLE_STYLE = ({ pressed }: PressableStateCallbackType) => ({
@@ -32,12 +39,14 @@ const PRESSABLE_STYLE = ({ pressed }: PressableStateCallbackType) => ({
 
 export const YoutubePlayer = forwardRef(function YoutubePlayer(
   {
+    title,
     noThumbnail,
     style,
     thumbnail,
     onReady,
     onLayout,
     play = true,
+    duration,
     ...playerProps
   }: YoutubePlayerProps,
   ref: React.ForwardedRef<YoutubePlayerRef>
@@ -86,6 +95,16 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
         <YoutubeRenderer ref={innerVideoRef} {...playerProps} onReady={handleOnReady} play={play} />
       ) : null}
 
+      {(!playerVisible || !playerReady) && duration ? (
+        <TagContainer>
+          <Tag
+            label={duration.label}
+            variant={TagVariant.DEFAULT}
+            accessibilityLabel={duration.accessibilityLabel}
+          />
+        </TagContainer>
+      ) : null}
+
       {(playerVisible && playerReady) || noThumbnail ? null : (
         <StyledAnimatedView height={playerProps.height} width={playerProps.width}>
           <Pressable
@@ -102,9 +121,15 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
               )}
             </ThumbnailOverlay>
             {thumbnail}
+            <StyledLinearGradient testID="thumbnailGradient" />
           </Pressable>
         </StyledAnimatedView>
       )}
+      {(!playerVisible || !playerReady) && title ? (
+        <BottomTextContainer>
+          <VideoTitle numberOfLines={2}>{title}</VideoTitle>
+        </BottomTextContainer>
+      ) : null}
     </Container>
   )
 })
@@ -154,3 +179,40 @@ const IconContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.xxs,
   backgroundColor: theme.designSystem.color.background.default,
 }))
+
+const BottomTextContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  bottom: theme.designSystem.size.spacing.l,
+  left: theme.designSystem.size.spacing.l,
+  right: theme.designSystem.size.spacing.l,
+  zIndex: 20,
+}))
+
+const VideoTitle = styled(Typo.BodyAccent)(({ theme }) => ({
+  color: theme.designSystem.color.text.lockedInverted,
+}))
+
+const TagContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: theme.designSystem.size.spacing.l,
+  right: theme.designSystem.size.spacing.l,
+  zIndex: 20,
+}))
+
+const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
+  useAngle: true,
+  angle: 180,
+  locations: [0, 0.4531, 0.6717],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0),
+    colorAlpha(theme.designSystem.color.background.lockedInverted, 0.5),
+    theme.designSystem.color.background.lockedInverted,
+  ],
+}))({
+  height: '100%',
+  width: '100%',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  zIndex: 6,
+})
