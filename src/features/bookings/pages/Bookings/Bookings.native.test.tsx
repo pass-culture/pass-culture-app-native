@@ -18,6 +18,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { Bookings } from './Bookings'
+import { storage } from 'libs/storage'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -55,6 +56,7 @@ describe('Bookings', () => {
   )
 
   beforeEach(() => {
+    storage.clear('has_seen_booking_page')
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
@@ -75,12 +77,20 @@ describe('Bookings', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should send Batch event when the screen is mounted', async () => {
+  it('should send Batch event once on the first page render', async () => {
     renderBookings()
 
     await screen.findByText('Mes réservations')
 
     expect(BatchProfile.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.hasSeenBookingPage)
+
+    jest.clearAllMocks()
+
+    renderBookings()
+
+    await screen.findByText('Mes réservations')
+
+    expect(BatchProfile.trackEvent).toHaveBeenCalledTimes(0)
   })
 
   it('should display the empty bookings dedicated view', async () => {
