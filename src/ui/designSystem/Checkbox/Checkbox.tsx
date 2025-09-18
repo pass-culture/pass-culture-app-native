@@ -16,7 +16,7 @@ import { getCheckboxColors } from 'ui/designSystem/Checkbox/getCheckboxColors'
 import { getCheckboxState } from 'ui/designSystem/Checkbox/getCheckboxState'
 import {
   CheckboxAssetProps,
-  CheckboxDisplay,
+  CheckboxSizing,
   CheckboxState,
   CheckboxVariant,
 } from 'ui/designSystem/Checkbox/types'
@@ -30,13 +30,13 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 const isWeb = Platform.OS === 'web'
 
 type CheckboxBaseCheckedOnly = {
+  indeterminate?: boolean
   isChecked: boolean
-  indeterminate?: false
 }
 
 type CheckboxBaseIndeterminateOnly = {
-  isChecked: false
-  indeterminate: true
+  indeterminate?: boolean
+  isChecked: boolean
 }
 
 type CheckboxBase = {
@@ -47,40 +47,41 @@ type CheckboxBase = {
   disabled?: boolean
 } & (CheckboxBaseCheckedOnly | CheckboxBaseIndeterminateOnly)
 
-type Props = CheckboxBase &
-  (
-    | {
-        asset?: never
-        collapsed?: never
-        description?: never
-        display?: CheckboxDisplay
-        variant?: 'default'
-      }
-    | {
-        asset?: CheckboxAssetProps
-        collapsed?: never
-        description?: string
-        display?: CheckboxDisplay
-        variant?: 'detailed'
-      }
-    | {
-        asset?: CheckboxAssetProps
-        collapsed: React.ReactNode
-        description?: string
-        display?: Extract<CheckboxDisplay, 'fill'>
-        variant?: 'detailed'
-      }
-  )
+type DefaultCheckbox = CheckboxBase & {
+  asset?: never
+  collapsed?: never
+  description?: never
+  sizing?: CheckboxSizing
+  variant?: 'default'
+}
 
-export const Checkbox: FunctionComponent<Props> = ({
+type DetailedCheckbox = CheckboxBase & {
+  asset?: CheckboxAssetProps
+  collapsed?: never
+  description?: string
+  sizing?: CheckboxSizing
+  variant?: 'detailed'
+}
+
+type DetailedCheckboxWithCollapsed = CheckboxBase & {
+  asset?: CheckboxAssetProps
+  collapsed: React.ReactNode
+  description?: string
+  sizing?: Extract<CheckboxSizing, 'fill'>
+  variant?: 'detailed'
+}
+
+export type CheckboxProps = DefaultCheckbox | DetailedCheckbox | DetailedCheckboxWithCollapsed
+
+export const Checkbox: FunctionComponent<CheckboxProps> = ({
   asset,
   collapsed,
   description,
   disabled,
-  display,
+  sizing,
   hasError,
-  indeterminate,
-  isChecked,
+  indeterminate = false, // TODO(PC-38116): Use new state props instead
+  isChecked, // TODO(PC-38116): Use new state props instead
   label,
   onPress,
   required,
@@ -97,7 +98,7 @@ export const Checkbox: FunctionComponent<Props> = ({
 
   useSpaceBarAction(focusProps.isFocus ? onToggle : undefined)
 
-  const effectiveDisplay: CheckboxDisplay = display ?? (variant === 'detailed' ? 'fill' : 'hug')
+  const effectiveSizing: CheckboxSizing = sizing ?? (variant === 'detailed' ? 'fill' : 'hug')
 
   const state = getCheckboxState(isChecked, indeterminate, hasError, disabled)
   const isDisabled = state.includes('disabled')
@@ -114,7 +115,7 @@ export const Checkbox: FunctionComponent<Props> = ({
       {...accessibleCheckboxProps({ checked: isChecked, label, required })}
       state={state}
       variant={variant}
-      display={effectiveDisplay}
+      sizing={effectiveSizing}
       collapsed={collapsed}
       onPress={onToggle}
       {...focusProps}
@@ -161,7 +162,7 @@ type ContainerProps = {
   state: CheckboxState[]
   variant: CheckboxVariant
   collapsed?: React.ReactNode
-  display?: CheckboxDisplay
+  sizing?: CheckboxSizing
   isHover?: boolean
   isFocus?: boolean
 }
@@ -177,7 +178,7 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
   theme,
   state,
   variant,
-  display,
+  sizing,
   isFocus,
   isHover,
   collapsed,
@@ -194,8 +195,8 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
 
   return {
     cursor: isDisabled ? 'default' : 'pointer',
-    width: display === 'fill' ? '100%' : undefined,
-    alignSelf: display === 'hug' && isWeb ? 'flex-start' : undefined,
+    width: sizing === 'fill' ? '100%' : undefined,
+    alignSelf: sizing === 'hug' && isWeb ? 'flex-start' : undefined,
     ...(isDetailed && {
       backgroundColor,
       border: 1,
