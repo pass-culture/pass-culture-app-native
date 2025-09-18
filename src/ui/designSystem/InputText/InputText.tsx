@@ -102,7 +102,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           {customProps.errorMessage ? (
             <ErrorContainer>
               <ErrorIcon />
-              <ErrorText>{customProps.errorMessage}</ErrorText>
+              <ErrorText numberOfLines={2} ellipsizeMode="tail">
+                {customProps.errorMessage}
+              </ErrorText>
             </ErrorContainer>
           ) : null}
           {customProps.characterCount ? (
@@ -139,11 +141,13 @@ const FooterContainer = styled.View(({ theme }) => ({
 }))
 
 const ErrorContainer = styled.View({
+  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
 })
 
 const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
+  flex: 1,
   color: theme.designSystem.color.text.error,
   marginLeft: theme.designSystem.size.spacing.xs,
 }))
@@ -151,7 +155,9 @@ const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
 const ErrorIcon = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.extraSmall,
-}))``
+}))({
+  flexShrink: 0,
+})
 
 const CounterContainer = styled.View({
   marginLeft: 'auto',
