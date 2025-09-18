@@ -2,47 +2,85 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchState } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
+import { LocationMode } from 'libs/location/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
-  title: string
-  subtitle?: string
-  errorDescription: string
-  ctaWording: string
-  onPress: VoidFunction
+  searchState: SearchState
+  navigateToSearchFilter: (searchState: SearchState) => void
+  onResetPlace: () => void
+  navigateToSearchResults: (searchState: SearchState) => void
 }
 
-export const NoSearchResult: React.FC<NoSearchResultProps> = ({
-  title,
-  subtitle,
-  errorDescription,
-  ctaWording,
-  onPress,
-}) => {
+export const NoSearchResult = ({
+  searchState,
+  navigateToSearchFilter,
+  onResetPlace,
+  navigateToSearchResults,
+}: NoSearchResultProps) => {
+  const title = 'Pas de résultat'
+  const subtitle = searchState.query ? `pour "${searchState.query}"` : ''
+
+  const noResultsProps = {
+    errorDescription: 'Élargis la zone de recherche pour plus de résultats.',
+    ctaWording: 'Élargir la zone de recherche',
+    onPress: () => {
+      analytics.logExtendSearchRadiusClicked(searchState.searchId)
+      onResetPlace()
+      navigateToSearchResults({
+        ...searchState,
+        locationFilter: {
+          locationType: LocationMode.EVERYWHERE,
+        },
+      })
+    },
+  }
+
+  const noResultsEverywhereProps = {
+    errorDescription: searchState.query
+      ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+      : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.',
+    ctaWording: 'Modifier mes filtres',
+    onPress: () => navigateToSearchFilter(searchState),
+  }
+  const props =
+    searchState.locationFilter.locationType === LocationMode.EVERYWHERE
+      ? noResultsEverywhereProps
+      : noResultsProps
+
   return (
-    <Container accessibilityRole={AccessibilityRole.STATUS}>
-      <ContainerNoOffer>
-        <StyledNoOffer />
-      </ContainerNoOffer>
-      <ContainerText>
-        <Title>{title}</Title>
-        {subtitle ? <Typo.Body>{subtitle}</Typo.Body> : null}
-        <ErrorDescriptionContainer>
-          <ErrorDescription accessibilityLiveRegion="assertive">
-            {errorDescription}
-          </ErrorDescription>
-        </ErrorDescriptionContainer>
-      </ContainerText>
-      <View>
-        <ButtonPrimary wording={ctaWording} onPress={onPress} />
-      </View>
-    </Container>
+    <NoSearchResultsWrapper>
+      <Container accessibilityRole={AccessibilityRole.STATUS}>
+        <ContainerNoOffer>
+          <StyledNoOffer />
+        </ContainerNoOffer>
+        <ContainerText>
+          <Title>{title}</Title>
+          {subtitle ? <Typo.Body>{subtitle}</Typo.Body> : null}
+          <ErrorDescriptionContainer>
+            <ErrorDescription accessibilityLiveRegion="assertive">
+              {props.errorDescription}
+            </ErrorDescription>
+          </ErrorDescriptionContainer>
+        </ContainerText>
+        <View>
+          <ButtonPrimary wording={props.ctaWording} onPress={props.onPress} />
+        </View>
+      </Container>
+    </NoSearchResultsWrapper>
   )
 }
+
+const NoSearchResultsWrapper = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+})
 
 const ContainerNoOffer = styled.View(({ theme }) => ({
   flexShrink: 0,
