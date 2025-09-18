@@ -17,40 +17,39 @@ export const NoSearchResultContainer = ({
   onResetPlace: () => void
   navigateToSearchResults: (searchState: SearchState) => void
 }) => {
-  const isEverywhereSearch = searchState.locationFilter.locationType === LocationMode.EVERYWHERE
+  const title = 'Pas de résultat'
+  const subtitle = searchState.query ? `pour "${searchState.query}"` : ''
+
   const noResultsProps = {
-    title: 'Pas de résultat',
-    subtitle: searchState.query ? `pour "${searchState.query}"` : '',
+    errorDescription: 'Élargis la zone de recherche pour plus de résultats.',
+    ctaWording: 'Élargir la zone de recherche',
+    onPress: () => {
+      analytics.logExtendSearchRadiusClicked(searchState.searchId)
+      onResetPlace()
+      navigateToSearchResults({
+        ...searchState,
+        locationFilter: {
+          locationType: LocationMode.EVERYWHERE,
+        },
+      })
+    },
+  }
+
+  const noResultsEverywhereProps = {
     errorDescription: searchState.query
       ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
       : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.',
+    ctaWording: 'Modifier mes filtres',
+    onPress: () => navigateToSearchFilter(searchState),
   }
+  const props =
+    searchState.locationFilter.locationType === LocationMode.EVERYWHERE
+      ? noResultsEverywhereProps
+      : noResultsProps
 
   return (
     <NoSearchResultsWrapper>
-      {isEverywhereSearch ? (
-        <NoSearchResult
-          {...noResultsProps}
-          ctaWording="Modifier mes filtres"
-          onPress={() => navigateToSearchFilter(searchState)}
-        />
-      ) : (
-        <NoSearchResult
-          {...noResultsProps}
-          errorDescription="Élargis la zone de recherche pour plus de résultats."
-          ctaWording="Élargir la zone de recherche"
-          onPress={() => {
-            analytics.logExtendSearchRadiusClicked(searchState.searchId)
-            onResetPlace()
-            navigateToSearchResults({
-              ...searchState,
-              locationFilter: {
-                locationType: LocationMode.EVERYWHERE,
-              },
-            })
-          }}
-        />
-      )}
+      <NoSearchResult {...props} title={title} subtitle={subtitle} />
     </NoSearchResultsWrapper>
   )
 }
