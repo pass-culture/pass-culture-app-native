@@ -14,7 +14,7 @@ export type RadioState = 'selected' | 'disabledSelected' | 'disabled' | 'error' 
 export type RadioDisplayOptions = {
   variant: RadioVariant
   collapsed?: React.ReactNode
-  display?: SelectableSizing
+  sizing?: SelectableSizing
 }
 
 type BaseRadioProps = {
