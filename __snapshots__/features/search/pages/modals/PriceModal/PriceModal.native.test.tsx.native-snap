@@ -794,7 +794,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       isEmpty={true}
                       keyboardType="numeric"
                       multiline={false}
-                      nativeID="testUuidV4"
+                      nativeID="Entrée pour le prix minimum"
                       onBlur={[Function]}
                       onChangeText={[Function]}
                       onFocus={[Function]}
@@ -911,7 +911,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     isEmpty={true}
                     keyboardType="numeric"
                     multiline={false}
-                    nativeID="testUuidV4"
+                    nativeID="Entrée pour le prix maximum"
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}

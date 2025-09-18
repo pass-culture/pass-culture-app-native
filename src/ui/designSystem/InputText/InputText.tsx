@@ -32,7 +32,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   const [textLength, setTextLength] = useState(0)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomInputTextProps(props)
-  const textInputID = uuidv4()
+  const textInputID = nativeProps.testID ?? uuidv4()
 
   const Icon = customProps.rightButton?.icon
   const StyledIcon =
