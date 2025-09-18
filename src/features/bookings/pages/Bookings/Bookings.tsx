@@ -21,17 +21,17 @@ import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-export function Bookings() {
+const checkBookingPage = async () => {
+  const hasSeenBookingPage = await storage.readObject<boolean>('has_seen_booking_page')
+
+  if (!hasSeenBookingPage) {
+    BatchProfile.trackEvent(BatchEvent.hasSeenBookingPage)
+    await storage.saveObject('has_seen_booking_page', true)
+  }
+}
+
+export const Bookings = () => {
   useEffect(() => {
-    const checkBookingPage = async () => {
-      const hasSeenBookingPage = await storage.readObject<boolean>('has_seen_booking_page')
-
-      if (!hasSeenBookingPage) {
-        BatchProfile.trackEvent(BatchEvent.hasSeenBookingPage)
-        await storage.saveObject('has_seen_booking_page', true)
-      }
-    }
-
     checkBookingPage()
   }, [])
 
