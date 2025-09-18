@@ -15,11 +15,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { storage } from 'libs/storage'
 import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { storage } from 'libs/storage'
 
 export function Bookings() {
   useEffect(() => {

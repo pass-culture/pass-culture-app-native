@@ -12,13 +12,13 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { Bookings } from './Bookings'
-import { storage } from 'libs/storage'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
