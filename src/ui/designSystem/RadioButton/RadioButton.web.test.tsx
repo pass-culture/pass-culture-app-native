@@ -4,7 +4,7 @@
  */
 
 import userEvent from '@testing-library/user-event'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { act, render, screen } from 'tests/utils/web'
 
@@ -12,27 +12,31 @@ import { RadioButton } from './RadioButton'
 
 const onSelectMock = jest.fn()
 const labelText = 'I agree to disagree'
-const propsBase = {
+
+const baseProps: ComponentProps<typeof RadioButton> = {
   label: labelText,
   onSelect: onSelectMock,
   isSelected: false,
+  variant: 'default',
+  radioState: 'default',
+  onToggle: jest.fn(),
 }
 
 describe('<RadioButton />', () => {
   it('should render an accessible RadioButton', () => {
-    render(<RadioButton {...propsBase} />)
+    render(<RadioButton {...baseProps} />)
 
     expect(screen.getByRole('radio')).toBeInTheDocument()
   })
 
   it('is linked to his label', () => {
-    render(<RadioButton {...propsBase} />)
+    render(<RadioButton {...baseProps} />)
 
     expect(screen.getByLabelText(labelText)).toEqual(screen.getByRole('radio'))
   })
 
   it('can be checked with RadioButton', async () => {
-    render(<RadioButton {...propsBase} />)
+    render(<RadioButton {...baseProps} />)
 
     await act(async () => {
       await userEvent.click(screen.getByLabelText(labelText))
@@ -42,7 +46,7 @@ describe('<RadioButton />', () => {
   })
 
   it('can be checked with label', async () => {
-    render(<RadioButton {...propsBase} />)
+    render(<RadioButton {...baseProps} />)
 
     await act(async () => {
       await userEvent.click(screen.getByText(labelText))
@@ -53,7 +57,7 @@ describe('<RadioButton />', () => {
 
   describe('toggle his state', () => {
     it('select radioButton when radioButton is unselected', async () => {
-      render(<RadioButton {...propsBase} isSelected={false} />)
+      render(<RadioButton {...baseProps} isSelected={false} />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('radio'))
@@ -63,7 +67,7 @@ describe('<RadioButton />', () => {
     })
 
     it('unselect radioButton when radioButton is selected', async () => {
-      render(<RadioButton {...propsBase} isSelected />)
+      render(<RadioButton {...baseProps} isSelected />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('radio'))
@@ -75,7 +79,7 @@ describe('<RadioButton />', () => {
 
   describe('when pressing space', () => {
     it("doesn't change the checked state when doesn't having the focus", async () => {
-      render(<RadioButton {...propsBase} />)
+      render(<RadioButton {...baseProps} />)
 
       await userEvent.keyboard('[Space]')
 
@@ -84,7 +88,7 @@ describe('<RadioButton />', () => {
 
     describe('when it has focus', () => {
       it('check the box when is unchecked', async () => {
-        render(<RadioButton {...propsBase} isSelected={false} />)
+        render(<RadioButton {...baseProps} isSelected={false} />)
 
         await act(async () => {
           await userEvent.tab()
@@ -98,7 +102,7 @@ describe('<RadioButton />', () => {
       })
 
       it('uncheck the box and is checked', async () => {
-        render(<RadioButton {...propsBase} isSelected />)
+        render(<RadioButton {...baseProps} isSelected />)
 
         await act(async () => {
           await userEvent.tab()
@@ -115,13 +119,13 @@ describe('<RadioButton />', () => {
 
   describe('have aria-checked attribute', () => {
     it('checked when RadioButton is checked', async () => {
-      render(<RadioButton {...propsBase} isSelected />)
+      render(<RadioButton {...baseProps} isSelected />)
 
       expect(screen.getByRole('radio').getAttribute('aria-checked')).toBe('true')
     })
 
     it('not checked when RadioButton is unchecked', async () => {
-      render(<RadioButton {...propsBase} isSelected={false} />)
+      render(<RadioButton {...baseProps} isSelected={false} />)
 
       expect(screen.getByRole('radio').getAttribute('aria-checked')).toBe('false')
     })
