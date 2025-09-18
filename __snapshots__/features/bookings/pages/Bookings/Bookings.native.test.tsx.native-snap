@@ -372,15 +372,15 @@ exports[`Bookings should render correctly 1`] = `
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
                     {
                       "backgroundColor": "#DDDDDD",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "height": 12,
                       "overflow": "hidden",
                       "width": 168,
@@ -412,7 +412,7 @@ exports[`Bookings should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -511,15 +511,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -551,7 +551,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -576,15 +576,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -616,7 +616,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -641,15 +641,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -681,7 +681,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -706,15 +706,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -746,422 +746,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "translateX": -40,
-                              },
-                            ],
-                          }
-                        }
-                      />
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "marginHorizontal": 24,
-                    "marginVertical": 16,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#f1f1f4",
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "borderBottomLeftRadius": 999,
-                  "borderBottomRightRadius": 999,
-                  "borderTopLeftRadius": 999,
-                  "borderTopRightRadius": 999,
-                  "marginRight": 24,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            >
-              <View
-                gap={4}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                        "borderWidth": 1,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "width": 40,
-                      },
-                      {
-                        "transform": undefined,
-                      },
-                    ]
-                  }
-                />
-              </View>
-            </View>
-            <View
-              onFocusCapture={[Function]}
-              onLayout={[Function]}
-              style={null}
-            >
-              <View
-                gap={4}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 16,
-                    "marginHorizontal": 24,
-                  }
-                }
-              >
-                <View
-                  borderRadius={4}
-                  height={112}
-                  style={
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 112,
-                      "overflow": "hidden",
-                      "width": 72,
-                    }
-                  }
-                  width={72}
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 1,
-                        "y": 0,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      {
-                        "borderRadius": 4,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": [
-                          {
-                            "translateX": -90,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
-                <View>
-                  <View
-                    marginBottom={1}
-                    style={
-                      {
-                        "marginBottom": 4,
-                      }
-                    }
-                  >
-                    <View
-                      borderRadius={2}
-                      height={12}
-                      style={
-                        {
-                          "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
-                          "height": 12,
-                          "overflow": "hidden",
-                          "width": 240,
-                        }
-                      }
-                      width={240}
-                    >
-                      <BVLinearGradient
-                        colors={
-                          [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
-                          ]
-                        }
-                        endPoint={
-                          {
-                            "x": 1,
-                            "y": 0,
-                          }
-                        }
-                        locations={null}
-                        startPoint={
-                          {
-                            "x": 0,
-                            "y": 0,
-                          }
-                        }
-                        style={
-                          {
-                            "borderRadius": 2,
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "translateX": -300,
-                              },
-                            ],
-                          }
-                        }
-                      />
-                    </View>
-                  </View>
-                  <View
-                    marginBottom={7}
-                    style={
-                      {
-                        "marginBottom": 28,
-                      }
-                    }
-                  >
-                    <View
-                      borderRadius={2}
-                      height={12}
-                      style={
-                        {
-                          "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
-                          "height": 12,
-                          "overflow": "hidden",
-                          "width": 120,
-                        }
-                      }
-                      width={120}
-                    >
-                      <BVLinearGradient
-                        colors={
-                          [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
-                          ]
-                        }
-                        endPoint={
-                          {
-                            "x": 1,
-                            "y": 0,
-                          }
-                        }
-                        locations={null}
-                        startPoint={
-                          {
-                            "x": 0,
-                            "y": 0,
-                          }
-                        }
-                        style={
-                          {
-                            "borderRadius": 2,
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "translateX": -150,
-                              },
-                            ],
-                          }
-                        }
-                      />
-                    </View>
-                  </View>
-                  <View
-                    marginBottom={3}
-                    style={
-                      {
-                        "marginBottom": 12,
-                      }
-                    }
-                  >
-                    <View
-                      borderRadius={2}
-                      height={12}
-                      style={
-                        {
-                          "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
-                          "height": 12,
-                          "overflow": "hidden",
-                          "width": 96,
-                        }
-                      }
-                      width={96}
-                    >
-                      <BVLinearGradient
-                        colors={
-                          [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
-                          ]
-                        }
-                        endPoint={
-                          {
-                            "x": 1,
-                            "y": 0,
-                          }
-                        }
-                        locations={null}
-                        startPoint={
-                          {
-                            "x": 0,
-                            "y": 0,
-                          }
-                        }
-                        style={
-                          {
-                            "borderRadius": 2,
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                            "transform": [
-                              {
-                                "translateX": -120,
-                              },
-                            ],
-                          }
-                        }
-                      />
-                    </View>
-                  </View>
-                  <View
-                    marginBottom={2}
-                    style={
-                      {
-                        "marginBottom": 8,
-                      }
-                    }
-                  >
-                    <View
-                      borderRadius={2}
-                      height={12}
-                      style={
-                        {
-                          "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
-                          "height": 12,
-                          "overflow": "hidden",
-                          "width": 32,
-                        }
-                      }
-                      width={32}
-                    >
-                      <BVLinearGradient
-                        colors={
-                          [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
-                          ]
-                        }
-                        endPoint={
-                          {
-                            "x": 1,
-                            "y": 0,
-                          }
-                        }
-                        locations={null}
-                        startPoint={
-                          {
-                            "x": 0,
-                            "y": 0,
-                          }
-                        }
-                        style={
-                          {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1280,15 +865,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -1320,7 +905,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1345,15 +930,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -1385,7 +970,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1410,15 +995,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -1450,7 +1035,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1475,15 +1060,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -1515,7 +1100,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1634,15 +1219,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -1674,7 +1259,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1699,15 +1284,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -1739,7 +1324,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1764,15 +1349,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -1804,7 +1389,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1829,15 +1414,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -1869,7 +1454,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -1988,15 +1573,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -2028,7 +1613,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2053,15 +1638,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -2093,7 +1678,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2118,15 +1703,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -2158,7 +1743,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2183,15 +1768,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -2223,7 +1808,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2342,15 +1927,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -2382,7 +1967,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2407,15 +1992,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -2447,7 +2032,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2472,15 +2057,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -2512,7 +2097,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2537,15 +2122,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -2577,7 +2162,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2696,15 +2281,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -2736,7 +2321,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2761,15 +2346,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -2801,7 +2386,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2826,15 +2411,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -2866,7 +2451,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -2891,15 +2476,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -2931,7 +2516,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3050,15 +2635,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -3090,7 +2675,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3115,15 +2700,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -3155,7 +2740,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3180,15 +2765,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -3220,7 +2805,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3245,15 +2830,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -3285,7 +2870,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3404,15 +2989,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 240,
@@ -3444,7 +3029,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3469,15 +3054,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 120,
@@ -3509,7 +3094,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3534,15 +3119,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 96,
@@ -3574,7 +3159,7 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3599,15 +3184,15 @@ exports[`Bookings should render correctly 1`] = `
                     }
                   >
                     <View
-                      borderRadius={2}
+                      borderRadius={4}
                       height={12}
                       style={
                         {
                           "backgroundColor": "#DDDDDD",
-                          "borderBottomLeftRadius": 2,
-                          "borderBottomRightRadius": 2,
-                          "borderTopLeftRadius": 2,
-                          "borderTopRightRadius": 2,
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
                           "height": 12,
                           "overflow": "hidden",
                           "width": 32,
@@ -3639,7 +3224,715 @@ exports[`Bookings should render correctly 1`] = `
                         }
                         style={
                           {
-                            "borderRadius": 2,
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -40,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "marginHorizontal": 24,
+                    "marginVertical": 16,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
+                  }
+                />
+              </View>
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                gap={4}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                    "marginHorizontal": 24,
+                  }
+                }
+              >
+                <View
+                  borderRadius={4}
+                  height={112}
+                  style={
+                    {
+                      "backgroundColor": "#DDDDDD",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 112,
+                      "overflow": "hidden",
+                      "width": 72,
+                    }
+                  }
+                  width={72}
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      {
+                        "borderRadius": 4,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": [
+                          {
+                            "translateX": -90,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+                <View>
+                  <View
+                    marginBottom={1}
+                    style={
+                      {
+                        "marginBottom": 4,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 240,
+                        }
+                      }
+                      width={240}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -300,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View
+                    marginBottom={7}
+                    style={
+                      {
+                        "marginBottom": 28,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 120,
+                        }
+                      }
+                      width={120}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -150,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View
+                    marginBottom={3}
+                    style={
+                      {
+                        "marginBottom": 12,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 96,
+                        }
+                      }
+                      width={96}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -120,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View
+                    marginBottom={2}
+                    style={
+                      {
+                        "marginBottom": 8,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 32,
+                        }
+                      }
+                      width={32}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -40,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "marginHorizontal": 24,
+                    "marginVertical": 16,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "backgroundColor": "#f1f1f4",
+                      "height": 1,
+                      "width": "100%",
+                    }
+                  }
+                />
+              </View>
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                gap={4}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                    "marginHorizontal": 24,
+                  }
+                }
+              >
+                <View
+                  borderRadius={4}
+                  height={112}
+                  style={
+                    {
+                      "backgroundColor": "#DDDDDD",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 112,
+                      "overflow": "hidden",
+                      "width": 72,
+                    }
+                  }
+                  width={72}
+                >
+                  <BVLinearGradient
+                    colors={
+                      [
+                        4292730333,
+                        4293848814,
+                        4293848814,
+                        4292730333,
+                      ]
+                    }
+                    endPoint={
+                      {
+                        "x": 1,
+                        "y": 0,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      {
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      {
+                        "borderRadius": 4,
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "transform": [
+                          {
+                            "translateX": -90,
+                          },
+                        ],
+                      }
+                    }
+                  />
+                </View>
+                <View>
+                  <View
+                    marginBottom={1}
+                    style={
+                      {
+                        "marginBottom": 4,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 240,
+                        }
+                      }
+                      width={240}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -300,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View
+                    marginBottom={7}
+                    style={
+                      {
+                        "marginBottom": 28,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 120,
+                        }
+                      }
+                      width={120}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -150,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View
+                    marginBottom={3}
+                    style={
+                      {
+                        "marginBottom": 12,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 96,
+                        }
+                      }
+                      width={96}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": [
+                              {
+                                "translateX": -120,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View
+                    marginBottom={2}
+                    style={
+                      {
+                        "marginBottom": 8,
+                      }
+                    }
+                  >
+                    <View
+                      borderRadius={4}
+                      height={12}
+                      style={
+                        {
+                          "backgroundColor": "#DDDDDD",
+                          "borderBottomLeftRadius": 4,
+                          "borderBottomRightRadius": 4,
+                          "borderTopLeftRadius": 4,
+                          "borderTopRightRadius": 4,
+                          "height": 12,
+                          "overflow": "hidden",
+                          "width": 32,
+                        }
+                      }
+                      width={32}
+                    >
+                      <BVLinearGradient
+                        colors={
+                          [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          {
+                            "borderRadius": 4,
                             "bottom": 0,
                             "left": 0,
                             "position": "absolute",
@@ -3670,526 +3963,8 @@ exports[`Bookings should render correctly 1`] = `
               />
             </View>
           </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "flexDirection": "row",
-                      "marginHorizontal": 24,
-                      "paddingRight": 40,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
-            >
-              <View
-                size="tall"
-                style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "height": 120,
-                    "width": 80,
-                  }
-                }
-                withShadow={true}
-              >
-                <View
-                  borderRadius={4}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#f1f1f4",
-                        "borderBottomLeftRadius": 4,
-                        "borderBottomRightRadius": 4,
-                        "borderTopLeftRadius": 4,
-                        "borderTopRightRadius": 4,
-                        "height": "100%",
-                        "justifyContent": "center",
-                        "width": "100%",
-                      },
-                      {},
-                    ]
-                  }
-                  testID="imagePlaceholder"
-                >
-                  <View
-                    height={32}
-                    testID="categoryIcon"
-                    width={32}
-                  >
-                    <Text>
-                      categoryIcon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "paddingLeft": 16,
-                    "paddingRight": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "paddingBottom": 4,
-                    }
-                  }
-                >
-                  <Text
-                    numberOfLines={2}
-                    shrink={true}
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    Avez-vous déjà vu ?
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Le 15 mars 2021 à 21h00
-                </Text>
-                <View
-                  style={
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    }
-                  }
-                />
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "borderBottomLeftRadius": 999,
-                  "borderBottomRightRadius": 999,
-                  "borderTopLeftRadius": 999,
-                  "borderTopRightRadius": 999,
-                  "marginRight": 24,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Partager l’offre Avez-vous déjà vu ?"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                        "borderWidth": 1,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "width": 40,
-                      },
-                      {
-                        "transform": undefined,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={24}
-                    testID="icon-share"
-                    width={24}
-                  >
-                    <Text>
-                      icon-share-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "backgroundColor": "#f1f1f4",
-                    "height": 1,
-                    "width": "100%",
-                  }
-                }
-              />
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          >
-            <View
-              accessibilityLabel="Réservation de l’offre Un titre de livre, "
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "flexDirection": "row",
-                      "marginHorizontal": 24,
-                      "paddingRight": 40,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Réservation de l’offre Un titre de livre, "
-            >
-              <View
-                size="tall"
-                style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "height": 120,
-                    "width": 80,
-                  }
-                }
-                withShadow={true}
-              >
-                <View
-                  borderRadius={4}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#f1f1f4",
-                        "borderBottomLeftRadius": 4,
-                        "borderBottomRightRadius": 4,
-                        "borderTopLeftRadius": 4,
-                        "borderTopRightRadius": 4,
-                        "height": "100%",
-                        "justifyContent": "center",
-                        "width": "100%",
-                      },
-                      {},
-                    ]
-                  }
-                  testID="imagePlaceholder"
-                >
-                  <View
-                    height={32}
-                    testID="categoryIcon"
-                    width={32}
-                  >
-                    <Text>
-                      categoryIcon-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "paddingLeft": 16,
-                    "paddingRight": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "paddingBottom": 4,
-                    }
-                  }
-                >
-                  <Text
-                    numberOfLines={2}
-                    shrink={true}
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    Un titre de livre
-                  </Text>
-                </View>
-                <View
-                  style={
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    }
-                  }
-                />
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "borderBottomLeftRadius": 999,
-                  "borderBottomRightRadius": 999,
-                  "borderTopLeftRadius": 999,
-                  "borderTopRightRadius": 999,
-                  "marginRight": 24,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            >
-              <View
-                accessibilityLabel="Partager l’offre Un titre de livre"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Partager l’offre Un titre de livre"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "aspectRatio": 1,
-                        "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 999,
-                        "borderBottomRightRadius": 999,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 999,
-                        "borderTopRightRadius": 999,
-                        "borderWidth": 1,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "width": 40,
-                      },
-                      {
-                        "transform": undefined,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={24}
-                    testID="icon-share"
-                    width={24}
-                  >
-                    <Text>
-                      icon-share-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </RCTScrollView>
+        </RCTScrollView>
+      </View>
     </View>
   </View>
 </View>
