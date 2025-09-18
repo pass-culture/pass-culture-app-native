@@ -3,9 +3,11 @@ import { mergeWith } from 'lodash'
 
 import {
   BookingOfferResponse,
+  BookingOfferResponseAddressV2,
   BookingOfferResponseV2,
   BookingReponse,
   BookingResponse,
+  BookingStockResponseV2,
   BookingVenueResponse,
   OfferResponseV2,
   OfferStockResponse,
@@ -14,7 +16,12 @@ import {
 } from 'api/gen'
 import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
-import { mockedBookingOfferResponse, mockedBookingOfferResponseV2 } from 'fixtures/booking'
+import {
+  mockedBookingOfferResponse,
+  mockedBookingOfferResponseAddressV2,
+  mockedBookingOfferResponseV2,
+  mockedBookingStockResponseV2,
+} from 'fixtures/booking'
 import { Offer } from 'shared/offer/types'
 import { createDateBuilder } from 'tests/createBuilder'
 
@@ -89,6 +96,10 @@ export const mockBuilder = {
   bookingOfferResponseV2: createMockBuilder<BookingOfferResponseV2>(mockedBookingOfferResponseV2),
   bookingResponseV1: createMockBuilder<BookingReponse>(bookingsSnap.ongoing_bookings[0]),
   bookingResponseV2: createMockBuilder<BookingResponse>(bookingsSnapV2.ongoingBookings[0]),
+  bookingStockResponseV2: createMockBuilder<BookingStockResponseV2>(mockedBookingStockResponseV2),
+  bookingOfferResponseAddressV2: createMockBuilder<BookingOfferResponseAddressV2>(
+    mockedBookingOfferResponseAddressV2
+  ),
 }
 
 export const dateBuilder = createDateBuilder()

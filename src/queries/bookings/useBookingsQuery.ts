@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { BookingsResponse, BookingsResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { convertOffererDatesToTimezone } from 'features/bookings/queries/selectors/convertOffererDatesToTimezone'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'
@@ -31,3 +32,6 @@ export const useBookingsQuery = <TData = BookingsResponseV2>(
     enabled: enabledQuery,
     staleTime: STALE_TIME_BOOKINGS,
   })
+
+export const useBookingsV2WithConvertedTimezoneQuery = (enabled: boolean) =>
+  useBookingsQuery(enabled, (data) => convertOffererDatesToTimezone(data))

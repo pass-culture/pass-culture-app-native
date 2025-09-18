@@ -36,9 +36,9 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 21h00',
+      dateLabel: 'Le 15 mars 2021 à 20h00',
       dayLabel: '15 mars 2021',
-      hourLabel: '21h00',
+      hourLabel: '20h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: '',
     })
@@ -52,9 +52,9 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 21h00',
+      dateLabel: 'Le 15 mars 2021 à 20h00',
       dayLabel: '15 mars 2021',
-      hourLabel: '21h00',
+      hourLabel: '20h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Aujourd’hui',
     })
@@ -68,9 +68,9 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 21h00',
+      dateLabel: 'Le 15 mars 2021 à 20h00',
       dayLabel: '15 mars 2021',
-      hourLabel: '21h00',
+      hourLabel: '20h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Demain',
     })
@@ -86,7 +86,7 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'À retirer avant le 16 mars 2021',
+      dateLabel: 'À retirer avant le 15 mars 2021',
       dayLabel: '',
       hourLabel: '',
       locationLabel: 'Maison de la Brique, Drancy',

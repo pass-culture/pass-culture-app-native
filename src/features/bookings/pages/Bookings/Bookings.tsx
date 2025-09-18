@@ -14,20 +14,21 @@ import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { useBookingsQueryV2 } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export function Bookings() {
   const { params } = useRoute<UseRouteType<'Bookings'>>()
+
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
   const isQueryEnabled = !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn
-  const { data: bookings } = useBookingsQueryV2(isQueryEnabled)
+  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
   const { mutate: addReaction } = useReactionMutation()
 
   const { endedBookings = [] } = bookings ?? {}
@@ -43,7 +44,7 @@ export function Bookings() {
   const updateReactions = useCallback(() => {
     const bookingsToUpdate =
       endedBookings
-        .filter((ended_booking) => ended_booking.userReaction === null)
+        .filter((endedBooking) => endedBooking.userReaction === null)
         .map((booking) => booking.stock.offer.id) ?? []
 
     const mutationPayload = bookingsToUpdate.map((bookingId) => ({
@@ -61,7 +62,9 @@ export function Bookings() {
         if (previousTab === BookingsTab.COMPLETED) {
           updateReactions()
         }
-        setPreviousTab(activeTab)
+        if (previousTab !== activeTab) {
+          setPreviousTab(activeTab)
+        }
       }
     }, [activeTab, previousTab, updateReactions])
   )
