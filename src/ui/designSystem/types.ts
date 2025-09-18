@@ -9,13 +9,20 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type SizeProp = keyof AppThemeType['image']['square']['sizes']
 
-export type CheckboxVariant = 'default' | 'detailed'
+export type SelectableVariant = 'default' | 'detailed'
 
-export type CheckboxState = 'checked' | 'indeterminate' | 'error' | 'disabled' | 'default'
+export type CheckboxState = 'default' | 'disabled' | 'error' | 'checked' | 'indeterminate'
 
-export type CheckboxDisplay = 'hug' | 'fill'
+export type RadioButtonState = {
+  selected: boolean
+  error?: boolean
+  disabled?: boolean
+  default: boolean
+}
 
-export type CheckboxAssetProps =
+export type SelectableDisplay = 'hug' | 'fill'
+
+export type SelectableAssetProps =
   | {
       variant: 'icon'
       Icon: React.FC<AccessibleIcon>
