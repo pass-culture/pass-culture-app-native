@@ -11,15 +11,15 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { CheckboxAsset } from 'ui/designSystem/Checkbox/CheckboxAsset'
 import { getCheckboxColors } from 'ui/designSystem/Checkbox/getCheckboxColors'
 import { getCheckboxState } from 'ui/designSystem/Checkbox/getCheckboxState'
+import { SelectableAsset } from 'ui/designSystem/SelectableAsset'
 import {
-  CheckboxAssetProps,
-  CheckboxSizing,
   CheckboxState,
-  CheckboxVariant,
-} from 'ui/designSystem/Checkbox/types'
+  SelectableAssetProps,
+  SelectableSizing,
+  SelectableVariant,
+} from 'ui/designSystem/types'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
@@ -51,23 +51,23 @@ type DefaultCheckbox = CheckboxBase & {
   asset?: never
   collapsed?: never
   description?: never
-  sizing?: CheckboxSizing
+  sizing?: SelectableSizing
   variant?: 'default'
 }
 
 type DetailedCheckbox = CheckboxBase & {
-  asset?: CheckboxAssetProps
+  asset?: SelectableAssetProps
   collapsed?: never
   description?: string
-  sizing?: CheckboxSizing
+  sizing?: SelectableSizing
   variant?: 'detailed'
 }
 
 type DetailedCheckboxWithCollapsed = CheckboxBase & {
-  asset?: CheckboxAssetProps
+  asset?: SelectableAssetProps
   collapsed: React.ReactNode
   description?: string
-  sizing?: Extract<CheckboxSizing, 'fill'>
+  sizing?: Extract<SelectableSizing, 'fill'>
   variant?: 'detailed'
 }
 
@@ -98,7 +98,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 
   useSpaceBarAction(focusProps.isFocus ? onToggle : undefined)
 
-  const effectiveSizing: CheckboxSizing = sizing ?? (variant === 'detailed' ? 'fill' : 'hug')
+  const effectiveSizing: SelectableSizing = sizing ?? (variant === 'detailed' ? 'fill' : 'hug')
 
   const state = getCheckboxState(isChecked, indeterminate, hasError, disabled)
   const isDisabled = state.includes('disabled')
@@ -149,7 +149,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
         </RightBox>
         {asset ? (
           <BottomBox>
-            <CheckboxAsset {...asset} disable={isDisabled} />
+            <SelectableAsset {...asset} disable={isDisabled} />
           </BottomBox>
         ) : null}
       </ContentContainer>
@@ -160,9 +160,9 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 
 type ContainerProps = {
   state: CheckboxState[]
-  variant: CheckboxVariant
+  variant: SelectableVariant
   collapsed?: React.ReactNode
-  sizing?: CheckboxSizing
+  sizing?: SelectableSizing
   isHover?: boolean
   isFocus?: boolean
 }
@@ -216,7 +216,7 @@ const ContentContainer = styled.View({
 })
 
 type LeftBoxProps = {
-  variant: CheckboxVariant
+  variant: SelectableVariant
   state: CheckboxState[]
   isHover?: boolean
   disabled?: boolean
