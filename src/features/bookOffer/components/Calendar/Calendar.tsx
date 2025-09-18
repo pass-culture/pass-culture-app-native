@@ -50,7 +50,15 @@ type CustomTheme = Theme & {
 }
 
 const calendarHeaderStyle = (theme: DefaultTheme): CustomTheme => ({
+  textDisabledColor: theme.designSystem.color.text.disabled,
+  calendarBackground: theme.designSystem.color.background.default,
+  dayTextColor: theme.designSystem.color.text.default,
+  monthTextColor: theme.designSystem.color.text.default,
   textSectionTitleColor: theme.designSystem.color.text.subtle,
+  backgroundColor: theme.designSystem.color.background.default,
+  textDayFontFamily: theme.designSystem.typography.body.fontFamily,
+  textMonthFontFamily: theme.designSystem.typography.body.fontFamily,
+  textDayHeaderFontFamily: theme.designSystem.typography.body.fontFamily,
   'stylesheet.calendar.header': {
     header: {
       flexDirection: 'row',
