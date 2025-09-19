@@ -16,8 +16,8 @@ const variantConfig: Variants<typeof PasswordInput> = [
     label: 'PasswordInput',
   },
   {
-    label: 'PasswordInput with custom label and placeholder',
-    props: { label: 'Custom label', placeholder: 'Custom placeholder...' },
+    label: 'PasswordInput with custom label',
+    props: { label: 'Custom label' },
   },
   {
     label: 'PasswordInput with value',
@@ -29,7 +29,7 @@ const variantConfig: Variants<typeof PasswordInput> = [
   },
   {
     label: 'PasswordInput with Error',
-    props: { isError: true },
+    props: { errorMessage: 'Erreur' },
   },
 
   {

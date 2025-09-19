@@ -52,9 +52,9 @@ describe('ChangePassword', () => {
   it('should enable the submit button when passwords are equals and filled and current password is correct', async () => {
     renderChangePassword()
 
-    const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const currentPasswordInput = screen.getByTestId('Mot de passe actuel')
+    const passwordInput = screen.getByTestId('Nouveau mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     await act(async () => {
@@ -84,8 +84,8 @@ describe('ChangePassword', () => {
   it('should display the matching error when the passwords dont match', async () => {
     renderChangePassword()
 
-    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Nouveau mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
 
     await act(async () => {
       fireEvent.changeText(passwordInput, '123456')
@@ -109,9 +109,9 @@ describe('ChangePassword', () => {
     }))
     renderChangePassword()
 
-    const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const currentPasswordInput = screen.getByTestId('Mot de passe actuel')
+    const passwordInput = screen.getByTestId('Nouveau mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     await act(async () => {
@@ -141,9 +141,9 @@ describe('ChangePassword', () => {
     })
     renderChangePassword()
 
-    const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const currentPasswordInput = screen.getByTestId('Mot de passe actuel')
+    const passwordInput = screen.getByTestId('Nouveau mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     await act(async () => {

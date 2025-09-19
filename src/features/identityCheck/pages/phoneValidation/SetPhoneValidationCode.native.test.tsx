@@ -78,7 +78,7 @@ describe('SetPhoneValidationCode', () => {
 
     expect(continueButton).toBeDisabled()
 
-    const input = screen.getByPlaceholderText('012345')
+    const input = screen.getByTestId('Entrée pour le code reçu par sms')
     fireEvent.changeText(input, '000000 ')
 
     expect(continueButton).toBeDisabled()
@@ -108,7 +108,7 @@ describe('SetPhoneValidationCode', () => {
     )
     renderSetPhoneValidationCode()
 
-    const input = screen.getByPlaceholderText('012345')
+    const input = screen.getByTestId('Entrée pour le code reçu par sms')
     fireEvent.changeText(input, '000000')
 
     await user.press(screen.getByTestId('Continuer'))
@@ -130,7 +130,7 @@ describe('SetPhoneValidationCode', () => {
     )
     renderSetPhoneValidationCode()
 
-    const input = screen.getByPlaceholderText('012345')
+    const input = screen.getByTestId('Entrée pour le code reçu par sms')
     fireEvent.changeText(input, '000000')
 
     await user.press(screen.getByTestId('Continuer'))
@@ -154,7 +154,7 @@ describe('SetPhoneValidationCode', () => {
     )
     renderSetPhoneValidationCode()
 
-    const input = screen.getByPlaceholderText('012345')
+    const input = screen.getByTestId('Entrée pour le code reçu par sms')
     fireEvent.changeText(input, '000000')
 
     await user.press(screen.getByTestId('Continuer'))
