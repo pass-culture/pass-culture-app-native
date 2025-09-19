@@ -31,7 +31,8 @@ export const useIdentificationUrlMutation = () => {
           replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
         }
       }
-    }
+    },
+    { retry: false }
   )
 
   useEffect(() => {
