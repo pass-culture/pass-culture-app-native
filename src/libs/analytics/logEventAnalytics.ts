@@ -272,6 +272,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
     youtubeId?: string
+    offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
