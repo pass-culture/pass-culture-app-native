@@ -8,6 +8,7 @@ import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePla
 import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { analytics } from 'libs/analytics/provider'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -57,6 +58,7 @@ export const VideoSection = ({
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
           duration={duration ? formatDuration(duration, 'sec') : undefined}
+          onPlayPress={() => analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })}
         />
         <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>

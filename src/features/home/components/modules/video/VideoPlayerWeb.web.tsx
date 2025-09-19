@@ -41,7 +41,7 @@ export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
   )
 
   const logConsultVideo = () => {
-    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId })
+    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId, offerId: offer?.objectID })
   }
 
   const replayVideo = () => {
