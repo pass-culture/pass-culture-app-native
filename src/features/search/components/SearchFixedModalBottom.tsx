@@ -1,10 +1,8 @@
-import React, { memo, useState } from 'react'
-import { Platform } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React, { memo } from 'react'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
+import { SearchFixedModalBottomContainer } from 'features/search/components/SearchFixedModalBottomContainer'
 import { FilterBehaviour } from 'features/search/enums'
-import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 
 type Props = {
   onResetPress: () => void
@@ -21,14 +19,8 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   isSearchDisabled,
   isResetDisabled,
 }: Props) {
-  const { modal } = useTheme()
-  const [keyboardHeight, setKeyboardHeight] = useState(0)
-  useForHeightKeyboardEvents(setKeyboardHeight)
-
-  const modalSpacing = Platform.OS === 'ios' ? modal.spacing.LG : modal.spacing.SM
-
   return (
-    <FilterPageButtonsContainer paddingBottom={keyboardHeight ? keyboardHeight - modalSpacing : 0}>
+    <SearchFixedModalBottomContainer>
       <FilterPageButtons
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
@@ -37,13 +29,6 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
         filterBehaviour={filterBehaviour}
         isResetDisabled={isResetDisabled}
       />
-    </FilterPageButtonsContainer>
+    </SearchFixedModalBottomContainer>
   )
 })
-
-const FilterPageButtonsContainer = styled.View<{ paddingBottom: number }>(
-  ({ paddingBottom, theme }) => ({
-    paddingBottom,
-    backgroundColor: theme.designSystem.color.background.default,
-  })
-)
