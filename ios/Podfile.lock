@@ -1526,9 +1526,9 @@ PODS:
     - React-Core
   - react-native-lottie-splash-screen (1.1.2):
     - React
-  - react-native-maps (1.24.3):
-    - react-native-maps/Maps (= 1.24.3)
-  - react-native-maps/Generated (1.24.3):
+  - react-native-maps (1.23.12):
+    - react-native-maps/Maps (= 1.23.12)
+  - react-native-maps/Generated (1.23.12):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1549,7 +1549,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-maps/Maps (1.24.3):
+  - react-native-maps/Maps (1.23.12):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2802,7 +2802,7 @@ SPEC CHECKSUMS:
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-in-app-review: db8bb167a5f238e7ceca5c242d6b36ce8c4404a4
   react-native-lottie-splash-screen: 4e1b1fd9d6633f9cd2106d6877eb5ba0147f3e2b
-  react-native-maps: 027b0039dcc65f1a662d0e2dafa9952457c36382
+  react-native-maps: 20fecb1f385a6775e04878f482a3d3e3d1906f86
   react-native-netinfo: f0a9899081c185db1de5bb2fdc1c88c202a059ac
   react-native-orientation-locker: 5819fd23ca89cbac0d736fb4314745f62716d517
   react-native-performance: 446a14bdd7b46ae78c3ae652aa7ab23ff2a93f1f
