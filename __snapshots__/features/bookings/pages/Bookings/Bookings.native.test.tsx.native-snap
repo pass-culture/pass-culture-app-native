@@ -376,7 +376,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={12}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -391,10 +391,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -450,7 +450,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -465,10 +465,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -515,7 +515,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -530,10 +530,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -580,7 +580,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -595,10 +595,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -645,7 +645,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -660,10 +660,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -710,7 +710,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -725,10 +725,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -804,7 +804,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -819,10 +819,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -869,7 +869,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -884,10 +884,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -934,7 +934,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -949,10 +949,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -999,7 +999,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1014,10 +1014,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1064,7 +1064,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1079,10 +1079,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1158,7 +1158,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -1173,10 +1173,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1223,7 +1223,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1238,10 +1238,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1288,7 +1288,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1303,10 +1303,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1353,7 +1353,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1368,10 +1368,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1418,7 +1418,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1433,10 +1433,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1512,7 +1512,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -1527,10 +1527,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1577,7 +1577,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1592,10 +1592,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1642,7 +1642,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1657,10 +1657,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1707,7 +1707,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1722,10 +1722,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1772,7 +1772,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1787,10 +1787,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1866,7 +1866,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -1881,10 +1881,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1931,7 +1931,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1946,10 +1946,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -1996,7 +1996,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2011,10 +2011,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2061,7 +2061,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2076,10 +2076,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2126,7 +2126,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2141,10 +2141,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2220,7 +2220,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -2235,10 +2235,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2285,7 +2285,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2300,10 +2300,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2350,7 +2350,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2365,10 +2365,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2415,7 +2415,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2430,10 +2430,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2480,7 +2480,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2495,10 +2495,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2574,7 +2574,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -2589,10 +2589,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2639,7 +2639,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2654,10 +2654,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2704,7 +2704,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2719,10 +2719,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2769,7 +2769,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2784,10 +2784,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2834,7 +2834,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -2849,10 +2849,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -2928,7 +2928,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -2943,10 +2943,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2993,7 +2993,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3008,10 +3008,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3058,7 +3058,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3073,10 +3073,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3123,7 +3123,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3138,10 +3138,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3188,7 +3188,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3203,10 +3203,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3282,7 +3282,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3297,10 +3297,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3347,7 +3347,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3362,10 +3362,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3412,7 +3412,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3427,10 +3427,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3477,7 +3477,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3492,10 +3492,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3542,7 +3542,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3557,10 +3557,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3636,7 +3636,7 @@ exports[`Bookings should render correctly 1`] = `
                   height={112}
                   style={
                     {
-                      "backgroundColor": "#DDDDDD",
+                      "backgroundColor": "#cbcdd2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3651,10 +3651,10 @@ exports[`Bookings should render correctly 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3701,7 +3701,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3716,10 +3716,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3766,7 +3766,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3781,10 +3781,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3831,7 +3831,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3846,10 +3846,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
@@ -3896,7 +3896,7 @@ exports[`Bookings should render correctly 1`] = `
                       height={12}
                       style={
                         {
-                          "backgroundColor": "#DDDDDD",
+                          "backgroundColor": "#cbcdd2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -3911,10 +3911,10 @@ exports[`Bookings should render correctly 1`] = `
                       <BVLinearGradient
                         colors={
                           [
-                            4292730333,
-                            4293848814,
-                            4293848814,
-                            4292730333,
+                            4291546578,
+                            4294046196,
+                            4294046196,
+                            4291546578,
                           ]
                         }
                         endPoint={
