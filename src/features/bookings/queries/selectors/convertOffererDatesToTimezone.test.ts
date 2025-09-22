@@ -56,4 +56,15 @@ describe('convertOffererDatesToTimezone', () => {
     expect(result?.ongoingBookings[0]?.stock.beginningDatetime).toEqual('2024-05-08T14:50:00.000Z')
     expect(result?.endedBookings[0]?.stock.beginningDatetime).toEqual('2024-05-08T08:50:00.000Z')
   })
+
+  it('should return itself when there are no bookings', () => {
+    const emptyBookingsResponseV2: BookingsResponseV2 = {
+      ongoingBookings: [],
+      endedBookings: [],
+      hasBookingsAfter18: false,
+    }
+    const result = convertOffererDatesToTimezone(emptyBookingsResponseV2)
+
+    expect(result).toStrictEqual(emptyBookingsResponseV2)
+  })
 })

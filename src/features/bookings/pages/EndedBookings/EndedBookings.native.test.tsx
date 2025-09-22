@@ -87,5 +87,5 @@ describe('EndedBookings', () => {
 })
 
 const renderEndedBookings = () => {
-  return render(reactQueryProviderHOC(<EndedBookings isQueryEnabled />))
+  return render(reactQueryProviderHOC(<EndedBookings />))
 }

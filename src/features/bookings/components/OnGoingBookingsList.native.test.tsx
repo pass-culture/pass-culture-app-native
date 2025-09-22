@@ -159,5 +159,5 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 })
 
 function renderOnGoingBookingsList() {
-  render(<OnGoingBookingsList isQueryEnabled />)
+  render(<OnGoingBookingsList />)
 }
