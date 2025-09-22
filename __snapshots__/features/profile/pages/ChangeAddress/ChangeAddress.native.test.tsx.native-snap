@@ -343,10 +343,10 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                         "width": "100%",
                       },
                       {
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ]
                   }
@@ -946,10 +946,10 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                         "width": "100%",
                       },
                       {
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                       },
                     ]
                   }

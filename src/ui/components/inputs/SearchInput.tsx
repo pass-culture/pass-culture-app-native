@@ -123,7 +123,7 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
 }))``
 
 const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.xl,
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
 const StyledView = styled.View({
