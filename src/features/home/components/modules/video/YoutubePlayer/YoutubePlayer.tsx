@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React, { ReactElement, forwardRef, useRef, useState } from 'react'
+import React, { ReactElement, forwardRef, useCallback, useRef, useState } from 'react'
 import {
   ActivityIndicator,
   LayoutChangeEvent,
@@ -30,6 +30,7 @@ type YoutubePlayerProps = YoutubeRendererProps & {
   onLayout?: (event: LayoutChangeEvent) => void
   noThumbnail?: boolean
   duration?: Duration
+  onPlayPress?: () => void
 }
 
 const PRESSABLE_STYLE = ({ pressed }: PressableStateCallbackType) => ({
@@ -47,6 +48,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
     onLayout,
     play = true,
     duration,
+    onPlayPress,
     ...playerProps
   }: YoutubePlayerProps,
   ref: React.ForwardedRef<YoutubePlayerRef>
@@ -54,6 +56,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
   const { designSystem } = useTheme()
   const innerVideoRef = React.useRef<YoutubeRendererRef>(null)
   const containerRef = useRef<View>(null)
+  const [hasLaunched, setHasLaunched] = useState(false)
 
   const [playerVisible, setPlayerVisible] = useState(noThumbnail)
   const [playerReady, setPlayerReady] = useState(false)
@@ -79,6 +82,14 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
     setPlayerReady(true)
     onReady?.()
   }
+
+  const handleLaunchPlayer = useCallback(() => {
+    if (!hasLaunched) {
+      setHasLaunched(true)
+      onPlayPress?.()
+    }
+    setPlayerVisible(true)
+  }, [hasLaunched, onPlayPress])
 
   if (!noThumbnail && !thumbnail) {
     return null
@@ -109,7 +120,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
         <StyledAnimatedView height={playerProps.height} width={playerProps.width}>
           <Pressable
             accessibilityRole="imagebutton"
-            onPress={() => setPlayerVisible(true)}
+            onPress={handleLaunchPlayer}
             style={PRESSABLE_STYLE}>
             <ThumbnailOverlay>
               {playerVisible ? (

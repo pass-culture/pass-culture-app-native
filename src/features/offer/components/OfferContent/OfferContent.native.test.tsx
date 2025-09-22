@@ -897,17 +897,6 @@ describe('<OfferContent />', () => {
         id: offerResponseSnap.id,
       })
     })
-
-    it('should trigger ConsultVideo log when pressing see video button', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-      renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      await user.press(screen.getByText('Voir la vidéo'))
-
-      expect(analytics.logConsultVideo).toHaveBeenCalledWith({ from: 'offer' })
-    })
   })
 })
 

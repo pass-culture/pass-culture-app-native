@@ -8,6 +8,7 @@ import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePla
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
@@ -51,6 +52,9 @@ export const OfferVideoPreview: FunctionComponent = () => {
             offer.video.durationSeconds
               ? formatDuration(offer.video.durationSeconds, 'sec')
               : undefined
+          }
+          onPlayPress={() =>
+            analytics.logConsultVideo({ from: 'offer', offerId: String(offer.id) })
           }
         />
       ) : null}
