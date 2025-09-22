@@ -37,6 +37,7 @@ import {
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
+import { useAppStateChange } from 'libs/appState'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -301,24 +302,26 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }, [homeId, name])
   )
 
-  // useAppStateChange(undefined, () => {
-  //   const state = useOfferPlaylistTrackingStore.getState()
+  // Handle app going to background
+  useAppStateChange(undefined, () => {
+    const state = useOfferPlaylistTrackingStore.getState()
 
-  //   if (state?.pageId && state?.pageLocation && state?.playlists) {
-  //     logPlaylistDebug('GENERIC_HOME', 'App state changed - sending playlist stats', {
-  //       pageId: state.pageId,
-  //       pageLocation: state.pageLocation,
-  //       playlistsCount: state.playlists.length,
-  //       playlists: state.playlists.map((p) => ({
-  //         moduleId: p.moduleId,
-  //         itemType: p.itemType,
-  //         itemsCount: p.items.length,
-  //         index: p.index,
-  //       })),
-  //     })
-  //   }
-  //   logViewItem(state)
-  // })
+    // Only send stats if this is the Home page
+    if (state?.pageId && state?.pageLocation && state?.playlists && state.pageLocation === 'Home') {
+      logPlaylistDebug('GENERIC_HOME', 'App state changed - sending playlist stats', {
+        pageId: state.pageId,
+        pageLocation: state.pageLocation,
+        playlistsCount: state.playlists.length,
+        playlists: state.playlists.map((p) => ({
+          moduleId: p.moduleId,
+          itemType: p.itemType,
+          itemsCount: p.items.length,
+          index: p.index,
+        })),
+      })
+      logViewItem(state)
+    }
+  })
 
   useFocusEffect(
     useCallback(() => {

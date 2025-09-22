@@ -9,7 +9,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { useViewItemTracking } from 'shared/hook/useViewItemTracking'
-import { setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
+import { setPageTrackingInfo, setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
 
 const handleViewableItemsChanged = (
   items: Pick<ViewToken, 'key' | 'index'>[],
@@ -31,12 +31,22 @@ const handleViewableItemsChanged = (
 export const Artist: FunctionComponent = () => {
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params, name } = useRoute<UseRouteType<'Artist'>>()
-  useViewItemTracking(name)
+  useViewItemTracking(name, 'artist')
 
   const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
     artistId: params.id,
   })
   const { data: artist } = useArtistQuery(params.id)
+
+  // Set page tracking info when artist is loaded
+  React.useEffect(() => {
+    if (params.id) {
+      setPageTrackingInfo({
+        pageId: params.id,
+        pageLocation: 'artist',
+      })
+    }
+  }, [params.id])
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
   if (!artist || !enableArtistPage) return null

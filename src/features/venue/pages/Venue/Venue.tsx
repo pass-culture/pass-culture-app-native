@@ -32,7 +32,7 @@ import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useViewItemTracking } from 'shared/hook/useViewItemTracking'
-import { setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
+import { setPageTrackingInfo, setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -53,8 +53,18 @@ const handleViewableItemsChanged = (
 
 export const Venue: FunctionComponent = () => {
   const { params, name } = useRoute<UseRouteType<'Venue'>>()
-  useViewItemTracking(name)
+  useViewItemTracking(name, 'venue')
   const { data: venue } = useVenueQuery(params.id)
+
+  // Set page tracking info when venue is loaded
+  React.useEffect(() => {
+    if (venue?.id) {
+      setPageTrackingInfo({
+        pageId: String(venue.id),
+        pageLocation: 'venue',
+      })
+    }
+  }, [venue?.id])
 
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
