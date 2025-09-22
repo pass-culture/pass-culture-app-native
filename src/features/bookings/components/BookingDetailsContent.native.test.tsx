@@ -12,7 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { renderAsync, screen, userEvent } from 'tests/utils'
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -72,7 +72,7 @@ describe('<BookingDetailsContent />', () => {
   beforeEach(() => setFeatureFlags())
 
   it('should navigate to Venue page when venue isOpenToPublic and booking adress is the same', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking: bookingVenueOpenToPublic,
       properties: mockProperties,
     })
@@ -84,7 +84,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should locConsultVenue when click on venue which is OpenToPublic and booking adress is the same', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking: bookingVenueOpenToPublic,
       properties: mockProperties,
     })
@@ -96,7 +96,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should not navigate to Venue page when venue is not OpenToPublic', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking: bookingVenueNotOpenToPublic,
       properties: mockProperties,
     })
@@ -108,7 +108,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should not navigate to Venue page when venue is OpenToPublic but booking adress is not the same', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking,
       properties: mockProperties,
     })
@@ -120,13 +120,13 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display seeItineraryButton when offer is event and offer address is defined', async () => {
-    renderBookingDetailsContent({ booking, properties: { ...mockProperties, isEvent: true } })
+    await renderBookingDetailsContent({ booking, properties: { ...mockProperties, isEvent: true } })
 
     expect(screen.getByText('Voir l’itinéraire')).toBeOnTheScreen()
   })
 
   it('should display seeItineraryButton when offer is physical and not digital and offer address is defined', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking,
       properties: { ...mockProperties, isEvent: false, isDigital: false, isPhysical: true },
     })
@@ -135,7 +135,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should not display seeItineraryButton when offer is physical and digital and offer address is defined', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking,
       properties: { ...mockProperties, isEvent: false, isDigital: true, isPhysical: true },
     })
@@ -147,7 +147,7 @@ describe('<BookingDetailsContent />', () => {
     const booking: BookingResponse = {
       ...bookingsSnapV2.ongoingBookings[0],
     }
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       booking,
       properties: { ...mockProperties, isEvent: false, isDigital: false, isPhysical: false },
     })
@@ -156,7 +156,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should logConsultItinerary when click on itinerary', async () => {
-    renderBookingDetailsContent({ booking, properties: mockProperties })
+    await renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const seeItineraryButton = screen.getByText('Voir l’itinéraire')
     await user.press(seeItineraryButton)
@@ -168,7 +168,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should logCancelBooking when booking is canceled', async () => {
-    renderBookingDetailsContent({ booking, properties: mockProperties })
+    await renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const cancelBookingButton = screen.getByText('Annuler ma réservation')
     await user.press(cancelBookingButton)
@@ -177,7 +177,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display CancelModal when booking is canceled', async () => {
-    renderBookingDetailsContent({ booking, properties: mockProperties })
+    await renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const cancelBookingButton = screen.getByText('Annuler ma réservation')
     await user.press(cancelBookingButton)
@@ -186,7 +186,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should log cancelBooking when cancel button is clicked', async () => {
-    renderBookingDetailsContent({ properties: mockProperties, booking })
+    await renderBookingDetailsContent({ properties: mockProperties, booking })
 
     const cancelButton = screen.getByText('Annuler ma réservation')
     await user.press(cancelButton)
@@ -195,12 +195,12 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
-    renderBookingDetailsContent({ properties: mockProperties, booking })
+    await renderBookingDetailsContent({ properties: mockProperties, booking })
 
     const scrollView = await screen.findByTestId('BookingDetailsScrollView')
 
     // Scroll a bit
-    user.scrollTo(scrollView, {
+    await user.scrollTo(scrollView, {
       layoutMeasurement: { height: 1000, width: 400 },
       contentSize: { height: 1900, width: 400 },
       y: 400,
@@ -209,7 +209,7 @@ describe('<BookingDetailsContent />', () => {
     expect(analytics.logViewedBookingPage).not.toHaveBeenCalled()
 
     // Scroll to the bottom
-    user.scrollTo(scrollView, {
+    await user.scrollTo(scrollView, {
       layoutMeasurement: { height: 1000, width: 400 },
       contentSize: { height: 1900, width: 400 },
       y: 1900,
@@ -221,19 +221,22 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display a punched ticket when offer is an event', async () => {
-    renderBookingDetailsContent({ properties: { ...mockProperties, isEvent: true }, booking })
+    await renderBookingDetailsContent({ properties: { ...mockProperties, isEvent: true }, booking })
 
     expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
   })
 
   it('should display a full ticket when offer is not an event', async () => {
-    renderBookingDetailsContent({ properties: { ...mockProperties, isEvent: false }, booking })
+    await renderBookingDetailsContent({
+      properties: { ...mockProperties, isEvent: false },
+      booking,
+    })
 
     expect(screen.getByTestId('ticket-full')).toBeOnTheScreen()
   })
 
   it('should not display error banner when booking is no ticket', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {
         ...bookingsSnapV2.ongoingBookings[0],
@@ -250,7 +253,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display error banner when booking has a ticket', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {
         ...bookingsSnapV2.ongoingBookings[0],
@@ -267,7 +270,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display message to contact organizer when booking has a ticket', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {
         ...bookingsSnapV2.ongoingBookings[0],
@@ -293,7 +296,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should not display message to contact organizer when booking has no ticket', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {
         ...bookingsSnapV2.ongoingBookings[0],
@@ -319,7 +322,7 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display organizer email when booking has no ticket', async () => {
-    renderBookingDetailsContent({
+    await renderBookingDetailsContent({
       properties: { ...mockProperties, isEvent: false },
       booking: {
         ...bookingsSnapV2.ongoingBookings[0],
@@ -348,7 +351,7 @@ const renderBookingDetailsContent = ({
   properties: BookingProperties
   booking: BookingResponse
 }) => {
-  return render(
+  return renderAsync(
     reactQueryProviderHOC(
       <BookingDetailsContent
         user={beneficiaryUser}

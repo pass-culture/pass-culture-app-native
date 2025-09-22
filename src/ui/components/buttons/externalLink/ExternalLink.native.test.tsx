@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { ExternalLink } from './ExternalLink'
 
@@ -16,7 +16,7 @@ describe('ExternalLink', () => {
   it('should open given url when text clicked', async () => {
     render(<ExternalLink url={someUrl} />)
 
-    await act(async () => user.press(screen.getByLabelText('Nouvelle fenêtre\u00a0: ' + someUrl)))
+    await user.press(screen.getByLabelText('Nouvelle fenêtre\u00a0: ' + someUrl))
 
     expect(openURLSpy).toHaveBeenNthCalledWith(1, someUrl)
   })

@@ -21,9 +21,9 @@ describe('<RadioSelector />', () => {
     expect(defaultProps.onPress).toHaveBeenCalledWith()
   })
 
-  it('should not call onPress when disabled', () => {
+  it('should not call onPress when disabled', async () => {
     render(<RadioSelector {...defaultProps} disabled />)
-    user.press(screen.getByText('Test Label'))
+    await user.press(screen.getByText('Test Label'))
 
     expect(defaultProps.onPress).not.toHaveBeenCalled()
   })

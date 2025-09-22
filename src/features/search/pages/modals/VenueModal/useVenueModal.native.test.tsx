@@ -173,11 +173,14 @@ describe('useVenueModal', () => {
     })
 
     it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
-      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-        initialProps: {
-          dismissModal: dismissModal,
-        },
-      })
+      const { result } = renderHook(
+        ({ dismissModal }: { dismissModal: VoidFunction }) => useVenueModal({ dismissModal }),
+        {
+          initialProps: {
+            dismissModal: dismissModal,
+          },
+        }
+      )
 
       await act(() => {
         result.current.doSetSelectedVenue({
@@ -204,11 +207,14 @@ describe('useVenueModal', () => {
         },
       })
 
-      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-        initialProps: {
-          dismissModal: dismissModal,
-        },
-      })
+      const { result } = renderHook(
+        ({ dismissModal }: { dismissModal: VoidFunction }) => useVenueModal({ dismissModal }),
+        {
+          initialProps: {
+            dismissModal: dismissModal,
+          },
+        }
+      )
 
       await act(() => {
         result.current.doResetVenue()

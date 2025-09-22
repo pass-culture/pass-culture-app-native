@@ -78,7 +78,7 @@ describe('BusinessModule component', () => {
 
   it('should open url when clicking on the image', async () => {
     renderModule(props)
-    user.press(screen.getByTestId('imageBusiness'))
+    await user.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(openURLSpy).toHaveBeenCalledWith('url')
@@ -97,7 +97,7 @@ describe('BusinessModule component', () => {
       url: 'some_url_with_email={email}',
     })
 
-    user.press(screen.getByTestId('imageBusiness'))
+    await user.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
@@ -119,7 +119,7 @@ describe('BusinessModule component', () => {
       url: 'some_url_with_email={email}',
     })
 
-    user.press(screen.getByTestId('imageBusiness'))
+    await user.press(screen.getByTestId('imageBusiness'))
     await waitFor(() =>
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
@@ -143,7 +143,7 @@ describe('BusinessModule component', () => {
       url: 'some_url_with_no_email',
     })
 
-    user.press(screen.getByTestId('imageBusiness'))
+    await user.press(screen.getByTestId('imageBusiness'))
     await waitFor(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
 
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()

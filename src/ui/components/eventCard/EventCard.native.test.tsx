@@ -31,7 +31,7 @@ describe('EventCard', () => {
     it('should not send log ConsultOffer event when not on venue page and user clicks on an eventCard', async () => {
       render(<EventCard {...defaultEventCardProps} analyticsFrom="offer" offerId={1} />)
       const eventCard = await screen.findByLabelText('Film 1')
-      user.press(eventCard)
+      await user.press(eventCard)
 
       expect(analytics.logConsultOffer).not.toHaveBeenCalled()
     })

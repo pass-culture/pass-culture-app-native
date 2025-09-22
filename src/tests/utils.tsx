@@ -3,7 +3,7 @@
 // https://github.com/prisma/prisma/issues/8558#issuecomment-1040378575
 
 // eslint-disable-next-line no-restricted-imports
-import { render } from '@testing-library/react-native'
+import { render, renderAsync, waitFor } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
 import React, { PropsWithChildren, ReactNode } from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
@@ -20,6 +20,12 @@ export async function simulateWebviewMessage(webview: ReactTestInstance, message
     webview.props.onMessage({
       nativeEvent: { data: message },
     })
+  })
+}
+
+export const waitForButtonToBePressable = async (button: ReactTestInstance) => {
+  return waitFor(async () => {
+    expect(button.props.focusable).toBeTruthy()
   })
 }
 
@@ -66,6 +72,21 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+function customRenderAsync(ui: React.ReactElement<any>, options?: CustomRenderOptions) {
+  const { wrapper: Wrapper, theme, ...restOfOptions } = options || {}
+  return renderAsync(ui, {
+    wrapper: Wrapper
+      ? ({ children }) => (
+          <DefaultWrapper theme={theme}>
+            <Wrapper>{children}</Wrapper>
+          </DefaultWrapper>
+        )
+      : ({ children }) => <DefaultWrapper theme={theme}>{children}</DefaultWrapper>,
+    ...restOfOptions,
+  })
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureRendersOptions) {
   const { wrapper, ...restOfOptions } = options || {}
   const Wrapper = wrapper as React.ComponentType<PropsWithChildren>
@@ -85,6 +106,7 @@ function customMeasurePerformance(ui: React.ReactElement<any>, options?: Measure
 export * from '@testing-library/react-native'
 
 export { customRender as render }
+export { customRenderAsync as renderAsync }
 export { customMeasurePerformance as measurePerformance }
 
 export const middleScrollEvent = {
