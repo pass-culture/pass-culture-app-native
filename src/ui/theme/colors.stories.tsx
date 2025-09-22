@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { Typo, getSpacing } from 'ui/theme'
 
-import { ColorsEnum, UniqueColors } from './colors'
+import { ColorsEnum } from './colors'
 
 export default {
   title: 'Fondations/Colors',
@@ -24,8 +24,6 @@ const Template: StoryFn<React.FC> = () => (
   <React.Fragment>
     <Typo.Title2>ColorsEnum</Typo.Title2>
     <ColorsSection colorsPalette={ColorsEnum} />
-    <Typo.Title2>UniqueColors</Typo.Title2>
-    <ColorsSection colorsPalette={UniqueColors} />
   </React.Fragment>
 )
 export const AllColors = {
