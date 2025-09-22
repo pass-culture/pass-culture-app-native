@@ -106,7 +106,7 @@ export type RNTextInputProps = Pick<
     testID?: string
   }
 
-export type TextInputProps = CustomTextInputProps & RNTextInputProps
+type TextInputProps = CustomTextInputProps & RNTextInputProps
 
 export type InputTextProps = CustomInputTextProps & Omit<RNTextInputProps, 'placeholder'>
 
@@ -116,20 +116,6 @@ function getInputProps<Props extends InputProps>(props: Props): InputProps {
   return {
     accessibilityHint: props.accessibilityHint,
     focusOutlineColor: props.focusOutlineColor,
-  }
-}
-
-export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
-  return {
-    ...getInputProps(props),
-    label: props.label,
-    isError: props.isError,
-    disabled: props.disabled,
-    containerStyle: props.containerStyle,
-    isRequiredField: props.isRequiredField,
-    leftComponent: props.leftComponent,
-    rightLabel: props.rightLabel,
-    rightButton: props.rightButton,
   }
 }
 
