@@ -352,11 +352,11 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       isEmpty={true}
                       maxLength={800}
                       multiline={true}
-                      nativeID="testUuidV4"
+                      nativeID="feedback-input"
                       onBlur={[Function]}
                       onChangeText={[Function]}
                       onFocus={[Function]}
-                      placeholder="Ma suggestion..."
+                      placeholder=""
                       placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
@@ -374,7 +374,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           "paddingTop": 10,
                         }
                       }
-                      testID="Champ de texte"
+                      testID="feedback-input"
                       textAlignVertical="top"
                       value=""
                     />

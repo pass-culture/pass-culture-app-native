@@ -8,10 +8,7 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import {
-  FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
-  setFeedbackInAppSchema,
-} from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
+import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -83,16 +80,14 @@ export const FeedbackInApp = () => {
             <Controller
               control={control}
               name="feedback"
-              render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+              render={({ field: { onChange, onBlur, value } }) => (
                 <LargeTextInput
                   label="Ma suggestion"
                   value={value}
                   onBlur={onBlur}
                   onChangeText={onChange}
-                  placeholder="Ma suggestion..."
-                  isError={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
                   isRequiredField
-                  showErrorMessage={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
+                  testID="feedback-input"
                 />
               )}
             />

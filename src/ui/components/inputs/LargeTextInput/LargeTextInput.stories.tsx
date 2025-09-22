@@ -11,8 +11,6 @@ const meta: Meta<typeof LargeTextInput> = {
 }
 export default meta
 
-const textWith801Character = 'a'.repeat(801)
-
 const baseProps = { label: 'Label', placeholder: 'Placeholder...' }
 
 const variantConfig: Variants<typeof LargeTextInput> = [
@@ -31,10 +29,6 @@ const variantConfig: Variants<typeof LargeTextInput> = [
   {
     label: 'Disabled LargeTextInput',
     props: { ...baseProps, disabled: true },
-  },
-  {
-    label: ' LargeTextInput with Error',
-    props: { ...baseProps, isError: true, showErrorMessage: true, value: textWith801Character },
   },
 ]
 
