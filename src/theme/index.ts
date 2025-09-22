@@ -8,7 +8,7 @@ import { ModalSpacing } from 'ui/components/modals/enum'
 import { getSpacing } from 'ui/theme'
 import { buttonHeights } from 'ui/theme/buttonHeights'
 // eslint-disable-next-line no-restricted-imports
-import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
+import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   DESKTOP_CONTENT_MAX_WIDTH,
@@ -148,10 +148,6 @@ export const theme = {
     skyBlue: ColorsEnum.SKY_BLUE,
     skyBlueLight: ColorsEnum.SKY_BLUE_LIGHT,
     white: ColorsEnum.WHITE,
-  },
-  uniqueColors: {
-    backgroundColor: UniqueColors.BACKGROUND_COLOR,
-    foregroundColor: UniqueColors.FOREGROUND_COLOR,
   },
   breakpoints: {
     xxs: Breakpoints.XXS,

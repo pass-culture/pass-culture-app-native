@@ -664,10 +664,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
               },
             },
           },
-          "uniqueColors": {
-            "backgroundColor": "#DDDDDD",
-            "foregroundColor": "#EEEEEE",
-          },
           "zIndex": {
             "background": -1,
             "bottomSheet": 60,
@@ -1508,10 +1504,6 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                 "width": 146,
               },
             },
-          },
-          "uniqueColors": {
-            "backgroundColor": "#DDDDDD",
-            "foregroundColor": "#EEEEEE",
           },
           "zIndex": {
             "background": -1,
