@@ -31,40 +31,37 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { useViewItemTracking } from 'shared/hook/useViewItemTracking'
-import { setPageTrackingInfo, setPlaylistTrackingInfo } from 'store/tracking/playlistTrackingStore'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-const handleViewableItemsChanged = (
-  items: Pick<ViewToken, 'key' | 'index'>[],
-  moduleId: string,
-  itemType: 'offer' | 'venue' | 'artist' | 'unknown'
-) => {
-  setPlaylistTrackingInfo({
-    index: items[0]?.index ?? 0,
-    moduleId,
-    viewedAt: new Date(),
-    items,
-    itemType,
-    pageLocation: 'venue',
-  })
-}
+// Handler will be created dynamically in the component with the new system
 
 export const Venue: FunctionComponent = () => {
-  const { params, name } = useRoute<UseRouteType<'Venue'>>()
-  useViewItemTracking(name, 'venue')
+  const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
 
-  // Set page tracking info when venue is loaded
-  React.useEffect(() => {
-    if (venue?.id) {
-      setPageTrackingInfo({
-        pageId: String(venue.id),
-        pageLocation: 'venue',
+  const pageTracking = usePageTracking({
+    pageName: 'Venue',
+    pageLocation: 'venue',
+    pageId: venue?.id ? String(venue.id) : params.id.toString(),
+  })
+
+  // Handler for modules with the new system
+  const handleViewableItemsChanged = React.useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
       })
-    }
-  }, [venue?.id])
+    },
+    [pageTracking]
+  )
 
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()

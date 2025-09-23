@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 
-import { logPlaylistDebug } from 'shared/analytics/logViewItem'
-
 import { parseThreshold } from './helpers'
 import { IntersectionObserverProps } from './types'
 
@@ -20,15 +18,10 @@ export function IntersectionObserver({
     (entries: IntersectionObserverEntry[]) => {
       const entry = entries[0]
       if (entry) {
-        logPlaylistDebug('INTERSECTION_OBSERVER_WEB', 'IntersectionObserver state changed', {
-          isIntersecting: entry.isIntersecting,
-          intersectionRatio: entry.intersectionRatio,
-          threshold,
-        })
         onChange(entry.isIntersecting)
       }
     },
-    [onChange, threshold]
+    [onChange]
   )
 
   useEffect(() => {

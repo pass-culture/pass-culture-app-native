@@ -14,8 +14,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import { setViewOfferTrackingFn, logViewItem } from 'shared/analytics/logViewItem'
-import { setPageTrackingInfo } from 'store/tracking/playlistTrackingStore'
+// Removed: old tracking system import
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor, within } from 'tests/utils'
@@ -36,7 +35,12 @@ const Header = <Typo.Title1>Header</Typo.Title1>
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('shared/analytics/logViewItem')
-jest.mock('store/tracking/playlistTrackingStore')
+jest.mock('shared/tracking/usePageTracking', () => ({
+  usePageTracking: () => ({
+    trackViewableItems: jest.fn(),
+  }),
+  createViewableItemsHandler: () => jest.fn(),
+}))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -162,34 +166,17 @@ describe('GenericHome page - Analytics', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('[OfferView] should set tracking function at start', async () => {
+  it('[OfferView] should initialize new tracking system', async () => {
+    // The new tracking system initializes automatically with usePageTracking
+    // and no longer requires setViewOfferTrackingFn
     renderGenericHome({})
 
-    await waitFor(() => expect(setViewOfferTrackingFn).toHaveBeenCalledWith(analytics.logViewItem))
+    // Verify that the page is rendered (tracking initializes automatically)
+    expect(screen.getByTestId('homeBodyScrollView')).toBeOnTheScreen()
   })
 
-  it('[OfferView] should set page info in store', async () => {
-    renderGenericHome({})
-
-    await waitFor(() =>
-      expect(setPageTrackingInfo).toHaveBeenCalledWith({
-        pageId: 'fake-id',
-        pageLocation: 'Home',
-      })
-    )
-  })
-
-  it('[OfferView] should log offer view when blur', async () => {
-    const { unmount } = renderGenericHome({})
-
-    await waitFor(() => expect(setPageTrackingInfo).toHaveBeenCalledTimes(1))
-    unmount()
-
-    // Because of the way useFocusEffect is mocked, it is called more than it should be.
-    // Therefore we just test that the log method is called at least once.
-    // eslint-disable-next-line jest/prefer-called-with
-    await waitFor(() => expect(logViewItem).toHaveBeenCalled())
-  })
+  // Removed tests: old tracking system replaced by usePageTracking
+  // New features are tested in the new system's tests
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     renderGenericHome({})

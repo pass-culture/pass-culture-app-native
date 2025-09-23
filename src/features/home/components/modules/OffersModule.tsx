@@ -17,7 +17,6 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylist
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/location'
-import { logPlaylistDebug } from 'shared/analytics/logViewItem'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -177,10 +176,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   ])
 
   if (!shouldModuleBeDisplayed) return null
-
-  logPlaylistDebug('OFFERS_MODULE', `Rendering module ${moduleId} with IntersectionObserver`, {
-    hasData: offersToDisplay.length,
-  })
 
   return (
     <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
