@@ -13,6 +13,7 @@ import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWrite
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { analytics } from 'libs/analytics/provider'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -20,6 +21,7 @@ import { getSpacing } from 'ui/theme'
 type Props = PropsWithChildren<{
   offerId: number
   offerName: string
+  offerCategoryId: string
   chronicleCardsData: ChronicleCardData[]
   variantInfo: ChronicleVariantInfo
   onShowRecoButtonPress: VoidFunction
@@ -28,6 +30,7 @@ type Props = PropsWithChildren<{
 export const ChroniclesBase: FunctionComponent<Props> = ({
   offerId,
   offerName,
+  offerCategoryId,
   chronicleCardsData,
   variantInfo,
   onShowRecoButtonPress,
@@ -70,6 +73,15 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
     onShowRecoButtonPress()
   }
 
+  const handleOnShowChroniclesWritersModal = () => {
+    analytics.logClickWhatsClub({
+      offerId: offerId.toString(),
+      from: 'chronicles',
+      categoryName: offerCategoryId,
+    })
+    showModal()
+  }
+
   return (
     <React.Fragment>
       <ChroniclesWebMetaHeader title={title} />
@@ -86,7 +98,10 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           horizontal={false}
           separatorSize={6}
           headerComponent={
-            <ChronicleCardListHeader variantInfo={variantInfo} onPressMoreInfo={showModal} />
+            <ChronicleCardListHeader
+              variantInfo={variantInfo}
+              onPressMoreInfo={handleOnShowChroniclesWritersModal}
+            />
           }
           ref={chroniclesListRef}
           onScroll={onScroll}

@@ -17,6 +17,7 @@ import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chroni
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { analytics } from 'libs/analytics/provider'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -75,6 +76,13 @@ export const Chronicles: FunctionComponent = () => {
   }
 
   const handleOnShowRecoButtonPress = () => {
+    analytics.logClickAllClubRecos({
+      offerId: offerId.toString(),
+      from: 'chronicles',
+      categoryName: offer?.subcategoryId
+        ? subcategoriesMapping[offer.subcategoryId].categoryId
+        : '',
+    })
     navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
   }
 
@@ -85,6 +93,7 @@ export const Chronicles: FunctionComponent = () => {
       <ChroniclesBase
         offerId={offer.id}
         offerName={offer.name}
+        offerCategoryId={subcategory.categoryId}
         variantInfo={chronicleVariantInfo}
         chronicleCardsData={chronicleCardsData}
         onShowRecoButtonPress={handleOnShowRecoButtonPress}>

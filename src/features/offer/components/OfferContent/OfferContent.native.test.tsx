@@ -778,6 +778,19 @@ describe('<OfferContent />', () => {
         })
       })
 
+      it('should trigger ClickInfoReview log when pressing "Voir tous les avis" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        await user.press(await screen.findByText('Voir tous les avis'))
+
+        expect(analytics.logClickInfoReview).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: '116656',
+        })
+      })
+
       it('should navigate to chronicles page with anchor on the selected chronicle when pressing "Voir plus" button on a card', async () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },

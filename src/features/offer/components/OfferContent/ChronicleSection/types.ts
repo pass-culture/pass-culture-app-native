@@ -10,6 +10,7 @@ export type ChronicleSectionProps = {
   navigateTo: InternalNavigationProps['navigateTo']
   variantInfo: ChronicleVariantInfo
   onShowChroniclesWritersModal: () => void
+  onBeforeNavigate?: () => void
   onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
 }
