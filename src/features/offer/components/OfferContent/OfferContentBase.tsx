@@ -227,6 +227,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
+  const handleOnSeeAllReviewsPress = () => {
+    analytics.logClickInfoReview({
+      from: 'offer',
+      offerId: offer?.id.toString() ?? '',
+      userId: userId?.toString(),
+    })
+  }
+
   const offerCtaButton = (
     <OfferCTAButton
       offer={offer}
@@ -303,6 +311,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               onSeeMoreButtonPress={onSeeMoreButtonPress}
               onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+              onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
             />
           ) : null}
           <StyledSectionWithDivider

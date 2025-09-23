@@ -24,6 +24,7 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
     variantInfo,
     ctaLabel,
     navigateTo,
+    onBeforeNavigate,
     style,
     onSeeMoreButtonPress,
     onShowChroniclesWritersModal,
@@ -44,6 +45,7 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
                 // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
                 // eslint-disable-next-line react-native/no-inline-styles
                 style={{ width: 'auto', borderWidth: 0, paddingLeft: getSpacing(2) }}
+                onBeforeNavigate={onBeforeNavigate}
               />
             </Row>
             {variantInfo.subtitleSection ? (
