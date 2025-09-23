@@ -86,6 +86,12 @@ describe('<SearchInVenueModal />', () => {
           ...initialSearchState,
           venue: venueSelected,
           query: 'Martine',
+          accessibilityFilter: {
+            isAudioDisabilityCompliant: undefined,
+            isMentalDisabilityCompliant: undefined,
+            isMotorDisabilityCompliant: undefined,
+            isVisualDisabilityCompliant: undefined,
+          },
         },
       },
     })

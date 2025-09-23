@@ -84,7 +84,7 @@ const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
 }))``
 
 const SearchInputContainer = styled.View(({ theme }) => ({
-  paddingVertical: theme.modal.spacing.MD,
+  paddingVertical: theme.designSystem.size.spacing.xl,
 }))
 
 const HeaderContainer = styled.View({

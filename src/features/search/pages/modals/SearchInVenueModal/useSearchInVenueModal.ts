@@ -1,9 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
 import { useCallback, useState } from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import {
   SearchInVenueModalHook,
   SearchInVenueModalHookProps,
@@ -17,22 +16,7 @@ export const useSearchInVenueModal = ({
 }: SearchInVenueModalHookProps): SearchInVenueModalHook => {
   const [searchInVenueQuery, setSearchInVenueQuery] = useState('')
   const { dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const navigateToSearch = useCallback(
-    (searchState: SearchState): void => {
-      navigate('TabNavigator', {
-        screen: 'SearchStackNavigator',
-        params: {
-          screen: 'SearchResults',
-          params: {
-            ...searchState,
-          },
-        },
-      })
-    },
-    [navigate]
-  )
+  const { navigateToSearch } = useNavigateToSearch('SearchResults')
 
   const onClose = () => {
     setSearchInVenueQuery('')
