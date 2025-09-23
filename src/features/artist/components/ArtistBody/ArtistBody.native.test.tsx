@@ -50,7 +50,12 @@ describe('<ArtistBody />', () => {
   it('should display only the main artist when there are several artists on header title', async () => {
     render(
       reactQueryProviderHOC(
-        <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
       )
     )
 
@@ -62,7 +67,12 @@ describe('<ArtistBody />', () => {
   it('should call goBack when pressing the back button', async () => {
     render(
       reactQueryProviderHOC(
-        <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
       )
     )
     const backButton = screen.getByTestId('Revenir en arrière')
@@ -81,6 +91,7 @@ describe('<ArtistBody />', () => {
           }}
           artistPlaylist={[]}
           artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
@@ -95,7 +106,14 @@ describe('<ArtistBody />', () => {
       image: undefined,
     }
     render(
-      reactQueryProviderHOC(<ArtistBody artist={artist} artistPlaylist={[]} artistTopOffers={[]} />)
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={artist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
     )
 
     expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
@@ -104,7 +122,12 @@ describe('<ArtistBody />', () => {
   it('should display artist description', async () => {
     render(
       reactQueryProviderHOC(
-        <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
+        <ArtistBody
+          artist={mockArtist}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
       )
     )
 

@@ -1,5 +1,6 @@
 import { Hit } from '@algolia/client-search'
-import React from 'react'
+import React, { Ref } from 'react'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
@@ -20,6 +21,8 @@ export interface GtlPlaylistProps {
   playlist: GtlPlaylistData
   venue?: VenueResponse
   noMarginBottom?: boolean
+  playlistRef?: Ref<FlatList>
+  onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void
 }
 
 export function GtlPlaylist({
@@ -28,6 +31,8 @@ export function GtlPlaylist({
   analyticsFrom,
   route,
   noMarginBottom,
+  onViewableItemsChanged,
+  playlistRef,
 }: Readonly<GtlPlaylistProps>) {
   const entryId = playlist.entryId
 
@@ -68,6 +73,8 @@ export function GtlPlaylist({
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
         FlatListComponent={FlatList}
+        playlistRef={playlistRef}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     </IntersectionObserver>
   )

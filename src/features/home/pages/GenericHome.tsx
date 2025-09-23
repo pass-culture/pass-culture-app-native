@@ -302,10 +302,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }, [homeId, name])
   )
 
+  // Handle app going to background
   useAppStateChange(undefined, () => {
     const state = useOfferPlaylistTrackingStore.getState()
 
-    if (state?.pageId && state?.pageLocation && state?.playlists) {
+    // Only send stats if this is the Home page
+    if (state?.pageId && state?.pageLocation && state?.playlists && state.pageLocation === 'Home') {
       logPlaylistDebug('GENERIC_HOME', 'App state changed - sending playlist stats', {
         pageId: state.pageId,
         pageLocation: state.pageLocation,
@@ -317,8 +319,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
           index: p.index,
         })),
       })
+      logViewItem(state)
     }
-    logViewItem(state)
   })
 
   useFocusEffect(
