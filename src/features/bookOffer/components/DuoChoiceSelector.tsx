@@ -3,9 +3,9 @@ import styled from 'styled-components/native'
 
 import { DuoChoice } from 'features/bookOffer/components/DuoChoice'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -15,7 +15,7 @@ import { getSpacing } from 'ui/theme'
 
 export const DuoChoiceSelector: React.FC = () => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo } = useBookingOffer() ?? {}
+  const { isDuo } = useBookingOfferQuery() ?? {}
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const currency = useGetCurrencyToDisplay()

@@ -10,10 +10,10 @@ import {
   getStockSortedByPriceFromHour,
   getStockWithCategoryFromDate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -103,7 +103,7 @@ function getHourChoiceForSingleStock(
 
 export const BookHourChoice = () => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo, stocks = [], venue } = useBookingOffer() ?? {}
+  const { isDuo, stocks = [], venue } = useBookingOfferQuery() ?? {}
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
 
