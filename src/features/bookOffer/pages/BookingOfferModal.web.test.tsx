@@ -29,8 +29,8 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   })),
 }))
 
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: jest.fn(() => mockOffer),
+jest.mock('queries/offer/useBookingOfferQuery', () => ({
+  useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
 const mockHasNextPage = true
