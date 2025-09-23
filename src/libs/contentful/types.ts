@@ -244,6 +244,7 @@ export interface SearchParametersFields {
   title: string
   algoliaSubcategories?: Subcategories
   algoliaCategories?: Categories
+  allocineId?: string[]
   tags?: string[]
   isDigital?: boolean
   isThing?: boolean

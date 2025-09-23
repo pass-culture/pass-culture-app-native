@@ -146,6 +146,7 @@ export type OffersModuleParameters = {
   aroundRadius?: number
   gtlLevel?: GtlLevel
   gtlLabel?: string
+  allocineIdList?: string[]
 }
 
 export type BusinessModule = {

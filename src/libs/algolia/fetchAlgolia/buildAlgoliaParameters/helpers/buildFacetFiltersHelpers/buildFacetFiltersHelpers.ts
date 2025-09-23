@@ -71,9 +71,8 @@ export const buildEanPredicate = (eanList: string[]) =>
 export const buildArtistNamePredicate = (artistName: string) =>
   `${FACETS_FILTERS_ENUM.ARTISTS_NAME}:${artistName}`
 
-export const buildAllocineIdPredicate = (allocineId: number) => [
-  `${FACETS_FILTERS_ENUM.OFFER_ALLOCINE_ID}:${allocineId}`,
-]
+export const buildAllocineIdPredicate = (allocineIdList: number[]) =>
+  allocineIdList.map((allocineId) => `${FACETS_FILTERS_ENUM.OFFER_ALLOCINE_ID}:${allocineId}`)
 
 export const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
   offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:true`] : undefined

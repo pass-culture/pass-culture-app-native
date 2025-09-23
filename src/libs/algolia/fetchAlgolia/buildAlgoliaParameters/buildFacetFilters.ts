@@ -26,6 +26,7 @@ export const buildFacetFilters = ({
   eanList,
   artistName,
   allocineId,
+  allocineIdList,
   isUserUnderage,
   objectIds,
   isHeadline,
@@ -54,12 +55,13 @@ export const buildFacetFilters = ({
   | 'tags'
   | 'gtls'
   | 'isHeadline'
+  | 'allocineIdList'
+  | 'allocineId'
+  | 'eanList'
+  | 'artistName'
+  | 'objectIds'
 > & {
   isUserUnderage: boolean
-  objectIds?: string[]
-  eanList?: string[]
-  artistName?: string
-  allocineId?: number
   disabilitiesProperties: DisabilitiesProperties
 }): null | {
   facetFilters: FiltersArray
@@ -108,7 +110,15 @@ export const buildFacetFilters = ({
   }
 
   if (allocineId) {
-    const allocineIdPredicate = buildAllocineIdPredicate(allocineId)
+    const allocineIdPredicate = buildAllocineIdPredicate([allocineId])
+    facetFilters.push(allocineIdPredicate)
+  }
+
+  if (allocineIdList && allocineIdList.length > 0) {
+    const allocineIdListParsed = allocineIdList
+      .map(Number)
+      .filter((allocineId) => !Number.isNaN(allocineId))
+    const allocineIdPredicate = buildAllocineIdPredicate(allocineIdListParsed)
     facetFilters.push(allocineIdPredicate)
   }
 
