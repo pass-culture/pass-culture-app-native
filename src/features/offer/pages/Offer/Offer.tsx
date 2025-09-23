@@ -63,6 +63,9 @@ export function Offer() {
     enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
   })
   const { mutate: saveReaction } = useReactionMutation()
+  const categoryId = offer?.subcategoryId
+    ? subcategoriesMapping[offer?.subcategoryId]?.categoryId
+    : ''
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
@@ -73,17 +76,20 @@ export function Offer() {
   )
 
   const handleOnShowRecoButtonPress = () => {
+    analytics.logClickAllClubRecos({
+      offerId: offerId.toString(),
+      from: 'offer',
+      categoryName: categoryId,
+    })
     hideChroniclesWritersModal()
     navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
   }
 
   const handleOnShowChroniclesWritersModal = () => {
     analytics.logClickWhatsClub({
-      offerId: offer?.id.toString() ?? '',
+      offerId: offerId.toString(),
       from: 'offer',
-      categoryName: offer?.subcategoryId
-        ? subcategoriesMapping[offer?.subcategoryId].categoryId
-        : '',
+      categoryName: categoryId,
     })
     showChroniclesWritersModal()
   }

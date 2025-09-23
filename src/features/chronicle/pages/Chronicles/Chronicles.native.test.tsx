@@ -207,6 +207,18 @@ describe('Chronicles', () => {
           })
         })
       })
+
+      it('should trigger ClickAllClubRecos log when pressing button', async () => {
+        render(reactQueryProviderHOC(<Chronicles />))
+
+        await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
+
+        expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {
+          categoryName: 'CINEMA',
+          from: 'chronicles',
+          offerId: '116656',
+        })
+      })
     })
   })
 })

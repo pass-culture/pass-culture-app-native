@@ -26,6 +26,7 @@ export enum AnalyticsEvent {
   CHANGE_SEARCH_LOCATION = 'ChangeSearchLocation',
   CHOOSE_EDUCONNECT_METHOD = 'ChooseEduConnectMethod',
   CHOOSE_UBBLE_METHOD = 'ChooseUbbleMethod',
+  CLICK_ALL_CLUB_RECOS = 'ClickAllClubRecos',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CLICK_COPY_DEBUG_INFO = 'ClickCopyDebugInfo',
   CLICK_EMAIL_ORGANIZER = 'ClickEmailOrganizer',

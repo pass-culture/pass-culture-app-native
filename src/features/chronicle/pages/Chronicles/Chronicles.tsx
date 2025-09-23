@@ -9,6 +9,7 @@ import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBa
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
+import { analytics } from 'libs/analytics/provider'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
@@ -28,6 +29,13 @@ export const Chronicles: FunctionComponent = () => {
   })
 
   const handleOnShowRecoButtonPress = () => {
+    analytics.logClickAllClubRecos({
+      offerId: offerId.toString(),
+      from: 'chronicles',
+      categoryName: offer?.subcategoryId
+        ? subcategoriesMapping[offer.subcategoryId].categoryId
+        : '',
+    })
     InteractionManager.runAfterInteractions(() => {
       navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
     })

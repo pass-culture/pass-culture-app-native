@@ -24,6 +24,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logCategoryBlockClicked: jest.fn(),
   logChooseEduConnectMethod: jest.fn(),
   logChooseUbbleMethod: jest.fn(),
+  logClickAllClubRecos: jest.fn(),
   logClickBookOffer: jest.fn(),
   logClickCopyDebugInfo: jest.fn(),
   logClickEmailOrganizer: jest.fn(),

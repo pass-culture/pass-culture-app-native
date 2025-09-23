@@ -157,6 +157,8 @@ export const logEventAnalytics = {
     analytics.logEvent({
       firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
     }),
+  logClickAllClubRecos: (params: { offerId: string; from: Referrals; categoryName: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_ALL_CLUB_RECOS }, params),
   logClickBookOffer: (params: {
     offerId: number
     from?: Referrals
