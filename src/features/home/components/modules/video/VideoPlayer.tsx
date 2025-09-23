@@ -54,7 +54,7 @@ export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
 
   const playVideo = () => {
     setIsPlaying(true)
-    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId })
+    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId, offerId: offer?.objectID })
   }
 
   const replayVideo = () => {
