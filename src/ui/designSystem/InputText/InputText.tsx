@@ -104,9 +104,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           {customProps.errorMessage ? (
             <ErrorContainer>
               <ErrorIcon />
-              <ErrorText numberOfLines={2} ellipsizeMode="tail">
-                {customProps.errorMessage}
-              </ErrorText>
+              <ErrorText>{customProps.errorMessage}</ErrorText>
             </ErrorContainer>
           ) : null}
           {customProps.characterCount ? (
