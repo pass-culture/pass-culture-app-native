@@ -9,6 +9,7 @@ import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBa
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
 export const Chronicles: FunctionComponent = () => {
@@ -17,6 +18,7 @@ export const Chronicles: FunctionComponent = () => {
 
   const offerId = route.params?.offerId
   const { data: offer } = useOfferQuery({ offerId })
+  const subcategoriesMapping = useSubcategoriesMapping()
   const chronicleVariantInfo =
     chronicleVariant[offer?.subcategoryId ?? SubcategoryIdEnum.LIVRE_PAPIER]
   const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
@@ -38,6 +40,7 @@ export const Chronicles: FunctionComponent = () => {
       chronicleCardsData={chronicleCardsData}
       offerId={offer.id}
       offerName={offer.name}
+      offerCategoryId={subcategoriesMapping[offer.subcategoryId].categoryId}
       variantInfo={chronicleVariantInfo}
       onShowRecoButtonPress={handleOnShowRecoButtonPress}
     />

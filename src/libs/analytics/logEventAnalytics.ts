@@ -184,6 +184,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
+  logClickWhatsClub: (params: { offerId: string; from: Referrals; categoryName: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
   logConnectionInfo: (params: { type: string; generation?: string | null }) =>

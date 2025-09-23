@@ -33,6 +33,7 @@ export enum AnalyticsEvent {
   CLICK_INFO_REVIEW = 'ClickInfoReview',
   CLICK_MAIL_DEBUG_INFO = 'ClickMailDebugInfo',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
+  CLICK_WHATS_CLUB = 'ClickWhatsClub',
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
   CONNECTION_INFO = 'ConnectionInfo',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',

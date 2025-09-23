@@ -9,6 +9,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { renderOfferPage } from 'features/offer/tests/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -225,6 +226,20 @@ describe('<Offer />', () => {
       await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
+    })
+
+    it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await screen.findByText('La reco du Ciné Club')
+
+      await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+
+      expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
+        categoryName: 'CINEMA',
+        from: 'offer',
+        offerId: '116656',
+      })
     })
   })
 

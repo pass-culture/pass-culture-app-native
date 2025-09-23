@@ -32,6 +32,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logClickMailDebugInfo: jest.fn(),
   logClickSeeMore: jest.fn(),
   logClickSocialNetwork: jest.fn(),
+  logClickWhatsClub: jest.fn(),
   logConfirmBookingCancellation: jest.fn(),
   logConnectionInfo: jest.fn(),
   logConsultAccessibility: jest.fn(),

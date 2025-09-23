@@ -13,6 +13,7 @@ import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetc
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -76,6 +77,17 @@ export function Offer() {
     navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
   }
 
+  const handleOnShowChroniclesWritersModal = () => {
+    analytics.logClickWhatsClub({
+      offerId: offer?.id.toString() ?? '',
+      from: 'offer',
+      categoryName: offer?.subcategoryId
+        ? subcategoriesMapping[offer?.subcategoryId].categoryId
+        : '',
+    })
+    showChroniclesWritersModal()
+  }
+
   const { data } = useFetchHeadlineOffersCountQuery(offer)
 
   if (!offer || !subcategories || !subcategoriesMapping?.[offer?.subcategoryId]) return null
@@ -126,7 +138,7 @@ export function Offer() {
         defaultReaction={booking?.userReaction}
         onReactionButtonPress={booking?.canReact ? showReactionModal : undefined}
         userId={user?.id}
-        onShowChroniclesWritersModal={showChroniclesWritersModal}
+        onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
       />
     </Page>
   )

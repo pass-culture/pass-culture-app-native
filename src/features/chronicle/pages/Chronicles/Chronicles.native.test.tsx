@@ -3,10 +3,12 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum } from 'api/gen'
+import { SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { analytics } from 'libs/analytics/provider'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -35,6 +37,13 @@ const mockNavigate = jest.fn()
 jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   navigate: mockNavigate,
 })
+
+const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 const mockShowModal = jest.fn()
 const mockCloseModal = jest.fn()
@@ -108,6 +117,24 @@ describe('Chronicles', () => {
       await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
+    })
+
+    it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club ?" button', async () => {
+      jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: jest.fn(),
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+      render(reactQueryProviderHOC(<Chronicles />))
+
+      await user.press(await screen.findByText('C’est quoi le Ciné Club ?'))
+
+      expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
+        categoryName: 'CINEMA',
+        from: 'chronicles',
+        offerId: '116656',
+      })
     })
   })
 

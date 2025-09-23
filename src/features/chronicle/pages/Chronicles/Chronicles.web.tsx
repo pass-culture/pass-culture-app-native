@@ -85,6 +85,7 @@ export const Chronicles: FunctionComponent = () => {
       <ChroniclesBase
         offerId={offer.id}
         offerName={offer.name}
+        offerCategoryId={subcategory.categoryId}
         variantInfo={chronicleVariantInfo}
         chronicleCardsData={chronicleCardsData}
         onShowRecoButtonPress={handleOnShowRecoButtonPress}>
