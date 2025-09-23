@@ -22,7 +22,14 @@ const defaultConfig: KnipConfig = {
     'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
     'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
     'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
-    'src/ui/designSystem/RadioButton/getRadioButtonColors.ts', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/helpers/colors.ts', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/helpers/display.ts', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/helpers/hover.ts', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/helpers/index.ts', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/helpers/state.ts', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/styles/RadioButtonLabel.styles.tsx', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/styles/RadioCircle.styles.tsx', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/types.ts', // TODO(PC-36310): remove
     'src/ui/designSystem/RadioButton/RadioButton.tsx', // TODO(PC-36310): remove
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
