@@ -2,7 +2,7 @@ import { BookingsResponseV2, BookingResponse } from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
 const convertBookingDatesToTimezone = (bookings: BookingResponse[]): BookingResponse[] => {
-  return bookings.map((booking) => {
+  return bookings?.map((booking) => {
     const timezone = booking.stock.offer.address?.timezone ?? booking.stock.offer.venue.timezone
     return {
       ...booking,
