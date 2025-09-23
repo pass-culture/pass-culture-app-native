@@ -137,6 +137,40 @@ describe('<Venue />', () => {
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })
 
+  it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is on and there is more than one offer', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR])
+    renderVenue(venueId)
+
+    expect(screen.queryByText('Agenda')).not.toBeOnTheScreen()
+  })
+
+  describe('Venue is monoOffer', () => {
+    beforeEach(() => {
+      mockUseVenueOffers.mockReturnValue({
+        isLoading: false,
+        data: { hits: [VenueOffersResponseSnap[0]], nbHits: 1 },
+      })
+    })
+
+    it('should display Agenda tab content when ff WIP_ENABLE_VENUE_CALENDAR is on and tab is selected', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR])
+      renderVenue(venueId)
+      await user.press(await screen.findByText('Agenda'))
+
+      expect(
+        await screen.findByText(
+          'Bientôt : agenda présentant les dates de l’evènement unique de ce lieu'
+        )
+      ).toBeOnTheScreen()
+    })
+
+    it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is off', async () => {
+      renderVenue(venueId)
+
+      expect(screen.queryByText('Agenda')).not.toBeOnTheScreen()
+    })
+  })
+
   describe('CTA', () => {
     it('should not display CTA if venueTypeCode is Movie', async () => {
       const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }

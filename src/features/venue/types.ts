@@ -21,6 +21,7 @@ export interface Venue {
 export enum Tab {
   OFFERS = 'Offres disponibles',
   INFOS = 'Infos pratiques',
+  AGENDA = 'Agenda',
 }
 
 export type TabProps<TabKeyType extends string> = {
