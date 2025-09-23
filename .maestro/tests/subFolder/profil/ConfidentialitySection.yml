@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Partager le pass Culture'
+            text: 'Partage le pass Culture'
 - tapOn:
     text: 'Confidentialité'
 
