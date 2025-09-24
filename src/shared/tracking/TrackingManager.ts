@@ -217,14 +217,13 @@ class TrackingManagerService {
       return
     }
 
-    // Send final data if needed
-    if (buffer.hasData()) {
-      TrackingLogger.info('SENDING_FINAL_DATA', {
-        pageId,
-        stats: buffer.getStats(),
-      })
-      this.sendAndClearBuffer(pageId)
-    }
+    // No need to send data here - Focus Lost already handles it
+    // This prevents duplicate analytics sends
+    TrackingLogger.debug('UNREGISTER_NO_SEND', {
+      pageId,
+      hasData: buffer.hasData(),
+      message: 'Focus Lost already handled analytics - no duplicate send',
+    })
 
     // Clean up
     this.pageBuffers.delete(pageId)
