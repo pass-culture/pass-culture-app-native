@@ -794,6 +794,7 @@ describe('<OfferContent />', () => {
         expect(analytics.logClickInfoReview).toHaveBeenNthCalledWith(1, {
           from: 'offer',
           offerId: '116656',
+          categoryName: 'CINEMA',
         })
       })
 
