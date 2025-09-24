@@ -9338,10 +9338,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-async-storage-persister@npm:^5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/query-async-storage-persister@npm:5.90.1"
+  dependencies:
+    "@tanstack/query-core": 5.90.1
+    "@tanstack/query-persist-client-core": 5.90.1
+  checksum: d238fea398782fa77964113526d453d585e4fa28971566fcf696816ade2cb22f0f8fcaf2ab6bf741fff92a904e4ca791fa7cfb4c1dcb2f502a4b2a9af51f5827
+  languageName: node
+  linkType: hard
+
 "@tanstack/query-core@npm:5.87.1":
   version: 5.87.1
   resolution: "@tanstack/query-core@npm:5.87.1"
   checksum: 3dc20d40221948a783af3e7e9b489f1264513121dfd7cad21ccf58c2cb58bfe5fd095d061560682860823def56d8492bc45e657cc7ce71927b8cf3041c7e9ee5
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/query-core@npm:5.90.1"
+  checksum: 7f5f62581d2d567cb85324d2183a17ea2bd00e86c827b6e144be1d59fb74154db4b00eb635a25fc0dc94f98bb6edb3742e2503029082179254553bddae6e527f
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-persist-client-core@npm:5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/query-persist-client-core@npm:5.90.1"
+  dependencies:
+    "@tanstack/query-core": 5.90.1
+  checksum: 3192a8a09194cc17d56cb5c21bbd58d046f461c9cc356b848667dbc62d4c05712cc4287e67a6f9fb79a240975a1e144bef66caae0563d25a664d0a3d0a6a1ace
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-persist-client@npm:^5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/react-query-persist-client@npm:5.90.1"
+  dependencies:
+    "@tanstack/query-persist-client-core": 5.90.1
+  peerDependencies:
+    "@tanstack/react-query": ^5.90.1
+    react: ^18 || ^19
+  checksum: 26e7e6673a9d7863850dcbb297d14e522b195cbfc13b1ae85ac0725ca6a35480c53aad29f8420baf69a1131096c596a2a66d71c783c57a27748daefd9df82f4e
   languageName: node
   linkType: hard
 
@@ -11058,7 +11096,9 @@ __metadata:
     "@storybook/react-native-web-vite": ^9.0.18
     "@storybook/react-vite": ^9.0.18
     "@storybook/testing-library": ^0.2.2
+    "@tanstack/query-async-storage-persister": ^5.90.1
     "@tanstack/react-query": 5.87.1
+    "@tanstack/react-query-persist-client": ^5.90.1
     "@testing-library/jest-dom": ^6.4.2
     "@testing-library/jest-native": ^5.4.3
     "@testing-library/react": ^15.0.5
