@@ -40,7 +40,10 @@ export const ReactQueryClientProvider = ({ children }: { children: React.JSX.Ele
       client={queryClient}
       persistOptions={{
         persister,
-        dehydrateOptions: { shouldDehydrateQuery: (query) => !!query.meta?.persist },
+        dehydrateOptions: {
+          shouldDehydrateQuery: (query) => !!query.meta?.persist,
+          shouldDehydrateMutation: (mutation) => !!mutation.meta?.persist,
+        },
       }}>
       {children}
     </PersistQueryClientProvider>
