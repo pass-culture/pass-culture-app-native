@@ -3,7 +3,6 @@ import React from 'react'
 import { EligibilityType, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
-import * as BookingOfferAPI from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
@@ -15,6 +14,7 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import * as BookingOfferAPI from 'queries/offer/useBookingOfferQuery'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -49,10 +49,8 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),
 }))
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: jest.fn(),
-}))
-const mockUseBookingOffer = jest.spyOn(BookingOfferAPI, 'useBookingOffer')
+
+const mockUseBookingOffer = jest.spyOn(BookingOfferAPI, 'useBookingOfferQuery')
 mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
 
 const mockShowErrorSnackBar = jest.fn()

@@ -8,13 +8,10 @@ interface MutationOptions {
   onError: (error: unknown) => void
 }
 
-export function useSuspendForSuspiciousLoginMutation({ onSuccess, onError }: MutationOptions) {
-  return useMutation(
-    (body: SuspendAccountForSuspiciousLoginRequest) =>
+export const useSuspendForSuspiciousLoginMutation = ({ onSuccess, onError }: MutationOptions) =>
+  useMutation({
+    mutationFn: (body: SuspendAccountForSuspiciousLoginRequest) =>
       api.postNativeV1AccountSuspendForSuspiciousLogin(body),
-    {
-      onSuccess,
-      onError,
-    }
-  )
-}
+    onSuccess,
+    onError,
+  })

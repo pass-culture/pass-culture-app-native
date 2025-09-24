@@ -11,9 +11,9 @@ export const useGetStepperInfoQuery = (): UseQueryResult<
 > => {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery<SubscriptionStepperResponseV2>(
-    [QueryKeys.STEPPER_INFO],
-    () => api.getNativeV2SubscriptionStepper(),
-    { enabled: isLoggedIn }
-  )
+  return useQuery({
+    queryKey: [QueryKeys.STEPPER_INFO],
+    queryFn: () => api.getNativeV2SubscriptionStepper(),
+    enabled: isLoggedIn,
+  })
 }

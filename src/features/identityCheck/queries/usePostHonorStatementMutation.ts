@@ -2,9 +2,9 @@ import { MutationOptions, useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 
-export function usePostHonorStatementMutation({ onSuccess, onError }: MutationOptions) {
-  return useMutation(() => api.postNativeV1SubscriptionHonorStatement(), {
+export const usePostHonorStatementMutation = ({ onSuccess, onError }: MutationOptions) =>
+  useMutation({
+    mutationFn: () => api.postNativeV1SubscriptionHonorStatement(),
     onSuccess,
     onError,
   })
-}

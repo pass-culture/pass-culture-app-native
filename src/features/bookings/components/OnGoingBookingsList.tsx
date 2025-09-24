@@ -3,6 +3,7 @@ import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -25,18 +26,17 @@ import { OnGoingBookingItem } from './OnGoingBookingItem'
 
 const ANIMATION_DURATION = 700
 
-export const OnGoingBookingsList: FunctionComponent<{ isQueryEnabled: boolean }> = ({
-  isQueryEnabled,
-}) => {
+export const OnGoingBookingsList: FunctionComponent = () => {
   const netInfo = useNetInfoContext()
+  const { isLoggedIn } = useAuthContext()
 
   const {
     data: bookings,
-    isInitialLoading: isLoading,
+    isLoading,
     isFetching,
     refetch,
-  } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
-  const { isInitialLoading: subcategoriesIsLoading } = useSubcategories()
+  } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
+  const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()

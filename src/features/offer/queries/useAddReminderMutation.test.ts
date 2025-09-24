@@ -54,7 +54,7 @@ describe('useAddReminderMutation', () => {
       result.current.mutate(offerId)
     })
 
-    expect(cancelQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(cancelQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
 
     const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
 
@@ -96,7 +96,7 @@ describe('useAddReminderMutation', () => {
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
   })
 
   it('should invalidate reminders query after mutation fails', async () => {
@@ -114,7 +114,7 @@ describe('useAddReminderMutation', () => {
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(false))
 
-    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
   })
 })
 

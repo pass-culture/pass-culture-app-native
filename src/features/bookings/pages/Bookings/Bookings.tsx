@@ -13,7 +13,6 @@ import { useReactionMutation } from 'features/reactions/queries/useReactionMutat
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
 import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
@@ -41,11 +40,8 @@ export const Bookings = () => {
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { isLoggedIn } = useAuthContext()
-  const netInfo = useNetInfoContext()
-  const isQueryEnabled = !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn
-  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
+  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
   const { mutate: addReaction } = useReactionMutation()
-
   const { endedBookings = [] } = bookings ?? {}
 
   const { data: availableReactions } = useAvailableReactionQuery()
@@ -85,8 +81,8 @@ export const Bookings = () => {
   )
 
   const tabPanels = {
-    [BookingsTab.CURRENT]: <OnGoingBookingsList isQueryEnabled={isQueryEnabled} />,
-    [BookingsTab.COMPLETED]: <EndedBookings isQueryEnabled={isQueryEnabled} />,
+    [BookingsTab.CURRENT]: <OnGoingBookingsList />,
+    [BookingsTab.COMPLETED]: <EndedBookings />,
   }
 
   const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0

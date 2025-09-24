@@ -6,6 +6,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { api } from 'api/api'
 import {
+  BookingsResponse,
   FavoriteResponse,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
@@ -28,6 +29,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -102,6 +104,9 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('features/auth/context/AuthContext')
+
+const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
+fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
 const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
@@ -212,6 +217,7 @@ describe('<OfferContent />', () => {
     spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -661,7 +667,7 @@ describe('<OfferContent />', () => {
 
   describe('movie screening access button', () => {
     describe('with remote config activated', () => {
-      beforeAll(() => {
+      beforeEach(() => {
         useRemoteConfigSpy.mockReturnValue({
           ...remoteConfigResponseFixture,
           data: {
@@ -775,6 +781,19 @@ describe('<OfferContent />', () => {
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
           from: 'chronicles',
+        })
+      })
+
+      it('should trigger ClickInfoReview log when pressing "Voir tous les avis" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        await user.press(await screen.findByText('Voir tous les avis'))
+
+        expect(analytics.logClickInfoReview).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: '116656',
         })
       })
 

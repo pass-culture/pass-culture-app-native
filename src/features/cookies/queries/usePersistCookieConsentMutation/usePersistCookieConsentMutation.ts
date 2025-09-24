@@ -14,21 +14,23 @@ import { COOKIES_CONSENT_KEY } from '../../helpers/cookiesConsentKey'
 export const usePersistCookieConsentMutation = () => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useMutation(async (cookiesChoice: CookiesConsent): Promise<void> => {
-    await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+  return useMutation({
+    mutationFn: async (cookiesChoice: CookiesConsent): Promise<void> => {
+      await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
 
-    try {
-      if (cookiesChoice.consent) {
-        await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
+      try {
+        if (cookiesChoice.consent) {
+          await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
+        }
+      } catch (error) {
+        if (logType === LogTypeEnum.INFO) {
+          const errorMessage = getErrorMessage(error)
+          eventMonitoring.captureException(
+            `can‘t log cookies consent choice ; reason: "${errorMessage}"`,
+            { level: logType, extra: { error } }
+          )
+        }
       }
-    } catch (error) {
-      if (logType === LogTypeEnum.INFO) {
-        const errorMessage = getErrorMessage(error)
-        eventMonitoring.captureException(
-          `can‘t log cookies consent choice ; reason: "${errorMessage}"`,
-          { level: logType, extra: { error } }
-        )
-      }
-    }
+    },
   })
 }

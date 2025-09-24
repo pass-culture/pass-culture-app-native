@@ -2,8 +2,8 @@ appId: app.passculture.webapp
 ---
 - waitForAnimationToEnd
 
-- runFlow:
-    when:
+- repeat:
+    while:
       visible: "Respect de ta vie privée"
     commands:
       - tapOn:

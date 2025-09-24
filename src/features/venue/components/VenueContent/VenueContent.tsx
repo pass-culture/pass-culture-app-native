@@ -10,9 +10,7 @@ import { VenueHeaderWrapper } from 'features/venue/components/VenueContent/Venue
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
-import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { isCloseToBottom } from 'libs/analytics'
-import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
@@ -24,6 +22,7 @@ type Props = {
   venue: VenueResponse
   isCTADisplayed?: boolean
   children: React.ReactNode
+  showSearchInVenueModal: () => void
 }
 
 const trackEventHasSeenVenueForSurvey = () =>
@@ -33,6 +32,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   venue,
   isCTADisplayed,
   children,
+  showSearchInVenueModal,
 }) => {
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -73,25 +73,18 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
   const { isButtonVisible, wording } = useOfferCTA()
-  const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
 
   const renderVenueCTA = useCallback(() => {
     if (showAccessScreeningButton && wording.length) {
       return isButtonVisible ? <CineContentCTA /> : null
     }
-    return isCTADisplayed ? (
-      <VenueCTA
-        searchNavigationConfig={searchNavigationConfig}
-        onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
-      />
-    ) : null
+    return isCTADisplayed ? <VenueCTA showSearchInVenueModal={showSearchInVenueModal} /> : null
   }, [
     isButtonVisible,
     isCTADisplayed,
     showAccessScreeningButton,
-    venue.id,
     wording.length,
-    searchNavigationConfig,
+    showSearchInVenueModal,
   ])
 
   return (

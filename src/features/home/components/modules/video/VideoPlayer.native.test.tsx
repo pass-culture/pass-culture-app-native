@@ -105,6 +105,7 @@ describe('VideoPlayer', () => {
           from: 'home',
           homeEntryId: 'xyz',
           moduleId: 'abcd',
+          offerId: '102280',
         })
       })
     })

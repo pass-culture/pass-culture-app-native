@@ -10,69 +10,77 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export const useReactionMutation = () => {
   const queryClient = useQueryClient()
   const { showErrorSnackBar } = useSnackBarContext()
-  return useMutation(
-    (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
-    {
-      onMutate: async (reactionRequest: PostReactionRequest) => {
-        await queryClient.cancelQueries([QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId])
-        await queryClient.cancelQueries([QueryKeys.BOOKINGS])
+  return useMutation({
+    mutationFn: (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
+    onMutate: async (reactionRequest: PostReactionRequest) => {
+      await queryClient.cancelQueries({
+        queryKey: [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
+      })
+      await queryClient.cancelQueries({
+        queryKey: [QueryKeys.BOOKINGS],
+      })
 
-        const previousOfferData = queryClient.getQueryData([
-          QueryKeys.OFFER,
-          reactionRequest.reactions[0]?.offerId,
-        ])
-        const previousBookingsData = queryClient.getQueryData([QueryKeys.BOOKINGS])
+      const previousOfferData = queryClient.getQueryData([
+        QueryKeys.OFFER,
+        reactionRequest.reactions[0]?.offerId,
+      ])
+      const previousBookingsData = queryClient.getQueryData([QueryKeys.BOOKINGS])
 
-        queryClient.setQueryData<OfferResponseV2 | undefined>(
-          [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
-          (oldData) => {
-            if (!oldData) return
-
-            const currentLikes = oldData.reactionsCount.likes
-            const isLike = reactionRequest.reactions[0]?.reactionType === ReactionTypeEnum.LIKE
-
-            return {
-              ...oldData,
-              reactionsCount: {
-                likes: updateLikesCounter(currentLikes, isLike),
-              },
-            }
-          }
-        )
-
-        queryClient.setQueryData<BookingsResponse | undefined>([QueryKeys.BOOKINGS], (oldData) => {
+      queryClient.setQueryData<OfferResponseV2 | undefined>(
+        [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
+        (oldData) => {
           if (!oldData) return
 
-          const updatedEndedBookings = addReactionsToBookings(
-            oldData.ended_bookings,
-            reactionRequest.reactions
-          )
+          const currentLikes = oldData.reactionsCount.likes
+          const isLike = reactionRequest.reactions[0]?.reactionType === ReactionTypeEnum.LIKE
 
           return {
             ...oldData,
-            ended_bookings: updatedEndedBookings,
+            reactionsCount: {
+              likes: updateLikesCounter(currentLikes, isLike),
+            },
           }
-        })
+        }
+      )
 
-        return { previousBookingsData, previousOfferData }
-      },
-      onError: (_error, reactionRequest, context) => {
-        queryClient.setQueryData(
-          [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
-          context?.previousOfferData
+      queryClient.setQueryData<BookingsResponse | undefined>([QueryKeys.BOOKINGS], (oldData) => {
+        if (!oldData) return
+
+        const updatedEndedBookings = addReactionsToBookings(
+          oldData.ended_bookings,
+          reactionRequest.reactions
         )
-        queryClient.setQueryData([QueryKeys.BOOKINGS], context?.previousBookingsData)
 
-        showErrorSnackBar({
-          message: 'Une erreur s’est produite',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      },
-      onSettled: (_data, _error, reactionRequest) => {
-        queryClient.invalidateQueries([QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId])
-        queryClient.invalidateQueries([QueryKeys.BOOKINGS])
-        queryClient.invalidateQueries([QueryKeys.AVAILABLE_REACTION])
-      },
-    }
-  )
+        return {
+          ...oldData,
+          ended_bookings: updatedEndedBookings,
+        }
+      })
+
+      return { previousBookingsData, previousOfferData }
+    },
+    onError: (_error, reactionRequest, context) => {
+      queryClient.setQueryData(
+        [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
+        context?.previousOfferData
+      )
+      queryClient.setQueryData([QueryKeys.BOOKINGS], context?.previousBookingsData)
+
+      showErrorSnackBar({
+        message: 'Une erreur s’est produite',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+    onSettled: (_data, _error, reactionRequest) => {
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
+      })
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.BOOKINGS],
+      })
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.AVAILABLE_REACTION],
+      })
+    },
+  })
 }

@@ -182,7 +182,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         <View
           style={
             {
-              "paddingBottom": 20,
+              "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 24,
               "width": "100%",
@@ -328,7 +328,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           style={
             {
               "alignItems": "center",
-              "marginTop": 20,
+              "marginTop": 24,
               "paddingHorizontal": 24,
             }
           }

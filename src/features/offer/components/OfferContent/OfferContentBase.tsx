@@ -183,7 +183,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
-  const { mutate: addFavorite, isLoading: isAddFavoriteLoading } = useAddFavoriteMutation({
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddFavoriteMutation({
     onSuccess: () => {
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
@@ -200,7 +200,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const { mutate: removeFavorite, isLoading: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',
@@ -225,6 +225,14 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     // It's dirty but necessary to use from parameter for the logs
     navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
     analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
+  }
+
+  const handleOnSeeAllReviewsPress = () => {
+    analytics.logClickInfoReview({
+      from: 'offer',
+      offerId: offer?.id.toString() ?? '',
+      userId: userId?.toString(),
+    })
   }
 
   const offerCtaButton = (
@@ -303,6 +311,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               onSeeMoreButtonPress={onSeeMoreButtonPress}
               onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+              onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
             />
           ) : null}
           <StyledSectionWithDivider

@@ -64,7 +64,9 @@ describe('<RootNavigator />', () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
     renderRootNavigator()
 
+    await act(async () => {})
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
+    await act(async () => {})
 
     expect(privacyPolicyTitle).not.toBeOnTheScreen()
   })
@@ -76,6 +78,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {})
     const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
+    await act(async () => {})
 
     expect(privacyPolicyTitle).toBeOnTheScreen()
   })
@@ -88,8 +91,9 @@ describe('<RootNavigator />', () => {
     await act(async () => {})
 
     screen.getByText('Respect de ta vie privée')
-
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
+
+    await act(async () => {})
 
     expect(quickAccessButton).not.toBeOnTheScreen()
   })

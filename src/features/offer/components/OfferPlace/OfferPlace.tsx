@@ -95,7 +95,7 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
     },
     ean: offer.extraData?.ean ?? undefined,
     allocineId: offer.extraData?.allocineId ?? undefined,
-    queryOptions: { enabled: shouldFetchSearchVenueOffers },
+    enabled: shouldFetchSearchVenueOffers,
   })
 
   const onShowChangeVenueModal = useCallback(() => {

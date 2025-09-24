@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.359.2",
-  "build": 10359002,
+  "version": "1.359.3",
+  "build": 10359003,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -116,7 +116,7 @@
     "@sentry/types": "^8.55.0",
     "@shopify/flash-list": "^2.0.2",
     "@storybook/testing-library": "^0.2.2",
-    "@tanstack/react-query": "4.29.19",
+    "@tanstack/react-query": "5.87.1",
     "@zootools/email-spell-checker": "^1.11.0",
     "algoliasearch": "^4.24.0",
     "chromatic": "^11.27.0",

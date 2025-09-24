@@ -60,7 +60,7 @@ describe('useReactionMutation', () => {
 
     await waitFor(() => {
       expect(result.current.isSuccess).toBeTruthy()
-      expect(queryCache.find([QueryKeys.BOOKINGS])?.state.isInvalidated).toBeTruthy()
+      expect(queryCache.find({ queryKey: [QueryKeys.BOOKINGS] })?.state.isInvalidated).toBeTruthy()
     })
   })
 
@@ -74,7 +74,7 @@ describe('useReactionMutation', () => {
 
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()
-      expect(queryCache.find([QueryKeys.BOOKINGS])?.state.isInvalidated).toBeTruthy()
+      expect(queryCache.find({ queryKey: [QueryKeys.BOOKINGS] })?.state.isInvalidated).toBeTruthy()
     })
   })
 })

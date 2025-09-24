@@ -24,7 +24,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
   const { goBack } = useGoBack(...getTabHookConfig('Bookings'))
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
-  const { mutate, isLoading } = useArchiveBookingMutation({
+  const { mutate, isPending } = useArchiveBookingMutation({
     bookingId: props.bookingId,
     onSuccess: () => {
       showSuccessSnackBar({
@@ -60,7 +60,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
         <ButtonPrimary
           wording="Terminer ma réservation"
           onPress={terminateCancel}
-          disabled={isLoading}
+          disabled={isPending}
         />
         <Spacer.Column numberOfSpaces={3} />
         <ButtonTertiaryPrimary

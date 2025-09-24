@@ -48,8 +48,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     data: { aroundPrecision },
   } = useRemoteConfigQuery()
 
-  const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
-    [
+  const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>({
+    queryKey: [
       QueryKeys.SEARCH_RESULTS,
       searchState,
       userLocation,
@@ -58,7 +58,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       aroundMeRadius,
       disabilities,
     ],
-    async ({ pageParam: page = 0 }) => {
+    queryFn: async ({ pageParam }) => {
+      const page = pageParam as number
       const {
         offersResponse,
         venuesResponse,
@@ -89,13 +90,12 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       }
     },
     // first page is 0
-    {
-      getNextPageParam: ({ offers: { nbPages, page } }) => {
-        return page + 1 < nbPages ? page + 1 : undefined
-      },
-      enabled: onlineManager.isOnline(),
-    }
-  )
+    initialPageParam: 0,
+    getNextPageParam: ({ offers: { nbPages, page } }) => {
+      return page + 1 < nbPages ? page + 1 : null
+    },
+    enabled: onlineManager.isOnline(),
+  })
 
   const hits: SearchOfferHits = useMemo(() => {
     const { pages = [] } = data ?? {}

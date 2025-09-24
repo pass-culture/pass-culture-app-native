@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
@@ -7,6 +7,7 @@ import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useArtistResultsQuery } from 'queries/offer/useArtistResultsQuery'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 
@@ -25,7 +26,11 @@ export const Artist: FunctionComponent = () => {
   const { artistPlaylist, artistTopOffers } = useArtistResultsQuery({
     artistId: params.id,
   })
-  const { data: artist } = useArtistQuery(params.id)
+  const { data: artist, isError, error, isLoading } = useArtistQuery(params.id)
+
+  useEffect(() => {
+    if (isError) eventMonitoring.captureException(error)
+  }, [error, isError])
 
   // Handler for modules with the new system
   const handleViewableItemsChanged = React.useCallback(
@@ -45,7 +50,7 @@ export const Artist: FunctionComponent = () => {
   )
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
-  if (!artist || !enableArtistPage) return null
+  if (isLoading || !artist || !enableArtistPage) return null
 
   return (
     <ArtistBody

@@ -98,6 +98,7 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
+    mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
       ...venueDataTest,
@@ -134,6 +135,40 @@ describe('<Venue />', () => {
     renderVenue(venueId)
 
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
+  })
+
+  it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is on and there is more than one offer', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR])
+    renderVenue(venueId)
+
+    expect(screen.queryByText('Agenda')).not.toBeOnTheScreen()
+  })
+
+  describe('Venue is monoOffer', () => {
+    beforeEach(() => {
+      mockUseVenueOffers.mockReturnValue({
+        isLoading: false,
+        data: { hits: [VenueOffersResponseSnap[0]], nbHits: 1 },
+      })
+    })
+
+    it('should display Agenda tab content when ff WIP_ENABLE_VENUE_CALENDAR is on and tab is selected', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR])
+      renderVenue(venueId)
+      await user.press(await screen.findByText('Agenda'))
+
+      expect(
+        await screen.findByText(
+          'Bientôt : agenda présentant les dates de l’evènement unique de ce lieu'
+        )
+      ).toBeOnTheScreen()
+    })
+
+    it('should not display Agenda tab when ff WIP_ENABLE_VENUE_CALENDAR is off', async () => {
+      renderVenue(venueId)
+
+      expect(screen.queryByText('Agenda')).not.toBeOnTheScreen()
+    })
   })
 
   describe('CTA', () => {
@@ -294,6 +329,58 @@ describe('<Venue />', () => {
 
         expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
       })
+    })
+  })
+
+  describe('wipSearchInVenueModal is on', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE])
+    })
+
+    it('should open the search in venue modal when pressing on "Rechercher une offre"', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      expect(await screen.findByText('Rechercher dans ce lieu')).toBeOnTheScreen()
+    })
+
+    it('should display button "Lancer la recherche" disabled when opening the modal', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      expect(await screen.findByText('Lancer la recherche')).toBeDisabled()
+    })
+
+    it('should display button "Lancer la recherche" not disabled when there is at least on charcter in searchbar', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      await user.type(screen.getByTestId('searchInput'), 'Martine')
+
+      expect(await screen.findByText('Lancer la recherche')).not.toBeDisabled()
+    })
+
+    it('should logVenueSeeAllOffersClicked when pressing on "Lancer la recherche"', async () => {
+      renderVenue(venueId)
+
+      await screen.findByText('Rechercher une offre')
+
+      await user.press(await screen.findByText('Rechercher une offre'))
+
+      await user.type(screen.getByTestId('searchInput'), 'Martine')
+
+      await user.press(screen.getByText('Lancer la recherche'))
+
+      expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(5543)
     })
   })
 })

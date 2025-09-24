@@ -12,7 +12,6 @@ import { CguWithCheckbox } from 'features/bookOffer/components/CguWithCheckbox'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
@@ -23,6 +22,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { formatFullAddress } from 'shared/address/addressFormatter'
@@ -65,7 +65,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
   const selectedStock = useBookingStock()
-  const offer = useBookingOffer()
+  const offer = useBookingOfferQuery()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const isUserUnderage = useIsUserUnderage()
@@ -96,7 +96,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       longitude: offer?.venue?.coordinates?.longitude ?? 0,
     },
     query: '',
-    queryOptions: { enabled: shouldFetchSearchVenueOffers },
+    enabled: shouldFetchSearchVenueOffers,
   }
   const currentSearchVenueOffers = {
     offerId: offer?.id,

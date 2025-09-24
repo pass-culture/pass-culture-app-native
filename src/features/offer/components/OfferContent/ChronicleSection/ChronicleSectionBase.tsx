@@ -19,6 +19,7 @@ export const ChronicleSectionBase = ({
   variantInfo,
   ctaLabel,
   navigateTo,
+  onBeforeNavigate,
   onSeeMoreButtonPress,
   onShowChroniclesWritersModal,
   style,
@@ -42,6 +43,7 @@ export const ChronicleSectionBase = ({
           as={ButtonSecondaryBlack}
           wording={ctaLabel}
           navigateTo={navigateTo}
+          onBeforeNavigate={onBeforeNavigate}
           // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
           // eslint-disable-next-line react-native/no-inline-styles
           style={{ alignSelf: 'center' }}

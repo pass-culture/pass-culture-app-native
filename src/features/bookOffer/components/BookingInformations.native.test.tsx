@@ -35,8 +35,8 @@ const carteCineOfferDigital = {
 }
 
 const mockUseBookingOffer = jest.fn((): OfferResponseV2 | undefined => cinePleinAirOffer)
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: () => mockUseBookingOffer(),
+jest.mock('queries/offer/useBookingOfferQuery', () => ({
+  useBookingOfferQuery: () => mockUseBookingOffer(),
 }))
 
 // This line checks that there is no text content rendered. The regex /./ matches any character, so queryByText will return null if there is no content.

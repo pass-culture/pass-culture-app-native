@@ -7,24 +7,16 @@ import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
 export const useOngoingOrEndedBookingQueryV1 = (
   id: number
-): UseQueryResult<BookingReponse | null> => {
-  return useBookingsQuery({
-    select(bookings: BookingsResponse | null) {
-      if (!bookings) {
-        return null
-      }
-      const onGoingBooking = bookings.ongoing_bookings?.find(
-        (item: BookingReponse) => item.id === id
-      )
-      const endedBooking = bookings.ended_bookings?.find((item: BookingReponse) => item.id === id)
+): UseQueryResult<BookingReponse | null, Error> =>
+  useBookingsQuery({
+    select: (data: BookingsResponse | null) => findOngoingOrEndedBookingV1(data, id),
+  }) as unknown as UseQueryResult<BookingReponse | null, Error>
 
-      const selected = onGoingBooking ?? endedBooking
-      if (!selected) {
-        return null
-      }
-      return selected
-    },
-  }) as UseQueryResult<BookingReponse | null>
+const findOngoingOrEndedBookingV1 = (bookings: BookingsResponse | null, id: number) => {
+  const onGoingBooking = bookings?.ongoing_bookings?.find((item: BookingReponse) => item.id === id)
+  const endedBooking = bookings?.ended_bookings?.find((item: BookingReponse) => item.id === id)
+
+  return onGoingBooking ?? (endedBooking || null)
 }
 
 export const useOngoingOrEndedBookingQuery = (id: number, enabled: boolean) =>

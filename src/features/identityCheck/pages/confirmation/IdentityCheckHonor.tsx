@@ -31,12 +31,16 @@ export const IdentityCheckHonor = () => {
 
   const {
     mutate: postHonorStatement,
-    isLoading: isPostingHonorLoading,
+    isPending: isPostingHonorLoading,
     isSuccess: isPostingHonorSuccess,
   } = usePostHonorStatementMutation({
     onSuccess: async () => {
-      queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
-      queryClient.invalidateQueries([QueryKeys.HOME_BANNER])
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.NEXT_SUBSCRIPTION_STEP],
+      })
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.HOME_BANNER],
+      })
       let userProfile
       try {
         const { data: user } = await refetchUser()

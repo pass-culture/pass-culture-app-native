@@ -11,7 +11,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useSubmitChangeCity } from './useSubmitChangeCity'
 
 export const ChangeCity = () => {
-  const { control, handleSubmit, onSubmit, isValid, buttonWording, isLoading } =
+  const { control, handleSubmit, onSubmit, isValid, buttonWording, isPending } =
     useSubmitChangeCity()
 
   return (
@@ -37,7 +37,7 @@ export const ChangeCity = () => {
           onPress={handleSubmit(onSubmit)}
           wording={buttonWording}
           disabled={!isValid}
-          isLoading={isLoading}
+          isLoading={isPending}
         />
       }
     />

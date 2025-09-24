@@ -67,7 +67,7 @@ export const OnboardingSubscription = () => {
     initialSubscribedThemes
   )
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
+  const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({
