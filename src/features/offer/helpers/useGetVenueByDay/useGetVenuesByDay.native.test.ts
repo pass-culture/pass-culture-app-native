@@ -8,6 +8,10 @@ import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
+type UseGetVenuesByDayReturn = ReturnType<typeof useGetVenuesByDay>
+type UseGetVenuesByDayParams = Parameters<typeof useGetVenuesByDay>
+type HookProps = { date: UseGetVenuesByDayParams[0] }
+
 const TODAY = dateBuilder().withDay(2).withHours(6)
 const TODAY_LATER = dateBuilder().withDay(2).withHours(10)
 const TODAY_DATE = TODAY.toDate()
@@ -109,11 +113,18 @@ describe('useGetVenuesByDay', () => {
   })
 })
 
-const renderUseGetVenueByDay = (...params: Parameters<typeof useGetVenuesByDay>) =>
-  renderHook(({ date }) => useGetVenuesByDay(date, params[1]), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-    initialProps: { date: params[0] },
-  })
+function renderUseGetVenueByDay(
+  date: UseGetVenuesByDayParams[0],
+  offers: UseGetVenuesByDayParams[1]
+) {
+  return renderHook<UseGetVenuesByDayReturn, HookProps>(
+    ({ date }) => useGetVenuesByDay(date, offers),
+    {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+      initialProps: { date },
+    }
+  )
+}
 
 function generateOfferNumber<T>(length: number, element: T): T[] {
   return new Array(length).fill(element)

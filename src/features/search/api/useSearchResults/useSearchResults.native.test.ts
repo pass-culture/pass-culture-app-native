@@ -40,10 +40,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 const setVenuesSpy = jest.spyOn(useVenueMapStore, 'setVenues')
-
 const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
-const mockDispatch = jest.fn()
 const mockFetchSearchResultsResponse = {
   offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
   venuesResponse: mockedAlgoliaVenueResponse,
@@ -64,6 +62,9 @@ jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () 
 }))
 
 jest.useFakeTimers()
+
+type UseSearchResultsReturn = ReturnType<typeof useSearchInfiniteQuery>
+type UseSearchResultsProps = { searchState: SearchState }
 
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
@@ -139,7 +140,8 @@ describe('useSearchResults', () => {
     it('should not fetch again when focus on suggestion changes', async () => {
       const { rerender } = renderUseSearchResults()
 
-      rerender({ searchState: initialSearchState, dispatch: mockDispatch })
+      // ✅ ne pas passer "dispatch" ici : le hook n’attend que { searchState }
+      rerender({ searchState: initialSearchState })
       await waitFor(() => {
         expect(multipleQueries).toHaveBeenCalledTimes(1)
       })
@@ -239,10 +241,10 @@ describe('useSearchResults', () => {
 })
 
 const renderUseSearchResults = (newSearchState?: SearchState) =>
-  renderHook(
-    ({ searchState }: { searchState: SearchState }) => useSearchInfiniteQuery(searchState),
+  renderHook<UseSearchResultsReturn, UseSearchResultsProps>(
+    ({ searchState }) => useSearchInfiniteQuery(searchState),
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
-      initialProps: { searchState: newSearchState ?? initialSearchState, dispatch: mockDispatch },
+      initialProps: { searchState: newSearchState ?? initialSearchState },
     }
   )
