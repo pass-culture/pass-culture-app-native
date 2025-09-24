@@ -34,7 +34,7 @@ const variantConfig: Variants<typeof LargeTextInput> = [
   },
   {
     label: ' LargeTextInput with Error',
-    props: { ...baseProps, isError: true, showErrorMessage: true, value: textWith801Character },
+    props: { ...baseProps, errorMessage: 'Error', value: textWith801Character },
   },
 ]
 

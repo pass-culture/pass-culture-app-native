@@ -32,7 +32,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   const [textLength, setTextLength] = useState(0)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomInputTextProps(props)
-  const textInputID = uuidv4()
+  const textInputID = nativeProps.testID ?? uuidv4()
 
   const Icon = customProps.rightButton?.icon
   const StyledIcon =
@@ -139,11 +139,13 @@ const FooterContainer = styled.View(({ theme }) => ({
 }))
 
 const ErrorContainer = styled.View({
+  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
 })
 
 const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
+  flex: 1,
   color: theme.designSystem.color.text.error,
   marginLeft: theme.designSystem.size.spacing.xs,
 }))
@@ -151,7 +153,9 @@ const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
 const ErrorIcon = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.extraSmall,
-}))``
+}))({
+  flexShrink: 0,
+})
 
 const CounterContainer = styled.View({
   marginLeft: 'auto',

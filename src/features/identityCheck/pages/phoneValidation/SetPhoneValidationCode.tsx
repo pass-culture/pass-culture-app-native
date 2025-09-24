@@ -153,7 +153,6 @@ export const SetPhoneValidationCode = () => {
                 format="Format&nbsp;: 6 chiffres"
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
-                placeholder="012345"
                 autoComplete="one-time-code"
                 textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
