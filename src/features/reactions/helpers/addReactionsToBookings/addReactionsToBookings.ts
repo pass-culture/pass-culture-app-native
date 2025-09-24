@@ -18,14 +18,14 @@ export const addReactionsToBookings = (
   )
 }
 
-export function addReactionsToBookingsV2(
+export const addReactionsToBookingsV2 = (
   endedBookings: BookingsResponseV2['endedBookings'],
   reactions: PostOneReactionRequest[]
-): BookingsResponseV2['endedBookings'] {
+): BookingsResponseV2['endedBookings'] => {
   if (!endedBookings?.length || !reactions?.length) return endedBookings
 
   return endedBookings.map((booking) => {
-    const match = reactions.find((reaction) => reaction.offerId === booking.stock.offer.id)
-    return match ? { ...booking, userReaction: match.reactionType } : booking
+    const foundReaction = reactions.find((reaction) => reaction.offerId === booking.stock.offer.id)
+    return foundReaction ? { ...booking, userReaction: foundReaction.reactionType } : booking
   })
 }
