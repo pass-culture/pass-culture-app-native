@@ -361,4 +361,5 @@ class MswMockServer
     this.universalPatch(fullUrl, options)
   }
 }
+
 export const mockServer = new MswMockServer(`${env.API_BASE_URL}/native`)

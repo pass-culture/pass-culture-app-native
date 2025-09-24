@@ -6,7 +6,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitForButtonToBePressable } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
@@ -45,7 +45,11 @@ describe('<NewEmailSelection />', () => {
     const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    expect(await screen.findByLabelText('Modifier mon adresse e-mail')).toBeEnabled()
+    const button = await screen.findByLabelText('Modifier mon adresse e-mail')
+
+    await waitForButtonToBePressable(button)
+
+    expect(button).toBeEnabled()
   })
 
   it('should disable submit button when email input is invalid', async () => {

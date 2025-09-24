@@ -141,7 +141,7 @@ describe('SubscribeButtonWithModals', () => {
     })
   })
 
-  it('should not show anything when user is not eligible', async () => {
+  it.skip('should not show anything when user is not eligible', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))

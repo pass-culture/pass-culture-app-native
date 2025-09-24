@@ -11,7 +11,7 @@ import { setSettings } from 'features/auth/tests/setSettings'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, renderAsync, screen, userEvent } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
@@ -56,23 +56,23 @@ describe('<SetBirthday />', () => {
     setSettings()
   })
 
-  it('should render correctly', () => {
-    render(<SetBirthday {...props} />)
+  it('should render correctly', async () => {
+    await renderAsync(<SetBirthday {...props} />)
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly when account creation token and email are in route params', () => {
+  it('should render correctly when account creation token and email are in route params', async () => {
     useRoute.mockReturnValueOnce({
       params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
     })
-    render(<SetBirthday {...props} isSSOSubscription />)
+    await renderAsync(<SetBirthday {...props} isSSOSubscription />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should call goToNextStep() when the date is selected and press the button "Continuer"', async () => {
-    render(<SetBirthday {...props} />)
+    await renderAsync(<SetBirthday {...props} />)
 
     const datePicker = screen.getByTestId('date-picker-spinner-native')
     await act(() =>
@@ -91,7 +91,7 @@ describe('<SetBirthday />', () => {
     'should set default date when no specific user age in local storage',
     async (userAge) => {
       storage.saveObject('user_age', userAge)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
@@ -103,7 +103,7 @@ describe('<SetBirthday />', () => {
     'should set default year to user birth year when user age is in local storage',
     async (userAge) => {
       storage.saveObject('user_age', userAge)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const datePicker = await screen.findByTestId('date-picker-spinner-native')
       const spinnerDate = new Date(datePicker.props.date)
@@ -122,7 +122,7 @@ describe('<SetBirthday />', () => {
         birthdate: '12-11-1994',
       },
     }
-    render(<SetBirthday {...propsWithPreviousBirthdate} />)
+    await renderAsync(<SetBirthday {...propsWithPreviousBirthdate} />)
 
     const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
@@ -136,7 +136,7 @@ describe('<SetBirthday />', () => {
 
     it('should display the general public message when userAge is  NonEligible.OVER_18', async () => {
       storage.saveObject('user_age', NonEligible.OVER_18)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const bannerMessage = await screen.findByText(GENERAL_PUBLIC_MESSAGE)
 
@@ -145,7 +145,7 @@ describe('<SetBirthday />', () => {
 
     it('should display the eligible message when userAge is set in number', async () => {
       storage.saveObject('user_age', 16)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 
@@ -154,7 +154,7 @@ describe('<SetBirthday />', () => {
 
     it('should display the eligible message when userAge is UNDER_15', async () => {
       storage.saveObject('user_age', NonEligible.UNDER_15)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 
@@ -163,7 +163,7 @@ describe('<SetBirthday />', () => {
 
     it('should display the eligible message when userAge is UNDER_17', async () => {
       storage.saveObject('user_age', NonEligible.UNDER_17)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 
@@ -172,7 +172,7 @@ describe('<SetBirthday />', () => {
 
     it('should display the eligible message when userAge is null', async () => {
       storage.saveObject('user_age', null)
-      render(<SetBirthday {...props} />)
+      await renderAsync(<SetBirthday {...props} />)
 
       const bannerMessage = await screen.findByText(ELIGIBLE_MESSAGE)
 

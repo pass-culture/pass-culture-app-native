@@ -108,9 +108,6 @@ describe('SearchLocationModal', () => {
 
   it('should hide modal on close modal button press', async () => {
     renderSearchLocationModal()
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
 
     await user.press(screen.getByLabelText('Fermer la modale'))
 
@@ -195,9 +192,6 @@ describe('SearchLocationModal', () => {
   describe('PlaceRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
       renderSearchLocationModal()
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
 
       const openLocationModalButton = screen.getByText('Choisir une localisation')
       await user.press(openLocationModalButton)
@@ -206,12 +200,10 @@ describe('SearchLocationModal', () => {
         const searchInput = screen.getByTestId('styled-input-container')
         fireEvent.changeText(searchInput, mockPlaces[0].label)
       })
-      await act(async () => {
-        const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-        // userEvent.press not working correctly here
-        // eslint-disable-next-line local-rules/no-fireEvent
-        fireEvent.press(suggestedPlace)
-      })
+      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
+      fireEvent.press(suggestedPlace)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })

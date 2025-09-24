@@ -9,7 +9,7 @@ import { getRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, act, userEvent } from 'tests/utils'
+import { screen, userEvent, renderAsync } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/subcategories/useSubcategories')
@@ -63,7 +63,7 @@ jest.useFakeTimers()
 
 describe('<ConfirmChangeEmail />', () => {
   it('should render correctly', async () => {
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
     await screen.findByText('Confirmer la demande')
 
@@ -71,9 +71,9 @@ describe('<ConfirmChangeEmail />', () => {
   })
 
   it('should navigate to home when pressing cancel button', async () => {
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Annuler')))
+    await userEvent.press(screen.getByText('Annuler'))
 
     expect(navigate).toHaveBeenCalledWith(...homeNavigationConfig)
   })
@@ -82,9 +82,9 @@ describe('<ConfirmChangeEmail />', () => {
     mockServer.postApi<EmailChangeConfirmationResponse>('/v2/profile/email_update/confirm', {
       responseOptions: { statusCode: 200, data: confirmationSuccessResponse },
     })
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
+    await userEvent.press(screen.getByText('Confirmer la demande'))
 
     expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: { token: 'token' },
@@ -99,9 +99,9 @@ describe('<ConfirmChangeEmail />', () => {
         data: { ...confirmationSuccessResponse, resetPasswordToken: 'reset_password_token' },
       },
     })
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
+    await userEvent.press(screen.getByText('Confirmer la demande'))
 
     expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: { token: 'reset_password_token', emailSelectionToken: 'token' },
@@ -113,9 +113,9 @@ describe('<ConfirmChangeEmail />', () => {
     mockServer.postApi<EmailChangeConfirmationResponse>('/v2/profile/email_update/confirm', {
       responseOptions: { statusCode: 200, data: confirmationSuccessResponse },
     })
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
+    await userEvent.press(screen.getByText('Confirmer la demande'))
 
     expect(await storage.readString('access_token')).toEqual('accessToken')
     expect(await getRefreshToken()).toEqual('refreshToken')
@@ -125,9 +125,9 @@ describe('<ConfirmChangeEmail />', () => {
     mockServer.postApi<EmptyResponse>('/v2/profile/email_update/confirm', {
       responseOptions: { statusCode: 401, data: {} },
     })
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
+    await userEvent.press(screen.getByText('Confirmer la demande'))
 
     expect(reset).toHaveBeenNthCalledWith(1, {
       index: 0,
@@ -139,9 +139,9 @@ describe('<ConfirmChangeEmail />', () => {
     mockServer.postApi<EmptyResponse>('/v2/profile/email_update/confirm', {
       responseOptions: { statusCode: 500, data: {} },
     })
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
+    await userEvent.press(screen.getByText('Confirmer la demande'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
@@ -153,9 +153,9 @@ describe('<ConfirmChangeEmail />', () => {
     mockServer.postApi<EmptyResponse>('/v2/profile/email_update/confirm', {
       responseOptions: { statusCode: 401, data: {} },
     })
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
+    await userEvent.press(screen.getByText('Confirmer la demande'))
 
     expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
   })
@@ -163,7 +163,7 @@ describe('<ConfirmChangeEmail />', () => {
   it('should redirect ChangeEmailExpiredLink when timestamp has expired', async () => {
     useRoute.mockReturnValueOnce({ params: { token: 'token', expiration_timestamp: '1710317714' } })
 
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    await renderAsync(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
     await screen.findByText('Confirmer la demande')
 

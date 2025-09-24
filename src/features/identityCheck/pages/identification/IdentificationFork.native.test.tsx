@@ -73,7 +73,7 @@ describe('<IdentificationFork />', () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Mes codes ÉduConnect')
 
-    user.press(button)
+    await user.press(button)
 
     await waitFor(() => {
       expect(analytics.logChooseEduConnectMethod).toHaveBeenCalledTimes(1)

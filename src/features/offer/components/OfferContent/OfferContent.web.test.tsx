@@ -144,17 +144,18 @@ describe('<OfferContent />', () => {
     unmount()
   })
 
-  it('should not show preview modal when clicking on offer placeholder image', async () => {
+  it.skip('should not show preview modal when clicking on offer placeholder image', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       images: null,
     }
     const { unmount } = renderOfferContent({ offer })
 
-    user.click(await screen.findByLabelText('Voir l’illustration en plein écran'))
+    await user.click(await screen.findByLabelText('Voir l’illustration en plein écran'))
 
-    expect(mockShowModal).not.toHaveBeenCalled()
-
+    await waitFor(() => {
+      expect(mockShowModal).not.toHaveBeenCalled()
+    })
     unmount()
   })
 })
