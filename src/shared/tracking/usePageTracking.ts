@@ -19,7 +19,7 @@ import { AppLifecycleManager } from './AppLifecycleManager'
 import { TrackingLogger } from './TrackingLogger'
 import { TrackingManager, TrackingData } from './TrackingManager'
 
-export interface UsePageTrackingConfig {
+interface UsePageTrackingConfig {
   /**
    * Nom de la page pour les logs (ex: "Home", "Artist", "Venue")
    */
@@ -34,7 +34,7 @@ export interface UsePageTrackingConfig {
   pageId?: string
 }
 
-export interface TrackingHandlers {
+interface TrackingHandlers {
   /**
    * Handler pour les changements d'items visibles
    * Remplace handleViewableItemsChanged dans toutes les pages
@@ -225,18 +225,6 @@ function generatePageId(pageLocation: string): string {
   const timestamp = Date.now()
   const random = Math.random().toString(36).substring(2, 8)
   return `${pageLocation}_${timestamp}_${random}`
-}
-
-/**
- * Hook for compatibility with old API
- * To use temporarily during migration
- */
-export function usePageTrackingLegacy(pageName: string, pageLocation: string): TrackingHandlers {
-  return usePageTracking({
-    pageName,
-    pageLocation,
-    pageId: generatePageId(pageLocation),
-  })
 }
 
 /**

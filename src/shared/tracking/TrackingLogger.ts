@@ -5,7 +5,7 @@
  * debugging and migration validation.
  */
 
-export interface LogContext {
+interface LogContext {
   pageId?: string
   moduleId?: string
   event?: string

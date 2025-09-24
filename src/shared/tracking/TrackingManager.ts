@@ -8,7 +8,7 @@
 import { AppLifecycleManager } from './AppLifecycleManager'
 import { TrackingLogger } from './TrackingLogger'
 
-export type PlaylistTrackingInfo = {
+type PlaylistTrackingInfo = {
   moduleId: string
   itemType: 'offer' | 'venue' | 'artist' | 'unknown'
   callId: string
@@ -36,7 +36,7 @@ export interface TrackingData {
   artistId?: string
 }
 
-export interface PageTrackingConfig {
+interface PageTrackingConfig {
   pageLocation: string
   pageId: string
 }
