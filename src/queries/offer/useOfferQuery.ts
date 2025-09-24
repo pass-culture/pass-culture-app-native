@@ -39,7 +39,9 @@ export const useOfferQuery = <T = OfferResponseV2>({
 }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery([QueryKeys.OFFER, offerId], () => getOfferById(offerId, logType), {
+  return useQuery({
+    queryKey: [QueryKeys.OFFER, offerId],
+    queryFn: () => getOfferById(offerId, logType),
     enabled: !!offerId,
     select,
   })

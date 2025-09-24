@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
@@ -24,40 +24,46 @@ interface Props {
   onDismiss: () => void
 }
 
+const handleError = (error: ApiError, logType: LogTypeEnum) => {
+  if (logType === LogTypeEnum.INFO)
+    eventMonitoring.captureException(
+      `Could not resend validation email: ${String(error.content)}`,
+      {
+        level: logType,
+      }
+    )
+  return error.statusCode === 429
+    ? 'Tu as dépassé le nombre de renvois autorisés.'
+    : 'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
+}
+
 export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const [errorMessage, setErrorMessage] = React.useState<string>()
   const { timeLeft, setTimeLeft } = useTimer(0)
   const { logType } = useLogTypeFromRemoteConfig()
 
-  const onError = (error: ApiError) => {
-    if (error.statusCode === 429) {
-      setErrorMessage('Tu as dépassé le nombre de renvois autorisés.')
-    } else {
-      setErrorMessage(
-        'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
-      )
+  const onError = (error: ApiError) => setErrorMessage(handleError(error, logType))
+
+  const {
+    data: remainingResendsResponse,
+    refetch: refetchRemainingResends,
+    isError,
+    error,
+  } = useEmailValidationRemainingResendsQuery({
+    email,
+  })
+
+  useEffect(() => {
+    if (isError) {
+      setErrorMessage(handleError(error, logType))
     }
-
-    if (logType === LogTypeEnum.INFO)
-      eventMonitoring.captureException(
-        `Could not resend validation email: ${String(error.content)}`,
-        {
-          level: logType,
-        }
-      )
-  }
-
-  const { data: remainingResendsResponse, refetch: refetchRemainingResends } =
-    useEmailValidationRemainingResendsQuery({
-      email,
-      onError,
-    })
+  }, [isError, error, logType])
 
   const onResendEmailSuccess = () => {
     refetchRemainingResends()
     setTimeLeft(60)
   }
-  const { mutate: resendEmail, isLoading } = useResendEmailValidationMutation({
+  const { mutate: resendEmail, isPending } = useResendEmailValidationMutation({
     onError,
     onSuccess: onResendEmailSuccess,
   })
@@ -109,7 +115,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
         <ButtonPrimary
           wording="Demander un nouveau lien"
           onPress={onResendPress}
-          disabled={isLoading || !hasAttemptsLeft || isResendCooldownActive}
+          disabled={isPending || !hasAttemptsLeft || isResendCooldownActive}
         />
         {errorMessage ? (
           <React.Fragment>

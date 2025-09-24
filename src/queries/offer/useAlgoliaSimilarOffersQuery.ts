@@ -20,11 +20,11 @@ export const useAlgoliaSimilarOffersQuery = (
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
 
-  const { data: hits } = useQuery(
-    queryKey ?? [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
-    () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
-    { enabled: ids.length > 0 }
-  )
+  const { data: hits } = useQuery({
+    queryKey: queryKey ?? [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
+    queryFn: () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
+    enabled: ids.length > 0,
+  })
 
   return useMemo(() => {
     if (!hits || hits.length === 0) return

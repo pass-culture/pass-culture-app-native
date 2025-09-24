@@ -42,20 +42,21 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   isFetched: true,
   isFetchedAfterMount: true,
   isFetching: false,
+  isPending: false,
+  isInitialLoading: false,
+  isEnabled: true,
   isLoadingError: false,
   isPlaceholderData: false,
-  isPreviousData: false,
   isRefetchError: false,
   isStale: false,
-  remove: jest.fn(),
   dataUpdatedAt: Date.now(),
   errorUpdatedAt: 0,
   errorUpdateCount: 0,
   isRefetching: false,
   failureReason: new Error(),
-  isInitialLoading: false,
   isPaused: false,
   fetchStatus: 'fetching',
+  promise: Promise.resolve([]),
 }
 
 const useGTLPlaylistsSpy = jest
@@ -78,7 +79,7 @@ describe('BookPlaylists', () => {
   it('should render skeleton when playlists are still loading', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
       ...defaultResponse,
-      isInitialLoading: true,
+      isLoading: true,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
@@ -89,7 +90,7 @@ describe('BookPlaylists', () => {
 
   it('should not render gtl playlists when algolia does not return offers', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
-      isInitialLoading: false,
+      isLoading: false,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 

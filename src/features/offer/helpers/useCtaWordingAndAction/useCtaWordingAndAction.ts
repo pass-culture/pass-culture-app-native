@@ -513,7 +513,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
 
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId, false)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
@@ -551,7 +551,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     }
   }
 
-  const { mutate: bookOffer, isLoading: isBookingLoading } = useBookOfferMutation({
+  const { mutate: bookOffer, isPending: isBookingLoading } = useBookOfferMutation({
     onSuccess(data) {
       analytics.logBookingConfirmation({
         ...apiRecoParams,

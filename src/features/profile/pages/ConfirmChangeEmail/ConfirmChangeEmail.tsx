@@ -20,7 +20,7 @@ export function ConfirmChangeEmail() {
   const { params } = useRoute<UseRouteType<'ConfirmChangeEmail'>>()
   const loginRoutine = useLoginRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { mutate, isLoading } = useConfirmChangeEmailMutationV2({
+  const { mutate, isPending } = useConfirmChangeEmailMutationV2({
     onSuccess: async ({
       accessToken,
       refreshToken,
@@ -78,13 +78,13 @@ export function ConfirmChangeEmail() {
       buttonPrimary={{
         wording: 'Confirmer la demande',
         onPress: onConfirmEmail,
-        disabled: isLoading,
+        disabled: isPending,
       }}
       buttonTertiary={{
         wording: 'Annuler',
         navigateTo: navigateToHomeConfig,
         icon: Invalidate,
-        disabled: isLoading,
+        disabled: isPending,
       }}
     />
   )

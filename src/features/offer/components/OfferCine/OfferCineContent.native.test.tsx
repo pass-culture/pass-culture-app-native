@@ -29,7 +29,7 @@ jest.mock('ui/components/anchor/AnchorContext', () => ({
 }))
 
 const defaultOffersStocksFromOfferQuery = {
-  isInitialLoading: false,
+  isLoading: false,
   data: mockBuilder.offerResponseV2({}),
 }
 const mockuseOffersStocksFromOfferQuery = jest.fn(() => defaultOffersStocksFromOfferQuery)
@@ -89,11 +89,11 @@ describe('OfferCineContent', () => {
     mockuseOffersStocksFromOfferQuery
       .mockReturnValueOnce({
         ...defaultOffersStocksFromOfferQuery,
-        isInitialLoading: true,
+        isLoading: true,
       })
       .mockReturnValueOnce({
         ...defaultOffersStocksFromOfferQuery,
-        isInitialLoading: true,
+        isLoading: true,
       })
     renderOfferCineContent()
 
@@ -103,7 +103,7 @@ describe('OfferCineContent', () => {
   it('should not display skeleton when data is loaded', async () => {
     mockuseOffersStocksFromOfferQuery.mockReturnValueOnce({
       ...defaultOffersStocksFromOfferQuery,
-      isInitialLoading: false,
+      isLoading: false,
     })
     renderOfferCineContent()
 

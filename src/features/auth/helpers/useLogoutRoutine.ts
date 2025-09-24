@@ -20,7 +20,9 @@ export function useLogoutRoutine(): () => Promise<void> {
       handleBatchProfileReset()
 
       LoggedInQueryKeys.forEach((queryKey) => {
-        queryClient.removeQueries([queryKey])
+        queryClient.removeQueries({
+          queryKey: [queryKey],
+        })
       })
       await Promise.all([
         analytics.logLogout(),

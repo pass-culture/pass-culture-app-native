@@ -27,7 +27,7 @@ jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
-} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
+} as UseQueryResult<SubcategoriesResponseModelv2, Error>)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
@@ -104,7 +104,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     it('when bookings are loading', () => {
       const loadingBookings = {
         data: undefined,
-        isInitialLoading: true,
+        isLoading: true,
         isFetching: false,
       } as UseQueryResult<BookingsResponseV2, Error>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
@@ -117,8 +117,8 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
     it('when subcategories are loading', () => {
       const loadingSubcategories = {
-        isInitialLoading: true,
-      } as UseQueryResult<SubcategoriesResponseModelv2, unknown>
+        isLoading: true,
+      } as UseQueryResult<SubcategoriesResponseModelv2, Error>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
       renderOnGoingBookingsList()
 

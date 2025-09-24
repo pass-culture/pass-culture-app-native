@@ -7,19 +7,17 @@ type UseAccountSuspendMutationOptions = {
   onError?: (error: unknown) => void
 }
 
-export function useAccountSuspendMutation({
+export const useAccountSuspendMutation = ({
   onSuccess,
   onError,
-}: UseAccountSuspendMutationOptions = {}) {
-  const { mutate: suspendAccount, isLoading } = useMutation(
-    () => api.postNativeV1AccountSuspend(),
-    {
-      onSuccess,
-      onError,
-    }
-  )
+}: UseAccountSuspendMutationOptions = {}) => {
+  const { mutate: suspendAccount, isPending } = useMutation({
+    mutationFn: () => api.postNativeV1AccountSuspend(),
+    onSuccess,
+    onError,
+  })
   return {
     suspendAccount,
-    isLoading,
+    isLoading: isPending,
   }
 }

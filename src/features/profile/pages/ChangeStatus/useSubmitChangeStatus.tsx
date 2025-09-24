@@ -33,7 +33,7 @@ export const useSubmitChangeStatus = () => {
   const storedStatus = useStatus()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
-  const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
+  const { mutate: patchProfile, isPending } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       if (isMandatoryUpdatePersonalData) {
         reset({
@@ -81,5 +81,5 @@ export const useSubmitChangeStatus = () => {
     [patchProfile]
   )
 
-  return { isLoading, control, handleSubmit, selectedStatus, submitStatus, formIsValid }
+  return { isPending, control, handleSubmit, selectedStatus, submitStatus, formIsValid }
 }

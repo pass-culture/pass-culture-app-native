@@ -51,7 +51,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
-  const { data: gtlPlaylists, isInitialLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
+  const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
     searchGroupLabel: params?.fromThematicSearch,
     userLocation,

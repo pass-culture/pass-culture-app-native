@@ -16,16 +16,8 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink
 export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { email } = props.route.params
-  const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery(
-    [QueryKeys.SIGNUP_CONFIRMATION_EXPIRED_LINK],
-    signupConfirmationExpiredLink,
-    {
-      cacheTime: 0,
-      enabled: false,
-    }
-  )
 
-  async function signupConfirmationExpiredLink() {
+  const signupConfirmationExpiredLink = async () => {
     try {
       analytics.logResendEmailSignupConfirmationExpiredLink()
       const result = await api.postNativeV1ResendEmailValidation({ email })
@@ -38,6 +30,12 @@ export function SignupConfirmationExpiredLink(props: Props) {
       })
     }
   }
+  const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery({
+    queryKey: [QueryKeys.SIGNUP_CONFIRMATION_EXPIRED_LINK],
+    queryFn: signupConfirmationExpiredLink,
+    gcTime: 0,
+    enabled: false,
+  })
 
   const renderCustomButton = {
     wording: 'Renvoyer l’email',

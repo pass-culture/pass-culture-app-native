@@ -45,7 +45,7 @@ const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
   data: PLACEHOLDER_DATA,
-} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
+} as UseQueryResult<SubcategoriesResponseModelv2, Error>)
 
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 

@@ -35,6 +35,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 const mockedGetStocksByOfferIds = jest.spyOn(getStocksByOfferIdsModule, 'getStocksByOfferIds')
 const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
+fetchOffersSpy.mockResolvedValue(<fetchAlgoliaOffer.FetchOffersResponse>{})
 
 mockdate.set(TODAY.toDate())
 

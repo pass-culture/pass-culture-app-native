@@ -13,6 +13,7 @@ const mockFetchVenues = jest.fn()
 jest.mock('libs/algolia/fetchAlgolia/fetchVenues/fetchVenues', () => ({
   fetchVenues: (params: unknown) => mockFetchVenues(params),
 }))
+mockFetchVenues.mockResolvedValue({})
 
 const region: Region = {
   latitude: 48.866667,
@@ -82,8 +83,11 @@ describe('useVenuesInRegionQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
+    await act(async () => {})
 
     await waitFor(() => expect(result.current.isSuccess).toBeFalsy())
+
+    await act(async () => {})
 
     expect(spySetVenues).toHaveBeenCalledTimes(0)
   })

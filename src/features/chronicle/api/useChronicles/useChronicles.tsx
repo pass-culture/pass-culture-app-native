@@ -7,12 +7,10 @@ import { QueryKeys } from 'libs/queryKeys'
 export function useChronicles<
   TData = Awaited<ReturnType<typeof api.getNativeV1OfferofferIdChronicles>>,
 >({ offerId, select }: { offerId: number; select?: (data: OfferChronicles) => TData }) {
-  return useQuery(
-    [QueryKeys.OFFER_CHRONICLES, offerId],
-    () => api.getNativeV1OfferofferIdChronicles(offerId),
-    {
-      enabled: !!offerId,
-      select,
-    }
-  )
+  return useQuery({
+    queryKey: [QueryKeys.OFFER_CHRONICLES, offerId],
+    queryFn: () => api.getNativeV1OfferofferIdChronicles(offerId),
+    enabled: !!offerId,
+    select,
+  })
 }

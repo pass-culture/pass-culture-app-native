@@ -29,9 +29,9 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 const venueId = venueDataTest.id
 
 jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
-  isInitialLoading: false,
+  isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-} as unknown as UseQueryResult<VenueOffersType, unknown>)
+} as unknown as UseQueryResult<VenueOffersType, Error>)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -84,8 +84,8 @@ describe('<VenueOffers />', () => {
 
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValueOnce({
-      isInitialLoading: true,
-    } as UseQueryResult<VenueOffersType, unknown>)
+      isLoading: true,
+    } as UseQueryResult<VenueOffersType, Error>)
     renderVenueOffers({})
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()

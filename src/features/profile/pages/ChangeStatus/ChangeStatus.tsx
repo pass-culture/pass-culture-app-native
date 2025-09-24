@@ -8,7 +8,7 @@ import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const ChangeStatus = () => {
-  const { isLoading, control, handleSubmit, selectedStatus, submitStatus, formIsValid } =
+  const { isPending, control, handleSubmit, selectedStatus, submitStatus, formIsValid } =
     useSubmitChangeStatus()
 
   const titleID = uuidv4()
@@ -19,7 +19,7 @@ export const ChangeStatus = () => {
       <PageHeaderWithoutPlaceholder title="Modifier mon statut" />
       <StatusFlatList
         handleSubmit={handleSubmit}
-        isLoading={isLoading}
+        isLoading={isPending}
         selectedStatus={selectedStatus}
         submitStatus={submitStatus}
         formIsValid={formIsValid}

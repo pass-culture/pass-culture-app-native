@@ -39,7 +39,7 @@ export const RecreditBirthdayNotification = () => {
   )
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =
+  const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
       onSuccess: () => navigateToHome(),
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),

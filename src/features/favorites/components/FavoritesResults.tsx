@@ -76,7 +76,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
   const { geolocPosition: position } = useLocation()
-  const { data, isInitialLoading: isLoading, isFetching, refetch } = useFavoritesQuery()
+  const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 

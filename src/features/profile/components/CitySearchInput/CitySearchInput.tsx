@@ -39,26 +39,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
-  const { data: cities = [], isInitialLoading: isLoading } = useCities(postalCodeQuery, {
-    onError: () => {
-      showErrorSnackBar({
-        message:
-          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      eventMonitoring.captureException(
-        new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
-      )
-    },
-    onSuccess: (cities) => {
-      const isEmpty = cities.length === 0
-      if (isEmpty)
-        setError('postalCode', {
-          message:
-            'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
-        })
-    },
-  })
+  const { data: cities = [], isLoading, isError, isSuccess } = useCities(postalCodeQuery)
 
   const {
     control,
@@ -70,6 +51,27 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
     resolver: yupResolver(object().shape({ postalCode: string() })),
     defaultValues: { postalCode: city?.postalCode ?? '' },
   })
+
+  useEffect(() => {
+    if (isSuccess) {
+      const isEmpty = cities.length === 0
+      if (isEmpty)
+        setError('postalCode', {
+          message:
+            'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
+        })
+    }
+    if (isError) {
+      showErrorSnackBar({
+        message:
+          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      eventMonitoring.captureException(
+        new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
+      )
+    }
+  }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
 
   const onSubmit = useCallback(
     ({ postalCode }: PostalCodeForm) => {

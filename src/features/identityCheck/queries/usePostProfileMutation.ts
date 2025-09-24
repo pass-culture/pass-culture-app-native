@@ -9,9 +9,9 @@ type PostProfileMutationOptions = {
   onError?: (error: unknown) => void
 }
 
-export function usePostProfileMutation({ onSuccess, onError }: PostProfileMutationOptions) {
-  return useMutation(
-    (profile: SubscriptionState['profile']) => {
+export const usePostProfileMutation = ({ onSuccess, onError }: PostProfileMutationOptions) =>
+  useMutation({
+    mutationFn: (profile: SubscriptionState['profile']) => {
       const body = getCompleteProfile(profile)
       if (body) {
         return api.postNativeV1SubscriptionProfile(body)
@@ -21,9 +21,10 @@ export function usePostProfileMutation({ onSuccess, onError }: PostProfileMutati
         return Promise.reject(new Error(errorMessage))
       }
     },
-    { onSuccess, onError }
-  )
-}
+
+    onSuccess,
+    onError,
+  })
 
 const getCompleteProfile = (profile: SubscriptionState['profile']): ProfileUpdateRequest | null => {
   if (

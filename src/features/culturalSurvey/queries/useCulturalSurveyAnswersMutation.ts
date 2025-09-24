@@ -8,14 +8,11 @@ interface Props {
   onError: (error: unknown) => void
 }
 
-export const useCulturalSurveyAnswersMutation = ({ onSuccess, onError }: Props) => {
-  return useMutation(
-    (answers: CulturalSurveyAnswersRequest) => {
+export const useCulturalSurveyAnswersMutation = ({ onSuccess, onError }: Props) =>
+  useMutation({
+    mutationFn: (answers: CulturalSurveyAnswersRequest) => {
       return api.postNativeV1CulturalSurveyAnswers(answers)
     },
-    {
-      onSuccess,
-      onError,
-    }
-  )
-}
+    onSuccess,
+    onError,
+  })

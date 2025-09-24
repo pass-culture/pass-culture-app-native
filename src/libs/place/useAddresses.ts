@@ -12,10 +12,10 @@ export const useAddresses = ({
   cityCode,
   postalCode,
   enabled,
-}: BuildSearchAddressProps & { enabled: boolean }) => {
-  return useQuery<string[]>(
-    [QueryKeys.ADDRESSES, query, cityCode, postalCode],
-    () => fetchAddresses({ query, limit, cityCode, postalCode }),
-    { staleTime: STALE_TIME_ADDRESSES, enabled }
-  )
-}
+}: BuildSearchAddressProps & { enabled: boolean }) =>
+  useQuery({
+    queryKey: [QueryKeys.ADDRESSES, query, cityCode, postalCode],
+    queryFn: () => fetchAddresses({ query, limit, cityCode, postalCode }),
+    staleTime: STALE_TIME_ADDRESSES,
+    enabled,
+  })
