@@ -25,7 +25,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const mockMutate = jest.fn()
 jest.mock('features/reactions/queries/useReactionMutation', () => ({
-  useReactionMutation: () => ({ mutate: mockMutate }),
+  useReactionMutation: () => ({ mutateAsync: mockMutate }),
 }))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
