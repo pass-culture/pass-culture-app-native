@@ -9,6 +9,7 @@ import {
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
@@ -27,11 +28,11 @@ import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 const keyExtractor: (item: BookingResponse) => string = (item) => item.id.toString()
 
-export const EndedBookings: FunctionComponent<{ isQueryEnabled: boolean }> = ({
-  isQueryEnabled,
-}) => {
+export const EndedBookings: FunctionComponent = () => {
+  const { isLoggedIn } = useAuthContext()
+
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isQueryEnabled)
+  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
 
   const { mutate: addReaction } = useReactionMutation()
 

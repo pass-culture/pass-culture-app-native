@@ -49,7 +49,7 @@ describe('EndedBookings', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<EndedBookings isQueryEnabled />))
+      const { container } = render(reactQueryProviderHOC(<EndedBookings />))
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

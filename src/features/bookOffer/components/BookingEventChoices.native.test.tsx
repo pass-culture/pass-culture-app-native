@@ -45,8 +45,8 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   })),
 }))
 
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: jest.fn(() => mockOffer),
+jest.mock('queries/offer/useBookingOfferQuery', () => ({
+  useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
 describe('<BookingEventChoices />', () => {

@@ -48,8 +48,8 @@ jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => mockUseOfferQuery(),
 }))
 
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: jest.fn(() => mockOffer),
+jest.mock('queries/offer/useBookingOfferQuery', () => ({
+  useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
 jest.mock('libs/subcategories/useSubcategories')

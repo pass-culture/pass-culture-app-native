@@ -3,11 +3,11 @@ import React from 'react'
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { formatDateTimezone, formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
@@ -24,7 +24,7 @@ const ExpirationDate: React.FC<{
 
 export const BookingInformations = () => {
   const { bookingState } = useBookingContext()
-  const offer = useBookingOffer()
+  const offer = useBookingOfferQuery()
   const stock = useBookingStock()
   const mapping = useSubcategoriesMapping()
   const { quantity } = bookingState

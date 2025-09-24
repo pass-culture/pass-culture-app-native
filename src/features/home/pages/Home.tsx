@@ -17,7 +17,6 @@ import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/us
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
 import { useBookingsQueryV2 } from 'queries/bookings'
@@ -36,8 +35,6 @@ export const Home: FunctionComponent = () => {
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
   const { isLoggedIn, user } = useAuthContext()
-  const netInfo = useNetInfoContext()
-  const isQueryEnabled = !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn
 
   const {
     visible: onboardingSubscriptionModalVisible,
@@ -49,7 +46,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading: isBookingsLoading } = useBookingsQueryV2(isQueryEnabled)
+  const { data: bookings, isLoading: isBookingsLoading } = useBookingsQueryV2(isLoggedIn)
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,
