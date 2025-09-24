@@ -34,7 +34,7 @@ export const EndedBookings: FunctionComponent = () => {
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
 
-  const { mutate: addReaction } = useReactionMutation()
+  const { mutateAsync: addReaction } = useReactionMutation()
 
   const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingOfferResponseV2>()
   const [selectedBookingOfferEndedDateLabel, setSelectedBookingOfferEndedDateLabel] =

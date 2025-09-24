@@ -21,6 +21,12 @@ jest.mock('libs/jwt/jwt')
 
 const setup = (queryClient: QueryClient) => {
   queryClient.setQueryData([QueryKeys.BOOKINGS], bookingsSnap)
+
+  const bookingsV2Snap = {
+    endedBookings: bookingsSnap.ended_bookings,
+    ongoingBookings: bookingsSnap.ongoing_bookings,
+  }
+  queryClient.setQueryData([QueryKeys.BOOKINGSV2], bookingsV2Snap)
 }
 
 describe('useReactionMutation', () => {
@@ -50,10 +56,8 @@ describe('useReactionMutation', () => {
     })
   })
 
-  //TODO(PC-36585): unskip this test
-  it.skip('should invalidate bookings query on success', async () => {
+  it('should invalidate bookings queries on success', async () => {
     mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
-
     const { result } = renderUseReactionMutation()
 
     result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
@@ -61,13 +65,14 @@ describe('useReactionMutation', () => {
     await waitFor(() => {
       expect(result.current.isSuccess).toBeTruthy()
       expect(queryCache.find({ queryKey: [QueryKeys.BOOKINGS] })?.state.isInvalidated).toBeTruthy()
+      expect(
+        queryCache.find({ queryKey: [QueryKeys.BOOKINGSV2] })?.state.isInvalidated
+      ).toBeTruthy()
     })
   })
 
-  //TODO(PC-36585): unskip this test
-  it.skip('should invalidate bookings query on error', async () => {
+  it('should invalidate bookings queries on error', async () => {
     mockServer.postApi('/v1/reaction', { responseOptions: { statusCode: 400, data: {} } })
-
     const { result } = renderUseReactionMutation()
 
     result.current.mutate({ reactions: [{ offerId: 1, reactionType: ReactionTypeEnum.LIKE }] })
@@ -75,6 +80,9 @@ describe('useReactionMutation', () => {
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()
       expect(queryCache.find({ queryKey: [QueryKeys.BOOKINGS] })?.state.isInvalidated).toBeTruthy()
+      expect(
+        queryCache.find({ queryKey: [QueryKeys.BOOKINGSV2] })?.state.isInvalidated
+      ).toBeTruthy()
     })
   })
 })
