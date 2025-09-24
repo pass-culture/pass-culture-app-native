@@ -11236,7 +11236,7 @@ __metadata:
     react-native-get-random-values: ^1.5.1
     react-native-in-app-review: ^4.3.1
     react-native-intersection-observer: ^0.2.1
-    react-native-keychain: ^8.0.0
+    react-native-keychain: ^10.0.0
     react-native-launch-navigator: 1.0.9
     react-native-linear-gradient: ^2.8.3
     react-native-lottie-splash-screen: ^1.1.2
@@ -24963,10 +24963,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-keychain@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "react-native-keychain@npm:8.0.0"
-  checksum: cbab1cef8565743072f919663068727df20fc0ef5edd53b0aa96fac74c11fcd0daa197968b06cabed4f1b3f8e5e5ae73b6db8543ed9adbecc13662c38958c9ce
+"react-native-keychain@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "react-native-keychain@npm:10.0.0"
+  checksum: 1055cc192df58cb110bd49df1264a401007a354ad28b93adefd740aeac0f746cdab86d7428887694a1b0949ef8d0dc85db8984e77db684d7b967180167b64d42
   languageName: node
   linkType: hard
 
