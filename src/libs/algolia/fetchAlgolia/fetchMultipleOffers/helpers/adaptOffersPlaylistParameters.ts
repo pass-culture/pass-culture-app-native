@@ -60,6 +60,7 @@ export const adaptOffersPlaylistParameters = (
     offerGtlLabel: parameters.gtlLabel,
     offerGtlLevel: parameters.gtlLevel,
     offerNativeCategories: [],
+    ...(parameters.likesMin ? { minLikes: parameters.likesMin } : undefined),
   }
 }
 

@@ -147,6 +147,7 @@ export type OffersModuleParameters = {
   gtlLevel?: GtlLevel
   gtlLabel?: string
   allocineIdList?: string[]
+  likesMin?: number
 }
 
 export type BusinessModule = {
