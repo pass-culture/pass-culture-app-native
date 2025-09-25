@@ -13,7 +13,7 @@ If you run a debug build performances that are not representative of the final's
 
 I ran into the following problems when attempting to use a emulator:
 
-- To add the Netskope certificate, the phone/emulator can't have the Google Play on it.
+- To add the proxy certificate, the phone/emulator can't have the Google Play on it.
 - To run the app as profileable the phone/emulator must have Google Play on it.
 
 Considering these constraints, the easiest work around is to use a physical Android device.
