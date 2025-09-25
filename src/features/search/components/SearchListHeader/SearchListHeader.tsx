@@ -11,6 +11,7 @@ import { NumberOfResults } from 'features/search/components/NumberOfResults/Numb
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
+import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
@@ -30,8 +31,6 @@ interface SearchListHeaderProps extends ScrollViewProps {
   venues?: SearchOfferHits['venues']
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
-  setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
-  selectedGridListLayout?: GridListLayout
   shouldDisplayGridList?: boolean
 }
 
@@ -41,8 +40,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
   artistSection,
-  setGridListLayout,
-  selectedGridListLayout,
   shouldDisplayGridList,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
@@ -68,6 +65,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const previousRoute = usePreviousRoute()
 
+  const selectedGridListLayout = useGridListLayout()
+
   const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
@@ -84,16 +83,15 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
-  const handleToggleChange = (layout: GridListLayout) => {
-    const fromLayout = layout === GridListLayout.GRID ? GridListLayout.LIST : GridListLayout.GRID
-    analytics.logHasClickedGridListToggle({ fromLayout })
-    setGridListLayout?.(layout)
+  const onGridListButtonPress = (layout: GridListLayout) => {
+    gridListLayoutActions.setLayout(layout)
+    analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
   }
 
   const getLayoutButtonProps = (layout: GridListLayout) => ({
     layout,
     isSelected: selectedGridListLayout === layout,
-    onPress: () => handleToggleChange(layout),
+    onPress: () => onGridListButtonPress(layout),
   })
 
   return (

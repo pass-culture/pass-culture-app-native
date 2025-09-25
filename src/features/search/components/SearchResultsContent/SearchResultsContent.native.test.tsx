@@ -941,13 +941,21 @@ describe('SearchResultsContent component', () => {
 
       describe('gridListLayout remote config is grid', () => {
         it('should display results as grid', async () => {
-          useRemoteConfigSpy.mockReturnValueOnce({
-            ...remoteConfigResponseFixture,
-            data: {
-              ...DEFAULT_REMOTE_CONFIG,
-              gridListLayoutRemoteConfig: 'Grille',
-            },
-          })
+          useRemoteConfigSpy
+            .mockReturnValueOnce({
+              ...remoteConfigResponseFixture,
+              data: {
+                ...DEFAULT_REMOTE_CONFIG,
+                gridListLayoutRemoteConfig: 'Grille',
+              },
+            })
+            .mockReturnValueOnce({
+              ...remoteConfigResponseFixture,
+              data: {
+                ...DEFAULT_REMOTE_CONFIG,
+                gridListLayoutRemoteConfig: 'Grille',
+              },
+            })
 
           renderSearchResultContent()
 
@@ -1032,7 +1040,7 @@ describe('SearchResultsContent component', () => {
       renderSearchResultContent()
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
-      expect(await screen.findByText('Liste')).toBeOnTheScreen()
+      expect(await screen.findByText('Résultats')).toBeOnTheScreen()
     })
 
     it('should log consult venue map when pressing map tab', async () => {
