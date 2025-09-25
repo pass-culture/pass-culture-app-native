@@ -1,8 +1,8 @@
-import { Result, UserCredentials } from 'react-native-keychain'
+import { Result, STORAGE_TYPE, UserCredentials } from 'react-native-keychain'
 
 const result: Result = {
   service: 'service',
-  storage: 'storage',
+  storage: STORAGE_TYPE.AES_GCM,
 }
 
 const credentials: UserCredentials = {

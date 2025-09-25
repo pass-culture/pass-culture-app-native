@@ -1,5 +1,5 @@
 import { Platform } from 'react-native'
-import * as Keychain from 'react-native-keychain'
+import { getGenericPassword, resetGenericPassword, setGenericPassword } from 'react-native-keychain'
 
 import { env } from 'libs/environment/env'
 
@@ -18,7 +18,7 @@ export async function saveRefreshToken(refreshToken: string | undefined): Promis
     throw Error('[Keychain]: No refresh token to save')
   }
   try {
-    await Keychain.setGenericPassword(REFRESH_TOKEN_KEY, refreshToken, keychainOptions)
+    await setGenericPassword(REFRESH_TOKEN_KEY, refreshToken, keychainOptions)
   } catch (error: unknown) {
     handleKeychainError(error, 'saving')
   }
@@ -26,7 +26,7 @@ export async function saveRefreshToken(refreshToken: string | undefined): Promis
 
 export async function clearRefreshToken(): Promise<void> {
   try {
-    await Keychain.resetGenericPassword(keychainOptions)
+    await resetGenericPassword(keychainOptions)
   } catch (error: unknown) {
     handleKeychainError(error, 'deletion')
   }
@@ -34,7 +34,7 @@ export async function clearRefreshToken(): Promise<void> {
 
 export async function getRefreshToken(): Promise<string | null> {
   try {
-    const credentials = await Keychain.getGenericPassword(keychainOptions)
+    const credentials = await getGenericPassword(keychainOptions)
     if (credentials) {
       return credentials.password
     }
