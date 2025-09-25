@@ -16,6 +16,7 @@ import {
   buildOfferSubcategoriesPredicate,
   buildTagsPredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
+import { parseAndCleanStringsToNumbers } from 'libs/algolia/fetchAlgolia/utils'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 
 const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
@@ -115,9 +116,7 @@ export const buildFacetFilters = ({
   }
 
   if (allocineIdList && allocineIdList.length > 0) {
-    const allocineIdListParsed = allocineIdList
-      .map(Number)
-      .filter((allocineId) => !Number.isNaN(allocineId))
+    const allocineIdListParsed = parseAndCleanStringsToNumbers(allocineIdList)
     const allocineIdPredicate = buildAllocineIdPredicate(allocineIdListParsed)
     facetFilters.push(allocineIdPredicate)
   }
