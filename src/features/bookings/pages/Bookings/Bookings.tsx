@@ -41,7 +41,7 @@ export const Bookings = () => {
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { isLoggedIn } = useAuthContext()
   const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
-  const { mutate: addReaction } = useReactionMutation()
+  const { mutateAsync: addReaction } = useReactionMutation()
   const { endedBookings = [] } = bookings ?? {}
 
   const { data: availableReactions } = useAvailableReactionQuery()
@@ -103,6 +103,7 @@ export const Bookings = () => {
           },
         ]}
         onTabChange={(key) => {
+          if (activeTab === BookingsTab.COMPLETED) updateReactions()
           setActiveTab(key)
         }}
       />
