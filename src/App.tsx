@@ -10,6 +10,8 @@ import 'react-native-get-random-values' // required for `uuid` module to work
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
 
+import PerformanceStats from 'react-native-performance-stats'
+
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
@@ -55,6 +57,20 @@ const App: FunctionComponent = function () {
   useLaunchPerformanceObserver()
 
   useOrientationLocked()
+
+  useEffect(() => {
+    const listener = PerformanceStats.addListener((stats) => {
+      console.log(stats)
+    })
+
+    // you must call .start(true) to get CPU as well
+    PerformanceStats.start()
+
+    // ... at some later point you could call:
+    // PerformanceStats.stop();
+
+    return () => listener.remove()
+  }, [])
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
