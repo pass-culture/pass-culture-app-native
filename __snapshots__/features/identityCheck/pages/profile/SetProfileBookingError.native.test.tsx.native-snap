@@ -245,7 +245,7 @@ Un problème est survenu !
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -346,7 +346,7 @@ Un problème est survenu !
                 "width": "100%",
               },
               {
-                "borderColor": "#eb0055",
+                "borderColor": "#6123df",
                 "borderStyle": "solid",
                 "borderWidth": 2,
               },
@@ -371,7 +371,7 @@ Un problème est survenu !
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,

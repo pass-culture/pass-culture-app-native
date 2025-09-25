@@ -167,7 +167,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   <View
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "flexBasis": 0,
                         "flexGrow": 0,
                         "flexShrink": 1,
@@ -449,7 +449,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 }
               >
                 <View
-                  fill="#eb0055"
+                  fill="#6123df"
                   height={32}
                   width={32}
                 >
@@ -2014,7 +2014,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
             },
             {
               "alignItems": "center",
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomLeftRadius": 24,
               "borderBottomRightRadius": 24,
               "borderTopLeftRadius": 24,

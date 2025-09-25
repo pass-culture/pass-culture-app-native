@@ -90,7 +90,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c3:focus-visible,
 .c3:active {
-  border-color: #eb0055;
+  border-color: #6123df;
 }
 
 .c6 {
@@ -114,7 +114,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c6:focus-visible,
 .c6:active {
-  border-color: #eb0055;
+  border-color: #6123df;
 }
 
 .c7 {
@@ -138,7 +138,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c7:focus-visible,
 .c7:active {
-  border-color: #eb0055;
+  border-color: #6123df;
 }
 
 .c4 {

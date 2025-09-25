@@ -691,7 +691,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 width={16}
               >
@@ -1044,7 +1044,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 width={16}
               >
@@ -1397,7 +1397,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 width={16}
               >
@@ -1754,7 +1754,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           }
         >
           <View
-            fill="#eb0055"
+            fill="#6123df"
             height={16}
             width={16}
           >
@@ -1859,7 +1859,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           onPress={[Function]}
           style={
             {
-              "color": "#eb0055",
+              "color": "#6123df",
               "cursor": "pointer",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -1908,7 +1908,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,

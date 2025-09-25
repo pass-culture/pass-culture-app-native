@@ -246,7 +246,7 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,

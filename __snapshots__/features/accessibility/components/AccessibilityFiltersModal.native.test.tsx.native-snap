@@ -567,7 +567,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <View
-                        fill="#eb0055"
+                        fill="#6123df"
                         height={32}
                         width={32}
                       >
@@ -712,7 +712,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <View
-                        fill="#eb0055"
+                        fill="#6123df"
                         height={32}
                         width={32}
                       >
@@ -857,7 +857,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <View
-                        fill="#eb0055"
+                        fill="#6123df"
                         height={32}
                         width={32}
                       >
@@ -1002,7 +1002,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       }
                     >
                       <View
-                        fill="#eb0055"
+                        fill="#6123df"
                         height={32}
                         width={32}
                       >
@@ -1189,7 +1189,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       },
                       {
                         "alignItems": "center",
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 24,
                         "borderBottomRightRadius": 24,
                         "borderTopLeftRadius": 24,

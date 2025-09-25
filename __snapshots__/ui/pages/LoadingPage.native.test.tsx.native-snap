@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<LoadingPage /> should render correctly 1`] = `
 <View
@@ -22,7 +22,7 @@ exports[`<LoadingPage /> should render correctly 1`] = `
   <Text
     style={
       {
-        "color": "#eb0055",
+        "color": "#6123df",
         "fontFamily": "Montserrat-Medium",
         "fontSize": 16,
         "lineHeight": 25.6,

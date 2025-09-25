@@ -591,7 +591,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "color": "#eb0055",
+                          "color": "#6123df",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -606,7 +606,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 4,
                         "borderBottomRightRadius": 4,
                         "borderTopLeftRadius": 4,
@@ -2679,7 +2679,7 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -3348,7 +3348,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "color": "#eb0055",
+                          "color": "#6123df",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3363,7 +3363,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 4,
                         "borderBottomRightRadius": 4,
                         "borderTopLeftRadius": 4,
@@ -5747,7 +5747,7 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -6502,7 +6502,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "color": "#eb0055",
+                          "color": "#6123df",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -6517,7 +6517,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 4,
                         "borderBottomRightRadius": 4,
                         "borderTopLeftRadius": 4,
@@ -8790,7 +8790,7 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,

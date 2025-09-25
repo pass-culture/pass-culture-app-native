@@ -2226,7 +2226,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -2344,7 +2344,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -2462,7 +2462,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -3745,7 +3745,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onPress={[Function]}
                   style={
                     {
-                      "color": "#eb0055",
+                      "color": "#6123df",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
@@ -3850,7 +3850,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onPress={[Function]}
                   style={
                     {
-                      "color": "#eb0055",
+                      "color": "#6123df",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
@@ -4042,7 +4042,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onPress={[Function]}
                   style={
                     {
-                      "color": "#eb0055",
+                      "color": "#6123df",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
@@ -4624,7 +4624,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onPress={[Function]}
                   style={
                     {
-                      "color": "#eb0055",
+                      "color": "#6123df",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
@@ -4729,7 +4729,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onPress={[Function]}
                   style={
                     {
-                      "color": "#eb0055",
+                      "color": "#6123df",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
@@ -4921,7 +4921,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onPress={[Function]}
                   style={
                     {
-                      "color": "#eb0055",
+                      "color": "#6123df",
                       "cursor": "pointer",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,

@@ -855,7 +855,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     },
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#eb0055",
+                      "backgroundColor": "#6123df",
                       "borderBottomLeftRadius": 24,
                       "borderBottomRightRadius": 24,
                       "borderTopLeftRadius": 24,

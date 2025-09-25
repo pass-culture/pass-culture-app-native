@@ -229,7 +229,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             onPress={[Function]}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "cursor": "pointer",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
@@ -2266,7 +2266,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             onPress={[Function]}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "cursor": "pointer",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
@@ -2348,7 +2348,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               onPress={[Function]}
               style={
                 {
-                  "color": "#eb0055",
+                  "color": "#6123df",
                   "cursor": "pointer",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
@@ -2378,7 +2378,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               onPress={[Function]}
               style={
                 {
-                  "color": "#eb0055",
+                  "color": "#6123df",
                   "cursor": "pointer",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,

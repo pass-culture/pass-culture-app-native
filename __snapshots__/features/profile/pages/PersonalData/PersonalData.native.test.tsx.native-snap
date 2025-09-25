@@ -355,7 +355,7 @@ exports[`PersonalData should render personal data success 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 testID="button-icon-left"
                 width={16}
@@ -370,7 +370,7 @@ exports[`PersonalData should render personal data success 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "#eb0055",
+                  "color": "#6123df",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -557,7 +557,7 @@ exports[`PersonalData should render personal data success 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 testID="button-icon-left"
                 width={16}
@@ -572,7 +572,7 @@ exports[`PersonalData should render personal data success 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "#eb0055",
+                  "color": "#6123df",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -712,7 +712,7 @@ exports[`PersonalData should render personal data success 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 testID="button-icon-left"
                 width={16}
@@ -727,7 +727,7 @@ exports[`PersonalData should render personal data success 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "#eb0055",
+                  "color": "#6123df",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -867,7 +867,7 @@ exports[`PersonalData should render personal data success 1`] = `
               }
             >
               <View
-                fill="#eb0055"
+                fill="#6123df"
                 height={16}
                 testID="button-icon-left"
                 width={16}
@@ -882,7 +882,7 @@ exports[`PersonalData should render personal data success 1`] = `
               numberOfLines={1}
               style={
                 {
-                  "color": "#eb0055",
+                  "color": "#6123df",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
