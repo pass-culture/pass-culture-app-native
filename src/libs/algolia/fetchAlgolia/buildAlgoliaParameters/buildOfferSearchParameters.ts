@@ -17,6 +17,7 @@ type Parameters = SearchQueryParameters & {
 export const buildOfferSearchParameters = (
   {
     allocineId = undefined,
+    allocineIdList = [],
     artistName = undefined,
     beginningDatetime = undefined,
     date = null,
@@ -57,6 +58,7 @@ export const buildOfferSearchParameters = (
   return {
     ...buildFacetFilters({
       allocineId,
+      allocineIdList,
       artistName,
       eanList,
       isUserUnderage,
