@@ -148,6 +148,7 @@ export type OffersModuleParameters = {
   gtlLabel?: string
   allocineIdList?: string[]
   likesMin?: number
+  isSortedByLikes?: boolean
 }
 
 export type BusinessModule = {

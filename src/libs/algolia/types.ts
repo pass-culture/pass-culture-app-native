@@ -168,6 +168,7 @@ export type SearchQueryParameters = {
   distinct?: boolean
   objectIds?: string[]
   minLikes?: number
+  isSortedByLikes?: boolean
 }
 
 export type Geoloc = AlgoliaGeoloc
