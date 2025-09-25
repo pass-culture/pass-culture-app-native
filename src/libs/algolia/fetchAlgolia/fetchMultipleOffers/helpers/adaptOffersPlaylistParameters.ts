@@ -61,6 +61,7 @@ export const adaptOffersPlaylistParameters = (
     offerGtlLevel: parameters.gtlLevel,
     offerNativeCategories: [],
     ...(parameters.likesMin ? { minLikes: parameters.likesMin } : undefined),
+    ...(parameters.isSortedByLikes ? { isSortedByLikes: parameters.isSortedByLikes } : undefined),
   }
 }
 

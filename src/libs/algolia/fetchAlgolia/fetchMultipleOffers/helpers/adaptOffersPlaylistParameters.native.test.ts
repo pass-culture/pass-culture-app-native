@@ -231,4 +231,21 @@ describe('adaptOffersPlaylistParameters', () => {
       minLikes: 200,
     })
   })
+
+  it('should return algolia parameters when sort by like provided', () => {
+    const parameters = {
+      isSortedByLikes: true,
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      isSortedByLikes: true,
+    })
+  })
 })
