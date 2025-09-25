@@ -6802,13 +6802,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rtsao/scc@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@rtsao/scc@npm:1.1.0"
-  checksum: 17d04adf404e04c1e61391ed97bca5117d4c2767a76ae3e879390d6dec7b317fcae68afbf9e98badee075d0b64fa60f287729c4942021b4d19cd01db77385c01
-  languageName: node
-  linkType: hard
-
 "@sentry-internal/browser-utils@npm:8.55.0":
   version: 8.55.0
   resolution: "@sentry-internal/browser-utils@npm:8.55.0"
@@ -9060,7 +9053,7 @@ __metadata:
     eslint-import-resolver-alias: ^1.1.2
     eslint-plugin-boundaries: ^5.0.1
     eslint-plugin-header: ^3.1.1
-    eslint-plugin-import: ^2.22.1
+    eslint-plugin-import: 2.25.3
     eslint-plugin-jest: ^27.1.4
     eslint-plugin-jest-formatting: ^3.1.0
     eslint-plugin-local-rules: ^1.1.0
@@ -9112,7 +9105,7 @@ __metadata:
     react-instantsearch-core: ^7.8.1
     react-mobile-picker: ^0.2.1
     react-native: 0.77.3
-    react-native-animatable: ^1.3.3
+    react-native-animatable: 1.3.3
     react-native-appsflyer: ^6.16.2
     react-native-calendars: 1.1312.0
     react-native-code-push: ^8.3.1
@@ -9672,7 +9665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array-includes@npm:^3.1.6, array-includes@npm:^3.1.8, array-includes@npm:^3.1.9":
+"array-includes@npm:^3.1.4, array-includes@npm:^3.1.6, array-includes@npm:^3.1.8":
   version: 3.1.9
   resolution: "array-includes@npm:3.1.9"
   dependencies:
@@ -9709,22 +9702,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array.prototype.findlastindex@npm:^1.2.6":
-  version: 1.2.6
-  resolution: "array.prototype.findlastindex@npm:1.2.6"
-  dependencies:
-    call-bind: ^1.0.8
-    call-bound: ^1.0.4
-    define-properties: ^1.2.1
-    es-abstract: ^1.23.9
-    es-errors: ^1.3.0
-    es-object-atoms: ^1.1.1
-    es-shim-unscopables: ^1.1.0
-  checksum: bd2665bd51f674d4e1588ce5d5848a8adb255f414070e8e652585598b801480516df2c6cef2c60b6ea1a9189140411c49157a3f112d52e9eabb4e9fc80936ea6
-  languageName: node
-  linkType: hard
-
-"array.prototype.flat@npm:^1.3.1, array.prototype.flat@npm:^1.3.3":
+"array.prototype.flat@npm:^1.2.5, array.prototype.flat@npm:^1.3.1":
   version: 1.3.3
   resolution: "array.prototype.flat@npm:1.3.3"
   dependencies:
@@ -13001,7 +12979,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-shim-unscopables@npm:^1.0.2, es-shim-unscopables@npm:^1.1.0":
+"es-shim-unscopables@npm:^1.0.2":
   version: 1.1.0
   resolution: "es-shim-unscopables@npm:1.1.0"
   dependencies:
@@ -13226,7 +13204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-node@npm:0.3.9, eslint-import-resolver-node@npm:^0.3.9":
+"eslint-import-resolver-node@npm:0.3.9, eslint-import-resolver-node@npm:^0.3.6":
   version: 0.3.9
   resolution: "eslint-import-resolver-node@npm:0.3.9"
   dependencies:
@@ -13249,7 +13227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-module-utils@npm:^2.12.1":
+"eslint-module-utils@npm:^2.7.1":
   version: 2.12.1
   resolution: "eslint-module-utils@npm:2.12.1"
   dependencies:
@@ -13309,32 +13287,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:^2.22.1":
-  version: 2.32.0
-  resolution: "eslint-plugin-import@npm:2.32.0"
+"eslint-plugin-import@npm:2.25.3":
+  version: 2.25.3
+  resolution: "eslint-plugin-import@npm:2.25.3"
   dependencies:
-    "@rtsao/scc": ^1.1.0
-    array-includes: ^3.1.9
-    array.prototype.findlastindex: ^1.2.6
-    array.prototype.flat: ^1.3.3
-    array.prototype.flatmap: ^1.3.3
-    debug: ^3.2.7
+    array-includes: ^3.1.4
+    array.prototype.flat: ^1.2.5
+    debug: ^2.6.9
     doctrine: ^2.1.0
-    eslint-import-resolver-node: ^0.3.9
-    eslint-module-utils: ^2.12.1
-    hasown: ^2.0.2
-    is-core-module: ^2.16.1
+    eslint-import-resolver-node: ^0.3.6
+    eslint-module-utils: ^2.7.1
+    has: ^1.0.3
+    is-core-module: ^2.8.0
     is-glob: ^4.0.3
-    minimatch: ^3.1.2
-    object.fromentries: ^2.0.8
-    object.groupby: ^1.0.3
-    object.values: ^1.2.1
-    semver: ^6.3.1
-    string.prototype.trimend: ^1.0.9
-    tsconfig-paths: ^3.15.0
+    minimatch: ^3.0.4
+    object.values: ^1.1.5
+    resolve: ^1.20.0
+    tsconfig-paths: ^3.11.0
   peerDependencies:
-    eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9
-  checksum: 8cd40595b5e4346d3698eb577014b4b6d0ba57b7b9edf975be4f052a89330ec202d0cc5c3861d37ebeafa151b6264821410243889b0c31710911a6b625bcf76b
+    eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+  checksum: 8bdf4b1fafb0e5c8f57a1673f72d84307d32c06a23942990d198c8b32a85a5ae0098872d1ef5bf80d7dfe8ec542f6a671e3c5e706731a80b493c9015f7a147f5
   languageName: node
   linkType: hard
 
@@ -15459,6 +15431,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"has@npm:^1.0.3":
+  version: 1.0.4
+  resolution: "has@npm:1.0.4"
+  checksum: 8a11ba062e0627c9578a1d08285401e39f1d071a9692ddf793199070edb5648b21c774dd733e2a181edd635bf6862731885f476f4ccf67c998d7a5ff7cef2550
+  languageName: node
+  linkType: hard
+
 "hasown@npm:^2.0.2":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
@@ -16215,7 +16194,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.13.0, is-core-module@npm:^2.16.0, is-core-module@npm:^2.16.1":
+"is-core-module@npm:^2.13.0, is-core-module@npm:^2.16.0, is-core-module@npm:^2.8.0":
   version: 2.16.1
   resolution: "is-core-module@npm:2.16.1"
   dependencies:
@@ -18446,10 +18425,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.7.1":
-  version: 5.13.0
-  resolution: "lottie-web@npm:5.13.0"
-  checksum: f634eddbfc49a243af598c8c3b5b2bc347c6980cb85ef3e17a394aa52e2d4d1d04ef565d9cf1581727eec598717932abf5e0e0aba111b4d64f2a9dadaeaa98e2
+"lottie-web@npm:5.8.1":
+  version: 5.8.1
+  resolution: "lottie-web@npm:5.8.1"
+  checksum: 48c19ea7863310150dc9e46855b0f85179f3768ac0c0cf4f3ffb18944819079d3046c31ca04f2748291f3c413a855329a12ce9c3faae056a1a869776b6ed12a9
   languageName: node
   linkType: hard
 
@@ -20085,18 +20064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object.groupby@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "object.groupby@npm:1.0.3"
-  dependencies:
-    call-bind: ^1.0.7
-    define-properties: ^1.2.1
-    es-abstract: ^1.23.2
-  checksum: 0d30693ca3ace29720bffd20b3130451dca7a56c612e1926c0a1a15e4306061d84410bdb1456be2656c5aca53c81b7a3661eceaa362db1bba6669c2c9b6d1982
-  languageName: node
-  linkType: hard
-
-"object.values@npm:^1.1.6, object.values@npm:^1.2.1":
+"object.values@npm:^1.1.5, object.values@npm:^1.1.6, object.values@npm:^1.2.1":
   version: 1.2.1
   resolution: "object.values@npm:1.2.1"
   dependencies:
@@ -21817,15 +21785,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-animatable@npm:^1.3.3":
-  version: 1.4.0
-  resolution: "react-native-animatable@npm:1.4.0"
-  dependencies:
-    prop-types: ^15.8.1
-  checksum: a1b211aff745b97351d78643d641fa298f7d71524eaf22fee8a69257ce52e85d6b3caf8e7fd26a521af34984fba7402b7c632c35ea69d618769387d1dcb6b32a
-  languageName: node
-  linkType: hard
-
 "react-native-appsflyer@npm:^6.16.2":
   version: 6.17.5
   resolution: "react-native-appsflyer@npm:6.17.5"
@@ -22877,7 +22836,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.13.1, resolve@npm:^1.14.2, resolve@npm:^1.19.0, resolve@npm:^1.22.1, resolve@npm:^1.22.10, resolve@npm:^1.22.4, resolve@npm:^1.22.8":
+"resolve@npm:^1.13.1, resolve@npm:^1.14.2, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.22.10, resolve@npm:^1.22.4, resolve@npm:^1.22.8":
   version: 1.22.10
   resolution: "resolve@npm:1.22.10"
   dependencies:
@@ -22903,7 +22862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.13.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.10#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.8#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.13.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.10#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.8#~builtin<compat/resolve>":
   version: 1.22.10
   resolution: "resolve@patch:resolve@npm%3A1.22.10#~builtin<compat/resolve>::version=1.22.10&hash=c3c19d"
   dependencies:
@@ -24883,7 +24842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:^3.15.0":
+"tsconfig-paths@npm:^3.11.0":
   version: 3.15.0
   resolution: "tsconfig-paths@npm:3.15.0"
   dependencies:
