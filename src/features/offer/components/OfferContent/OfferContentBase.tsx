@@ -230,7 +230,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const handleOnSeeAllReviewsPress = () => {
     analytics.logClickInfoReview({
       from: 'offer',
-      offerId: offer?.id.toString() ?? '',
+      offerId: offer.id.toString(),
+      categoryName: subcategory.categoryId,
       userId: userId?.toString(),
     })
   }

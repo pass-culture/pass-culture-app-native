@@ -36,6 +36,8 @@ describe('useOngoingOrEndedBookingQuery', () => {
     })
   })
 
+  // TODO(PC-36586): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(booking.id), {
@@ -48,6 +50,8 @@ describe('useOngoingOrEndedBookingQuery', () => {
     })
   })
 
+  // TODO(PC-36586): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should return ended_bookings when there is one', async () => {
     const booking = bookingsSnap.ended_bookings[0]
     const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(booking.id), {
@@ -60,6 +64,8 @@ describe('useOngoingOrEndedBookingQuery', () => {
     })
   })
 
+  // TODO(PC-36586): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should return null if no ongoing nor ended booking can be found', async () => {
     const bookingId = 1230912039
     const { result } = renderHook(() => useOngoingOrEndedBookingQueryV1(bookingId), {

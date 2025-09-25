@@ -154,6 +154,8 @@ describe('<OfferCTAButton />', () => {
     expect(await screen.findByText('Réservation impossible')).toBeOnTheScreen()
   })
 
+  // TODO(PC-36585): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   describe.skip('When offer is digital and free and not already booked', () => {
     const expectedResponse: BookingsResponse = {
       ended_bookings: [],
@@ -317,6 +319,8 @@ describe('<OfferCTAButton />', () => {
     })
   })
 
+  // TODO(PC-36585): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   describe.skip('When offer is digital and free and already booked', () => {
     const expectedResponse: BookingsResponse = {
       ended_bookings: [],

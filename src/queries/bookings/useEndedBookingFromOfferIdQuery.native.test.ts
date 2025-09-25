@@ -27,6 +27,8 @@ describe('useEndedBookingFromOfferIdQuery', () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
   })
 
+  // TODO(PC-36586): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should return an ended booking if existing', async () => {
     const booking = bookingsSnap.ended_bookings[0]
     const { result } = renderHook(
@@ -42,6 +44,8 @@ describe('useEndedBookingFromOfferIdQuery', () => {
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 
+  // TODO(PC-36586): Test flaky following the v5 react query update
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should not return an ended booking if not existing', async () => {
     const unknownOfferId = 91919191
     const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId, true), {
