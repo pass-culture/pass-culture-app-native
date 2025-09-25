@@ -226,7 +226,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -611,7 +611,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,

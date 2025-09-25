@@ -480,7 +480,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "alignItems": "center",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
-                        "borderColor": "#eb0055",
+                        "borderColor": "#6123df",
                         "borderStyle": "solid",
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
@@ -496,7 +496,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "backgroundColor": "#eb0055",
+                          "backgroundColor": "#6123df",
                           "borderBottomLeftRadius": 16,
                           "borderBottomRightRadius": 16,
                           "borderTopLeftRadius": 16,

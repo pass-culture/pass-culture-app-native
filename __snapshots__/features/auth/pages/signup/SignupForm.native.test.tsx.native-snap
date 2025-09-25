@@ -193,7 +193,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         style={
           [
             {
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomRightRadius": 3,
               "borderTopRightRadius": 3,
               "height": "100%",
@@ -959,7 +959,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         style={
           [
             {
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomRightRadius": 3,
               "borderTopRightRadius": 3,
               "height": "100%",
@@ -1857,7 +1857,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         style={
           [
             {
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomRightRadius": 3,
               "borderTopRightRadius": 3,
               "height": "100%",
@@ -2242,9 +2242,9 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "color": {
                     "background": {
                       "bookclub": "#dcf3f8",
-                      "brandPrimary": "#eb0055",
-                      "brandPrimaryHover": "#cb0659",
-                      "brandPrimarySelected": "#ffe0ea",
+                      "brandPrimary": "#6123df",
+                      "brandPrimaryHover": "#320096",
+                      "brandPrimarySelected": "#f3edff",
                       "brandSecondary": "#320096",
                       "brandSecondaryHover": "#25026c",
                       "cineclub": "#ffe0ea",
@@ -2261,7 +2261,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                       "info": "#f3edff",
                       "inverted": "#161617",
                       "locked": "#ffffff",
-                      "lockedBrandPrimary": "#eb0055",
+                      "lockedBrandPrimary": "#6123df",
                       "lockedBrandSecondary": "#320096",
                       "lockedInverted": "#161617",
                       "overlay": "#24242429",
@@ -2273,8 +2273,8 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                       "warning": "#f9df81",
                     },
                     "border": {
-                      "brandPrimary": "#eb0055",
-                      "brandPrimaryHover": "#cb0659",
+                      "brandPrimary": "#6123df",
+                      "brandPrimaryHover": "#320096",
                       "brandSecondary": "#320096",
                       "brandSecondaryHover": "#25026c",
                       "decorative01": "#d63d00",
@@ -2293,8 +2293,8 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                     },
                     "icon": {
                       "bookclub": "#14a0be",
-                      "brandPrimary": "#eb0055",
-                      "brandPrimaryHover": "#cb0659",
+                      "brandPrimary": "#6123df",
+                      "brandPrimaryHover": "#320096",
                       "brandSecondary": "#320096",
                       "brandSecondaryHover": "#25026c",
                       "cineclub": "#cb0659",
@@ -2316,8 +2316,8 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                       "inverted": "#ffffff",
                     },
                     "text": {
-                      "brandPrimary": "#eb0055",
-                      "brandPrimaryHover": "#cb0659",
+                      "brandPrimary": "#6123df",
+                      "brandPrimaryHover": "#320096",
                       "brandSecondary": "#320096",
                       "brandSecondaryHover": "#25026c",
                       "default": "#161617",
@@ -3000,7 +3000,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         style={
           [
             {
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomRightRadius": 3,
               "borderTopRightRadius": 3,
               "height": "100%",

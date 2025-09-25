@@ -679,7 +679,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <View
-              fill="#eb0055"
+              fill="#6123df"
               height={16}
               width={16}
             >
@@ -1032,7 +1032,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <View
-              fill="#eb0055"
+              fill="#6123df"
               height={16}
               width={16}
             >
@@ -1385,7 +1385,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <View
-              fill="#eb0055"
+              fill="#6123df"
               height={16}
               width={16}
             >
@@ -1742,7 +1742,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         }
       >
         <View
-          fill="#eb0055"
+          fill="#6123df"
           height={16}
           width={16}
         >
@@ -1852,7 +1852,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         onPress={[Function]}
         style={
           {
-            "color": "#eb0055",
+            "color": "#6123df",
             "cursor": "pointer",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,

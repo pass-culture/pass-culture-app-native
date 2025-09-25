@@ -53,12 +53,17 @@ const calendarHeaderStyle = (theme: DefaultTheme): CustomTheme => ({
   textDisabledColor: theme.designSystem.color.text.disabled,
   calendarBackground: theme.designSystem.color.background.default,
   dayTextColor: theme.designSystem.color.text.default,
+  todayTextColor: theme.designSystem.color.text.default,
   monthTextColor: theme.designSystem.color.text.default,
   textSectionTitleColor: theme.designSystem.color.text.subtle,
   backgroundColor: theme.designSystem.color.background.default,
   textDayFontFamily: theme.designSystem.typography.body.fontFamily,
   textMonthFontFamily: theme.designSystem.typography.body.fontFamily,
   textDayHeaderFontFamily: theme.designSystem.typography.body.fontFamily,
+  textDayFontWeight: 500,
+  textMonthFontWeight: 500,
+  textDayHeaderFontWeight: 500,
+  todayButtonFontWeight: 600,
   'stylesheet.calendar.header': {
     header: {
       flexDirection: 'row',

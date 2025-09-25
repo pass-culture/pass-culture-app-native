@@ -134,7 +134,7 @@ describe('VenueMapLocationModal', () => {
 
     await user.press(geolocPositionButton)
 
-    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
   })
 
   it('should hide "Géolocalisation désactivée" if geolocation is enabled', async () => {
@@ -417,7 +417,7 @@ describe('VenueMapLocationModal', () => {
 
       await user.press(geolocPositionButton)
 
-      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })

@@ -110,7 +110,7 @@ describe('HomeLocationModal', () => {
     const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
     await user.press(geolocPositionButton)
 
-    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {

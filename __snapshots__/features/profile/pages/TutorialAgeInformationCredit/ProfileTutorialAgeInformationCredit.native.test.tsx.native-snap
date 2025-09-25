@@ -332,11 +332,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           }
                         />
                         <View
-                          color="#eb0055"
+                          color="#6123df"
                           progress={0.5}
                           style={
                             {
-                              "backgroundColor": "#eb0055",
+                              "backgroundColor": "#6123df",
                               "borderBottomLeftRadius": 999,
                               "borderBottomRightRadius": 999,
                               "borderTopLeftRadius": 999,
@@ -651,11 +651,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                           }
                         />
                         <View
-                          color="#eb0055"
+                          color="#6123df"
                           progress={1}
                           style={
                             {
-                              "backgroundColor": "#eb0055",
+                              "backgroundColor": "#6123df",
                               "borderBottomLeftRadius": 999,
                               "borderBottomRightRadius": 999,
                               "borderTopLeftRadius": 999,

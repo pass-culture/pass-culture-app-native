@@ -207,7 +207,7 @@ Reviens lundi pour débloquer ton crédit !
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -560,7 +560,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,

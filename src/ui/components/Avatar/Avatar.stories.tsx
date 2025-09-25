@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
+import { styled } from 'styled-components/native'
 
 import { theme } from 'theme'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -18,6 +19,14 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta
 
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  color: theme.designSystem.color.text.lockedInverted,
+}))
+
+const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
+  color: theme.designSystem.color.text.lockedInverted,
+}))
+
 const variantConfig: Variants<typeof Avatar> = [
   {
     label: 'Avatar xsmall',
@@ -32,7 +41,7 @@ const variantConfig: Variants<typeof Avatar> = [
     props: {
       size: AVATAR_MEDIUM,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
-      children: <Typo.Title3>M</Typo.Title3>,
+      children: <StyledTitle3>M</StyledTitle3>,
     },
   },
   {
@@ -70,7 +79,7 @@ const variantConfig: Variants<typeof Avatar> = [
       rounded: false,
       borderWidth: 6,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
-      children: <Typo.Title1>M.M</Typo.Title1>,
+      children: <StyledTitle1>M.M</StyledTitle1>,
     },
   },
   {
@@ -80,7 +89,7 @@ const variantConfig: Variants<typeof Avatar> = [
       rounded: false,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
       borderRadius: theme.designSystem.size.borderRadius.m,
-      children: <Typo.Title1>M.M</Typo.Title1>,
+      children: <StyledTitle1>M.M</StyledTitle1>,
     },
   },
 ]

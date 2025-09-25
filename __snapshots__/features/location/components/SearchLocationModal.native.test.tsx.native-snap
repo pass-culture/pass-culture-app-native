@@ -630,7 +630,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           color="brandPrimary"
                           style={
                             {
-                              "color": "#eb0055",
+                              "color": "#6123df",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 16,
                               "lineHeight": 25.6,
