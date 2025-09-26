@@ -2,9 +2,10 @@ import '@testing-library/jest-native/extend-expect'
 
 import { TextEncoder } from 'util'
 
-import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
+
+import { customConsoleFailTest } from 'tests/customConsoleFailTest'
 
 import { queryCache, mutationCache } from './reactQueryProviderHOC'
 
@@ -14,16 +15,31 @@ configure({ testingLibrary: 'react-native' })
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder
 
-consoleFailTestModule.cft({
-  testFramework: 'jest',
-  spyLibrary: 'jest',
-  console: {
-    debug: false,
-    error: false,
-    log: false,
-    warn: true,
+customConsoleFailTest(
+  {
+    console: {
+      debug: false,
+      error: false,
+      log: false,
+      warn: false,
+    },
   },
-})
+  {
+    error: [
+      'The above error occurred in the',
+      'When testing, code that causes React state updates should be wrapped into act(...)',
+      '',
+    ],
+    warn: [
+      'Node of type rule not supported as an inline style',
+      'props.pointerEvents is deprecated. Use style.pointerEvents',
+      '[Reanimated] Reading from `value` during component render.',
+      '"shadow*" style props are deprecated. Use "boxShadow".',
+      'Image: style.resizeMode is deprecated. Please use props.resizeMode.',
+      'Image: style.tintColor is deprecated. Please use props.tintColor.',
+    ],
+  }
+)
 
 global.afterEach(async () => {
   queryCache.clear()
