@@ -15,7 +15,7 @@ exports[`Stepper navigation should render correctly 1`] = `
     contentContainerStyle={
       {
         "alignSelf": "center",
-        "flex": 1,
+        "flexGrow": 1,
         "maxWidth": 500,
         "paddingBottom": 36,
         "paddingHorizontal": 24,
