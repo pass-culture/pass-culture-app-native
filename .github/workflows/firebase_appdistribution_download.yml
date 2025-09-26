@@ -1,0 +1,198 @@
+name: 'Firebase App Distribution Download'
+
+on:
+  # Manual trigger for downloading releases
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to download'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+        - ios
+        - android
+        - both
+      environment:
+        description: 'Environment to download from'
+        required: true
+        default: 'testing'
+        type: choice
+        options:
+        - testing
+        - staging
+      latest_only:
+        description: 'Download only the latest release'
+        required: false
+        default: true
+        type: boolean
+      max_releases:
+        description: 'Maximum releases to download (if not latest only)'
+        required: false
+        default: '3'
+        type: string
+
+  # Trigger via API or other workflows
+  workflow_call:
+    inputs:
+      platform:
+        description: 'Platform to download'
+        required: true
+        type: string
+        default: 'both'
+      environment:
+        description: 'Environment to download from'
+        required: true
+        type: string
+        default: 'testing'
+      latest_only:
+        description: 'Download only the latest release'
+        required: false
+        type: boolean
+        default: true
+      max_releases:
+        description: 'Maximum releases to download'
+        required: false
+        type: string
+        default: '3'
+
+jobs:
+  download:
+    name: 'Download Firebase App Distribution Releases'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+      
+      - name: Authenticate to Google Cloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      
+      - name: Setup Google Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+      
+      - name: Get Firebase credentials from Secret Manager
+        id: 'firebase_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.environment || github.event.inputs.environment }}_firebase_json
+            SLACK_WEBHOOK_URL:passculture-metier-ehp/passculture-native-firebase-download-slack-webhook
+      
+      - name: Setup Firebase credentials file
+        run: |
+          echo '${{ steps.firebase_secrets.outputs.FIREBASE_TOKEN }}' > firebase_credentials.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/firebase_credentials.json" >> $GITHUB_ENV
+      
+      - name: Download Firebase App Distribution releases
+        run: |
+          # Determine flags based on inputs
+          PLATFORM="${{ inputs.platform || github.event.inputs.platform }}"
+          ENVIRONMENT="${{ inputs.environment || github.event.inputs.environment }}"
+          LATEST_FLAG=""
+          MAX_RELEASES_FLAG=""
+          
+          if [ "${{ inputs.latest_only || github.event.inputs.latest_only }}" == "true" ]; then
+            LATEST_FLAG="-l"
+          else
+            MAX_RELEASES_FLAG="-m ${{ inputs.max_releases || github.event.inputs.max_releases }}"
+          fi
+          
+          # Run download script
+          ./scripts/download_firebase_appdistribution.sh \
+            -o "$PLATFORM" \
+            -e "$ENVIRONMENT" \
+            -d "./firebase-downloads" \
+            -f "$GOOGLE_APPLICATION_CREDENTIALS" \
+            -s "${{ steps.firebase_secrets.outputs.SLACK_WEBHOOK_URL }}" \
+            $LATEST_FLAG \
+            $MAX_RELEASES_FLAG
+      
+      - name: Upload release metadata as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firebase-releases-${{ inputs.platform || github.event.inputs.platform }}-${{ inputs.environment || github.event.inputs.environment }}
+          path: |
+            ./firebase-downloads/**/*.json
+            ./firebase-downloads/**/*.txt
+          retention-days: 30
+      
+      - name: Generate download summary
+        run: |
+          PLATFORM="${{ inputs.platform || github.event.inputs.platform }}"
+          ENVIRONMENT="${{ inputs.environment || github.event.inputs.environment }}"
+          
+          echo "## Firebase App Distribution Download Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Platform:** $PLATFORM" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** $ENVIRONMENT" >> $GITHUB_STEP_SUMMARY
+          echo "**Latest Only:** ${{ inputs.latest_only || github.event.inputs.latest_only }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # List downloaded metadata files
+          echo "### Downloaded Release Metadata:" >> $GITHUB_STEP_SUMMARY
+          find ./firebase-downloads -name "*.json" -type f | while read -r file; do
+            echo "- $(basename "$file")" >> $GITHUB_STEP_SUMMARY
+          done
+          
+          # Show directory structure
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Directory Structure:" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          find ./firebase-downloads -type f | head -20 >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+      
+      - name: Cleanup sensitive files
+        if: always()
+        run: |
+          rm -f firebase_credentials.json
+
+  notify_failure:
+    name: 'Notify download failure'
+    runs-on: ubuntu-latest
+    needs: download
+    if: always() && needs.download.result == 'failure'
+    steps:
+      - name: Authenticate to Google Cloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      
+      - name: Get Slack webhook from Secret Manager
+        id: 'slack_secret'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            SLACK_WEBHOOK_URL:passculture-metier-ehp/passculture-native-firebase-download-slack-webhook
+      
+      - name: Send failure notification to Slack
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{
+              "attachments": [
+                {
+                  "color": "#A30002",
+                  "author_name": "${{ github.actor }}",
+                  "title": "Firebase App Distribution Download Failed",
+                  "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                  "text": "Firebase App Distribution download failed for ${{ inputs.platform || github.event.inputs.platform }} from `${{ inputs.environment || github.event.inputs.environment }}`\n\n*Repository:* ${{ github.repository }}\n*Workflow:* ${{ github.workflow }}\n*Run ID:* ${{ github.run_id }}",
+                  "mrkdwn_in": ["text"]
+                }
+              ]
+            }' \
+            "${{ steps.slack_secret.outputs.SLACK_WEBHOOK_URL }}"
