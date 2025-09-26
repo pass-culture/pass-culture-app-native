@@ -16,6 +16,7 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useFlatListPerformance } from 'features/debugPerformance/hooks/useListPerformance'
 import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
@@ -202,6 +203,21 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const modulesIntervalId = useRef<NodeJS.Timeout>()
   const { zIndex } = useTheme()
 
+  const scrollRef = useRef<IOFlatListController>(null)
+
+  // List performance monitoring
+  const { onScroll: listPerformanceOnScroll, captureMetrics } = useFlatListPerformance(scrollRef, {
+    autoScrollTracking: true,
+    enableMemoryTracking: true,
+    componentInfo: {
+      componentName: 'GenericHome',
+      screenName: 'Home',
+      listDescription: 'Homepage modules list',
+      parentComponent: 'Home',
+      listPosition: 'primary',
+    },
+  })
+
   const flatListHeaderStyle = { zIndex: zIndex.header }
 
   const enrichedModules = useMemo(
@@ -209,7 +225,11 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     [modules, offersModulesData, venuesModulesData, maxIndex]
   )
 
-  const scrollRef = useRef<IOFlatListController>(null)
+  const modulesToDisplayHandlingVideoCarousel: HomepageModule[] = useMemo(
+    () => buildModulesHandlingVideoCarouselPosition(enrichedModules, thematicHeader),
+    [enrichedModules, thematicHeader]
+  )
+
   useScrollToTop(scrollRef)
 
   const scrollListenerToThrottle = useCallback(
@@ -257,9 +277,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (givenOnScroll) givenOnScroll(event)
 
+      // List performance monitoring
+      listPerformanceOnScroll(event)
+
       checkTrigger(event.nativeEvent.contentOffset.y)
     },
-    [givenOnScroll, checkTrigger]
+    [givenOnScroll, checkTrigger, listPerformanceOnScroll]
   )
 
   const { onScroll, scrollButtonTransition } = useOnScroll(scrollListenerToThrottle, scrollListener)
@@ -357,12 +380,22 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     [homeId, videoModuleId]
   )
 
-  const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =
-    buildModulesHandlingVideoCarouselPosition(enrichedModules, thematicHeader)
   const videoCarouselModules = enrichedModules.filter(isVideoCarouselModule)
 
   const shouldDisplayVideoInHeader =
     !thematicHeader && enrichedModules[0]?.type === HomepageModuleType.VideoCarouselModule
+
+  // Capture metrics when modules are loaded in development
+  useEffect(() => {
+    if (__DEV__ && modulesToDisplayHandlingVideoCarousel.length > 0) {
+      const timer = setTimeout(() => {
+        captureMetrics()
+      }, 2000)
+
+      return () => clearTimeout(timer)
+    }
+    return undefined
+  }, [modulesToDisplayHandlingVideoCarousel.length, captureMetrics])
 
   const ListHeader = useMemo(
     () => (
