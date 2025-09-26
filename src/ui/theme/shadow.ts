@@ -22,7 +22,7 @@ type IOSShadow = {
   shadowOffset: { width: number; height: number }
   shadowRadius: number
   shadowColor: ColorsEnum | string
-  shadowOpacity: number
+  shadowOpacity: string
 }
 type WebShadow = { boxShadow?: string; filter?: string }
 
@@ -45,7 +45,7 @@ function buildShadow(
       },
       shadowRadius: shadowInput.shadowRadius,
       shadowColor: shadowInput.shadowColor,
-      shadowOpacity: 1, // We keep value at 1 because alpha is already included in the color token
+      shadowOpacity: '1', // We keep value at 1 because alpha is already included in the color token
     }
   }
 
