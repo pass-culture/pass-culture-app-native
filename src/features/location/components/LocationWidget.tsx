@@ -1,12 +1,12 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -27,6 +27,7 @@ type Props = {
 
 export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
+  const navigation = useNavigation<UseNavigationType>()
 
   const { place, selectedLocationMode } = useLocation()
   const {
@@ -66,17 +67,17 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
       ) : null}
       <StyledTouchable
         testID="Ouvrir la modale de localisation depuis le widget"
-        onPress={showLocationModal}
+        onPress={() => navigation.navigate('LocationModal')}
         accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
         <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
-      {shouldShowHomeLocationModal ? (
+      {/* {shouldShowHomeLocationModal ? (
         <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
       ) : (
         <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
-      )}
+      )} */}
     </React.Fragment>
   )
 }

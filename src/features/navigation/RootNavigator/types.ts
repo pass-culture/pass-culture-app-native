@@ -291,6 +291,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
+  LocationModal: undefined
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &

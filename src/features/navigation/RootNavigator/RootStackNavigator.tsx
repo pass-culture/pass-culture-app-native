@@ -35,6 +35,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
+import { LocationModal } from 'features/location/components/LocationModal'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
@@ -387,6 +388,13 @@ const RootStackNavigator = withWebWrapper(
             name="Offer"
             component={OfferWithAsyncErrorBoundry}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="LocationModal"
+            component={LocationModal}
+            options={{
+              title: 'LocationModal',
+              presentation: 'modal',
+            }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer1"
             component={OfferWithAsyncErrorBoundry}
