@@ -167,6 +167,8 @@ export type SearchQueryParameters = {
   gtls?: GTL[]
   distinct?: boolean
   objectIds?: string[]
+  minLikes?: number
+  isSortedByLikes?: boolean
 }
 
 export type Geoloc = AlgoliaGeoloc

@@ -1,3 +1,4 @@
+import { NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildDatePredicate,
   buildHomepageDatePredicate,
@@ -18,6 +19,7 @@ export const buildNumericFilters = (
     maxPrice,
     maxPossiblePrice,
     minBookingsThreshold,
+    minLikes,
   }: Pick<
     SearchQueryParameters,
     | 'beginningDatetime'
@@ -31,6 +33,7 @@ export const buildNumericFilters = (
     | 'maxPossiblePrice'
     | 'minBookingsThreshold'
     | 'isHeadline'
+    | 'minLikes'
   >,
   isUsedFromSearch?: boolean
 ): null | {
@@ -58,6 +61,7 @@ export const buildNumericFilters = (
   if (datePredicate) numericFilters.push(datePredicate)
   if (homepageDatePredicate) numericFilters.push(homepageDatePredicate)
   if (last30DaysBookingsPredicate) numericFilters.push(last30DaysBookingsPredicate)
+  if (minLikes) numericFilters.push([`${NUMERIC_FILTERS_ENUM.OFFER_LIKES} > ${minLikes}`])
 
   return numericFilters.length > 0 ? { numericFilters } : null
 }

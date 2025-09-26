@@ -44,6 +44,7 @@ export const buildOfferSearchParameters = (
     timeRange = null,
     venue,
     gtls = [],
+    minLikes,
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean,
@@ -90,6 +91,7 @@ export const buildOfferSearchParameters = (
         priceRange,
         timeRange,
         isHeadline,
+        minLikes,
       },
       isUsedFromSearch
     ),
