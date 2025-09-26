@@ -16,7 +16,7 @@ import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -61,7 +61,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
       />
       <MarginContainer>
         <ViewGap gap={4}>
-          <InformationTags tags={venueTags} />
+          <GroupTags tags={venueTags} />
           <ViewGap gap={1}>
             <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
               {venueName}

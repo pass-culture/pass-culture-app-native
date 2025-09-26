@@ -103,13 +103,12 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              maxHeight={56}
+              gap={2}
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
-                  "maxHeight": 56,
                   "overflow": "hidden",
                 }
               }
@@ -2860,13 +2859,12 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             }
           >
             <View
-              maxHeight={56}
+              gap={2}
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
-                  "maxHeight": 56,
                   "overflow": "hidden",
                 }
               }
@@ -5928,13 +5926,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             }
           >
             <View
-              maxHeight={56}
+              gap={2}
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
-                  "maxHeight": 56,
                   "overflow": "hidden",
                 }
               }
