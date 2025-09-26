@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { DebugScreen } from './DebugScreen'
 
@@ -52,7 +52,7 @@ describe('DebugScreen', () => {
 
   it('should call copyToClipboard when press "Copier dans le presse-papier" button', async () => {
     render(<DebugScreen />)
-
+    await enterDescription()
     const copyButton = screen.getByText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
@@ -61,6 +61,7 @@ describe('DebugScreen', () => {
 
   it('should contain the correct informations when press "Contacter le support" button', async () => {
     render(<DebugScreen />)
+    await enterDescription()
 
     const supportButton = screen.getByText('Contacter le support')
     await userEvent.press(supportButton)
@@ -77,10 +78,12 @@ describe('DebugScreen', () => {
     expect(decodedUrl).toContain('User ID : 1234')
     expect(decodedUrl).toContain('Device font scale : 1.5')
     expect(decodedUrl).toContain('Device zoom : Non renseigné')
+    expect(decodedUrl).toContain("J'ai un problème avec la carte")
   })
 
   it('should log ClickCopyDebugInfo event when press "Copier dans le press-papier" button', async () => {
     render(<DebugScreen />)
+    await enterDescription()
 
     const copyButton = screen.getByText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
@@ -90,6 +93,7 @@ describe('DebugScreen', () => {
 
   it('should log ClickMailDebugInfo event when press "Contacter le support" button', async () => {
     render(<DebugScreen />)
+    await enterDescription()
 
     const copyButton = screen.getByText('Contacter le support')
     await userEvent.press(copyButton)
@@ -97,3 +101,10 @@ describe('DebugScreen', () => {
     expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, '1234')
   })
 })
+
+const enterDescription = async () => {
+  const textBox = screen.getByPlaceholderText('Décrire en quelques phrases.')
+  await act(async () => {
+    fireEvent.changeText(textBox, "J'ai un problème avec la carte")
+  })
+}
