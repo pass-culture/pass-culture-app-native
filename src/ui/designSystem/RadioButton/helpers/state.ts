@@ -5,11 +5,11 @@
 
 import { RadioState } from 'ui/designSystem/RadioButton/types'
 
-export function getRadioState(
+export const getRadioState = (
   isSelected: boolean,
   hasError?: boolean,
   isDisabled?: boolean
-): RadioState {
+): RadioState => {
   if (isDisabled && isSelected) return 'disabledSelected'
   if (isDisabled) return 'disabled'
   if (hasError) return 'error'
@@ -17,6 +17,6 @@ export function getRadioState(
   return 'default'
 }
 
-export function isDisabledState(state: RadioState) {
+export const isDisabledState = (state: RadioState) => {
   return state === 'disabled' || state === 'disabledSelected'
 }
