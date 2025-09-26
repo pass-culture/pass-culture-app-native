@@ -114,7 +114,7 @@ const variantConfig: Variants<typeof Checkbox> = [
       label: 'Checkbox label',
       variant: 'detailed',
       isChecked: false,
-      display: 'hug',
+      sizing: 'hug',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
