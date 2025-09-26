@@ -37,13 +37,12 @@ const selectedBackgroundTokenByPart: Record<
     default: { open: 'default', collapsed: 'default' },
     detailed: { open: 'brandPrimarySelected', collapsed: 'brandPrimarySelected' },
   },
-} as const
+}
 
 const backgroundColorForSelected = (theme: DefaultTheme, params: RadioBackgroundParams): string => {
-  const { color } = theme.designSystem
   const collapsedKey = getCollapsedKey(params.componentPart, params.collapsed)
   const token = selectedBackgroundTokenByPart[params.componentPart][params.variant][collapsedKey]
-  return color.background[token]
+  return theme.designSystem.color.background[token]
 }
 
 const backgroundColorForDisabledSelected = (
@@ -76,16 +75,15 @@ const backgroundColorByState: Record<
 }
 
 const getRadioBorderColor = (state: RadioState, theme: DefaultTheme) => {
-  const { color } = theme.designSystem
   const tokenByState = {
     selected: 'brandPrimary',
     disabledSelected: 'disabled',
     disabled: 'disabled',
     error: 'error',
     default: 'default',
-  } as const
+  }
 
-  return color.border[tokenByState[state]]
+  return theme.designSystem.color.border[tokenByState[state]]
 }
 
 type GetRadioColorsOptions = {
