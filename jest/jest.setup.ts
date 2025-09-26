@@ -36,17 +36,3 @@ jest.mock('react-native-orientation-locker')
 jest.mock('shared/accessibility/useGetFontScale', () => ({
   useGetFontScale: () => ({ fontScale: 1 }),
 }))
-
-// TODO(PC-37747): remove this temporary ignore warnings
-// Store the original console.warn
-const originalWarn = console.warn
-
-jest.spyOn(console, 'warn').mockImplementation((...args) => {
-  if (typeof args[0] === 'string' && args[0].includes('Expected style')) {
-    if (args[0].includes('to contain units')) {
-      return // Do not log
-    }
-  }
-  // Use the original console.warn for other warnings
-  originalWarn.apply(console, args)
-})
