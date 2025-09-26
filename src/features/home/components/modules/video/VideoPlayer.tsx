@@ -16,7 +16,7 @@ import { YoutubePlayerRef } from './YoutubePlayer/types'
 import { YoutubePlayer } from './YoutubePlayer/YoutubePlayer'
 
 interface VideoPlayerNativeProps extends VideoPlayerProps {
-  playerRef: RefObject<YoutubePlayerRef>
+  playerRef: RefObject<YoutubePlayerRef | null>
 }
 
 export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({

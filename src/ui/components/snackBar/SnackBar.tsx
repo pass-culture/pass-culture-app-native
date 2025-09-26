@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
+import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ColorsType, TextColorKey } from 'theme/types'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -30,8 +30,8 @@ const SnackBarBase = (props: SnackBarProps) => {
   const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
-  const containerRef: AnimatedRef = useRef(null)
-  const progressBarContainerRef: AnimatedRef = useRef(null)
+  const containerRef = useRef<AnimatedViewRefType>(null)
+  const progressBarContainerRef = useRef<AnimatedViewRefType>(null)
   const [isVisible, setIsVisible] = useState(props.visible)
 
   async function triggerApparitionAnimation() {

@@ -1,5 +1,4 @@
-import { FunctionComponent } from 'react'
-import React from 'react-native'
+import React from 'react'
 
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -13,12 +12,7 @@ interface Props {
   snackBarMessage?: string
 }
 
-export const CopyToClipboardButton: FunctionComponent<Props> = ({
-  wording,
-  textToCopy,
-  onCopy,
-  snackBarMessage,
-}) => {
+export const CopyToClipboardButton = ({ wording, textToCopy, onCopy, snackBarMessage }: Props) => {
   const copyToClipboard = useCopyToClipboard({ textToCopy, snackBarMessage, onCopy })
 
   return <StyledButtonTertiary icon={Duplicate} wording={wording} onPress={copyToClipboard} />

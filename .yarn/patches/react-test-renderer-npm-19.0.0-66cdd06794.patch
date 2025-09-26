@@ -1,0 +1,13 @@
+diff --git a/cjs/react-test-renderer.development.js b/cjs/react-test-renderer.development.js
+index c5ffdb44d6b1802890f44888a4b2c67958d5f0a5..0ea460a47f5cb9468b413bcc824313634d4f20e6 100644
+--- a/cjs/react-test-renderer.development.js
++++ b/cjs/react-test-renderer.development.js
+@@ -14379,7 +14379,7 @@
+     exports.act = act;
+     exports.create = function (element, options) {
+       !0 !== global.IS_REACT_NATIVE_TEST_ENVIRONMENT &&
+-        console.error(
++        console.warn(
+           "react-test-renderer is deprecated. See https://react.dev/warnings/react-test-renderer"
+         );
+       var createNodeMock = JSCompiler_object_inline_createNodeMock_1022,
