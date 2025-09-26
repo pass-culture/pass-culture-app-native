@@ -39,28 +39,28 @@ const selectedBackgroundTokenByPart: Record<
   },
 } as const
 
-function backgroundColorForSelected(theme: DefaultTheme, params: RadioBackgroundParams): string {
+const backgroundColorForSelected = (theme: DefaultTheme, params: RadioBackgroundParams): string => {
   const { color } = theme.designSystem
   const collapsedKey = getCollapsedKey(params.componentPart, params.collapsed)
   const token = selectedBackgroundTokenByPart[params.componentPart][params.variant][collapsedKey]
   return color.background[token]
 }
 
-function backgroundColorForDisabledSelected(
+const backgroundColorForDisabledSelected = (
   theme: DefaultTheme,
   params: RadioBackgroundParams
-): string {
+): string => {
   if (params.componentPart === 'round') return theme.designSystem.color.icon.disabled
   return theme.designSystem.color.background.disabled
 }
 
-function backgroundColorForDisabled(theme: DefaultTheme, params: RadioBackgroundParams): string {
+const backgroundColorForDisabled = (theme: DefaultTheme, params: RadioBackgroundParams): string => {
   return params.variant === 'detailed'
     ? theme.designSystem.color.background.disabled
     : theme.designSystem.color.background.default
 }
 
-function backgroundColorDefault(theme: DefaultTheme): string {
+const backgroundColorDefault = (theme: DefaultTheme): string => {
   return theme.designSystem.color.background.default
 }
 
@@ -75,7 +75,7 @@ const backgroundColorByState: Record<
   default: backgroundColorDefault,
 }
 
-function getRadioBorderColor(state: RadioState, theme: DefaultTheme) {
+const getRadioBorderColor = (state: RadioState, theme: DefaultTheme) => {
   const { color } = theme.designSystem
   const tokenByState = {
     selected: 'brandPrimary',
@@ -94,11 +94,11 @@ type GetRadioColorsOptions = {
   collapsed?: boolean
 }
 
-export function getRadioColors(
+export const getRadioColors = (
   state: RadioState,
   theme: DefaultTheme,
   options?: GetRadioColorsOptions
-) {
+) => {
   const params: RadioBackgroundParams = {
     componentPart: options?.componentPart ?? 'container',
     variant: options?.variant ?? 'default',
@@ -111,13 +111,13 @@ export function getRadioColors(
   return { borderColor, backgroundColor }
 }
 
-export function getLabelColor({
+export const getLabelColor = ({
   radioState,
   theme,
 }: {
   radioState: RadioState
   theme: DefaultTheme
-}) {
+}) => {
   return isDisabledState(radioState)
     ? theme.designSystem.color.text.disabled
     : theme.designSystem.color.text.default
