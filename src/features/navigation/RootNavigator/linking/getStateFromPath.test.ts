@@ -42,6 +42,7 @@ describe('getStateFromPath()', () => {
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId: '777',
         from: 'deeplink',
+        isHeadline: false,
       })
     })
   })

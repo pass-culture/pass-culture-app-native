@@ -327,6 +327,7 @@ describe('BookingDetails', () => {
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId: String(offerId),
         from: 'bookings',
+        isHeadline: false,
       })
     })
 
@@ -733,6 +734,7 @@ describe('BookingDetails', () => {
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId: String(offerId),
         from: 'bookings',
+        isHeadline: false,
       })
     })
 

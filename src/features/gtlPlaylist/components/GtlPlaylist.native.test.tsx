@@ -67,6 +67,7 @@ describe('GtlPlaylist', () => {
           moduleId: '2xUlLBRfxdk6jeYyJszunX',
           offerId: '12',
           venueId: 5543,
+          isHeadline: false,
         })
       )
     })

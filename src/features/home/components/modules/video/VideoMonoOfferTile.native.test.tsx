@@ -24,6 +24,7 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   moduleId: 'abcd',
   moduleName: 'salut à tous c’est lujipeka',
   homeEntryId: 'xyz',
+  isHeadline: false,
 }
 
 const hideModalMock = jest.fn()

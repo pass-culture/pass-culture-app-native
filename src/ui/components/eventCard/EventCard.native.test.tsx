@@ -25,6 +25,7 @@ describe('EventCard', () => {
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
         offerId: '1',
         from: 'venue',
+        isHeadline: false,
       })
     })
 
