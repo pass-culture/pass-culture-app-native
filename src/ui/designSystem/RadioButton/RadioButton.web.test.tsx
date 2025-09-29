@@ -10,16 +10,21 @@ import { act, render, screen } from 'tests/utils/web'
 
 import { RadioButton } from './RadioButton'
 
-const onSelectMock = jest.fn()
+const setValueMock = jest.fn()
 const labelText = 'I agree to disagree'
 
 const baseProps: ComponentProps<typeof RadioButton> = {
   label: labelText,
-  onSelect: onSelectMock,
+  disabled: false,
+  error: false,
+  value: null,
+  collapsed: null,
+  description: null,
+  asset: null,
+  sizing: 'hug',
+  setValue: setValueMock,
   isSelected: false,
   variant: 'default',
-  radioState: 'default',
-  onToggle: jest.fn(),
 }
 
 describe('<RadioButton />', () => {
@@ -42,7 +47,7 @@ describe('<RadioButton />', () => {
       await userEvent.click(screen.getByLabelText(labelText))
     })
 
-    expect(onSelectMock).toHaveBeenCalledWith(true)
+    expect(setValueMock).toHaveBeenCalledWith(labelText)
   })
 
   it('can be checked with label', async () => {
@@ -52,7 +57,7 @@ describe('<RadioButton />', () => {
       await userEvent.click(screen.getByText(labelText))
     })
 
-    expect(onSelectMock).toHaveBeenCalledWith(true)
+    expect(setValueMock).toHaveBeenCalledWith(labelText)
   })
 
   describe('toggle his state', () => {
@@ -63,7 +68,7 @@ describe('<RadioButton />', () => {
         await userEvent.click(screen.getByRole('radio'))
       })
 
-      expect(onSelectMock).toHaveBeenCalledWith(true)
+      expect(setValueMock).toHaveBeenCalledWith(labelText)
     })
 
     it('unselect radioButton when radioButton is selected', async () => {
@@ -73,7 +78,7 @@ describe('<RadioButton />', () => {
         await userEvent.click(screen.getByRole('radio'))
       })
 
-      expect(onSelectMock).toHaveBeenCalledWith(false)
+      expect(setValueMock).toHaveBeenCalledWith(labelText)
     })
   })
 
@@ -83,11 +88,11 @@ describe('<RadioButton />', () => {
 
       await userEvent.keyboard('[Space]')
 
-      expect(onSelectMock).not.toHaveBeenCalled()
+      expect(setValueMock).not.toHaveBeenCalled()
     })
 
     describe('when it has focus', () => {
-      it('check the box when is unchecked', async () => {
+      it('select the radio when is not selected', async () => {
         render(<RadioButton {...baseProps} isSelected={false} />)
 
         await act(async () => {
@@ -98,21 +103,7 @@ describe('<RadioButton />', () => {
           await userEvent.keyboard('[Space]')
         })
 
-        expect(onSelectMock).toHaveBeenCalledWith(true)
-      })
-
-      it('uncheck the box and is checked', async () => {
-        render(<RadioButton {...baseProps} isSelected />)
-
-        await act(async () => {
-          await userEvent.tab()
-        })
-
-        await act(async () => {
-          await userEvent.keyboard('[Space]')
-        })
-
-        expect(onSelectMock).toHaveBeenCalledWith(false)
+        expect(setValueMock).toHaveBeenCalledWith(labelText)
       })
     })
   })

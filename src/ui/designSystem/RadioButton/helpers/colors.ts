@@ -6,24 +6,25 @@
 import { DefaultTheme } from 'styled-components'
 
 import { BackgroundColorKey } from 'theme/types'
-import { isDisabledState } from 'ui/designSystem/RadioButton/helpers'
+import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
+import { SelectableVariant } from 'ui/designSystem/types'
 
-import { RadioPart, RadioState, RadioVariant } from '../types'
+import { RadioPart, RadioState } from '../types'
 
 type RadioBackgroundParams = {
   componentPart: RadioPart
-  variant: RadioVariant
+  variant: SelectableVariant
   collapsed: boolean
 }
 
 type CollapsedKey = 'open' | 'collapsed'
 
-const getCollapsedKey = (part: RadioPart, collapsed: boolean): CollapsedKey =>
+export const getCollapsedKey = (part: RadioPart, collapsed: boolean): CollapsedKey =>
   part === 'container' && collapsed ? 'collapsed' : 'open'
 
 const selectedBackgroundTokenByPart: Record<
   RadioPart,
-  Record<RadioVariant, Record<CollapsedKey, BackgroundColorKey>>
+  Record<SelectableVariant, Record<CollapsedKey, BackgroundColorKey>>
 > = {
   round: {
     default: { open: 'brandPrimary', collapsed: 'brandPrimary' },
@@ -39,61 +40,63 @@ const selectedBackgroundTokenByPart: Record<
   },
 }
 
-const backgroundColorForSelected = (theme: DefaultTheme, params: RadioBackgroundParams): string => {
+export const backgroundColorForSelected = (
+  theme: DefaultTheme,
+  params: RadioBackgroundParams
+): string => {
   const collapsedKey = getCollapsedKey(params.componentPart, params.collapsed)
   const token = selectedBackgroundTokenByPart[params.componentPart][params.variant][collapsedKey]
   return theme.designSystem.color.background[token]
 }
 
-const backgroundColorForDisabledSelected = (
+export const backgroundColorForDisabledSelected = (
+  theme: DefaultTheme,
+  params: RadioBackgroundParams
+): string =>
+  params.componentPart === 'round'
+    ? theme.designSystem.color.icon.disabled
+    : theme.designSystem.color.background.disabled
+
+export const backgroundColorForDisabled = (
   theme: DefaultTheme,
   params: RadioBackgroundParams
 ): string => {
-  if (params.componentPart === 'round') return theme.designSystem.color.icon.disabled
-  return theme.designSystem.color.background.disabled
-}
-
-const backgroundColorForDisabled = (theme: DefaultTheme, params: RadioBackgroundParams): string => {
   return params.variant === 'detailed'
     ? theme.designSystem.color.background.disabled
     : theme.designSystem.color.background.default
 }
 
-const backgroundColorDefault = (theme: DefaultTheme): string => {
-  return theme.designSystem.color.background.default
-}
-
-const backgroundColorByState: Record<
+export const backgroundColorByState: Record<
   RadioState,
   (theme: DefaultTheme, params: RadioBackgroundParams) => string
 > = {
   selected: backgroundColorForSelected,
   disabledSelected: backgroundColorForDisabledSelected,
   disabled: backgroundColorForDisabled,
-  error: backgroundColorDefault,
-  default: backgroundColorDefault,
+  error: (theme: DefaultTheme): string => {
+    return theme.designSystem.color.background.default
+  },
+  default: (theme: DefaultTheme): string => {
+    return theme.designSystem.color.background.default
+  },
 }
 
-const getRadioBorderColor = (state: RadioState, theme: DefaultTheme) => {
-  const tokenByState = {
-    selected: 'brandPrimary',
-    disabledSelected: 'disabled',
-    disabled: 'disabled',
-    error: 'error',
-    default: 'default',
-  }
-
-  return theme.designSystem.color.border[tokenByState[state]]
+export const getRadioBorderColor = (state: RadioStateObject, theme: DefaultTheme) => {
+  if (state.disabled) return theme.designSystem.color.border.disabled
+  if (state.error) return theme.designSystem.color.border.error
+  return state.isSelected
+    ? theme.designSystem.color.border.brandPrimary
+    : theme.designSystem.color.border.default
 }
 
 type GetRadioColorsOptions = {
   componentPart?: RadioPart
-  variant?: RadioVariant
+  variant?: SelectableVariant
   collapsed?: boolean
 }
 
 export const getRadioColors = (
-  state: RadioState,
+  state: RadioStateObject,
   theme: DefaultTheme,
   options?: GetRadioColorsOptions
 ) => {
@@ -102,21 +105,17 @@ export const getRadioColors = (
     variant: options?.variant ?? 'default',
     collapsed: options?.collapsed ?? false,
   }
+  let _state = 'default'
+  if (state.disabled && state.isSelected) _state = 'disabledSelected'
+  else if (state.disabled) _state = 'disabled'
+  else if (state.error) _state = 'error'
+  else if (state.isSelected) _state = 'selected'
 
   const borderColor = getRadioBorderColor(state, theme)
-  const backgroundColor = backgroundColorByState[state](theme, params)
+  const backgroundColor = backgroundColorByState[_state](theme, params)
 
   return { borderColor, backgroundColor }
 }
 
-export const getLabelColor = ({
-  radioState,
-  theme,
-}: {
-  radioState: RadioState
-  theme: DefaultTheme
-}) => {
-  return isDisabledState(radioState)
-    ? theme.designSystem.color.text.disabled
-    : theme.designSystem.color.text.default
-}
+export const getLabelColor = ({ disabled, theme }: { disabled: boolean; theme: DefaultTheme }) =>
+  disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default

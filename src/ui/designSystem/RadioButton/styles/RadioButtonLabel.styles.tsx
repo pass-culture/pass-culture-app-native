@@ -6,33 +6,32 @@
 import styled from 'styled-components/native'
 
 import { getLabelColor } from 'ui/designSystem/RadioButton/helpers'
+import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
 import { Typo } from 'ui/theme'
 
 import { getTextHoverStyle } from '../helpers/hover'
-import { RadioState } from '../types'
 
-type RadioTextProps = { radioState: RadioState; isHover?: boolean }
+type RadioTextProps = { radioState: RadioStateObject; isHover?: boolean }
 
 export const RadioLabelText = styled(Typo.Body)<RadioTextProps>(
   ({ radioState, theme, isHover }) => ({
-    color: getLabelColor({ radioState, theme }),
+    color: getLabelColor({ disabled: radioState.disabled, theme }),
     ...getTextHoverStyle({ radioState, theme, isHover }),
   })
 )
 
 export const RadioLabelTextSelected = styled(Typo.BodyAccent)<RadioTextProps>(
   ({ radioState, theme, isHover }) => ({
-    color: getLabelColor({ radioState, theme }),
+    color: getLabelColor({ disabled: radioState.disabled, theme }),
     ...getTextHoverStyle({ radioState, theme, isHover }),
   })
 )
 
 export const RadioDescriptionText = styled(Typo.BodyAccentXs)<RadioTextProps>(
   ({ radioState, theme, isHover }) => ({
-    color:
-      radioState === 'disabled' || radioState === 'disabledSelected'
-        ? theme.designSystem.color.text.disabled
-        : theme.designSystem.color.text.default,
+    color: radioState.disabled
+      ? theme.designSystem.color.text.disabled
+      : theme.designSystem.color.text.default,
     ...getTextHoverStyle({ radioState, theme, isHover }),
   })
 )

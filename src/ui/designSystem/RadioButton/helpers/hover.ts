@@ -5,34 +5,31 @@
 
 import { DefaultTheme } from 'styled-components'
 
+import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-import { RadioState } from '../types'
-
-import { isDisabledState } from './state'
-
-export function getBorderHoverStyle({
+export const getBorderHoverStyle = ({
   theme,
   radioState,
   isHover,
 }: {
   theme: DefaultTheme
-  radioState: RadioState
+  radioState: RadioStateObject
   isHover?: boolean
-}) {
-  if (isDisabledState(radioState) || radioState === 'error') return {}
-  return getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimary, isHover })
-}
+}) =>
+  radioState.disabled || radioState.error
+    ? {}
+    : getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimary, isHover })
 
-export function getTextHoverStyle({
+export const getTextHoverStyle = ({
   theme,
   radioState,
   isHover,
 }: {
   theme: DefaultTheme
-  radioState: RadioState
+  radioState: RadioStateObject
   isHover?: boolean
-}) {
-  if (isDisabledState(radioState) || radioState === 'error') return {}
-  return getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimary, isHover })
-}
+}) =>
+  radioState.disabled || radioState.error
+    ? {}
+    : getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimary, isHover })

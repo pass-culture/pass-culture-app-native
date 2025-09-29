@@ -8,9 +8,6 @@ import React from 'react'
 
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Calendar } from 'ui/svg/icons/Calendar'
-import { Star } from 'ui/svg/Star'
-import { Typo } from 'ui/theme'
 
 const meta: Meta<typeof RadioButton> = {
   title: 'design system/inputs/RadioButton',
@@ -23,63 +20,81 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Default',
     props: {
       label: 'Label',
-      variant: 'default',
-      isSelected: false,
+      value: null,
+      setValue: () => {
+        //
+      },
+      sizing: 'hug',
     },
   },
   {
-    label: 'RadioButton Default Selected',
+    label: 'RadioButton Default selected',
     props: {
-      label: 'RadioButton label',
-      variant: 'default',
-      isSelected: true,
+      label: 'Label',
+      value: 'Label',
+      setValue: () => {
+        //
+      },
+      sizing: 'hug',
     },
   },
   {
-    label: 'RadioButton Default Disabled',
+    label: 'RadioButton Default disabled',
     props: {
-      label: 'RadioButton label',
-      variant: 'default',
-      isSelected: false,
+      label: 'Label',
       disabled: true,
+      value: null,
+      setValue: () => {
+        //
+      },
+      sizing: 'hug',
     },
   },
   {
-    label: 'RadioButton Default Selected Disabled',
+    label: 'RadioButton Default disabled selected',
     props: {
-      label: 'RadioButton label',
-      variant: 'default',
-      isSelected: true,
+      label: 'Label',
       disabled: true,
+      value: 'Label',
+      setValue: () => {
+        //
+      },
+      sizing: 'hug',
     },
   },
-
   {
     label: 'RadioButton Default Has Error',
     props: {
-      label: 'RadioButton label',
-      variant: 'default',
-      isSelected: false,
-      hasError: true,
+      label: 'Label',
+      error: true,
+      value: null,
+      setValue: () => {
+        //
+      },
+      sizing: 'hug',
     },
   },
   {
-    label: 'RadioButton Default Disabled',
-    props: {
-      label: 'RadioButton label',
-      variant: 'default',
-      isSelected: false,
-      disabled: true,
-    },
-  },
-  {
-    label: 'RadioButton Detailed',
+    label: 'RadioButton Detailed with description',
     props: {
       label: 'RadioButton label',
       variant: 'detailed',
-      isSelected: false,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
+  {
+    label: 'RadioButton Detailed with description selected',
+    props: {
+      label: 'Label',
+      value: 'Label',
+      setValue: () => {
+        //
+      },
+      variant: 'detailed',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },
+  },
+  /*  
   {
     label: 'RadioButton Detailed With Description',
     props: {
@@ -250,7 +265,7 @@ const variantConfig: Variants<typeof RadioButton> = [
       asset: { variant: 'icon', Icon: Calendar },
       collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
     },
-  },
+  }, */
 ]
 
 export const Template: VariantsStory<typeof RadioButton> = {
