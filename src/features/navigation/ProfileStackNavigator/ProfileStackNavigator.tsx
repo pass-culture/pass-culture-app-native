@@ -68,17 +68,17 @@ const profileScreens: ProfileRouteConfig[] = [
   {
     name: 'AccessibilityDeclarationMobileAndroid',
     component: AccessibilityDeclarationMobileAndroid,
-    options: { title: 'Déclaration d’accessibilité mobile - Android' },
+    options: { title: 'Déclaration d’accessibilité - Android' },
   },
   {
     name: 'AccessibilityDeclarationMobileIOS',
     component: AccessibilityDeclarationMobileIOS,
-    options: { title: 'Déclaration d’accessibilité mobile - iOS' },
+    options: { title: 'Déclaration d’accessibilité - iOS' },
   },
   {
     name: 'AccessibilityDeclarationWeb',
     component: AccessibilityDeclarationWeb,
-    options: { title: 'Déclaration d’accessibilité de la version web' },
+    options: { title: 'Déclaration d’accessibilité - web' },
   },
   {
     name: 'RecommendedPaths',

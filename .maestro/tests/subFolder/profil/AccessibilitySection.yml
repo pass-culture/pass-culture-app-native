@@ -1,11 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
-
 - tapOn: 'Accessibilité'
 - assertVisible: 'Accessibilité'
 
-- tapOn: "Plan du site"
-- assertVisible: "Plan du site"
+- tapOn: 'Plan du site'
+- assertVisible: 'Plan du site'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
@@ -23,22 +22,22 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: "Déclaration d’accessibilité mobile - Android"
-- assertVisible: "Déclaration d’accessibilité mobile - Android"
+- tapOn: 'Déclaration d’accessibilité - Android'
+- assertVisible: 'Déclaration d’accessibilité - Android'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: "Déclaration d’accessibilité mobile - iOS"
-- assertVisible: "Déclaration d’accessibilité mobile - iOS"
+- tapOn: 'Déclaration d’accessibilité - iOS'
+- assertVisible: 'Déclaration d’accessibilité - iOS'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: "Déclaration d’accessibilité de la version web"
-- assertVisible: "Déclaration d’accessibilité web"
+- tapOn: 'Déclaration d’accessibilité - web'
+- assertVisible: 'Déclaration d’accessibilité web'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Parcours recommandés de la version web'
+- tapOn: 'Parcours recommandés - web'
 - assertVisible: 'Parcours recommandés web'
 
 - runFlow:

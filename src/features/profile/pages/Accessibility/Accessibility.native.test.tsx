@@ -26,10 +26,10 @@ describe('Accessibility', () => {
     route                                      | title
     ${'AccessibilityActionPlan'}               | ${'Schéma pluriannuel'}
     ${'AccessibilityEngagement'}               | ${'Les engagements du pass Culture'}
-    ${'AccessibilityDeclarationMobileAndroid'} | ${'Déclaration d’accessibilité mobile - Android'}
-    ${'AccessibilityDeclarationMobileIOS'}     | ${'Déclaration d’accessibilité mobile - iOS'}
-    ${'AccessibilityDeclarationWeb'}           | ${'Déclaration d’accessibilité de la version web'}
-    ${'RecommendedPaths'}                      | ${'Parcours recommandés de la version web'}
+    ${'AccessibilityDeclarationMobileAndroid'} | ${'Déclaration d’accessibilité - Android'}
+    ${'AccessibilityDeclarationMobileIOS'}     | ${'Déclaration d’accessibilité - iOS'}
+    ${'AccessibilityDeclarationWeb'}           | ${'Déclaration d’accessibilité - web'}
+    ${'RecommendedPaths'}                      | ${'Parcours recommandés - web'}
   `('should navigate to $route when $title is clicked', async ({ route, title }) => {
     render(<Accessibility />)
 
