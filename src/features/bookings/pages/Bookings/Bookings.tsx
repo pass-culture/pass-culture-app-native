@@ -56,17 +56,17 @@ export const Bookings = () => {
     if (isPending) return
 
     const reactableEndedBookings = endedBookings.filter(
-      (endedBooking) => endedBooking.canReact === true && endedBooking.userReaction === null
+      (endedBooking) => !!endedBooking.canReact && endedBooking.userReaction === null
     )
 
     const reactionRequest: PostReactionRequest = {
-      reactions: reactableEndedBookings.map((b) => ({
-        offerId: Number(b.stock.offer.id),
+      reactions: reactableEndedBookings.map((booking) => ({
+        offerId: booking.stock.offer.id,
         reactionType: ReactionTypeEnum.NO_REACTION,
       })),
     }
 
-    if (reactionRequest.reactions.length > 0) {
+    if (reactionRequest.reactions.length) {
       await addReaction(reactionRequest)
     }
   }, [isPending, addReaction, endedBookings])
