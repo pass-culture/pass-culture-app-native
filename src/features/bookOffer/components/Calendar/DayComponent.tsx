@@ -69,12 +69,8 @@ export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
 }
 
 function getStatusColor({ designSystem }: DefaultTheme, status: OfferStatus) {
-  if (status === OfferStatus.BOOKABLE) {
-    return designSystem.color.text.brandPrimary
-  }
-  if (status === OfferStatus.NOT_BOOKABLE) {
-    return designSystem.color.text.disabled
-  }
+  if (status === OfferStatus.BOOKABLE) return designSystem.color.text.brandPrimary
+  if (status === OfferStatus.NOT_BOOKABLE) return designSystem.color.text.disabled
   return designSystem.color.text.subtle
 }
 
@@ -91,8 +87,9 @@ const Day = styled(Typo.Button)<{ status: OfferStatus }>(({ theme, status }) => 
 const SelectedDay = styled(View)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
   borderRadius: theme.designSystem.size.spacing.m,
-  width: theme.designSystem.size.spacing.xl,
-  height: theme.designSystem.size.spacing.xl,
+  minWidth: theme.designSystem.size.spacing.xl,
+  minHeight: theme.designSystem.size.spacing.xl,
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
   alignSelf: 'center',
   justifyContent: 'center',
 }))
@@ -103,6 +100,6 @@ const SelectedDayNumber = styled(Typo.Button)(({ theme }) => ({
 }))
 
 const DayContainer = styled(View)(({ theme }) => ({
-  height: theme.designSystem.size.spacing.xl,
+  minHeight: theme.designSystem.size.spacing.xl,
   justifyContent: 'center',
 }))
