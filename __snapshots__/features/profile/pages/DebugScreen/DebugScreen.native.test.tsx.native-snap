@@ -270,29 +270,6 @@ exports[`DebugScreen should render correctly 1`] = `
                   }
                 }
               >
-                Description
-                 : 
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                />
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
                 Device font scale
                  : 
                 <Text
@@ -459,148 +436,145 @@ exports[`DebugScreen should render correctly 1`] = `
                 </Text>
               </Text>
               <View
+                gap={0}
                 style={
                   {
-                    "marginVertical": 4,
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "gap": 0,
+                    "maxWidth": 500,
+                    "width": "100%",
                   }
                 }
               >
-                <View
-                  gap={0}
-                  style={
-                    {
-                      "alignItems": "flex-start",
-                      "display": "flex",
-                      "flexDirection": "column",
-                      "gap": 0,
-                      "maxWidth": 500,
-                      "width": "100%",
-                    }
-                  }
-                >
-                  <View>
-                    <View
-                      style={
-                        {
-                          "alignItems": "flex-end",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "width": "100%",
-                        }
+                <View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "flex-end",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "width": "100%",
                       }
-                    >
-                      <Text
-                        accessibilityLabel="Description"
-                        style={
+                    }
+                  >
+                    <Text
+                      accessibilityLabel="Description du problème"
+                      style={
+                        [
                           {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        Description *
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    isDisabled={false}
-                    isError={false}
-                    isFocused={false}
-                    size="small"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "borderColor": "#90949d",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "marginTop": 4,
-                          "paddingBottom": 0,
-                          "paddingLeft": 9,
-                          "paddingRight": 9,
-                          "paddingTop": 0,
-                          "width": "100%",
-                        },
-                        {
-                          "height": 200,
-                        },
-                      ]
-                    }
-                    testID="styled-input-container"
-                  >
-                    <TextInput
-                      accessibilityRequired={true}
-                      editable={true}
-                      isEmpty={true}
-                      maxLength={800}
-                      multiline={true}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder="Décrire en quelques phrases."
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="next"
-                      style={
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
-                          "fontSize": 16,
-                          "height": "100%",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 10,
-                        }
+                          },
+                          {
+                            "fontWeight": "bold",
+                          },
+                        ]
                       }
-                      testID="Champ de texte"
-                      textAlignVertical="top"
-                      value=""
-                    />
+                    >
+                      Description du problème *
+                    </Text>
                   </View>
+                </View>
+                <View
+                  isDisabled={false}
+                  isError={false}
+                  isFocused={false}
+                  size="small"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "marginTop": 4,
+                        "paddingBottom": 0,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      },
+                      {
+                        "height": 200,
+                      },
+                    ]
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    accessibilityRequired={true}
+                    editable={true}
+                    isEmpty={true}
+                    maxLength={800}
+                    multiline={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Décris ton problème en quelques phrases."
+                    placeholderTextColor="#696a6f"
+                    returnKeyType="next"
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 10,
+                      }
+                    }
+                    testID="Champ de texte"
+                    textAlignVertical="top"
+                    value=""
+                  />
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "marginTop": 4,
+                      "width": "100%",
+                    }
+                  }
+                >
                   <View
                     style={
                       {
                         "alignItems": "center",
-                        "flexDirection": "row",
-                        "marginTop": 4,
-                        "width": "100%",
+                        "marginLeft": "auto",
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
                         {
-                          "alignItems": "center",
-                          "marginLeft": "auto",
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
                         }
                       }
                     >
-                      <Text
-                        style={
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          }
-                        }
-                      >
-                        0/800
-                      </Text>
-                    </View>
+                      0/800
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -708,7 +682,7 @@ exports[`DebugScreen should render correctly 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Contacter le support"
+              accessibilityLabel="Envoyer au support"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -760,7 +734,7 @@ exports[`DebugScreen should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Contacter le support"
+              testID="Envoyer au support"
             >
               <View
                 style={
@@ -802,7 +776,7 @@ exports[`DebugScreen should render correctly 1`] = `
                     }
                   }
                 >
-                  Contacter le support
+                  Envoyer au support
                 </Text>
               </View>
             </View>

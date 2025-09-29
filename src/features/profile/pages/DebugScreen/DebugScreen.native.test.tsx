@@ -59,11 +59,11 @@ describe('DebugScreen', () => {
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)
   })
 
-  it('should contain the correct informations when press "Contacter le support" button', async () => {
+  it('should contain the correct informations when press "Envoyer au support" button', async () => {
     render(<DebugScreen />)
     await enterDescription()
 
-    const supportButton = screen.getByText('Contacter le support')
+    const supportButton = screen.getByText('Envoyer au support')
     await userEvent.press(supportButton)
 
     const decodedUrl = decodeURI(openUrl.mock.calls[0]?.[0] as string)
@@ -91,11 +91,11 @@ describe('DebugScreen', () => {
     expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
   })
 
-  it('should log ClickMailDebugInfo event when press "Contacter le support" button', async () => {
+  it('should log ClickMailDebugInfo event when press "Envoyer au support" button', async () => {
     render(<DebugScreen />)
     await enterDescription()
 
-    const copyButton = screen.getByText('Contacter le support')
+    const copyButton = screen.getByText('Envoyer au support')
     await userEvent.press(copyButton)
 
     expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, '1234')

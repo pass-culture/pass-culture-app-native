@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Platform, TextStyle } from 'react-native'
-import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
@@ -21,7 +20,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useVersion } from 'ui/hooks/useVersion'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -43,7 +42,7 @@ export const DebugScreen = () => {
   const {
     control,
     formState: { isValid },
-    getValues,
+    watch,
   } = useForm<FormValue>({
     defaultValues: { feedback: '' },
     resolver: yupResolver(setFeedbackInAppSchema),
@@ -51,7 +50,7 @@ export const DebugScreen = () => {
   })
 
   const undefinedValue = 'Non renseigné'
-  const description = getValues().feedback.toString()
+  const description = watch().feedback.toString()
   const debugData = [
     { label: 'App version', value: fullVersion },
     { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
@@ -83,37 +82,36 @@ export const DebugScreen = () => {
   const mailtoUrl = `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`
 
   const labelBoldStyle: TextStyle = { fontWeight: 'bold' }
+  const debugDataToShow = sortedDebugData.filter((data) => data.label !== 'Description')
   return (
     <PageWithHeader
       title="Débuggage"
       scrollChildren={
         <ViewGap gap={2}>
-          {sortedDebugData.map((item) => (
+          {debugDataToShow.map((item) => (
             <Typo.Button key={item.label}>
               {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
             </Typo.Button>
           ))}
-          <InputContainer>
-            <Controller
-              control={control}
-              name="feedback"
-              render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
-                return (
-                  <LargeTextInput
-                    label="Description du problème"
-                    labelStyle={labelBoldStyle}
-                    value={value}
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    placeholder="Décris ton problème en quelques phrases."
-                    isError={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
-                    isRequiredField
-                    showErrorMessage={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
-                  />
-                )
-              }}
-            />
-          </InputContainer>
+          <Controller
+            control={control}
+            name="feedback"
+            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
+              return (
+                <LargeTextInput
+                  label="Description du problème"
+                  labelStyle={labelBoldStyle}
+                  value={value}
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  placeholder="Décris ton problème en quelques phrases."
+                  isError={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
+                  isRequiredField
+                  showErrorMessage={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
+                />
+              )
+            }}
+          />
         </ViewGap>
       }
       fixedBottomChildren={
@@ -132,7 +130,3 @@ export const DebugScreen = () => {
     />
   )
 }
-
-const InputContainer = styled.View({
-  marginVertical: getSpacing(1),
-})
