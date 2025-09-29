@@ -7,12 +7,16 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: 'Ma position'
       - tapOn: 'France entière'
-- tapOn:
-    label: 'Sélection de la 1ère offre disponible'
-    below:
-      text: .*résultats
-      index: 1
 
+- swipe:
+    from:
+      text: 'Les offres'
+    direction: UP
+- tapOn: 
+    text: "CD"
+    index: 2
+
+    
 - waitForAnimationToEnd
 
 - runFlow:
@@ -26,7 +30,7 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - tapOn:
-          point: ${output.button.ios.booking}
+          id: sticky-booking-button
 
 - assertVisible: 'Détails de la réservation'
 - assertVisible: 'Informations'

@@ -1,9 +1,21 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Livre'
+- tapOn: 
+    text: 'Livre'
+    index: 2
 
-- tapOn:
-    id: offerBodyImage
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn:
+        id: offerBodyImage
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Voir l’illustration en plein écran"
 
 - runFlow:
     when:

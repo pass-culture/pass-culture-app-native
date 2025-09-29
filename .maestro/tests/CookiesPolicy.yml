@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - nightlyAndroid
+  - nightlyIOS
   - local
   - squad-activation
 ---
