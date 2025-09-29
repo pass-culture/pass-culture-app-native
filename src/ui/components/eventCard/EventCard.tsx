@@ -97,7 +97,7 @@ const SubtitleLeft = styled(Typo.BodyAccentXs)<{
   hasSubtitleRight: boolean
 }>(({ theme, disabled, hasSubtitleRight }) => ({
   color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.subtle,
-  lineHeight: theme.designSystem.size.spacing.xl,
+  lineHeight: `${theme.designSystem.size.spacing.xl}px`,
   textAlign: 'left',
   flex: hasSubtitleRight ? 'auto' : 1,
 }))
