@@ -306,6 +306,7 @@ PODS:
     - React-RCTText (= 0.77.3)
     - React-RCTVibration (= 0.77.3)
   - React-callinvoker (0.77.3)
+  - React-Codegen (0.1.0)
   - React-Core (0.77.3):
     - glog
     - hermes-engine
@@ -1596,6 +1597,13 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-performance-stats (0.2.3):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - ReactCommon/turbomodule/core
   - react-native-safe-area-context (5.5.1):
     - DoubleConversion
     - glog
@@ -2416,6 +2424,7 @@ DEPENDENCIES:
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-orientation-locker (from `../node_modules/react-native-orientation-locker`)
   - react-native-performance (from `../node_modules/react-native-performance`)
+  - react-native-performance-stats (from `../node_modules/react-native-performance-stats`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -2508,6 +2517,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PromisesSwift
+    - React-Codegen
     - SDWebImage
     - SDWebImageWebPCoder
     - Sentry
@@ -2623,6 +2633,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-orientation-locker"
   react-native-performance:
     :path: "../node_modules/react-native-performance"
+  react-native-performance-stats:
+    :path: "../node_modules/react-native-performance-stats"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-tracking-transparency:
@@ -2790,6 +2802,7 @@ SPEC CHECKSUMS:
   RCTTypeSafety: 870cb072be3d3f310ecec897c3d297a931f8f7e1
   React: 535fa5014fb1743f6654a980acb16dae339e1944
   React-callinvoker: dd1ecd51f8d3c76a551afdf6dab6d51c1ead5501
+  React-Codegen: 4b8b4817cea7a54b83851d4c1f91f79aa73de30a
   React-Core: cd2530a1bcf14af3e34cd7561ee36916079a8e7f
   React-CoreModules: d4fec6cceab80b9e22b5a45036ee431b5a69b102
   React-cxxreact: 3d3010b4ccd33458ab12bfbbc1b05402e17e4a98
@@ -2825,6 +2838,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: f0a9899081c185db1de5bb2fdc1c88c202a059ac
   react-native-orientation-locker: 5819fd23ca89cbac0d736fb4314745f62716d517
   react-native-performance: 446a14bdd7b46ae78c3ae652aa7ab23ff2a93f1f
+  react-native-performance-stats: cf17a268b3775dc304c9f989cbeaaca75a9c7e33
   react-native-safe-area-context: 8f49152d936d4e0b37d586368afde3b8d6af7f9a
   react-native-tracking-transparency: 25ff1ff866e338c137c818bdec20526bb05ffcc1
   react-native-webview: f3180bd28381ba09520b01f36fd84d377f6ebc49
