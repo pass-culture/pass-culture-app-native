@@ -15,9 +15,6 @@ import { Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 const PADDING_VERTICAL = getSpacing(1)
 const NUMBER_OF_SPACES_LINE_HEIGHT = 4
-const LINE_HEIGHT = getSpacing(NUMBER_OF_SPACES_LINE_HEIGHT)
-
-export const TAG_HEIGHT = PADDING_VERTICAL + LINE_HEIGHT + PADDING_VERTICAL
 
 export const Tag: FunctionComponent<TagProps> = ({
   label,
