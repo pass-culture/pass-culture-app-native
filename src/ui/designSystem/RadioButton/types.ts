@@ -7,53 +7,31 @@ import React from 'react'
 
 import { SelectableAssetProps, SelectableSizing } from 'ui/designSystem/types'
 
-export type RadioVariant = 'default' | 'detailed'
 export type RadioPart = 'container' | 'circle' | 'round'
 export type RadioState = 'selected' | 'disabledSelected' | 'disabled' | 'error' | 'default'
-
-export type RadioDisplayOptions = {
-  variant: RadioVariant
-  collapsed?: React.ReactNode
-  sizing?: SelectableSizing
-}
 
 type BaseRadioProps = {
   label: string
   isSelected: boolean
-  onSelect: (isSelected: boolean) => void
   disabled?: boolean
-  hasError?: boolean
-  radioState: RadioState
-  onToggle: () => void
+  error?: boolean
+  value: string | null
+  setValue: (value: string) => void
+  variant: 'default' | 'detailed'
 }
 
 export type DefaultRadioProps = BaseRadioProps & {
   variant: 'default'
-  description?: never
-  asset?: never
-  collapsed?: never
-  sizing?: never
+  collapsed: never
+  description: never
+  asset: never
+  sizing: never
 }
 
-export type DetailedInlineRadioProps = BaseRadioProps & {
+export type DetailedRadioProps = BaseRadioProps & {
   variant: 'detailed'
-  description?: string
-  asset?: SelectableAssetProps
-  collapsed?: never
+  description: string | null
+  collapsed: React.ReactNode | null
+  asset: SelectableAssetProps | null
   sizing?: SelectableSizing
-  effectiveSizing: SelectableSizing | undefined
 }
-
-export type DetailedCollapsedRadioProps = BaseRadioProps & {
-  variant: 'detailed'
-  collapsed: React.ReactNode
-  description?: never
-  asset?: Extract<SelectableAssetProps, { variant: 'icon' }>
-  sizing?: Extract<SelectableSizing, 'fill'>
-  effectiveSizing: SelectableSizing | undefined
-}
-
-export type RadioButtonProps =
-  | DefaultRadioProps
-  | DetailedInlineRadioProps
-  | DetailedCollapsedRadioProps

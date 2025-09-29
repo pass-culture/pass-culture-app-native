@@ -50,9 +50,9 @@ export const CheckboxGroup = ({
   const selectedValues = value ?? []
   const handleChange = (option: CheckboxGroupOption, newValue: boolean) => {
     if (disabled) return
-    let newValues: string[]
-    if (newValue) newValues = [...selectedValues, option.value]
-    else newValues = selectedValues.filter((value) => value !== option.value)
+    const newValues = newValue
+      ? [...selectedValues, option.value]
+      : selectedValues.filter((value) => value !== option.value)
     onChange?.(newValues)
   }
 

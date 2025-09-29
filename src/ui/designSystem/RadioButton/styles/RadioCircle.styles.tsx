@@ -6,14 +6,14 @@
 import { styled } from 'styled-components/native'
 
 import { getBorderHoverStyle, getRadioColors } from 'ui/designSystem/RadioButton/helpers'
-import { RadioState } from 'ui/designSystem/RadioButton/types'
+import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
 import { getSpacing } from 'ui/theme'
 
 const DOT_SIZE = getSpacing(2.5)
 
 type RadioCircleProps = {
   variant: 'default' | 'detailed'
-  radioState: RadioState
+  radioState: RadioStateObject
   isHover?: boolean
 }
 
