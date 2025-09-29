@@ -9,7 +9,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { ButtonWithLinearGradientDeprecated } from './ButtonWithLinearGradientDeprecated'
 
 const meta: Meta<typeof ButtonWithLinearGradientDeprecated> = {
-  title: 'ui/buttons/ButtonWithLinearGradient',
+  title: 'ui/buttons/ButtonWithLinearGradientDeprecated',
   component: ButtonWithLinearGradientDeprecated,
 }
 export default meta
