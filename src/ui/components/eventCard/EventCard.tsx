@@ -65,10 +65,10 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
 
 const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
   ({ theme, disabled }) => ({
-    width: EVENT_CARD_WIDTH,
-    height: EVENT_CARD_HEIGHT,
+    minWidth: EVENT_CARD_WIDTH,
+    minHeight: EVENT_CARD_HEIGHT,
     boxSizing: 'border-box',
-    padding: getSpacing(3),
+    padding: theme.designSystem.size.spacing.m,
     justifyContent: 'flex-start',
     borderColor: theme.designSystem.color.border.default,
     borderWidth: disabled ? 0 : BORDER_WIDTH,
@@ -87,7 +87,6 @@ const Title = styled(Typo.Button)<{ disabled: boolean }>(({ theme, disabled }) =
 const SubtitleContainer = styled.View({
   alignSelf: 'stretch',
   flexDirection: 'row',
-  width: '100%',
   alignItems: 'center',
   justifyContent: 'space-between',
   textOverflow: 'ellipsis',
@@ -98,13 +97,13 @@ const SubtitleLeft = styled(Typo.BodyAccentXs)<{
   hasSubtitleRight: boolean
 }>(({ theme, disabled, hasSubtitleRight }) => ({
   color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.subtle,
-  lineHeight: `${getSpacing(5)}px`,
+  lineHeight: theme.designSystem.size.spacing.xl,
   textAlign: 'left',
   flex: hasSubtitleRight ? 'auto' : 1,
 }))
 
 const SubtitleRight = styled(Typo.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
-  marginLeft: getSpacing(1),
+  marginLeft: theme.designSystem.size.spacing.xs,
   color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,
   textAlign: 'right',
   flexShrink: 0,
