@@ -65,7 +65,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     <ContainerWithMaxWidth gap={0}>
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer>
-          <Typo.Body accessibilityLabel={computedAccessibilityLabel}>{inputLabel}</Typo.Body>
+          <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
+            {inputLabel}
+          </Typo.Body>
         </LabelContainer>
       </FlexInputLabel>
       {customProps.format ? <Description>{customProps.format}</Description> : null}

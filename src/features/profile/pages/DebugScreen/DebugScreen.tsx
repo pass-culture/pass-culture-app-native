@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { Platform } from 'react-native'
+import { Platform, TextStyle } from 'react-native'
 import { styled } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -82,6 +82,7 @@ export const DebugScreen = () => {
   )
   const mailtoUrl = `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`
 
+  const labelBoldStyle: TextStyle = { fontWeight: 'bold' }
   return (
     <PageWithHeader
       title="Débuggage"
@@ -96,18 +97,21 @@ export const DebugScreen = () => {
             <Controller
               control={control}
               name="feedback"
-              render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-                <LargeTextInput
-                  label="Description"
-                  value={value}
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  placeholder="Décrire en quelques phrases."
-                  isError={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
-                  isRequiredField
-                  showErrorMessage={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
-                />
-              )}
+              render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
+                return (
+                  <LargeTextInput
+                    label="Description du problème"
+                    labelStyle={labelBoldStyle}
+                    value={value}
+                    onBlur={onBlur}
+                    onChangeText={onChange}
+                    placeholder="Décris ton problème en quelques phrases."
+                    isError={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
+                    isRequiredField
+                    showErrorMessage={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
+                  />
+                )
+              }}
             />
           </InputContainer>
         </ViewGap>
@@ -118,7 +122,7 @@ export const DebugScreen = () => {
           <ExternalTouchableLink
             disabled={!isValid}
             as={ButtonSecondary}
-            wording="Contacter le support"
+            wording="Envoyer au support"
             externalNav={{ url: mailtoUrl }}
             icon={EmailFilled}
             onBeforeNavigate={() => analytics.logClickMailDebugInfo(user?.id)}

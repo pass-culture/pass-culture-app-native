@@ -1,5 +1,5 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
-import { TextInput as RNTextInput, ViewStyle } from 'react-native'
+import { TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
@@ -32,6 +32,7 @@ type CustomTextInputProps = InputProps & {
 
 type CustomInputTextProps = InputProps & {
   label: string
+  labelStyle?: TextStyle
   errorMessage?: string
   format?: string
   disabled?: boolean

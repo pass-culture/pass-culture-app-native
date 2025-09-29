@@ -103,7 +103,7 @@ describe('DebugScreen', () => {
 })
 
 const enterDescription = async () => {
-  const textBox = screen.getByPlaceholderText('Décrire en quelques phrases.')
+  const textBox = screen.getByPlaceholderText('Décris ton problème en quelques phrases.')
   await act(async () => {
     fireEvent.changeText(textBox, "J'ai un problème avec la carte")
   })

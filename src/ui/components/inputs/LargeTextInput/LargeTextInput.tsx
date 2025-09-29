@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput, TextStyle } from 'react-native'
 
 import { TextInputProps } from 'ui/components/inputs/types'
 import { InputText } from 'ui/designSystem/InputText/InputText'
@@ -7,6 +7,7 @@ import { getSpacing } from 'ui/theme'
 
 interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
+  labelStyle?: TextStyle
   value: string
   onChangeText: (suggestion: string) => void
   showErrorMessage: boolean
@@ -18,6 +19,7 @@ interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeTe
 const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTextInputProps> = (
   {
     label,
+    labelStyle,
     value,
     onChangeText,
     containerHeight,
@@ -36,6 +38,7 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
   return (
     <InputText
       label={label}
+      labelStyle={labelStyle}
       value={value}
       onChangeText={onChangeText}
       containerStyle={{ height: containerHeight ?? getSpacing(50) }}
