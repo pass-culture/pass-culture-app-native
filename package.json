@@ -21,7 +21,6 @@
     "android:staging": "yarn android --mode=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --mode=apptestingDebug --appId=app.passculture.testing",
     "android:development": "yarn android --mode=developmentDebug --appId=app.passculture.testing",
-    "appcenter:install": "./scripts/appcenter-download-release.sh",
     "build": "vite build",
     "build:development": "yarn build --mode=development",
     "build:integration": "yarn build --mode=integration",
@@ -338,7 +337,9 @@
     "@babel/preset-typescript": "^7.23.3",
     "@babel/plugin-transform-typescript": "^7.23.6",
     "@babel/plugin-syntax-typescript": "^7.23.3",
-    "@babel/types": "^7.23.6"
+    "@babel/types": "^7.23.6",
+    "tar-fs": "3.1.1",
+    "path-to-regexp": "0.1.12"
   },
   "exports": {
     ".": "./index.js",
