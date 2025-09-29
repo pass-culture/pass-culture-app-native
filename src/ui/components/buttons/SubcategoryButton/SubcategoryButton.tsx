@@ -65,13 +65,12 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderColor: ColorsType
 }>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
   ...(theme.isMobileViewport
-    ? {
-        width: windowWidth / 2 - getSpacing(8),
-      }
+    ? { width: windowWidth / 2 - theme.designSystem.size.spacing.xxl }
     : {}),
   flexDirection: 'row',
   backgroundColor,
-  height: SUBCATEGORY_BUTTON_HEIGHT,
+  minHeight: SUBCATEGORY_BUTTON_HEIGHT,
+  height: '100%',
   borderColor,
   borderWidth: 1.6,
   borderStyle: 'solid',
@@ -79,12 +78,12 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   ...customFocusOutline({ isFocus }),
   textAlign: 'left',
   alignItems: 'center',
-  ...(Platform.OS === 'web' && { padding: getSpacing(2) }),
+  ...(Platform.OS === 'web' && { padding: theme.designSystem.size.spacing.s }),
 }))
 
 const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
-  numberOfLines: 2,
+  numberOfLines: 3,
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
   marginHorizontal: Number(theme.designSystem.size.spacing.s),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
