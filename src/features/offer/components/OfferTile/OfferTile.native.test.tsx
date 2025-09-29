@@ -131,6 +131,7 @@ describe('OfferTile component', () => {
         offerId: String(OFFER_ID),
         from: 'home',
         moduleName: props.moduleName,
+        isHeadline: false,
       })
     })
 
@@ -156,6 +157,7 @@ describe('OfferTile component', () => {
         moduleName: props.moduleName,
         fromOfferId: '1',
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        isHeadline: false,
       })
     })
 
@@ -168,6 +170,7 @@ describe('OfferTile component', () => {
         from: 'home',
         moduleName: props.moduleName,
         homeEntryId: 'abcd',
+        isHeadline: false,
       })
     })
 
@@ -198,6 +201,7 @@ describe('OfferTile component', () => {
         from: 'venue',
         venueId: 1,
         searchId,
+        isHeadline: false,
       })
     })
 
@@ -226,6 +230,7 @@ describe('OfferTile component', () => {
         moduleId: undefined,
         playlistType: undefined,
         venueId: undefined,
+        isHeadline: false,
       })
     })
 
@@ -255,6 +260,7 @@ describe('OfferTile component', () => {
         index: undefined,
         moduleId: undefined,
         venueId: undefined,
+        isHeadline: false,
       })
     })
   })
