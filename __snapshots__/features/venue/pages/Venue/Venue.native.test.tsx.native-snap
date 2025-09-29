@@ -1873,7 +1873,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -1885,9 +1885,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -1976,7 +1973,7 @@ Instagram
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -1988,9 +1985,6 @@ Instagram
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -2079,7 +2073,7 @@ WhatsApp
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -2091,9 +2085,6 @@ WhatsApp
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -2182,7 +2173,7 @@ iMessage
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -2194,9 +2185,6 @@ iMessage
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -4940,7 +4928,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -4952,9 +4940,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5043,7 +5028,7 @@ Instagram
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5055,9 +5040,6 @@ Instagram
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5146,7 +5128,7 @@ WhatsApp
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5158,9 +5140,6 @@ WhatsApp
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5249,7 +5228,7 @@ iMessage
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5261,9 +5240,6 @@ iMessage
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -7982,7 +7958,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -7994,9 +7970,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8085,7 +8058,7 @@ Instagram
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8097,9 +8070,6 @@ Instagram
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8188,7 +8158,7 @@ WhatsApp
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8200,9 +8170,6 @@ WhatsApp
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8291,7 +8258,7 @@ iMessage
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8303,9 +8270,6 @@ iMessage
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
