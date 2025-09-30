@@ -807,7 +807,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         numberOfLines={2}
                         style={
                           {
-                            "color": "#eb0055",
+                            "color": "#6123df",
                             "flexGrow": 1,
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-SemiBold",
@@ -2757,7 +2757,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#eb0055",
+                    "backgroundColor": "#6123df",
                     "borderBottomLeftRadius": 24,
                     "borderBottomRightRadius": 24,
                     "borderTopLeftRadius": 24,

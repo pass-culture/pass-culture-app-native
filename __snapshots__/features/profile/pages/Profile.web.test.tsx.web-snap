@@ -45,7 +45,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #eb0055;
+  background-color: #6123df;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -1150,7 +1150,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #eb0055;
+  background-color: #6123df;
   max-width: 500px;
   cursor: pointer;
   outline: none;

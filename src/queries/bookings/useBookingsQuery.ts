@@ -31,6 +31,7 @@ export const useBookingsQuery = <TData = BookingsResponseV2>(
     select,
     enabled: enabledQuery,
     staleTime: STALE_TIME_BOOKINGS,
+    meta: { persist: true },
   })
 
 export const useBookingsV2WithConvertedTimezoneQuery = (enabled: boolean) =>

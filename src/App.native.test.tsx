@@ -32,31 +32,39 @@ describe('<App /> with mocked RootNavigator', () => {
     setFeatureFlags()
   })
 
-  it("should override font for Batch's in-app messages", () => {
+  it("should override font for Batch's in-app messages", async () => {
     renderApp()
 
-    expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should refresh batch token at app start', () => {
+  it('should refresh batch token at app start', async () => {
     renderApp()
 
-    expect(BatchPush.refreshToken).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(BatchPush.refreshToken).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should not init AppsFlyer on launch', () => {
+  it('should not init AppsFlyer on launch', async () => {
     renderApp()
 
-    expect(campaignTracker.init).not.toHaveBeenCalled()
+    await waitFor(() => {
+      expect(campaignTracker.init).not.toHaveBeenCalled()
+    })
   })
 
-  it('should configure Google signin on launch', () => {
+  it('should configure Google signin on launch', async () => {
     renderApp()
 
-    expect(configureGoogleSignin).toHaveBeenCalledWith({
-      iosClientId: 'GOOGLE_IOS_CLIENT_ID',
-      webClientId: 'GOOGLE_CLIENT_ID',
-      offlineAccess: true,
+    await waitFor(() => {
+      expect(configureGoogleSignin).toHaveBeenCalledWith({
+        iosClientId: 'GOOGLE_IOS_CLIENT_ID',
+        webClientId: 'GOOGLE_CLIENT_ID',
+        offlineAccess: true,
+      })
     })
   })
 

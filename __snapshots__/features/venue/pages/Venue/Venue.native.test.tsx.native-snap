@@ -103,13 +103,12 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              maxHeight={56}
+              gap={2}
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
-                  "maxHeight": 56,
                   "overflow": "hidden",
                 }
               }
@@ -591,7 +590,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "color": "#eb0055",
+                          "color": "#6123df",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -606,7 +605,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 4,
                         "borderBottomRightRadius": 4,
                         "borderTopLeftRadius": 4,
@@ -1911,7 +1910,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -1923,9 +1922,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -2014,7 +2010,7 @@ Instagram
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -2026,9 +2022,6 @@ Instagram
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -2117,7 +2110,7 @@ WhatsApp
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -2129,9 +2122,6 @@ WhatsApp
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -2220,7 +2210,7 @@ iMessage
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -2232,9 +2222,6 @@ iMessage
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -2716,7 +2703,7 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -2897,13 +2884,12 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             }
           >
             <View
-              maxHeight={56}
+              gap={2}
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
-                  "maxHeight": 56,
                   "overflow": "hidden",
                 }
               }
@@ -3385,7 +3371,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "color": "#eb0055",
+                          "color": "#6123df",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3400,7 +3386,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 4,
                         "borderBottomRightRadius": 4,
                         "borderTopLeftRadius": 4,
@@ -5016,7 +5002,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5028,9 +5014,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5119,7 +5102,7 @@ Instagram
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5131,9 +5114,6 @@ Instagram
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5222,7 +5202,7 @@ WhatsApp
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5234,9 +5214,6 @@ WhatsApp
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5325,7 +5302,7 @@ iMessage
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -5337,9 +5314,6 @@ iMessage
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -5821,7 +5795,7 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -6002,13 +5976,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             }
           >
             <View
-              maxHeight={56}
+              gap={2}
               style={
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 8,
-                  "maxHeight": 56,
                   "overflow": "hidden",
                 }
               }
@@ -6576,7 +6549,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "color": "#eb0055",
+                          "color": "#6123df",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -6591,7 +6564,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 4,
                         "borderBottomRightRadius": 4,
                         "borderTopLeftRadius": 4,
@@ -8059,7 +8032,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8071,9 +8044,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8162,7 +8132,7 @@ Instagram
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8174,9 +8144,6 @@ Instagram
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8265,7 +8232,7 @@ WhatsApp
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8277,9 +8244,6 @@ WhatsApp
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8368,7 +8332,7 @@ iMessage
                           style={
                             {
                               "alignItems": "center",
-                              "height": 96,
+                              "minHeight": 96,
                               "opacity": 1,
                               "userSelect": "auto",
                               "width": 76,
@@ -8380,9 +8344,6 @@ iMessage
                             style={
                               {
                                 "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "gap": 8,
                               }
                             }
@@ -8864,7 +8825,7 @@ d’options
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,

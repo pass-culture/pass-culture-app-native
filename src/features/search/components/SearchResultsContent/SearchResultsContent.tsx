@@ -33,6 +33,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
+import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
@@ -68,19 +69,25 @@ import {
 } from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
+import { Grid } from 'ui/svg/icons/Grid'
+import { List } from 'ui/svg/icons/List'
 import { Map } from 'ui/svg/icons/Map'
-import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
 
 enum Tab {
-  SEARCHLIST = 'Liste',
+  SEARCHLIST = 'Résultats',
   MAP = 'Carte',
 }
 
 const isWeb = Platform.OS === 'web'
+
+const gridListLatout = {
+  Grille: GridListLayout.GRID,
+  Liste: GridListLayout.LIST,
+}
 
 export type SearchResultsContentProps = {
   onEndReached: () => void
@@ -126,14 +133,20 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
-  const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
-  const shouldDisplayGridList = enableGridList && !isWeb
   const {
     data: { gridListLayoutRemoteConfig },
   } = useRemoteConfigQuery()
-  const initialGridListLayout =
-    gridListLayoutRemoteConfig === 'Grille' ? GridListLayout.GRID : GridListLayout.LIST
-  const [gridListLayout, setGridListLayout] = useState(initialGridListLayout)
+
+  useEffect(() => {
+    if (gridListLayoutRemoteConfig) {
+      gridListLayoutActions.setLayout(gridListLatout[gridListLayoutRemoteConfig])
+    }
+  }, [gridListLayoutRemoteConfig])
+
+  const gridListLayout = useGridListLayout()
+
+  const enableGridList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST)
+  const shouldDisplayGridList = enableGridList && !isWeb
   const isGridLayout = shouldDisplayGridList && gridListLayout === GridListLayout.GRID
 
   const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
@@ -401,7 +414,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         }
         isGridLayout={isGridLayout}
         shouldDisplayGridList={shouldDisplayGridList}
-        setGridListLayout={setGridListLayout}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
@@ -416,12 +428,12 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           tabPanels={tabPanels}
           defaultTab={defaultTab}
           tabs={[
-            { key: Tab.SEARCHLIST, Icon: Sort },
+            { key: Tab.SEARCHLIST, Icon: isGridLayout ? Grid : List },
             { key: Tab.MAP, Icon: Map },
           ]}
           onTabChange={{
             Carte: triggerMapTab,
-            Liste: () => setIsSearchListTab(true),
+            Résultats: () => setIsSearchListTab(true),
           }}
         />
       ) : (

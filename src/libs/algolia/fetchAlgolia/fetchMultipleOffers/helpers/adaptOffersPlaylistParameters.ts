@@ -51,6 +51,7 @@ export const adaptOffersPlaylistParameters = (
     isDigital: parameters.isDigital ?? false,
     priceRange: _buildPriceRange({ priceMin, priceMax }),
     tags: parameters.tags ?? [],
+    allocineIdList: parameters.allocineIdList ?? [],
     date: null,
     timeRange: null,
     query: '',

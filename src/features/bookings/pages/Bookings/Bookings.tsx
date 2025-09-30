@@ -2,7 +2,7 @@ import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { ReactionTypeEnum } from 'api/gen'
+import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
 import { BookingsTab } from 'features/bookings/enum'
@@ -41,7 +41,7 @@ export const Bookings = () => {
   const [previousTab, setPreviousTab] = useState(activeTab)
   const { isLoggedIn } = useAuthContext()
   const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
-  const { mutate: addReaction } = useReactionMutation()
+  const { mutateAsync: addReaction, isPending } = useReactionMutation()
   const { endedBookings = [] } = bookings ?? {}
 
   const { data: availableReactions } = useAvailableReactionQuery()
@@ -52,20 +52,24 @@ export const Bookings = () => {
     'réservations'
   )
 
-  const updateReactions = useCallback(() => {
-    const bookingsToUpdate =
-      endedBookings
-        .filter((endedBooking) => endedBooking.userReaction === null)
-        .map((booking) => booking.stock.offer.id) ?? []
+  const updateReactions = useCallback(async () => {
+    if (isPending) return
 
-    const mutationPayload = bookingsToUpdate.map((bookingId) => ({
-      offerId: bookingId,
-      reactionType: ReactionTypeEnum.NO_REACTION,
-    }))
-    if (mutationPayload.length > 0) {
-      addReaction({ reactions: mutationPayload })
+    const reactableEndedBookings = endedBookings.filter(
+      (endedBooking) => !!endedBooking.canReact && endedBooking.userReaction === null
+    )
+
+    const reactionRequest: PostReactionRequest = {
+      reactions: reactableEndedBookings.map((booking) => ({
+        offerId: booking.stock.offer.id,
+        reactionType: ReactionTypeEnum.NO_REACTION,
+      })),
     }
-  }, [addReaction, endedBookings])
+
+    if (reactionRequest.reactions.length) {
+      await addReaction(reactionRequest)
+    }
+  }, [isPending, addReaction, endedBookings])
 
   useFocusEffect(
     useCallback(() => {
@@ -103,6 +107,7 @@ export const Bookings = () => {
           },
         ]}
         onTabChange={(key) => {
+          if (activeTab === BookingsTab.COMPLETED) updateReactions()
           setActiveTab(key)
         }}
       />

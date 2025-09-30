@@ -82,6 +82,7 @@ export const Ticket = ({
       display={display}
       topContent={
         <TicketTopPart
+          user={user}
           day={dayLabel == '' ? undefined : dayLabel}
           hour={hourLabel == '' ? undefined : hourLabel}
           isDuo={properties.isDuo}

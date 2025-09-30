@@ -43,7 +43,7 @@ export function AccessibilityDeclarationMobileBase({
   return (
     <SecondaryPageWithBlurHeader
       onGoBack={goBack}
-      title={`Déclaration d’accessibilité mobile - ${platformName}`}
+      title={`Déclaration d’accessibilité - ${platformName}`}
       enableMaxWidth={false}>
       <ViewGap gap={6}>
         <Typo.Body>

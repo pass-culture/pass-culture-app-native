@@ -46,7 +46,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params, true)
@@ -64,7 +64,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(mockNavigateToItinerary).toHaveBeenCalledWith(mockedFullAddress)
@@ -81,7 +81,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(openUrl).toHaveBeenCalledWith(WEBAPP_V2_URL, undefined, true)
@@ -99,7 +99,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      user.press(screen.getByText(linkText))
+      await user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(navigateFromRef).toHaveBeenCalledWith(...homeNavigationConfig)

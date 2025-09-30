@@ -292,7 +292,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
                     <View
                       style={
                         {
-                          "backgroundColor": "#eb0055",
+                          "backgroundColor": "#6123df",
                           "flexBasis": 0,
                           "flexGrow": 0.3333333333333333,
                           "flexShrink": 1,

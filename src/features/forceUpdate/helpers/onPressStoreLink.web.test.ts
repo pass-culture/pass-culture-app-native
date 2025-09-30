@@ -21,7 +21,7 @@ describe('onPressStoreLink', () => {
       writable: true,
     })
 
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.123456)
+    jest.spyOn(global.Date, 'now').mockReturnValue(123456)
   })
 
   it('should clear session storage', () => {
@@ -40,6 +40,6 @@ describe('onPressStoreLink', () => {
     onPressStoreLink()
     const assignedUrlCall = mockAssign.mock.calls[0][0].toString()
 
-    expect(assignedUrlCall).toBe('https://example.com/?force=0.123456')
+    expect(assignedUrlCall).toBe('https://example.com/?force=123456')
   })
 })

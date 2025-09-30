@@ -507,7 +507,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#eb0055",
+                    "backgroundColor": "#6123df",
                     "borderBottomLeftRadius": 24,
                     "borderBottomRightRadius": 24,
                     "borderTopLeftRadius": 24,
@@ -1110,7 +1110,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#eb0055",
+                    "backgroundColor": "#6123df",
                     "borderBottomLeftRadius": 24,
                     "borderBottomRightRadius": 24,
                     "borderTopLeftRadius": 24,

@@ -748,7 +748,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#eb0055",
+                      "borderColor": "#6123df",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -764,7 +764,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 16,
                         "borderBottomRightRadius": 16,
                         "borderTopLeftRadius": 16,
@@ -1930,7 +1930,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": false,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -1944,7 +1944,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           }
         }
         accessible={true}
-        focusable={true}
+        focusable={false}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -1960,7 +1960,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#f1f1f4",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -1997,7 +1997,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
             numberOfLines={1}
             style={
               {
-                "color": "#ffffff",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -2802,7 +2802,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#eb0055",
+                      "borderColor": "#6123df",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -2818,7 +2818,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 16,
                         "borderBottomRightRadius": 16,
                         "borderTopLeftRadius": 16,
@@ -3984,7 +3984,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": false,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -3998,7 +3998,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           }
         }
         accessible={true}
-        focusable={true}
+        focusable={false}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -4014,7 +4014,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#f1f1f4",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -4051,7 +4051,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#ffffff",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -4856,7 +4856,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                       "alignItems": "center",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#eb0055",
+                      "borderColor": "#6123df",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
@@ -4872,7 +4872,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
                     isSelected={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 16,
                         "borderBottomRightRadius": 16,
                         "borderTopLeftRadius": 16,
@@ -6038,7 +6038,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": false,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -6052,7 +6052,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           }
         }
         accessible={true}
-        focusable={true}
+        focusable={false}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -6068,7 +6068,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#f1f1f4",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -6105,7 +6105,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
             numberOfLines={1}
             style={
               {
-                "color": "#ffffff",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,

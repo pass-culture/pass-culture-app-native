@@ -2,7 +2,7 @@ import React from 'react'
 
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, renderAsync, screen, userEvent } from 'tests/utils'
 
 import * as constants from '../../constant'
 
@@ -51,7 +51,7 @@ describe('VenueMapView', () => {
   })
 
   it('should render empty map', async () => {
-    render(<VenueMapView venues={[]} />)
+    await renderAsync(<VenueMapView venues={[]} />)
 
     const map = await screen.findByTestId('venue-map-view')
 
@@ -59,14 +59,14 @@ describe('VenueMapView', () => {
   })
 
   it('should render map with markers', async () => {
-    render(<VenueMapView venues={venuesFixture} />)
+    await renderAsync(<VenueMapView venues={venuesFixture} />)
 
     expect(await screen.findByTestId('venue-map-view')).toBeOnTheScreen()
     expect(screen.getAllByTestId(/marker-/)).toHaveLength(venuesFixture.length)
   })
 
   it('should not display search button after initializing the map', async () => {
-    render(<VenueMapView venues={venuesFixture} onSearch={undefined} />)
+    await renderAsync(<VenueMapView venues={venuesFixture} onSearch={undefined} />)
     await screen.findByTestId('venue-map-view')
 
     expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
@@ -74,7 +74,7 @@ describe('VenueMapView', () => {
 
   it('should display search button and call refresh on press', async () => {
     const handleOnSearch = jest.fn()
-    render(<VenueMapView venues={venuesFixture} onSearch={handleOnSearch} />)
+    await renderAsync(<VenueMapView venues={venuesFixture} onSearch={handleOnSearch} />)
 
     await screen.findByTestId('venue-map-view')
     await user.press(await screen.findByText('Rechercher dans cette zone'))
@@ -83,7 +83,9 @@ describe('VenueMapView', () => {
   })
 
   it('should display venue label', async () => {
-    render(<VenueMapView venues={venuesFixture} showLabel initialRegion={mockCurrentRegion} />)
+    await renderAsync(
+      <VenueMapView venues={venuesFixture} showLabel initialRegion={mockCurrentRegion} />
+    )
 
     expect(await screen.findByText('Cinéma de la fin')).toBeOnTheScreen()
   })
@@ -94,7 +96,7 @@ describe('VenueMapView', () => {
       altitude: 1000,
     })
 
-    render(
+    await renderAsync(
       <VenueMapView venues={venuesFixture} showLabel={false} initialRegion={mockCurrentRegion} />
     )
 
@@ -105,7 +107,7 @@ describe('VenueMapView', () => {
 
   it('should call select marker when pressed', async () => {
     const handleOnMarkerPress = jest.fn()
-    render(<VenueMapView venues={venuesFixture} onMarkerPress={handleOnMarkerPress} />)
+    await renderAsync(<VenueMapView venues={venuesFixture} onMarkerPress={handleOnMarkerPress} />)
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
     await pressVenueMarker(venuesFixture[0])
@@ -124,7 +126,9 @@ describe('VenueMapView', () => {
   })
 
   it('should select marker by default', async () => {
-    render(<VenueMapView venues={venuesFixture} selectedVenueId={venuesFixture[0].venueId} />)
+    await renderAsync(
+      <VenueMapView venues={venuesFixture} selectedVenueId={venuesFixture[0].venueId} />
+    )
 
     expect(
       await screen.findByTestId(`marker-${venuesFixture[0].venueId}-selected`)
@@ -132,7 +136,7 @@ describe('VenueMapView', () => {
   })
 
   it('should render cluster', async () => {
-    const { root } = render(<VenueMapView venues={venuesFixture} />)
+    const { root } = await renderAsync(<VenueMapView venues={venuesFixture} />)
     root.props.renderCluster({ properties: { cluster_id: 'cluster' } })
 
     expect(await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)).toBeOnTheScreen()

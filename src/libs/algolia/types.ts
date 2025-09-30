@@ -135,6 +135,7 @@ export type FiltersArray = string[][]
 
 export type SearchQueryParameters = {
   allocineId?: number
+  allocineIdList?: string[]
   beginningDatetime?: string
   date: SelectedDate | null
   eanList?: string[]

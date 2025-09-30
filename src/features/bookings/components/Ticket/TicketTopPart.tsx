@@ -3,17 +3,20 @@ import styled from 'styled-components/native'
 
 import { BookingOfferResponseV2 } from 'api/gen'
 import { LinkToOffer } from 'features/bookings/components/LinkToOffer'
+import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BookFilled } from 'ui/svg/icons/BookFilled'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
+import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Stock } from 'ui/svg/icons/Stock'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type TicketTopPartProps = {
   title: string
+  user: UserProfileResponseWithoutSurvey
   hour?: string
   day?: string
   isDuo?: boolean
@@ -25,6 +28,7 @@ type TicketTopPartProps = {
 }
 
 export const TicketTopPart = ({
+  user,
   day,
   hour,
   isDuo,
@@ -39,6 +43,14 @@ export const TicketTopPart = ({
     <ViewGap gap={6}>
       <Typo.Title2 {...getHeadingAttrs(1)}>{title}</Typo.Title2>
       <ViewGap gap={2}>
+        {user.firstName && user.lastName ? (
+          <Row>
+            <StyledProfileFilled />
+            <Typo.Body>
+              {user.firstName} {user.lastName}
+            </Typo.Body>
+          </Row>
+        ) : null}
         {day ? (
           <Row>
             <StyledCalendarS />
@@ -78,6 +90,9 @@ export const TicketTopPart = ({
   )
 }
 
+const StyledProfileFilled = styled(ProfileFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))({})
 const StyledClockFilled = styled(ClockFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})

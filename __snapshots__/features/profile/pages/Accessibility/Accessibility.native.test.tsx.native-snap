@@ -564,7 +564,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Déclaration d’accessibilité mobile - Android"
+            accessibilityLabel="Déclaration d’accessibilité - Android"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -602,7 +602,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Déclaration d’accessibilité mobile - Android"
+            testID="Déclaration d’accessibilité - Android"
           >
             <View
               style={
@@ -640,7 +640,7 @@ exports[`Accessibility should render correctly 1`] = `
                     }
                   }
                 >
-                  Déclaration d’accessibilité mobile - Android
+                  Déclaration d’accessibilité - Android
                 </Text>
               </View>
               <View
@@ -681,7 +681,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Déclaration d’accessibilité mobile - iOS"
+            accessibilityLabel="Déclaration d’accessibilité - iOS"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -719,7 +719,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Déclaration d’accessibilité mobile - iOS"
+            testID="Déclaration d’accessibilité - iOS"
           >
             <View
               style={
@@ -757,7 +757,7 @@ exports[`Accessibility should render correctly 1`] = `
                     }
                   }
                 >
-                  Déclaration d’accessibilité mobile - iOS
+                  Déclaration d’accessibilité - iOS
                 </Text>
               </View>
               <View
@@ -798,7 +798,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Déclaration d’accessibilité de la version web"
+            accessibilityLabel="Déclaration d’accessibilité - web"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -836,7 +836,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Déclaration d’accessibilité de la version web"
+            testID="Déclaration d’accessibilité - web"
           >
             <View
               style={
@@ -874,7 +874,7 @@ exports[`Accessibility should render correctly 1`] = `
                     }
                   }
                 >
-                  Déclaration d’accessibilité de la version web
+                  Déclaration d’accessibilité - web
                 </Text>
               </View>
               <View
@@ -915,7 +915,7 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Parcours recommandés de la version web"
+            accessibilityLabel="Parcours recommandés - web"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -953,7 +953,7 @@ exports[`Accessibility should render correctly 1`] = `
                 },
               ]
             }
-            testID="Parcours recommandés de la version web"
+            testID="Parcours recommandés - web"
           >
             <View
               style={
@@ -991,7 +991,7 @@ exports[`Accessibility should render correctly 1`] = `
                     }
                   }
                 >
-                  Parcours recommandés de la version web
+                  Parcours recommandés - web
                 </Text>
               </View>
               <View

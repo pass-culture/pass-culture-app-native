@@ -2070,8 +2070,27 @@ PODS:
   - RNGoogleSignin (10.1.0):
     - GoogleSignIn (~> 7.0)
     - React-Core
-  - RNKeychain (8.0.0):
+  - RNKeychain (10.0.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNLaunchNavigator (1.0.9):
     - React
   - RNPermissions (5.4.1):
@@ -2850,7 +2869,7 @@ SPEC CHECKSUMS:
   RNFBRemoteConfig: 1bd86986a8372a52c95c00d83d73c44a3d61f31d
   RNGestureHandler: 6bd728f386096ebb26670b4dd6a604a67b14f65d
   RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
-  RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
+  RNKeychain: 774184659ed098fd715a4976d44e2003c829934f
   RNLaunchNavigator: d855643e1f842f13c6cc65575e0755975667032c
   RNPermissions: 57959c69d512e865639e7c312005ac7d610e0064
   RNReanimated: b3358b08f92ab850db74249e1f144d6b1a459cf4

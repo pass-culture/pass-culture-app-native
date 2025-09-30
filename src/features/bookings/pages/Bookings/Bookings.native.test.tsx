@@ -16,7 +16,7 @@ import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
@@ -41,9 +41,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const mockMutate = jest.fn()
+const mockMutateAsync = jest.fn().mockResolvedValue(undefined)
 jest.mock('features/reactions/queries/useReactionMutation', () => ({
-  useReactionMutation: () => ({ mutate: mockMutate }),
+  useReactionMutation: () => ({
+    mutateAsync: mockMutateAsync,
+  }),
 }))
 
 const user = userEvent.setup()
@@ -128,31 +130,32 @@ describe('Bookings', () => {
     expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
   })
 
-  //TODO(PC-37969): fix this test
-  it.skip('should call updateReactions when switching from COMPLETED tab', async () => {
+  it('should call updateReactions when switching from COMPLETED tab', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+
     renderBookings()
 
-    await user.press(await screen.findByText('Terminées'))
+    await screen.findByText('Mes réservations')
 
+    await user.press(await screen.findByText('Terminées'))
     await user.press(await screen.findByText('En cours'))
 
-    expect(mockMutate).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockMutateAsync).toHaveBeenCalledTimes(1))
   })
 
-  //TODO(PC-37969): fix this test
-  it.skip('should update reactions for ended bookings without user reaction', async () => {
+  it('should update reactions for ended bookings without user reaction', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+
     renderBookings()
 
     await user.press(await screen.findByText('Terminées'))
-
     await user.press(await screen.findByText('En cours'))
 
-    expect(mockMutate).toHaveBeenCalledWith({
-      reactions: [
-        { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
-        { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
-      ],
-    })
+    await waitFor(() =>
+      expect(mockMutateAsync).toHaveBeenCalledWith({
+        reactions: [{ offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION }],
+      })
+    )
   })
 
   it('should display a pastille when there are bookings without user reaction if wipReactionFeature FF activated', async () => {

@@ -76,7 +76,7 @@ describe('<FavoritesSorts/>', () => {
       mockUseLocation.mockReturnValueOnce(defaultUseLocation)
       renderFavoritesSort()
 
-      user.press(screen.getByText(sortByWording))
+      await user.press(screen.getByText(sortByWording))
       await user.press(screen.getByText('Valider'))
 
       expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
@@ -110,7 +110,7 @@ describe('<FavoritesSorts/>', () => {
     mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
-    user.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Proximité géographique'))
     await user.press(screen.getByText('Valider'))
 
     expect(
@@ -130,7 +130,7 @@ describe('<FavoritesSorts/>', () => {
 
     renderFavoritesSort()
 
-    user.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Proximité géographique'))
     await user.press(screen.getByText('Valider'))
 
     expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({

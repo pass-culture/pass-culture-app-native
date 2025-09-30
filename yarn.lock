@@ -3479,12 +3479,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.6, @babel/runtime@npm:^7.24.4, @babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.6, @babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.8.4":
   version: 7.26.10
   resolution: "@babel/runtime@npm:7.26.10"
   dependencies:
     regenerator-runtime: ^0.14.0
   checksum: 22d2e0abb86e90de489ab16bb578db6fe2b63a88696db431198b24963749820c723f1982298cdbbea187f7b2b80fb4d98a514faf114ddb2fdc14a4b96277b955
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.25.7":
+  version: 7.28.4
+  resolution: "@babel/runtime@npm:7.28.4"
+  checksum: 934b0a0460f7d06637d93fcd1a44ac49adc33518d17253b5a0b55ff4cb90a45d8fe78bf034b448911dbec7aff2a90b918697559f78d21c99ff8dbadae9565b55
   languageName: node
   linkType: hard
 
@@ -3719,59 +3726,59 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@callstack/reassure-cli@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@callstack/reassure-cli@npm:1.1.0"
+"@callstack/reassure-cli@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@callstack/reassure-cli@npm:1.4.0"
   dependencies:
-    "@callstack/reassure-compare": 1.1.0
-    "@callstack/reassure-logger": 1.1.0
+    "@callstack/reassure-compare": 1.4.0
+    "@callstack/reassure-logger": 1.4.0
     chalk: 4.1.2
-    simple-git: ^3.25.0
+    simple-git: ^3.27.0
     yargs: ^17.7.2
   bin:
     reassure: lib/commonjs/bin.js
-  checksum: dabd078199030f343ceb0a1b0dd34adafd7e233f12d298a14292787d171331ff5c1608a86e6801ff7346aa8d195b2167e66f519fcfb4dc14f692feff55342288
+  checksum: 77bc0644d20c64173224f51c86d0c4da56f5ce4c0f5c72de0c0ef46b6c3376d59630102f3bc50fbf72b70fea5a47dba7033c107c2da039c13f070ead47f1064b
   languageName: node
   linkType: hard
 
-"@callstack/reassure-compare@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@callstack/reassure-compare@npm:1.1.0"
+"@callstack/reassure-compare@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@callstack/reassure-compare@npm:1.4.0"
   dependencies:
-    "@callstack/reassure-logger": 1.1.0
-    markdown-table: ^2.0.0
-    ts-regex-builder: ^1.7.1
-    zod: ^3.23.8
-  checksum: 5929fb2a5163a970425f861891064d3257c816aae4201e0484cc854c08d090e5adc672537b27c29324728ecab3d251d9c0c2230b169d67f71993b5ca6ba5674d
+    "@callstack/reassure-logger": 1.4.0
+    ts-markdown-builder: 0.4.1
+    ts-regex-builder: ^1.8.2
+    zod: ^3.24.2
+  checksum: 142b2a5d4ec6b6a32eab2150fdc0c6fcdf893aa6b57ba0daf4d61f2910f7d53963b2aabebddee4f7ef1ada9f7fa398a6cecfdb545e767c978da88380661b5050
   languageName: node
   linkType: hard
 
-"@callstack/reassure-danger@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@callstack/reassure-danger@npm:1.1.0"
-  checksum: a85ddeda4bbe32ec6542840b089dfdb9397b8e17ed4fadd25f258befef42665889742abda55e26e71be761c95eca9e0a88277c4cbe553645deeca982f9a302c8
+"@callstack/reassure-danger@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@callstack/reassure-danger@npm:1.4.0"
+  checksum: b0f72c407bfc7c7be353573261442915a82e80765b8c632a5fb0f6c5cd6a85824f5c5a4823cdd62675667eaaa22718dcf8da2be9f302bfdb68ad262a0dcd3e61
   languageName: node
   linkType: hard
 
-"@callstack/reassure-logger@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@callstack/reassure-logger@npm:1.1.0"
+"@callstack/reassure-logger@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@callstack/reassure-logger@npm:1.4.0"
   dependencies:
     chalk: 4.1.2
-  checksum: d5e2893d9d027d2793b9e1a483ff94d6562364c5c23da82fad1689d5c76f5b2c13aad8fe3cd574561cbcf9a865e06a51d132e5b0af096e82d520e77c3a39bad7
+  checksum: a65c569a615df2ba489ee36c09ff2065f56686c54e825f7664c59e30e5c31e46d36e105bf851dfcbfc6505f88115d185277a57caf46eb6700afecb7040525e6f
   languageName: node
   linkType: hard
 
-"@callstack/reassure-measure@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@callstack/reassure-measure@npm:1.1.0"
+"@callstack/reassure-measure@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@callstack/reassure-measure@npm:1.4.0"
   dependencies:
-    "@callstack/reassure-logger": 1.1.0
-    mathjs: ^12.4.3
+    "@callstack/reassure-logger": 1.4.0
+    mathjs: ^13.2.3
     pretty-format: ^29.7.0
   peerDependencies:
     react: ">=18.0.0"
-  checksum: ebcd58212aac1da790253beb7a09f88e13e3070eef49205336452c3e60f7ef2e602c3fcc06224ac459b1178bcd8f190e0f28e8cd9ea5086c20d8081bbba9dd08
+  checksum: e698db7005eb19b1e17b0374a6c808c7e0dd353793968c31abca69dc5066ba35494dd48761c6ab4311f82d2c026dab8372ec3b002a5c717e2af1a532958f3b28
   languageName: node
   linkType: hard
 
@@ -6815,6 +6822,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/get-type@npm:30.1.0":
+  version: 30.1.0
+  resolution: "@jest/get-type@npm:30.1.0"
+  checksum: e2a95fbb49ce2d15547db8af5602626caf9b05f62a5e583b4a2de9bd93a2bfe7175f9bbb2b8a5c3909ce261d467b6991d7265bb1d547cb60e7e97f571f361a70
+  languageName: node
+  linkType: hard
+
 "@jest/globals@npm:30.0.5":
   version: 30.0.5
   resolution: "@jest/globals@npm:30.0.5"
@@ -7658,10 +7672,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pass-culture/design-system@npm:0.3.0":
-  version: 0.3.0
-  resolution: "@pass-culture/design-system@npm:0.3.0"
-  checksum: 1501ef6c1262dc484b5d20ca609165538dfa64588a97c9357afa509317bd0da8ec1f46bf536e13d5011f86581e98db26182d00015100a8b9d375825baec224b1
+"@pass-culture/design-system@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@pass-culture/design-system@npm:0.4.0"
+  checksum: 3583a5f500ba60ec477db0ff109d6da25fe93ac16ae7d32ed9426cc625bd0af3dedcaf73fb2b9247a866d3c5327747cf7b7eac7a17047569c0e0ac216d8f0906
   languageName: node
   linkType: hard
 
@@ -9338,10 +9352,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-async-storage-persister@npm:^5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/query-async-storage-persister@npm:5.90.1"
+  dependencies:
+    "@tanstack/query-core": 5.90.1
+    "@tanstack/query-persist-client-core": 5.90.1
+  checksum: d238fea398782fa77964113526d453d585e4fa28971566fcf696816ade2cb22f0f8fcaf2ab6bf741fff92a904e4ca791fa7cfb4c1dcb2f502a4b2a9af51f5827
+  languageName: node
+  linkType: hard
+
 "@tanstack/query-core@npm:5.87.1":
   version: 5.87.1
   resolution: "@tanstack/query-core@npm:5.87.1"
   checksum: 3dc20d40221948a783af3e7e9b489f1264513121dfd7cad21ccf58c2cb58bfe5fd095d061560682860823def56d8492bc45e657cc7ce71927b8cf3041c7e9ee5
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/query-core@npm:5.90.1"
+  checksum: 7f5f62581d2d567cb85324d2183a17ea2bd00e86c827b6e144be1d59fb74154db4b00eb635a25fc0dc94f98bb6edb3742e2503029082179254553bddae6e527f
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-persist-client-core@npm:5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/query-persist-client-core@npm:5.90.1"
+  dependencies:
+    "@tanstack/query-core": 5.90.1
+  checksum: 3192a8a09194cc17d56cb5c21bbd58d046f461c9cc356b848667dbc62d4c05712cc4287e67a6f9fb79a240975a1e144bef66caae0563d25a664d0a3d0a6a1ace
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-persist-client@npm:^5.90.1":
+  version: 5.90.1
+  resolution: "@tanstack/react-query-persist-client@npm:5.90.1"
+  dependencies:
+    "@tanstack/query-persist-client-core": 5.90.1
+  peerDependencies:
+    "@tanstack/react-query": ^5.90.1
+    react: ^18 || ^19
+  checksum: 26e7e6673a9d7863850dcbb297d14e522b195cbfc13b1ae85ac0725ca6a35480c53aad29f8420baf69a1131096c596a2a66d71c783c57a27748daefd9df82f4e
   languageName: node
   linkType: hard
 
@@ -9435,22 +9487,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-native@npm:^12.4.5":
-  version: 12.4.5
-  resolution: "@testing-library/react-native@npm:12.4.5"
+"@testing-library/react-native@npm:^13.3.3":
+  version: 13.3.3
+  resolution: "@testing-library/react-native@npm:13.3.3"
   dependencies:
-    jest-matcher-utils: ^29.7.0
-    pretty-format: ^29.7.0
+    jest-matcher-utils: ^30.0.5
+    picocolors: ^1.1.1
+    pretty-format: ^30.0.5
     redent: ^3.0.0
   peerDependencies:
-    jest: ">=28.0.0"
-    react: ">=16.8.0"
-    react-native: ">=0.59"
-    react-test-renderer: ">=16.8.0"
+    jest: ">=29.0.0"
+    react: ">=18.2.0"
+    react-native: ">=0.71"
+    react-test-renderer: ">=18.2.0"
   peerDependenciesMeta:
     jest:
       optional: true
-  checksum: 2cf0d267b5c0c63963116e25cd8e66b44b9b5c6e62a1e60ec9511f3fd3678c086e7422e95d04248f251f0d940563613ba29ac79e8102c12c6cbefba5dbf8717d
+  checksum: 5688918384ce834e3667a56b72c8b776a2f9a5afae0a2738e7d0077f342b3ade7eca628cbe122943201caee75f3718379ef7b3ca00cd50c4ee607b4131d09505
   languageName: node
   linkType: hard
 
@@ -11023,7 +11076,7 @@ __metadata:
     "@hot-updater/react-native": 0.19.9
     "@lhci/cli": ^0.14.0
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
-    "@pass-culture/design-system": 0.3.0
+    "@pass-culture/design-system": 0.4.0
     "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-native-async-storage/async-storage": ^1.17.11
     "@react-native-clipboard/clipboard": ^1.16.2
@@ -11058,11 +11111,13 @@ __metadata:
     "@storybook/react-native-web-vite": ^9.0.18
     "@storybook/react-vite": ^9.0.18
     "@storybook/testing-library": ^0.2.2
+    "@tanstack/query-async-storage-persister": ^5.90.1
     "@tanstack/react-query": 5.87.1
+    "@tanstack/react-query-persist-client": ^5.90.1
     "@testing-library/jest-dom": ^6.4.2
     "@testing-library/jest-native": ^5.4.3
     "@testing-library/react": ^15.0.5
-    "@testing-library/react-native": ^12.4.5
+    "@testing-library/react-native": ^13.3.3
     "@testing-library/user-event": ^14.5.2
     "@tsconfig/react-native": ^3.0.0
     "@types/contentful-resolve-response": ^0.1.30
@@ -11102,7 +11157,6 @@ __metadata:
     babel-preset-react-app: ^10.0.1
     chromatic: ^11.27.0
     color-alpha: ^1.1.3
-    console-fail-test: ^0.2.3
     contentful-resolve-response: ^1.3.0
     cross-fetch: ^3.1.5
     danger: ^11.2.4
@@ -11181,7 +11235,7 @@ __metadata:
     react-native-get-random-values: ^1.5.1
     react-native-in-app-review: ^4.3.1
     react-native-intersection-observer: ^0.2.1
-    react-native-keychain: ^8.0.0
+    react-native-keychain: ^10.0.0
     react-native-launch-navigator: 1.0.9
     react-native-linear-gradient: ^2.8.3
     react-native-lottie-splash-screen: ^1.1.2
@@ -11210,7 +11264,7 @@ __metadata:
     react-test-renderer: 18.3.1
     react-window: ^1.8.9
     react-youtube: ^10.1.0
-    reassure: 1.1.0
+    reassure: ^1.4.0
     reset-css: ^5.0.2
     resize-observer-polyfill: ^1.5.1
     search-insights: ^2.13.0
@@ -13792,10 +13846,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"complex.js@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "complex.js@npm:2.1.1"
-  checksum: a0802cc3f0eb7703088edfc3fe209ae7be5ce93c0e710a0f288be2e29ee31b3530a8c0d3330d7c2a668410dfe4293a4038554d66c7f1f1165997941bdc1092aa
+"complex.js@npm:^2.2.5":
+  version: 2.4.2
+  resolution: "complex.js@npm:2.4.2"
+  checksum: 989332b1ca2ac4c71cb42e79501b535f5c95e2356570a027a47cd03e515ff1ddfe4ea497dc26edf249610e097fe730092f498995306f02ad0443f9a5a7b6e5f3
   languageName: node
   linkType: hard
 
@@ -13910,13 +13964,6 @@ __metadata:
   version: 2.15.3
   resolution: "consola@npm:2.15.3"
   checksum: 8ef7a09b703ec67ac5c389a372a33b6dc97eda6c9876443a60d76a3076eea0259e7f67a4e54fd5a52f97df73690822d090cf8b7e102b5761348afef7c6d03e28
-  languageName: node
-  linkType: hard
-
-"console-fail-test@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "console-fail-test@npm:0.2.3"
-  checksum: bc86389b8900672921e18105a30f79aa86db4c0fa4a6f4728bfdafb97af5945c3faec1d82bd9e63b6a5451ddae34554881216f9884281b01bc79d3c4f4c1c625
   languageName: node
   linkType: hard
 
@@ -17535,10 +17582,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fraction.js@npm:4.3.4":
-  version: 4.3.4
-  resolution: "fraction.js@npm:4.3.4"
-  checksum: 26fdecf114e3b693c760d3b2d5447f8ba9e815991ca7c7cdb930156780793b87f10936979a890b389676d960d7cd026273da9a44a6e20c12e3c4fd282a026ed3
+"fraction.js@npm:^4.3.7":
+  version: 4.3.7
+  resolution: "fraction.js@npm:4.3.7"
+  checksum: e1553ae3f08e3ba0e8c06e43a3ab20b319966dfb7ddb96fd9b5d0ee11a66571af7f993229c88ebbb0d4a816eb813a24ed48207b140d442a8f76f33763b8d1f3f
   languageName: node
   linkType: hard
 
@@ -19875,6 +19922,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-diff@npm:30.1.2":
+  version: 30.1.2
+  resolution: "jest-diff@npm:30.1.2"
+  dependencies:
+    "@jest/diff-sequences": 30.0.1
+    "@jest/get-type": 30.1.0
+    chalk: ^4.1.2
+    pretty-format: 30.0.5
+  checksum: 15f350b664f5fe00190cbd36dbe2fd477010bf471b9fb3b2b0b1a40ce4241b10595a05203fcb86aea7720d2be225419efc3d1afa921966b0371d33120c563eec
+  languageName: node
+  linkType: hard
+
 "jest-diff@npm:^29.0.1, jest-diff@npm:^29.2.1, jest-diff@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-diff@npm:29.7.0"
@@ -20075,6 +20134,18 @@ __metadata:
     jest-get-type: ^29.6.3
     pretty-format: ^29.7.0
   checksum: d7259e5f995d915e8a37a8fd494cb7d6af24cd2a287b200f831717ba0d015190375f9f5dc35393b8ba2aae9b2ebd60984635269c7f8cff7d85b077543b7744cd
+  languageName: node
+  linkType: hard
+
+"jest-matcher-utils@npm:^30.0.5":
+  version: 30.1.2
+  resolution: "jest-matcher-utils@npm:30.1.2"
+  dependencies:
+    "@jest/get-type": 30.1.0
+    chalk: ^4.1.2
+    jest-diff: 30.1.2
+    pretty-format: 30.0.5
+  checksum: 51735e221cdfcfbfe88ad8149b06f861356c3cf2e6713368f23216c9951768634082bfc821eb47acc09cafde8be8cbea01308d74f24c9b6075ea31492b77448a
   languageName: node
   linkType: hard
 
@@ -21659,15 +21730,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markdown-table@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "markdown-table@npm:2.0.0"
-  dependencies:
-    repeat-string: ^1.0.0
-  checksum: 9bb634a9300016cbb41216c1eab44c74b6b7083ac07872e296f900a29449cf0e260ece03fa10c3e9784ab94c61664d1d147da0315f95e1336e2bdcc025615c90
-  languageName: node
-  linkType: hard
-
 "marked-terminal@npm:^7.0.0":
   version: 7.3.0
   resolution: "marked-terminal@npm:7.3.0"
@@ -21708,22 +21770,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mathjs@npm:^12.4.3":
-  version: 12.4.3
-  resolution: "mathjs@npm:12.4.3"
+"mathjs@npm:^13.2.3":
+  version: 13.2.3
+  resolution: "mathjs@npm:13.2.3"
   dependencies:
-    "@babel/runtime": ^7.24.4
-    complex.js: ^2.1.1
+    "@babel/runtime": ^7.25.7
+    complex.js: ^2.2.5
     decimal.js: ^10.4.3
     escape-latex: ^1.2.0
-    fraction.js: 4.3.4
+    fraction.js: ^4.3.7
     javascript-natural-sort: ^0.7.1
     seedrandom: ^3.0.5
     tiny-emitter: ^2.1.0
-    typed-function: ^4.1.1
+    typed-function: ^4.2.1
   bin:
     mathjs: bin/cli.js
-  checksum: 5d0f78717492d72653a87d2ad219cb7e1ac82399e0c2199caa44852583e2f2efbdc33d5008911994f9a1bfb7cb13575aa6824ff88d2c11127e61364f02ef3f7c
+  checksum: 0ba0a25bf60084c1580174e556603cb8836d1f1724da4e6a86aec2625f19bece544ae7b43959c223e2e0c01206b2a466a1a50fbe7a847c53afd68002482d182c
   languageName: node
   linkType: hard
 
@@ -24049,7 +24111,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:30.0.5":
+"pretty-format@npm:30.0.5, pretty-format@npm:^30.0.5":
   version: 30.0.5
   resolution: "pretty-format@npm:30.0.5"
   dependencies:
@@ -24893,10 +24955,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-keychain@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "react-native-keychain@npm:8.0.0"
-  checksum: cbab1cef8565743072f919663068727df20fc0ef5edd53b0aa96fac74c11fcd0daa197968b06cabed4f1b3f8e5e5ae73b6db8543ed9adbecc13662c38958c9ce
+"react-native-keychain@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "react-native-keychain@npm:10.0.0"
+  checksum: 1055cc192df58cb110bd49df1264a401007a354ad28b93adefd740aeac0f746cdab86d7428887694a1b0949ef8d0dc85db8984e77db684d7b967180167b64d42
   languageName: node
   linkType: hard
 
@@ -25487,18 +25549,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reassure@npm:1.1.0":
-  version: 1.1.0
-  resolution: "reassure@npm:1.1.0"
+"reassure@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "reassure@npm:1.4.0"
   dependencies:
-    "@callstack/reassure-cli": 1.1.0
-    "@callstack/reassure-compare": 1.1.0
-    "@callstack/reassure-danger": 1.1.0
-    "@callstack/reassure-measure": 1.1.0
+    "@callstack/reassure-cli": 1.4.0
+    "@callstack/reassure-compare": 1.4.0
+    "@callstack/reassure-danger": 1.4.0
+    "@callstack/reassure-measure": 1.4.0
     import-local: ^3.2.0
   bin:
     reassure: lib/commonjs/bin/reassure.js
-  checksum: c22dae1c56b53930155d7032fb6747831abf6f554b801f0cf1e66df1ce0e11222bbf0e43a8c98a3b36cb2d5e814f2d7fb322ce2fa8ba92112f3fa417c0fcf03f
+  checksum: 57b388611bcbcf9d2ed1862e51b64352f285320e043105570011f95ceea276c1c565c7bcb8ddf0fef9baff8fe8c9658bd3ecf18b3372da84db7b0baf9bc4d032
   languageName: node
   linkType: hard
 
@@ -25726,13 +25788,6 @@ __metadata:
   version: 0.2.7
   resolution: "relateurl@npm:0.2.7"
   checksum: 5891e792eae1dfc3da91c6fda76d6c3de0333a60aa5ad848982ebb6dccaa06e86385fb1235a1582c680a3d445d31be01c6bfc0804ebbcab5aaf53fa856fde6b6
-  languageName: node
-  linkType: hard
-
-"repeat-string@npm:^1.0.0":
-  version: 1.6.1
-  resolution: "repeat-string@npm:1.6.1"
-  checksum: 1b809fc6db97decdc68f5b12c4d1a671c8e3f65ec4a40c238bc5200e44e85bcc52a54f78268ab9c29fcf5fe4f1343e805420056d1f30fa9a9ee4c2d93e3cc6c0
   languageName: node
   linkType: hard
 
@@ -26574,14 +26629,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:^3.25.0":
-  version: 3.27.0
-  resolution: "simple-git@npm:3.27.0"
+"simple-git@npm:^3.27.0":
+  version: 3.28.0
+  resolution: "simple-git@npm:3.28.0"
   dependencies:
     "@kwsites/file-exists": ^1.1.1
     "@kwsites/promise-deferred": ^1.1.1
-    debug: ^4.3.5
-  checksum: bc602d67317a5421363f4cbe446bc71336387a7ea9864b23993dcbbd7e4847e346a234aa5b46bf9d80130d2448cbaeb21cf8f7b62572dce093fb4643ff7ffafd
+    debug: ^4.4.0
+  checksum: d4f4a56f0eaf916e3c4b801342f6e6c32e73a3eb8c5497f61f71ff21f30462c64537ba76f2cc835d6cd1ffe6198bd52b3e242b0a70444c8cd21faa9f61f75634
   languageName: node
   linkType: hard
 
@@ -27896,6 +27951,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-markdown-builder@npm:0.4.1":
+  version: 0.4.1
+  resolution: "ts-markdown-builder@npm:0.4.1"
+  checksum: fcb16b44bce6fb66271640fb9d9569f95243cda791925d18b74e6c75bdeb8b70b7006073af8abd5d9b7220b44bc9153d4e4204bd24eeebe4b635f67ec965f2e9
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^10.8.0":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
@@ -27941,7 +28003,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-regex-builder@npm:^1.7.1":
+"ts-regex-builder@npm:^1.8.2":
   version: 1.8.2
   resolution: "ts-regex-builder@npm:1.8.2"
   checksum: b9f99d93724e64cc0edad17b3f1e83767d5a0403806491475ada0957a005a6ebffd3f5b7ef5db982e719c2a8af4de371450ae9067513e6285904a72cf7f24f9b
@@ -28173,7 +28235,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typed-function@npm:^4.1.1":
+"typed-function@npm:^4.2.1":
   version: 4.2.1
   resolution: "typed-function@npm:4.2.1"
   checksum: 00d2dbbc61cf238fda6e0359eee8c5d344e92de3c54588a6da202be24dd8d31a5c87715a8401a65d384b8fdba7c971b19ac86e572f27e23976cccbd6ed842487
@@ -29695,7 +29757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.24.3":
+"zod@npm:^3.24.2, zod@npm:^3.24.3":
   version: 3.25.76
   resolution: "zod@npm:3.25.76"
   checksum: c9a403a62b329188a5f6bd24d5d935d2bba345f7ab8151d1baa1505b5da9f227fb139354b043711490c798e91f3df75991395e40142e6510a4b16409f302b849

@@ -275,7 +275,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -376,7 +376,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
                 "width": "100%",
               },
               {
-                "borderColor": "#eb0055",
+                "borderColor": "#6123df",
                 "borderStyle": "solid",
                 "borderWidth": 2,
               },
@@ -420,7 +420,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,

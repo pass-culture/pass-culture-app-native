@@ -24,6 +24,7 @@ const defaultSearchParameters = omit(
     offerGenreTypes: [],
     offerGtlLabel: undefined,
     offerGtlLevel: undefined,
+    allocineIdList: [],
   },
   [
     'offerIsFree',

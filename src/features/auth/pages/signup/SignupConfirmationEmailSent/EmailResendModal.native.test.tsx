@@ -10,7 +10,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
 
@@ -33,17 +33,14 @@ jest.useFakeTimers()
 
 describe('<EmailResendModal />', () => {
   it('should render correctly', async () => {
-    renderEmailResendModal({})
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
+    await renderEmailResendModal({})
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should dismiss modal when close icon is pressed', async () => {
-    renderEmailResendModal({})
+    await renderEmailResendModal({})
 
     await user.press(screen.getByLabelText('Fermer la modale'))
 
@@ -51,36 +48,23 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should log analytics when resend email button is clicked', async () => {
-    renderEmailResendModal({})
+    await renderEmailResendModal({})
 
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
-
-    await act(async () => {
-      user.press(screen.getByLabelText('Demander un nouveau lien'))
-    })
+    await user.press(screen.getByLabelText('Demander un nouveau lien'))
 
     expect(analytics.logResendEmailValidation).toHaveBeenCalledTimes(1)
   })
 
   it('should resend email when resend email button is clicked', async () => {
-    renderEmailResendModal({})
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
+    await renderEmailResendModal({})
 
-    await act(async () => user.press(screen.getByText('Demander un nouveau lien')))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(resendEmailValidationSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should display timer when resend email button is clicked', async () => {
-    renderEmailResendModal({})
-
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
+    await renderEmailResendModal({})
 
     await user.press(screen.getByText('Demander un nouveau lien'))
 
@@ -92,30 +76,24 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should display error message when email resend fails', async () => {
-    renderEmailResendModal({ emailResendErrorCode: 500 })
+    await renderEmailResendModal({ emailResendErrorCode: 500 })
 
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
+    expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
 
-    user.press(screen.getByText('Demander un nouveau lien'))
+    const button = screen.getByText('Demander un nouveau lien')
+    await user.press(button)
 
-    await waitFor(async () =>
-      expect(
-        await screen.findByText(
-          'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
-        )
-      ).toBeOnTheScreen()
+    const text = await screen.findByText(
+      'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
     )
+
+    expect(text).toBeOnTheScreen()
   })
 
   it('should display error message when maximum number of resends is reached', async () => {
-    renderEmailResendModal({ emailResendErrorCode: 429 })
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
+    await renderEmailResendModal({ emailResendErrorCode: 429 })
 
-    user.press(screen.getByText('Demander un nouveau lien'))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       await screen.findByText('Tu as dépassé le nombre de renvois autorisés.')
@@ -126,16 +104,13 @@ describe('<EmailResendModal />', () => {
     mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: 500, data: 'error' },
     })
-    renderEmailResendModal({})
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
+    await renderEmailResendModal({})
 
-    await act(async () => user.press(screen.getByText('Demander un nouveau lien')))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       screen.queryByText(
-        'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
+        "Une erreur s'est produite lors de l'envoi du nouveau lien. Réessaie plus tard."
       )
     ).not.toBeOnTheScreen()
   })
@@ -146,7 +121,7 @@ describe('<EmailResendModal />', () => {
       counterResetDatetime: '2023-09-30T12:58:04.065652Z',
     })
 
-    renderEmailResendModal({})
+    await renderEmailResendModal({})
 
     await screen.findAllByLabelText('Recevoir un nouveau lien')
 
@@ -169,10 +144,7 @@ describe('<EmailResendModal />', () => {
     })
 
     it('should not log to Sentry on error', async () => {
-      renderEmailResendModal({ emailResendErrorCode: 500 })
-      await waitFor(() => {
-        expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-      })
+      await renderEmailResendModal({ emailResendErrorCode: 500 })
 
       await user.press(screen.getByText('Demander un nouveau lien'))
 
@@ -196,12 +168,9 @@ describe('<EmailResendModal />', () => {
     })
 
     it('should log to Sentry on error', async () => {
-      renderEmailResendModal({ emailResendErrorCode: 500 })
-      await waitFor(() => {
-        expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-      })
+      await renderEmailResendModal({ emailResendErrorCode: 500 })
 
-      user.press(screen.getByText('Demander un nouveau lien'))
+      await user.press(screen.getByText('Demander un nouveau lien'))
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(
@@ -214,7 +183,11 @@ describe('<EmailResendModal />', () => {
 })
 
 const onDismissMock = jest.fn()
-const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode?: number }) => {
+const renderEmailResendModal = async ({
+  emailResendErrorCode,
+}: {
+  emailResendErrorCode?: number
+}) => {
   if (emailResendErrorCode) {
     mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: emailResendErrorCode, data: 'error' },
@@ -237,9 +210,11 @@ const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode
       },
     }
   )
-  render(
+  const render = await renderAsync(
     reactQueryProviderHOC(
       <EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />
     )
   )
+  await screen.findByText(/Attention, il te reste :/i)
+  return render
 }

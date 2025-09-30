@@ -10,7 +10,7 @@ import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor, waitForButtonToBePressable } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
 
@@ -70,6 +70,8 @@ describe('<PriceModal/>', () => {
     renderSearchPrice()
 
     const searchButton = await screen.findByLabelText('Rechercher')
+
+    await waitForButtonToBePressable(searchButton)
 
     expect(searchButton).toBeEnabled()
 

@@ -173,8 +173,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EMAIL_ORGANIZER }),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
-  logClickInfoReview: (params: { offerId: string; from: Referrals; userId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_INFO_REVIEW }, params),
+  logClickInfoReview: (params: {
+    offerId: string
+    from: Referrals
+    categoryName: string
+    userId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_INFO_REVIEW }, params),
   logClickMailDebugInfo: (userId?: number) => {
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
   },

@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query'
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { api } from 'api/api'
@@ -13,9 +14,7 @@ import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
-import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
-
 const NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS = 1000
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
@@ -114,15 +113,14 @@ export const AuthWrapper = memo(function AuthWrapper({
 })
 
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
-function useUserProfileInfo(isLoggedIn: boolean, options = {}) {
+const useUserProfileInfo = (isLoggedIn: boolean, options = {}) => {
   const netInfo = useNetInfoContext()
-  return usePersistQuery<UserProfileResponseWithoutSurvey>(
-    [QueryKeys.USER_PROFILE],
-    () => api.getNativeV1Me(),
-    {
-      enabled: !!netInfo.isConnected && isLoggedIn,
-      staleTime: STALE_TIME_USER_PROFILE,
-      ...options,
-    }
-  )
+  return useQuery<UserProfileResponseWithoutSurvey>({
+    queryKey: [QueryKeys.USER_PROFILE],
+    queryFn: () => api.getNativeV1Me(),
+    enabled: !!netInfo.isConnected && isLoggedIn,
+    staleTime: STALE_TIME_USER_PROFILE,
+    meta: { persist: true },
+    ...options,
+  })
 }

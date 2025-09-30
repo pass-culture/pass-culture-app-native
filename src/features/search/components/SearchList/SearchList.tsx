@@ -3,7 +3,7 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
-import { GridListLayout, SearchListProps } from 'features/search/types'
+import { SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { getSpacing } from 'ui/theme'
@@ -25,7 +25,6 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
       venuesUserData,
       artistSection,
       numColumns,
-      setGridListLayout,
       isGridLayout,
       shouldDisplayGridList,
     },
@@ -46,8 +45,6 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
             venues={hits.venues}
             artistSection={artistSection}
             venuesUserData={venuesUserData}
-            setGridListLayout={setGridListLayout}
-            selectedGridListLayout={isGridLayout ? GridListLayout.GRID : GridListLayout.LIST}
             shouldDisplayGridList={shouldDisplayGridList}
           />
         }

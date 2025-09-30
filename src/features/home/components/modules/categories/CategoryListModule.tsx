@@ -26,7 +26,7 @@ type CategoryListProps = {
   homeEntryId: string
 }
 
-const BLOCK_HEIGHT = getSpacing(24)
+const BLOCK_HEIGHT = getSpacing(25)
 const DESKTOP_MAX_WIDTH = getSpacing(37.33)
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)

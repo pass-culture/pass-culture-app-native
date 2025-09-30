@@ -16,6 +16,7 @@ import {
   buildOfferSubcategoriesPredicate,
   buildTagsPredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
+import { parseAndCleanStringsToNumbers } from 'libs/algolia/fetchAlgolia/utils'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 
 const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
@@ -26,6 +27,7 @@ export const buildFacetFilters = ({
   eanList,
   artistName,
   allocineId,
+  allocineIdList,
   isUserUnderage,
   objectIds,
   isHeadline,
@@ -54,12 +56,13 @@ export const buildFacetFilters = ({
   | 'tags'
   | 'gtls'
   | 'isHeadline'
+  | 'allocineIdList'
+  | 'allocineId'
+  | 'eanList'
+  | 'artistName'
+  | 'objectIds'
 > & {
   isUserUnderage: boolean
-  objectIds?: string[]
-  eanList?: string[]
-  artistName?: string
-  allocineId?: number
   disabilitiesProperties: DisabilitiesProperties
 }): null | {
   facetFilters: FiltersArray
@@ -108,7 +111,13 @@ export const buildFacetFilters = ({
   }
 
   if (allocineId) {
-    const allocineIdPredicate = buildAllocineIdPredicate(allocineId)
+    const allocineIdPredicate = buildAllocineIdPredicate([allocineId])
+    facetFilters.push(allocineIdPredicate)
+  }
+
+  if (allocineIdList && allocineIdList.length > 0) {
+    const allocineIdListParsed = parseAndCleanStringsToNumbers(allocineIdList)
+    const allocineIdPredicate = buildAllocineIdPredicate(allocineIdListParsed)
     facetFilters.push(allocineIdPredicate)
   }
 

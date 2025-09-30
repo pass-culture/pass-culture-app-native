@@ -123,6 +123,7 @@ describe('OffersModule', () => {
           offerGtlLabel: undefined,
           offerGtlLevel: undefined,
           offerNativeCategories: [],
+          allocineIdList: [],
         },
       },
     })

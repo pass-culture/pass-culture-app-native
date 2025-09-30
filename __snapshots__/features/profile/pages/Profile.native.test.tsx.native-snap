@@ -1722,7 +1722,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessibilityIgnoresInvertColors={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "justifyContent": "center",
                         "width": "100%",
                       }

@@ -338,7 +338,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                             accessibilityRole="header"
                             style={
                               {
-                                "color": "#eb0055",
+                                "color": "#6123df",
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 21,
                                 "lineHeight": 33.6,
@@ -1018,7 +1018,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,

@@ -46,7 +46,7 @@ describe('CulturalSurveyIntro page', () => {
       render(<CulturalSurveyIntro />)
 
       const StartButton = screen.getByText('Commencer le questionnaire')
-      user.press(StartButton)
+      await user.press(StartButton)
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {

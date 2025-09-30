@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { fireEvent, render, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
@@ -59,8 +59,8 @@ describe('<VenueThematicSection/>', () => {
   })
 
   it('should render null if user is not eligible', async () => {
-    mockAuthContextWithUser(nonBeneficiaryUser)
-    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
+    mockAuthContextWithUser(nonBeneficiaryUser, { persist: true })
+    await renderAsync(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
     await waitFor(() => {
       expect(screen.toJSON()).toBeNull()

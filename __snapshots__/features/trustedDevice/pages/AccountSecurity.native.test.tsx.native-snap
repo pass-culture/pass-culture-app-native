@@ -393,7 +393,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -494,7 +494,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 "width": "100%",
               },
               {
-                "borderColor": "#eb0055",
+                "borderColor": "#6123df",
                 "borderStyle": "solid",
                 "borderWidth": 2,
               },
@@ -519,7 +519,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -1035,7 +1035,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -1588,7 +1588,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -1689,7 +1689,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 "width": "100%",
               },
               {
-                "borderColor": "#eb0055",
+                "borderColor": "#6123df",
                 "borderStyle": "solid",
                 "borderWidth": 2,
               },
@@ -1714,7 +1714,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,

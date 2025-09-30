@@ -156,7 +156,7 @@ exports[`Bookings should render correctly 1`] = `
             isSelected={true}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -171,7 +171,7 @@ exports[`Bookings should render correctly 1`] = `
           isSelected={true}
           style={
             {
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomLeftRadius": 4,
               "borderBottomRightRadius": 4,
               "borderTopLeftRadius": 4,

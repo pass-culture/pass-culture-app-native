@@ -716,7 +716,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
             },
             {
               "alignItems": "center",
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomLeftRadius": 24,
               "borderBottomRightRadius": 24,
               "borderTopLeftRadius": 24,
@@ -1601,7 +1601,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
             },
             {
               "alignItems": "center",
-              "backgroundColor": "#eb0055",
+              "backgroundColor": "#6123df",
               "borderBottomLeftRadius": 24,
               "borderBottomRightRadius": 24,
               "borderTopLeftRadius": 24,

@@ -240,7 +240,8 @@ describe('useSearchResults', () => {
 
 const renderUseSearchResults = (newSearchState?: SearchState) =>
   renderHook(
-    ({ searchState }: { searchState: SearchState }) => useSearchInfiniteQuery(searchState),
+    ({ searchState }: { searchState: SearchState; dispatch?: () => void }) =>
+      useSearchInfiniteQuery(searchState),
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: { searchState: newSearchState ?? initialSearchState, dispatch: mockDispatch },

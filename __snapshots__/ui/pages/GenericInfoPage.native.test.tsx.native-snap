@@ -383,7 +383,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -463,7 +463,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             "backgroundColor": "transparent",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
-            "borderColor": "#eb0055",
+            "borderColor": "#6123df",
             "borderStyle": "solid",
             "borderTopLeftRadius": 24,
             "borderTopRightRadius": 24,
@@ -496,7 +496,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
