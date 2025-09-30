@@ -7,6 +7,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 
 interface Props {
+  radioGroupLabel: string
   hour: string
   price: number
   selected: boolean
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export function HourChoice({
+  radioGroupLabel,
   hour,
   price,
   selected,
@@ -51,6 +53,7 @@ export function HourChoice({
   return (
     <Wrapper index={index}>
       <RadioSelector
+        radioGroupLabel={radioGroupLabel}
         label={hour}
         description={joinedFeatures}
         rightText={priceWording}

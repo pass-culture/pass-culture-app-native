@@ -19,6 +19,8 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+const radioGroupLabel = 'Horaires'
+
 function getHourChoiceForMultiplePrices(
   stocks: OfferStockResponse[],
   selectedDate: string | undefined,
@@ -49,6 +51,7 @@ function getHourChoiceForMultiplePrices(
     const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
     return (
       <HourChoice
+        radioGroupLabel={radioGroupLabel}
         index={index}
         key={hour}
         price={minPriceStock.price}
@@ -87,6 +90,7 @@ function getHourChoiceForSingleStock(
     )
     .map((stock, index) => (
       <HourChoice
+        radioGroupLabel={radioGroupLabel}
         index={index}
         key={stock.id}
         price={stock.price}
@@ -171,7 +175,7 @@ export const BookHourChoice = () => {
   return (
     <ViewGap gap={4}>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
-        Horaire
+        {radioGroupLabel}
       </Typo.Title3>
 
       {bookingState.step === Step.HOUR ? (
