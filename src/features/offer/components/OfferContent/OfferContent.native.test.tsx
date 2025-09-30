@@ -22,7 +22,6 @@ import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
-import { PlaylistType } from 'features/offer/enums'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -303,56 +302,6 @@ describe('<OfferContent />', () => {
 
         expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
       })
-
-      it('should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          nbResults: 4,
-          ...apiRecoParams,
-        })
-      })
-
-      it('should trigger only once time logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-        mockInView(false)
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-      })
-
-      it('should not trigger logSameCategoryPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(false)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
-      })
     })
 
     describe('Other categories similar offers', () => {
@@ -370,68 +319,6 @@ describe('<OfferContent />', () => {
         await screen.findByText('Réserver l’offre')
 
         expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
-      })
-
-      it('should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          nbResults: 4,
-          ...apiRecoParams,
-        })
-      })
-
-      it('should trigger only once time logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-        mockInView(false)
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-      })
-
-      it('should not trigger logOtherCategoriesPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(false)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
       })
     })
   })

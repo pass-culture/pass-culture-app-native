@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SimilarOffersResponse } from 'api/gen'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -60,6 +61,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
+      useRoute.mockReturnValue({ params: { id: mockedOffer.id } })
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
         params: {},
