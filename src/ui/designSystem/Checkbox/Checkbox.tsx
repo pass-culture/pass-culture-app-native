@@ -45,6 +45,7 @@ type CheckboxBase = {
   required?: boolean
   hasError?: boolean
   disabled?: boolean
+  accessibilityLabel?: string
 } & (CheckboxBaseCheckedOnly | CheckboxBaseIndeterminateOnly)
 
 type DefaultCheckbox = CheckboxBase & {
@@ -83,6 +84,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   indeterminate = false, // TODO(PC-38116): Use new state props instead
   isChecked, // TODO(PC-38116): Use new state props instead
   label,
+  accessibilityLabel,
   onPress,
   required,
   variant = 'default',
@@ -108,11 +110,16 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   const colorMark = disabled ? designSystem.color.icon.disabled : designSystem.color.icon.inverted
   const checkboxMarkSize = checkbox.size / 1.75 // Parent padding doesn't have effect on CheckboxMarkIndeterminate
 
+  const computedAccessibilityLabel = accessibilityLabel ?? label
   const Label = isCheckedState || isIndeterminate ? StyledBodyAccent : StyledBody
 
   return (
     <CheckboxContainer
-      {...accessibleCheckboxProps({ checked: isChecked, label, required })}
+      {...accessibleCheckboxProps({
+        checked: isChecked,
+        label: computedAccessibilityLabel,
+        required,
+      })}
       state={state}
       variant={variant}
       sizing={effectiveSizing}
