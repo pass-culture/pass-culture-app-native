@@ -47,7 +47,7 @@ export const Venue: FunctionComponent = () => {
   const pageTracking = usePageTracking({
     pageName: 'Venue',
     pageLocation: 'venue',
-    pageId: venue?.id ? String(venue.id) : params.id.toString(),
+    pageId: params.id.toString(),
   })
 
   // Handler for modules with the new system

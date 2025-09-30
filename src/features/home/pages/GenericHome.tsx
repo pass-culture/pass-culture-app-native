@@ -67,9 +67,6 @@ type GenericHomeProps = {
 
 const keyExtractor = (item: HomepageModule) => item.id
 
-// Handler for modules - will be created dynamically in the component
-// with the new tracking system
-
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,

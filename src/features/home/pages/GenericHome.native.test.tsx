@@ -166,18 +166,6 @@ describe('GenericHome page - Analytics', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('[OfferView] should initialize new tracking system', async () => {
-    // The new tracking system initializes automatically with usePageTracking
-    // and no longer requires setViewOfferTrackingFn
-    renderGenericHome({})
-
-    // Verify that the page is rendered (tracking initializes automatically)
-    expect(screen.getByTestId('homeBodyScrollView')).toBeOnTheScreen()
-  })
-
-  // Removed tests: old tracking system replaced by usePageTracking
-  // New features are tested in the new system's tests
-
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     renderGenericHome({})
     const scrollView = screen.getByTestId('homeBodyScrollView')
