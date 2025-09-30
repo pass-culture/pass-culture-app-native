@@ -22,7 +22,7 @@ appId: ${MAESTRO_APP_ID}
     - tapOn: 'LIVRES'
     - tapOn: 'Romans & littérature'
 
-- assertVisible: 'Liste'
+- assertVisible: "Résultats"
 - assertVisible: "Carte"
 
 - tapOn: "Carte"

@@ -2,6 +2,7 @@ appId: ${MAESTRO_APP_ID}
 jsengine: graaljs
 tags:
   - nightlyAndroid
+  - nightlyIOS
   - local
   - squad-decouverte
 onFlowStart:
