@@ -153,10 +153,7 @@ describe('Bookings', () => {
 
     await waitFor(() =>
       expect(mockMutateAsync).toHaveBeenCalledWith({
-        reactions: [
-          { offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION },
-          { offerId: 147875, reactionType: ReactionTypeEnum.NO_REACTION },
-        ],
+        reactions: [{ offerId: 147874, reactionType: ReactionTypeEnum.NO_REACTION }],
       })
     )
   })
