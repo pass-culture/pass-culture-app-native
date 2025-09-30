@@ -11,7 +11,6 @@
 
 ## 📋 Légende
 
-
 🟠 : Correction disponible à la vérification  
 🟢 : Correction validée  
 🔴 : Correction invalidée  
@@ -29,13 +28,15 @@
 **Ticket** : [PC-37377](https://passculture.atlassian.net/browse/PC-37377)  
 **PR** : [#8676](https://github.com/pass-culture/pass-culture-app-native/pull/8676)
 
-**Problème** 😱  
-- Les emojis étaient vocalisé sur Android car on utilisait `accessibilityHidden` qui ne fonctionne pas. 
+**Problème** 😱
+
+- Les emojis étaient vocalisé sur Android car on utilisait `accessibilityHidden` qui ne fonctionne pas.
 - Les icons qui étaient présent au début des boutons sont vocalisé "zéro" pour la même raison.
 
-**Correction** 💡  
+**Correction** 💡
+
 - Refacto du code de `AccessibleTitle` et utilisation de `accessibilityElementsHidden` (iOS) et `importantForAccessibility` (Android) via `hiddenFromScreenReader()` pour ignorer les emojis. Création d'un composant `AccessibleTitle` spécifique web qui permet de garder `aria-hidden` en web pour éviter les problèmes de compatibilité.
-- Utilisation du nouveau composant `LinkInsideText` qui ne possède pas d'emojis de lien externe. 
+- Utilisation du nouveau composant `LinkInsideText` qui ne possède pas d'emojis de lien externe.
 
 </details>
 
@@ -130,7 +131,8 @@ Utilisation des composants `Li` associés à des `AccessibilityRole.LIST`.
 **Problème** 😱  
 Certains textes n’étaient pas vocalisés car ils n’étaient pas inclus dans les labels.
 
-**Correction** 💡  
+**Correction** 💡
+
 - Ajout d’informations dans certains `accessibilityLabel` et/ou suppression d’`accessibilityLabel` inutiles afin d’éviter toute confusion.
 - Modification de `tileAccessibilityLabel` pour prendre en compte les tags.
 
@@ -189,20 +191,39 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 **PR** : [#8730](https://github.com/pass-culture/pass-culture-app-native/pull/8730)
 
 **Problème** 😱  
-Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% : 
+Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
+
 - **(E01 / E03 / E04)** Des liens sont tronqué car le composant qui est utilisé pour les afficher n'est pas vrai un texte
-- **(E06)** Les éléments dans le "plan du site" sont tronqué car ils n'utilisent pas de composant bouton. 
-- **(E09)** Les tags ont une hauteur limité, ce qui empeche un texte de s'afficher sur 2 ou 3 lignes. 
-- **(E12)** La page de statut de la demande de déblocage du crédit ne scroll pas, car on bloque sa hauteur. 
-- **(E15)** Les options dans le calendrir ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes. 
+- **(E06)** Les éléments dans le "plan du site" sont tronqué car ils n'utilisent pas de composant bouton.
+- **(E09)** Les tags ont une hauteur limité, ce qui empeche un texte de s'afficher sur 2 ou 3 lignes.
+- **(E12)** La page de statut de la demande de déblocage du crédit ne scroll pas, car on bloque sa hauteur.
+- **(E15)** Les options dans le calendrir ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes.
 
+**Correction** 💡
 
-**Correction** 💡  
 - **(E01 / E03 / E04)** Pour les liens tronqué, nous avons utilisé le nouveau composant `LinkInsideText`
-- **(E06)** Utilisation de boutons pour tous les éléments du plan du site, qui gère mieux le passage à la ligne et ne tronque pas le texte. 
-- **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes. 
-- **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller. 
-- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth` plutôt que `width` pour permettre d'afficher le texte des options sur plusieurs lignes. 
+- **(E06)** Utilisation de boutons pour tous les éléments du plan du site, qui gère mieux le passage à la ligne et ne tronque pas le texte.
+- **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes.
+- **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller.
+- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que`width` pour permettre d'afficher le texte des options sur plusieurs lignes.
+
+</details>
+
+<details>
+
+<summary> 🟠 Critère 9.3 - Chaque étiquette associée à un champ de formulaire est-elle pertinente?</summary>
+
+**RAAM** : [Critère 9.3](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-3)  
+**Ticket** : [PC-37490](https://passculture.atlassian.net/browse/PC-37490)  
+**PR** : [#8733](https://github.com/pass-culture/pass-culture-app-native/pull/8733)
+
+**Problème** 😱
+
+- **(E015)** Le champ pour le choix de l'horaire dans la modale "Choix des Options>Horaire n'indique pas "VF" "VO" etc.
+
+**Correction** 💡
+
+- **(E015)** L'`accessibilityLabel` du conteneur était l'horaire. On a inclus le prix et la langue.
 
 </details>
 
