@@ -36,19 +36,19 @@ const sectionConfig: {
     screen: 'AccessibilityActionPlan',
   },
   {
-    title: 'Déclaration d’accessibilité mobile - Android',
+    title: 'Déclaration d’accessibilité - Android',
     screen: 'AccessibilityDeclarationMobileAndroid',
   },
   {
-    title: 'Déclaration d’accessibilité mobile - iOS',
+    title: 'Déclaration d’accessibilité - iOS',
     screen: 'AccessibilityDeclarationMobileIOS',
   },
   {
-    title: 'Déclaration d’accessibilité de la version web',
+    title: 'Déclaration d’accessibilité - web',
     screen: 'AccessibilityDeclarationWeb',
   },
   {
-    title: 'Parcours recommandés de la version web',
+    title: 'Parcours recommandés - web',
     screen: 'RecommendedPaths',
   },
 ]

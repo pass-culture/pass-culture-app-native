@@ -150,7 +150,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             }
           }
         >
-          Déclaration d’accessibilité mobile - Android
+          Déclaration d’accessibilité - Android
         </Text>
       </View>
       <View

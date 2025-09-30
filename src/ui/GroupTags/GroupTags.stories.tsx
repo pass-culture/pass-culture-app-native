@@ -3,12 +3,12 @@ import React from 'react'
 
 import { OfferExtraDataResponse } from 'api/gen'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: Meta<typeof InformationTags> = {
-  title: 'ui/InformationTags',
-  component: InformationTags,
+const meta: Meta<typeof GroupTags> = {
+  title: 'ui/GroupTags',
+  component: GroupTags,
 }
 export default meta
 
@@ -57,28 +57,20 @@ const tagsList = [
 ]
 const offerExtraData: OfferExtraDataResponse = { musicType: 'Pop', musicSubType: 'Pop/Rock' }
 
-const variantConfig: Variants<typeof InformationTags> = [
+const variantConfig: Variants<typeof GroupTags> = [
   {
-    label: 'InformationTags with custom data on two lines',
+    label: 'GroupTags with custom data on two lines',
     props: { tags: tagsList },
   },
   {
-    label: 'InformationTags with custom data on three lines',
-    props: { tags: tagsList, tagsLines: 3 },
-  },
-  {
-    label: 'InformationTags with offer example',
+    label: 'GroupTags with offer example',
     props: { tags: getOfferTags('Vinyle', offerExtraData) },
   },
 ]
 
-export const Template: VariantsStory<typeof InformationTags> = {
-  name: 'InformationTags',
+export const Template: VariantsStory<typeof GroupTags> = {
+  name: 'GroupTags',
   render: (props) => (
-    <VariantsTemplate
-      variants={variantConfig}
-      Component={InformationTags}
-      defaultProps={{ ...props }}
-    />
+    <VariantsTemplate variants={variantConfig} Component={GroupTags} defaultProps={{ ...props }} />
   ),
 }

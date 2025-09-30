@@ -150,7 +150,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             }
           }
         >
-          Déclaration d’accessibilité mobile - iOS
+          Déclaration d’accessibilité - iOS
         </Text>
       </View>
       <View

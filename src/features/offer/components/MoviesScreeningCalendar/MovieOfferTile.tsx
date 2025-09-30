@@ -70,9 +70,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
-            analyticsParams={{
-              from: 'venue',
-            }}
+            analyticsParams={{ from: 'venue' }}
             price={undefined}
             subtitles={getSubtitles(offer)}
             withRightArrow
@@ -109,7 +107,6 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
 const getSubtitles = (offer: OfferPreviewResponse): string[] => {
   const genre = offer.extraData?.genres?.length ? offer.extraData?.genres?.join(' / ') : ''
   const duration = formatDuration(offer.extraData?.durationMinutes).label
-
   return [genre, duration]
 }
 

@@ -180,6 +180,32 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 ## ✅ Corrections 26 septembre → 30 octobre
 
+<details>
+
+<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 1</summary>
+
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
+**Ticket** : [PC-37484](https://passculture.atlassian.net/browse/PC-37484)  
+**PR** : [#8730](https://github.com/pass-culture/pass-culture-app-native/pull/8730)
+
+**Problème** 😱  
+Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% : 
+- **(E01 / E03 / E04)** Des liens sont tronqué car le composant qui est utilisé pour les afficher n'est pas vrai un texte
+- **(E06)** Les éléments dans le "plan du site" sont tronqué car ils n'utilisent pas de composant bouton. 
+- **(E09)** Les tags ont une hauteur limité, ce qui empeche un texte de s'afficher sur 2 ou 3 lignes. 
+- **(E12)** La page de statut de la demande de déblocage du crédit ne scroll pas, car on bloque sa hauteur. 
+- **(E15)** Les options dans le calendrir ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes. 
+
+
+**Correction** 💡  
+- **(E01 / E03 / E04)** Pour les liens tronqué, nous avons utilisé le nouveau composant `LinkInsideText`
+- **(E06)** Utilisation de boutons pour tous les éléments du plan du site, qui gère mieux le passage à la ligne et ne tronque pas le texte. 
+- **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes. 
+- **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller. 
+- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth` plutôt que `width` pour permettre d'afficher le texte des options sur plusieurs lignes. 
+
+</details>
+
 <br>
 
 ## ✅ Corrections 30 octobre → 19 novembre

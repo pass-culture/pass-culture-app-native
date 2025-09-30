@@ -4,7 +4,7 @@
  */
 
 import React, { FunctionComponent } from 'react'
-import { View, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getTagColors } from 'ui/designSystem/Tag/helper/getTagColors'
@@ -15,9 +15,6 @@ import { Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 const PADDING_VERTICAL = getSpacing(1)
 const NUMBER_OF_SPACES_LINE_HEIGHT = 4
-const LINE_HEIGHT = getSpacing(NUMBER_OF_SPACES_LINE_HEIGHT)
-
-export const TAG_HEIGHT = PADDING_VERTICAL + LINE_HEIGHT + PADDING_VERTICAL
 
 export const Tag: FunctionComponent<TagProps> = ({
   label,
@@ -58,7 +55,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   )
 }
 
-const Wrapper = styled(View)<{ backgroundColor: string; withColor?: boolean }>(
+const Wrapper = styled.View<{ backgroundColor: string; withColor?: boolean }>(
   ({ theme, backgroundColor, withColor }) => ({
     flexDirection: 'row',
     alignItems: 'center',
@@ -72,11 +69,9 @@ const Wrapper = styled(View)<{ backgroundColor: string; withColor?: boolean }>(
 
 const LabelText = styled(Typo.BodyAccentXs)({
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
-  ...(Platform.OS === 'web' && {
-    textWrap: 'nowrap',
-  }),
+  ...(Platform.OS === 'web' && { textWrap: 'nowrap' }),
 })
 
-const IconContainer = styled(View)({
+const IconContainer = styled.View({
   marginRight: getSpacing(1),
 })
