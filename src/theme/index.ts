@@ -162,6 +162,7 @@ export const theme = {
     button: BorderRadiusEnum.BUTTON,
     radius: BorderRadiusEnum.BORDER_RADIUS,
     checkbox: BorderRadiusEnum.CHECKBOX_RADIUS,
+    radioButton: BorderRadiusEnum.RADIO_BUTTON_RADIUS,
     tile: BorderRadiusEnum.TILE,
   },
   zIndex: {
@@ -304,6 +305,12 @@ export const theme = {
     spaceBetweenModules: getSpacing(6),
   },
   checkbox: {
+    size: getSpacing(5),
+    border: {
+      size: 2,
+    },
+  },
+  radioButton: {
     size: getSpacing(5),
     border: {
       size: 2,

@@ -10,8 +10,8 @@ import FastImage from 'react-native-fast-image'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { CheckboxAssetProps, SizeProp } from 'ui/designSystem/Checkbox/types'
 import { Tag } from 'ui/designSystem/Tag/Tag'
+import { SelectableAssetProps, SizeProp } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
 
 type StyleProps = {
@@ -21,7 +21,7 @@ type StyleProps = {
   withShadow?: boolean
 }
 
-export function CheckboxAsset({
+export function SelectableAsset({
   variant,
   disable = false,
   Icon,
@@ -29,7 +29,7 @@ export function CheckboxAsset({
   size = 'small',
   text,
   tag,
-}: CheckboxAssetProps) {
+}: SelectableAssetProps) {
   const { designSystem, icons } = useTheme()
 
   const iconColor = disable
