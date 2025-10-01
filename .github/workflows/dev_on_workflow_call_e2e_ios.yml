@@ -27,7 +27,7 @@ jobs:
   build_e2e:
     name: 'Build & Test iOS Staging'
     runs-on: macos-14
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -131,7 +131,7 @@ jobs:
           device-os: iOS-17-5
           device-model: iPhone-11
           include-tags: ${{ inputs.test_tags }}
-          timeout: 120
+          timeout: 180
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}

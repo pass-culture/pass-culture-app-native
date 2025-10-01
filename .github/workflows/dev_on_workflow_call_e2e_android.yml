@@ -27,8 +27,19 @@ jobs:
   maestro-cloud:
     name: 'Build & Test Android Staging'
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
+      - name: Free up disk space
+        run: |
+          echo "Before cleanup:"
+          df --human-readable --total
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/share/swift
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache
+          sudo apt-get clean
+          echo "After cleanup:"
+          df --human-readable --total
       - name: Enable Corepack
         run: corepack enable
 
@@ -48,7 +59,7 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
-          
+
       - name: Yarn install
         run: yarn install
 
@@ -98,6 +109,10 @@ jobs:
       - name: Build android apk
         run: cd android && for i in {1..3}; do ENVFILE=.env.staging ./gradlew assembleDebug && break || sleep 2; done
 
+      - name: Disk usage after build
+        if: always()
+        run: du -sh /* | sort -h
+
       - name: Generate Maestro Android upload name
         id: generate_name
         run: |
@@ -121,7 +136,7 @@ jobs:
           android-api-level: 34
           workspace: .maestro/tests/
           include-tags: ${{ inputs.test_tags }}
-          timeout: 120
+          timeout: 180
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
