@@ -120,7 +120,9 @@ describe('<Venue />', () => {
   })
 })
 
-const renderVenue = async () =>
-  act(async () => {
+const renderVenue = async () => {
+  useRoute.mockReturnValue({ params: { id: venueId } })
+  return act(async () => {
     return render(reactQueryProviderHOC(<Venue />))
   })
+}
