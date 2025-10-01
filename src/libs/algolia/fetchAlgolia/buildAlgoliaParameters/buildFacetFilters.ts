@@ -1,5 +1,5 @@
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
+import { FACETS_FILTERS_ENUM, NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildAccessibiltyFiltersPredicate,
   buildAllocineIdPredicate,
@@ -42,6 +42,7 @@ export const buildFacetFilters = ({
   tags,
   gtls,
   disabilitiesProperties,
+  isWithClub,
 }: Pick<
   SearchQueryParameters,
   | 'venue'
@@ -61,6 +62,7 @@ export const buildFacetFilters = ({
   | 'eanList'
   | 'artistName'
   | 'objectIds'
+  | 'isWithClub'
 > & {
   isUserUnderage: boolean
   disabilitiesProperties: DisabilitiesProperties
@@ -148,6 +150,11 @@ export const buildFacetFilters = ({
   if (isHeadline) {
     const isHeadlineFilter = buildHeadlinePredicate(isHeadline)
     facetFilters.push(isHeadlineFilter)
+  }
+
+  if (isWithClub) {
+    const isWithClubsPredicate = [`${NUMERIC_FILTERS_ENUM.OFFER_CHRONICLES_COUNT} > 0`]
+    facetFilters.push(isWithClubsPredicate)
   }
 
   return { facetFilters }

@@ -32,6 +32,7 @@ export enum NUMERIC_FILTERS_ENUM {
   OFFER_TIMES = 'offer.times',
   OFFER_LAST_30_DAYS_BOOKINGS = 'offer.last30DaysBookings',
   OFFER_LIKES = 'offer.likes',
+  OFFER_CHRONICLES_COUNT = 'offer.chroniclesCount',
 }
 
 // Taken from https://www.algolia.com/apps/E2IKXJ325N/explorer/configuration/venues/facets
