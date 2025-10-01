@@ -46,8 +46,8 @@ interface PageTrackingConfig {
  * Replaces the fragile singleton with independent buffers
  */
 class TrackingBuffer {
-  private data = new Map<string, PlaylistTrackingInfo>()
-  private config: PageTrackingConfig
+  private readonly data = new Map<string, PlaylistTrackingInfo>()
+  private readonly config: PageTrackingConfig
 
   constructor(config: PageTrackingConfig) {
     this.config = config
@@ -154,7 +154,7 @@ class TrackingBuffer {
  */
 class TrackingManagerService {
   private static instance: TrackingManagerService
-  private pageBuffers = new Map<string, TrackingBuffer>()
+  private readonly pageBuffers = new Map<string, TrackingBuffer>()
   private isInitialized = false
 
   static getInstance(): TrackingManagerService {
@@ -266,7 +266,7 @@ class TrackingManagerService {
    */
   sendBufferIfNeeded(pageId: string) {
     const buffer = this.pageBuffers.get(pageId)
-    if (!buffer || !buffer.hasData()) {
+    if (!buffer?.hasData()) {
       TrackingLogger.debug('NO_DATA_TO_SEND_ON_FOCUS_LOST', { pageId })
       return
     }
@@ -308,7 +308,7 @@ class TrackingManagerService {
     })
 
     const buffer = this.pageBuffers.get(pageId)
-    if (!buffer || !buffer.hasData()) {
+    if (!buffer?.hasData()) {
       TrackingLogger.debug('NO_DATA_TO_SEND', { pageId })
       return
     }
@@ -444,8 +444,8 @@ declare global {
   }
 }
 
-if (__DEV__ && typeof window !== 'undefined') {
-  window.__TRACKING_MANAGER_DEBUG__ = {
+if (__DEV__ && typeof globalThis.window !== 'undefined') {
+  globalThis.window.__TRACKING_MANAGER_DEBUG__ = {
     getInfo: () => TrackingManager.getDebugInfo(),
     forceSend: (pageId: string) => TrackingManager.__forceSend(pageId),
     reset: () => TrackingManager.__resetForTesting(),

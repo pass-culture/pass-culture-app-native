@@ -12,7 +12,7 @@ export const logPlaylistDebug = (component: string, message: string, data?: unkn
   // Convert old logs to the new system
   TrackingLogger.debug(`LEGACY_${component}`, {
     message,
-    ...((data as Record<string, unknown>) || {}),
+    ...(data as Record<string, unknown>),
   })
 }
 

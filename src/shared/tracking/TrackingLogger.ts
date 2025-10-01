@@ -175,8 +175,8 @@ declare global {
 }
 
 // Setup global debug interface in development
-if (__DEV__ && typeof window !== 'undefined') {
-  window.__TRACKING_DEBUG__ = {
+if (__DEV__ && typeof globalThis.window !== 'undefined') {
+  globalThis.window.__TRACKING_DEBUG__ = {
     enable: () => TrackingLogger.configure(true),
     disable: () => TrackingLogger.configure(false),
     getLogs: () => TrackingLogger.getLogs(),

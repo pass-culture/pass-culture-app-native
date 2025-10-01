@@ -34,6 +34,8 @@ interface UsePageTrackingConfig {
   pageId?: string
 }
 
+type ItemType = 'offer' | 'venue' | 'artist' | 'unknown'
+
 interface TrackingHandlers {
   /**
    * Handler pour les changements d'items visibles
@@ -41,7 +43,7 @@ interface TrackingHandlers {
    */
   trackViewableItems: (params: {
     moduleId: string
-    itemType?: 'offer' | 'venue' | 'artist' | 'unknown'
+    itemType?: ItemType
     viewableItems: Pick<ViewToken, 'key' | 'index'>[]
     callId?: string
     extra?: Record<string, string | undefined>
@@ -204,7 +206,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
 
       // Utiliser l'interface debug pour forcer l'envoi
       const debug = (
-        window as { __TRACKING_MANAGER_DEBUG__?: { forceSend: (pageId: string) => void } }
+        globalThis.window as { __TRACKING_MANAGER_DEBUG__?: { forceSend: (pageId: string) => void } }
       ).__TRACKING_MANAGER_DEBUG__
       if (debug) {
         debug.forceSend(pageId)

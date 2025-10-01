@@ -25,7 +25,7 @@ class AppLifecycleManagerService {
   private isInitialized = false
   private currentAppState: AppStateStatus = AppState.currentState
   private activePageId: string | null = null
-  private pageListeners = new Map<string, PageListener>()
+  private readonly pageListeners = new Map<string, PageListener>()
 
   static getInstance(): AppLifecycleManagerService {
     if (!AppLifecycleManagerService.instance) {
@@ -280,8 +280,8 @@ declare global {
   }
 }
 
-if (__DEV__ && typeof window !== 'undefined') {
-  window.__APP_LIFECYCLE_DEBUG__ = {
+if (__DEV__ && typeof globalThis.window !== 'undefined') {
+  globalThis.window.__APP_LIFECYCLE_DEBUG__ = {
     getInfo: () => AppLifecycleManager.getDebugInfo(),
     reset: () => AppLifecycleManager.__resetForTesting(),
     setActivePage: (pageId: string) => AppLifecycleManager.setActivePage(pageId),
