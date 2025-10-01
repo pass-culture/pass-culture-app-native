@@ -57,7 +57,7 @@ export const filterGroups: FilterGroupData[] = [
   {
     id: 'SHOPS',
     label: 'Boutiques',
-    color: theme.designSystem.color.icon.brandPrimary,
+    color: theme.colors.primary,
     icon: Store,
   },
   { id: 'OTHERS', label: 'Autres', color: theme.colors.skyBlue, icon: Sort },
