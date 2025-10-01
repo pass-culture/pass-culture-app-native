@@ -187,11 +187,11 @@ describe('<AcceptCgu/>', () => {
   it('should not take into account previous marketing data for SSO account in CGU page', async () => {
     renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: true })
 
-    const marketingCheckbox = await screen.findByLabelText(
-      'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
-    )
+    const marketingCheckbox = await screen.findByRole('checkbox', {
+      name: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.',
+    })
 
-    expect(marketingCheckbox.props.accessibilityState.checked).toBe(false)
+    expect(marketingCheckbox).toHaveProp('accessibilityState', { checked: false })
   })
 
   it('should display error message when API call to create user account fails', async () => {

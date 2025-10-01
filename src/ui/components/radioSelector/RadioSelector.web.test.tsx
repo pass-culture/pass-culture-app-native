@@ -10,7 +10,14 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<RadioSelector />', () => {
   it('should call press when pressing Spacebar', () => {
-    render(<RadioSelector label="label" onPress={onPress} checked={false} />)
+    render(
+      <RadioSelector
+        radioGroupLabel="radioGroupLabel"
+        label="label"
+        onPress={onPress}
+        checked={false}
+      />
+    )
 
     const container = screen.getByText('label')
 
@@ -21,7 +28,15 @@ describe('<RadioSelector />', () => {
   })
 
   it('should not call press when pressing Spacebar if disabled', () => {
-    render(<RadioSelector label="label" onPress={onPress} disabled checked={false} />)
+    render(
+      <RadioSelector
+        radioGroupLabel="radioGroupLabel"
+        label="label"
+        onPress={onPress}
+        disabled
+        checked={false}
+      />
+    )
 
     const container = screen.getByText('label')
 
@@ -33,7 +48,9 @@ describe('<RadioSelector />', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<RadioSelector label="label" onPress={onPress} checked />)
+      const { container } = render(
+        <RadioSelector radioGroupLabel="radioGroupLabel" label="label" onPress={onPress} checked />
+      )
 
       const results = await checkAccessibilityFor(container)
 

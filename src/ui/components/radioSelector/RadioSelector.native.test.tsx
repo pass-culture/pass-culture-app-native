@@ -9,6 +9,7 @@ jest.useFakeTimers()
 
 describe('<RadioSelector />', () => {
   const defaultProps = {
+    radioGroupLabel: 'radioGroupLabel',
     label: 'Test Label',
     checked: false,
     onPress: jest.fn(),

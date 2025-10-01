@@ -58,7 +58,7 @@ export function AccessibilityDeclarationMobileBase({
             externalNav={storeLink}
             accessibilityRole={AccessibilityRole.LINK}
           />
-          {SPACE}version 1.348.8 du pass Culture.
+          {SPACE}version 1.358.2 du pass Culture.
         </Typo.Body>
       </ViewGap>
 
