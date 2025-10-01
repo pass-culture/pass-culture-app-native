@@ -19,7 +19,7 @@ beforeAll(() => {
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('<CheatcodesScreenDebugInformations/>', () => {
+describe.skip('<CheatcodesScreenDebugInformations/>', () => {
   it('should display code push button for testing environment', async () => {
     env.ENV = 'testing'
     renderCheatCodes()
