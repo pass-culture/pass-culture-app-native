@@ -206,7 +206,9 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
 
       // Utiliser l'interface debug pour forcer l'envoi
       const debug = (
-        globalThis.window as { __TRACKING_MANAGER_DEBUG__?: { forceSend: (pageId: string) => void } }
+        globalThis.window as {
+          __TRACKING_MANAGER_DEBUG__?: { forceSend: (pageId: string) => void }
+        }
       ).__TRACKING_MANAGER_DEBUG__
       if (debug) {
         debug.forceSend(pageId)
