@@ -11,6 +11,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { useRef, useEffect, useCallback } from 'react'
 import { ViewToken } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { analytics } from 'libs/analytics/provider'
 import { setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
@@ -236,9 +237,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
  * Generate a unique ID for a page
  */
 function generatePageId(pageLocation: string): string {
-  const timestamp = Date.now()
-  const random = Math.random().toString(36).substring(2, 8)
-  return `${pageLocation}_${timestamp}_${random}`
+  return `${pageLocation}_${uuidv4()}`
 }
 
 /**
