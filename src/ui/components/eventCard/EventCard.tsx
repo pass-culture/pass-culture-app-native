@@ -46,8 +46,9 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
     <StyledTouchableOpacity
       testID="event-card"
       disabled={isDisabled}
-      onPress={handleEventCardPress}>
-      <Title accessibilityLabel={accessibilityLabel} numberOfLines={1} disabled={isDisabled}>
+      onPress={handleEventCardPress}
+      accessibilityLabel={accessibilityLabel}>
+      <Title numberOfLines={1} disabled={isDisabled}>
         {title}
       </Title>
 
