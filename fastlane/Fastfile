@@ -67,12 +67,12 @@ platform :ios do
 
   lane :deploy do |options|
     if options[:ota] then # @hot-updater
-      version = %x[jq -r .version package.json].strip
       release_notes = %x[#{release_notes_command}]
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
       sh "cd .. && \
+      export VERSION=`jq -r .version package.json` && \
       yarn hotupdater:deploy:ios:#{ENV['ENV']} \
-          --target-app-version #{version} \
+          --target-app-version ${VERSION} \
           --message #{escaped_release_notes}"
       
     else
@@ -148,12 +148,12 @@ platform :android do
 
   lane :deploy do |options|
     if options[:ota] then # @hot-updater
-      version = %x[jq -r .version package.json].strip
       release_notes = %x[#{release_notes_command}]
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
       sh "cd .. && \
+      export VERSION=`jq -r .version package.json` && \
       yarn hotupdater:deploy:android:#{ENV['ENV']} \
-          --target-app-version #{version} \
+          --target-app-version ${VERSION} \
           --message #{escaped_release_notes}"
       
     else
