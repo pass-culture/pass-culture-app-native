@@ -33,7 +33,8 @@ type Props = {
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    artistId: string
+    artistId: string,
+    playlistIndex?: number
   ) => void
 }
 

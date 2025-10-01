@@ -37,16 +37,19 @@ export const Artist: FunctionComponent = () => {
     (
       items: Pick<ViewToken, 'key' | 'index'>[],
       moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      artistId: string,
+      playlistIndex?: number
     ) => {
       pageTracking.trackViewableItems({
         moduleId,
         itemType,
         viewableItems: items,
-        artistId: params.id,
+        artistId,
+        playlistIndex,
       })
     },
-    [pageTracking, params.id]
+    [pageTracking]
   )
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted

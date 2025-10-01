@@ -48,6 +48,7 @@ interface TrackingHandlers {
     callId?: string
     extra?: Record<string, string | undefined>
     artistId?: string
+    playlistIndex?: number
   }) => void
 
   /**
@@ -145,8 +146,17 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
       callId?: string
       extra?: Record<string, string | undefined>
       artistId?: string
+      playlistIndex?: number
     }) => {
-      const { moduleId, itemType = 'unknown', viewableItems, callId = '', extra, artistId } = params
+      const {
+        moduleId,
+        itemType = 'unknown',
+        viewableItems,
+        callId = '',
+        extra,
+        artistId,
+        playlistIndex,
+      } = params
 
       if (!moduleId || !viewableItems.length) {
         TrackingLogger.debug('TRACKING_IGNORED', {
@@ -162,7 +172,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
         moduleId,
         itemType,
         callId,
-        index: viewableItems[0]?.index ?? -1,
+        index: playlistIndex ?? -1,
         items: viewableItems.map((item) => ({
           key: item.key,
           index: item.index,
@@ -247,7 +257,7 @@ export function createViewableItemsHandler(
     callId?: string
     artistId?: string
   }) => {
-    const { moduleId, moduleType, viewableItems, homeEntryId, callId, artistId } = params
+    const { index, moduleId, moduleType, viewableItems, homeEntryId, callId, artistId } = params
 
     // Infer itemType from moduleType if possible
     const itemType = inferItemTypeFromModuleType(moduleType)
@@ -263,6 +273,7 @@ export function createViewableItemsHandler(
       callId,
       extra: Object.keys(extra).length > 0 ? extra : undefined,
       artistId,
+      playlistIndex: index,
     })
   }
 }

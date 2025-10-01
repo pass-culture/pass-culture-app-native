@@ -55,12 +55,14 @@ export const Venue: FunctionComponent = () => {
     (
       items: Pick<ViewToken, 'key' | 'index'>[],
       moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
     ) => {
       pageTracking.trackViewableItems({
         moduleId,
         itemType,
         viewableItems: items,
+        playlistIndex,
       })
     },
     [pageTracking]

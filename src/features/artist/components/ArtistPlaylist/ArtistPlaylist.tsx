@@ -29,7 +29,8 @@ type ArtistPlaylistProps = {
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
-    artistId: string
+    artistId: string,
+    playlistIndex?: number
   ) => void
 }
 
@@ -51,7 +52,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   const handleArtistOffersViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
       if (!isFocused) return
-      onViewableItemsChanged(items, 'all_offers', 'offer', artist.id)
+      onViewableItemsChanged(items, 'all_offers', 'offer', artist.id, 0)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

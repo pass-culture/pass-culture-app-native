@@ -45,7 +45,8 @@ type VenueOffersListProps = VenueOffersProps & {
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
   ) => void
 }
 
@@ -135,7 +136,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const handleAllOffersViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
       if (!isFocused) return
-      onViewableItemsChanged(items, 'venue_offers_list', 'offer')
+      onViewableItemsChanged(items, 'venue_offers_list', 'offer', 0)
     },
     [isFocused, onViewableItemsChanged]
   )
@@ -143,16 +144,17 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const handleArtistsViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
       if (!isFocused) return
-      onViewableItemsChanged(items, 'venue_artists_carousel', 'artist')
+      onViewableItemsChanged(items, 'venue_artists_carousel', 'artist', 1)
     },
     [isFocused, onViewableItemsChanged]
   )
 
   const handleGtlViewableItemsChanged = useCallback(
-    (playlistTitle: string) => (items: Pick<ViewToken, 'key' | 'index'>[]) => {
-      if (!isFocused) return
-      onViewableItemsChanged(items, playlistTitle, 'offer')
-    },
+    (playlistTitle: string, playlistIndex: number) =>
+      (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+        if (!isFocused) return
+        onViewableItemsChanged(items, playlistTitle, 'offer', playlistIndex)
+      },
     [isFocused, onViewableItemsChanged]
   )
 
@@ -193,22 +195,29 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         </ArtistsPlaylistContainer>
       ) : null}
       {playlists.length
-        ? playlists.map((playlist) => (
-            <ObservedPlaylist
-              key={playlist.entryId}
-              onViewableItemsChanged={handleGtlViewableItemsChanged(playlist.title)}>
-              {({ listRef, handleViewableItemsChanged }) => (
-                <GtlPlaylist
-                  venue={venue}
-                  playlist={playlist}
-                  analyticsFrom="venue"
-                  route="Venue"
-                  onViewableItemsChanged={handleViewableItemsChanged}
-                  playlistRef={listRef}
-                />
-              )}
-            </ObservedPlaylist>
-          ))
+        ? playlists.map((playlist, index) => {
+            // Calculate playlist index: 0 = offers list, 1 = artists (if present), 2+ = GTL playlists
+            const playlistIndex = (shouldDisplayArtistsPlaylist ? 2 : 1) + index
+            return (
+              <ObservedPlaylist
+                key={playlist.entryId}
+                onViewableItemsChanged={handleGtlViewableItemsChanged(
+                  playlist.title,
+                  playlistIndex
+                )}>
+                {({ listRef, handleViewableItemsChanged }) => (
+                  <GtlPlaylist
+                    venue={venue}
+                    playlist={playlist}
+                    analyticsFrom="venue"
+                    route="Venue"
+                    onViewableItemsChanged={handleViewableItemsChanged}
+                    playlistRef={listRef}
+                  />
+                )}
+              </ObservedPlaylist>
+            )
+          })
         : null}
     </Container>
   )
