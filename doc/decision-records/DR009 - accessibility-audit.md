@@ -223,7 +223,7 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 
 **Correction** 💡
 
-- **(E015)** L'`accessibilityLabel` du conteneur était l'horaire. On a inclus le prix et la langue.
+- **(E015)** L'`accessibilityLabel` du composant de sélection de l'horaire (`HourChoice.tsx`) n'incluait pas la propriété `description` qui est pourtant montré à l'écran. Après l'inclusion de cette information dans L'`accessibilityLabel`, la restitution des lecteurs d'écran est fidèle à ce qui est présenté visuellement à l'utilisateur.
 
 </details>
 
