@@ -72,8 +72,7 @@ platform :ios do
       sh "cd .. && \
       export VERSION=`jq -r .version package.json` && \
       yarn hotupdater:deploy:ios:#{ENV['ENV']} \
-          --target-app-version ${VERSION} \
-          --message #{escaped_release_notes}"
+          --target-app-version ${VERSION} "
       
     else
       match(
@@ -153,8 +152,7 @@ platform :android do
       sh "cd .. && \
       export VERSION=`jq -r .version package.json` && \
       yarn hotupdater:deploy:android:#{ENV['ENV']} \
-          --target-app-version ${VERSION} \
-          --message #{escaped_release_notes}"
+          --target-app-version ${VERSION}"
       
     else
       build

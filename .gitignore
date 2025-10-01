@@ -150,5 +150,5 @@ storybook-static
 
 .direnv/
 
-# Hot Updater
-.hot-updater/*
+# hot-updater
+.hot-updater/output
