@@ -35,6 +35,8 @@
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
     "generate:allure-report": "allure generate allure-results --clean -o allure-report",
     "hotupdater:console": "NODE_ENV=testing yarn hot-updater console",
+    "hotupdater:deploy:ios:testing": "NODE_ENV=testing yarn hot-updater deploy -p ios",
+    "hotupdater:deploy:android:testing": "NODE_ENV=testing yarn hot-updater deploy -p android",
     "preios": "./scripts/check_xcode_version.sh",
     "ios": "yarn preios && CC=\"$(xcrun --find clang)\" CXX=\"$(xcrun --find clang++)\" react-native run-ios \"$@\" && yarn postios",
     "postios": "./scripts/add_certificate_to_ios_simulator.sh",
