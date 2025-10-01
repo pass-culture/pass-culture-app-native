@@ -385,8 +385,6 @@ class TrackingManagerService {
         willRetry: false, // Pour l'instant, pas de retry
         dataSize: JSON.stringify(data).length,
       })
-
-      // TODO(PC-37506): Implement retry logic if needed
     }
   }
 
@@ -444,7 +442,7 @@ declare global {
   }
 }
 
-if (__DEV__ && typeof globalThis.window !== 'undefined') {
+if (__DEV__ && globalThis.window !== undefined) {
   globalThis.window.__TRACKING_MANAGER_DEBUG__ = {
     getInfo: () => TrackingManager.getDebugInfo(),
     forceSend: (pageId: string) => TrackingManager.__forceSend(pageId),

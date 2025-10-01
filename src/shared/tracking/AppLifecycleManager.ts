@@ -280,7 +280,7 @@ declare global {
   }
 }
 
-if (__DEV__ && typeof globalThis.window !== 'undefined') {
+if (__DEV__ && globalThis.window !== undefined) {
   globalThis.window.__APP_LIFECYCLE_DEBUG__ = {
     getInfo: () => AppLifecycleManager.getDebugInfo(),
     reset: () => AppLifecycleManager.__resetForTesting(),
