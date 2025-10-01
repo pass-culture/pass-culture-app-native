@@ -1655,6 +1655,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <Text
+                  accessibilityRole="header"
                   style={
                     {
                       "color": "#161617",
@@ -2471,6 +2472,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
+          accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
           style={
@@ -4710,6 +4712,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 }
               >
                 <Text
+                  accessibilityRole="header"
                   style={
                     {
                       "color": "#161617",
@@ -5526,6 +5529,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
+          accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
           style={
@@ -6529,6 +6533,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -6571,6 +6576,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -6613,6 +6619,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -6932,6 +6939,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -7380,6 +7388,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     }
                   >
                     <Text
+                      accessibilityRole="header"
                       style={
                         {
                           "color": "#161617",
@@ -7740,6 +7749,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 }
               >
                 <Text
+                  accessibilityRole="header"
                   style={
                     {
                       "color": "#161617",
@@ -8556,6 +8566,7 @@ d’options
       >
         <Text
           accessibilityHidden={true}
+          accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
           style={

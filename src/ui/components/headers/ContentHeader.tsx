@@ -7,6 +7,7 @@ import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
@@ -63,6 +64,7 @@ export const ContentHeader = ({
         {LeftElement}
         <TitleContainer>
           <Title
+            {...getHeadingAttrs(1)}
             testID={titleTestID}
             style={{
               opacity: customHeaderTitleTransition ?? headerTransition,
