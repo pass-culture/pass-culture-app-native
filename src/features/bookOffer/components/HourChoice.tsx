@@ -45,13 +45,14 @@ export function HourChoice({
     hasSeveralPrices
   )
 
-  const accessibilityLabel = `${hour} ${priceWording}`
+  const joinedFeatures = features.join(' ')
+  const accessibilityLabel = `${hour} ${joinedFeatures} ${priceWording}`
 
   return (
     <Wrapper index={index}>
       <RadioSelector
         label={hour}
-        description={features.join(' ')}
+        description={joinedFeatures}
         rightText={priceWording}
         onPress={onPress}
         checked={selected}
