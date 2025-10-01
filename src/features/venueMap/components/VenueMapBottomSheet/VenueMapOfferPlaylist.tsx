@@ -1,4 +1,6 @@
-import React, { Fragment, useCallback } from 'react'
+import { useIsFocused } from '@react-navigation/native'
+import React, { useCallback } from 'react'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -14,15 +16,21 @@ import {
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { LENGTH_S, RATIO_HOME_IMAGE, getSpacing } from 'ui/theme'
+import { LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
   playlistType: PlaylistType
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+  ) => void
   onPressMore?: () => void
 }
 
@@ -35,12 +43,14 @@ export const VenueMapOfferPlaylist = ({
   offers,
   onPressMore,
   playlistType,
+  onViewableItemsChanged,
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+  const isFocused = useIsFocused()
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item }) => {
@@ -79,19 +89,33 @@ export const VenueMapOfferPlaylist = ({
     [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType, theme]
   )
 
+  const handleOfferPlaylistViewableItemsChanged = useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
+      onViewableItemsChanged(items, 'venue_map', 'offer')
+    },
+    [isFocused, onViewableItemsChanged]
+  )
+
   return (
-    <Fragment>
-      <Playlist
-        data={offers}
-        itemHeight={PLAYLIST_ITEM_HEIGHT}
-        itemWidth={PLAYLIST_ITEM_WIDTH}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        FlatListComponent={FlatList}
-        testID="venueOfferPlaylist"
-        itemSeparatorSize={getSpacing(2)}
-        horizontalMargin={getSpacing(4)}
-      />
+    <React.Fragment>
+      <ObservedPlaylist onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}>
+        {({ listRef, handleViewableItemsChanged }) => (
+          <Playlist
+            data={offers}
+            itemHeight={PLAYLIST_ITEM_HEIGHT}
+            itemWidth={PLAYLIST_ITEM_WIDTH}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            FlatListComponent={FlatList}
+            testID="venueOfferPlaylist"
+            itemSeparatorSize={theme.designSystem.size.spacing.s}
+            horizontalMargin={theme.designSystem.size.spacing.l}
+            ref={listRef}
+            onViewableItemsChanged={handleViewableItemsChanged}
+          />
+        )}
+      </ObservedPlaylist>
       <StyledView>
         <StyleButtonTertiaryBlack
           inline
@@ -100,7 +124,7 @@ export const VenueMapOfferPlaylist = ({
           icon={PlainArrowNext}
         />
       </StyledView>
-    </Fragment>
+    </React.Fragment>
   )
 }
 

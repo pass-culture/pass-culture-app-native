@@ -6,6 +6,7 @@ import BottomSheet, {
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { Fragment, FunctionComponent, forwardRef, useMemo, useRef } from 'react'
+import { ViewToken } from 'react-native'
 import {
   Directions,
   FlingGesture,
@@ -41,11 +42,24 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
   offersPlaylistType: PlaylistType
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+  ) => void
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
   function VenueMapBottomSheet(
-    { onClose, venue, venueOffers, onFlingUp, offersPlaylistType, ...bottomSheetProps },
+    {
+      onClose,
+      venue,
+      venueOffers,
+      onFlingUp,
+      offersPlaylistType,
+      onViewableItemsChanged,
+      ...bottomSheetProps
+    },
     ref
   ) {
     const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
@@ -80,13 +94,14 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
                 offers={venueOffers}
                 onPressMore={handlePressMore}
                 playlistType={offersPlaylistType}
+                onViewableItemsChanged={onViewableItemsChanged}
               />
             </ScrollView>
           </Fragment>
         )
       }
       return null
-    }, [venueOffers, venue, navigate, offersPlaylistType])
+    }, [venueOffers, venue, offersPlaylistType, onViewableItemsChanged, navigate])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
@@ -124,13 +139,12 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     return (
       <GestureDetector gesture={FLING_GESTURE}>
         <StyledBottomSheet
-          offersPlaylistType={offersPlaylistType}
           ref={ref}
           index={-1}
           enablePanDownToClose
           simultaneousHandlers={flingRef}
-          {...bottomSheetProps}
-          handleComponent={HandleComponent}>
+          handleComponent={HandleComponent}
+          {...bottomSheetProps}>
           <StyledBottomSheetView>
             {venueMapPreview}
             {offersPlaylist}
@@ -146,7 +160,7 @@ const StyledBottomSheetView = styled(BottomSheetView)(({ theme }) => ({
   flex: 1,
 }))
 
-const StyledBottomSheet = styled(BottomSheet).attrs<VenueMapBottomSheetProps>(({ theme }) => ({
+const StyledBottomSheet = styled(BottomSheet).attrs<BottomSheetProps>(({ theme }) => ({
   containerStyle: { zIndex: theme.zIndex.bottomSheet },
 }))``
 
