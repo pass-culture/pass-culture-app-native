@@ -82,7 +82,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="header"
                   style={
                     {
                       "alignItems": "center",
@@ -93,6 +92,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     htmlFor="testUuidV4"
                     style={
                       {

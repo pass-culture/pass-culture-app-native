@@ -68,7 +68,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             }
           >
             <View
-              accessibilityRole="header"
               style={
                 {
                   "alignItems": "center",
@@ -79,6 +78,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               }
             >
               <Text
+                accessibilityRole="header"
                 htmlFor="testUuidV4"
                 style={
                   {
