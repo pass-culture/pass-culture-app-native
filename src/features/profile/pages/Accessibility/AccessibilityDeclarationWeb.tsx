@@ -97,13 +97,13 @@ export function AccessibilityDeclarationWeb() {
           Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration
           de l’accessibilité.
         </Typo.Body>
-        <Typo.BodyAccent>
+        <SubtitleText>
           Résultats des tests
           {DOUBLE_LINE_BREAK}
           <Typo.Body>
             L’audit de conformité réalisé par la société Tanaguru révèle que&nbsp;:
           </Typo.Body>
-        </Typo.BodyAccent>
+        </SubtitleText>
       </ViewGap>
       <StyledView>
         <VerticalUl>
@@ -117,7 +117,7 @@ export function AccessibilityDeclarationWeb() {
         <Typo.Body>
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Typo.Body>
-        <Typo.BodyAccent>Non conformité</Typo.BodyAccent>
+        <SubtitleText>Non conformité</SubtitleText>
       </ViewGap>
       <StyledView>
         <VerticalUl>
@@ -141,7 +141,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page." />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>Dérogations pour charge disproportionnée</Typo.BodyAccent>
+      <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo." />
@@ -149,7 +149,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="La carte des lieux culturels, utilisée dans la recherche." />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</Typo.BodyAccent>
+      <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Aucun" />
@@ -162,9 +162,7 @@ export function AccessibilityDeclarationWeb() {
           Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février
           2023.
         </Typo.BodyItalic>
-        <Typo.BodyAccent>
-          Technologies utilisées pour la réalisation du site pass Culture
-        </Typo.BodyAccent>
+        <SubtitleText>Technologies utilisées pour la réalisation du site pass Culture</SubtitleText>
       </ViewGap>
       <StyledView>
         <VerticalUl>
@@ -173,7 +171,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="JavaScript" />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>
+      <SubtitleText>
         Environnement de test
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -181,7 +179,7 @@ export function AccessibilityDeclarationWeb() {
           combinaison fournie par la base de référence du RGAA 4.1, avec les versions
           suivantes&nbsp;:
         </Typo.Body>
-      </Typo.BodyAccent>
+      </SubtitleText>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Firefox et NVDA" />
@@ -189,7 +187,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="Safari et VoiceOver" />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>Les outils utilisés lors de l’évaluation</Typo.BodyAccent>
+      <SubtitleText>Les outils utilisés lors de l’évaluation</SubtitleText>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Extension HeadingsMap" />
@@ -200,9 +198,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="Outils de développement (navigateur)" />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>
-        Pages du site ayant fait l’objet de la vérification de conformité
-      </Typo.BodyAccent>
+      <SubtitleText>Pages du site ayant fait l’objet de la vérification de conformité</SubtitleText>
       <StyledView>
         <VerticalUl>
           <BulletListItem>
@@ -392,6 +388,8 @@ export function AccessibilityDeclarationWeb() {
 }
 
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+
+const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),
