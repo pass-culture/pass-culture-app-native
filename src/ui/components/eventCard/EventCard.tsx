@@ -36,25 +36,28 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
     }
     onPress()
   }
+  const separator = ', '
+
+  const accessibilityLabel = [title, subtitleLeft ?? null, hasSubtitleRight ? subtitleRight : null]
+    .filter(Boolean)
+    .join(separator)
+
   return (
     <StyledTouchableOpacity
       testID="event-card"
       disabled={isDisabled}
-      onPress={handleEventCardPress}>
-      <Title accessibilityLabel={title} numberOfLines={1} disabled={isDisabled}>
+      onPress={handleEventCardPress}
+      accessibilityLabel={accessibilityLabel}>
+      <Title numberOfLines={1} disabled={isDisabled}>
         {title}
       </Title>
 
       <SubtitleContainer>
-        <SubtitleLeft
-          accessibilityLabel={subtitleLeft}
-          numberOfLines={1}
-          disabled={isDisabled}
-          hasSubtitleRight={hasSubtitleRight}>
+        <SubtitleLeft numberOfLines={1} disabled={isDisabled} hasSubtitleRight={hasSubtitleRight}>
           {subtitleLeft}
         </SubtitleLeft>
         {hasSubtitleRight ? (
-          <SubtitleRight accessibilityLabel={subtitleRight} numberOfLines={1} disabled={isDisabled}>
+          <SubtitleRight numberOfLines={1} disabled={isDisabled}>
             {subtitleRight}
           </SubtitleRight>
         ) : null}
