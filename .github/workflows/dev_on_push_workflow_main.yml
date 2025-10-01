@@ -96,8 +96,7 @@ jobs:
     secrets:
       CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   soft-deploy-testing:
-    needs: yarn-tester
-    if: contains(github.ref, 'pc-37192/hot-updater-testing-setup')
+    needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
