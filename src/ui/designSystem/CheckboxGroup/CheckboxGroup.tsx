@@ -30,7 +30,6 @@ export const CheckboxGroup = ({
   display = 'vertical',
   variant = 'default',
   disabled = false,
-  customRequiredText,
 }: CheckboxGroupProps) => {
   let LabelTag: ElementType
   switch (labelTag) {
@@ -56,11 +55,6 @@ export const CheckboxGroup = ({
     else newValues = selectedValues.filter((value) => value !== option.value)
     onChange?.(newValues)
   }
-
-  const requiredCount = options.filter((option) => option.required).length
-  const showRequiredText = requiredCount > 0
-  const requiredLabel =
-    customRequiredText ?? `${requiredCount === 1 ? 'obligatoire' : 'obligatoires'}`
 
   return (
     <View accessibilityRole={AccessibilityRole.GROUP}>
@@ -126,12 +120,6 @@ export const CheckboxGroup = ({
           )
         })}
       </CheckboxContainer>
-
-      {showRequiredText ? (
-        <CaptionNeutralInfoContainer>
-          <CaptionNeutralInfo>*{requiredLabel}</CaptionNeutralInfo>
-        </CaptionNeutralInfoContainer>
-      ) : null}
     </View>
   )
 }
@@ -162,10 +150,3 @@ const CheckboxContainer = styled.View<VariantProps & DisplayProps>(
     }
   }
 )
-const CaptionNeutralInfoContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
-}))
