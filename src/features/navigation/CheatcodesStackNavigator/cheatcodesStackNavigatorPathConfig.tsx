@@ -7,6 +7,7 @@ export const cheatcodesStackNavigatorPathConfig = {
       CheatcodesNavigationBirthdayNotifications: 'cheatcodes/birthday-notifications',
       CheatcodesNavigationBookings: 'cheatcodes/bookings',
       CheatcodesNavigationBookOffer: 'cheatcodes/book-offer',
+      CheatcodesNavigationBonification: 'cheatcodes/bonification',
       CheatcodesNavigationCulturalSurvey: 'cheatcodes/cultural-survey',
       CheatcodesNavigationErrors: 'cheatcodes/other/errors',
       CheatcodesNavigationForceUpdate: 'cheatcodes/other/force-update',

@@ -3,6 +3,7 @@ import React, { ComponentType } from 'react'
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBirthdayNotifications } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
+import { CheatcodesNavigationBonification } from 'cheatcodes/pages/features/bonification/CheatcodesNavigationBonification'
 import { CheatcodesNavigationBookings } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
 import { CheatcodesScreenBookingNotFound } from 'cheatcodes/pages/features/bookings/CheatcodesScreenBookingNotFound'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
@@ -89,6 +90,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesNavigationAchievements',
     component: CheatcodesNavigationAchievements,
+  },
+  {
+    name: 'CheatcodesNavigationBonification',
+    component: CheatcodesNavigationBonification,
   },
   {
     name: 'CheatcodesNavigationShare',

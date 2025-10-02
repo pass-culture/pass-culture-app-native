@@ -158,6 +158,27 @@ export const rootStackNavigatorPathConfig = {
       ComeBackLater: {
         path: 'identification/reviens-plus-tard',
       },
+      BonificationIntroduction: {
+        path: 'bonification/introduction',
+      },
+      BonificationNames: {
+        path: 'bonification/noms',
+      },
+      BonificationTitle: {
+        path: 'bonification/civilite',
+      },
+      BonificationBirthDate: {
+        path: 'bonification/date-de-naissance',
+      },
+      BonificationBirthPlace: {
+        path: 'bonification/lieux-de-naissance',
+      },
+      BonificationRecap: {
+        path: 'bonification/resume',
+      },
+      BonificationError: {
+        path: 'bonification/erreur',
+      },
     },
   },
   AccountSecurityBuffer: {
