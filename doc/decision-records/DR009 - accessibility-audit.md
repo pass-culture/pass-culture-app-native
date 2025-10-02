@@ -4,7 +4,7 @@
 | ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ----------- |
 | Android    | RAAM 1.1   | 35.71%     | 44.19%       | ⏳         | ⏳          | ⏳          |
 |            | EN 301-549 | 35.42%     | 37.50%       | ⏳         | ⏳          | ⏳          |
-| iOS        | RAAM 1.1   | 28.57%     | 39.53%       | ⏳         | ⏳          | ⏳          |
+| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | ⏳         | ⏳          | ⏳          |
 |            | EN 301-549 | 20.83%     | 25.00%       | ⏳         | ⏳          | ⏳          |
 
 <br>
@@ -171,7 +171,7 @@ Dans le cas de contenus HTML (contenus web embarqués), veiller à utiliser les 
 
 <details>
 
-<summary> 🔴🟢 Critère 8.1 - Dans chaque écran, le contenu visible porteur d’information est-il accessible aux technologies d’assistance ?</summary>
+<summary> 🟢🟢 Critère 8.1 - Dans chaque écran, le contenu visible porteur d’information est-il accessible aux technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 8.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-1)  
 **Ticket** : [PC-37483](https://passculture.atlassian.net/browse/PC-37483)  
@@ -184,17 +184,6 @@ Certains textes n’étaient pas vocalisés car ils n’étaient pas inclus dans
 
 - Ajout d’informations dans certains `accessibilityLabel` et/ou suppression d’`accessibilityLabel` inutiles afin d’éviter toute confusion.
 - Modification de `tileAccessibilityLabel` pour prendre en compte les tags.
-
-**Retours audit** 🔥
-
-Android : OK
-
-iOS : NOK
-Au moins un contenu visible porteur d'information n'est pas accessible aux technologies d'assistance.
-
-Par exemple :
-
-- Les mentions " X J'aime" (indiquées sur certaines offres). -> OK mais le rendu du texte "j'aime" n'est pas bon, Voice Over dit "Joulaime"
 
 </details>
 
@@ -241,6 +230,27 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 <br>
 
 ## ✅ Corrections 26 septembre → 31 octobre
+
+<details>
+
+<summary> 🟠 Critère 1.1 - Android - Chaque élément graphique de décoration est-il ignoré par les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 1.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-1)  
+**Ticket** : [PC-38204](https://passculture.atlassian.net/browse/PC-38204)  
+**PR** : [#8741](https://github.com/pass-culture/pass-culture-app-native/pull/8741)
+
+**Problème** 😱
+
+- **(E06)** Les puces de listes sont ignorée, mais on peut toujours les atteindre.
+
+
+**Correction** 💡
+
+- **(E06)** On utilisait une balise de `Text` plutôt qu'une `View` et prenait ne focus.
+
+</details>
+
+<br>
 
 <details>
 
@@ -310,7 +320,6 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 **Correction** 💡
 
 - **(E015)** L'`accessibilityLabel` du composant de sélection de l'horaire (`HourChoice.tsx`) n'incluait pas la propriété `description` qui est pourtant montré à l'écran. Après l'inclusion de cette information dans L'`accessibilityLabel`, la restitution des lecteurs d'écran est fidèle à ce qui est présenté visuellement à l'utilisateur.
-  <br>
 
 </details>
 
@@ -350,47 +359,6 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 
 ## 💡 Questions
 
-<details>
-
-<summary> ⏳ Critère 8.1 - Dans chaque écran, le contenu visible porteur d’information est-il accessible aux technologies d’assistance ?</summary>
-
-**RAAM** : [Critère 8.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-1)  
-**Ticket** : [PC-37483](https://passculture.atlassian.net/browse/PC-37483)  
-**PR** : [#8579](https://github.com/pass-culture/pass-culture-app-native/pull/8579), [#8662](https://github.com/pass-culture/pass-culture-app-native/pull/8662)
-
-Pour les écrans E09, E015 et E016, nous n'arrivons pas à reproduire les non-conformités, est-ce qu'il s'agissait de tuiles d’offres avec des tags (non vocalisé) ?
-
-</details>
-
-<br>
-
-<details>
-
-<summary> ⏳ Critère 9.12 - Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
-
-**RAAM** : [Critère 9.12](https://accessibilite.public.lu/fr/raam1/referentiel-technique.html#crit-9-12)  
-**Ticket** : [PC-37497](https://passculture.atlassian.net/browse/PC-37497)  
-**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
-
-| iOS Version | TextInput Type | Contact Menu AutoFill | Direct Email Suggestion AutoFill | Typing Contact Name AutoFill |
-| ----------- | -------------- | --------------------- | -------------------------------- | ---------------------------- |
-| 16.4        | Multi-layer    | ❌ Doesn't work       | ❌ Doesn't work                  | ❌ Doesn't work              |
-| 16.4        | Basic          | ❌ Doesn't work       | ✅ Works                         | ❌ Doesn't work              |
-| 18.3.1      | Multi-layer    | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
-| 18.3.1      | Basic          | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
-
-Legend:
-`TextInput` Type Basic = a generic `TextInput` imported directly from `react-native`, with accessibility props:
-
-```ts
-<TextInput
- style={{ backgroundColor: 'yellow', height: 40 }}
- textContentType="emailAddress"
- autoComplete="email"
-/>
-```
-
-`TextInput` Type Multi-layer = our custom input component `EmailInputController`.
 
 </details>
 
@@ -430,6 +398,37 @@ Si je supprime ce `accessibilityLabel`, les emojis dans le titre sont lus, même
 En réalité, nous n'avions pas testé correctement le plan du site avec le TalkBack. En plus de la restitution de toute la page lors de l'activation du TalkBack, de la restitution en appuyant un élément, on peut utiliser le swipe pour "naviguer" à travers les éléments. En swipant, on arrive bien a reproduire le problème qu'avait constaté l'auditeur. On endend bien un "click" entre les éléments. Mais ce n'était pas la restitution du svg "point" comme le pensait l'auditeur.
 
 Le son que nous entendions entre les éléments du plan du site était la restitution d'un texte vide. Ce texte vide était dû à la mauvaise utilisation d'un composant texte, utilisé comme conteneur, alors qu'il fallait utilisé une simple `View`. Une fois le composant texte remplacé par une `View`, nous n'avions plus le bruit parasite entre chaque element.
+</details>
+
+<br>
+
+<details>
+
+<summary> ⏳ Critère 9.12 - Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
+
+**RAAM** : [Critère 9.12](https://accessibilite.public.lu/fr/raam1/referentiel-technique.html#crit-9-12)  
+**Ticket** : [PC-37497](https://passculture.atlassian.net/browse/PC-37497)  
+**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
+
+| iOS Version | TextInput Type | Contact Menu AutoFill | Direct Email Suggestion AutoFill | Typing Contact Name AutoFill |
+| ----------- | -------------- | --------------------- | -------------------------------- | ---------------------------- |
+| 16.4        | Multi-layer    | ❌ Doesn't work       | ❌ Doesn't work                  | ❌ Doesn't work              |
+| 16.4        | Basic          | ❌ Doesn't work       | ✅ Works                         | ❌ Doesn't work              |
+| 18.3.1      | Multi-layer    | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
+| 18.3.1      | Basic          | ✅ Works              | ❌ Doesn't work                  | ✅ Works                     |
+
+Legend:
+`TextInput` Type Basic = a generic `TextInput` imported directly from `react-native`, with accessibility props:
+
+```ts
+<TextInput
+ style={{ backgroundColor: 'yellow', height: 40 }}
+ textContentType="emailAddress"
+ autoComplete="email"
+/>
+```
+
+`TextInput` Type Multi-layer = our custom input component `EmailInputController`.
 
 </details>
 

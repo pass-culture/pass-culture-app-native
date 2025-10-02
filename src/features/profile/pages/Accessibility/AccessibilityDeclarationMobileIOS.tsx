@@ -10,7 +10,7 @@ export function AccessibilityDeclarationMobileIOS() {
       osVersion="18.5"
       storeLink={{ url: `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}` }}
       conformityEN="25.00%"
-      conformityRAAM="39.53%"
+      conformityRAAM="41.86%"
       nonAccessibleContent={[
         'Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.',
         'Des images légendées ne sont pas correctement restituées par les lecteurs d’écran.',
