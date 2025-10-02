@@ -171,7 +171,7 @@ export const rootStackNavigatorPathConfig = {
         path: 'bonification/date-de-naissance',
       },
       BonificationBirthPlace: {
-        path: 'bonification/lieux-de-naissance',
+        path: 'bonification/lieu-de-naissance',
       },
       BonificationRecap: {
         path: 'bonification/resume',
