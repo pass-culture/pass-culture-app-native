@@ -421,7 +421,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Mode clair - Affichage classique - sélectionné"
+                  accessibilityLabel="Thème - Mode clair - Affichage classique - sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -471,7 +471,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Mode clair - Affichage classique - sélectionné"
+                  testID="Thème - Mode clair - Affichage classique - sélectionné"
                 >
                   <View
                     isSelected={true}
@@ -579,7 +579,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Mode sombre - Réduit la fatigue visuelle - non sélectionné"
+                  accessibilityLabel="Thème - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -629,7 +629,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Mode sombre - Réduit la fatigue visuelle - non sélectionné"
+                  testID="Thème - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                 >
                   <View
                     isSelected={false}
@@ -737,7 +737,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
+                  accessibilityLabel="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -787,7 +787,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
+                  testID="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
                 >
                   <View
                     isSelected={false}

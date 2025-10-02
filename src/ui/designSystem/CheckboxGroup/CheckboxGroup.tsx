@@ -30,6 +30,7 @@ export const CheckboxGroup = ({
   display = 'vertical',
   variant = 'default',
   disabled = false,
+  customRequiredText,
 }: CheckboxGroupProps) => {
   let LabelTag: ElementType
   switch (labelTag) {
@@ -56,6 +57,11 @@ export const CheckboxGroup = ({
     onChange?.(newValues)
   }
 
+  const requiredCount = options.filter((option) => option.required).length
+  const showRequiredText = requiredCount > 0
+  const requiredLabel =
+    customRequiredText ?? `${requiredCount === 1 ? 'obligatoire' : 'obligatoires'}`
+
   return (
     <View accessibilityRole={AccessibilityRole.GROUP}>
       <Header gap={2} hasError={!!error}>
@@ -63,6 +69,7 @@ export const CheckboxGroup = ({
         {description ? <Description>{description}</Description> : null}
         {error ? <InputError errorMessage={error} visible /> : null}
       </Header>
+
       <CheckboxContainer variant={variant} display={display}>
         {options.map((option) => {
           const isChecked = selectedValues.includes(option.value)
@@ -75,6 +82,7 @@ export const CheckboxGroup = ({
             disabled,
             indeterminate: option.indeterminate,
             required: option.required,
+            accessibilityLabel: `${label} - ${option.label}`,
           }
 
           const computedCheckboxSizing = (() => {
@@ -108,7 +116,6 @@ export const CheckboxGroup = ({
               />
             )
           }
-
           return (
             <Checkbox
               key={option.value}
@@ -119,6 +126,12 @@ export const CheckboxGroup = ({
           )
         })}
       </CheckboxContainer>
+
+      {showRequiredText ? (
+        <CaptionNeutralInfoContainer>
+          <CaptionNeutralInfo>*{requiredLabel}</CaptionNeutralInfo>
+        </CaptionNeutralInfoContainer>
+      ) : null}
     </View>
   )
 }
@@ -149,3 +162,10 @@ const CheckboxContainer = styled.View<VariantProps & DisplayProps>(
     }
   }
 )
+const CaptionNeutralInfoContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
+}))

@@ -58,7 +58,7 @@ export function AccessibilityDeclarationMobileBase({
             externalNav={storeLink}
             accessibilityRole={AccessibilityRole.LINK}
           />
-          {SPACE}version 1.348.8 du pass Culture.
+          {SPACE}version 1.358.2 du pass Culture.
         </Typo.Body>
       </ViewGap>
 
@@ -98,17 +98,17 @@ export function AccessibilityDeclarationMobileBase({
         <Typo.Body>
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Typo.Body>
-        <Typo.BodyAccent>Non conformité</Typo.BodyAccent>
+        <SubtitleText>Non conformité</SubtitleText>
         <VerticalUl>
           {nonAccessibleContent.map((item) => (
             <BulletListItem key={item} text={item} />
           ))}
         </VerticalUl>
 
-        <Typo.BodyAccent>Dérogations pour charge disproportionnée</Typo.BodyAccent>
+        <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
         <Typo.Body>Aucune</Typo.Body>
 
-        <Typo.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</Typo.BodyAccent>
+        <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
         <Typo.Body>
           Les contenus suivants n’entrent pas dans le calcul de la conformité ni dans le périmètre
           des éléments à rendre accessible, ils sont dérogés&nbsp;:
@@ -124,18 +124,16 @@ export function AccessibilityDeclarationMobileBase({
       <ViewGap gap={6}>
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
         <Typo.BodyItalic>Cette déclaration a été établie le jeudi 31 juillet 2025.</Typo.BodyItalic>
-        <Typo.BodyAccent>
-          Technologies utilisées pour la réalisation de l’application
-        </Typo.BodyAccent>
+        <SubtitleText>Technologies utilisées pour la réalisation de l’application</SubtitleText>
         <VerticalUl>
           <BulletListItem text="react" />
           <BulletListItem text="react-native" />
           <BulletListItem text="react-native-web" />
         </VerticalUl>
-        <Typo.BodyAccent>
+        <SubtitleText>
           Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier
           l’accessibilité
-        </Typo.BodyAccent>
+        </SubtitleText>
         <VerticalUl>
           {toolsUsed.map((item) => (
             <BulletListItem key={item} text={item} />
@@ -220,6 +218,9 @@ export function AccessibilityDeclarationMobileBase({
 }
 
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+
+const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
+
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
 }))
