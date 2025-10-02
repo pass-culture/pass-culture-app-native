@@ -6,6 +6,7 @@ import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
+import { PartnerAgenda } from 'features/venue/components/PartnerAgenda/PartnerAgenda'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -88,9 +89,10 @@ export const VenueBody: FunctionComponent<Props> = ({
     ),
     [Tab.INFOS]: <PracticalInformation venue={venue} enableAccesLibre={enableAccesLibre} />,
     [Tab.AGENDA]: shouldDisplayVenueCalendar ? (
-      <Typo.Title3>
-        Bientôt&nbsp;: agenda présentant les dates de l’evènement unique de ce lieu
-      </Typo.Title3>
+      <PartnerAgenda
+        title="Bientôt: agenda présentant les dates de l’evènement unique de ce lieu"
+        venueOffers={venueOffers ?? ({} as VenueOffersType)}
+      />
     ) : null,
   }
 
