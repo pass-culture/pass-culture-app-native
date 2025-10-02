@@ -3,6 +3,7 @@ import React from 'react'
 import { fetchMusicOffers } from 'features/search/pages/ThematicSearch/api/fetchMusicOffers'
 import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
+import { ThematicPlaylistProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
@@ -17,7 +18,10 @@ const MUSIC_PLAYLISTS_TITLES = [
   'Vinyles',
 ]
 
-export const MusicPlaylists: React.FC = () => {
+export const MusicPlaylists: React.FC<ThematicPlaylistProps> = ({
+  shouldDisplayVenuesPlaylist,
+  onViewableItemsChanged,
+}) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
@@ -31,6 +35,11 @@ export const MusicPlaylists: React.FC = () => {
     })
 
   return (
-    <ThematicSearchPlaylistList playlists={musicPlaylists} isLoading={areMusicPlaylistsLoading} />
+    <ThematicSearchPlaylistList
+      playlists={musicPlaylists}
+      isLoading={areMusicPlaylistsLoading}
+      shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+      onViewableItemsChanged={onViewableItemsChanged}
+    />
   )
 }

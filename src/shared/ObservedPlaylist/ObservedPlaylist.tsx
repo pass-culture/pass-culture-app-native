@@ -20,6 +20,7 @@ export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedP
 
   const handleViewableItemsChanged = useCallback(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      console.log('handleViewableItemsChanged')
       if (isInView.current) {
         onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
         lastViewableItems.current = viewableItems
@@ -46,6 +47,7 @@ export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedP
 
   const handleIntersectionObserverChange = useCallback(
     (value: boolean) => {
+      console.log('handleIntersectionObserverChange')
       isInView.current = value
       if (!value) return
 

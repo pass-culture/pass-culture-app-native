@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
-import { Platform, StyleProp, ViewStyle } from 'react-native'
+import React, { Ref, useEffect } from 'react'
+import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -39,6 +40,11 @@ type Props = {
   offerCategory?: SearchGroupNameEnumv2
   searchGroup?: SearchGroupNameEnumv2
   style?: StyleProp<ViewStyle>
+  playlistRef?: Ref<FlatList>
+  onViewableItemsChanged?: (info: {
+    viewableItems: ViewToken<unknown>[]
+    changed: ViewToken<unknown>[]
+  }) => void
 }
 
 const renderVenueItem = (
@@ -74,6 +80,8 @@ export const VenuePlaylist: React.FC<Props> = ({
   shouldDisplaySeparator = true,
   searchGroup,
   style,
+  playlistRef,
+  onViewableItemsChanged,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
@@ -154,6 +162,8 @@ export const VenuePlaylist: React.FC<Props> = ({
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
           contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+          ref={playlistRef}
+          onViewableItemsChanged={onViewableItemsChanged}
         />
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}

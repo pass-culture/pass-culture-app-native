@@ -3,6 +3,7 @@ import React from 'react'
 import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
 import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
+import { ThematicPlaylistProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
@@ -14,7 +15,10 @@ const FILMS_PLAYLISTS_TITLES = [
   'DVD et Blu-ray',
 ]
 
-export const FilmsPlaylists: React.FC = () => {
+export const FilmsPlaylists: React.FC<ThematicPlaylistProps> = ({
+  shouldDisplayVenuesPlaylist,
+  onViewableItemsChanged,
+}) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
@@ -28,6 +32,11 @@ export const FilmsPlaylists: React.FC = () => {
     })
 
   return (
-    <ThematicSearchPlaylistList playlists={filmsPlaylists} isLoading={areFilmsPlaylistsLoading} />
+    <ThematicSearchPlaylistList
+      playlists={filmsPlaylists}
+      isLoading={areFilmsPlaylistsLoading}
+      shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+      onViewableItemsChanged={onViewableItemsChanged}
+    />
   )
 }
