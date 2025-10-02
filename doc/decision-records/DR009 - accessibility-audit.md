@@ -240,7 +240,29 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <br>
 
-## ✅ Corrections 26 septembre → 30 octobre
+## ✅ Corrections 26 septembre → 31 octobre
+
+<details>
+
+<summary> 🟠 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
+
+**RAAM** : [Critère 7.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-1)  
+**Ticket** : [PC-38205](https://passculture.atlassian.net/browse/PC-38205)  
+**PR** : [#8740](https://github.com/pass-culture/pass-culture-app-native/pull/8740)
+
+**Problème** 😱  
+- **(E04)** Les sous titres ne sont pas identifié comme des titres mais simplement comme des textes, car n'utilisent pas `getHeadingAttrs()`.
+- **(E09)** Le titre dans le header d'un lieu n'est pas identifié comme un titre mais simplement comme un texte, car n'utilise pas `getHeadingAttrs()`.
+- **(E14)** Le titre "Rechercher" de la page de recherche n'est pas identifié comme un titre mais simplement comme un texte, car utilise `getHeadingAttrs()` mais sur une `View`. 
+
+**Correction** 💡  
+- **(E04)** Utilisation de `getHeadingAttrs(3)` pour les sous titres de type `Typo.BodyAccent`
+- **(E09)** Utilisation de `getHeadingAttrs(3)` pour les sous titres de type `Typo.BodyAccent`
+- **(E14)** Utilisation de `getHeadingAttrs(1)` sur le texte et non sur le container qui était une `View`
+
+</details>
+
+<br>
 
 <details>
 
@@ -316,11 +338,11 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 
 <br>
 
-## ✅ Corrections 30 octobre → 19 novembre
+## ✅ Corrections 31 octobre → 19 novembre
 
 <br>
 
-## ✅ Corrections 19 novembre → 12 décembre
+## ✅ Corrections 19 novembre → 15 décembre
 
 <br>
 

@@ -431,6 +431,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1533,6 +1534,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1557,6 +1559,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           Aucune
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1743,6 +1746,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           Cette déclaration a été établie le jeudi 31 juillet 2025.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1927,6 +1931,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",

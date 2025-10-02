@@ -6,6 +6,7 @@ import { SubscriptionThematicIllustration } from 'features/subscription/componen
 import { mapSubscriptionThematicToBlockTitles } from 'features/subscription/helpers/mapSubscriptionThematicToBlockTitles'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   thematic: SubscriptionTheme
@@ -24,7 +25,7 @@ export const ThematicSubscriptionBlock = ({
     <Container>
       <SubscriptionThematicIllustration thematic={thematic} size="medium" />
       <ContentContainer>
-        <Typo.BodyAccent>{title}</Typo.BodyAccent>
+        <Typo.BodyAccent {...getHeadingAttrs(2)}>{title}</Typo.BodyAccent>
         <Subtitle>{subtitle}</Subtitle>
         <SubscribeButton
           onPress={onSubscribePress}
