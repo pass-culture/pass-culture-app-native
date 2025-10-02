@@ -46,6 +46,7 @@ export const SearchLanding = () => {
   return (
     <Page>
       <Form.Flex>
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <InstantSearch
           future={{ preserveSharedStateOnUnmount: true }}
           searchClient={getSearchClient}

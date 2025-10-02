@@ -60,6 +60,7 @@ export function App() {
           <SupportedBrowsersGate>
             <SafeAreaProvider>
               <SettingsWrapper>
+                {/* @ts-expect-error - type incompatibility with React 19 */}
                 <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
                   <AuthWrapper>
                     <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>

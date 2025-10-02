@@ -59,7 +59,6 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       maxLength={props.maxLength}
       ref={(ref) => {
         if (ref) {
-          /* @ts-expect-error Conflicts between types */
           inputRef.current = ref
           if (forwardedRef) {
             /* @ts-expect-error Conflicts between types */

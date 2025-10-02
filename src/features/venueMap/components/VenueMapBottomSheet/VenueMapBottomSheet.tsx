@@ -115,7 +115,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       return null
     }, [venue, onClose, venueTags])
 
-    const flingRef = useRef<FlingGesture>()
+    const flingRef = useRef<FlingGesture | undefined>(undefined)
 
     FLING_GESTURE.withRef(flingRef)
       .enabled(!!onFlingUp)
@@ -141,6 +141,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
   }
 )
 
+// @ts-expect-error - type incompatibility with React 19
 const StyledBottomSheetView = styled(BottomSheetView)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   paddingTop: theme.designSystem.size.spacing.s,

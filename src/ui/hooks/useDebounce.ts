@@ -37,7 +37,7 @@ export function useDebounce<T, U>(
   delay: number,
   options?: DebounceSettings
 ): Callback<T, U | undefined> {
-  const ref = useRef<Callback<T, U>>()
+  const ref = useRef<Callback<T, U>>(callback)
 
   useEffect(() => {
     ref.current = callback
