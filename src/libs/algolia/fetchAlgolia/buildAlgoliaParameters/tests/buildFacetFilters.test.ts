@@ -154,4 +154,15 @@ describe('buildFacetFilters', () => {
       ],
     })
   })
+
+  it('should return offer with chronicles only facet when is with club specified', () => {
+    const facetFilters = buildFacetFilters({
+      ...defaultBuildFacetFilterParam,
+      isWithClub: true,
+    })
+
+    expect(facetFilters).toEqual({
+      facetFilters: [['offer.isEducational:false'], ['offer.chroniclesCount > 0']],
+    })
+  })
 })

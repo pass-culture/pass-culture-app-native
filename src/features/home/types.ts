@@ -149,6 +149,7 @@ export type OffersModuleParameters = {
   allocineIdList?: string[]
   likesMin?: number
   isSortedByLikes?: boolean
+  isWithClub?: boolean
 }
 
 export type BusinessModule = {

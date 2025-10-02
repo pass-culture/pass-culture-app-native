@@ -45,6 +45,7 @@ export const buildOfferSearchParameters = (
     venue,
     gtls = [],
     minLikes,
+    isWithClub,
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean,
@@ -77,6 +78,7 @@ export const buildOfferSearchParameters = (
       gtls,
       disabilitiesProperties,
       isHeadline,
+      isWithClub,
     }),
     ...buildNumericFilters(
       {

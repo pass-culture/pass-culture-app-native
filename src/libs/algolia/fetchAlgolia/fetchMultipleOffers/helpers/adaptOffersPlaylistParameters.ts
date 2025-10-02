@@ -62,6 +62,7 @@ export const adaptOffersPlaylistParameters = (
     offerNativeCategories: [],
     ...(parameters.likesMin ? { minLikes: parameters.likesMin } : undefined),
     ...(parameters.isSortedByLikes ? { isSortedByLikes: parameters.isSortedByLikes } : undefined),
+    ...(parameters.isWithClub ? { isWithClub: parameters.isWithClub } : undefined),
   }
 }
 
