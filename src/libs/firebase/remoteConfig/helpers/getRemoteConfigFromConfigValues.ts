@@ -13,7 +13,6 @@ export const getRemoteConfigFromConfigValues = (
     getConfigValue(parameters.artistPageSubcategories).asString()
   ),
   aroundPrecision: JSON.parse(getConfigValue(parameters.aroundPrecision).asString()),
-  gridListLayoutRemoteConfig: getConfigValue(parameters.gridListLayoutRemoteConfig).asString(),
   homeEntryIdBeneficiary: getConfigValue(parameters.homeEntryIdBeneficiary).asString(),
   homeEntryIdFreeBeneficiary: getConfigValue(parameters.homeEntryIdFreeBeneficiary).asString(),
   homeEntryIdFreeOffers: getConfigValue(parameters.homeEntryIdFreeOffers).asString(),

@@ -7,7 +7,6 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   artistPageSubcategories: { subcategories: [] },
   displayInAppFeedback: false,
   displayMandatoryUpdatePersonalData: false,
-  gridListLayoutRemoteConfig: 'Liste',
   homeEntryIdBeneficiary: '',
   homeEntryIdFreeBeneficiary: '',
   homeEntryIdFreeOffers: '',
