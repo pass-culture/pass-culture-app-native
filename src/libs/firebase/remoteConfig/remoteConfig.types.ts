@@ -6,7 +6,6 @@ export type CustomRemoteConfig = {
   artistPageSubcategories: Record<'subcategories', SubcategoryIdEnum[]>
   displayInAppFeedback: boolean
   displayMandatoryUpdatePersonalData: boolean
-  gridListLayoutRemoteConfig: string
   homeEntryIdBeneficiary: string
   homeEntryIdFreeBeneficiary: string
   homeEntryIdFreeOffers: string
