@@ -1,6 +1,13 @@
 import { StackNavigationOptions } from '@react-navigation/stack'
 import React from 'react'
 
+import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
+import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
+import { BonificationError } from 'features/bonification/pages/BonificationError'
+import { BonificationIntroduction } from 'features/bonification/pages/BonificationIntroduction'
+import { BonificationNames } from 'features/bonification/pages/BonificationNames'
+import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
+import { BonificationTitle } from 'features/bonification/pages/BonificationTitle'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
@@ -197,6 +204,35 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
     component: withAuthProtection(CulturalSurveyThanks),
   },
   { name: 'FAQWebview', component: FAQWebview },
+  // Bonification
+  {
+    name: 'BonificationIntroduction',
+    component: withAuthProtection(BonificationIntroduction),
+  },
+  {
+    name: 'BonificationNames',
+    component: withAuthProtection(BonificationNames),
+  },
+  {
+    name: 'BonificationTitle',
+    component: withAuthProtection(BonificationTitle),
+  },
+  {
+    name: 'BonificationBirthDate',
+    component: withAuthProtection(BonificationBirthDate),
+  },
+  {
+    name: 'BonificationBirthPlace',
+    component: withAuthProtection(BonificationBirthPlace),
+  },
+  {
+    name: 'BonificationRecap',
+    component: withAuthProtection(BonificationRecap),
+  },
+  {
+    name: 'BonificationError',
+    component: withAuthProtection(BonificationError),
+  },
 ]
 
 export const SubscriptionStackNavigator = () => (
