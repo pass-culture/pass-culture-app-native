@@ -4,7 +4,6 @@ exports[`<WebShareModal/> should render correctly when hidden 1`] = `
 <body>
   <div />
   <div />
-  <div />
 </body>
 `;
 
@@ -156,7 +155,6 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 <body>
-  <div />
   <div />
   <div>
     <div
