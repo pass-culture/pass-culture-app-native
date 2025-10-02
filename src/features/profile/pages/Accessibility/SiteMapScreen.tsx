@@ -108,7 +108,7 @@ const BulletContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-const ListText = styled(Typo.Body)({
+const ListText = styled.View({
   marginLeft: getSpacing(3),
   flex: 1,
 })
