@@ -87,5 +87,5 @@ const Subtitle = styled(Typo.BodyAccentXs).attrs({
 const SubtitleWithoutTitle = styled(Typo.BodyAccentS).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
-  color: theme.designSystem.color.text.subtle,
+  color: theme.designSystem.color.text.default,
 }))
