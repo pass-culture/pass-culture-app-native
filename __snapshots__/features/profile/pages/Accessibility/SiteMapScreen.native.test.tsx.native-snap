@@ -230,16 +230,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -319,7 +315,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -358,16 +354,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -447,7 +439,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -486,16 +478,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -575,7 +563,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -614,16 +602,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -703,7 +687,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -742,16 +726,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -831,7 +811,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -870,16 +850,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -959,7 +935,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -998,16 +974,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1087,7 +1059,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1126,16 +1098,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1215,7 +1183,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1254,16 +1222,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1343,7 +1307,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1382,16 +1346,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1471,7 +1431,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1510,16 +1470,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1599,7 +1555,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1638,16 +1594,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1727,7 +1679,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1766,16 +1718,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1855,7 +1803,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -1894,16 +1842,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -1983,7 +1927,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2022,16 +1966,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2111,7 +2051,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2150,16 +2090,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2239,7 +2175,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2278,16 +2214,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2367,7 +2299,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2406,16 +2338,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2495,7 +2423,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2534,16 +2462,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2623,7 +2547,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2662,16 +2586,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2751,7 +2671,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2790,16 +2710,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -2879,7 +2795,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -2918,16 +2834,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3007,7 +2919,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3046,16 +2958,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3135,7 +3043,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3174,16 +3082,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3263,7 +3167,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3302,16 +3206,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3391,7 +3291,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3430,16 +3330,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3519,7 +3415,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3558,16 +3454,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3647,7 +3539,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3686,16 +3578,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3775,7 +3663,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3814,16 +3702,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -3903,7 +3787,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -3942,16 +3826,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -4031,7 +3911,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
         <View
@@ -4070,16 +3950,12 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Text
+            <View
               style={
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
                   "marginLeft": 12,
                 }
               }
@@ -4159,7 +4035,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-            </Text>
+            </View>
           </View>
         </View>
       </View>
