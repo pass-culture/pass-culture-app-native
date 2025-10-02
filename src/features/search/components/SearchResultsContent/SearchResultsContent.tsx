@@ -3,7 +3,7 @@ import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -71,7 +71,7 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Grid } from 'ui/svg/icons/Grid'
 import { List } from 'ui/svg/icons/List'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
+import { RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
@@ -110,6 +110,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   facets,
   offerVenues,
 }) => {
+  const { designSystem } = useTheme()
+
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlashListRef<Offer> | null>(null)
 
@@ -460,7 +462,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             showOfferDuoModal,
             showAccessibilityModal,
           })}
-          contentContainerStyle={{ marginBottom: getSpacing(2), paddingHorizontal: getSpacing(5) }}>
+          contentContainerStyle={{
+            marginBottom: designSystem.size.spacing.s,
+            paddingHorizontal: designSystem.size.spacing.xs + designSystem.size.spacing.l,
+          }}>
           <StyledLi>
             <FilterButton
               activeFilters={activeFiltersCount}
@@ -548,7 +553,7 @@ const SkeletonContainer = styled.View(({ theme }) => ({
 }))
 
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBar.height + getSpacing(10),
+  height: theme.tabBar.height + theme.designSystem.size.spacing.xxxl,
   alignItems: 'center',
 }))
 
@@ -565,14 +570,14 @@ const StyledLi = styled(Li)(({ theme }) => ({
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  right: getSpacing(7),
-  bottom: theme.tabBar.height + getSpacing(6),
+  right: theme.designSystem.size.spacing.xs + theme.designSystem.size.spacing.xl,
+  bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const StyledArtistSection = styled(ArtistSection)({
-  marginTop: getSpacing(4),
-})
+const StyledArtistSection = styled(ArtistSection)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
