@@ -13,7 +13,6 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -134,18 +133,17 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         options={checkboxOptions}
         value={selectedValues}
         onChange={setSelectedValues}
-        customRequiredText="obligatoires pour créer ton compte."
       />
-      <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
-      <ExternalTouchableLink
-        as={ButtonQuaternaryBlack}
-        wording="Nos conditions générales d’utilisation"
-        externalNav={{ url: env.CGU_LINK }}
-        icon={ExternalSiteFilled}
-        justifyContent="flex-start"
-        numberOfLines={2}
-      />
-      <ViewGap gap={10}>
+      <LinksContainer>
+        <CaptionNeutralInfo>En cochant ces 2 cases tu assures avoir lu&nbsp;:</CaptionNeutralInfo>
+        <ExternalTouchableLink
+          as={ButtonQuaternaryBlack}
+          wording="Nos conditions générales d’utilisation"
+          externalNav={{ url: env.CGU_LINK }}
+          icon={ExternalSiteFilled}
+          justifyContent="flex-start"
+          numberOfLines={2}
+        />
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           wording="La charte des données personnelles"
@@ -154,6 +152,8 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           justifyContent="flex-start"
           numberOfLines={2}
         />
+      </LinksContainer>
+      <ButtonContainer>
         <ButtonPrimary
           wording="S’inscrire"
           accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
@@ -164,7 +164,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           disabled={disabled}
           accessibilityHint={errorMessage ?? undefined}
         />
-      </ViewGap>
+      </ButtonContainer>
       <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
       <BottomContainer>
         <CaptionNeutralInfo>
@@ -187,4 +187,12 @@ const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const BottomContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
+}))
+
+const LinksContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxl,
 }))

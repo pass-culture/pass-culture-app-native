@@ -43,5 +43,4 @@ export type CheckboxGroupProps = {
   display?: CheckboxGroupDisplay
   variant?: CheckboxVariant
   disabled?: boolean
-  customRequiredText?: string
 }
