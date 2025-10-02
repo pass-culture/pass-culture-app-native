@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHolder'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type InfoHeaderProps = PropsWithChildren<{
   defaultThumbnailSize: number
@@ -55,27 +55,28 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   )
 }
 
-const StyledView = styled.View({
+const StyledView = styled.View(({ theme }) => ({
   flexShrink: 1,
   flexDirection: 'row',
   alignItems: 'center',
-  columnGap: getSpacing(2),
-})
+  columnGap: theme.designSystem.size.spacing.s,
+}))
 
 const RightContainer = styled.View({
   flexShrink: 1,
   justifyContent: 'center',
 })
 
-const TitleContainer = styled.View({
+const TitleContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  columnGap: getSpacing(1),
-})
+  columnGap: theme.designSystem.size.spacing.xs,
+}))
 
-const Title = styled(Typo.BodyAccent).attrs({ numberOfLines: 1 })({
+const Title = styled(Typo.BodyAccent).attrs({ numberOfLines: 1 })(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
   flexShrink: 1,
-})
+}))
 
 const Subtitle = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
@@ -85,4 +86,6 @@ const Subtitle = styled(Typo.BodyAccentXs).attrs({
 
 const SubtitleWithoutTitle = styled(Typo.BodyAccentS).attrs({
   numberOfLines: 2,
-})({})
+})(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
+}))

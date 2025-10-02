@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
-import styled, { ThemeProvider } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { VenueTypeCodeKey } from 'api/gen'
@@ -12,7 +12,6 @@ import { VenueMapFiltersModal } from 'features/venueMap/pages/modals/VenueMapFil
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 // eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { getSpacing, Typo } from 'ui/theme'
@@ -20,19 +19,6 @@ import { getSpacing, Typo } from 'ui/theme'
 import { useVenueMapFilters } from '../../hook/useVenueMapFilters'
 
 type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapTypeFilter'>
-
-const ALTERED_THEME = {
-  ...theme,
-  showTabBar: !!theme.showTabBar,
-  borderRadius: {
-    ...theme.borderRadius,
-    checkbox: 2,
-  },
-  checkbox: {
-    ...theme.checkbox,
-    size: getSpacing(4),
-  },
-}
 
 const titleId = uuidv4()
 
@@ -81,23 +67,21 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
       shouldDisplayBackButton
       shouldDisplayCloseButton>
       <Container gap={4}>
-        <ThemeProvider theme={ALTERED_THEME}>
-          <Typo.Title1>{title}</Typo.Title1>
-          <Checkbox label="Tout sélectionner" isChecked={hasAllFilters} onPress={toggleAll} />
-          {venueTypes.map((venueType) => {
-            const isChecked = venueFilters.includes(venueType)
-            return (
-              <Checkbox
-                key={venueType}
-                label={MAP_VENUE_TYPE_TO_LABEL[venueType]}
-                isChecked={isChecked}
-                onPress={() => {
-                  handleCheckboxPress(venueType)
-                }}
-              />
-            )
-          })}
-        </ThemeProvider>
+        <Typo.Title1>{title}</Typo.Title1>
+        <Checkbox label="Tout sélectionner" isChecked={hasAllFilters} onPress={toggleAll} />
+        {venueTypes.map((venueType) => {
+          const isChecked = venueFilters.includes(venueType)
+          return (
+            <Checkbox
+              key={venueType}
+              label={MAP_VENUE_TYPE_TO_LABEL[venueType]}
+              isChecked={isChecked}
+              onPress={() => {
+                handleCheckboxPress(venueType)
+              }}
+            />
+          )
+        })}
       </Container>
     </VenueMapFiltersModal>
   )

@@ -1,4 +1,12 @@
-import React, { FunctionComponent, useRef, useEffect, useCallback, useState, memo } from 'react'
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useCallback,
+  useState,
+  memo,
+  useMemo,
+} from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -46,16 +54,16 @@ const SnackBarBase = (props: SnackBarProps) => {
     })
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onClose = useCallback(() => props.onClose?.(), [])
+  const onClose = useCallback(() => props.onClose?.(), [props])
 
-  const iconLabel = props.visible ? {} : { accessibilityLabel: undefined }
-  const Icon =
-    !!props.icon &&
-    styled(props.icon).attrs(({ theme }) => ({
+  const Icon = useMemo(() => {
+    const iconAccessibilityLabelProps = props.visible ? {} : { accessibilityLabel: undefined }
+    if (!props.icon) return null
+    return styled(props.icon).attrs(({ theme }) => ({
       size: theme.icons.sizes.small,
-      ...iconLabel,
+      ...iconAccessibilityLabelProps,
     }))``
+  }, [props.icon, props.visible])
 
   // Visibility effect
   useEffect(() => {
