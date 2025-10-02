@@ -250,12 +250,14 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 **Ticket** : [PC-38205](https://passculture.atlassian.net/browse/PC-38205)  
 **PR** : [#8740](https://github.com/pass-culture/pass-culture-app-native/pull/8740)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(E04)** Les sous titres ne sont pas identifié comme des titres mais simplement comme des textes, car n'utilisent pas `getHeadingAttrs()`.
 - **(E09)** Le titre dans le header d'un lieu n'est pas identifié comme un titre mais simplement comme un texte, car n'utilise pas `getHeadingAttrs()`.
-- **(E14)** Le titre "Rechercher" de la page de recherche n'est pas identifié comme un titre mais simplement comme un texte, car utilise `getHeadingAttrs()` mais sur une `View`. 
+- **(E14)** Le titre "Rechercher" de la page de recherche n'est pas identifié comme un titre mais simplement comme un texte, car utilise `getHeadingAttrs()` mais sur une `View`.
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E04)** Utilisation de `getHeadingAttrs(3)` pour les sous titres de type `Typo.BodyAccent`
 - **(E09)** Utilisation de `getHeadingAttrs(3)` pour les sous titres de type `Typo.BodyAccent`
 - **(E14)** Utilisation de `getHeadingAttrs(1)` sur le texte et non sur le container qui était une `View`
@@ -425,7 +427,9 @@ Lors d'une lecture manuelle des éléments de la home, les emojis ne sont pas lu
 Si je supprime ce `accessibilityLabel`, les emojis dans le titre sont lus, même en lecture manuelle, ce qui me permet de conclure que ce code fonctionne correctement.
 
 **Correction** 💡  
-Texte
+En réalité, nous n'avions pas testé correctement le plan du site avec le TalkBack. En plus de la restitution de toute la page lors de l'activation du TalkBack, de la restitution en appuyant un élément, on peut utiliser le swipe pour "naviguer" à travers les éléments. En swipant, on arrive bien a reproduire le problème qu'avait constaté l'auditeur. On endend bien un "click" entre les éléments. Mais ce n'était pas la restitution du svg "point" comme le pensait l'auditeur.
+
+Le son que nous entendions entre les éléments du plan du site était la restitution d'un texte vide. Ce texte vide était dû à la mauvaise utilisation d'un composant texte, utilisé comme conteneur, alors qu'il fallait utilisé une simple `View`. Une fois le composant texte remplacé par une `View`, nous n'avions plus le bruit parasite entre chaque element.
 
 </details>
 
