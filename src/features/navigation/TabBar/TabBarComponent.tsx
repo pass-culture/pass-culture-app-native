@@ -32,6 +32,8 @@ export const TabBarComponent: React.FC<Props> = ({
 }) => {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const BicolorIcon = mapTabRouteToIcon({ route: tabName, enableReactionFeature })
+  const accessibilityLabelSelected = isSelected ? 'actif' : 'inactif'
+  const accessibilityLabel = `${menu[tabName].accessibilityLabel} - ${accessibilityLabelSelected}`
 
   return (
     <TabComponentContainer
@@ -39,7 +41,7 @@ export const TabBarComponent: React.FC<Props> = ({
       enableNavigate={enableNavigate}
       onBeforeNavigate={onPress}
       selected={isSelected}
-      accessibilityLabel={menu[tabName].accessibilityLabel}
+      accessibilityLabel={accessibilityLabel}
       testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
       accessibilityCurrent={isSelected ? 'page' : undefined}>
       <TabBarInnerComponent

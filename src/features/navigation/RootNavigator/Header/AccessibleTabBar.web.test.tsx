@@ -106,16 +106,10 @@ describe('AccessibleTabBar', () => {
 
   it('should display the 5 following tabs', () => {
     renderTabBar()
-    const expectedTabsTestIds = [
-      'Accueil sélectionné',
-      'Rechercher des offres',
-      'Mes réservations',
-      'Favoris',
-      'Mon profil',
-    ]
+    const expectedTabsTestIds = ['Accueil', 'Recherche', 'Réservations', 'Favoris', 'Profil']
 
     expectedTabsTestIds.forEach((tab) => {
-      expect(screen.getByTestId(tab)).toBeInTheDocument()
+      expect(screen.getByText(tab)).toBeInTheDocument()
     })
   })
 
@@ -128,13 +122,13 @@ describe('AccessibleTabBar', () => {
   it('should identify only one tab as current page', () => {
     renderTabBar()
     const tabsTestIds = [
-      'Accueil',
-      'Rechercher des offres',
-      'Mes réservations',
-      'Favoris',
-      'Mon profil',
+      'Accueil - actif',
+      'Rechercher des offres - inactif',
+      'Mes réservations - inactif',
+      'Mes favoris - inactif',
+      'Mon profil - inactif',
     ]
-    const tabs = tabsTestIds.map((testID) => screen.getByTestId(testID))
+    const tabs = tabsTestIds.map((testID) => screen.getByLabelText(testID))
 
     const currentPageList = tabs
       .map((tab) => tab.getAttribute('aria-current'))
