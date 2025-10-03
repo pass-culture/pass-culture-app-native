@@ -37,17 +37,17 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       {shouldDisplayDateSelection ? (
         <BookDateChoice stocks={stocks} userRemainingCredit={creditForOffer} />
       ) : null}
-      {step && step >= Step.HOUR && shouldDisplayHourSelection ? (
+      {shouldDisplayHourSelection ? (
         <Wrapper>
           <BookHourChoice />
         </Wrapper>
       ) : null}
-      {step && step >= Step.PRICE && shouldDisplayPriceSelection ? (
+      {shouldDisplayPriceSelection ? (
         <Wrapper>
           <BookPricesChoice stocks={stocksWithCategory} isDuo={offerIsDuo} />
         </Wrapper>
       ) : null}
-      {step && step >= Step.DUO ? (
+      {step >= Step.DUO ? (
         <Wrapper>
           <BookDuoChoice />
         </Wrapper>

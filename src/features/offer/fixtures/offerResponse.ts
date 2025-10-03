@@ -21,6 +21,7 @@ export const offerResponseSnap = toMutable({
   name: 'Sous les étoiles de Paris - VF',
   subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
   isReleased: true,
+  isEvent: true,
   isExpired: false,
   isForbiddenToUnderage: false,
   isSoldOut: false,

@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
@@ -12,7 +12,6 @@ import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOf
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -153,11 +152,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { top } = useCustomSafeInsets()
   const { modal } = useTheme()
 
-  const stocksWithCategory = useMemo(() => {
-    return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
-  }, [bookingState.date, bookingState.hour, offer?.stocks])
-  const hasPricesStep = stocksWithCategory.length > 1
-
   const modalLeftIconProps = {
     leftIcon,
     leftIconAccessibilityLabel,
@@ -227,7 +221,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         />
       }
       fixedModalBottom={
-        <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
+        <BookingOfferModalFooter hasPricesStep={offer?.isEvent} isDuo={offer?.isDuo} />
       }
       shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
       {children}

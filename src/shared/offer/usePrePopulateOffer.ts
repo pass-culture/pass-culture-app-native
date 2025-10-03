@@ -21,6 +21,7 @@ const mergeOfferData =
     name: offer.name ?? '',
     isDigital: false,
     isExpired: false,
+    isEvent: false,
     // assumption. If wrong, we receive correct data once API call finishes.
     // In the meantime, we have to make sure no visual glitch appears.
     // For example, before displaying the CTA, we wait for the API call to finish.

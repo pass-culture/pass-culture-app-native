@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
-import { BookingState, Step } from 'features/bookOffer/context/reducer'
+import { Action, BookingState, Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getSortedHoursFromDate,
@@ -21,13 +21,13 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const radioGroupLabel = 'Horaires'
 
-function getHourChoiceForMultiplePrices(
+const getHourChoiceForMultiplePrices = (
   stocks: OfferStockResponse[],
   selectedDate: string | undefined,
   bookingState: BookingState,
   selectHour: (hour: string, stockFromHour: OfferStockResponse[]) => void,
   offerCredit: number
-) {
+) => {
   const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
   const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
   return distinctHours.map((hour, index) => {
@@ -68,15 +68,16 @@ function getHourChoiceForMultiplePrices(
   })
 }
 
-function getHourChoiceForSingleStock(
+const getHourChoiceForSingleStock = (
   stocks: OfferStockResponse[],
   selectedDate: string | undefined,
   venue: OfferVenueResponse | undefined,
   bookingState: BookingState,
   selectStock: (stockId: number) => void,
-  offerCredit: number
-) {
-  return stocks
+  offerCredit: number,
+  dispatch: React.Dispatch<Action>
+) =>
+  stocks
     .filter(({ beginningDatetime }) => {
       if (beginningDatetime === undefined || beginningDatetime === null) return false
       return selectedDate && beginningDatetime
@@ -96,14 +97,16 @@ function getHourChoiceForSingleStock(
         price={stock.price}
         hour={formatHour(stock.beginningDatetime, venue?.timezone).replace(':', 'h')}
         selected={stock.id === bookingState.stockId}
-        onPress={() => selectStock(stock.id)}
+        onPress={() => {
+          dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime ?? '' })
+          selectStock(stock.id)
+        }}
         testID={`HourChoice${stock.id}`}
         isBookable={stock.isBookable}
         offerCredit={offerCredit}
         features={stock.features}
       />
     ))
-}
 
 export const BookHourChoice = () => {
   const { bookingState, dispatch } = useBookingContext()
@@ -152,7 +155,8 @@ export const BookHourChoice = () => {
           venue,
           bookingState,
           selectStock,
-          offerCredit
+          offerCredit,
+          dispatch
         )
       }
     },

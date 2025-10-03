@@ -2853,6 +2853,11 @@ export interface OfferResponse {
    * @type {boolean}
    * @memberof OfferResponse
    */
+  isEvent: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
   isExpired: boolean
   /**
    * @type {boolean}
@@ -3010,6 +3015,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   isEducational: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isEvent: boolean
   /**
    * @type {boolean}
    * @memberof OfferResponseV2

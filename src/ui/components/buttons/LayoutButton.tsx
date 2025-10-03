@@ -6,7 +6,7 @@ import { LayoutButtonProps } from 'features/search/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkmark } from 'ui/svg/icons/Checkmark'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButtonProps) => {
   const { designSystem } = useTheme()
@@ -43,13 +43,14 @@ const TitleContainer = styled(ViewGap)<{ isSelected: boolean }>(({ isSelected, t
   backgroundColor: isSelected
     ? theme.designSystem.color.background.brandPrimarySelected
     : undefined,
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
   borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
-const IconsContainer = styled(ViewGap)({
+const IconsContainer = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
-})
+  paddingVertical: theme.designSystem.size.spacing.s,
+}))
 
 const Title = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected
