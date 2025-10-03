@@ -32,7 +32,7 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: ${output.button.ios.booking}
 
 - assertVisible: 'Détails de la réservation'
-- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - runFlow:
     when:
       platform: Android
