@@ -61,7 +61,7 @@ export const LocationWrapper = memo(function LocationWrapper({
     contextualRequestGeolocPermission,
   } = useGeolocation()
 
-  const onModalHideRef = useRef<() => void>()
+  const onModalHideRef = useRef<() => void>(() => null)
 
   const {
     place,

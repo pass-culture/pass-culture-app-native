@@ -1,6 +1,7 @@
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
+    ...(process.env.NODE_ENV !== 'test' && !process.env.JEST ? ['babel-plugin-react-compiler'] : []),
     'macros',
     [
       require.resolve('babel-plugin-module-resolver'),

@@ -40,11 +40,12 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   }
 
   const filteredStocks = getStockSortedByPriceFromHour(stocks, selectedHour)
+  const radioGroupLabel = 'Prix'
 
   return (
     <React.Fragment>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="PricesStep">
-        Prix
+        {radioGroupLabel}
       </Typo.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
@@ -53,6 +54,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
           {filteredStocks.map((stock) => (
             <Li key={stock.id}>
               <RadioSelector
+                radioGroupLabel={radioGroupLabel}
                 label={stock.priceCategoryLabel ?? ''}
                 onPress={() => selectStock(stock.id)}
                 checked={stock.id === bookingState.stockId}

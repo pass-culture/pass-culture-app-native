@@ -40,6 +40,7 @@ export const DisplayPreference = () => {
   )
 
   const selectedTheme = useStoredColorScheme()
+  const radioGroupLabel = 'Thème'
 
   return (
     <PageWithHeader
@@ -61,7 +62,7 @@ export const DisplayPreference = () => {
           {enableDarkMode ? (
             <DarkThemeContainer>
               <Typo.BodyAccentS nativeID={titleID} id={titleID} {...getHeadingAttrs(2)}>
-                Thème
+                {radioGroupLabel}
               </Typo.BodyAccentS>
               <GreySeparator />
               <SelectorContainer
@@ -69,6 +70,7 @@ export const DisplayPreference = () => {
                 accessibilityRole={AccessibilityRole.RADIOGROUP}
                 accessibilityLabelledBy={titleID}>
                 <RadioSelector
+                  radioGroupLabel={radioGroupLabel}
                   label="Mode clair"
                   description="Affichage classique"
                   checked={selectedTheme === ColorScheme.LIGHT}
@@ -78,6 +80,7 @@ export const DisplayPreference = () => {
                   rightElement={<DefaultThemeIllustration />}
                 />
                 <RadioSelector
+                  radioGroupLabel={radioGroupLabel}
                   label="Mode sombre"
                   description="Réduit la fatigue visuelle"
                   checked={selectedTheme === ColorScheme.DARK}
@@ -87,6 +90,7 @@ export const DisplayPreference = () => {
                   rightElement={<DarkThemeIllustration />}
                 />
                 <RadioSelector
+                  radioGroupLabel={radioGroupLabel}
                   label="Réglages appareil"
                   description="Automatique selon les réglages de ton appareil"
                   checked={selectedTheme === ColorScheme.SYSTEM}

@@ -24,7 +24,17 @@ onFlowStart:
 - tapOn: 'Rechercher'
 
 - tapOn: '.*Voir tous les filtres.*'
-- doubleTapOn: 'Dates'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - doubleTapOn: 'Dates'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Dates"
 
 - assertVisible: 'Dates'
 - tapOn: '${output.targetDateTest}'

@@ -133,6 +133,7 @@ export const VenueSelectionList = forwardRef<never, VenueSelectionListProps>(
 
     return (
       <Container onLayout={onLayout} testID="venuesList">
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <VariableSizeList
           ref={listRef}
           key={rerenderKey}

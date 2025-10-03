@@ -12,7 +12,17 @@ appId: ${MAESTRO_APP_ID}
 - waitForAnimationToEnd
 
 - runFlow:
+    when:
+      platform: Android
     file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Revenir à pass Culture S"
+    - tapOn: "Revenir en arrière"
+    - scrollUntilVisible:
+        element: 'Partager le pass Culture'
 
 - runFlow: # Fallback si problème de retour
     when:
@@ -25,9 +35,21 @@ appId: ${MAESTRO_APP_ID}
     id: "Nouvelle fenêtre\_: Charte de protection des données personnelles"
 - 'waitForAnimationToEnd'
 - runFlow:
+    when:
+      platform: Android
     file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Revenir à pass Culture S"
+    - tapOn: "Revenir en arrière"
+    - scrollUntilVisible:
+        element: 'Partager le pass Culture'
 
 - runFlow:
+    when:
+      platform: Android
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - runFlow: # Fallback si problème de retour

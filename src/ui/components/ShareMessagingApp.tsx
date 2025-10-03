@@ -55,7 +55,7 @@ const mapNetworkToRoundIcon: Record<Network, React.FC<AccessibleIcon>> = {
 const MESSAGING_BUTTON_HEIGHT = getSpacing(24)
 export const MESSAGING_BUTTON_WIDTH = getSpacing(19)
 export const MessagingAppButtonContainer = styledButton(Touchable)({
-  height: MESSAGING_BUTTON_HEIGHT,
+  minHeight: MESSAGING_BUTTON_HEIGHT,
   width: MESSAGING_BUTTON_WIDTH,
   alignItems: 'center',
 })

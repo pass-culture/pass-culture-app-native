@@ -38,7 +38,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -152,7 +152,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       <MarginContainer gap={6}>
         <GroupWithoutGap>
           <ViewGap gap={4}>
-            <InformationTags tags={tags} />
+            <GroupTags tags={tags} />
             <ViewGap gap={2}>
               <OfferTitle offerName={offer.name} />
               {artists.length > 0 ? (

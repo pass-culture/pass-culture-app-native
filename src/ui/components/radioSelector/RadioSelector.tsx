@@ -15,6 +15,7 @@ type RightContentProps =
 
 interface BaseRadioSelectorProps {
   label: string
+  radioGroupLabel: string
   onPress: VoidFunction
   checked: boolean
   description?: string | null
@@ -35,13 +36,12 @@ export const RadioSelector = ({
   disabled,
   testID,
   accessibilityLabel,
+  radioGroupLabel,
 }: RadioSelectorProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
 
   const handlePress = () => {
-    if (disabled) {
-      return
-    }
+    if (disabled) return
     onPress()
   }
 
@@ -49,10 +49,10 @@ export const RadioSelector = ({
 
   const checkedStatus = checked ? 'sélectionné' : 'non sélectionné'
   const computedAccessibilityLabel = accessibilityLabel
-    ? `${accessibilityLabel} - ${checkedStatus}`
+    ? `${radioGroupLabel} - ${accessibilityLabel} - ${checkedStatus}`
     : description
-      ? `${label} - ${description} - ${checkedStatus}`
-      : `${label} - ${checkedStatus}`
+      ? `${radioGroupLabel} - ${label} - ${description} - ${checkedStatus}`
+      : `${radioGroupLabel} - ${label} - ${checkedStatus}`
 
   return (
     <SelectableListItem

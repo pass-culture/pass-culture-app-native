@@ -68,7 +68,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             }
           >
             <View
-              accessibilityRole="header"
               style={
                 {
                   "alignItems": "center",
@@ -79,6 +78,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               }
             >
               <Text
+                accessibilityRole="header"
                 htmlFor="testUuidV4"
                 style={
                   {
@@ -443,15 +443,15 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
       <RCTScrollView
         contentContainerStyle={
           {
-            "flexDirection": "column",
+            "alignContent": "flex-start",
+            "alignItems": "flex-start",
+            "flexDirection": "row",
             "flexWrap": "wrap",
             "gap": 16,
-            "maxHeight": 176,
             "padding": 24,
           }
         }
         horizontal={true}
-        itemsNumber={13}
         showsHorizontalScrollIndicator={false}
         style={{}}
       >
@@ -503,7 +503,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -517,7 +518,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -578,7 +579,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -592,7 +594,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -653,7 +655,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -667,7 +670,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -728,7 +731,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -742,7 +746,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -803,7 +807,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -817,7 +822,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -878,7 +883,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -892,7 +898,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -953,7 +959,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -967,7 +974,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -1028,7 +1035,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1042,7 +1050,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -1103,7 +1111,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1117,7 +1126,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -1178,7 +1187,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1192,7 +1202,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -1253,7 +1263,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1267,7 +1278,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -1328,7 +1339,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1342,7 +1354,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",
@@ -1403,7 +1415,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "borderTopRightRadius": 8,
                     "borderWidth": 1.6,
                     "flexDirection": "row",
-                    "height": 56,
+                    "height": "100%",
+                    "minHeight": 56,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1417,7 +1430,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           >
             <Text
               ellipsizeMode="tail"
-              numberOfLines={2}
+              numberOfLines={3}
               style={
                 {
                   "color": "#161617",

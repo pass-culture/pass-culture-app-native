@@ -5,18 +5,15 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'animated-icon-back'
 
-- swipe:
-    from:
-      text: 'Les offres'
-    direction: UP
+- scroll
 
 - runFlow:
     when:
       platform: iOS
     commands:
       - tapOn:
-          text: ".*catégorie CD.*"
-          index: 1
+          text: "CD"
+          index: 3
 
 - runFlow:
     when:
@@ -49,7 +46,7 @@ appId: ${MAESTRO_APP_ID}
           id: "animated-icon-back"
       - scroll
       - tapOn:
-          text: ".*catégorie CD.*"
+          text: "CD"
           index: 2
 
 - tapOn:
@@ -81,7 +78,7 @@ appId: ${MAESTRO_APP_ID}
           id: "animated-icon-back"
       - scroll
       - tapOn:
-          text: ".*catégorie CD.*"
+          text: "CD"
           index: 2
 
 - runFlow:
@@ -89,7 +86,9 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
     - scroll
-    - tapOn: ".*catégorie CD.*"
+    - tapOn: 
+        text: "CD"
+        index: 2
     - tapOn:
         id: 'animated-icon-favorite'
     - tapOn:
@@ -101,6 +100,7 @@ appId: ${MAESTRO_APP_ID}
     commands:
     - tapOn:
         text: 'CD'
+        index: 2
     - tapOn:
         id: 'animated-icon-favorite'
     - tapOn:
