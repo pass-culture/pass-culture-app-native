@@ -133,7 +133,6 @@ export function ChangePassword() {
             name="currentPassword"
             label="Mot de passe actuel"
             placeholder="Ton mot de passe actuel"
-            isRequiredField
           />
           <Spacer.Column numberOfSpaces={7} />
           <PasswordInputController

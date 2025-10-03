@@ -3195,7 +3195,18 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                     }
                   >
                     J’ai lu et j’accepte les conditions générales d’utilisation
-                    *
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
+                      }
+                    >
+                       - obligatoire
+                    </Text>
                   </Text>
                 </View>
               </View>
@@ -3312,161 +3323,150 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                     }
                   >
                     J’ai lu la charte des données personnelles
-                    *
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
+                      }
+                    >
+                       - obligatoire
+                    </Text>
                   </Text>
                 </View>
               </View>
             </View>
           </View>
-          <View
+        </View>
+        <View
+          style={
+            {
+              "marginTop": 24,
+            }
+          }
+        >
+          <Text
             style={
               {
-                "marginTop": 16,
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
               }
             }
           >
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              *
-              obligatoires pour créer ton compte.
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            }
-          }
-        >
-          En cochant ces 2 cases tu assures avoir lu :
-        </Text>
-        <View
-          accessibilityLabel="Nos conditions générales d’utilisation"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "flexDirection": "row",
-                  "height": "auto",
-                  "justifyContent": "flex-start",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Nos conditions générales d’utilisation"
-        >
+            En cochant ces 2 cases tu assures avoir lu :
+          </Text>
           <View
-            style={
+            accessibilityLabel="Nos conditions générales d’utilisation"
+            accessibilityState={
               {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "flexDirection": "row",
+                    "height": "auto",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Nos conditions générales d’utilisation"
           >
             <View
               style={
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={16}
-                testID="button-icon-left"
-                width={16}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={2}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "maxWidth": "100%",
+                style={
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
                 }
-              }
-            >
-              Nos conditions générales d’utilisation
-            </Text>
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={16}
+                  testID="button-icon-left"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "maxWidth": "100%",
+                  }
+                }
+              >
+                Nos conditions générales d’utilisation
+              </Text>
+            </View>
           </View>
-        </View>
-        <View
-          gap={10}
-          style={
-            {
-              "gap": 40,
-            }
-          }
-        >
           <View
             accessibilityLabel="La charte des données personnelles"
             accessibilityState={
@@ -3574,6 +3574,14 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "marginTop": 40,
+            }
+          }
+        >
           <View
             accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
             accessibilityState={
