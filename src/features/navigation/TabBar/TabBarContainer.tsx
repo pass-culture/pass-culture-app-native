@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getSpacing, getShadow } from 'ui/theme'
 
@@ -10,7 +11,7 @@ export const TabBarContainer = ({ children }: { children: React.ReactNode }) => 
   const { bottom } = useCustomSafeInsets()
   const netInfo = useNetInfoContext()
   return (
-    <MainContainer>
+    <MainContainer accessibilityRole={AccessibilityRole.NAVIGATION}>
       <RowContainer>{children}</RowContainer>
       <SafeAreaPlaceholder safeHeight={netInfo.isConnected ? bottom : 0} />
     </MainContainer>
