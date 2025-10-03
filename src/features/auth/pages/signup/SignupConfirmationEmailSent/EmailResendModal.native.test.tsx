@@ -29,7 +29,26 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
-jest.useFakeTimers()
+jest.useFakeTimers({ legacyFakeTimers: true })
+
+// Configure Jest to handle React 19 properly
+beforeAll(() => {
+  // Suppress React 19 development warnings in tests
+  const originalError = console.error
+  console.error = (...args) => {
+    if (
+      typeof args[0] === 'string' &&
+      (args[0].includes('Warning:') || args[0].includes('AggregateError'))
+    ) {
+      return
+    }
+    originalError(...args)
+  }
+})
+
+afterAll(() => {
+  jest.restoreAllMocks()
+})
 
 describe('<EmailResendModal />', () => {
   it('should render correctly', async () => {

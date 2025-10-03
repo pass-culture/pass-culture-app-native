@@ -41,5 +41,5 @@
     "coverage/**",
     "./server/**"
   ],
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config"
 }

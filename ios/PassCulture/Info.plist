@@ -5,9 +5,9 @@
 	<key>BatchAPIKey</key>
 	<string>$(BATCH_API_PUBLIC_KEY_IOS)</string>
 	<key>BatchProfileCustomDataMigrationEnabled</key>
-    <true/>
-    <key>BatchProfileCustomIdMigrationEnabled</key>
-    <true/>
+	<true/>
+	<key>BatchProfileCustomIdMigrationEnabled</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>fr</string>
 	<key>CFBundleDisplayName</key>
@@ -96,11 +96,10 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
-			<key>NSAllowsArbitraryLoads</key>
-				<false/>
-			<key>NSAllowsLocalNetworking</key>
-				<true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec une photo.</string>
@@ -108,16 +107,20 @@
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec de l'audio</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec une photo de votre galerie.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Pour vous offrir les meilleurs offres et une expérience personnalisée</string>
 	<key>NSUserNotificationsUsageDescription</key>
 	<string>Cette application a besoin d'accéder aux notifications pour vous tenir informé des offres et événements.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Pour vous offrir les meilleurs offres et une expérience personnalisée</string>
+	<key>RCTNewArchEnabled</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
@@ -141,7 +144,5 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<true/>
 </dict>
 </plist>
