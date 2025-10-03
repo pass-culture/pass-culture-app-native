@@ -532,6 +532,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
+                  accessibilityLabel="Offres disponibles"
                   accessibilityRole="tab"
                   accessibilityState={
                     {
@@ -550,7 +551,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   nativeID="Offres disponibles"
@@ -571,6 +572,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Offres disponibles"
                 >
                   <View
                     gap={2}
@@ -618,6 +620,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   />
                 </View>
                 <View
+                  accessibilityLabel="Infos pratiques"
                   accessibilityRole="tab"
                   accessibilityState={
                     {
@@ -636,7 +639,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   nativeID="Infos pratiques"
@@ -657,6 +660,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Infos pratiques"
                 >
                   <View
                     gap={2}
@@ -3315,6 +3319,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 />
                 <View
+                  accessibilityLabel="Offres disponibles"
                   accessibilityRole="tab"
                   accessibilityState={
                     {
@@ -3333,7 +3338,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   nativeID="Offres disponibles"
@@ -3354,6 +3359,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Offres disponibles"
                 >
                   <View
                     gap={2}
@@ -3401,6 +3407,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   />
                 </View>
                 <View
+                  accessibilityLabel="Infos pratiques"
                   accessibilityRole="tab"
                   accessibilityState={
                     {
@@ -3419,7 +3426,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   nativeID="Infos pratiques"
@@ -3440,6 +3447,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Infos pratiques"
                 >
                   <View
                     gap={2}
@@ -6409,6 +6417,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   }
                 />
                 <View
+                  accessibilityLabel="Offres disponibles"
                   accessibilityRole="tab"
                   accessibilityState={
                     {
@@ -6427,7 +6436,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   nativeID="Offres disponibles"
@@ -6448,6 +6457,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Offres disponibles"
                 >
                   <View
                     gap={2}
@@ -6495,6 +6505,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   />
                 </View>
                 <View
+                  accessibilityLabel="Infos pratiques"
                   accessibilityRole="tab"
                   accessibilityState={
                     {
@@ -6513,7 +6524,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   nativeID="Infos pratiques"
@@ -6534,6 +6545,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Infos pratiques"
                 >
                   <View
                     gap={2}
