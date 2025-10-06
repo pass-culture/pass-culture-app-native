@@ -194,7 +194,7 @@ describe('OnboardingSubscription', () => {
 
     await user.press(screen.getByLabelText('Activités créatives'))
     await user.press(screen.getByLabelText('Suivre la sélection'))
-    await user.press(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails'))
+    await user.press(screen.getByTestId(/Autoriser l’envoi d’e-mails - Interrupteur à bascule/))
     await user.press(screen.getByLabelText('Valider'))
 
     expect(patchProfileSpy).toHaveBeenCalledWith({

@@ -13,7 +13,7 @@ describe('<ControlledFilterSwitch />', () => {
   it('should call onChange with new value on toggle', async () => {
     render(<ControlledFilterSwitch onChange={onChange} name={name} />)
 
-    const Switch = screen.getByTestId('Interrupteur')
+    const Switch = screen.getByRole('switch')
 
     await user.press(Switch)
 

@@ -2,9 +2,8 @@ import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckFilled } from 'ui/svg/icons/CheckFilled'
@@ -47,29 +46,31 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
-  const hiddenTextStatus = active ? 'cochée' : 'non cochée'
-
-  useSpaceBarAction(isFocus ? toggle : undefined)
+  const hiddenTextStatus = active ? 'coché' : 'non coché'
 
   const testIdFull = testID ? `Interrupteur ${testID}` : 'Interrupteur'
 
+  const baseLabel = `Interrupteur à bascule - ${hiddenTextStatus}`
+  const accessibilityLabel = props.accessibilityLabel
+    ? `${props.accessibilityLabel} - ${baseLabel}`
+    : baseLabel
+
+  useSpaceBarAction(isFocus ? toggle : undefined)
+
   return (
     <FilterSwitchContainer>
-      <HiddenAccessibleText accessibilityHidden>
-        Case à cocher - {hiddenTextStatus}
-      </HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        {...accessibleCheckboxProps({
-          checked: active,
-          label: props.accessibilityLabel,
-        })}
         accessibilityHint={props.accessibilityHint}
         accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}
         onBlur={onBlur}
-        testID={testIdFull}>
+        testID={testIdFull}
+        accessibilityRole={AccessibilityRole.SWITCH}
+        accessibilityLabel={accessibilityLabel}
+        accessibilityState={{ checked: active }}
+        accessibilityChecked={active}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
             {disabled ? <Lock /> : null}
@@ -111,13 +112,11 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme }) =>
 const Lock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.extraSmall,
-  accessibilityLabel: 'Désactivé',
 }))``
 
 const Check = styled(CheckFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
   size: theme.icons.sizes.extraSmall,
-  accessibilityLabel: 'Activé',
 }))``
 
 const propsAreEqual = (

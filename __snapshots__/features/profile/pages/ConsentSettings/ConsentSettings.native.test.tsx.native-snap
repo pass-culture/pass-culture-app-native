@@ -285,19 +285,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             }
           >
-            <Text
-              accessibilityHidden={true}
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Case à cocher - 
-              non cochée
-            </Text>
             <View
-              accessibilityRole="checkbox"
+              accessibilityLabel="Tout accepter - Interrupteur à bascule - non coché"
+              accessibilityRole="switch"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -315,7 +305,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -334,7 +324,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Interrupteur Tout accepter"
+              testID="Tout accepter - Interrupteur à bascule - non coché"
             >
               <View
                 active={false}
@@ -414,19 +404,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             }
           >
-            <Text
-              accessibilityHidden={true}
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Case à cocher - 
-              non cochée
-            </Text>
             <View
-              accessibilityRole="checkbox"
+              accessibilityLabel="Personnaliser ta navigation - Interrupteur à bascule - non coché"
+              accessibilityRole="switch"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -444,7 +424,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -463,7 +443,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Interrupteur Personnaliser ta navigation"
+              testID="Personnaliser ta navigation - Interrupteur à bascule - non coché"
             >
               <View
                 active={false}
@@ -767,19 +747,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             }
           >
-            <Text
-              accessibilityHidden={true}
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Case à cocher - 
-              non cochée
-            </Text>
             <View
-              accessibilityRole="checkbox"
+              accessibilityLabel="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
+              accessibilityRole="switch"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -797,7 +767,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -816,7 +786,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Interrupteur Enregistrer des statistiques de navigation"
+              testID="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
             >
               <View
                 active={false}
@@ -1120,19 +1090,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             }
           >
-            <Text
-              accessibilityHidden={true}
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Case à cocher - 
-              non cochée
-            </Text>
             <View
-              accessibilityRole="checkbox"
+              accessibilityLabel="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
+              accessibilityRole="switch"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1150,7 +1110,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1169,7 +1129,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Interrupteur Mesurer l’efficacité de nos publicités"
+              testID="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
             >
               <View
                 active={false}
@@ -1473,19 +1433,9 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               }
             }
           >
-            <Text
-              accessibilityHidden={true}
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Case à cocher - 
-              cochée
-            </Text>
             <View
-              accessibilityRole="checkbox"
+              accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
+              accessibilityRole="switch"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1503,7 +1453,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1522,7 +1472,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs"
+              testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
             >
               <View
                 active={true}
@@ -1562,7 +1512,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Désactivé"
                     height={16}
                     width={16}
                   >

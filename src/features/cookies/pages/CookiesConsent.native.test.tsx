@@ -63,6 +63,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const CUSTOMIZE_NAVIGATION_SWITCH = /Personnaliser ta navigation - Interrupteur à bascule/
+const NAVIGATION_STATISTICS_SWITCH =
+  /Enregistrer des statistiques de navigation - Interrupteur à bascule/
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -202,9 +206,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(
-        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-      )
+      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
@@ -237,9 +239,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(
-        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-      )
+      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
@@ -251,9 +251,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(
-        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-      )
+      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
@@ -278,7 +276,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(screen.getByTestId('Interrupteur Personnaliser ta navigation'))
+      await user.press(screen.getByTestId(CUSTOMIZE_NAVIGATION_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 

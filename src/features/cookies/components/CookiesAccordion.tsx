@@ -43,6 +43,7 @@ export const CookiesAccordion = ({
             disabled={isEssential}
             accessibilityLabelledBy={accordionLabelId}
             toggle={toggleSwitch}
+            accessibilityLabel={info.title}
           />
         }>
         <React.Fragment>

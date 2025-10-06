@@ -326,19 +326,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -356,7 +346,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -375,7 +365,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser l’envoi d’e-mails"
+                    testID="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -508,19 +498,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser les notifications - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -538,7 +518,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -557,7 +537,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser les notifications"
+                    testID="Autoriser les notifications - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -791,19 +771,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -821,7 +791,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -840,7 +810,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Suivre tous les thèmes"
+                    testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -880,7 +850,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -979,19 +948,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Cinéma - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1009,7 +968,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1028,7 +987,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Cinéma"
+                    testID="Cinéma - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1068,7 +1027,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1159,19 +1117,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Lecture - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1189,7 +1137,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1208,7 +1156,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Lecture"
+                    testID="Lecture - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1248,7 +1196,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1339,19 +1286,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Musique - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1369,7 +1306,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1388,7 +1325,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Musique"
+                    testID="Musique - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1428,7 +1365,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1519,19 +1455,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Spectacles - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1549,7 +1475,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1568,7 +1494,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Spectacles"
+                    testID="Spectacles - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1608,7 +1534,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1699,19 +1624,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Activités créatives - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1729,7 +1644,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1748,7 +1663,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Activités créatives"
+                    testID="Activités créatives - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1788,7 +1703,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1879,19 +1793,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Visites et sorties - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1909,7 +1813,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1928,7 +1832,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Visites et sorties"
+                    testID="Visites et sorties - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1968,7 +1872,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -2507,19 +2410,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2537,7 +2430,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2556,7 +2449,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser l’envoi d’e-mails"
+                    testID="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -2596,7 +2489,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -2687,19 +2579,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser les notifications - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2717,7 +2599,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2736,7 +2618,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser les notifications"
+                    testID="Autoriser les notifications - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -2776,7 +2658,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -2913,19 +2794,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2943,7 +2814,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2962,7 +2833,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Suivre tous les thèmes"
+                    testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3002,7 +2873,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3101,19 +2971,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Cinéma - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3131,7 +2991,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3150,7 +3010,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Cinéma"
+                    testID="Cinéma - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3190,7 +3050,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3281,19 +3140,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Lecture - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3311,7 +3160,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3330,7 +3179,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Lecture"
+                    testID="Lecture - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3370,7 +3219,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3461,19 +3309,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Musique - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3491,7 +3329,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3510,7 +3348,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Musique"
+                    testID="Musique - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3550,7 +3388,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3641,19 +3478,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Spectacles - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3671,7 +3498,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3690,7 +3517,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Spectacles"
+                    testID="Spectacles - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3730,7 +3557,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3821,19 +3647,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Activités créatives - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3851,7 +3667,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3870,7 +3686,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Activités créatives"
+                    testID="Activités créatives - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3910,7 +3726,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -4001,19 +3816,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Visites et sorties - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -4031,7 +3836,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4050,7 +3855,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Visites et sorties"
+                    testID="Visites et sorties - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -4090,7 +3895,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >

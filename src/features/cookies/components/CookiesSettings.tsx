@@ -68,6 +68,7 @@ export const CookiesSettings = ({
             accessibilityLabelledBy={labelID}
             checkboxID={checkboxID}
             toggle={toggleAll}
+            accessibilityLabel={inputLabel}
             testID={inputLabel}
           />
         </AcceptAllContainer>

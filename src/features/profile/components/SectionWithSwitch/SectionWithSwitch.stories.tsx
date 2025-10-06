@@ -17,6 +17,12 @@ export default meta
 type Story = StoryObj<typeof SectionWithSwitch>
 
 export const Template: Story = {
-  render: () => <SectionWithSwitch title="Section with switch title" toggleLabel="Toggle label" />,
+  render: () => (
+    <SectionWithSwitch
+      title="Section with switch title"
+      toggleLabel="Toggle label"
+      toggle={() => 'doNothing'}
+    />
+  ),
   name: 'SectionWithSwitch',
 }
