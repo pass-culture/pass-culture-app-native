@@ -46,6 +46,30 @@ export const ThematicSearch: React.FC = () => {
   } = useSearchResults()
 
   const { searchState, dispatch } = useSearch()
+  const isFocused = useIsFocused()
+
+  const pageTracking = usePageTracking({
+    pageName: 'ThematicSearch',
+    pageLocation: 'thematicsearch',
+  })
+
+  // Handler for modules with the new system
+  const handleTrackViewableItems = React.useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+        playlistIndex,
+      })
+    },
+    [pageTracking]
+  )
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
@@ -90,6 +114,14 @@ export const ThematicSearch: React.FC = () => {
     isLocated
   )
 
+  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
+      handleTrackViewableItems(items, venuePlaylistTitle, 'venue', 0)
+    },
+    [handleTrackViewableItems, isFocused, venuePlaylistTitle]
+  )
+
   const searchGroupWithGtlPlaylist = getShouldDisplayGtlPlaylist({
     searchGroup: offerCategory,
   })
@@ -105,6 +137,8 @@ export const ThematicSearch: React.FC = () => {
         <IntersectionObserverScrollView>
           <SubcategoryButtonListWrapper offerCategory={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (
+            <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+              {({ listRef, handleViewableItemsChanged }) => (
             <VenuePlaylist
               venuePlaylistTitle={venuePlaylistTitle}
               venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
@@ -113,7 +147,11 @@ export const ThematicSearch: React.FC = () => {
               offerCategory={offerCategory}
               shouldDisplaySeparator={false}
               searchGroup={searchGroupWithGtlPlaylist}
+                  playlistRef={listRef}
+                  onViewableItemsChanged={handleViewableItemsChanged}
             />
+              )}
+            </ObservedPlaylist>
           ) : null}
           {playlistsComponent[offerCategory]}
         </IntersectionObserverScrollView>
