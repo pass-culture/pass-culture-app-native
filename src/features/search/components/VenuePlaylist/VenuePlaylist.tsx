@@ -12,7 +12,7 @@ import { SearchVenueItem } from 'features/search/components/SearchVenueItems/Sea
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getVenueTypesFromSearchGroup } from 'features/search/helpers/getVenueTypesFromSearchGroup/getVenueTypesFromSearchGroup'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
-import { AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaVenue, AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -32,7 +32,7 @@ const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
 type Props = {
   venuePlaylistTitle: string
-  venues: AlgoliaVenue[]
+  venues: AlgoliaVenueOfferListItem[]
   isLocated?: boolean
   shouldDisplaySeparator?: boolean
   currentView?: keyof SearchStackParamList

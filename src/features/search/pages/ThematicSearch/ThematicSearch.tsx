@@ -12,6 +12,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
+import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { BookPlaylists } from 'features/search/pages/ThematicSearch/Book/BookPlaylists'
 import { CinemaPlaylists } from 'features/search/pages/ThematicSearch/Cinema/CinemaPlaylists'
 import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSearch/ConcertsAndFestivals/ConcertsAndFestivalsPlaylists'
@@ -106,7 +107,7 @@ export const ThematicSearch: React.FC = () => {
           {shouldDisplayVenuesPlaylist ? (
             <VenuePlaylist
               venuePlaylistTitle={venuePlaylistTitle}
-              venues={venues}
+              venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
               isLocated={isLocated}
               currentView={currentView}
               offerCategory={offerCategory}

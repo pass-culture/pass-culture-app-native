@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -14,6 +13,7 @@ import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVe
 import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -28,7 +28,7 @@ import { Typo } from 'ui/theme'
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
-  venues?: SearchOfferHits['venues']
+  venues?: AlgoliaVenueOfferListItem[]
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
   shouldDisplayGridList?: boolean
