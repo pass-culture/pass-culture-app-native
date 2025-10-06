@@ -1,5 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
+import { InteractionManager } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -83,7 +84,9 @@ export function Offer() {
       categoryName: categoryId,
     })
     hideChroniclesWritersModal()
-    navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+    InteractionManager.runAfterInteractions(() => {
+      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+    })
   }
 
   const handleOnShowChroniclesWritersModal = () => {
