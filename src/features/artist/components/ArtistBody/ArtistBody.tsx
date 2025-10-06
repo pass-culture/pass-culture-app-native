@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
+import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -29,12 +29,20 @@ type Props = {
   artist: ArtistResponse
   artistPlaylist: AlgoliaOfferWithArtistAndEan[]
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    artistId: string,
+    playlistIndex?: number
+  ) => void
 }
 
 export const ArtistBody: FunctionComponent<Props> = ({
   artist,
   artistPlaylist,
   artistTopOffers,
+  onViewableItemsChanged,
 }) => {
   const { goBack } = useGoBack('Offer')
   const { appBarHeight } = useTheme()
@@ -78,7 +86,11 @@ export const ArtistBody: FunctionComponent<Props> = ({
             ) : null}
           </ViewGap>
           <ArtistTopOffers artistName={name} items={artistTopOffers} />
-          <ArtistPlaylist artistName={name} items={artistPlaylist} />
+          <ArtistPlaylist
+            artist={artist}
+            items={artistPlaylist}
+            onViewableItemsChanged={onViewableItemsChanged}
+          />
         </ViewGap>
       </ContentContainer>
 

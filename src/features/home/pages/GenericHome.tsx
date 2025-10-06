@@ -1,4 +1,4 @@
-import { useFocusEffect, useRoute, useScrollToTop } from '@react-navigation/native'
+import { useScrollToTop } from '@react-navigation/native'
 import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
@@ -22,7 +22,6 @@ import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholde
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { enrichModulesWithData } from 'features/home/helpers/enrichModulesWithData'
-import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
@@ -37,7 +36,6 @@ import {
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { useAppStateChange } from 'libs/appState'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -46,13 +44,7 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { logPlaylistDebug, logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
-import {
-  resetPageTrackingInfo,
-  setPageTrackingInfo,
-  setPlaylistTrackingInfo,
-  useOfferPlaylistTrackingStore,
-} from 'store/tracking/playlistTrackingStore'
+import { usePageTracking, createViewableItemsHandler } from 'shared/tracking/usePageTracking'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { Page } from 'ui/pages/Page'
@@ -75,46 +67,12 @@ type GenericHomeProps = {
 
 const keyExtractor = (item: HomepageModule) => item.id
 
-const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
-  index,
-  moduleId,
-  moduleType,
-  viewableItems,
-  homeEntryId,
-  callId,
-}) => {
-  const trackingData = {
-    index,
-    moduleId,
-    viewedAt: new Date(),
-    items: viewableItems,
-    itemType: getItemTypeFromModuleType(moduleType),
-    extra: { homeEntryId },
-    callId: callId ?? '',
-  }
-
-  logPlaylistDebug('GENERIC_HOME', 'Module viewable items changed', {
-    moduleId,
-    moduleType,
-    index,
-    itemsCount: viewableItems.length,
-    items: viewableItems,
-    callId: callId ?? '',
-  })
-
-  setPlaylistTrackingInfo(trackingData)
-}
-
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,
+  handleViewableItemsChanged: ModuleViewableItemsChangedHandler,
   videoModuleId?: string
 ) => {
-  logPlaylistDebug('GENERIC_HOME', `Rendering module ${item.id} at index ${index}`, {
-    moduleType: item.type,
-    hasData: !!(isOffersModule(item) || isVenuesModule(item)),
-  })
-
   return (
     <HomeModule
       item={item}
@@ -233,7 +191,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const { height } = useWindowDimensions()
   const { isLoggedIn } = useAuthContext()
   const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
-  const { name } = useRoute()
 
   const triggerHasSeenEnoughHomeContent = async (screenSeenCount: ScreenSeenCount) => {
     const attributes = new BatchEventAttributes()
@@ -284,79 +241,22 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }
   }, [modules.length, isLoading, maxIndex])
 
-  useEffect(() => {
-    setViewOfferTrackingFn(analytics.logViewItem)
-  }, [])
-
-  useFocusEffect(
-    useCallback(() => {
-      if (!homeId || !name) {
-        return
-      }
-      logPlaylistDebug('GENERIC_HOME', 'Setting page tracking info', {
-        pageId: homeId,
-        pageLocation: name,
-      })
-      setPageTrackingInfo({
-        pageId: homeId,
-        pageLocation: name,
-      })
-    }, [homeId, name])
-  )
-
-  useAppStateChange(undefined, () => {
-    const state = useOfferPlaylistTrackingStore.getState()
-
-    if (state?.pageId && state?.pageLocation && state?.playlists) {
-      logPlaylistDebug('GENERIC_HOME', 'App state changed - sending playlist stats', {
-        pageId: state.pageId,
-        pageLocation: state.pageLocation,
-        playlistsCount: state.playlists.length,
-        playlists: state.playlists.map((p) => ({
-          moduleId: p.moduleId,
-          itemType: p.itemType,
-          itemsCount: p.items.length,
-          index: p.index,
-        })),
-      })
-    }
-    logViewItem(state)
+  const pageTracking = usePageTracking({
+    pageName: 'Home',
+    pageLocation: 'home',
+    pageId: homeId || 'home_unknown',
   })
 
-  useFocusEffect(
-    useCallback(() => {
-      return () => {
-        setIsLoading(false)
-        const state = useOfferPlaylistTrackingStore.getState()
-
-        if (state?.pageId && state?.pageLocation && state?.playlists) {
-          logPlaylistDebug('GENERIC_HOME', 'Focus lost - sending final playlist stats', {
-            pageId: state.pageId,
-            pageLocation: state.pageLocation,
-            playlistsCount: state.playlists.length,
-            playlists: state.playlists.map((p) => ({
-              moduleId: p.moduleId,
-              itemType: p.itemType,
-              itemsCount: p.items.length,
-              index: p.index,
-              viewedAt: p.viewedAt,
-            })),
-          })
-        }
-
-        logViewItem(state)
-
-        logPlaylistDebug('GENERIC_HOME', 'Resetting page tracking info')
-        resetPageTrackingInfo()
-      }
-    }, [])
+  // Create handler for modules with the new tracking system
+  const handleViewableItemsChanged = useMemo(
+    () => createViewableItemsHandler(pageTracking.trackViewableItems),
+    [pageTracking.trackViewableItems]
   )
 
   const renderItem = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ({ item, index }: { item: any; index: number }) =>
-      renderModule({ item, index }, homeId, videoModuleId),
-    [homeId, videoModuleId]
+    ({ item, index }: { item: HomepageModule; index: number }) =>
+      renderModule({ item, index }, homeId, handleViewableItemsChanged, videoModuleId),
+    [homeId, handleViewableItemsChanged, videoModuleId]
   )
 
   const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =

@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
+import { ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -32,6 +33,7 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -41,6 +43,31 @@ const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
+
+  const pageTracking = usePageTracking({
+    pageName: 'Venue',
+    pageLocation: 'venue',
+    pageId: params.id.toString(),
+  })
+
+  // Handler for modules with the new system
+  const handleViewableItemsChanged = React.useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+        playlistIndex,
+      })
+    },
+    [pageTracking]
+  )
+
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)
   const {
     visible: searchInVenueModalVisible,
@@ -130,6 +157,7 @@ export const Venue: FunctionComponent = () => {
             arePlaylistsLoading={arePlaylistsLoading}
             enableAccesLibre={enableAccesLibre}
             shouldDisplayVenueCalendar={shouldDisplayVenueCalendar}
+            onViewableItemsChanged={handleViewableItemsChanged}
           />
           <VenueThematicSection venue={venue} />
           <VenueMessagingApps venue={venue} />

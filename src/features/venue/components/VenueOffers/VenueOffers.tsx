@@ -1,4 +1,5 @@
 import React from 'react'
+import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
@@ -27,6 +28,12 @@ export interface VenueOffersProps {
   currency: Currency
   euroToPacificFrancRate: number
   arePlaylistsLoading: boolean
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 const LoadingState: React.FC = () => (
@@ -43,6 +50,7 @@ export function VenueOffers({
   currency,
   euroToPacificFrancRate,
   arePlaylistsLoading,
+  onViewableItemsChanged,
 }: Readonly<VenueOffersProps>) {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
@@ -86,6 +94,7 @@ export function VenueOffers({
       currency={currency}
       euroToPacificFrancRate={euroToPacificFrancRate}
       arePlaylistsLoading={arePlaylistsLoading}
+      onViewableItemsChanged={onViewableItemsChanged}
     />
   )
 }
