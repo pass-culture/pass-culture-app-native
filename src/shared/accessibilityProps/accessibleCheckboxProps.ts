@@ -10,7 +10,6 @@ export const accessibleCheckboxProps = ({
   checked?: boolean
   label?: string
   required?: boolean
-  customRequiredLabel?: string
 }) => {
   const computedLabel = required && label ? `${label} - obligatoire` : label
   const commonProps = {

@@ -19,7 +19,7 @@ export const useRenderPassPlaylist = ({
   playlist,
   venue,
 }: Readonly<
-  CinemaPlaylistPropsContainingVenue | GtlPlaylistProps
+  CinemaPlaylistPropsContainingVenue | Omit<GtlPlaylistProps, 'onViewableItemsChanged'>
 >): CustomListRenderItem<Offer> => {
   const currentRoute = useRoute<UseRouteType<typeof route>>()
   const entryId = 'entryId' in playlist ? playlist.entryId : undefined
