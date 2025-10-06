@@ -248,4 +248,21 @@ describe('adaptOffersPlaylistParameters', () => {
       isSortedByLikes: true,
     })
   })
+
+  it('should return algolia parameters for offers only with chronicles param provided', () => {
+    const parameters = {
+      isWithClub: true,
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      isWithClub: true,
+    })
+  })
 })

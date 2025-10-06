@@ -20,6 +20,7 @@ export const buildNumericFilters = (
     maxPossiblePrice,
     minBookingsThreshold,
     minLikes,
+    isWithClub,
   }: Pick<
     SearchQueryParameters,
     | 'beginningDatetime'
@@ -34,6 +35,7 @@ export const buildNumericFilters = (
     | 'minBookingsThreshold'
     | 'isHeadline'
     | 'minLikes'
+    | 'isWithClub'
   >,
   isUsedFromSearch?: boolean
 ): null | {
@@ -62,6 +64,7 @@ export const buildNumericFilters = (
   if (homepageDatePredicate) numericFilters.push(homepageDatePredicate)
   if (last30DaysBookingsPredicate) numericFilters.push(last30DaysBookingsPredicate)
   if (minLikes) numericFilters.push([`${NUMERIC_FILTERS_ENUM.OFFER_LIKES} > ${minLikes}`])
+  if (isWithClub) numericFilters.push([`${NUMERIC_FILTERS_ENUM.OFFER_CHRONICLES_COUNT} > 0`])
 
   return numericFilters.length > 0 ? { numericFilters } : null
 }

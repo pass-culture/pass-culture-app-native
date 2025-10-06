@@ -169,6 +169,7 @@ export type SearchQueryParameters = {
   objectIds?: string[]
   minLikes?: number
   isSortedByLikes?: boolean
+  isWithClub?: boolean
 }
 
 export type Geoloc = AlgoliaGeoloc

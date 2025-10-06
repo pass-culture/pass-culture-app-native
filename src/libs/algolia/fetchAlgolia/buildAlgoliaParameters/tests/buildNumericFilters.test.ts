@@ -85,4 +85,15 @@ describe('buildNumericFilters', () => {
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.likes > 100']],
     })
   })
+
+  it('should return offer with chronicles only when is with club specified', () => {
+    const numericFilters = buildNumericFilters({
+      ...defaultBuildNumericFilters,
+      isWithClub: true,
+    })
+
+    expect(numericFilters).toEqual({
+      numericFilters: [['offer.prices: 0 TO 300'], ['offer.chroniclesCount > 0']],
+    })
+  })
 })
