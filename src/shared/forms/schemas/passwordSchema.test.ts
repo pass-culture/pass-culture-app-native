@@ -41,5 +41,13 @@ describe('passwordSchema', () => {
 
       await expect(result).rejects.toEqual(new ValidationError('1 Chiffre'))
     })
+
+    it('must have less than 72 characters', async () => {
+      const value =
+        'user@AZERTYyyyy1234567890123456789012345678901234567890123456789012345678901234567890'
+      const result = passwordSchema.validate(value)
+
+      await expect(result).rejects.toEqual(new ValidationError('72 Caractères'))
+    })
   })
 })
