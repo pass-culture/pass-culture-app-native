@@ -53,7 +53,7 @@ export const BonificationNames = () => {
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>{'Quel est son nom et prénom\u00a0?'}</Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>Quel est son nom et prénom&nbsp;?</Typo.Title3>
             <InfoBanner
               icon={IdCard}
               message="Plus tu seras précis sur ces informations, plus on aura de chances de trouver la personne en question."

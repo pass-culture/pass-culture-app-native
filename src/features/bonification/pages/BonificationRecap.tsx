@@ -65,7 +65,6 @@ export const BonificationRecap = () => {
           />
         </ViewGap>
       }
-      shouldDisplayBackButton={false}
     />
   )
 }
