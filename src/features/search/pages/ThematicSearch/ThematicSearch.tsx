@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo } from 'react'
 import { Platform } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -102,7 +102,7 @@ export const ThematicSearch: React.FC = () => {
         offerCategories={offerCategories}
         placeholder={`${titles[offerCategory]}...`}
         title={titles[offerCategory]}>
-        <ScrollView>
+        <IntersectionObserverScrollView>
           <SubcategoryButtonListWrapper offerCategory={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (
             <VenuePlaylist
@@ -116,7 +116,7 @@ export const ThematicSearch: React.FC = () => {
             />
           ) : null}
           {playlistsComponent[offerCategory]}
-        </ScrollView>
+        </IntersectionObserverScrollView>
       </ThematicSearchBar>
     </StyledPage>
   )
