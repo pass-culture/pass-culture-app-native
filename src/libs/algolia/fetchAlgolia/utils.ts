@@ -1,8 +1,8 @@
 export const buildHitsPerPage = (hitsPerPage: number | null) =>
   hitsPerPage ? { hitsPerPage } : null
 
-export function parseAndCleanStringsToNumbers(allocineIdList: string[]) {
-  return allocineIdList
+export const parseAndCleanStringsToNumbers = (allocineIdList: string[]) =>
+  allocineIdList
     .map(Number)
     .filter(
       (allocineId) =>
@@ -11,4 +11,3 @@ export function parseAndCleanStringsToNumbers(allocineIdList: string[]) {
         allocineId !== Infinity &&
         allocineId !== -Infinity
     )
-}

@@ -68,18 +68,16 @@ export const useVenueOffersQuery = ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
   }
 
-  const venueOffersQueriesParamsList = [
-    venueSearchedOffersQueryParams,
-    venueTopOffersQueryParams,
-    headlineOfferQueryParams,
-  ]
-
   return useQuery({
     queryKey: [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
 
     queryFn: () =>
       fetchMultipleOffers({
-        paramsList: venueOffersQueriesParamsList,
+        paramsList: [
+          venueSearchedOffersQueryParams,
+          venueTopOffersQueryParams,
+          headlineOfferQueryParams,
+        ],
         isUserUnderage,
       }),
 

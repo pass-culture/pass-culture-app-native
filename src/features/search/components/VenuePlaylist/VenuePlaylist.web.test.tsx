@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
+import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -47,7 +48,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
           currentView="ThematicSearch"
         />
       )

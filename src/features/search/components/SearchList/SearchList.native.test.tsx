@@ -4,11 +4,13 @@ import React from 'react'
 import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { initialSearchState } from 'features/search/context/reducer'
+import * as getReconciledVenuesAPI from 'features/search/helpers/searchList/getReconciledVenues'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -31,6 +33,8 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: jest.requireActual('react-native').FlatList,
   }
 })
+
+const spiedGetReconciledVenue = jest.spyOn(getReconciledVenuesAPI, 'getReconciledVenues')
 
 describe('<SearchList />', () => {
   beforeEach(() => {
@@ -55,7 +59,7 @@ describe('<SearchList />', () => {
   }
 
   it('should renders correctly and calls renderItem', () => {
-    render(<SearchList {...props} />)
+    render(reactQueryProviderHOC(<SearchList {...props} />))
 
     expect(renderItem).toHaveBeenCalledWith({
       item: mockHits[0],
@@ -72,21 +76,23 @@ describe('<SearchList />', () => {
     beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
 
     it('should sets ItemSeparatorComponent when isGridLayout is false', () => {
-      const screen = render(<SearchList {...props} isGridLayout={false} />)
+      const screen = render(reactQueryProviderHOC(<SearchList {...props} isGridLayout={false} />))
       const searchList = screen.getByTestId('searchResultsFlashlist')
 
       expect(searchList.props.ItemSeparatorComponent).toBeDefined()
     })
 
     it('should not set ItemSeparatorComponent when isGridLayout is true', () => {
-      const screen = render(<SearchList {...props} isGridLayout />)
+      const screen = render(reactQueryProviderHOC(<SearchList {...props} isGridLayout />))
       const searchList = screen.getByTestId('searchResultsFlashlist')
 
       expect(searchList.props.ItemSeparatorComponent).toBeUndefined()
     })
 
     it('sets numColumns when isGridLayout is true', () => {
-      const screen = render(<SearchList {...props} isGridLayout numColumns={2} />)
+      const screen = render(
+        reactQueryProviderHOC(<SearchList {...props} isGridLayout numColumns={2} />)
+      )
       const searchList = screen.getByTestId('searchResultsFlashlist')
 
       // Check that the FlashList component is rendered with grid layout
@@ -95,15 +101,25 @@ describe('<SearchList />', () => {
     })
   })
 
+  describe('with ENABLE_VENUES_FROM_OFFER_INDEX FF enabled', () => {
+    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX]))
+
+    it('should call getReconciledVenues with offers and venues from algolia indexes', () => {
+      render(reactQueryProviderHOC(<SearchList {...props} isGridLayout={false} />))
+
+      expect(spiedGetReconciledVenue).toHaveBeenCalledWith(mockHits, [])
+    })
+  })
+
   it('should disable scrolling when nbHits is 0', () => {
-    const screen = render(<SearchList {...props} nbHits={0} />)
+    const screen = render(reactQueryProviderHOC(<SearchList {...props} nbHits={0} />))
     const searchList = screen.getByTestId('searchResultsFlashlist')
 
     expect(searchList.props.scrollEnabled).toBe(false)
   })
 
   it('should enable scrolling when nbHits is greater than 0', () => {
-    const screen = render(<SearchList {...props} nbHits={2} />)
+    const screen = render(reactQueryProviderHOC(<SearchList {...props} nbHits={2} />))
     const searchList = screen.getByTestId('searchResultsFlashlist')
 
     expect(searchList.props.scrollEnabled).toBe(true)
