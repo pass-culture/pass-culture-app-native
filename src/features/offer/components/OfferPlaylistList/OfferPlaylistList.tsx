@@ -115,10 +115,10 @@ export function OfferPlaylistList({
     isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
 
   const handleOfferPlaylistViewableItemsChanged = useCallback(
-    (playlistTitle: string, playlistIndex: number) =>
+    (playlistType: string, playlistIndex: number) =>
       (items: Pick<ViewToken, 'key' | 'index'>[]) => {
         if (!isFocused) return
-        onViewableItemsChanged(items, playlistTitle, 'offer', playlistIndex)
+        onViewableItemsChanged(items, playlistType, 'offer', playlistIndex)
       },
     [isFocused, onViewableItemsChanged]
   )
@@ -131,7 +131,7 @@ export function OfferPlaylistList({
         return (
           <ObservedPlaylist
             key={playlist.type}
-            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.title, index)}>
+            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}>
             {({ listRef, handleViewableItemsChanged }) => (
               <StyledPassPlaylist
                 data={playlist.offers ?? []}
