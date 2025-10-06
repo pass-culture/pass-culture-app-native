@@ -10,7 +10,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { LayoutChangeEvent, LayoutRectangle } from 'react-native'
+import { LayoutChangeEvent, LayoutRectangle, ViewToken } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -40,6 +40,7 @@ import { camelCase } from 'libs/formatter/camelCase'
 import { useLocation } from 'libs/location/location'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { LENGTH_L } from 'ui/theme'
 
 import { VenueMapView } from './VenueMapView'
@@ -54,6 +55,11 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { bottom } = useSafeAreaInsets()
   const { name: routeName } = useRoute()
+  const pageTracking = usePageTracking({
+    pageName: 'VenueMap',
+    pageLocation: 'venue_map',
+    pageId: routeName,
+  })
 
   const tabBarHeight = useContext(BottomTabBarHeightContext) ?? 0
 
@@ -234,6 +240,21 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     return venues?.filter((venue) => venue.venue_type && activeFilters.includes(venue.venue_type))
   }, [venues, activeFilters])
 
+  const handleViewableItemsChanged = useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+      })
+    },
+    [pageTracking]
+  )
+
   return initialRegion ? (
     <Container>
       <VenueMapBottomSheet
@@ -246,6 +267,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
         onAnimate={handleBottomSheetAnimation}
         onChange={setBottomSheetIndex}
         offersPlaylistType={offersPlaylistType}
+        onViewableItemsChanged={handleViewableItemsChanged}
       />
       <VenueMapView
         ref={mapViewRef}
