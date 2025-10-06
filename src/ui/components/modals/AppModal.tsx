@@ -232,6 +232,7 @@ export const AppModal: FunctionComponent<Props> = ({
       onModalHide={onModalHide}
       onSwipeComplete={onSwipe}
       swipeDirection={swipeDirection}
+      backdropTransitionOutTiming={1}
       propagateSwipe={propagateSwipe}>
       <KeyboardAvoidingViewWrapper>
         <ModalContainer
