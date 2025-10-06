@@ -157,7 +157,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
-  const modulesIntervalId = useRef<NodeJS.Timeout>()
+  const modulesIntervalId = useRef<NodeJS.Timeout>(null)
   const { zIndex } = useTheme()
 
   const flatListHeaderStyle = { zIndex: zIndex.header }
@@ -168,7 +168,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   )
 
   const scrollRef = useRef<IOFlatListController>(null)
-  useScrollToTop(scrollRef)
+  useScrollToTop(scrollRef as React.RefObject<IOFlatListController>)
 
   const scrollListenerToThrottle = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -234,8 +234,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     }, MODULES_TIMEOUT_VALUE_IN_MS)
 
     return () => {
-      clearInterval(modulesIntervalId.current)
-      modulesIntervalId.current = undefined
+      if (modulesIntervalId.current) {
+        clearInterval(modulesIntervalId.current)
+        modulesIntervalId.current = null
+      }
     }
   }, [modules.length, isLoading, maxIndex])
 
@@ -365,6 +367,7 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
+// @ts-expect-error - type incompatibility with React 19
 const FlatListContainer = styled(IntersectionObserverFlatlist<HomepageModule>)({
   overflow: 'visible',
 })

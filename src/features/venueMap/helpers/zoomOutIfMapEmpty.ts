@@ -7,7 +7,7 @@ const getIsMapEmpty = async ({
   mapViewRef,
   venues,
 }: {
-  mapViewRef: RefObject<Map>
+  mapViewRef: RefObject<Map | null>
   venues: GeolocatedVenue[]
 }) => {
   if (!mapViewRef.current) return undefined
@@ -36,7 +36,7 @@ export const zoomOutIfMapEmpty = async ({
   mapViewRef,
   venues,
 }: {
-  mapViewRef: RefObject<Map>
+  mapViewRef: RefObject<Map | null>
   venues: GeolocatedVenue[]
 }) => {
   const isMapEmpty = await getIsMapEmpty({

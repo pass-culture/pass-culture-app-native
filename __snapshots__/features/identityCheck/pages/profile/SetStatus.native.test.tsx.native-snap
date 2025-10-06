@@ -350,7 +350,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Collégien - non sélectionné"
+                accessibilityLabel="Statut - Collégien - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -407,7 +407,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Collégien - non sélectionné"
+                testID="Statut - Collégien - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -516,7 +516,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Lycéen - non sélectionné"
+                accessibilityLabel="Statut - Lycéen - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -573,7 +573,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Lycéen - non sélectionné"
+                testID="Statut - Lycéen - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -682,7 +682,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Étudiant - non sélectionné"
+                accessibilityLabel="Statut - Étudiant - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -739,7 +739,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Étudiant - non sélectionné"
+                testID="Statut - Étudiant - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -848,7 +848,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Employé - non sélectionné"
+                accessibilityLabel="Statut - Employé - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -905,7 +905,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Employé - non sélectionné"
+                testID="Statut - Employé - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1014,7 +1014,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Apprenti - non sélectionné"
+                accessibilityLabel="Statut - Apprenti - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1071,7 +1071,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Apprenti - non sélectionné"
+                testID="Statut - Apprenti - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1180,7 +1180,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Alternant - non sélectionné"
+                accessibilityLabel="Statut - Alternant - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1237,7 +1237,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Alternant - non sélectionné"
+                testID="Statut - Alternant - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1346,7 +1346,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Volontaire - En service civique - non sélectionné"
+                accessibilityLabel="Statut - Volontaire - En service civique - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1403,7 +1403,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Volontaire - En service civique - non sélectionné"
+                testID="Statut - Volontaire - En service civique - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1525,7 +1525,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Inactif - En incapacité de travailler - non sélectionné"
+                accessibilityLabel="Statut - Inactif - En incapacité de travailler - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1582,7 +1582,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Inactif - En incapacité de travailler - non sélectionné"
+                testID="Statut - Inactif - En incapacité de travailler - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1704,7 +1704,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Chômeur - En recherche d’emploi - non sélectionné"
+                accessibilityLabel="Statut - Chômeur - En recherche d’emploi - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1761,7 +1761,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Chômeur - En recherche d’emploi - non sélectionné"
+                testID="Statut - Chômeur - En recherche d’emploi - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1918,8 +1918,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "paddingBottom": 20,
-          "paddingHorizontal": 20,
+          "paddingBottom": 24,
+          "paddingHorizontal": 24,
           "paddingTop": 12,
         }
       }

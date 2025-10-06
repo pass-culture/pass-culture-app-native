@@ -44,6 +44,7 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
   return (
     <Container>
       <StyledHeader title={title} onGoBack={goBack} />
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Carousel
         vertical={false}
         height={screenHeight}

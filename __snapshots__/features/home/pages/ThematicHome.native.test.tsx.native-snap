@@ -481,6 +481,7 @@ exports[`ThematicHome should render correctly 1`] = `
       >
         <Text
           accessibilityHidden={true}
+          accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
           style={

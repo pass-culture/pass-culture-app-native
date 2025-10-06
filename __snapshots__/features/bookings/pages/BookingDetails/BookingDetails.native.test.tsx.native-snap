@@ -1286,6 +1286,7 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
       >
         <Text
           accessibilityHidden={true}
+          accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
           style={

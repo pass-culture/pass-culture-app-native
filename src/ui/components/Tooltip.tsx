@@ -4,7 +4,7 @@ import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
+import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
@@ -30,7 +30,7 @@ export const Tooltip: FunctionComponent<Props> = ({
   onCloseIconPress,
   style,
 }) => {
-  const containerRef: AnimatedRef = useRef(null)
+  const containerRef = useRef<AnimatedViewRefType>(null)
   useEffect(() => {
     if (isVisible) {
       containerRef.current?.fadeIn?.()

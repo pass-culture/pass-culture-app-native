@@ -90,7 +90,7 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
     expect(screen.getByText('S’inscrire')).toBeDisabled()
@@ -99,10 +99,10 @@ describe('<AcceptCgu/>', () => {
   it('should log analytics when pressing on signup button', async () => {
     renderAcceptCGU()
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -115,10 +115,10 @@ describe('<AcceptCgu/>', () => {
     expect(screen.queryByTestId('recaptcha-webview-modal')).not.toBeOnTheScreen()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -129,9 +129,9 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -148,9 +148,9 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU({ isSSOSubscription: false, previousMarketingData: true })
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -171,9 +171,9 @@ describe('<AcceptCgu/>', () => {
       )
     )
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
     await user.press(screen.getByText('S’inscrire'))
 
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -187,11 +187,11 @@ describe('<AcceptCgu/>', () => {
   it('should not take into account previous marketing data for SSO account in CGU page', async () => {
     renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: true })
 
-    const marketingCheckbox = await screen.findByLabelText(
-      'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
-    )
+    const marketingCheckbox = await screen.findByRole('checkbox', {
+      name: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.',
+    })
 
-    expect(marketingCheckbox.props.accessibilityState.checked).toBe(false)
+    expect(marketingCheckbox).toHaveProp('accessibilityState', { checked: false })
   })
 
   it('should display error message when API call to create user account fails', async () => {
@@ -201,9 +201,9 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -225,9 +225,9 @@ describe('<AcceptCgu/>', () => {
   it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
     renderAcceptCGU()
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -249,9 +249,9 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')

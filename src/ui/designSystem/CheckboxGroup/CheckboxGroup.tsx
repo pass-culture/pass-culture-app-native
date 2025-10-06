@@ -63,6 +63,7 @@ export const CheckboxGroup = ({
         {description ? <Description>{description}</Description> : null}
         {error ? <InputError errorMessage={error} visible /> : null}
       </Header>
+
       <CheckboxContainer variant={variant} display={display}>
         {options.map((option) => {
           const isChecked = selectedValues.includes(option.value)
@@ -75,6 +76,7 @@ export const CheckboxGroup = ({
             disabled,
             indeterminate: option.indeterminate,
             required: option.required,
+            accessibilityLabel: `${label} - ${option.label}`,
           }
 
           const computedCheckboxSizing = (() => {
@@ -108,7 +110,6 @@ export const CheckboxGroup = ({
               />
             )
           }
-
           return (
             <Checkbox
               key={option.value}

@@ -539,6 +539,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration de l’accessibilité.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -737,6 +738,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1331,6 +1333,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
       </View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -1524,6 +1527,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
       </View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -1652,6 +1656,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février 2023.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1846,6 +1851,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
       </View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -2054,6 +2060,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
       </View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",
@@ -2409,6 +2416,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         </View>
       </View>
       <Text
+        accessibilityRole="header"
         style={
           {
             "color": "#161617",

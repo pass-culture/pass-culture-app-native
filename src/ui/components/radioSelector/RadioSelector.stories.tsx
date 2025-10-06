@@ -18,13 +18,12 @@ const meta: Meta<typeof RadioSelector> = {
       },
     },
   },
-  argTypes: {
-    onPress: { control: { disable: true } },
-  },
+  argTypes: { onPress: { control: { disable: true } } },
 }
 export default meta
 
 const baseProps = {
+  radioGroupLabel: 'RadioGroupLabel',
   label: 'Lorem ipsum dolor sit amet consectetur ac.',
   description: '1 place restante',
   rightText: `35\u00a0€`,
@@ -49,10 +48,7 @@ const variantConfig: Variants<typeof RadioSelector> = [
   },
   {
     label: 'RadioSelector without right text',
-    props: {
-      ...baseProps,
-      rightText: '',
-    },
+    props: { ...baseProps, rightText: '' },
   },
 ]
 

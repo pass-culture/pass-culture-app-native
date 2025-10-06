@@ -10,7 +10,7 @@ const START_OFFSET = 1000
 const TOOLTIP_DISPLAY_DURATION = 8000
 
 export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
-  const touchableRef = React.useRef<HTMLButtonElement>()
+  const touchableRef = React.useRef<HTMLButtonElement>(null)
 
   const { isSplashScreenHidden } = useSplashScreenContext()
   const isNativeSplashScreenHidden = isSplashScreenHidden || Platform.OS === 'web'

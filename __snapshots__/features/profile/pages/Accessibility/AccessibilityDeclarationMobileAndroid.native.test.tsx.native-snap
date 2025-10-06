@@ -241,7 +241,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             l’application Android
           </Text>
            
-          version 1.348.8 du pass Culture.
+          version 1.358.2 du pass Culture.
         </Text>
       </View>
       <View
@@ -357,7 +357,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            35.42%
+            37.50%
           </Text>
            à la norme européenne EN 301 549 v.3.2.1.
         </Text>
@@ -382,7 +382,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            35.71%
+            44.19%
           </Text>
            au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
         </Text>
@@ -431,6 +431,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1533,6 +1534,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1557,6 +1559,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Aucune
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1743,6 +1746,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Cette déclaration a été établie le jeudi 31 juillet 2025.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1927,6 +1931,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",

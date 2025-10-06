@@ -22,7 +22,7 @@ describe('accessibleCheckboxProps', () => {
 
     expect(props).toMatchObject({
       accessibilityRole: AccessibilityRole.CHECKBOX,
-      accessibilityLabel: label,
+      accessibilityLabel: `${label} - obligatoire`,
       accessibilityChecked: false,
       accessibilityRequired: true,
     })

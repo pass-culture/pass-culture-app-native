@@ -125,11 +125,13 @@ export const SearchSuggestions = ({
       />
       <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
       {shouldDisplayArtistsSuggestions ? (
+        // @ts-expect-error - type incompatibility with React 19
         <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
           <Configure hitsPerPage={5} clickAnalytics />
           <AutocompleteArtist onItemPress={onArtistPress} />
         </Index>
       ) : null}
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Index indexName={currentVenuesIndex}>
         <Configure
           hitsPerPage={5}

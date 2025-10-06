@@ -74,4 +74,15 @@ describe('buildNumericFilters', () => {
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 1']],
     })
   })
+
+  it('should return the minimum likes threshold and default offer prices as filter when minimum likes threshold defined', () => {
+    const numericFilters = buildNumericFilters({
+      ...defaultBuildNumericFilters,
+      minLikes: 100,
+    })
+
+    expect(numericFilters).toEqual({
+      numericFilters: [['offer.prices: 0 TO 300'], ['offer.likes > 100']],
+    })
+  })
 })

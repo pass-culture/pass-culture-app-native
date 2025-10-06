@@ -227,7 +227,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -249,7 +249,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -270,7 +270,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -290,7 +290,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -304,7 +304,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -317,7 +317,7 @@ describe('<BookingOfferModalComponent />', () => {
         renderBookingOfferModal({ offerId: mockOffer.id })
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -336,7 +336,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -371,7 +371,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -391,7 +391,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -411,7 +411,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -441,7 +441,7 @@ describe('<BookingOfferModalComponent />', () => {
 
           await user.press(
             await screen.findByRole('checkbox', {
-              name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+              name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
             })
           )
 
@@ -473,7 +473,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 

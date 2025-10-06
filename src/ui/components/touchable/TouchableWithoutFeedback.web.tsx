@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { TouchableWithoutFeedbackProps } from 'react-native'
 import styled from 'styled-components'
 
@@ -18,10 +18,10 @@ const StyledTouchableWithoutFeedback = styled.button.attrs<TouchableWithoutFeedb
   textAlign: 'left',
 })
 
-export const TouchableWithoutFeedback: React.ForwardRefRenderFunction<
+export const TouchableWithoutFeedback = forwardRef<
   HTMLButtonElement,
   TouchableWithoutFeedbackProps
-> = ({ onPress, ...rest }) => (
+>(({ onPress, ...rest }, ref) => (
   /*
     We can't export styled.button.attrs directly,
     despite the Props type given to attrs,
@@ -29,5 +29,7 @@ export const TouchableWithoutFeedback: React.ForwardRefRenderFunction<
     Warning: Unknown event handler property `onPress`. It will be ignored.
     */
   // @ts-ignore bug with typescript
-  <StyledTouchableWithoutFeedback onClick={onPress} {...rest} />
-)
+  <StyledTouchableWithoutFeedback ref={ref} onClick={onPress} {...rest} />
+))
+
+TouchableWithoutFeedback.displayName = 'TouchableWithoutFeedback'

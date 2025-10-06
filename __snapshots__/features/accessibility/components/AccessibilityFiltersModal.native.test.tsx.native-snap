@@ -445,7 +445,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   variant="detailed"
                 >
                   <View
-                    accessibilityLabel="Handicap visuel"
+                    accessibilityLabel="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap visuel"
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
@@ -501,7 +501,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Handicap visuel"
+                    testID="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap visuel"
                   >
                     <View
                       style={
@@ -590,7 +590,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Handicap psychique ou cognitif"
+                    accessibilityLabel="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap psychique ou cognitif"
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
@@ -646,7 +646,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Handicap psychique ou cognitif"
+                    testID="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap psychique ou cognitif"
                   >
                     <View
                       style={
@@ -735,7 +735,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Handicap moteur"
+                    accessibilityLabel="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap moteur"
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
@@ -791,7 +791,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Handicap moteur"
+                    testID="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap moteur"
                   >
                     <View
                       style={
@@ -880,7 +880,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Handicap auditif"
+                    accessibilityLabel="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap auditif"
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
@@ -936,7 +936,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Handicap auditif"
+                    testID="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps - Handicap auditif"
                   >
                     <View
                       style={
