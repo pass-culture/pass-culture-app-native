@@ -1,6 +1,6 @@
+import { FlashListRef } from '@shopify/flash-list'
 import mockDate from 'mockdate'
 import React from 'react'
-import { FlatList } from 'react-native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { toMutable } from 'shared/types/toMutable'
@@ -145,7 +145,11 @@ describe('<MovieCalendar/>', () => {
 
     it('should scroll to the middle element when an item is clicked', async () => {
       const itemIndex = 5
-      renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
+      renderMovieCalendar(
+        dummyDates,
+        { isDesktopViewport: false },
+        mockFlatListRef as unknown as React.RefObject<FlashListRef<Date>>
+      )
       mockFlatListRef.current.scrollToOffset = jest.fn()
 
       const firstDateItem = await screen.findByLabelText('Mardi 23 Juillet')
@@ -160,7 +164,11 @@ describe('<MovieCalendar/>', () => {
 
     it('should scroll to the start when the offset is less than 0', async () => {
       const itemIndex = 1
-      renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
+      renderMovieCalendar(
+        dummyDates,
+        { isDesktopViewport: false },
+        mockFlatListRef as unknown as React.RefObject<FlashListRef<Date>>
+      )
       mockFlatListRef.current.scrollToOffset = jest.fn()
 
       const firstDateItem = await screen.findByLabelText('Vendredi 19 Juillet')
@@ -178,7 +186,7 @@ describe('<MovieCalendar/>', () => {
 const renderMovieCalendar = (
   dates: Date[],
   theme?: CustomRenderOptions['theme'],
-  ref = React.createRef<FlatList | null>()
+  ref = React.createRef<FlashListRef<Date> | null>()
 ) => {
   const MovieCalendarWrapper = () => {
     return (
@@ -186,8 +194,8 @@ const renderMovieCalendar = (
         dates={dates}
         selectedDate={dates[0]}
         onTabChange={mockOnTabChange}
-        flatListRef={ref}
-        flatListWidth={DEFAULT_FLATLIST_WIDTH}
+        listRef={ref}
+        listWidth={DEFAULT_FLATLIST_WIDTH}
         onFlatListLayout={jest.fn()}
         itemWidth={DEFAULT_ITEM_WIDTH}
         onItemLayout={jest.fn()}
