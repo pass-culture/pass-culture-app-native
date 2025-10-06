@@ -14,6 +14,7 @@ type Props = {
 }
 
 export const PASSWORD_MIN_LENGTH = 12
+export const PASSWORD_MAX_LENGTH = 72
 export const CAPITAL_REGEX = /[A-Z]+/
 export const LOWERCASE_REGEX = /[a-z]+/
 export const NUMBER_REGEX = /[0-9]+/
