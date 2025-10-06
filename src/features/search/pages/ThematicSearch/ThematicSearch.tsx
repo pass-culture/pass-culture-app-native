@@ -1,6 +1,6 @@
-import { useRoute } from '@react-navigation/native'
+import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo } from 'react'
-import { Platform } from 'react-native'
+import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -23,6 +23,8 @@ import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShoul
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Page } from 'ui/pages/Page'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -95,16 +97,6 @@ export const ThematicSearch: React.FC = () => {
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories[0]
 
-  if (!offerCategory) return null
-
-  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
-    [SearchGroupNameEnumv2.LIVRES]: <BookPlaylists />,
-    [SearchGroupNameEnumv2.CINEMA]: <CinemaPlaylists />,
-    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: <FilmsPlaylists />,
-    [SearchGroupNameEnumv2.MUSIQUE]: <MusicPlaylists />,
-    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: <ConcertsAndFestivalsPlaylists />,
-  }
-
   const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0
 
@@ -121,6 +113,41 @@ export const ThematicSearch: React.FC = () => {
     },
     [handleTrackViewableItems, isFocused, venuePlaylistTitle]
   )
+
+  if (!offerCategory) return null
+
+  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
+    [SearchGroupNameEnumv2.LIVRES]: (
+      <BookPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.CINEMA]: (
+      <CinemaPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: (
+      <FilmsPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.MUSIQUE]: (
+      <MusicPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: (
+      <ConcertsAndFestivalsPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+  }
 
   const searchGroupWithGtlPlaylist = getShouldDisplayGtlPlaylist({
     searchGroup: offerCategory,
@@ -139,17 +166,17 @@ export const ThematicSearch: React.FC = () => {
           {shouldDisplayVenuesPlaylist ? (
             <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
               {({ listRef, handleViewableItemsChanged }) => (
-            <VenuePlaylist
-              venuePlaylistTitle={venuePlaylistTitle}
-              venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-              isLocated={isLocated}
-              currentView={currentView}
-              offerCategory={offerCategory}
-              shouldDisplaySeparator={false}
-              searchGroup={searchGroupWithGtlPlaylist}
+                <VenuePlaylist
+                  venuePlaylistTitle={venuePlaylistTitle}
+                  venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+                  isLocated={isLocated}
+                  currentView={currentView}
+                  offerCategory={offerCategory}
+                  shouldDisplaySeparator={false}
+                  searchGroup={searchGroupWithGtlPlaylist}
                   playlistRef={listRef}
                   onViewableItemsChanged={handleViewableItemsChanged}
-            />
+                />
               )}
             </ObservedPlaylist>
           ) : null}
