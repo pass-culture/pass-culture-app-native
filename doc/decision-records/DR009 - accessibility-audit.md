@@ -334,6 +334,46 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 
 <details>
 
+<summary> 🟠 Critère 8.6 - Dans chaque écran, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</summary>
+
+**RAAM** : [Critère 8.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
+**Ticket** : [PC-37486](https://passculture.atlassian.net/browse/PC-37486)  
+**PR** : [#8753](https://github.com/pass-culture/pass-culture-app-native/pull/8753)
+
+**Problème** 😱  
+
+- **(E02)** Le bouton de menu actif dans la navigation en bas d'écran n'a pas de mention "actif/non actif" accessible aux lecteurs d'écrans.
+
+- **(E08)** Le toggle de localisation n'a pas de mention "coché/non coché" accessible aux lecteurs d'écrans.
+
+- **(E11)** Dans la liste des obligations pour la conception du mot de passe, les coches n'ont pas de mention "validé / invalidé" accessible aux lecteurs d'écrans. 
+
+- **(E14)** Les tabs liste / grille n'ont pas d'indication de sélection accessible aux lecteurs d'écrans.
+
+- **(E15)** Les indications "accessible / non accessible" du bloc d'accessibilité des offres et lieux ne sont pas accessibles aux lecteurs d'écrans.
+
+
+**Correction** 💡  
+
+- **(E02)** Ajout de la mention "actif/incactif" sur les boutons du menu de navigation via l'`accessibilityLabel`.
+
+- **(E08)** Ajout de la mention "coché/non coché" sur tous les toggles via l'`accessibilityLabel`. 
+
+- **(E11)** Ajout de la mention "validé/invalidé" sur les critères du mot de passe via l'`accessibilityLabel`. 
+
+- **(E14)** Ajout de la mention "actif/incatif" sur les tabs de la recherche via l'`accessibilityLabel`.
+
+- **(E15)** Ajout de la mention "accessible/inaccessible" sur les critères d'accessibilité via l'`accessibilityLabel`.
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 9.3 - Chaque étiquette associée à un champ de formulaire est-elle pertinente?</summary>
 
 **RAAM** : [Critère 9.3](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-3)  
