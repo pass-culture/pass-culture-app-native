@@ -27,13 +27,13 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Réglages des cookies'
 - assertVisible: 'Je choisis mes cookies'
 - tapOn:
-    id: 'Interrupteur Personnaliser ta navigation'
+    id: 'Personnaliser ta navigation - Interrupteur à bascule - non coché'
 - assertVisible:
-    id: Interrupteur Personnaliser ta navigation
+    id: 'Personnaliser ta navigation - Interrupteur à bascule - coché'
     enabled: true
 - tapOn:
-    id: 'Interrupteur Enregistrer des statistiques de navigation'
+    id: 'Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché'
 - assertVisible:
-    id: 'Interrupteur Enregistrer des statistiques de navigation'
+    id: 'Enregistrer des statistiques de navigation - Interrupteur à bascule - coché'
     enabled: true
 - tapOn: 'Enregistrer mes choix'

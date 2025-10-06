@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertNotVisible: 'Mes réservations'
-- tapOn: 'Mes favoris'
+- tapOn: 'Mes favoris.*'
 
 - assertVisible: 'Identifie-toi pour retrouver tes favoris'
 - assertVisible:

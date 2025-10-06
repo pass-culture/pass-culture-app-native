@@ -19,10 +19,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
-    - tapOn: "Revenir en arrière"
-    - scrollUntilVisible:
-        element: 'Partager le pass Culture'
+      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: 'Revenir en arrière'
+      - scrollUntilVisible:
+          element: 'Partager le pass Culture'
 
 - runFlow: # Fallback si problème de retour
     when:
@@ -42,10 +42,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
-    - tapOn: "Revenir en arrière"
-    - scrollUntilVisible:
-        element: 'Partager le pass Culture'
+      - tapOn: 'Revenir à pass Culture S'
+      - tapOn: 'Revenir en arrière'
+      - scrollUntilVisible:
+          element: 'Partager le pass Culture'
 
 - runFlow:
     when:
@@ -56,5 +56,4 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Bonjour Test-e2e.*'
     commands:
-      - tapOn:
-          id: 'Mon profil'
+      - tapOn: 'Mon profil.*'

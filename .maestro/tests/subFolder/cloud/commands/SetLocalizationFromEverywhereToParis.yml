@@ -4,8 +4,8 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'France entière'
     commands:
-      - tapOn: 'France entière'
-      - tapOn: 'Choisir une localisation'
+      - tapOn: 'France entière.*'
+      - tapOn: 'Choisir une localisation.*'
       - inputText: 'Paris'
       - hideKeyboard
       - tapOn: 'Paris Paris'

@@ -25,7 +25,7 @@ onFlowStart:
 - tapOn: '.*Voir tous les filtres.*'
 - tapOn: 'Duo'
 - tapOn:
-    id: 'Interrupteur limitDuoOfferSearch'
+    id: 'Uniquement les offres duo - Interrupteur à bascule - non coché'
 - tapOn: 'Appliquer le filtre'
 
 - tapOn: 'Dates'
