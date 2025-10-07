@@ -5,12 +5,14 @@ import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 interface OfferImageCarouselItemProps {
   index: number
   imageDimensions: OfferImageContainerDimensions
   imageURL?: string
+  imageCredit?: string
   onPress?: (index: number) => void
   isInCarousel?: boolean
   onLoad?: (event: OnLoadEvent) => void
@@ -18,22 +20,29 @@ interface OfferImageCarouselItemProps {
 export const OfferImageCarouselItem = ({
   index,
   imageDimensions,
-  onPress,
   imageURL,
+  imageCredit,
+  onPress,
   onLoad,
   isInCarousel = false,
   children,
 }: PropsWithChildren<OfferImageCarouselItemProps>) => {
   const numberOfIllustration = index + 1
-  const accessibilityLabel =
+  const accessibilityLabelBase =
     numberOfIllustration > 1
       ? `Voir le carousel de ${numberOfIllustration} illustrations en plein écran`
       : 'Voir l’illustration en plein écran'
+
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    accessibilityLabelBase,
+    imageCredit
+  )
+
   return (
     <TouchableOpacity
       disabled={!onPress}
       onPress={() => onPress?.(index)}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={computedAccessibilityLabel}
       accessibilityRole={AccessibilityRole.BUTTON}
       delayPressIn={70}>
       <OfferImageWrapper
