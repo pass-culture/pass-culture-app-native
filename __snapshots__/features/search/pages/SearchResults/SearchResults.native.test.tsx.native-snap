@@ -272,7 +272,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         contentContainerStyle={
           {
             "marginBottom": 8,
-            "paddingHorizontal": 20,
+            "paddingHorizontal": 16,
           }
         }
         horizontal={true}
@@ -2279,7 +2279,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           "alignSelf": "center",
           "bottom": 88,
           "position": "absolute",
-          "right": 28,
+          "right": 24,
           "zIndex": 1,
         }
       }
