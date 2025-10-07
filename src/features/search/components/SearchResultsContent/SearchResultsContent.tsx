@@ -464,7 +464,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           })}
           contentContainerStyle={{
             marginBottom: designSystem.size.spacing.s,
-            paddingHorizontal: designSystem.size.spacing.xs + designSystem.size.spacing.l,
+            paddingHorizontal: designSystem.size.spacing.l,
           }}>
           <StyledLi>
             <FilterButton
@@ -570,7 +570,7 @@ const StyledLi = styled(Li)(({ theme }) => ({
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  right: theme.designSystem.size.spacing.xs + theme.designSystem.size.spacing.xl,
+  right: theme.designSystem.size.spacing.xl,
   bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))
