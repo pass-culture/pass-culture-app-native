@@ -2,16 +2,16 @@ import { FlashListRef } from '@shopify/flash-list'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, LayoutChangeEvent, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
-type UseFlatListScrollArgs = {
-  ref: React.RefObject<FlatList | FlashListRef<unknown> | null>
+type UseFlatListScrollArgs<T = unknown> = {
+  ref: React.Ref<FlatList<T> | FlashListRef<T>> | null
   scrollRatio?: number
   isActive?: boolean
 }
-export const useHorizontalFlatListScroll = ({
+export const useHorizontalFlatListScroll = <T = unknown>({
   ref,
   scrollRatio = 1,
   isActive = true,
-}: UseFlatListScrollArgs) => {
+}: UseFlatListScrollArgs<T>) => {
   const [containerWidth, setContainerWidth] = useState<number>(0)
   const [contentWidth, setContentWidth] = useState<number>(0)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
@@ -56,12 +56,16 @@ export const useHorizontalFlatListScroll = ({
 
   const handleScrollNext = useCallback(() => {
     const nextOffset = scrollPosition + containerWidth * scrollRatio
-    ref.current?.scrollToOffset({ offset: nextOffset, animated: true })
+    if (ref && 'current' in ref) {
+      ref.current?.scrollToOffset({ offset: nextOffset, animated: true })
+    }
   }, [containerWidth, ref, scrollPosition, scrollRatio])
 
   const handleScrollPrevious = useCallback(() => {
     const prevOffset = Math.max(scrollPosition - containerWidth * scrollRatio, 0)
-    ref.current?.scrollToOffset({ offset: prevOffset, animated: true })
+    if (ref && 'current' in ref) {
+      ref.current?.scrollToOffset({ offset: prevOffset, animated: true })
+    }
   }, [containerWidth, ref, scrollPosition, scrollRatio])
 
   return {

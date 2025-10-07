@@ -1,6 +1,7 @@
+import { FlashList, FlashListRef } from '@shopify/flash-list'
 import { differenceInCalendarDays } from 'date-fns'
-import React, { useCallback } from 'react'
-import { FlatList, LayoutChangeEvent, View } from 'react-native'
+import React, { Ref, useCallback } from 'react'
+import { LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -19,9 +20,9 @@ type Props = {
   dates: Date[]
   selectedDate: Date | undefined
   onTabChange: (date: Date) => void
-  flatListRef: React.MutableRefObject<FlatList | null>
+  listRef: Ref<FlashListRef<Date>> | null
   disabledDates?: Date[]
-  flatListWidth?: number
+  listWidth?: number
   onFlatListLayout?: (event: LayoutChangeEvent) => void
   itemWidth?: number
   onItemLayout?: (event: LayoutChangeEvent) => void
@@ -31,8 +32,8 @@ export const MovieCalendar: React.FC<Props> = ({
   dates,
   selectedDate,
   onTabChange,
-  flatListRef,
-  flatListWidth,
+  listRef,
+  listWidth,
   onFlatListLayout,
   itemWidth,
   onItemLayout,
@@ -47,19 +48,24 @@ export const MovieCalendar: React.FC<Props> = ({
     onContainerLayout,
     isEnd,
     isStart,
-  } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
+  } = useHorizontalFlatListScroll({
+    ref: listRef,
+    isActive: isDesktopViewport,
+  })
 
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
-      if (!flatListWidth || !itemWidth) return
-      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
+      if (!listWidth || !itemWidth) return
+      const { offset } = handleMovieCalendarScroll(currentIndex, listWidth, itemWidth)
 
-      flatListRef.current?.scrollToOffset({
-        animated: true,
-        offset,
-      })
+      if (listRef && 'current' in listRef) {
+        listRef.current?.scrollToOffset({
+          animated: true,
+          offset,
+        })
+      }
     },
-    [flatListRef, flatListWidth, itemWidth]
+    [listRef, listWidth, itemWidth]
   )
 
   const onInternalTabChange = useCallback(
@@ -82,9 +88,9 @@ export const MovieCalendar: React.FC<Props> = ({
         />
       ) : null}
       <View>
-        <FlatList
+        <FlashList
           onLayout={onFlatListLayout}
-          ref={flatListRef}
+          ref={listRef}
           data={dates}
           horizontal
           contentContainerStyle={contentContainerStyle}
