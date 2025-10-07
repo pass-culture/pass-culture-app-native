@@ -921,6 +921,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           }
           onEndReached={[Function]}
           onScroll={[Function]}
+          onViewableItemsChanged={[Function]}
           refreshControl={
             <RefreshControlMock
               onRefresh={
