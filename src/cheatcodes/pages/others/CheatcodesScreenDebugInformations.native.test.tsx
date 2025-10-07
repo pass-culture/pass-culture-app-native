@@ -18,28 +18,36 @@ beforeAll(() => {
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('@hot-updater/react-native', () => ({
+  HotUpdater: {
+    checkForUpdate: jest.fn(),
+    getBundleId: jest.fn(() => '0199a453-9467-7933-b6d7-6b1020cb5b25'),
+    getChannel: jest.fn(() => 'production'),
+    getAppVersion: jest.fn(() => '1.0.0'),
+    reload: jest.fn(),
+    runUpdateProcess: jest.fn(),
+  },
+}))
 
-describe.skip('<CheatcodesScreenDebugInformations/>', () => {
-  it('should display code push button for testing environment', async () => {
+describe('<CheatcodesScreenDebugInformations/>', () => {
+  it('should display hot updater button for testing environment', async () => {
     env.ENV = 'testing'
     renderCheatCodes()
 
-    await screen.findByText('CheatCodes')
+    await screen.findByText('HOT UPDATER')
 
-    expect(screen.getByText('Check update')).toBeOnTheScreen()
+    expect(screen.getByText('Check for App Update')).toBeOnTheScreen()
   })
 
-  it.each`
-    environment
-    ${'staging'}
-    ${'production'}
-  `('should not display code push button for $environment environment', async ({ environment }) => {
-    env.ENV = environment
+  it('should display hot updater infos for testing environment', async () => {
+    env.ENV = 'testing'
     renderCheatCodes()
 
-    await screen.findByText('CheatCodes')
+    await screen.findByText('HOT UPDATER')
 
-    expect(screen.queryByText('Check update')).not.toBeOnTheScreen()
+    expect(screen.getByText('Bundle ID: 0199a453-9467-7933-b6d7-6b1020cb5b25')).toBeOnTheScreen()
+    expect(screen.getByText('Channel: production')).toBeOnTheScreen()
+    expect(screen.getByText('App Version: 1.0.0')).toBeOnTheScreen()
   })
 
   it('should call installationID and display it', async () => {
