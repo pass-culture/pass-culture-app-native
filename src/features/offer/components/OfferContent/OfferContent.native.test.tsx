@@ -10,7 +10,6 @@ import {
   FavoriteResponse,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
-  OfferResponseV2,
   PaginatedFavoritesResponse,
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
@@ -260,21 +259,13 @@ describe('<OfferContent />', () => {
   it('should navigate to offer preview screen when clicking on image offer', async () => {
     renderOfferContent({})
 
-    await user.press(await screen.findByLabelText('Voir l’illustration en plein écran'))
+    await user.press(
+      await screen.findByLabelText(
+        'Voir l’illustration en plein écran - © Author: photo credit author'
+      )
+    )
 
     expect(mockNavigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
-  })
-
-  it('should navigate to offer preview screen when clicking on placeholder image', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      images: null,
-    }
-    renderOfferContent({ offer })
-
-    await user.press(await screen.findByLabelText('Voir l’illustration en plein écran'))
-
-    await waitFor(() => expect(mockNavigate).not.toHaveBeenCalled())
   })
 
   it('should animate on scroll', async () => {

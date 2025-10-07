@@ -52,7 +52,9 @@ describe('<VenueBanner />', () => {
       />
     )
 
-    await user.press(screen.getByTestId('venueImage'))
+    await user.press(
+      screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo')
+    )
 
     expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
   })
@@ -66,7 +68,9 @@ describe('<VenueBanner />', () => {
       />
     )
 
-    await user.press(screen.getByTestId('venueImageWithGoogleWatermark'))
+    await user.press(
+      screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo')
+    )
 
     expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
   })

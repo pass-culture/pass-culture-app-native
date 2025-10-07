@@ -32,7 +32,7 @@ describe('<VenueTopComponent />', () => {
       { theme: { isDesktopViewport: true } }
     )
 
-    fireEvent.click(screen.getByTestId('venueImage'))
+    fireEvent.click(screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo'))
 
     expect(await screen.findByTestId('fullscreenModalView')).toBeInTheDocument()
     expect(screen.getByLabelText('Image 1')).toBeInTheDocument()
@@ -52,7 +52,7 @@ describe('<VenueTopComponent />', () => {
       { theme: { isDesktopViewport: false } }
     )
 
-    fireEvent.click(screen.getByTestId('venueImage'))
+    fireEvent.click(screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo'))
 
     expect(screen.queryByTestId('fullscreenModalView')).not.toBeInTheDocument()
   })

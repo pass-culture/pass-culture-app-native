@@ -118,7 +118,9 @@ describe('<VenueTopComponent />', () => {
       bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
     })
 
-    await user.press(screen.getByTestId('venueImage'))
+    await user.press(
+      screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo')
+    )
 
     expect(navigate).toHaveBeenCalledWith('VenuePreviewCarousel', {
       id: venueOpenToPublic.id,

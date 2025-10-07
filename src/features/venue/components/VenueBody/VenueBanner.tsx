@@ -6,7 +6,9 @@ import styled, { useTheme } from 'styled-components/native'
 import { BannerMetaModel } from 'api/gen'
 import { GOOGLE_LOGO } from 'features/venue/components/VenueBody/GoogleLogo'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Image } from 'libs/resizing-image-on-demand/Image'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
@@ -23,13 +25,19 @@ type Props = {
 
 export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bannerMeta }) => {
   const backgroundStyle = useVenueBackgroundStyle()
-  const { isMobileViewport } = useTheme()
+  const { isMobileViewport, designSystem } = useTheme()
   const { is_from_google: isFromGoogle, image_credit: imageCredit } = bannerMeta ?? {
     is_from_google: null,
     image_credit: null,
   }
   const hasGoogleCredit = isFromGoogle && imageCredit
-  const defaultMarginBottom = isMobileViewport ? getSpacing(6) : undefined
+  const defaultMarginBottom = isMobileViewport ? designSystem.size.spacing.xl : undefined
+
+  const currentCreditText = imageCredit ? `© ${imageCredit}` : undefined
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    'Voir l’illustration en plein écran',
+    currentCreditText
+  )
 
   return (
     <HeaderContainer hasGoogleCredit={!!hasGoogleCredit} defaultMarginBottom={defaultMarginBottom}>
@@ -37,10 +45,11 @@ export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bann
         <ViewGap gap={1}>
           <GoogleWatermarkWrapper
             withGoogleWatermark={!!isFromGoogle}
-            handleImagePress={handleImagePress}>
+            handleImagePress={handleImagePress}
+            accessibilityLabel={computedAccessibilityLabel}>
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           </GoogleWatermarkWrapper>
-          {hasGoogleCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
+          {hasGoogleCredit ? <CopyrightText>{currentCreditText}</CopyrightText> : null}
         </ViewGap>
       ) : (
         <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
@@ -64,20 +73,29 @@ const HeaderContainer = styled.View<{ hasGoogleCredit: boolean; defaultMarginBot
 
 const GoogleWatermarkWrapper = ({
   withGoogleWatermark,
+  accessibilityLabel,
   handleImagePress,
   children,
 }: PropsWithChildren<{
   withGoogleWatermark: boolean
+  accessibilityLabel?: string
   handleImagePress?: VoidFunction
 }>) =>
   withGoogleWatermark ? (
-    <TouchableOpacity onPress={handleImagePress} testID="venueImageWithGoogleWatermark ">
+    <TouchableOpacity
+      onPress={handleImagePress}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole={AccessibilityRole.BUTTON}>
       {children}
       <StyledLinearGradient />
       <GoogleLogo source={GOOGLE_LOGO} testID="googleWatermark" />
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity onPress={handleImagePress} testID="venueImage">
+    <TouchableOpacity
+      onPress={handleImagePress}
+      testID="venueImage"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole={AccessibilityRole.BUTTON}>
       {children}
     </TouchableOpacity>
   )
