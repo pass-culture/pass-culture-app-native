@@ -7,7 +7,5 @@
  *  => "Title - Subtitle - Credit"
  */
 export function getComputedAccessibilityLabel(...parts: (string | undefined | null)[]): string {
-  return parts
-    .filter((part): part is string => Boolean(part && part.trim())) // keep only non-empty strings
-    .join(' - ')
+  return parts.filter((part) => part?.trim()).join(' - ')
 }
