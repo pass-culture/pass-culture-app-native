@@ -254,6 +254,33 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <details>
 
+<summary> 🟠 Critère 1.9 - Chaque élément graphique légendé est-il correctement restitué par les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 1.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-9)  
+**Ticket** : [PC-37464](https://passculture.atlassian.net/browse/PC-37464)  
+**PR** : [#8762](https://github.com/pass-culture/pass-culture-app-native/pull/8762)
+
+**Problème** 😱  
+
+- **(E09)** La légende du copyright de l'illustration du lieu n'est pas reliée correctement à l’image qu’elle décrit car le bouton n'est pas focusable aux lecteurs d'écrans.
+
+- **(E15)** La légende du copyright de l'affiche du film n'est pas reliée correctement à l’image qu’elle décrit.
+
+**Correction** 💡  
+
+- **(E09)** Ajout de la légende du copyright de l'illustration du lieu directement dans l'`accessibilityLabel` du bouton de l'image.
+
+- **(E15)** Ajout de la légende du copyright de l'affiche du film directement dans l'`accessibilityLabel` du bouton de l'image.
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
 
 **RAAM** : [Critère 7.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-1)  
