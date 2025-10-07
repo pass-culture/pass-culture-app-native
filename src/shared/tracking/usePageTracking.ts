@@ -9,7 +9,7 @@
  */
 
 import { useFocusEffect } from '@react-navigation/native'
-import { useRef, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -18,7 +18,7 @@ import { setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 
 import { AppLifecycleManager } from './AppLifecycleManager'
 import { TrackingLogger } from './TrackingLogger'
-import { TrackingManager, TrackingData } from './TrackingManager'
+import { TrackingData, TrackingManager } from './TrackingManager'
 
 interface UsePageTrackingConfig {
   /**
@@ -50,6 +50,7 @@ interface TrackingHandlers {
     extra?: Record<string, string | undefined>
     artistId?: string
     playlistIndex?: number
+    searchId?: string
   }) => void
 
   /**
@@ -148,6 +149,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
       extra?: Record<string, string | undefined>
       artistId?: string
       playlistIndex?: number
+      searchId?: string
     }) => {
       const {
         moduleId,
@@ -157,6 +159,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
         extra,
         artistId,
         playlistIndex,
+        searchId,
       } = params
 
       if (!moduleId || !viewableItems.length) {
@@ -180,6 +183,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
         })),
         extra,
         ...(artistId ? { artistId } : {}),
+        ...(searchId ? { searchId } : {}),
       }
 
       try {
@@ -202,6 +206,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
         callId: callId || 'empty',
         hasExtra: !!extra,
         hasArtistId: !!artistId,
+        hasSearchId: !!searchId,
       })
     },
     [pageId, config.pageName]
@@ -255,8 +260,10 @@ export function createViewableItemsHandler(
     homeEntryId?: string
     callId?: string
     artistId?: string
+    searchId?: string
   }) => {
-    const { index, moduleId, moduleType, viewableItems, homeEntryId, callId, artistId } = params
+    const { index, moduleId, moduleType, viewableItems, homeEntryId, callId, artistId, searchId } =
+      params
 
     // Infer itemType from moduleType if possible
     const itemType = inferItemTypeFromModuleType(moduleType)
@@ -273,6 +280,7 @@ export function createViewableItemsHandler(
       extra: Object.keys(extra).length > 0 ? extra : undefined,
       artistId,
       playlistIndex: index,
+      searchId,
     })
   }
 }
