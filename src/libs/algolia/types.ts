@@ -61,19 +61,38 @@ export interface AlgoliaGeoloc {
   lng?: number | null
 }
 
-export interface AlgoliaOffer<T = HitOffer> {
+export type AlgoliaVenueOffer = {
+  id?: number
+  name?: string
+  publicName?: string
+  address?: string
+  city?: string
+  postalCode?: string
+  departmentCode?: string
+  banner_url?: string
+  isAudioDisabilityCompliant?: boolean
+  isMentalDisabilityCompliant?: boolean
+  isMotorDisabilityCompliant?: boolean
+  isVisualDisabilityCompliant?: boolean
+  isPermanent?: boolean
+  venue_type?: string
+}
+
+export type AlgoliaVenueOfferListItem = {
+  objectID: string
+  _geoloc: Geoloc
+  banner_url: string
+  venue_type: string
+  name: string
+  city: string
+  postalCode: string
+}
+
+export type AlgoliaOffer<T = HitOffer> = {
   offer: T
   _geoloc: Geoloc
   objectID: string
-  venue: {
-    departmentCode?: string
-    id?: number
-    name?: string
-    publicName?: string
-    address?: string
-    postalCode?: string
-    city?: string
-  }
+  venue: AlgoliaVenueOffer
   artists?: Artist[]
   _tags?: string[]
 }
@@ -169,6 +188,7 @@ export type SearchQueryParameters = {
   objectIds?: string[]
   minLikes?: number
   isSortedByLikes?: boolean
+  isWithClub?: boolean
 }
 
 export type Geoloc = AlgoliaGeoloc

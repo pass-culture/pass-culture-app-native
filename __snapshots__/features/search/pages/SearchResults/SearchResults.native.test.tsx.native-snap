@@ -1315,6 +1315,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 1",
                         "postalCode": "75000",
                         "publicName": "Lieu 1",
+                        "venue_type": "BOOKSTORE",
                       },
                     }
                   }
@@ -1361,6 +1362,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1648,6 +1650,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1686,6 +1689,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1965,6 +1969,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }

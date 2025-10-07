@@ -1,5 +1,6 @@
 import { Hit } from '@algolia/client-search'
-import React from 'react'
+import React, { Ref } from 'react'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
@@ -15,12 +16,19 @@ export interface ThematicSearchPlaylist {
   playlist: ThematicSearchPlaylistData
   analyticsFrom: Referrals
   route: Extract<ScreenNames, 'ThematicSearch'>
+  playlistRef?: Ref<FlatList>
+  onViewableItemsChanged?: (info: {
+    viewableItems: ViewToken<unknown>[]
+    changed: ViewToken<unknown>[]
+  }) => void
 }
 
 export function ThematicSearchPlaylist({
   playlist,
   analyticsFrom,
   route,
+  playlistRef,
+  onViewableItemsChanged,
 }: Readonly<ThematicSearchPlaylist>) {
   const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist })
   return (
@@ -33,6 +41,8 @@ export function ThematicSearchPlaylist({
       title={playlist.title}
       noMarginBottom
       FlatListComponent={FlatList}
+      playlistRef={playlistRef}
+      onViewableItemsChanged={onViewableItemsChanged}
     />
   )
 }

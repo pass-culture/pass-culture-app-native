@@ -217,7 +217,12 @@ describe('BookHourChoice when there are several stocks', () => {
 
     await user.press(screen.getByText('22h00'))
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SELECT_HOUR',
+      payload: '2023-04-01T20:00:00Z',
+    })
+
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SELECT_STOCK',
       payload: 18758,
     })

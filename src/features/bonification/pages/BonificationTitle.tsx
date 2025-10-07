@@ -1,0 +1,72 @@
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
+import React, { useState } from 'react'
+import { styled } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
+
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+enum FormValues {
+  MADAM = 'Madame',
+  MISTER = 'Monsieur',
+}
+
+export const BonificationTitle = () => {
+  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+
+  const titleID = uuidv4()
+  const titleLabel = 'Civilité'
+  const [title, setTitle] = useState<FormValues | null>(null)
+  const disabled = !title
+
+  const saveTitleAndNavigate = () => {
+    navigate('BonificationBirthDate')
+  }
+  return (
+    <PageWithHeader
+      title="Informations Personnelles"
+      scrollChildren={
+        <React.Fragment>
+          <Typo.Title3 {...getHeadingAttrs(2)}>{'Quelle est sa civilité\u00a0?'}</Typo.Title3>
+          <SelectorContainer
+            gap={5}
+            accessibilityRole={AccessibilityRole.RADIOGROUP}
+            accessibilityLabelledBy={titleID}>
+            <RadioSelector
+              radioGroupLabel={titleLabel}
+              label="Madame"
+              checked={title === FormValues.MADAM}
+              onPress={() => setTitle(FormValues.MADAM)}
+            />
+            <RadioSelector
+              radioGroupLabel={titleLabel}
+              label="Monsieur"
+              checked={title === FormValues.MISTER}
+              onPress={() => setTitle(FormValues.MISTER)}
+            />
+          </SelectorContainer>
+        </React.Fragment>
+      }
+      fixedBottomChildren={
+        <ButtonPrimary
+          type="submit"
+          wording="Continuer"
+          accessibilityLabel="Continuer vers la date de naissance"
+          onPress={saveTitleAndNavigate}
+          disabled={disabled}
+        />
+      }
+    />
+  )
+}
+
+const SelectorContainer = styled(ViewGap)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
