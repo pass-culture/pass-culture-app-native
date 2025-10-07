@@ -36,7 +36,7 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
-import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -424,8 +424,9 @@ export const RootNavigator: React.ComponentType = () => {
 
   const initialScreen = useInitialScreen()
 
-  const currentRoute = useCurrentRoute()
-  const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
+  const currentRoute = navigationRef.getCurrentRoute()
+  // const currentRoute = useCurrentRoute()
+  const showHeaderQuickAccess = currentRoute?.name === ('TabNavigator' as string)
   const headerWithQuickAccess = showHeaderQuickAccess ? (
     <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
   ) : null
@@ -446,8 +447,9 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
-  const mainAccessibilityRole: AccessibilityRole | undefined =
-    determineAccessibilityRole(currentRoute)
+  const mainAccessibilityRole: AccessibilityRole | undefined = determineAccessibilityRole(
+    currentRoute || null
+  )
 
   return (
     <TabNavigationStateProvider>
