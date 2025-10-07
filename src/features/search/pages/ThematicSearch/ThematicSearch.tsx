@@ -1,7 +1,7 @@
-import { useRoute } from '@react-navigation/native'
+import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo } from 'react'
-import { Platform } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { Platform, ViewToken } from 'react-native'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -23,6 +23,8 @@ import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShoul
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Page } from 'ui/pages/Page'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -46,6 +48,30 @@ export const ThematicSearch: React.FC = () => {
   } = useSearchResults()
 
   const { searchState, dispatch } = useSearch()
+  const isFocused = useIsFocused()
+
+  const pageTracking = usePageTracking({
+    pageName: 'ThematicSearch',
+    pageLocation: 'thematicsearch',
+  })
+
+  // Handler for modules with the new system
+  const handleTrackViewableItems = React.useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+        playlistIndex,
+      })
+    },
+    [pageTracking]
+  )
 
   const shouldDisplayVenuesPlaylist = !searchState.venue && !!venues?.length
 
@@ -71,16 +97,6 @@ export const ThematicSearch: React.FC = () => {
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
   const offerCategory = offerCategories[0]
 
-  if (!offerCategory) return null
-
-  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
-    [SearchGroupNameEnumv2.LIVRES]: <BookPlaylists />,
-    [SearchGroupNameEnumv2.CINEMA]: <CinemaPlaylists />,
-    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: <FilmsPlaylists />,
-    [SearchGroupNameEnumv2.MUSIQUE]: <MusicPlaylists />,
-    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: <ConcertsAndFestivalsPlaylists />,
-  }
-
   const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0
 
@@ -89,6 +105,49 @@ export const ThematicSearch: React.FC = () => {
     venuesUserData?.[0]?.venue_playlist_title,
     isLocated
   )
+
+  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
+      handleTrackViewableItems(items, venuePlaylistTitle, 'venue', 0)
+    },
+    [handleTrackViewableItems, isFocused, venuePlaylistTitle]
+  )
+
+  if (!offerCategory) return null
+
+  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
+    [SearchGroupNameEnumv2.LIVRES]: (
+      <BookPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.CINEMA]: (
+      <CinemaPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: (
+      <FilmsPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.MUSIQUE]: (
+      <MusicPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: (
+      <ConcertsAndFestivalsPlaylists
+        shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
+        onViewableItemsChanged={handleTrackViewableItems}
+      />
+    ),
+  }
 
   const searchGroupWithGtlPlaylist = getShouldDisplayGtlPlaylist({
     searchGroup: offerCategory,
@@ -102,21 +161,27 @@ export const ThematicSearch: React.FC = () => {
         offerCategories={offerCategories}
         placeholder={`${titles[offerCategory]}...`}
         title={titles[offerCategory]}>
-        <ScrollView>
+        <IntersectionObserverScrollView>
           <SubcategoryButtonListWrapper offerCategory={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (
-            <VenuePlaylist
-              venuePlaylistTitle={venuePlaylistTitle}
-              venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-              isLocated={isLocated}
-              currentView={currentView}
-              offerCategory={offerCategory}
-              shouldDisplaySeparator={false}
-              searchGroup={searchGroupWithGtlPlaylist}
-            />
+            <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+              {({ listRef, handleViewableItemsChanged }) => (
+                <VenuePlaylist
+                  venuePlaylistTitle={venuePlaylistTitle}
+                  venues={venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+                  isLocated={isLocated}
+                  currentView={currentView}
+                  offerCategory={offerCategory}
+                  shouldDisplaySeparator={false}
+                  searchGroup={searchGroupWithGtlPlaylist}
+                  playlistRef={listRef}
+                  onViewableItemsChanged={handleViewableItemsChanged}
+                />
+              )}
+            </ObservedPlaylist>
           ) : null}
           {playlistsComponent[offerCategory]}
-        </ScrollView>
+        </IntersectionObserverScrollView>
       </ThematicSearchBar>
     </StyledPage>
   )
