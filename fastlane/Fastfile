@@ -41,19 +41,6 @@ platform :ios do
     )
   end
   
-
-  lane :deploy_appCenter do |options|
-    appcenter_upload(
-      api_token: ENV['IOS_APPCENTER_API_TOKEN'],
-      owner_name: ENV['APPCENTER_ORGANISATION'],
-      owner_type: "organization",
-      app_name: ENV['APPCENTER_IOS_APP_ID'],
-      ipa: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
-      release_notes: escaped_release_notes,
-      destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
-    )
-  end
-
   lane :deploy_appDistribution do |options|
     firebase_app_distribution(
         app: ENV['FIREBASE_PUBLIC_IOS_APP_ID'],
@@ -64,35 +51,16 @@ platform :ios do
     )
   end
 
-  lane :upload_sentry_sourceMaps_soft do
-    sh "cd .. && \
-        export APPCENTER_ACCESS_TOKEN=#{ENV['IOS_APPCENTER_API_TOKEN']} && \
-        export BUILD=`jq -r .build package.json` && \
-        export VERSION=`jq -r .version package.json` && \
-        export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
-        npx sentry-cli react-native appcenter \
-            #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} \
-            ios ./build/CodePush \
-            --deployment #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
-            --dist ${BUILD}-ios \
-            --release-name ${VERSION}-ios+codepush:${CODEPUSH_LABEL}"
-  end
-
   lane :deploy do |options|
-    if options[:codepush] then # @codepush
+    if options[:ota] then # @hot-updater
+      version = `jq -r .version ../package.json`
       release_notes = %x[#{release_notes_command}]
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
       sh "cd .. && \
-      yarn appcenter codepush release-react \
-          --token #{ENV['IOS_APPCENTER_API_TOKEN']} \
-          --deployment-name #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
-          --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} \
-          --target-binary-version \"#{ENV['VERSION']}\" \
-          --description \"#{escaped_release_notes}\" \
-          --disable-duplicate-release-error \
-          --sourcemap-output-dir build/CodePush \
-          --output-dir ./build"
-      upload_sentry_sourceMaps_soft
+      yarn hotupdater:deploy:ios:#{ENV['ENV']} \
+          --target-app-version #{version} \
+          --message \"#{escaped_release_notes}\" "
+      
     else
       match(
         shallow_clone: true,
@@ -100,8 +68,7 @@ platform :ios do
         readonly: true
       )
       build
-      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter'
-        deploy_appCenter
+      if ENV['DEPLOYMENT_PLATFORM'] === 'appDistribution'
         deploy_appDistribution(firebase_token: options[:firebase_token])
       else
         # after upgrading fastlane to version 2.212.2, an error occured "Could not determine the package’s bundle ID. The package is missing an Info.plist
@@ -139,19 +106,7 @@ platform :android do
       skip_upload_screenshots: true
     )
   end
-
-  lane :deploy_appCenter do |options|
-    appcenter_upload(
-      api_token: ENV['ANDROID_APPCENTER_API_TOKEN'],
-      owner_name: ENV['APPCENTER_ORGANISATION'],
-      owner_type: "organization",
-      app_name: ENV['APPCENTER_ANDROID_APP_ID'],
-      file: ENV["ANDROID_FILE_PATH"],
-      release_notes: %x[#{release_notes_command}],
-      destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
-    )
-  end
-
+  
   lane :deploy_appDistribution do |options|
     firebase_app_distribution(
         app: ENV['FIREBASE_PUBLIC_ANDROID_APP_ID'],
@@ -162,39 +117,19 @@ platform :android do
     )
   end
 
-  lane :upload_sentry_sourceMaps_soft do
-    sh "cd .. && \
-        export APPCENTER_ACCESS_TOKEN=#{ENV['ANDROID_APPCENTER_API_TOKEN']} && \
-        export BUILD=`jq -r .build package.json` && \
-        export VERSION=`jq -r .version package.json` && \
-        export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
-        npx sentry-cli react-native appcenter \
-            #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} \
-            android ./build/CodePush \
-            --deployment #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
-            --dist ${BUILD}-android \
-            --release-name ${VERSION}-android+codepush:${CODEPUSH_LABEL}"
-  end
-
   lane :deploy do |options|
-    if options[:codepush] then # @codepush
+    if options[:ota] then # @hot-updater
+      version = `jq -r .version ../package.json`
       release_notes = %x[#{release_notes_command}]
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
       sh "cd .. && \
-        yarn appcenter codepush release-react \
-            --token #{ENV['ANDROID_APPCENTER_API_TOKEN']} \
-            --deployment-name #{ENV['CODEPUSH_DEPLOYMENT_NAME']} \
-            --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} \
-            --target-binary-version \"#{ENV['VERSION']}\" \
-            --description \"#{escaped_release_notes}\" \
-            --disable-duplicate-release-error \
-            --sourcemap-output-dir build/CodePush \
-            --output-dir ./build"
-      upload_sentry_sourceMaps_soft
+      yarn hotupdater:deploy:android:#{ENV['ENV']} \
+          --target-app-version #{version} \
+          --message \"#{escaped_release_notes}\" "
+      
     else
       build
-      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
-        deploy_appCenter
+      if ENV['DEPLOYMENT_PLATFORM'] === 'appDistribution' then
         deploy_appDistribution(firebase_token: options[:firebase_token])
       elsif ENV['DEPLOYMENT_PLATFORM'] === 'store' then
         deploy_playStore

@@ -150,3 +150,6 @@ scripts/dead_code_current.txt
 storybook-static
 
 .direnv/
+
+# hot-updater
+.hot-updater/output
