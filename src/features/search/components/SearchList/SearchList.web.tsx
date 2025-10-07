@@ -1,5 +1,5 @@
 import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
-import { Animated, LayoutChangeEvent, useWindowDimensions, View } from 'react-native'
+import { Animated, LayoutChangeEvent, useWindowDimensions, View, ViewToken } from 'react-native'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
@@ -130,6 +130,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
       userData,
       venuesUserData,
       artistSection,
+      onViewableVenuePlaylistItemsChanged,
+      onViewableItemsChanged,
     },
     _ref
   ) => {
@@ -199,6 +201,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
       autoScrollEnabled,
       onPress,
       searchState,
+      onViewableVenuePlaylistItemsChanged,
     }
 
     /**
@@ -237,6 +240,40 @@ export const SearchList = forwardRef<never, SearchListProps>(
       ]
     )
 
+    const handleItemsRendered = useCallback(
+      ({
+        visibleStartIndex,
+        visibleStopIndex,
+      }: {
+        visibleStartIndex: number
+        visibleStopIndex: number
+      }) => {
+        if (!onViewableItemsChanged) return
+
+        // Constructing Objects That Look Like ViewTokens
+        const viewableOffers = data.items
+          .slice(visibleStartIndex, visibleStopIndex + 1)
+          .map((item, index) => {
+            if (!('objectID' in item)) return null // skip placeholders
+            return {
+              item,
+              key: item.objectID,
+              index: visibleStartIndex + index - 1, // -1 because of the header
+              isViewable: true,
+            }
+          })
+          .filter(Boolean) as ViewToken[]
+
+        if (viewableOffers.length > 0) {
+          onViewableItemsChanged({
+            viewableItems: viewableOffers,
+            changed: viewableOffers,
+          })
+        }
+      },
+      [data.items, onViewableItemsChanged]
+    )
+
     return (
       <SearchResultList onLayout={onLayout} testID="searchResultsList">
         <React.Fragment>
@@ -251,6 +288,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
             itemCount={data.items.length}
             outerRef={outerListRef}
             onScroll={handleScroll}
+            onItemsRendered={handleItemsRendered}
             width="100%">
             {SearchListItem}
           </VariableSizeList>
