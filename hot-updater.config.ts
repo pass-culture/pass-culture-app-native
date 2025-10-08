@@ -6,7 +6,7 @@ import { config } from 'dotenv'
 import * as admin from 'firebase-admin'
 import { defineConfig } from 'hot-updater'
 
-const ENV = process.env.NODE_ENV || 'testing'
+const ENV = process.env.NODE_ENV || 'local'
 
 config({ path: `.env.${ENV}` })
 config()

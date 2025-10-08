@@ -131,7 +131,7 @@ jobs:
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement codePush Android/iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement en OTA Android/iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
                   }
               ],
               "unfurl_links": false,
