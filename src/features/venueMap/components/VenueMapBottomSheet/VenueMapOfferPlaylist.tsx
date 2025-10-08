@@ -29,7 +29,8 @@ type VenueMapOfferPlaylistProps = {
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
   ) => void
   onPressMore?: () => void
 }
@@ -92,7 +93,7 @@ export const VenueMapOfferPlaylist = ({
   const handleOfferPlaylistViewableItemsChanged = useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
       if (!isFocused) return
-      onViewableItemsChanged(items, 'venue_map', 'offer')
+      onViewableItemsChanged(items, 'venue_map', 'offer', 0)
     },
     [isFocused, onViewableItemsChanged]
   )

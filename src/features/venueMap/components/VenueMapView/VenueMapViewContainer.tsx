@@ -58,7 +58,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const pageTracking = usePageTracking({
     pageName: 'VenueMap',
     pageLocation: 'venue_map',
-    pageId: routeName,
   })
 
   const tabBarHeight = useContext(BottomTabBarHeightContext) ?? 0
@@ -244,12 +243,14 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     (
       items: Pick<ViewToken, 'key' | 'index'>[],
       moduleId: string,
-      itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
     ) => {
       pageTracking.trackViewableItems({
         moduleId,
         itemType,
         viewableItems: items,
+        playlistIndex,
       })
     },
     [pageTracking]

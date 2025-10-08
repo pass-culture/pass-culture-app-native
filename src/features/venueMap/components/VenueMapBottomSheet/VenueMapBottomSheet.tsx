@@ -40,7 +40,8 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   onViewableItemsChanged: (
     items: Pick<ViewToken, 'key' | 'index'>[],
     moduleId: string,
-    itemType: 'offer' | 'venue' | 'artist' | 'unknown'
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
   ) => void
 }
 
