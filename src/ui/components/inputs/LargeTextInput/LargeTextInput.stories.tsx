@@ -26,7 +26,7 @@ const variantConfig: Variants<typeof LargeTextInput> = [
   },
   {
     label: 'Required LargeTextInput',
-    props: { ...baseProps, required: 'text' },
+    props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
     label: 'Disabled LargeTextInput',

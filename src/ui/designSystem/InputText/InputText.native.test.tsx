@@ -14,13 +14,17 @@ describe('<InputText />', () => {
   const myRef = React.createRef<RNTextInput>()
 
   it('should display label with asterisk when input required with symbol', () => {
-    render(<InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" required="symbol" />)
+    render(
+      <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="symbol" />
+    )
 
     expect(screen.getByText('E-mail *')).toBeOnTheScreen()
   })
 
   it('should display mandatory label when input required with text', () => {
-    render(<InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" required="text" />)
+    render(
+      <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="explicit" />
+    )
 
     expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
   })

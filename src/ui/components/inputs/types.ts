@@ -30,6 +30,8 @@ type CustomTextInputProps = InputProps & {
   Icon?: React.FC
 }
 
+export type RequiredIndicator = 'symbol' | 'explicit'
+
 type CustomInputTextProps = InputProps & {
   label: string
   labelStyle?: TextStyle
@@ -37,8 +39,7 @@ type CustomInputTextProps = InputProps & {
   description?: string
   disabled?: boolean
   containerStyle?: ViewStyle
-  required?: 'symbol' | 'text'
-  // isRequiredField?: boolean
+  requiredIndicator?: RequiredIndicator
   leftComponent?: React.ReactElement
   showSoftInputOnFocus?: boolean
   rightButton?: {
@@ -127,7 +128,7 @@ export function getCustomInputTextProps(props: InputTextProps): CustomInputTextP
     errorMessage: props.errorMessage,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
-    required: props.required,
+    requiredIndicator: props.requiredIndicator,
     leftComponent: props.leftComponent,
     rightButton: props.rightButton,
     description: props.description,

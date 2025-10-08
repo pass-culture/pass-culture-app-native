@@ -5,12 +5,13 @@
 
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform } from 'react-native'
-import styled, { useTheme, DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { RequiredIndicator, RequiredLabel } from 'ui/components/inputs/RequiredLabel'
+import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
+import { RequiredIndicator } from 'ui/components/inputs/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { CheckboxAsset } from 'ui/designSystem/Checkbox/CheckboxAsset'
 import { getCheckboxColors } from 'ui/designSystem/Checkbox/getCheckboxColors'
@@ -89,7 +90,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   accessibilityLabel,
   onPress,
   required,
-  requiredIndicator = 'long',
+  requiredIndicator = 'explicit',
   variant = 'default',
 }) => {
   const focusProps = useHandleFocus()

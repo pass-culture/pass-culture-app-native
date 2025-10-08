@@ -26,7 +26,7 @@ const variantConfig: Variants<typeof EmailInput> = [
   },
   {
     label: 'EmailInput Required',
-    props: { ...baseProps, required: 'text' },
+    props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
     label: 'EmailInput Disabled',

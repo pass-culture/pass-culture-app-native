@@ -25,7 +25,7 @@ const variantConfig: Variants<typeof PasswordInput> = [
   },
   {
     label: 'PasswordInput required',
-    props: { required: 'text' },
+    props: { requiredIndicator: 'explicit' },
   },
   {
     label: 'PasswordInput with Error',

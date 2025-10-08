@@ -132,7 +132,7 @@ export function ChangePassword() {
             control={control}
             name="currentPassword"
             label="Mot de passe actuel"
-            required="text"
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={7} />
           <PasswordInputController
@@ -140,14 +140,14 @@ export function ChangePassword() {
             name="newPassword"
             label="Nouveau mot de passe"
             withSecurityRules
-            required="text"
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={5} />
           <PasswordInputController
             control={control}
             name="confirmedPassword"
             label="Confirmer le mot de passe"
-            required="text"
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={10} />
           {keyboardHeight ? <Spacer.Column numberOfSpaces={2} /> : null}

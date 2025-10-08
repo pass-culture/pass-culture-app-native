@@ -102,7 +102,7 @@ const renderPasswordInputController = ({
         name="password"
         withSecurityRules={withSecurityRules}
         securityRulesAlwaysVisible={securityRulesAlwaysVisible}
-        required="text"
+        requiredIndicator="explicit"
       />
     )
   }

@@ -44,11 +44,11 @@ const variantConfig: Variants<typeof InputText> = [
   },
   {
     label: 'Required InputText with symbol',
-    props: { ...baseProps, required: 'symbol' },
+    props: { ...baseProps, requiredIndicator: 'symbol' },
   },
   {
     label: 'Required InputText with text',
-    props: { ...baseProps, required: 'text' },
+    props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
     label: 'InputText with error',

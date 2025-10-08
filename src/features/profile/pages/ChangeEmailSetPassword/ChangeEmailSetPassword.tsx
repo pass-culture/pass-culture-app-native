@@ -89,7 +89,7 @@ export const ChangeEmailSetPassword = () => {
             name="newPassword"
             label="Mot de passe"
             control={control}
-            required="text"
+            requiredIndicator="explicit"
             autoFocus
             withSecurityRules
             securityRulesAlwaysVisible
@@ -99,7 +99,7 @@ export const ChangeEmailSetPassword = () => {
             name="confirmedPassword"
             label="Confirmer le mot de passe"
             control={control}
-            required="text"
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={10} />
           <ButtonPrimary

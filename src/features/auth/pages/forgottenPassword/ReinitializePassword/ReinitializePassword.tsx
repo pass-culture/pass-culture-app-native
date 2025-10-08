@@ -131,7 +131,7 @@ export const ReinitializePassword = () => {
             withSecurityRules
             securityRulesAlwaysVisible
             onSubmitEditing={handleSubmit(submitPassword)}
-            required="text"
+            requiredIndicator="explicit"
           />
         </Container>
         <Container>
@@ -140,7 +140,7 @@ export const ReinitializePassword = () => {
             label="Confirmer le mot de passe"
             control={control}
             onSubmitEditing={handleSubmit(submitPassword)}
-            required="text"
+            requiredIndicator="explicit"
           />
         </Container>
         <Container>

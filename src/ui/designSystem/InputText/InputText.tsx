@@ -60,7 +60,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     .join(' - ')
 
   const inputLabel =
-    customProps.required === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
+    customProps.requiredIndicator === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
 
   return (
     <ContainerWithMaxWidth gap={0}>
@@ -72,7 +72,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
             </Typo.Body>
             {customProps.description ? <Description>{customProps.description}</Description> : null}
           </View>
-          {customProps.required === 'text' ? (
+          {customProps.requiredIndicator === 'explicit' ? (
             <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>
           ) : null}
         </LabelContainer>
@@ -92,7 +92,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
-          accessibilityRequired={!!customProps.required}
+          accessibilityRequired={!!customProps.requiredIndicator}
           multiline={props.multiline}
           maxLength={customProps.characterCount}
           onChangeText={handleChangeText}
