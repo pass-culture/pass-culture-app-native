@@ -10,9 +10,9 @@ describe('BonificationNames', () => {
   it('Should navigate to next form when pressing "Continuer" when forms are filled', async () => {
     render(<BonificationNames />)
 
-    const firstNameField = screen.getByPlaceholderText('Son prénom')
+    const firstNameField = screen.getByTestId('Entrée pour le prénom')
     await userEvent.type(firstNameField, 'Jaques')
-    const birthNameField = screen.getByPlaceholderText('Son nom de naissance')
+    const birthNameField = screen.getByTestId('Entrée pour le nom')
     await userEvent.type(birthNameField, 'Dupont')
 
     const button = screen.getByText('Continuer')

@@ -10,9 +10,9 @@ describe('BonificationBirthPlace', () => {
   it('Should navigate to next form when pressing "Continuer" when forms are filled', async () => {
     render(<BonificationBirthPlace />)
 
-    const countryOfBirthField = screen.getByPlaceholderText('Son pays de naissance')
+    const countryOfBirthField = screen.getByTestId('Entrée pour le pays de naissance')
     await userEvent.type(countryOfBirthField, 'France')
-    const cityOfBirthField = screen.getByPlaceholderText('Sa ville de naissance')
+    const cityOfBirthField = screen.getByTestId('Entrée pour la ville de naissance')
     await userEvent.type(cityOfBirthField, 'Toulouse')
 
     const button = screen.getByText('Continuer')

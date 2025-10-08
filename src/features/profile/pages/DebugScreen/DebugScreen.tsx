@@ -4,10 +4,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { Platform, TextStyle } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  setFeedbackInAppSchema,
-  FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
-} from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
+import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -104,10 +101,9 @@ export const DebugScreen = () => {
                   value={value}
                   onBlur={onBlur}
                   onChangeText={onChange}
-                  placeholder="Décris ton problème en quelques phrases."
-                  isError={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
+                  errorMessage={error?.message}
+                  testID="problem-description-input"
                   isRequiredField
-                  showErrorMessage={!!error && value.length > FEEDBACK_IN_APP_VALUE_MAX_LENGTH}
                 />
               )
             }}
