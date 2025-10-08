@@ -354,18 +354,32 @@ exports[`<SetName/> should render correctly 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <Text
+                        accessibilityLabel="Prénom"
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Prénom
+                      </Text>
+                    </View>
                     <Text
-                      accessibilityLabel="Prénom"
                       style={
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
                         }
                       }
                     >
-                      Prénom *
+                      Obligatoire
                     </Text>
                   </View>
                 </View>
@@ -464,18 +478,32 @@ exports[`<SetName/> should render correctly 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <Text
+                        accessibilityLabel="Nom"
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
+                        }
+                      >
+                        Nom
+                      </Text>
+                    </View>
                     <Text
-                      accessibilityLabel="Nom"
                       style={
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
                         }
                       }
                     >
-                      Nom *
+                      Obligatoire
                     </Text>
                   </View>
                 </View>

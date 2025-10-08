@@ -34,7 +34,6 @@ export const PasswordInputController = <
             value={value}
             onChangeText={onChange}
             onBlur={onBlur}
-            isRequiredField
             accessibilityHint={error?.message}
             errorMessage={error?.message}
             {...otherPasswordInputProps}

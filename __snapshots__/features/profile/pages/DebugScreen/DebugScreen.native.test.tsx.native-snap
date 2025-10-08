@@ -459,23 +459,37 @@ exports[`DebugScreen should render correctly 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <Text
+                        accessibilityLabel="Description du problème"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                            {
+                              "fontWeight": "bold",
+                            },
+                          ]
+                        }
+                      >
+                        Description du problème
+                      </Text>
+                    </View>
                     <Text
-                      accessibilityLabel="Description du problème"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                          {
-                            "fontWeight": "bold",
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
-                      Description du problème *
+                      Obligatoire
                     </Text>
                   </View>
                 </View>

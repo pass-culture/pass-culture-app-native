@@ -743,19 +743,21 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         }
                       }
                     >
-                      <Text
-                        accessibilityLabel="Prix minimum (en €)"
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                      <View>
+                        <Text
+                          accessibilityLabel="Prix minimum (en €)"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
-                        }
-                      >
-                        Prix minimum (en €)
-                      </Text>
+                        >
+                          Prix minimum (en €)
+                        </Text>
+                      </View>
                     </View>
                   </View>
                   <View
@@ -787,6 +789,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     testID="styled-input-container"
                   >
                     <TextInput
+                      accessibilityRequired={false}
                       autoCapitalize="none"
                       autoComplete="off"
                       disabled={false}
@@ -848,33 +851,36 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                     }
                   >
-                    <Text
-                      accessibilityLabel="Prix maximum (en €)"
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                    <View>
+                      <Text
+                        accessibilityLabel="Prix maximum (en €)"
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          }
                         }
-                      }
-                    >
-                      Prix maximum (en €)
-                    </Text>
+                      >
+                        Prix maximum (en €)
+                      </Text>
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                            "marginTop": 2,
+                          }
+                        }
+                      >
+                        max : 80 €
+                      </Text>
+                    </View>
                   </View>
                 </View>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  max : 80 €
-                </Text>
                 <View
                   isDisabled={false}
                   isError={false}
@@ -904,6 +910,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   testID="styled-input-container"
                 >
                   <TextInput
+                    accessibilityRequired={false}
                     autoCapitalize="none"
                     autoComplete="off"
                     disabled={false}

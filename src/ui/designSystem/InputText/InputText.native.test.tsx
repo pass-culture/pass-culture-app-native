@@ -13,10 +13,16 @@ import { Search } from 'ui/svg/icons/Search'
 describe('<InputText />', () => {
   const myRef = React.createRef<RNTextInput>()
 
-  it('should display label with asterisk when input required', () => {
-    render(<InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" isRequiredField />)
+  it('should display label with asterisk when input required with symbol', () => {
+    render(<InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" required="symbol" />)
 
     expect(screen.getByText('E-mail *')).toBeOnTheScreen()
+  })
+
+  it('should display mandatory label when input required with text', () => {
+    render(<InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" required="text" />)
+
+    expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
   })
 
   it('should display format when defined', () => {

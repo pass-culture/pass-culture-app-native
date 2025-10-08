@@ -4,7 +4,7 @@
  */
 
 import React, { forwardRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -59,18 +59,25 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     .filter(Boolean)
     .join(' - ')
 
-  const inputLabel = customProps.isRequiredField ? `${customProps.label}\u00A0*` : customProps.label
+  const inputLabel =
+    customProps.required === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
 
   return (
     <ContainerWithMaxWidth gap={0}>
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer>
-          <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
-            {inputLabel}
-          </Typo.Body>
+          <View>
+            <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
+              {inputLabel}
+            </Typo.Body>
+            {customProps.format ? <Description>{customProps.format}</Description> : null}
+          </View>
+          {customProps.required === 'text' ? (
+            <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>
+          ) : null}
         </LabelContainer>
       </FlexInputLabel>
-      {customProps.format ? <Description>{customProps.format}</Description> : null}
+
       <InputTextContainer
         isFocused={isFocus}
         isError={!!customProps.errorMessage}
@@ -85,7 +92,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
-          accessibilityRequired={customProps.isRequiredField}
+          accessibilityRequired={!!customProps.required}
           multiline={props.multiline}
           maxLength={customProps.characterCount}
           onChangeText={handleChangeText}
@@ -124,8 +131,12 @@ const IconTouchableOpacity = styledButton(Touchable)({
   maxWidth: getSpacing(15),
 })
 
-const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+}))
+
+const Description = styled(StyledBodyAccentXs)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxs,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({

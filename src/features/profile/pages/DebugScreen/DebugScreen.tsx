@@ -103,7 +103,7 @@ export const DebugScreen = () => {
                   onChangeText={onChange}
                   errorMessage={error?.message}
                   testID="problem-description-input"
-                  isRequiredField
+                  required="text"
                 />
               )
             }}

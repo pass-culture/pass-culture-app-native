@@ -1743,19 +1743,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="videoModuleId"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="videoModuleId"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          videoModuleId
-                        </Text>
+                          >
+                            videoModuleId
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
@@ -1787,6 +1789,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
@@ -2027,19 +2030,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="utm_campaign"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_campaign"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          utm_campaign
-                        </Text>
+                          >
+                            utm_campaign
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
@@ -2071,6 +2076,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
@@ -2165,19 +2171,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="utm_source"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_source"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          utm_source
-                        </Text>
+                          >
+                            utm_source
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
@@ -2209,6 +2217,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
@@ -2303,19 +2312,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="utm_medium"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_medium"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          utm_medium
-                        </Text>
+                          >
+                            utm_medium
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
@@ -2347,6 +2358,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
@@ -2441,19 +2453,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="utm_content"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_content"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          utm_content
-                        </Text>
+                          >
+                            utm_content
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
@@ -2485,6 +2499,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
@@ -2579,19 +2594,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="utm_gen (*)"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_gen (*)"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          utm_gen (*)
-                        </Text>
+                          >
+                            utm_gen (*)
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
@@ -2623,6 +2640,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         defaultValue="marketing"
                         editable={true}
                         isEmpty={true}

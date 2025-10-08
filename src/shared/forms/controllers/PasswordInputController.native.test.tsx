@@ -24,7 +24,7 @@ describe('<PasswordInputController />', () => {
     it('should show that password is mandatory', async () => {
       renderPasswordInputController({})
 
-      expect(screen.getByText('Mot de passe *')).toBeOnTheScreen()
+      expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
     })
 
     it('should not show password validation', () => {
@@ -102,6 +102,7 @@ const renderPasswordInputController = ({
         name="password"
         withSecurityRules={withSecurityRules}
         securityRulesAlwaysVisible={securityRulesAlwaysVisible}
+        required="text"
       />
     )
   }

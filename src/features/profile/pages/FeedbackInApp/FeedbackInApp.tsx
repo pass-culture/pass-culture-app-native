@@ -86,7 +86,7 @@ export const FeedbackInApp = () => {
                   value={value}
                   onBlur={onBlur}
                   onChangeText={onChange}
-                  isRequiredField
+                  required="text"
                   testID="feedback-input"
                 />
               )}

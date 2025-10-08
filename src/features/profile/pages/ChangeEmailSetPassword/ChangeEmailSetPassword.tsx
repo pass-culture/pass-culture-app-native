@@ -14,7 +14,7 @@ import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -89,7 +89,7 @@ export const ChangeEmailSetPassword = () => {
             name="newPassword"
             label="Mot de passe"
             control={control}
-            isRequiredField
+            required="text"
             autoFocus
             withSecurityRules
             securityRulesAlwaysVisible
@@ -99,7 +99,7 @@ export const ChangeEmailSetPassword = () => {
             name="confirmedPassword"
             label="Confirmer le mot de passe"
             control={control}
-            isRequiredField
+            required="text"
           />
           <Spacer.Column numberOfSpaces={10} />
           <ButtonPrimary

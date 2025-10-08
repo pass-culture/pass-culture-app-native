@@ -37,7 +37,8 @@ type CustomInputTextProps = InputProps & {
   format?: string
   disabled?: boolean
   containerStyle?: ViewStyle
-  isRequiredField?: boolean
+  required?: 'symbol' | 'text'
+  // isRequiredField?: boolean
   leftComponent?: React.ReactElement
   showSoftInputOnFocus?: boolean
   rightButton?: {
@@ -126,7 +127,7 @@ export function getCustomInputTextProps(props: InputTextProps): CustomInputTextP
     errorMessage: props.errorMessage,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
-    isRequiredField: props.isRequiredField,
+    required: props.required,
     leftComponent: props.leftComponent,
     rightButton: props.rightButton,
     format: props.format,
