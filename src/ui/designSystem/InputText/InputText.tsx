@@ -70,7 +70,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
             <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
               {inputLabel}
             </Typo.Body>
-            {customProps.format ? <Description>{customProps.format}</Description> : null}
+            {customProps.description ? <Description>{customProps.description}</Description> : null}
           </View>
           {customProps.required === 'text' ? (
             <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>

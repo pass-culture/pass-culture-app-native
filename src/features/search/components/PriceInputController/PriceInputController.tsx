@@ -19,7 +19,7 @@ export const PriceInputController = <
   name,
   control,
   label,
-  format,
+  description,
   isDisabled,
   testID,
   ...textInputProps
@@ -34,7 +34,7 @@ export const PriceInputController = <
           onChangeText={onChange}
           onBlur={onBlur}
           label={label}
-          format={format}
+          description={description}
           disabled={isDisabled}
           accessibilityHint={error?.message}
           keyboardType="numeric"

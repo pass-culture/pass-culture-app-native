@@ -26,7 +26,7 @@ const SearchIcon = styled(Search).attrs(({ theme }) => ({
 
 const baseProps = {
   label: 'Label',
-  format: 'Format',
+  description: 'Format',
 }
 
 const variantConfig: Variants<typeof InputText> = [

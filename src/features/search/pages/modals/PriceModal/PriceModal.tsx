@@ -355,7 +355,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             control={control}
             name="maxPrice"
             label={`Prix maximum (en\u00a0${currencyFull})`}
-            format={`max\u00a0: ${formatInitialCreditWithCurrency}`}
+            description={`max\u00a0: ${formatInitialCreditWithCurrency}`}
             testID="Entrée pour le prix maximum"
             isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
           />

@@ -34,7 +34,7 @@ type CustomInputTextProps = InputProps & {
   label: string
   labelStyle?: TextStyle
   errorMessage?: string
-  format?: string
+  description?: string
   disabled?: boolean
   containerStyle?: ViewStyle
   required?: 'symbol' | 'text'
@@ -130,7 +130,7 @@ export function getCustomInputTextProps(props: InputTextProps): CustomInputTextP
     required: props.required,
     leftComponent: props.leftComponent,
     rightButton: props.rightButton,
-    format: props.format,
+    description: props.description,
     characterCount: props.characterCount,
   }
 }

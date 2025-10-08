@@ -534,7 +534,9 @@ describe('<PriceModal/>', () => {
     renderSearchPrice()
 
     const minPriceInput = screen.getByTestId('Entrée pour le prix minimum')
-    const onlyFreeOffersToggle = screen.getByTestId('Interrupteur onlyFreeOffers')
+    const onlyFreeOffersToggle = screen.getByTestId(
+      'Uniquement les offres gratuites - Interrupteur à bascule - non coché'
+    )
 
     await user.type(minPriceInput, '9999')
 

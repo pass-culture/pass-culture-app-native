@@ -13,7 +13,7 @@ export default meta
 
 const textWith801Character = 'a'.repeat(801)
 
-const baseProps = { label: 'Label', placeholder: 'Placeholder...' }
+const baseProps = { label: 'Label' }
 
 const variantConfig: Variants<typeof LargeTextInput> = [
   {

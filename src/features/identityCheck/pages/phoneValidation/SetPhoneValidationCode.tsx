@@ -150,7 +150,7 @@ export const SetPhoneValidationCode = () => {
                 autoCapitalize="none"
                 keyboardType="number-pad"
                 label="Code de validation"
-                format="Format&nbsp;: 6 chiffres"
+                description="Format&nbsp;: 6 chiffres"
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
                 autoComplete="one-time-code"

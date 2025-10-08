@@ -31,7 +31,7 @@ describe('<InputText />', () => {
         onChangeText={jest.fn()}
         ref={myRef}
         label="E-mail"
-        format="Exemple : toto@email.com"
+        description="Exemple : toto@email.com"
       />
     )
 
