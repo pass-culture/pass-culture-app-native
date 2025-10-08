@@ -1,0 +1,20 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn: "Sorties"
+- tapOn: "Boutiques"
+- tapOn: "Autres"
+- tapOn: "Voir tous les filtres : 3 filtres actifs"
+
+- assertVisible: "Filtres"
+- assertVisible: "Sorties"
+- assertVisible: "Boutiques"
+- assertVisible: "Autres"
+
+- tapOn: "Réinitialiser"
+- tapOn: "Sorties"
+- tapOn: "Cinéma - Salle de projections"
+- tapOn: "Rechercher"
+
+- tapOn: "Voir tous les filtres : 1 filtre actif"
+- tapOn: "Réinitialiser"
+- tapOn: "Rechercher"
