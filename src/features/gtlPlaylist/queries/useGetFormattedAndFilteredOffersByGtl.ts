@@ -6,8 +6,8 @@ export const useGetFormattedAndFilteredOffersByGtl = (
   args: UseGetOffersByGtlQueryArgs,
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
 ) =>
-  useGetOffersByGtlQuery<GtlPlaylistData[]>(args, (data) => {
-    return args.filteredGtlPlaylistsConfig
+  useGetOffersByGtlQuery<GtlPlaylistData[]>(args, (data) =>
+    args.filteredGtlPlaylistsConfig
       .map((item, index) => {
         return {
           title: item.displayParameters.title,
@@ -17,7 +17,7 @@ export const useGetFormattedAndFilteredOffersByGtl = (
           entryId: item.id,
         }
       })
-      .filter((playlist) => {
-        return playlist?.offers?.hits.length >= Math.max(playlist.minNumberOfOffers, 1)
-      })
-  })
+      .filter(
+        ({ offers, minNumberOfOffers }) => offers?.hits.length >= Math.max(minNumberOfOffers, 1)
+      )
+  )
