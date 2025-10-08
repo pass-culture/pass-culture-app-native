@@ -19,6 +19,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const SENDING_EMAIL_SWITCH = /Autoriser l’envoi d’e-mails - Interrupteur à bascule/
+const NOTIFICATIONS_SWITCH = /Autoriser les notifications - Interrupteur à bascule/
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -42,7 +45,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should reset the switch when dismissing the modal', async () => {
     renderModal(true)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleSwitch = screen.getByTestId(SENDING_EMAIL_SWITCH)
     await user.press(toggleSwitch)
 
     const dismissModalButton = screen.getByTestId('rightIcon')
@@ -64,7 +67,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should reset the switch on press "Tout refuser..."', async () => {
     renderModal(true)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleSwitch = screen.getByTestId(SENDING_EMAIL_SWITCH)
     await user.press(toggleSwitch)
 
     const declineButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
@@ -76,7 +79,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should dismiss modal when saving changes', async () => {
     renderModal(true)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleSwitch = screen.getByTestId(SENDING_EMAIL_SWITCH)
     await user.press(toggleSwitch)
 
     await user.press(screen.getByText('Valider'))
@@ -87,7 +90,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should call onPressSaveChanges when saving changes', async () => {
     renderModal(true)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleSwitch = screen.getByTestId(SENDING_EMAIL_SWITCH)
     await user.press(toggleSwitch)
 
     await user.press(screen.getByText('Valider'))
@@ -98,7 +101,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should call onPressSaveChanges with allowEmails true when saving changes', async () => {
     renderModal(true)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleSwitch = screen.getByTestId(SENDING_EMAIL_SWITCH)
     await user.press(toggleSwitch)
 
     await user.press(screen.getByText('Valider'))
@@ -109,7 +112,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should call onPressSaveChanges with allowPush true when saving changes', async () => {
     renderModal(true)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+    const toggleSwitch = screen.getByTestId(NOTIFICATIONS_SWITCH)
     await user.press(toggleSwitch)
 
     await user.press(screen.getByText('Valider'))

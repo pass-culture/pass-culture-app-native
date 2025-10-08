@@ -374,6 +374,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Utiliser ma position actuelle, non sélectionné"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -392,7 +393,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -408,6 +409,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="Utiliser ma position actuelle, non sélectionné"
                   >
                     <View
                       gap={2}
@@ -463,6 +465,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Choisir une localisation, Ville, code postal, adresse, non sélectionné"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -481,7 +484,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -497,6 +500,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="Choisir une localisation, Ville, code postal, adresse, non sélectionné"
                   >
                     <View
                       gap={2}
@@ -572,6 +576,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       }
                     />
                     <View
+                      accessibilityLabel="France entière, sélectionné"
                       accessibilityRole="button"
                       accessibilityState={
                         {
@@ -590,7 +595,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           "text": undefined,
                         }
                       }
-                      accessible={false}
+                      accessible={true}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -606,6 +611,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           "userSelect": "auto",
                         }
                       }
+                      testID="France entière, sélectionné"
                     >
                       <View
                         gap={2}

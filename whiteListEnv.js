@@ -62,6 +62,8 @@ export const whiteListEnv = (env, commitHash) => {
     'GOOGLE_MAPS_API_PUBLIC_KEY',
     'GOOGLE_PLAY_STORE_URL',
     'HOT_UPDATER_FUNCTION_URL',
+    'HOT_UPDATER_FIREBASE_PROJECT_ID',
+    'HOT_UPDATER_FIREBASE_STORAGE_BUCKET',
     'IOS_APP_ICON',
     'IOS_APP_ID',
     'IOS_APP_NAME',

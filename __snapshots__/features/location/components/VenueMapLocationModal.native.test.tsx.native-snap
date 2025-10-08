@@ -418,6 +418,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Utiliser ma position actuelle, non sélectionné"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -436,7 +437,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -455,6 +456,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                         },
                       ]
                     }
+                    testID="Utiliser ma position actuelle, non sélectionné"
                   >
                     <View
                       gap={2}
@@ -510,6 +512,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Choisir une localisation, Ville, code postal, adresse, non sélectionné"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -528,7 +531,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -547,6 +550,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                         },
                       ]
                     }
+                    testID="Choisir une localisation, Ville, code postal, adresse, non sélectionné"
                   >
                     <View
                       gap={2}

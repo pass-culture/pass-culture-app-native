@@ -15,7 +15,7 @@ describe('<VenueBanner />', () => {
       />
     )
 
-    fireEvent.click(screen.getByTestId('venueImage'))
+    fireEvent.click(screen.getByLabelText('Voir l’illustration en plein écran - © François Boulo'))
 
     expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
   })
@@ -29,7 +29,7 @@ describe('<VenueBanner />', () => {
       />
     )
 
-    fireEvent.click(screen.getByTestId('venueImageWithGoogleWatermark'))
+    fireEvent.click(screen.getByTestId('Voir l’illustration en plein écran - © François Boulo'))
 
     expect(mockHandleImagePress).toHaveBeenCalledTimes(1)
   })

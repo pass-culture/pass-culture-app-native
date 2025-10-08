@@ -5,7 +5,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Paris'
     commands:
       - tapOn: 'Paris'
-      - tapOn: 'Choisir une localisation'
+      - tapOn: 'Choisir une localisation.*'
       - inputText: 'Paris'
       - hideKeyboard
-      - tapOn: 'France entière'
+      - tapOn: 'France entière.*'

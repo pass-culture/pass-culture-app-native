@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LayoutButtonProps } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkmark } from 'ui/svg/icons/Checkmark'
@@ -22,8 +23,15 @@ export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButton
       : null
   }, [Icon, isSelected])
 
+  const accessibilityLabelChecked = isSelected ? 'sélectionné' : 'non sélectionné'
+  const accessibilityLabel = `${layout} - ${accessibilityLabelChecked}`
+
   return (
-    <TouchableOpacity id={layout} onPress={onPress}>
+    <TouchableOpacity
+      id={layout}
+      onPress={onPress}
+      accessibilityRole={AccessibilityRole.BUTTON}
+      accessibilityLabel={accessibilityLabel}>
       <TitleContainer gap={2} isSelected={isSelected}>
         {StyledIcon ? (
           <IconsContainer gap={2}>

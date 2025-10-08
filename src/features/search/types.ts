@@ -102,6 +102,16 @@ export interface SearchListProps {
   isGridLayout?: boolean
   shouldDisplayGridList?: boolean
   setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
+  onViewableItemsChanged?: (info: {
+    viewableItems: ViewToken<unknown>[]
+    changed: ViewToken<unknown>[]
+  }) => void
+  onViewableVenuePlaylistItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export type CreateHistoryItem = {

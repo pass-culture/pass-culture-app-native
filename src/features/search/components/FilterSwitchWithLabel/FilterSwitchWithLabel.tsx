@@ -57,6 +57,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           checkboxID={checkboxID}
           active={isActive}
           toggle={toggle}
+          accessibilityLabel={label}
           accessibilityLabelledBy={labelID}
           testID={testID}
           disabled={disabled}

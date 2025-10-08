@@ -6,17 +6,16 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'France entière'
+      - tapOn: 'France entière.*'
 
 - swipe:
     from:
       text: 'Les offres'
     direction: UP
-- tapOn: 
-    text: "CD"
+- tapOn:
+    text: 'CD'
     index: 2
 
-    
 - waitForAnimationToEnd
 
 - runFlow:

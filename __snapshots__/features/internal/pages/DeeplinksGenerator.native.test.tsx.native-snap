@@ -834,7 +834,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Sélectionné"
                       height={20}
                       width={20}
                     >

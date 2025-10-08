@@ -54,6 +54,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const ACCEPT_ALL_SWITCH = /Tout accepter - Interrupteur à bascule/
+const BROWSING_STATISTICS_SWITCH =
+  /Enregistrer des statistiques de navigation - Interrupteur à bascule/
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -66,7 +70,7 @@ describe('<ConsentSettings/>', () => {
   it('should render correctly', async () => {
     renderConsentSettings()
 
-    await screen.findByTestId('Interrupteur Tout accepter')
+    await screen.findByTestId(ACCEPT_ALL_SWITCH)
 
     expect(screen).toMatchSnapshot()
   })
@@ -76,9 +80,7 @@ describe('<ConsentSettings/>', () => {
 
     renderConsentSettings()
 
-    const performanceSwitch = screen.getByTestId(
-      'Interrupteur Enregistrer des statistiques de navigation'
-    )
+    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
     await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -114,9 +116,7 @@ describe('<ConsentSettings/>', () => {
 
     renderConsentSettings()
 
-    const performanceSwitch = screen.getByTestId(
-      'Interrupteur Enregistrer des statistiques de navigation'
-    )
+    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
     await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -130,9 +130,7 @@ describe('<ConsentSettings/>', () => {
 
     renderConsentSettings()
 
-    const performanceSwitch = screen.getByTestId(
-      'Interrupteur Enregistrer des statistiques de navigation'
-    )
+    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
     await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')

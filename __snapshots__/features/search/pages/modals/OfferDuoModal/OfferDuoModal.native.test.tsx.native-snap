@@ -413,19 +413,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Uniquement les offres duo - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -443,7 +433,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -462,7 +452,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         },
                       ]
                     }
-                    testID="Interrupteur limitDuoOfferSearch"
+                    testID="Uniquement les offres duo - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}

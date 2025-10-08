@@ -419,19 +419,9 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       }
                     }
                   >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        {
-                          "display": "none",
-                        }
-                      }
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </Text>
                     <View
-                      accessibilityRole="checkbox"
+                      accessibilityLabel="Date - Interrupteur à bascule - non coché"
+                      accessibilityRole="switch"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -449,7 +439,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "text": undefined,
                         }
                       }
-                      accessible={false}
+                      accessible={true}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -468,7 +458,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           },
                         ]
                       }
-                      testID="Interrupteur date"
+                      testID="Date - Interrupteur à bascule - non coché"
                     >
                       <View
                         active={false}
@@ -586,19 +576,9 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       }
                     }
                   >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        {
-                          "display": "none",
-                        }
-                      }
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </Text>
                     <View
-                      accessibilityRole="checkbox"
+                      accessibilityLabel="Heure - Interrupteur à bascule - non coché"
+                      accessibilityRole="switch"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -616,7 +596,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "text": undefined,
                         }
                       }
-                      accessible={false}
+                      accessible={true}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -635,7 +615,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           },
                         ]
                       }
-                      testID="Interrupteur hour"
+                      testID="Heure - Interrupteur à bascule - non coché"
                     >
                       <View
                         active={false}

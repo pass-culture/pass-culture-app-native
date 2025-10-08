@@ -2,7 +2,7 @@ import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, useWindowDimensions, View } from 'react-native'
+import { FlatList, Platform, useWindowDimensions, View, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -58,6 +58,7 @@ import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
+import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { FilterButtonList } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
@@ -95,11 +96,18 @@ export type SearchResultsContentProps = {
   venuesUserData: VenuesUserData
   facets: FacetData
   offerVenues: Venue[]
+  onViewableItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   onEndReached,
   onSearchResultsRefresh,
+  onViewableItemsChanged,
   hits,
   nbHits,
   isLoading,
@@ -113,7 +121,17 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const { designSystem } = useTheme()
 
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const searchListRef = useRef<FlashListRef<Offer> | null>(null)
+  const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
+    FlashListRef<Offer>
+  >({
+    onViewableItemsChanged: (items: Pick<ViewToken, 'key' | 'index'>[]) =>
+      onViewableItemsChanged?.(
+        items,
+        'searchResults',
+        'offer',
+        venuesUserData === undefined ? 0 : 1
+      ),
+  })
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -401,6 +419,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         }
         isGridLayout={isGridLayout}
         shouldDisplayGridList={shouldDisplayGridList}
+        onViewableItemsChanged={handleViewableItemsChanged}
+        onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,

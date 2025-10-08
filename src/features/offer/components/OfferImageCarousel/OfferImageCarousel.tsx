@@ -44,6 +44,9 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
     }
   }, [offerImages.length, onLoad])
 
+  const creditValue = offerImages[Math.round(currentIndex)]?.credit
+  const currentCredit = creditValue ? `© ${creditValue}` : undefined
+
   const renderItem: ({ item, index }: { item: ImageWithCredit; index: number }) => ReactElement =
     useCallback(
       ({ index, item }) => (
@@ -52,16 +55,15 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
             index={index}
             imageDimensions={imageDimensions}
             imageURL={item.url}
+            imageCredit={currentCredit}
             onLoad={handleImageLoad}
             onPress={onItemPress}
             isInCarousel
           />
         </Animated.View>
       ),
-      [handleImageLoad, imageDimensions, onItemPress]
+      [currentCredit, handleImageLoad, imageDimensions, onItemPress]
     )
-
-  const currentCredit = offerImages[Math.round(currentIndex)]?.credit
 
   return (
     <View style={style}>
@@ -84,7 +86,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
         style={carouselStyle}
       />
       <Container>
-        {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
+        {currentCredit ? <CopyrightText numberOfLines={2}>{currentCredit}</CopyrightText> : null}
       </Container>
       {offerImages.length > 1 && progressValue ? (
         <StyledCarouselPagination

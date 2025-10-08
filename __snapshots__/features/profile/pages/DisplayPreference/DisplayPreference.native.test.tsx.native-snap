@@ -291,19 +291,9 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Permettre l’orientation - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -321,7 +311,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -337,7 +327,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur"
+                    testID="Permettre l’orientation - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}

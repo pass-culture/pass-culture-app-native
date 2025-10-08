@@ -13,41 +13,41 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Notifications'
 
 - assertVisible:
-    id: 'Interrupteur Autoriser l’envoi d’e-mails'
+    id: 'Autoriser les notifications - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Autoriser les notifications'
+    id: 'Autoriser les notifications - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Suivre tous les thèmes'
+    id: 'Suivre tous les thèmes - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Cinéma'
+    id: 'Cinéma - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Lecture'
+    id: 'Lecture - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Musique'
+    id: 'Musique - Interrupteur à bascule - non coché'
     enabled: false
 
 - scroll
 
 - assertVisible:
-    id: 'Interrupteur Spectacles'
+    id: 'Spectacles - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Activités créatives'
+    id: 'Activités créatives - Interrupteur à bascule - non coché'
     enabled: false
 
 - assertVisible:
-    id: 'Interrupteur Visites et sorties'
+    id: 'Visites et sorties - Interrupteur à bascule - non coché'
     enabled: false
 
 - tapOn:
