@@ -7,6 +7,7 @@ describe('getCookiesChoiceFromCategories', () => {
       customization: false,
       performance: false,
       marketing: false,
+      video: false,
     }
 
     const cookiesChoiceByCategory = getCookiesChoiceFromCategories(categoryChoice)
@@ -22,6 +23,7 @@ describe('getCookiesChoiceFromCategories', () => {
       customization: true,
       performance: true,
       marketing: true,
+      video: true,
     }
 
     const cookiesChoiceByCategory = getCookiesChoiceFromCategories(categoryChoice)
@@ -37,13 +39,14 @@ describe('getCookiesChoiceFromCategories', () => {
       customization: true,
       performance: true,
       marketing: false,
+      video: false,
     }
 
     const cookiesChoiceByCategory = getCookiesChoiceFromCategories(categoryChoice)
 
     expect(cookiesChoiceByCategory).toEqual({
       accepted: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.performance],
-      refused: COOKIES_BY_CATEGORY.marketing,
+      refused: [...COOKIES_BY_CATEGORY.marketing, ...COOKIES_BY_CATEGORY.video],
     })
   })
 })

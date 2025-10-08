@@ -93,7 +93,11 @@ describe('<ConsentSettings/>', () => {
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: COOKIES_BY_CATEGORY.performance,
-        refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
+        refused: [
+          ...COOKIES_BY_CATEGORY.customization,
+          ...COOKIES_BY_CATEGORY.marketing,
+          ...COOKIES_BY_CATEGORY.video,
+        ],
       },
     }
 
@@ -138,7 +142,7 @@ describe('<ConsentSettings/>', () => {
 
     expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
       from: 'ConsentSettings',
-      type: { performance: true, customization: false, marketing: false },
+      type: { performance: true, customization: false, marketing: false, video: false },
     })
   })
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, render, act } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 jest.mock('queries/profile/usePatchProfileMutation')
 
@@ -23,6 +23,7 @@ describe('<CookiesDetails/>', () => {
             marketing: false,
             performance: false,
             customization: false,
+            video: false,
           }}
           setSettingsCookiesChoice={jest.fn()}
         />

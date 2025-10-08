@@ -23,12 +23,14 @@ export enum CookieNameEnum {
   TRAFFIC_MEDIUM = 'traffic_medium',
   TRAFFIC_SOURCE = 'traffic_source',
   UBBLE = 'ubble',
+  VIDEO_PLAYBACK = 'video_playback',
 }
 
 export enum CookieCategoriesEnum {
   customization = 'customization',
   performance = 'performance',
   marketing = 'marketing',
+  video = 'video',
   essential = 'essential',
 }
 

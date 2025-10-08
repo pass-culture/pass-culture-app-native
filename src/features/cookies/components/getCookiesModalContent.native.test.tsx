@@ -5,6 +5,7 @@ const settingsCookiesChoice = {
   customization: false,
   performance: false,
   marketing: false,
+  video: false,
 }
 const setCookiesStep = jest.fn()
 const setSettingsCookiesChoice = jest.fn()

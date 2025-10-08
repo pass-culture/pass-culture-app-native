@@ -1,4 +1,4 @@
-import { CookieCategoriesEnum, CookieNameEnum, ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieCategoriesEnum, CookieNameEnum } from 'features/cookies/enums'
 
 export type Cookies = CookieNameEnum[]
 
@@ -38,6 +38,7 @@ export type CookiesChoiceByCategory = {
   [CookieCategoriesEnum.marketing]: boolean
   [CookieCategoriesEnum.performance]: boolean
   [CookieCategoriesEnum.customization]: boolean
+  [CookieCategoriesEnum.video]: boolean
 }
 
 export interface CookiesChoiceSettings {

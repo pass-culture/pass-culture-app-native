@@ -31,12 +31,14 @@ export const CookiesSettings = ({
         customization: cookiesChoiceByCategory.customization,
         performance: cookiesChoiceByCategory.performance,
         marketing: cookiesChoiceByCategory.marketing,
+        video: cookiesChoiceByCategory.video,
       })
     }, [
       setSettingsCookiesChoice,
       cookiesChoiceByCategory.customization,
       cookiesChoiceByCategory.marketing,
       cookiesChoiceByCategory.performance,
+      cookiesChoiceByCategory.video,
     ])
   )
 
@@ -47,6 +49,7 @@ export const CookiesSettings = ({
       customization: !hasAcceptedAll,
       performance: !hasAcceptedAll,
       marketing: !hasAcceptedAll,
+      video: !hasAcceptedAll,
     })
   }
 
