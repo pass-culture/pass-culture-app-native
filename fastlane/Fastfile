@@ -58,8 +58,8 @@ platform :ios do
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
       sh "cd .. && \
       yarn hotupdater:deploy:ios:#{ENV['ENV']} \
-          --target-app-version #{version} \
-          --message \"#{escaped_release_notes}\" "
+          -m \"#{escaped_release_notes}\" \
+          -t #{version} "
       
     else
       match(
@@ -124,8 +124,8 @@ platform :android do
       escaped_release_notes = release_notes.gsub("\"", "\\\"")
       sh "cd .. && \
       yarn hotupdater:deploy:android:#{ENV['ENV']} \
-          --target-app-version #{version} \
-          --message \"#{escaped_release_notes}\" "
+          -m \"#{escaped_release_notes}\" \
+          -t #{version} "
       
     else
       build
