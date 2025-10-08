@@ -12,11 +12,11 @@ import { Typo } from 'ui/theme'
 interface Props {
   accessibilityHint?: string
   title: string
+  toggle: () => void
+  toggleLabel?: string
   iconSize?: number
   icon?: FunctionComponent<AccessibleIcon>
   active?: boolean
-  toggle?: () => void
-  toggleLabel?: string
   disabled?: boolean
 }
 
@@ -56,6 +56,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           toggle={toggle}
           disabled={disabled}
           accessibilityLabelledBy={labelID}
+          accessibilityLabel={toggleLabel ?? title}
           accessibilityHint={accessibilityHint}
           testID={title}
         />

@@ -1,11 +1,11 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: "Mon profil"
+- assertVisible: 'Paramètres du compte'
 - copyTextFrom:
-    childOf: ".*€"
+    childOf: '.*€'
 
 - evalScript: ${output.amountProfil = maestro.copiedText}
 - tapOn:
-    text: "Accueil"
+    text: 'Accueil.*'
     index: 0
-- assertVisible: "Tu as ${output.amountProfil} sur ton pass"
+- assertVisible: 'Tu as ${output.amountProfil} sur ton pass'

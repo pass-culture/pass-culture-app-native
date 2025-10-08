@@ -47,6 +47,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const DateSwitch = /Date - Interrupteur à bascule/
+const HourSwitch = /Heure - Interrupteur à bascule/
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -136,7 +139,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleDate = screen.getByTestId('Interrupteur date')
+      const toggleDate = screen.getByTestId(DateSwitch)
       await user.press(toggleDate)
 
       expect(toggleDate.props.accessibilityState.checked).toEqual(true)
@@ -153,7 +156,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur hour')
+      const toggleHour = screen.getByTestId(HourSwitch)
       await user.press(toggleHour)
 
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
@@ -174,7 +177,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleDate = screen.getByTestId('Interrupteur date')
+        const toggleDate = screen.getByTestId(DateSwitch)
         await user.press(toggleDate)
 
         const radioButton = screen.getByTestId(option)
@@ -203,7 +206,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleDate = screen.getByTestId('Interrupteur date')
+        const toggleDate = screen.getByTestId(DateSwitch)
         await user.press(toggleDate)
 
         const radioButton = screen.getByTestId(option)
@@ -229,7 +232,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur hour')
+      const toggleHour = screen.getByTestId(HourSwitch)
       await user.press(toggleHour)
 
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
@@ -255,7 +258,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur hour')
+      const toggleHour = screen.getByTestId(HourSwitch)
       await user.press(toggleHour)
 
       await act(async () => {
@@ -291,7 +294,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleDate = screen.getByTestId('Interrupteur date')
+      const toggleDate = screen.getByTestId(DateSwitch)
 
       await act(async () => {
         expect(toggleDate.props.accessibilityState.checked).toEqual(true)
@@ -305,7 +308,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur hour')
+      const toggleHour = screen.getByTestId(HourSwitch)
 
       await act(async () => {
         expect(toggleHour.props.accessibilityState.checked).toEqual(true)
@@ -351,7 +354,7 @@ describe('<DatesHoursModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggleDate = screen.getByTestId('Interrupteur date')
+      const toggleDate = screen.getByTestId(DateSwitch)
       await act(async () => {
         // With userEvent, test too long to execute for the CI
         // eslint-disable-next-line local-rules/no-fireEvent
@@ -412,7 +415,7 @@ describe('<DatesHoursModal/>', () => {
           }
           renderDatesHoursModal()
 
-          const toggleDate = screen.getByTestId('Interrupteur date')
+          const toggleDate = screen.getByTestId(DateSwitch)
           await act(async () => {
             // With userEvent, test too long to execute for the CI
             // eslint-disable-next-line local-rules/no-fireEvent
@@ -447,7 +450,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleHour = screen.getByTestId('Interrupteur hour')
+        const toggleHour = screen.getByTestId(HourSwitch)
         await act(async () => {
           // With userEvent, test too long to execute for the CI
           // eslint-disable-next-line local-rules/no-fireEvent

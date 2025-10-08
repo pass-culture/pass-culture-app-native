@@ -93,6 +93,35 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
+  const buildAccessibilityLabel = (
+    title: string,
+    subtitle: string | undefined,
+    isSelected: boolean
+  ) => {
+    return `${title}${subtitle ? `, ${subtitle}` : ''}, ${isSelected ? 'sélectionné' : 'non sélectionné'}`
+  }
+
+  const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
+  const AROUND_ME_SUBTITLE = hasGeolocPosition ? undefined : 'Géolocalisation désactivée'
+  const accessibilityLabelAroundMe = buildAccessibilityLabel(
+    AROUND_ME_TITLE,
+    AROUND_ME_SUBTITLE,
+    isCurrentLocationMode(LocationMode.AROUND_ME)
+  )
+
+  const AROUND_PLACE_TITLE = 'Choisir une localisation'
+  const accessibilityLabelAroundPlace = buildAccessibilityLabel(
+    AROUND_PLACE_TITLE,
+    LOCATION_PLACEHOLDER,
+    isCurrentLocationMode(LocationMode.AROUND_PLACE)
+  )
+
+  const accessibilityLabelEverywhere = buildAccessibilityLabel(
+    LocationLabel.everywhereLabel,
+    undefined,
+    isCurrentLocationMode(LocationMode.EVERYWHERE)
+  )
+
   return (
     <AppModal
       visible={visible}
@@ -126,8 +155,9 @@ export const LocationModal = ({
               onPress={selectLocationMode(LocationMode.AROUND_ME)}
               icon={PositionFilled}
               color={geolocationModeColor}
-              title="Utiliser ma position actuelle"
-              subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
+              title={AROUND_ME_TITLE}
+              subtitle={AROUND_ME_SUBTITLE}
+              accessibilityLabel={accessibilityLabelAroundMe}
             />
             {shouldShowAroundMeRadiusSlider ? (
               <SliderContainer>
@@ -144,8 +174,9 @@ export const LocationModal = ({
               onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
               icon={MagnifyingGlassFilled}
               color={customLocationModeColor}
-              title="Choisir une localisation"
+              title={AROUND_PLACE_TITLE}
               subtitle={LOCATION_PLACEHOLDER}
+              accessibilityLabel={accessibilityLabelAroundPlace}
             />
             {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
               <React.Fragment>
@@ -177,6 +208,7 @@ export const LocationModal = ({
                   icon={WorldPosition}
                   color={everywhereLocationModeColor}
                   title={LocationLabel.everywhereLabel}
+                  accessibilityLabel={accessibilityLabelEverywhere}
                 />
               </StyledView>
             </Li>

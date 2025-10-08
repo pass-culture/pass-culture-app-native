@@ -24,7 +24,7 @@ describe('<CookiesSettings/>', () => {
     renderCookiesSettings()
 
     const essentialToggle = await screen.findByTestId(
-      'Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs'
+      /Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule/
     )
 
     expect(essentialToggle).toBeDisabled()

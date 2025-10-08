@@ -10,7 +10,7 @@ describe('<FilterSwitch />', () => {
   it('should call toggle when pressing Spacebar on focused switch', () => {
     render(<FilterSwitch active={active} toggle={toggle} />)
 
-    const Switch = screen.getByTestId('Interrupteur')
+    const Switch = screen.getByRole('switch')
     fireEvent.focus(Switch)
     fireEvent.keyDown(Switch, { key: 'Spacebar' })
 

@@ -91,6 +91,7 @@ exports[`Bookings should render correctly 1`] = `
         }
       />
       <View
+        accessibilityLabel="En cours"
         accessibilityRole="tab"
         accessibilityState={
           {
@@ -109,7 +110,7 @@ exports[`Bookings should render correctly 1`] = `
             "text": undefined,
           }
         }
-        accessible={false}
+        accessible={true}
         focusable={true}
         nativeID="En cours"
         onClick={[Function]}
@@ -137,6 +138,7 @@ exports[`Bookings should render correctly 1`] = `
             },
           ]
         }
+        testID="En cours"
       >
         <View
           gap={2}
@@ -184,6 +186,7 @@ exports[`Bookings should render correctly 1`] = `
         />
       </View>
       <View
+        accessibilityLabel="Terminées"
         accessibilityRole="tab"
         accessibilityState={
           {
@@ -202,7 +205,7 @@ exports[`Bookings should render correctly 1`] = `
             "text": undefined,
           }
         }
-        accessible={false}
+        accessible={true}
         focusable={true}
         nativeID="Terminées"
         onClick={[Function]}
@@ -230,6 +233,7 @@ exports[`Bookings should render correctly 1`] = `
             },
           ]
         }
+        testID="Terminées"
       >
         <View
           gap={2}
