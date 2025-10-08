@@ -25,21 +25,29 @@ else
 fi
 
 parse_env_variable () {
-  test line
-  line=$(grep -E "$1=" "$2")
+  if [ -n "${!1:-}" ]; then
+    echo "${!1}"
+    return
+  fi
+  line=$(grep -E "$1=" "$2" 2>/dev/null)
   if [[ $line =~ \'(.*)\' ]]; then
     echo "${BASH_REMATCH[1]}"
+    return
   elif [[ $line =~ \=(.*) ]]; then
     echo "${BASH_REMATCH[1]}"
-  else
-    echo "Error: the key \"$1\" was not found in $2" >&2
-    exit 1
+    return
   fi
+  echo "Error: missing required secret '$1' (not found in environment nor in $2)" >&2
+  exit 1
 }
 
 case "$target" in
   "test")
-    TAGS="--include-tags local"
+    if [ "$platform" = "web" ]; then
+      TAGS="--include-tags Web"
+    else
+      TAGS="--include-tags local"
+    fi
     run_tracking_tests=false
     run_cloud_commands=false
     cloud_arguments=""
@@ -68,6 +76,12 @@ else
   rest_of_arguments="$*"
 fi
 
+if [ "$platform" = "web" ]; then
+  if [[ "$rest_of_arguments" != *".maestro/tests/SmokeTestWeb.yaml"* ]]; then
+    rest_of_arguments=".maestro/tests/ $rest_of_arguments"
+  fi
+fi
+
 METRO_SERVER_PORT=8081
 MOCK_ANALYTICS_SERVER_PORT=4001
 
@@ -84,14 +98,6 @@ elif [ "$platform" = "android" ]; then
 elif [ "$platform" = "web" ]; then
   app_id=$(parse_env_variable APP_PUBLIC_URL ".env.$env")
   echo "Running Web tests on $env environment with app id: $app_id"
-fi
-
-if adb shell pm list packages | grep "app.passculture.webapp"; then
-  echo "Prod app is installed."
-  app_installed="true"
-else
-  echo "Prod app isn't installed."
-  app_installed="false"
 fi
 
 start_mock_analytics_server() {
@@ -111,7 +117,7 @@ stop_mock_analytics_server() {
   fi
 }
 
-password=$(parse_env_variable PASSWORD .maestro/.env.secret)
+password=$(parse_env_variable MAESTRO_PASSWORD .maestro/.env.secret)
 maestro_cloud_api_key=$(parse_env_variable MAESTRO_CLOUD_API_KEY .maestro/.env.secret)
 
 if [ "$target" == "test" ]; then
@@ -131,13 +137,11 @@ maestro "$target" \
   --env MAESTRO_PASSWORD="$password" \
   --env MAESTRO_RUN_TRACKING_TESTS="$run_tracking_tests" \
   --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
-  --env MAESTRO_APP_INSTALLED="$app_installed" \
   --env MAESTRO_CLOUD_API_KEY="$maestro_cloud_api_key" \
   --env MAESTRO_DRIVER_STARTUP_TIMEOUT=60000 \
   $TAGS \
   $cloud_arguments \
   $rest_of_arguments
-ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
 if [ "$target" == "test" ]; then
   stop_mock_analytics_server
 fi
