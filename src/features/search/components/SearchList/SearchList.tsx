@@ -33,6 +33,8 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
       numColumns,
       isGridLayout,
       shouldDisplayGridList,
+      onViewableItemsChanged,
+      onViewableVenuePlaylistItemsChanged,
     },
     ref
   ) => {
@@ -60,6 +62,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
             artistSection={artistSection}
             venuesUserData={venuesUserData}
             shouldDisplayGridList={shouldDisplayGridList}
+            onViewableVenuePlaylistItemsChanged={onViewableVenuePlaylistItemsChanged}
           />
         }
         ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
@@ -73,6 +76,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         contentContainerStyle={{ paddingBottom: tabBar.height + getSpacing(10) }}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     )
   }

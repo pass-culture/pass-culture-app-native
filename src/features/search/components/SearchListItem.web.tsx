@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactNode } from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, ViewStyle, ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
@@ -27,6 +27,12 @@ export type RowData = {
   onPress: SearchListProps['onPress']
   searchState: SearchState
   artistSection?: ReactNode
+  onViewableVenuePlaylistItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 interface RowProps {
@@ -50,6 +56,7 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
           userData={data.userData}
           venuesUserData={data.venuesUserData}
           venues={data.venues}
+          onViewableVenuePlaylistItemsChanged={data.onViewableVenuePlaylistItemsChanged}
         />
       </li>
     )
