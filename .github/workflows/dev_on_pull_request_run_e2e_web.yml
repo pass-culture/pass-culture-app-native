@@ -55,7 +55,7 @@ jobs:
           MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
           echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
 
-      - name: Cache Maestro CLI
+      - name: Restore cache Maestro CLI
         id: maestro-cache
         uses: actions/cache@v4
         with:
@@ -72,6 +72,15 @@ jobs:
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
+
+      - name: Save Maestro CLI to cache if updated
+        if: steps.maestro-cache.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.maestro
+          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-maestro-
 
       - name: Add Maestro to PATH (from cache)
         if: steps.maestro-cache.outputs.cache-hit == 'true'
