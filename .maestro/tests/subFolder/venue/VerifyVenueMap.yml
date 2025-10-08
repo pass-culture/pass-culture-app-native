@@ -1,4 +1,3 @@
-
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Localisation"
@@ -16,14 +15,11 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
     - tapOn: "Paris0Paris"
-    
-- tapOn: "Valider et voir sur la carte"
 
-- tapOn: 
-    text: "Carte"
-    optional: true
+- tapOn: "Valider et voir sur la carte"
 
 - assertVisible: 
     text: "Carte des lieux"
     optional: true
+- runFlow: ../venue/VerifyMapFilter.yml
 - tapOn: "Revenir en arrière"
