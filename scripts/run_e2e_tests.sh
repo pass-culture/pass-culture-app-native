@@ -44,7 +44,7 @@ parse_env_variable () {
 case "$target" in
   "test")
     if [ "$platform" = "web" ]; then
-      TAGS="--include-tags Web"
+      TAGS="--include-tags web"
     else
       TAGS="--include-tags local"
     fi

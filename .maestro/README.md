@@ -239,7 +239,7 @@ Par exemple pour un nouveau test web :
 ```yaml
 url: http://localhost:5173/
 tags:
-  - Web
+  - web
   - wip
 ---
 - launchApp
@@ -250,7 +250,7 @@ il faut remplacer le `--include-tags` par celui voulu
 case "$target" in
   "test")
     if [ "$platform" = "web" ]; then
-      TAGS="--include-tags Web"
+      TAGS="--include-tags web"
     else
 ```
 
@@ -261,7 +261,7 @@ Les tests Maestro sont organisés avec un système de tags qui permet de catégo
 - `local` : Tests qui peuvent être exécutés en local
 - `nightlyAndroid` : Tests spécifiques pour les runs nocturnes sur Android
 - `nightlyIOS` : Tests spécifiques pour les runs nocturnes sur iOS
-- `Web` : Tests spécifiques aux runs web
+- `web` : Tests spécifiques aux runs web
 - `squad-conversion` : Tests liés aux parcours de conversion
 - `squad-activation` : Tests liés aux parcours d'activation
 - `squad-decouverte` : Tests liés aux parcours de découverte
