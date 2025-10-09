@@ -10,6 +10,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics/provider'
 import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -76,6 +77,7 @@ describe('<CookiesConsent/>', () => {
     storage.clear(COOKIES_CONSENT_KEY)
     mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
     mockdate.set(Today)
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {

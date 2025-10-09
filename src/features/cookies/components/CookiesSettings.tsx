@@ -9,6 +9,8 @@ import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { getCookiesChoiceByCategory } from 'features/cookies/helpers/getCookiesChoiceByCategory'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceSettings } from 'features/cookies/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
@@ -24,6 +26,9 @@ export const CookiesSettings = ({
   setSettingsCookiesChoice,
 }: CookiesChoiceSettings) => {
   const { cookiesConsent } = useCookies()
+  const shouldDisplayVideoCookiesToggle = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT
+  )
   const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesConsent)
   useFocusEffect(
     useCallback(() => {
@@ -54,6 +59,8 @@ export const CookiesSettings = ({
   }
 
   const inputLabel = 'Tout accepter'
+  const { [CookieCategoriesEnum.video]: _videoCookiesInfo, ...otherCookiesInfo } = cookiesInfo
+  const visibleCookiesInfo = shouldDisplayVideoCookiesToggle ? cookiesInfo : otherCookiesInfo
 
   return (
     <React.Fragment>
@@ -76,7 +83,7 @@ export const CookiesSettings = ({
           />
         </AcceptAllContainer>
       </ChoiceContainer>
-      {Object.keys(cookiesInfo).map((cookie) => (
+      {Object.keys(visibleCookiesInfo).map((cookie) => (
         <CookiesAccordion
           key={cookie}
           cookie={cookie as CookieCategoriesEnum}

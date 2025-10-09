@@ -7,6 +7,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -65,6 +66,7 @@ jest.useFakeTimers()
 describe('<ConsentSettings/>', () => {
   beforeEach(() => {
     mockdate.set(Today)
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {
