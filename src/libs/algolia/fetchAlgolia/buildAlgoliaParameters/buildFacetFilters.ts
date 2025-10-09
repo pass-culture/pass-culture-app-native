@@ -78,6 +78,9 @@ export const buildFacetFilters = ({
 
   if (offerGtlLabel && offerGtlLevel) {
     facetFilters.push(buildOfferGtl(offerGtlLevel, offerGtlLabel))
+    if (offerGtlLabel === 'Sciences humaines & sociales') {
+      facetFilters.push(['offer.gtlCodeLevel3:-09110800'])
+    }
   }
 
   if (offerSubcategories.length > 0) {
