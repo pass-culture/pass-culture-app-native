@@ -1,28 +1,21 @@
 import React, { ReactNode } from 'react'
+import { DefaultTheme } from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
-// eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
 import { Tag } from 'ui/designSystem/Tag/Tag'
-import { TagVariant } from 'ui/designSystem/Tag/types'
+import { TagProps, TagVariant } from 'ui/designSystem/Tag/types'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 
 type InteractionTagParams = {
-  theme: typeof theme
+  theme: DefaultTheme
   subcategoryId: SubcategoryIdEnum
   likesCount?: number
   chroniclesCount?: number
   headlinesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
-  withColor?: boolean
-}
-
-type TagProps = {
-  label: string
-  variant: TagVariant
-  withColor?: boolean
 }
 
 export const renderInteractionTag = (params: InteractionTagParams): ReactNode | undefined => {
@@ -39,13 +32,12 @@ export const getTagProps = ({
   hasSmallLayout,
   isComingSoonOffer,
   subcategoryId,
-  withColor,
 }: InteractionTagParams): TagProps | null => {
   if (isComingSoonOffer) {
     return {
       label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
-      variant: TagVariant.COMING_SOON,
-      withColor,
+      variant: TagVariant.WARNING,
+      Icon: ClockFilled,
     }
   }
 

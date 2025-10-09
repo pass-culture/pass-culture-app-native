@@ -395,7 +395,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                         }
                       }
                       testID="tagWrapper"
-                      withColor={true}
                     >
                       <Text
                         style={
@@ -628,7 +627,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                         }
                       }
                       testID="tagWrapper"
-                      withColor={true}
                     >
                       <Text
                         style={
@@ -1277,7 +1275,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                         }
                       }
                       testID="tagWrapper"
-                      withColor={true}
                     >
                       <Text
                         style={
@@ -1513,7 +1510,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                         }
                       }
                       testID="tagWrapper"
-                      withColor={true}
                     >
                       <Text
                         style={
