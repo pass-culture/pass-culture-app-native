@@ -1,16 +1,15 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput, TextStyle } from 'react-native'
 
-import { TextInputProps } from 'ui/components/inputs/types'
+import { InputTextProps } from 'ui/components/inputs/types'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing } from 'ui/theme'
 
-interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
+interface LargeTextInputProps extends Omit<InputTextProps, 'value' | 'onChangeText'> {
   label: string
   labelStyle?: TextStyle
   value: string
   onChangeText: (suggestion: string) => void
-  showErrorMessage: boolean
   errorMessage?: string
   containerHeight?: number
   maxValueLength?: number
@@ -24,16 +23,12 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
     onChangeText,
     containerHeight,
     maxLength,
-    showErrorMessage,
     errorMessage,
     ...inputProps
   },
   forwardedRef
 ) => {
   const maxValueLength = maxLength ?? 800
-  const computedErrorMessage = showErrorMessage
-    ? (errorMessage ?? 'Tu as atteint le nombre de caractères maximal.')
-    : undefined
 
   return (
     <InputText
@@ -43,9 +38,9 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
       onChangeText={onChangeText}
       containerStyle={{ height: containerHeight ?? getSpacing(50) }}
       multiline
-      accessibilityHint={computedErrorMessage}
+      accessibilityHint={errorMessage}
       maxLength={maxValueLength + 25}
-      errorMessage={computedErrorMessage}
+      errorMessage={errorMessage}
       ref={forwardedRef}
       characterCount={maxValueLength}
       {...inputProps}

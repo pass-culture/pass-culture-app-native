@@ -25,9 +25,8 @@ const SearchIcon = styled(Search).attrs(({ theme }) => ({
 }))``
 
 const baseProps = {
-  placeholder: 'Placeholder...',
   label: 'Label',
-  format: 'Format',
+  description: 'Format',
 }
 
 const variantConfig: Variants<typeof InputText> = [
@@ -44,12 +43,24 @@ const variantConfig: Variants<typeof InputText> = [
     props: { ...baseProps, disabled: true },
   },
   {
-    label: 'Required InputText',
-    props: { ...baseProps, isRequiredField: true },
+    label: 'Required InputText with symbol',
+    props: { ...baseProps, requiredIndicator: 'symbol' },
+  },
+  {
+    label: 'Required InputText with text',
+    props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
     label: 'InputText with error',
     props: { ...baseProps, errorMessage: 'Error message' },
+  },
+  {
+    label: 'InputText with long error',
+    props: {
+      ...baseProps,
+      errorMessage:
+        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr',
+    },
   },
   {
     label: 'InputText with inside rightButton',
@@ -69,6 +80,15 @@ const variantConfig: Variants<typeof InputText> = [
   {
     label: 'InputText with character count and error message',
     props: { ...baseProps, characterCount: 10, errorMessage: 'Error message' },
+  },
+  {
+    label: 'InputText with character count and long error message',
+    props: {
+      ...baseProps,
+      characterCount: 10,
+      errorMessage:
+        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr',
+    },
   },
 ]
 

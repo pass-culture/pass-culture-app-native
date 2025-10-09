@@ -248,24 +248,38 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     "alignItems": "flex-end",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginBottom": 8,
                     "width": "100%",
                   }
                 }
               >
-                <Text
-                  accessibilityLabel="Adresse e-mail"
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                <View>
+                  <Text
+                    accessibilityLabel="Adresse e-mail"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
-                  }
-                >
-                  Adresse e-mail
-                </Text>
+                  >
+                    Adresse e-mail
+                  </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                        "marginTop": 2,
+                      }
+                    }
+                  >
+                    Exemple : tonadresse@email.com
+                  </Text>
+                </View>
                 <Text
                   style={
                     {
@@ -281,46 +295,27 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               </View>
             </View>
             <View
-              style={
-                {
-                  "marginBottom": 8,
-                }
-              }
-            >
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  }
-                }
-              >
-                Exemple : tonadresse@email.com
-              </Text>
-            </View>
-            <View
-              height="small"
               isDisabled={false}
               isError={false}
-              isFocus={false}
+              isFocused={false}
+              size="small"
               style={
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
                   "borderColor": "#90949d",
                   "borderStyle": "solid",
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "height": 40,
+                  "marginTop": 4,
                   "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
+                  "paddingLeft": 9,
+                  "paddingRight": 9,
                   "paddingTop": 0,
                   "width": "100%",
                 }
@@ -334,9 +329,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 editable={true}
                 isEmpty={true}
                 keyboardType="email-address"
-                maxLength={120}
                 multiline={false}
-                nativeID="testUuidV4"
+                nativeID="Entrée pour l’email"
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
@@ -386,24 +380,25 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   "alignItems": "flex-end",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
-                  "marginBottom": 8,
                   "width": "100%",
                 }
               }
             >
-              <Text
-                accessibilityLabel="Mot de passe"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+              <View>
+                <Text
+                  accessibilityLabel="Mot de passe"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
-                }
-              >
-                Mot de passe
-              </Text>
+                >
+                  Mot de passe
+                </Text>
+              </View>
               <Text
                 style={
                   {
@@ -419,26 +414,27 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             </View>
           </View>
           <View
-            height="small"
             isDisabled={false}
             isError={false}
-            isFocus={false}
+            isFocused={false}
+            size="small"
             style={
               {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
                 "borderColor": "#90949d",
                 "borderStyle": "solid",
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
                 "height": 40,
+                "marginTop": 4,
                 "paddingBottom": 0,
-                "paddingLeft": 17,
-                "paddingRight": 17,
+                "paddingLeft": 9,
+                "paddingRight": 9,
                 "paddingTop": 0,
                 "width": "100%",
               }
@@ -451,12 +447,12 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               editable={true}
               isEmpty={true}
               multiline={false}
-              nativeID="testUuidV4"
+              nativeID="Mot de passe"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
               onSubmitEditing={[Function]}
-              placeholder="Ton mot de passe"
+              placeholder=""
               placeholderTextColor="#696a6f"
               returnKeyType="next"
               secureTextEntry={true}
@@ -481,67 +477,59 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               value=""
             />
             <View
-              style={
+              accessibilityLabel="Afficher le mot de passe"
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "marginTop": 8,
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "maxWidth": 60,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Afficher le mot de passe"
             >
               <View
-                accessibilityLabel="Afficher le mot de passe"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "maxWidth": 60,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Afficher le mot de passe"
+                fill="#161617"
+                height={24}
+                width={24}
               >
-                <View
-                  fill="#161617"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>

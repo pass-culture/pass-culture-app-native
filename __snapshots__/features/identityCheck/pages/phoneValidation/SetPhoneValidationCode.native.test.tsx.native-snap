@@ -309,33 +309,36 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="Code de validation"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="Code de validation"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          Code de validation
-                        </Text>
+                          >
+                            Code de validation
+                          </Text>
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 2,
+                              }
+                            }
+                          >
+                            Format : 6 chiffres
+                          </Text>
+                        </View>
                       </View>
                     </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                      Format : 6 chiffres
-                    </Text>
                     <View
                       isDisabled={false}
                       isError={false}
@@ -365,18 +368,19 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="one-time-code"
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour le code reçu par sms"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
                         onSubmitEditing={[Function]}
-                        placeholder="012345"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={

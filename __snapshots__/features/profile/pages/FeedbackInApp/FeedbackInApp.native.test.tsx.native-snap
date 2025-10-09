@@ -298,18 +298,32 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                         }
                       }
                     >
+                      <View>
+                        <Text
+                          accessibilityLabel="Ma suggestion"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Ma suggestion
+                        </Text>
+                      </View>
                       <Text
-                        accessibilityLabel="Ma suggestion"
                         style={
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
                           }
                         }
                       >
-                        Ma suggestion *
+                        Obligatoire
                       </Text>
                     </View>
                   </View>
@@ -352,11 +366,11 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       isEmpty={true}
                       maxLength={800}
                       multiline={true}
-                      nativeID="testUuidV4"
+                      nativeID="feedback-input"
                       onBlur={[Function]}
                       onChangeText={[Function]}
                       onFocus={[Function]}
-                      placeholder="Ma suggestion..."
+                      placeholder=""
                       placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
@@ -374,7 +388,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           "paddingTop": 10,
                         }
                       }
-                      testID="Champ de texte"
+                      testID="feedback-input"
                       textAlignVertical="top"
                       value=""
                     />

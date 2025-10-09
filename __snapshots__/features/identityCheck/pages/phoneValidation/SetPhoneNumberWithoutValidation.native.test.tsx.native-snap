@@ -356,33 +356,36 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityLabel="Numéro de téléphone"
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="Numéro de téléphone"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          Numéro de téléphone
-                        </Text>
+                          >
+                            Numéro de téléphone
+                          </Text>
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 2,
+                              }
+                            }
+                          >
+                            0639980123
+                          </Text>
+                        </View>
                       </View>
                     </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                      0639980123
-                    </Text>
                     <View
                       isDisabled={false}
                       isError={false}
@@ -503,13 +506,14 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         </View>
                       </View>
                       <TextInput
+                        accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="tel"
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour le numéro de téléphone"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}

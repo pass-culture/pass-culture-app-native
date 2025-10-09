@@ -54,7 +54,7 @@ describe('SetPassword Page', () => {
   it('should enable the submit button when password is correct', async () => {
     render(<SetPassword {...props} />)
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
     await user.type(passwordInput, 'user@AZERTY123')
 
     expect(await screen.findByTestId('Continuer')).toBeEnabled()
@@ -63,7 +63,7 @@ describe('SetPassword Page', () => {
   it('should go to next step when submitting password', async () => {
     render(<SetPassword {...props} />)
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
     await user.type(passwordInput, 'user@AZERTY123')
 
     await user.press(screen.getByTestId('Continuer'))

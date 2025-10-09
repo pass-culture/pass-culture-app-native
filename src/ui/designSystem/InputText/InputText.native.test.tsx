@@ -13,28 +13,29 @@ import { Search } from 'ui/svg/icons/Search'
 describe('<InputText />', () => {
   const myRef = React.createRef<RNTextInput>()
 
-  it('should display label with asterisk when input required', () => {
+  it('should display label with asterisk when input required with symbol', () => {
     render(
-      <InputText
-        placeholder="placeholder"
-        onChangeText={jest.fn()}
-        ref={myRef}
-        label="E-mail"
-        isRequiredField
-      />
+      <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="symbol" />
     )
 
     expect(screen.getByText('E-mail *')).toBeOnTheScreen()
   })
 
+  it('should display mandatory label when input required with text', () => {
+    render(
+      <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="explicit" />
+    )
+
+    expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
+  })
+
   it('should display format when defined', () => {
     render(
       <InputText
-        placeholder="placeholder"
         onChangeText={jest.fn()}
         ref={myRef}
         label="E-mail"
-        format="Exemple : toto@email.com"
+        description="Exemple : toto@email.com"
       />
     )
 
@@ -45,7 +46,6 @@ describe('<InputText />', () => {
     render(
       <InputText
         label="E-mail"
-        placeholder="placeholder"
         onChangeText={jest.fn()}
         ref={myRef}
         leftComponent={<Search testID="leftIcon" />}
@@ -59,7 +59,6 @@ describe('<InputText />', () => {
     render(
       <InputText
         label="E-mail"
-        placeholder="placeholder"
         onChangeText={jest.fn()}
         ref={myRef}
         rightButton={{ icon: Search, accessibilityLabel: 'My right button', onPress: jest.fn() }}
@@ -71,28 +70,14 @@ describe('<InputText />', () => {
 
   it('should display error message when defined', () => {
     render(
-      <InputText
-        label="E-mail"
-        placeholder="placeholder"
-        onChangeText={jest.fn()}
-        ref={myRef}
-        errorMessage="Error !!!"
-      />
+      <InputText label="E-mail" onChangeText={jest.fn()} ref={myRef} errorMessage="Error !!!" />
     )
 
     expect(screen.getByText('Error !!!')).toBeOnTheScreen()
   })
 
   it('should display character count when defined', () => {
-    render(
-      <InputText
-        label="E-mail"
-        placeholder="placeholder"
-        onChangeText={jest.fn()}
-        ref={myRef}
-        characterCount={10}
-      />
-    )
+    render(<InputText label="E-mail" onChangeText={jest.fn()} ref={myRef} characterCount={10} />)
 
     expect(screen.getByText('0/10')).toBeOnTheScreen()
   })

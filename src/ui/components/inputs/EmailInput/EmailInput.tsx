@@ -1,28 +1,25 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { TextInput } from 'ui/components/inputs/TextInput'
-import { TextInputProps } from 'ui/components/inputs/types'
+import { InputTextProps } from 'ui/components/inputs/types'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 
-export interface EmailInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
-  label?: string
+export interface EmailInputProps extends Omit<InputTextProps, 'value' | 'onChangeText'> {
   email: string
   onEmailChange: (email: string) => void
-  isRequiredField?: boolean
 }
 
 const WithRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, EmailInputProps> = (
-  { email, onEmailChange, label, ...inputProps },
+  { email, onEmailChange, ...inputProps },
   forwardedRef
 ) => {
   return (
-    <TextInput
+    <InputText
       autoCapitalize="none"
       autoComplete="email"
       keyboardType="email-address"
-      label={label ?? 'Adresse e-mail'}
       onChangeText={onEmailChange}
-      format="tonadresse@email.com"
+      description="Exemple&nbsp;: tonadresse@email.com"
       textContentType="emailAddress"
       value={email}
       maxLength={120}

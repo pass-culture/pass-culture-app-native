@@ -459,23 +459,37 @@ exports[`DebugScreen should render correctly 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <Text
+                        accessibilityLabel="Description du problème"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                            {
+                              "fontWeight": "bold",
+                            },
+                          ]
+                        }
+                      >
+                        Description du problème
+                      </Text>
+                    </View>
                     <Text
-                      accessibilityLabel="Description du problème"
                       style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                          {
-                            "fontWeight": "bold",
-                          },
-                        ]
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
                       }
                     >
-                      Description du problème *
+                      Obligatoire
                     </Text>
                   </View>
                 </View>
@@ -518,11 +532,11 @@ exports[`DebugScreen should render correctly 1`] = `
                     isEmpty={true}
                     maxLength={800}
                     multiline={true}
-                    nativeID="testUuidV4"
+                    nativeID="problem-description-input"
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
-                    placeholder="Décris ton problème en quelques phrases."
+                    placeholder=""
                     placeholderTextColor="#696a6f"
                     returnKeyType="next"
                     style={
@@ -540,7 +554,7 @@ exports[`DebugScreen should render correctly 1`] = `
                         "paddingTop": 10,
                       }
                     }
-                    testID="Champ de texte"
+                    testID="problem-description-input"
                     textAlignVertical="top"
                     value=""
                   />

@@ -223,67 +223,62 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                   "alignItems": "flex-end",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
-                  "marginBottom": 8,
                   "width": "100%",
                 }
               }
             >
-              <Text
-                accessibilityLabel="Nouvelle adresse e-mail"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+              <View>
+                <Text
+                  accessibilityLabel="Nouvelle adresse e-mail"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
-                }
-              >
-                Nouvelle adresse e-mail
-              </Text>
+                >
+                  Nouvelle adresse e-mail
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginTop": 2,
+                    }
+                  }
+                >
+                  Exemple : tonadresse@email.com
+                </Text>
+              </View>
             </View>
           </View>
           <View
-            style={
-              {
-                "marginBottom": 8,
-              }
-            }
-          >
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              Exemple : tonadresse@email.com
-            </Text>
-          </View>
-          <View
-            height="small"
             isDisabled={false}
             isError={false}
-            isFocus={false}
+            isFocused={false}
+            size="small"
             style={
               {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
                 "borderColor": "#90949d",
                 "borderStyle": "solid",
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
                 "height": 40,
+                "marginTop": 4,
                 "paddingBottom": 0,
-                "paddingLeft": 17,
-                "paddingRight": 17,
+                "paddingLeft": 9,
+                "paddingRight": 9,
                 "paddingTop": 0,
                 "width": "100%",
               }
@@ -291,14 +286,14 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             testID="styled-input-container"
           >
             <TextInput
+              accessibilityRequired={false}
               autoCapitalize="none"
               autoComplete="email"
               editable={true}
               isEmpty={true}
               keyboardType="email-address"
-              maxLength={120}
               multiline={false}
-              nativeID="testUuidV4"
+              nativeID="Entrée pour l’email"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}

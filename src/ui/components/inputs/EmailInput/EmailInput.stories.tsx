@@ -11,29 +11,30 @@ const meta: Meta<typeof EmailInput> = {
 }
 export default meta
 
+const baseProps = {
+  label: 'Adresse e-mail',
+}
+
 const variantConfig: Variants<typeof EmailInput> = [
   {
     label: 'EmailInput',
+    props: baseProps,
   },
   {
-    label: 'EmailInput with label',
-    props: { label: 'Adresse e-mail' },
-  },
-  {
-    label: 'EmailInput with label and value',
-    props: { label: 'Adresse e-mail', email: 'email@example.com' },
+    label: 'EmailInput with value',
+    props: { ...baseProps, email: 'email@example.com' },
   },
   {
     label: 'EmailInput Required',
-    props: { label: 'Adresse e-mail', isRequiredField: true },
+    props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
     label: 'EmailInput Disabled',
-    props: { label: 'Adresse e-mail', disabled: true },
+    props: { ...baseProps, disabled: true },
   },
   {
     label: ' EmailInput with Error',
-    props: { label: 'Adresse e-mail', isError: true },
+    props: { ...baseProps, errorMessage: 'Erreur' },
   },
 ]
 

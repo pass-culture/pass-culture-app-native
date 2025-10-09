@@ -3,9 +3,7 @@ import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
-import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
-import { getSpacing } from 'ui/theme'
 
 interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputProps {
   name: TName
@@ -36,9 +34,8 @@ export const PasswordInputController = <
             value={value}
             onChangeText={onChange}
             onBlur={onBlur}
-            isRequiredField
             accessibilityHint={error?.message}
-            isError={error && value.length > 0}
+            errorMessage={error?.message}
             {...otherPasswordInputProps}
           />
           {withSecurityRules ? (
@@ -47,13 +44,7 @@ export const PasswordInputController = <
               visible={securityRulesAlwaysVisible ? true : value.length > 0}
               nativeID={passwordInputErrorId}
             />
-          ) : (
-            <InputError
-              visible={!!error && value.length > 0}
-              errorMessage={error?.message}
-              numberOfSpacesTop={getSpacing(0.5)}
-            />
-          )}
+          ) : null}
         </React.Fragment>
       )}
     />

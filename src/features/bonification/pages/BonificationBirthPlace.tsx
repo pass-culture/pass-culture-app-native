@@ -61,8 +61,7 @@ export const BonificationBirthPlace = () => {
                   value={value}
                   autoFocus
                   onChangeText={onChange}
-                  placeholder="Son pays de naissance"
-                  isRequiredField
+                  requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le pays de naissance"
                   textContentType="countryName"
@@ -79,8 +78,7 @@ export const BonificationBirthPlace = () => {
                   label="Ville de naissance"
                   value={value}
                   onChangeText={onChange}
-                  placeholder="Sa ville de naissance"
-                  isRequiredField
+                  requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour la ville de naissance"
                   textContentType="addressCity"

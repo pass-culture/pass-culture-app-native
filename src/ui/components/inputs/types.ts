@@ -30,14 +30,16 @@ type CustomTextInputProps = InputProps & {
   Icon?: React.FC
 }
 
+export type RequiredIndicator = 'symbol' | 'explicit'
+
 type CustomInputTextProps = InputProps & {
   label: string
   labelStyle?: TextStyle
   errorMessage?: string
-  format?: string
+  description?: string
   disabled?: boolean
   containerStyle?: ViewStyle
-  isRequiredField?: boolean
+  requiredIndicator?: RequiredIndicator
   leftComponent?: React.ReactElement
   showSoftInputOnFocus?: boolean
   rightButton?: {
@@ -106,9 +108,9 @@ export type RNTextInputProps = Pick<
     testID?: string
   }
 
-export type TextInputProps = CustomTextInputProps & RNTextInputProps
+type TextInputProps = CustomTextInputProps & RNTextInputProps
 
-export type InputTextProps = CustomInputTextProps & RNTextInputProps
+export type InputTextProps = CustomInputTextProps & Omit<RNTextInputProps, 'placeholder'>
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
@@ -119,20 +121,6 @@ function getInputProps<Props extends InputProps>(props: Props): InputProps {
   }
 }
 
-export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
-  return {
-    ...getInputProps(props),
-    label: props.label,
-    isError: props.isError,
-    disabled: props.disabled,
-    containerStyle: props.containerStyle,
-    isRequiredField: props.isRequiredField,
-    leftComponent: props.leftComponent,
-    rightLabel: props.rightLabel,
-    rightButton: props.rightButton,
-  }
-}
-
 export function getCustomInputTextProps(props: InputTextProps): CustomInputTextProps {
   return {
     ...getInputProps(props),
@@ -140,10 +128,10 @@ export function getCustomInputTextProps(props: InputTextProps): CustomInputTextP
     errorMessage: props.errorMessage,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
-    isRequiredField: props.isRequiredField,
+    requiredIndicator: props.requiredIndicator,
     leftComponent: props.leftComponent,
     rightButton: props.rightButton,
-    format: props.format,
+    description: props.description,
     characterCount: props.characterCount,
   }
 }

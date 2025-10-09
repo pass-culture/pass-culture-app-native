@@ -67,8 +67,7 @@ export const BonificationNames = () => {
                   value={value}
                   autoFocus
                   onChangeText={onChange}
-                  placeholder="Son prénom"
-                  isRequiredField
+                  requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le prénom"
                   textContentType="givenName"
@@ -85,8 +84,7 @@ export const BonificationNames = () => {
                   label="Nom de naissance"
                   value={value}
                   onChangeText={onChange}
-                  placeholder="Son nom de naissance"
-                  isRequiredField
+                  requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le nom"
                   textContentType="familyName"
@@ -103,7 +101,6 @@ export const BonificationNames = () => {
                   label="Nom d’usage"
                   value={value}
                   onChangeText={onChange}
-                  placeholder="Son nom d’usage"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le nom d’usage"
                   textContentType="familyName"

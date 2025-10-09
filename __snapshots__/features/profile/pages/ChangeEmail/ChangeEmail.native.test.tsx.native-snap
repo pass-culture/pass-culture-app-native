@@ -291,67 +291,62 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                       "alignItems": "flex-end",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginBottom": 8,
                       "width": "100%",
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Adresse e-mail actuelle"
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                  <View>
+                    <Text
+                      accessibilityLabel="Adresse e-mail actuelle"
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
-                    }
-                  >
-                    Adresse e-mail actuelle
-                  </Text>
+                    >
+                      Adresse e-mail actuelle
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginTop": 2,
+                        }
+                      }
+                    >
+                      Exemple : tonadresse@email.com
+                    </Text>
+                  </View>
                 </View>
               </View>
               <View
-                style={
-                  {
-                    "marginBottom": 8,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Exemple : tonadresse@email.com
-                </Text>
-              </View>
-              <View
-                height="small"
                 isDisabled={true}
                 isError={false}
-                isFocus={false}
+                isFocused={false}
+                size="small"
                 style={
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#cbcdd2",
                     "borderStyle": "solid",
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 40,
+                    "marginTop": 4,
                     "paddingBottom": 0,
-                    "paddingLeft": 17,
-                    "paddingRight": 17,
+                    "paddingLeft": 9,
+                    "paddingRight": 9,
                     "paddingTop": 0,
                     "width": "100%",
                   }
@@ -359,15 +354,15 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
+                  accessibilityRequired={false}
                   autoCapitalize="none"
                   autoComplete="email"
                   disabled={true}
                   editable={false}
                   isEmpty={false}
                   keyboardType="email-address"
-                  maxLength={120}
                   multiline={false}
-                  nativeID="testUuidV4"
+                  nativeID="Entrée pour l’email"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
