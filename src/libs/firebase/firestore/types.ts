@@ -82,4 +82,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_VENUE_HEADLINE_OFFER = 'wipVenueHeadlineOffer',
   WIP_VENUE_MAP = 'wipVenueMap',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
+  WIP_VIDEO_COOKIES_CONSENT = 'wipVideoCookiesConsent',
 }

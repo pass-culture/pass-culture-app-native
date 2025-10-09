@@ -31,6 +31,7 @@ export const COOKIES_BY_CATEGORY: Record<CookieCategoriesEnum, Cookies> = {
     CookieNameEnum.TIMES_REVIEW_HAS_BEEN_REQUESTED,
     CookieNameEnum.UBBLE,
   ],
+  [CookieCategoriesEnum.video]: [CookieNameEnum.VIDEO_PLAYBACK],
   [CookieCategoriesEnum.marketing]: [CookieNameEnum.APPSFLYER],
 }
 
@@ -38,4 +39,5 @@ export const ALL_OPTIONAL_COOKIES = [
   ...COOKIES_BY_CATEGORY.customization,
   ...COOKIES_BY_CATEGORY.performance,
   ...COOKIES_BY_CATEGORY.marketing,
+  ...COOKIES_BY_CATEGORY.video,
 ]

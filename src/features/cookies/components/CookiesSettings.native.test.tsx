@@ -4,6 +4,8 @@ import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -20,6 +22,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 jest.useFakeTimers()
 
 describe('<CookiesSettings/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should disable and check essential cookies switch', async () => {
     renderCookiesSettings()
 
@@ -42,6 +48,27 @@ describe('<CookiesSettings/>', () => {
       expect(analytics.logHasOpenedCookiesAccordion).toHaveBeenCalledWith(cookieCategory)
     )
   })
+
+  it('should not display video cookies toggle when wipVideoCookiesConsent FF deactivated', async () => {
+    renderCookiesSettings()
+
+    await screen.findByTestId(
+      /Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule/
+    )
+
+    const videoCookieCategory = CookieCategoriesEnum.video
+
+    expect(screen.queryByText(cookiesInfo[videoCookieCategory].title)).not.toBeOnTheScreen()
+  })
+
+  it('should display video cookies toggle when wipVideoCookiesConsent FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT])
+    renderCookiesSettings()
+
+    const videoCookieCategory = CookieCategoriesEnum.video
+
+    expect(await screen.findByText(cookiesInfo[videoCookieCategory].title)).toBeOnTheScreen()
+  })
 })
 
 const renderCookiesSettings = () =>
@@ -52,6 +79,7 @@ const renderCookiesSettings = () =>
           marketing: false,
           performance: false,
           customization: false,
+          video: false,
         }}
         setSettingsCookiesChoice={jest.fn()}
       />

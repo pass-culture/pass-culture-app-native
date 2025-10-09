@@ -1,6 +1,6 @@
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
-import { Cookies, CookiesChoiceByCategory, ConsentStatus } from 'features/cookies/types'
+import { ConsentStatus, Cookies, CookiesChoiceByCategory } from 'features/cookies/types'
 
 export const getCookiesChoiceByCategory = (
   cookiesChoice: ConsentStatus
@@ -13,6 +13,7 @@ export const getCookiesChoiceByCategory = (
       marketing: false,
       performance: false,
       customization: false,
+      video: false,
     }
   }
 
@@ -24,5 +25,6 @@ export const getCookiesChoiceByCategory = (
     marketing: hasAcceptedCookies(COOKIES_BY_CATEGORY.marketing),
     performance: hasAcceptedCookies(COOKIES_BY_CATEGORY.performance),
     customization: hasAcceptedCookies(COOKIES_BY_CATEGORY.customization),
+    video: hasAcceptedCookies(COOKIES_BY_CATEGORY.video),
   }
 }

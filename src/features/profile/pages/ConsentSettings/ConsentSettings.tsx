@@ -34,6 +34,7 @@ export const ConsentSettings = () => {
     customization: false,
     performance: false,
     marketing: false,
+    video: false,
   })
 
   const saveChoice = useCallback(() => {
