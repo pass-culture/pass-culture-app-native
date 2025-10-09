@@ -29,7 +29,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
-import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import {
+  useCategoryHomeLabelMapping,
+  useCategoryIdMapping,
+  useSubcategoriesMapping,
+} from 'libs/subcategories'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -78,6 +82,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
+
   const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
     searchGroupLabel: params?.fromThematicSearch,
@@ -91,6 +96,8 @@ export const Venue: FunctionComponent = () => {
 
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
+  const subcategoriesMapping = useSubcategoriesMapping()
+
   const { data: venueOffers } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
@@ -99,7 +106,9 @@ export const Venue: FunctionComponent = () => {
     searchState,
     transformHits,
     venue,
+    mapping: subcategoriesMapping,
   })
+
   const {
     data: { artistPageSubcategories },
   } = useRemoteConfigQuery()
