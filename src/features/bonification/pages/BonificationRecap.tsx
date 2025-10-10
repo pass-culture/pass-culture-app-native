@@ -41,7 +41,7 @@ export const BonificationRecap = () => {
     { title: 'Pays de naissance', value: birthCountry },
   ]
 
-  if (commonName) recapData.push({ title: 'Nom d’usage', value: commonName })
+  if (commonName) recapData.splice(1, 0, { title: 'Nom d’usage', value: commonName })
   if (birthCity) recapData.push({ title: 'Ville de naissance', value: birthCity })
 
   return (
