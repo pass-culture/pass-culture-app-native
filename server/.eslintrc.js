@@ -13,7 +13,7 @@ delete rules['testing-library/await-async-utils']
 module.exports = {
   ...config,
   root: true,
-  plugins: ['typescript-sort-keys', 'eslint-plugin-local-rules'],
+  plugins: [...config.plugins, 'typescript-sort-keys', 'eslint-plugin-local-rules'],
   extends: [...config.extends.filter((extend) => !extend.includes('react'))],
   ignorePatterns: ['build', '.*.js', '*.config.js', 'node_modules', 'coverage', '*.test.ts'],
   parserOptions: {

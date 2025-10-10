@@ -2400,7 +2400,7 @@ __metadata:
     eslint-import-resolver-alias: ^1.1.2
     eslint-loader: ^4.0.2
     eslint-plugin-import: ^2.22.1
-    eslint-plugin-local-rules: ^1.1.0
+    eslint-plugin-local-rules: ^3.0.2
     eslint-plugin-prettier: ^3.1.4
     eslint-plugin-typescript-sort-keys: ^2.3.0
     express: ^4.20.0
@@ -4783,10 +4783,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-local-rules@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "eslint-plugin-local-rules@npm:1.1.0"
-  checksum: 83df8f4d1d569c8128dd5bb4864a507f41943e205680baf6d9a1989f0ccc6e0eb810b7517d25ce47c50cadfa879f56b3be0c7d7c6677621d51d3516ac51fdfdc
+"eslint-plugin-local-rules@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "eslint-plugin-local-rules@npm:3.0.2"
+  checksum: ad883be0739f022bcd0f49de45354c792bc2ef23ea0030789c3f90b10288b4346ab509fbfd451e87282c0f92393251e51a5a69a2f3ba3865a1a1f780cebef7cb
   languageName: node
   linkType: hard
 
