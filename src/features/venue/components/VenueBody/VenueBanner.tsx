@@ -9,6 +9,7 @@ import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgrou
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
@@ -49,7 +50,9 @@ export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bann
             accessibilityLabel={computedAccessibilityLabel}>
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           </GoogleWatermarkWrapper>
-          {hasGoogleCredit ? <CopyrightText>{currentCreditText}</CopyrightText> : null}
+          {hasGoogleCredit ? (
+            <CopyrightText {...hiddenFromScreenReader()}>{currentCreditText}</CopyrightText>
+          ) : null}
         </ViewGap>
       ) : (
         <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
