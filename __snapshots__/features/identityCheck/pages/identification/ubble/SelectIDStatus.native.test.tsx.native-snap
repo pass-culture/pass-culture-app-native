@@ -580,6 +580,9 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -711,6 +714,9 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >

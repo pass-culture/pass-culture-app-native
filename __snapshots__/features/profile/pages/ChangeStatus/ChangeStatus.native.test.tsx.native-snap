@@ -346,6 +346,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -512,6 +515,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -678,6 +684,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -844,6 +853,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1010,6 +1022,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1176,6 +1191,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1342,6 +1360,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1521,6 +1542,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1700,6 +1724,9 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -2400,6 +2427,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -2566,6 +2596,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -2732,6 +2765,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -2898,6 +2934,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -3064,6 +3103,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -3230,6 +3272,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -3396,6 +3441,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -3575,6 +3623,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -3754,6 +3805,9 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -4454,6 +4508,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -4620,6 +4677,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -4786,6 +4846,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -4952,6 +5015,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -5118,6 +5184,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -5284,6 +5353,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -5450,6 +5522,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -5629,6 +5704,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -5808,6 +5886,9 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >

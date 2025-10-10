@@ -1873,6 +1873,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -1966,6 +1969,9 @@ Instagram
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -2059,6 +2065,9 @@ WhatsApp
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -2152,6 +2161,9 @@ iMessage
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -4943,6 +4955,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -5036,6 +5051,9 @@ Instagram
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -5129,6 +5147,9 @@ WhatsApp
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -5222,6 +5243,9 @@ iMessage
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7000,6 +7024,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7097,6 +7124,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7195,6 +7225,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7293,6 +7326,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7435,6 +7471,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7471,6 +7510,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7507,6 +7549,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7543,6 +7588,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7579,6 +7627,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7615,6 +7666,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7651,6 +7705,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -7944,6 +8001,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -8037,6 +8097,9 @@ Instagram
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -8130,6 +8193,9 @@ WhatsApp
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -8223,6 +8289,9 @@ iMessage
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >

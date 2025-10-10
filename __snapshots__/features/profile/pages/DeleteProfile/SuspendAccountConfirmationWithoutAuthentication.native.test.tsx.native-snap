@@ -254,6 +254,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -339,6 +342,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -394,6 +400,9 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >

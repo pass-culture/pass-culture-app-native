@@ -355,6 +355,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
@@ -449,6 +452,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
@@ -546,6 +552,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >

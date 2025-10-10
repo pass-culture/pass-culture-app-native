@@ -305,7 +305,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -361,7 +361,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -451,7 +451,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -507,7 +507,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <a
@@ -569,7 +569,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -625,7 +625,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -681,7 +681,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -763,7 +763,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       role="list"
                     >
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -799,7 +799,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         </a>
                       </li>
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -835,7 +835,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         </a>
                       </li>
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -871,7 +871,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         </a>
                       </li>
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -1403,7 +1403,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -1459,7 +1459,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -1549,7 +1549,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -1605,7 +1605,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <a
@@ -1667,7 +1667,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   role="list"
                 >
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -1723,7 +1723,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -1779,7 +1779,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj"
+                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     role="listitem"
                   >
                     <div
@@ -1861,7 +1861,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       role="list"
                     >
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -1897,7 +1897,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         </a>
                       </li>
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -1933,7 +1933,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         </a>
                       </li>
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a
@@ -1969,7 +1969,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         </a>
                       </li>
                       <li
-                        class="css-view-175oi2r r-display-ixj5dj"
+                        class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                         role="listitem"
                       >
                         <a

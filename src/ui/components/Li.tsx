@@ -60,5 +60,6 @@ export const Li: React.FC<LiProps> = ({
 }
 
 const StyledView = styled.View({
+  flex: 1,
   display: isWeb ? 'list-item' : 'flex',
 })

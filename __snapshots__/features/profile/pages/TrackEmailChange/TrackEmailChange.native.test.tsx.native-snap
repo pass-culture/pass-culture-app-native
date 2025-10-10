@@ -166,6 +166,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -390,6 +393,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -646,6 +652,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1044,6 +1053,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1300,6 +1312,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1535,6 +1550,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1933,6 +1951,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -2157,6 +2178,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -2381,6 +2405,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -2800,6 +2827,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3024,6 +3054,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3248,6 +3281,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3504,6 +3540,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3902,6 +3941,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -4158,6 +4200,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -4393,6 +4438,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -4628,6 +4676,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5026,6 +5077,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5250,6 +5304,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5506,6 +5563,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5741,6 +5801,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6139,6 +6202,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6363,6 +6429,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6587,6 +6656,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6811,6 +6883,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >

@@ -293,6 +293,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -426,6 +429,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -509,6 +515,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -601,6 +610,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -693,6 +705,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -785,6 +800,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >

@@ -695,6 +695,9 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >
@@ -753,6 +756,9 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         style={
                           {
                             "display": "flex",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           }
                         }
                       >

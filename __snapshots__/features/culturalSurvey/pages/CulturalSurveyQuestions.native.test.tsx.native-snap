@@ -292,6 +292,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -466,6 +469,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -639,6 +645,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -812,6 +821,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -985,6 +997,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1138,6 +1153,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1291,6 +1309,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1464,6 +1485,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1637,6 +1661,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1810,6 +1837,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >

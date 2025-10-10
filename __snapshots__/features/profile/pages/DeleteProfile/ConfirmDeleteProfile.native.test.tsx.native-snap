@@ -263,6 +263,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -338,6 +341,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -393,6 +399,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
