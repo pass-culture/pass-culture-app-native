@@ -23,12 +23,10 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - assertVisible:
           text: Illustration 1 sur 2
-          index: 1
       - swipe:
           direction: LEFT
       - assertVisible:
           text: Illustration 2 sur 2
-          index: 1
       - swipe:
           direction: RIGHT
 
