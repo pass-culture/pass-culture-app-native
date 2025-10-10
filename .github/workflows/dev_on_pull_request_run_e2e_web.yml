@@ -55,39 +55,20 @@ jobs:
           MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
           echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
 
-      - name: Restore cache Maestro CLI
-        id: maestro-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.maestro
-          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-maestro-
+      - name: Cleanup Maestro CLI
+        run: |
+          echo "Cleaning up any previous Maestro CLI installation..."
+          rm -rf $HOME/.maestro
 
-      - name: Install Maestro CLI
-        if: steps.maestro-cache.outputs.cache-hit != 'true'
+      - name: Install latest Maestro CLI
         run: |
           echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
           curl --location --silent "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
-        env:
-          MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
-
-      - name: Save Maestro CLI to cache if updated
-        if: steps.maestro-cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
-        with:
-          path: ~/.maestro
-          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-maestro-
-
-      - name: Add Maestro to PATH (from cache)
-        if: steps.maestro-cache.outputs.cache-hit == 'true'
-        run: |
-          echo "Using cached Maestro CLI."
           export PATH=$HOME/.maestro/bin:$PATH
           maestro --version
+        env:
+          MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
 
       - name: Start Vite server
         run: yarn start:web:staging --host > /dev/null 2>&1 &
