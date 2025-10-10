@@ -173,7 +173,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -296,7 +296,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             />
           </View>
           <View
-            accessibilityRole="none"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -418,7 +418,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             />
           </View>
           <View
-            accessibilityRole="none"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -540,7 +540,7 @@ exports[`OnboardingAgeSelectionFork should render correctly 1`] = `
             />
           </View>
           <View
-            accessibilityRole="none"
+            accessible={true}
             style={
               {
                 "display": "flex",

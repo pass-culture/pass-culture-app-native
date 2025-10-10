@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -16,41 +16,53 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityActionPlan() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
+  const { designSystem } = useTheme()
+
   return (
     <SecondaryPageWithBlurHeader
       onGoBack={goBack}
       title="Schéma pluriannuel"
       enableMaxWidth={false}>
       <Typo.BodyItalic>Schéma pluriannuel d’accessibilité 2022 - 2024</Typo.BodyItalic>
-      <StyledBody marginTop={getSpacing(6)}>
+      <StyledBody marginTop={designSystem.size.spacing.l}>
         L’article 47 de la loi n° 2005-102 du 11 février 2005 pour l’égalité des droits et des
         chances, la participation et la citoyenneté des personnes rend obligatoire à tout service de
         communication publique en ligne d’être accessible à tous.
       </StyledBody>
       <StyledSeparator />
       <TitleText>Définition de l’accessibilité numérique</TitleText>
-      <StyledBody marginTop={getSpacing(6)}>
+      <StyledBody marginTop={designSystem.size.spacing.l}>
         L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques,
         supports multimédias, intranets d’entreprise, applications mobiles…), quelle que soit sa
         façon de naviguer.
       </StyledBody>
-      <StyledBodyAccent marginBottom={getSpacing(5)}>
+      <StyledBodyAccent marginBottom={designSystem.size.spacing.xl}>
         L’accessibilité numérique est indispensable aux personnes en situation de handicap
         pour&nbsp;:
       </StyledBodyAccent>
       <VerticalUl>
-        <BulletListItem text="s’informer ;" />
-        <BulletListItem text="communiquer ;" />
-        <BulletListItem text="accomplir des démarches administratives ;" />
-        <BulletListItem text="mener une activité professionnelle…" />
+        <BulletListItem groupLabel="Raisons" index={0} total={4} text="s’informer ;" />
+        <BulletListItem groupLabel="Raisons" index={1} total={4} text="communiquer ;" />
+        <BulletListItem
+          groupLabel="raisons"
+          index={2}
+          total={4}
+          text="accomplir des démarches administratives ;"
+        />
+        <BulletListItem
+          groupLabel="raisons"
+          index={3}
+          total={4}
+          text="mener une activité professionnelle…"
+        />
       </VerticalUl>
-      <StyledBody marginTop={getSpacing(6)}>
+      <StyledBody marginTop={designSystem.size.spacing.l}>
         L’accessibilité numérique profite à tous&nbsp;: aux personnes âgées, aux personnes en
         situation de handicap temporaire ou permanent, aux personnes peu à l’aise avec Internet…
         {LINE_BREAK}
@@ -65,7 +77,9 @@ export function AccessibilityActionPlan() {
       </StyledBody>
       <StyledSeparator />
       <TitleText>Politique d’accessibilité</TitleText>
-      <StyledBody marginTop={getSpacing(6)} marginBottom={getSpacing(5)}>
+      <StyledBody
+        marginTop={designSystem.size.spacing.l}
+        marginBottom={designSystem.size.spacing.xl}>
         L’accessibilité numérique est au cœur des préoccupations liées au développement ou à la mise
         à disposition de sites web ou d’applications tant auprès du public que des personnels
         internes de la SAS pass Culture.
@@ -81,17 +95,42 @@ export function AccessibilityActionPlan() {
         Ses missions sont&nbsp;:
       </StyledBody>
       <VerticalUl>
-        <BulletListItem text="promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;" />
-        <BulletListItem text="accompagner les équipes internes par des actions notamment de formation ;" />
-        <BulletListItem text="contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;" />
-        <BulletListItem text="assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;" />
-        <BulletListItem text="faire une veille sur les évolutions réglementaires." />
+        <BulletListItem
+          groupLabel="Missions"
+          index={0}
+          total={5}
+          text="promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;"
+        />
+        <BulletListItem
+          groupLabel="Missions"
+          index={1}
+          total={5}
+          text="accompagner les équipes internes par des actions notamment de formation ;"
+        />
+        <BulletListItem
+          groupLabel="Missions"
+          index={2}
+          total={5}
+          text="contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;"
+        />
+        <BulletListItem
+          groupLabel="Missions"
+          index={3}
+          total={5}
+          text="assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;"
+        />
+        <BulletListItem
+          groupLabel="Missions"
+          index={4}
+          total={5}
+          text="faire une veille sur les évolutions réglementaires."
+        />
       </VerticalUl>
       <StyledSeparator />
       <TitleText>
         Ressources humaines et financières affectées à l’accessibilité numérique
       </TitleText>
-      <StyledBody marginTop={getSpacing(6)}>
+      <StyledBody marginTop={designSystem.size.spacing.l}>
         Le pilotage et le suivi de la conformité au RGAA reviennent au pôle Accessibilité. Cette
         équipe transverse est notamment composée d’une personne en lien avec les publics,
         d’ingénieurs en informatique, d’une designeuse, et d’une personne dédiée à la conception du
@@ -99,16 +138,38 @@ export function AccessibilityActionPlan() {
       </StyledBody>
       <StyledSeparator />
       <TitleText>Organisation de la prise en compte de l’accessibilité numérique</TitleText>
-      <StyledBodyAccent marginBottom={getSpacing(5)}>
+      <StyledBodyAccent marginBottom={designSystem.size.spacing.xl}>
         La prise en compte de l’accessibilité numérique nécessite&nbsp;:
       </StyledBodyAccent>
       <VerticalUl>
-        <BulletListItem text="de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;" />
-        <BulletListItem text="de poursuivre l’accompagnement des équipes ;" />
-        <BulletListItem text="de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;" />
-        <BulletListItem text="de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés." />
+        <BulletListItem
+          groupLabel="Nécessites"
+          index={0}
+          total={4}
+          text="de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;"
+        />
+        <BulletListItem
+          groupLabel="Nécessites"
+          index={1}
+          total={4}
+          text="de poursuivre l’accompagnement des équipes ;"
+        />
+        <BulletListItem
+          groupLabel="Nécessites"
+          index={2}
+          total={4}
+          text="de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;"
+        />
+        <BulletListItem
+          groupLabel="Nécessites"
+          index={3}
+          total={4}
+          text="de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés."
+        />
       </VerticalUl>
-      <StyledBody marginTop={getSpacing(5)} marginBottom={getSpacing(6)}>
+      <StyledBody
+        marginTop={designSystem.size.spacing.xl}
+        marginBottom={designSystem.size.spacing.xl}>
         Les éléments ci-dessous décrivent les points importants sur lesquels la SAS pass Culture
         s’appuiera pour améliorer l’accessibilité numérique de l’ensemble de ses sites web et
         applications.
@@ -125,14 +186,24 @@ export function AccessibilityActionPlan() {
           accessibles.
         </Typo.Body>
       </Typo.BodyAccent>
-      <StyledBodyAccent marginBottom={getSpacing(5)}>
+      <StyledBodyAccent marginBottom={designSystem.size.spacing.xl}>
         Plus précisément, notre action consiste à&nbsp;:
       </StyledBodyAccent>
       <VerticalUl>
-        <BulletListItem text="sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;" />
-        <BulletListItem text="former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles." />
+        <BulletListItem
+          groupLabel="Actions"
+          index={0}
+          total={2}
+          text="sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;"
+        />
+        <BulletListItem
+          groupLabel="Actions"
+          index={1}
+          total={2}
+          text="former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles."
+        />
       </VerticalUl>
-      <StyledBodyAccent marginBottom={getSpacing(6)}>
+      <StyledBodyAccent marginBottom={designSystem.size.spacing.xl}>
         Recours à des compétences externes
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -161,7 +232,7 @@ export function AccessibilityActionPlan() {
           mis à la disposition des équipes projets.
         </Typo.Body>
       </Typo.BodyAccent>
-      <StyledBodyAccent marginBottom={getSpacing(6)}>
+      <StyledBodyAccent marginBottom={designSystem.size.spacing.xl}>
         Tests utilisateurs
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -195,7 +266,7 @@ export function AccessibilityActionPlan() {
           la création des fiches de postes et les procédures de recrutement.
         </Typo.Body>
       </StyledBodyAccent>
-      <StyledBodyAccent marginBottom={getSpacing(6)}>
+      <StyledBodyAccent marginBottom={designSystem.size.spacing.xl}>
         Traitement des retours utilisateurs
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -249,13 +320,25 @@ export function AccessibilityActionPlan() {
         </Typo.Body>
       </StyledBodyAccent>
       <VerticalUl>
-        <BulletListItem text="la fréquentation ;" />
-        <BulletListItem text="le service rendu ;" />
-        <BulletListItem text="la criticité ;" />
-        <BulletListItem text="le cycle de vie (date de la prochaine refonte) ;" />
-        <BulletListItem text="les technologies employées." />
+        <BulletListItem groupLabel="Critères" index={0} total={5} text="la fréquentation ;" />
+        <BulletListItem groupLabel="Critères" index={1} total={5} text="le service rendu ;" />
+        <BulletListItem groupLabel="Critères" index={2} total={5} text="la criticité ;" />
+        <BulletListItem
+          groupLabel="Critères"
+          index={3}
+          total={5}
+          text="le cycle de vie (date de la prochaine refonte) ;"
+        />
+        <BulletListItem
+          groupLabel="Critères"
+          index={4}
+          total={5}
+          text="les technologies employées."
+        />
       </VerticalUl>
-      <StyledBody marginTop={getSpacing(5)} marginBottom={getSpacing(6)}>
+      <StyledBody
+        marginTop={designSystem.size.spacing.xl}
+        marginBottom={designSystem.size.spacing.xl}>
         Des évaluations rapides de l’accessibilité, permettant de servir de socle à l’élaboration
         des interventions d’audits ont été ou vont être réalisées sur l’ensemble des sites et
         applications concernées.
@@ -288,7 +371,7 @@ export function AccessibilityActionPlan() {
       </StyledBodyAccent>
       <StyledSeparator />
       <TitleText>Annexe 1&nbsp;: Périmètre technique et fonctionnel</TitleText>
-      <StyledBody marginTop={getSpacing(6)}>
+      <StyledBody marginTop={designSystem.size.spacing.l}>
         La liste ci-dessous présente les sites et applications de la SAS pass Culture ouverts au
         public&nbsp;:
         {DOUBLE_LINE_BREAK}
@@ -332,9 +415,9 @@ export function AccessibilityActionPlan() {
 
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledBody = styled(Typo.Body)<{ marginTop: number; marginBottom?: number }>(
   ({ marginTop, marginBottom }) => ({
@@ -343,7 +426,9 @@ const StyledBody = styled(Typo.Body)<{ marginTop: number; marginBottom?: number 
   })
 )
 
-const StyledBodyAccent = styled(Typo.BodyAccent)<{ marginBottom?: number }>(({ marginBottom }) => ({
-  marginTop: getSpacing(6),
-  marginBottom,
-}))
+const StyledBodyAccent = styled(Typo.BodyAccent)<{ marginBottom?: number }>(
+  ({ theme, marginBottom }) => ({
+    marginTop: theme.designSystem.size.spacing.xl,
+    marginBottom,
+  })
+)

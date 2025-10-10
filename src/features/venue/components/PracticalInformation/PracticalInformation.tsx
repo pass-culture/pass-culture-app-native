@@ -94,7 +94,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
     },
     {
       title: 'Horaires d’ouverture',
-      body: <OpeningHours openingHours={openingHours} />,
+      body: <OpeningHours openingHours={openingHours} title="Horaires d’ouverture" />,
       shouldBeDisplayed: shouldDisplayOpeningHours,
     },
   ].filter(isSectionWithBody)

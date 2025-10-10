@@ -691,7 +691,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       }
                     >
                       <View
-                        accessibilityRole="none"
+                        accessible={true}
                         style={
                           {
                             "display": "flex",
@@ -749,7 +749,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                         />
                       </View>
                       <View
-                        accessibilityRole="none"
+                        accessible={true}
                         style={
                           {
                             "display": "flex",

@@ -212,13 +212,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={true}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
-                "marginTop": 24,
               }
             }
           >
@@ -331,12 +328,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
               }
             }
           >
@@ -473,12 +468,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
               }
             }
           >
@@ -601,12 +594,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
               }
             }
           >
@@ -729,12 +720,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
               }
             }
           >

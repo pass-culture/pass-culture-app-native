@@ -100,8 +100,14 @@ export function AccessibilityDeclarationMobileBase({
         </Typo.Body>
         <SubtitleText>Non conformité</SubtitleText>
         <VerticalUl>
-          {nonAccessibleContent.map((item) => (
-            <BulletListItem key={item} text={item} />
+          {nonAccessibleContent.map((item, index) => (
+            <BulletListItem
+              key={item}
+              text={item}
+              index={index}
+              total={nonAccessibleContent.length}
+              groupLabel="Non conformité"
+            />
           ))}
         </VerticalUl>
 
@@ -114,8 +120,18 @@ export function AccessibilityDeclarationMobileBase({
           des éléments à rendre accessible, ils sont dérogés&nbsp;:
         </Typo.Body>
         <VerticalUl>
-          <BulletListItem text="Les cartes Goggle Maps (motif&nbsp;: service externe)" />
-          <BulletListItem text="La vérification d’identité (webview d’un prestataire externe)" />
+          <BulletListItem
+            text="Les cartes Goggle Maps (motif&nbsp;: service externe)"
+            groupLabel="Contenus non soumis à l’obligation d’accessibilité"
+            index={0}
+            total={2}
+          />
+          <BulletListItem
+            text="La vérification d’identité (webview d’un prestataire externe)"
+            groupLabel="Contenus non soumis à l’obligation d’accessibilité"
+            index={1}
+            total={2}
+          />
         </VerticalUl>
       </ViewGap>
 
@@ -126,17 +142,38 @@ export function AccessibilityDeclarationMobileBase({
         <Typo.BodyItalic>Cette déclaration a été établie le jeudi 31 juillet 2025.</Typo.BodyItalic>
         <SubtitleText>Technologies utilisées pour la réalisation de l’application</SubtitleText>
         <VerticalUl>
-          <BulletListItem text="react" />
-          <BulletListItem text="react-native" />
-          <BulletListItem text="react-native-web" />
+          <BulletListItem
+            text="react"
+            groupLabel="Technologies utilisées pour l’application"
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            text="react-native"
+            groupLabel="Technologies utilisées pour l’application"
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            text="react-native-web"
+            groupLabel="Technologies utilisées pour l’application"
+            index={2}
+            total={3}
+          />
         </VerticalUl>
         <SubtitleText>
           Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier
           l’accessibilité
         </SubtitleText>
         <VerticalUl>
-          {toolsUsed.map((item) => (
-            <BulletListItem key={item} text={item} />
+          {toolsUsed.map((item, index) => (
+            <BulletListItem
+              key={item}
+              text={item}
+              groupLabel="Technologies pour vérifier l’accesibilité"
+              index={index}
+              total={toolsUsed.length}
+            />
           ))}
         </VerticalUl>
         <Typo.Body>

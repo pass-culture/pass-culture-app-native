@@ -242,7 +242,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
           }
         }
       >
-        Les conséquences :
+        Les conséquences
+         :
       </Text>
       <View
         accessibilityRole="list"
@@ -254,7 +255,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les   conditions générales d’utilisation"
+          accessibilityRole="link"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -338,7 +341,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Les conséquences – Liste - Élément 2 sur 3 - si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -392,7 +396,8 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Les conséquences – Liste - Élément 3 sur 3 - tu n’auras plus accès au catalogue."
+          accessible={true}
           style={
             {
               "display": "flex",

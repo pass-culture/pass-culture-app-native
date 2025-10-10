@@ -453,7 +453,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 1 sur 20 - Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -507,7 +508,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 2 sur 20 - Des images légendées ne sont pas correctement restituées par les lecteurs d’écran."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -561,7 +563,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 3 sur 20 - Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -615,7 +618,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 4 sur 20 - Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -669,7 +673,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 5 sur 20 - Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -723,7 +728,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 6 sur 20 - Certains médias ne sont pas clairement identifiés par un texte adjacent."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -777,7 +783,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 7 sur 20 - Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués)."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -831,7 +838,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 8 sur 20 - Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -885,7 +893,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 9 sur 20 - Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -939,7 +948,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 10 sur 20 - Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -993,7 +1003,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 11 sur 20 - Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1047,7 +1058,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 12 sur 20 - Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1101,7 +1113,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 13 sur 20 - Certains éléments ne sont pas accessibles au clavier ou au pointage."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1155,7 +1168,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 14 sur 20 - Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1209,7 +1223,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 15 sur 20 - L’information n’est pas toujours structurée par des titres hiérarchisés."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1263,7 +1278,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 16 sur 20 - Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1317,7 +1333,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 17 sur 20 - Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1371,7 +1388,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 18 sur 20 - L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1425,7 +1443,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 19 sur 20 - Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1479,7 +1498,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 20 sur 20 - L’affichage en mode paysage n’est pas toujours correctement géré."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1593,7 +1613,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 1 sur 2 - Les cartes Goggle Maps (motif : service externe)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1647,7 +1668,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 2 sur 2 - La vérification d’identité (webview d’un prestataire externe)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1768,7 +1790,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 1 sur 3 - react"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1822,7 +1845,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 2 sur 3 - react-native"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1876,7 +1900,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 3 sur 3 - react-native-web"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1953,7 +1978,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 4 - VoiceOver (lecteur d’écran)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2007,7 +2033,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 4 - Clavier externe"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2061,7 +2088,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 4 - VoiceControl (contrôle vocal)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2115,7 +2143,8 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 4 sur 4 - Paramètres de présentation utilisateurs (taille de police, contrastes renforcés etc.)"
+            accessible={true}
             style={
               {
                 "display": "flex",

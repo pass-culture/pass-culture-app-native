@@ -6,6 +6,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
@@ -15,7 +16,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Dot } from 'ui/svg/icons/Dot'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export function SiteMapScreen() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
@@ -27,44 +28,60 @@ export function SiteMapScreen() {
     ({ isLoggedIn: required }) => !required || isLoggedIn
   )
 
-  const listItems = visibleSiteMapLinks.flatMap((item) => {
-    const parentJsx = (
-      <ItemContainer key={item.wording}>
-        <BulletContainer>
-          <Bullet />
-        </BulletContainer>
-        <ListText>
-          <InternalTouchableLink as={Button} wording={item.wording} navigateTo={item.navigateTo} />
-        </ListText>
-      </ItemContainer>
-    )
-
-    const childrenJsx = item.subPages
-      .filter((subPage) => !subPage.isLoggedIn || isLoggedIn)
-      .map((subPage) => (
-        <NestedItemContainer key={subPage.wording}>
-          <BulletContainer>
-            <NestedBullet />
-          </BulletContainer>
-          <ListText>
-            <InternalTouchableLink
-              as={Button}
-              typography="BodyAccentXs"
-              wording={subPage.wording}
-              navigateTo={subPage.navigateTo}
-            />
-          </ListText>
-        </NestedItemContainer>
-      ))
-
-    return [parentJsx, ...childrenJsx]
-  })
-
   return (
     <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
       <StyledVerticalUl>
-        {listItems.map((item) => {
-          return <Li key={item.key}>{item}</Li>
+        {visibleSiteMapLinks.flatMap((item) => {
+          const parentJsx = (
+            <Li
+              key={item.wording}
+              groupLabel="Plan du site"
+              total={visibleSiteMapLinks.length}
+              index={visibleSiteMapLinks.indexOf(item)}
+              accessibilityLabel={item.wording}
+              accessibilityRole={AccessibilityRole.BUTTON}>
+              <ItemContainer>
+                <BulletContainer>
+                  <Bullet />
+                </BulletContainer>
+                <ListText>
+                  <InternalTouchableLink
+                    as={Button}
+                    wording={item.wording}
+                    navigateTo={item.navigateTo}
+                  />
+                </ListText>
+              </ItemContainer>
+            </Li>
+          )
+
+          const childrenJsx = item.subPages
+            .filter((subPage) => !subPage.isLoggedIn || isLoggedIn)
+            .map((subPage, idx) => (
+              <Li
+                key={subPage.wording}
+                groupLabel={item.wording}
+                index={idx}
+                total={item.subPages.length}
+                accessibilityLabel={subPage.wording}
+                accessibilityRole={AccessibilityRole.BUTTON}>
+                <NestedItemContainer>
+                  <BulletContainer>
+                    <NestedBullet />
+                  </BulletContainer>
+                  <ListText>
+                    <InternalTouchableLink
+                      as={Button}
+                      typography="BodyAccentXs"
+                      wording={subPage.wording}
+                      navigateTo={subPage.navigateTo}
+                    />
+                  </ListText>
+                </NestedItemContainer>
+              </Li>
+            ))
+
+          return [parentJsx, ...childrenJsx]
         })}
       </StyledVerticalUl>
     </SecondaryPageWithBlurHeader>
@@ -83,14 +100,14 @@ const Button = styledButton(AppButton).attrs<BaseButtonProps>(({ theme }) => {
   }
 })``
 
-const ItemContainer = styled.View<{ spacing?: number }>(() => ({
+const ItemContainer = styled.View<{ spacing?: number }>(({ theme }) => ({
   flexDirection: 'row',
-  marginLeft: getSpacing(3),
+  marginLeft: theme.designSystem.size.spacing.m,
 }))
 
-const NestedItemContainer = styled.View<{ spacing?: number }>(() => ({
+const NestedItemContainer = styled.View<{ spacing?: number }>(({ theme }) => ({
   flexDirection: 'row',
-  marginLeft: getSpacing(7),
+  marginLeft: theme.designSystem.size.spacing.xxl,
 }))
 
 const Bullet = styled(Dot).attrs({
@@ -108,10 +125,10 @@ const BulletContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-const ListText = styled.View({
-  marginLeft: getSpacing(3),
+const ListText = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.m,
   flex: 1,
-})
+}))
 
 const StyledVerticalUl = styled(VerticalUl)({
   width: '100%',
