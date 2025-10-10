@@ -14,4 +14,7 @@ tags:
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/SelectThreeCookies.yml
 
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/cookies/SelectFourCookies.yml
+
 - runFlow: subFolder/commons/StopApp.yml

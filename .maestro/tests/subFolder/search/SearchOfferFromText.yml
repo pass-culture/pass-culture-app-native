@@ -17,7 +17,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Voir tous les filtres'
 - tapOn: 'Prix'
-- tapOn: '300'
+- tapOn:
+    id: 'Entrée pour le prix maximum'
 - inputText: '50'
 - pressKey: Enter
 - tapOn: 'Appliquer le filtre'

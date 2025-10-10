@@ -44,4 +44,13 @@ appId: ${MAESTRO_APP_ID}
     id: 'Mesurer l’efficacité de nos publicités - Interrupteur à bascule - coché'
     enabled: true
 
+- tapOn: 'Lire les contenus vidéos - Interrupteur à bascule - non coché'
+- assertVisible:
+    id: 'Lire les contenus vidéos - Interrupteur à bascule - coché'
+    enabled: true
+    
+- assertVisible:
+    id: 'Tout accepter - Interrupteur à bascule - coché'
+    enabled: true
+
 - tapOn: 'Enregistrer mes choix'
