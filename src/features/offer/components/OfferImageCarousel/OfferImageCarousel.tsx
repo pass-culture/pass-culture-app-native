@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { ImageWithCredit } from 'shared/types'
 import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
 import { Typo } from 'ui/theme'
@@ -86,7 +87,11 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
         style={carouselStyle}
       />
       <Container>
-        {currentCredit ? <CopyrightText numberOfLines={2}>{currentCredit}</CopyrightText> : null}
+        {currentCredit ? (
+          <CopyrightText numberOfLines={2} {...hiddenFromScreenReader()}>
+            {currentCredit}
+          </CopyrightText>
+        ) : null}
       </Container>
       {offerImages.length > 1 && progressValue ? (
         <StyledCarouselPagination
