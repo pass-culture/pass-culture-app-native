@@ -50,49 +50,30 @@ jobs:
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
 
-      - name: Get latest Maestro version
+      - name: Determine latest Maestro version
         run: |
           MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
           echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
 
-      - name: Restore cache Maestro CLI
-        id: maestro-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.maestro
-          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-maestro-
+      - name: Cleanup Maestro CLI
+        run: |
+          echo "Cleaning up any previous Maestro CLI installation..."
+          rm -rf $HOME/.maestro
 
-      - name: Install Maestro CLI
-        if: steps.maestro-cache.outputs.cache-hit != 'true'
+      - name: Install latest Maestro CLI
         run: |
           echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
           curl --location --silent "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+          export PATH=$HOME/.maestro/bin:$PATH
+          maestro --version
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
 
-      - name: Save Maestro CLI to cache if updated
-        if: steps.maestro-cache.outputs.cache-hit != 'true'
-        uses: actions/cache@v4
-        with:
-          path: ~/.maestro
-          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-maestro-
-
-      - name: Add Maestro to PATH (from cache)
-        if: steps.maestro-cache.outputs.cache-hit == 'true'
-        run: |
-          echo "Using cached Maestro CLI."
-          export PATH=$HOME/.maestro/bin:$PATH
-          maestro --version
-
-      - name: Start Vite server
+      - name: Start a web staging server
         run: yarn start:web:staging --host > /dev/null 2>&1 &
 
-      - name: Run Maestro E2E Tests
+      - name: Run Maestro E2E Web Tests
         env:
           MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
           MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
@@ -103,11 +84,11 @@ jobs:
           MAESTRO_RUN_TRACKING_TESTS: false
           MAESTRO_RUN_CLOUD_COMMANDS: false
         run: |
-          echo "Running Maestro tests against on web Staging"
+          echo "Running Maestro tests from your branch on web Staging build"
           export PATH=$HOME/.maestro/bin:$PATH
           yarn test:e2e:web:staging --headless
 
-      - name: Upload Maestro artifacts (logs & screenshots)
+      - name: Logs & screenshots from errors (Download link ⬇️)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
