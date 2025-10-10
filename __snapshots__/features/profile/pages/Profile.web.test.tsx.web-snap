@@ -361,7 +361,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj r-marginBlock-12kyg2d"
+                    class="css-view-175oi2r r-display-ixj5dj"
                     role="listitem"
                   >
                     <div
@@ -1459,7 +1459,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </li>
                   <li
-                    class="css-view-175oi2r r-display-ixj5dj r-marginBlock-12kyg2d"
+                    class="css-view-175oi2r r-display-ixj5dj"
                     role="listitem"
                   >
                     <div

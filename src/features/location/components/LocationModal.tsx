@@ -6,6 +6,7 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -122,6 +123,8 @@ export const LocationModal = ({
     isCurrentLocationMode(LocationMode.EVERYWHERE)
   )
 
+  const groupLabel = 'Localisation'
+
   return (
     <AppModal
       visible={visible}
@@ -134,7 +137,7 @@ export const LocationModal = ({
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
-            title="Localisation"
+            title={groupLabel}
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onClose}
@@ -150,14 +153,18 @@ export const LocationModal = ({
       }>
       <StyledScrollView>
         <VerticalUl>
-          <Li>
+          <Li
+            groupLabel={groupLabel}
+            accessibilityLabel={accessibilityLabelAroundMe}
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={0}
+            total={3}>
             <LocationModalButton
               onPress={selectLocationMode(LocationMode.AROUND_ME)}
               icon={PositionFilled}
               color={geolocationModeColor}
               title={AROUND_ME_TITLE}
               subtitle={AROUND_ME_SUBTITLE}
-              accessibilityLabel={accessibilityLabelAroundMe}
             />
             {shouldShowAroundMeRadiusSlider ? (
               <SliderContainer>
@@ -169,14 +176,18 @@ export const LocationModal = ({
             ) : null}
             <StyledSeparator />
           </Li>
-          <Li>
+          <Li
+            groupLabel={groupLabel}
+            accessibilityLabel={accessibilityLabelAroundPlace}
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={1}
+            total={3}>
             <LocationModalButton
               onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
               icon={MagnifyingGlassFilled}
               color={customLocationModeColor}
               title={AROUND_PLACE_TITLE}
               subtitle={LOCATION_PLACEHOLDER}
-              accessibilityLabel={accessibilityLabelAroundPlace}
             />
             {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
               <React.Fragment>
@@ -200,7 +211,12 @@ export const LocationModal = ({
             ) : null}
           </Li>
           {shouldDisplayEverywhereSection ? (
-            <Li>
+            <Li
+              groupLabel={groupLabel}
+              accessibilityLabel={accessibilityLabelEverywhere}
+              accessibilityRole={AccessibilityRole.BUTTON}
+              index={2}
+              total={3}>
               <StyledView>
                 <Separator.Horizontal />
                 <LocationModalButton
@@ -208,7 +224,6 @@ export const LocationModal = ({
                   icon={WorldPosition}
                   color={everywhereLocationModeColor}
                   title={LocationLabel.everywhereLabel}
-                  accessibilityLabel={accessibilityLabelEverywhere}
                 />
               </StyledView>
             </Li>

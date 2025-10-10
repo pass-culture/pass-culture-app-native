@@ -257,7 +257,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -308,7 +308,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           />
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -359,7 +359,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           />
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -410,7 +410,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           />
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -861,7 +861,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -912,7 +912,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           />
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -963,7 +963,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           />
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",

@@ -1,10 +1,64 @@
-import { Platform } from 'react-native'
+import React, { PropsWithChildren } from 'react'
+import { Platform, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
-export const Li = styled.View.attrs<{ key?: string | number | null }>({
-  accessibilityRole: AccessibilityRole.LISTITEM,
-})({
-  display: Platform.OS === 'web' ? 'list-item' : 'flex',
+const isWeb = Platform.OS === 'web'
+
+export interface AccessibleLiProps extends ViewProps {
+  index: number
+  total: number
+  groupLabel: string
+  accessibilityLabel: string
+  accessibilityRole?: AccessibilityRole
+}
+
+interface SimpleLiProps extends ViewProps {
+  index?: never
+  total?: never
+  groupLabel?: never
+  accessibilityLabel?: never
+  accessibilityRole?: AccessibilityRole
+}
+
+type LiProps = PropsWithChildren<AccessibleLiProps | SimpleLiProps>
+
+export const Li: React.FC<LiProps> = ({
+  groupLabel,
+  index,
+  total,
+  accessibilityLabel,
+  accessibilityRole,
+  children,
+}) => {
+  const withAccessibilityLabel =
+    groupLabel !== undefined &&
+    index !== undefined &&
+    total !== undefined &&
+    accessibilityLabel !== undefined
+
+  if (withAccessibilityLabel) {
+    const computedLabel = `${groupLabel} – Liste - Élément ${index + 1} sur ${total} - ${accessibilityLabel}`
+    return (
+      <StyledView
+        accessible
+        accessibilityRole={isWeb ? AccessibilityRole.LISTITEM : accessibilityRole}
+        accessibilityLabel={isWeb ? undefined : computedLabel}>
+        {children}
+      </StyledView>
+    )
+  }
+
+  return (
+    <StyledView
+      accessible
+      accessibilityRole={isWeb ? AccessibilityRole.LISTITEM : accessibilityRole}>
+      {children}
+    </StyledView>
+  )
+}
+
+const StyledView = styled.View({
+  display: isWeb ? 'list-item' : 'flex',
 })

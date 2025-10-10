@@ -576,7 +576,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -707,7 +707,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   />
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",

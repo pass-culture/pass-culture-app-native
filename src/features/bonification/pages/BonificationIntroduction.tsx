@@ -42,19 +42,19 @@ export const BonificationIntroduction = () => {
             </Typo.Body>
             <Typo.Body>On va te demander&nbsp;:</Typo.Body>
             <VerticalUl>
-              <BulletListItem>
+              <BulletListItem groupLabel="Informations demandées" index={0} total={5}>
                 <Typo.BodyAccent>Nom de naissance (avant mariage)</Typo.BodyAccent>
               </BulletListItem>
-              <BulletListItem>
+              <BulletListItem groupLabel="Informations demandées" index={1} total={5}>
                 <Typo.BodyAccent>Prénom complet</Typo.BodyAccent>
               </BulletListItem>
-              <BulletListItem>
+              <BulletListItem groupLabel="Informations demandées" index={2} total={5}>
                 <Typo.BodyAccent>Nom d’usage</Typo.BodyAccent>
               </BulletListItem>
-              <BulletListItem>
+              <BulletListItem groupLabel="Informations demandées" index={3} total={5}>
                 <Typo.BodyAccent>Date de naissance</Typo.BodyAccent>
               </BulletListItem>
-              <BulletListItem>
+              <BulletListItem groupLabel="Informations demandées" index={4} total={5}>
                 <Typo.BodyAccent>Ville de naissance</Typo.BodyAccent>
               </BulletListItem>
             </VerticalUl>
