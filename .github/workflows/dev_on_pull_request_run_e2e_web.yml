@@ -83,6 +83,7 @@ jobs:
           MAESTRO_UNREGISTERED_EMAIL: dev-tests-unregistered+e2e@passculture.team
           MAESTRO_RUN_TRACKING_TESTS: false
           MAESTRO_RUN_CLOUD_COMMANDS: false
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
         run: |
           echo "Running Maestro tests from your branch on web Staging build"
           export PATH=$HOME/.maestro/bin:$PATH
