@@ -44,7 +44,7 @@ exports[`GeolocationActivationModal should render properly 1`] = `
             "userSelect": "auto",
           },
           {
-            "backgroundColor": "#24242429",
+            "backgroundColor": "#23232329",
             "flexDirection": "column",
             "flexGrow": 1,
             "height": "100%",
