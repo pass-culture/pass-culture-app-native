@@ -2,6 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 
+import {
+  legalRepresentativeActions,
+  useLegalRepresentative,
+} from 'features/bonification/store/legalRepresentativeStore'
 import { Summary } from 'features/identityCheck/components/Summary'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -12,30 +16,40 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const BonificationRecap = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
-  const [accepted, setAccepted] = useState(false)
+  const { title, firstName, commonName, givenName, birthDate, birthCity, birthCountry } =
+    useLegalRepresentative()
+  const { resetLegalRepresentative } = legalRepresentativeActions
 
+  const [accepted, setAccepted] = useState(false)
   const [loading, setLoading] = useState(false)
+
   const submit = () => {
     setLoading(true)
 
     setTimeout(() => {
       setLoading(false)
+      resetLegalRepresentative() // change this to onSuccess of API call
       navigate('BonificationError')
     }, 4000)
   }
+
+  if (!title || !firstName || !givenName || !birthDate || !birthCountry) throw new Error()
+
+  const recapData = [
+    { title: 'Nom', value: `${title} ${firstName} ${givenName}` },
+    { title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() },
+    { title: 'Pays de naissance', value: birthCountry },
+  ]
+
+  if (commonName) recapData.push({ title: 'Nom d’usage', value: commonName })
+  if (birthCity) recapData.push({ title: 'Ville de naissance', value: birthCity })
+
   return (
     <PageWithHeader
       title="Informations personnelles"
       scrollChildren={
         <ViewGap gap={4}>
-          <Summary
-            title="Ces informations sont-elles exactes&nbsp;?"
-            data={[
-              { title: 'Nom', value: 'Mr Jean Dupont' },
-              { title: 'Date de naissance', value: '12/12/79' },
-              { title: 'Lieu de naissance', value: 'Toulouse, France' },
-            ]}
-          />
+          <Summary title="Ces informations sont-elles exactes&nbsp;?" data={recapData} />
           <Checkbox
             label="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
             variant="default"
