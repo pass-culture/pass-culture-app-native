@@ -4,6 +4,10 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import {
+  legalRepresentativeActions,
+  useLegalRepresentative,
+} from 'features/bonification/store/legalRepresentativeStore'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -13,6 +17,8 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+export type Title = 'Madame' | 'Monsieur'
+
 enum FormValues {
   MADAM = 'Madame',
   MISTER = 'Monsieur',
@@ -21,12 +27,16 @@ enum FormValues {
 export const BonificationTitle = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
+  const storedLegalRepresentative = useLegalRepresentative()
+  const { setTitle: storeTitle } = legalRepresentativeActions
+
   const titleID = uuidv4()
   const titleLabel = 'Civilité'
-  const [title, setTitle] = useState<FormValues | null>(null)
+  const [title, setTitle] = useState<Title | null>(storedLegalRepresentative.title ?? null)
   const disabled = !title
 
   const saveTitleAndNavigate = () => {
+    if (title) storeTitle(title)
     navigate('BonificationBirthDate')
   }
   return (

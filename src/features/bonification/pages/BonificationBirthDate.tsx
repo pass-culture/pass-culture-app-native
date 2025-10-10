@@ -6,6 +6,10 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
+import {
+  legalRepresentativeActions,
+  useLegalRepresentative,
+} from 'features/bonification/store/legalRepresentativeStore'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,9 +27,14 @@ type BirthdayForm = {
 export const BonificationBirthDate = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
+  const storedLegalRepresentative = useLegalRepresentative()
+  const { setBirthDate } = legalRepresentativeActions
+
   const currentYear = new Date().getFullYear()
   const maximumSpinnerDate = new Date(currentYear - 17, 11, 31)
-  const defaultDate = new Date(new Date().setFullYear(currentYear - 17))
+  const defaultDate = storedLegalRepresentative.birthDate
+    ? new Date(storedLegalRepresentative.birthDate)
+    : new Date(new Date().setFullYear(currentYear - 17))
 
   const {
     control,
@@ -37,13 +46,14 @@ export const BonificationBirthDate = () => {
     mode: 'onChange',
   })
 
-  const onGoToNextStep = useCallback(
+  const navigateToBirthPlace = useCallback(
     ({ birthdate }: BirthdayForm) => {
       if (birthdate) {
+        setBirthDate(birthdate)
         navigate('BonificationBirthPlace')
       }
     },
-    [navigate]
+    [navigate, setBirthDate]
   )
 
   return (
@@ -82,7 +92,7 @@ export const BonificationBirthDate = () => {
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers le lieu de naissance"
-          onPress={handleSubmit(onGoToNextStep)}
+          onPress={handleSubmit(navigateToBirthPlace)}
           disabled={!isValid}
         />
       }

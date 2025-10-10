@@ -5,6 +5,10 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { BonificationNamesSchema } from 'features/bonification/schemas/BonificationNamesSchema'
+import {
+  legalRepresentativeActions,
+  useLegalRepresentative,
+} from 'features/bonification/store/legalRepresentativeStore'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,11 +30,14 @@ type FormValues = {
 export const BonificationNames = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
+  const storedLegalRepresentative = useLegalRepresentative()
+  const { setFirstName, setCommonName, setGivenName } = legalRepresentativeActions
+
   const { control, formState, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      firstName: '',
-      givenName: '',
-      commonName: '',
+      firstName: storedLegalRepresentative.firstName ?? '',
+      givenName: storedLegalRepresentative.givenName ?? '',
+      commonName: storedLegalRepresentative.commonName ?? '',
     },
     resolver: yupResolver(BonificationNamesSchema),
     mode: 'all',
@@ -42,6 +49,9 @@ export const BonificationNames = () => {
     if (disabled) return
     // eslint-disable-next-line no-console
     console.log({ firstName, givenName, commonName })
+    setFirstName(firstName)
+    if (commonName) setCommonName(commonName)
+    setGivenName(givenName)
     navigate('BonificationTitle')
   }
 
