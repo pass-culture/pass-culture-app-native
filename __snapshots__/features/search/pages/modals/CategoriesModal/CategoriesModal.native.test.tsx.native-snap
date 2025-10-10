@@ -361,9 +361,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -496,9 +501,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -619,9 +629,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -742,9 +757,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -865,9 +885,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -988,9 +1013,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1111,9 +1141,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1234,9 +1269,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1357,9 +1397,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1480,9 +1525,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1603,9 +1653,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1726,9 +1781,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1862,9 +1922,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View
@@ -1985,9 +2050,14 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessible={true}
                 style={
-                  {
-                    "display": "flex",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
                 }
               >
                 <View

@@ -291,9 +291,16 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             <View
               accessible={true}
               style={
-                {
-                  "display": "flex",
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -424,9 +431,16 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             <View
               accessible={true}
               style={
-                {
-                  "display": "flex",
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -507,9 +521,16 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             <View
               accessible={true}
               style={
-                {
-                  "display": "flex",
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -599,9 +620,16 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             <View
               accessible={true}
               style={
-                {
-                  "display": "flex",
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -691,9 +719,16 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             <View
               accessible={true}
               style={
-                {
-                  "display": "flex",
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -783,9 +818,16 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             <View
               accessible={true}
               style={
-                {
-                  "display": "flex",
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View

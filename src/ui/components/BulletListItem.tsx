@@ -54,7 +54,7 @@ export const BulletListItem: React.FC<BulletListItemProps> = ({
 
             return (
               <Li
-                key={indexNested}
+                key={accessibilityLabelNested}
                 index={indexNested}
                 total={nestedListTexts.length}
                 groupLabel={accessibilityLabel}

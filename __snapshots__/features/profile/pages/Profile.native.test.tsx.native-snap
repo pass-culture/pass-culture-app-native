@@ -493,9 +493,14 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessible={true}
                   style={
-                    {
-                      "display": "flex",
-                    }
+                    [
+                      {
+                        "display": "flex",
+                      },
+                      {
+                        "marginVertical": 16,
+                      },
+                    ]
                   }
                 >
                   <View

@@ -1870,9 +1870,21 @@ exports[`<Venue /> should match snapshot 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -1963,9 +1975,21 @@ Instagram
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -2056,9 +2080,21 @@ WhatsApp
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -2149,9 +2185,21 @@ iMessage
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -4939,9 +4987,21 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -5032,9 +5092,21 @@ Instagram
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -5125,9 +5197,21 @@ WhatsApp
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -5218,9 +5302,21 @@ iMessage
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -6995,9 +7091,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "maxWidth": 72,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -7092,9 +7193,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "maxWidth": 72,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -7190,9 +7296,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "maxWidth": 72,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -7288,9 +7399,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "maxWidth": 72,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -7430,9 +7546,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 1 sur 7 - Lundi 09:00 - 19:00"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7466,9 +7587,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 2 sur 7 - Mardi 09:00 - 12:00  puis  14:00 - 19:00"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7502,9 +7628,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 3 sur 7 - Mercredi 09:00 - 12:00  puis  14:00 - 19:00"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7538,9 +7669,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 4 sur 7 - Jeudi 09:00 - 12:00  puis  14:00 - 19:00"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7574,9 +7710,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 5 sur 7 - Vendredi 09:00 - 19:00"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7610,9 +7751,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 6 sur 7 - Samedi Fermé"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7646,9 +7792,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         accessibilityLabel="Horaires d’ouverture – Liste - Élément 7 sur 7 - Dimanche Fermé"
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "display": "flex",
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -7939,9 +8090,21 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -8032,9 +8195,21 @@ Instagram
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -8125,9 +8300,21 @@ WhatsApp
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View
@@ -8218,9 +8405,21 @@ iMessage
                       <View
                         accessible={true}
                         style={
-                          {
-                            "display": "flex",
-                          }
+                          [
+                            {
+                              "display": "flex",
+                            },
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
                         }
                       >
                         <View

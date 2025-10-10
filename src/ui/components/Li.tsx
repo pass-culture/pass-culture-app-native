@@ -31,6 +31,7 @@ export const Li: React.FC<LiProps> = ({
   accessibilityLabel,
   accessibilityRole,
   children,
+  ...rest
 }) => {
   const withAccessibilityLabel =
     groupLabel !== undefined &&
@@ -42,6 +43,7 @@ export const Li: React.FC<LiProps> = ({
     const computedLabel = `${groupLabel} – Liste - Élément ${index + 1} sur ${total} - ${accessibilityLabel}`
     return (
       <StyledView
+        {...rest}
         accessible
         accessibilityRole={isWeb ? AccessibilityRole.LISTITEM : accessibilityRole}
         accessibilityLabel={isWeb ? undefined : computedLabel}>
@@ -52,6 +54,7 @@ export const Li: React.FC<LiProps> = ({
 
   return (
     <StyledView
+      {...rest}
       accessible
       accessibilityRole={isWeb ? AccessibilityRole.LISTITEM : accessibilityRole}>
       {children}
@@ -60,5 +63,5 @@ export const Li: React.FC<LiProps> = ({
 }
 
 const StyledView = styled.View({
-  display: isWeb ? 'list-item' : 'flex',
+  display: Platform.OS === 'web' ? 'list-item' : 'flex',
 })

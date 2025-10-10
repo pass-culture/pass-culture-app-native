@@ -341,6 +341,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -507,6 +508,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -673,6 +675,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -839,6 +842,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -1005,6 +1009,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -1171,6 +1176,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -1337,6 +1343,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -1516,6 +1523,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={
@@ -1695,6 +1703,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
+              accessibilityLabelledBy="testUuidV4"
               accessibilityRole="radiogroup"
               accessible={true}
               style={

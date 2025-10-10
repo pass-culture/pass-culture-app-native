@@ -213,10 +213,18 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         >
           <View
             accessible={true}
+            isFirstSectionItem={true}
             style={
-              {
-                "display": "flex",
-              }
+              [
+                {
+                  "display": "flex",
+                },
+                {
+                  "display": "flex",
+                  "marginBottom": 24,
+                  "marginTop": 24,
+                },
+              ]
             }
           >
             <View
@@ -329,10 +337,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           </View>
           <View
             accessible={true}
+            isFirstSectionItem={false}
             style={
-              {
-                "display": "flex",
-              }
+              [
+                {
+                  "display": "flex",
+                },
+                {
+                  "display": "flex",
+                  "marginBottom": 24,
+                },
+              ]
             }
           >
             <View
@@ -469,10 +484,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           </View>
           <View
             accessible={true}
+            isFirstSectionItem={false}
             style={
-              {
-                "display": "flex",
-              }
+              [
+                {
+                  "display": "flex",
+                },
+                {
+                  "display": "flex",
+                  "marginBottom": 24,
+                },
+              ]
             }
           >
             <View
@@ -595,10 +617,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           </View>
           <View
             accessible={true}
+            isFirstSectionItem={false}
             style={
-              {
-                "display": "flex",
-              }
+              [
+                {
+                  "display": "flex",
+                },
+                {
+                  "display": "flex",
+                  "marginBottom": 24,
+                },
+              ]
             }
           >
             <View
@@ -721,10 +750,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           </View>
           <View
             accessible={true}
+            isFirstSectionItem={false}
             style={
-              {
-                "display": "flex",
-              }
+              [
+                {
+                  "display": "flex",
+                },
+                {
+                  "display": "flex",
+                  "marginBottom": 24,
+                },
+              ]
             }
           >
             <View
