@@ -50,7 +50,7 @@ jobs:
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
 
-      - name: Get latest Maestro version
+      - name: Determine latest Maestro version
         run: |
           MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
           echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
@@ -70,10 +70,10 @@ jobs:
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
 
-      - name: Start Vite server
+      - name: Start a web staging server
         run: yarn start:web:staging --host > /dev/null 2>&1 &
 
-      - name: Run Maestro E2E Tests
+      - name: Run Maestro E2E Web Tests
         env:
           MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
           MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
@@ -84,11 +84,11 @@ jobs:
           MAESTRO_RUN_TRACKING_TESTS: false
           MAESTRO_RUN_CLOUD_COMMANDS: false
         run: |
-          echo "Running Maestro tests against on web Staging"
+          echo "Running Maestro tests from your branch on web Staging build"
           export PATH=$HOME/.maestro/bin:$PATH
           yarn test:e2e:web:staging --headless
 
-      - name: Upload Maestro artifacts (logs & screenshots)
+      - name: Logs & screenshots from errors (Download link ⬇️)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
