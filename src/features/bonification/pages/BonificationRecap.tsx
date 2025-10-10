@@ -33,7 +33,9 @@ export const BonificationRecap = () => {
     }, 4000)
   }
 
-  if (!title || !firstName || !givenName || !birthDate || !birthCountry) throw new Error()
+  if (!title || !firstName || !givenName || !birthDate || !birthCountry) {
+    throw new Error("Couldn't retrieve data from storage")
+  }
 
   const recapData = [
     { title: 'Nom', value: `${title} ${firstName} ${givenName}` },

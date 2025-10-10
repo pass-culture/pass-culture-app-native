@@ -78,6 +78,12 @@ describe('BonificationRecap', () => {
 
     expect(resetLegalRepresentativeSpy).toHaveBeenCalledWith()
   })
+
+  it('should navigate to error screen if store is missing data', async () => {
+    expect(() => render(<BonificationRecap />)).toThrow(
+      new Error("Couldn't retrieve data from storage")
+    )
+  })
 })
 
 function prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry) {
