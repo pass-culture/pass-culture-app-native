@@ -162,10 +162,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -386,10 +389,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -642,10 +648,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1040,10 +1049,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1296,10 +1308,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1531,10 +1546,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -1929,10 +1947,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -2153,10 +2174,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -2377,10 +2401,13 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -2796,10 +2823,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3020,10 +3050,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3244,10 +3277,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3500,10 +3536,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -3898,10 +3937,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -4154,10 +4196,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -4389,10 +4434,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -4624,10 +4672,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5022,10 +5073,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5246,10 +5300,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5502,10 +5559,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -5737,10 +5797,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6135,10 +6198,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6359,10 +6425,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6583,10 +6652,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >
@@ -6807,10 +6879,13 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             }
           }
         >

@@ -305,6 +305,33 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
+
+**RAAM** : [Critère 7.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-2)  
+**Ticket** : [PC-38209](https://passculture.atlassian.net/browse/PC-38209)  
+**PR** : [#8778](https://github.com/pass-culture/pass-culture-app-native/pull/8778)
+
+**Problème** 😱  
+
+- **(E02)** Les options de recherche dans la modale "Localisation" ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+
+- **(E04)** Les éléments de listes des déclarations d'accessibilité ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+
+- **(E06)** Les éléments du plan du site ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+
+**Correction** 💡  
+- **(E02 | E04 | E06)** Création d'un `accessiblityLabel="groupLabel – Liste - Élément X sur X - accessibilityLabel"` pour compenser le manque d'`accessibilityRole` `list` ou `listitem`.
+
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 1</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  

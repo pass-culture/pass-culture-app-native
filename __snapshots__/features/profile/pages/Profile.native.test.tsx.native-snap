@@ -238,10 +238,13 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -365,10 +368,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -491,11 +497,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
-                      "marginVertical": 16,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -711,10 +719,13 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -837,10 +848,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -988,10 +1002,13 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -1114,10 +1131,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -1241,10 +1261,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -1367,10 +1390,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -1493,10 +1519,13 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     }
                   }
                 >
@@ -1893,10 +1922,13 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         }
                       }
                     >
@@ -1990,10 +2022,13 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         }
                       }
                     >
@@ -2087,10 +2122,13 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         }
                       }
                     >
@@ -2184,10 +2222,13 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         }
                       }
                     >

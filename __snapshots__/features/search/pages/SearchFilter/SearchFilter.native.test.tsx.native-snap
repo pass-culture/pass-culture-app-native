@@ -212,13 +212,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={true}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
-                "marginTop": 24,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -331,12 +331,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -473,12 +474,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -601,12 +603,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -729,12 +732,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
+            accessible={true}
             style={
               {
                 "display": "flex",
-                "marginBottom": 24,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >

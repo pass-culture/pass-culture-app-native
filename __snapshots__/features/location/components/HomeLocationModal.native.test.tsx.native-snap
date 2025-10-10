@@ -349,15 +349,19 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
               }
             >
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Localisation – Liste - Élément 1 sur 3 - Utiliser ma position actuelle, non sélectionné"
+                accessibilityRole="button"
+                accessible={true}
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
                 <View
-                  accessibilityLabel="Utiliser ma position actuelle, non sélectionné"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -376,7 +380,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={true}
+                  accessible={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -395,7 +399,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       },
                     ]
                   }
-                  testID="Utiliser ma position actuelle, non sélectionné"
                 >
                   <View
                     gap={2}
@@ -443,15 +446,19 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 />
               </View>
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Localisation – Liste - Élément 2 sur 3 - Choisir une localisation, Ville, code postal, adresse, non sélectionné"
+                accessibilityRole="button"
+                accessible={true}
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
                 <View
-                  accessibilityLabel="Choisir une localisation, Ville, code postal, adresse, non sélectionné"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -470,7 +477,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={true}
+                  accessible={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -489,7 +496,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                       },
                     ]
                   }
-                  testID="Choisir une localisation, Ville, code postal, adresse, non sélectionné"
                 >
                   <View
                     gap={2}
@@ -540,10 +546,15 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 </View>
               </View>
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Localisation – Liste - Élément 3 sur 3 - France entière, sélectionné"
+                accessibilityRole="button"
+                accessible={true}
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
@@ -565,7 +576,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                     }
                   />
                   <View
-                    accessibilityLabel="France entière, sélectionné"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -584,7 +594,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={true}
+                    accessible={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -603,7 +613,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                         },
                       ]
                     }
-                    testID="France entière, sélectionné"
                   >
                     <View
                       gap={2}

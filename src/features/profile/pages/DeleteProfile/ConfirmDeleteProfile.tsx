@@ -48,6 +48,8 @@ export function ConfirmDeleteProfile() {
     },
   })
 
+  const groupLabel = 'Les conséquences'
+
   return (
     <GenericInfoPage
       withGoBack
@@ -63,9 +65,15 @@ export function ConfirmDeleteProfile() {
         externalNav: { url: env.FAQ_LINK_DELETE_ACCOUNT },
         onBeforeNavigate: analytics.logConsultArticleAccountDeletion,
       }}>
-      <Typo.BodyAccent>Les conséquences&nbsp;:</Typo.BodyAccent>
+      <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>
-        <BulletListItem text="tes réservations sont annulées sauf pour certains cas précisés dans les ">
+        {LINE_BREAK}
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={0}
+          total={3}
+          text="tes réservations sont annulées sauf pour certains cas précisés dans les "
+          accessibilityRole={AccessibilityRole.LINK}>
           {LINE_BREAK}
           <ExternalTouchableLink
             as={LinkInsideTextBlack}
@@ -74,8 +82,18 @@ export function ConfirmDeleteProfile() {
             accessibilityRole={AccessibilityRole.LINK}
           />
         </BulletListItem>
-        <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau" />
-        <BulletListItem text="tu n’auras plus accès au catalogue" />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={1}
+          total={3}
+          text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+        />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={2}
+          total={3}
+          text="tu n’auras plus accès au catalogue"
+        />
       </VerticalUl>
       <StyledBodyAccent>Les données que nous conservons&nbsp;:</StyledBodyAccent>
       <Typo.Body>

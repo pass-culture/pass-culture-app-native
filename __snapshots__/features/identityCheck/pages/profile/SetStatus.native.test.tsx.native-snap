@@ -341,11 +341,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -507,11 +510,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -673,11 +679,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -839,11 +848,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1005,11 +1017,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1171,11 +1186,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1337,11 +1355,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1516,11 +1537,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >
@@ -1695,11 +1719,14 @@ exports[`<SetStatus/> should render correctly 1`] = `
             style={null}
           >
             <View
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 }
               }
             >

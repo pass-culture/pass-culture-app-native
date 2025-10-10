@@ -206,8 +206,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -221,10 +220,15 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Engagements – Liste - Élément 1 sur 3 - Schéma pluriannuel d’accessibilité 2022 - 2025"
+            accessibilityRole="button"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -302,10 +306,15 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Engagements – Liste - Élément 2 sur 3 - Actions réalisées depuis 2022"
+            accessibilityRole="button"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -383,10 +392,15 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Engagements – Liste - Élément 3 sur 3 - Plan d’actions 2024"
+            accessibilityRole="button"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -570,8 +584,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -585,10 +598,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Résultats des tests – Liste - Élément 1 sur 2 - 85 % des critères RGAA version 4.1 sont respectés."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -639,10 +656,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Résultats des tests – Liste - Élément 2 sur 2 - Le taux moyen de conformité du service en ligne s’élève à 93 %."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -754,8 +775,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -769,10 +789,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 1 sur 8 - Certains intitulés de lien ne sont pas pertinents."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -823,10 +847,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 2 sur 8 - Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -877,10 +905,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 3 sur 8 - En version mobile ou lors d’un zoom 200 %, le menu de navigation n’est plus disponible sur plusieurs pages de l’application."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -931,10 +963,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 4 sur 8 - Sur les pages de la recherche (recherche, résultats et filtres) :"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -994,10 +1030,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               }
             >
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Sur les pages de la recherche (recherche, résultats et filtres) : – Liste - Élément 1 sur 1 - Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS."
+                accessible={true}
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
@@ -1005,7 +1045,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   style={
                     {
                       "flexDirection": "row",
-                      "marginLeft": 28,
+                      "marginLeft": 32,
                       "marginTop": 0,
                     }
                   }
@@ -1050,10 +1090,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 5 sur 8 - Sur la page des résultats de recherche :"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1113,10 +1157,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
               }
             >
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Sur la page des résultats de recherche : – Liste - Élément 1 sur 1 - La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large."
+                accessible={true}
                 style={
                   {
                     "display": "flex",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                   }
                 }
               >
@@ -1124,7 +1172,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
                   style={
                     {
                       "flexDirection": "row",
-                      "marginLeft": 28,
+                      "marginLeft": 32,
                       "marginTop": 0,
                     }
                   }
@@ -1169,10 +1217,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 6 sur 8 - Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1223,10 +1275,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 7 sur 8 - La modale d’information sur la géolocalisation n’est pas restituée comme telle."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1277,10 +1333,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 8 sur 8 - Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1348,8 +1408,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -1363,10 +1422,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Dérogations – Liste - Élément 1 sur 3 - Le lecteur Youtube, utilisé pour diffuser les contenus vidéo."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1417,10 +1480,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Dérogations – Liste - Élément 2 sur 3 - Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1471,10 +1538,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Dérogations – Liste - Élément 3 sur 3 - La carte des lieux culturels, utilisée dans la recherche."
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1542,8 +1613,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -1557,10 +1627,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel=" – Liste - Élément 1 sur 1 - Aucun"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1672,8 +1746,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -1687,10 +1760,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour le site – Liste - Élément 1 sur 3 - HTML5"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1741,10 +1818,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour le site – Liste - Élément 2 sur 3 - CSS"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1795,10 +1876,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour le site – Liste - Élément 3 sur 3 - JavaScript"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1881,8 +1966,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -1896,10 +1980,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 3 - Firefox et NVDA"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -1950,10 +2038,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 3 - Chrome et NVDA"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2004,10 +2096,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 3 - Safari et VoiceOver"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2075,8 +2171,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -2090,10 +2185,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Les outils utilisés – Liste - Élément 1 sur 6 - Extension HeadingsMap"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2144,10 +2243,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Les outils utilisés – Liste - Élément 2 sur 6 - Extension Web Developer"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2198,10 +2301,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Les outils utilisés – Liste - Élément 3 sur 6 - Extension Stylus"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2252,10 +2359,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Les outils utilisés – Liste - Élément 4 sur 6 - Validateur HTML W3C"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2306,10 +2417,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Les outils utilisés – Liste - Élément 5 sur 6 - Tanaguru Contrast-Finder"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2360,10 +2475,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Les outils utilisés – Liste - Élément 6 sur 6 - Outils de développement (navigateur)"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2431,8 +2550,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
       <View
         style={
           {
-            "marginBottom": 24,
-            "marginTop": 20,
+            "marginVertical": 24,
           }
         }
       >
@@ -2446,10 +2564,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 1 sur 12 - Accueil"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2527,10 +2649,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 2 sur 12 - Connexion"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2608,10 +2734,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 3 sur 12 - Inscription - Date de naissance"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2689,10 +2819,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 4 sur 12 - Vérification d’identité"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2770,10 +2904,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 5 sur 12 - Profil"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2851,10 +2989,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 6 sur 12 - Modification de mot de passe"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -2932,10 +3074,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 7 sur 12 - Recherche"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -3013,10 +3159,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 8 sur 12 - Filtres"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -3094,10 +3244,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 9 sur 12 - Résultats de recherche"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -3175,10 +3329,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 10 sur 12 - Favoris"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -3256,10 +3414,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 11 sur 12 - Détails d’une offre"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
@@ -3337,10 +3499,14 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Pages auditées – Liste - Élément 12 sur 12 - Déclaration d’accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
           >
