@@ -141,7 +141,6 @@ export const HorizontalOfferTile = ({
     theme,
     isComingSoonOffer: isAComingSoonOffer,
     subcategoryId,
-    withColor: !isAComingSoonOffer,
   })
 
   const interactionTagLabel = getInteractionTagLabel(interactionTag)

@@ -11,16 +11,14 @@ import { getTagColors } from 'ui/designSystem/Tag/helper/getTagColors'
 import { getTagIcon } from 'ui/designSystem/Tag/helper/getTagIcon'
 import { renderTagIcon } from 'ui/designSystem/Tag/helper/renderTagIcon'
 import { TagProps, TagVariant } from 'ui/designSystem/Tag/types'
-import { Typo, getSpacing, getSpacingString } from 'ui/theme'
+import { Typo, getSpacingString } from 'ui/theme'
 
-const PADDING_VERTICAL = getSpacing(1)
 const NUMBER_OF_SPACES_LINE_HEIGHT = 4
 
 export const Tag: FunctionComponent<TagProps> = ({
   label,
   variant = TagVariant.DEFAULT,
   Icon,
-  withColor = true,
   ...props
 }) => {
   const theme = useTheme()
@@ -36,42 +34,30 @@ export const Tag: FunctionComponent<TagProps> = ({
   })
 
   return (
-    <Wrapper
-      backgroundColor={withColor ? backgroundColor : theme.designSystem.color.background.default}
-      withColor={withColor}
-      testID="tagWrapper"
-      {...props}>
+    <Wrapper backgroundColor={backgroundColor} testID="tagWrapper" {...props}>
       {FinalIcon ? (
-        <IconContainer>
-          {renderTagIcon(
-            withColor ? iconColor : theme.designSystem.color.icon.default,
-            iconSize,
-            FinalIcon
-          )}
-        </IconContainer>
+        <IconContainer>{renderTagIcon(iconColor, iconSize, FinalIcon)}</IconContainer>
       ) : null}
       <LabelText color={labelColor}>{label}</LabelText>
     </Wrapper>
   )
 }
 
-const Wrapper = styled.View<{ backgroundColor: string; withColor?: boolean }>(
-  ({ theme, backgroundColor, withColor }) => ({
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    borderRadius: theme.designSystem.size.borderRadius.s,
-    backgroundColor,
-    paddingVertical: PADDING_VERTICAL,
-    ...(withColor ? { paddingHorizontal: getSpacing(2) } : undefined),
-  })
-)
+const Wrapper = styled.View<{ backgroundColor: string }>(({ theme, backgroundColor }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  alignSelf: 'flex-start',
+  borderRadius: theme.designSystem.size.borderRadius.s,
+  backgroundColor,
+  paddingVertical: theme.designSystem.size.spacing.xs,
+  paddingHorizontal: theme.designSystem.size.spacing.s,
+}))
 
 const LabelText = styled(Typo.BodyAccentXs)({
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
   ...(Platform.OS === 'web' && { textWrap: 'nowrap' }),
 })
 
-const IconContainer = styled.View({
-  marginRight: getSpacing(1),
-})
+const IconContainer = styled.View(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.xs,
+}))
