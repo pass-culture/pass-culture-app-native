@@ -1,0 +1,45 @@
+import { Title } from 'features/bonification/pages/BonificationTitle'
+import { createStore } from 'libs/store/createStore'
+
+type State = {
+  firstName: string | null
+  givenName: string | null
+  commonName: string | null
+  title: Title | null
+  birthDate: Date | null
+  birthCity: string | null
+  birthCountry: string | null
+}
+
+const defaultState: State = {
+  firstName: null,
+  givenName: null,
+  commonName: null,
+  title: null,
+  birthDate: null,
+  birthCity: null,
+  birthCountry: null,
+}
+
+const legalRepresentativeStore = createStore({
+  name: 'legal-representative',
+  defaultState,
+  actions: (set) => ({
+    setFirstName: (firstName: string) => set({ firstName }),
+    setGivenName: (givenName: string) => set({ givenName }),
+    setCommonName: (commonName: string) => set({ commonName }),
+    setTitle: (title: Title) => set({ title }),
+    setBirthDate: (birthDate: Date) => set({ birthDate }),
+    setBirthCity: (birthCity: string) => set({ birthCity }),
+    setBirthCountry: (birthCountry: string) => set({ birthCountry }),
+    resetLegalRepresentative: () => set(defaultState),
+  }),
+  selectors: {
+    selectLegalRepresentative: () => (state) => state,
+  },
+  options: { persist: true },
+})
+
+export const legalRepresentativeActions = legalRepresentativeStore.actions
+
+export const { useLegalRepresentative } = legalRepresentativeStore.hooks

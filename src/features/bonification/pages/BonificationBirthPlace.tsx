@@ -5,6 +5,10 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
+import {
+  legalRepresentativeActions,
+  useLegalRepresentative,
+} from 'features/bonification/store/legalRepresentativeStore'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -16,17 +20,20 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
-  country: string
-  city?: string
+  birthCountry: string
+  birthCity?: string
 }
 
 export const BonificationBirthPlace = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
+  const storedLegalRepresentative = useLegalRepresentative()
+  const { setBirthCountry, setBirthCity } = legalRepresentativeActions
+
   const { control, formState, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      country: '',
-      city: '',
+      birthCountry: storedLegalRepresentative.birthCountry ?? '',
+      birthCity: storedLegalRepresentative.birthCity ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'all',
@@ -34,10 +41,12 @@ export const BonificationBirthPlace = () => {
 
   const disabled = !formState.isValid
 
-  async function saveBirthPlaceAndNavigate({ country, city }: FormValues) {
+  async function saveBirthPlaceAndNavigate({ birthCountry, birthCity }: FormValues) {
     if (disabled) return
     // eslint-disable-next-line no-console
-    console.log({ country, city })
+    console.log({ birthCountry, birthCity })
+    setBirthCountry(birthCountry)
+    if (birthCity) setBirthCity(birthCity)
     navigate('BonificationRecap')
   }
 
@@ -54,7 +63,7 @@ export const BonificationBirthPlace = () => {
             </Typo.Title3>
             <Controller
               control={control}
-              name="country"
+              name="birthCountry"
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <InputText
                   label="Pays de naissance"
@@ -72,7 +81,7 @@ export const BonificationBirthPlace = () => {
             />
             <Controller
               control={control}
-              name="city"
+              name="birthCity"
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <InputText
                   label="Ville de naissance"
