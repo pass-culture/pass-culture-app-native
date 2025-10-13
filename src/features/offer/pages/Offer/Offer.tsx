@@ -5,6 +5,8 @@ import { InteractionManager } from 'react-native'
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
@@ -37,6 +39,7 @@ export function Offer() {
     RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+  const shouldUseVideoCookies = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT)
 
   const { isLoggedIn, user } = useAuthContext()
   const { data: offer, isLoading } = useOfferQuery({
@@ -49,6 +52,12 @@ export function Offer() {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
+  const { cookiesConsent } = useCookies()
+
+  const hasVideoCookiesConsent = shouldUseVideoCookies
+    ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
+      cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
+    : true
 
   const {
     visible: reactionModalVisible,
@@ -149,6 +158,7 @@ export function Offer() {
         onReactionButtonPress={booking?.canReact ? showReactionModal : undefined}
         userId={user?.id}
         onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
+        hasVideoCookiesConsent={hasVideoCookiesConsent}
       />
     </Page>
   )

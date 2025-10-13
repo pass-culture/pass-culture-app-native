@@ -39,8 +39,14 @@ describe('<VideoSection />', () => {
     expect(screen.getByTestId('video-section-with-divider')).toBeOnTheScreen()
   })
 
+  it('should display player with preview when user accepted video cookies', () => {
+    render(<VideoSection {...defaultProps} hasVideoCookiesConsent />)
+
+    expect(screen.getByRole('imagebutton')).toBeOnTheScreen()
+  })
+
   it('should send log ConsultVideo when user taps Play on the thumbnail', async () => {
-    render(<VideoSection {...defaultProps} />)
+    render(<VideoSection {...defaultProps} hasVideoCookiesConsent />)
 
     const playButton = screen.getByRole('imagebutton')
 
@@ -50,5 +56,15 @@ describe('<VideoSection />', () => {
       from: 'offer',
       offerId: '123',
     })
+  })
+
+  it('should display player placeholder when user not accepted video cookies', () => {
+    render(<VideoSection {...defaultProps} hasVideoCookiesConsent={false} />)
+
+    expect(
+      screen.getByText(
+        'En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.'
+      )
+    ).toBeOnTheScreen()
   })
 })

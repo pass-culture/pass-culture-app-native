@@ -96,6 +96,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   BodyWrapper = React.Fragment,
   onLayout,
   userId,
+  hasVideoCookiesConsent,
   children,
 }) => {
   const theme = useTheme()
@@ -321,7 +322,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               headlineOffersCount={headlineOffersCount}
               chronicleVariantInfo={chronicleVariantInfo}
               userId={userId}
-              isVideoSectionEnabled={isVideoSectionEnabled}>
+              isVideoSectionEnabled={isVideoSectionEnabled}
+              hasVideoCookiesConsent={hasVideoCookiesConsent}>
               {theme.isDesktopViewport ? (
                 <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
                   {offerCtaButton}
