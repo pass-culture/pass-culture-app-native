@@ -134,6 +134,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('Artist', { id: artists[0].id })
   }
 
+  const handleManageCookiesPress = () => {
+    navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { from: 'offer' } })
+  }
+
   const fullAddressOffer = formatFullAddress(
     offer.address?.street,
     offer.address?.postalCode,
@@ -211,6 +215,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           userId={userId}
           duration={offer.video?.durationSeconds}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
+          onManageCookiesPress={handleManageCookiesPress}
         />
       ) : null}
 

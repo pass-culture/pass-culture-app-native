@@ -592,6 +592,17 @@ describe('<OfferBody />', () => {
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
+  it('should redirect to cookies management when pressing manage cookies button', async () => {
+    renderOfferBody({ isVideoSectionEnabled: true })
+
+    await user.press(await screen.findByText('Gérer mes cookies'))
+
+    expect(mockNavigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      screen: 'ConsentSettings',
+      params: { from: 'offer' },
+    })
+  })
+
   type RenderOfferBodyType = Partial<ComponentProps<typeof OfferBody>> & {
     isDesktopViewport?: boolean
   }
@@ -601,6 +612,8 @@ describe('<OfferBody />', () => {
     subcategory = mockSubcategory,
     isDesktopViewport,
     distance,
+    isVideoSectionEnabled,
+    hasVideoCookiesConsent,
     children,
   }: RenderOfferBodyType) {
     render(
@@ -609,7 +622,9 @@ describe('<OfferBody />', () => {
           offer={offer}
           subcategory={subcategory}
           distance={distance}
-          chronicleVariantInfo={chronicleVariantInfoFixture}>
+          chronicleVariantInfo={chronicleVariantInfoFixture}
+          isVideoSectionEnabled={isVideoSectionEnabled}
+          hasVideoCookiesConsent={hasVideoCookiesConsent}>
           {children}
         </OfferBody>
       ),

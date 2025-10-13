@@ -18,6 +18,7 @@ type VideoSectionProps = {
   title: string
   offerId: number
   offerSubcategory: SubcategoryIdEnum
+  onManageCookiesPress: VoidFunction
   videoId?: string
   subtitle?: string
   videoThumbnail?: ReactElement
@@ -42,6 +43,7 @@ export const VideoSection = ({
   userId,
   duration,
   hasVideoCookiesConsent,
+  onManageCookiesPress,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
@@ -87,6 +89,7 @@ export const VideoSection = ({
         duration={duration ? formatDuration(duration, 'sec') : undefined}
         height={videoHeight}
         width={viewportWidth < maxWidth ? undefined : maxWidth}
+        onManageCookiesPress={onManageCookiesPress}
       />
     )
   }, [duration, maxWidth, title, videoHeight, videoThumbnail, viewportWidth])
