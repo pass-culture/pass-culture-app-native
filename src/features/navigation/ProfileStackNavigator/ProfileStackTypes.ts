@@ -1,5 +1,5 @@
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
-import { AccessibilityRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { AccessibilityRootStackParamList, Referrals } from 'features/navigation/RootNavigator/types'
 
 interface PersonalDataType {
   type: PersonalDataTypes.PROFIL_PERSONAL_DATA | PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA
@@ -16,7 +16,7 @@ export type ProfileStackParamList = {
   UpdatePersonalDataConfirmation: undefined
   ProfileInformationValidationUpdate: undefined
   ConfirmDeleteProfile: undefined
-  ConsentSettings: { onGoBack?: () => void } | undefined
+  ConsentSettings: { onGoBack?: () => void; from?: Referrals } | undefined
   DeactivateProfileSuccess: undefined
   DebugScreen: undefined
   DeleteProfileAccountHacked: undefined

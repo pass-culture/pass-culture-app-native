@@ -24,6 +24,7 @@ const labelID = uuidv4()
 export const CookiesSettings = ({
   settingsCookiesChoice,
   setSettingsCookiesChoice,
+  from,
 }: CookiesChoiceSettings) => {
   const { cookiesConsent } = useCookies()
   const shouldDisplayVideoCookiesToggle = useFeatureFlag(
@@ -89,6 +90,7 @@ export const CookiesSettings = ({
           cookie={cookie as CookieCategoriesEnum}
           settingsCookiesChoice={settingsCookiesChoice}
           setSettingsCookiesChoice={setSettingsCookiesChoice}
+          from={from}
         />
       ))}
     </React.Fragment>

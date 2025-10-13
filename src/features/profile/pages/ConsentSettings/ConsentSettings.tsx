@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCook
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieChoicesChanged/haveCookieChoicesChanged'
@@ -36,6 +36,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const ConsentSettings = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
+  const { params } = useRoute<UseRouteType<'ConsentSettings'>>()
+  const from = params?.from
+
   const { showSuccessSnackBar } = useSnackBarContext()
   const { cookiesConsent, setCookiesConsent } = useCookies()
   const { visible, showModal, hideModal } = useModal(false)
@@ -105,6 +108,7 @@ export const ConsentSettings = () => {
         <CookiesSettings
           settingsCookiesChoice={currentCookieChoices}
           setSettingsCookiesChoice={setCurrentCookieChoices}
+          from={from}
         />
 
         <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
