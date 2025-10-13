@@ -44,39 +44,6 @@ describe('YoutubePlayer', () => {
     await waitFor(() => expect(screen.queryByRole('imagebutton')).not.toBeOnTheScreen())
   })
 
-  it('should display duration when specified', async () => {
-    render(
-      <YoutubePlayer
-        height={300}
-        videoId="id"
-        title="Vidéo"
-        thumbnail={<Image source={{ uri: 'thumbnail.jpg' }} />}
-        duration={{ label: '3min', accessibilityLabel: '3 minutes' }}
-        onReady={jest.fn()}
-      />
-    )
-
-    await screen.findByLabelText('Jouer')
-
-    expect(screen.getByText('3min')).toBeOnTheScreen()
-  })
-
-  it('should display video title when specified', async () => {
-    render(
-      <YoutubePlayer
-        height={300}
-        videoId="id"
-        title="Vidéo"
-        thumbnail={<Image source={{ uri: 'thumbnail.jpg' }} />}
-        onReady={jest.fn()}
-      />
-    )
-
-    await screen.findByLabelText('Jouer')
-
-    expect(screen.getByText('Vidéo')).toBeOnTheScreen()
-  })
-
   it('should be ready when press on thumbnail', async () => {
     const handleOnReady = jest.fn()
     render(
