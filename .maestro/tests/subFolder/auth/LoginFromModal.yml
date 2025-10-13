@@ -6,7 +6,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Entrée pour l’email'
 - runFlow: InputEmail.yml
-- tapOn: 'Ton mot de passe'
+- tapOn:
+    id: 'Mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
