@@ -1800,7 +1800,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           }
         }
       >
-        Pour plus d’informations, nous t’invitons à consulter notre
+        Pour plus d’informations, nous t’invitons à consulter notre 
          
         <Text
           accessibilityLabel="politique de gestion des cookies, lien externe"
