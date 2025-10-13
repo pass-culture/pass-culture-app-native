@@ -49,12 +49,4 @@ describe('<Tag />', () => {
 
     expect(screen.getByTestId('tagWrapper')).toHaveStyle({ backgroundColor: expectedColor })
   })
-
-  it('should use default backgroundColor when withColor prop is false', () => {
-    render(<Tag label="Club" variant={TagVariant.COMING_SOON} withColor={false} />)
-
-    const expectedColor = theme.designSystem.color.background.default
-
-    expect(screen.getByTestId('tagWrapper')).toHaveStyle({ backgroundColor: expectedColor })
-  })
 })

@@ -2583,7 +2583,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2670,7 +2669,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2757,7 +2755,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2844,7 +2841,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2931,7 +2927,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3018,7 +3013,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3105,7 +3099,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3192,7 +3185,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3279,7 +3271,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3366,7 +3357,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3495,7 +3485,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3582,7 +3571,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3669,7 +3657,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3774,7 +3761,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3879,7 +3865,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3966,7 +3951,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4071,7 +4055,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4158,7 +4141,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4245,7 +4227,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4332,7 +4313,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4461,7 +4441,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4548,7 +4527,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4653,7 +4631,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4758,7 +4735,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4845,7 +4821,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4950,7 +4925,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5037,7 +5011,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5166,7 +5139,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5253,7 +5225,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5340,7 +5311,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5427,7 +5397,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5514,7 +5483,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5601,7 +5569,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5688,7 +5655,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5775,7 +5741,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={

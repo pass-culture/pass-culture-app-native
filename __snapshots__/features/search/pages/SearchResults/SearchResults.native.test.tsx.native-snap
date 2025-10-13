@@ -1266,7 +1266,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1597,7 +1596,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1924,7 +1922,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -2250,7 +2247,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
