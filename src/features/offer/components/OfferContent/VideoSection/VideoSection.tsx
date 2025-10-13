@@ -13,7 +13,6 @@ import { analytics } from 'libs/analytics/provider'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type VideoSectionProps = {
   title: string
@@ -51,7 +50,7 @@ export const VideoSection = ({
   const renderVideoSection = useCallback(() => {
     return (
       <React.Fragment>
-        <Typo.Title3 {...getHeadingAttrs(3)}>Vidéo</Typo.Title3>
+        <Typo.Title3>Vidéo</Typo.Title3>
         {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
         <StyledYoutubePlayer
           title={title}

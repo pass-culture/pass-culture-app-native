@@ -8,7 +8,6 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   height: number
@@ -23,7 +22,7 @@ export const GatedVideoSection = ({ height, thumbnail, title, duration, width }:
 
   return (
     <Container gap={4} width={width}>
-      <Typo.Title3 {...getHeadingAttrs(3)}>Vidéo</Typo.Title3>
+      <Typo.Title3>Vidéo</Typo.Title3>
       <PlayerPreview
         thumbnail={thumbnail}
         title={title}
