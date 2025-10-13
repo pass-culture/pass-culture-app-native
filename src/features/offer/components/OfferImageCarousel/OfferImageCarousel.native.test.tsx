@@ -80,6 +80,6 @@ describe('OfferImageCarousel', () => {
       />
     )
 
-    expect(await screen.findByText('© Cédric')).toBeOnTheScreen()
+    expect(await screen.findByText('© Cédric', { hidden: true })).toBeOnTheScreen()
   })
 })

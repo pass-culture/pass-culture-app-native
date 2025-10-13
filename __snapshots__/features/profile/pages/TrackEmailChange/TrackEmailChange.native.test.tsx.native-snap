@@ -162,7 +162,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -386,7 +386,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -642,7 +642,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1040,7 +1040,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1296,7 +1296,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1531,7 +1531,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1929,7 +1929,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2153,7 +2153,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2377,7 +2377,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2796,7 +2796,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3020,7 +3020,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3244,7 +3244,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3500,7 +3500,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3898,7 +3898,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -4154,7 +4154,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -4389,7 +4389,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -4624,7 +4624,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5022,7 +5022,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5246,7 +5246,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5502,7 +5502,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5737,7 +5737,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6135,7 +6135,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6359,7 +6359,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6583,7 +6583,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6807,7 +6807,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",

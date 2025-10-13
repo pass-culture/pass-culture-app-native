@@ -29,7 +29,7 @@ describe('<VenueBanner />', () => {
       />
     )
 
-    expect(screen.getByText('© François Boulo')).toBeOnTheScreen()
+    expect(screen.getByText('© François Boulo', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should not display the copyright if the image has a credit but is not from Google', () => {

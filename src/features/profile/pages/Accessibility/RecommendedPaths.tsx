@@ -13,6 +13,7 @@ import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
+  const groupLabel = 'Méthodes pour obtenir le crédit'
   return (
     <SecondaryPageWithBlurHeader
       title="Parcours recommandés web"
@@ -28,9 +29,24 @@ export function RecommendedPaths() {
       </Typo.Body>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
-        <BulletListItem text="en indiquant ses identifiants EduConnect" />
-        <BulletListItem text="en présentant sa carte d’identité" />
-        <BulletListItem text="en remplissant un formulaire sur ">
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={0}
+          total={3}
+          text="en indiquant ses identifiants EduConnect"
+        />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={1}
+          total={3}
+          text="en présentant sa carte d’identité"
+        />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={2}
+          total={3}
+          text="en remplissant un formulaire sur "
+          accessibilityRole={AccessibilityRole.LINK}>
           <ExternalTouchableLink
             as={LinkInsideText}
             typography="BodyAccentXs"

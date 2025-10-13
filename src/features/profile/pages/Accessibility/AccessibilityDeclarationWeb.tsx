@@ -15,7 +15,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -49,7 +49,11 @@ export function AccessibilityDeclarationWeb() {
       </Typo.Body>
       <StyledView>
         <VerticalUl>
-          <BulletListItem>
+          <BulletListItem
+            groupLabel="Engagements"
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={0}
+            total={3}>
             <Typo.BodyXs>
               <InternalTouchableLink
                 as={LinkInsideText}
@@ -59,7 +63,11 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem
+            groupLabel="Engagements"
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={1}
+            total={3}>
             <Typo.BodyXs>
               <InternalTouchableLink
                 as={LinkInsideText}
@@ -69,7 +77,11 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem
+            groupLabel="Engagements"
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={2}
+            total={3}>
             <Typo.BodyXs>
               <InternalTouchableLink
                 as={LinkInsideText}
@@ -107,8 +119,18 @@ export function AccessibilityDeclarationWeb() {
       </ViewGap>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="85&nbsp;% des critères RGAA version 4.1 sont respectés." />
-          <BulletListItem text="Le taux moyen de conformité du service en ligne s’élève à 93&nbsp;%." />
+          <BulletListItem
+            groupLabel="Résultats des tests"
+            text="85&nbsp;% des critères RGAA version 4.1 sont respectés."
+            index={0}
+            total={2}
+          />
+          <BulletListItem
+            groupLabel="Résultats des tests"
+            text="Le taux moyen de conformité du service en ligne s’élève à 93&nbsp;%."
+            index={1}
+            total={2}
+          />
         </VerticalUl>
         <StyledSeparator />
         <TitleText>Contenus non accessibles</TitleText>
@@ -121,38 +143,89 @@ export function AccessibilityDeclarationWeb() {
       </ViewGap>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Certains intitulés de lien ne sont pas pertinents." />
-          <BulletListItem text="Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes." />
-          <BulletListItem text="En version mobile ou lors d’un zoom 200&nbsp;%, le menu de navigation n’est plus disponible sur plusieurs pages de l’application." />
           <BulletListItem
+            groupLabel="Non conformité"
+            text="Certains intitulés de lien ne sont pas pertinents."
+            index={0}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes."
+            index={1}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="En version mobile ou lors d’un zoom 200&nbsp;%, le menu de navigation n’est plus disponible sur plusieurs pages de l’application."
+            index={2}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
             text="Sur les pages de la recherche (recherche, résultats et filtres)&nbsp;:"
             nestedListTexts={[
               'Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.',
             ]}
+            index={3}
+            total={8}
           />
           <BulletListItem
+            groupLabel="Non conformité"
             text="Sur la page des résultats de recherche&nbsp;:"
             nestedListTexts={[
               'La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large.',
             ]}
+            index={4}
+            total={8}
           />
-          <BulletListItem text="Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue." />
-          <BulletListItem text="La modale d’information sur la géolocalisation n’est pas restituée comme telle." />
-          <BulletListItem text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page." />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue."
+            index={5}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="La modale d’information sur la géolocalisation n’est pas restituée comme telle."
+            index={6}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page."
+            index={7}
+            total={8}
+          />
         </VerticalUl>
       </StyledView>
       <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo." />
-          <BulletListItem text="Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte." />
-          <BulletListItem text="La carte des lieux culturels, utilisée dans la recherche." />
+          <BulletListItem
+            groupLabel="Dérogations"
+            text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo."
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Dérogations"
+            text="Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte."
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Dérogations"
+            text="La carte des lieux culturels, utilisée dans la recherche."
+            index={2}
+            total={3}
+          />
         </VerticalUl>
       </StyledView>
       <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Aucun" />
+          <BulletListItem groupLabel="" index={0} total={1} text="Aucun" />
         </VerticalUl>
         <StyledSeparator />
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
@@ -166,9 +239,24 @@ export function AccessibilityDeclarationWeb() {
       </ViewGap>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="HTML5" />
-          <BulletListItem text="CSS" />
-          <BulletListItem text="JavaScript" />
+          <BulletListItem
+            groupLabel="Technologies utilisées pour le site"
+            text="HTML5"
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies utilisées pour le site"
+            text="CSS"
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies utilisées pour le site"
+            text="JavaScript"
+            index={2}
+            total={3}
+          />
         </VerticalUl>
       </StyledView>
       <SubtitleText>
@@ -182,26 +270,71 @@ export function AccessibilityDeclarationWeb() {
       </SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Firefox et NVDA" />
-          <BulletListItem text="Chrome et NVDA" />
-          <BulletListItem text="Safari et VoiceOver" />
+          <BulletListItem
+            groupLabel="Technologies pour vérifier l’accesibilité"
+            text="Firefox et NVDA"
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies pour vérifier l’accesibilité"
+            text="Chrome et NVDA"
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies pour vérifier l’accesibilité"
+            text="Safari et VoiceOver"
+            index={2}
+            total={3}
+          />
         </VerticalUl>
       </StyledView>
       <SubtitleText>Les outils utilisés lors de l’évaluation</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Extension HeadingsMap" />
-          <BulletListItem text="Extension Web Developer" />
-          <BulletListItem text="Extension Stylus" />
-          <BulletListItem text="Validateur HTML W3C" />
-          <BulletListItem text="Tanaguru Contrast-Finder" />
-          <BulletListItem text="Outils de développement (navigateur)" />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Extension HeadingsMap"
+            index={0}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Extension Web Developer"
+            index={1}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Extension Stylus"
+            index={2}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Validateur HTML W3C"
+            index={3}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Tanaguru Contrast-Finder"
+            index={4}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Outils de développement (navigateur)"
+            index={5}
+            total={6}
+          />
         </VerticalUl>
       </StyledView>
       <SubtitleText>Pages du site ayant fait l’objet de la vérification de conformité</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={0} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -211,7 +344,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={1} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -221,7 +354,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={2} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -231,7 +364,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={3} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -241,7 +374,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={4} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -251,7 +384,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={5} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -261,7 +394,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={6} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -271,7 +404,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={7} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -281,7 +414,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={8} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -291,7 +424,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={9} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -301,7 +434,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={10} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -311,7 +444,7 @@ export function AccessibilityDeclarationWeb() {
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={11} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
                 as={LinkInsideText}
@@ -391,11 +524,10 @@ const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledView = styled.View({
-  marginTop: getSpacing(5),
-  marginBottom: getSpacing(6),
-})
+const StyledView = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

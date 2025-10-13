@@ -342,7 +342,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -508,7 +509,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -674,7 +676,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -840,7 +843,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1006,7 +1010,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1172,7 +1177,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1338,7 +1344,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1517,7 +1524,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1696,7 +1704,8 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -2396,7 +2405,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -2562,7 +2572,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -2728,7 +2739,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -2894,7 +2906,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -3060,7 +3073,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -3226,7 +3240,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -3392,7 +3407,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -3571,7 +3587,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -3750,7 +3767,8 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -4450,7 +4468,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -4616,7 +4635,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -4782,7 +4802,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -4948,7 +4969,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -5114,7 +5136,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -5280,7 +5303,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -5446,7 +5470,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -5625,7 +5650,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -5804,7 +5830,8 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
