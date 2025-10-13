@@ -17,7 +17,7 @@ export const CookiesAccordion = ({
   cookie,
   settingsCookiesChoice,
   setSettingsCookiesChoice,
-  from,
+  offerId,
 }: { cookie: CookieCategoriesEnum } & CookiesChoiceSettings) => {
   const info = cookiesInfo[cookie]
   const isEssential = cookie === CookieCategoriesEnum.essential
@@ -31,7 +31,7 @@ export const CookiesAccordion = ({
           [cookie]: !settingsCookiesChoice[cookie],
         }))
 
-  const defaultOpen = cookie === CookieCategoriesEnum.video && from === 'offer'
+  const defaultOpen = cookie === CookieCategoriesEnum.video && !!offerId
 
   return (
     <React.Fragment>

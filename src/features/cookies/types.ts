@@ -1,5 +1,4 @@
 import { ConsentState, CookieCategoriesEnum, CookieNameEnum } from 'features/cookies/enums'
-import { Referrals } from 'features/navigation/RootNavigator/types'
 
 export type Cookies = CookieNameEnum[]
 
@@ -45,7 +44,7 @@ export type CookiesChoiceByCategory = {
 export interface CookiesChoiceSettings {
   settingsCookiesChoice: CookiesChoiceByCategory
   setSettingsCookiesChoice: React.Dispatch<React.SetStateAction<CookiesChoiceByCategory>>
-  from?: Referrals
+  offerId?: number
 }
 
 export type UTMParams = {

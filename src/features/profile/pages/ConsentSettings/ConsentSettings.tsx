@@ -39,7 +39,7 @@ export const ConsentSettings = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { params } = useRoute<UseRouteType<'ConsentSettings'>>()
-  const from = params?.from
+  const offerId = params?.offerId
 
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
@@ -119,7 +119,7 @@ export const ConsentSettings = () => {
           <CookiesSettings
             settingsCookiesChoice={currentCookieChoices}
             setSettingsCookiesChoice={setCurrentCookieChoices}
-            from={from}
+            offerId={offerId}
           />
 
           <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>

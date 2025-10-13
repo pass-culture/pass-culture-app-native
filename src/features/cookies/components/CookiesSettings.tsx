@@ -27,7 +27,7 @@ const labelID = uuidv4()
 export const CookiesSettings = ({
   settingsCookiesChoice,
   setSettingsCookiesChoice,
-  from,
+  offerId,
 }: CookiesChoiceSettings) => {
   const { cookiesConsent } = useCookies()
   const shouldDisplayVideoCookiesToggle = useFeatureFlag(
@@ -65,7 +65,7 @@ export const CookiesSettings = ({
 
   useEffect(() => {
     InteractionManager.runAfterInteractions(() => {
-      if (from === 'offer') {
+      if (!!offerId) {
         scrollToAnchor('cookies-accordion')
       }
     })
@@ -103,7 +103,7 @@ export const CookiesSettings = ({
               cookie={cookie as CookieCategoriesEnum}
               settingsCookiesChoice={settingsCookiesChoice}
               setSettingsCookiesChoice={setSettingsCookiesChoice}
-              from={from}
+              offerId={offerId}
             />
           </Anchor>
         ) : (
@@ -112,7 +112,7 @@ export const CookiesSettings = ({
             cookie={cookie as CookieCategoriesEnum}
             settingsCookiesChoice={settingsCookiesChoice}
             setSettingsCookiesChoice={setSettingsCookiesChoice}
-            from={from}
+            offerId={offerId}
           />
         )
       )}

@@ -599,7 +599,7 @@ describe('<OfferBody />', () => {
 
     expect(mockNavigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       screen: 'ConsentSettings',
-      params: { from: 'offer' },
+      params: { offerId: offerResponseSnap.id },
     })
   })
 

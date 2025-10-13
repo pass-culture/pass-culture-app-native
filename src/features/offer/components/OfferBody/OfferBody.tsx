@@ -135,7 +135,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   }
 
   const handleManageCookiesPress = () => {
-    navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { from: 'offer' } })
+    navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { offerId: offer.id } })
   }
 
   const fullAddressOffer = formatFullAddress(
