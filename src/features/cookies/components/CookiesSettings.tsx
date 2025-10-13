@@ -1,5 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,10 +11,13 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceSettings } from 'features/cookies/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { InteractionManager } from 'react-native'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Anchor } from 'ui/components/anchor/Anchor'
+import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -47,6 +50,7 @@ export const CookiesSettings = ({
       cookiesChoiceByCategory.video,
     ])
   )
+  const scrollToAnchor = useScrollToAnchor()
 
   const hasAcceptedAll = Object.values(settingsCookiesChoice).every((choice) => choice === true)
 
@@ -58,6 +62,14 @@ export const CookiesSettings = ({
       video: !hasAcceptedAll,
     })
   }
+
+  useEffect(() => {
+    InteractionManager.runAfterInteractions(() => {
+      if (from === 'offer') {
+        scrollToAnchor('cookies-accordion')
+      }
+    })
+  }, [])
 
   const inputLabel = 'Tout accepter'
   const { [CookieCategoriesEnum.video]: _videoCookiesInfo, ...otherCookiesInfo } = cookiesInfo
@@ -84,15 +96,26 @@ export const CookiesSettings = ({
           />
         </AcceptAllContainer>
       </ChoiceContainer>
-      {Object.keys(visibleCookiesInfo).map((cookie) => (
-        <CookiesAccordion
-          key={cookie}
-          cookie={cookie as CookieCategoriesEnum}
-          settingsCookiesChoice={settingsCookiesChoice}
-          setSettingsCookiesChoice={setSettingsCookiesChoice}
-          from={from}
-        />
-      ))}
+      {Object.keys(visibleCookiesInfo).map((cookie) =>
+        (cookie as CookieCategoriesEnum) === CookieCategoriesEnum.video ? (
+          <Anchor name="cookies-accordion" key={cookie}>
+            <CookiesAccordion
+              cookie={cookie as CookieCategoriesEnum}
+              settingsCookiesChoice={settingsCookiesChoice}
+              setSettingsCookiesChoice={setSettingsCookiesChoice}
+              from={from}
+            />
+          </Anchor>
+        ) : (
+          <CookiesAccordion
+            key={cookie}
+            cookie={cookie as CookieCategoriesEnum}
+            settingsCookiesChoice={settingsCookiesChoice}
+            setSettingsCookiesChoice={setSettingsCookiesChoice}
+            from={from}
+          />
+        )
+      )}
     </React.Fragment>
   )
 }

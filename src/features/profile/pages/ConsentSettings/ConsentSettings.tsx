@@ -1,5 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
@@ -16,6 +17,7 @@ import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieCho
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
@@ -38,6 +40,9 @@ export const ConsentSettings = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { params } = useRoute<UseRouteType<'ConsentSettings'>>()
   const from = params?.from
+
+  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollYRef = useRef<number>(0)
 
   const { showSuccessSnackBar } = useSnackBarContext()
   const { cookiesConsent, setCookiesConsent } = useCookies()
@@ -90,48 +95,55 @@ export const ConsentSettings = () => {
 
   const modalDescription = 'Tes modifications ne seront pas prises en compte.'
 
+  const handleCheckScrollY = useRef(() => {
+    return scrollYRef.current
+  }).current
+
   return (
     <React.Fragment>
-      <SecondaryPageWithBlurHeader
-        onGoBack={handleBack}
-        title="Paramètres de confidentialité"
-        scrollable>
-        <Typo.Body>
-          L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer
-          ton expérience de navigation.
-        </Typo.Body>
+      <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+        <SecondaryPageWithBlurHeader
+          onGoBack={handleBack}
+          title="Paramètres de confidentialité"
+          scrollable
+          ref={scrollViewRef}>
+          <Typo.Body>
+            L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer
+            ton expérience de navigation.
+          </Typo.Body>
 
-        <StyledBodyAccentXs>
-          Tu peux choisir d’accepter ou non l’activation de leur suivi.
-        </StyledBodyAccentXs>
+          <StyledBodyAccentXs>
+            Tu peux choisir d’accepter ou non l’activation de leur suivi.
+          </StyledBodyAccentXs>
 
-        <CookiesSettings
-          settingsCookiesChoice={currentCookieChoices}
-          setSettingsCookiesChoice={setCurrentCookieChoices}
-          from={from}
-        />
-
-        <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
-        <StyledBody>
-          Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
-        </StyledBody>
-        <Typo.Body>
-          On te redemandera bien sûr ton consentement si notre politique évolue.
-        </Typo.Body>
-
-        <StyledBodyAccentXs>
-          Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
-          <ExternalTouchableLink
-            as={LinkInsideText}
-            wording="politique de gestion des cookies"
-            externalNav={{ url: env.COOKIES_POLICY_LINK }}
-            typography="BodyAccentXs"
-            accessibilityRole={AccessibilityRole.LINK}
+          <CookiesSettings
+            settingsCookiesChoice={currentCookieChoices}
+            setSettingsCookiesChoice={setCurrentCookieChoices}
+            from={from}
           />
-        </StyledBodyAccentXs>
 
-        <SaveButton wording="Enregistrer mes choix" onPress={handleSaveChoices} center />
-      </SecondaryPageWithBlurHeader>
+          <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
+          <StyledBody>
+            Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
+          </StyledBody>
+          <Typo.Body>
+            On te redemandera bien sûr ton consentement si notre politique évolue.
+          </Typo.Body>
+
+          <StyledBodyAccentXs>
+            Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
+            <ExternalTouchableLink
+              as={LinkInsideText}
+              wording="politique de gestion des cookies"
+              externalNav={{ url: env.COOKIES_POLICY_LINK }}
+              typography="BodyAccentXs"
+              accessibilityRole={AccessibilityRole.LINK}
+            />
+          </StyledBodyAccentXs>
+
+          <SaveButton wording="Enregistrer mes choix" onPress={handleSaveChoices} center />
+        </SecondaryPageWithBlurHeader>
+      </AnchorProvider>
 
       <AppModal
         title=""
