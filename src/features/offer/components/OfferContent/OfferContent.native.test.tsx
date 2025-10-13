@@ -822,6 +822,7 @@ function renderOfferContent({
           chronicles={chroniclesData}
           chronicleVariantInfo={chronicleVariantInfoFixture}
           onShowChroniclesWritersModal={jest.fn()}
+          hasVideoCookiesConsent
         />
       </NavigationContainer>
     ),
