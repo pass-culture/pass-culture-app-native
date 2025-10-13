@@ -12,7 +12,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Continuer vers l’étape Mot de passe'
 
 - assertVisible: 'Choisis un mot de passe'
-- tapOn: 'Ton mot de passe'
+- tapOn:
+    id: 'Mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Continuer vers l’étape Date de naissance'
