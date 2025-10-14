@@ -18,7 +18,7 @@ describe('<InputText />', () => {
       <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="symbol" />
     )
 
-    expect(screen.getByText('E-mail *')).toBeOnTheScreen()
+    expect(screen.getByText('E-mail *', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should display mandatory label when input required with text', () => {
@@ -26,7 +26,7 @@ describe('<InputText />', () => {
       <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="explicit" />
     )
 
-    expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
+    expect(screen.getByText('Obligatoire', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should display format when defined', () => {
@@ -39,7 +39,7 @@ describe('<InputText />', () => {
       />
     )
 
-    expect(screen.getByText('Exemple : toto@email.com')).toBeOnTheScreen()
+    expect(screen.getByText('Exemple : toto@email.com', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should display left icon when defined', () => {

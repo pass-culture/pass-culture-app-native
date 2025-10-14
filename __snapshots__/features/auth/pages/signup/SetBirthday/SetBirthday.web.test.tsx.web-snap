@@ -1515,6 +1515,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         class="css-view-175oi2r r-height-eu3ka"
       />
       <div
+        aria-label="Date de naissance - 1er décembre 2006"
         class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
       >
         <div
@@ -1532,7 +1533,6 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           data-testid="styled-input-container"
         >
           <div
-            aria-label="1er décembre 2006"
             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
             id="testUuidV4"

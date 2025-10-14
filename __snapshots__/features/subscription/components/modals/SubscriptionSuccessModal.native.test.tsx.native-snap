@@ -308,7 +308,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -898,7 +898,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -1488,7 +1488,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -2078,7 +2078,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -2668,7 +2668,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -3258,7 +3258,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {

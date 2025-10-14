@@ -309,7 +309,7 @@ retrouver tes favoris
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {

@@ -253,7 +253,7 @@ exports[`<AppModal /> on big screen 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -539,7 +539,7 @@ exports[`<AppModal /> on small screen 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -779,7 +779,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -1065,7 +1065,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -1351,7 +1351,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -1705,7 +1705,7 @@ exports[`<AppModal /> with left icon render 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -1991,7 +1991,7 @@ exports[`<AppModal /> with minimal props 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -2337,7 +2337,7 @@ exports[`<AppModal /> with right icon render 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {
@@ -2623,7 +2623,7 @@ exports[`<AppModal /> without children 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {

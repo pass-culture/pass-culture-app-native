@@ -44,7 +44,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
             "userSelect": "auto",
           },
           {
-            "backgroundColor": "#23232329",
+            "backgroundColor": "#24242429",
             "flexDirection": "column",
             "flexGrow": 1,
             "height": "100%",

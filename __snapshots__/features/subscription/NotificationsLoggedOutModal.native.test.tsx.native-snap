@@ -308,7 +308,7 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#23232329"
+        backdropColor="#24242429"
         paddingBottom={8}
         style={
           {

@@ -91,5 +91,5 @@ describe('<CitySearchInput />', () => {
 })
 
 const waitForScreenToBeLoaded = () => {
-  return screen.findByText('Indique ton code postal et choisis ta ville')
+  return screen.findByText('Indique ton code postal et choisis ta ville', { hidden: true })
 }

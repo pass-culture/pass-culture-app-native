@@ -734,6 +734,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   <View>
                     <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
                       style={
                         {
                           "alignItems": "flex-end",
@@ -745,7 +747,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     >
                       <View>
                         <Text
-                          accessibilityLabel="Prix minimum (en €)"
                           style={
                             {
                               "color": "#161617",
@@ -789,6 +790,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     testID="styled-input-container"
                   >
                     <TextInput
+                      accessibilityLabel="Champs de texte - Prix minimum (en €)"
                       accessibilityRequired={false}
                       autoCapitalize="none"
                       autoComplete="off"
@@ -842,6 +844,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               >
                 <View>
                   <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
                     style={
                       {
                         "alignItems": "flex-end",
@@ -853,7 +857,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   >
                     <View>
                       <Text
-                        accessibilityLabel="Prix maximum (en €)"
                         style={
                           {
                             "color": "#161617",
@@ -910,6 +913,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   testID="styled-input-container"
                 >
                   <TextInput
+                    accessibilityLabel="Champs de texte - Prix maximum (en €) - max : 80 €"
                     accessibilityRequired={false}
                     autoCapitalize="none"
                     autoComplete="off"

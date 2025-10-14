@@ -2,7 +2,11 @@ import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
-import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
+import {
+  PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL,
+  PasswordSecurityRules,
+} from 'features/auth/components/PasswordSecurityRules'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
 
 interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputProps {
@@ -24,29 +28,40 @@ export const PasswordInputController = <
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   const passwordInputErrorId = uuidv4()
 
+  const securityRulesAccessibilityLabel = withSecurityRules
+    ? PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL
+    : undefined
+
   return (
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-        <React.Fragment>
-          <PasswordInput
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-            accessibilityHint={error?.message}
-            errorMessage={error?.message}
-            {...otherPasswordInputProps}
-          />
-          {withSecurityRules ? (
-            <PasswordSecurityRules
-              password={value}
-              visible={securityRulesAlwaysVisible ? true : value.length > 0}
-              nativeID={passwordInputErrorId}
+      render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
+        const computedAccessibilityHint = getComputedAccessibilityLabel(
+          securityRulesAccessibilityLabel,
+          error?.message
+        )
+
+        return (
+          <React.Fragment>
+            <PasswordInput
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              accessibilityHint={computedAccessibilityHint}
+              errorMessage={error?.message}
+              {...otherPasswordInputProps}
             />
-          ) : null}
-        </React.Fragment>
-      )}
+            {withSecurityRules ? (
+              <PasswordSecurityRules
+                password={value}
+                visible={securityRulesAlwaysVisible ? true : value.length > 0}
+                nativeID={passwordInputErrorId}
+              />
+            ) : null}
+          </React.Fragment>
+        )
+      }}
     />
   )
 }

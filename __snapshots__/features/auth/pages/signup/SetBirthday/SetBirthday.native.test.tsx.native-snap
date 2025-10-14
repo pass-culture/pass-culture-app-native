@@ -106,6 +106,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <View
+      accessibilityLabel="Date de naissance - 1er décembre 2006"
+      accessible={true}
       gap={2}
       style={
         {
@@ -170,7 +172,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         testID="styled-input-container"
       >
         <Text
-          accessibilityLabel="1er décembre 2006"
           nativeID="testUuidV4"
           style={
             {
@@ -370,8 +371,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                 "lockedBrandPrimary": "#6123df",
                 "lockedBrandSecondary": "#320096",
                 "lockedInverted": "#161617",
-                "overlay": "#23232329",
-                "shadowOverlay": "#23232329",
+                "overlay": "#24242429",
+                "shadowOverlay": "#24242429",
                 "skeletonGradient01": "#cbcdd2",
                 "skeletonGradient02": "#f1f1f4",
                 "subtle": "#f1f1f4",
@@ -947,6 +948,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       }
     />
     <View
+      accessibilityLabel="Date de naissance - 1er décembre 2006"
+      accessible={true}
       gap={2}
       style={
         {
@@ -1011,7 +1014,6 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         testID="styled-input-container"
       >
         <Text
-          accessibilityLabel="1er décembre 2006"
           nativeID="testUuidV4"
           style={
             {
@@ -1211,8 +1213,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                 "lockedBrandPrimary": "#6123df",
                 "lockedBrandSecondary": "#320096",
                 "lockedInverted": "#161617",
-                "overlay": "#23232329",
-                "shadowOverlay": "#23232329",
+                "overlay": "#24242429",
+                "shadowOverlay": "#24242429",
                 "skeletonGradient01": "#cbcdd2",
                 "skeletonGradient02": "#f1f1f4",
                 "subtle": "#f1f1f4",

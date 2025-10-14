@@ -279,6 +279,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 </View>
                 <TextInput
                   accessibilityHidden={true}
+                  accessibilityLabel="Champs de texte (recherche)"
                   autoCorrect={false}
                   autoFocus={false}
                   editable={true}
