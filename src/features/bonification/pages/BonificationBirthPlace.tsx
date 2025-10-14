@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Insets, Text, TouchableOpacity, View } from 'react-native'
 
 import { COUNTRY_LIST } from 'features/bonification/countries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
@@ -14,32 +14,38 @@ import {
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Validate } from 'ui/svg/icons/Validate'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
-  birthCountry: string
-  birthCountryChild?: string
+  birthCountrySelection: string
+  birthCountryInput?: string
   birthCity?: string
 }
+const inset = 10 // arbitrary hitSlop zone inset for touchable
+const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 
 export const BonificationBirthPlace = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
   const [countryList, setCountryList] = useState(COUNTRY_LIST)
+  const [showCityField, setShowCityField] = useState(false)
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
 
-  const { control, formState, handleSubmit } = useForm<FormValues>({
+  const { control, formState, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: {
-      birthCountry: storedLegalRepresentative.birthCountry ?? '',
+      birthCountrySelection: storedLegalRepresentative.birthCountry ?? '',
       birthCity: storedLegalRepresentative.birthCity ?? '',
-      birthCountryChild: '',
+      birthCountryInput: '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -47,21 +53,33 @@ export const BonificationBirthPlace = () => {
 
   const disabled = !formState.isValid
 
-  async function saveBirthPlaceAndNavigate({ birthCountry, birthCity }: FormValues) {
+  async function saveBirthPlaceAndNavigate({ birthCountrySelection, birthCity }: FormValues) {
     if (disabled) return
     // eslint-disable-next-line no-console
-    console.log({ birthCountry, birthCity })
-    setBirthCountry(birthCountry)
-    if (birthCity) setBirthCity(birthCity)
+    console.log({ birthCountrySelection, birthCity })
+    setBirthCountry(birthCountrySelection)
+    if (birthCountrySelection !== 'France' && birthCity) setBirthCity(birthCity)
     navigate('BonificationRecap')
   }
 
   const handleUserInputChange = (input: string) => {
-    console.log(input)
-    setCountryList(COUNTRY_LIST.filter((country) => country.name_fr.startsWith(input)))
+    setCountryList(
+      COUNTRY_LIST.filter((country) =>
+        country.name_fr.toLocaleLowerCase().startsWith(input.toLocaleLowerCase())
+      )
+    )
   }
 
+  // console.log('Input', watch('birthCountryInput'))
+  // console.log('Selection', watch('birthCountrySelection'))
+
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
+
+  const findCountry = (countryName) => {
+    return COUNTRY_LIST.find(
+      (country) => country.lang_fr.toLocaleLowerCase() === countryName.toLocaleLowerCase()
+    )
+  }
 
   return (
     <PageWithHeader
@@ -74,27 +92,27 @@ export const BonificationBirthPlace = () => {
             </Typo.Title3>
             <Controller
               control={control}
-              name="birthCountry"
+              name="birthCountrySelection"
               render={({
-                field: { onChange: onChangeParent, value: valueParent },
+                field: { onChange: onChangeSelection, value: valueSelection },
                 fieldState: { error },
               }) => (
                 <React.Fragment>
                   <Controller
                     control={control}
-                    name="birthCountryChild"
+                    name="birthCountryInput"
                     render={({
-                      field: { value, onChange: onChangeChild },
+                      field: { value: valueInput, onChange: onChangeInput },
                       fieldState: { error },
                     }) => (
                       <React.Fragment>
                         <InputText
                           label="Pays de naissance"
-                          value={value}
+                          value={valueInput}
                           autoFocus
                           onChangeText={(text) => {
                             handleUserInputChange(text)
-                            onChangeChild(text)
+                            onChangeInput(text)
                           }}
                           requiredIndicator="explicit"
                           accessibilityHint={error?.message}
@@ -103,51 +121,73 @@ export const BonificationBirthPlace = () => {
                           autoComplete="country"
                           errorMessage={error?.message}
                         />
-                        {countryList.map((country) => {
-                          return (
-                            <TouchableOpacity
-                              key={country.id}
-                              onPress={() => {
-                                onChangeParent(country.name_fr)
-                                onChangeChild(country.name_fr)
-                              }}>
-                              <View style={{ flexDirection: 'row' }}>
-                                {country.iso_4217 ? (
-                                  <Image
-                                    source={{
-                                      uri: `https://flagcdn.com/w320/${country.tld.slice(1)}.png`,
-                                    }}
-                                    style={{ width: 32 }}
-                                  />
-                                ) : null}
-                                <Text>{country.name_fr}</Text>
-                              </View>
-                            </TouchableOpacity>
-                          )
-                        })}
+                        {valueInput && valueInput.length != 0 ? (
+                          <Touchable
+                            hitSlop={hitSlop}
+                            onPress={() => {
+                              reset()
+                              setShowCityField(false)
+                            }}
+                            accessibilityLabel="Réinitialiser la recherche"
+                            type="reset">
+                            <Invalidate />
+                          </Touchable>
+                        ) : null}
+                        {valueInput &&
+                          valueInput.length != 0 &&
+                          countryList.map((country) => {
+                            return (
+                              <TouchableOpacity
+                                key={country.id}
+                                onPress={() => {
+                                  handleUserInputChange(country.name_fr)
+                                  onChangeSelection(country.name_fr)
+                                  onChangeInput(country.name_fr)
+
+                                  if (valueInput === 'France') {
+                                    setShowCityField(true)
+                                  } else setShowCityField(false)
+                                }}>
+                                <View style={{ flexDirection: 'row' }}>
+                                  {country.iso_4217 ? (
+                                    <Image
+                                      source={{
+                                        uri: `https://flagcdn.com/w320/${country.tld.slice(1)}.png`,
+                                      }}
+                                      style={{ width: 32, borderRadius: 4 }}
+                                    />
+                                  ) : null}
+                                  <Text>{country.name_fr}</Text>
+                                  {valueSelection === country.name_fr ? <Validate /> : null}
+                                </View>
+                              </TouchableOpacity>
+                            )
+                          })}
                       </React.Fragment>
                     )}
                   />
                 </React.Fragment>
               )}
             />
-            <Controller
-              control={control}
-              name="birthCity"
-              render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
-                  label="Ville de naissance"
-                  value={value}
-                  onChangeText={onChange}
-                  requiredIndicator="explicit"
-                  accessibilityHint={error?.message}
-                  testID="Entrée pour la ville de naissance"
-                  textContentType="addressCity"
-                  autoComplete="postal-address-locality"
-                  errorMessage={error?.message}
-                />
-              )}
-            />
+            {showCityField ? (
+              <Controller
+                control={control}
+                name="birthCity"
+                render={({ field: { onChange, value }, fieldState: { error } }) => (
+                  <InputText
+                    label="Ville de naissance"
+                    value={value}
+                    onChangeText={onChange}
+                    requiredIndicator="explicit"
+                    accessibilityHint={error?.message}
+                    testID="Entrée pour la ville de naissance"
+                    textContentType="addressCity"
+                    autoComplete="postal-address-locality"
+                    errorMessage={error?.message}
+                  />
+                )}
+              />
+            ) : null}
           </ViewGap>
         </Form.MaxWidth>
       }
