@@ -3,7 +3,7 @@ import { object, string } from 'yup'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 
 export const BonificationBirthPlaceSchema = object().shape({
-  birthCountry: string()
+  birthCountrySelection: string()
     .required('Le pays de naissance est obligatoire')
     .test(
       'isCountryValid',
