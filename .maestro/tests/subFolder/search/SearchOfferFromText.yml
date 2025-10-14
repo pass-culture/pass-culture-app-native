@@ -7,7 +7,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'France entière.*'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
 
 - tapOn: 'Offre, artiste, lieu culturel...'
 

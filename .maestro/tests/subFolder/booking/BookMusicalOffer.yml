@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'France entière.*'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
 
 - runFlow:
     label: 'Swipe vers les offres pour éviter tap sur la tabBar'

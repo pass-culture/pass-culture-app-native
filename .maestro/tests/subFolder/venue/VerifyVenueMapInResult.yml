@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Localisation'
-- tapOn: 'Choisir une localisation.*'
+- tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
 - inputText: 'Paris'
 - hideKeyboard
 - tapOn: 'Paris0Paris'

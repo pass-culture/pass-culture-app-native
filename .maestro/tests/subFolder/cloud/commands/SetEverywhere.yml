@@ -6,4 +6,4 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: 'Ouvrir la modale de localisation depuis le widget'
       - hideKeyboard
-      - tapOn: 'France entière.*'
+      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
