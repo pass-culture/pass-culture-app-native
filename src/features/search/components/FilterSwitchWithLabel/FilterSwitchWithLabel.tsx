@@ -1,7 +1,9 @@
 import React, { FunctionComponent, useMemo } from 'react'
+import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
@@ -32,21 +34,33 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const labelDescriptionID = useMemo(uuidv4, [])
   const { isDesktopViewport } = useTheme()
 
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(label, subtitle)
+
   const TitleWithSubtitle = useMemo(
     () => (
-      <React.Fragment>
+      <View
+        accessibilityLabel={computedAccessibilityLabel}
+        {...getHeadingAttrs(accessibilityLevel ?? 2)}
+        accessible>
         <StyledInputLabel
-          {...getHeadingAttrs(accessibilityLevel ?? 2)}
           id={labelID}
           htmlFor={checkboxID}
           accessibilityDescribedBy={labelDescriptionID}>
           {label}
         </StyledInputLabel>
         {subtitle ? <Subtitle nativeID={labelDescriptionID}>{subtitle}</Subtitle> : null}
-      </React.Fragment>
+      </View>
     ),
 
-    [accessibilityLevel, label, labelID, labelDescriptionID, checkboxID, subtitle]
+    [
+      accessibilityLevel,
+      computedAccessibilityLabel,
+      labelID,
+      checkboxID,
+      labelDescriptionID,
+      label,
+      subtitle,
+    ]
   )
 
   return (

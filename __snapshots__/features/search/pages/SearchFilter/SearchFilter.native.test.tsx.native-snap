@@ -212,7 +212,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
-            accessible={true}
             isFirstSectionItem={true}
             style={
               [
@@ -336,7 +335,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [
@@ -483,7 +481,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [
@@ -616,7 +613,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [
@@ -749,7 +745,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [

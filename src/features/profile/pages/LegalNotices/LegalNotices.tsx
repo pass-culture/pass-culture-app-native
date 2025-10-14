@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
@@ -28,7 +27,7 @@ export function LegalNotices() {
           Éditeur du site&nbsp;:
           {SPACE}
           <ExternalTouchableLink
-            as={LinkInsideTextBlack}
+            as={LinkInsideText}
             wording="https://passculture.app/accueil"
             externalNav={{ url: 'https://passculture.app/accueil' }}
             icon={ExternalSiteFilled}
@@ -53,7 +52,7 @@ export function LegalNotices() {
           Nous contacter&nbsp;:
           {SPACE}
           <ExternalTouchableLink
-            as={LinkInsideTextBlack}
+            as={LinkInsideText}
             wording="support@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             externalNav={contactSupport.forGenericQuestion}
@@ -84,7 +83,3 @@ export function LegalNotices() {
     </SecondaryPageWithBlurHeader>
   )
 }
-
-const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))``

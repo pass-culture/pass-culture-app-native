@@ -16,6 +16,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFunctionOnce } from 'libs/hooks'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { extractTextFromReactNode } from 'shared/extractTextFromReactNode/extractTextFromReactNode'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -38,6 +40,7 @@ interface AccordionProps {
 }
 
 const isWeb = Platform.OS === 'web'
+
 export const Accordion = ({
   title,
   titleComponent,
@@ -99,6 +102,12 @@ export const Accordion = ({
     return isWeb ? { accessibilityExpanded: open } : { accessibilityState: { expanded: open } }
   }, [open])
 
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    accessibilityLabel ?? extractTextFromReactNode(title),
+    'Accordéon',
+    open ? 'Réduire l’accordéon' : 'Développer l’accordéon'
+  )
+
   return (
     <React.Fragment>
       <SwitchContainer>
@@ -108,7 +117,7 @@ export const Accordion = ({
           </LeftComponentView>
         ) : null}
         <StyledTouchableOpacity
-          accessibilityLabel={accessibilityLabel}
+          accessibilityLabel={computedAccessibilityLabel}
           accessibilityRole={AccessibilityRole.BUTTON}
           onPress={toggleListItem}
           accessibilityControls={accordionBodyId}
