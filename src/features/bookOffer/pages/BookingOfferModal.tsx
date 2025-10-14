@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
@@ -12,7 +12,6 @@ import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOf
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -40,8 +39,9 @@ const errorCodeToMessage: Record<string, string> = {
     'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!',
   ALREADY_BOOKED: 'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!',
   STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
-  PROVIDER_STOCK_SOLD_OUT: 'Oups, cette offre n’est plus disponible\u00a0!',
+  PROVIDER_STOCK_NOT_ENOUGH_SEATS: 'Désolé, il n’y a plus de place pour cette séance\u00a0!',
   PROVIDER_BOOKING_TIMEOUT: 'Nous t’invitons à réessayer un peu plus tard',
+  PROVIDER_SHOW_DOES_NOT_EXIST: 'Oups, cette offre n’est plus disponible\u00a0!',
 }
 
 export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProps> = ({
@@ -153,11 +153,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { top } = useCustomSafeInsets()
   const { modal } = useTheme()
 
-  const stocksWithCategory = useMemo(() => {
-    return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
-  }, [bookingState.date, bookingState.hour, offer?.stocks])
-  const hasPricesStep = stocksWithCategory.length > 1
-
   const modalLeftIconProps = {
     leftIcon,
     leftIconAccessibilityLabel,
@@ -227,7 +222,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         />
       }
       fixedModalBottom={
-        <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
+        <BookingOfferModalFooter hasPricesStep={offer?.isEvent} isDuo={offer?.isDuo} />
       }
       shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
       {children}

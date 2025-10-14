@@ -349,7 +349,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
               }
             >
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Localisation – Liste - Élément 1 sur 3 - Utiliser ma position actuelle, non sélectionné"
+                accessibilityRole="button"
+                accessible={true}
                 style={
                   {
                     "display": "flex",
@@ -441,7 +443,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 />
               </View>
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Localisation – Liste - Élément 2 sur 3 - Choisir une localisation, Ville, code postal, adresse, non sélectionné"
+                accessibilityRole="button"
+                accessible={true}
                 style={
                   {
                     "display": "flex",
@@ -536,7 +540,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                 </View>
               </View>
               <View
-                accessibilityRole="none"
+                accessibilityLabel="Localisation – Liste - Élément 3 sur 3 - France entière, sélectionné"
+                accessibilityRole="button"
+                accessible={true}
                 style={
                   {
                     "display": "flex",

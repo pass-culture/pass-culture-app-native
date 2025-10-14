@@ -1,5 +1,6 @@
+import { FlashListRef } from '@shopify/flash-list'
 import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
-import { FlatList, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
@@ -34,7 +35,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
     movieScreeningUserData,
   } = useOfferCTAButton(offer, subcategory, bookingData)
 
-  const flatListRef = useRef<FlatList | null>(null)
+  const flatListRef = useRef<FlashListRef<Date> | null>(null)
 
   const eventCardData = useMemo(
     () => selectedDateScreenings(offerVenueId, onPressOfferCTA, movieScreeningUserData),
@@ -56,7 +57,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
         dates={movieScreeningDates}
         selectedDate={selectedDate}
         onTabChange={setSelectedDate}
-        flatListRef={flatListRef}
+        listRef={flatListRef}
       />
       {eventCardData ? (
         <EventCardListContainer>

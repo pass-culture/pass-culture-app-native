@@ -109,7 +109,7 @@ exports[`Stepper navigation should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -342,7 +342,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -598,7 +598,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -842,7 +842,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",

@@ -1,6 +1,7 @@
 import { QueryClient } from '@tanstack/react-query'
 import React, { ComponentProps } from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -171,6 +172,7 @@ const renderOfferContent = ({
   isDesktopViewport = false,
   isMobileViewport = false,
 }: RenderOfferContentType) => {
+  useRoute.mockReturnValue({ params: { id: offer.id } })
   return render(
     reactQueryProviderHOC(
       <OfferContent

@@ -3,7 +3,13 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
+import {
+  convertAlgoliaVenue2AlgoliaVenueOfferListItem,
+  getReconciledVenues,
+} from 'features/search/helpers/searchList/getReconciledVenues'
 import { SearchListProps } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { getSpacing } from 'ui/theme'
@@ -27,10 +33,16 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
       numColumns,
       isGridLayout,
       shouldDisplayGridList,
+      onViewableItemsChanged,
+      onViewableVenuePlaylistItemsChanged,
     },
     ref
   ) => {
     const { tabBar } = useTheme()
+    const isEnabledVenuesFromOfferIndex = useFeatureFlag(
+      RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX
+    )
+
     return (
       <FlashList
         ref={ref}
@@ -42,10 +54,15 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
           <SearchListHeader
             nbHits={nbHits}
             userData={userData}
-            venues={hits.venues}
+            venues={
+              isEnabledVenuesFromOfferIndex
+                ? getReconciledVenues(hits.offers, hits.venues)
+                : hits.venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
+            }
             artistSection={artistSection}
             venuesUserData={venuesUserData}
             shouldDisplayGridList={shouldDisplayGridList}
+            onViewableVenuePlaylistItemsChanged={onViewableVenuePlaylistItemsChanged}
           />
         }
         ItemSeparatorComponent={isGridLayout ? undefined : LineSeparator}
@@ -59,6 +76,7 @@ export const SearchList = React.forwardRef<FlashListRef<Offer>, SearchListProps>
         contentContainerStyle={{ paddingBottom: tabBar.height + getSpacing(10) }}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     )
   }

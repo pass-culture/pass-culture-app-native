@@ -3,6 +3,7 @@ import React from 'react'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { getHeaderSize } from 'features/search/components/SearchList/SearchList.web'
 import { initialSearchState } from 'features/search/context/reducer'
+import * as getReconciledVenuesAPI from 'features/search/helpers/searchList/getReconciledVenues'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -56,6 +57,8 @@ jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
   default: mockUseWindowDimensions,
 }))
 
+const spiedGetReconciledVenue = jest.spyOn(getReconciledVenuesAPI, 'getReconciledVenues')
+
 describe('<SearchList />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
@@ -75,6 +78,16 @@ describe('<SearchList />', () => {
 
       expect(screen.queryByTestId('grid-list-menu')).not.toBeOnTheScreen()
     })
+  })
+})
+
+describe('with ENABLE_VENUES_FROM_OFFER_INDEX FF enabled', () => {
+  beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX]))
+
+  it('should call getReconciledVenues with offers and venues from algolia indexes', () => {
+    render(reactQueryProviderHOC(<SearchList {...props} isGridLayout={false} />))
+
+    expect(spiedGetReconciledVenue).toHaveBeenCalledWith(mockHits, [])
   })
 })
 

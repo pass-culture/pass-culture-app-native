@@ -195,7 +195,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Plan du site – Liste - Élément 1 sur 5 - Accueil"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -319,7 +321,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Plan du site – Liste - Élément 2 sur 5 - Recherche"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -443,7 +447,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 1 sur 14 - Explore la carte"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -454,7 +460,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -567,7 +573,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 2 sur 14 - Concerts & festivals"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -578,7 +586,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -691,7 +699,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 3 sur 14 - Cinéma"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -702,7 +712,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -815,7 +825,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 4 sur 14 - Films, séries et documentaires"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -826,7 +838,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -939,7 +951,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 5 sur 14 - Livres"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -950,7 +964,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1063,7 +1077,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 6 sur 14 - Musique"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1074,7 +1090,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1187,7 +1203,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 7 sur 14 - Arts & loisirs créatifs"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1198,7 +1216,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1311,7 +1329,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 8 sur 14 - Spectacles"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1322,7 +1342,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1435,7 +1455,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 9 sur 14 - Musées & visites culturelles"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1446,7 +1468,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1559,7 +1581,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 10 sur 14 - Jeux & jeux vidéos"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1570,7 +1594,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1683,7 +1707,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 11 sur 14 - Médias & presse"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1694,7 +1720,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1807,7 +1833,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 12 sur 14 - Cartes jeunes"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1818,7 +1846,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -1931,7 +1959,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 13 sur 14 - Conférences & rencontres"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1942,7 +1972,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -2055,7 +2085,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Recherche – Liste - Élément 14 sur 14 - Évènements en ligne"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2066,7 +2098,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -2179,7 +2211,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Plan du site – Liste - Élément 3 sur 5 - Réservations"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2303,7 +2337,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Plan du site – Liste - Élément 4 sur 5 - Favoris"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2427,7 +2463,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Plan du site – Liste - Élément 5 sur 5 - Profil"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2551,7 +2589,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 1 sur 12 - Créer un compte"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2562,7 +2602,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -2675,7 +2715,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 2 sur 12 - Se connecter"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2686,7 +2728,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -2799,7 +2841,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 3 sur 12 - Mes succès"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2810,7 +2854,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -2923,7 +2967,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 4 sur 12 - Notifications"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2934,7 +2980,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3047,7 +3093,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 5 sur 12 - Comment ça marche ?"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3058,7 +3106,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3171,7 +3219,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 6 sur 12 - Informations personnelles"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3182,7 +3232,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3295,7 +3345,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 7 sur 12 - Préférence d’affichage"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3306,7 +3358,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3419,7 +3471,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 8 sur 12 - Accessibilité"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3430,7 +3484,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3543,7 +3597,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 9 sur 12 - Faire une suggestion"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3554,7 +3610,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3667,7 +3723,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 10 sur 12 - Informations légales"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3678,7 +3736,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3791,7 +3849,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 11 sur 12 - Confidentialité"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3802,7 +3862,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >
@@ -3915,7 +3975,9 @@ exports[`SiteMapScreen should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Profil – Liste - Élément 12 sur 12 - Débuggage"
+          accessibilityRole="button"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3926,7 +3988,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               {
                 "flexDirection": "row",
-                "marginLeft": 28,
+                "marginLeft": 32,
               }
             }
           >

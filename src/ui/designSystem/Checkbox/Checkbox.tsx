@@ -5,11 +5,13 @@
 
 import React, { FunctionComponent, useCallback } from 'react'
 import { Platform } from 'react-native'
-import styled, { useTheme, DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
+import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
+import { RequiredIndicator } from 'ui/components/inputs/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { CheckboxAsset } from 'ui/designSystem/Checkbox/CheckboxAsset'
 import { getCheckboxColors } from 'ui/designSystem/Checkbox/getCheckboxColors'
@@ -23,7 +25,7 @@ import {
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMarkChecked } from 'ui/svg/icons/CheckboxMarkChecked'
 import { CheckboxMarkIndeterminate } from 'ui/svg/icons/CheckboxMarkIndeterminate'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -43,6 +45,7 @@ type CheckboxBase = {
   label: string
   onPress: (isChecked: boolean) => void
   required?: boolean
+  requiredIndicator?: RequiredIndicator
   hasError?: boolean
   disabled?: boolean
   accessibilityLabel?: string
@@ -87,6 +90,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   accessibilityLabel,
   onPress,
   required,
+  requiredIndicator = 'explicit',
   variant = 'default',
 }) => {
   const focusProps = useHandleFocus()
@@ -146,7 +150,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
         <RightBox>
           <Label state={state} {...hoverProps}>
             {label}
-            {required ? '*' : null}
+            {required ? <RequiredLabel indicator={requiredIndicator} lowercase /> : null}
           </Label>
           {description ? (
             <StyledBodyAccentXs state={state} {...hoverProps}>
@@ -209,18 +213,18 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
       border: 1,
       borderColor,
       borderRadius: theme.designSystem.size.borderRadius.m,
-      padding: getSpacing(4),
+      padding: theme.designSystem.size.spacing.l,
     }),
     ...customFocusOutline({ isFocus }),
     ...getBoderHoverStyle({ state, theme, isHover }),
   }
 })
 
-const ContentContainer = styled.View({
+const ContentContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'row',
-  columnGap: getSpacing(3),
-})
+  columnGap: theme.designSystem.size.spacing.m,
+}))
 
 type LeftBoxProps = {
   variant: CheckboxVariant
@@ -306,6 +310,6 @@ const BottomBox = styled.View({
   justifyContent: 'center',
 })
 
-const CollapsedContainer = styled.View({
-  marginTop: getSpacing(4),
-})
+const CollapsedContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

@@ -64,6 +64,16 @@ jobs:
             ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+      - name: Get Secret for App Distribution from Secret Manager (EHP only)
+        id: 'firebase_secret'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
+        if: ${{ inputs.ENV != 'production' }}
+      - name: Export firebase secret to file
+        run: |
+          echo '${{steps.firebase_secret.outputs.FIREBASE_TOKEN}}' > firebase_credentials.json
       - name: 'Render Sentry Template'
         id: render_template
         uses: chuhlomin/render-template@v1.10
@@ -74,18 +84,18 @@ jobs:
           result_path: .sentryclirc
       - name: Deploy soft android for ${{ inputs.ENV }}
         run: |
-          bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
+          bundle exec fastlane android deploy ota: --env ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
       - name: Deploy soft ios App for ${{ inputs.ENV }}
         run: |
-          bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
+          bundle exec fastlane ios deploy ota: --env ${{ inputs.ENV }}
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
-          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./firebase_credentials.json
 
   slack_notify:
     runs-on: ubuntu-24.04
@@ -121,7 +131,7 @@ jobs:
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement codePush Android/iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
+                      "text": "Le déploiement en OTA Android/iOS sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.sentry_and_deploy.result == 'failure'] }}"
                   }
               ],
               "unfurl_links": false,

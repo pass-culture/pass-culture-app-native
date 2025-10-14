@@ -78,8 +78,8 @@ describe('ReinitializePassword Page', () => {
   it('should enable the submit button when inputs are valid', async () => {
     await renderReinitializePassword()
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -94,8 +94,8 @@ describe('ReinitializePassword Page', () => {
 
   it('should display error when the passwords dont match', async () => {
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, '123456')
     })
@@ -117,8 +117,8 @@ describe('ReinitializePassword Page', () => {
     })
 
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -149,8 +149,8 @@ describe('ReinitializePassword Page', () => {
     })
 
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
 
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
@@ -176,8 +176,8 @@ describe('ReinitializePassword Page', () => {
       refreshToken: 'refreshToken',
     })
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -195,8 +195,8 @@ describe('ReinitializePassword Page', () => {
       refreshToken: 'refreshToken',
     })
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -219,8 +219,8 @@ describe('ReinitializePassword Page', () => {
       refreshToken: 'refreshToken',
     })
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -241,8 +241,8 @@ describe('ReinitializePassword Page', () => {
       refreshToken: 'refreshToken',
     })
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -260,8 +260,8 @@ describe('ReinitializePassword Page', () => {
   it('should show error snack bar when reinitialize password request fails', async () => {
     mockServer.postApi('/v1/reset_password', { responseOptions: { statusCode: 400 } })
     await renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })

@@ -3,7 +3,6 @@ import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
 import { EmailInput, EmailInputProps } from 'ui/components/inputs/EmailInput/EmailInput'
 import { EmailInputWithSpellingHelp } from 'ui/components/inputs/EmailInputWithSpellingHelp/EmailInputWithSpellingHelp'
-import { InputError } from 'ui/components/inputs/InputError'
 
 interface Props<TFieldValues extends FieldValues, TName>
   extends Omit<EmailInputProps, 'onEmailChange' | 'email'> {
@@ -30,17 +29,15 @@ export const EmailInputController = <
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-        <React.Fragment>
-          <Input
-            email={value}
-            onEmailChange={onChange}
-            onBlur={onBlur}
-            accessibilityHint={error?.message}
-            onSpellingHelpPress={onSpellingHelpPress}
-            {...otherEmailInputProps}
-          />
-          <InputError visible={!!error} errorMessage={error?.message} numberOfSpacesTop={2} />
-        </React.Fragment>
+        <Input
+          email={value}
+          onEmailChange={onChange}
+          onBlur={onBlur}
+          accessibilityHint={error?.message}
+          onSpellingHelpPress={onSpellingHelpPress}
+          errorMessage={error?.message}
+          {...otherEmailInputProps}
+        />
       )}
     />
   )

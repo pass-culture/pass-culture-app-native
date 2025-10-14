@@ -254,6 +254,33 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <details>
 
+<summary> 🟠 Critère 1.9 - Chaque élément graphique légendé est-il correctement restitué par les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 1.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-9)  
+**Ticket** : [PC-37464](https://passculture.atlassian.net/browse/PC-37464)  
+**PR** : [#8762](https://github.com/pass-culture/pass-culture-app-native/pull/8762)
+
+**Problème** 😱  
+
+- **(E09)** La légende du copyright de l'illustration du lieu n'est pas reliée correctement à l’image qu’elle décrit car le bouton n'est pas focusable aux lecteurs d'écrans.
+
+- **(E15)** La légende du copyright de l'affiche du film n'est pas reliée correctement à l’image qu’elle décrit.
+
+**Correction** 💡  
+
+- **(E09)** Ajout de la légende du copyright de l'illustration du lieu directement dans l'`accessibilityLabel` du bouton de l'image.
+
+- **(E15)** Ajout de la légende du copyright de l'affiche du film directement dans l'`accessibilityLabel` du bouton de l'image.
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
 
 **RAAM** : [Critère 7.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-1)  
@@ -271,6 +298,33 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 - **(E04)** Utilisation de `getHeadingAttrs(3)` pour les sous titres de type `Typo.BodyAccent`
 - **(E09)** Utilisation de `getHeadingAttrs(3)` pour les sous titres de type `Typo.BodyAccent`
 - **(E14)** Utilisation de `getHeadingAttrs(1)` sur le texte et non sur le container qui était une `View`
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
+
+**RAAM** : [Critère 7.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-2)  
+**Ticket** : [PC-38209](https://passculture.atlassian.net/browse/PC-38209)  
+**PR** : [#8778](https://github.com/pass-culture/pass-culture-app-native/pull/8778)
+
+**Problème** 😱  
+
+- **(E02)** Les options de recherche dans la modale "Localisation" ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+
+- **(E04)** Les éléments de listes des déclarations d'accessibilité ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+
+- **(E06)** Les éléments du plan du site ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+
+**Correction** 💡  
+- **(E02 | E04 | E06)** Création d'un `accessiblityLabel="groupLabel – Liste - Élément X sur X - accessibilityLabel"` pour compenser le manque d'`accessibilityRole` `list` ou `listitem`.
+
+
+**Retours audit** 🔥
+Texte
 
 </details>
 
@@ -300,6 +354,46 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes.
 - **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller.
 - **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que`width` pour permettre d'afficher le texte des options sur plusieurs lignes.
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 8.6 - Dans chaque écran, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</summary>
+
+**RAAM** : [Critère 8.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
+**Ticket** : [PC-37486](https://passculture.atlassian.net/browse/PC-37486)  
+**PR** : [#8753](https://github.com/pass-culture/pass-culture-app-native/pull/8753)
+
+**Problème** 😱  
+
+- **(E02)** Le bouton de menu actif dans la navigation en bas d'écran n'a pas de mention "actif/non actif" accessible aux lecteurs d'écrans.
+
+- **(E08)** Le toggle de localisation n'a pas de mention "coché/non coché" accessible aux lecteurs d'écrans.
+
+- **(E11)** Dans la liste des obligations pour la conception du mot de passe, les coches n'ont pas de mention "validé / invalidé" accessible aux lecteurs d'écrans. 
+
+- **(E14)** Les tabs liste / grille n'ont pas d'indication de sélection accessible aux lecteurs d'écrans.
+
+- **(E15)** Les indications "accessible / non accessible" du bloc d'accessibilité des offres et lieux ne sont pas accessibles aux lecteurs d'écrans.
+
+
+**Correction** 💡  
+
+- **(E02)** Ajout de la mention "actif/incactif" sur les boutons du menu de navigation via l'`accessibilityLabel`.
+
+- **(E08)** Ajout de la mention "coché/non coché" sur tous les toggles via l'`accessibilityLabel`. 
+
+- **(E11)** Ajout de la mention "validé/invalidé" sur les critères du mot de passe via l'`accessibilityLabel`. 
+
+- **(E14)** Ajout de la mention "actif/incatif" sur les tabs de la recherche via l'`accessibilityLabel`.
+
+- **(E15)** Ajout de la mention "accessible/inaccessible" sur les critères d'accessibilité via l'`accessibilityLabel`.
+
+**Retours audit** 🔥
+Texte
 
 </details>
 

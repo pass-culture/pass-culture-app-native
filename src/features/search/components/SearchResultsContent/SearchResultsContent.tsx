@@ -2,8 +2,8 @@ import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, useWindowDimensions, View } from 'react-native'
-import styled from 'styled-components/native'
+import { FlatList, Platform, useWindowDimensions, View, ViewToken } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -33,7 +33,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
+import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Venue } from 'features/venue/types'
@@ -53,12 +53,12 @@ import { FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
+import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { FilterButtonList } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
@@ -72,7 +72,7 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Grid } from 'ui/svg/icons/Grid'
 import { List } from 'ui/svg/icons/List'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
+import { RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
@@ -83,11 +83,6 @@ enum Tab {
 }
 
 const isWeb = Platform.OS === 'web'
-
-const gridListLatout = {
-  Grille: GridListLayout.GRID,
-  Liste: GridListLayout.LIST,
-}
 
 export type SearchResultsContentProps = {
   onEndReached: () => void
@@ -101,11 +96,18 @@ export type SearchResultsContentProps = {
   venuesUserData: VenuesUserData
   facets: FacetData
   offerVenues: Venue[]
+  onViewableItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   onEndReached,
   onSearchResultsRefresh,
+  onViewableItemsChanged,
   hits,
   nbHits,
   isLoading,
@@ -116,8 +118,20 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   facets,
   offerVenues,
 }) => {
+  const { designSystem } = useTheme()
+
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const searchListRef = useRef<FlashListRef<Offer> | null>(null)
+  const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
+    FlashListRef<Offer>
+  >({
+    onViewableItemsChanged: (items: Pick<ViewToken, 'key' | 'index'>[]) =>
+      onViewableItemsChanged?.(
+        items,
+        'searchResults',
+        'offer',
+        venuesUserData === undefined ? 0 : 1
+      ),
+  })
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -133,15 +147,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
-  const {
-    data: { gridListLayoutRemoteConfig },
-  } = useRemoteConfigQuery()
-
-  useEffect(() => {
-    if (gridListLayoutRemoteConfig) {
-      gridListLayoutActions.setLayout(gridListLatout[gridListLayoutRemoteConfig])
-    }
-  }, [gridListLayoutRemoteConfig])
 
   const gridListLayout = useGridListLayout()
 
@@ -414,6 +419,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         }
         isGridLayout={isGridLayout}
         shouldDisplayGridList={shouldDisplayGridList}
+        onViewableItemsChanged={handleViewableItemsChanged}
+        onViewableVenuePlaylistItemsChanged={onViewableItemsChanged}
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
@@ -475,7 +482,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
             showOfferDuoModal,
             showAccessibilityModal,
           })}
-          contentContainerStyle={{ marginBottom: getSpacing(2), paddingHorizontal: getSpacing(5) }}>
+          contentContainerStyle={{
+            marginBottom: designSystem.size.spacing.s,
+            paddingHorizontal: designSystem.size.spacing.l,
+          }}>
           <StyledLi>
             <FilterButton
               activeFilters={activeFiltersCount}
@@ -563,7 +573,7 @@ const SkeletonContainer = styled.View(({ theme }) => ({
 }))
 
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBar.height + getSpacing(10),
+  height: theme.tabBar.height + theme.designSystem.size.spacing.xxxl,
   alignItems: 'center',
 }))
 
@@ -580,14 +590,14 @@ const StyledLi = styled(Li)(({ theme }) => ({
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  right: getSpacing(7),
-  bottom: theme.tabBar.height + getSpacing(6),
+  right: theme.designSystem.size.spacing.xl,
+  bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const StyledArtistSection = styled(ArtistSection)({
-  marginTop: getSpacing(4),
-})
+const StyledArtistSection = styled(ArtistSection)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),

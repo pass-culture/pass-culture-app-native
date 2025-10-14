@@ -12,7 +12,7 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Paramètres de confidentialité'
 - tapOn:
-    id: 'Interrupteur Tout accepter'
+    id: 'Tout accepter - Interrupteur à bascule - coché'
 - scroll
 - assertVisible: '.*politique de gestion des cookies'
 - tapOn: 'Enregistrer mes choix'

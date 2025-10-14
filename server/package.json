@@ -1,7 +1,7 @@
 {
   "name": "@pass-culture/web-proxy",
   "description": "Express proxy for pass-culture-app-native Web Application",
-  "version": "1.361.1",
+  "version": "1.362.0",
   "private": true,
   "main": "build/src/index.js",
   "author": {
@@ -59,7 +59,7 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-local-rules": "^1.1.0",
+    "eslint-plugin-local-rules": "^3.0.2",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "jest": "^27.5.1",

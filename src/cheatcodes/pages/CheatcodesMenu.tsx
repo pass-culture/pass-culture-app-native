@@ -6,6 +6,7 @@ import { CheatcodesButtonList } from 'cheatcodes/components/CheatcodesButtonList
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { cheatcodesNavigationAchievementsButtons } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { cheatcodesNavigationBirthdayNotificationsButtons } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
+import { cheatcodesNavigationBonificationButtons } from 'cheatcodes/pages/features/bonification/CheatcodesNavigationBonification'
 import { cheatcodesNavigationBookingsButtons } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
 import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { cheatcodesNavigationCulturalSurveyButtons } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
@@ -73,6 +74,7 @@ export function CheatcodesMenu(): React.JSX.Element {
 
   const featuresButtons: CheatcodeCategory[] = [
     ...cheatcodesNavigationAchievementsButtons,
+    ...cheatcodesNavigationBonificationButtons,
     ...cheatcodesNavigationBirthdayNotificationsButtons,
     ...cheatcodesNavigationBookOfferButtons,
     ...cheatcodesNavigationBookingsButtons,

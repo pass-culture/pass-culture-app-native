@@ -1,0 +1,56 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      visible: 'Autorisez-vous.*'
+      platform: iOS
+    commands:
+      - tapOn: 'Autoriser'
+- assertVisible: 'Respect de ta vie privée'
+- tapOn: 'Choisir les cookies'
+
+- assertVisible: 'Réglages des cookies'
+- assertVisible: 'Je choisis mes cookies'
+- scrollUntilVisible:
+    element:
+      text: '.*politique de gestion des cookies'
+- tapOn: '.*politique de gestion des cookies'
+
+- back
+
+- tapOn:
+    id: 'Revenir à l’étape précédente'
+
+- assertVisible: 'Respect de ta vie privée'
+- tapOn: 'Choisir les cookies'
+
+- assertVisible: 'Réglages des cookies'
+- assertVisible: 'Je choisis mes cookies'
+- tapOn:
+    id: 'Personnaliser ta navigation - Interrupteur à bascule - non coché'
+- assertVisible:
+    id: 'Personnaliser ta navigation - Interrupteur à bascule - coché'
+    enabled: true
+
+- tapOn:
+    id: 'Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché'
+- assertVisible:
+    id: 'Enregistrer des statistiques de navigation - Interrupteur à bascule - coché'
+    enabled: true
+
+- tapOn:
+    id: 'Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché'
+- assertVisible:
+    id: 'Mesurer l’efficacité de nos publicités - Interrupteur à bascule - coché'
+    enabled: true
+
+- tapOn: 'Lire les contenus vidéos - Interrupteur à bascule - non coché'
+- assertVisible:
+    id: 'Lire les contenus vidéos - Interrupteur à bascule - coché'
+    enabled: true
+    
+- assertVisible:
+    id: 'Tout accepter - Interrupteur à bascule - coché'
+    enabled: true
+
+- tapOn: 'Enregistrer mes choix'

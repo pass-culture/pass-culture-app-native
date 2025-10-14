@@ -22,8 +22,13 @@ export function AccessibilityActionPlanSection({
     <ViewGap gap={6}>
       <Typo.Title4 {...getHeadingAttrs(2)}>{title}</Typo.Title4>
       <VerticalUl>
-        {items.map((item) => (
-          <BulletListItem key={item.text} text={item.text}>
+        {items.map((item, index) => (
+          <BulletListItem
+            key={item.text}
+            text={item.text}
+            groupLabel={title}
+            index={index}
+            total={items.length}>
             {item.customContent ? SPACE : null}
             {item.customContent}
             {SPACE}

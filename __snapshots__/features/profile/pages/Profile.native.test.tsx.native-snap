@@ -238,7 +238,7 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -365,7 +365,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -491,12 +491,16 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
-                    {
-                      "display": "flex",
-                      "marginVertical": 16,
-                    }
+                    [
+                      {
+                        "display": "flex",
+                      },
+                      {
+                        "marginVertical": 16,
+                      },
+                    ]
                   }
                 >
                   <View
@@ -576,19 +580,9 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            {
-                              "display": "none",
-                            }
-                          }
-                        >
-                          Case à cocher - 
-                          cochée
-                        </Text>
                         <View
-                          accessibilityRole="checkbox"
+                          accessibilityLabel="Activer ma géolocalisation - Interrupteur à bascule - coché"
+                          accessibilityRole="switch"
                           accessibilityState={
                             {
                               "busy": undefined,
@@ -606,7 +600,7 @@ exports[`Profile component should render correctly 1`] = `
                               "text": undefined,
                             }
                           }
-                          accessible={false}
+                          accessible={true}
                           focusable={true}
                           onClick={[Function]}
                           onResponderGrant={[Function]}
@@ -625,7 +619,7 @@ exports[`Profile component should render correctly 1`] = `
                               },
                             ]
                           }
-                          testID="Interrupteur Activer ma géolocalisation"
+                          testID="Activer ma géolocalisation - Interrupteur à bascule - coché"
                         >
                           <View
                             active={true}
@@ -665,7 +659,6 @@ exports[`Profile component should render correctly 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Activé"
                                 height={16}
                                 width={16}
                               >
@@ -722,7 +715,7 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -848,7 +841,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -999,7 +992,7 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1125,7 +1118,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1252,7 +1245,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1378,7 +1371,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1504,7 +1497,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1904,7 +1897,7 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2001,7 +1994,7 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2098,7 +2091,7 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2195,7 +2188,7 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",

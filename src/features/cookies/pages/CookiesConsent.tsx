@@ -25,6 +25,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     customization: false,
     performance: false,
     marketing: false,
+    video: false,
   })
   const { setCookiesConsent } = useCookies()
 

@@ -6,14 +6,10 @@ import BottomSheet, {
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { Fragment, FunctionComponent, forwardRef, useMemo, useRef } from 'react'
-import {
-  Directions,
-  FlingGesture,
-  Gesture,
-  GestureDetector,
-  ScrollView,
-} from 'react-native-gesture-handler'
-import styled from 'styled-components/native'
+import { ViewToken } from 'react-native'
+import { Directions, FlingGesture, Gesture, GestureDetector } from 'react-native-gesture-handler'
+import { IOScrollView } from 'react-native-intersection-observer'
+import styled, { useTheme } from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -41,14 +37,29 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
   offersPlaylistType: PlaylistType
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
   function VenueMapBottomSheet(
-    { onClose, venue, venueOffers, onFlingUp, offersPlaylistType, ...bottomSheetProps },
+    {
+      onClose,
+      venue,
+      venueOffers,
+      onFlingUp,
+      offersPlaylistType,
+      onViewableItemsChanged,
+      ...bottomSheetProps
+    },
     ref
   ) {
     const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+    const { designSystem } = useTheme()
 
     const distanceToVenue = getDistance(
       {
@@ -75,18 +86,19 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             <StyledView>
               <StyledSeparator />
             </StyledView>
-            <ScrollView>
+            <IOScrollView>
               <VenueMapOfferPlaylist
                 offers={venueOffers}
                 onPressMore={handlePressMore}
                 playlistType={offersPlaylistType}
+                onViewableItemsChanged={onViewableItemsChanged}
               />
-            </ScrollView>
+            </IOScrollView>
           </Fragment>
         )
       }
       return null
-    }, [venueOffers, venue, navigate, offersPlaylistType])
+    }, [venueOffers, venue, offersPlaylistType, onViewableItemsChanged, navigate])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
@@ -108,12 +120,12 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             testID="venueMapPreview"
             enableNavigate={enableNavigate}
             withRightArrow={enableNavigate}
-            style={{ paddingHorizontal: getSpacing(4) }}
+            style={{ paddingHorizontal: designSystem.size.spacing.l }}
           />
         )
       }
       return null
-    }, [venue, onClose, venueTags])
+    }, [venue, onClose, venueTags, designSystem.size.spacing.l])
 
     const flingRef = useRef<FlingGesture | undefined>(undefined)
 
@@ -124,13 +136,12 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     return (
       <GestureDetector gesture={FLING_GESTURE}>
         <StyledBottomSheet
-          offersPlaylistType={offersPlaylistType}
           ref={ref}
           index={-1}
           enablePanDownToClose
           simultaneousHandlers={flingRef}
-          {...bottomSheetProps}
-          handleComponent={HandleComponent}>
+          handleComponent={HandleComponent}
+          {...bottomSheetProps}>
           <StyledBottomSheetView>
             {venueMapPreview}
             {offersPlaylist}
@@ -148,7 +159,7 @@ const StyledBottomSheetView = styled(BottomSheetView)(({ theme }) => ({
   flex: 1,
 }))
 
-const StyledBottomSheet = styled(BottomSheet).attrs<VenueMapBottomSheetProps>(({ theme }) => ({
+const StyledBottomSheet = styled(BottomSheet).attrs<BottomSheetProps>(({ theme }) => ({
   containerStyle: { zIndex: theme.zIndex.bottomSheet },
 }))``
 

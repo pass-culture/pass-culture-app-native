@@ -286,67 +286,62 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                       "alignItems": "flex-end",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginBottom": 8,
                       "width": "100%",
                     }
                   }
                 >
-                  <Text
-                    accessibilityLabel="Adresse e-mail"
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
+                  <View>
+                    <Text
+                      accessibilityLabel="Adresse e-mail"
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
                       }
-                    }
-                  >
-                    Adresse e-mail
-                  </Text>
+                    >
+                      Adresse e-mail
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginTop": 2,
+                        }
+                      }
+                    >
+                      Exemple : tonadresse@email.com
+                    </Text>
+                  </View>
                 </View>
               </View>
               <View
-                style={
-                  {
-                    "marginBottom": 8,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Exemple : tonadresse@email.com
-                </Text>
-              </View>
-              <View
-                height="small"
                 isDisabled={false}
                 isError={false}
-                isFocus={false}
+                isFocused={false}
+                size="small"
                 style={
                   {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 24,
-                    "borderBottomRightRadius": 24,
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
                     "borderColor": "#90949d",
                     "borderStyle": "solid",
-                    "borderTopLeftRadius": 24,
-                    "borderTopRightRadius": 24,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 40,
+                    "marginTop": 4,
                     "paddingBottom": 0,
-                    "paddingLeft": 17,
-                    "paddingRight": 17,
+                    "paddingLeft": 9,
+                    "paddingRight": 9,
                     "paddingTop": 0,
                     "width": "100%",
                   }
@@ -354,14 +349,14 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
+                  accessibilityRequired={false}
                   autoCapitalize="none"
                   autoComplete="email"
                   editable={true}
                   isEmpty={true}
                   keyboardType="email-address"
-                  maxLength={120}
                   multiline={false}
-                  nativeID="testUuidV4"
+                  nativeID="Entrée pour l’email"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
@@ -1046,47 +1041,49 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                   "alignItems": "flex-end",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
-                  "marginBottom": 8,
                   "width": "100%",
                 }
               }
             >
-              <Text
-                accessibilityLabel="Mot de passe"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+              <View>
+                <Text
+                  accessibilityLabel="Mot de passe"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
                   }
-                }
-              >
-                Mot de passe
-              </Text>
+                >
+                  Mot de passe
+                </Text>
+              </View>
             </View>
           </View>
           <View
-            height="small"
             isDisabled={false}
             isError={false}
-            isFocus={false}
+            isFocused={false}
+            size="small"
             style={
               {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
                 "borderColor": "#90949d",
                 "borderStyle": "solid",
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
                 "borderWidth": 1,
                 "flexDirection": "row",
                 "height": 40,
+                "marginTop": 4,
                 "paddingBottom": 0,
-                "paddingLeft": 17,
-                "paddingRight": 17,
+                "paddingLeft": 9,
+                "paddingRight": 9,
                 "paddingTop": 0,
                 "width": "100%",
               }
@@ -1100,11 +1097,11 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               editable={true}
               isEmpty={true}
               multiline={false}
-              nativeID="testUuidV4"
+              nativeID="Mot de passe"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
-              placeholder="Ton mot de passe"
+              placeholder=""
               placeholderTextColor="#696a6f"
               returnKeyType="next"
               secureTextEntry={true}
@@ -1129,67 +1126,59 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               value=""
             />
             <View
-              style={
+              accessibilityLabel="Afficher le mot de passe"
+              accessibilityRole="button"
+              accessibilityState={
                 {
-                  "marginTop": 8,
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
                 }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "maxWidth": 60,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Afficher le mot de passe"
             >
               <View
-                accessibilityLabel="Afficher le mot de passe"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "maxWidth": 60,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Afficher le mot de passe"
+                fill="#161617"
+                height={24}
+                width={24}
               >
-                <View
-                  fill="#161617"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>
@@ -1235,6 +1224,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             }
           >
             <Text
+              accessibilityLabel="12 caractères - au minimum"
               color="default"
               noFullWidth={false}
               style={
@@ -1258,7 +1248,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               }
             >
               <View
-                accessibilityLabel="12 caractères minimum"
                 height={20}
                 testID="rule-icon-close"
                 width={20}
@@ -1284,6 +1273,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             }
           >
             <Text
+              accessibilityLabel="1 majuscule - au minimum"
               color="default"
               noFullWidth={false}
               style={
@@ -1307,7 +1297,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               }
             >
               <View
-                accessibilityLabel="1 majuscule minimum"
                 height={20}
                 testID="rule-icon-close"
                 width={20}
@@ -1333,6 +1322,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             }
           >
             <Text
+              accessibilityLabel="1 minuscule - au minimum"
               color="default"
               noFullWidth={false}
               style={
@@ -1356,7 +1346,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               }
             >
               <View
-                accessibilityLabel="1 minuscule minimum"
                 height={20}
                 testID="rule-icon-close"
                 width={20}
@@ -1382,6 +1371,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             }
           >
             <Text
+              accessibilityLabel="1 chiffre - au minimum"
               color="default"
               noFullWidth={false}
               style={
@@ -1405,7 +1395,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               }
             >
               <View
-                accessibilityLabel="1 chiffre minimum"
                 height={20}
                 testID="rule-icon-close"
                 width={20}
@@ -1431,6 +1420,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             }
           >
             <Text
+              accessibilityLabel="1 caractère spécial (!@#$%^&*...) - au minimum"
               color="default"
               noFullWidth={false}
               style={
@@ -1454,7 +1444,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               }
             >
               <View
-                accessibilityLabel="1 caractère spécial (!@#$%^&*...) minimum"
                 height={20}
                 testID="rule-icon-close"
                 width={20}
@@ -2264,8 +2253,8 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                       "lockedBrandPrimary": "#6123df",
                       "lockedBrandSecondary": "#320096",
                       "lockedInverted": "#161617",
-                      "overlay": "#24242429",
-                      "shadowOverlay": "#24242429",
+                      "overlay": "#23232329",
+                      "shadowOverlay": "#23232329",
                       "skeletonGradient01": "#cbcdd2",
                       "skeletonGradient02": "#f1f1f4",
                       "subtle": "#f1f1f4",
@@ -3195,7 +3184,18 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                     }
                   >
                     J’ai lu et j’accepte les conditions générales d’utilisation
-                    *
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
+                      }
+                    >
+                       - obligatoire
+                    </Text>
                   </Text>
                 </View>
               </View>
@@ -3312,161 +3312,150 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                     }
                   >
                     J’ai lu la charte des données personnelles
-                    *
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        }
+                      }
+                    >
+                       - obligatoire
+                    </Text>
                   </Text>
                 </View>
               </View>
             </View>
           </View>
-          <View
+        </View>
+        <View
+          style={
+            {
+              "marginTop": 24,
+            }
+          }
+        >
+          <Text
             style={
               {
-                "marginTop": 16,
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
               }
             }
           >
-            <Text
-              style={
-                {
-                  "color": "#696a6f",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-            >
-              *
-              obligatoires pour créer ton compte.
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            }
-          }
-        >
-          En cochant ces 2 cases tu assures avoir lu :
-        </Text>
-        <View
-          accessibilityLabel="Nos conditions générales d’utilisation"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "flexDirection": "row",
-                  "height": "auto",
-                  "justifyContent": "flex-start",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Nos conditions générales d’utilisation"
-        >
+            En cochant ces 2 cases tu assures avoir lu :
+          </Text>
           <View
-            style={
+            accessibilityLabel="Nos conditions générales d’utilisation"
+            accessibilityState={
               {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
               }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "flexDirection": "row",
+                    "height": "auto",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Nos conditions générales d’utilisation"
           >
             <View
               style={
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
-                  "flexShrink": 0,
-                  "marginRight": 8,
                 }
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={16}
-                testID="button-icon-left"
-                width={16}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={2}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "maxWidth": "100%",
+                style={
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
                 }
-              }
-            >
-              Nos conditions générales d’utilisation
-            </Text>
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={16}
+                  testID="button-icon-left"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={2}
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "maxWidth": "100%",
+                  }
+                }
+              >
+                Nos conditions générales d’utilisation
+              </Text>
+            </View>
           </View>
-        </View>
-        <View
-          gap={10}
-          style={
-            {
-              "gap": 40,
-            }
-          }
-        >
           <View
             accessibilityLabel="La charte des données personnelles"
             accessibilityState={
@@ -3574,6 +3563,14 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "marginTop": 40,
+            }
+          }
+        >
           <View
             accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
             accessibilityState={

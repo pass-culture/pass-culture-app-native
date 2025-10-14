@@ -4,5 +4,5 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'icon-back'
     optional: true
-- tapOn: 'Rechercher des offres'
-- tapOn: 'Rechercher des offres' # Permet de réinitialiser l'état de la page Recherche
+- tapOn: 'Rechercher des offres.*'
+- tapOn: 'Rechercher des offres.*' # Permet de réinitialiser l'état de la page Recherche

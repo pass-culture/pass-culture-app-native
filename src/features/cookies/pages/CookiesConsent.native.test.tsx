@@ -10,6 +10,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics/provider'
 import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -63,6 +64,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const CUSTOMIZE_NAVIGATION_SWITCH = /Personnaliser ta navigation - Interrupteur à bascule/
+const NAVIGATION_STATISTICS_SWITCH =
+  /Enregistrer des statistiques de navigation - Interrupteur à bascule/
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -72,6 +77,7 @@ describe('<CookiesConsent/>', () => {
     storage.clear(COOKIES_CONSENT_KEY)
     mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
     mockdate.set(Today)
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {
@@ -202,9 +208,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(
-        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-      )
+      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
@@ -215,7 +219,11 @@ describe('<CookiesConsent/>', () => {
         consent: {
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: COOKIES_BY_CATEGORY.performance,
-          refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
+          refused: [
+            ...COOKIES_BY_CATEGORY.customization,
+            ...COOKIES_BY_CATEGORY.marketing,
+            ...COOKIES_BY_CATEGORY.video,
+          ],
         },
       }
 
@@ -237,9 +245,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(
-        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-      )
+      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
@@ -251,15 +257,13 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(
-        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-      )
+      await user.press(screen.getByTestId(NAVIGATION_STATISTICS_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
         from: 'Modal',
-        type: { performance: true, customization: false, marketing: false },
+        type: { performance: true, customization: false, marketing: false, video: false },
       })
     })
 
@@ -278,7 +282,7 @@ describe('<CookiesConsent/>', () => {
 
       await user.press(screen.getByText('Choisir les cookies'))
 
-      await user.press(screen.getByTestId('Interrupteur Personnaliser ta navigation'))
+      await user.press(screen.getByTestId(CUSTOMIZE_NAVIGATION_SWITCH))
 
       await user.press(screen.getByText('Enregistrer mes choix'))
 

@@ -180,10 +180,10 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "width": "100%",
                         },
                         {
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                         },
                         {
                           "flex": 1,
@@ -272,7 +272,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         contentContainerStyle={
           {
             "marginBottom": 8,
-            "paddingHorizontal": 20,
+            "paddingHorizontal": 16,
           }
         }
         horizontal={true}
@@ -289,14 +289,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             }
           >
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -425,14 +429,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -511,14 +519,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -606,14 +618,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -701,14 +717,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -796,14 +816,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -921,6 +945,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           }
           onEndReached={[Function]}
           onScroll={[Function]}
+          onViewableItemsChanged={[Function]}
           refreshControl={
             <RefreshControlMock
               onRefresh={
@@ -1265,7 +1290,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1315,6 +1339,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 1",
                         "postalCode": "75000",
                         "publicName": "Lieu 1",
+                        "venue_type": "BOOKSTORE",
                       },
                     }
                   }
@@ -1361,6 +1386,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1594,7 +1620,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1648,6 +1673,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1686,6 +1712,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1919,7 +1946,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1965,6 +1991,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -2244,7 +2271,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -2274,7 +2300,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           "alignSelf": "center",
           "bottom": 88,
           "position": "absolute",
-          "right": 28,
+          "right": 24,
           "zIndex": 1,
         }
       }

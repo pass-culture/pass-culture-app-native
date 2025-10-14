@@ -43,12 +43,10 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
         control={control}
         name="password"
         label="Mot de passe"
-        placeholder="Ton mot de passe"
         withSecurityRules
         securityRulesAlwaysVisible
         autoFocus
         nativeAutoFocus
-        isRequiredField={false}
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary

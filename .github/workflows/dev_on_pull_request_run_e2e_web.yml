@@ -32,47 +32,64 @@ jobs:
           bucket: ${{ secrets.CACHE_BUCKET_NAME }}
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
       - name: Yarn install
         run: yarn install
 
-      - name: Set Maestro Version
-        run: echo "MAESTRO_VERSION=1.40.0" >> $GITHUB_ENV
-
-      - name: Cache Maestro CLI
-        id: maestro-cache
-        uses: actions/cache@v4
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
         with:
-          path: ~/.maestro
-          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-maestro-
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
-      - name: Install Maestro CLI
-        if: steps.maestro-cache.outputs.cache-hit!= 'true'
+      - name: Get secrets for Maestro
+        id: maestro_secrets
+        uses: google-github-actions/get-secretmanager-secrets@v2
+        with:
+          secrets: |-
+            MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+            MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
+
+      - name: Determine latest Maestro version
+        run: |
+          MAESTRO_VERSION=$(curl -s https://api.github.com/repos/mobile-dev-inc/maestro/releases/latest | grep tag_name | cut -d '"' -f4 | sed 's/^cli-//;s/^v//')
+          echo "MAESTRO_VERSION=$MAESTRO_VERSION" >> $GITHUB_ENV
+
+      - name: Cleanup Maestro CLI
+        run: |
+          echo "Cleaning up any previous Maestro CLI installation..."
+          rm -rf $HOME/.maestro
+
+      - name: Install latest Maestro CLI
         run: |
           echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
           curl --location --silent "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+          export PATH=$HOME/.maestro/bin:$PATH
+          maestro --version
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
 
-      - name: Add Maestro to PATH (from cache)
-        if: steps.maestro-cache.outputs.cache-hit == 'true'
-        run: |
-          echo "Using cached Maestro CLI."
-          export PATH=$HOME/.maestro/bin:$PATH
-          maestro --version
-
-      - name: Start Vite server
+      - name: Start a web staging server
         run: yarn start:web:staging --host > /dev/null 2>&1 &
 
-      - name: Run Maestro E2E Tests
+      - name: Run Maestro E2E Web Tests
+        env:
+          MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
+          MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
+          MAESTRO_VALID_IOS_EMAIL: dev-tests-e2e-ios@passculture.team
+          MAESTRO_VALID_ANDROID_EMAIL: dev-tests-e2e-android@passculture.team
+          MAESTRO_INVALID_EMAIL: dev-tests-e2e-invalid@passculture.team
+          MAESTRO_UNREGISTERED_EMAIL: dev-tests-unregistered+e2e@passculture.team
+          MAESTRO_RUN_TRACKING_TESTS: false
+          MAESTRO_RUN_CLOUD_COMMANDS: false
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
         run: |
-          echo "Running Maestro tests against on web Staging"
+          echo "Running Maestro tests from your branch on web Staging build"
           export PATH=$HOME/.maestro/bin:$PATH
-          maestro test .maestro/tests/SmokeTestWeb.yaml --headless
-          
-      - name: Upload Maestro artifacts (logs & screenshots)
+          yarn test:e2e:web:staging --headless
+
+      - name: Logs & screenshots from errors (Download link ⬇️)
         if: failure()
         uses: actions/upload-artifact@v4
         with:

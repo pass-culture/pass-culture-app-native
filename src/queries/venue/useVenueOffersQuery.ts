@@ -8,14 +8,17 @@ import { SearchState } from 'features/search/types'
 import { VenueOffers } from 'features/venue/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import {
+  determineAllOffersAreEventsAndNotCinema,
   filterOfferHitWithImage,
   filterValidOfferHit,
+  sortHitOffersByDate,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
+import { SubcategoriesMapping } from 'libs/subcategories/types'
 
 type UseVenueOffersParams = {
   userLocation: Position
@@ -26,6 +29,7 @@ type UseVenueOffersParams = {
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
   venue?: VenueResponse
   includeHitsWithoutImage?: boolean
+  mapping?: SubcategoriesMapping
 }
 
 export const useVenueOffersQuery = ({
@@ -37,6 +41,7 @@ export const useVenueOffersQuery = ({
   transformHits,
   venue,
   includeHitsWithoutImage,
+  mapping,
 }: UseVenueOffersParams): UseQueryResult<VenueOffers> => {
   const buildVenueOffersQueryParams = useCallback(
     (offerParams: SearchQueryParameters) => ({
@@ -68,18 +73,16 @@ export const useVenueOffersQuery = ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
   }
 
-  const venueOffersQueriesParamsList = [
-    venueSearchedOffersQueryParams,
-    venueTopOffersQueryParams,
-    headlineOfferQueryParams,
-  ]
-
   return useQuery({
     queryKey: [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
 
     queryFn: () =>
       fetchMultipleOffers({
-        paramsList: venueOffersQueriesParamsList,
+        paramsList: [
+          venueSearchedOffersQueryParams,
+          venueTopOffersQueryParams,
+          headlineOfferQueryParams,
+        ],
         isUserUnderage,
       }),
 
@@ -94,8 +97,11 @@ export const useVenueOffersQuery = ({
 
       const uniqHits = uniqBy(hits, 'objectID')
 
-      const headlineOfferHit = headlineOfferResults?.hits[0]
-      const headlineOffer = headlineOfferHit ? transformHits(headlineOfferHit) : undefined
+      if (determineAllOffersAreEventsAndNotCinema(hits, mapping)) uniqHits.sort(sortHitOffersByDate)
+
+      const headlineOffer = headlineOfferResults?.hits[0]
+        ? transformHits(headlineOfferResults?.hits[0])
+        : undefined
 
       return {
         hits: uniqHits,

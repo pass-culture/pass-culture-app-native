@@ -1,19 +1,17 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { TextInput } from 'ui/components/inputs/TextInput'
-import { TextInputProps } from 'ui/components/inputs/types'
+import { InputTextProps } from 'ui/components/inputs/types'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 
-export interface Props extends TextInputProps {
+export interface Props extends Omit<InputTextProps, 'label'> {
   label?: string
-  placeholder?: string
-  isRequiredField?: boolean
 }
 
 const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
-  { label, placeholder, ...inputProps },
+  { label, ...inputProps },
   forwardedRef
 ) => {
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
@@ -23,10 +21,9 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> =
   }
 
   return (
-    <TextInput
+    <InputText
       label={label ?? 'Mot de passe'}
       autoCapitalize="none"
-      placeholder={placeholder ?? 'Ton mot de passe'}
       textContentType="password"
       secureTextEntry={shouldHidePassword}
       testID={label ?? 'Mot de passe'}

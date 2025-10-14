@@ -6,13 +6,13 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { FeedBackVideo } from 'features/offer/components/OfferContent/VideoSection/FeedBackVideo'
+import { GatedVideoSection } from 'features/offer/components/OfferContent/VideoSection/GatedVideoSection'
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { analytics } from 'libs/analytics/provider'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type VideoSectionProps = {
   title: string
@@ -26,6 +26,7 @@ type VideoSectionProps = {
   playerRatio?: number
   userId?: number
   duration?: number | null
+  hasVideoCookiesConsent?: boolean
 }
 
 export const VideoSection = ({
@@ -40,6 +41,7 @@ export const VideoSection = ({
   offerSubcategory,
   userId,
   duration,
+  hasVideoCookiesConsent,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
@@ -48,7 +50,7 @@ export const VideoSection = ({
   const renderVideoSection = useCallback(() => {
     return (
       <React.Fragment>
-        <Typo.Title3 {...getHeadingAttrs(3)}>Vidéo</Typo.Title3>
+        <Typo.Title3>Vidéo</Typo.Title3>
         {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
         <StyledYoutubePlayer
           title={title}
@@ -77,15 +79,29 @@ export const VideoSection = ({
     viewportWidth,
   ])
 
+  const renderGatedVideoSection = useCallback(() => {
+    return (
+      <GatedVideoSection
+        thumbnail={videoThumbnail}
+        title={title}
+        duration={duration ? formatDuration(duration, 'sec') : undefined}
+        height={videoHeight}
+        width={viewportWidth < maxWidth ? undefined : maxWidth}
+      />
+    )
+  }, [duration, maxWidth, title, videoHeight, videoThumbnail, viewportWidth])
+
   return (
     <React.Fragment>
       {isDesktopViewport ? (
         <ViewGap testID="video-section-without-divider" gap={4} style={style}>
-          {renderVideoSection()}
+          {hasVideoCookiesConsent ? renderVideoSection() : renderGatedVideoSection()}
         </ViewGap>
       ) : (
         <SectionWithDivider testID="video-section-with-divider" visible gap={4}>
-          <Container gap={8}>{renderVideoSection()}</Container>
+          <Container gap={8}>
+            {hasVideoCookiesConsent ? renderVideoSection() : renderGatedVideoSection()}
+          </Container>
         </SectionWithDivider>
       )}
     </React.Fragment>

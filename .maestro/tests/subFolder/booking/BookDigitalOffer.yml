@@ -1,6 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
+- swipe:
+    from:
+      text: 'Les offres'
+    direction: UP
 - tapOn:
     id: "native-category-value"
 

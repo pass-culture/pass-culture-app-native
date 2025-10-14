@@ -2,7 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 import type { ReadonlyDeep } from 'type-fest'
 
 import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
-import { AlgoliaOfferWithArtistAndEan, AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaOffer, AlgoliaOfferWithArtistAndEan, AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { toMutable } from 'shared/types/toMutable'
 
@@ -28,6 +28,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '1 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
+        venue_type: VenueTypeCodeKey.BOOKSTORE,
       },
       artists: [{ id: '1', name: 'Artist 1' }],
     },
@@ -51,6 +52,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '2 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
+        venue_type: VenueTypeCodeKey.CONCERT_HALL,
       },
       artists: [
         { id: '2', name: 'Artist 2' },
@@ -77,6 +79,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '3 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
+        venue_type: VenueTypeCodeKey.CONCERT_HALL,
       },
     },
     {
@@ -1144,3 +1147,206 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
     artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
 ] as const satisfies ReadonlyDeep<AlgoliaOfferWithArtistAndEan[]>)
+
+export const mockedAlgoliaVenueOffersResponse = toMutable([
+  {
+    offer: {
+      dates: [1781029800],
+      isDuo: true,
+      isEducational: false,
+      name: 'destinées',
+      prices: [14],
+      subcategoryId: SubcategoryIdEnum.CONCERT,
+      thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/4LHXM',
+    },
+    venue: {
+      address: '7 Place du Théâtre',
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/HSFA_1706885798',
+      city: 'Arras',
+      departmentCode: '62',
+      id: 15498,
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isPermanent: true,
+      isVisualDisabilityCompliant: true,
+      name: 'Théâtre d’Arras',
+      postalCode: '62000',
+      publicName: 'Théâtre d’Arras',
+      venue_type: 'PERFORMING_ARTS',
+    },
+    _geoloc: {
+      lat: 50.29039,
+      lng: 2.77342,
+    },
+    objectID: '346052958',
+  },
+  {
+    offer: {
+      dates: [1775154600],
+      isDuo: true,
+      isEducational: false,
+      name: 'duo milstein',
+      prices: [14],
+      subcategoryId: SubcategoryIdEnum.CONCERT,
+      thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/4LFT8',
+    },
+    venue: {
+      address: '7 Place du Théâtre',
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/HSFA_1706885798',
+      city: 'Arras',
+      departmentCode: '62',
+      id: 15498,
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isPermanent: true,
+      isVisualDisabilityCompliant: true,
+      name: 'Théâtre d’Arras',
+      postalCode: '62000',
+      publicName: 'Théâtre d’Arras',
+      venue_type: 'PERFORMING_ARTS',
+    },
+    _geoloc: {
+      lat: 50.29039,
+      lng: 2.77342,
+    },
+    objectID: '345857595',
+  },
+  {
+    offer: {
+      artist: 'Les Métaboles',
+      dates: [1772902800],
+      isDuo: true,
+      isEducational: false,
+      name: 'das atmende Klarsein',
+      prices: [14],
+      subcategoryId: SubcategoryIdEnum.CONCERT,
+      thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/4LEXU',
+    },
+    venue: {
+      address: '7 Place du Théâtre',
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/HSFA_1706885798',
+      city: 'Arras',
+      departmentCode: '62',
+      id: 15498,
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isPermanent: true,
+      isVisualDisabilityCompliant: true,
+      name: 'Théâtre d’Arras',
+      postalCode: '62000',
+      publicName: 'Théâtre d’Arras',
+      venue_type: 'PERFORMING_ARTS',
+    },
+    _geoloc: {
+      lat: 50.29039,
+      lng: 2.77342,
+    },
+    objectID: '345698009',
+  },
+  {
+    offer: {
+      dates: [1769625000, 1769715000],
+      isDuo: true,
+      isEducational: false,
+      name: 'musiques interdites quand les lumières s’éteignent',
+      prices: [14],
+      subcategoryId: SubcategoryIdEnum.CONCERT,
+      thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/4LD69',
+    },
+    venue: {
+      address: '7 Place du Théâtre',
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/HSFA_1706885798',
+      city: 'Arras',
+      departmentCode: '62',
+      id: 15498,
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isPermanent: true,
+      isVisualDisabilityCompliant: true,
+      name: 'Théâtre d’Arras',
+      postalCode: '62000',
+      publicName: 'Théâtre d’Arras',
+      venue_type: 'PERFORMING_ARTS',
+    },
+    _geoloc: {
+      lat: 50.29039,
+      lng: 2.77342,
+    },
+    objectID: '345659153',
+  },
+  {
+    offer: {
+      dates: [1768399200],
+      isDuo: true,
+      isEducational: false,
+      name: 'EKLA!',
+      prices: [8],
+      subcategoryId: SubcategoryIdEnum.CONCERT,
+      thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/4LD5G',
+    },
+    venue: {
+      address: '7 Place du Théâtre',
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/HSFA_1706885798',
+      city: 'Arras',
+      departmentCode: '62',
+      id: 15498,
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isPermanent: true,
+      isVisualDisabilityCompliant: true,
+      name: 'Théâtre d’Arras',
+      postalCode: '62000',
+      publicName: 'Théâtre d’Arras',
+      venue_type: 'PERFORMING_ARTS',
+    },
+    _geoloc: {
+      lat: 50.29039,
+      lng: 2.77342,
+    },
+    objectID: '345645175',
+  },
+  {
+    offer: {
+      artist: 'Henry Purcell',
+      dates: [1762716600],
+      isDuo: true,
+      isEducational: false,
+      name: 'didon et énée',
+      prices: [14],
+      subcategoryId: SubcategoryIdEnum.CONCERT,
+      thumbUrl: '/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/4LDSW',
+    },
+    venue: {
+      address: '7 Place du Théâtre',
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/HSFA_1706885798',
+      city: 'Arras',
+      departmentCode: '62',
+      id: 15498,
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isPermanent: true,
+      isVisualDisabilityCompliant: true,
+      name: 'Théâtre d’Arras',
+      postalCode: '62000',
+      publicName: 'Théâtre d’Arras',
+      venue_type: 'PERFORMING_ARTS',
+    },
+    _geoloc: {
+      lat: 50.29039,
+      lng: 2.77342,
+    },
+    objectID: '345517876',
+  },
+] as const satisfies ReadonlyDeep<Array<AlgoliaOffer>>)

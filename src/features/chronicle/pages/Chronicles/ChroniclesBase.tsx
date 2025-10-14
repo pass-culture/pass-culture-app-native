@@ -70,7 +70,9 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
 
   const handleOnShowRecoButtonPress = () => {
     hideModal()
-    onShowRecoButtonPress()
+    InteractionManager.runAfterInteractions(() => {
+      onShowRecoButtonPress()
+    })
   }
 
   const handleOnShowChroniclesWritersModal = () => {

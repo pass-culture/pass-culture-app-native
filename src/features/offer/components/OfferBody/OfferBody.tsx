@@ -54,6 +54,7 @@ type Props = {
   chronicles?: ChronicleCardData[]
   userId?: number
   isVideoSectionEnabled?: boolean
+  hasVideoCookiesConsent?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -68,6 +69,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   chronicles,
   userId,
   isVideoSectionEnabled,
+  hasVideoCookiesConsent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -208,6 +210,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           offerSubcategory={offer.subcategoryId}
           userId={userId}
           duration={offer.video?.durationSeconds}
+          hasVideoCookiesConsent={hasVideoCookiesConsent}
         />
       ) : null}
 

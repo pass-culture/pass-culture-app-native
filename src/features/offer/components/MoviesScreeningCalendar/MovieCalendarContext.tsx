@@ -1,3 +1,4 @@
+import { FlashListRef } from '@shopify/flash-list'
 import React, {
   createContext,
   useCallback,
@@ -6,12 +7,8 @@ import React, {
   useRef,
   useEffect,
   useState,
-  PropsWithChildren,
 } from 'react'
-import { Animated, View, ViewStyle } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
-import { Easing } from 'react-native-reanimated'
-import styled from 'styled-components/native'
+import { View, ViewStyle } from 'react-native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { useDaysSelector } from 'features/offer/helpers/useDaysSelector/useDaysSelector'
@@ -32,49 +29,6 @@ type MovieCalendarContextType = {
 
 const MovieCalendarContext = createContext<MovieCalendarContextType | undefined>(undefined)
 
-const AnimatedCalendarView: React.FC<PropsWithChildren<{ selectedDate: Date }>> = ({
-  selectedDate,
-  children,
-}) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current
-  const translateAnim = useRef(new Animated.Value(0)).current
-  const [width, setWidth] = useState<number>(0)
-
-  useEffect(() => {
-    translateAnim.setValue(0)
-    fadeAnim.setValue(0)
-    Animated.timing(translateAnim, {
-      toValue: 1,
-      duration: 200,
-      useNativeDriver: true,
-      easing: Easing.out(Easing.ease),
-    }).start()
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 300,
-      easing: Easing.in(Easing.ease),
-      useNativeDriver: true,
-    }).start()
-  }, [fadeAnim, translateAnim, selectedDate])
-
-  return (
-    <AnimationContainer>
-      <Animated.View
-        onLayout={({ nativeEvent }) => {
-          setWidth(nativeEvent.layout.width)
-        }}
-        style={{
-          opacity: fadeAnim,
-          transform: [
-            { translateX: Animated.subtract(Animated.multiply(translateAnim, width), width) },
-          ],
-        }}>
-        {children}
-      </Animated.View>
-    </AnimationContainer>
-  )
-}
-
 export const MovieCalendarProvider: React.FC<{
   children: React.ReactNode
   containerStyle?: ViewStyle
@@ -82,7 +36,7 @@ export const MovieCalendarProvider: React.FC<{
 }> = ({ containerStyle, children, initialDates = [] }) => {
   const { dates, selectedDate, setSelectedDate, setDates } = useDaysSelector(initialDates)
   const [disabledDates, setDisabledDates] = useState<Date[]>([])
-  const flatListRef = useRef<FlatList | null>(null)
+  const flatListRef = useRef<FlashListRef<Date> | null>(null)
   const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
   const scrollToAnchor = useScrollToAnchor()
@@ -151,8 +105,8 @@ export const MovieCalendarProvider: React.FC<{
               selectedDate={selectedDate}
               disabledDates={disabledDates}
               onTabChange={setSelectedDate}
-              flatListRef={flatListRef}
-              flatListWidth={flatListWidth}
+              listRef={flatListRef}
+              listWidth={flatListWidth}
               onFlatListLayout={onFlatListLayout}
               itemWidth={itemWidth}
               onItemLayout={onItemLayout}
@@ -160,13 +114,10 @@ export const MovieCalendarProvider: React.FC<{
           </Anchor>
         </View>
       ) : null}
-
-      <AnimatedCalendarView selectedDate={selectedDate}>{children}</AnimatedCalendarView>
+      {children}
     </MovieCalendarContext.Provider>
   )
 }
-
-const AnimationContainer = styled.View({ overflow: 'hidden' })
 
 export const useMovieCalendar = (): MovieCalendarContextType => {
   const context = useContext(MovieCalendarContext)

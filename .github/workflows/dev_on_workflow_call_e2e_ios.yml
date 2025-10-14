@@ -91,6 +91,9 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
+      - name: Disable staging reCAPTCHA for E2E
+        run: |
+          yarn ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts staging false
       - name: Build E2E IOS Staging
         id: build_e2e
         run: |

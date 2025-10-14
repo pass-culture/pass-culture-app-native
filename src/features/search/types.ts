@@ -1,5 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import React, { ReactNode } from 'react'
+import { ViewToken } from 'react-native'
 
 import {
   GenreType,
@@ -101,6 +102,16 @@ export interface SearchListProps {
   isGridLayout?: boolean
   shouldDisplayGridList?: boolean
   setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
+  onViewableItemsChanged?: (info: {
+    viewableItems: ViewToken<unknown>[]
+    changed: ViewToken<unknown>[]
+  }) => void
+  onViewableVenuePlaylistItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export type CreateHistoryItem = {
@@ -153,4 +164,14 @@ export type LayoutButtonProps = {
   isSelected: boolean
   onPress: () => void
   Icon: React.FC<AccessibleIcon>
+}
+
+export type ThematicPlaylistProps = {
+  shouldDisplayVenuesPlaylist: boolean
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }

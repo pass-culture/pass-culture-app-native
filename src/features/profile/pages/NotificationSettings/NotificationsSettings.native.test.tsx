@@ -49,6 +49,18 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const EMAIL_SWITCH = /Autoriser l’envoi d’e-mails - Interrupteur à bascule/
+const CINEMA_SWITCH = /Cinéma - Interrupteur à bascule/
+const READING_SWITCH = /Lecture - Interrupteur à bascule/
+
+const MUSIC_SWTICH = /Musique - Interrupteur à bascule/
+const SHOW_SWITCH = /Spectacles - Interrupteur à bascule/
+const VISIT_SWITCH = /Visites et sorties - Interrupteur à bascule/
+const CREATIVE_ACTIVITIES_SWITCH = /Activités créatives - Interrupteur à bascule/
+const NOTIFICATIONS_SWITCH = /Autoriser les notifications - Interrupteur à bascule/
+
+const ALL_THEMES_SWITCH = /Suivre tous les thèmes - Interrupteur à bascule/
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -83,9 +95,9 @@ describe('NotificationsSettings', () => {
   it('should enable save button when user has changed a parameter', async () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleSwitch = screen.getByTestId(EMAIL_SWITCH)
     await user.press(toggleSwitch)
-    const cinemaSwitch = screen.getByTestId('Interrupteur Cinéma')
+    const cinemaSwitch = screen.getByTestId(CINEMA_SWITCH)
     await user.press(cinemaSwitch)
 
     expect(screen.getByText('Enregistrer')).toBeEnabled()
@@ -102,39 +114,26 @@ describe('NotificationsSettings', () => {
     })
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    expect(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')).toHaveAccessibilityState(
-      {
-        checked: true,
-      }
-    )
-    expect(screen.getByTestId('Interrupteur Autoriser les notifications')).toHaveAccessibilityState(
-      {
-        checked: true,
-      }
-    )
-
-    expect(screen.getByTestId('Interrupteur Musique')).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(EMAIL_SWITCH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(NOTIFICATIONS_SWITCH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(MUSIC_SWTICH)).toHaveAccessibilityState({ checked: true })
   })
 
   it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
     await user.press(toggleEmail)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
+    const toggleSwitch = screen.getByTestId(ALL_THEMES_SWITCH)
     await user.press(toggleSwitch)
 
-    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
-    expect(screen.getByTestId('Interrupteur Lecture')).toHaveAccessibilityState({ checked: true })
-    expect(screen.getByTestId('Interrupteur Musique')).toHaveAccessibilityState({ checked: true })
-    expect(screen.getByTestId('Interrupteur Spectacles')).toHaveAccessibilityState({
-      checked: true,
-    })
-    expect(screen.getByTestId('Interrupteur Visites et sorties')).toHaveAccessibilityState({
-      checked: true,
-    })
-    expect(screen.getByTestId('Interrupteur Activités créatives')).toHaveAccessibilityState({
+    expect(screen.getByTestId(CINEMA_SWITCH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(READING_SWITCH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(MUSIC_SWTICH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(SHOW_SWITCH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(VISIT_SWITCH)).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(CREATIVE_ACTIVITIES_SWITCH)).toHaveAccessibilityState({
       checked: true,
     })
   })
@@ -142,23 +141,19 @@ describe('NotificationsSettings', () => {
   it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', async () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
     await user.press(toggleEmail)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
+    const toggleSwitch = screen.getByTestId(ALL_THEMES_SWITCH)
     await user.press(toggleSwitch)
     await user.press(toggleSwitch)
 
-    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: false })
-    expect(screen.getByTestId('Interrupteur Lecture')).toHaveAccessibilityState({ checked: false })
-    expect(screen.getByTestId('Interrupteur Musique')).toHaveAccessibilityState({ checked: false })
-    expect(screen.getByTestId('Interrupteur Spectacles')).toHaveAccessibilityState({
-      checked: false,
-    })
-    expect(screen.getByTestId('Interrupteur Visites et sorties')).toHaveAccessibilityState({
-      checked: false,
-    })
-    expect(screen.getByTestId('Interrupteur Activités créatives')).toHaveAccessibilityState({
+    expect(screen.getByTestId(CINEMA_SWITCH)).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId(READING_SWITCH)).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId(MUSIC_SWTICH)).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId(SHOW_SWITCH)).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId(VISIT_SWITCH)).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId(CREATIVE_ACTIVITIES_SWITCH)).toHaveAccessibilityState({
       checked: false,
     })
   })
@@ -166,36 +161,36 @@ describe('NotificationsSettings', () => {
   it('should toggle on specific theme when its toggle is pressed', async () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
     await user.press(toggleEmail)
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+    const toggleSwitch = screen.getByTestId(CINEMA_SWITCH)
     await user.press(toggleSwitch)
 
-    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId(CINEMA_SWITCH)).toHaveAccessibilityState({ checked: true })
   })
 
   it('should disabled all thematic toggles when email toggle and push toggle are inactive', () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    expect(screen.getByTestId('Interrupteur Cinéma')).toBeDisabled()
-    expect(screen.getByTestId('Interrupteur Lecture')).toBeDisabled()
-    expect(screen.getByTestId('Interrupteur Musique')).toBeDisabled()
-    expect(screen.getByTestId('Interrupteur Spectacles')).toBeDisabled()
-    expect(screen.getByTestId('Interrupteur Visites et sorties')).toBeDisabled()
-    expect(screen.getByTestId('Interrupteur Activités créatives')).toBeDisabled()
+    expect(screen.getByTestId(CINEMA_SWITCH)).toBeDisabled()
+    expect(screen.getByTestId(READING_SWITCH)).toBeDisabled()
+    expect(screen.getByTestId(MUSIC_SWTICH)).toBeDisabled()
+    expect(screen.getByTestId(SHOW_SWITCH)).toBeDisabled()
+    expect(screen.getByTestId(VISIT_SWITCH)).toBeDisabled()
+    expect(screen.getByTestId(CREATIVE_ACTIVITIES_SWITCH)).toBeDisabled()
   })
 
   it('should switch off thematic toggle when disabling email and push toggle at the same time', async () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
     await user.press(toggleEmail)
-    const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+    const toggleSwitch = screen.getByTestId(CINEMA_SWITCH)
     await user.press(toggleSwitch)
     await user.press(toggleEmail)
 
-    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId(CINEMA_SWITCH)).toHaveAccessibilityState({ checked: false })
   })
 
   it('should display help message when the email toggle is inactive and user is logged in', () => {
@@ -221,7 +216,7 @@ describe('NotificationsSettings', () => {
   it('should not display info banner when at least email or push toggles is active', async () => {
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
     await user.press(toggleEmail)
 
     expect(
@@ -251,7 +246,7 @@ describe('NotificationsSettings', () => {
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const saveButton = screen.getByText('Enregistrer')
@@ -272,7 +267,7 @@ describe('NotificationsSettings', () => {
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const saveButton = screen.getByText('Enregistrer')
@@ -291,7 +286,7 @@ describe('NotificationsSettings', () => {
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const saveButton = screen.getByText('Enregistrer')
@@ -310,7 +305,7 @@ describe('NotificationsSettings', () => {
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const saveButton = screen.getByText('Enregistrer')
@@ -328,7 +323,7 @@ describe('NotificationsSettings', () => {
       })
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+      const toggleSwitch = screen.getByTestId(NOTIFICATIONS_SWITCH)
       await user.press(toggleSwitch)
 
       expect(screen.getByText('Paramètres de notifications')).toBeOnTheScreen()
@@ -341,7 +336,7 @@ describe('NotificationsSettings', () => {
       })
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+      const toggleSwitch = screen.getByTestId(NOTIFICATIONS_SWITCH)
       await user.press(toggleSwitch)
 
       const openSettingsButton = await screen.findByLabelText('Autoriser les notifications')
@@ -357,7 +352,7 @@ describe('NotificationsSettings', () => {
       })
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+      const toggleSwitch = screen.getByTestId(NOTIFICATIONS_SWITCH)
       await user.press(toggleSwitch)
 
       expect(toggleSwitch).toHaveAccessibilityState({ checked: true })
@@ -368,7 +363,7 @@ describe('NotificationsSettings', () => {
     it('should display a modal', async () => {
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
@@ -383,10 +378,10 @@ describe('NotificationsSettings', () => {
       mockServer.patchApi('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
-      const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+      const toggleSwitch = screen.getByTestId(CINEMA_SWITCH)
       await user.press(toggleSwitch)
 
       const saveButton = screen.getByText('Enregistrer')
@@ -403,7 +398,7 @@ describe('NotificationsSettings', () => {
       mockServer.patchApi('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const saveButton = screen.getByText('Enregistrer')
@@ -416,7 +411,7 @@ describe('NotificationsSettings', () => {
       mockServer.patchApi('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
@@ -432,7 +427,7 @@ describe('NotificationsSettings', () => {
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
-      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleEmail = screen.getByTestId(EMAIL_SWITCH)
       await user.press(toggleEmail)
 
       const saveButton = screen.getByText('Enregistrer')

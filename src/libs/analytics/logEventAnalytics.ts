@@ -39,7 +39,7 @@ import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'l
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { LocationMode } from 'libs/location/types'
-import { PageTrackingInfo } from 'store/tracking/types'
+import { PageTrackingInfo } from 'shared/tracking/TrackingManager'
 
 type ConsultHomeParams = { homeEntryId: string }
 

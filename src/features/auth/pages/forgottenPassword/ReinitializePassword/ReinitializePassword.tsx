@@ -20,7 +20,7 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ReinitializePasswordFormData = {
@@ -128,20 +128,19 @@ export const ReinitializePassword = () => {
             label="Mot de passe"
             control={control}
             autoFocus
-            isRequiredField
             withSecurityRules
             securityRulesAlwaysVisible
             onSubmitEditing={handleSubmit(submitPassword)}
+            requiredIndicator="explicit"
           />
         </Container>
         <Container>
           <PasswordInputController
             name="confirmedPassword"
             label="Confirmer le mot de passe"
-            placeholder="Confirmer le mot de passe"
             control={control}
-            isRequiredField
             onSubmitEditing={handleSubmit(submitPassword)}
+            requiredIndicator="explicit"
           />
         </Container>
         <Container>
@@ -158,6 +157,6 @@ export const ReinitializePassword = () => {
   )
 }
 
-const Container = styled.View({
-  marginTop: getSpacing(10),
-})
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxl,
+}))

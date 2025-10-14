@@ -204,14 +204,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Schéma pluriannuel d’accessibilité 2022 - 2024
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -241,28 +241,28 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Définition de l’accessibilité numérique
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
         L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques, supports multimédias, intranets d’entreprise, applications mobiles…), quelle que soit sa façon de naviguer.
       </Text>
       <Text
-        marginBottom={20}
+        marginBottom={24}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
+            "marginBottom": 24,
             "marginTop": 24,
           }
         }
@@ -279,7 +279,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Raisons – Liste - Élément 1 sur 4 - s’informer ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -333,7 +334,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Raisons – Liste - Élément 2 sur 4 - communiquer ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -387,7 +389,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="raisons – Liste - Élément 3 sur 4 - accomplir des démarches administratives ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -441,7 +444,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="raisons – Liste - Élément 4 sur 4 - mener une activité professionnelle…"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -496,14 +500,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         </View>
       </View>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -539,16 +543,16 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Politique d’accessibilité
       </Text>
       <Text
-        marginBottom={20}
-        marginTop={24}
+        marginBottom={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
-            "marginTop": 24,
+            "marginBottom": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -575,7 +579,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 1 sur 5 - promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -629,7 +634,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 2 sur 5 - accompagner les équipes internes par des actions notamment de formation ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -683,7 +689,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 3 sur 5 - contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -737,7 +744,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 4 sur 5 - assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -791,7 +799,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 5 sur 5 - faire une veille sur les évolutions réglementaires."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -869,14 +878,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Ressources humaines et financières affectées à l’accessibilité numérique
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -906,14 +915,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Organisation de la prise en compte de l’accessibilité numérique
       </Text>
       <Text
-        marginBottom={20}
+        marginBottom={24}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
+            "marginBottom": 24,
             "marginTop": 24,
           }
         }
@@ -930,7 +939,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 1 sur 4 - de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -984,7 +994,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 2 sur 4 - de poursuivre l’accompagnement des équipes ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1038,7 +1049,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 3 sur 4 - de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1092,7 +1104,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 4 sur 4 - de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1148,7 +1161,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </View>
       <Text
         marginBottom={24}
-        marginTop={20}
+        marginTop={24}
         style={
           {
             "color": "#161617",
@@ -1156,7 +1169,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             "fontSize": 16,
             "lineHeight": 25.6,
             "marginBottom": 24,
-            "marginTop": 20,
+            "marginTop": 24,
           }
         }
       >
@@ -1193,14 +1206,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         </Text>
       </Text>
       <Text
-        marginBottom={20}
+        marginBottom={24}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
+            "marginBottom": 24,
             "marginTop": 24,
           }
         }
@@ -1217,7 +1230,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Actions – Liste - Élément 1 sur 2 - sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1271,7 +1285,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Actions – Liste - Élément 2 sur 2 - former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1747,7 +1762,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 1 sur 5 - la fréquentation ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1801,7 +1817,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 2 sur 5 - le service rendu ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1855,7 +1872,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 3 sur 5 - la criticité ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1909,7 +1927,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 4 sur 5 - le cycle de vie (date de la prochaine refonte) ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1963,7 +1982,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 5 sur 5 - les technologies employées."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2019,7 +2039,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </View>
       <Text
         marginBottom={24}
-        marginTop={20}
+        marginTop={24}
         style={
           {
             "color": "#161617",
@@ -2027,7 +2047,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             "fontSize": 16,
             "lineHeight": 25.6,
             "marginBottom": 24,
-            "marginTop": 20,
+            "marginTop": 24,
           }
         }
       >
@@ -2115,14 +2135,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Annexe 1 : Périmètre technique et fonctionnel
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -2515,7 +2535,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 1 sur 10 - Réaliser un audit interne sur les parcours clés de la version web"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2583,7 +2604,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2602,7 +2622,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 2 sur 10 - Valider la certification “Développer des sites web accessibles” (tous les développeurs front-end)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2670,7 +2691,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2689,7 +2709,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 3 sur 10 - Former un développeur à l’audit d’accessibilité numérique des applications mobiles"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2757,7 +2778,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2776,7 +2796,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 4 sur 10 - Mettre en place un process de vérification d’accessibilité RGAA pour les nouvelles fonctionnalités"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2844,7 +2865,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2863,7 +2883,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 5 sur 10 - Revoir l’accessibilité de tous les mails transactionnels"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2931,7 +2952,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2950,7 +2970,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 6 sur 10 - Atteindre 100% d’accessibilité de la version web sur les parcours clés"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3018,7 +3039,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3037,7 +3057,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 7 sur 10 - Informer des modalités de mises en accessibilité des offres"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3105,7 +3126,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3124,7 +3144,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 8 sur 10 - Renforcer la visibilité sur le pass d’offres accessibles auprès des publics concernés (partenariats et inscriptions d’AC spécialisées…)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3192,7 +3213,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3211,7 +3231,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 9 sur 10 - Proposer un mode sombre aux utilisateurs"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3279,7 +3300,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3298,7 +3318,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 10 sur 10 - Mettre en place un design system 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3366,7 +3387,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3427,7 +3447,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 1 sur 10 - Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3495,7 +3516,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3514,7 +3534,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 2 sur 10 - Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3582,7 +3603,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3601,7 +3621,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 3 sur 10 - Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3669,7 +3690,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3688,7 +3708,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 4 sur 10 - Publier la déclaration d’accessibilité du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3774,7 +3795,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3793,7 +3813,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 5 sur 10 - Formation des Product Manager du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3879,7 +3900,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3898,7 +3918,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 6 sur 10 - Sensibilisation des équipes internes aux enjeux d’accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3966,7 +3987,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3985,7 +4005,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 7 sur 10 - Rendre le site 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4071,7 +4092,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4090,7 +4110,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 8 sur 10 - Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4158,7 +4179,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4177,7 +4197,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 9 sur 10 - Mettre en place une charte graphique 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4245,7 +4266,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4264,7 +4284,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 10 sur 10 - Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4332,7 +4353,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4393,7 +4413,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 1 sur 7 - Formation des équipes produit aux enjeux de l’accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4461,7 +4482,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4480,7 +4500,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 2 sur 7 - Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4548,7 +4569,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4567,7 +4587,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 3 sur 7 - Formation des développeurs du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4653,7 +4674,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4672,7 +4692,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 4 sur 7 - Réalisation d’un audit d’accessibilité du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4758,7 +4779,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4777,7 +4797,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 5 sur 7 - Diffusion d’information sur le pass Culture via les MDPH (Maisons départementales des personnes handicapées)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4845,7 +4866,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4864,7 +4884,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 6 sur 7 - Maquettage d’un nouveau site 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4950,7 +4971,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4969,7 +4989,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 7 sur 7 - Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5037,7 +5058,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5098,7 +5118,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 1 sur 8 - Constitution du pôle Accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5166,7 +5187,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5185,7 +5205,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 2 sur 8 - Nomination de 2 personnes référentes sur l’accessibilité numérique"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5253,7 +5274,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5272,7 +5292,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 3 sur 8 - Formation de l’ensemble des développeurs travaillant sur le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5340,7 +5361,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5359,7 +5379,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 4 sur 8 - Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5427,7 +5448,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5446,7 +5466,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 5 sur 8 - Audit d’accessibilité pour le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5514,7 +5535,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5533,7 +5553,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 6 sur 8 - Publication de la déclaration de mise en conformité pour le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5601,7 +5622,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5620,7 +5640,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 7 sur 8 - Rencontre avec des utilisateurs en situation de handicap"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5688,7 +5709,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5707,7 +5727,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 8 sur 8 - Formation du pôle Communication, Marketing, Recherche"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5775,7 +5796,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={

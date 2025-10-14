@@ -399,19 +399,12 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                         >
                           <div
-                            aria-hidden="true"
-                            class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                            dir="ltr"
-                          >
-                            Case à cocher - 
-                            non cochée
-                          </div>
-                          <div
                             aria-checked="false"
+                            aria-label="Activer ma géolocalisation - Interrupteur à bascule - non coché"
                             aria-labelledby="testUuidV4"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                            data-testid="Interrupteur Activer ma géolocalisation"
-                            role="checkbox"
+                            data-testid="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            role="switch"
                             style="transition-duration: 0s;"
                             tabindex="0"
                           >
@@ -1504,19 +1497,12 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                         >
                           <div
-                            aria-hidden="true"
-                            class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                            dir="ltr"
-                          >
-                            Case à cocher - 
-                            non cochée
-                          </div>
-                          <div
                             aria-checked="false"
+                            aria-label="Activer ma géolocalisation - Interrupteur à bascule - non coché"
                             aria-labelledby="testUuidV4"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                            data-testid="Interrupteur Activer ma géolocalisation"
-                            role="checkbox"
+                            data-testid="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            role="switch"
                             style="transition-duration: 0s;"
                             tabindex="0"
                           >

@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'France entière'
+      - tapOn: 'France entière.*'
 
 - runFlow:
     label: 'Swipe vers les offres pour éviter tap sur la tabBar'
@@ -39,10 +39,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn: "Réserver l’offre"
+      - tapOn: 'Réserver l’offre'
 
 - assertVisible: 'Détails de la réservation'
-- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - runFlow:
     when:
       platform: Android

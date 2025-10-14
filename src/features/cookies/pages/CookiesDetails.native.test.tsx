@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, render, act } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 jest.mock('queries/profile/usePatchProfileMutation')
 
@@ -15,6 +16,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<CookiesDetails/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', async () => {
     render(
       reactQueryProviderHOC(
@@ -23,6 +28,7 @@ describe('<CookiesDetails/>', () => {
             marketing: false,
             performance: false,
             customization: false,
+            video: false,
           }}
           setSettingsCookiesChoice={jest.fn()}
         />

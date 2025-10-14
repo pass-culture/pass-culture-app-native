@@ -1,33 +1,33 @@
+import { HotUpdater } from '@hot-updater/react-native'
 import { useState, useEffect } from 'react'
-import CodePush from 'react-native-code-push'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppVersion } from 'libs/packageJson'
 
 export function useVersion() {
-  const [codePushLabel, setCodePushLabel] = useState('')
+  const [hotUpdaterLabel, setHotUpdaterLabel] = useState('')
 
   useEffect(() => {
-    async function getcodePushLabel() {
+    async function getHotUpdaterLabel() {
       try {
-        const metadata = await CodePush.getUpdateMetadata()
+        const metadata = await HotUpdater.getBundleId()
 
         if (!metadata) {
           return
         }
-        setCodePushLabel(metadata.label)
+        setHotUpdaterLabel(metadata)
       } catch (error) {
         eventMonitoring.captureException(error)
       }
     }
-    getcodePushLabel()
+    getHotUpdaterLabel()
   }, [])
 
-  // exemple Code Push format : 'v3875' => '3875'
-  const shortCodePushLabel = codePushLabel.slice(1)
+  // for Hot Updater we take the last 4 digits of the bundle id
+  const shortHotUpdaterLabel = hotUpdaterLabel.slice(-4)
 
   let version = `Version\u00A0${getAppVersion()}`
-  if (codePushLabel) version += `-${shortCodePushLabel}`
+  if (hotUpdaterLabel && shortHotUpdaterLabel !== '0000') version += `-${shortHotUpdaterLabel}`
 
   return version
 }

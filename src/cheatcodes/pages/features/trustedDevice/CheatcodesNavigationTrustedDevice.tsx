@@ -89,11 +89,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
           onPress={navigateToAccountSecurityBuffer}
           disabled={value.length < 1}
         />
-        <InputText
-          onChangeText={setValue}
-          label="Token"
-          placeholder="Rentrer un token pour activer le bouton"
-        />
+        <InputText onChangeText={setValue} label="Token" />
       </BufferContainer>
     </CheatcodesTemplateScreen>
   )

@@ -2,11 +2,15 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ConsentState } from 'features/cookies/enums'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import * as useCookies from 'features/cookies/helpers/useCookies'
+import type * as CookiesTypes from 'features/cookies/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -54,6 +58,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies')
+
+const ACCEPT_ALL_SWITCH = /Tout accepter - Interrupteur à bascule/
+const BROWSING_STATISTICS_SWITCH =
+  /Enregistrer des statistiques de navigation - Interrupteur à bascule/
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -61,12 +71,13 @@ jest.useFakeTimers()
 describe('<ConsentSettings/>', () => {
   beforeEach(() => {
     mockdate.set(Today)
+    setFeatureFlags()
   })
 
   it('should render correctly', async () => {
     renderConsentSettings()
 
-    await screen.findByTestId('Interrupteur Tout accepter')
+    await screen.findByTestId(ACCEPT_ALL_SWITCH)
 
     expect(screen).toMatchSnapshot()
   })
@@ -76,9 +87,7 @@ describe('<ConsentSettings/>', () => {
 
     renderConsentSettings()
 
-    const performanceSwitch = screen.getByTestId(
-      'Interrupteur Enregistrer des statistiques de navigation'
-    )
+    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
     await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -91,7 +100,11 @@ describe('<ConsentSettings/>', () => {
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: COOKIES_BY_CATEGORY.performance,
-        refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
+        refused: [
+          ...COOKIES_BY_CATEGORY.marketing,
+          ...COOKIES_BY_CATEGORY.customization,
+          ...COOKIES_BY_CATEGORY.video,
+        ],
       },
     }
 
@@ -100,6 +113,23 @@ describe('<ConsentSettings/>', () => {
 
   it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
     mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
+
+    const emptyCookies: CookiesTypes.Cookies = []
+    const consentValue: CookiesTypes.Consent = {
+      mandatory: emptyCookies,
+      accepted: emptyCookies,
+      refused: emptyCookies,
+    }
+    const consentStatus: CookiesTypes.ConsentStatus = {
+      state: ConsentState.HAS_CONSENT,
+      value: consentValue,
+    }
+
+    useCookiesSpyOn.mockReturnValueOnce({
+      cookiesConsent: consentStatus,
+      setCookiesConsent: jest.fn(),
+      setUserId: jest.fn(),
+    })
 
     renderConsentSettings()
 
@@ -114,9 +144,7 @@ describe('<ConsentSettings/>', () => {
 
     renderConsentSettings()
 
-    const performanceSwitch = screen.getByTestId(
-      'Interrupteur Enregistrer des statistiques de navigation'
-    )
+    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
     await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -130,9 +158,7 @@ describe('<ConsentSettings/>', () => {
 
     renderConsentSettings()
 
-    const performanceSwitch = screen.getByTestId(
-      'Interrupteur Enregistrer des statistiques de navigation'
-    )
+    const performanceSwitch = screen.getByTestId(BROWSING_STATISTICS_SWITCH)
     await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -140,7 +166,7 @@ describe('<ConsentSettings/>', () => {
 
     expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
       from: 'ConsentSettings',
-      type: { performance: true, customization: false, marketing: false },
+      type: { performance: true, customization: false, marketing: false, video: false },
     })
   })
 

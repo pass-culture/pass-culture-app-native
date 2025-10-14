@@ -1,8 +1,8 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- scrollUntilVisible: 
-    element: 
-        text: 'Instagram'
+- scrollUntilVisible:
+    element:
+      text: 'Instagram'
 - tapOn: 'Instagram'
 - waitForAnimationToEnd
 
@@ -15,18 +15,18 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - assertVisible:
-        id: 'com.android.chrome:id/url_bar'
-    - runFlow:
-        file: ../../subFolder/cloud/commands/TapOnBack.yml
+      - assertVisible:
+          id: 'com.android.chrome:id/url_bar'
+      - runFlow:
+          file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
-    - scrollUntilVisible: 
-        element: 
+      - tapOn: 'Revenir à pass Culture S'
+      - scrollUntilVisible:
+          element:
             text: 'Instagram'
 
 - tapOn: 'X'
@@ -35,18 +35,18 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - assertVisible:
-        id: 'com.android.chrome:id/url_bar'
-    - runFlow:
-        file: ../../subFolder/cloud/commands/TapOnBack.yml
+      - assertVisible:
+          id: 'com.android.chrome:id/url_bar'
+      - runFlow:
+          file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
-    - scrollUntilVisible: 
-        element: 
+      - tapOn: 'Revenir à pass Culture S'
+      - scrollUntilVisible:
+          element:
             text: 'Instagram'
 
 - tapOn: 'Tiktok'
@@ -55,28 +55,27 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - assertVisible:
-        id: 'com.android.chrome:id/url_bar'
-    - pressKey: back
-    - pressKey: back
+      - assertVisible:
+          id: 'com.android.chrome:id/url_bar'
+      - pressKey: back
+      - pressKey: back
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
-    - scrollUntilVisible: 
-        element: 
+      - tapOn: 'Revenir à pass Culture S'
+      - scrollUntilVisible:
+          element:
             text: 'Instagram'
 
 - runFlow: # Fallback si problème de retour
     when:
       visible: 'Bonjour Test-e2e.*'
     commands:
-      - tapOn:
-          id: 'Mon profil'
+      - tapOn: 'Mon profil.*'
       - scrollUntilVisible:
-          element: 
+          element:
             text: 'Facebook'
 
 - tapOn: 'Facebook'
@@ -90,15 +89,15 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - pressKey: back
+      - pressKey: back
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Revenir à pass Culture S"
+      - tapOn: 'Revenir à pass Culture S'
 
 - scrollUntilVisible:
     element:
-      text: "Paramètres du compte"
+      text: 'Paramètres du compte'
     direction: UP

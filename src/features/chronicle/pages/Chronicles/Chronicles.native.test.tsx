@@ -213,10 +213,12 @@ describe('Chronicles', () => {
 
         await user.press(await screen.findByText('Voir toutes les recos du Ciné Club'))
 
-        expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {
-          categoryName: 'CINEMA',
-          from: 'chronicles',
-          offerId: '116656',
+        await waitFor(() => {
+          expect(analytics.logClickAllClubRecos).toHaveBeenNthCalledWith(1, {
+            categoryName: 'CINEMA',
+            from: 'chronicles',
+            offerId: '116656',
+          })
         })
       })
     })

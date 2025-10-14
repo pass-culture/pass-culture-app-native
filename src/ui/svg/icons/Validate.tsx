@@ -22,7 +22,7 @@ const ValidateSvg: React.FunctionComponent<ValidateProps> = ({
       width={size}
       height={size}
       viewBox="0 0 48 48"
-      accessibilityLabel={accessibilityLabel ?? `Sélectionné`}
+      accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <Circle r={10} cx={24} cy={24} fill={color2} />
       <Path

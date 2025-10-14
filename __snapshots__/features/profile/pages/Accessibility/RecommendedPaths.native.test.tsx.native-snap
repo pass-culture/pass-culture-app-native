@@ -225,7 +225,8 @@ exports[`RecommendedPaths should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 1 sur 3 - en indiquant ses identifiants EduConnect"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -279,7 +280,8 @@ exports[`RecommendedPaths should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 2 sur 3 - en présentant sa carte d’identité"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -333,7 +335,9 @@ exports[`RecommendedPaths should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Méthodes pour obtenir le crédit – Liste - Élément 3 sur 3 - en remplissant un formulaire sur "
+          accessibilityRole="link"
+          accessible={true}
           style={
             {
               "display": "flex",

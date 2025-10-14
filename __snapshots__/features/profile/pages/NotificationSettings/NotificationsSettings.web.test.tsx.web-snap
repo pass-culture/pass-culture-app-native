@@ -250,20 +250,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                       aria-labelledby="0"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Autoriser l’envoi d’e-mails"
-                      role="checkbox"
+                      data-testid="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -275,7 +268,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -346,20 +338,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                       aria-labelledby="2"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Suivre tous les thèmes"
-                      role="checkbox"
+                      data-testid="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -371,7 +356,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -425,20 +409,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Cinéma - Interrupteur à bascule - non coché"
                       aria-labelledby="4"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Cinéma"
-                      role="checkbox"
+                      data-testid="Cinéma - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -450,7 +427,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -501,20 +477,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Lecture - Interrupteur à bascule - non coché"
                       aria-labelledby="6"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Lecture"
-                      role="checkbox"
+                      data-testid="Lecture - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -526,7 +495,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -577,20 +545,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Musique - Interrupteur à bascule - non coché"
                       aria-labelledby="8"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Musique"
-                      role="checkbox"
+                      data-testid="Musique - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -602,7 +563,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -653,20 +613,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Spectacles - Interrupteur à bascule - non coché"
                       aria-labelledby="10"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Spectacles"
-                      role="checkbox"
+                      data-testid="Spectacles - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -678,7 +631,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -729,20 +681,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Activités créatives - Interrupteur à bascule - non coché"
                       aria-labelledby="12"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Activités créatives"
-                      role="checkbox"
+                      data-testid="Activités créatives - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -754,7 +699,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -805,20 +749,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Visites et sorties - Interrupteur à bascule - non coché"
                       aria-labelledby="14"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Visites et sorties"
-                      role="checkbox"
+                      data-testid="Visites et sorties - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -830,7 +767,6 @@ exports[`NotificationsSettings should render correctly 1`] = `
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div

@@ -4,7 +4,7 @@
  */
 
 import React, { forwardRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -32,7 +32,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   const [textLength, setTextLength] = useState(0)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomInputTextProps(props)
-  const textInputID = uuidv4()
+  const textInputID = nativeProps.testID ?? uuidv4()
 
   const Icon = customProps.rightButton?.icon
   const StyledIcon =
@@ -59,18 +59,25 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     .filter(Boolean)
     .join(' - ')
 
-  const inputLabel = customProps.isRequiredField ? `${customProps.label}\u00A0*` : customProps.label
+  const inputLabel =
+    customProps.requiredIndicator === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
 
   return (
     <ContainerWithMaxWidth gap={0}>
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer>
-          <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
-            {inputLabel}
-          </Typo.Body>
+          <View>
+            <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
+              {inputLabel}
+            </Typo.Body>
+            {customProps.description ? <Description>{customProps.description}</Description> : null}
+          </View>
+          {customProps.requiredIndicator === 'explicit' ? (
+            <StyledBodyAccentXs>Obligatoire</StyledBodyAccentXs>
+          ) : null}
         </LabelContainer>
       </FlexInputLabel>
-      {customProps.format ? <Description>{customProps.format}</Description> : null}
+
       <InputTextContainer
         isFocused={isFocus}
         isError={!!customProps.errorMessage}
@@ -85,7 +92,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
-          accessibilityRequired={customProps.isRequiredField}
+          accessibilityRequired={!!customProps.requiredIndicator}
           multiline={props.multiline}
           maxLength={customProps.characterCount}
           onChangeText={handleChangeText}
@@ -124,8 +131,12 @@ const IconTouchableOpacity = styledButton(Touchable)({
   maxWidth: getSpacing(15),
 })
 
-const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+}))
+
+const Description = styled(StyledBodyAccentXs)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxs,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
@@ -141,11 +152,13 @@ const FooterContainer = styled.View(({ theme }) => ({
 }))
 
 const ErrorContainer = styled.View({
+  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
 })
 
 const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
+  flex: 1,
   color: theme.designSystem.color.text.error,
   marginLeft: theme.designSystem.size.spacing.xs,
 }))
@@ -153,7 +166,9 @@ const ErrorText = styled(Typo.BodyAccentS)(({ theme }) => ({
 const ErrorIcon = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
   size: theme.icons.sizes.extraSmall,
-}))``
+}))({
+  flexShrink: 0,
+})
 
 const CounterContainer = styled.View({
   marginLeft: 'auto',

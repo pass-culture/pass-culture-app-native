@@ -53,6 +53,8 @@ export const EnvironmentSchema = yup.object({
   GOOGLE_IOS_REVERSED_CLIENT_ID: yup.string().required(),
   GOOGLE_PLAY_STORE_URL: yup.string().required(),
   HOT_UPDATER_FUNCTION_URL: yup.string().required(),
+  HOT_UPDATER_FIREBASE_PROJECT_ID: yup.string().required(),
+  HOT_UPDATER_FIREBASE_STORAGE_BUCKET: yup.string().required(),
   IOS_APP_ID: yup.string().required(),
   IOS_APP_STORE_ID: yup.string().required(),
   PASSCULTURE_DOWNLOAD_APP_URL: yup.string().required(),

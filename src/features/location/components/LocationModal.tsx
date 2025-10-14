@@ -6,6 +6,7 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -93,6 +94,37 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
+  const buildAccessibilityLabel = (
+    title: string,
+    subtitle: string | undefined,
+    isSelected: boolean
+  ) => {
+    return `${title}${subtitle ? `, ${subtitle}` : ''}, ${isSelected ? 'sélectionné' : 'non sélectionné'}`
+  }
+
+  const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
+  const AROUND_ME_SUBTITLE = hasGeolocPosition ? undefined : 'Géolocalisation désactivée'
+  const accessibilityLabelAroundMe = buildAccessibilityLabel(
+    AROUND_ME_TITLE,
+    AROUND_ME_SUBTITLE,
+    isCurrentLocationMode(LocationMode.AROUND_ME)
+  )
+
+  const AROUND_PLACE_TITLE = 'Choisir une localisation'
+  const accessibilityLabelAroundPlace = buildAccessibilityLabel(
+    AROUND_PLACE_TITLE,
+    LOCATION_PLACEHOLDER,
+    isCurrentLocationMode(LocationMode.AROUND_PLACE)
+  )
+
+  const accessibilityLabelEverywhere = buildAccessibilityLabel(
+    LocationLabel.everywhereLabel,
+    undefined,
+    isCurrentLocationMode(LocationMode.EVERYWHERE)
+  )
+
+  const groupLabel = 'Localisation'
+
   return (
     <AppModal
       visible={visible}
@@ -105,7 +137,7 @@ export const LocationModal = ({
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
-            title="Localisation"
+            title={groupLabel}
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onClose}
@@ -121,13 +153,18 @@ export const LocationModal = ({
       }>
       <StyledScrollView>
         <VerticalUl>
-          <Li>
+          <Li
+            groupLabel={groupLabel}
+            accessibilityLabel={accessibilityLabelAroundMe}
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={0}
+            total={3}>
             <LocationModalButton
               onPress={selectLocationMode(LocationMode.AROUND_ME)}
               icon={PositionFilled}
               color={geolocationModeColor}
-              title="Utiliser ma position actuelle"
-              subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
+              title={AROUND_ME_TITLE}
+              subtitle={AROUND_ME_SUBTITLE}
             />
             {shouldShowAroundMeRadiusSlider ? (
               <SliderContainer>
@@ -139,12 +176,17 @@ export const LocationModal = ({
             ) : null}
             <StyledSeparator />
           </Li>
-          <Li>
+          <Li
+            groupLabel={groupLabel}
+            accessibilityLabel={accessibilityLabelAroundPlace}
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={1}
+            total={3}>
             <LocationModalButton
               onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
               icon={MagnifyingGlassFilled}
               color={customLocationModeColor}
-              title="Choisir une localisation"
+              title={AROUND_PLACE_TITLE}
               subtitle={LOCATION_PLACEHOLDER}
             />
             {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
@@ -169,7 +211,12 @@ export const LocationModal = ({
             ) : null}
           </Li>
           {shouldDisplayEverywhereSection ? (
-            <Li>
+            <Li
+              groupLabel={groupLabel}
+              accessibilityLabel={accessibilityLabelEverywhere}
+              accessibilityRole={AccessibilityRole.BUTTON}
+              index={2}
+              total={3}>
               <StyledView>
                 <Separator.Horizontal />
                 <LocationModalButton

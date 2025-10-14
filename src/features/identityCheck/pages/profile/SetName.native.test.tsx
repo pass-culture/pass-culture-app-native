@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute, navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { storage } from 'libs/storage'
@@ -57,10 +57,10 @@ describe('<SetName/>', () => {
 
     expect(continueButton).toBeDisabled()
 
-    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    const firstNameInput = screen.getByTestId('Entrée pour le prénom')
     fireEvent.changeText(firstNameInput, firstName)
 
-    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    const lastNameInput = screen.getByTestId('Entrée pour le nom')
     fireEvent.changeText(lastNameInput, lastName)
 
     await waitFor(async () => {
@@ -71,10 +71,10 @@ describe('<SetName/>', () => {
   it('should store name in storage when submit name', async () => {
     renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    const firstNameInput = screen.getByTestId('Entrée pour le prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
-    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    const lastNameInput = screen.getByTestId('Entrée pour le nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     await user.press(screen.getByText('Continuer'))
@@ -89,10 +89,10 @@ describe('<SetName/>', () => {
   it('should navigate to SetCity with identityCheck params when submit name', async () => {
     renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    const firstNameInput = screen.getByTestId('Entrée pour le prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
-    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    const lastNameInput = screen.getByTestId('Entrée pour le nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     await user.press(screen.getByText('Continuer'))
@@ -103,10 +103,10 @@ describe('<SetName/>', () => {
   it('should navigate to SetCity with booking params when submit name', async () => {
     renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
-    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    const firstNameInput = screen.getByTestId('Entrée pour le prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
-    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    const lastNameInput = screen.getByTestId('Entrée pour le nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     await user.press(screen.getByText('Continuer'))

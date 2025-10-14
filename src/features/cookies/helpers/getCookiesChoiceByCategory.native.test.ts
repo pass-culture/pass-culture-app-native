@@ -15,6 +15,7 @@ describe('getCookiesChoiceByCategory', () => {
       marketing: false,
       performance: false,
       customization: false,
+      video: false,
     })
   })
 
@@ -29,6 +30,7 @@ describe('getCookiesChoiceByCategory', () => {
       marketing: false,
       performance: false,
       customization: false,
+      video: false,
     })
   })
 
@@ -48,6 +50,7 @@ describe('getCookiesChoiceByCategory', () => {
       marketing: false,
       performance: false,
       customization: false,
+      video: false,
     })
   })
 
@@ -67,6 +70,7 @@ describe('getCookiesChoiceByCategory', () => {
       marketing: true,
       performance: true,
       customization: true,
+      video: true,
     })
   })
 
@@ -86,6 +90,7 @@ describe('getCookiesChoiceByCategory', () => {
       marketing: false,
       performance: true,
       customization: true,
+      video: false,
     })
   })
 })

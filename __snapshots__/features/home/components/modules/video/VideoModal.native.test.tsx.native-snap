@@ -261,6 +261,17 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               }
               width={750}
             />
+            <View
+              height={421.875}
+              style={
+                {
+                  "backgroundColor": "#161617",
+                  "height": 421.875,
+                  "width": 750,
+                }
+              }
+              width={750}
+            />
           </View>
         </View>
         <RCTScrollView
@@ -303,7 +314,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   }
                 }
                 testID="tagWrapper"
-                withColor={true}
               >
                 <Text
                   style={

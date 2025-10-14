@@ -105,5 +105,28 @@ describe('changePasswordSchema', () => {
 
       await expect(result).rejects.toEqual(new ValidationError('1 Chiffre'))
     })
+
+    it.each([
+      [
+        {
+          currentPassword: 'user@AZERTYyyyy',
+          newPassword:
+            'AZERTYyyyy1234567890123456789012345678901234567890123456789012345678901234567890',
+          confirmedPassword:
+            'AZERTYyyyy1234567890123456789012345678901234567890123456789012345678901234567890',
+        },
+        {
+          currentPassword: 'user@AZERTY123',
+          newPassword:
+            'AZERTYyyyy1234567890123456789012345678901234567890123456789012345678901234567890',
+          confirmedPassword:
+            'AZERTYyyyy1234567890123456789012345678901234567890123456789012345678901234567890',
+        },
+      ],
+    ])('should fail due to having more than 72 characters', async (values) => {
+      const result = changePasswordSchema.validate(values)
+
+      await expect(result).rejects.toEqual(new ValidationError('72 Caractères'))
+    })
   })
 })
