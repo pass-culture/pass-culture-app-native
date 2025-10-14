@@ -1868,7 +1868,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     >
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -1973,7 +1972,6 @@ Instagram
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -2078,7 +2076,6 @@ WhatsApp
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -2183,7 +2180,6 @@ iMessage
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -4985,7 +4981,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       }
                     >
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -5090,7 +5085,6 @@ Instagram
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -5195,7 +5189,6 @@ WhatsApp
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -5300,7 +5293,6 @@ iMessage
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -7089,7 +7081,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       testID="BasicAccessibilityInfo"
                     >
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -7191,7 +7182,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -7294,7 +7284,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -7397,7 +7386,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -8088,7 +8076,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       }
                     >
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -8193,7 +8180,6 @@ Instagram
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -8298,7 +8284,6 @@ WhatsApp
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {
@@ -8403,7 +8388,6 @@ iMessage
                         </View>
                       </View>
                       <View
-                        accessible={true}
                         style={
                           [
                             {

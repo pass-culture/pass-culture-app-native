@@ -443,22 +443,27 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     }
                   }
                 >
-                  <Text
-                    accessibilityDescribedBy="testUuidV4"
+                  <View
+                    accessibilityLabel="Uniquement les offres gratuites"
                     accessibilityRole="header"
-                    htmlFor="testUuidV4"
-                    id="testUuidV4"
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
+                    accessible={true}
                   >
-                    Uniquement les offres gratuites
-                  </Text>
+                    <Text
+                      accessibilityDescribedBy="testUuidV4"
+                      htmlFor="testUuidV4"
+                      id="testUuidV4"
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Uniquement les offres gratuites
+                    </Text>
+                  </View>
                 </View>
                 <View
                   style={
@@ -587,22 +592,27 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     }
                   }
                 >
-                  <Text
-                    accessibilityDescribedBy="testUuidV4"
+                  <View
+                    accessibilityLabel="Limiter la recherche à mon crédit"
                     accessibilityRole="header"
-                    htmlFor="testUuidV4"
-                    id="testUuidV4"
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
+                    accessible={true}
                   >
-                    Limiter la recherche à mon crédit
-                  </Text>
+                    <Text
+                      accessibilityDescribedBy="testUuidV4"
+                      htmlFor="testUuidV4"
+                      id="testUuidV4"
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        }
+                      }
+                    >
+                      Limiter la recherche à mon crédit
+                    </Text>
+                  </View>
                 </View>
                 <View
                   style={

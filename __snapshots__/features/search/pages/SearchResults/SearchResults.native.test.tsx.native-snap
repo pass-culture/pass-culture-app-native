@@ -289,7 +289,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             }
           >
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -429,7 +428,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -519,7 +517,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -618,7 +615,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -717,7 +713,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -816,7 +811,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
