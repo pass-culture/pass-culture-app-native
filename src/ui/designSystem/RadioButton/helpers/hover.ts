@@ -5,7 +5,7 @@
 
 import { DefaultTheme } from 'styled-components'
 
-import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
+import { RadioStateObject } from 'ui/designSystem/RadioButton/types'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export const getBorderHoverStyle = ({

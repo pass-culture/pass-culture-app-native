@@ -8,6 +8,9 @@ import React from 'react'
 
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { Calendar } from 'ui/svg/icons/Calendar'
+import { Star } from 'ui/svg/Star'
+import { Typo } from 'ui/theme'
 
 const meta: Meta<typeof RadioButton> = {
   title: 'design system/inputs/RadioButton',
@@ -15,15 +18,15 @@ const meta: Meta<typeof RadioButton> = {
 }
 export default meta
 
+const setValue = () => null
+
 const variantConfig: Variants<typeof RadioButton> = [
   {
     label: 'RadioButton Default',
     props: {
       label: 'Label',
       value: null,
-      setValue: () => {
-        //
-      },
+      setValue,
       sizing: 'hug',
     },
   },
@@ -32,9 +35,7 @@ const variantConfig: Variants<typeof RadioButton> = [
     props: {
       label: 'Label',
       value: 'Label',
-      setValue: () => {
-        //
-      },
+      setValue,
       sizing: 'hug',
     },
   },
@@ -44,9 +45,7 @@ const variantConfig: Variants<typeof RadioButton> = [
       label: 'Label',
       disabled: true,
       value: null,
-      setValue: () => {
-        //
-      },
+      setValue,
       sizing: 'hug',
     },
   },
@@ -56,9 +55,7 @@ const variantConfig: Variants<typeof RadioButton> = [
       label: 'Label',
       disabled: true,
       value: 'Label',
-      setValue: () => {
-        //
-      },
+      setValue,
       sizing: 'hug',
     },
   },
@@ -68,9 +65,7 @@ const variantConfig: Variants<typeof RadioButton> = [
       label: 'Label',
       error: true,
       value: null,
-      setValue: () => {
-        //
-      },
+      setValue,
       sizing: 'hug',
     },
   },
@@ -87,20 +82,8 @@ const variantConfig: Variants<typeof RadioButton> = [
     props: {
       label: 'Label',
       value: 'Label',
-      setValue: () => {
-        //
-      },
+      setValue,
       variant: 'detailed',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-  },
-  /*  
-  {
-    label: 'RadioButton Detailed With Description',
-    props: {
-      label: 'RadioButton label',
-      variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
@@ -108,18 +91,10 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed Hug',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       sizing: 'hug',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-  },
-  {
-    label: 'RadioButton Detailed Selected',
-    props: {
-      label: 'RadioButton label',
-      variant: 'detailed',
-      isSelected: true,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
@@ -127,18 +102,9 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed Selected Disabled',
     props: {
       label: 'RadioButton label',
+      value: 'RadioButton label',
+      setValue,
       variant: 'detailed',
-      isSelected: true,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      disabled: true,
-    },
-  },
-  {
-    label: 'RadioButton Detailed Disabled',
-    props: {
-      label: 'RadioButton label',
-      variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       disabled: true,
     },
@@ -147,8 +113,9 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Icon',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'icon', Icon: Calendar },
     },
@@ -157,8 +124,9 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Icon Disabled',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       disabled: true,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'icon', Icon: Calendar },
@@ -168,9 +136,10 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed Has Error',
     props: {
       label: 'RadioButton label',
+      value: 'RadioButton label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
-      hasError: true,
+      error: true,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
@@ -178,8 +147,9 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Text',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'text', text: '32\u00a0€' },
     },
@@ -188,8 +158,9 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Image',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: {
         variant: 'image',
@@ -198,11 +169,12 @@ const variantConfig: Variants<typeof RadioButton> = [
     },
   },
   {
-    label: 'RadioButton Detailed With Medium Image',
+    label: 'RadioButton Detailed With Image Medium',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: {
         variant: 'image',
@@ -212,11 +184,12 @@ const variantConfig: Variants<typeof RadioButton> = [
     },
   },
   {
-    label: 'RadioButton Detailed With Large Image',
+    label: 'RadioButton Detailed With Image Large',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: {
         variant: 'image',
@@ -229,8 +202,9 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Tag',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'tag', tag: { label: 'Tag label', Icon: <Star size={16} /> } },
     },
@@ -239,8 +213,10 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Collapsed Content',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'icon', Icon: Calendar },
       collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
     },
@@ -249,8 +225,10 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Collapsed Content Selected',
     props: {
       label: 'RadioButton label',
+      value: 'RadioButton label',
+      setValue,
       variant: 'detailed',
-      isSelected: true,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'icon', Icon: Calendar },
       collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
     },
@@ -259,13 +237,15 @@ const variantConfig: Variants<typeof RadioButton> = [
     label: 'RadioButton Detailed With Collapsed Content Disabled',
     props: {
       label: 'RadioButton label',
+      value: 'Label',
+      setValue,
       variant: 'detailed',
-      isSelected: false,
       disabled: true,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       asset: { variant: 'icon', Icon: Calendar },
       collapsed: <Typo.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typo.Body>,
     },
-  }, */
+  },
 ]
 
 export const Template: VariantsStory<typeof RadioButton> = {

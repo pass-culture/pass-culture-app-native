@@ -7,9 +7,9 @@ import React, { FunctionComponent } from 'react'
 
 import { RadioButtonDefault } from 'ui/designSystem/RadioButton/RadioButtonDefault'
 import { RadioButtonDetailed } from 'ui/designSystem/RadioButton/RadioButtonDetailed'
-import { DefaultRadioProps, DetailedRadioProps } from 'ui/designSystem/RadioButton/types'
+import { BaseRadioProps } from 'ui/designSystem/RadioButton/types'
 
-export const RadioButton: FunctionComponent<DefaultRadioProps | DetailedRadioProps> = ({
+export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   label,
   disabled,
   error,
@@ -20,20 +20,19 @@ export const RadioButton: FunctionComponent<DefaultRadioProps | DetailedRadioPro
   sizing,
   variant,
   setValue,
-}) => {
-  const detailedSizing = collapsed ? 'fill' : (sizing ?? 'hug')
-
-  return variant === 'detailed' ? (
+}) =>
+  variant === 'detailed' ? (
     <RadioButtonDetailed
       label={label}
       disabled={!!disabled}
       error={error ?? false}
       value={value}
+      setValue={setValue}
+      sizing={collapsed ? 'fill' : (sizing ?? 'hug')}
       collapsed={collapsed}
       description={description ?? null}
       asset={asset ?? null}
-      setValue={setValue}
-      sizing={detailedSizing}
+      variant={variant}
     />
   ) : (
     <RadioButtonDefault
@@ -42,7 +41,7 @@ export const RadioButton: FunctionComponent<DefaultRadioProps | DetailedRadioPro
       error={error ?? false}
       value={value}
       setValue={setValue}
+      variant={variant}
       sizing="hug"
     />
   )
-}

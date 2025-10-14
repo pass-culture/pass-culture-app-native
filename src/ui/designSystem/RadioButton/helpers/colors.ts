@@ -6,10 +6,9 @@
 import { DefaultTheme } from 'styled-components'
 
 import { BackgroundColorKey } from 'theme/types'
-import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
 import { SelectableVariant } from 'ui/designSystem/types'
 
-import { RadioPart, RadioState } from '../types'
+import { RadioPart, RadioStateObject } from '../types'
 
 type RadioBackgroundParams = {
   componentPart: RadioPart
@@ -66,30 +65,25 @@ export const backgroundColorForDisabled = (
     : theme.designSystem.color.background.default
 }
 
-export const backgroundColorByState: Record<
-  RadioState,
-  (theme: DefaultTheme, params: RadioBackgroundParams) => string
-> = {
-  selected: backgroundColorForSelected,
-  disabledSelected: backgroundColorForDisabledSelected,
-  disabled: backgroundColorForDisabled,
-  error: (theme: DefaultTheme): string => {
-    return theme.designSystem.color.background.default
-  },
-  default: (theme: DefaultTheme): string => {
-    return theme.designSystem.color.background.default
-  },
-}
-
 export const getRadioBorderColor = (state: RadioStateObject, theme: DefaultTheme) => {
   if (state.disabled) return theme.designSystem.color.border.disabled
   if (state.error) return theme.designSystem.color.border.error
-  return state.isSelected
+  return state.selected
     ? theme.designSystem.color.border.brandPrimary
     : theme.designSystem.color.border.default
 }
 
-type GetRadioColorsOptions = {
+export const getBackgroundColor = (state: RadioStateObject) => {
+  if (state.disabled) {
+    return state.selected ? backgroundColorForDisabledSelected : backgroundColorForDisabled
+  }
+  if (state.selected) return backgroundColorForSelected
+  if (state.error)
+    return (theme: DefaultTheme): string => theme.designSystem.color.background.default
+  return (theme: DefaultTheme): string => theme.designSystem.color.background.default
+}
+
+export type GetRadioColorsOptions = {
   componentPart?: RadioPart
   variant?: SelectableVariant
   collapsed?: boolean
@@ -105,17 +99,11 @@ export const getRadioColors = (
     variant: options?.variant ?? 'default',
     collapsed: options?.collapsed ?? false,
   }
-  let _state = 'default'
-  if (state.disabled && state.isSelected) _state = 'disabledSelected'
-  else if (state.disabled) _state = 'disabled'
-  else if (state.error) _state = 'error'
-  else if (state.isSelected) _state = 'selected'
 
-  const borderColor = getRadioBorderColor(state, theme)
-  const backgroundColor = backgroundColorByState[_state](theme, params)
-
-  return { borderColor, backgroundColor }
+  return {
+    borderColor: getRadioBorderColor(state, theme),
+    backgroundColor: getBackgroundColor(state)(theme, params),
+  }
 }
-
 export const getLabelColor = ({ disabled, theme }: { disabled: boolean; theme: DefaultTheme }) =>
   disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default

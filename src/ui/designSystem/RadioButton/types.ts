@@ -9,29 +9,32 @@ import { SelectableAssetProps, SelectableSizing } from 'ui/designSystem/types'
 
 export type RadioPart = 'container' | 'circle' | 'round'
 export type RadioState = 'selected' | 'disabledSelected' | 'disabled' | 'error' | 'default'
+export type Variant = 'default' | 'detailed'
 
-type BaseRadioProps = {
-  label: string
-  isSelected: boolean
-  disabled?: boolean
-  error?: boolean
-  value: string | null
-  setValue: (value: string) => void
-  variant: 'default' | 'detailed'
+export type RadioStateObject = {
+  selected: boolean
+  error: boolean
+  disabled: boolean
 }
 
-export type DefaultRadioProps = BaseRadioProps & {
+export type BaseRadioProps = {
+  label: string
+  disabled: boolean
+  error: boolean
+  value: string | null
+  setValue: (value: string) => void
+  variant: Variant
+  description?: string | null
+  collapsed?: React.ReactNode | null
+  asset?: SelectableAssetProps | null
+  sizing?: SelectableSizing
+}
+
+export type DefaultRadioProps = Omit<BaseRadioProps, 'description' | 'asset' | 'collapsed'> & {
   variant: 'default'
-  collapsed: never
-  description: never
-  asset: never
-  sizing: never
+  sizing: 'hug'
 }
 
 export type DetailedRadioProps = BaseRadioProps & {
   variant: 'detailed'
-  description: string | null
-  collapsed: React.ReactNode | null
-  asset: SelectableAssetProps | null
-  sizing?: SelectableSizing
 }

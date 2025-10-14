@@ -23,7 +23,6 @@ const baseProps: ComponentProps<typeof RadioButton> = {
   asset: null,
   sizing: 'hug',
   setValue: setValueMock,
-  isSelected: false,
   variant: 'default',
 }
 
@@ -34,7 +33,7 @@ describe('<RadioButton />', () => {
     expect(screen.getByRole('radio')).toBeInTheDocument()
   })
 
-  it('is linked to his label', () => {
+  it('is linked to label', () => {
     render(<RadioButton {...baseProps} />)
 
     expect(screen.getByLabelText(labelText)).toEqual(screen.getByRole('radio'))
@@ -62,7 +61,7 @@ describe('<RadioButton />', () => {
 
   describe('toggle his state', () => {
     it('select radioButton when radioButton is unselected', async () => {
-      render(<RadioButton {...baseProps} isSelected={false} />)
+      render(<RadioButton {...baseProps} />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('radio'))
@@ -72,51 +71,35 @@ describe('<RadioButton />', () => {
     })
 
     it('unselect radioButton when radioButton is selected', async () => {
-      render(<RadioButton {...baseProps} isSelected />)
+      render(<RadioButton {...baseProps} value="I agree to disagree" />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('radio'))
       })
 
-      expect(setValueMock).toHaveBeenCalledWith(labelText)
+      expect(setValueMock).toHaveBeenCalledWith('')
     })
   })
 
   describe('when pressing space', () => {
     it("doesn't change the checked state when doesn't having the focus", async () => {
-      render(<RadioButton {...baseProps} />)
+      render(<RadioButton {...baseProps} value="I agree to disagree" />)
 
       await userEvent.keyboard('[Space]')
 
       expect(setValueMock).not.toHaveBeenCalled()
     })
-
-    describe('when it has focus', () => {
-      it('select the radio when is not selected', async () => {
-        render(<RadioButton {...baseProps} isSelected={false} />)
-
-        await act(async () => {
-          await userEvent.tab()
-        })
-
-        await act(async () => {
-          await userEvent.keyboard('[Space]')
-        })
-
-        expect(setValueMock).toHaveBeenCalledWith(labelText)
-      })
-    })
   })
 
   describe('have aria-checked attribute', () => {
     it('checked when RadioButton is checked', async () => {
-      render(<RadioButton {...baseProps} isSelected />)
+      render(<RadioButton {...baseProps} value="I agree to disagree" />)
 
       expect(screen.getByRole('radio').getAttribute('aria-checked')).toBe('true')
     })
 
     it('not checked when RadioButton is unchecked', async () => {
-      render(<RadioButton {...baseProps} isSelected={false} />)
+      render(<RadioButton {...baseProps} />)
 
       expect(screen.getByRole('radio').getAttribute('aria-checked')).toBe('false')
     })

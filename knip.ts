@@ -29,6 +29,8 @@ const defaultConfig: KnipConfig = {
     'src/ui/designSystem/RadioButton/styles/RadioCircle.styles.tsx', // TODO(PC-36310): remove
     'src/ui/designSystem/RadioButton/types.ts', // TODO(PC-36310): remove
     'src/ui/designSystem/RadioButton/RadioButton.tsx', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/RadioButtonDefault.tsx', // TODO(PC-36310): remove
+    'src/ui/designSystem/RadioButton/RadioButtonDetailed.tsx', // TODO(PC-36310): remove
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {

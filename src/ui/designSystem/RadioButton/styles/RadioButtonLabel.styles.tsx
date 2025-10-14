@@ -6,7 +6,7 @@
 import styled from 'styled-components/native'
 
 import { getLabelColor } from 'ui/designSystem/RadioButton/helpers'
-import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
+import { RadioStateObject } from 'ui/designSystem/RadioButton/types'
 import { Typo } from 'ui/theme'
 
 import { getTextHoverStyle } from '../helpers/hover'

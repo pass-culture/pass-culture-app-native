@@ -6,10 +6,7 @@
 import { styled } from 'styled-components/native'
 
 import { getBorderHoverStyle, getRadioColors } from 'ui/designSystem/RadioButton/helpers'
-import { RadioStateObject } from 'ui/designSystem/RadioButton/RadioButtonDefault'
-import { getSpacing } from 'ui/theme'
-
-const DOT_SIZE = getSpacing(2.5)
+import { RadioStateObject } from 'ui/designSystem/RadioButton/types'
 
 type RadioCircleProps = {
   variant: 'default' | 'detailed'
@@ -18,39 +15,32 @@ type RadioCircleProps = {
 }
 
 export const RadioOuterCircle = styled.View<RadioCircleProps>(
-  ({ theme, variant, isHover, radioState }) => {
-    const { borderColor, backgroundColor } = getRadioColors(radioState, theme, {
+  ({ theme, variant, isHover, radioState }) => ({
+    width: theme.radioButton.size,
+    height: theme.radioButton.size,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: theme.borderRadius.radioButton,
+    borderWidth: theme.radioButton.border.size,
+    ...getBorderHoverStyle({ radioState, theme, isHover }),
+    ...getRadioColors(radioState, theme, {
       componentPart: 'circle',
       variant,
-    })
-    return {
-      width: theme.radioButton.size,
-      height: theme.radioButton.size,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: theme.borderRadius.radioButton,
-      borderWidth: theme.radioButton.border.size,
-      borderColor,
-      backgroundColor,
-      ...getBorderHoverStyle({ radioState, theme, isHover }),
-    }
-  }
+    }),
+  })
 )
 
 export const RadioInnerDot = styled.View<RadioCircleProps>(
-  ({ theme, variant, isHover, radioState }) => {
-    const { backgroundColor } = getRadioColors(radioState, theme, {
+  ({ theme, variant, isHover, radioState }) => ({
+    width: theme.designSystem.size.spacing.m,
+    height: theme.designSystem.size.spacing.m,
+    borderRadius: theme.designSystem.size.spacing.m / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...getRadioColors(radioState, theme, {
       componentPart: 'round',
       variant,
-    })
-    return {
-      width: DOT_SIZE,
-      height: DOT_SIZE,
-      borderRadius: DOT_SIZE / 2,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor,
-      ...getBorderHoverStyle({ radioState, theme, isHover }),
-    }
-  }
+    }),
+    ...getBorderHoverStyle({ radioState, theme, isHover }),
+  })
 )

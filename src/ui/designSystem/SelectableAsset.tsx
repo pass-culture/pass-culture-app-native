@@ -21,7 +21,7 @@ type StyleProps = {
   withShadow?: boolean
 }
 
-export function SelectableAsset({
+export const SelectableAsset = ({
   variant,
   disable = false,
   Icon,
@@ -29,7 +29,7 @@ export function SelectableAsset({
   size = 'small',
   text,
   tag,
-}: SelectableAssetProps) {
+}: SelectableAssetProps) => {
   const { designSystem, icons } = useTheme()
 
   const iconColor = disable
