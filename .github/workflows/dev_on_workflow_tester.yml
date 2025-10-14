@@ -6,6 +6,10 @@ on:
       CACHE_BUCKET_NAME:
         type: string
         required: true
+      HAS_BREAKING_CHANGE_LABEL:
+        type: boolean
+        required: false
+        default: false
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -267,6 +271,60 @@ jobs:
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: .
+
+  build-web:
+    if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: 'OpenID Connect Authentication'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Cache the node_modules
+        id: yarn-modules-cache
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Yarn install
+        run: yarn install
+      - name: 'Build web'
+        run: |
+          NODE_OPTIONS='--max-old-space-size=8192' yarn build
+
+  e2e-ios:
+    if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
+    needs: build-web
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
+    with:
+      upload_name_prefix: '[PR]'
+      test_tags: 'nightlyAndroid'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+
+  e2e-android:
+    if: ${{ inputs.HAS_BREAKING_CHANGE_LABEL }}
+    needs: build-web
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
+    with:
+      upload_name_prefix: '[PR]'
+      test_tags: 'nightlyIOS'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
 
   yarn_test_proxy:
     runs-on: ubuntu-24.04
