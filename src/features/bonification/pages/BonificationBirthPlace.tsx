@@ -1,9 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
+import { COUNTRY_LIST } from 'features/bonification/countries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
   legalRepresentativeActions,
@@ -21,11 +23,14 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
   birthCountry: string
+  birthCountryChild?: string
   birthCity?: string
 }
 
 export const BonificationBirthPlace = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+
+  const [countryList, setCountryList] = useState(COUNTRY_LIST)
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
@@ -34,9 +39,10 @@ export const BonificationBirthPlace = () => {
     defaultValues: {
       birthCountry: storedLegalRepresentative.birthCountry ?? '',
       birthCity: storedLegalRepresentative.birthCity ?? '',
+      birthCountryChild: '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
-    mode: 'all',
+    mode: 'onChange',
   })
 
   const disabled = !formState.isValid
@@ -48,6 +54,11 @@ export const BonificationBirthPlace = () => {
     setBirthCountry(birthCountry)
     if (birthCity) setBirthCity(birthCity)
     navigate('BonificationRecap')
+  }
+
+  const handleUserInputChange = (input: string) => {
+    console.log(input)
+    setCountryList(COUNTRY_LIST.filter((country) => country.name_fr.startsWith(input)))
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
@@ -64,19 +75,60 @@ export const BonificationBirthPlace = () => {
             <Controller
               control={control}
               name="birthCountry"
-              render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
-                  label="Pays de naissance"
-                  value={value}
-                  autoFocus
-                  onChangeText={onChange}
-                  requiredIndicator="explicit"
-                  accessibilityHint={error?.message}
-                  testID="Entrée pour le pays de naissance"
-                  textContentType="countryName"
-                  autoComplete="country"
-                  errorMessage={error?.message}
-                />
+              render={({
+                field: { onChange: onChangeParent, value: valueParent },
+                fieldState: { error },
+              }) => (
+                <React.Fragment>
+                  <Controller
+                    control={control}
+                    name="birthCountryChild"
+                    render={({
+                      field: { value, onChange: onChangeChild },
+                      fieldState: { error },
+                    }) => (
+                      <React.Fragment>
+                        <InputText
+                          label="Pays de naissance"
+                          value={value}
+                          autoFocus
+                          onChangeText={(text) => {
+                            handleUserInputChange(text)
+                            onChangeChild(text)
+                          }}
+                          requiredIndicator="explicit"
+                          accessibilityHint={error?.message}
+                          testID="Entrée pour le pays de naissance"
+                          textContentType="countryName"
+                          autoComplete="country"
+                          errorMessage={error?.message}
+                        />
+                        {countryList.map((country) => {
+                          return (
+                            <TouchableOpacity
+                              key={country.id}
+                              onPress={() => {
+                                onChangeParent(country.name_fr)
+                                onChangeChild(country.name_fr)
+                              }}>
+                              <View style={{ flexDirection: 'row' }}>
+                                {country.iso_4217 ? (
+                                  <Image
+                                    source={{
+                                      uri: `https://flagcdn.com/w320/${country.tld.slice(1)}.png`,
+                                    }}
+                                    style={{ width: 32 }}
+                                  />
+                                ) : null}
+                                <Text>{country.name_fr}</Text>
+                              </View>
+                            </TouchableOpacity>
+                          )
+                        })}
+                      </React.Fragment>
+                    )}
+                  />
+                </React.Fragment>
               )}
             />
             <Controller
