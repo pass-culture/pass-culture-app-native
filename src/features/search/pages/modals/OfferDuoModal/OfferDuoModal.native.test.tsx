@@ -40,6 +40,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const LIMIT_DUO_OFFER_SEARCH_SWITCH = /Uniquement les offres duo - Interrupteur à bascule/
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -89,7 +91,7 @@ describe('<OfferDuoModal/>', () => {
     it('should toggle offerIsDuo', async () => {
       renderOfferDuoModal()
 
-      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
+      const toggle = screen.getByTestId(LIMIT_DUO_OFFER_SEARCH_SWITCH)
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
@@ -109,7 +111,7 @@ describe('<OfferDuoModal/>', () => {
     it('should disable duo offer when click on reset button', async () => {
       renderOfferDuoModal()
 
-      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
+      const toggle = screen.getByTestId(LIMIT_DUO_OFFER_SEARCH_SWITCH)
 
       await user.press(toggle)
 
@@ -183,7 +185,7 @@ describe('<OfferDuoModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
+      const toggle = screen.getByTestId(LIMIT_DUO_OFFER_SEARCH_SWITCH)
 
       await user.press(toggle)
 
@@ -206,7 +208,7 @@ describe('<OfferDuoModal/>', () => {
   describe('with "Rechercher" button', () => {
     it('should set search state view to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
-      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
+      const toggle = screen.getByTestId(LIMIT_DUO_OFFER_SEARCH_SWITCH)
 
       await user.press(toggle)
 

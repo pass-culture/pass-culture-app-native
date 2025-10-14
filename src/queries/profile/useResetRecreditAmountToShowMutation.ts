@@ -7,12 +7,12 @@ type ResetRecreditAmountToShowMutationOptions = {
   onError?: (error: unknown) => void
 }
 
-export function useResetRecreditAmountToShowMutation({
+export const useResetRecreditAmountToShowMutation = ({
   onSuccess,
   onError,
-}: ResetRecreditAmountToShowMutationOptions) {
-  return useMutation(() => api.postNativeV1ResetRecreditAmountToShow(), {
+}: ResetRecreditAmountToShowMutationOptions) =>
+  useMutation({
+    mutationFn: () => api.postNativeV1ResetRecreditAmountToShow(),
     onSuccess,
     onError,
   })
-}

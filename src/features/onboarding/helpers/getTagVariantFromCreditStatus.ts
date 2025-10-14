@@ -1,5 +1,5 @@
 import { CreditStatus } from 'features/onboarding/enums'
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 const creditStatusToVariant: Record<CreditStatus, TagVariant> = {
   [CreditStatus.GONE]: TagVariant.DEFAULT,

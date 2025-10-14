@@ -1968,17 +1968,6 @@ export interface FavoriteResponse {
 }
 /**
  * @export
- * @interface FavoritesCountResponse
- */
-export interface FavoritesCountResponse {
-  /**
-   * @type {number}
-   * @memberof FavoritesCountResponse
-   */
-  count: number
-}
-/**
- * @export
  * @interface GTL
  */
 export interface GTL {
@@ -2864,6 +2853,11 @@ export interface OfferResponse {
    * @type {boolean}
    * @memberof OfferResponse
    */
+  isEvent: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
   isExpired: boolean
   /**
    * @type {boolean}
@@ -3021,6 +3015,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   isEducational: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isEvent: boolean
   /**
    * @type {boolean}
    * @memberof OfferResponseV2
@@ -3256,15 +3255,25 @@ export interface OfferVenueResponse {
  */
 export interface OfferVideo {
   /**
+   * @type {number}
+   * @memberof OfferVideo
+   */
+  durationSeconds?: number | null
+  /**
    * @type {string}
    * @memberof OfferVideo
    */
-  id?: string | null
+  id: string
   /**
    * @type {string}
    * @memberof OfferVideo
    */
   thumbUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVideo
+   */
+  title?: string | null
 }
 /**
  * @export
@@ -3297,17 +3306,6 @@ export interface OffersStocksRequest {
    * @memberof OffersStocksRequest
    */
   offer_ids: Array<number>
-}
-/**
- * @export
- * @interface OffersStocksResponse
- */
-export interface OffersStocksResponse {
-  /**
-   * @type {Array<OfferPreviewResponse>}
-   * @memberof OffersStocksResponse
-   */
-  offers: Array<OfferPreviewResponse>
 }
 /**
  * @export
@@ -5046,7 +5044,7 @@ export interface VenueResponse {
    * @type {VenueTypeCodeKey}
    * @memberof VenueResponse
    */
-  venueTypeCode?: VenueTypeCodeKey | null
+  venueTypeCode: VenueTypeCodeKey
   /**
    * @type {string}
    * @memberof VenueResponse
@@ -5454,24 +5452,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV1MeFavorites(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/me/favorites`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_favorites_count <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1MeFavoritesCount(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/me/favorites/count`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6308,36 +6288,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'GoogleSigninRequest' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary get_offers_showtimes <POST>
-     * @deprecated
-     * @param {OffersStocksRequest} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1OffersStocks(
-      body?: OffersStocksRequest,
-      options: any = {}
-    ): Promise<FetchArgs> {
-      let pathname = `/native/v1/offers/stocks`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'OffersStocksRequest' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      const needsSerialization = (<any>"GoogleSigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -7021,13 +6973,8 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @throws {RequiredError}
      */
     async getNativeV1MeFavorites(options?: any): Promise<PaginatedFavoritesResponse> {
-      const localVarFetchArgs =
-        await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavorites(options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavorites(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7095,18 +7042,9 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1OfferofferIdChronicles(
-      offer_id: number,
-      options?: any
-    ): Promise<OfferChronicles> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).getNativeV1OfferofferIdChronicles(offer_id, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+    async getNativeV1OfferofferIdChronicles(offer_id: number, options?: any): Promise<OfferChronicles> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OfferofferIdChronicles(offer_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7480,40 +7418,9 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postNativeV1OauthGoogleAuthorize(
-      body?: GoogleSigninRequest,
-      options?: any
-    ): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).postNativeV1OauthGoogleAuthorize(body, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     *
-     * @summary get_offers_showtimes <POST>
-     * @deprecated
-     * @param {OffersStocksRequest} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postNativeV1OffersStocks(
-      body?: OffersStocksRequest,
-      options?: any
-    ): Promise<OffersStocksResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(
-        configuration
-      ).postNativeV1OffersStocks(body, options)
-      const response = await safeFetch(
-        configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+    async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options?: any): Promise<SigninResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthGoogleAuthorize(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -8407,19 +8314,6 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1OauthGoogleAuthorize(body, options)
-  }
-  /**
-   *
-   * @summary get_offers_showtimes <POST>
-   * @deprecated
-   * @param {OffersStocksRequest} [body]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public async postNativeV1OffersStocks(body?: OffersStocksRequest, options?: any) {
-    const configuration = this.getConfiguration()
-    return DefaultApiFp(this, configuration).postNativeV1OffersStocks(body, options)
   }
   /**
     * 

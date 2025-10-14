@@ -217,6 +217,7 @@ describe.skip('<VideoCarouselModule />', () => {
         moduleId: videoCarouselModuleFixture.items[0].id,
         from: 'video_carousel_block',
         homeEntryId: undefined,
+        isHeadline: false,
       })
     })
 

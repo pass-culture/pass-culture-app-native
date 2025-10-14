@@ -1,7 +1,7 @@
 import React from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 
 interface Props<TFieldValues extends FieldValues, TName> {
   name: TName

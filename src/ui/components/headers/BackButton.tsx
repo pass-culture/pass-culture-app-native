@@ -26,10 +26,12 @@ export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
   )
 }
 
+export const BACK_BUTTON_MAX_SIZE = getSpacing(10)
+
 const StyledTouchable = styledButton(Touchable)({
   flexGrow: 1,
-  maxWidth: getSpacing(10),
-  height: getSpacing(10),
+  maxWidth: BACK_BUTTON_MAX_SIZE,
+  height: BACK_BUTTON_MAX_SIZE,
   justifyContent: 'center',
   alignItems: 'center',
 })

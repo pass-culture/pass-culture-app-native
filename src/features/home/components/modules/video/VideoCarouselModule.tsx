@@ -22,7 +22,7 @@ import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/components/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
 const CAROUSEL_HEIGHT = getSpacing(35)
@@ -174,6 +174,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (
           <React.Fragment>
+            {/* @ts-expect-error - type incompatibility with React 19 */}
             <Carousel
               ref={carouselRef}
               mode="parallax"
@@ -226,14 +227,8 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
   backgroundColor:
     theme.designSystem.color.background[colorMapping[color].fill ?? 'default'] ||
     colorMapping[color].fill,
-  borderRadius: getSpacing(3),
   marginHorizontal: theme.designSystem.size.spacing.xs,
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(3) },
-    shadowRadius: getSpacing(12),
-    shadowColor: theme.designSystem.color.background.lockedInverted,
-    shadowOpacity: 0.15,
-  }),
+  borderRadius: theme.designSystem.size.borderRadius.l,
 }))
 
 const SingleItemContainer = styled.View(({ theme }) => ({

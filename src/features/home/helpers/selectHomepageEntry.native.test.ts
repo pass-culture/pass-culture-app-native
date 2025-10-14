@@ -106,7 +106,7 @@ mockUseBookings.mockReturnValue({
   data: bookingsSnap,
   isLoading: false,
   isFetching: false,
-} as unknown as UseQueryResult<BookingsResponse, unknown>)
+} as unknown as UseQueryResult<BookingsResponse, Error>)
 
 jest.mock('shared/user/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>

@@ -413,19 +413,9 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Uniquement les offres duo - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -443,7 +433,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -462,7 +452,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         },
                       ]
                     }
-                    testID="Interrupteur limitDuoOfferSearch"
+                    testID="Uniquement les offres duo - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -487,19 +477,12 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
-                              },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
                               "width": 28,
                             },
                             {
@@ -688,7 +671,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     },
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#eb0055",
+                      "backgroundColor": "#6123df",
                       "borderBottomLeftRadius": 24,
                       "borderBottomRightRadius": 24,
                       "borderTopLeftRadius": 24,

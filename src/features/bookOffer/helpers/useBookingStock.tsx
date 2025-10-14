@@ -1,8 +1,8 @@
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 
 export const useBookingStock = () => {
   const { bookingState } = useBookingContext()
-  const offer = useBookingOffer()
+  const offer = useBookingOfferQuery()
   return offer ? offer.stocks.find(({ id }) => id === bookingState.stockId) : undefined
 }

@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -68,7 +68,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should match snapshot', async () => {
-    renderReinitializePassword()
+    await renderReinitializePassword()
 
     await screen.findByText('Nouveau mot de passe')
 
@@ -76,10 +76,10 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should enable the submit button when inputs are valid', async () => {
-    renderReinitializePassword()
+    await renderReinitializePassword()
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -93,9 +93,9 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should display error when the passwords dont match', async () => {
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, '123456')
     })
@@ -103,7 +103,9 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, '123456--')
     })
 
-    const notMatchingErrorText = screen.queryByText('Les mots de passe ne concordent pas')
+    const notMatchingErrorText = screen.queryByText('Les mots de passe ne concordent pas', {
+      hidden: true,
+    })
 
     expect(notMatchingErrorText).toBeOnTheScreen()
   })
@@ -114,9 +116,9 @@ describe('ReinitializePassword Page', () => {
       refreshToken: 'refreshToken',
     })
 
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -146,9 +148,9 @@ describe('ReinitializePassword Page', () => {
       refreshToken: 'refreshToken',
     })
 
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
 
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
@@ -173,9 +175,9 @@ describe('ReinitializePassword Page', () => {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -192,9 +194,9 @@ describe('ReinitializePassword Page', () => {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -211,14 +213,14 @@ describe('ReinitializePassword Page', () => {
 
   it('should log analytics with from params value when password is successfully reset', async () => {
     ROUTE_PARAMS.from = 'accountsecurity'
-    renderReinitializePassword()
+    await renderReinitializePassword()
     mockServer.postApi('/v1/reset_password', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -238,9 +240,9 @@ describe('ReinitializePassword Page', () => {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -257,9 +259,9 @@ describe('ReinitializePassword Page', () => {
 
   it('should show error snack bar when reinitialize password request fails', async () => {
     mockServer.postApi('/v1/reset_password', { responseOptions: { statusCode: 400 } })
-    renderReinitializePassword()
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await renderReinitializePassword()
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
@@ -277,7 +279,7 @@ describe('ReinitializePassword Page', () => {
   it('should redirect to ResetPasswordExpiredLink when expiration_timestamp is expired', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(datesLib, 'isTimestampExpired').mockImplementation(() => true)
-    renderReinitializePassword()
+    await renderReinitializePassword()
 
     await waitFor(() =>
       expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
@@ -288,5 +290,5 @@ describe('ReinitializePassword Page', () => {
 })
 
 function renderReinitializePassword() {
-  return render(reactQueryProviderHOC(<ReinitializePassword />))
+  return renderAsync(reactQueryProviderHOC(<ReinitializePassword />))
 }

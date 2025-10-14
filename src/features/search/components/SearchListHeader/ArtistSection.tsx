@@ -12,7 +12,7 @@ const TITLE = 'Les artistes'
 
 type ArtistSectionProps = {
   artists: Artist[]
-  onItemPress: (artistName: string) => void
+  onItemPress: (artistId: string, artistName: string) => void
   style?: StyleProp<ViewStyle>
 }
 

@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 export const ANIMATION_DELAY = 700 // Time for the skeleton animation to finish
 
 const useShowSkeletonFromFetchingCount = (fetchingCount: number) => {
-  const timer = useRef<NodeJS.Timeout>()
+  const timer = useRef<NodeJS.Timeout>(null)
   const [showSkeleton, setShowSkeleton] = useState(true)
 
   useEffect(() => {
@@ -23,9 +23,13 @@ const useShowSkeletonFromFetchingCount = (fetchingCount: number) => {
   return showSkeleton
 }
 
-export const useShowSkeleton = function () {
-  const isFetchingHomepageModules = useIsFetching([QueryKeys.HOMEPAGE_MODULES])
-  const isFetchingHomeModules = useIsFetching([QueryKeys.HOME_MODULE])
+export const useShowSkeleton = () => {
+  const isFetchingHomepageModules = useIsFetching({
+    queryKey: [QueryKeys.HOMEPAGE_MODULES],
+  })
+  const isFetchingHomeModules = useIsFetching({
+    queryKey: [QueryKeys.HOME_MODULE],
+  })
   const fetchingCount = isFetchingHomepageModules + isFetchingHomeModules
 
   return useShowSkeletonFromFetchingCount(fetchingCount)

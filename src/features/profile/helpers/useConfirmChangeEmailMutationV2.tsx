@@ -9,9 +9,10 @@ export const useConfirmChangeEmailMutationV2 = ({
 }: {
   onSuccess: (response: EmailChangeConfirmationResponse) => void
   onError: (error: unknown) => void
-}) => {
-  return useMutation(
-    (body: ChangeBeneficiaryEmailBody) => api.postNativeV2ProfileEmailUpdateConfirm(body),
-    { onSuccess, onError }
-  )
-}
+}) =>
+  useMutation({
+    mutationFn: (body: ChangeBeneficiaryEmailBody) =>
+      api.postNativeV2ProfileEmailUpdateConfirm(body),
+    onSuccess,
+    onError,
+  })

@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { PastilleType } from 'features/venue/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -41,7 +42,13 @@ export const InfoTab = <TabKeyType extends string>({
   }, [Icon, isSelected])
 
   return (
-    <StyledTouchableTab id={tab} onPress={onPress} selected={isSelected} {...hoverProps}>
+    <StyledTouchableTab
+      accessibilityLabel={tab}
+      accessibilityRole={AccessibilityRole.TAB}
+      id={tab}
+      onPress={onPress}
+      selected={isSelected}
+      {...hoverProps}>
       <TabTitleContainer gap={2}>
         {StyledIcon ? <StyledIcon testID="tabIcon" /> : null}
         <TabTitle isHover={isHover} isSelected={isSelected}>
@@ -86,13 +93,13 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   height: theme.designSystem.size.spacing.xs,
   width: '100%',
   backgroundColor: isSelected ? theme.designSystem.color.background.brandPrimary : 'transparent',
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
 const PastilleContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: getSpacing(3.25),
   paddingHorizontal: theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.l,
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({

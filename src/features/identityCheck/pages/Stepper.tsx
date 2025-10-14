@@ -155,7 +155,7 @@ const Container = styled.ScrollView.attrs(({ theme }) => ({
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
-    flex: 1,
+    flexGrow: 1,
   },
 }))``
 

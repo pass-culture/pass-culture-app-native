@@ -38,7 +38,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -54,6 +54,7 @@ type Props = {
   chronicles?: ChronicleCardData[]
   userId?: number
   isVideoSectionEnabled?: boolean
+  hasVideoCookiesConsent?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -68,6 +69,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   chronicles,
   userId,
   isVideoSectionEnabled,
+  hasVideoCookiesConsent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -122,7 +124,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   const handleArtistLinkPress = () => {
     if (!artists[0]) return
     const mainArtistName = artists[0].name
-    analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName, from: 'offer' })
+    const mainArtistId = artists[0].id
+    analytics.logConsultArtist({
+      offerId: offer.id.toString(),
+      artistId: mainArtistId,
+      artistName: mainArtistName,
+      from: 'offer',
+    })
     navigate('Artist', { id: artists[0].id })
   }
 
@@ -146,7 +154,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       <MarginContainer gap={6}>
         <GroupWithoutGap>
           <ViewGap gap={4}>
-            <InformationTags tags={tags} />
+            <GroupTags tags={tags} />
             <ViewGap gap={2}>
               <OfferTitle offerName={offer.name} />
               {artists.length > 0 ? (
@@ -197,10 +205,12 @@ export const OfferBody: FunctionComponent<Props> = ({
           videoThumbnail={
             <VideoThumbnailImage url={offer.video.thumbUrl ?? ''} resizeMode="cover" />
           }
-          title="Vidéo"
+          title={offer.video?.title ?? offer.name}
           offerId={offer.id}
           offerSubcategory={offer.subcategoryId}
           userId={userId}
+          duration={offer.video?.durationSeconds}
+          hasVideoCookiesConsent={hasVideoCookiesConsent}
         />
       ) : null}
 

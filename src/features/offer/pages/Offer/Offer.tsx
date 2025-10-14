@@ -1,9 +1,12 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
+import { InteractionManager } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
+import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
@@ -13,6 +16,7 @@ import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetc
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -35,9 +39,10 @@ export function Offer() {
     RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+  const shouldUseVideoCookies = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT)
 
   const { isLoggedIn, user } = useAuthContext()
-  const { data: offer, isInitialLoading: isLoading } = useOfferQuery({
+  const { data: offer, isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
       ...data,
@@ -47,6 +52,12 @@ export function Offer() {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
+  const { cookiesConsent } = useCookies()
+
+  const hasVideoCookiesConsent = shouldUseVideoCookies
+    ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
+      cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
+    : true
 
   const {
     visible: reactionModalVisible,
@@ -58,10 +69,14 @@ export function Offer() {
     hideModal: hideChroniclesWritersModal,
     showModal: showChroniclesWritersModal,
   } = useModal(false)
-  const { data: booking } = useEndedBookingFromOfferIdQuery(offer?.id ?? -1, {
-    enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
-  })
+  const { data: booking } = useEndedBookingFromOfferIdQuery(
+    offer?.id ?? -1,
+    isLoggedIn && isReactionEnabled && !!offer?.id
+  )
   const { mutate: saveReaction } = useReactionMutation()
+  const categoryId = offer?.subcategoryId
+    ? subcategoriesMapping[offer?.subcategoryId]?.categoryId
+    : ''
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: { offerId: number; reactionType: ReactionTypeEnum }) => {
@@ -72,8 +87,24 @@ export function Offer() {
   )
 
   const handleOnShowRecoButtonPress = () => {
+    analytics.logClickAllClubRecos({
+      offerId: offerId.toString(),
+      from: 'offer',
+      categoryName: categoryId,
+    })
     hideChroniclesWritersModal()
-    navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+    InteractionManager.runAfterInteractions(() => {
+      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+    })
+  }
+
+  const handleOnShowChroniclesWritersModal = () => {
+    analytics.logClickWhatsClub({
+      offerId: offerId.toString(),
+      from: 'offer',
+      categoryName: categoryId,
+    })
+    showChroniclesWritersModal()
   }
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
@@ -126,7 +157,8 @@ export function Offer() {
         defaultReaction={booking?.userReaction}
         onReactionButtonPress={booking?.canReact ? showReactionModal : undefined}
         userId={user?.id}
-        onShowChroniclesWritersModal={showChroniclesWritersModal}
+        onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
+        hasVideoCookiesConsent={hasVideoCookiesConsent}
       />
     </Page>
   )

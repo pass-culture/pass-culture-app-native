@@ -1,6 +1,6 @@
 import { MutableRefObject, Dispatch, SetStateAction } from 'react'
 
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState } from 'libs/location/location'
 import { RequestGeolocPermissionParams, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 

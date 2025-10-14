@@ -57,7 +57,7 @@ describe('GtlPlaylist', () => {
 
       const item = await screen.findByText('Mon abonnement bibliothèque')
 
-      await act(async () => user.press(item))
+      await user.press(item)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
         1,
@@ -67,6 +67,7 @@ describe('GtlPlaylist', () => {
           moduleId: '2xUlLBRfxdk6jeYyJszunX',
           offerId: '12',
           venueId: 5543,
+          isHeadline: false,
         })
       )
     })
@@ -127,7 +128,7 @@ describe('GtlPlaylist', () => {
 
       const item = await screen.findByText('Mon abonnement bibliothèque')
 
-      await act(async () => user.press(item))
+      await user.press(item)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
         1,

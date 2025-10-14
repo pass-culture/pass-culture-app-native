@@ -1,19 +1,15 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
-import { getSpacing } from 'ui/theme/spacing'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 
 interface Props<TFieldValues extends FieldValues, TName>
-  extends Omit<React.ComponentProps<typeof TextInput>, 'value' | 'onChangeText'> {
+  extends Omit<React.ComponentProps<typeof InputText>, 'value' | 'onChangeText'> {
   name: TName
   control: Control<TFieldValues>
   label: string
-  placeholder?: string
   rightLabel?: string
   isDisabled?: boolean
-  accessibilityId: string
 }
 
 export const PriceInputController = <
@@ -23,10 +19,9 @@ export const PriceInputController = <
   name,
   control,
   label,
-  placeholder,
-  rightLabel,
+  description,
   isDisabled,
-  accessibilityId,
+  testID,
   ...textInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   return (
@@ -34,30 +29,22 @@ export const PriceInputController = <
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-        <React.Fragment>
-          <TextInput
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-            label={label}
-            placeholder={placeholder}
-            rightLabel={rightLabel}
-            disabled={isDisabled}
-            isError={!!error && value.length > 0}
-            accessibilityDescribedBy={accessibilityId}
-            keyboardType="numeric"
-            autoCapitalize="none"
-            autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
-            textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
-            {...textInputProps}
-          />
-          <InputError
-            visible={!!error}
-            messageId={error?.message}
-            relatedInputId={accessibilityId}
-            numberOfSpacesTop={getSpacing(0.5)}
-          />
-        </React.Fragment>
+        <InputText
+          value={value}
+          onChangeText={onChange}
+          onBlur={onBlur}
+          label={label}
+          description={description}
+          disabled={isDisabled}
+          accessibilityHint={error?.message}
+          keyboardType="numeric"
+          autoCapitalize="none"
+          autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
+          textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
+          errorMessage={error?.message}
+          testID={testID ?? 'Entrée pour un prix'}
+          {...textInputProps}
+        />
       )}
     />
   )

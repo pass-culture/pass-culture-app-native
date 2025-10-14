@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const TicketCodeTitle = ({
@@ -33,5 +33,5 @@ const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
   borderColor: theme.designSystem.color.border.brandPrimary,
   borderWidth: '1px',
   borderStyle: 'dashed',
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
 }))

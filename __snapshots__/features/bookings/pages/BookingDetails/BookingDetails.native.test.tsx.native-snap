@@ -225,13 +225,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                     "alignItems": "center",
                     "flexDirection": "column",
                     "justifyContent": "center",
-                    "shadowColor": "#161617",
-                    "shadowOffset": {
-                      "height": 2,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.1,
-                    "shadowRadius": 3,
                   }
                 }
                 testID="ticket-without-external-bookings-information"
@@ -345,7 +338,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                             accessibilityRole="header"
                             style={
                               {
-                                "color": "#eb0055",
+                                "color": "#6123df",
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 21,
                                 "lineHeight": 33.6,
@@ -1025,7 +1018,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#6123df",
                 "borderBottomLeftRadius": 24,
                 "borderBottomRightRadius": 24,
                 "borderTopLeftRadius": 24,
@@ -1196,10 +1189,10 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
         onStartShouldSetResponder={[Function]}
         style={
           {
-            "borderBottomLeftRadius": 40,
-            "borderBottomRightRadius": 40,
-            "borderTopLeftRadius": 40,
-            "borderTopRightRadius": 40,
+            "borderBottomLeftRadius": 999,
+            "borderBottomRightRadius": 999,
+            "borderTopLeftRadius": 999,
+            "borderTopRightRadius": 999,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1213,12 +1206,12 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderBottomLeftRadius": 40,
-              "borderBottomRightRadius": 40,
+              "borderBottomLeftRadius": 999,
+              "borderBottomRightRadius": 999,
               "borderColor": "rgba(255, 255, 255, 1)",
               "borderStyle": "solid",
-              "borderTopLeftRadius": 40,
-              "borderTopRightRadius": 40,
+              "borderTopLeftRadius": 999,
+              "borderTopRightRadius": 999,
               "borderWidth": 1,
               "height": 40,
               "justifyContent": "center",
@@ -1293,6 +1286,7 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
       >
         <Text
           accessibilityHidden={true}
+          accessibilityRole="header"
           collapsable={false}
           numberOfLines={2}
           style={

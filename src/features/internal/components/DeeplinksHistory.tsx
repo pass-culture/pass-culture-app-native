@@ -4,9 +4,9 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { getSpacing, padding, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {

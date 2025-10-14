@@ -7,6 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -93,7 +94,7 @@ const AROUND_ME_POSITION = {
 }
 
 const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
@@ -104,6 +105,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
+fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -328,6 +331,7 @@ describe('<OfferPlace />', () => {
       from: 'offer',
       fromMultivenueOfferId: '146112',
       offerId: '2',
+      isHeadline: false,
     })
   })
 

@@ -308,7 +308,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#24242429"
+        backdropColor="#23232329"
         paddingBottom={8}
         style={
           {
@@ -367,6 +367,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   gap={2}
                   style={
                     {
+                      "alignItems": "center",
                       "gap": 8,
                       "marginBottom": 16,
                       "marginTop": 24,
@@ -410,7 +411,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                           },
                           {
                             "alignItems": "center",
-                            "backgroundColor": "#eb0055",
+                            "backgroundColor": "#6123df",
                             "borderBottomLeftRadius": 24,
                             "borderBottomRightRadius": 24,
                             "borderTopLeftRadius": 24,

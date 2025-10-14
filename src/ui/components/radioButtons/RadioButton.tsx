@@ -156,16 +156,18 @@ const IconContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-end',
   width: theme.icons.sizes.smaller,
   height: theme.icons.sizes.smaller,
-  marginLeft: theme.isDesktopViewport ? getSpacing(2) : undefined,
+  marginLeft: theme.isDesktopViewport ? theme.designSystem.size.spacing.s : undefined,
 }))
 
 const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
+  color2: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.smaller,
 }))``
 
 const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
+  color2: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.smaller,
 }))``
 
@@ -173,10 +175,10 @@ const LabelWrapper = styled.View({
   flex: 1,
 })
 
-const IconWrapper = styled.View({
+const IconWrapper = styled.View(({ theme }) => ({
   flexShrink: 0,
-  marginRight: getSpacing(2),
-})
+  marginRight: theme.designSystem.size.spacing.s,
+}))
 
 const ContainerWithComplement = styled.View({
   flexDirection: 'row',

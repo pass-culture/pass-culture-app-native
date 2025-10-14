@@ -2,7 +2,6 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
@@ -21,7 +20,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
@@ -73,7 +72,6 @@ const OnlineProfile: React.FC = () => {
   const signOut = useLogoutRoutine()
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const locationActivationErrorId = uuidv4()
   const userAge = getAge(user?.birthDate)
   const {
     data: { displayInAppFeedback },
@@ -196,7 +194,7 @@ const OnlineProfile: React.FC = () => {
                       iconSize={SECTION_ROW_ICON_SIZE}
                       title="Activer ma géolocalisation"
                       active={isGeolocSwitchActive}
-                      accessibilityDescribedBy={locationActivationErrorId}
+                      accessibilityHint={geolocPositionError?.message}
                       toggle={() => {
                         switchGeolocation()
                         debouncedLogLocationToggle(!isGeolocSwitchActive)
@@ -205,9 +203,8 @@ const OnlineProfile: React.FC = () => {
                     />
                     <InputError
                       visible={!!geolocPositionError}
-                      messageId={geolocPositionError?.message}
+                      errorMessage={geolocPositionError?.message}
                       numberOfSpacesTop={1}
-                      relatedInputId={locationActivationErrorId}
                     />
                   </LiWithMarginVertical>
                 </VerticalUl>

@@ -8,7 +8,7 @@ import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
@@ -48,7 +48,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     await screen.findByText('Confirme ton adresse e-mail')
 
     const consultHelpSupportButton = screen.getByText('Consulter notre centre d’aide')
-    await act(async () => user.press(consultHelpSupportButton))
+    await user.press(consultHelpSupportButton)
 
     expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toHaveBeenCalledTimes(1)
     expect(mockedOpenUrl).toHaveBeenCalledWith(
@@ -63,9 +63,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     await screen.findByText('Confirme ton adresse e-mail')
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
-    await act(async () => {
-      user.press(checkEmailsButton)
-    })
+    await user.press(checkEmailsButton)
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })

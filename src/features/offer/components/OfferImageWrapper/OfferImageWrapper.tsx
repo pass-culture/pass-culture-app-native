@@ -7,7 +7,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { OfferImageContainerDimensions } from 'features/offer/types'
-import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   children: React.ReactNode
@@ -16,7 +15,6 @@ type Props = {
   shouldDisplayOfferPreview?: boolean
   testID?: string
   isInCarousel?: boolean
-  withDropShadow?: boolean
   style?: StyleProp<ViewStyle>
 }
 
@@ -27,14 +25,10 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   shouldDisplayOfferPreview,
   testID = 'imageContainer',
   isInCarousel,
-  withDropShadow,
   style,
 }) => {
   return (
-    <Container
-      style={[style, imageDimensions.imageStyle]}
-      withDropShadow={withDropShadow}
-      testID={testID}>
+    <Container style={[style, imageDimensions.imageStyle]} testID={testID}>
       {imageUrl && shouldDisplayOfferPreview ? (
         <React.Fragment>
           <StyledLinearGradient testID="imageGradient" isInCarousel={isInCarousel} />
@@ -47,23 +41,10 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(View)<{
-  withDropShadow?: boolean
-}>(({ withDropShadow, theme }) => ({
+const Container = styled(View)({
   backgroundColor: 'transparent',
   bottom: 0,
-  ...(withDropShadow
-    ? getShadow({
-        shadowOffset: {
-          width: 0,
-          height: getSpacing(2),
-        },
-        shadowRadius: getSpacing(3),
-        shadowColor: theme.colors.black,
-        shadowOpacity: 0.2,
-      })
-    : {}),
-}))
+})
 
 const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   useAngle: true,
@@ -78,5 +59,5 @@ const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>
   height: '100%',
   width: '100%',
   zIndex: 2,
-  ...(isInCarousel ? {} : { borderRadius: theme.borderRadius.radius }),
+  ...(isInCarousel ? {} : { borderRadius: theme.designSystem.size.borderRadius.m }),
 }))

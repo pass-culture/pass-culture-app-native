@@ -19,19 +19,19 @@ describe('<FilterSwitch />', () => {
   it('should call toggle when press on switch', async () => {
     render(<FilterSwitch active={active} toggle={toggle} />)
 
-    const Switch = screen.getByTestId('Interrupteur')
+    const Switch = screen.getByRole('switch')
 
     await user.press(Switch)
 
     expect(toggle).toHaveBeenCalledTimes(1)
   })
 
-  it('should not call toggle when switch is disabled and press on', () => {
+  it('should not call toggle when switch is disabled and press on', async () => {
     render(<FilterSwitch active={active} toggle={toggle} disabled />)
 
-    const Switch = screen.getByTestId('Interrupteur')
+    const Switch = screen.getByRole('switch')
 
-    user.press(Switch)
+    await user.press(Switch)
 
     expect(toggle).not.toHaveBeenCalledTimes(1)
   })

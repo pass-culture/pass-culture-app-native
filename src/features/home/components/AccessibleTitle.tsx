@@ -1,57 +1,43 @@
 import React, { ComponentProps, ComponentType } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 
-type Props = {
+export type AccessibleTitleProps = {
   title: string
-  testID?: string
   TitleComponent?: ComponentType<ComponentProps<typeof Typo.Title3>>
   withMargin?: boolean
 }
 
-export const separateTitleAndEmojis = (title: string) => {
-  const titleWithoutEndSpace = title.trimEnd()
-  const emojiRegex = /(\p{Emoji})(?=\s*$)/gu
-  const titleText = titleWithoutEndSpace.replace(emojiRegex, '')
-  const titleEmoji = titleWithoutEndSpace.replace(titleText, '')
-  return { titleText, titleEmoji }
-}
-
-export const AccessibleTitle: React.FC<Props> = ({
+export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   title,
-  testID,
   TitleComponent = Typo.Title3,
   withMargin = true,
 }) => {
-  const { width: windowWidth } = useWindowDimensions()
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
-
   const StyledTitleComponent = styled(TitleComponent || Typo.Title3)({})
-
-  return Platform.OS === 'web' ? (
-    <TitleWrapper testID={testID} windowWidth={windowWidth} withMargin={withMargin}>
-      <StyledTitleComponent numberOfLines={2}>
-        {titleText}
-        <span aria-hidden>{titleEmoji}</span>
-      </StyledTitleComponent>
-    </TitleWrapper>
-  ) : (
-    <TitleWrapper testID={testID} withMargin={withMargin}>
-      <StyledTitleComponent accessibilityHidden numberOfLines={2} accessibilityLabel={titleText}>
-        {titleText}
-        {titleEmoji}
+  return (
+    <TitleWrapper testID="playlistTitle" withMargin={withMargin}>
+      <StyledTitleComponent numberOfLines={2} accessibilityLabel={titleText}>
+        <StyledTitleComponent {...hiddenFromScreenReader()}>
+          {titleText}
+          {titleEmoji ? (
+            <React.Fragment>
+              {SPACE}
+              {titleEmoji}
+            </React.Fragment>
+          ) : null}
+        </StyledTitleComponent>
       </StyledTitleComponent>
     </TitleWrapper>
   )
 }
 
-const TitleWrapper = styled.View<{ windowWidth?: number; withMargin?: boolean }>(
-  ({ windowWidth, withMargin, theme }) => {
-    return {
-      marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
-      width: windowWidth,
-    }
+const TitleWrapper = styled.View<{ withMargin?: boolean }>(({ withMargin, theme }) => {
+  return {
+    marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
   }
-)
+})

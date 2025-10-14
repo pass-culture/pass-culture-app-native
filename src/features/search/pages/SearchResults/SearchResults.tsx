@@ -1,6 +1,7 @@
 import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
+import { ViewToken } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -18,9 +19,10 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
 
@@ -54,7 +56,7 @@ export const SearchResults = () => {
     data,
     refetch,
     nbHits,
-    isInitialLoading: isLoading,
+    isLoading,
     isFetching,
     isFetchingNextPage,
     userData,
@@ -62,6 +64,30 @@ export const SearchResults = () => {
     facets,
     offerVenues,
   } = useSearchResults()
+
+  const pageTracking = usePageTracking({
+    pageName: 'SearchResults',
+    pageLocation: 'searchresults',
+  })
+
+  // Handler for modules with the new system
+  const handleViewableItemsChanged = React.useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+        searchId: searchState.searchId,
+        playlistIndex,
+      })
+    },
+    [pageTracking, searchState.searchId]
+  )
 
   const shouldRefetchResults = Boolean(
     (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
@@ -93,6 +119,7 @@ export const SearchResults = () => {
   return (
     <Page>
       <Form.Flex>
+        {/* @ts-expect-error - type incompatibility with React 19 */}
         <InstantSearch
           searchClient={getSearchClient}
           indexName={suggestionsIndex}
@@ -125,6 +152,7 @@ export const SearchResults = () => {
               venuesUserData={venuesUserData}
               facets={facets}
               offerVenues={offerVenues}
+              onViewableItemsChanged={handleViewableItemsChanged}
             />
           )}
         </InstantSearch>

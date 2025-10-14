@@ -238,7 +238,7 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -247,7 +247,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Informations personnelles"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -365,7 +365,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -374,7 +374,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Notifications"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -491,12 +491,16 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
-                    {
-                      "display": "flex",
-                      "marginVertical": 16,
-                    }
+                    [
+                      {
+                        "display": "flex",
+                      },
+                      {
+                        "marginVertical": 16,
+                      },
+                    ]
                   }
                 >
                   <View
@@ -576,19 +580,9 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         }
                       >
-                        <Text
-                          accessibilityHidden={true}
-                          style={
-                            {
-                              "display": "none",
-                            }
-                          }
-                        >
-                          Case à cocher - 
-                          cochée
-                        </Text>
                         <View
-                          accessibilityRole="checkbox"
+                          accessibilityLabel="Activer ma géolocalisation - Interrupteur à bascule - coché"
+                          accessibilityRole="switch"
                           accessibilityState={
                             {
                               "busy": undefined,
@@ -606,7 +600,7 @@ exports[`Profile component should render correctly 1`] = `
                               "text": undefined,
                             }
                           }
-                          accessible={false}
+                          accessible={true}
                           focusable={true}
                           onClick={[Function]}
                           onResponderGrant={[Function]}
@@ -625,7 +619,7 @@ exports[`Profile component should render correctly 1`] = `
                               },
                             ]
                           }
-                          testID="Interrupteur Activer ma géolocalisation"
+                          testID="Activer ma géolocalisation - Interrupteur à bascule - coché"
                         >
                           <View
                             active={true}
@@ -650,19 +644,12 @@ exports[`Profile component should render correctly 1`] = `
                                     "alignItems": "center",
                                     "aspectRatio": 1,
                                     "backgroundColor": "#ffffff",
-                                    "borderBottomLeftRadius": 28,
-                                    "borderBottomRightRadius": 28,
-                                    "borderTopLeftRadius": 28,
-                                    "borderTopRightRadius": 28,
+                                    "borderBottomLeftRadius": 32,
+                                    "borderBottomRightRadius": 32,
+                                    "borderTopLeftRadius": 32,
+                                    "borderTopRightRadius": 32,
                                     "height": 28,
                                     "justifyContent": "center",
-                                    "shadowColor": "#161617",
-                                    "shadowOffset": {
-                                      "height": 2,
-                                      "width": 0,
-                                    },
-                                    "shadowOpacity": 0.2,
-                                    "shadowRadius": 2.5,
                                     "width": 28,
                                   },
                                   {
@@ -672,7 +659,6 @@ exports[`Profile component should render correctly 1`] = `
                               }
                             >
                               <View
-                                accessibilityLabel="Activé"
                                 height={16}
                                 width={16}
                               >
@@ -729,7 +715,7 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -738,7 +724,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Comment ça marche ?"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -855,7 +841,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1006,7 +992,7 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1015,7 +1001,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Préférences d’affichage"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1132,7 +1118,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1141,7 +1127,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Accessibilité"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1259,7 +1245,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1268,7 +1254,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Faire une suggestion"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1385,7 +1371,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1394,7 +1380,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Informations légales"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1511,7 +1497,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityRole="none"
+                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1520,7 +1506,7 @@ exports[`Profile component should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Confidentialité"
-                    accessibilityRole="link"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1717,10 +1703,10 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   style={
                     {
-                      "borderBottomLeftRadius": 7,
-                      "borderBottomRightRadius": 7,
-                      "borderTopLeftRadius": 7,
-                      "borderTopRightRadius": 7,
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "overflow": "hidden",
                     }
                   }
@@ -1729,7 +1715,7 @@ exports[`Profile component should render correctly 1`] = `
                     accessibilityIgnoresInvertColors={true}
                     style={
                       {
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "justifyContent": "center",
                         "width": "100%",
                       }
@@ -1765,7 +1751,7 @@ exports[`Profile component should render correctly 1`] = `
                           {
                             "alignItems": "center",
                             "borderColor": "#90949d",
-                            "borderRadius": 7,
+                            "borderRadius": 8,
                             "borderStyle": "solid",
                             "borderWidth": 1,
                             "flexDirection": "row",
@@ -1911,7 +1897,7 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2008,7 +1994,7 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2105,7 +2091,7 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2202,7 +2188,7 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityRole="none"
+                      accessible={true}
                       style={
                         {
                           "display": "flex",

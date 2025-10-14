@@ -25,7 +25,7 @@ import {
   GeolocPermissionState,
   GeolocPositionError,
   GeolocationError,
-} from 'libs/location'
+} from 'libs/location/location'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -42,8 +42,6 @@ import * as useVersion from 'ui/hooks/useVersion'
 
 import { Profile } from './Profile'
 
-const GEOLOC_SWITCH = 'Interrupteur Activer ma géolocalisation'
-
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
   user: nonBeneficiaryUser,
@@ -56,6 +54,8 @@ const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
+
+const GEOLOC_SWITCH = /Activer ma géolocalisation - Interrupteur à bascule/
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null
@@ -212,7 +212,8 @@ describe('Profile component', () => {
 
         expect(
           await screen.findByText(
-            GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED]
+            GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
+            { hidden: true }
           )
         ).toBeOnTheScreen()
       })

@@ -3,10 +3,11 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LayoutButtonProps } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkmark } from 'ui/svg/icons/Checkmark'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButtonProps) => {
   const { designSystem } = useTheme()
@@ -22,8 +23,15 @@ export const LayoutButton = ({ isSelected, Icon, onPress, layout }: LayoutButton
       : null
   }, [Icon, isSelected])
 
+  const accessibilityLabelChecked = isSelected ? 'sélectionné' : 'non sélectionné'
+  const accessibilityLabel = `${layout} - ${accessibilityLabelChecked}`
+
   return (
-    <TouchableOpacity id={layout} onPress={onPress}>
+    <TouchableOpacity
+      id={layout}
+      onPress={onPress}
+      accessibilityRole={AccessibilityRole.BUTTON}
+      accessibilityLabel={accessibilityLabel}>
       <TitleContainer gap={2} isSelected={isSelected}>
         {StyledIcon ? (
           <IconsContainer gap={2}>
@@ -43,13 +51,14 @@ const TitleContainer = styled(ViewGap)<{ isSelected: boolean }>(({ isSelected, t
   backgroundColor: isSelected
     ? theme.designSystem.color.background.brandPrimarySelected
     : undefined,
-  padding: getSpacing(2),
-  borderRadius: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
-const IconsContainer = styled(ViewGap)({
+const IconsContainer = styled(ViewGap)(({ theme }) => ({
   flexDirection: 'row',
-})
+  paddingVertical: theme.designSystem.size.spacing.s,
+}))
 
 const Title = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected

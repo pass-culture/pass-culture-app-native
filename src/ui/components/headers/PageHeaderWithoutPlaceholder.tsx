@@ -4,11 +4,11 @@ import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { BackButton } from 'ui/components/headers/BackButton'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { HEADER_HEIGHT } from 'shared/header/useGetHeaderHeight'
+import { BACK_BUTTON_MAX_SIZE, BackButton } from 'ui/components/headers/BackButton'
+import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
   title?: string
@@ -19,14 +19,6 @@ interface Props {
   RightButton?: ReactNode
   children?: ReactNode
   style?: StyleProp<ViewStyle>
-}
-
-const HEADER_HEIGHT = getSpacing(12)
-
-export const useGetHeaderHeight = () => {
-  const { top } = useCustomSafeInsets()
-
-  return HEADER_HEIGHT + top + 1
 }
 
 // Component naming: this component needs to be used with a PlaceHolder component
@@ -46,17 +38,19 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
     <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
       <Spacer.TopScreen />
       <Container>
-        <Row>
-          <ButtonContainer positionInHeader="left" testID="back-button-container">
-            {shouldDisplayBackButton ? (
-              <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
-            ) : null}
-          </ButtonContainer>
-          {title ? <Title nativeID={titleID}>{title}</Title> : null}
-          <ButtonContainer positionInHeader="right" testID="close-button-container">
-            {RightButton}
-          </ButtonContainer>
-        </Row>
+        <ButtonContainer positionInHeader="left" testID="back-button-container">
+          {shouldDisplayBackButton ? (
+            <BackButton onGoBack={onGoBack} color={designSystem.color.icon.default} />
+          ) : null}
+        </ButtonContainer>
+        {title ? (
+          <TitleContainer>
+            <Title nativeID={titleID}>{title}</Title>
+          </TitleContainer>
+        ) : null}
+        <ButtonContainer positionInHeader="right" testID="close-button-container">
+          {RightButton}
+        </ButtonContainer>
       </Container>
       {children}
     </Header>
@@ -78,33 +72,36 @@ const Header = styled(View)(({ theme }) => ({
   borderBottomWidth: 1,
 }))
 
-const Container = styled.View({
-  alignItems: 'center',
-  height: HEADER_HEIGHT,
-  justifyContent: 'center',
+const TitleContainer = styled.View({
+  flexShrink: 1,
 })
 
 const Title = styled(Typo.Title4).attrs(() => ({
-  numberOfLines: 1,
+  numberOfLines: 2,
   ...getHeadingAttrs(1),
 }))({
   textAlign: 'center',
 })
 
-const Row = styled.View({
+const Container = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  minHeight: HEADER_HEIGHT,
   width: '100%',
-})
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
-  ({ positionInHeader = 'left' }) => ({
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
-    paddingLeft: getSpacing(3),
-    paddingRight: getSpacing(3),
-  })
+  ({ positionInHeader = 'left', theme }) => {
+    const isLeftComponent = positionInHeader === 'left'
+    const marginHorizontal = theme.designSystem.size.spacing.s
+    return {
+      alignItems: isLeftComponent ? 'flex-start' : 'center',
+      justifyContent: isLeftComponent ? 'flex-start' : 'flex-end',
+      minWidth: BACK_BUTTON_MAX_SIZE,
+      marginLeft: isLeftComponent ? 0 : marginHorizontal,
+      marginRight: isLeftComponent ? marginHorizontal : 0,
+    }
+  }
 )

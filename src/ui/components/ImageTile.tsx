@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers/category'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
   width: number
@@ -20,18 +19,19 @@ interface Props {
 const PLACEHOLDER_ICON_SIZE = getSpacing(16)
 
 export const ImageTile: React.FC<Props> = (props) => {
+  const { designSystem } = useTheme()
   const style = useMemo(
     () => ({
       height: props.height,
       width: props.width,
       ...(props.onlyTopBorderRadius
         ? {
-            borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
-            borderTopRightRadius: BorderRadiusEnum.BORDER_RADIUS,
+            borderTopLeftRadius: designSystem.size.borderRadius.m,
+            borderTopRightRadius: designSystem.size.borderRadius.m,
           }
-        : { borderRadius: BorderRadiusEnum.BORDER_RADIUS }),
+        : { borderRadius: designSystem.size.borderRadius.m }),
     }),
-    [props.height, props.width, props.onlyTopBorderRadius]
+    [props.height, props.width, props.onlyTopBorderRadius, designSystem.size.borderRadius.m]
   )
 
   return props.uri ? (
@@ -67,7 +67,7 @@ const DefaultImageContainer = styled.View<{ height: number; width: number }>(
 const StyledImagePlaceholder = styled(ImagePlaceholder)<{
   onlyTopBorderRadius: boolean
 }>(({ theme, onlyTopBorderRadius }) => ({
-  borderRadius: onlyTopBorderRadius ? 0 : theme.borderRadius.radius,
-  borderTopLeftRadius: theme.borderRadius.radius,
-  borderTopRightRadius: theme.borderRadius.radius,
+  borderRadius: onlyTopBorderRadius ? 0 : theme.designSystem.size.borderRadius.m,
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.m,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.m,
 }))

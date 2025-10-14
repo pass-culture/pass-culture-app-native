@@ -14,7 +14,7 @@ import {
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
+import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -240,7 +240,8 @@ describe('useSearchResults', () => {
 
 const renderUseSearchResults = (newSearchState?: SearchState) =>
   renderHook(
-    ({ searchState }: { searchState: SearchState }) => useSearchInfiniteQuery(searchState),
+    ({ searchState }: { searchState: SearchState; dispatch?: () => void }) =>
+      useSearchInfiniteQuery(searchState),
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: { searchState: newSearchState ?? initialSearchState, dispatch: mockDispatch },

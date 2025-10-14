@@ -43,12 +43,12 @@ const end = { x: 1, y: 0 }
 
 function UnmemoizedSkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
   const translateX = useWaveAnimation(width)
-  const { uniqueColors } = useTheme()
+  const { designSystem } = useTheme()
   const colors = [
-    uniqueColors.backgroundColor,
-    uniqueColors.foregroundColor,
-    uniqueColors.foregroundColor,
-    uniqueColors.backgroundColor,
+    designSystem.color.background.skeletonGradient01,
+    designSystem.color.background.skeletonGradient02,
+    designSystem.color.background.skeletonGradient02,
+    designSystem.color.background.skeletonGradient01,
   ]
   return (
     <BackgroundContainer
@@ -78,6 +78,6 @@ const BackgroundContainer = styled.View<DimensionProps>(
     height,
     width: fullWidth ? '100%' : width,
     overflow: 'hidden',
-    backgroundColor: theme.uniqueColors.backgroundColor,
+    backgroundColor: theme.designSystem.color.background.skeletonGradient01,
   })
 )

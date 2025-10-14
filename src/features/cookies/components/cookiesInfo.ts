@@ -27,6 +27,11 @@ export const cookiesInfo: {
     caption:
       'En revanche, nous faisons de la publicité sur les réseaux sociaux pour faire connaître le pass Culture auprès du plus grand nombre. Grâce à ces cookies, nous pourrons en estimer l’efficacité.',
   },
+  [CookieCategoriesEnum.video]: {
+    title: 'Lire les contenus vidéos',
+    description:
+      'Ces cookies sont nécessaires pour afficher les vidéos YouTube intégrées dans l’application.\n\nIls permettent à YouTube d’assurer le bon fonctionnement de la lecture, de collecter des statistiques d’utilisation et de personnaliser ton expérience.',
+  },
   [CookieCategoriesEnum.essential]: {
     title: 'Assurer la sécurité, prévenir la fraude et corriger les bugs',
     description:

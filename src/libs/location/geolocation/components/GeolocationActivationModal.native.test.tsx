@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { GeolocPermissionState } from 'libs/location'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { GeolocPermissionState } from 'libs/location/location'
 import { render, screen, userEvent } from 'tests/utils'
 
 const hideGeolocPermissionModal = jest.fn()

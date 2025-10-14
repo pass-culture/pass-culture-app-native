@@ -165,7 +165,7 @@ describe('SetPhoneNumber', () => {
 
       await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-      expect(screen.getByText('Le numéro est invalide.')).toBeOnTheScreen()
+      expect(screen.getByText('Le numéro est invalide.', { hidden: true })).toBeOnTheScreen()
     })
 
     it('should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code', async () => {

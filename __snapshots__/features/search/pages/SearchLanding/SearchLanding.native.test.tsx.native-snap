@@ -82,7 +82,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="header"
                   style={
                     {
                       "alignItems": "center",
@@ -93,6 +92,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     htmlFor="testUuidV4"
                     style={
                       {
@@ -178,12 +178,12 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 40,
-                      "borderBottomRightRadius": 40,
+                      "borderBottomLeftRadius": 999,
+                      "borderBottomRightRadius": 999,
                       "borderColor": "#90949d",
                       "borderStyle": "solid",
-                      "borderTopLeftRadius": 40,
-                      "borderTopRightRadius": 40,
+                      "borderTopLeftRadius": 999,
+                      "borderTopRightRadius": 999,
                       "borderWidth": 2,
                       "height": 40,
                       "justifyContent": "center",
@@ -270,12 +270,12 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 48,
@@ -286,11 +286,10 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                           "width": "100%",
                         },
                         {
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "outlineOffset": 0,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                         },
                         {
                           "flex": 1,
@@ -317,7 +316,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       </View>
                     </View>
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       accessibilityHidden={true}
                       autoCorrect={false}
                       autoFocus={false}
@@ -426,7 +424,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
           >
             <View
               accessibilityLabel="Catégorie Concerts & festivals"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -519,7 +517,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Cinéma"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -612,7 +610,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Films, séries et documentaires"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -705,7 +703,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Livres"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -798,7 +796,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Musique"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -891,7 +889,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Arts & loisirs créatifs"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -984,7 +982,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Spectacles"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1077,7 +1075,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Musées & visites culturelles"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1170,7 +1168,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Jeux & jeux vidéos"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1263,7 +1261,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Médias & presse"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1356,7 +1354,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Cartes jeunes"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1449,7 +1447,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Conférences & rencontres"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1542,7 +1540,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             </View>
             <View
               accessibilityLabel="Catégorie Évènements en ligne"
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

@@ -23,7 +23,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
 import * as constants from '../../constant'
 
@@ -89,7 +89,7 @@ const mockUseVenueOffers = (emptyResponse = false) => {
   useVenueOffersSpy.mockReturnValue({
     isLoading: false,
     data: { hits: emptyResponse ? [] : VenueOffersResponseSnap, nbHits: emptyResponse ? 0 : 10 },
-  } as unknown as UseQueryResult<VenueOffers, unknown>)
+  } as unknown as UseQueryResult<VenueOffers, Error>)
 }
 
 const pressVenueMarker = (venue: GeolocatedVenue, forcedVenueId?: string) => {
@@ -152,7 +152,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should render map', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
     expect(mapView).toBeOnTheScreen()
@@ -164,7 +164,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
     expect(mapView).toBeOnTheScreen()
@@ -173,7 +173,7 @@ describe('VenueMapViewContainer', () => {
 
   it('should render map coming from other screen than venueMap', async () => {
     mockUseRoute.mockReturnValueOnce({ name: 'searchResults' })
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
     expect(mapView).toBeOnTheScreen()
@@ -181,14 +181,14 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should not display search button after initializing the map', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     await screen.findByTestId('venue-map-view')
 
     expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
   })
 
   it('should display search button after region change', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
     // Simulate region change
@@ -203,7 +203,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should not display search button after search press', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
     // Simulate region change
@@ -222,27 +222,25 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should set venues in store when pressing search button', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
     const setVenuesSpy = jest.spyOn(useVenueMapStore, 'setVenues')
 
-    await act(async () => {
-      // Simulate region change
-      fireEvent(mapView, 'onRegionChangeComplete', {
-        latitude: 1,
-        longitude: 1,
-        latitudeDelta: 1,
-        longitudeDelta: 1,
-      })
-      await user.press(await screen.findByText('Rechercher dans cette zone'))
+    // Simulate region change
+    fireEvent(mapView, 'onRegionChangeComplete', {
+      latitude: 1,
+      longitude: 1,
+      latitudeDelta: 1,
+      longitudeDelta: 1,
     })
+    await user.press(await screen.findByText('Rechercher dans cette zone'))
 
     expect(setVenuesSpy).toHaveBeenNthCalledWith(1, venuesFixture)
   })
 
   it('should display venueMapPreview + venueMapList in bottom sheet when marker is pressed', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
     await pressVenueMarker(venuesFixture[0])
@@ -255,7 +253,7 @@ describe('VenueMapViewContainer', () => {
   // TODO(PC-33564): fix flaky tests
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should not display venueMapPreview in bottom sheet if selected marker is not found in venue list', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
     await act(async () => {
@@ -268,7 +266,7 @@ describe('VenueMapViewContainer', () => {
   })
 
   it('should remove selected venue when map is pressed', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     const mockRemoveSelectedVenue = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
@@ -288,7 +286,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
     mockUseVenueOffers(true)
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
@@ -311,7 +309,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
     mockUseVenueOffers(true)
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
@@ -337,7 +335,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
     mockUseVenueOffers(true)
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
@@ -360,7 +358,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
 
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
@@ -381,7 +379,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
 
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
@@ -397,7 +395,7 @@ describe('VenueMapViewContainer', () => {
   it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
     setFeatureFlags([])
 
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     await pressVenueMarker(venuesFixture[0])
 
@@ -406,7 +404,7 @@ describe('VenueMapViewContainer', () => {
 
   it('should not display offers in bottom-sheet if wipOffersInBottomSheet FF disabled', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     await pressVenueMarker(venuesFixture[0])
 
@@ -419,7 +417,7 @@ describe('VenueMapViewContainer', () => {
 
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should center map on bottom sheet animation', async () => {
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
     await user.press(screen.getByTestId('venue-map-view'))
@@ -436,7 +434,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId('venue-map-view')
 
@@ -453,7 +451,7 @@ describe('VenueMapViewContainer', () => {
       altitude: 1000,
     })
 
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await screen.findByTestId('venue-map-view')
 
@@ -465,7 +463,7 @@ describe('VenueMapViewContainer', () => {
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
-    renderVenueMapViewContainer()
+    await renderVenueMapViewContainer()
 
     await waitFor(() =>
       expect(screen.getAllByTestId(/marker-/)).toHaveLength(
@@ -477,8 +475,8 @@ describe('VenueMapViewContainer', () => {
   })
 })
 
-function renderVenueMapViewContainer() {
-  render(
+const renderVenueMapViewContainer = () => {
+  return renderAsync(
     reactQueryProviderHOC(
       <BottomTabBarHeightContext.Provider value={80}>
         <VenueMapViewContainer />

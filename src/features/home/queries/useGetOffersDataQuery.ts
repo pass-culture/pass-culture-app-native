@@ -9,7 +9,7 @@ import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { PlaylistOffersParams } from 'libs/algolia/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 
 const isPlaylistOffersParameters = (parameter: unknown): parameter is PlaylistOffersParams =>

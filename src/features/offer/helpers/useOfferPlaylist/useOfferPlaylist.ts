@@ -8,7 +8,7 @@ import {
   SearchGroupResponseModelv2,
 } from 'api/gen'
 import { useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'
-import { Position, useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
 type Props = {

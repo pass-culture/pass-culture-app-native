@@ -1,5 +1,5 @@
 import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
-import { Animated, LayoutChangeEvent, useWindowDimensions, View } from 'react-native'
+import { Animated, LayoutChangeEvent, useWindowDimensions, View, ViewToken } from 'react-native'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
@@ -12,9 +12,15 @@ import {
 } from 'features/search/components/SearchListItem.web'
 import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import {
+  convertAlgoliaVenue2AlgoliaVenueOfferListItem,
+  getReconciledVenues,
+} from 'features/search/helpers/searchList/getReconciledVenues'
 import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
 import { SearchListProps, SearchView } from 'features/search/types'
-import { useLocation } from 'libs/location'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location/location'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
@@ -124,6 +130,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
       userData,
       venuesUserData,
       artistSection,
+      onViewableVenuePlaylistItemsChanged,
+      onViewableItemsChanged,
     },
     _ref
   ) => {
@@ -133,8 +141,16 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const { hasGeolocPosition } = useLocation()
     const { searchState } = useSearch()
     const previousRoute = usePreviousRoute()
+
+    const isEnabledVenuesFromOfferIndex = useFeatureFlag(
+      RemoteStoreFeatureFlags.ENABLE_VENUES_FROM_OFFER_INDEX
+    )
+    const venues = isEnabledVenuesFromOfferIndex
+      ? getReconciledVenues(hits.offers, hits.venues)
+      : hits.venues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)
+
     const hasVenuesPlaylist =
-      !searchState.venue && !!hits.venues.length && previousRoute?.name !== SearchView.Thematic
+      !searchState.venue && !!venues && previousRoute?.name !== SearchView.Thematic
 
     /**
      * This method will compute maximum height to set list height programatically.
@@ -179,12 +195,13 @@ export const SearchList = forwardRef<never, SearchListProps>(
       venuesUserData,
       nbHits,
       offers: hits.offers,
-      venues: hits.venues,
+      venues,
       artistSection,
       isFetchingNextPage,
       autoScrollEnabled,
       onPress,
       searchState,
+      onViewableVenuePlaylistItemsChanged,
     }
 
     /**
@@ -223,9 +240,44 @@ export const SearchList = forwardRef<never, SearchListProps>(
       ]
     )
 
+    const handleItemsRendered = useCallback(
+      ({
+        visibleStartIndex,
+        visibleStopIndex,
+      }: {
+        visibleStartIndex: number
+        visibleStopIndex: number
+      }) => {
+        if (!onViewableItemsChanged) return
+
+        // Constructing Objects That Look Like ViewTokens
+        const viewableOffers = data.items
+          .slice(visibleStartIndex, visibleStopIndex + 1)
+          .map((item, index) => {
+            if (!('objectID' in item)) return null // skip placeholders
+            return {
+              item,
+              key: item.objectID,
+              index: visibleStartIndex + index - 1, // -1 because of the header
+              isViewable: true,
+            }
+          })
+          .filter(Boolean) as ViewToken[]
+
+        if (viewableOffers.length > 0) {
+          onViewableItemsChanged({
+            viewableItems: viewableOffers,
+            changed: viewableOffers,
+          })
+        }
+      },
+      [data.items, onViewableItemsChanged]
+    )
+
     return (
       <SearchResultList onLayout={onLayout} testID="searchResultsList">
         <React.Fragment>
+          {/* @ts-expect-error - type incompatibility with React 19 */}
           <VariableSizeList
             ref={listRef}
             key={rerenderKey}
@@ -236,6 +288,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
             itemCount={data.items.length}
             outerRef={outerListRef}
             onScroll={handleScroll}
+            onItemsRendered={handleItemsRendered}
             width="100%">
             {SearchListItem}
           </VariableSizeList>
@@ -273,7 +326,7 @@ const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
 const StyledView = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
-  borderRadius: theme.borderRadius.button,
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',

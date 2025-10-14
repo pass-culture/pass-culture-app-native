@@ -1,8 +1,10 @@
 import { useCallback } from 'react'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
+import { SubcategoriesMapping } from 'libs/subcategories/types'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
 // to see how the data is indexed into the search client (algolia => app search)
@@ -59,3 +61,27 @@ export const useTransformOfferHits = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(transformOfferHit(urlPrefix), [urlPrefix])
 }
+
+export const sortHitOffersByDate = (
+  hitA: AlgoliaOffer<HitOffer> | undefined,
+  hitB: AlgoliaOffer<HitOffer> | undefined
+) => {
+  const datesA = hitA?.offer?.dates
+  datesA?.sort((a, b) => a - b)
+  const datesB = hitB?.offer?.dates
+  datesB?.sort((a, b) => a - b)
+  const dateA = datesA ? datesA[0] : 0
+  const dateB = datesB ? datesB[0] : 0
+  return (dateA ?? 0) - (dateB ?? 0)
+}
+
+export const determineAllOffersAreEventsAndNotCinema = (
+  hits: Array<AlgoliaOffer<HitOffer>>,
+  mapping: SubcategoriesMapping | undefined
+) =>
+  hits.every((hit) => {
+    return (
+      mapping?.[hit.offer.subcategoryId].isEvent &&
+      hit.offer.subcategoryId !== SubcategoryIdEnum.SEANCE_CINE
+    )
+  })

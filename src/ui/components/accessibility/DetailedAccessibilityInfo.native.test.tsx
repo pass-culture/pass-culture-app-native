@@ -30,7 +30,7 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
-    user.press(accesLibreLink)
+    await user.press(accesLibreLink)
 
     await waitFor(() => expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl))
   })
@@ -45,7 +45,7 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
-    user.press(accesLibreLink)
+    await user.press(accesLibreLink)
 
     await waitFor(() =>
       expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(
@@ -63,7 +63,7 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
-    user.press(accesLibreLink)
+    await user.press(accesLibreLink)
 
     await waitFor(() =>
       expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(undefined)
@@ -117,7 +117,7 @@ describe('DetailedAccessibilityInfo', () => {
       />
     )
 
-    user.press(screen.getByText('Handicap auditif'))
+    await user.press(screen.getByText('Handicap auditif'))
 
     await waitFor(() =>
       expect(analytics.logHasOpenedAccessibilityAccordion).toHaveBeenCalledWith('Handicap auditif')

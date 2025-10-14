@@ -6,13 +6,13 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -59,14 +59,13 @@ export const CheatcodesScreenNewCaledonia = () => {
       <Typo.Body>Taux de change par défaut côté frontend&nbsp;:</Typo.Body>
       <Typo.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</Typo.Title3>
       <StyledSeparator />
-      <TextInput
+      <InputText
         label="Montant en&nbsp;€ pour conversion&nbsp;:"
         autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
         autoCapitalize="none"
         value={inputEuro}
         onChangeText={setInputEuro}
         keyboardType="numeric"
-        placeholder="Entrez le montant en&nbsp;€"
         textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
       />
       <StyledText>Franc Pacifique sans arrondi&nbsp;:</StyledText>

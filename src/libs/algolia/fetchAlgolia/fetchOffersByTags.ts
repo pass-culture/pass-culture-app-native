@@ -1,7 +1,7 @@
 import { initialSearchState } from 'features/search/context/reducer'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode } from 'libs/algolia/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchOffersByTagsArgs = {

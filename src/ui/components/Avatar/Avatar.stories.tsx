@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
+import { styled } from 'styled-components/native'
 
 import { theme } from 'theme'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
@@ -7,13 +8,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { Typo } from 'ui/theme'
-import {
-  AVATAR_LARGE,
-  AVATAR_MEDIUM,
-  AVATAR_SMALL,
-  AVATAR_XSMALL,
-  AVATAR_BORDER_RADIUS_SMALL,
-} from 'ui/theme/constants'
+import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL, AVATAR_XSMALL } from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
 
@@ -23,6 +18,14 @@ const meta: Meta<typeof Avatar> = {
 }
 
 export default meta
+
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  color: theme.designSystem.color.text.lockedInverted,
+}))
+
+const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
+  color: theme.designSystem.color.text.lockedInverted,
+}))
 
 const variantConfig: Variants<typeof Avatar> = [
   {
@@ -38,7 +41,7 @@ const variantConfig: Variants<typeof Avatar> = [
     props: {
       size: AVATAR_MEDIUM,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
-      children: <Typo.Title3>M</Typo.Title3>,
+      children: <StyledTitle3>M</StyledTitle3>,
     },
   },
   {
@@ -76,7 +79,7 @@ const variantConfig: Variants<typeof Avatar> = [
       rounded: false,
       borderWidth: 6,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
-      children: <Typo.Title1>M.M</Typo.Title1>,
+      children: <StyledTitle1>M.M</StyledTitle1>,
     },
   },
   {
@@ -85,8 +88,8 @@ const variantConfig: Variants<typeof Avatar> = [
       size: AVATAR_LARGE,
       rounded: false,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
-      borderRadius: AVATAR_BORDER_RADIUS_SMALL,
-      children: <Typo.Title1>M.M</Typo.Title1>,
+      borderRadius: theme.designSystem.size.borderRadius.m,
+      children: <StyledTitle1>M.M</StyledTitle1>,
     },
   },
 ]

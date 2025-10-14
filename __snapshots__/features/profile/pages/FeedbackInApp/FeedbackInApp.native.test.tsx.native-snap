@@ -39,110 +39,107 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -155,23 +152,20 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
         >
           Faire une suggestion
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
@@ -300,23 +294,25 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           "alignItems": "flex-end",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
-                          "marginBottom": 8,
                           "width": "100%",
                         }
                       }
                     >
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                      <View>
+                        <Text
+                          accessibilityLabel="Ma suggestion"
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
-                        }
-                      >
-                        Ma suggestion
-                      </Text>
+                        >
+                          Ma suggestion
+                        </Text>
+                      </View>
                       <Text
                         style={
                           {
@@ -332,27 +328,28 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     </View>
                   </View>
                   <View
-                    height="small"
                     isDisabled={false}
                     isError={false}
-                    isFocus={false}
+                    isFocused={false}
+                    size="small"
                     style={
                       [
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         },
@@ -364,17 +361,16 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     testID="styled-input-container"
                   >
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       accessibilityRequired={true}
                       editable={true}
                       isEmpty={true}
-                      maxLength={825}
+                      maxLength={800}
                       multiline={true}
-                      nativeID="testUuidV4"
+                      nativeID="feedback-input"
                       onBlur={[Function]}
                       onChangeText={[Function]}
                       onFocus={[Function]}
-                      placeholder="Ma suggestion..."
+                      placeholder=""
                       placeholderTextColor="#696a6f"
                       returnKeyType="next"
                       style={
@@ -392,52 +388,42 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           "paddingTop": 10,
                         }
                       }
-                      testID="Champ de texte"
+                      testID="feedback-input"
                       textAlignVertical="top"
                       value=""
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    {
-                      "flexDirection": "row",
-                      "marginVertical": 8,
-                      "maxWidth": 500,
-                    }
-                  }
-                >
                   <View
                     style={
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  />
-                  <View
-                    style={
-                      {
-                        "textAlign": "end",
-                        "width": 72,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "marginTop": 4,
+                        "width": "100%",
                       }
                     }
                   >
-                    <Text
+                    <View
                       style={
                         {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "alignItems": "center",
+                          "marginLeft": "auto",
                         }
                       }
                     >
-                      0
-                       / 
-                      800
-                    </Text>
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        0/800
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

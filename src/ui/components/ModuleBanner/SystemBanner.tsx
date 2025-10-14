@@ -147,7 +147,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
 }>(({ color }) => ({
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean; color: ColorsType }>(({ theme, isFocus, color }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus, color }),
 }))
 
@@ -156,14 +156,14 @@ const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
 }>(({ color }) => ({
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean; color: ColorsType }>(({ theme, isFocus, color }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus, color }),
 }))
 
 const StyledTouchableOpacity = styledButton(Touchable)<{
   color: ColorsType
 }>(({ theme, color }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ color }),
   ...getHoverStyle({ underlineColor: color }),
 }))
@@ -173,7 +173,7 @@ const Container = styled.View<{ backgroundColor: ColorsType; borderColor: Colors
     alignItems: 'center',
     backgroundColor,
     borderColor,
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     borderStyle: 'solid',
     borderWidth: 1,
     flexDirection: 'row',

@@ -1,7 +1,7 @@
 import { Linking } from 'react-native'
 
 import { mockLocationState } from 'features/location/fixtures/mockLocationState'
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 

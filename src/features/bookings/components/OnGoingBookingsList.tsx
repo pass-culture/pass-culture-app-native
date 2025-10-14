@@ -2,15 +2,16 @@ import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
-import { Booking } from 'features/bookings/types'
+import { BookingResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQuery } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,
@@ -23,20 +24,24 @@ import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
-const emptyBookings: Booking[] = []
-
 const ANIMATION_DURATION = 700
 
 export const OnGoingBookingsList: FunctionComponent = () => {
   const netInfo = useNetInfoContext()
-  const { data: bookings, isInitialLoading: isLoading, isFetching, refetch } = useBookingsQuery()
-  const { isInitialLoading: subcategoriesIsLoading } = useSubcategories()
+  const { isLoggedIn } = useAuthContext()
+
+  const {
+    data: bookings,
+    isLoading,
+    isFetching,
+    refetch,
+  } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
+  const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const { ongoing_bookings: ongoingBookings = emptyBookings } = bookings ?? {}
-
+  const { ongoingBookings = [] } = bookings ?? {}
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({
       message: 'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.',
@@ -56,12 +61,10 @@ export const OnGoingBookingsList: FunctionComponent = () => {
     }
   }
 
-  const eligibleBookingsForArchive = useMemo(
-    () => getEligibleBookingsForArchive(ongoingBookings),
-    [ongoingBookings]
-  )
+  const eligibleBookingsForArchive =
+    expirationDateUtilsV2.getEligibleBookingsForArchive(ongoingBookings)
 
-  const renderItem: ListRenderItem<Booking> = useCallback(
+  const renderItem: ListRenderItem<BookingResponse> = useCallback(
     ({ item }) => (
       <OnGoingBookingItem booking={item} eligibleBookingsForArchive={eligibleBookingsForArchive} />
     ),
@@ -89,7 +92,7 @@ export const OnGoingBookingsList: FunctionComponent = () => {
   )
 }
 
-const keyExtractor = (item: Booking) => item.id.toString()
+const keyExtractor = (item: BookingResponse) => item.id.toString()
 
 const contentContainerStyle = {
   flexGrow: 1,

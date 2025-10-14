@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
@@ -27,11 +26,11 @@ import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
@@ -58,7 +57,6 @@ export const SetPhoneNumber = () => {
     showModal: showTipsModal,
     hideModal: hideTipsModal,
   } = useModal(true)
-  const phoneNumberInputErrorId = uuidv4()
 
   useEffect(() => {
     showTipsModal()
@@ -68,7 +66,7 @@ export const SetPhoneNumber = () => {
     setPhoneNumber(value)
   }
 
-  const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
+  const { mutate: sendPhoneValidationCode, isPending } = useSendPhoneValidationMutation({
     onSuccess: () => {
       dispatch({
         type: 'SET_PHONE_NUMBER',
@@ -79,7 +77,7 @@ export const SetPhoneNumber = () => {
       })
       saveStep(IdentityCheckStep.PHONE_VALIDATION)
       navigate(...getSubscriptionHookConfig('SetPhoneValidationCode'))
-      queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS] })
     },
     onError: (error: unknown) => {
       dispatch({
@@ -112,41 +110,30 @@ export const SetPhoneNumber = () => {
       title="Numéro de téléphone"
       scrollChildren={
         <React.Fragment>
-          <Typo.Title3 {...getHeadingAttrs(2)}>Quel est ton numéro de téléphone&nbsp;?</Typo.Title3>
-          <Spacer.Column numberOfSpaces={6} />
+          <StyledTitle3 {...getHeadingAttrs(2)}>
+            Quel est ton numéro de téléphone&nbsp;?
+          </StyledTitle3>
           <Form.MaxWidth>
             <View>
               <StyledBody>
                 Tu vas recevoir un code de validation pour confirmer ton numéro.
               </StyledBody>
-              <Spacer.Column numberOfSpaces={6} />
-              <InputContainer>
-                <TextInput
+              <InputContainer invalidPhoneNumberMessage={invalidPhoneNumberMessage}>
+                <InputText
                   autoComplete="tel"
                   autoCapitalize="none"
-                  isError={false}
                   keyboardType="number-pad"
                   label="Numéro de téléphone"
                   value={phoneNumber}
                   onChangeText={onChangeText}
                   textContentType="telephoneNumber"
                   onSubmitEditing={requestSendPhoneValidationCode}
-                  accessibilityDescribedBy={phoneNumberInputErrorId}
+                  accessibilityHint={invalidPhoneNumberMessage}
                   leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}
                   testID="Entrée pour le numéro de téléphone"
+                  errorMessage={invalidPhoneNumberMessage}
                 />
               </InputContainer>
-              <InputError
-                relatedInputId={phoneNumberInputErrorId}
-                visible={!!invalidPhoneNumberMessage}
-                messageId={invalidPhoneNumberMessage}
-                numberOfSpacesTop={3}
-              />
-              {invalidPhoneNumberMessage ? (
-                <Spacer.Column numberOfSpaces={5} />
-              ) : (
-                <Spacer.Column numberOfSpaces={8} />
-              )}
 
               <PhoneValidationTipsModal
                 isVisible={isTipsModalVisible}
@@ -158,7 +145,7 @@ export const SetPhoneNumber = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <BottomContentContainer>
+        <BottomContentContainer gap={2}>
           <RemainingAttemptsContainer>
             <StyledBodyAccentXs>Il te reste </StyledBodyAccentXs>
             <WarningRemainingAttempts isLastAttempt={isLastAttempt}>
@@ -166,14 +153,13 @@ export const SetPhoneNumber = () => {
             </WarningRemainingAttempts>
             <StyledBodyAccentXs>de code de validation</StyledBodyAccentXs>
           </RemainingAttemptsContainer>
-          <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             type="submit"
             onPress={requestSendPhoneValidationCode}
             wording="Continuer"
             accessibilityLabel="Continuer vers l’étape suivante"
             disabled={!isContinueButtonEnabled}
-            isLoading={isLoading}
+            isLoading={isPending}
           />
         </BottomContentContainer>
       }
@@ -181,24 +167,34 @@ export const SetPhoneNumber = () => {
   )
 }
 
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
 const RemainingAttemptsContainer = styled.View({
   flexDirection: 'row',
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const BottomContentContainer = styled.View({
+const BottomContentContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const InputContainer = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  width: '100%',
-  marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
-}))
+const InputContainer = styled.View<{ invalidPhoneNumberMessage: string }>(
+  ({ theme, invalidPhoneNumberMessage }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
+    marginBottom: invalidPhoneNumberMessage
+      ? theme.designSystem.size.spacing.l
+      : theme.designSystem.size.spacing.xxl,
+  })
+)
 
 const WarningRemainingAttempts = styled(Typo.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({

@@ -39,103 +39,100 @@ exports[`DisplayPreference should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
           }
         }
+        testID="back-button-container"
       >
         <View
-          positionInHeader="left"
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
               "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 40,
+              "opacity": 1,
+              "userSelect": "auto",
             }
           }
-          testID="back-button-container"
+          testID="Revenir en arrière"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Revenir en arrière"
+            height={24}
+            testID="icon-back"
+            width={24}
           >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
+            <Text>
+              icon-back-SVG-Mock
             </Text>
           </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
         </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -148,23 +145,20 @@ exports[`DisplayPreference should render correctly 1`] = `
         >
           Préférences d’affichage
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
@@ -297,19 +291,9 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Permettre l’orientation - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -327,7 +311,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -343,7 +327,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur"
+                    testID="Permettre l’orientation - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -368,20 +352,13 @@ exports[`DisplayPreference should render correctly 1`] = `
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 28,
-                            "borderBottomRightRadius": 28,
-                            "borderTopLeftRadius": 28,
-                            "borderTopRightRadius": 28,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
                             "height": 28,
                             "justifyContent": "center",
                             "marginLeft": 2,
-                            "shadowColor": "#161617",
-                            "shadowOffset": {
-                              "height": 2,
-                              "width": 0,
-                            },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 2.5,
                             "width": 28,
                           }
                         }
@@ -434,7 +411,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Mode clair - Affichage classique - sélectionné"
+                  accessibilityLabel="Thème - Mode clair - Affichage classique - sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -484,7 +461,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Mode clair - Affichage classique - sélectionné"
+                  testID="Thème - Mode clair - Affichage classique - sélectionné"
                 >
                   <View
                     isSelected={true}
@@ -493,7 +470,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "alignItems": "center",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
-                        "borderColor": "#eb0055",
+                        "borderColor": "#6123df",
                         "borderStyle": "solid",
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
@@ -509,7 +486,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       isSelected={true}
                       style={
                         {
-                          "backgroundColor": "#eb0055",
+                          "backgroundColor": "#6123df",
                           "borderBottomLeftRadius": 16,
                           "borderBottomRightRadius": 16,
                           "borderTopLeftRadius": 16,
@@ -592,7 +569,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Mode sombre - Réduit la fatigue visuelle - non sélectionné"
+                  accessibilityLabel="Thème - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -642,7 +619,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Mode sombre - Réduit la fatigue visuelle - non sélectionné"
+                  testID="Thème - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                 >
                   <View
                     isSelected={false}
@@ -750,7 +727,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
+                  accessibilityLabel="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -800,7 +777,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
+                  testID="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
                 >
                   <View
                     isSelected={false}

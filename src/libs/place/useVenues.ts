@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { Venue } from 'features/venue/types'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_VENUES = 5 * 60 * 1000
@@ -16,16 +15,14 @@ export const useVenues = (query: string) => {
     aroundPlaceRadius,
   }
 
-  return useQuery<Venue[]>(
-    [QueryKeys.VENUES, query, buildLocationParameterParams],
-    () =>
+  return useQuery({
+    queryKey: [QueryKeys.VENUES, query, buildLocationParameterParams],
+    queryFn: () =>
       fetchVenues({
         query: query,
         buildLocationParameterParams,
       }),
-    {
-      staleTime: STALE_TIME_VENUES,
-      enabled: query.length > 0,
-    }
-  )
+    staleTime: STALE_TIME_VENUES,
+    enabled: query.length > 0,
+  })
 }

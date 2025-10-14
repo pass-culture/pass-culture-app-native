@@ -7,7 +7,7 @@ import {
 } from '../../../tests/constants'
 import { ENTITY_MAP, EntityKeys } from '../../services/entities/types'
 import { replaceHtmlMetas } from '../metas'
-import { env } from '../../libs/environment/env'
+import { env } from '../../libs/environment/serverEnv'
 import { logger } from '../logging'
 
 const mockEntityMap = ENTITY_MAP

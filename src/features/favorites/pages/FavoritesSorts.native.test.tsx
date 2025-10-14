@@ -11,7 +11,7 @@ import {
   GeolocationError,
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-} from 'libs/location'
+} from 'libs/location/location'
 import { render, screen, userEvent } from 'tests/utils'
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
@@ -76,7 +76,7 @@ describe('<FavoritesSorts/>', () => {
       mockUseLocation.mockReturnValueOnce(defaultUseLocation)
       renderFavoritesSort()
 
-      user.press(screen.getByText(sortByWording))
+      await user.press(screen.getByText(sortByWording))
       await user.press(screen.getByText('Valider'))
 
       expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
@@ -100,7 +100,9 @@ describe('<FavoritesSorts/>', () => {
     await user.press(screen.getByText('Proximité géographique'))
 
     expect(
-      screen.getByText(GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED])
+      screen.getByText(GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED], {
+        hidden: true,
+      })
     ).toBeOnTheScreen()
   })
 
@@ -108,7 +110,7 @@ describe('<FavoritesSorts/>', () => {
     mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
-    user.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Proximité géographique'))
     await user.press(screen.getByText('Valider'))
 
     expect(
@@ -128,7 +130,7 @@ describe('<FavoritesSorts/>', () => {
 
     renderFavoritesSort()
 
-    user.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Proximité géographique'))
     await user.press(screen.getByText('Valider'))
 
     expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({

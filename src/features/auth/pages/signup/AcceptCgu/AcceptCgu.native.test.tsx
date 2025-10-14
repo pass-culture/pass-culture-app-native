@@ -86,19 +86,23 @@ describe('<AcceptCgu/>', () => {
     expect(Linking.openURL).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK)
   })
 
-  it('should disable the button if the data charted is not checked', () => {
+  it('should disable the button if the data charted is not checked', async () => {
     renderAcceptCGU()
 
-    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
+    await user.press(
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
+    )
 
     expect(screen.getByText('S’inscrire')).toBeDisabled()
   })
 
   it('should log analytics when pressing on signup button', async () => {
     renderAcceptCGU()
-    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
+    await user.press(
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
+    )
 
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -110,9 +114,11 @@ describe('<AcceptCgu/>', () => {
 
     expect(screen.queryByTestId('recaptcha-webview-modal')).not.toBeOnTheScreen()
 
-    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
+    await user.press(
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
+    )
 
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -122,13 +128,15 @@ describe('<AcceptCgu/>', () => {
   it('should call API to create user account when reCAPTCHA challenge is successful', async () => {
     renderAcceptCGU()
 
-    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
+    )
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken', false)
@@ -139,13 +147,15 @@ describe('<AcceptCgu/>', () => {
   it('should call API with previous marketing data to create classic account', async () => {
     renderAcceptCGU({ isSSOSubscription: false, previousMarketingData: true })
 
-    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
+    )
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
@@ -155,19 +165,19 @@ describe('<AcceptCgu/>', () => {
   it('should call API with marketing email subscription information to create SSO account', async () => {
     renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: false })
 
-    user.press(
+    await user.press(
       screen.getByText(
         'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
       )
     )
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
     await user.press(screen.getByText('S’inscrire'))
 
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
@@ -177,11 +187,11 @@ describe('<AcceptCgu/>', () => {
   it('should not take into account previous marketing data for SSO account in CGU page', async () => {
     renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: true })
 
-    const marketingCheckbox = await screen.findByLabelText(
-      'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
-    )
+    const marketingCheckbox = await screen.findByRole('checkbox', {
+      name: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.',
+    })
 
-    expect(marketingCheckbox.props.accessibilityState.checked).toBe(false)
+    expect(marketingCheckbox).toHaveProp('accessibilityState', { checked: false })
   })
 
   it('should display error message when API call to create user account fails', async () => {
@@ -191,19 +201,22 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken', false)
       expect(
-        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.', {
+          exact: false,
+          hidden: true,
+        })
       ).toBeOnTheScreen()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
@@ -212,17 +225,20 @@ describe('<AcceptCgu/>', () => {
   it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
     renderAcceptCGU()
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
+    await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     await waitFor(() => {
       expect(
-        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+        screen.getByText('Un problème est survenu pendant l’inscription, réessaie plus tard.', {
+          exact: false,
+          hidden: true,
+        })
       ).toBeOnTheScreen()
       expect(props.signUp).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
@@ -233,17 +249,19 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
     await waitFor(() => {
-      expect(screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeOnTheScreen()
+      expect(
+        screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.', { hidden: true })
+      ).toBeOnTheScreen()
       expect(props.signUp).not.toHaveBeenCalled()
       expect(navigate).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()

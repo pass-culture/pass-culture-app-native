@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, reset, navigate } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
@@ -135,7 +135,20 @@ describe('<ChangeStatus/>', () => {
       })
     })
 
-    it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
+    it('should navigate to PersonalData when press "Continuer"', async () => {
+      renderChangedStatus()
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+
+      await user.press(screen.getByText('Employé'))
+      await user.press(screen.getByText('Continuer'))
+
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        screen: 'PersonalData',
+        params: undefined,
+      })
+    })
+
+    it('should show snackbar on success when clicking on "Continuer"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
@@ -166,7 +179,29 @@ describe('<ChangeStatus/>', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should not show snackbar on success when clicking on "Valider mon adresse"', async () => {
+    it('should navigate and reset to UpdatePersonalDataConfirmation when press "Continuer"', async () => {
+      renderChangedStatus()
+      mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
+
+      await user.press(screen.getByText('Employé'))
+      await user.press(screen.getByText('Continuer'))
+
+      expect(reset).toHaveBeenCalledWith({
+        index: 1,
+        routes: [
+          {
+            name: 'TabNavigator',
+            params: { screen: 'Home', params: undefined },
+          },
+          {
+            name: 'ProfileStackNavigator',
+            params: { screen: 'UpdatePersonalDataConfirmation', params: undefined },
+          },
+        ],
+      })
+    })
+
+    it('should not show snackbar on success when clicking on "Continuer"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 

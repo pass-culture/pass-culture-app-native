@@ -5,7 +5,7 @@ import {
   AccessibilityActionPlanSectionProps,
 } from 'features/profile/components/AccessibilityActionPlanSection/AccessibilityActionPlanSection'
 import { render, screen } from 'tests/utils'
-import { TagVariant } from 'ui/components/Tag/types'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Typo } from 'ui/theme'
 
 describe('<AccessibilityActionPlanSection />', () => {

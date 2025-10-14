@@ -3,7 +3,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/fixtures/algoliaFixtures'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { renderHook } from 'tests/utils'
 

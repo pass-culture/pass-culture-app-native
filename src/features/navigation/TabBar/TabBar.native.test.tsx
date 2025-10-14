@@ -4,7 +4,6 @@ import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
@@ -20,6 +19,7 @@ import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
+import { getTabHookConfig } from './getTabHookConfig'
 import { TabBar } from './TabBar'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -142,17 +142,10 @@ describe('TabBar', () => {
   it('should display the 5 following tabs with Home selected', async () => {
     renderTabBar(mockTabNavigationState)
 
-    const expectedTabsTestIds = [
-      'Accueil sélectionné',
-      'Accueil',
-      'Rechercher des offres',
-      'Mes réservations',
-      'Mes favoris',
-      'Mon profil',
-    ].sort()
+    const expectedTabsTestIds = ['Accueil', 'Recherche', 'Réservations', 'Favoris', 'Profil'].sort()
 
     expectedTabsTestIds.forEach((tab) => {
-      expect(screen.getByTestId(tab)).toBeOnTheScreen()
+      expect(screen.getByText(tab)).toBeOnTheScreen()
     })
   })
 
@@ -166,16 +159,15 @@ describe('TabBar', () => {
     })
     renderTabBar(mockTabNavigationState)
     const expectedTabsTestIds = [
-      'Accueil',
-      'Rechercher des offres',
-      'Mes réservations',
-      'Mes réservations sélectionné',
-      'Mes favoris',
-      'Mon profil',
+      'Accueil - inactif',
+      'Rechercher des offres - inactif',
+      'Mes réservations - actif',
+      'Mes favoris - inactif',
+      'Mon profil - inactif',
     ].sort()
 
     expectedTabsTestIds.forEach((tab) => {
-      expect(screen.getByTestId(tab)).toBeOnTheScreen()
+      expect(screen.getByLabelText(tab)).toBeOnTheScreen()
     })
   })
 
@@ -197,7 +189,7 @@ describe('TabBar', () => {
 
     expect(screen.getByTestId('Mon profil sélectionné')).toBeOnTheScreen()
 
-    const profileTab = screen.getByTestId('Mon profil')
+    const profileTab = screen.getByText('Profil')
     await user.press(profileTab)
 
     expect(navigation.navigate).toHaveBeenCalledTimes(1)
@@ -208,7 +200,7 @@ describe('TabBar', () => {
 
     expect(screen.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
 
-    const homeTab = screen.getByTestId('Accueil')
+    const homeTab = screen.getByText('Accueil')
     await user.press(homeTab)
 
     expect(navigation.navigate).toHaveBeenCalledTimes(1)
@@ -226,7 +218,7 @@ describe('TabBar', () => {
 
     screen.getByTestId('Rechercher des offres sélectionné')
 
-    const searchTab = screen.getByTestId('Rechercher des offres')
+    const searchTab = screen.getByText('Recherche')
     await user.press(searchTab)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_STATE', payload: initialSearchState })
@@ -244,7 +236,7 @@ describe('TabBar', () => {
 
     screen.getByTestId('Rechercher des offres sélectionné')
 
-    const searchTab = screen.getByTestId('Rechercher des offres')
+    const searchTab = screen.getByText('Recherche')
     await user.press(searchTab)
 
     expect(mockSetDisabilities).toHaveBeenCalledWith(undefined)
@@ -252,7 +244,7 @@ describe('TabBar', () => {
 
   it('navigates to Profile on Profile tab click', async () => {
     renderTabBar(mockTabNavigationState)
-    const profileTab = screen.getByTestId('Mon profil')
+    const profileTab = screen.getByText('Profil')
 
     await user.press(profileTab)
 

@@ -150,7 +150,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
 
         await submitWithPhoneNumber('0612345678')
 
-        expect(await screen.findByText('Une erreur est survenue')).toBeTruthy()
+        expect(await screen.findByText('Une erreur est survenue', { hidden: true })).toBeTruthy()
 
         unmount()
       })

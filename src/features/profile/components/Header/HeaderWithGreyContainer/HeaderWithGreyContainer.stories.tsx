@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -12,13 +11,6 @@ import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
 const meta: Meta<typeof HeaderWithGreyContainer> = {
   title: 'features/Profile/HeaderWithGreyContainer',
   component: HeaderWithGreyContainer,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

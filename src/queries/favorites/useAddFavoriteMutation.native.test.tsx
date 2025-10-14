@@ -46,7 +46,7 @@ describe('useAddFavoriteMutation', () => {
     const onSuccess = jest.fn()
     const result = renderUseAddFavorite(onSuccess)
 
-    expect(result.current.isLoading).toBeFalsy()
+    expect(result.current.isPending).toBeFalsy()
 
     result.current.mutate({ offerId })
 
@@ -69,7 +69,7 @@ describe('useAddFavoriteMutation', () => {
     })
     const result = renderUseAddFavorite()
 
-    expect(result.current.isLoading).toBeFalsy()
+    expect(result.current.isPending).toBeFalsy()
 
     result.current.mutate({ offerId })
 
@@ -90,7 +90,7 @@ describe('useAddFavoriteMutation', () => {
     })
     const result = renderUseAddFavorite()
 
-    expect(result.current.isLoading).toBeFalsy()
+    expect(result.current.isPending).toBeFalsy()
 
     result.current.mutate({ offerId })
 

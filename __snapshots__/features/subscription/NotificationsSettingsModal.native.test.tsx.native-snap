@@ -308,7 +308,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#24242429"
+        backdropColor="#23232329"
         paddingBottom={8}
         style={
           {
@@ -424,19 +424,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       }
                     }
                   >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        {
-                          "display": "none",
-                        }
-                      }
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </Text>
                     <View
-                      accessibilityRole="checkbox"
+                      accessibilityLabel="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                      accessibilityRole="switch"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -454,7 +444,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                           "text": undefined,
                         }
                       }
-                      accessible={false}
+                      accessible={true}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -473,7 +463,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="Interrupteur Autoriser l’envoi d’e-mails"
+                      testID="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                     >
                       <View
                         active={false}
@@ -498,19 +488,12 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "alignItems": "center",
                                 "aspectRatio": 1,
                                 "backgroundColor": "#ffffff",
-                                "borderBottomLeftRadius": 28,
-                                "borderBottomRightRadius": 28,
-                                "borderTopLeftRadius": 28,
-                                "borderTopRightRadius": 28,
+                                "borderBottomLeftRadius": 32,
+                                "borderBottomRightRadius": 32,
+                                "borderTopLeftRadius": 32,
+                                "borderTopRightRadius": 32,
                                 "height": 28,
                                 "justifyContent": "center",
-                                "shadowColor": "#161617",
-                                "shadowOffset": {
-                                  "height": 2,
-                                  "width": 0,
-                                },
-                                "shadowOpacity": 0.2,
-                                "shadowRadius": 2.5,
                                 "width": 28,
                               },
                               {
@@ -601,19 +584,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       }
                     }
                   >
-                    <Text
-                      accessibilityHidden={true}
-                      style={
-                        {
-                          "display": "none",
-                        }
-                      }
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </Text>
                     <View
-                      accessibilityRole="checkbox"
+                      accessibilityLabel="Autoriser les notifications - Interrupteur à bascule - non coché"
+                      accessibilityRole="switch"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -631,7 +604,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                           "text": undefined,
                         }
                       }
-                      accessible={false}
+                      accessible={true}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -650,7 +623,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="Interrupteur Autoriser les notifications"
+                      testID="Autoriser les notifications - Interrupteur à bascule - non coché"
                     >
                       <View
                         active={false}
@@ -675,19 +648,12 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "alignItems": "center",
                                 "aspectRatio": 1,
                                 "backgroundColor": "#ffffff",
-                                "borderBottomLeftRadius": 28,
-                                "borderBottomRightRadius": 28,
-                                "borderTopLeftRadius": 28,
-                                "borderTopRightRadius": 28,
+                                "borderBottomLeftRadius": 32,
+                                "borderBottomRightRadius": 32,
+                                "borderTopLeftRadius": 32,
+                                "borderTopRightRadius": 32,
                                 "height": 28,
                                 "justifyContent": "center",
-                                "shadowColor": "#161617",
-                                "shadowOffset": {
-                                  "height": 2,
-                                  "width": 0,
-                                },
-                                "shadowOpacity": 0.2,
-                                "shadowRadius": 2.5,
                                 "width": 28,
                               },
                               {

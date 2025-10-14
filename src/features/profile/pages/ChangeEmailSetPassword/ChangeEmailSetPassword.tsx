@@ -14,7 +14,7 @@ import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -44,7 +44,7 @@ export const ChangeEmailSetPassword = () => {
     mode: 'onChange',
   })
 
-  const { mutate: setPassword, isLoading } = useChangeEmailSetPasswordMutation({
+  const { mutate: setPassword, isPending } = useChangeEmailSetPasswordMutation({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Ton mot de passe a bien été créé.',
@@ -89,7 +89,7 @@ export const ChangeEmailSetPassword = () => {
             name="newPassword"
             label="Mot de passe"
             control={control}
-            isRequiredField
+            requiredIndicator="explicit"
             autoFocus
             withSecurityRules
             securityRulesAlwaysVisible
@@ -99,13 +99,13 @@ export const ChangeEmailSetPassword = () => {
             name="confirmedPassword"
             label="Confirmer le mot de passe"
             control={control}
-            isRequiredField
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={10} />
           <ButtonPrimary
             wording="Créer mon mot de passe"
             disabled={!isValid}
-            isLoading={isLoading}
+            isLoading={isPending}
             onPress={onSubmit}
           />
         </Form.MaxWidth>

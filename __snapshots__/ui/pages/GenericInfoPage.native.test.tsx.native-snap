@@ -44,194 +44,180 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
+        style={
+          {
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexGrow": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 40,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        positionInHeader="right"
         style={
           {
             "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
           }
         }
+        testID="close-button-container"
       >
         <View
-          positionInHeader="left"
+          accessibilityLabel="Passer à la page suivante"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "flexBasis": 0,
+              "backgroundColor": "transparent",
+              "borderBottomLeftRadius": 0,
+              "borderBottomRightRadius": 0,
+              "borderTopLeftRadius": 0,
+              "borderTopRightRadius": 0,
+              "borderWidth": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
+              "justifyContent": "center",
+              "marginTop": 0,
+              "maxWidth": 500,
+              "minHeight": 16,
+              "opacity": 1,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "userSelect": "auto",
+              "width": "auto",
             }
           }
-          testID="back-button-container"
+          testID="Passer à la page suivante"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               {
                 "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        >
-          <View
-            accessibilityLabel="Passer à la page suivante"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderBottomLeftRadius": 0,
-                "borderBottomRightRadius": 0,
-                "borderTopLeftRadius": 0,
-                "borderTopRightRadius": 0,
-                "borderWidth": 0,
                 "flexDirection": "row",
-                "justifyContent": "center",
-                "marginTop": 0,
-                "maxWidth": 500,
-                "minHeight": 16,
-                "opacity": 1,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "userSelect": "auto",
-                "width": "auto",
               }
             }
-            testID="Passer à la page suivante"
           >
-            <View
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
+                  "color": "#696a6f",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
                 }
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  }
-                }
-              >
-                Passer
-              </Text>
-            </View>
+              Passer
+            </Text>
           </View>
         </View>
       </View>
@@ -397,7 +383,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#eb0055",
+            "backgroundColor": "#6123df",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
             "borderTopLeftRadius": 24,
@@ -477,7 +463,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             "backgroundColor": "transparent",
             "borderBottomLeftRadius": 24,
             "borderBottomRightRadius": 24,
-            "borderColor": "#eb0055",
+            "borderColor": "#6123df",
             "borderStyle": "solid",
             "borderTopLeftRadius": 24,
             "borderTopRightRadius": 24,
@@ -510,7 +496,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,

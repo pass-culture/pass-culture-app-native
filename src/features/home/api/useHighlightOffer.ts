@@ -4,7 +4,7 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { Position } from 'libs/location/types'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { Offer } from 'shared/offer/types'
@@ -50,7 +50,7 @@ export const useHighlightOffer = ({
       })
     }
 
-    if (!offerId) return undefined
+    if (!offerId) return []
 
     return fetchOffersByIds({
       objectIds: [offerId],

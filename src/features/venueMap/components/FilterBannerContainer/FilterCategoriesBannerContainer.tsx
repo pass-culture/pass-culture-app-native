@@ -8,7 +8,7 @@ import { SingleFilterButton } from 'features/search/components/Buttons/SingleFil
 import { FILTER_BANNER_HEIGHT, filterGroups } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import { FilterGroupKey } from 'features/venueMap/types'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 
 const BULLET_SIZE = 12
 
@@ -66,5 +66,5 @@ const ColoredGradientBullet = styled(LinearGradient).attrs<{ color: string; colo
   backgroundColor: theme.designSystem.color.icon.default,
   width: BULLET_SIZE,
   height: BULLET_SIZE,
-  borderRadius: BULLET_SIZE * 0.5,
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))

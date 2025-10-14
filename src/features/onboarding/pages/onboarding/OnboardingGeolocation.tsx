@@ -4,7 +4,7 @@ import React, { useCallback } from 'react'
 import { getOnboardingHookConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import Geolocation from 'ui/animations/geolocalisation.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 

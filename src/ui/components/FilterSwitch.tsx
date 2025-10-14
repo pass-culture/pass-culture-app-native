@@ -2,20 +2,19 @@ import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckFilled } from 'ui/svg/icons/CheckFilled'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface FilterSwitchProps {
   active: boolean
   checkboxID?: string
-  accessibilityDescribedBy?: string
+  accessibilityHint?: string
   accessibilityLabel?: string
   accessibilityLabelledBy?: string
   disabled?: boolean
@@ -47,29 +46,31 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
-  const hiddenTextStatus = active ? 'cochée' : 'non cochée'
-
-  useSpaceBarAction(isFocus ? toggle : undefined)
+  const hiddenTextStatus = active ? 'coché' : 'non coché'
 
   const testIdFull = testID ? `Interrupteur ${testID}` : 'Interrupteur'
 
+  const baseLabel = `Interrupteur à bascule - ${hiddenTextStatus}`
+  const accessibilityLabel = props.accessibilityLabel
+    ? `${props.accessibilityLabel} - ${baseLabel}`
+    : baseLabel
+
+  useSpaceBarAction(isFocus ? toggle : undefined)
+
   return (
     <FilterSwitchContainer>
-      <HiddenAccessibleText accessibilityHidden>
-        Case à cocher - {hiddenTextStatus}
-      </HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        {...accessibleCheckboxProps({
-          checked: active,
-          label: props.accessibilityLabel,
-        })}
-        accessibilityDescribedBy={props.accessibilityDescribedBy}
+        accessibilityHint={props.accessibilityHint}
         accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}
         onBlur={onBlur}
-        testID={testIdFull}>
+        testID={testIdFull}
+        accessibilityRole={AccessibilityRole.SWITCH}
+        accessibilityLabel={accessibilityLabel}
+        accessibilityState={{ checked: active }}
+        accessibilityChecked={active}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
             {disabled ? <Lock /> : null}
@@ -92,45 +93,30 @@ const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active 
   backgroundColor: getBackgroundColor(theme, active),
   width: getSpacing(14),
   height: getSpacing(8),
-  borderRadius: getSpacing(4),
+  borderRadius: theme.designSystem.size.borderRadius.l,
   justifyContent: 'center',
 }))
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disabled }) => ({
+const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme }) => ({
   aspectRatio: '1',
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
   backgroundColor: theme.designSystem.color.background.default,
-  borderRadius: getSpacing(7),
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
   alignItems: 'center',
   justifyContent: 'center',
-  ...(disabled
-    ? {}
-    : {
-        ...getShadow({
-          shadowOffset: {
-            width: 0,
-            height: getSpacing(0.5),
-          },
-          shadowRadius: 2.5,
-          shadowColor: theme.designSystem.color.background.lockedInverted,
-          shadowOpacity: 0.2,
-        }),
-      }),
 }))
 
 const Lock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.extraSmall,
-  accessibilityLabel: 'Désactivé',
 }))``
 
 const Check = styled(CheckFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
   size: theme.icons.sizes.extraSmall,
-  accessibilityLabel: 'Activé',
 }))``
 
 const propsAreEqual = (
@@ -141,6 +127,6 @@ const propsAreEqual = (
   prevProps.disabled === nextProps.disabled &&
   prevProps.checkboxID === nextProps.checkboxID &&
   prevProps.accessibilityLabelledBy === nextProps.accessibilityLabelledBy &&
-  prevProps.accessibilityDescribedBy === nextProps.accessibilityDescribedBy
+  prevProps.accessibilityHint === nextProps.accessibilityHint
 
 export default memo(FilterSwitch, propsAreEqual)

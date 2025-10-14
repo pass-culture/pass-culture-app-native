@@ -1,4 +1,4 @@
-import React, { createContext, memo, useContext, useRef, useState } from 'react'
+import React, { createContext, memo, useContext, useMemo, useState } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
@@ -29,6 +29,7 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
   children: React.ReactNode
 }) {
   const theme = useTheme()
+
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',
@@ -47,27 +48,23 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
   const hideSnackBar = () =>
     setSnackBarProps((props) => ({ ...props, visible: false, refresher: new Date().getTime() }))
 
-  const snackBarToolsRef = useRef<SnackBarContextValue>({
-    hideSnackBar,
-    showErrorSnackBar: (settings) =>
-      showSnackBar({
-        ...settings,
-        ...mapSnackBarTypeToStyle(theme, SnackBarType.ERROR),
-      }),
-    showInfoSnackBar: (settings) =>
-      showSnackBar({
-        ...settings,
-        ...mapSnackBarTypeToStyle(theme, SnackBarType.INFO),
-      }),
-    showSuccessSnackBar: (settings) =>
-      showSnackBar({
-        ...settings,
-        ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS),
-      }),
-  })
+  const snackBarContextValue = useMemo<SnackBarContextValue>(() => {
+    return {
+      hideSnackBar,
+      showErrorSnackBar: (settings) => {
+        showSnackBar({ ...settings, ...mapSnackBarTypeToStyle(theme, SnackBarType.ERROR) })
+      },
+      showInfoSnackBar: (settings) => {
+        showSnackBar({ ...settings, ...mapSnackBarTypeToStyle(theme, SnackBarType.INFO) })
+      },
+      showSuccessSnackBar: (settings) => {
+        showSnackBar({ ...settings, ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS) })
+      },
+    }
+  }, [theme])
 
   return (
-    <SnackBarContext.Provider value={snackBarToolsRef.current}>
+    <SnackBarContext.Provider value={snackBarContextValue}>
       <SnackBar
         visible={snackBarProps.visible}
         message={snackBarProps.message}

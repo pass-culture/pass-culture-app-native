@@ -7,7 +7,7 @@ import {
   filterOfferHitWithImage,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { Position, useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location/location'
 import { Offer } from 'shared/offer/types'
 
 type ThematicSearchPlaylists = {
@@ -27,11 +27,7 @@ export function useThematicSearchPlaylists({
   const transformHits = useTransformOfferHits()
 
   const { userLocation } = useLocation()
-  const {
-    data,
-    refetch,
-    isInitialLoading: isLoading,
-  } = useQuery({
+  const { data, refetch, isLoading } = useQuery({
     queryKey: [queryKey],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchMethod(userLocation)

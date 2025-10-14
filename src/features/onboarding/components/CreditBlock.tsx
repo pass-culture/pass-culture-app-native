@@ -6,8 +6,8 @@ import { CreditStatus } from 'features/onboarding/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getTagVariantFromCreditStatus } from 'features/onboarding/helpers/getTagVariantFromCreditStatus'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { Tag } from 'ui/components/Tag/Tag'
 import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -56,7 +56,7 @@ const Container = styled.View<{
       ? theme.designSystem.color.border.selected
       : theme.designSystem.color.border.disabled,
   borderWidth: getSpacing(0.25),
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
   padding: getSpacing(4),
   overflow: 'hidden',
   marginHorizontal: status === CreditStatus.ONGOING ? 0 : getSpacing(1),

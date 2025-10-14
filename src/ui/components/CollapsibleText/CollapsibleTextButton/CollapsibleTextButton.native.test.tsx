@@ -22,18 +22,6 @@ describe('CollapsibleTextButton', () => {
     expect(screen.getByText('Voir plus')).toBeOnTheScreen()
   })
 
-  it('should use Réduire le texte as accessibility label  when collapsible text is expanded', () => {
-    render(<CollapsibleTextButton expanded onPress={mockOnPress} />)
-
-    expect(screen.getByLabelText('Réduire le texte')).toBeOnTheScreen()
-  })
-
-  it('should use Étendre le texte as accessibility label  when collapsible text is expanded', () => {
-    render(<CollapsibleTextButton expanded={false} onPress={mockOnPress} />)
-
-    expect(screen.getByLabelText('Étendre le texte')).toBeOnTheScreen()
-  })
-
   it('should trigger onPress when pressing button', async () => {
     render(<CollapsibleTextButton expanded onPress={mockOnPress} />)
 

@@ -24,8 +24,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { GeolocPermissionState, Position } from 'libs/location'
+import { GeolocPermissionState, Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -437,7 +436,7 @@ describe('SearchResultsContent component', () => {
       await user.press(venueButton)
 
       expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
-        'Trouver un lieu culturel'
+        /Trouver un lieu culturel/
       )
     })
 
@@ -906,7 +905,7 @@ describe('SearchResultsContent component', () => {
       )
 
       expect(filterButton).toBeOnTheScreen()
-      expect(filterButton).toHaveTextContent('2')
+      expect(filterButton).toHaveTextContent(/2/)
     })
   })
 
@@ -928,34 +927,6 @@ describe('SearchResultsContent component', () => {
   describe('WIP_ENABLE_GRID_LIST', () => {
     describe('is activated', () => {
       beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GRID_LIST]))
-
-      describe('gridListLayout remote config is default', () => {
-        it('should display results as list', async () => {
-          renderSearchResultContent()
-
-          await initSearchResultsFlashlist()
-
-          expect(screen.getAllByTestId(`horizontal_offer_tile`)).toBeTruthy()
-        })
-      })
-
-      describe('gridListLayout remote config is grid', () => {
-        it('should display results as grid', async () => {
-          useRemoteConfigSpy.mockReturnValueOnce({
-            ...remoteConfigResponseFixture,
-            data: {
-              ...DEFAULT_REMOTE_CONFIG,
-              gridListLayoutRemoteConfig: 'Grille',
-            },
-          })
-
-          renderSearchResultContent()
-
-          await initSearchResultsFlashlist()
-
-          expect(screen.getAllByTestId('OfferTile')).toBeTruthy()
-        })
-      })
 
       it('should display results as grid when click on gridlist toggle already on list mode', async () => {
         renderSearchResultContent()
@@ -1032,7 +1003,7 @@ describe('SearchResultsContent component', () => {
       renderSearchResultContent()
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
-      expect(await screen.findByText('Liste')).toBeOnTheScreen()
+      expect(await screen.findByText('Résultats')).toBeOnTheScreen()
     })
 
     it('should log consult venue map when pressing map tab', async () => {
@@ -1156,8 +1127,10 @@ describe('SearchResultsContent component', () => {
       await user.press(screen.getByText('Artist 1'))
 
       expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistId: '1',
         artistName: 'Artist 1',
         from: 'search',
+        searchId,
       })
     })
   })

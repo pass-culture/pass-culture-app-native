@@ -11,16 +11,17 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Entrée pour l’email'
 - runFlow: InputEmail.yml
-- tapOn: 'Ton mot de passe'
+- tapOn:
+    id: 'Mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
 
 - waitForAnimationToEnd
 
-- runFlow: # Si apparition du QPI
+- runFlow:
     when:
-      visible: 'Prends 1 minute'
+      visible: 'Plus tard'
     commands:
       - tapOn: 'Plus tard'
 

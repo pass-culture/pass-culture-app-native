@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { AccessibilityRole, ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BANNER_BORDER_WIDTH, GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
+import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -93,7 +93,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
 }))({})
 
 const ImageContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius - BANNER_BORDER_WIDTH,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   overflow: 'hidden',
 }))
 

@@ -22,8 +22,8 @@ appId: ${MAESTRO_APP_ID}
           end: 47%, 68%
       - tapOn: 'Continuer vers l’étape CGU & Données'
       - tapOn:
-          id: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+          id: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
       - tapOn:
-          id: 'J’ai lu la charte des données personnelles'
+          id: 'J’ai lu la charte des données personnelles - obligatoire'
       - tapOn: 'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire'
       - tapOn: 'Vérifier mon identité plus tard'

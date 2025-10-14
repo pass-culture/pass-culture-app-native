@@ -10,9 +10,10 @@ type Options = {
   onError?: (error: unknown) => void
 }
 
-export function usePatchProfileMutation({ onError, onSuccess }: Options) {
+export const usePatchProfileMutation = ({ onError, onSuccess }: Options) => {
   const client = useQueryClient()
-  return useMutation((body: UserProfilePatchRequest) => api.patchNativeV1Profile(body), {
+  return useMutation({
+    mutationFn: (body: UserProfilePatchRequest) => api.patchNativeV1Profile(body),
     onSuccess(response: UserProfileResponseWithoutSurvey, variables) {
       client.setQueryData(
         [QueryKeys.USER_PROFILE],

@@ -1,4 +1,5 @@
-import { TabRouteName, TabParamList } from './TabStackNavigatorTypes'
+import { getTabHookConfig } from './getTabHookConfig'
+import { TabRouteName } from './TabStackNavigatorTypes'
 
 export function getShouldDisplayTab({
   isLoggedIn,
@@ -13,13 +14,6 @@ export function getShouldDisplayTab({
     }
     return true
   }
-}
-
-export function getTabHookConfig<Screen extends TabRouteName>(
-  screen: Screen,
-  params?: TabParamList[Screen]
-): ['TabNavigator', { screen: Screen; params: TabParamList[Screen] }] {
-  return ['TabNavigator', { screen, params }]
 }
 
 export const homeNavigationConfig = getTabHookConfig('Home')

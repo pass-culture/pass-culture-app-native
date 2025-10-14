@@ -1,8 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
-import { BookingsResponse, OfferResponseV2, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { addReactionsToBookings } from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
+import {
+  BookingsResponse,
+  BookingsResponseV2,
+  OfferResponseV2,
+  PostReactionRequest,
+  ReactionTypeEnum,
+} from 'api/gen'
+import {
+  addReactionsToBookings,
+  addReactionsToBookingsV2,
+} from 'features/reactions/helpers/addReactionsToBookings/addReactionsToBookings'
 import { updateLikesCounter } from 'features/reactions/helpers/updateLikesCounter/updateLikesCounter'
 import { QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -10,69 +19,74 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export const useReactionMutation = () => {
   const queryClient = useQueryClient()
   const { showErrorSnackBar } = useSnackBarContext()
-  return useMutation(
-    (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
-    {
-      onMutate: async (reactionRequest: PostReactionRequest) => {
-        await queryClient.cancelQueries([QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId])
-        await queryClient.cancelQueries([QueryKeys.BOOKINGS])
 
-        const previousOfferData = queryClient.getQueryData([
-          QueryKeys.OFFER,
-          reactionRequest.reactions[0]?.offerId,
-        ])
-        const previousBookingsData = queryClient.getQueryData([QueryKeys.BOOKINGS])
+  return useMutation({
+    mutationFn: (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
 
-        queryClient.setQueryData<OfferResponseV2 | undefined>(
-          [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
-          (oldData) => {
-            if (!oldData) return
+    onMutate: async (reactionRequest: PostReactionRequest) => {
+      const offerId = reactionRequest.reactions[0]?.offerId
+      const isLike = reactionRequest.reactions[0]?.reactionType === ReactionTypeEnum.LIKE
 
-            const currentLikes = oldData.reactionsCount.likes
-            const isLike = reactionRequest.reactions[0]?.reactionType === ReactionTypeEnum.LIKE
+      await queryClient.cancelQueries({ queryKey: [QueryKeys.OFFER, offerId] })
+      await queryClient.cancelQueries({ queryKey: [QueryKeys.BOOKINGS] })
+      await queryClient.cancelQueries({ queryKey: [QueryKeys.BOOKINGSV2] })
 
-            return {
-              ...oldData,
+      const previousOfferData = queryClient.getQueryData<OfferResponseV2>([
+        QueryKeys.OFFER,
+        offerId,
+      ])
+      const previousBookingsV1 = queryClient.getQueryData<BookingsResponse>([QueryKeys.BOOKINGS])
+      const previousBookingsV2 = queryClient.getQueryData<BookingsResponseV2>([
+        QueryKeys.BOOKINGSV2,
+      ])
+
+      queryClient.setQueryData<OfferResponseV2 | undefined>([QueryKeys.OFFER, offerId], (old) =>
+        old
+          ? {
+              ...old,
               reactionsCount: {
-                likes: updateLikesCounter(currentLikes, isLike),
+                likes: updateLikesCounter(old.reactionsCount.likes, isLike),
               },
             }
-          }
-        )
+          : old
+      )
 
-        queryClient.setQueryData<BookingsResponse | undefined>([QueryKeys.BOOKINGS], (oldData) => {
-          if (!oldData) return
+      queryClient.setQueryData<BookingsResponse | undefined>([QueryKeys.BOOKINGS], (old) =>
+        old
+          ? {
+              ...old,
+              ended_bookings: addReactionsToBookings(old.ended_bookings, reactionRequest.reactions),
+            }
+          : old
+      )
 
-          const updatedEndedBookings = addReactionsToBookings(
-            oldData.ended_bookings,
-            reactionRequest.reactions
-          )
+      queryClient.setQueryData<BookingsResponseV2 | undefined>([QueryKeys.BOOKINGSV2], (old) =>
+        old
+          ? {
+              ...old,
+              endedBookings: addReactionsToBookingsV2(old.endedBookings, reactionRequest.reactions),
+            }
+          : old
+      )
 
-          return {
-            ...oldData,
-            ended_bookings: updatedEndedBookings,
-          }
-        })
+      return { previousOfferData, previousBookingsV1, previousBookingsV2 }
+    },
 
-        return { previousBookingsData, previousOfferData }
-      },
-      onError: (_error, reactionRequest, context) => {
-        queryClient.setQueryData(
-          [QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId],
-          context?.previousOfferData
-        )
-        queryClient.setQueryData([QueryKeys.BOOKINGS], context?.previousBookingsData)
+    onError: (_error, reactionRequest, context) => {
+      const offerId = reactionRequest.reactions[0]?.offerId
+      queryClient.setQueryData([QueryKeys.OFFER, offerId], context?.previousOfferData)
+      queryClient.setQueryData([QueryKeys.BOOKINGS], context?.previousBookingsV1)
+      queryClient.setQueryData([QueryKeys.BOOKINGSV2], context?.previousBookingsV2)
 
-        showErrorSnackBar({
-          message: 'Une erreur s’est produite',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      },
-      onSettled: (_data, _error, reactionRequest) => {
-        queryClient.invalidateQueries([QueryKeys.OFFER, reactionRequest.reactions[0]?.offerId])
-        queryClient.invalidateQueries([QueryKeys.BOOKINGS])
-        queryClient.invalidateQueries([QueryKeys.AVAILABLE_REACTION])
-      },
-    }
-  )
+      showErrorSnackBar({ message: 'Une erreur s’est produite', timeout: SNACK_BAR_TIME_OUT })
+    },
+
+    onSettled: (_data, _error, reactionRequest) => {
+      const offerId = reactionRequest.reactions[0]?.offerId
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.OFFER, offerId] })
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] })
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] })
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.AVAILABLE_REACTION] })
+    },
+  })
 }

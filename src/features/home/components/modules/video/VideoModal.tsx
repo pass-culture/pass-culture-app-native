@@ -14,9 +14,9 @@ import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSwipeDirection } from 'ui/components/modals/types'
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -130,7 +130,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   position: 'absolute',
   top: theme.designSystem.size.spacing.l,
   right: theme.designSystem.size.spacing.l,
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   padding: getSpacing(2.5),
   backgroundColor: theme.designSystem.color.background.default,
 }))

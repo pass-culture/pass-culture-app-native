@@ -1,21 +1,25 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { StoryFn } from '@storybook/react'
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo, getSpacing } from 'ui/theme'
 
-export const SVGTemplate: StoryFn<
-  React.FC<{
-    title: string
-    icons: Record<string, React.ComponentType<AccessibleIcon>>
-    isBicolor?: boolean
-    children?: never
-    isIllustration?: boolean
-  }>
-> = ({ title, icons, isBicolor = false, isIllustration = false }) => {
+interface SVGTemplateProps {
+  title: string
+  icons: Record<string, React.ComponentType<AccessibleIcon>>
+  isBicolor?: boolean
+  children?: never
+  isIllustration?: boolean
+}
+
+export const SVGTemplate: React.FC<SVGTemplateProps> = ({
+  title,
+  icons,
+  isBicolor = false,
+  isIllustration = false,
+}) => {
   const [copiedIconName, setCopiedIconName] = useState<string | null>(null)
 
   const sortedIcons = useMemo(() => {
@@ -81,7 +85,7 @@ const IconWrapper = styled.TouchableOpacity<{
   width: isIllustration ? getSpacing(60) : getSpacing(40),
   minHeight: isIllustration ? getSpacing(40) : getSpacing(25),
   border: `2px solid ${isCopied ? theme.designSystem.color.border.success : theme.designSystem.color.border.subtle}`,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   justifyContent: 'center',
   backgroundColor: isCopied
     ? theme.designSystem.color.background.success
@@ -94,7 +98,7 @@ const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.success,
   backgroundColor: theme.designSystem.color.background.default,
   padding: getSpacing(2),
-  borderRadius: getSpacing(1),
+  borderRadius: theme.designSystem.size.borderRadius.s,
   zIndex: 1,
 }))
 

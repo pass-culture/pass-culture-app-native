@@ -40,16 +40,23 @@ describe('ConcertsAndFestivalsPlaylists', () => {
   it('should render playlist when algolia returns offers', async () => {
     renderConcertsAndFestivals()
 
-    expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
+    expect(await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
     useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderConcertsAndFestivals()
 
-    expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
 const renderConcertsAndFestivals = () =>
-  render(reactQueryProviderHOC(<ConcertsAndFestivalsPlaylists />))
+  render(
+    reactQueryProviderHOC(
+      <ConcertsAndFestivalsPlaylists
+        shouldDisplayVenuesPlaylist
+        onViewableItemsChanged={jest.fn()}
+      />
+    )
+  )

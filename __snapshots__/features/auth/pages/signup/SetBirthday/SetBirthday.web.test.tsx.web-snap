@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 .c8 {
@@ -71,7 +71,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c3 {
   font-family: Montserrat-Medium;
-  font-size: 1rempx;
+  font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
   width: 100%;
@@ -90,12 +90,12 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c3:focus-visible,
 .c3:active {
-  border-color: #eb0055;
+  border-color: #6123df;
 }
 
 .c6 {
   font-family: Montserrat-Medium;
-  font-size: 1rempx;
+  font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
   width: 100%;
@@ -114,12 +114,12 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c6:focus-visible,
 .c6:active {
-  border-color: #eb0055;
+  border-color: #6123df;
 }
 
 .c7 {
   font-family: Montserrat-Medium;
-  font-size: 1rempx;
+  font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
   width: 100%;
@@ -138,7 +138,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 
 .c7:focus-visible,
 .c7:active {
-  border-color: #eb0055;
+  border-color: #6123df;
 }
 
 .c4 {
@@ -195,7 +195,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         class="css-view-175oi2r r-height-eu3ka"
       />
       <div
-        aria-describedby="testUuidV4"
         class="css-view-175oi2r r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         data-testid="date-picker-dropdown"
       >
@@ -1380,7 +1379,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         </div>
       </div>
       <div
-        id="testUuidV4"
         role="alert"
       />
       <div
@@ -1530,10 +1528,11 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           </label>
         </div>
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5kex9v r-borderBottomRightRadius-1inxgn4 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kj4tcz r-borderBottomRightRadius-wab3e5 r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-wowrgg r-borderTopRightRadius-oho8x9 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
           data-testid="styled-input-container"
         >
           <div
+            aria-label="1er décembre 2006"
             class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
             id="testUuidV4"
@@ -1543,7 +1542,6 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         </div>
       </div>
       <div
-        id="testUuidV4"
         role="alert"
       />
       <div

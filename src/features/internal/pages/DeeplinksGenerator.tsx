@@ -5,11 +5,9 @@ import styled from 'styled-components/native'
 import { DeeplinksGeneratorForm } from 'features/internal/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/internal/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/internal/components/DeeplinksResult'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'

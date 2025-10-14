@@ -273,19 +273,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           }
         >
-          <Text
-            accessibilityHidden={true}
-            style={
-              {
-                "display": "none",
-              }
-            }
-          >
-            Case à cocher - 
-            non cochée
-          </Text>
           <View
-            accessibilityRole="checkbox"
+            accessibilityLabel="Tout accepter - Interrupteur à bascule - non coché"
+            accessibilityRole="switch"
             accessibilityState={
               {
                 "busy": undefined,
@@ -303,7 +293,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "text": undefined,
               }
             }
-            accessible={false}
+            accessible={true}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -322,7 +312,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Interrupteur Tout accepter"
+            testID="Tout accepter - Interrupteur à bascule - non coché"
           >
             <View
               active={false}
@@ -347,19 +337,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 28,
-                      "borderBottomRightRadius": 28,
-                      "borderTopLeftRadius": 28,
-                      "borderTopRightRadius": 28,
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
                       "height": 28,
                       "justifyContent": "center",
-                      "shadowColor": "#161617",
-                      "shadowOffset": {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
                       "width": 28,
                     },
                     {
@@ -409,19 +392,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           }
         >
-          <Text
-            accessibilityHidden={true}
-            style={
-              {
-                "display": "none",
-              }
-            }
-          >
-            Case à cocher - 
-            non cochée
-          </Text>
           <View
-            accessibilityRole="checkbox"
+            accessibilityLabel="Personnaliser ta navigation - Interrupteur à bascule - non coché"
+            accessibilityRole="switch"
             accessibilityState={
               {
                 "busy": undefined,
@@ -439,7 +412,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "text": undefined,
               }
             }
-            accessible={false}
+            accessible={true}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -458,7 +431,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Interrupteur Personnaliser ta navigation"
+            testID="Personnaliser ta navigation - Interrupteur à bascule - non coché"
           >
             <View
               active={false}
@@ -483,19 +456,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 28,
-                      "borderBottomRightRadius": 28,
-                      "borderTopLeftRadius": 28,
-                      "borderTopRightRadius": 28,
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
                       "height": 28,
                       "justifyContent": "center",
-                      "shadowColor": "#161617",
-                      "shadowOffset": {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
                       "width": 28,
                     },
                     {
@@ -693,7 +659,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <View
-              fill="#eb0055"
+              fill="#6123df"
               height={16}
               width={16}
             >
@@ -769,19 +735,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           }
         >
-          <Text
-            accessibilityHidden={true}
-            style={
-              {
-                "display": "none",
-              }
-            }
-          >
-            Case à cocher - 
-            non cochée
-          </Text>
           <View
-            accessibilityRole="checkbox"
+            accessibilityLabel="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
+            accessibilityRole="switch"
             accessibilityState={
               {
                 "busy": undefined,
@@ -799,7 +755,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "text": undefined,
               }
             }
-            accessible={false}
+            accessible={true}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -818,7 +774,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Interrupteur Enregistrer des statistiques de navigation"
+            testID="Enregistrer des statistiques de navigation - Interrupteur à bascule - non coché"
           >
             <View
               active={false}
@@ -843,19 +799,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 28,
-                      "borderBottomRightRadius": 28,
-                      "borderTopLeftRadius": 28,
-                      "borderTopRightRadius": 28,
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
                       "height": 28,
                       "justifyContent": "center",
-                      "shadowColor": "#161617",
-                      "shadowOffset": {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
                       "width": 28,
                     },
                     {
@@ -1053,7 +1002,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <View
-              fill="#eb0055"
+              fill="#6123df"
               height={16}
               width={16}
             >
@@ -1129,19 +1078,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           }
         >
-          <Text
-            accessibilityHidden={true}
-            style={
-              {
-                "display": "none",
-              }
-            }
-          >
-            Case à cocher - 
-            non cochée
-          </Text>
           <View
-            accessibilityRole="checkbox"
+            accessibilityLabel="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
+            accessibilityRole="switch"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1159,7 +1098,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "text": undefined,
               }
             }
-            accessible={false}
+            accessible={true}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1178,7 +1117,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Interrupteur Mesurer l’efficacité de nos publicités"
+            testID="Mesurer l’efficacité de nos publicités - Interrupteur à bascule - non coché"
           >
             <View
               active={false}
@@ -1203,19 +1142,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 28,
-                      "borderBottomRightRadius": 28,
-                      "borderTopLeftRadius": 28,
-                      "borderTopRightRadius": 28,
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
                       "height": 28,
                       "justifyContent": "center",
-                      "shadowColor": "#161617",
-                      "shadowOffset": {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 2.5,
                       "width": 28,
                     },
                     {
@@ -1413,7 +1345,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           >
             <View
-              fill="#eb0055"
+              fill="#6123df"
               height={16}
               width={16}
             >
@@ -1489,19 +1421,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
             }
           }
         >
-          <Text
-            accessibilityHidden={true}
-            style={
-              {
-                "display": "none",
-              }
-            }
-          >
-            Case à cocher - 
-            cochée
-          </Text>
           <View
-            accessibilityRole="checkbox"
+            accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
+            accessibilityRole="switch"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1519,7 +1441,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "text": undefined,
               }
             }
-            accessible={false}
+            accessible={true}
             focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1538,7 +1460,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs"
+            testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Interrupteur à bascule - coché"
           >
             <View
               active={true}
@@ -1563,10 +1485,10 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "alignItems": "center",
                       "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 28,
-                      "borderBottomRightRadius": 28,
-                      "borderTopLeftRadius": 28,
-                      "borderTopRightRadius": 28,
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
                       "height": 28,
                       "justifyContent": "center",
                       "width": 28,
@@ -1578,7 +1500,6 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Désactivé"
                   height={16}
                   width={16}
                 >
@@ -1770,7 +1691,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         }
       >
         <View
-          fill="#eb0055"
+          fill="#6123df"
           height={16}
           width={16}
         >
@@ -1873,99 +1794,24 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       }
     >
       Pour plus d’informations, nous t’invitons à consulter notre
-      <View
-        numberOfSpaces={1}
+       
+      <Text
+        accessibilityLabel="politique de gestion des cookies, lien externe"
+        accessibilityRole="link"
+        onPress={[Function]}
         style={
           {
-            "width": 4,
+            "color": "#6123df",
+            "cursor": "pointer",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 19.2,
+            "textDecorationLine": "underline",
           }
         }
-      />
-      <View>
-        <View
-          accessibilityLabel="Politique de gestion des cookies"
-          accessibilityRole="link"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "top": 3,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Politique de gestion des cookies"
-        >
-          <View
-            gap={1}
-            paddingForIcon={0}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 4,
-                "top": 0,
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Nouvelle fenêtre"
-              height={16}
-              testID="button-icon"
-              width={16}
-            >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                }
-              }
-              typography="BodyAccentXs"
-            >
-              Politique de gestion des cookies
-            </Text>
-          </View>
-        </View>
-      </View>
+      >
+        politique de gestion des cookies
+      </Text>
     </Text>
   </View>
 </View>

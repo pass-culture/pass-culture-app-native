@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
+import { beneficiaryUser } from 'fixtures/user'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -40,6 +41,12 @@ describe('TicketTopPart', () => {
 
     expect(screen.getByText(`À récupérer avant le 14 juillet 2025`)).toBeOnTheScreen()
   })
+
+  it('should display user firstname and lastname', async () => {
+    renderTicketTopPart({})
+
+    expect(screen.getByText(`Jean Dupond`)).toBeOnTheScreen()
+  })
 })
 
 const renderTicketTopPart = ({
@@ -58,6 +65,7 @@ const renderTicketTopPart = ({
   return render(
     reactQueryProviderHOC(
       <TicketTopPart
+        user={beneficiaryUser}
         isDuo={isDuo}
         day={day}
         hour={hour}

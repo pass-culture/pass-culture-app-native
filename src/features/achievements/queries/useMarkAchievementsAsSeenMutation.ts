@@ -9,15 +9,18 @@ export function useAchievementsMarkAsSeenMutation(
 ) {
   const queryClient = useQueryClient()
 
-  return useMutation(
-    (achievementIds: number[]) => api.postNativeV1AchievementsMarkAsSeen({ achievementIds }),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries([QueryKeys.USER_PROFILE]) // To re-fetch the user's achievements
+  return useMutation({
+    mutationFn: (achievementIds: number[]) =>
+      api.postNativeV1AchievementsMarkAsSeen({ achievementIds }),
 
-        if (onSuccess) onSuccess()
-      },
-      onError,
-    }
-  )
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.USER_PROFILE],
+      }) // To re-fetch the user's achievements
+
+      if (onSuccess) onSuccess()
+    },
+
+    onError,
+  })
 }

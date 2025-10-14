@@ -34,7 +34,7 @@ const Frame = styled.View(({ theme }) => ({
   width: getSpacing(12),
   alignItems: 'center',
   borderColor: theme.designSystem.color.border.default,
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   borderWidth: 1,
 }))
 

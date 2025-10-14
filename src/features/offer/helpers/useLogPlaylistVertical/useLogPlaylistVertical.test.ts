@@ -101,7 +101,7 @@ describe('useLogPlaylist', () => {
 
   it('should logPlaylistHorizontalScroll correctly', () => {
     const { result, rerender } = renderHook(
-      ({ fromOfferId }) =>
+      ({ fromOfferId }: { fromOfferId: number }) =>
         useLogPlaylist({
           offerId: 1,
           nbOtherCategoriesSimilarOffers: 0,

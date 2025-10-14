@@ -6,7 +6,7 @@ import {
   VENUE_WITH_BANNER_RESPONSE_SNAPSHOT,
   VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT,
 } from '../../../tests/constants'
-import { env } from '../../libs/environment/env'
+import { env } from '../../libs/environment/serverEnv'
 import { metasResponseInterceptor, fixHTMLFallbackStatusCode } from '../webAppProxyMiddleware'
 import { server } from '../../../tests/server'
 

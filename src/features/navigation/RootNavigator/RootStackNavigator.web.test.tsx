@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { FavoritesCountResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useSplashScreenContext } from 'libs/splashscreen'
+import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -31,7 +31,7 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 }))
 jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/navigation/navigationRef')
-jest.mock('libs/splashscreen')
+jest.mock('libs/splashscreen/splashscreen')
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -54,7 +54,6 @@ describe('<RootNavigator />', () => {
 
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
-    mockServer.getApi<FavoritesCountResponse>('/v1/me/favorites/count', { count: 2 })
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

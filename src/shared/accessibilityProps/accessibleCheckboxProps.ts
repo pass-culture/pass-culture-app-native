@@ -11,7 +11,12 @@ export const accessibleCheckboxProps = ({
   label?: string
   required?: boolean
 }) => {
-  const commonProps = { accessibilityRole: AccessibilityRole.CHECKBOX, accessibilityLabel: label }
+  const computedLabel = required && label ? `${label} - obligatoire` : label
+  const commonProps = {
+    accessibilityRole: AccessibilityRole.CHECKBOX,
+    accessibilityLabel: computedLabel,
+  }
+
   return Platform.select({
     web: {
       ...commonProps,

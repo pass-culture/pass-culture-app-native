@@ -7,9 +7,9 @@ import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 
@@ -31,9 +31,8 @@ export const CheatcodesScreenAccesLibre = () => {
 
   return (
     <CheatcodesTemplateScreen title="AccesLibre 🌈" flexDirection="column">
-      <TextInput
+      <InputText
         label="Rentrer un ID de lieu avec AccesLibre"
-        placeholder="859"
         keyboardType="number-pad"
         value={value}
         onChangeText={setValue}

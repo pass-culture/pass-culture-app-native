@@ -6,6 +6,7 @@ import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
+import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -31,6 +32,10 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const mockedAlgoliaVenuesItems = mockAlgoliaVenues.map(
+  convertAlgoliaVenue2AlgoliaVenueOfferListItem
+)
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
@@ -41,7 +46,7 @@ describe('<VenuePlaylist />', () => {
   })
 
   it('should render the title and venues playlist', () => {
-    render(<VenuePlaylist venuePlaylistTitle="Test Playlist" venues={mockAlgoliaVenues} />)
+    render(<VenuePlaylist venuePlaylistTitle="Test Playlist" venues={mockedAlgoliaVenuesItems} />)
 
     expect(screen.getByText('Test Playlist')).toBeOnTheScreen()
     expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
@@ -51,7 +56,7 @@ describe('<VenuePlaylist />', () => {
     render(
       <VenuePlaylist
         venuePlaylistTitle="Test Playlist"
-        venues={mockAlgoliaVenues}
+        venues={mockedAlgoliaVenuesItems}
         currentView="SearchResults"
       />
     )
@@ -68,7 +73,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
         />
       )
@@ -80,7 +85,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="SearchResults"
         />
       )
@@ -92,7 +97,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.LIVRES}
         />
@@ -111,7 +116,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
         />
@@ -126,7 +131,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
         />
       )
@@ -147,7 +152,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated={false}
@@ -163,7 +168,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated
@@ -179,7 +184,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated
@@ -195,7 +200,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated={false}
@@ -213,7 +218,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated={false}
@@ -228,7 +233,7 @@ describe('<VenuePlaylist />', () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           currentView="ThematicSearch"
           offerCategory={SearchGroupNameEnumv2.CINEMA}
           isLocated={false}

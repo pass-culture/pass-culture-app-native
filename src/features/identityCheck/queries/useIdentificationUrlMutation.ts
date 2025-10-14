@@ -16,9 +16,9 @@ export const useIdentificationUrlMutation = () => {
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
   const { navigate, replace } = useNavigation<UseNavigationType>()
 
-  const { mutate: postIdentificationUrl } = useMutation(
-    [MutationKeys.IDENTIFICATION_URL],
-    async () => {
+  const { mutate: postIdentificationUrl } = useMutation({
+    mutationKey: [MutationKeys.IDENTIFICATION_URL],
+    mutationFn: async () => {
       try {
         const data = await api.postNativeV1UbbleIdentification({ redirectUrl: REDIRECT_URL_UBBLE })
         setIdentificationUrl(data.identificationUrl)
@@ -31,8 +31,9 @@ export const useIdentificationUrlMutation = () => {
           replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
         }
       }
-    }
-  )
+    },
+    retry: false,
+  })
 
   useEffect(() => {
     if (identificationUrl) return

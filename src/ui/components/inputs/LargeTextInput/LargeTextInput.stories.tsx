@@ -13,7 +13,7 @@ export default meta
 
 const textWith801Character = 'a'.repeat(801)
 
-const baseProps = { label: 'Label', placeholder: 'Placeholder...' }
+const baseProps = { label: 'Label' }
 
 const variantConfig: Variants<typeof LargeTextInput> = [
   {
@@ -26,7 +26,7 @@ const variantConfig: Variants<typeof LargeTextInput> = [
   },
   {
     label: 'Required LargeTextInput',
-    props: { ...baseProps, isRequiredField: true },
+    props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
     label: 'Disabled LargeTextInput',
@@ -34,7 +34,7 @@ const variantConfig: Variants<typeof LargeTextInput> = [
   },
   {
     label: ' LargeTextInput with Error',
-    props: { ...baseProps, isError: true, showErrorMessage: true, value: textWith801Character },
+    props: { ...baseProps, errorMessage: 'Error', value: textWith801Character },
   },
 ]
 

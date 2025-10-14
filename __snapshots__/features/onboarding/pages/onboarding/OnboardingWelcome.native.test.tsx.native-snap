@@ -188,7 +188,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#eb0055",
+                  "backgroundColor": "#6123df",
                   "borderBottomLeftRadius": 24,
                   "borderBottomRightRadius": 24,
                   "borderTopLeftRadius": 24,
@@ -289,83 +289,41 @@ exports[`OnboardingWelcome should render correctly 1`] = `
             Déjà un compte ?
           </Text>
           <View
-            accessibilityLabel="Se connecter"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 4,
+              }
             }
-            testID="Se connecter"
           >
             <View
-              gap={1}
-              paddingForIcon={0}
+              fill="#6123df"
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              accessibilityLabel="Se connecter"
+              accessibilityRole="button"
+              color="#6123df"
+              onPress={[Function]}
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 4,
-                  "top": 0,
+                  "color": "#6123df",
+                  "cursor": "pointer",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textDecorationLine": "underline",
                 }
               }
             >
-              <View
-                fill="#eb0055"
-                height={20}
-                testID="button-icon"
-                width={20}
-              >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                color="#eb0055"
-                style={
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-                typography="Button"
-              >
-                Se connecter
-              </Text>
-            </View>
+              Se connecter
+            </Text>
           </View>
         </View>
         <View

@@ -18,7 +18,7 @@ describe('<SurveyModal />', () => {
   it('should redirect to survey when pressing "Répondre au questionnaire" button', async () => {
     renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })
 
-    user.press(screen.getByText('Répondre au questionnaire'))
+    await user.press(screen.getByText('Répondre au questionnaire'))
 
     await waitFor(() => {
       expect(openUrl).toHaveBeenNthCalledWith(
@@ -53,7 +53,7 @@ describe('<SurveyModal />', () => {
   it('should call hideModal function  when pressing "Répondre au questionnaire" button', async () => {
     renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })
 
-    user.press(screen.getByText('Répondre au questionnaire'))
+    await user.press(screen.getByText('Répondre au questionnaire'))
 
     await waitFor(() => {
       expect(hideModalMock).toHaveBeenCalledTimes(1)

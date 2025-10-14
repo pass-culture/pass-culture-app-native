@@ -12,9 +12,9 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { QueryKeys } from 'libs/queryKeys'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Page } from 'ui/pages/Page'
@@ -31,12 +31,16 @@ export const IdentityCheckHonor = () => {
 
   const {
     mutate: postHonorStatement,
-    isLoading: isPostingHonorLoading,
+    isPending: isPostingHonorLoading,
     isSuccess: isPostingHonorSuccess,
   } = usePostHonorStatementMutation({
     onSuccess: async () => {
-      queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
-      queryClient.invalidateQueries([QueryKeys.HOME_BANNER])
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.NEXT_SUBSCRIPTION_STEP],
+      })
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.HOME_BANNER],
+      })
       let userProfile
       try {
         const { data: user } = await refetchUser()

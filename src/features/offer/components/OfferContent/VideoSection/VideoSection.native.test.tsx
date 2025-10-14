@@ -1,8 +1,10 @@
 import React from 'react'
 
+import FastImage from '__mocks__/react-native-fast-image'
 import { SubcategoryIdEnum } from 'api/gen'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
-import { render, screen } from 'tests/utils'
+import { analytics } from 'libs/analytics/provider'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -12,13 +14,17 @@ const defaultProps = {
   videoId: 'abc123',
   title: 'Peppa Pig',
   subtitle: 'le cochon rose',
+  videoThumbnail: <FastImage />,
 }
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VideoSection />', () => {
   it('should display Vidéo section', () => {
     render(<VideoSection {...defaultProps} />)
 
-    expect(screen.getByText('Peppa Pig')).toBeOnTheScreen()
+    expect(screen.getByText('Vidéo')).toBeOnTheScreen()
   })
 
   it('should display container without divider on desktop', () => {
@@ -31,5 +37,34 @@ describe('<VideoSection />', () => {
     render(<VideoSection {...defaultProps} />, { theme: { isDesktopViewport: false } })
 
     expect(screen.getByTestId('video-section-with-divider')).toBeOnTheScreen()
+  })
+
+  it('should display player with preview when user accepted video cookies', () => {
+    render(<VideoSection {...defaultProps} hasVideoCookiesConsent />)
+
+    expect(screen.getByRole('imagebutton')).toBeOnTheScreen()
+  })
+
+  it('should send log ConsultVideo when user taps Play on the thumbnail', async () => {
+    render(<VideoSection {...defaultProps} hasVideoCookiesConsent />)
+
+    const playButton = screen.getByRole('imagebutton')
+
+    await user.press(playButton)
+
+    expect(analytics.logConsultVideo).toHaveBeenCalledWith({
+      from: 'offer',
+      offerId: '123',
+    })
+  })
+
+  it('should display player placeholder when user not accepted video cookies', () => {
+    render(<VideoSection {...defaultProps} hasVideoCookiesConsent={false} />)
+
+    expect(
+      screen.getByText(
+        'En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.'
+      )
+    ).toBeOnTheScreen()
   })
 })

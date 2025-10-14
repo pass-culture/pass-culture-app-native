@@ -1,7 +1,7 @@
 import { Server } from 'http'
 import { AddressInfo } from 'net'
 
-import { env } from './libs/environment/__mocks__/env'
+import { env } from './libs/environment/__mocks__/serverEnv'
 
 describe('express server', () => {
   let server: Server

@@ -5,7 +5,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 
 describe('triggerConsultOfferLog', () => {
   it('should trigger ConsultOffer log when offerId defined', () => {
-    const params: ConsultOfferLogParams = { offerId: '123', from: 'home' }
+    const params: ConsultOfferLogParams = { offerId: '123', from: 'home', isHeadline: false }
 
     triggerConsultOfferLog(params)
 

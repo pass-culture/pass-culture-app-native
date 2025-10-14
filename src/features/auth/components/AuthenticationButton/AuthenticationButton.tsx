@@ -1,13 +1,11 @@
-import React, { FC, FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import React, { FunctionComponent } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
-import { AppButtonEventNative } from 'ui/components/buttons/AppButton/types'
-import { ButtonInsideTextInner } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextInner'
-import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Connect } from 'ui/svg/icons/Connect'
 import { ProfileFilled } from 'ui/svg/icons/ProfileFilled'
 import { getSpacing, Typo } from 'ui/theme'
@@ -34,6 +32,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   params = {},
   onAdditionalPress: onPress,
 }) => {
+  const { designSystem } = useTheme()
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
@@ -42,49 +41,31 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const wording = isLogin ? 'Se connecter' : 'Créer un compte'
-  const icon = isLogin ? Connect : ProfileFilled
+  const color = linkColor ?? designSystem.color.icon.brandPrimary
 
   return (
     <AuthenticationContainer>
       <StyledBody>{text}</StyledBody>
-      <InternalTouchableLink
-        as={Button}
-        navigateTo={nextNavigation}
-        wording={wording}
-        buttonColor={linkColor}
-        icon={icon}
-        onBeforeNavigate={onPress}
-      />
+      <ButtonContainer>
+        {isLogin ? <Connect color={color} /> : <ProfileFilled color={color} />}
+        <InternalTouchableLink
+          as={LinkInsideText}
+          navigateTo={nextNavigation}
+          wording={wording}
+          color={color}
+          onBeforeNavigate={onPress}
+          accessibilityRole={AccessibilityRole.BUTTON}
+        />
+      </ButtonContainer>
     </AuthenticationContainer>
   )
 }
 
-const Button: FC<ButtonInsideTexteProps> = ({
-  onPress,
-  onLongPress,
-  wording,
-  icon,
-  buttonColor,
-  typography,
-  accessibilityLabel,
-  accessibilityRole,
-}) => {
-  return (
-    <TouchableOpacity
-      onPress={onPress as AppButtonEventNative}
-      onLongPress={onLongPress as AppButtonEventNative}
-      accessibilityRole={accessibilityRole}
-      accessibilityLabel={accessibilityLabel || wording}>
-      <ButtonInsideTextInner
-        wording={wording}
-        icon={icon}
-        color={buttonColor}
-        typography={typography}
-        disablePadding
-      />
-    </TouchableOpacity>
-  )
-}
+const ButtonContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: getSpacing(1),
+})
 
 const AuthenticationContainer = styled.View({
   alignItems: 'center',

@@ -53,7 +53,7 @@ export const useThematicSubscription = ({
 
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
+  const { mutate: patchProfile, isPending: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       const analyticsParams = homeId

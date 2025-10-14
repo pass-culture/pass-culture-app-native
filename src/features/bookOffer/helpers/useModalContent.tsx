@@ -9,10 +9,10 @@ import { BookingImpossible } from 'features/bookOffer/components/BookingImpossib
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getPreviousStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { Loader } from 'ui/components/Loader'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -102,7 +102,7 @@ export const useModalContent = (
   bookingDataMovieScreening?: MovieScreeningBookingData
 ): ModalContent => {
   const { bookingState, dispatch } = useBookingContext()
-  const offer = useBookingOffer()
+  const offer = useBookingOfferQuery()
   const mapping = useSubcategoriesMapping()
   const bookingStep = bookingState.step ?? Step.DATE
 

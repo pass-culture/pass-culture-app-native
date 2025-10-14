@@ -9,12 +9,13 @@ import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePrevi
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { GeoCoordinates } from 'libs/location'
+import { GeoCoordinates } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -88,6 +89,10 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const mockedAlgoliaVenuesItems = mockAlgoliaVenues.map(
+  convertAlgoliaVenue2AlgoliaVenueOfferListItem
+)
+
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
@@ -109,7 +114,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -155,7 +160,7 @@ describe('<SearchListHeader />', () => {
               nbHits={10}
               userData={[]}
               venuesUserData={mockVenuesUserData}
-              venues={mockAlgoliaVenues}
+              venues={mockedAlgoliaVenuesItems}
             />
           )
 
@@ -170,7 +175,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -187,7 +192,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -224,7 +229,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -237,7 +242,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -265,7 +270,7 @@ describe('<SearchListHeader />', () => {
             nbHits={10}
             userData={[]}
             venuesUserData={[]}
-            venues={mockAlgoliaVenues}
+            venues={mockedAlgoliaVenuesItems}
           />
         )
 
@@ -291,7 +296,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -315,7 +320,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -331,7 +336,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -395,7 +400,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -420,7 +425,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -439,7 +444,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
         />
       )
 
@@ -453,7 +458,12 @@ describe('<SearchListHeader />', () => {
       selectedLocationMode: LocationMode.EVERYWHERE,
     })
     render(
-      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venuesUserData={[]}
+        venues={mockedAlgoliaVenuesItems}
+      />
     )
 
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
@@ -466,7 +476,7 @@ describe('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockedAlgoliaVenuesItems}
           shouldDisplayGridList
         />
       )

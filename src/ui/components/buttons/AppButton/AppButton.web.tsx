@@ -26,7 +26,7 @@ const _AppButton = <T extends AppButtonProps>({
   buttonHeight = 'small',
   inlineHeight,
   accessibilityLabel,
-  accessibilityDescribedBy,
+  accessibilityHint,
   testID,
   wording,
   adjustsFontSizeToFit,
@@ -75,6 +75,8 @@ const _AppButton = <T extends AppButtonProps>({
     [type, longPressHandler]
   )
 
+  const computedAccessibilityLabel = [wording, accessibilityHint].filter(Boolean).join(' - ')
+
   return (
     <ButtonComponent
       {...accessibilityAndTestId(accessibilityLabel || wording, testID)}
@@ -83,7 +85,7 @@ const _AppButton = <T extends AppButtonProps>({
       onDoubleClick={onDoubleClick}
       disabled={disabled}
       type={href ? undefined : type}
-      aria-describedby={accessibilityDescribedBy}
+      aria-label={computedAccessibilityLabel}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}
       buttonHeight={buttonHeight}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeoCoordinates, GeolocPermissionState } from 'libs/location'
+import { GeoCoordinates, GeolocPermissionState } from 'libs/location/location'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 

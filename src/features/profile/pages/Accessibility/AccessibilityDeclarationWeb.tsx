@@ -5,19 +5,17 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -51,33 +49,45 @@ export function AccessibilityDeclarationWeb() {
       </Typo.Body>
       <StyledView>
         <VerticalUl>
-          <BulletListItem>
+          <BulletListItem
+            groupLabel="Engagements"
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={0}
+            total={3}>
             <Typo.BodyXs>
               <InternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
-                icon={PlainArrowNext}
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
+                accessibilityRole={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem
+            groupLabel="Engagements"
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={1}
+            total={3}>
             <Typo.BodyXs>
               <InternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Actions réalisées depuis 2022"
-                icon={PlainArrowNext}
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
+                accessibilityRole={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem
+            groupLabel="Engagements"
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={2}
+            total={3}>
             <Typo.BodyXs>
               <InternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Plan d’actions 2024"
-                icon={PlainArrowNext}
                 navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
+                accessibilityRole={AccessibilityRole.BUTTON}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -86,10 +96,10 @@ export function AccessibilityDeclarationWeb() {
       <Typo.Body>
         Cette déclaration d’accessibilité s’applique au site internet{SPACE}
         <ExternalTouchableLink
-          as={ButtonInsideText}
+          as={LinkInsideText}
           wording="https://passculture.app/"
-          icon={ExternalSiteFilled}
           externalNav={webappUrl}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </Typo.Body>
       <StyledSeparator />
@@ -99,18 +109,28 @@ export function AccessibilityDeclarationWeb() {
           Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration
           de l’accessibilité.
         </Typo.Body>
-        <Typo.BodyAccent>
+        <SubtitleText>
           Résultats des tests
           {DOUBLE_LINE_BREAK}
           <Typo.Body>
             L’audit de conformité réalisé par la société Tanaguru révèle que&nbsp;:
           </Typo.Body>
-        </Typo.BodyAccent>
+        </SubtitleText>
       </ViewGap>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="85&nbsp;% des critères RGAA version 4.1 sont respectés." />
-          <BulletListItem text="Le taux moyen de conformité du service en ligne s’élève à 93&nbsp;%." />
+          <BulletListItem
+            groupLabel="Résultats des tests"
+            text="85&nbsp;% des critères RGAA version 4.1 sont respectés."
+            index={0}
+            total={2}
+          />
+          <BulletListItem
+            groupLabel="Résultats des tests"
+            text="Le taux moyen de conformité du service en ligne s’élève à 93&nbsp;%."
+            index={1}
+            total={2}
+          />
         </VerticalUl>
         <StyledSeparator />
         <TitleText>Contenus non accessibles</TitleText>
@@ -119,42 +139,93 @@ export function AccessibilityDeclarationWeb() {
         <Typo.Body>
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Typo.Body>
-        <Typo.BodyAccent>Non conformité</Typo.BodyAccent>
+        <SubtitleText>Non conformité</SubtitleText>
       </ViewGap>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Certains intitulés de lien ne sont pas pertinents." />
-          <BulletListItem text="Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes." />
-          <BulletListItem text="En version mobile ou lors d’un zoom 200&nbsp;%, le menu de navigation n’est plus disponible sur plusieurs pages de l’application." />
           <BulletListItem
+            groupLabel="Non conformité"
+            text="Certains intitulés de lien ne sont pas pertinents."
+            index={0}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="Le code source généré sur chaque page est invalide au regard de la spécification HTML5, la grande majorité des erreurs relevées concernent des imbrications de balises non conformes."
+            index={1}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="En version mobile ou lors d’un zoom 200&nbsp;%, le menu de navigation n’est plus disponible sur plusieurs pages de l’application."
+            index={2}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
             text="Sur les pages de la recherche (recherche, résultats et filtres)&nbsp;:"
             nestedListTexts={[
               'Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.',
             ]}
+            index={3}
+            total={8}
           />
           <BulletListItem
+            groupLabel="Non conformité"
             text="Sur la page des résultats de recherche&nbsp;:"
             nestedListTexts={[
               'La liste des filtres placée sous le champ de recherche est tronquée sur un écran de 320px de large.',
             ]}
+            index={4}
+            total={8}
           />
-          <BulletListItem text="Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue." />
-          <BulletListItem text="La modale d’information sur la géolocalisation n’est pas restituée comme telle." />
-          <BulletListItem text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page." />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="Au sein des modales affichant un calendrier (filtrer selon une date ou réserver une offre), le calendrier n’est pas compatible avec les technologies d’assistance en raison de rôles absents et/ou erronés ainsi qu’une navigation clavier qui n’est pas implémentée comme attendue."
+            index={5}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="La modale d’information sur la géolocalisation n’est pas restituée comme telle."
+            index={6}
+            total={8}
+          />
+          <BulletListItem
+            groupLabel="Non conformité"
+            text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page."
+            index={7}
+            total={8}
+          />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>Dérogations pour charge disproportionnée</Typo.BodyAccent>
+      <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo." />
-          <BulletListItem text="Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte." />
-          <BulletListItem text="La carte des lieux culturels, utilisée dans la recherche." />
+          <BulletListItem
+            groupLabel="Dérogations"
+            text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo."
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Dérogations"
+            text="Le reCaptcha, utilisé lors de la connexion, le changement de mot de passe ou de la création du compte."
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Dérogations"
+            text="La carte des lieux culturels, utilisée dans la recherche."
+            index={2}
+            total={3}
+          />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</Typo.BodyAccent>
+      <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Aucun" />
+          <BulletListItem groupLabel="" index={0} total={1} text="Aucun" />
         </VerticalUl>
         <StyledSeparator />
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
@@ -164,18 +235,31 @@ export function AccessibilityDeclarationWeb() {
           Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février
           2023.
         </Typo.BodyItalic>
-        <Typo.BodyAccent>
-          Technologies utilisées pour la réalisation du site pass Culture
-        </Typo.BodyAccent>
+        <SubtitleText>Technologies utilisées pour la réalisation du site pass Culture</SubtitleText>
       </ViewGap>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="HTML5" />
-          <BulletListItem text="CSS" />
-          <BulletListItem text="JavaScript" />
+          <BulletListItem
+            groupLabel="Technologies utilisées pour le site"
+            text="HTML5"
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies utilisées pour le site"
+            text="CSS"
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies utilisées pour le site"
+            text="JavaScript"
+            index={2}
+            total={3}
+          />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>
+      <SubtitleText>
         Environnement de test
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
@@ -183,147 +267,190 @@ export function AccessibilityDeclarationWeb() {
           combinaison fournie par la base de référence du RGAA 4.1, avec les versions
           suivantes&nbsp;:
         </Typo.Body>
-      </Typo.BodyAccent>
+      </SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Firefox et NVDA" />
-          <BulletListItem text="Chrome et NVDA" />
-          <BulletListItem text="Safari et VoiceOver" />
+          <BulletListItem
+            groupLabel="Technologies pour vérifier l’accesibilité"
+            text="Firefox et NVDA"
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies pour vérifier l’accesibilité"
+            text="Chrome et NVDA"
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            groupLabel="Technologies pour vérifier l’accesibilité"
+            text="Safari et VoiceOver"
+            index={2}
+            total={3}
+          />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>Les outils utilisés lors de l’évaluation</Typo.BodyAccent>
+      <SubtitleText>Les outils utilisés lors de l’évaluation</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem text="Extension HeadingsMap" />
-          <BulletListItem text="Extension Web Developer" />
-          <BulletListItem text="Extension Stylus" />
-          <BulletListItem text="Validateur HTML W3C" />
-          <BulletListItem text="Tanaguru Contrast-Finder" />
-          <BulletListItem text="Outils de développement (navigateur)" />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Extension HeadingsMap"
+            index={0}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Extension Web Developer"
+            index={1}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Extension Stylus"
+            index={2}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Validateur HTML W3C"
+            index={3}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Tanaguru Contrast-Finder"
+            index={4}
+            total={6}
+          />
+          <BulletListItem
+            groupLabel="Les outils utilisés"
+            text="Outils de développement (navigateur)"
+            index={5}
+            total={6}
+          />
         </VerticalUl>
       </StyledView>
-      <Typo.BodyAccent>
-        Pages du site ayant fait l’objet de la vérification de conformité
-      </Typo.BodyAccent>
+      <SubtitleText>Pages du site ayant fait l’objet de la vérification de conformité</SubtitleText>
       <StyledView>
         <VerticalUl>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={0} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Accueil"
-                icon={ExternalSiteFilled}
                 externalNav={homeUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={1} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Connexion"
-                icon={ExternalSiteFilled}
                 externalNav={loginUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={2} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Inscription - Date de naissance"
-                icon={ExternalSiteFilled}
                 externalNav={signupUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={3} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Vérification d’identité"
-                icon={ExternalSiteFilled}
                 externalNav={identityCheckUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={4} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Profil"
-                icon={ExternalSiteFilled}
                 externalNav={profileUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={5} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Modification de mot de passe"
-                icon={ExternalSiteFilled}
                 externalNav={changePasswordUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={6} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Recherche"
-                icon={ExternalSiteFilled}
                 externalNav={searchUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={7} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Filtres"
-                icon={ExternalSiteFilled}
                 externalNav={filterUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={8} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Résultats de recherche"
-                icon={ExternalSiteFilled}
                 externalNav={searchResultsUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={9} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Favoris"
-                icon={ExternalSiteFilled}
                 externalNav={favoritesUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={10} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Détails d’une offre"
-                icon={ExternalSiteFilled}
                 externalNav={offerUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
-          <BulletListItem>
+          <BulletListItem groupLabel="Pages auditées" index={11} total={12}>
             <Typo.BodyXs>
               <ExternalTouchableLink
-                as={ButtonInsideText}
+                as={LinkInsideText}
                 wording="Déclaration d’accessibilité"
-                icon={ExternalSiteFilled}
                 externalNav={accessibilityUrl}
+                accessibilityRole={AccessibilityRole.LINK}
               />
             </Typo.BodyXs>
           </BulletListItem>
@@ -343,12 +470,12 @@ export function AccessibilityDeclarationWeb() {
       <Typo.Body>
         Contacter l’équipe support à l’adresse{SPACE}
         <ExternalTouchableLink
-          as={ButtonInsideText}
+          as={LinkInsideText}
           wording="support@passculture.app"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           justifyContent="flex-start"
           externalNav={contactSupport.forGenericQuestion}
-          icon={EmailFilled}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </Typo.Body>
 
@@ -367,19 +494,19 @@ export function AccessibilityDeclarationWeb() {
           <Typo.Body>
             Écrire un message au{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideText}
+              as={LinkInsideText}
               wording="Défenseur des droits"
-              icon={ExternalSiteFilled}
               externalNav={rightsDefenderUrl}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
             Contacter le délégué du{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideText}
+              as={LinkInsideText}
               wording="Défenseur des droits dans votre région"
-              icon={ExternalSiteFilled}
               externalNav={rightsDelegateUrl}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
@@ -395,11 +522,12 @@ export function AccessibilityDeclarationWeb() {
 
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(6),
-})
+const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
 
-const StyledView = styled.View({
-  marginTop: getSpacing(5),
-  marginBottom: getSpacing(6),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
+
+const StyledView = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

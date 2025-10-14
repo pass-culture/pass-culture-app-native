@@ -14,8 +14,8 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - tapOn:
-          above:
-            id: searchResultsFlashlist
+          text: 'Livre'
+          index: 2
 
 - waitForAnimationToEnd
 
@@ -29,11 +29,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-      - tapOn:
-          point: ${output.button.ios.booking}
+      - tapOn: ${output.button.ios.booking}
 
 - assertVisible: 'Détails de la réservation'
-- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - runFlow:
     when:
       platform: Android

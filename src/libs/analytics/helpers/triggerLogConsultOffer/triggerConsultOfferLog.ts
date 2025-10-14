@@ -15,6 +15,7 @@ export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
     offerId: params.offerId.toString(),
     fromOfferId: params.fromOfferId?.toString(),
     fromMultivenueOfferId: params.fromMultivenueOfferId?.toString(),
+    isHeadline: params.isHeadline === true,
   }
 
   analytics.logConsultOffer(paramsWithStringId)

@@ -6,30 +6,28 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - scrollUntilVisible:
-        element:
-          text: "Catégorie livre.*"
-    - tapOn: 'Catégorie livre.*'
-    - tapOn: 'Romans & littérature'
-
+      - scrollUntilVisible:
+          element:
+            text: 'Catégorie livre.*'
+      - tapOn: 'Catégorie livre.*'
+      - tapOn: 'Romans & littérature'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - scrollUntilVisible:
-        element:
-          text: "LIVRES"
-    - tapOn: 'LIVRES'
-    - tapOn: 'Romans & littérature'
-
+      - scrollUntilVisible:
+          element:
+            text: 'LIVRES'
+      - tapOn: 'LIVRES'
+      - tapOn: 'Romans & littérature'
 
 - runFlow:
     when:
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'France entière'
+      - tapOn: 'France entière.*'
 
 - tapOn: 'Catégories'
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import { LocationState } from 'features/location/types'
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 type Props = {

@@ -1,5 +1,5 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
-import { InfiniteQueryObserverOptions, useInfiniteQuery } from '@tanstack/react-query'
+import { Hit } from '@algolia/client-search'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
 
@@ -7,10 +7,10 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { fetchOffers, FetchOffersResponse } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, Geoloc } from 'libs/algolia/types'
-import { Position, useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
@@ -18,15 +18,13 @@ import { formatFullAddressStartsWithPostalCode } from 'shared/address/addressFor
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
-type Response = Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
-
 type UseSearchVenueOffersOptions = {
   allocineId?: number
   ean?: string
   offerId: number
   query?: string
   geolocation: Position
-  queryOptions?: Omit<InfiniteQueryObserverOptions<Response>, 'getNextPageParam'>
+  enabled?: boolean
   venueId?: number
   hitsPerPage?: number
   aroundMeRadius?: number
@@ -98,7 +96,7 @@ export const useSearchVenueOffersInfiniteQuery = ({
   venueId,
   query = '',
   geolocation,
-  queryOptions,
+  enabled,
   hitsPerPage = 10,
   aroundMeRadius = AROUND_RADIUS,
 }: UseSearchVenueOffersOptions) => {
@@ -108,9 +106,10 @@ export const useSearchVenueOffersInfiniteQuery = ({
   const previousPageObjectIds = useRef<string[]>([])
   const { userLocation } = useLocation()
 
-  const { data, ...infiniteQuery } = useInfiniteQuery<FetchOffersResponse>(
-    [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, query }],
-    async ({ pageParam: page = 0 }) => {
+  const { data, ...infiniteQuery } = useInfiniteQuery<FetchOffersResponse>({
+    queryKey: [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, query }],
+    queryFn: async ({ pageParam }) => {
+      const page = pageParam as number
       const response = await fetchOffers({
         parameters: {
           ...initialSearchState,
@@ -135,8 +134,10 @@ export const useSearchVenueOffersInfiniteQuery = ({
       return response
     },
     // first page is 0
-    { getNextPageParam, ...queryOptions }
-  )
+    initialPageParam: 0,
+    getNextPageParam,
+    enabled,
+  })
 
   const venueList = useMemo(() => {
     const availablePages = data?.pages ?? []

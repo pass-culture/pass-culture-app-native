@@ -8,6 +8,7 @@ export type StorageKey =
   | 'device_id'
   | 'first_time_review_has_been_requested'
   | 'has_seen_birthday_notification_card'
+  | 'has_seen_booking_page'
   | 'has_seen_share_app_modal'
   | 'has_seen_eligible_card'
   | 'has_seen_onboarding_subscription'

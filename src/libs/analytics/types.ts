@@ -24,6 +24,7 @@ export type OfferAnalyticsParams = {
   apiRecoParams?: string
   playlistType?: PlaylistType
   artistName?: string
+  isHeadline?: boolean
 }
 
 export type ConsultOfferLogParams = {

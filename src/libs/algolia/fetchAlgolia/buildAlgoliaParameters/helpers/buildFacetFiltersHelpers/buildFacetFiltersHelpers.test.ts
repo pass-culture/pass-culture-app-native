@@ -247,9 +247,15 @@ describe('buildAccessibiltyFiltersPredicate', () => {
 
   describe('buildAllocineIdPredicate', () => {
     it('should return an allocine predicate formatted for Algolia API', () => {
-      const allocineIdPredicate = buildAllocineIdPredicate(123456)
+      const allocineIdPredicate = buildAllocineIdPredicate([123456])
 
       expect(allocineIdPredicate).toEqual(['offer.allocineId:123456'])
     })
+  })
+
+  it('should return an allocine predicate with multiple IDs formatted when provided for Algolia API', () => {
+    const allocineIdPredicate = buildAllocineIdPredicate([123456, 654321])
+
+    expect(allocineIdPredicate).toEqual(['offer.allocineId:123456', 'offer.allocineId:654321'])
   })
 })

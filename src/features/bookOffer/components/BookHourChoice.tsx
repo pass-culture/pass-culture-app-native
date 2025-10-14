@@ -3,29 +3,31 @@ import { View } from 'react-native'
 
 import { OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
-import { BookingState, Step } from 'features/bookOffer/context/reducer'
+import { Action, BookingState, Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getSortedHoursFromDate,
   getStockSortedByPriceFromHour,
   getStockWithCategoryFromDate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-function getHourChoiceForMultiplePrices(
+const radioGroupLabel = 'Horaires'
+
+const getHourChoiceForMultiplePrices = (
   stocks: OfferStockResponse[],
   selectedDate: string | undefined,
   bookingState: BookingState,
   selectHour: (hour: string, stockFromHour: OfferStockResponse[]) => void,
   offerCredit: number
-) {
+) => {
   const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
   const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
   return distinctHours.map((hour, index) => {
@@ -49,6 +51,7 @@ function getHourChoiceForMultiplePrices(
     const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
     return (
       <HourChoice
+        radioGroupLabel={radioGroupLabel}
         index={index}
         key={hour}
         price={minPriceStock.price}
@@ -65,15 +68,16 @@ function getHourChoiceForMultiplePrices(
   })
 }
 
-function getHourChoiceForSingleStock(
+const getHourChoiceForSingleStock = (
   stocks: OfferStockResponse[],
   selectedDate: string | undefined,
   venue: OfferVenueResponse | undefined,
   bookingState: BookingState,
   selectStock: (stockId: number) => void,
-  offerCredit: number
-) {
-  return stocks
+  offerCredit: number,
+  dispatch: React.Dispatch<Action>
+) =>
+  stocks
     .filter(({ beginningDatetime }) => {
       if (beginningDatetime === undefined || beginningDatetime === null) return false
       return selectedDate && beginningDatetime
@@ -87,23 +91,26 @@ function getHourChoiceForSingleStock(
     )
     .map((stock, index) => (
       <HourChoice
+        radioGroupLabel={radioGroupLabel}
         index={index}
         key={stock.id}
         price={stock.price}
         hour={formatHour(stock.beginningDatetime, venue?.timezone).replace(':', 'h')}
         selected={stock.id === bookingState.stockId}
-        onPress={() => selectStock(stock.id)}
+        onPress={() => {
+          dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime ?? '' })
+          selectStock(stock.id)
+        }}
         testID={`HourChoice${stock.id}`}
         isBookable={stock.isBookable}
         offerCredit={offerCredit}
         features={stock.features}
       />
     ))
-}
 
 export const BookHourChoice = () => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo, stocks = [], venue } = useBookingOffer() ?? {}
+  const { isDuo, stocks = [], venue } = useBookingOfferQuery() ?? {}
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
 
@@ -148,7 +155,8 @@ export const BookHourChoice = () => {
           venue,
           bookingState,
           selectStock,
-          offerCredit
+          offerCredit,
+          dispatch
         )
       }
     },
@@ -171,7 +179,7 @@ export const BookHourChoice = () => {
   return (
     <ViewGap gap={4}>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
-        Horaire
+        {radioGroupLabel}
       </Typo.Title3>
 
       {bookingState.step === Step.HOUR ? (

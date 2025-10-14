@@ -2,7 +2,7 @@ import { MultipleQueriesQuery } from '@algolia/client-search'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 type ThematicSearchQueryParams = {
   indexName: string

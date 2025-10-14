@@ -19,7 +19,7 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
@@ -546,8 +546,9 @@ describe('<OfferBody />', () => {
     await user.press(await screen.findByText('Stephen King'))
 
     expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
-      offerId: offerResponseSnap.id,
+      offerId: offerResponseSnap.id.toString(),
       artistName: 'Stephen King',
+      artistId: '1',
       from: 'offer',
     })
   })

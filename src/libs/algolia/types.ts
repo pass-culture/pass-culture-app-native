@@ -61,19 +61,38 @@ export interface AlgoliaGeoloc {
   lng?: number | null
 }
 
-export interface AlgoliaOffer<T = HitOffer> {
+export type AlgoliaVenueOffer = {
+  id?: number
+  name?: string
+  publicName?: string
+  address?: string
+  city?: string
+  postalCode?: string
+  departmentCode?: string
+  banner_url?: string
+  isAudioDisabilityCompliant?: boolean
+  isMentalDisabilityCompliant?: boolean
+  isMotorDisabilityCompliant?: boolean
+  isVisualDisabilityCompliant?: boolean
+  isPermanent?: boolean
+  venue_type?: string
+}
+
+export type AlgoliaVenueOfferListItem = {
+  objectID: string
+  _geoloc: Geoloc
+  banner_url: string
+  venue_type: string
+  name: string
+  city: string
+  postalCode: string
+}
+
+export type AlgoliaOffer<T = HitOffer> = {
   offer: T
   _geoloc: Geoloc
   objectID: string
-  venue: {
-    departmentCode?: string
-    id?: number
-    name?: string
-    publicName?: string
-    address?: string
-    postalCode?: string
-    city?: string
-  }
+  venue: AlgoliaVenueOffer
   artists?: Artist[]
   _tags?: string[]
 }
@@ -135,6 +154,7 @@ export type FiltersArray = string[][]
 
 export type SearchQueryParameters = {
   allocineId?: number
+  allocineIdList?: string[]
   beginningDatetime?: string
   date: SelectedDate | null
   eanList?: string[]
@@ -166,6 +186,9 @@ export type SearchQueryParameters = {
   gtls?: GTL[]
   distinct?: boolean
   objectIds?: string[]
+  minLikes?: number
+  isSortedByLikes?: boolean
+  isWithClub?: boolean
 }
 
 export type Geoloc = AlgoliaGeoloc
@@ -235,7 +258,7 @@ export interface AlgoliaVenue {
   postalCode: string | null
   name: string
   offerer_name: string
-  venue_type: VenueTypeCodeKey | null
+  venue_type: VenueTypeCodeKey
   description: string
   audio_disability: boolean | null
   mental_disability: boolean | null

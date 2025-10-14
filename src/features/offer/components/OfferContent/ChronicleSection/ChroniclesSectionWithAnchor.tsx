@@ -15,6 +15,7 @@ type ChroniclesSectionWithAnchorProps = {
   offer: OfferResponseV2
   onSeeMoreButtonPress: (chronicleId: number) => void
   onShowChroniclesWritersModal: () => void
+  onSeeAllReviewsPress: () => void
 }
 
 export const ChroniclesSectionWithAnchor: FunctionComponent<ChroniclesSectionWithAnchorProps> = ({
@@ -23,6 +24,7 @@ export const ChroniclesSectionWithAnchor: FunctionComponent<ChroniclesSectionWit
   offer,
   onSeeMoreButtonPress,
   onShowChroniclesWritersModal,
+  onSeeAllReviewsPress,
 }) => {
   const chroniclesSectionRef = useRef<View>(null)
   const registerAnchor = useRegisterAnchor()
@@ -47,6 +49,7 @@ export const ChroniclesSectionWithAnchor: FunctionComponent<ChroniclesSectionWit
             screen: 'Chronicles',
             params: { offerId: offer.id, from: 'chronicles' },
           }}
+          onBeforeNavigate={onSeeAllReviewsPress}
           onSeeMoreButtonPress={onSeeMoreButtonPress}
           onShowChroniclesWritersModal={onShowChroniclesWritersModal}
         />

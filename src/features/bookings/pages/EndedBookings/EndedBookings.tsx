@@ -3,15 +3,16 @@ import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
-  BookingOfferResponse,
+  BookingOfferResponseV2,
+  BookingResponse,
   PostOneReactionRequest,
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
-import { Booking } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
@@ -19,21 +20,23 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
-import { useBookingsQuery } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
-const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
+const keyExtractor: (item: BookingResponse) => string = (item) => item.id.toString()
 
 export const EndedBookings: FunctionComponent = () => {
+  const { isLoggedIn } = useAuthContext()
+
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { data: bookings } = useBookingsQuery()
+  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
 
-  const { mutate: addReaction } = useReactionMutation()
+  const { mutateAsync: addReaction } = useReactionMutation()
 
-  const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingOfferResponse>()
+  const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingOfferResponseV2>()
   const [selectedBookingOfferEndedDateLabel, setSelectedBookingOfferEndedDateLabel] =
     useState<string>('')
   const [shareContent, setShareContent] = useState<ShareContent | null>()
@@ -51,10 +54,10 @@ export const EndedBookings: FunctionComponent = () => {
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
+  const endedBookingsCount = bookings?.endedBookings?.length ?? 0
 
   const openReactionModal = useCallback(
-    (booking: Booking) => {
+    (booking: BookingResponse) => {
       setSelectedBookingOffer(booking.stock.offer)
       setUserReaction(booking.userReaction)
 
@@ -105,7 +108,7 @@ export const EndedBookings: FunctionComponent = () => {
     [hideReactionModal, onSaveReaction]
   )
 
-  const renderItem: ListRenderItem<Booking> = useCallback(
+  const renderItem: ListRenderItem<BookingResponse> = useCallback(
     ({ item }) => {
       return (
         <EndedBookingItem
@@ -122,7 +125,7 @@ export const EndedBookings: FunctionComponent = () => {
     <React.Fragment>
       <FlatList
         contentContainerStyle={contentContainerStyle}
-        data={bookings?.ended_bookings ?? []}
+        data={bookings?.endedBookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={StyledSeparator}

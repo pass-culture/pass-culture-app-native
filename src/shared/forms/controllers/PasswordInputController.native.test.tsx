@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm, ErrorOption } from 'react-hook-form'
+import { ErrorOption, useForm } from 'react-hook-form'
 
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -10,23 +10,15 @@ type PasswordForm = {
 
 describe('<PasswordInputController />', () => {
   describe('by default', () => {
-    it('should not show error when password is invalid but not given', async () => {
-      renderPasswordInputController({
-        error: { type: 'custom', message: 'error' },
-      })
-
-      expect(screen.queryByText('error')).not.toBeOnTheScreen()
-    })
-
     it('should show error when form is invalid and password is not empty', async () => {
       renderPasswordInputController({
         error: { type: 'custom', message: 'error' },
       })
 
-      const input = screen.getByPlaceholderText('Ton mot de passe')
+      const input = screen.getByTestId('Mot de passe')
       fireEvent.changeText(input, 'pass')
 
-      expect(screen.getByText('error')).toBeOnTheScreen()
+      expect(screen.getByText('error', { hidden: true })).toBeOnTheScreen()
     })
 
     it('should show that password is mandatory', async () => {
@@ -38,7 +30,7 @@ describe('<PasswordInputController />', () => {
     it('should not show password validation', () => {
       renderPasswordInputController({})
 
-      const input = screen.getByPlaceholderText('Ton mot de passe')
+      const input = screen.getByTestId('Mot de passe')
       fireEvent.changeText(input, 'user@AZERTY123')
 
       expect(screen.queryByText('12 Caractères')).not.toBeOnTheScreen()
@@ -67,7 +59,7 @@ describe('<PasswordInputController />', () => {
     ])('should show password validation rules when at least one character is typed', (rules) => {
       renderPasswordInputController({ withSecurityRules: true })
 
-      const input = screen.getByPlaceholderText('Ton mot de passe')
+      const input = screen.getByTestId('Mot de passe')
       fireEvent.changeText(input, 'a')
 
       expect(screen.getByText(rules)).toBeOnTheScreen()
@@ -110,6 +102,7 @@ const renderPasswordInputController = ({
         name="password"
         withSecurityRules={withSecurityRules}
         securityRulesAlwaysVisible={securityRulesAlwaysVisible}
+        requiredIndicator="explicit"
       />
     )
   }

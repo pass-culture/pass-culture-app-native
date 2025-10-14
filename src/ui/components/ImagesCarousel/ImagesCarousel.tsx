@@ -7,13 +7,11 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { CarouselDot } from 'ui/components/CarouselDot/CarouselDot'
 import { BlurFooter } from 'ui/components/headers/BlurFooter'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeight'
 import { getSpacing } from 'ui/theme'
@@ -40,10 +38,13 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
 
   const carouselDotId = uuidv4()
 
+  const numberOfIllustration = index + 1
+  const title = `Illustration ${numberOfIllustration} sur ${images.length}`
+
   return (
     <Container>
-      <StyledHeader title={`${index + 1}/${images.length}`} onGoBack={goBack} />
-
+      <StyledHeader title={title} onGoBack={goBack} />
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Carousel
         vertical={false}
         height={screenHeight}

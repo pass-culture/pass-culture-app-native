@@ -31,7 +31,7 @@ mockUseVenueOffers.mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
 })
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -146,6 +146,7 @@ const renderVenueBody = ({
         headlineOfferData={headlineOfferData}
         playlists={playlists}
         arePlaylistsLoading={arePlaylistsLoading}
+        onViewableItemsChanged={jest.fn()}
       />
     )
   )

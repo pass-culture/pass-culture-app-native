@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { act, render, screen, userEvent } from 'tests/utils'
 
@@ -15,7 +15,7 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseLocation = useLocation as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper', () => ({

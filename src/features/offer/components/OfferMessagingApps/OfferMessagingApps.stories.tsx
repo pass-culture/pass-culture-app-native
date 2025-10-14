@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,11 +11,9 @@ const meta: Meta<typeof OfferMessagingApps> = {
   component: OfferMessagingApps,
   decorators: [
     (Story) => (
-      <NavigationContainer>
-        <ReactQueryClientProvider>
-          <Story />
-        </ReactQueryClientProvider>
-      </NavigationContainer>
+      <ReactQueryClientProvider>
+        <Story />
+      </ReactQueryClientProvider>
     ),
   ],
 }

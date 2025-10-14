@@ -1,6 +1,5 @@
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import {
   buildLocationParameterForSearch,
   BuildLocationParameterParams,
@@ -12,19 +11,18 @@ import { buildNumericFilters } from './buildNumericFilters'
 
 type Parameters = SearchQueryParameters & {
   objectIds?: string[]
-  excludedObjectIds?: string[]
   aroundRadius?: number
 }
 
 export const buildOfferSearchParameters = (
   {
     allocineId = undefined,
+    allocineIdList = [],
     artistName = undefined,
     beginningDatetime = undefined,
     date = null,
     eanList = [],
     endingDatetime = undefined,
-    excludedObjectIds = [],
     isFullyDigitalOffersCategory = false,
     isHeadline = false,
     maxPossiblePrice = '',
@@ -46,6 +44,8 @@ export const buildOfferSearchParameters = (
     timeRange = null,
     venue,
     gtls = [],
+    minLikes,
+    isWithClub,
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean,
@@ -60,6 +60,7 @@ export const buildOfferSearchParameters = (
   return {
     ...buildFacetFilters({
       allocineId,
+      allocineIdList,
       artistName,
       eanList,
       isUserUnderage,
@@ -91,10 +92,11 @@ export const buildOfferSearchParameters = (
         priceRange,
         timeRange,
         isHeadline,
+        minLikes,
+        isWithClub,
       },
       isUsedFromSearch
     ),
     ...locationParameter,
-    ...buildFilters({ excludedObjectIds }),
   }
 }

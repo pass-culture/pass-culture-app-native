@@ -65,8 +65,8 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
       ...stateWithLocationType,
       label:
         locationFilter.locationType === LocationMode.AROUND_PLACE
-          ? locationFilter.place.label.slice(0, maxLabelLength)
-          : venue?.label.slice(0, maxLabelLength),
+          ? locationFilter.place.label?.slice(0, maxLabelLength)
+          : venue?.label?.slice(0, maxLabelLength),
     }
     return JSON.stringify(customLocationFilter)
   }

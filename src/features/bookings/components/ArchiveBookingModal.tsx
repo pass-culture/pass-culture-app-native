@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
@@ -24,7 +24,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
   const { goBack } = useGoBack(...getTabHookConfig('Bookings'))
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
-  const { mutate, isLoading } = useArchiveBookingMutation({
+  const { mutate, isPending } = useArchiveBookingMutation({
     bookingId: props.bookingId,
     onSuccess: () => {
       showSuccessSnackBar({
@@ -60,7 +60,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
         <ButtonPrimary
           wording="Terminer ma réservation"
           onPress={terminateCancel}
-          disabled={isLoading}
+          disabled={isPending}
         />
         <Spacer.Column numberOfSpaces={3} />
         <ButtonTertiaryPrimary

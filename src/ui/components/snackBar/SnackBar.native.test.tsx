@@ -122,7 +122,7 @@ describe('SnackBar Component', () => {
 
       const touchable = screen.getByTestId(`Supprimer le message\u00a0: ${snackBarMessage}`)
 
-      user.press(touchable)
+      await user.press(touchable)
 
       await waitFor(async () => expect(onClose).toHaveBeenCalledTimes(1))
     })

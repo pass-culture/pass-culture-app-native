@@ -38,7 +38,7 @@ type Props = {
 }
 
 export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPlace }) => {
-  const { data: places = [], isInitialLoading: isLoading } = usePlaces({ query })
+  const { data: places = [], isLoading } = usePlaces({ query })
 
   if (isLoading) {
     return <Spinner testID="loader" />

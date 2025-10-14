@@ -178,6 +178,7 @@ describe('gtlPlaylist helpers functions', () => {
         info: mockVenue.city,
         label: mockVenue.name,
         isOpenToPublic: mockVenue.isOpenToPublic,
+        venue_type: mockVenue.venueTypeCode,
       })
     })
 

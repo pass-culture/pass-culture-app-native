@@ -51,6 +51,7 @@ export const adaptOffersPlaylistParameters = (
     isDigital: parameters.isDigital ?? false,
     priceRange: _buildPriceRange({ priceMin, priceMax }),
     tags: parameters.tags ?? [],
+    allocineIdList: parameters.allocineIdList ?? [],
     date: null,
     timeRange: null,
     query: '',
@@ -59,6 +60,9 @@ export const adaptOffersPlaylistParameters = (
     offerGtlLabel: parameters.gtlLabel,
     offerGtlLevel: parameters.gtlLevel,
     offerNativeCategories: [],
+    ...(parameters.likesMin ? { minLikes: parameters.likesMin } : undefined),
+    ...(parameters.isSortedByLikes ? { isSortedByLikes: parameters.isSortedByLikes } : undefined),
+    ...(parameters.isWithClub ? { isWithClub: parameters.isWithClub } : undefined),
   }
 }
 

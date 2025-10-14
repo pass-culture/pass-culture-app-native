@@ -327,6 +327,7 @@ describe('BookingDetails', () => {
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId: String(offerId),
         from: 'bookings',
+        isHeadline: false,
       })
     })
 
@@ -640,6 +641,36 @@ describe('BookingDetails', () => {
       expect(screen.getByText(withdrawalDetails)).toBeOnTheScreen()
     })
 
+    it('should render message to contact organizer', async () => {
+      const organizerEmail = 'toto@email.com'
+
+      renderBookingDetailsV2({
+        ...ongoingBookingV2,
+        stock: {
+          ...ongoingBookingV2.stock,
+          offer: {
+            ...ongoingBookingV2.stock.offer,
+            bookingContact: organizerEmail,
+          },
+        },
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          display: TicketDisplayEnum.email_sent,
+          withdrawal: {
+            type: WithdrawalTypeEnum.by_email,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+      expect(
+        screen.getByText(
+          `Si tu n’as pas reçu tes billets, contacte l’organisateur\u00a0:\n${organizerEmail}`
+        )
+      ).toBeOnTheScreen()
+    })
+
     it("should render organizer's email", async () => {
       const organizerEmail = 'toto@email.com'
 
@@ -652,6 +683,13 @@ describe('BookingDetails', () => {
             bookingContact: organizerEmail,
           },
         },
+        ticket: {
+          ...ongoingBookingV2.ticket,
+          display: TicketDisplayEnum.no_ticket,
+          withdrawal: {
+            type: WithdrawalTypeEnum.no_ticket,
+          },
+        },
       })
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
@@ -659,7 +697,7 @@ describe('BookingDetails', () => {
       expect(screen.getByText(organizerEmail)).toBeOnTheScreen()
     })
 
-    it('should log analytics on email press', async () => {
+    it('should log analytics on `Contacter l’organisateur` press', async () => {
       const organizerEmail = 'toto@email.com'
       renderBookingDetailsV2({
         ...ongoingBookingV2,
@@ -696,6 +734,7 @@ describe('BookingDetails', () => {
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId: String(offerId),
         from: 'bookings',
+        isHeadline: false,
       })
     })
 

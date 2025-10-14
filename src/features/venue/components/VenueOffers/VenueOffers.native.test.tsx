@@ -29,9 +29,9 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 const venueId = venueDataTest.id
 
 jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
-  isInitialLoading: false,
+  isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-} as unknown as UseQueryResult<VenueOffersType, unknown>)
+} as unknown as UseQueryResult<VenueOffersType, Error>)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -84,8 +84,8 @@ describe('<VenueOffers />', () => {
 
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValueOnce({
-      isInitialLoading: true,
-    } as UseQueryResult<VenueOffersType, unknown>)
+      isLoading: true,
+    } as UseQueryResult<VenueOffersType, Error>)
     renderVenueOffers({})
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
@@ -112,7 +112,7 @@ describe('<VenueOffers />', () => {
   it('should display "En voir plus" button if they are more hits to see than the one displayed', async () => {
     renderVenueOffers({ playlists: [] })
 
-    await screen.findByText('Toutes les offres')
+    await screen.findByLabelText('Toutes les offres')
 
     expect(screen.getByText('En voir plus')).toBeOnTheScreen()
   })
@@ -122,7 +122,7 @@ describe('<VenueOffers />', () => {
       venueOffers: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     })
 
-    await screen.findByText('Toutes les offres')
+    await screen.findByLabelText('Toutes les offres')
 
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
@@ -160,7 +160,7 @@ describe('<VenueOffers />', () => {
   it('should not display gtl playlist when gtl playlist is an empty array', async () => {
     renderVenueOffers({ playlists: [] })
 
-    await screen.findByText('Toutes les offres')
+    await screen.findByLabelText('Toutes les offres')
 
     expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
   })
@@ -197,16 +197,17 @@ describe('<VenueOffers />', () => {
         await user.press(screen.getByText('Freida McFadden'))
 
         expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+          artistId: '1',
           artistName: 'Freida McFadden',
           from: 'venue',
-          venueId: venueDataTest.id,
+          venueId: venueDataTest.id.toString(),
         })
       })
 
       it('should not display artists playlist when venue offers have artists', async () => {
         renderVenueOffers({})
 
-        await screen.findByText('Toutes les offres')
+        await screen.findByLabelText('Toutes les offres')
 
         expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
       })
@@ -218,7 +219,7 @@ describe('<VenueOffers />', () => {
           venueArtists: venueOffersArtistsMock,
         })
 
-        await screen.findByText('Toutes les offres')
+        await screen.findByLabelText('Toutes les offres')
 
         expect(screen.queryByText('Les artistes disponibles dans ce lieu')).not.toBeOnTheScreen()
       })
@@ -253,6 +254,7 @@ const renderVenueOffers = ({
             labelMapping={labelMapping}
             currency={currency}
             euroToPacificFrancRate={euroToPacificFrancRate}
+            onViewableItemsChanged={jest.fn()}
           />
         </OfferCTAProvider>
       </AnchorProvider>

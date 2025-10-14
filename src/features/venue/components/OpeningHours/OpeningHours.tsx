@@ -7,16 +7,19 @@ import { Typo } from 'ui/theme'
 
 import { OpeningHours as OpeningHoursType, getOpeningHours } from './getOpeningHours'
 
-type Props = { openingHours: OpeningHoursType }
+type Props = { title: string; openingHours: OpeningHoursType }
 
-export const OpeningHours: FC<Props> = ({ openingHours }) => {
+export const OpeningHours: FC<Props> = ({ title, openingHours }) => {
   const { days } = getOpeningHours(openingHours)
   return (
     <StyledVerticalUl>
-      {days.map((day) => (
+      {days.map((day, index) => (
         <StyledLi
           key={day.label}
-          accessibilityLabel={`${day.label} ${day.hours.replace('/', ' puis ')}`}>
+          groupLabel={title}
+          accessibilityLabel={`${day.label} ${day.hours.replace('/', ' puis ')}`}
+          index={index}
+          total={days.length}>
           <Typo.Body accessibilityHidden>{day.label}</Typo.Body>
           <Typo.Body accessibilityHidden>{day.hours}</Typo.Body>
         </StyledLi>

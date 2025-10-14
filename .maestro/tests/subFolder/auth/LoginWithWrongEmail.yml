@@ -8,10 +8,17 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Entrée pour l’email'
 - inputRandomEmail
-- tapOn: 'Ton mot de passe'
+- tapOn:
+    id: 'Mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
+- assertVisible: '.*E-mail ou mot de passe incorrect.*'
 
-- assertVisible: 'E-mail ou mot de passe incorrect'
 - tapOn: 'Revenir en arrière' # Permet de réinitialiser les forms
+
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'

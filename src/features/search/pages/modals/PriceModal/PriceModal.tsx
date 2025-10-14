@@ -46,8 +46,6 @@ export type PriceModalProps = {
 }
 
 const titleId = uuidv4()
-const minPriceInputId = uuidv4()
-const maxPriceInputId = uuidv4()
 
 const getConversionRate = (currency: Currency, euroToPacificFrancRate: number) => {
   return currency === Currency.PACIFIC_FRANC_SHORT ? euroToPacificFrancRate : 1
@@ -349,8 +347,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
               control={control}
               name="minPrice"
               label={`Prix minimum (en\u00a0${currencyFull})`}
-              placeholder="0"
-              accessibilityId={minPriceInputId}
               testID="Entrée pour le prix minimum"
               isDisabled={getValues('isOnlyFreeOffersSearch')}
             />
@@ -359,9 +355,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
             control={control}
             name="maxPrice"
             label={`Prix maximum (en\u00a0${currencyFull})`}
-            placeholder={`${formatInitialCredit}`}
-            rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
-            accessibilityId={maxPriceInputId}
+            description={`max\u00a0: ${formatInitialCreditWithCurrency}`}
             testID="Entrée pour le prix maximum"
             isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
           />

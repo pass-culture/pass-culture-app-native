@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingReponse, ReactionTypeEnum } from 'api/gen'
+import { BookingResponse, ReactionTypeEnum } from 'api/gen'
 import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -10,7 +10,7 @@ import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
-  booking: BookingReponse
+  booking: BookingResponse
   handlePressShareOffer: VoidFunction
   handleShowReactionModal: VoidFunction
 }
@@ -63,9 +63,9 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
 }
 
 const ShareContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))
 
 const ReactionContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))

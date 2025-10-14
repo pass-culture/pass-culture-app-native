@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
-import { Platform, StyleProp, ViewStyle } from 'react-native'
+import React, { Ref, useEffect } from 'react'
+import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -12,7 +13,7 @@ import { SearchVenueItem } from 'features/search/components/SearchVenueItems/Sea
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getVenueTypesFromSearchGroup } from 'features/search/helpers/getVenueTypesFromSearchGroup/getVenueTypesFromSearchGroup'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
-import { AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaVenue, AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -24,7 +25,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
-import { LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
 
 export const VENUE_ITEM_HEIGHT = LENGTH_XXS
 export const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -32,13 +33,18 @@ const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
 type Props = {
   venuePlaylistTitle: string
-  venues: AlgoliaVenue[]
+  venues: AlgoliaVenueOfferListItem[]
   isLocated?: boolean
   shouldDisplaySeparator?: boolean
   currentView?: keyof SearchStackParamList
   offerCategory?: SearchGroupNameEnumv2
   searchGroup?: SearchGroupNameEnumv2
   style?: StyleProp<ViewStyle>
+  playlistRef?: Ref<FlatList>
+  onViewableItemsChanged?: (info: {
+    viewableItems: ViewToken<unknown>[]
+    changed: ViewToken<unknown>[]
+  }) => void
 }
 
 const renderVenueItem = (
@@ -74,6 +80,8 @@ export const VenuePlaylist: React.FC<Props> = ({
   shouldDisplaySeparator = true,
   searchGroup,
   style,
+  playlistRef,
+  onViewableItemsChanged,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
@@ -126,18 +134,20 @@ export const VenuePlaylist: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Container style={style}>
-        <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
-        {shouldDisplaySeeOnMapButton ? (
-          <ButtonContainer>
-            <ButtonTertiaryBlack
-              icon={Map}
-              wording="Voir sur la carte"
-              onPress={handleSeeMapPress}
-            />
-          </ButtonContainer>
-        ) : (
-          <NumberOfResults nbHits={venues?.length ?? 0} />
-        )}
+        <HeaderPlaylistContainer>
+          <Typo.Title3 numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Typo.Title3>
+          {shouldDisplaySeeOnMapButton ? (
+            <ButtonContainer>
+              <ButtonTertiaryBlack
+                icon={Map}
+                wording="Voir sur la carte"
+                onPress={handleSeeMapPress}
+              />
+            </ButtonContainer>
+          ) : (
+            <NumberOfResults nbHits={venues?.length ?? 0} />
+          )}
+        </HeaderPlaylistContainer>
         <Playlist
           data={venues ?? []}
           scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
@@ -151,6 +161,9 @@ export const VenuePlaylist: React.FC<Props> = ({
           keyExtractor={keyExtractor}
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
+          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+          ref={playlistRef}
+          onViewableItemsChanged={onViewableItemsChanged}
         />
       </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
@@ -165,7 +178,10 @@ export const VenuePlaylist: React.FC<Props> = ({
 
 const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
-  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
+
+const HeaderPlaylistContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xl,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({

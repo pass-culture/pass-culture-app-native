@@ -39,110 +39,107 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -155,23 +152,20 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         >
           Numéro de téléphone
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
@@ -248,19 +242,12 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 19,
                   "lineHeight": 30.4,
+                  "marginBottom": 24,
                 }
               }
             >
               Quel est ton numéro de téléphone ?
             </Text>
-            <View
-              numberOfSpaces={6}
-              style={
-                {
-                  "height": 24,
-                }
-              }
-            />
             <View
               style={
                 {
@@ -277,24 +264,19 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
+                      "marginBottom": 24,
                     }
                   }
                 >
                   Tu vas recevoir un code de validation pour confirmer ton numéro.
                 </Text>
                 <View
-                  numberOfSpaces={6}
-                  style={
-                    {
-                      "height": 24,
-                    }
-                  }
-                />
-                <View
+                  invalidPhoneNumberMessage=""
                   style={
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "marginBottom": 32,
                       "width": "100%",
                     }
                   }
@@ -319,46 +301,49 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             "alignItems": "flex-end",
                             "flexDirection": "row",
                             "justifyContent": "space-between",
-                            "marginBottom": 8,
                             "width": "100%",
                           }
                         }
                       >
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="Numéro de téléphone"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          Numéro de téléphone
-                        </Text>
+                          >
+                            Numéro de téléphone
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -368,7 +353,8 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       <View
                         style={
                           {
-                            "marginBottom": 8,
+                            "flexShrink": 0,
+                            "marginRight": 8,
                           }
                         }
                       >
@@ -463,14 +449,14 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         </View>
                       </View>
                       <TextInput
-                        accessibilityDescribedBy="testUuidV4"
+                        accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="tel"
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour le numéro de téléphone"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
@@ -501,14 +487,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={8}
-                  style={
-                    {
-                      "height": 32,
-                    }
-                  }
-                />
               </View>
             </View>
           </View>
@@ -529,9 +507,11 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           }
         >
           <View
+            gap={2}
             style={
               {
                 "alignItems": "center",
+                "gap": 8,
               }
             }
           >
@@ -580,14 +560,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 de code de validation
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                {
-                  "height": 8,
-                }
-              }
-            />
             <View
               accessibilityLabel="Continuer vers l’étape suivante"
               accessibilityState={

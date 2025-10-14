@@ -309,7 +309,7 @@ pour réserver cette offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#24242429"
+        backdropColor="#23232329"
         paddingBottom={8}
         style={
           {
@@ -431,7 +431,7 @@ pour réserver cette offre
                         },
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#eb0055",
+                          "backgroundColor": "#6123df",
                           "borderBottomLeftRadius": 24,
                           "borderBottomRightRadius": 24,
                           "borderTopLeftRadius": 24,
@@ -799,7 +799,7 @@ pour réserver cette offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#24242429"
+        backdropColor="#23232329"
         paddingBottom={8}
         style={
           {
@@ -921,7 +921,7 @@ pour réserver cette offre
                         },
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#eb0055",
+                          "backgroundColor": "#6123df",
                           "borderBottomLeftRadius": 24,
                           "borderBottomRightRadius": 24,
                           "borderTopLeftRadius": 24,
@@ -1289,7 +1289,7 @@ pour réserver cette offre
         testID="spacerBetweenHeaderAndContent"
       />
       <View
-        backdropColor="#24242429"
+        backdropColor="#23232329"
         paddingBottom={8}
         style={
           {
@@ -1384,7 +1384,7 @@ pour réserver cette offre
                         },
                         {
                           "alignItems": "center",
-                          "backgroundColor": "#eb0055",
+                          "backgroundColor": "#6123df",
                           "borderBottomLeftRadius": 24,
                           "borderBottomRightRadius": 24,
                           "borderTopLeftRadius": 24,

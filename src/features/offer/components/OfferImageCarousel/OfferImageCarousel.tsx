@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageContainerDimensions } from 'features/offer/types'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { ImageWithCredit } from 'shared/types'
 import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
 import { Typo } from 'ui/theme'
@@ -27,9 +28,9 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
   onLoad,
   style,
 }) => {
-  const { borderRadius } = useTheme()
+  const { designSystem } = useTheme()
   const carouselStyle = useRef({
-    borderRadius: borderRadius.radius,
+    borderRadius: designSystem.size.borderRadius.m,
   }).current
   const imagesLoadedCount = useRef(0)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -44,6 +45,9 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
     }
   }, [offerImages.length, onLoad])
 
+  const creditValue = offerImages[Math.round(currentIndex)]?.credit
+  const currentCredit = creditValue ? `© ${creditValue}` : undefined
+
   const renderItem: ({ item, index }: { item: ImageWithCredit; index: number }) => ReactElement =
     useCallback(
       ({ index, item }) => (
@@ -52,19 +56,19 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
             index={index}
             imageDimensions={imageDimensions}
             imageURL={item.url}
+            imageCredit={currentCredit}
             onLoad={handleImageLoad}
             onPress={onItemPress}
             isInCarousel
           />
         </Animated.View>
       ),
-      [handleImageLoad, imageDimensions, onItemPress]
+      [currentCredit, handleImageLoad, imageDimensions, onItemPress]
     )
-
-  const currentCredit = offerImages[Math.round(currentIndex)]?.credit
 
   return (
     <View style={style}>
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Carousel
         ref={carouselRef}
         testID="offerImageContainerCarousel"
@@ -83,7 +87,11 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
         style={carouselStyle}
       />
       <Container>
-        {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
+        {currentCredit ? (
+          <CopyrightText numberOfLines={2} {...hiddenFromScreenReader()}>
+            {currentCredit}
+          </CopyrightText>
+        ) : null}
       </Container>
       {offerImages.length > 1 && progressValue ? (
         <StyledCarouselPagination

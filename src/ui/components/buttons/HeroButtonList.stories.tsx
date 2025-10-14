@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -14,13 +13,6 @@ import { iconSizes } from 'ui/theme/iconSizes'
 const meta: Meta<typeof HeroButtonList> = {
   title: 'ui/buttons/HeroButtonList',
   component: HeroButtonList,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

@@ -12,13 +12,11 @@ export const useGetRemindersQuery = <TData = GetRemindersResponse>(
 ) => {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery<GetRemindersResponse, Error, TData>(
-    [QueryKeys.REMINDERS],
-    () => api.getNativeV1MeReminders(),
-    {
-      select,
-      enabled: isLoggedIn,
-      staleTime: STALE_TIME_REMINDERS,
-    }
-  )
+  return useQuery({
+    queryKey: [QueryKeys.REMINDERS],
+    queryFn: () => api.getNativeV1MeReminders(),
+    select,
+    enabled: isLoggedIn,
+    staleTime: STALE_TIME_REMINDERS,
+  })
 }

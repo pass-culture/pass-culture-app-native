@@ -39,7 +39,7 @@ import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'l
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { LocationMode } from 'libs/location/types'
-import { PageTrackingInfo } from 'store/tracking/types'
+import { PageTrackingInfo } from 'shared/tracking/TrackingManager'
 
 type ConsultHomeParams = { homeEntryId: string }
 
@@ -157,6 +157,8 @@ export const logEventAnalytics = {
     analytics.logEvent({
       firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
     }),
+  logClickAllClubRecos: (params: { offerId: string; from: Referrals; categoryName: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_ALL_CLUB_RECOS }, params),
   logClickBookOffer: (params: {
     offerId: number
     from?: Referrals
@@ -171,6 +173,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EMAIL_ORGANIZER }),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
+  logClickInfoReview: (params: {
+    offerId: string
+    from: Referrals
+    categoryName: string
+    userId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_INFO_REVIEW }, params),
   logClickMailDebugInfo: (userId?: number) => {
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_MAIL_DEBUG_INFO }, { userId })
   },
@@ -182,6 +190,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
+  logClickWhatsClub: (params: { offerId: string; from: Referrals; categoryName: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_WHATS_CLUB }, params),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
   logConnectionInfo: (params: { type: string; generation?: string | null }) =>
@@ -205,10 +215,12 @@ export const logEventAnalytics = {
   logConsultArticleAccountDeletion: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION }),
   logConsultArtist: (params: {
+    artistId: string
     artistName: string
     from: Referrals
-    offerId?: number
-    venueId?: number
+    offerId?: string
+    venueId?: string
+    searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST }, params),
   logConsultArtistFakeDoor: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST_FAKE_DOOR }),
@@ -270,6 +282,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
     youtubeId?: string
+    offerId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),

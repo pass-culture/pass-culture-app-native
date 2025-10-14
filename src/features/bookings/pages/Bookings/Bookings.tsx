@@ -1,8 +1,9 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { ReactionTypeEnum } from 'api/gen'
+import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
 import { BookingsTab } from 'features/bookings/enum'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
@@ -12,20 +13,36 @@ import { useReactionMutation } from 'features/reactions/queries/useReactionMutat
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useBookingsQuery } from 'queries/bookings'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { storage } from 'libs/storage'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-export function Bookings() {
+const checkBookingPage = async () => {
+  const hasSeenBookingPage = await storage.readObject<boolean>('has_seen_booking_page')
+
+  if (!hasSeenBookingPage) {
+    BatchProfile.trackEvent(BatchEvent.hasSeenBookingPage)
+    await storage.saveObject('has_seen_booking_page', true)
+  }
+}
+
+export const Bookings = () => {
+  useEffect(() => {
+    checkBookingPage()
+  }, [])
+
   const { params } = useRoute<UseRouteType<'Bookings'>>()
+
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
-  const { data: bookings } = useBookingsQuery()
-  const { mutate: addReaction } = useReactionMutation()
-
-  const { ended_bookings: endedBookings = [] } = bookings ?? {}
+  const { isLoggedIn } = useAuthContext()
+  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
+  const { mutateAsync: addReaction, isPending } = useReactionMutation()
+  const { endedBookings = [] } = bookings ?? {}
 
   const { data: availableReactions } = useAvailableReactionQuery()
   const numberOfReactableBookings = availableReactions?.numberOfReactableBookings ?? 0
@@ -35,20 +52,24 @@ export function Bookings() {
     'réservations'
   )
 
-  const updateReactions = useCallback(() => {
-    const bookingsToUpdate =
-      endedBookings
-        .filter((ended_booking) => ended_booking.userReaction === null)
-        .map((booking) => booking.stock.offer.id) ?? []
+  const updateReactions = useCallback(async () => {
+    if (isPending) return
 
-    const mutationPayload = bookingsToUpdate.map((bookingId) => ({
-      offerId: bookingId,
-      reactionType: ReactionTypeEnum.NO_REACTION,
-    }))
-    if (mutationPayload.length > 0) {
-      addReaction({ reactions: mutationPayload })
+    const reactableEndedBookings = endedBookings.filter(
+      (endedBooking) => !!endedBooking.canReact && endedBooking.userReaction === null
+    )
+
+    const reactionRequest: PostReactionRequest = {
+      reactions: reactableEndedBookings.map((booking) => ({
+        offerId: booking.stock.offer.id,
+        reactionType: ReactionTypeEnum.NO_REACTION,
+      })),
     }
-  }, [addReaction, endedBookings])
+
+    if (reactionRequest.reactions.length) {
+      await addReaction(reactionRequest)
+    }
+  }, [isPending, addReaction, endedBookings])
 
   useFocusEffect(
     useCallback(() => {
@@ -56,7 +77,9 @@ export function Bookings() {
         if (previousTab === BookingsTab.COMPLETED) {
           updateReactions()
         }
-        setPreviousTab(activeTab)
+        if (previousTab !== activeTab) {
+          setPreviousTab(activeTab)
+        }
       }
     }, [activeTab, previousTab, updateReactions])
   )
@@ -84,6 +107,7 @@ export function Bookings() {
           },
         ]}
         onTabChange={(key) => {
+          if (activeTab === BookingsTab.COMPLETED) updateReactions()
           setActiveTab(key)
         }}
       />

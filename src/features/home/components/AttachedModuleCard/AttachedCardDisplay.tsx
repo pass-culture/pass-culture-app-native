@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
 import { OfferName } from 'ui/components/tiles/OfferName'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 

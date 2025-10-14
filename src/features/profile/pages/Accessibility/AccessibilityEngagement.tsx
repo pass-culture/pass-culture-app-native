@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -87,11 +87,11 @@ export function AccessibilityEngagement() {
         Vous pouvez retrouver également toutes nos fiches d’aide pour vous inscrire sur le pass
         Culture directement dans{' '}
         <ExternalTouchableLink
-          as={ButtonInsideText}
+          as={LinkInsideText}
           wording="notre centre d’aide"
           typography="BodyAccentXs"
-          icon={ExternalSiteFilled}
           externalNav={{ url: env.FAQ_LINK }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       </StyledBodyAccentXs>
       <Spacer.BottomScreen />

@@ -2,8 +2,8 @@ import React from 'react'
 
 import { HomepageLabelNameEnumv2 } from 'api/gen'
 import { render, screen } from 'tests/utils'
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 
 import { PlaylistCardOffer } from './PlaylistCardOffer'
 

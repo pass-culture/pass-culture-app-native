@@ -20,7 +20,7 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ReinitializePasswordFormData = {
@@ -72,7 +72,7 @@ export const ReinitializePassword = () => {
     trigger('confirmedPassword')
   }, [password, trigger])
 
-  const { mutate: resetPassword, isLoading } = useResetPasswordMutation({
+  const { mutate: resetPassword, isPending } = useResetPasswordMutation({
     onSuccess: (response: ResetPasswordResponse) => {
       showSuccessSnackBar({
         message: 'Ton mot de passe est modifié\u00a0!',
@@ -128,28 +128,27 @@ export const ReinitializePassword = () => {
             label="Mot de passe"
             control={control}
             autoFocus
-            isRequiredField
             withSecurityRules
             securityRulesAlwaysVisible
             onSubmitEditing={handleSubmit(submitPassword)}
+            requiredIndicator="explicit"
           />
         </Container>
         <Container>
           <PasswordInputController
             name="confirmedPassword"
             label="Confirmer le mot de passe"
-            placeholder="Confirmer le mot de passe"
             control={control}
-            isRequiredField
             onSubmitEditing={handleSubmit(submitPassword)}
+            requiredIndicator="explicit"
           />
         </Container>
         <Container>
           <ButtonPrimary
             wording="Se connecter"
             onPress={handleSubmit(submitPassword)}
-            disabled={!isValid || isLoading}
-            isLoading={isLoading}
+            disabled={!isValid || isPending}
+            isLoading={isPending}
             accessibilityLabel="Valider le nouveau mot de passe et se connecter"
           />
         </Container>
@@ -158,6 +157,6 @@ export const ReinitializePassword = () => {
   )
 }
 
-const Container = styled.View({
-  marginTop: getSpacing(10),
-})
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxl,
+}))

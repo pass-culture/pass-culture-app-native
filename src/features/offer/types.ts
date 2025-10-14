@@ -80,6 +80,7 @@ export type OfferContentProps = {
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
   userId?: number
+  hasVideoCookiesConsent?: boolean
 }
 
 export type OfferImageContainerDimensions = {
@@ -91,4 +92,9 @@ export type OfferImageContainerDimensions = {
     aspectRatio: number
     borderRadius: number
   }
+}
+
+export type Duration = {
+  label: string
+  accessibilityLabel: string
 }

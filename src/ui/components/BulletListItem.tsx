@@ -2,20 +2,40 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
-import { Li } from 'ui/components/Li'
+import { extractTextFromReactNode } from 'shared/extractTextFromReactNode/extractTextFromReactNode'
+import { Li, AccessibleLiProps } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing, Typo } from 'ui/theme'
 
-// Use with Ul or VerticalUl to be accessible in web
-export const BulletListItem: React.FC<{
+type BulletListItemProps = {
   text?: string | React.ReactNode
   spacing?: number
-  nestedListTexts?: string[] | React.ReactNode[]
+  nestedListTexts?: (string | React.ReactNode)[]
   children?: React.ReactNode
-}> = ({ text, spacing, nestedListTexts, children }) => {
+} & Omit<AccessibleLiProps, 'accessibilityLabel' | 'children'>
+
+// Use with Ul or VerticalUl to be accessible in web
+export const BulletListItem: React.FC<BulletListItemProps> = ({
+  text,
+  spacing,
+  nestedListTexts,
+  index,
+  total,
+  groupLabel,
+  accessibilityRole,
+  children,
+}) => {
+  const baseText = text ?? children
+  const accessibilityLabel = extractTextFromReactNode(baseText)
+
   return (
-    <Li>
+    <Li
+      accessibilityLabel={accessibilityLabel}
+      index={index}
+      total={total}
+      groupLabel={groupLabel}
+      accessibilityRole={accessibilityRole}>
       <ItemContainer spacing={spacing}>
         <BulletContainer>
           <Bullet />
@@ -25,16 +45,25 @@ export const BulletListItem: React.FC<{
           {children}
         </ListText>
       </ItemContainer>
+
       {nestedListTexts ? (
         <StyledUl>
-          {nestedListTexts.map((itemText, idx) => {
+          {nestedListTexts.map((itemNested, indexNested) => {
+            const baseTextNested = nestedListTexts ?? children
+            const accessibilityLabelNested = extractTextFromReactNode(baseTextNested)
+
             return (
-              <Li key={idx}>
+              <Li
+                key={accessibilityLabelNested}
+                index={indexNested}
+                total={nestedListTexts.length}
+                groupLabel={accessibilityLabel}
+                accessibilityLabel={accessibilityLabelNested}>
                 <NestedItemContainer spacing={spacing}>
                   <BulletContainer>
                     <NestedBullet />
                   </BulletContainer>
-                  <ListText>{itemText}</ListText>
+                  <ListText>{itemNested}</ListText>
                 </NestedItemContainer>
               </Li>
             )
@@ -45,21 +74,21 @@ export const BulletListItem: React.FC<{
   )
 }
 
-const ItemContainer = styled.View<{ spacing?: number }>(({ spacing }) => ({
+const ItemContainer = styled.View<{ spacing?: number }>(({ theme, spacing }) => ({
   flexDirection: 'row',
-  marginLeft: getSpacing(3),
+  marginLeft: theme.designSystem.size.spacing.m,
   marginTop: spacing ? getSpacing(spacing) : 0,
 }))
 
-const NestedItemContainer = styled.View<{ spacing?: number }>(({ spacing }) => ({
+const NestedItemContainer = styled.View<{ spacing?: number }>(({ theme, spacing }) => ({
   flexDirection: 'row',
-  marginLeft: getSpacing(7),
+  marginLeft: theme.designSystem.size.spacing.xxl,
   marginTop: spacing ? getSpacing(spacing) : 0,
 }))
 
-const StyledUl = styled(VerticalUl)({
-  marginVertical: getSpacing(1),
-})
+const StyledUl = styled(VerticalUl)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xs,
+}))
 
 const Bullet = styled(Dot).attrs({
   size: 3,
@@ -75,7 +104,7 @@ const BulletContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
 }))
 
-const ListText = styled(Typo.Body)({
-  marginLeft: getSpacing(3),
+const ListText = styled(Typo.Body)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.m,
   flex: 1,
-})
+}))

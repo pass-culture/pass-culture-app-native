@@ -40,15 +40,20 @@ describe('CinemaPlaylists', () => {
   it('should render playlist when algolia returns offers', async () => {
     renderCinema()
 
-    expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
+    expect(await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
     useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderCinema()
 
-    expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-const renderCinema = () => render(reactQueryProviderHOC(<CinemaPlaylists />))
+const renderCinema = () =>
+  render(
+    reactQueryProviderHOC(
+      <CinemaPlaylists shouldDisplayVenuesPlaylist onViewableItemsChanged={jest.fn()} />
+    )
+  )

@@ -6,31 +6,17 @@ import { InputError } from './InputError'
 
 describe('InputError Component', () => {
   it('should display the given message', () => {
-    render(
-      <InputError
-        visible
-        messageId="message"
-        numberOfSpacesTop={1}
-        relatedInputId="relatedInputId"
-      />
-    )
+    render(<InputError visible errorMessage="message" numberOfSpacesTop={1} />)
 
-    const text = screen.queryByText('message')
+    const text = screen.getByText('message', { hidden: true })
 
     expect(text).toBeOnTheScreen()
   })
 
   it('should hide the given message', () => {
-    render(
-      <InputError
-        visible={false}
-        messageId="message"
-        numberOfSpacesTop={1}
-        relatedInputId="relatedInputId"
-      />
-    )
+    render(<InputError visible={false} errorMessage="message" numberOfSpacesTop={1} />)
 
-    const text = screen.queryByText('message')
+    const text = screen.queryByText('message', { hidden: true })
 
     expect(text).not.toBeOnTheScreen()
   })

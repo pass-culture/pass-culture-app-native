@@ -1,5 +1,5 @@
-import colorAlpha from 'color-alpha'
 import { Platform } from 'react-native'
+import { DefaultTheme } from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -11,23 +11,22 @@ type InputShadow = {
   }
   shadowRadius: number
   shadowColor: ColorsEnum | string
-  shadowOpacity: number
 }
 type AndroidShadow = {
   // To avoid the following error:
   // WARN  Expected style "elevation: 2.2857142857142856px" to be unitless
   // https://github.com/styled-components/styled-components/issues/3254
-  elevation: string
+  elevation: number
 }
 type IOSShadow = {
-  shadowOffset: string
+  shadowOffset: { width: number; height: number }
   shadowRadius: number
   shadowColor: ColorsEnum | string
   shadowOpacity: string
 }
 type WebShadow = { boxShadow?: string; filter?: string }
 
-export function getShadow(
+function buildShadow(
   shadowInput: InputShadow,
   dropShadow = false
 ): AndroidShadow | IOSShadow | WebShadow {
@@ -36,24 +35,42 @@ export function getShadow(
     if (Platform.Version < 5) {
       return {}
     }
-    return { elevation: `${Number(shadowInput.shadowOffset.height) * 2}` }
+    return { elevation: shadowInput.shadowOffset.height * 2 }
   }
   if (Platform.OS === 'ios') {
     return {
-      shadowOffset: `${shadowInput.shadowOffset.width}px ${shadowInput.shadowOffset.height}px`,
+      shadowOffset: {
+        width: shadowInput.shadowOffset.width,
+        height: shadowInput.shadowOffset.height,
+      },
       shadowRadius: shadowInput.shadowRadius,
       shadowColor: shadowInput.shadowColor,
-      shadowOpacity: shadowInput.shadowOpacity.toString(),
+      shadowOpacity: '1', // We keep value at 1 because alpha is already included in the color token
     }
   }
-  const shadowColor = colorAlpha(shadowInput.shadowColor, shadowInput.shadowOpacity ?? 1)
+
+  const shadowX = shadowInput.shadowOffset.width
+  const shadowY = shadowInput.shadowOffset.height
+  const shadowBlur = shadowInput.shadowRadius
+  const shadowColor = shadowInput.shadowColor
+
   if (dropShadow) {
-    return {
-      filter: `drop-shadow(0px 2px 4px ${shadowColor})`,
-    }
-  } else {
-    return {
-      boxShadow: `${shadowInput.shadowOffset.width}px ${shadowInput.shadowOffset.height}px ${shadowInput.shadowRadius}px ${shadowColor}`,
-    }
+    return { filter: `drop-shadow(${shadowX}px ${shadowY}px ${shadowBlur}px ${shadowColor})` }
   }
+  return { boxShadow: `${shadowX}px ${shadowY}px ${shadowBlur}px ${shadowColor}` }
+}
+
+function buildThemeShadowInput(theme: DefaultTheme): InputShadow {
+  return {
+    shadowOffset: {
+      width: theme.designSystem.size.spacing.xxs,
+      height: theme.designSystem.size.spacing.m,
+    },
+    shadowRadius: theme.designSystem.size.spacing.xxl,
+    shadowColor: theme.designSystem.color.background.shadowOverlay,
+  }
+}
+
+export function getShadow(theme: DefaultTheme) {
+  return buildShadow(buildThemeShadowInput(theme))
 }

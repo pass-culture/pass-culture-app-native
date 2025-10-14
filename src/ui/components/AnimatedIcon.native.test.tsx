@@ -2,7 +2,7 @@ import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Animated, TouchableOpacity } from 'react-native'
 
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import { Logo } from 'ui/svg/icons/Logo'
 
@@ -32,8 +32,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('AnimatedIcon', () => {
-  it('should display only the first color before animation', () => {
-    render(<DummyComponent />)
+  it('should display only the first color before animation', async () => {
+    await renderAsync(<DummyComponent />)
 
     const initialContainer = screen.getByTestId('initial-icon-container')
     const finalContainer = screen.getByTestId('final-icon-container')
@@ -43,9 +43,9 @@ describe('AnimatedIcon', () => {
   })
 
   it('should display only the last color after animation', async () => {
-    render(<DummyComponent />)
+    await renderAsync(<DummyComponent />)
 
-    user.press(screen.getByTestId('dummyPressable'))
+    await user.press(screen.getByTestId('dummyPressable'))
 
     const initialContainer = screen.getByTestId('initial-icon-container')
     const finalContainer = screen.getByTestId('final-icon-container')

@@ -32,7 +32,7 @@ jest.mock('uuid', () => ({
 
 const venueId = venueDataTest.id
 
-jest.mock('libs/location', () => ({
+jest.mock('libs/location/location', () => ({
   useLocation: jest.fn().mockReturnValue({
     userLocation: {
       latitude: 2,
@@ -120,7 +120,9 @@ describe('<Venue />', () => {
   })
 })
 
-const renderVenue = async () =>
-  act(async () => {
+const renderVenue = async () => {
+  useRoute.mockReturnValue({ params: { id: venueId } })
+  return act(async () => {
     return render(reactQueryProviderHOC(<Venue />))
   })
+}

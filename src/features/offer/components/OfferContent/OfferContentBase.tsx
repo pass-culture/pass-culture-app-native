@@ -15,6 +15,7 @@ import {
   ScrollView,
   StyleProp,
   ViewStyle,
+  ViewToken,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
@@ -43,12 +44,13 @@ import { OfferContentProps } from 'features/offer/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { ImageWithCredit } from 'shared/types'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -94,12 +96,19 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   BodyWrapper = React.Fragment,
   onLayout,
   userId,
+  hasVideoCookiesConsent,
   children,
 }) => {
   const theme = useTheme()
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
+
+  const pageTracking = usePageTracking({
+    pageName: 'Offer',
+    pageLocation: 'offer',
+    pageId: params.id.toString(),
+  })
 
   const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
     ? JSON.parse(params?.apiRecoParams)
@@ -183,7 +192,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
-  const { mutate: addFavorite, isLoading: isAddFavoriteLoading } = useAddFavoriteMutation({
+  const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddFavoriteMutation({
     onSuccess: () => {
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
@@ -200,7 +209,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const { mutate: removeFavorite, isLoading: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
+  const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',
@@ -227,6 +236,15 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
+  const handleOnSeeAllReviewsPress = () => {
+    analytics.logClickInfoReview({
+      from: 'offer',
+      offerId: offer.id.toString(),
+      categoryName: subcategory.categoryId,
+      userId: userId?.toString(),
+    })
+  }
+
   const offerCtaButton = (
     <OfferCTAButton
       offer={offer}
@@ -236,6 +254,23 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   )
 
   const { animationState } = getAnimationState(theme, headerTransition)
+
+  const handleViewableItemsChanged = useCallback(
+    (
+      items: Pick<ViewToken, 'key' | 'index'>[],
+      moduleId: string,
+      itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+      playlistIndex?: number
+    ) => {
+      pageTracking.trackViewableItems({
+        moduleId,
+        itemType,
+        viewableItems: items,
+        playlistIndex,
+      })
+    },
+    [pageTracking]
+  )
 
   return (
     <Container>
@@ -287,7 +322,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               headlineOffersCount={headlineOffersCount}
               chronicleVariantInfo={chronicleVariantInfo}
               userId={userId}
-              isVideoSectionEnabled={isVideoSectionEnabled}>
+              isVideoSectionEnabled={isVideoSectionEnabled}
+              hasVideoCookiesConsent={hasVideoCookiesConsent}>
               {theme.isDesktopViewport ? (
                 <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
                   {offerCtaButton}
@@ -303,6 +339,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               onSeeMoreButtonPress={onSeeMoreButtonPress}
               onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+              onSeeAllReviewsPress={handleOnSeeAllReviewsPress}
             />
           ) : null}
           <StyledSectionWithDivider
@@ -318,6 +355,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsSameCategory={apiRecoParamsSameCategory}
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+            onViewableItemsChanged={handleViewableItemsChanged}
           />
           {children}
         </ScrollViewContainer>

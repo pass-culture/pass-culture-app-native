@@ -39,110 +39,107 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -155,23 +152,20 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
         >
           Envie de tout envie de lien ?
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
@@ -813,7 +807,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         numberOfLines={2}
                         style={
                           {
-                            "color": "#eb0055",
+                            "color": "#6123df",
                             "flexGrow": 1,
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-SemiBold",
@@ -840,7 +834,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Sélectionné"
                       height={20}
                       width={20}
                     >
@@ -1739,27 +1732,56 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            accessibilityLabel="videoModuleId"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            videoModuleId
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -1767,14 +1789,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour un videoModuleId"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="videoModuleId"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -1792,7 +1815,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un videoModuleId"
                         textAlignVertical="center"
                       />
                     </View>
@@ -1996,27 +2019,56 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_campaign"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            utm_campaign
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -2024,14 +2076,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour un utm_campaign"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_campaign"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2049,7 +2102,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_campaign"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2107,27 +2160,56 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_source"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            utm_source
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -2135,14 +2217,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour un utm_source"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_source"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2160,7 +2243,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_source"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2218,27 +2301,56 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_medium"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            utm_medium
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -2246,14 +2358,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour un utm_medium"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_medium"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2271,7 +2384,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_medium"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2329,27 +2442,56 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_content"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            utm_content
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -2357,14 +2499,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour un utm_content"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_content"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2382,7 +2525,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_content"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2440,27 +2583,56 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       }
                     }
                   >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            accessibilityLabel="utm_gen (*)"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            utm_gen (*)
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -2468,15 +2640,16 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityRequired={false}
                         defaultValue="marketing"
                         editable={true}
                         isEmpty={true}
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour un utm_gen"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}
-                        placeholder="utm_gen (*)"
+                        placeholder=""
                         placeholderTextColor="#696a6f"
                         returnKeyType="next"
                         style={
@@ -2494,7 +2667,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                             "paddingTop": 0,
                           }
                         }
-                        testID="Champ de texte"
+                        testID="Entrée pour un utm_gen"
                         textAlignVertical="center"
                       />
                     </View>
@@ -2613,7 +2786,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#eb0055",
+                    "backgroundColor": "#6123df",
                     "borderBottomLeftRadius": 24,
                     "borderBottomRightRadius": 24,
                     "borderTopLeftRadius": 24,

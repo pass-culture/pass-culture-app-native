@@ -2,7 +2,6 @@ import '@testing-library/jest-native/extend-expect'
 
 import { TextEncoder } from 'util'
 
-import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
@@ -13,17 +12,6 @@ configure({ testingLibrary: 'react-native' })
 
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder
-
-consoleFailTestModule.cft({
-  testFramework: 'jest',
-  spyLibrary: 'jest',
-  console: {
-    debug: false,
-    error: false,
-    log: false,
-    warn: true,
-  },
-})
 
 global.afterEach(async () => {
   queryCache.clear()

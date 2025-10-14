@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 
 import {
-  BookingReponse,
+  BookingResponse,
   PostOneReactionRequest,
   PostReactionRequest,
   ReactionTypeEnum,
@@ -17,7 +17,7 @@ import { useModal } from 'ui/components/modals/useModal'
 export const IncomingReactionModalContainer = ({
   bookingsEligibleToReaction = [],
 }: {
-  bookingsEligibleToReaction?: Array<BookingReponse>
+  bookingsEligibleToReaction?: Array<BookingResponse>
 }) => {
   const { mutate: addReaction } = useReactionMutation()
   const { visible: reactionModalVisible, hideModal: hideReactionModal } = useModal(true)

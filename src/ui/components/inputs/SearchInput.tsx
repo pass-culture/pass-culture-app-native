@@ -28,7 +28,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const {
     LeftIcon,
     label,
-    accessibilityDescribedBy,
     onPressRightIcon,
     inputContainerStyle,
     isFocusable = true,
@@ -36,6 +35,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     children,
     isRequiredField,
     disableClearButton,
+    accessibilityHint,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
@@ -50,13 +50,15 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     }
   }
 
+  const computedAccessibilityLabel = [label, accessibilityHint].filter(Boolean).join(' - ')
+
   return (
     <React.Fragment>
       {label ? (
         <StyledView>
           <FlexInputLabel htmlFor={searchInputID}>
             <LabelContainer>
-              <Typo.Body>{label}</Typo.Body>
+              <Typo.Body accessibilityLabel={computedAccessibilityLabel}>{label}</Typo.Body>
               {isRequiredField ? <RequiredLabel /> : null}
             </LabelContainer>
           </FlexInputLabel>
@@ -88,7 +90,6 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           selectionColor={undefined}
           focusable={isFocusable}
           accessibilityHidden={!isFocusable}
-          accessibilityDescribedBy={accessibilityDescribedBy}
           accessibilityRequired={isRequiredField}
           enablesReturnKeyAutomatically
           testID={nativeProps.testID || 'searchInput'}
@@ -121,10 +122,9 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
   selectionColor: theme.designSystem.color.text.subtle,
 }))``
 
-const StyledInputContainer = styled(InputContainer)({
-  outlineOffset: 0,
-  borderRadius: getSpacing(6),
-})
+const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.m,
+}))
 
 const StyledView = styled.View({
   marginBottom: getSpacing(2),

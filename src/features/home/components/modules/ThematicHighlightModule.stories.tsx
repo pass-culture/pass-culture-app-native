@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import mockDate from 'mockdate'
 import React from 'react'
@@ -13,13 +12,6 @@ mockDate.set(CURRENT_DATE)
 const meta: Meta<typeof ThematicHighlightModule> = {
   title: 'Features/home/ThematicHighlightModule',
   component: ThematicHighlightModule,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

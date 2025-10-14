@@ -10,9 +10,9 @@ export interface Venue {
   label: string
   info: string
   venueId: number | null
+  venue_type: VenueTypeCodeKey
   _geoloc?: Geoloc
   banner_url?: string | null
-  venue_type?: VenueTypeCodeKey | null
   postalCode?: string | null
   isPermanent?: boolean | null
   isOpenToPublic: boolean
@@ -21,6 +21,7 @@ export interface Venue {
 export enum Tab {
   OFFERS = 'Offres disponibles',
   INFOS = 'Infos pratiques',
+  AGENDA = 'Agenda',
 }
 
 export type TabProps<TabKeyType extends string> = {

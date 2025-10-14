@@ -110,7 +110,6 @@ describe('OfferTile component', () => {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
-      isHeadline: false,
       name: OFFER.name,
       stocks: [],
       subcategoryId: OFFER.subcategoryId,
@@ -132,6 +131,7 @@ describe('OfferTile component', () => {
         offerId: String(OFFER_ID),
         from: 'home',
         moduleName: props.moduleName,
+        isHeadline: false,
       })
     })
 
@@ -157,6 +157,7 @@ describe('OfferTile component', () => {
         moduleName: props.moduleName,
         fromOfferId: '1',
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        isHeadline: false,
       })
     })
 
@@ -169,6 +170,7 @@ describe('OfferTile component', () => {
         from: 'home',
         moduleName: props.moduleName,
         homeEntryId: 'abcd',
+        isHeadline: false,
       })
     })
 
@@ -199,6 +201,7 @@ describe('OfferTile component', () => {
         from: 'venue',
         venueId: 1,
         searchId,
+        isHeadline: false,
       })
     })
 
@@ -221,11 +224,13 @@ describe('OfferTile component', () => {
         searchId: propsFromThematicSearchGtlPlaylist.searchId,
         moduleName: propsFromThematicSearchGtlPlaylist.moduleName,
         fromOfferId: undefined,
+        fromMultivenueOfferId: undefined,
         homeEntryId: undefined,
         index: undefined,
         moduleId: undefined,
         playlistType: undefined,
         venueId: undefined,
+        isHeadline: false,
       })
     })
 
@@ -250,10 +255,12 @@ describe('OfferTile component', () => {
         searchId: undefined,
         moduleName: undefined,
         fromOfferId: undefined,
+        fromMultivenueOfferId: undefined,
         homeEntryId: undefined,
         index: undefined,
         moduleId: undefined,
         venueId: undefined,
+        isHeadline: false,
       })
     })
   })

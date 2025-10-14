@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
@@ -54,10 +54,8 @@ describe('SetPassword Page', () => {
   it('should enable the submit button when password is correct', async () => {
     render(<SetPassword {...props} />)
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    await act(async () => {
-      user.type(passwordInput, 'user@AZERTY123')
-    })
+    const passwordInput = screen.getByTestId('Mot de passe')
+    await user.type(passwordInput, 'user@AZERTY123')
 
     expect(await screen.findByTestId('Continuer')).toBeEnabled()
   })
@@ -65,14 +63,10 @@ describe('SetPassword Page', () => {
   it('should go to next step when submitting password', async () => {
     render(<SetPassword {...props} />)
 
-    await act(async () => {
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      user.type(passwordInput, 'user@AZERTY123')
-    })
+    const passwordInput = screen.getByTestId('Mot de passe')
+    await user.type(passwordInput, 'user@AZERTY123')
 
-    await act(async () => {
-      user.press(screen.getByTestId('Continuer'))
-    })
+    await user.press(screen.getByTestId('Continuer'))
 
     expect(props.goToNextStep).toHaveBeenCalledWith({ password: 'user@AZERTY123' })
   })

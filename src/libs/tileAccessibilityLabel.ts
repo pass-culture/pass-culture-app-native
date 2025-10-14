@@ -5,6 +5,7 @@ import { parseType } from 'libs/parsers/venueType'
 
 type Offer = Pick<OfferTileProps, 'name' | 'categoryLabel' | 'price' | 'date' | 'isDuo'> & {
   distance?: string
+  interactionTagLabel?: string
 }
 type Venue = Pick<VenueHit, 'name' | 'venueTypeCode'> & { distance?: string }
 type Booking = {
@@ -22,15 +23,16 @@ export enum TileContentType {
 }
 
 function getOfferAccessibilityLabel(offer: Offer) {
-  const { name, categoryLabel: category, distance, date, price, isDuo } = offer
-  const nameLabel = name ?? ''
-  const categoryLabel = category ? `de la catégorie ${category},` : ''
-  const distanceLabel = distance ? `à ${distance},` : ''
+  const { name, categoryLabel: category, distance, date, price, isDuo, interactionTagLabel } = offer
+  const tagLabel = interactionTagLabel ? `${interactionTagLabel} - ` : ''
+  const nameLabel = name ? `"${name}",` : ''
+  const categoryLabel = category ? `de la catégorie "${category}",` : ''
+  const distanceLabel = distance ? `à une distance de ${distance},` : ''
   const datePrefix = date?.match(/^\d/) ? `le` : ''
-  const dateLabel = date ? datePrefix + ` ${date},` : ''
+  const dateLabel = date ? datePrefix + `${date},` : ''
   const priceLabel = price === 'Gratuit' ? price : `prix ${price}`
   const duoLabel = isDuo ? 'Possibilité de réserver 2 places.' : ''
-  return `Offre ${nameLabel} ${categoryLabel} ${distanceLabel} ${dateLabel} ${priceLabel}. ${duoLabel}`
+  return `${tagLabel}Offre ${nameLabel} ${categoryLabel} ${distanceLabel} ${dateLabel} ${priceLabel}. ${duoLabel}`
 }
 
 function getVenueAccessibilityLabel(venue: Venue) {

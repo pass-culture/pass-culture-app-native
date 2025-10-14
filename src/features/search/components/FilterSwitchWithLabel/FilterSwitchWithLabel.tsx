@@ -29,7 +29,6 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
 }) => {
   const checkboxID = useMemo(uuidv4, [])
   const labelID = useMemo(uuidv4, [])
-  const describedByID = useMemo(uuidv4, [])
   const labelDescriptionID = useMemo(uuidv4, [])
   const { isDesktopViewport } = useTheme()
 
@@ -58,8 +57,8 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           checkboxID={checkboxID}
           active={isActive}
           toggle={toggle}
+          accessibilityLabel={label}
           accessibilityLabelledBy={labelID}
-          accessibilityDescribedBy={describedByID}
           testID={testID}
           disabled={disabled}
         />

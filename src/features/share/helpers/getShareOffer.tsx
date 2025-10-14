@@ -1,10 +1,10 @@
-import { BookingOfferResponse, FavoriteOfferResponse, OfferResponseV2 } from 'api/gen'
+import { BookingOfferResponseV2, FavoriteOfferResponse, OfferResponseV2 } from 'api/gen'
 import { formatShareOfferMessage } from 'features/share/helpers/formatShareOfferMessage'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 
-type Offer = OfferResponseV2 | BookingOfferResponse | FavoriteOfferResponse
+type Offer = OfferResponseV2 | BookingOfferResponseV2 | FavoriteOfferResponse
 type Parameters = {
   offer?: Offer
   utmMedium: string

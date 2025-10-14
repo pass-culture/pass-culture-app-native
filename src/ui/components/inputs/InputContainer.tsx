@@ -86,12 +86,12 @@ const StyledView = styled(View)<{
       ? {
           ...padding(2, tallHorizontalPadding), // This assures that things don't move when the border width changes on focus
           alignItems: 'flex-start',
-          borderRadius: 16,
+          borderRadius: theme.designSystem.size.borderRadius.l,
         }
       : {
           ...padding(0, horizontalPadding), // This assures that things don't move when the border width changes on focus
           alignItems: 'center',
-          borderRadius: 22,
+          borderRadius: theme.designSystem.size.borderRadius.xl,
         }),
   }
 })

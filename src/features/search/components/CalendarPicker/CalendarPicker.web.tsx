@@ -4,7 +4,6 @@ import Picker from 'react-mobile-picker'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { Theme as RNCalendarTheme, DateData } from 'react-native-calendars/src/types'
 import styled, { useTheme } from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { isBeforeToday } from 'features/search/helpers/isBeforeToday/isBeforeToday'
@@ -73,7 +72,6 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
   }>({})
   const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
   const [mobileDateValues, setMobileDateValues] = useState(getDateValuesString(selectedDate))
-  const bookingDateChoiceErrorId = uuidv4()
 
   useEffect(() => {
     if (ref.current) {
@@ -131,6 +129,8 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
     hideCalendar()
   }
 
+  const errorMessage = 'Choisis une date dans le futur'
+
   return (
     <AppModal
       visible={visible}
@@ -160,7 +160,7 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
             theme={calendarTheme}
             markedDates={markedDates}
             onDayPress={handleDesktopDateChange}
-            accessibilityDescribedBy={bookingDateChoiceErrorId}
+            accessibilityHint={errorMessage}
             disableAllTouchEventsForDisabledDays
           />
         </CalendarPickerWrapperDesktop>
@@ -175,9 +175,8 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
         />
         <InputError
           visible={isMobileDateInvalid}
-          messageId="Choisis une date dans le futur"
+          errorMessage={errorMessage}
           numberOfSpacesTop={2}
-          relatedInputId={bookingDateChoiceErrorId}
         />
         {isMobileDateInvalid ? (
           <Spacer.Column numberOfSpaces={1} />

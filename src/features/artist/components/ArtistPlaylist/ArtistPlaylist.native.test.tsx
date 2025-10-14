@@ -15,23 +15,32 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          artistName="Céline Dion"
+          artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
 
-    await screen.findByText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Toutes ses offres disponibles')
 
-    expect(screen.getByText('Toutes ses offres disponibles')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Toutes ses offres disponibles')).toBeOnTheScreen()
     expect(screen.getByText('Manga Série "One piece" - Tome 3')).toBeOnTheScreen()
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
-    render(reactQueryProviderHOC(<ArtistPlaylist artistName="Céline Dion" items={[]} />))
+    render(
+      reactQueryProviderHOC(
+        <ArtistPlaylist
+          artist={{ id: '1', name: 'Céline Dion' }}
+          items={[]}
+          onViewableItemsChanged={jest.fn()}
+        />
+      )
+    )
 
     await waitFor(() =>
-      expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
+      expect(screen.queryByLabelText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
     )
   })
 
@@ -39,13 +48,14 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          artistName="Céline Dion"
+          artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
 
-    await screen.findByText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Toutes ses offres disponibles')
 
     expect(screen.getByText('Poche')).toBeOnTheScreen()
   })
@@ -54,13 +64,14 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          artistName="Céline Dion"
+          artist={{ id: '1', name: 'Céline Dion' }}
           items={mockedAlgoliaOffersWithSameArtistResponse}
+          onViewableItemsChanged={jest.fn()}
         />
       )
     )
 
-    await screen.findByText('Toutes ses offres disponibles')
+    await screen.findByLabelText('Toutes ses offres disponibles')
 
     expect(screen.getAllByText('Livre')[1]).toBeOnTheScreen()
   })

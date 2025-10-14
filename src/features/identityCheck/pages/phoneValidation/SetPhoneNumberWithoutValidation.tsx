@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
@@ -21,16 +20,14 @@ import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SetPhoneNumberWithoutValidation = () => {
-  const phoneNumberInputErrorId = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
   const { control, handleSubmit, getValues, setError, formState } = useForm<PhoneNumberFormValues>({
     resolver: yupResolver(phoneNumberSchema),
@@ -97,18 +94,17 @@ export const SetPhoneNumberWithoutValidation = () => {
               control={control}
               render={({ field, fieldState }) => (
                 <ViewGap gap={2}>
-                  <TextInput
+                  <InputText
                     autoComplete="tel"
                     autoCapitalize="none"
-                    isError={!!fieldState.error}
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
-                    format="0639980123"
+                    description="0639980123"
                     value={field.value}
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}
                     textContentType="telephoneNumber"
-                    accessibilityDescribedBy={phoneNumberInputErrorId}
+                    accessibilityHint={fieldState.error?.message}
                     leftComponent={
                       <Controller
                         name="countryId"
@@ -126,12 +122,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                       />
                     }
                     testID="Entrée pour le numéro de téléphone"
-                  />
-                  <InputError
-                    visible={!!fieldState.error}
-                    messageId={fieldState.error?.message}
-                    numberOfSpacesTop={0}
-                    relatedInputId={phoneNumberInputErrorId}
+                    errorMessage={fieldState.error?.message}
                   />
                 </ViewGap>
               )}

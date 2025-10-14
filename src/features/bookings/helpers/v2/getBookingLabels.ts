@@ -9,19 +9,17 @@ import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
   formatToHour,
-  getTimeZonedDate,
   isToday,
   isTomorrow,
 } from 'libs/parsers/formatDates'
 
 const formatEventDateLabel = (
   date: Date | string,
-  timezone: string,
   shouldDisplayWeekDay: boolean,
   format: 'date' | 'day',
   prefix?: string
 ) => {
-  return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime({ date: getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay }) : formatToCompleteFrenchDate({ date: getTimeZonedDate({ date, timezone }), shouldDisplayWeekDay })}`
+  return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime({ date: new Date(date), shouldDisplayWeekDay }) : formatToCompleteFrenchDate({ date: new Date(date), shouldDisplayWeekDay })}`
 }
 
 const getDateLabel = (booking: BookingResponse, properties: BookingProperties): string => {
@@ -34,26 +32,17 @@ const getDateLabel = (booking: BookingResponse, properties: BookingProperties): 
   }
 
   const {
-    stock: {
-      beginningDatetime,
-      offer: { venue },
-    },
+    stock: { beginningDatetime },
   } = booking
 
   if (properties.isEvent) {
     if (!beginningDatetime) return ''
-    return formatEventDateLabel(new Date(beginningDatetime), venue.timezone, false, 'date', 'Le ')
+    return formatEventDateLabel(new Date(beginningDatetime), false, 'date', 'Le ')
   }
 
   if (properties.isPhysical) {
     if (!booking.expirationDate) return ''
-    return formatEventDateLabel(
-      booking.expirationDate,
-      venue.timezone,
-      false,
-      'day',
-      'À retirer avant le '
-    )
+    return formatEventDateLabel(booking.expirationDate, false, 'day', 'À retirer avant le ')
   }
 
   return ''
@@ -61,22 +50,12 @@ const getDateLabel = (booking: BookingResponse, properties: BookingProperties): 
 
 const getDayLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
-  return formatEventDateLabel(
-    new Date(booking.stock.beginningDatetime),
-    booking.stock.offer.venue.timezone,
-    false,
-    'day'
-  )
+  return formatEventDateLabel(new Date(booking.stock.beginningDatetime), false, 'day')
 }
 
 const getHourLabel = (booking: BookingResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
-  return formatToHour(
-    getTimeZonedDate({
-      date: new Date(booking.stock.beginningDatetime),
-      timezone: booking.stock.offer.venue.timezone,
-    })
-  )
+  return formatToHour(new Date(booking.stock.beginningDatetime))
 }
 
 const getWithdrawLabel = (booking: BookingResponse, properties: BookingProperties): string => {

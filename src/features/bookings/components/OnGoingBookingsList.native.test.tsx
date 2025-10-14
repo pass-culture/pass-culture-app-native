@@ -1,13 +1,13 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnap as mockBookings } from 'features/bookings/fixtures'
+import { BookingsResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { bookingsSnapV2 as mockBookings } from 'features/bookings/fixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQuery } from 'queries/bookings'
+import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { act, render, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -15,18 +15,19 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
 jest.mock('queries/bookings/useBookingsQuery')
-const mockUseBookings = jest.mocked(useBookingsQuery)
+const mockUseBookings = jest.mocked(useBookingsV2WithConvertedTimezoneQuery)
 mockUseBookings.mockReturnValue({
   data: mockBookings,
   isLoading: false,
   isFetching: false,
-} as unknown as UseQueryResult<BookingsResponse, unknown>)
+  refetch: jest.fn(),
+} as unknown as UseQueryResult<BookingsResponseV2, Error>)
 
 jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
-} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
+} as UseQueryResult<SubcategoriesResponseModelv2, Error>)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
@@ -68,18 +69,6 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
   describe('offline', () => {
     it('should allow pull to refetch when netInfo.isConnected && netInfo.isInternetReachable', () => {
-      const refetch = jest.fn()
-      const loadingBookings = {
-        data: {
-          ended_bookings: [],
-          ongoing_bookings: [],
-          hasBookingsAfter18: false,
-        } as BookingsResponse,
-        isLoading: false,
-        isFetching: false,
-        refetch: refetch as unknown,
-      } as UseQueryResult<BookingsResponse, unknown>
-      mockUseBookings.mockReturnValueOnce(loadingBookings)
       renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
@@ -93,18 +82,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isConnected: false,
         isInternetReachable: false,
       })
-      const refetch = jest.fn()
-      const loadingBookings = {
-        data: {
-          ended_bookings: [],
-          ongoing_bookings: [],
-          hasBookingsAfter18: false,
-        } as BookingsResponse,
-        isLoading: false,
-        isFetching: false,
-        refetch: refetch as unknown,
-      } as UseQueryResult<BookingsResponse, unknown>
-      mockUseBookings.mockReturnValueOnce(loadingBookings)
+
       renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
@@ -126,9 +104,9 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     it('when bookings are loading', () => {
       const loadingBookings = {
         data: undefined,
-        isInitialLoading: true,
+        isLoading: true,
         isFetching: false,
-      } as UseQueryResult<BookingsResponse, unknown>
+      } as UseQueryResult<BookingsResponseV2, Error>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
       renderOnGoingBookingsList()
 
@@ -139,8 +117,8 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
     it('when subcategories are loading', () => {
       const loadingSubcategories = {
-        isInitialLoading: true,
-      } as UseQueryResult<SubcategoriesResponseModelv2, unknown>
+        isLoading: true,
+      } as UseQueryResult<SubcategoriesResponseModelv2, Error>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
       renderOnGoingBookingsList()
 

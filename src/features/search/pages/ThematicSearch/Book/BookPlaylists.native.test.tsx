@@ -42,20 +42,21 @@ const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
   isFetched: true,
   isFetchedAfterMount: true,
   isFetching: false,
+  isPending: false,
+  isInitialLoading: false,
+  isEnabled: true,
   isLoadingError: false,
   isPlaceholderData: false,
-  isPreviousData: false,
   isRefetchError: false,
   isStale: false,
-  remove: jest.fn(),
   dataUpdatedAt: Date.now(),
   errorUpdatedAt: 0,
   errorUpdateCount: 0,
   isRefetching: false,
   failureReason: new Error(),
-  isInitialLoading: false,
   isPaused: false,
   fetchStatus: 'fetching',
+  promise: Promise.resolve([]),
 }
 
 const useGTLPlaylistsSpy = jest
@@ -72,13 +73,13 @@ describe('BookPlaylists', () => {
   it('should render gtl playlists when algolia returns offers', async () => {
     renderBookPlaylists()
 
-    expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
+    expect(await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should render skeleton when playlists are still loading', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
       ...defaultResponse,
-      isInitialLoading: true,
+      isLoading: true,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
@@ -89,19 +90,19 @@ describe('BookPlaylists', () => {
 
   it('should not render gtl playlists when algolia does not return offers', async () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({
-      isInitialLoading: false,
+      isLoading: false,
       data: [],
     } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
     renderBookPlaylists()
 
-    expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 
   it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME if FF is disabled', async () => {
     renderBookPlaylists()
 
-    await screen.findByText(DEFAULT_PLAYLIST_TITLE)
+    await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -115,7 +116,7 @@ describe('BookPlaylists', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX])
     renderBookPlaylists()
 
-    await screen.findByText(DEFAULT_PLAYLIST_TITLE)
+    await screen.findByLabelText(DEFAULT_PLAYLIST_TITLE)
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -126,4 +127,9 @@ describe('BookPlaylists', () => {
   })
 })
 
-const renderBookPlaylists = () => render(reactQueryProviderHOC(<BookPlaylists />))
+const renderBookPlaylists = () =>
+  render(
+    reactQueryProviderHOC(
+      <BookPlaylists shouldDisplayVenuesPlaylist onViewableItemsChanged={jest.fn()} />
+    )
+  )

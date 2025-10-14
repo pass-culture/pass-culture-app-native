@@ -3,9 +3,13 @@ import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics/provider'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  checkGeolocPermission,
+  GeolocPermissionState,
+  LocationWrapper,
+} from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
@@ -106,7 +110,7 @@ describe('HomeLocationModal', () => {
     const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
     await user.press(geolocPositionButton)
 
-    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {

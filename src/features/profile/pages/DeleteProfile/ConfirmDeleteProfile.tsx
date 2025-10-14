@@ -4,16 +4,16 @@ import styled from 'styled-components/native'
 
 import { useAccountSuspendMutation } from 'features/auth/queries/useAccountSuspendMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -48,6 +48,8 @@ export function ConfirmDeleteProfile() {
     },
   })
 
+  const groupLabel = 'Les conséquences'
+
   return (
     <GenericInfoPage
       withGoBack
@@ -63,19 +65,35 @@ export function ConfirmDeleteProfile() {
         externalNav: { url: env.FAQ_LINK_DELETE_ACCOUNT },
         onBeforeNavigate: analytics.logConsultArticleAccountDeletion,
       }}>
-      <Typo.BodyAccent>Les conséquences&nbsp;:</Typo.BodyAccent>
+      <Typo.BodyAccent>{groupLabel}&nbsp;:</Typo.BodyAccent>
       <VerticalUl>
-        <BulletListItem text="tes réservations sont annulées sauf pour certains cas précisés dans les ">
+        {LINE_BREAK}
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={0}
+          total={3}
+          text="tes réservations sont annulées sauf pour certains cas précisés dans les "
+          accessibilityRole={AccessibilityRole.LINK}>
           {LINE_BREAK}
           <ExternalTouchableLink
-            as={StyledButtonInsideText}
+            as={LinkInsideTextBlack}
             wording="conditions générales d’utilisation"
-            icon={ExternalSiteFilled}
             externalNav={{ url: env.CGU_LINK }}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </BulletListItem>
-        <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau" />
-        <BulletListItem text="tu n’auras plus accès au catalogue" />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={1}
+          total={3}
+          text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+        />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={2}
+          total={3}
+          text="tu n’auras plus accès au catalogue"
+        />
       </VerticalUl>
       <StyledBodyAccent>Les données que nous conservons&nbsp;:</StyledBodyAccent>
       <Typo.Body>
@@ -86,8 +104,8 @@ export function ConfirmDeleteProfile() {
   )
 }
 
-const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.default,
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))``
 
 const StyledBodyAccent = styled(Typo.BodyAccent)({

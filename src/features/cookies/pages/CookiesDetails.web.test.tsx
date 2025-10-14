@@ -27,6 +27,7 @@ describe('<CookiesDetails/>', () => {
               marketing: false,
               performance: false,
               customization: false,
+              video: false,
             }}
             setSettingsCookiesChoice={jest.fn()}
           />

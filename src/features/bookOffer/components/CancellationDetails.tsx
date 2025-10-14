@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
+import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -12,7 +12,7 @@ const NOT_CANCELLABLE_MESSAGE =
 
 export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
-  const offer = useBookingOffer()
+  const offer = useBookingOfferQuery()
 
   if (!stock || !offer) return null
 

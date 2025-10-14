@@ -11,7 +11,7 @@ import { act } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/navigation/RootNavigator/linking')
+jest.mock('features/navigation/RootNavigator/linking/linking')
 jest.mock('libs/firebase/analytics/analytics')
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
@@ -71,7 +71,11 @@ describe('openUrl', () => {
     it('should navigate to in-app screen (ex: Offer)', async () => {
       const openURL = openURLSpy.mockResolvedValueOnce(undefined)
       getScreenFromDeeplinkModuleSpy.mockImplementationOnce(
-        () => ({ screen: 'Offer', params: { id: 1, from: 'offer' } }) as DeeplinkParts
+        () =>
+          ({
+            screen: 'Offer',
+            params: { id: 1, from: 'offer' },
+          }) as DeeplinkParts
       )
       const path = getScreenPath('Offer', { id: 1, from: 'offer', moduleName: undefined })
 
@@ -96,7 +100,11 @@ describe('openUrl', () => {
     it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
       const openURL = openURLSpy.mockResolvedValueOnce(undefined)
       getScreenFromDeeplinkModuleSpy.mockImplementationOnce(
-        () => ({ screen: 'PageNotFound', params: undefined }) as DeeplinkParts
+        () =>
+          ({
+            screen: 'PageNotFound',
+            params: undefined,
+          }) as DeeplinkParts
       )
 
       const link = 'https://mockValidPrefix2' + '/unknown'

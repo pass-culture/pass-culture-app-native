@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -11,13 +10,6 @@ import { Accordion } from './Accordion'
 const meta: Meta<typeof Accordion> = {
   title: 'ui/Accordion',
   component: Accordion,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

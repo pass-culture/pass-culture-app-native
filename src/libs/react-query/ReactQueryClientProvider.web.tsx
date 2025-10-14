@@ -6,5 +6,6 @@ import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
 export const ReactQueryClientProvider = ({ children }: { children: React.JSX.Element }) => {
   usePrefetchQueries()
+
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }

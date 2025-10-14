@@ -5,7 +5,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
@@ -36,7 +36,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   return (
     <Wrapper {...touchableProps}>
       <Row>
-        <StyledInformationTags tags={tags} />
+        <StyledGroupTags tags={tags} />
         <StyledCloseButton onClose={onClose} size={iconSize} />
       </Row>
       <StyledVenueInfoHeader
@@ -51,19 +51,11 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
 }
 
 const Container = styled(InternalTouchableLink)(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
   padding: theme.designSystem.size.spacing.l,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(1),
-    },
-    shadowRadius: getSpacing(4),
-    shadowColor: theme.colors.secondaryDark,
-    shadowOpacity: 0.2,
-  }),
+  ...getShadow(theme),
 }))
 
 const Row = styled.View({
@@ -79,6 +71,6 @@ const StyledCloseButton = styledButton(CloseButton)({
   justifyContent: 'flex-start',
 })
 
-const StyledInformationTags = styled(InformationTags)({
+const StyledGroupTags = styled(GroupTags)({
   flexGrow: 1,
 })

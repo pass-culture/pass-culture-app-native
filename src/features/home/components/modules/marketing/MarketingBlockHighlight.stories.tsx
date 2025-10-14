@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -10,13 +9,6 @@ import { MarketingBlockHighlight } from './MarketingBlockHighlight'
 const meta: Meta<typeof MarketingBlockHighlight> = {
   title: 'features/home/MarketingBlock/MarketingBlockHighlight',
   component: MarketingBlockHighlight,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

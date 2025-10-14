@@ -162,7 +162,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -196,8 +196,8 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -233,10 +233,10 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -386,7 +386,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -420,8 +420,8 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -501,7 +501,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               />
               <View
                 accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -558,7 +558,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -642,7 +642,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -722,10 +722,10 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -1040,7 +1040,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1074,8 +1074,8 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -1211,7 +1211,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -1296,7 +1296,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1406,7 +1406,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1531,7 +1531,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1611,10 +1611,10 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -1929,7 +1929,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1963,8 +1963,8 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -2000,10 +2000,10 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -2153,7 +2153,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2187,8 +2187,8 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -2224,10 +2224,10 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -2251,7 +2251,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2377,7 +2377,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2411,8 +2411,8 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -2454,10 +2454,10 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -2544,7 +2544,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -2796,7 +2796,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2830,8 +2830,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -2867,10 +2867,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -3020,7 +3020,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3054,8 +3054,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -3091,10 +3091,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -3118,7 +3118,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Création de ton mot de passe complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3244,7 +3244,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3278,8 +3278,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -3359,7 +3359,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               />
               <View
                 accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3416,7 +3416,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -3500,7 +3500,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3580,10 +3580,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -3898,7 +3898,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -3932,8 +3932,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -4069,7 +4069,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -4154,7 +4154,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -4264,7 +4264,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Création de ton mot de passe non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4389,7 +4389,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -4499,7 +4499,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4624,7 +4624,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -4704,10 +4704,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -5022,7 +5022,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5056,8 +5056,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -5093,10 +5093,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -5246,7 +5246,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5280,8 +5280,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -5361,7 +5361,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               />
               <View
                 accessibilityLabel="Crée ton mot de passe non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5418,7 +5418,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -5502,7 +5502,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5612,7 +5612,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5737,7 +5737,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -5817,10 +5817,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -6135,7 +6135,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6169,8 +6169,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -6206,10 +6206,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -6359,7 +6359,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6393,8 +6393,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -6430,10 +6430,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -6457,7 +6457,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Création de ton mot de passe complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -6583,7 +6583,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6617,8 +6617,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -6654,10 +6654,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -6681,7 +6681,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             >
               <View
                 accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -6807,7 +6807,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -6841,8 +6841,8 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -6884,10 +6884,10 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -6974,7 +6974,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",

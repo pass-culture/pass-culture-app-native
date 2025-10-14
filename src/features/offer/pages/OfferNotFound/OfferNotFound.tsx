@@ -7,7 +7,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
-  const timer = useRef<NodeJS.Timeout>()
+  const timer = useRef<NodeJS.Timeout>(null)
 
   useEffect(
     () => () => {

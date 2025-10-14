@@ -6,7 +6,7 @@
 
 - Pouvoir builder l'app en local pour [Android](/doc/installation/Android.md) et [iOS](/doc/installation/iOS.md)
 - Java [11.0.20.1](/doc/installation/Android.md#troubleshooting)
-- Xcode 14 ou plus
+- Xcode 16 ou plus
 
 ## Installation commune à toutes les plateformes
 
@@ -24,7 +24,7 @@ Tableau récapitulatif des besoins de chaque plateforme pour lancer les tests:
 | Android Physique | ✓           | ✓   | ✓   | ✗   | ✗            |
 | iOS Virtuel      | ✓           | ✓   | ✗   | ✓   | ✗            |
 | iOS Physique     | -           | -   | -   | -   | -            |
-| Web              | ✗           | ✓   | ✗   | ✗   | ✓            |
+| Web              | ✓           | ✓   | ✗   | ✗   | ✓            |
 
 ### Installer la CLI Maestro
 
@@ -34,10 +34,9 @@ Pour installer Maestro sur Mac OS, Linux ou Windows :
 curl -Ls "https://get.maestro.mobile.dev" | bash
 ```
 ### Installer les secrets pour Maestro
-[1]: https://keepersecurity.eu/vault/#
 
 Pour exécuter les tests avec Maestro, vous aurez besoin des secrets utilisés par les scénarios.  
-Ces secrets sont disponibles dans [Keeper][1] sous le nom **`Secrets E2E`**.
+Ces secrets sont disponibles dans notre gestionnaire de mots de passe sous le nom **`Secrets E2E`**.
 
 Copiez ensuite le contenu dans le fichier `.maestro/.env.secret`  
 (créez ce fichier s’il n’existe pas déjà).
@@ -172,10 +171,6 @@ yarn test:e2e:web:staging
 yarn test:e2e:android:testing
 yarn test:e2e:ios:testing
 yarn test:e2e:web:testing
-
-# Commande pour lancer un test spécifique
-yarn test:e2e:android:staging .maestro/tests/subFolder/commons/LaunchApp.yml
-yarn test:e2e:android:staging:cloud --app-file <Path of your ipa/app or apk> .maestro/tests/
 ```
 
 ## Lancer un test simple sur le web
@@ -184,22 +179,21 @@ Admettons que nous voulions tester que la version testing du web se lance bien.
 
 S'il n'existe pas encore, duplicons le fichier `.yml` pour lancer l'application que nous souhaitons tester pour en créer un pour le web.
 
-Le fichier d'origine s'appelle `.maestro/tests/reusableFlows/LaunchApp.yml`, créons donc `.maestro/tests/reusableFlows/LaunchApp.web.yml`.
+Le fichier d'origine s'appelle `.maestro/tests/reusableFlows/LaunchApp.yml`, créons donc `.maestro/tests/reusableFlows/LaunchApp.yaml`.
 
 Dans ce fichier, remplaçons l'application que vise les tests par l'url du site web de testing. Au final nous aurons:
 
-```yml
-appId: https://app.testing.passculture.team
+```yaml
+url: https://app.testing.passculture.team
 ---
 - launchApp:
-    appId: 'https://app.testing.passculture.team'
     clearState: true
 ```
 
 Maintenant, lançons le test que nous venons de créer:
 
 ```bash
-maestro test .maestro/tests/reusableFlows/LaunchApp.web.yml
+maestro test .maestro/tests/reusableFlows/LaunchApp.yaml
 ```
 
 La commande ci-dessus lancera une fenêtre Chrome dans lequel on verra la banière suivante: `Chrome is being controlled by an automated test software`. Le site pass Culture devrait apparaître bièvement avant de se refermer.
@@ -234,7 +228,31 @@ Dans notre terminal, à la fin du test nous devrions avoir:
 ║    ✅  Tap on "Tout accepter"
 ```
 
-Évidemment, il est préferable de ne pas rajouter ces deux nouvelles lignes dans `.maestro/tests/reusableFlows/LaunchApp.web.yml`, mais de créer un nouvel fichier qui aurait pour responsabilité de tester les cookies (voir `.maestro/tests/reusableFlows/features/cookies/CookiesConsent.yml`). Ensuite on créerait un nouveau flow qui reprendrait le lancement de l'app et le test des cookies.
+Évidemment, il est préferable de ne pas rajouter ces deux nouvelles lignes dans `.maestro/tests/reusableFlows/LaunchApp.yml`, mais de créer un nouvel fichier qui aurait pour responsabilité de tester les cookies (voir `.maestro/tests/reusableFlows/features/cookies/CookiesConsent.yml`). Ensuite on créerait un nouveau flow qui reprendrait le lancement de l'app et le test des cookies.
+
+## Lancer un test spécifique
+
+Pour lancer un test spécifique peut importe la plateforme, il est préférable de mettre un tag dans le test choisi et de modifier la surcouche bash `run_e2e_tests.sh` pour que la commande de base execute seulement le tag choisi pour la plateforme désirée
+
+Par exemple pour un nouveau test web :
+
+```yaml
+url: http://localhost:5173/
+tags:
+  - web
+  - wip
+---
+- launchApp
+```
+Et par exemple, ici pour le cas d'un test web
+il faut remplacer le `--include-tags` par celui voulu
+```bash
+case "$target" in
+  "test")
+    if [ "$platform" = "web" ]; then
+      TAGS="--include-tags web"
+    else
+```
 
 ## Organisation des tests avec les tags
 
@@ -243,6 +261,7 @@ Les tests Maestro sont organisés avec un système de tags qui permet de catégo
 - `local` : Tests qui peuvent être exécutés en local
 - `nightlyAndroid` : Tests spécifiques pour les runs nocturnes sur Android
 - `nightlyIOS` : Tests spécifiques pour les runs nocturnes sur iOS
+- `web` : Tests spécifiques aux runs web
 - `squad-conversion` : Tests liés aux parcours de conversion
 - `squad-activation` : Tests liés aux parcours d'activation
 - `squad-decouverte` : Tests liés aux parcours de découverte

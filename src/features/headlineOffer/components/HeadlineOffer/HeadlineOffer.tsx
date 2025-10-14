@@ -39,7 +39,7 @@ export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
 }
 
 const Container = styled(InternalTouchableLink)(({ theme }) => ({
-  borderRadius: theme.borderRadius.tile,
+  borderRadius: theme.designSystem.size.borderRadius.l,
   overflow: 'hidden',
   height: theme.isDesktopViewport ? HEADLINE_OFFER_LARGE_VIEWPORT : HEADLINE_OFFER_SMALL_VIEWPORT,
   width: '100%',

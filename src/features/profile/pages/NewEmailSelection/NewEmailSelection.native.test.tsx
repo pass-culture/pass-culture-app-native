@@ -6,8 +6,15 @@ import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
-import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
+import {
+  act,
+  fireEvent,
+  render,
+  renderAsync,
+  screen,
+  userEvent,
+  waitForButtonToBePressable,
+} from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 jest.useFakeTimers()
@@ -45,7 +52,11 @@ describe('<NewEmailSelection />', () => {
     const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    expect(await screen.findByLabelText('Modifier mon adresse e-mail')).toBeEnabled()
+    const button = await screen.findByLabelText('Modifier mon adresse e-mail')
+
+    await waitForButtonToBePressable(button)
+
+    expect(button).toBeEnabled()
   })
 
   it('should disable submit button when email input is invalid', async () => {
@@ -152,39 +163,40 @@ describe('<NewEmailSelection />', () => {
 
   describe('email format', () => {
     it('should show email suggestion', async () => {
-      render(reactQueryProviderHOC(<NewEmailSelection />))
+      await renderAsync(reactQueryProviderHOC(<NewEmailSelection />))
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
-      fireEvent.changeText(emailInput, 'john.doe@gmal.com')
-      await act(() => jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS))
+      await user.type(emailInput, 'john.doe@gmal.com')
 
-      expect(screen.getByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
+      expect(
+        await screen.findByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')
+      ).toBeOnTheScreen()
     })
 
     it('should not display invalid email format when email format is valid', async () => {
-      render(reactQueryProviderHOC(<NewEmailSelection />))
+      await renderAsync(reactQueryProviderHOC(<NewEmailSelection />))
 
-      const emailInput = screen.getByTestId('Entrée pour l’email')
-      await act(() => fireEvent.changeText(emailInput, 'john.doe@example.com'))
-      await act(() => jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS))
+      const emailInput = await screen.findByTestId('Entrée pour l’email')
+      await user.type(emailInput, 'john.doe@example.com')
 
       expect(
         screen.queryByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+          { hidden: true }
         )
       ).not.toBeOnTheScreen()
     })
 
     it('should display invalid email format when email format is invalid', async () => {
-      render(reactQueryProviderHOC(<NewEmailSelection />))
+      await renderAsync(reactQueryProviderHOC(<NewEmailSelection />))
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
-      await act(() => fireEvent.changeText(emailInput, 'john.doe'))
-      await act(() => jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS))
+      await user.type(emailInput, 'john.doe')
 
       expect(
-        screen.getByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+        await screen.findByText(
+          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr',
+          { hidden: true }
         )
       ).toBeOnTheScreen()
     })

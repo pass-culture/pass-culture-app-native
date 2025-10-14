@@ -10,7 +10,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useChangePasswordMutation } from 'features/auth/queries/useChangePasswordMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -132,23 +132,22 @@ export function ChangePassword() {
             control={control}
             name="currentPassword"
             label="Mot de passe actuel"
-            placeholder="Ton mot de passe actuel"
-            isRequiredField
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={7} />
           <PasswordInputController
             control={control}
             name="newPassword"
             label="Nouveau mot de passe"
-            placeholder="Ton nouveau mot de passe"
             withSecurityRules
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={5} />
           <PasswordInputController
             control={control}
             name="confirmedPassword"
             label="Confirmer le mot de passe"
-            placeholder="Confirmer le mot de passe"
+            requiredIndicator="explicit"
           />
           <Spacer.Column numberOfSpaces={10} />
           {keyboardHeight ? <Spacer.Column numberOfSpaces={2} /> : null}

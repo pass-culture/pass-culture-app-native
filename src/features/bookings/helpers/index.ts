@@ -5,9 +5,20 @@ export { getOfferRules } from './getOfferRules'
 export { getBookingLabelForActivationCode } from './getBookingLabelForActivationCode'
 export { getBookingLabels } from './getBookingLabels'
 export { getEventOnSiteWithdrawLabel } from './getEventOnSiteWithdrawLabel'
+export {
+  daysCountdown,
+  displayExpirationMessage,
+  formattedExpirationDate,
+  getDigitalBookingsWithoutExpirationDate,
+  getEligibleBookingsForArchive,
+  isBookingInList,
+  isDigitalBookingWithoutExpirationDate,
+  isFreeBookingInSubcategories,
+} from './expirationDateUtils'
 
 export * as getBookingLabelsV2 from './v2/getBookingLabels'
 export * as getLocationLabelV2 from './v2/getLocationLabel'
 export * as getEventOnSiteWithdrawLabelV2 from './v2/getEventOnSiteWithdrawLabel'
 export * as getBookingLabelForActivationCodeV2 from './v2/getBookingLabelForActivationCode'
 export * as getBookingPropertiesV2 from './v2/getBookingProperties'
+export * as expirationDateUtilsV2 from './v2/expirationDateUtils'

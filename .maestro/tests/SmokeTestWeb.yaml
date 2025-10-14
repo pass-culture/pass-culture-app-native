@@ -1,6 +1,6 @@
 url: http://localhost:5173/
 tags:
-  - Web
+  - web
 ---
 - launchApp
 - waitForAnimationToEnd: # Because of split of index & navigationContainer (2 loading animations vs 1 before)

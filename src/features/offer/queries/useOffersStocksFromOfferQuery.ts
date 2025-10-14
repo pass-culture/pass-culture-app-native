@@ -2,6 +2,7 @@ import { Hit } from '@algolia/client-search'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
+import { convertOffererDatesToTimezone } from 'features/offer/queries/selectors/convertOffererDatesToTimezone'
 import { useFetchOffersQuery } from 'features/offer/queries/useFetchOffersQuery'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -44,7 +45,7 @@ export const useOffersStocksFromOfferQuery = (
 
   const offerIds = extractOfferIdsFromHits(data?.hits)
 
-  const offersStocks = useOffersStocksQuery({ offerIds })
+  const offersStocks = useOffersStocksQuery({ offerIds }, convertOffererDatesToTimezone)
 
   return { ...offersStocks, data: offersStocks.data ?? { offers: [] } }
 }

@@ -2,13 +2,13 @@ import React from 'react'
 import { Button, Text } from 'react-native'
 
 import { SearchWrapper, useSearch } from 'features/search/context/SearchWrapper'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import {
   checkGeolocPermission,
   GeolocPermissionState,
   LocationWrapper,
   useLocation,
-} from 'libs/location'
-import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+} from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { userEvent, render, screen } from 'tests/utils'

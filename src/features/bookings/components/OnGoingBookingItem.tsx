@@ -1,15 +1,17 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { WithdrawalTypeEnum } from 'api/gen'
+import { BookingResponse, WithdrawalTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
-import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
+import {
+  getBookingLabelsV2,
+  getBookingPropertiesV2,
+  expirationDateUtilsV2,
+} from 'features/bookings/helpers'
 import {
   daysCountdown,
   displayExpirationMessage,
-  isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
-import { Booking } from 'features/bookings/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
@@ -25,8 +27,8 @@ import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  booking: Booking
-  eligibleBookingsForArchive?: Booking[]
+  booking: BookingResponse
+  eligibleBookingsForArchive?: BookingResponse[]
 }
 
 export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Props) => {
@@ -35,8 +37,11 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
   const { stock } = booking
-  const bookingProperties = getBookingProperties(booking, isEvent)
-  const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties)
+  const bookingProperties = getBookingPropertiesV2.getBookingProperties(booking, isEvent)
+  const { dateLabel, withdrawLabel } = getBookingLabelsV2.getBookingLabels(
+    booking,
+    bookingProperties
+  )
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
     name: stock.offer.name,
@@ -44,7 +49,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
     date: dateLabel,
   })
 
-  const isBookingValid = isBookingInList(booking, eligibleBookingsForArchive)
+  const isBookingValid = expirationDateUtilsV2.isBookingInList(booking, eligibleBookingsForArchive)
   const canDisplayExpirationMessage = !!isBookingValid && daysLeft >= 0
   const correctExpirationMessages = displayExpirationMessage(daysLeft)
 
@@ -84,7 +89,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
           <Spacer.Flex />
           {withdrawLabel ? (
             <React.Fragment>
-              {stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
+              {booking.ticket.withdrawal.type === WithdrawalTypeEnum.on_site ? (
                 <WithdrawContainer testID="on-site-withdrawal-container">
                   <OfferEvent />
                   <OnSiteWithdrawalCaption numberOfLines={2}>
@@ -186,5 +191,5 @@ const ShareContainer = styled.View(({ theme }) => ({
   top: 0,
   right: 0,
   marginRight: theme.contentPage.marginHorizontal,
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
 }))

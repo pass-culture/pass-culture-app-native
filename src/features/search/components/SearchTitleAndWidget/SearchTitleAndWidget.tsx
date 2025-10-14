@@ -28,8 +28,10 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
-          <StyledTitleMainView {...getHeadingAttrs(1)}>
-            <StyledTitleMainText htmlFor={searchInputID}>{title}</StyledTitleMainText>
+          <StyledTitleMainView>
+            <StyledTitleMainText htmlFor={searchInputID} {...getHeadingAttrs(1)}>
+              {title}
+            </StyledTitleMainText>
           </StyledTitleMainView>
           {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
         </TitleMainWrapper>

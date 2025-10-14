@@ -39,110 +39,107 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -153,25 +150,22 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             }
           }
         >
-          Déclaration d’accessibilité mobile - Android
+          Déclaration d’accessibilité - Android
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <RCTScrollView
@@ -229,93 +223,25 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
         >
           La présente déclaration d’accessibilité s’applique à
            
-          <View>
-            <View
-              accessibilityLabel="l’application Android"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
+          <Text
+            accessibilityLabel="l’application Android, lien externe"
+            accessibilityRole="link"
+            onPress={[Function]}
+            style={
+              {
+                "color": "#6123df",
+                "cursor": "pointer",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textDecorationLine": "underline",
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "top": 3,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="l’application Android"
-            >
-              <View
-                gap={1}
-                paddingForIcon={0}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                  typography="Button"
-                >
-                  l’application Android
-                </Text>
-              </View>
-            </View>
-          </View>
+            }
+          >
+            l’application Android
+          </Text>
            
-          version 1.348.8 du pass Culture.
+          version 1.358.2 du pass Culture.
         </Text>
       </View>
       <View
@@ -431,7 +357,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            35.42%
+            37.50%
           </Text>
            à la norme européenne EN 301 549 v.3.2.1.
         </Text>
@@ -456,7 +382,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            35.71%
+            44.19%
           </Text>
            au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
         </Text>
@@ -505,6 +431,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -526,7 +453,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 1 sur 20 - Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -580,7 +508,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 2 sur 20 - Des images légendées ne sont pas correctement restituées par les lecteurs d’écran."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -634,7 +563,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 3 sur 20 - Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -688,7 +618,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 4 sur 20 - Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -742,7 +673,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 5 sur 20 - Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -796,7 +728,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 6 sur 20 - Certains médias ne sont pas clairement identifiés par un texte adjacent."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -850,7 +783,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 7 sur 20 - Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués)."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -904,7 +838,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 8 sur 20 - Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -958,7 +893,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 9 sur 20 - Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1012,7 +948,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 10 sur 20 - Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1066,7 +1003,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 11 sur 20 - Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1120,7 +1058,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 12 sur 20 - Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1174,7 +1113,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 13 sur 20 - Certains éléments ne sont pas accessibles au clavier ou au pointage."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1228,7 +1168,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 14 sur 20 - Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1282,7 +1223,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 15 sur 20 - L’information n’est pas toujours structurée par des titres hiérarchisés."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1336,7 +1278,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 16 sur 20 - Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1390,7 +1333,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 17 sur 20 - Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1444,7 +1388,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 18 sur 20 - L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1498,7 +1443,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 19 sur 20 - Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1552,7 +1498,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Non conformité – Liste - Élément 20 sur 20 - L’affichage en mode paysage n’est pas toujours correctement géré."
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1607,6 +1554,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1631,6 +1579,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Aucune
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1664,7 +1613,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 1 sur 2 - Les cartes Goggle Maps (motif : service externe)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1718,7 +1668,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Contenus non soumis à l’obligation d’accessibilité – Liste - Élément 2 sur 2 - La vérification d’identité (webview d’un prestataire externe)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1817,6 +1768,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Cette déclaration a été établie le jeudi 31 juillet 2025.
         </Text>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -1838,7 +1790,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 1 sur 3 - react"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1892,7 +1845,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 2 sur 3 - react-native"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -1946,7 +1900,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies utilisées pour l’application – Liste - Élément 3 sur 3 - react-native-web"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2001,6 +1956,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           </View>
         </View>
         <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -2022,7 +1978,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 1 sur 3 - TalkBack (lecteur d’écran)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2076,7 +2033,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 2 sur 3 - Switch Access (accès avec un périphérique externe)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2130,7 +2088,8 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Technologies pour vérifier l’accesibilité – Liste - Élément 3 sur 3 - Paramètres de présentation utilisateurs (taille de police etc.)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2280,90 +2239,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
         >
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
            
-          <View>
-            <View
-              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
+          <Text
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityRole="link"
+            onPress={[Function]}
+            style={
+              {
+                "color": "#6123df",
+                "cursor": "pointer",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textDecorationLine": "underline",
               }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "top": 3,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Ouvrir le gestionnaire mail pour contacter le support"
-            >
-              <View
-                gap={1}
-                paddingForIcon={0}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "gap": 4,
-                    "top": 0,
-                  }
-                }
-              >
-                <View
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                  typography="Button"
-                >
-                  support@passculture.app
-                </Text>
-              </View>
-            </View>
-          </View>
+            }
+          >
+            support@passculture.app
+          </Text>
         </Text>
       </View>
       <View
@@ -2429,91 +2321,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           >
             Écrire un message au
              
-            <View>
-              <View
-                accessibilityLabel="Défenseur des droits"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+            <Text
+              accessibilityLabel="Défenseur des droits, lien externe"
+              accessibilityRole="link"
+              onPress={[Function]}
+              style={
+                {
+                  "color": "#6123df",
+                  "cursor": "pointer",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textDecorationLine": "underline",
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "top": 3,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Défenseur des droits"
-              >
-                <View
-                  gap={1}
-                  paddingForIcon={0}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "top": 0,
-                    }
-                  }
-                >
-                  <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={20}
-                    testID="button-icon"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                    typography="Button"
-                  >
-                    Défenseur des droits
-                  </Text>
-                </View>
-              </View>
-            </View>
+              }
+            >
+              Défenseur des droits
+            </Text>
           </Text>
           <Text
             style={
@@ -2527,91 +2351,23 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           >
             Contacter le délégué du
              
-            <View>
-              <View
-                accessibilityLabel="Défenseur des droits dans votre région"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
+            <Text
+              accessibilityLabel="Défenseur des droits dans votre région, lien externe"
+              accessibilityRole="link"
+              onPress={[Function]}
+              style={
+                {
+                  "color": "#6123df",
+                  "cursor": "pointer",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textDecorationLine": "underline",
                 }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "top": 3,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Défenseur des droits dans votre région"
-              >
-                <View
-                  gap={1}
-                  paddingForIcon={0}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "gap": 4,
-                      "top": 0,
-                    }
-                  }
-                >
-                  <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={20}
-                    testID="button-icon"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    style={
-                      {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                    typography="Button"
-                  >
-                    Défenseur des droits dans votre région
-                  </Text>
-                </View>
-              </View>
-            </View>
+              }
+            >
+              Défenseur des droits dans votre région
+            </Text>
           </Text>
           <Text
             style={

@@ -13,8 +13,8 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
@@ -84,7 +84,7 @@ export const Favorite: React.FC<Props> = (props) => {
     from: StepperOrigin.FAVORITE,
   })
 
-  const { mutate: removeFavorite, isLoading } = useRemoveFavoriteMutation({
+  const { mutate: removeFavorite, isPending } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',
@@ -227,7 +227,7 @@ export const Favorite: React.FC<Props> = (props) => {
               accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
               onPress={onRemove}
               buttonHeight="tall"
-              disabled={isLoading}
+              disabled={isPending}
             />
           </ButtonContainer>
           {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}

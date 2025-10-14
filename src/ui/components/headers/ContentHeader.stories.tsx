@@ -3,8 +3,8 @@ import React from 'react'
 import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { Typo, getSpacing } from 'ui/theme'
 

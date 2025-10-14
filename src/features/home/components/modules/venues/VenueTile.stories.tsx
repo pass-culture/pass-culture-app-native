@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -15,9 +14,7 @@ const meta: Meta<typeof VenueTile> = {
   decorators: [
     (Story) => (
       <ReactQueryClientProvider>
-        <NavigationContainer>
-          <Story />
-        </NavigationContainer>
+        <Story />
       </ReactQueryClientProvider>
     ),
   ],

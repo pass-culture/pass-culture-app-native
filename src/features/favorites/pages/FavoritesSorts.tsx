@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -86,7 +86,7 @@ export const FavoritesSorts: React.FC = () => {
                   />
                   <InputError
                     visible={!!(sortBy === 'AROUND_ME' && geolocPositionError)}
-                    messageId={geolocPositionError?.message}
+                    errorMessage={geolocPositionError?.message}
                     numberOfSpacesTop={1}
                   />
                 </Li>

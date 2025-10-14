@@ -2,17 +2,18 @@ import React from 'react'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
+  const groupLabel = 'Méthodes pour obtenir le crédit'
   return (
     <SecondaryPageWithBlurHeader
       title="Parcours recommandés web"
@@ -28,15 +29,30 @@ export function RecommendedPaths() {
       </Typo.Body>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
-        <BulletListItem text="en indiquant ses identifiants EduConnect" />
-        <BulletListItem text="en présentant sa carte d’identité" />
-        <BulletListItem text="en remplissant un formulaire sur ">
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={0}
+          total={3}
+          text="en indiquant ses identifiants EduConnect"
+        />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={1}
+          total={3}
+          text="en présentant sa carte d’identité"
+        />
+        <BulletListItem
+          groupLabel={groupLabel}
+          index={2}
+          total={3}
+          text="en remplissant un formulaire sur "
+          accessibilityRole={AccessibilityRole.LINK}>
           <ExternalTouchableLink
-            as={ButtonInsideText}
+            as={LinkInsideText}
             typography="BodyAccentXs"
             wording="Démarches simplifiées"
-            icon={ExternalSiteFilled}
             externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </BulletListItem>
       </VerticalUl>

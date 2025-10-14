@@ -4,15 +4,14 @@ import styled from 'styled-components/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -44,7 +43,7 @@ export function AccessibilityDeclarationMobileBase({
   return (
     <SecondaryPageWithBlurHeader
       onGoBack={goBack}
-      title={`Déclaration d’accessibilité mobile - ${platformName}`}
+      title={`Déclaration d’accessibilité - ${platformName}`}
       enableMaxWidth={false}>
       <ViewGap gap={6}>
         <Typo.Body>
@@ -54,12 +53,12 @@ export function AccessibilityDeclarationMobileBase({
         <Typo.Body>
           La présente déclaration d’accessibilité s’applique à{SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideText}
+            as={LinkInsideText}
             wording={`l’application ${platformName}`}
-            icon={ExternalSiteFilled}
             externalNav={storeLink}
+            accessibilityRole={AccessibilityRole.LINK}
           />
-          {SPACE}version 1.348.8 du pass Culture.
+          {SPACE}version 1.358.2 du pass Culture.
         </Typo.Body>
       </ViewGap>
 
@@ -99,24 +98,40 @@ export function AccessibilityDeclarationMobileBase({
         <Typo.Body>
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
         </Typo.Body>
-        <Typo.BodyAccent>Non conformité</Typo.BodyAccent>
+        <SubtitleText>Non conformité</SubtitleText>
         <VerticalUl>
-          {nonAccessibleContent.map((item) => (
-            <BulletListItem key={item} text={item} />
+          {nonAccessibleContent.map((item, index) => (
+            <BulletListItem
+              key={item}
+              text={item}
+              index={index}
+              total={nonAccessibleContent.length}
+              groupLabel="Non conformité"
+            />
           ))}
         </VerticalUl>
 
-        <Typo.BodyAccent>Dérogations pour charge disproportionnée</Typo.BodyAccent>
+        <SubtitleText>Dérogations pour charge disproportionnée</SubtitleText>
         <Typo.Body>Aucune</Typo.Body>
 
-        <Typo.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</Typo.BodyAccent>
+        <SubtitleText>Contenus non soumis à l’obligation d’accessibilité</SubtitleText>
         <Typo.Body>
           Les contenus suivants n’entrent pas dans le calcul de la conformité ni dans le périmètre
           des éléments à rendre accessible, ils sont dérogés&nbsp;:
         </Typo.Body>
         <VerticalUl>
-          <BulletListItem text="Les cartes Goggle Maps (motif&nbsp;: service externe)" />
-          <BulletListItem text="La vérification d’identité (webview d’un prestataire externe)" />
+          <BulletListItem
+            text="Les cartes Goggle Maps (motif&nbsp;: service externe)"
+            groupLabel="Contenus non soumis à l’obligation d’accessibilité"
+            index={0}
+            total={2}
+          />
+          <BulletListItem
+            text="La vérification d’identité (webview d’un prestataire externe)"
+            groupLabel="Contenus non soumis à l’obligation d’accessibilité"
+            index={1}
+            total={2}
+          />
         </VerticalUl>
       </ViewGap>
 
@@ -125,21 +140,40 @@ export function AccessibilityDeclarationMobileBase({
       <ViewGap gap={6}>
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
         <Typo.BodyItalic>Cette déclaration a été établie le jeudi 31 juillet 2025.</Typo.BodyItalic>
-        <Typo.BodyAccent>
-          Technologies utilisées pour la réalisation de l’application
-        </Typo.BodyAccent>
+        <SubtitleText>Technologies utilisées pour la réalisation de l’application</SubtitleText>
         <VerticalUl>
-          <BulletListItem text="react" />
-          <BulletListItem text="react-native" />
-          <BulletListItem text="react-native-web" />
+          <BulletListItem
+            text="react"
+            groupLabel="Technologies utilisées pour l’application"
+            index={0}
+            total={3}
+          />
+          <BulletListItem
+            text="react-native"
+            groupLabel="Technologies utilisées pour l’application"
+            index={1}
+            total={3}
+          />
+          <BulletListItem
+            text="react-native-web"
+            groupLabel="Technologies utilisées pour l’application"
+            index={2}
+            total={3}
+          />
         </VerticalUl>
-        <Typo.BodyAccent>
+        <SubtitleText>
           Agents utilisateurs, technologies d’assistance et outils utilisés pour vérifier
           l’accessibilité
-        </Typo.BodyAccent>
+        </SubtitleText>
         <VerticalUl>
-          {toolsUsed.map((item) => (
-            <BulletListItem key={item} text={item} />
+          {toolsUsed.map((item, index) => (
+            <BulletListItem
+              key={item}
+              text={item}
+              groupLabel="Technologies pour vérifier l’accesibilité"
+              index={index}
+              total={toolsUsed.length}
+            />
           ))}
         </VerticalUl>
         <Typo.Body>
@@ -170,12 +204,12 @@ export function AccessibilityDeclarationMobileBase({
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter
           afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideText}
+            as={LinkInsideText}
             wording="support@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             justifyContent="flex-start"
             externalNav={contactSupport.forGenericQuestion}
-            icon={EmailFilled}
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </Typo.Body>
       </ViewGap>
@@ -194,19 +228,19 @@ export function AccessibilityDeclarationMobileBase({
           <Typo.Body>
             Écrire un message au{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideText}
+              as={LinkInsideText}
               wording="Défenseur des droits"
-              icon={ExternalSiteFilled}
               externalNav={rightsDefenderUrl}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
             Contacter le délégué du{SPACE}
             <ExternalTouchableLink
-              as={ButtonInsideText}
+              as={LinkInsideText}
               wording="Défenseur des droits dans votre région"
-              icon={ExternalSiteFilled}
               externalNav={rightsDelegateUrl}
+              accessibilityRole={AccessibilityRole.LINK}
             />
           </Typo.Body>
           <Typo.Body>
@@ -221,6 +255,9 @@ export function AccessibilityDeclarationMobileBase({
 }
 
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+
+const SubtitleText = styled(Typo.BodyAccent).attrs(getHeadingAttrs(3))``
+
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
 }))

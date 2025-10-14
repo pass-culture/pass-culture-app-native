@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NotificationsSettings should render correctly 1`] = `
 .c4 {
@@ -104,55 +104,55 @@ exports[`NotificationsSettings should render correctly 1`] = `
         class="css-view-175oi2r r-height-10ptun7"
       />
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-minHeight-1pl7oy7 r-paddingInline-cxgwc0 r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1habvwh r-justifyContent-1h0z5md r-marginLeft-11wrixw r-marginRight-1kb76zh r-minWidth-vkv6oe"
+          data-testid="back-button-container"
         >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="back-button-container"
+          <button
+            aria-label="Revenir en arrière"
+            class="c0 c1"
+            data-testid="Revenir en arrière"
+            tabindex="0"
+            title="Revenir en arrière"
+            type="button"
           >
-            <button
-              aria-label="Revenir en arrière"
-              class="c0 c1"
-              data-testid="Revenir en arrière"
-              tabindex="0"
-              title="Revenir en arrière"
-              type="button"
+            <div
+              class="css-view-175oi2r"
+              data-testid="icon-back"
             >
               <div
-                class="css-view-175oi2r"
-                data-testid="icon-back"
-              >
-                <div
-                  class="css-text-146c3p1"
-                  dir="ltr"
-                >
-                  icon-back-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-146c3p1"
                 dir="ltr"
               >
-                Retour
+                icon-back-SVG-Mock
               </div>
-            </button>
-          </div>
+            </div>
+            <div
+              class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+              dir="ltr"
+            >
+              Retour
+            </div>
+          </button>
+        </div>
+        <div
+          class="css-view-175oi2r r-flexShrink-1wbh5a2"
+        >
           <h1
             aria-level="1"
-            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
             Suivi et notifications
           </h1>
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="close-button-container"
-          />
         </div>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-17s6mgv r-marginLeft-1jkjb r-marginRight-61z16t r-minWidth-vkv6oe"
+          data-testid="close-button-container"
+        />
       </div>
     </header>
     <div
@@ -250,20 +250,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                       aria-labelledby="0"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Autoriser l’envoi d’e-mails"
-                      role="checkbox"
+                      data-testid="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -271,11 +264,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -346,20 +338,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                       aria-labelledby="2"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Suivre tous les thèmes"
-                      role="checkbox"
+                      data-testid="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -367,11 +352,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -425,20 +409,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Cinéma - Interrupteur à bascule - non coché"
                       aria-labelledby="4"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Cinéma"
-                      role="checkbox"
+                      data-testid="Cinéma - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -446,11 +423,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -501,20 +477,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Lecture - Interrupteur à bascule - non coché"
                       aria-labelledby="6"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Lecture"
-                      role="checkbox"
+                      data-testid="Lecture - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -522,11 +491,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -577,20 +545,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Musique - Interrupteur à bascule - non coché"
                       aria-labelledby="8"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Musique"
-                      role="checkbox"
+                      data-testid="Musique - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -598,11 +559,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -653,20 +613,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Spectacles - Interrupteur à bascule - non coché"
                       aria-labelledby="10"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Spectacles"
-                      role="checkbox"
+                      data-testid="Spectacles - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -674,11 +627,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -729,20 +681,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Activités créatives - Interrupteur à bascule - non coché"
                       aria-labelledby="12"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Activités créatives"
-                      role="checkbox"
+                      data-testid="Activités créatives - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -750,11 +695,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -805,20 +749,13 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      aria-hidden="true"
-                      class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Case à cocher - 
-                      non cochée
-                    </div>
-                    <div
                       aria-checked="false"
                       aria-disabled="true"
+                      aria-label="Visites et sorties - Interrupteur à bascule - non coché"
                       aria-labelledby="14"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-12vffkv"
-                      data-testid="Interrupteur Visites et sorties"
-                      role="checkbox"
+                      data-testid="Visites et sorties - Interrupteur à bascule - non coché"
+                      role="switch"
                       style="transition-duration: 0s;"
                       tabindex="-1"
                     >
@@ -826,11 +763,10 @@ exports[`NotificationsSettings should render correctly 1`] = `
                         class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                           style="margin-left: 2px;"
                         >
                           <div
-                            aria-label="Désactivé"
                             class="css-view-175oi2r"
                           >
                             <div
@@ -857,7 +793,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-height-3da1kt"
             />
             <button
-              aria-label="Enregistrer les modifications"
+              aria-label="Enregistrer"
               class="c4 c5"
               data-testid="Enregistrer les modifications"
               disabled=""

@@ -1,14 +1,16 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Summary } from 'features/identityCheck/components/Summary'
 import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
+import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
+import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -17,12 +19,12 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 
 export const ProfileInformationValidationUpdate = () => {
-  const { user } = useAuthContext()
+  const { user, refetchUser } = useAuthContext()
   const { navigate, reset } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
-  const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
+  const { mutateAsync: postProfile, isPending } = usePostProfileMutation({
     onSuccess: () => {
       reset({
         index: 1,
@@ -31,19 +33,42 @@ export const ProfileInformationValidationUpdate = () => {
           { name: navigatorName, params: screenConfig },
         ],
       })
+      resetProfileStores()
+      refetchUser()
     },
     onError: () => {
       showErrorSnackBar({ message: 'Une erreur est survenue', timeout: SNACK_BAR_TIME_OUT })
     },
   })
 
-  const onSubmitProfile = () =>
-    patchProfile({
-      address: user?.street,
-      city: user?.city,
-      postalCode: user?.postalCode,
-      activityId: user?.activityId,
-    })
+  const onSubmitProfile = useCallback(async () => {
+    if (
+      !user?.firstName ||
+      !user?.lastName ||
+      !user?.city ||
+      !user?.postalCode ||
+      !user?.street ||
+      !user?.activityId
+    )
+      return
+
+    const cityForPost: SuggestedCity = {
+      name: user.city,
+      postalCode: user.postalCode,
+      code: '', // not used in usePostProfileMutation but needed by typing
+    }
+
+    const profile = {
+      name: { firstName: user.firstName, lastName: user.lastName },
+      city: cityForPost,
+      address: user.street,
+      status: user.activityId,
+      hasSchoolTypes: false,
+      schoolType: null,
+    }
+
+    await postProfile(profile)
+  }, [postProfile, user])
 
   const onChangeInformation = () =>
     navigate(
@@ -68,7 +93,7 @@ export const ProfileInformationValidationUpdate = () => {
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}
-        isLoading={isLoading}
+        isLoading={isPending}
       />
     </ViewGap>
   )

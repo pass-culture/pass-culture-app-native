@@ -8,7 +8,8 @@ type Options = {
 }
 
 export const useAnonymizeAccountMutation = ({ onSuccess, onError }: Options) => {
-  const { mutate: anonymizeAccount } = useMutation(() => api.postNativeV1AccountAnonymize(), {
+  const { mutate: anonymizeAccount } = useMutation({
+    mutationFn: () => api.postNativeV1AccountAnonymize(),
     onSuccess,
     onError,
   })

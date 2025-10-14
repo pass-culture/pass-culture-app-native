@@ -1,9 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { Tag } from 'ui/components/Tag/Tag'
-import { TagVariant } from 'ui/components/Tag/types'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 
@@ -12,13 +11,6 @@ import { OfferTile } from './OfferTile'
 const meta: Meta<typeof OfferTile> = {
   title: 'ui/tiles/OfferTile',
   component: OfferTile,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

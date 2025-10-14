@@ -30,110 +30,107 @@ exports[`<SetStatus/> should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -146,23 +143,20 @@ exports[`<SetStatus/> should render correctly 1`] = `
         >
           Profil
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>,
   <View
@@ -348,7 +342,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -356,7 +351,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Collégien - non sélectionné"
+                accessibilityLabel="Statut - Collégien - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -413,7 +408,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Collégien - non sélectionné"
+                testID="Statut - Collégien - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -514,7 +509,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -522,7 +518,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Lycéen - non sélectionné"
+                accessibilityLabel="Statut - Lycéen - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -579,7 +575,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Lycéen - non sélectionné"
+                testID="Statut - Lycéen - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -680,7 +676,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -688,7 +685,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Étudiant - non sélectionné"
+                accessibilityLabel="Statut - Étudiant - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -745,7 +742,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Étudiant - non sélectionné"
+                testID="Statut - Étudiant - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -846,7 +843,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -854,7 +852,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Employé - non sélectionné"
+                accessibilityLabel="Statut - Employé - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -911,7 +909,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Employé - non sélectionné"
+                testID="Statut - Employé - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1012,7 +1010,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1020,7 +1019,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Apprenti - non sélectionné"
+                accessibilityLabel="Statut - Apprenti - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1077,7 +1076,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Apprenti - non sélectionné"
+                testID="Statut - Apprenti - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1178,7 +1177,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1186,7 +1186,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Alternant - non sélectionné"
+                accessibilityLabel="Statut - Alternant - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1243,7 +1243,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Alternant - non sélectionné"
+                testID="Statut - Alternant - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1344,7 +1344,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1352,7 +1353,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Volontaire - En service civique - non sélectionné"
+                accessibilityLabel="Statut - Volontaire - En service civique - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1409,7 +1410,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Volontaire - En service civique - non sélectionné"
+                testID="Statut - Volontaire - En service civique - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1523,7 +1524,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1531,7 +1533,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Inactif - En incapacité de travailler - non sélectionné"
+                accessibilityLabel="Statut - Inactif - En incapacité de travailler - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1588,7 +1590,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Inactif - En incapacité de travailler - non sélectionné"
+                testID="Statut - Inactif - En incapacité de travailler - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1702,7 +1704,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
           >
             <View
               accessibilityLabelledBy="testUuidV4"
-              accessibilityRole="none"
+              accessibilityRole="radiogroup"
+              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -1710,7 +1713,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Chômeur - En recherche d’emploi - non sélectionné"
+                accessibilityLabel="Statut - Chômeur - En recherche d’emploi - non sélectionné"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1767,7 +1770,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Chômeur - En recherche d’emploi - non sélectionné"
+                testID="Statut - Chômeur - En recherche d’emploi - non sélectionné"
               >
                 <View
                   isSelected={false}
@@ -1924,8 +1927,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "paddingBottom": 20,
-          "paddingHorizontal": 20,
+          "paddingBottom": 24,
+          "paddingHorizontal": 24,
           "paddingTop": 12,
         }
       }

@@ -5,7 +5,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { getSpacing, Spacer, getShadow, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface SeeMoreProps {
   height: number
@@ -83,20 +83,11 @@ const RoundContainer = styled.View(({ theme }) => ({
   width: CONTAINER_SIZE,
   height: CONTAINER_SIZE,
   aspectRatio: '1',
-  borderRadius: getSpacing(8),
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
   backgroundColor: theme.designSystem.color.background.default,
   border: 1,
   justifyContent: 'center',
   borderColor: theme.designSystem.color.border.default,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(2),
-    },
-    shadowRadius: getSpacing(3),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
   alignItems: 'center',
 }))
 

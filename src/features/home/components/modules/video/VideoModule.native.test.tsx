@@ -80,7 +80,7 @@ describe('VideoModule', () => {
 
     const multiOfferList = screen.getByTestId('video-multi-offers-module-list')
 
-    await screen.findByText(videoModuleFixture.title)
+    await screen.findByLabelText(videoModuleFixture.title)
 
     expect(multiOfferList).toBeOnTheScreen()
   })
@@ -122,7 +122,7 @@ describe('VideoModule', () => {
 
     const seeMoreWording = screen.getByText('Voir tout')
 
-    await screen.findByText(videoModuleFixture.title)
+    await screen.findByLabelText(videoModuleFixture.title)
 
     expect(seeMoreWording).toBeOnTheScreen()
   })
@@ -135,7 +135,7 @@ describe('VideoModule', () => {
 
     const seeMoreWording = screen.queryByText('Voir tout')
 
-    await screen.findByText(videoModuleFixture.title)
+    await screen.findByLabelText(videoModuleFixture.title)
 
     expect(seeMoreWording).not.toBeOnTheScreen()
   })

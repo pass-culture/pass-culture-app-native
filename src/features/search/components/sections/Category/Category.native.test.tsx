@@ -5,7 +5,7 @@ import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
-import { render, screen, waitFor, userEvent } from 'tests/utils'
+import { screen, waitFor, userEvent, renderAsync } from 'tests/utils'
 
 import { Category } from './Category'
 
@@ -55,28 +55,28 @@ describe('Category component', () => {
     setFeatureFlags()
   })
 
-  it('should display the category when selected', () => {
+  it('should display the category when selected', async () => {
     mockSearchState = {
       ...initialSearchState,
       offerCategories: [SearchGroupNameEnumv2.LIVRES],
     }
-    render(<Category />)
+    await renderAsync(<Category />)
 
     expect(screen.getByText('Livres')).toBeOnTheScreen()
   })
 
-  it('should display selected native category', () => {
+  it('should display selected native category', async () => {
     mockSearchState = {
       ...initialSearchState,
       offerCategories: [SearchGroupNameEnumv2.LIVRES],
       offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
     }
-    render(<Category />)
+    await renderAsync(<Category />)
 
     expect(screen.getByText('Livres papier')).toBeOnTheScreen()
   })
 
-  it('should display selected genre', () => {
+  it('should display selected genre', async () => {
     mockSearchState = {
       ...initialSearchState,
       offerCategories: [SearchGroupNameEnumv2.LIVRES],
@@ -85,19 +85,19 @@ describe('Category component', () => {
         { key: GenreType.BOOK, name: 'Bandes dessinées', value: 'Bandes dessinées' },
       ],
     }
-    render(<Category />)
+    await renderAsync(<Category />)
 
     expect(screen.getByText('Livres papier - Bandes dessinées')).toBeOnTheScreen()
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {
-    render(<Category />, {
+    await renderAsync(<Category />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
 
     const categoryButton = screen.getByTestId('FilterRow')
 
-    user.press(categoryButton)
+    await user.press(categoryButton)
 
     let fullscreenModalScrollView
     await waitFor(() => {
@@ -112,7 +112,7 @@ describe('Category component', () => {
       ...initialSearchState,
       offerCategories: [],
     }
-    render(<Category />)
+    await renderAsync(<Category />)
 
     expect(await screen.findByText(ALL_CATEGORIES_LABEL)).toBeOnTheScreen()
   })

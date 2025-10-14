@@ -136,7 +136,7 @@ const AnimationContainer = styled.div<{ hasBackground: boolean }>(({ theme, hasB
   justifyContent: 'center',
   width: getSpacing(65),
   border: `2px solid ${theme.designSystem.color.border.subtle}`,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   backgroundColor: hasBackground ? theme.designSystem.color.background.brandPrimary : 'transparent',
   cursor: 'pointer',
 }))
@@ -169,5 +169,5 @@ const Cover = styled.div<{ isHovered: boolean }>(({ theme, isHovered }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: getSpacing(2),
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))

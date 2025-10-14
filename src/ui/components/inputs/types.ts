@@ -1,5 +1,5 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
-import { TextInput as RNTextInput, ViewStyle } from 'react-native'
+import { TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
@@ -7,12 +7,12 @@ import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
-  label?: string
-  accessibilityDescribedBy?: string
+  accessibilityHint?: string
   focusOutlineColor?: ColorsType
 }
 
 type CustomTextInputProps = InputProps & {
+  label?: string
   isError?: boolean
   format?: string
   disabled?: boolean
@@ -27,9 +27,32 @@ type CustomTextInputProps = InputProps & {
     accessibilityLabel: string
     testID?: string
   }
+  Icon?: React.FC
+}
+
+export type RequiredIndicator = 'symbol' | 'explicit'
+
+type CustomInputTextProps = InputProps & {
+  label: string
+  labelStyle?: TextStyle
+  errorMessage?: string
+  description?: string
+  disabled?: boolean
+  containerStyle?: ViewStyle
+  requiredIndicator?: RequiredIndicator
+  leftComponent?: React.ReactElement
+  showSoftInputOnFocus?: boolean
+  rightButton?: {
+    icon: FunctionComponent<AccessibleIcon>
+    onPress: () => void
+    accessibilityLabel: string
+    testID?: string
+  }
+  characterCount?: number
 }
 
 type CustomSearchInputProps = InputProps & {
+  label?: string
   inputHeight?: 'small' | 'regular' | 'tall'
   format?: string
   LeftIcon?: React.FC
@@ -49,7 +72,7 @@ export type RNTextInputProps = Pick<
   /* react-native-web's TextInput supports the prop "disabled"
    * which adds the web property "disabled" (not focusable) to the input
    * https://github.com/necolas/react-native-web/commit/fc033a3161be76224d120dec7aab7009e9414fa7 */
-  | 'accessibilityDescribedBy'
+  | 'accessibilityHint'
   | 'accessibilityHidden'
   | 'accessibilityLabel'
   | 'accessibilityRequired'
@@ -85,34 +108,38 @@ export type RNTextInputProps = Pick<
     testID?: string
   }
 
-export type TextInputProps = CustomTextInputProps & RNTextInputProps
+type TextInputProps = CustomTextInputProps & RNTextInputProps
+
+export type InputTextProps = CustomInputTextProps & Omit<RNTextInputProps, 'placeholder'>
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 function getInputProps<Props extends InputProps>(props: Props): InputProps {
   return {
-    label: props.label,
-    accessibilityDescribedBy: props.accessibilityDescribedBy,
+    accessibilityHint: props.accessibilityHint,
     focusOutlineColor: props.focusOutlineColor,
   }
 }
 
-export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
+export function getCustomInputTextProps(props: InputTextProps): CustomInputTextProps {
   return {
     ...getInputProps(props),
-    isError: props.isError,
+    label: props.label,
+    errorMessage: props.errorMessage,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
-    isRequiredField: props.isRequiredField,
+    requiredIndicator: props.requiredIndicator,
     leftComponent: props.leftComponent,
-    rightLabel: props.rightLabel,
     rightButton: props.rightButton,
+    description: props.description,
+    characterCount: props.characterCount,
   }
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
   return {
     ...getInputProps(props),
+    label: props.label,
     inputHeight: props.inputHeight,
     LeftIcon: props.LeftIcon,
     onPressRightIcon: props.onPressRightIcon,

@@ -20,7 +20,7 @@ export const ImagePlaceholder = styled(
     )
   }
 ).attrs(({ theme, iconColor }) => ({
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   iconColor: iconColor ?? theme.designSystem.color.icon.subtle,
 }))``
 

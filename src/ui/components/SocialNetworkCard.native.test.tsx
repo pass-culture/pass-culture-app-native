@@ -19,7 +19,7 @@ describe('SocialNetworkCard', () => {
     render(<SocialNetworkCard network="facebook" />)
 
     const button = screen.getByText('Facebook')
-    user.press(button)
+    await user.press(button)
 
     await waitFor(() => {
       expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Facebook')
@@ -34,7 +34,7 @@ describe('SocialNetworkCard', () => {
     render(<SocialNetworkCard network="x" />)
 
     const button = screen.getByText('X')
-    user.press(button)
+    await user.press(button)
 
     await waitFor(() => {
       expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Twitter')

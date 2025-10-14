@@ -9,8 +9,8 @@ export function AccessibilityDeclarationMobileAndroid() {
       platformName="Android"
       osVersion="15"
       storeLink={{ url: `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}` }}
-      conformityEN="35.42%"
-      conformityRAAM="35.71%"
+      conformityEN="37.50%"
+      conformityRAAM="44.19%"
       nonAccessibleContent={[
         'Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.',
         'Des images légendées ne sont pas correctement restituées par les lecteurs d’écran.',

@@ -1,5 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
@@ -17,8 +16,8 @@ import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { useLocation } from 'libs/location'
-import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
+import { useLocation } from 'libs/location/location'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -51,7 +50,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { user } = useAuthContext()
   const { userLocation } = useLocation()
-  const isInView = useRef(false)
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
     userLocation,
@@ -177,68 +175,28 @@ export const OffersModule = (props: OffersModuleProps) => {
     shouldModuleBeDisplayed,
   ])
 
-  const listRef = useRef<FlatList>(null)
-  const lastViewableItems = useRef<ViewToken[]>([])
-
-  const handleViewableItemsChanged = useCallback(
-    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-      if (isInView.current) {
-        onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
-        lastViewableItems.current = viewableItems
-      }
-    },
-    // We cannot change onViewableItemsChanged on the fly
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  )
-
-  const handleIntersectionObserverChange = useCallback(
-    (value: boolean) => {
-      isInView.current = value
-      if (value) {
-        if (lastViewableItems.current?.length) {
-          handleViewableItemsChanged({
-            viewableItems: lastViewableItems.current,
-          })
-        } else {
-          listRef.current?.recordInteraction()
-        }
-      }
-    },
-    [handleViewableItemsChanged]
-  )
-
-  useFocusEffect(
-    useCallback(() => {
-      if (lastViewableItems.current?.length) {
-        handleViewableItemsChanged({
-          viewableItems: lastViewableItems.current,
-        })
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-  )
-
   if (!shouldModuleBeDisplayed) return null
 
   return (
-    <IntersectionObserver onChange={handleIntersectionObserverChange}>
-      <PassPlaylist
-        title={displayParameters.title}
-        subtitle={displayParameters.subtitle}
-        data={offersToDisplay}
-        itemHeight={itemHeight}
-        itemWidth={itemWidth}
-        onPressSeeMore={onPressSeeMore}
-        titleSeeMoreLink={{ ...searchTabConfig }}
-        renderItem={renderItem}
-        renderFooter={renderFooter}
-        keyExtractor={keyExtractor}
-        onEndReached={logHasSeenAllTilesOnce}
-        playlistRef={listRef}
-        FlatListComponent={FlatList}
-        onViewableItemsChanged={handleViewableItemsChanged}
-      />
-    </IntersectionObserver>
+    <ObservedPlaylist onViewableItemsChanged={onViewableItemsChanged}>
+      {({ listRef, handleViewableItemsChanged }) => (
+        <PassPlaylist
+          title={displayParameters.title}
+          subtitle={displayParameters.subtitle}
+          data={offersToDisplay}
+          itemHeight={itemHeight}
+          itemWidth={itemWidth}
+          onPressSeeMore={onPressSeeMore}
+          titleSeeMoreLink={{ ...searchTabConfig }}
+          renderItem={renderItem}
+          renderFooter={renderFooter}
+          keyExtractor={keyExtractor}
+          onEndReached={logHasSeenAllTilesOnce}
+          playlistRef={listRef}
+          FlatListComponent={FlatList}
+          onViewableItemsChanged={handleViewableItemsChanged}
+        />
+      )}
+    </ObservedPlaylist>
   )
 }

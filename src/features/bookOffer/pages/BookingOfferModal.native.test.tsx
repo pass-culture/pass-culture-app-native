@@ -13,7 +13,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,7 +24,7 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -48,8 +48,8 @@ jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => mockUseOfferQuery(),
 }))
 
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: jest.fn(() => mockOffer),
+jest.mock('queries/offer/useBookingOfferQuery', () => ({
+  useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
 jest.mock('libs/subcategories/useSubcategories')
@@ -227,7 +227,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -249,7 +249,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -270,7 +270,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -290,7 +290,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -304,7 +304,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -317,7 +317,7 @@ describe('<BookingOfferModalComponent />', () => {
         renderBookingOfferModal({ offerId: mockOffer.id })
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -336,7 +336,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -371,7 +371,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -391,7 +391,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -411,7 +411,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 
@@ -421,15 +421,16 @@ describe('<BookingOfferModalComponent />', () => {
       })
 
       it.each`
-        code                          | message
-        ${undefined}                  | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
-        ${'INSUFFICIENT_CREDIT'}      | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
-        ${'ALREADY_BOOKED'}           | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
-        ${'STOCK_NOT_BOOKABLE'}       | ${'Oups, cette offre n’est plus disponible\u00a0!'}
-        ${'PROVIDER_STOCK_SOLD_OUT'}  | ${'Oups, cette offre n’est plus disponible\u00a0!'}
-        ${'PROVIDER_BOOKING_TIMEOUT'} | ${'Nous t’invitons à réessayer un peu plus tard'}
+        code                                 | message
+        ${undefined}                         | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
+        ${'INSUFFICIENT_CREDIT'}             | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
+        ${'ALREADY_BOOKED'}                  | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
+        ${'STOCK_NOT_BOOKABLE'}              | ${'Oups, cette offre n’est plus disponible\u00a0!'}
+        ${'PROVIDER_STOCK_NOT_ENOUGH_SEATS'} | ${'Désolé, il n’y a plus de place pour cette séance\u00a0!'}
+        ${'PROVIDER_BOOKING_TIMEOUT'}        | ${'Nous t’invitons à réessayer un peu plus tard'}
+        ${'PROVIDER_SHOW_DOES_NOT_EXIST'}    | ${'Oups, cette offre n’est plus disponible\u00a0!'}
       `(
-        'should show the error snackbar with message="$message" for errorCode="code" if booking an offer fails',
+        'should show the error snackbar with message="$message" for errorCode="$code" if booking an offer fails',
         async ({ code, message }: { code: string | undefined; message: string }) => {
           mockUseMutationError({
             content: { code },
@@ -441,7 +442,7 @@ describe('<BookingOfferModalComponent />', () => {
 
           await user.press(
             await screen.findByRole('checkbox', {
-              name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+              name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
             })
           )
 
@@ -473,7 +474,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(
           await screen.findByRole('checkbox', {
-            name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
+            name: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire',
           })
         )
 

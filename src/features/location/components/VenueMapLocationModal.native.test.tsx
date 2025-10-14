@@ -8,9 +8,13 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import {
+  checkGeolocPermission,
+  GeolocPermissionState,
+  LocationWrapper,
+} from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -130,7 +134,7 @@ describe('VenueMapLocationModal', () => {
 
     await user.press(geolocPositionButton)
 
-    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
   })
 
   it('should hide "Géolocalisation désactivée" if geolocation is enabled', async () => {
@@ -359,23 +363,16 @@ describe('VenueMapLocationModal', () => {
   describe('PlaceRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
       renderVenueMapLocationModal({})
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-      })
 
       const openLocationModalButton = screen.getByText('Choisir une localisation')
       await user.press(openLocationModalButton)
 
-      await act(async () => {
-        const searchInput = screen.getByTestId('styled-input-container')
-        fireEvent.changeText(searchInput, mockPlaces[0].label)
-      })
-      await act(async () => {
-        const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-        // userEvent.press not working correctly here
-        // eslint-disable-next-line local-rules/no-fireEvent
-        fireEvent.press(suggestedPlace)
-      })
+      const searchInput = screen.getByTestId('styled-input-container')
+      fireEvent.changeText(searchInput, mockPlaces[0].label)
+      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
+      fireEvent.press(suggestedPlace)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
@@ -420,7 +417,7 @@ describe('VenueMapLocationModal', () => {
 
       await user.press(geolocPositionButton)
 
-      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })

@@ -15,6 +15,7 @@ export const MARKER_LABEL_VISIBILITY_LIMIT = {
   altitude: 4000,
   zoom: 13,
 }
+export const LABEL_HEIGHT = 28
 
 export const CLUSTER_IMAGE_COLOR_NAME = {
   BLUE: 'blue',
@@ -56,7 +57,7 @@ export const filterGroups: FilterGroupData[] = [
   {
     id: 'SHOPS',
     label: 'Boutiques',
-    color: theme.designSystem.color.icon.brandPrimary,
+    color: theme.colors.primary,
     icon: Store,
   },
   { id: 'OTHERS', label: 'Autres', color: theme.colors.skyBlue, icon: Sort },

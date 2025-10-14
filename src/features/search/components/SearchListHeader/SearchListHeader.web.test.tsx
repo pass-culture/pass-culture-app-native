@@ -5,10 +5,11 @@ import { SearchListHeader } from 'features/search/components/SearchListHeader/Se
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/helpers/searchList/getReconciledVenues'
 import { SearchState } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { GeoCoordinates } from 'libs/location'
+import { GeoCoordinates } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -85,7 +86,7 @@ describe.skip('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
         />
       )
 
@@ -116,7 +117,7 @@ describe.skip('<SearchListHeader />', () => {
           nbHits={10}
           userData={[]}
           venuesUserData={[]}
-          venues={mockAlgoliaVenues}
+          venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
         />
       )
 

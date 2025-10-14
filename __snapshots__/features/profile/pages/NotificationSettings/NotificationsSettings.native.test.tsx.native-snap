@@ -39,110 +39,107 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -155,23 +152,20 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
         >
           Suivi et notifications
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <RCTScrollView
@@ -332,19 +326,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -362,7 +346,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -381,7 +365,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser l’envoi d’e-mails"
+                    testID="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -406,19 +390,12 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
-                              },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
                               "width": 28,
                             },
                             {
@@ -521,19 +498,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser les notifications - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -551,7 +518,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -570,7 +537,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser les notifications"
+                    testID="Autoriser les notifications - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -595,19 +562,12 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
-                              },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
                               "width": 28,
                             },
                             {
@@ -811,19 +771,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -841,7 +791,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -860,7 +810,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Suivre tous les thèmes"
+                    testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -885,10 +835,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -900,7 +850,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -999,19 +948,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Cinéma - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1029,7 +968,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1048,7 +987,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Cinéma"
+                    testID="Cinéma - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1073,10 +1012,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1088,7 +1027,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1179,19 +1117,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Lecture - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1209,7 +1137,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1228,7 +1156,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Lecture"
+                    testID="Lecture - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1253,10 +1181,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1268,7 +1196,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1359,19 +1286,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Musique - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1389,7 +1306,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1408,7 +1325,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Musique"
+                    testID="Musique - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1433,10 +1350,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1448,7 +1365,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1539,19 +1455,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Spectacles - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1569,7 +1475,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1588,7 +1494,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Spectacles"
+                    testID="Spectacles - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1613,10 +1519,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1628,7 +1534,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1719,19 +1624,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Activités créatives - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1749,7 +1644,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1768,7 +1663,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Activités créatives"
+                    testID="Activités créatives - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1793,10 +1688,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1808,7 +1703,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -1899,19 +1793,9 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Visites et sorties - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -1929,7 +1813,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1948,7 +1832,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         },
                       ]
                     }
-                    testID="Interrupteur Visites et sorties"
+                    testID="Visites et sorties - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -1973,10 +1857,10 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -1988,7 +1872,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -2173,110 +2056,107 @@ exports[`NotificationsSettings should render correctly when user is not logged i
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -2289,23 +2169,20 @@ exports[`NotificationsSettings should render correctly when user is not logged i
         >
           Suivi et notifications
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <RCTScrollView
@@ -2533,19 +2410,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2563,7 +2430,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2582,7 +2449,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser l’envoi d’e-mails"
+                    testID="Autoriser l’envoi d’e-mails - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -2607,10 +2474,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -2622,7 +2489,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -2713,19 +2579,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Autoriser les notifications - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2743,7 +2599,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2762,7 +2618,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Autoriser les notifications"
+                    testID="Autoriser les notifications - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -2787,10 +2643,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -2802,7 +2658,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -2939,19 +2794,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Suivre tous les thèmes - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2969,7 +2814,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2988,7 +2833,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Suivre tous les thèmes"
+                    testID="Suivre tous les thèmes - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3013,10 +2858,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3028,7 +2873,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3127,19 +2971,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Cinéma - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3157,7 +2991,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3176,7 +3010,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Cinéma"
+                    testID="Cinéma - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3201,10 +3035,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3216,7 +3050,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3307,19 +3140,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Lecture - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3337,7 +3160,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3356,7 +3179,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Lecture"
+                    testID="Lecture - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3381,10 +3204,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3396,7 +3219,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3487,19 +3309,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Musique - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3517,7 +3329,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3536,7 +3348,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Musique"
+                    testID="Musique - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3561,10 +3373,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3576,7 +3388,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3667,19 +3478,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Spectacles - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3697,7 +3498,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3716,7 +3517,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Spectacles"
+                    testID="Spectacles - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3741,10 +3542,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3756,7 +3557,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -3847,19 +3647,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Activités créatives - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -3877,7 +3667,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3896,7 +3686,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Activités créatives"
+                    testID="Activités créatives - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -3921,10 +3711,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -3936,7 +3726,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >
@@ -4027,19 +3816,9 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     }
                   }
                 >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      {
-                        "display": "none",
-                      }
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
                   <View
-                    accessibilityRole="checkbox"
+                    accessibilityLabel="Visites et sorties - Interrupteur à bascule - non coché"
+                    accessibilityRole="switch"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -4057,7 +3836,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={false}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4076,7 +3855,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         },
                       ]
                     }
-                    testID="Interrupteur Visites et sorties"
+                    testID="Visites et sorties - Interrupteur à bascule - non coché"
                   >
                     <View
                       active={false}
@@ -4101,10 +3880,10 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "alignItems": "center",
                               "aspectRatio": 1,
                               "backgroundColor": "#ffffff",
-                              "borderBottomLeftRadius": 28,
-                              "borderBottomRightRadius": 28,
-                              "borderTopLeftRadius": 28,
-                              "borderTopRightRadius": 28,
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
                               "height": 28,
                               "justifyContent": "center",
                               "width": 28,
@@ -4116,7 +3895,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         }
                       >
                         <View
-                          accessibilityLabel="Désactivé"
                           height={16}
                           width={16}
                         >

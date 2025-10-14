@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -12,13 +11,6 @@ import { SearchVenueItem } from './SearchVenueItem'
 const meta: Meta<typeof SearchVenueItem> = {
   title: 'features/search/SearchVenueItem',
   component: SearchVenueItem,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

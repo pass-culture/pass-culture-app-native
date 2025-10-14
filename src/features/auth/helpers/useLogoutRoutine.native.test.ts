@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import * as ReactQueryAPI from '@tanstack/react-query'
+import { QueryClient } from '@tanstack/react-query'
 
 import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { analytics } from 'libs/analytics/provider'
@@ -13,7 +13,12 @@ import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
 
 jest.mock('libs/keychain/keychain')
 
-const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
+let queryClient: QueryClient
+const removeQueriesMock = jest.fn()
+const setupQueryClient = (client: QueryClient) => {
+  queryClient = client
+  jest.spyOn(queryClient, 'removeQueries').mockImplementation(removeQueriesMock)
+}
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -99,18 +104,15 @@ describe('useLogoutRoutine', () => {
     expect(eventMonitoring.setUser).toHaveBeenCalledWith(null)
   })
 
-  it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
-    const removeQueriesMock = jest.fn()
-    // We only want to test that the routine cleans up the queries,
-    // so we mock removeQueries and not the whole queryClient
-    useQueryClientSpy.mockReturnValueOnce({
-      removeQueries: removeQueriesMock,
-    } as unknown as ReactQueryAPI.QueryClient)
-
+  it.each(
+    LoggedInQueryKeys.map((key) => ({
+      queryKey: [key],
+    }))
+  )('should remove query: "%s"', async (query) => {
     const { result } = renderUseLogoutRoutine()
     await result.current()
 
-    expect(removeQueriesMock).toHaveBeenCalledWith([query])
+    expect(removeQueriesMock).toHaveBeenCalledWith(query)
   })
 
   it('should logout from Google account', async () => {
@@ -123,6 +125,6 @@ describe('useLogoutRoutine', () => {
 
 const renderUseLogoutRoutine = () => {
   return renderHook(useLogoutRoutine, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+    wrapper: ({ children }) => reactQueryProviderHOC(children, setupQueryClient),
   })
 }

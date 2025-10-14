@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, fireEvent, act, waitFor, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { FeedbackInApp } from './FeedbackInApp'
@@ -118,7 +118,7 @@ describe('<FeedbackInApp/>', () => {
   }
 
   const submitWithFeedback = async (feedback: string) => {
-    const textBox = screen.getByPlaceholderText('Ma suggestion...')
+    const textBox = screen.getByTestId('feedback-input')
     await act(async () => {
       fireEvent.changeText(textBox, feedback)
     })

@@ -8,7 +8,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
@@ -18,7 +18,7 @@ jest.mock('features/navigation/navigationRef')
 const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 function renderSignupConfirmationExpiredLink() {
-  return render(
+  return renderAsync(
     reactQueryProviderHOC(
       <SignupConfirmationExpiredLink
         {...(navigationProps as StackScreenProps<
@@ -43,10 +43,10 @@ jest.useFakeTimers()
 
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    renderSignupConfirmationExpiredLink()
+    await renderSignupConfirmationExpiredLink()
 
     const button = screen.getByText('Retourner à l’accueil')
-    user.press(button)
+    await user.press(button)
 
     await waitFor(() => {
       expect(navigateFromRef).toHaveBeenCalledWith(
@@ -58,9 +58,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
 
   it('should redirect to signup confirmation email sent page WHEN clicking on resend email and response is success', async () => {
     mockServer.postApi('/v1/resend_email_validation', {})
-    renderSignupConfirmationExpiredLink()
+    await renderSignupConfirmationExpiredLink()
 
-    user.press(screen.getByText(`Renvoyer l’email`))
+    await user.press(screen.getByText(`Renvoyer l’email`))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
@@ -76,11 +76,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: 400 },
     })
-    renderSignupConfirmationExpiredLink()
+    await renderSignupConfirmationExpiredLink()
 
-    await act(async () => {
-      user.press(screen.getByText(`Renvoyer l’email`))
-    })
+    await user.press(screen.getByText(`Renvoyer l’email`))
 
     expect(navigate).not.toHaveBeenCalled()
   })

@@ -1,31 +1,41 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: "Livre"
-
-- tapOn:
-    id: offerBodyImage
-
-- runFlow:
-    when:
-        visible: "1/2"
-    commands:
-    - assertVisible:
-        text: 1/2
-        index: 1
-    - swipe:
-        direction: LEFT
-    - assertVisible:
-        text: 2/2
-        index: 1
-    - swipe:
-        direction: RIGHT
+- tapOn: 
+    text: 'Livre'
+    index: 2
 
 - runFlow:
     when:
-        notVisible: "1/2"
+      platform: Android
     commands:
-    - assertVisible:
-        text: 1/1
+    - tapOn:
+        id: offerBodyImage
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Voir l’illustration en plein écran"
+
+- runFlow:
+    when:
+      visible: 'Illustration 1 sur 2'
+    commands:
+      - assertVisible:
+          text: Illustration 1 sur 2
+      - swipe:
+          direction: LEFT
+      - assertVisible:
+          text: Illustration 2 sur 2
+      - swipe:
+          direction: RIGHT
+
+- runFlow:
+    when:
+      notVisible: 'Illustration 1 sur 2'
+    commands:
+      - assertVisible:
+          text: Illustration 1 sur 1
 
 - tapOn: Revenir en arrière
 - tapOn: Revenir en arrière

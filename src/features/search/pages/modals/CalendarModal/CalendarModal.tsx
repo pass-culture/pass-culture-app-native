@@ -296,23 +296,32 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         markedDates={markedDates}
         testID="calendar"
         firstDay={1}
+        theme={{
+          textDisabledColor: designSystem.color.text.disabled,
+          calendarBackground: designSystem.color.background.default,
+          dayTextColor: designSystem.color.text.default,
+          todayTextColor: designSystem.color.text.default,
+          monthTextColor: designSystem.color.text.default,
+          textSectionTitleColor: designSystem.color.text.subtle,
+          backgroundColor: designSystem.color.background.default,
+          textDayFontFamily: designSystem.typography.body.fontFamily,
+          textMonthFontFamily: designSystem.typography.body.fontFamily,
+          textDayHeaderFontFamily: designSystem.typography.body.fontFamily,
+          textDayFontWeight: 500,
+          textMonthFontWeight: 500,
+          textDayHeaderFontWeight: 500,
+          todayButtonFontWeight: 600,
+        }}
       />
     </AppModal>
   )
 }
 
-const StyledCalendarList = styled(CalendarList).attrs(({ theme }) => ({
+const StyledCalendarList = styled(CalendarList).attrs({
   calendarStyle: {
     width: '100%',
-    backgroundColor: theme.designSystem.color.background.default,
   },
-  calendarTheme: {
-    calendarBackground: theme.designSystem.color.background.default,
-    dayTextColor: theme.designSystem.color.text.subtle,
-    monthTextColor: theme.designSystem.color.text.default,
-    textSectionTitleColor: theme.designSystem.color.text.subtle,
-  },
-}))({
+})({
   marginTop: getSpacing(4),
 })
 

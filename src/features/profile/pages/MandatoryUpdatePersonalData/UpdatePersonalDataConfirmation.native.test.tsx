@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { navigateFromRef } from 'features/navigation/navigationRef'
+import { reset } from '__mocks__/@react-navigation/native'
+import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { UpdatePersonalDataConfirmation } from './UpdatePersonalDataConfirmation'
@@ -29,14 +29,14 @@ describe('<UpdatePersonalDataConfirmation />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to ProfileInformationValidationUpdate screen when "Commencer" button is clicked', async () => {
+  it('should naviate and reset to home screen when clicking on "Terminer" button', async () => {
     render(<UpdatePersonalDataConfirmation />)
 
     await user.press(await screen.findByText('Terminer'))
 
-    expect(navigateFromRef).toHaveBeenCalledWith(
-      navigateToHomeConfig.screen,
-      navigateToHomeConfig.params
-    )
+    expect(reset).toHaveBeenCalledWith({
+      index: 0,
+      routes: [{ name: homeNavigationConfig[0] }],
+    })
   })
 })

@@ -31,6 +31,7 @@ describe('ThematicSearchPlaylist', () => {
       from: 'thematicsearch',
       index: 0,
       offerId: '1',
+      isHeadline: false,
     })
   })
 })

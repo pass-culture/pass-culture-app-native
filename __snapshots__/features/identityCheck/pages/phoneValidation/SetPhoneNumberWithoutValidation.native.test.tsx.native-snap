@@ -39,103 +39,100 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
           }
         }
+        testID="back-button-container"
       >
         <View
-          positionInHeader="left"
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             {
               "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
               "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 40,
+              "opacity": 1,
+              "userSelect": "auto",
             }
           }
-          testID="back-button-container"
+          testID="Revenir en arrière"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Revenir en arrière"
+            height={24}
+            testID="icon-back"
+            width={24}
           >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
+            <Text>
+              icon-back-SVG-Mock
             </Text>
           </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
         </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -148,23 +145,20 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
         >
           Numéro de téléphone
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
@@ -358,66 +352,62 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                             "alignItems": "flex-end",
                             "flexDirection": "row",
                             "justifyContent": "space-between",
-                            "marginBottom": 8,
                             "width": "100%",
                           }
                         }
                       >
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            accessibilityLabel="Numéro de téléphone"
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          Numéro de téléphone
-                        </Text>
+                          >
+                            Numéro de téléphone
+                          </Text>
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 2,
+                              }
+                            }
+                          >
+                            0639980123
+                          </Text>
+                        </View>
                       </View>
                     </View>
                     <View
-                      style={
-                        {
-                          "marginBottom": 8,
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          }
-                        }
-                      >
-                        Exemple : 0639980123
-                      </Text>
-                    </View>
-                    <View
-                      height="small"
                       isDisabled={false}
                       isError={false}
-                      isFocus={false}
+                      isFocused={false}
+                      size="small"
                       style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         }
@@ -427,7 +417,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       <View
                         style={
                           {
-                            "marginBottom": 8,
+                            "flexShrink": 0,
+                            "marginRight": 8,
                           }
                         }
                       >
@@ -515,14 +506,14 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         </View>
                       </View>
                       <TextInput
-                        accessibilityDescribedBy="testUuidV4"
+                        accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="tel"
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"
                         multiline={false}
-                        nativeID="testUuidV4"
+                        nativeID="Entrée pour le numéro de téléphone"
                         onBlur={[Function]}
                         onChangeText={[Function]}
                         onFocus={[Function]}

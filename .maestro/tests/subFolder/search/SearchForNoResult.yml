@@ -7,7 +7,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'France entière'
+      - tapOn: 'France entière.*'
 
 - tapOn: 'Offre, artiste, lieu culturel...'
 
@@ -20,7 +20,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Voir tous les filtres'
 - tapOn: 'Prix'
-- tapOn: '300'
+- tapOn:
+    id: 'Entrée pour le prix maximum'
 - inputText: '50'
 - pressKey: Enter
 - tapOn: 'Appliquer le filtre'

@@ -3,13 +3,13 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
 import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseGeolocation = jest.mocked(useLocation)
 const NOUMEA_DEFAULT_POSITION = { longitude: 166.445742, latitude: -22.26308 }
 const PARIS_DEFAULT_POSITION = { latitude: 48.859, longitude: 2.347 }

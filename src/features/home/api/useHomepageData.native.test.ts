@@ -1,5 +1,5 @@
-import { BookingsResponse } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures'
+import { BookingsResponseV2 } from 'api/gen'
+import { bookingsSnapV2 } from 'features/bookings/fixtures'
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
@@ -23,7 +23,7 @@ const homepageEntryIds = [
 
 describe('useHomepageModules', () => {
   beforeEach(() => {
-    mockServer.getApi<BookingsResponse>('/v2/bookings', bookingsSnap)
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
     mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, homepageEntriesAPIResponse)
   })
 

@@ -5,7 +5,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
 import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
@@ -61,9 +61,9 @@ export const useSimilarOffersQuery = ({
     [categoryExcluded, categoryIncluded, searchGroupList]
   )
 
-  const { data: apiRecoResponse } = useQuery(
-    [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames],
-    async () => {
+  const { data: apiRecoResponse } = useQuery({
+    queryKey: [QueryKeys.SIMILAR_OFFERS_IDS, offerId, position, searchGroupNames],
+    queryFn: async () => {
       try {
         return await api.getNativeV1RecommendationSimilarOffersofferId(
           offerId,
@@ -99,11 +99,9 @@ export const useSimilarOffersQuery = ({
         return { params: {}, results: [] }
       }
     },
-    {
-      staleTime: 1000 * 60 * 5,
-      enabled: !!searchGroupNames && onlineManager.isOnline() && shouldFetch,
-    }
-  )
+    staleTime: 1000 * 60 * 5,
+    enabled: !!searchGroupNames && onlineManager.isOnline() && shouldFetch,
+  })
 
   return {
     similarOffers: useAlgoliaSimilarOffersQuery(apiRecoResponse?.results ?? [], true),

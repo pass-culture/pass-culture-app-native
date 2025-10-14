@@ -1,6 +1,6 @@
 import { LocationState } from 'features/location/types'
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 
 export const mockLocationState: LocationState = {

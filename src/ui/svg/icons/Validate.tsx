@@ -1,29 +1,30 @@
 import React from 'react'
 import { Circle, Path } from 'react-native-svg'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-const ValidateSvg: React.FunctionComponent<AccessibleIcon> = ({
+type ValidateProps = AccessibleIcon & {
+  color2?: string
+}
+
+const ValidateSvg: React.FunctionComponent<ValidateProps> = ({
   size,
   color,
+  color2,
   accessibilityLabel,
   testID,
 }) => {
-  const {
-    colors: { primary, white },
-  } = useTheme()
-  const fillColor = color === white ? primary : white
   return (
     <AccessibleSvg
       width={size}
       height={size}
       viewBox="0 0 48 48"
-      accessibilityLabel={accessibilityLabel ?? `Sélectionné`}
+      accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <Circle r={10} cx={24} cy={24} fill={fillColor} />
+      <Circle r={10} cx={24} cy={24} fill={color2} />
       <Path
         fill={color}
         fillRule="evenodd"
@@ -34,7 +35,8 @@ const ValidateSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const Validate = styled(ValidateSvg).attrs(({ color, size, theme }) => ({
+export const Validate = styled(ValidateSvg).attrs(({ color, color2, size, theme }) => ({
   color: color ?? theme.designSystem.color.icon.default,
+  color2: color2 ?? theme.designSystem.color.icon.brandPrimary,
   size: size ?? theme.icons.sizes.smaller,
 }))``

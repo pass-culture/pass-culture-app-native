@@ -110,7 +110,7 @@ describe('useGetVenuesByDay', () => {
 })
 
 const renderUseGetVenueByDay = (...params: Parameters<typeof useGetVenuesByDay>) =>
-  renderHook(({ date }) => useGetVenuesByDay(date, params[1]), {
+  renderHook(({ date }: { date: Date }) => useGetVenuesByDay(date, params[1]), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
     initialProps: { date: params[0] },
   })

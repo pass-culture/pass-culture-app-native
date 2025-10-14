@@ -1,6 +1,6 @@
 import { RADIUS_FILTERS } from 'libs/algolia/enums/radiusFiltersEnums'
 import { LocationMode } from 'libs/algolia/types'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 
 export type AlgoliaPositionParams = {
   aroundLatLng: string

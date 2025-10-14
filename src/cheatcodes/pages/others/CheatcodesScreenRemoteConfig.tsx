@@ -4,13 +4,13 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GenericRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo, getSpacing } from 'ui/theme'
 
 const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfig }) => (
@@ -57,33 +57,33 @@ export const CheatcodesScreenRemoteConfig = () => {
     <CheatcodesTemplateScreen title={title} flexDirection="column">
       {showTestingFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
-          icon={ExternalSiteFilled}
           wording="Voir les feature flags testing"
           externalNav={{
             url: 'https://app.testing.passculture.team/cheatcodes/other/remote-config',
           }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
       {showStagingFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
-          icon={ExternalSiteFilled}
           wording="Voir les feature flags staging"
           externalNav={{
             url: 'https://app.staging.passculture.team/cheatcodes/other/remote-config',
           }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
       {showProductionFeatureFlags ? (
         <ExternalTouchableLink
-          as={ButtonInsideTextBlack}
+          as={LinkInsideTextBlack}
           buttonHeight="extraSmall"
-          icon={ExternalSiteFilled}
           wording="Voir les feature flags production"
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/remote-config' }}
+          accessibilityRole={AccessibilityRole.LINK}
         />
       ) : null}
 
@@ -98,12 +98,12 @@ export const CheatcodesScreenRemoteConfig = () => {
   )
 }
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(2),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
 
-const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.designSystem.color.text.default,
+const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))``
 
 const ItemSeparator = () => <StyledSeparator />

@@ -1,3 +1,4 @@
+import { VenueTypeCodeKey } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
@@ -172,11 +173,14 @@ describe('useVenueModal', () => {
     })
 
     it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
-      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-        initialProps: {
-          dismissModal: dismissModal,
-        },
-      })
+      const { result } = renderHook(
+        ({ dismissModal }: { dismissModal: VoidFunction }) => useVenueModal({ dismissModal }),
+        {
+          initialProps: {
+            dismissModal: dismissModal,
+          },
+        }
+      )
 
       await act(() => {
         result.current.doSetSelectedVenue({
@@ -184,6 +188,7 @@ describe('useVenueModal', () => {
           info: 'info',
           venueId: 1234,
           isOpenToPublic: true,
+          venue_type: VenueTypeCodeKey.BOOKSTORE,
         })
       })
       await act(() => {
@@ -202,11 +207,14 @@ describe('useVenueModal', () => {
         },
       })
 
-      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-        initialProps: {
-          dismissModal: dismissModal,
-        },
-      })
+      const { result } = renderHook(
+        ({ dismissModal }: { dismissModal: VoidFunction }) => useVenueModal({ dismissModal }),
+        {
+          initialProps: {
+            dismissModal: dismissModal,
+          },
+        }
+      )
 
       await act(() => {
         result.current.doResetVenue()

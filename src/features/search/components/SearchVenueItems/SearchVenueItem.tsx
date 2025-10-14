@@ -10,15 +10,15 @@ import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
-import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -126,7 +126,7 @@ const SearchVenueTouchableLink = styled(InternalTouchableLink).attrs(({ theme })
   width,
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
 }))
 
@@ -134,7 +134,7 @@ const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
   ({ theme, width, height }) => ({
     width: width,
     height: height,
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     border: `1px solid ${theme.designSystem.color.border.subtle}`,
     alignItems: 'center',
     justifyContent: 'center',

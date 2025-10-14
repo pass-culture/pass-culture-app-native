@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 import { object, string } from 'yup'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -40,27 +39,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
-  const { data: cities = [], isInitialLoading: isLoading } = useCities(postalCodeQuery, {
-    onError: () => {
-      showErrorSnackBar({
-        message:
-          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      eventMonitoring.captureException(
-        new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
-      )
-    },
-    onSuccess: (cities) => {
-      const isEmpty = cities.length === 0
-      if (isEmpty)
-        setError('postalCode', {
-          message:
-            'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
-        })
-    },
-  })
-  const postalCodeInputId = uuidv4()
+  const { data: cities = [], isLoading, isError, isSuccess } = useCities(postalCodeQuery)
 
   const {
     control,
@@ -72,6 +51,27 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
     resolver: yupResolver(object().shape({ postalCode: string() })),
     defaultValues: { postalCode: city?.postalCode ?? '' },
   })
+
+  useEffect(() => {
+    if (isSuccess) {
+      const isEmpty = cities.length === 0
+      if (isEmpty)
+        setError('postalCode', {
+          message:
+            'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
+        })
+    }
+    if (isError) {
+      showErrorSnackBar({
+        message:
+          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      eventMonitoring.captureException(
+        new IdentityCheckError('Failed to fetch data from API: https://geo.api.gouv.fr/communes')
+      )
+    }
+  }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
 
   const onSubmit = useCallback(
     ({ postalCode }: PostalCodeForm) => {
@@ -127,18 +127,13 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 format="75017"
                 onPressRightIcon={resetSearch}
                 keyboardType="number-pad"
-                accessibilityDescribedBy={postalCodeInputId}
+                accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
                 autoComplete="postal-code"
                 textContentType="postalCode"
                 searchInputID="postal-code-input"
               />
-              <InputError
-                messageId={error?.message}
-                numberOfSpacesTop={2}
-                visible={!!error}
-                relatedInputId={postalCodeInputId}
-              />
+              <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
             </StyledView>
           )}
         />

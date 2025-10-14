@@ -5,8 +5,7 @@ export type DatePickerProps = {
   onChange: (date?: Date) => void
   minimumDate: Date
   maximumDate: Date
-  errorMessage?: string | null
-  accessibilityDescribedBy?: string
+  errorMessage?: string
   isDisabled?: boolean
 }
 

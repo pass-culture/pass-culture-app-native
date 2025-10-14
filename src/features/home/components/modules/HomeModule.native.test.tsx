@@ -21,7 +21,7 @@ import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GeoCoordinates, Position } from 'libs/location'
+import { GeoCoordinates, Position } from 'libs/location/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -133,7 +133,7 @@ describe('<HomeModule />', () => {
     await act(async () => {})
 
     await waitFor(async () => {
-      expect(await screen.findByText(' L’offre du moment 💥')).toBeOnTheScreen()
+      expect(await screen.findByLabelText('L’offre du moment')).toBeOnTheScreen()
     })
   })
 
@@ -202,11 +202,10 @@ describe('<HomeModule />', () => {
   it('should display CategoryListModule', async () => {
     renderHomeModule(formattedCategoryListModule)
 
-    expect(await screen.findByText('Cette semaine sur le pass')).toBeOnTheScreen()
+    expect(await screen.findByLabelText('Cette semaine sur le pass')).toBeOnTheScreen()
   })
 
-  //TODO(PC-36585): unskip this test
-  it.skip('should display RecommendationModule', async () => {
+  it('should display RecommendationModule', async () => {
     const recommendedOffers: SimilarOffersResponse = {
       params: {
         call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
@@ -224,7 +223,9 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(formattedRecommendedOffersModule)
 
-    expect(await screen.findByText('Tes évènements en ligne')).toBeOnTheScreen()
+    await act(async () => {})
+
+    expect(await screen.findByLabelText('Tes évènements en ligne')).toBeOnTheScreen()
   })
 
   it('should display VideoModule', async () => {
@@ -233,9 +234,11 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(videoModuleFixture)
 
-    await screen.findByText('Découvre Lujipeka')
+    await screen.findByLabelText('Découvre Lujipeka')
 
-    expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()
+    })
   })
 
   it('should display ThematicHighlightModule', async () => {

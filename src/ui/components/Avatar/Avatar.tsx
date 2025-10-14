@@ -3,16 +3,8 @@ import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getShadow } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'
-
-const SHADOW = getShadow({
-  shadowOffset: { width: 0, height: getSpacing(1) },
-  shadowRadius: getSpacing(2),
-  shadowColor: theme.colors.greyDark,
-  shadowOpacity: 0.3,
-})
 
 export type AvatarProps = {
   size?: number
@@ -57,7 +49,9 @@ export const Avatar = ({
   return ContainerComponent
 }
 
-const ShadowWrapper = styled.View(SHADOW)
+const ShadowWrapper = styled.View(({ theme }) => ({
+  ...getShadow(theme),
+}))
 
 const AvatarBody = styled.View<Pick<AvatarProps, 'size' | 'backgroundColor' | 'borderWidth'>>(
   ({ size, backgroundColor, borderWidth = 0 }) => ({
@@ -74,7 +68,7 @@ const AvatarBody = styled.View<Pick<AvatarProps, 'size' | 'backgroundColor' | 'b
 
 const Container = styled.View<
   Pick<AvatarProps, 'rounded' | 'size' | 'borderWidth' | 'borderColor' | 'borderRadius'>
->(({ size = AVATAR_SMALL, rounded, borderColor, borderWidth, borderRadius }) => ({
+>(({ size = AVATAR_SMALL, rounded, borderColor, borderWidth, borderRadius, theme }) => ({
   width: size,
   height: size,
   overflow: 'hidden',
@@ -82,5 +76,5 @@ const Container = styled.View<
   borderColor,
   borderRadius: borderRadius ?? (rounded ? size * 0.5 : 0),
 
-  ...(Platform.OS === 'ios' ? undefined : SHADOW),
+  ...(Platform.OS === 'ios' ? {} : getShadow(theme)),
 }))

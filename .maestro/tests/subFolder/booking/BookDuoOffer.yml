@@ -34,10 +34,8 @@ appId: ${MAESTRO_APP_ID}
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
 - tapOn:
-    enabled: true
-    below:
-      id: VenuePreviewImage
-    label: 'Sélection de la séance'
+    id: event-card
+    label: 'Sélection de la séance Duo'
 
 - runFlow:
     when:
@@ -55,7 +53,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Finaliser ma réservation'
 
 - assertVisible: 'Détails de la réservation'
-- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation - obligatoire'
 - scrollUntilVisible:
     element: 'Confirmer la réservation'
 - doubleTapOn: 'Confirmer la réservation'

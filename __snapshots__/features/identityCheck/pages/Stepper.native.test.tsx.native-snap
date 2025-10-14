@@ -15,7 +15,7 @@ exports[`Stepper navigation should render correctly 1`] = `
     contentContainerStyle={
       {
         "alignSelf": "center",
-        "flex": 1,
+        "flexGrow": 1,
         "maxWidth": 500,
         "paddingBottom": 36,
         "paddingHorizontal": 24,
@@ -109,7 +109,7 @@ exports[`Stepper navigation should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -143,8 +143,8 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
                       "flexBasis": 0,
@@ -180,10 +180,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -207,7 +207,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Numéro de téléphone complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -342,7 +342,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -376,8 +376,8 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
                       "flexBasis": 0,
@@ -449,7 +449,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Identification non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -506,7 +506,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       {
                         "alignItems": "center",
                         "borderColor": "#90949d",
-                        "borderRadius": 7,
+                        "borderRadius": 8,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "flexDirection": "row",
@@ -598,7 +598,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -708,7 +708,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Profil non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -842,7 +842,7 @@ exports[`Stepper navigation should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -922,10 +922,10 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     {
                       "backgroundColor": "#90949d",
-                      "borderBottomLeftRadius": 2,
-                      "borderBottomRightRadius": 2,
-                      "borderTopLeftRadius": 2,
-                      "borderTopRightRadius": 2,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -948,7 +948,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Confirmation non complété"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

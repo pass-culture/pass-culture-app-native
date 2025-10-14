@@ -1,6 +1,6 @@
 import fetch, { Headers } from 'cross-fetch'
 
-import { env } from '../libs/environment/env'
+import { env } from '../libs/environment/serverEnv'
 
 import { ENTITY_MAP, EntityKeys } from './entities/types'
 

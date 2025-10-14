@@ -14,6 +14,7 @@ interface LocationModalButtonProps {
   title: string
   subtitle?: string
   onPress: () => void
+  accessibilityLabel?: string
 }
 
 export const LocationModalButton = ({
@@ -22,10 +23,14 @@ export const LocationModalButton = ({
   title,
   subtitle,
   onPress,
+  accessibilityLabel,
 }: LocationModalButtonProps) => {
   const { designSystem, icons } = useTheme()
   return (
-    <TouchableOpacity onPress={onPress} accessibilityRole={AccessibilityRole.BUTTON}>
+    <TouchableOpacity
+      onPress={onPress}
+      accessibilityRole={AccessibilityRole.BUTTON}
+      accessibilityLabel={accessibilityLabel}>
       <TopContainer gap={2}>
         <Icon color={designSystem.color.icon[color]} size={icons.sizes.small} />
         <Typo.Button color={color}>{title}</Typo.Button>

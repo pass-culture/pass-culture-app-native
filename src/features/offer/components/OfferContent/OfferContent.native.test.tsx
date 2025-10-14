@@ -6,10 +6,10 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { api } from 'api/api'
 import {
+  BookingsResponse,
   FavoriteResponse,
   GetRemindersResponse,
   NativeCategoryIdEnumv2,
-  OfferResponseV2,
   PaginatedFavoritesResponse,
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
@@ -21,13 +21,13 @@ import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
-import { PlaylistType } from 'features/offer/enums'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -38,7 +38,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { Position } from 'libs/location'
+import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -102,6 +102,9 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('features/auth/context/AuthContext')
+
+const fetchOffersSpy = jest.spyOn(fetchAlgoliaOffer, 'fetchOffers')
+fetchOffersSpy.mockResolvedValue({} as fetchAlgoliaOffer.FetchOffersResponse)
 
 const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
@@ -212,6 +215,7 @@ describe('<OfferContent />', () => {
     spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -255,21 +259,13 @@ describe('<OfferContent />', () => {
   it('should navigate to offer preview screen when clicking on image offer', async () => {
     renderOfferContent({})
 
-    await user.press(await screen.findByLabelText('Carousel image 1'))
+    await user.press(
+      await screen.findByLabelText(
+        'Voir l’illustration en plein écran - © Author: photo credit author'
+      )
+    )
 
     expect(mockNavigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
-  })
-
-  it('should navigate to offer preview screen when clicking on placeholder image', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      images: null,
-    }
-    renderOfferContent({ offer })
-
-    await user.press(await screen.findByLabelText('Carousel image 1'))
-
-    await waitFor(() => expect(mockNavigate).not.toHaveBeenCalled())
   })
 
   it('should animate on scroll', async () => {
@@ -295,57 +291,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
-      })
-
-      it('should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          nbResults: 4,
-          ...apiRecoParams,
-        })
-      })
-
-      it('should trigger only once time logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-        mockInView(false)
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-      })
-
-      it('should not trigger logSameCategoryPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(false)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+        expect(screen.getByLabelText('Dans la même catégorie')).toBeOnTheScreen()
       })
     })
 
@@ -363,69 +309,7 @@ describe('<OfferContent />', () => {
 
         await screen.findByText('Réserver l’offre')
 
-        expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
-      })
-
-      it('should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          nbResults: 4,
-          ...apiRecoParams,
-        })
-      })
-
-      it('should trigger only once time logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(true)
-        mockInView(false)
-        mockInView(true)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-      })
-
-      it('should not trigger logOtherCategoriesPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        renderOfferContent({})
-
-        mockInView(false)
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+        expect(screen.getByLabelText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
     })
   })
@@ -661,7 +545,7 @@ describe('<OfferContent />', () => {
 
   describe('movie screening access button', () => {
     describe('with remote config activated', () => {
-      beforeAll(() => {
+      beforeEach(() => {
         useRemoteConfigSpy.mockReturnValue({
           ...remoteConfigResponseFixture,
           data: {
@@ -775,6 +659,20 @@ describe('<OfferContent />', () => {
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
           from: 'chronicles',
+        })
+      })
+
+      it('should trigger ClickInfoReview log when pressing "Voir tous les avis" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        await user.press(await screen.findByText('Voir tous les avis'))
+
+        expect(analytics.logClickInfoReview).toHaveBeenNthCalledWith(1, {
+          from: 'offer',
+          offerId: '116656',
+          categoryName: 'CINEMA',
         })
       })
 
@@ -897,17 +795,6 @@ describe('<OfferContent />', () => {
         id: offerResponseSnap.id,
       })
     })
-
-    it('should trigger ConsultVideo log when pressing see video button', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-      renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      await user.press(screen.getByText('Voir la vidéo'))
-
-      expect(analytics.logConsultVideo).toHaveBeenCalledWith({ from: 'offer' })
-    })
   })
 })
 
@@ -935,6 +822,7 @@ function renderOfferContent({
           chronicles={chroniclesData}
           chronicleVariantInfo={chronicleVariantInfoFixture}
           onShowChroniclesWritersModal={jest.fn()}
+          hasVideoCookiesConsent
         />
       </NavigationContainer>
     ),

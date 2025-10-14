@@ -1,5 +1,6 @@
 import { FlashList } from '@shopify/flash-list'
 import React, { ComponentProps, Ref, useCallback } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -35,6 +36,7 @@ type Props = Pick<
   playlistRef?: Ref<FlatList>
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   withMargin?: boolean
+  contentContainerStyle?: StyleProp<ViewStyle>
 }
 
 export const PassPlaylist = ({
@@ -57,6 +59,7 @@ export const PassPlaylist = ({
   noMarginBottom,
   FlatListComponent,
   withMargin = true,
+  contentContainerStyle,
   ...props
 }: Props) => {
   const { isTouch } = useTheme()
@@ -89,12 +92,7 @@ export const PassPlaylist = ({
     <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
-          <AccessibleTitle
-            withMargin={withMargin}
-            TitleComponent={TitleLevel2}
-            testID="playlistTitle"
-            title={title}
-          />
+          <AccessibleTitle withMargin={withMargin} TitleComponent={TitleLevel2} title={title} />
           {renderTitleSeeMore()}
         </StyledView>
         {subtitle ? <StyledSubtitle withMargin={withMargin}>{subtitle}</StyledSubtitle> : null}
@@ -114,6 +112,7 @@ export const PassPlaylist = ({
         ref={playlistRef}
         onViewableItemsChanged={onViewableItemsChanged}
         FlatListComponent={FlatListComponent}
+        contentContainerStyle={contentContainerStyle}
       />
     </StyledViewGap>
   )

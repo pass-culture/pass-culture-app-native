@@ -1,4 +1,5 @@
 import React from 'react'
+import { ViewToken } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
@@ -11,7 +12,7 @@ import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffe
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -27,6 +28,12 @@ export interface VenueOffersProps {
   currency: Currency
   euroToPacificFrancRate: number
   arePlaylistsLoading: boolean
+  onViewableItemsChanged: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 const LoadingState: React.FC = () => (
@@ -43,13 +50,14 @@ export function VenueOffers({
   currency,
   euroToPacificFrancRate,
   arePlaylistsLoading,
+  onViewableItemsChanged,
 }: Readonly<VenueOffersProps>) {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const { isInitialLoading: areVenueOffersLoading } = useVenueOffersQuery({
+  const { isLoading: areVenueOffersLoading } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
     isUserUnderage,
@@ -86,6 +94,7 @@ export function VenueOffers({
       currency={currency}
       euroToPacificFrancRate={euroToPacificFrancRate}
       arePlaylistsLoading={arePlaylistsLoading}
+      onViewableItemsChanged={onViewableItemsChanged}
     />
   )
 }

@@ -39,110 +39,107 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       style={
         {
           "alignItems": "center",
-          "height": 48,
-          "justifyContent": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
+        positionInHeader="left"
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "width": "100%",
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
           }
         }
       >
-        <View
-          positionInHeader="left"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="back-button-container"
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "display": "none",
-                }
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
         <Text
           accessibilityRole="header"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
@@ -155,23 +152,20 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         >
           Schéma pluriannuel
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            }
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <RCTScrollView
@@ -210,14 +204,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Schéma pluriannuel d’accessibilité 2022 - 2024
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -247,28 +241,28 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Définition de l’accessibilité numérique
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
         L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques, supports multimédias, intranets d’entreprise, applications mobiles…), quelle que soit sa façon de naviguer.
       </Text>
       <Text
-        marginBottom={20}
+        marginBottom={24}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
+            "marginBottom": 24,
             "marginTop": 24,
           }
         }
@@ -285,7 +279,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Raisons – Liste - Élément 1 sur 4 - s’informer ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -339,7 +334,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Raisons – Liste - Élément 2 sur 4 - communiquer ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -393,7 +389,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="raisons – Liste - Élément 3 sur 4 - accomplir des démarches administratives ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -447,7 +444,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="raisons – Liste - Élément 4 sur 4 - mener une activité professionnelle…"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -502,14 +500,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         </View>
       </View>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -545,16 +543,16 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Politique d’accessibilité
       </Text>
       <Text
-        marginBottom={20}
-        marginTop={24}
+        marginBottom={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
-            "marginTop": 24,
+            "marginBottom": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -581,7 +579,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 1 sur 5 - promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -635,7 +634,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 2 sur 5 - accompagner les équipes internes par des actions notamment de formation ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -689,7 +689,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 3 sur 5 - contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -743,7 +744,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 4 sur 5 - assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -797,7 +799,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Missions – Liste - Élément 5 sur 5 - faire une veille sur les évolutions réglementaires."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -875,14 +878,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Ressources humaines et financières affectées à l’accessibilité numérique
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -912,14 +915,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Organisation de la prise en compte de l’accessibilité numérique
       </Text>
       <Text
-        marginBottom={20}
+        marginBottom={24}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
+            "marginBottom": 24,
             "marginTop": 24,
           }
         }
@@ -936,7 +939,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 1 sur 4 - de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -990,7 +994,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 2 sur 4 - de poursuivre l’accompagnement des équipes ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1044,7 +1049,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 3 sur 4 - de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1098,7 +1104,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Nécessites – Liste - Élément 4 sur 4 - de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1154,7 +1161,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </View>
       <Text
         marginBottom={24}
-        marginTop={20}
+        marginTop={24}
         style={
           {
             "color": "#161617",
@@ -1162,7 +1169,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             "fontSize": 16,
             "lineHeight": 25.6,
             "marginBottom": 24,
-            "marginTop": 20,
+            "marginTop": 24,
           }
         }
       >
@@ -1199,14 +1206,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         </Text>
       </Text>
       <Text
-        marginBottom={20}
+        marginBottom={24}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginBottom": 20,
+            "marginBottom": 24,
             "marginTop": 24,
           }
         }
@@ -1223,7 +1230,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Actions – Liste - Élément 1 sur 2 - sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1277,7 +1285,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Actions – Liste - Élément 2 sur 2 - former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1753,7 +1762,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 1 sur 5 - la fréquentation ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1807,7 +1817,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 2 sur 5 - le service rendu ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1861,7 +1872,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 3 sur 5 - la criticité ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1915,7 +1927,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 4 sur 5 - le cycle de vie (date de la prochaine refonte) ;"
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -1969,7 +1982,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           </View>
         </View>
         <View
-          accessibilityRole="none"
+          accessibilityLabel="Critères – Liste - Élément 5 sur 5 - les technologies employées."
+          accessible={true}
           style={
             {
               "display": "flex",
@@ -2025,7 +2039,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </View>
       <Text
         marginBottom={24}
-        marginTop={20}
+        marginTop={24}
         style={
           {
             "color": "#161617",
@@ -2033,7 +2047,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             "fontSize": 16,
             "lineHeight": 25.6,
             "marginBottom": 24,
-            "marginTop": 20,
+            "marginTop": 24,
           }
         }
       >
@@ -2121,14 +2135,14 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         Annexe 1 : Périmètre technique et fonctionnel
       </Text>
       <Text
-        marginTop={24}
+        marginTop={16}
         style={
           {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
-            "marginTop": 24,
+            "marginTop": 16,
           }
         }
       >
@@ -2232,7 +2246,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -2350,7 +2364,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -2468,7 +2482,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             numberOfLines={1}
             style={
               {
-                "color": "#eb0055",
+                "color": "#6123df",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -2521,7 +2535,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 1 sur 10 - Réaliser un audit interne sur les parcours clés de la version web"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2589,7 +2604,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2608,7 +2622,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 2 sur 10 - Valider la certification “Développer des sites web accessibles” (tous les développeurs front-end)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2676,7 +2691,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2695,7 +2709,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 3 sur 10 - Former un développeur à l’audit d’accessibilité numérique des applications mobiles"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2763,7 +2778,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2782,7 +2796,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 4 sur 10 - Mettre en place un process de vérification d’accessibilité RGAA pour les nouvelles fonctionnalités"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2850,7 +2865,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2869,7 +2883,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 5 sur 10 - Revoir l’accessibilité de tous les mails transactionnels"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -2937,7 +2952,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -2956,7 +2970,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 6 sur 10 - Atteindre 100% d’accessibilité de la version web sur les parcours clés"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3024,7 +3039,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3043,7 +3057,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 7 sur 10 - Informer des modalités de mises en accessibilité des offres"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3111,7 +3126,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3130,7 +3144,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 8 sur 10 - Renforcer la visibilité sur le pass d’offres accessibles auprès des publics concernés (partenariats et inscriptions d’AC spécialisées…)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3198,7 +3213,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3217,7 +3231,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 9 sur 10 - Proposer un mode sombre aux utilisateurs"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3285,7 +3300,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3304,7 +3318,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2025 – Liste - Élément 10 sur 10 - Mettre en place un design system 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3372,7 +3387,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3433,7 +3447,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 1 sur 10 - Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3501,7 +3516,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3520,7 +3534,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 2 sur 10 - Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3588,7 +3603,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3607,7 +3621,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 3 sur 10 - Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3675,7 +3690,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3694,7 +3708,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 4 sur 10 - Publier la déclaration d’accessibilité du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3745,91 +3760,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Publier la déclaration d’accessibilité du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://pass.culture.fr/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://pass.culture.fr/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://pass.culture.fr/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://pass.culture.fr/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://pass.culture.fr/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -3848,7 +3795,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -3867,7 +3813,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 5 sur 10 - Formation des Product Manager du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -3918,91 +3865,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Formation des Product Manager du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.pro/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.pro/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -4021,7 +3900,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4040,7 +3918,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 6 sur 10 - Sensibilisation des équipes internes aux enjeux d’accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4108,7 +3987,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4127,7 +4005,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 7 sur 10 - Rendre le site 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4178,91 +4057,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Rendre le site 100% accessible
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.app/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.app/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.app/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.app/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.app/
+                </Text>
                  
                 <View
                   backgroundColor="#f1f1f4"
@@ -4281,7 +4092,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4300,7 +4110,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 8 sur 10 - Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4368,7 +4179,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4387,7 +4197,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 9 sur 10 - Mettre en place une charte graphique 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4455,7 +4266,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4474,7 +4284,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 10 sur 10 - Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4542,7 +4353,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4603,7 +4413,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 1 sur 7 - Formation des équipes produit aux enjeux de l’accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4671,7 +4482,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4690,7 +4500,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 2 sur 7 - Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4758,7 +4569,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4777,7 +4587,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 3 sur 7 - Formation des développeurs du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -4828,91 +4639,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Formation des développeurs du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.pro/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.pro/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -4931,7 +4674,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -4950,7 +4692,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 4 sur 7 - Réalisation d’un audit d’accessibilité du site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5001,91 +4744,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Réalisation d’un audit d’accessibilité du site
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://passculture.pro/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://passculture.pro/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://passculture.pro/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://passculture.pro/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://passculture.pro/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -5104,7 +4779,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5123,7 +4797,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 5 sur 7 - Diffusion d’information sur le pass Culture via les MDPH (Maisons départementales des personnes handicapées)"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5191,7 +4866,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5210,7 +4884,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 6 sur 7 - Maquettage d’un nouveau site 100% accessible"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5261,91 +4936,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                 Maquettage d’un nouveau site 100% accessible
                  
-                <View>
-                  <View
-                    accessibilityLabel="https://pass.culture.fr/"
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
+                <Text
+                  accessibilityLabel="https://pass.culture.fr/, lien externe"
+                  accessibilityRole="link"
+                  onPress={[Function]}
+                  style={
+                    {
+                      "color": "#6123df",
+                      "cursor": "pointer",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "textDecorationLine": "underline",
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "top": 3,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="https://pass.culture.fr/"
-                  >
-                    <View
-                      gap={1}
-                      paddingForIcon={0}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 4,
-                          "top": 0,
-                        }
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={20}
-                        testID="button-icon"
-                        width={20}
-                      >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
-                      </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                        typography="Button"
-                      >
-                        https://pass.culture.fr/
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                  }
+                >
+                  https://pass.culture.fr/
+                </Text>
                  
                 <View
                   backgroundColor="#91e1b5"
@@ -5364,7 +4971,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5383,7 +4989,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 7 sur 7 - Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5451,7 +5058,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5512,7 +5118,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         >
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 1 sur 8 - Constitution du pôle Accessibilité"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5580,7 +5187,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5599,7 +5205,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 2 sur 8 - Nomination de 2 personnes référentes sur l’accessibilité numérique"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5667,7 +5274,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5686,7 +5292,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 3 sur 8 - Formation de l’ensemble des développeurs travaillant sur le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5754,7 +5361,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5773,7 +5379,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 4 sur 8 - Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5841,7 +5448,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5860,7 +5466,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 5 sur 8 - Audit d’accessibilité pour le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -5928,7 +5535,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -5947,7 +5553,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 6 sur 8 - Publication de la déclaration de mise en conformité pour le présent site"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -6015,7 +5622,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -6034,7 +5640,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 7 sur 8 - Rencontre avec des utilisateurs en situation de handicap"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -6102,7 +5709,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={
@@ -6121,7 +5727,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityRole="none"
+            accessibilityLabel="Plan annuel 2022 – Liste - Élément 8 sur 8 - Formation du pôle Communication, Marketing, Recherche"
+            accessible={true}
             style={
               {
                 "display": "flex",
@@ -6189,7 +5796,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   testID="tagWrapper"
-                  withColor={true}
                 >
                   <Text
                     style={

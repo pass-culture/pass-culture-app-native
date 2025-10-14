@@ -13,16 +13,14 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { capitalize } from 'libs/formatter/capitalize'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { Ul } from 'ui/components/Ul'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
+import { CheckboxGroupOption } from 'ui/designSystem/CheckboxGroup/types'
 import { Close } from 'ui/svg/icons/Close'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { Typo } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -34,6 +32,33 @@ export type AccessibilityModalProps = {
   onClose?: () => void
   filterBehaviour: FilterBehaviour
 }
+
+const disabilityOptions: CheckboxGroupOption[] = [
+  {
+    label: capitalize(HandicapEnum.VISUAL),
+    value: DisplayedDisabilitiesEnum.VISUAL,
+    variant: 'detailed',
+    asset: { variant: 'icon', Icon: HandicapVisual },
+  },
+  {
+    label: capitalize(HandicapEnum.MENTAL),
+    value: DisplayedDisabilitiesEnum.MENTAL,
+    variant: 'detailed',
+    asset: { variant: 'icon', Icon: HandicapMental },
+  },
+  {
+    label: capitalize(HandicapEnum.MOTOR),
+    value: DisplayedDisabilitiesEnum.MOTOR,
+    variant: 'detailed',
+    asset: { variant: 'icon', Icon: HandicapMotor },
+  },
+  {
+    label: capitalize(HandicapEnum.AUDIO),
+    value: DisplayedDisabilitiesEnum.AUDIO,
+    variant: 'detailed',
+    asset: { variant: 'icon', Icon: HandicapAudio },
+  },
+]
 
 export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   title,
@@ -66,11 +91,18 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
     setDisabilities(defaultDisabilitiesProperties)
   }
 
-  const handleOnPress = (disability: DisplayedDisabilitiesEnum) => {
-    setDisplayedDisabilities({
-      ...displayedDisabilities,
-      [disability]: !displayedDisabilities[disability],
-    })
+  const selectedDisabilities = Object.entries(displayedDisabilities)
+    .filter(([_, isSelected]) => isSelected)
+    .map(([key]) => key)
+
+  const handleOnPress = (newValues: string[]) => {
+    const updated: DisabilitiesProperties = {
+      [DisplayedDisabilitiesEnum.VISUAL]: newValues.includes(DisplayedDisabilitiesEnum.VISUAL),
+      [DisplayedDisabilitiesEnum.MENTAL]: newValues.includes(DisplayedDisabilitiesEnum.MENTAL),
+      [DisplayedDisabilitiesEnum.MOTOR]: newValues.includes(DisplayedDisabilitiesEnum.MOTOR),
+      [DisplayedDisabilitiesEnum.AUDIO]: newValues.includes(DisplayedDisabilitiesEnum.AUDIO),
+    }
+    setDisplayedDisabilities(updated)
   }
 
   const handleSubmit = () => {
@@ -108,52 +140,19 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
           isResetDisabled={hasDefaultValues}
         />
       }>
-      <AccessibilityFiltersContainer gap={8}>
-        <Typo.BodyAccent>
-          Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
-        </Typo.BodyAccent>
-        <StyledCheckBox>
-          <Checkbox
-            variant="detailed"
-            asset={{ variant: 'icon', Icon: HandicapVisual }}
-            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}
-            label={capitalize(HandicapEnum.VISUAL)}
-            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.VISUAL)}
-          />
-          <Checkbox
-            variant="detailed"
-            asset={{ variant: 'icon', Icon: HandicapMental }}
-            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MENTAL]}
-            label={capitalize(HandicapEnum.MENTAL)}
-            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MENTAL)}
-          />
-          <Checkbox
-            variant="detailed"
-            asset={{ variant: 'icon', Icon: HandicapMotor }}
-            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MOTOR]}
-            label={capitalize(HandicapEnum.MOTOR)}
-            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MOTOR)}
-          />
-          <Checkbox
-            variant="detailed"
-            asset={{ variant: 'icon', Icon: HandicapAudio }}
-            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.AUDIO]}
-            label={capitalize(HandicapEnum.AUDIO)}
-            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.AUDIO)}
-          />
-        </StyledCheckBox>
+      <AccessibilityFiltersContainer>
+        <CheckboxGroup
+          label="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps"
+          options={disabilityOptions}
+          value={selectedDisabilities}
+          onChange={handleOnPress}
+          variant="detailed"
+        />
       </AccessibilityFiltersContainer>
     </AppModal>
   )
 }
 
-const AccessibilityFiltersContainer = styled(ViewGap)(({ theme }) => ({
+const AccessibilityFiltersContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,
-}))
-
-const StyledCheckBox = styled(Ul)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  gap: theme.designSystem.size.spacing.l,
 }))

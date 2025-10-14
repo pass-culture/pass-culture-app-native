@@ -24,6 +24,7 @@ const defaultSearchParameters = omit(
     offerGenreTypes: [],
     offerGtlLabel: undefined,
     offerGtlLevel: undefined,
+    allocineIdList: [],
   },
   [
     'offerIsFree',
@@ -211,6 +212,57 @@ describe('adaptOffersPlaylistParameters', () => {
         { key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' },
         { key: 'MUSIC', name: 'ROCK', value: 'Rock' },
       ],
+    })
+  })
+
+  it('should return algolia parameters when minimum likes number provided', () => {
+    const parameters = {
+      likesMin: 200,
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      minLikes: 200,
+    })
+  })
+
+  it('should return algolia parameters when sort by like provided', () => {
+    const parameters = {
+      isSortedByLikes: true,
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      isSortedByLikes: true,
+    })
+  })
+
+  it('should return algolia parameters for offers only with chronicles param provided', () => {
+    const parameters = {
+      isWithClub: true,
+    } as OffersModuleParameters
+
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
+
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      isWithClub: true,
     })
   })
 })

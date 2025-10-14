@@ -12,8 +12,8 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { getSpacing } from 'ui/theme'
 
 const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
@@ -89,7 +89,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
           onPress={navigateToAccountSecurityBuffer}
           disabled={value.length < 1}
         />
-        <TextInput onChangeText={setValue} placeholder="Rentrer un token pour activer le bouton" />
+        <InputText onChangeText={setValue} label="Token" />
       </BufferContainer>
     </CheatcodesTemplateScreen>
   )
@@ -98,7 +98,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
 const BufferContainer = styled(ViewGap)(({ theme }) => ({
   borderWidth: getSpacing(0.5),
   borderColor: theme.designSystem.color.border.default,
-  borderRadius: getSpacing(5),
+  borderRadius: theme.designSystem.size.borderRadius.xl,
   width: theme.appContentWidth > theme.breakpoints.sm ? '50%' : '100%',
   padding: getSpacing(2),
 }))

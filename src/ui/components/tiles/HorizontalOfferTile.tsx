@@ -4,13 +4,14 @@ import { FlexStyle, StyleProp, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import {
   formatPrice,
@@ -24,10 +25,10 @@ import { getOfferDates } from 'shared/date/getOfferDates'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { Tag } from 'ui/components/Tag/Tag'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
@@ -108,14 +109,6 @@ export const HorizontalOfferTile = ({
     })
   )
 
-  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
-    ...offerDetails,
-    categoryLabel: appLabel,
-    distance: distanceToOffer,
-    date: formattedDate,
-    price: formattedPrice,
-  })
-
   const generatedSubtitles = useMemo(() => {
     return subtitles ?? [appLabel, formattedDate].filter((subtitle) => !!subtitle)
   }, [formattedDate, appLabel, subtitles])
@@ -148,7 +141,16 @@ export const HorizontalOfferTile = ({
     theme,
     isComingSoonOffer: isAComingSoonOffer,
     subcategoryId,
-    withColor: !isAComingSoonOffer,
+  })
+
+  const interactionTagLabel = getInteractionTagLabel(interactionTag)
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
+    ...offerDetails,
+    categoryLabel: appLabel,
+    distance: distanceToOffer,
+    date: formattedDate,
+    price: formattedPrice,
+    interactionTagLabel,
   })
 
   return (

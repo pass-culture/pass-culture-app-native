@@ -11,7 +11,7 @@ import { useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   offer: Offer
@@ -64,14 +64,5 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 }
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
-  borderRadius: getSpacing(3),
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(3),
-    },
-    shadowRadius: getSpacing(12),
-    shadowColor: theme.designSystem.color.background.lockedInverted,
-    shadowOpacity: 0.15,
-  }),
+  borderRadius: theme.designSystem.size.borderRadius.l,
 }))

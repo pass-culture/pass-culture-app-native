@@ -4,18 +4,18 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - tapOn: "Mon profil"
+      - tapOn: 'Mon profil.*'
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Mon profil"
+      - tapOn: 'Mon profil.*'
 
 - runFlow:
     when:
       platform: Web
     commands:
-    - tapOn: "Profil"
+      - tapOn: 'Profil'
 
 - waitForAnimationToEnd

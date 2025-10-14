@@ -21,7 +21,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 
 type SearchSuggestionsParams = {
   queryHistory: string
@@ -107,7 +107,7 @@ export const SearchSuggestions = ({
 
   const onArtistPress = (artistId: string, artistName: string) => {
     hideSuggestions()
-    analytics.logConsultArtist({ artistName, from: 'searchAutoComplete' })
+    analytics.logConsultArtist({ artistId, artistName, from: 'searchAutoComplete' })
     navigate('Artist', { id: artistId })
   }
 
@@ -125,11 +125,13 @@ export const SearchSuggestions = ({
       />
       <AutocompleteOffer addSearchHistory={addToHistory} offerCategories={offerCategories} />
       {shouldDisplayArtistsSuggestions ? (
+        // @ts-expect-error - type incompatibility with React 19
         <Index indexName={env.ALGOLIA_ARTISTS_INDEX_NAME}>
           <Configure hitsPerPage={5} clickAnalytics />
           <AutocompleteArtist onItemPress={onArtistPress} />
         </Index>
       ) : null}
+      {/* @ts-expect-error - type incompatibility with React 19 */}
       <Index indexName={currentVenuesIndex}>
         <Configure
           hitsPerPage={5}

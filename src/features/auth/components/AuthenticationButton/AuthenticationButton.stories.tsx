@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
@@ -9,13 +8,6 @@ import { AuthenticationButton } from './AuthenticationButton'
 const meta: Meta<typeof AuthenticationButton> = {
   title: 'Features/auth/AuthenticationButton',
   component: AuthenticationButton,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

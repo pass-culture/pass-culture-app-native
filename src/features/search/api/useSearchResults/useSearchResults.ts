@@ -1,8 +1,8 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from '@algolia/client-search'
 import { onlineManager, useInfiniteQuery } from '@tanstack/react-query'
 import { uniqBy } from 'lodash'
 import flatten from 'lodash/flatten'
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -18,7 +18,7 @@ import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptA
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
@@ -44,13 +44,12 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
-  const previousPageObjectIds = useRef<string[]>([])
   const {
     data: { aroundPrecision },
   } = useRemoteConfigQuery()
 
-  const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
-    [
+  const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>({
+    queryKey: [
       QueryKeys.SEARCH_RESULTS,
       searchState,
       userLocation,
@@ -59,7 +58,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       aroundMeRadius,
       disabilities,
     ],
-    async ({ pageParam: page = 0 }) => {
+    queryFn: async ({ pageParam }) => {
+      const page = pageParam as number
       const {
         offersResponse,
         venuesResponse,
@@ -77,12 +77,9 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
-        excludedObjectIds: previousPageObjectIds.current,
         disabilitiesProperties: disabilities,
         aroundPrecision,
       })
-
-      previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
 
       return {
         offers: offersResponse,
@@ -93,13 +90,12 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       }
     },
     // first page is 0
-    {
-      getNextPageParam: ({ offers: { nbPages, page } }) => {
-        return page + 1 < nbPages ? page + 1 : undefined
-      },
-      enabled: onlineManager.isOnline(),
-    }
-  )
+    initialPageParam: 0,
+    getNextPageParam: ({ offers: { nbPages, page } }) => {
+      return page + 1 < nbPages ? page + 1 : null
+    },
+    enabled: onlineManager.isOnline(),
+  })
 
   const hits: SearchOfferHits = useMemo(() => {
     const { pages = [] } = data ?? {}

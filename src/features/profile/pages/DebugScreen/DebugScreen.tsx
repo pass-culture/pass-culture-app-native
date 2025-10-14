@@ -1,13 +1,17 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
-import { Platform } from 'react-native'
+import { Controller, useForm } from 'react-hook-form'
+import { Platform, TextStyle } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useVersion } from 'ui/hooks/useVersion'
@@ -28,7 +32,22 @@ export const DebugScreen = () => {
     ? `${Math.round(deviceInfo.screenZoomLevel * 100)}%`
     : undefined
 
+  type FormValue = {
+    feedback: string
+  }
+
+  const {
+    control,
+    formState: { isValid },
+    watch,
+  } = useForm<FormValue>({
+    defaultValues: { feedback: '' },
+    resolver: yupResolver(setFeedbackInAppSchema),
+    mode: 'onChange',
+  })
+
   const undefinedValue = 'Non renseigné'
+  const description = watch().feedback.toString()
   const debugData = [
     { label: 'App version', value: fullVersion },
     { label: 'Device ID', value: deviceInfo?.deviceId ?? undefinedValue },
@@ -38,6 +57,7 @@ export const DebugScreen = () => {
     { label: 'Device zoom', value: zoomInPercent ?? undefinedValue },
     { label: 'User ID', value: user?.id ?? undefinedValue },
     { label: 'Device font scale', value: deviceInfo?.fontScale ?? undefinedValue },
+    { label: 'Description', value: description ?? undefinedValue },
   ]
 
   const sortedDebugData = [...debugData].sort((a, b) => a.label.localeCompare(b.label))
@@ -58,24 +78,45 @@ export const DebugScreen = () => {
   )
   const mailtoUrl = `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}&body=${body}`
 
+  const labelBoldStyle: TextStyle = { fontWeight: 'bold' }
+  const debugDataToShow = sortedDebugData.filter((data) => data.label !== 'Description')
   return (
     <PageWithHeader
       title="Débuggage"
       scrollChildren={
         <ViewGap gap={2}>
-          {sortedDebugData.map((item) => (
+          {debugDataToShow.map((item) => (
             <Typo.Button key={item.label}>
               {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
             </Typo.Button>
           ))}
+          <Controller
+            control={control}
+            name="feedback"
+            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
+              return (
+                <LargeTextInput
+                  label="Description du problème"
+                  labelStyle={labelBoldStyle}
+                  value={value}
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  errorMessage={error?.message}
+                  testID="problem-description-input"
+                  requiredIndicator="explicit"
+                />
+              )
+            }}
+          />
         </ViewGap>
       }
       fixedBottomChildren={
         <ViewGap gap={4}>
           <ButtonPrimary wording="Copier dans le presse-papier" onPress={copyToClipboard} />
           <ExternalTouchableLink
+            disabled={!isValid}
             as={ButtonSecondary}
-            wording="Contacter le support"
+            wording="Envoyer au support"
             externalNav={{ url: mailtoUrl }}
             icon={EmailFilled}
             onBeforeNavigate={() => analytics.logClickMailDebugInfo(user?.id)}

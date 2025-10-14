@@ -3,17 +3,17 @@ import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookiesChoiceSettings } from 'features/cookies/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { Accordion } from 'ui/components/Accordion'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
-  const buttonText = 'Pour plus d’informations, nous t’invitons à consulter notre'
   return (
     <StyledView>
       <AccordionContainer>
@@ -38,14 +38,14 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
           On te redemandera bien sûr ton consentement si notre politique évolue.
         </Typo.Body>
         <StyledBodyAccentXs>
-          {buttonText}
-          <Spacer.Row numberOfSpaces={1} />
+          Pour plus d’informations, nous t’invitons à consulter notre
+          {SPACE}
           <ExternalTouchableLink
-            as={ButtonInsideText}
-            wording="Politique de gestion des cookies"
+            as={LinkInsideText}
+            wording="politique de gestion des cookies"
             externalNav={{ url: env.COOKIES_POLICY_LINK }}
-            icon={ExternalSiteFilled}
             typography="BodyAccentXs"
+            accessibilityRole={AccessibilityRole.LINK}
           />
         </StyledBodyAccentXs>
       </ViewGap>
@@ -53,7 +53,6 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
   )
 }
 
-const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element }>(({ theme }) => ({
   title: <Typo.BodyAccent>Qu’est-ce que les cookies&nbsp;?</Typo.BodyAccent>,
   titleStyle: {
@@ -66,10 +65,10 @@ const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element 
   },
 }))``
 
-const AccordionContainer = styled.View({
-  borderRadius: ACCORDION_BORDER_RADIUS,
+const AccordionContainer = styled.View(({ theme }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.m,
   overflow: 'hidden',
-})
+}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

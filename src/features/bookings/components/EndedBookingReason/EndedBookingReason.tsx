@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons, BookingReponse } from 'api/gen'
+import { BookingCancellationReasons, BookingResponse } from 'api/gen'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 
 type Props = {
-  booking: BookingReponse
+  booking: BookingResponse
   isEligibleBookingsForArchiveValue?: boolean
 }
 

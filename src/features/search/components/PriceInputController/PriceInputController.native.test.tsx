@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm, ErrorOption } from 'react-hook-form'
+import { ErrorOption, useForm } from 'react-hook-form'
 
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -23,7 +23,7 @@ describe('<PriceInputController />', () => {
       error: { type: 'custom', message: 'error' },
     })
 
-    expect(screen.getByText('error')).toBeOnTheScreen()
+    expect(screen.getByText('error', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should display custom error message when error is set', async () => {
@@ -31,10 +31,10 @@ describe('<PriceInputController />', () => {
       error: { type: 'custom', message: 'Prix invalide' },
     })
 
-    const input = screen.getByPlaceholderText('Prix')
+    const input = screen.getByTestId('Entrée pour un prix')
     await user.type(input, 'abc')
 
-    expect(screen.getByText('Prix invalide')).toBeOnTheScreen()
+    expect(screen.getByText('Prix invalide', { hidden: true })).toBeOnTheScreen()
   })
 })
 
@@ -52,14 +52,7 @@ const renderPriceInputController = ({
 
     error && setError('price', error)
     return (
-      <PriceInputController
-        control={control}
-        name="price"
-        label="Prix"
-        placeholder="Prix"
-        accessibilityId="price-input"
-        isDisabled={isDisabled}
-      />
+      <PriceInputController control={control} name="price" label="Prix" isDisabled={isDisabled} />
     )
   }
   render(<PriceForm />)

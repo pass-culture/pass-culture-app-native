@@ -2,11 +2,12 @@ import React, { memo, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { NAVIGATION_METHOD } from 'shared/constants'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -50,10 +51,12 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     selectedLocationMode,
   })
 
+  const interactionTagLabel = getInteractionTagLabel(interactionTag)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
     distance: distanceFromOffer,
+    interactionTagLabel,
   })
 
   useEffect(() => {
@@ -135,6 +138,6 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
   underlayColor: theme.designSystem.color.background.default,
 }))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   marginVertical: theme.outline.width + theme.outline.offSet,
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
 }))

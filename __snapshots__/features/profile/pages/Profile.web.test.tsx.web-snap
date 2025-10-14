@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Profile/> should render correctly on desktop 1`] = `
 .c0 {
@@ -45,7 +45,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #eb0055;
+  background-color: #6123df;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -70,7 +70,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   text-decoration: none;
 }
 
-.c5 {
+.c6 {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -93,17 +93,17 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:hover {
+.c6:hover {
   text-decoration: underline;
   text-decoration-color: #696a6f;
 }
 
-.c5:hover:disabled {
+.c6:hover:disabled {
   text-decoration: none;
 }
 
@@ -116,13 +116,29 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c4 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: #320096;
+  font-family: Montserrat-Bold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c5 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
   cursor: pointer;
 }
 
-.c6 {
+.c7 {
   background-color: transparent;
 }
 
@@ -241,33 +257,25 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     Déjà un compte ?
                   </div>
                   <div
-                    aria-label="Se connecter"
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                    data-testid="Se connecter"
-                    style="transition-duration: 0s;"
-                    tabindex="0"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-top-ipm5af"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-view-175oi2r"
-                        data-testid="button-icon"
-                      >
-                        <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
-                        >
-                          button-icon-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-146c3p1"
                         dir="ltr"
                       >
-                        Se connecter
+                        undefined-SVG-Mock
                       </div>
                     </div>
+                    <button
+                      class="c4"
+                      color="#320096"
+                      type="button"
+                    >
+                      Se connecter
+                    </button>
                   </div>
                 </div>
               </div>
@@ -304,6 +312,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Notifications"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Notifications"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -372,7 +381,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c4"
+                          class="c5"
                           for="testUuidV4"
                         >
                           <div
@@ -390,20 +399,12 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                         >
                           <div
-                            aria-hidden="true"
-                            class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                            dir="ltr"
-                          >
-                            Case à cocher - 
-                            non cochée
-                          </div>
-                          <div
                             aria-checked="false"
-                            aria-describedby="testUuidV4"
+                            aria-label="Activer ma géolocalisation - Interrupteur à bascule - non coché"
                             aria-labelledby="testUuidV4"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                            data-testid="Interrupteur Activer ma géolocalisation"
-                            role="checkbox"
+                            data-testid="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            role="switch"
                             style="transition-duration: 0s;"
                             tabindex="0"
                           >
@@ -411,7 +412,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                               class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                                 style="margin-left: 2px;"
                               />
                             </div>
@@ -426,7 +427,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       </div>
                     </div>
                     <div
-                      id="testUuidV4"
                       role="alert"
                     />
                   </li>
@@ -458,6 +458,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Comment ça marche ?"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Comment ça marche ?"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -514,6 +515,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Nouvelle fenêtre : Centre d’aide"
                       href="https://passculture.faq"
+                      role="link"
                       style="transition-duration: 0s;"
                     >
                       <div
@@ -574,6 +576,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Accessibilité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Accessibilité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -629,6 +632,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Informations légales"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Informations légales"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -684,6 +688,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       aria-label="Confidentialité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Confidentialité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -764,6 +769,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -799,6 +805,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://twitter.com/pass_Culture"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -834,6 +841,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.tiktok.com/@passcultureofficiel"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -869,6 +877,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.facebook.com/passCultureofficiel/"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -950,6 +959,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -962,6 +972,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -974,6 +985,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -986,7 +998,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -1021,7 +1033,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"
@@ -1131,7 +1143,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #eb0055;
+  background-color: #6123df;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -1156,7 +1168,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   text-decoration: none;
 }
 
-.c5 {
+.c6 {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -1179,17 +1191,17 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:hover {
+.c6:hover {
   text-decoration: underline;
   text-decoration-color: #696a6f;
 }
 
-.c5:hover:disabled {
+.c6:hover:disabled {
   text-decoration: none;
 }
 
@@ -1202,13 +1214,29 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c4 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: #320096;
+  font-family: Montserrat-Bold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c5 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
   cursor: pointer;
 }
 
-.c6 {
+.c7 {
   background-color: transparent;
 }
 
@@ -1327,33 +1355,25 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     Déjà un compte ?
                   </div>
                   <div
-                    aria-label="Se connecter"
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                    data-testid="Se connecter"
-                    style="transition-duration: 0s;"
-                    tabindex="0"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui r-top-ipm5af"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-view-175oi2r"
-                        data-testid="button-icon"
-                      >
-                        <div
-                          class="css-text-146c3p1"
-                          dir="ltr"
-                        >
-                          button-icon-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-text-146c3p1 r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-146c3p1"
                         dir="ltr"
                       >
-                        Se connecter
+                        undefined-SVG-Mock
                       </div>
                     </div>
+                    <button
+                      class="c4"
+                      color="#320096"
+                      type="button"
+                    >
+                      Se connecter
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1390,6 +1410,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Notifications"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Notifications"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1458,7 +1479,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           </div>
                         </div>
                         <label
-                          class="c4"
+                          class="c5"
                           for="testUuidV4"
                         >
                           <div
@@ -1476,20 +1497,12 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                         >
                           <div
-                            aria-hidden="true"
-                            class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                            dir="ltr"
-                          >
-                            Case à cocher - 
-                            non cochée
-                          </div>
-                          <div
                             aria-checked="false"
-                            aria-describedby="testUuidV4"
+                            aria-label="Activer ma géolocalisation - Interrupteur à bascule - non coché"
                             aria-labelledby="testUuidV4"
                             class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                            data-testid="Interrupteur Activer ma géolocalisation"
-                            role="checkbox"
+                            data-testid="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            role="switch"
                             style="transition-duration: 0s;"
                             tabindex="0"
                           >
@@ -1497,7 +1510,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                               class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
                             >
                               <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-kubx7a r-borderBottomRightRadius-16f090s r-borderTopLeftRadius-1uv9fpa r-borderTopRightRadius-92sni r-boxShadow-1a7lnqi r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
                                 style="margin-left: 2px;"
                               />
                             </div>
@@ -1512,7 +1525,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       </div>
                     </div>
                     <div
-                      id="testUuidV4"
                       role="alert"
                     />
                   </li>
@@ -1544,6 +1556,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Comment ça marche ?"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Comment ça marche ?"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1600,6 +1613,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Nouvelle fenêtre : Centre d’aide"
                       href="https://passculture.faq"
+                      role="link"
                       style="transition-duration: 0s;"
                     >
                       <div
@@ -1660,6 +1674,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Accessibilité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Accessibilité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1715,6 +1730,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Informations légales"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Informations légales"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1770,6 +1786,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       aria-label="Confidentialité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Confidentialité"
+                      role="link"
                       style="transition-duration: 0s;"
                       tabindex="0"
                     >
@@ -1850,6 +1867,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -1885,6 +1903,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://twitter.com/pass_Culture"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -1920,6 +1939,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.tiktok.com/@passcultureofficiel"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -1955,6 +1975,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         <a
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           href="https://www.facebook.com/passCultureofficiel/"
+                          role="link"
                           style="transition-duration: 0s;"
                         >
                           <div
@@ -2036,6 +2057,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -2048,6 +2070,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -2060,6 +2083,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    role="link"
                     style="transition-duration: 0s;"
                     tabindex="0"
                   >
@@ -2072,7 +2096,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                   <a
                     aria-label="CGU utilisateurs"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="CGU utilisateurs"
                     href="https://passculture.cgu"
                     tabindex="0"
@@ -2107,7 +2131,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </a>
                   <a
                     aria-label="Charte des données personnelles"
-                    class="c5 c6"
+                    class="c6 c7"
                     data-testid="Charte des données personnelles"
                     href="https://passculture.privacy"
                     tabindex="0"

@@ -10,13 +10,13 @@ import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { GroupTags } from 'ui/GroupTags/GroupTags'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -61,7 +61,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
       />
       <MarginContainer>
         <ViewGap gap={4}>
-          <InformationTags tags={venueTags} />
+          <GroupTags tags={venueTags} />
           <ViewGap gap={1}>
             <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
               {venueName}

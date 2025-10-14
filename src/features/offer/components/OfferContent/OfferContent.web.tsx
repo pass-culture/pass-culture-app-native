@@ -6,12 +6,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
-import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { ImageWithCredit } from 'shared/types'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ImagesCarouselModal } from 'ui/components/ImagesCarouselModal/ImagesCarouselModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { useLayout } from 'ui/hooks/useLayout'
@@ -27,6 +26,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onReactionButtonPress,
   onShowChroniclesWritersModal,
   headlineOffersCount,
+  hasVideoCookiesConsent,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { visible, showModal, hideModal } = useModal(false)
@@ -50,7 +50,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   }
 
   const handleVideoPress = () => {
-    analytics.logConsultVideo({ from: 'offer' })
     navigate('OfferVideoPreview', { id: offer.id })
   }
 
@@ -88,7 +87,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
           onLayout={onLayout}
-          onShowChroniclesWritersModal={onShowChroniclesWritersModal}>
+          onShowChroniclesWritersModal={onShowChroniclesWritersModal}
+          hasVideoCookiesConsent={hasVideoCookiesConsent}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

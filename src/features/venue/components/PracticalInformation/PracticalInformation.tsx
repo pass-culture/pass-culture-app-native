@@ -9,6 +9,7 @@ import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessi
 import { DetailedAccessibilityInfo } from 'ui/components/accessibility/DetailedAccessibilityInfo'
 import { Separator } from 'ui/components/Separator'
 import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
@@ -93,7 +94,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
     },
     {
       title: 'Horaires d’ouverture',
-      body: <OpeningHours openingHours={openingHours} />,
+      body: <OpeningHours openingHours={openingHours} title="Horaires d’ouverture" />,
       shouldBeDisplayed: shouldDisplayOpeningHours,
     },
   ].filter(isSectionWithBody)
@@ -124,7 +125,7 @@ const SectionComponent: FunctionComponent<{ title: string; children?: ReactNode 
   children,
 }) => (
   <StyledViewGap>
-    <Typo.BodyAccentXs>{title}</Typo.BodyAccentXs>
+    <Typo.BodyAccentXs {...getHeadingAttrs(2)}>{title}</Typo.BodyAccentXs>
     {children}
   </StyledViewGap>
 )

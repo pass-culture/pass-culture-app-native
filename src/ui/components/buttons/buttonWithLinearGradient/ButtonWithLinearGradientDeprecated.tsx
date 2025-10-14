@@ -48,7 +48,7 @@ const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(({
   return {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: theme.borderRadius.button,
+    borderRadius: theme.designSystem.size.borderRadius.xl,
     overflow: 'hidden',
     ...buttonWidthStyle({ fitContentWidth }),
   }

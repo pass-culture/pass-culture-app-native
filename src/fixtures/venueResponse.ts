@@ -1,4 +1,4 @@
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 
 export default {
   address: '30 rue saint-andré des arts',
@@ -16,4 +16,5 @@ export default {
   timezone: 'Europe/Paris',
   accessibility: {},
   isVirtual: false,
+  venueTypeCode: VenueTypeCodeKey.MOVIE,
 } satisfies VenueResponse

@@ -5,11 +5,11 @@ import {
   generateUTMKeys,
   startTrackingAcceptedCookies,
 } from 'features/cookies/helpers/startTrackingAcceptedCookies'
-import { campaignTracker } from 'libs/campaign'
+import { campaignTracker } from 'libs/campaign/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
 const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock

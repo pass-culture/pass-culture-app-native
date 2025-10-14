@@ -12,7 +12,7 @@ import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/f
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ILocationContext, useLocation } from 'libs/location'
+import { ILocationContext, useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockServer } from 'tests/mswServer'
@@ -37,7 +37,7 @@ mockdate.set(new Date(today))
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/location')
+jest.mock('libs/location/location')
 const mockUseGeolocation = jest.mocked(useLocation)
 
 jest.mock('features/auth/context/AuthContext')

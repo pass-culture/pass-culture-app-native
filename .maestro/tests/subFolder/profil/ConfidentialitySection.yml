@@ -6,13 +6,13 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - scrollUntilVisible:
           element:
-            text: 'Partager le pass Culture'
+            text: 'Partage le pass Culture'
 - tapOn:
     text: 'Confidentialité'
 
 - assertVisible: 'Paramètres de confidentialité'
 - tapOn:
-    id: 'Interrupteur Tout accepter'
+    id: 'Tout accepter - Interrupteur à bascule - coché'
 - scroll
-- assertVisible: 'Politique de gestion des cookies'
+- assertVisible: '.*politique de gestion des cookies'
 - tapOn: 'Enregistrer mes choix'

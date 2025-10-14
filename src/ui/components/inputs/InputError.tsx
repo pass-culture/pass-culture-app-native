@@ -1,31 +1,41 @@
 import React, { FC } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { Error } from 'ui/svg/icons/Error'
+import { ErrorPlain } from 'ui/svg/icons/ErrorPlain'
 import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 
 import { InputRule } from './rules/InputRule'
 
 interface Props {
-  messageId?: string | null
+  errorMessage?: string | null
   visible: boolean
-  numberOfSpacesTop: number
+  numberOfSpacesTop?: number
   centered?: boolean
-  relatedInputId?: string
+  accessibilityElementsHidden?: boolean
 }
 
-export const InputError: FC<Props> = (props) => {
+export const InputError: FC<Props> = ({
+  errorMessage: messageId,
+  visible,
+  numberOfSpacesTop,
+  centered,
+  accessibilityElementsHidden = true,
+}) => {
+  const theme = useTheme()
   return (
-    <ErrorMessage relatedInputId={props.relatedInputId}>
-      {props.visible && props.messageId ? (
-        <Container numberOfSpacesTop={props.numberOfSpacesTop}>
+    <ErrorMessage>
+      {visible && messageId ? (
+        <Container
+          numberOfSpacesTop={numberOfSpacesTop ?? theme.designSystem.size.spacing.xxs}
+          accessibilityElementsHidden={accessibilityElementsHidden}
+          importantForAccessibility={accessibilityElementsHidden ? 'no' : 'auto'}>
           <InputRule
-            title={props.messageId}
+            title={messageId}
             type="Error"
-            icon={Error}
+            icon={ErrorPlain}
             testIdSuffix="warn"
-            iconSize={16}
-            noFullWidth={props.centered}
+            iconSize={theme.icons.sizes.extraSmall}
+            noFullWidth={centered}
           />
         </Container>
       ) : null}
@@ -35,4 +45,5 @@ export const InputError: FC<Props> = (props) => {
 
 const Container = styled.View<{ numberOfSpacesTop: number }>(({ numberOfSpacesTop }) => ({
   marginTop: numberOfSpacesTop,
+  width: '100%',
 }))

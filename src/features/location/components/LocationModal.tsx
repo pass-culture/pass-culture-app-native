@@ -6,13 +6,16 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
+import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
+import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -91,6 +94,37 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
+  const buildAccessibilityLabel = (
+    title: string,
+    subtitle: string | undefined,
+    isSelected: boolean
+  ) => {
+    return `${title}${subtitle ? `, ${subtitle}` : ''}, ${isSelected ? 'sélectionné' : 'non sélectionné'}`
+  }
+
+  const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
+  const AROUND_ME_SUBTITLE = hasGeolocPosition ? undefined : 'Géolocalisation désactivée'
+  const accessibilityLabelAroundMe = buildAccessibilityLabel(
+    AROUND_ME_TITLE,
+    AROUND_ME_SUBTITLE,
+    isCurrentLocationMode(LocationMode.AROUND_ME)
+  )
+
+  const AROUND_PLACE_TITLE = 'Choisir une localisation'
+  const accessibilityLabelAroundPlace = buildAccessibilityLabel(
+    AROUND_PLACE_TITLE,
+    LOCATION_PLACEHOLDER,
+    isCurrentLocationMode(LocationMode.AROUND_PLACE)
+  )
+
+  const accessibilityLabelEverywhere = buildAccessibilityLabel(
+    LocationLabel.everywhereLabel,
+    undefined,
+    isCurrentLocationMode(LocationMode.EVERYWHERE)
+  )
+
+  const groupLabel = 'Localisation'
+
   return (
     <AppModal
       visible={visible}
@@ -103,7 +137,7 @@ export const LocationModal = ({
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
-            title="Localisation"
+            title={groupLabel}
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onClose}
@@ -118,60 +152,83 @@ export const LocationModal = ({
         />
       }>
       <StyledScrollView>
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_ME)}
-          icon={PositionFilled}
-          color={geolocationModeColor}
-          title="Utiliser ma position actuelle"
-          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
-        />
-        {shouldShowAroundMeRadiusSlider ? (
-          <SliderContainer>
-            <LocationSearchFilters
-              aroundRadius={tempAroundMeRadius}
-              onValuesChange={onTempAroundMeRadiusValueChange}
+        <VerticalUl>
+          <Li
+            groupLabel={groupLabel}
+            accessibilityLabel={accessibilityLabelAroundMe}
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={0}
+            total={3}>
+            <LocationModalButton
+              onPress={selectLocationMode(LocationMode.AROUND_ME)}
+              icon={PositionFilled}
+              color={geolocationModeColor}
+              title={AROUND_ME_TITLE}
+              subtitle={AROUND_ME_SUBTITLE}
             />
-          </SliderContainer>
-        ) : null}
-        <StyledSeparator />
-        <LocationModalButton
-          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
-          icon={MagnifyingGlassFilled}
-          color={customLocationModeColor}
-          title="Choisir une localisation"
-          subtitle={LOCATION_PLACEHOLDER}
-        />
-        {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
-          <React.Fragment>
-            <LocationSearchInput
-              selectedPlace={selectedPlace}
-              setSelectedPlace={setSelectedPlace}
-              placeQuery={placeQuery}
-              setPlaceQuery={setPlaceQuery}
-              onResetPlace={onResetPlace}
-              onSetSelectedPlace={onSetSelectedPlace}
-            />
-            {shouldShowAroundPlaceRadiusSlider ? (
+            {shouldShowAroundMeRadiusSlider ? (
               <SliderContainer>
                 <LocationSearchFilters
-                  aroundRadius={tempAroundPlaceRadius}
-                  onValuesChange={onTempAroundPlaceRadiusValueChange}
+                  aroundRadius={tempAroundMeRadius}
+                  onValuesChange={onTempAroundMeRadiusValueChange}
                 />
               </SliderContainer>
             ) : null}
-          </React.Fragment>
-        ) : null}
-        {shouldDisplayEverywhereSection ? (
-          <StyledView>
-            <Separator.Horizontal />
+            <StyledSeparator />
+          </Li>
+          <Li
+            groupLabel={groupLabel}
+            accessibilityLabel={accessibilityLabelAroundPlace}
+            accessibilityRole={AccessibilityRole.BUTTON}
+            index={1}
+            total={3}>
             <LocationModalButton
-              onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-              icon={WorldPosition}
-              color={everywhereLocationModeColor}
-              title={LocationLabel.everywhereLabel}
+              onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
+              icon={MagnifyingGlassFilled}
+              color={customLocationModeColor}
+              title={AROUND_PLACE_TITLE}
+              subtitle={LOCATION_PLACEHOLDER}
             />
-          </StyledView>
-        ) : null}
+            {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
+              <React.Fragment>
+                <LocationSearchInput
+                  selectedPlace={selectedPlace}
+                  setSelectedPlace={setSelectedPlace}
+                  placeQuery={placeQuery}
+                  setPlaceQuery={setPlaceQuery}
+                  onResetPlace={onResetPlace}
+                  onSetSelectedPlace={onSetSelectedPlace}
+                />
+                {shouldShowAroundPlaceRadiusSlider ? (
+                  <SliderContainer>
+                    <LocationSearchFilters
+                      aroundRadius={tempAroundPlaceRadius}
+                      onValuesChange={onTempAroundPlaceRadiusValueChange}
+                    />
+                  </SliderContainer>
+                ) : null}
+              </React.Fragment>
+            ) : null}
+          </Li>
+          {shouldDisplayEverywhereSection ? (
+            <Li
+              groupLabel={groupLabel}
+              accessibilityLabel={accessibilityLabelEverywhere}
+              accessibilityRole={AccessibilityRole.BUTTON}
+              index={2}
+              total={3}>
+              <StyledView>
+                <Separator.Horizontal />
+                <LocationModalButton
+                  onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+                  icon={WorldPosition}
+                  color={everywhereLocationModeColor}
+                  title={LocationLabel.everywhereLabel}
+                />
+              </StyledView>
+            </Li>
+          ) : null}
+        </VerticalUl>
       </StyledScrollView>
     </AppModal>
   )

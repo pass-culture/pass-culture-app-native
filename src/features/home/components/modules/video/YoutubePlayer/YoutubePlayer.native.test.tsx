@@ -20,13 +20,15 @@ describe('YoutubePlayer', () => {
   })
 
   it('should render correctly with thumbnail', () => {
-    const { root } = render(<YoutubePlayer height={300} thumbnail={<View />} />)
+    const { root } = render(<YoutubePlayer height={300} thumbnail={<View />} title="Vidéo" />)
 
     expect(root).toBeOnTheScreen()
   })
 
   it('should have default ref', async () => {
-    render(<YoutubePlayer height={300} thumbnail={<View />} ref={mockRef} videoId="id" />)
+    render(
+      <YoutubePlayer height={300} thumbnail={<View />} ref={mockRef} videoId="id" title="Vidéo" />
+    )
 
     await expect(mockRef.current?.getDuration()).resolves.toBe(0)
     await expect(mockRef.current?.getCurrentTime()).resolves.toBe(0)
@@ -38,7 +40,7 @@ describe('YoutubePlayer', () => {
   })
 
   it('should display nothing if no thumbnail is given', async () => {
-    render(<YoutubePlayer height={300} videoId="id" />)
+    render(<YoutubePlayer height={300} videoId="id" title="Vidéo" />)
     await waitFor(() => expect(screen.queryByRole('imagebutton')).not.toBeOnTheScreen())
   })
 
@@ -50,6 +52,7 @@ describe('YoutubePlayer', () => {
         height={300}
         thumbnail={<Image source={{ uri: 'thumbnail.jpg' }} />}
         onReady={handleOnReady}
+        title="Vidéo"
       />
     )
 

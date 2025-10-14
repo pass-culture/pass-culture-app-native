@@ -7,7 +7,7 @@ import { SearchLocationModal } from 'features/location/components/SearchLocation
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
@@ -101,7 +101,7 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isActive }) => ({
   width: theme.buttons.roundedButton.size,
   height: theme.buttons.roundedButton.size,
-  borderRadius: theme.buttons.roundedButton.size,
+  borderRadius: theme.designSystem.size.borderRadius.pill,
   border: isActive ? 2 : 1,
   justifyContent: 'center',
   alignItems: 'center',

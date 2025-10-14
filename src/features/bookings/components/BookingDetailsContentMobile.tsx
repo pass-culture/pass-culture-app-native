@@ -16,6 +16,7 @@ export const BookingDetailsContentMobile = ({
   errorBannerMessage,
   cancelBooking,
   showArchiveModal,
+  hasTicket,
 }: {
   topBlock: React.JSX.Element
   booking: BookingResponse
@@ -23,6 +24,7 @@ export const BookingDetailsContentMobile = ({
   errorBannerMessage: string | null
   cancelBooking: () => void
   showArchiveModal: () => void
+  hasTicket: boolean
 }) => {
   return (
     <View testID="booking_details_mobile">
@@ -45,6 +47,7 @@ export const BookingDetailsContentMobile = ({
                 bookingContactEmail={booking.stock.offer.bookingContact}
                 withdrawalDetails={booking.ticket?.withdrawal.details}
                 onEmailPress={onEmailPress}
+                hasTicket={hasTicket}
               />
             </Container>
           </SectionContainer>

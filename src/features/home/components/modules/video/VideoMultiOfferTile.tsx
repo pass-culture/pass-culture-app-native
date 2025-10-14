@@ -6,8 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -105,7 +105,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
 
 const Container = styled(View)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
-  borderRadius: getSpacing(2),
+  borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
 const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({

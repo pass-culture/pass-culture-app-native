@@ -27,11 +27,19 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import {
+  act,
+  fireEvent,
+  renderAsync,
+  screen,
+  userEvent,
+  waitFor,
+  waitForButtonToBePressable,
+} from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('libs/campaign')
+jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -84,7 +92,7 @@ const gotoStep2 = async () => {
 }
 
 const gotoStep3 = async () => {
-  await user.type(await screen.findByPlaceholderText('Ton mot de passe'), 'user@AZERTY123')
+  await user.type(await screen.findByTestId('Mot de passe'), 'user@AZERTY123')
 
   await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
   await screen.findByText('Étape 3 sur 5', { includeHiddenElements: true })
@@ -126,7 +134,7 @@ describe('Signup Form', () => {
     const stepValidationMap = [() => Promise.resolve(), gotoStep2, gotoStep3, gotoStep4]
 
     it.each([1, 2, 3, 4])('should render correctly for step %i/5', async (step: number) => {
-      renderSignupForm()
+      await renderSignupForm()
 
       await screen.findByText('Inscription')
 
@@ -143,7 +151,7 @@ describe('Signup Form', () => {
 
   describe('Quit button', () => {
     it('should not display quit button on firstStep', async () => {
-      renderSignupForm()
+      await renderSignupForm()
 
       await screen.findByText('Crée-toi un compte')
 
@@ -153,7 +161,7 @@ describe('Signup Form', () => {
     })
 
     it('should open quit modal when pressing quit button on second step', async () => {
-      renderSignupForm()
+      await renderSignupForm()
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
@@ -166,17 +174,17 @@ describe('Signup Form', () => {
 
     it('should go back to home when pressing close button on email confirmation sent', async () => {
       simulateSignupSuccess()
-      renderSignupForm()
+      await renderSignupForm()
 
       await gotoStep2()
       await gotoStep3()
       await gotoStep4()
 
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -191,7 +199,7 @@ describe('Signup Form', () => {
 
   describe('Go back button', () => {
     it('should call goBack() when left icon is pressed from first step', async () => {
-      renderSignupForm()
+      await renderSignupForm()
 
       const goBackButton = await screen.findByTestId('Revenir en arrière')
       await user.press(goBackButton)
@@ -200,7 +208,7 @@ describe('Signup Form', () => {
     })
 
     it('should go to the previous step when go back icon is press from second step', async () => {
-      renderSignupForm()
+      await renderSignupForm()
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
@@ -220,13 +228,13 @@ describe('Signup Form', () => {
 
     it('should not display backButton on confirmation email sent page', async () => {
       simulateSignupSuccess()
-      renderSignupForm()
+      await renderSignupForm()
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
       await user.press(screen.getByText('Continuer'))
 
@@ -237,10 +245,10 @@ describe('Signup Form', () => {
       await user.press(screen.getByText('Continuer'))
 
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -250,13 +258,13 @@ describe('Signup Form', () => {
 
   it('should show email sent confirmation on signup success', async () => {
     simulateSignupSuccess()
-    renderSignupForm()
+    await renderSignupForm()
 
     const emailInput = screen.getByTestId('Entrée pour l’email')
     await user.type(emailInput, 'email@gmail.com')
     await user.press(screen.getByText('Continuer'))
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const passwordInput = screen.getByTestId('Mot de passe')
     await user.type(passwordInput, 'user@AZERTY123')
     await user.press(screen.getByText('Continuer'))
 
@@ -267,10 +275,10 @@ describe('Signup Form', () => {
     await user.press(screen.getByText('Continuer'))
 
     await user.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
     )
 
-    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
     await user.press(screen.getByText('S’inscrire'))
 
@@ -280,7 +288,7 @@ describe('Signup Form', () => {
   describe('analytics', () => {
     it('should trigger StepperDisplayed tracker when displaying step', async () => {
       simulateSignupSuccess()
-      renderSignupForm()
+      await renderSignupForm()
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         1,
@@ -301,7 +309,7 @@ describe('Signup Form', () => {
         undefined
       )
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
       await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
 
@@ -327,10 +335,10 @@ describe('Signup Form', () => {
       )
 
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -343,7 +351,7 @@ describe('Signup Form', () => {
     })
 
     it('should call logCancelSignup with Email when quitting after signup modal', async () => {
-      renderSignupForm()
+      await renderSignupForm()
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
@@ -370,14 +378,14 @@ describe('Signup Form', () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')
       getSystemNameSpy.mockReturnValueOnce('iOS')
 
-      renderSignupForm()
+      await renderSignupForm()
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
 
       await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
       await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
 
@@ -388,9 +396,9 @@ describe('Signup Form', () => {
       await user.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
 
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -420,13 +428,13 @@ describe('Signup Form', () => {
     it('should log to sentry on API error', async () => {
       mockServer.postApi('/v1/account', { responseOptions: { statusCode: 400, data: {} } })
 
-      renderSignupForm()
+      await renderSignupForm()
 
       const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      const passwordInput = screen.getByTestId('Mot de passe')
       await user.type(passwordInput, 'user@AZERTY123')
 
       await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
@@ -438,10 +446,10 @@ describe('Signup Form', () => {
       await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
 
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -477,10 +485,10 @@ describe('Signup Form', () => {
       })
       mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
 
-      renderSignupForm()
+      await renderSignupForm()
       await screen.findByText('Inscription')
 
-      await waitFor(() => pressSSOButton())
+      await pressSSOButton()
 
       expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
         authorizationCode: 'mockServerAuthCode',
@@ -504,7 +512,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
       await screen.findByText('Inscription')
 
       await waitFor(() => pressSSOButton())
@@ -519,7 +527,7 @@ describe('Signup Form', () => {
           data: signInFailureData,
         },
       })
-      renderSignupForm()
+      await renderSignupForm()
 
       await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
@@ -536,7 +544,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
       await screen.findByText('Inscription')
 
       await waitFor(() => pressSSOButton())
@@ -559,7 +567,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
 
       await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
@@ -594,7 +602,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
       await screen.findByText('Inscription')
 
       await waitFor(() => pressSSOButton())
@@ -608,10 +616,10 @@ describe('Signup Form', () => {
       )
       await user.press(screen.getByText('Continuer'))
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -655,7 +663,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
 
       const ssoButton = await screen.findByTestId('S’inscrire avec Google')
 
@@ -671,10 +679,10 @@ describe('Signup Form', () => {
       )
       await user.press(screen.getByText('Continuer'))
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -707,7 +715,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
@@ -715,10 +723,10 @@ describe('Signup Form', () => {
       )
       await user.press(screen.getByText('Continuer'))
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -736,7 +744,7 @@ describe('Signup Form', () => {
         params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
 
       expect(await screen.findByText('Renseigne ta date de naissance')).toBeOnTheScreen()
     })
@@ -764,7 +772,7 @@ describe('Signup Form', () => {
         },
       })
 
-      renderSignupForm()
+      await renderSignupForm()
 
       let datePicker: ReactTestInstance
       await waitFor(async () => {
@@ -775,10 +783,10 @@ describe('Signup Form', () => {
       )
       await user.press(screen.getByText('Continuer'))
       await user.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+        screen.getByText(/J’ai lu et j’accepte les conditions générales d’utilisation/)
       )
 
-      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      await user.press(screen.getByText(/J’ai lu la charte des données personnelles/))
 
       await user.press(screen.getByText('S’inscrire'))
 
@@ -813,7 +821,7 @@ describe('Signup Form', () => {
           },
         })
 
-        renderSignupForm()
+        await renderSignupForm()
 
         expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
           1,
@@ -858,7 +866,7 @@ describe('Signup Form', () => {
           },
         })
 
-        renderSignupForm()
+        await renderSignupForm()
 
         expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
           1,
@@ -894,10 +902,10 @@ describe('Signup Form', () => {
 
 const simulateSignupSuccess = () => mockServer.postApi('/v1/account', {})
 
-const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))
+const renderSignupForm = () => renderAsync(reactQueryProviderHOC(<SignupForm />))
 
 const pressSSOButton = async () => {
-  const SSOButton: ReactTestInstance = await screen.findByTestId('S’inscrire avec Google')
-
+  const SSOButton = await screen.findByTestId('S’inscrire avec Google')
+  await waitForButtonToBePressable(SSOButton)
   await user.press(SSOButton)
 }

@@ -1,53 +1,43 @@
-import React, { ReactElement, forwardRef, useRef, useState } from 'react'
-import {
-  ActivityIndicator,
-  LayoutChangeEvent,
-  Pressable,
-  PressableStateCallbackType,
-  StyleProp,
-  View,
-  ViewStyle,
-} from 'react-native'
-import Animated, { FadeOut } from 'react-native-reanimated'
-import { useTheme } from 'styled-components'
+import React, { ReactElement, forwardRef, useCallback, useRef, useState } from 'react'
+import { LayoutChangeEvent, StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Play } from 'ui/svg/icons/Play'
-import { getSpacing } from 'ui/theme'
+import { PlayerPreview } from 'features/home/components/modules/video/PlayerPreview/PlayerPreview'
+import { Duration } from 'features/offer/types'
 
 import { YoutubePlayerRef, YoutubeRendererProps, YoutubeRendererRef } from './types'
 import { YoutubeRenderer } from './YoutubeRenderer'
 
 type YoutubePlayerProps = YoutubeRendererProps & {
+  title?: string
   style?: StyleProp<ViewStyle>
   thumbnail?: ReactElement
   onLayout?: (event: LayoutChangeEvent) => void
   noThumbnail?: boolean
+  duration?: Duration
+  onPlayPress?: () => void
 }
-
-const PRESSABLE_STYLE = ({ pressed }: PressableStateCallbackType) => ({
-  opacity: pressed ? 0.7 : 1,
-  flex: 1,
-})
 
 export const YoutubePlayer = forwardRef(function YoutubePlayer(
   {
+    title,
     noThumbnail,
     style,
     thumbnail,
     onReady,
     onLayout,
     play = true,
+    duration,
+    onPlayPress,
     ...playerProps
   }: YoutubePlayerProps,
   ref: React.ForwardedRef<YoutubePlayerRef>
 ) {
-  const { designSystem } = useTheme()
   const innerVideoRef = React.useRef<YoutubeRendererRef>(null)
   const containerRef = useRef<View>(null)
+  const [hasLaunched, setHasLaunched] = useState(false)
 
   const [playerVisible, setPlayerVisible] = useState(noThumbnail)
-  const [playerReady, setPlayerReady] = useState(false)
 
   React.useImperativeHandle(ref, () => ({
     getDuration: () => Promise.resolve(0),
@@ -60,16 +50,22 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
     getPlaybackRate: () => Promise.resolve(0),
     unload: () => {
       setPlayerVisible(false)
-      setPlayerReady(false)
     },
     measure: (callback) => containerRef.current?.measure?.(callback),
     ...(innerVideoRef.current ?? {}),
   }))
 
   const handleOnReady = () => {
-    setPlayerReady(true)
     onReady?.()
   }
+
+  const handleLaunchPlayer = useCallback(() => {
+    if (!hasLaunched) {
+      setHasLaunched(true)
+      onPlayPress?.()
+    }
+    setPlayerVisible(true)
+  }, [hasLaunched, onPlayPress])
 
   if (!noThumbnail && !thumbnail) {
     return null
@@ -86,25 +82,15 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
         <YoutubeRenderer ref={innerVideoRef} {...playerProps} onReady={handleOnReady} play={play} />
       ) : null}
 
-      {(playerVisible && playerReady) || noThumbnail ? null : (
-        <StyledAnimatedView height={playerProps.height} width={playerProps.width}>
-          <Pressable
-            accessibilityRole="imagebutton"
-            onPress={() => setPlayerVisible(true)}
-            style={PRESSABLE_STYLE}>
-            <ThumbnailOverlay>
-              {playerVisible ? (
-                <ActivityIndicator size="large" color={designSystem.color.icon.lockedInverted} />
-              ) : (
-                <IconContainer>
-                  <StyledPlayIcon />
-                </IconContainer>
-              )}
-            </ThumbnailOverlay>
-            {thumbnail}
-          </Pressable>
-        </StyledAnimatedView>
-      )}
+      <PlayerPreview
+        thumbnail={thumbnail}
+        title={title}
+        duration={duration}
+        onPress={handleLaunchPlayer}
+        height={playerProps.height}
+        width={playerProps.width}
+        isLoading={hasLaunched}
+      />
     </Container>
   )
 })
@@ -118,39 +104,4 @@ const Container = styled.View.attrs<{ height: number; width?: number | string }>
   backgroundColor: theme.designSystem.color.background.lockedInverted,
   width,
   height,
-}))
-
-const ThumbnailOverlay = styled(View)({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  zIndex: 10,
-})
-
-const StyledAnimatedView = styled(Animated.View).attrs({
-  exiting: FadeOut.duration(500),
-})<{ height: number; width?: number | string }>(({ height, width = '100%' }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width,
-  height,
-  zIndex: 5,
-  overflow: 'hidden',
-}))
-
-const StyledPlayIcon = styled(Play).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.inverted,
-  color2: theme.designSystem.color.icon.default,
-  size: getSpacing(14),
-}))``
-
-const IconContainer = styled.View(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
-  padding: theme.designSystem.size.spacing.xxs,
-  backgroundColor: theme.designSystem.color.background.default,
 }))

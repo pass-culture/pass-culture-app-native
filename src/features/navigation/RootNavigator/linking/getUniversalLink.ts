@@ -2,7 +2,7 @@ import { ScreensUsedByMarketing } from 'features/internal/config/deeplinksExport
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
 import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/isSearchStackScreen'
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { isTabNavigatorScreen } from 'features/navigation/TabBar/isTabNavigatorScreen'
 
 export function getUniversalLink(

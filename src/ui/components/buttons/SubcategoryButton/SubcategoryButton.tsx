@@ -9,7 +9,7 @@ import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getShadow, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 import { getSpacing } from 'ui/theme/spacing'
@@ -65,33 +65,26 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderColor: ColorsType
 }>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
   ...(theme.isMobileViewport
-    ? {
-        width: windowWidth / 2 - getSpacing(8),
-      }
+    ? { width: windowWidth / 2 - theme.designSystem.size.spacing.xxl }
     : {}),
   flexDirection: 'row',
   backgroundColor,
-  height: SUBCATEGORY_BUTTON_HEIGHT,
+  minHeight: SUBCATEGORY_BUTTON_HEIGHT,
+  height: '100%',
   borderColor,
   borderWidth: 1.6,
   borderStyle: 'solid',
-  borderRadius: theme.borderRadius.radius,
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(1),
-    shadowColor: theme.colors.greyDark,
-    shadowOpacity: 0.2,
-  }),
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
   textAlign: 'left',
   alignItems: 'center',
-  padding: getSpacing(2),
+  ...(Platform.OS === 'web' && { padding: theme.designSystem.size.spacing.s }),
 }))
 
 const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
-  numberOfLines: 2,
-  ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),
+  numberOfLines: 3,
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
+  marginHorizontal: Number(theme.designSystem.size.spacing.s),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
 }))

@@ -82,7 +82,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityRole="header"
                   style={
                     {
                       "alignItems": "center",
@@ -93,6 +92,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   }
                 >
                   <Text
+                    accessibilityRole="header"
                     htmlFor="testUuidV4"
                     style={
                       {
@@ -164,12 +164,12 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 22,
-                          "borderBottomRightRadius": 22,
+                          "borderBottomLeftRadius": 24,
+                          "borderBottomRightRadius": 24,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 22,
-                          "borderTopRightRadius": 22,
+                          "borderTopLeftRadius": 24,
+                          "borderTopRightRadius": 24,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 48,
@@ -180,11 +180,10 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "width": "100%",
                         },
                         {
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "outlineOffset": 0,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                         },
                         {
                           "flex": 1,
@@ -211,7 +210,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                     </View>
                     <TextInput
-                      accessibilityDescribedBy="testUuidV4"
                       accessibilityHidden={true}
                       autoCorrect={false}
                       autoFocus={false}
@@ -274,7 +272,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         contentContainerStyle={
           {
             "marginBottom": 8,
-            "paddingHorizontal": 20,
+            "paddingHorizontal": 16,
           }
         }
         horizontal={true}
@@ -291,19 +289,23 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             }
           >
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
                 accessibilityLabel="Voir tous les filtres : 3 filtres actifs"
-                accessibilityRole="link"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -381,7 +383,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     [
                       {
                         "alignSelf": "center",
-                        "backgroundColor": "#eb0055",
+                        "backgroundColor": "#6123df",
                         "borderBottomLeftRadius": 16,
                         "borderBottomRightRadius": 16,
                         "borderColor": "#ffffff",
@@ -427,14 +429,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -513,14 +519,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -608,14 +618,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -703,14 +717,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -798,14 +816,18 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessibilityRole="none"
+              accessible={true}
               style={
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
               }
             >
               <View
@@ -923,6 +945,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           }
           onEndReached={[Function]}
           onScroll={[Function]}
+          onViewableItemsChanged={[Function]}
           refreshControl={
             <RefreshControlMock
               onRefresh={
@@ -1004,7 +1027,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       }
                     >
                       <Text
-                        accessibilityRole="header"
                         style={
                           {
                             "color": "#696a6f",
@@ -1059,8 +1081,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Offre La nuit des temps de la catégorie Livre, à 900+ km,  prix 28 €. "
-                  accessibilityRole="link"
+                  accessibilityLabel="Offre "La nuit des temps", de la catégorie "Livre", à une distance de 900+ km,  prix 28 €. "
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -1109,7 +1131,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Offre La nuit des temps de la catégorie Livre, à 900+ km,  prix 28 €. "
+                  testID="Offre "La nuit des temps", de la catégorie "Livre", à une distance de 900+ km,  prix 28 €. "
                 >
                   <View
                     style={
@@ -1137,13 +1159,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "height": 96,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
                           "width": 64,
                         }
                       }
@@ -1275,7 +1290,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1325,6 +1339,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 1",
                         "postalCode": "75000",
                         "publicName": "Lieu 1",
+                        "venue_type": "BOOKSTORE",
                       },
                     }
                   }
@@ -1371,6 +1386,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1395,8 +1411,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Offre I want something more de la catégorie Concert, à 900+ km,  prix Dès 23 €. "
-                  accessibilityRole="link"
+                  accessibilityLabel="Offre "I want something more", de la catégorie "Concert", à une distance de 900+ km,  prix Dès 23 €. "
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -1445,7 +1461,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Offre I want something more de la catégorie Concert, à 900+ km,  prix Dès 23 €. "
+                  testID="Offre "I want something more", de la catégorie "Concert", à une distance de 900+ km,  prix Dès 23 €. "
                 >
                   <View
                     style={
@@ -1473,13 +1489,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "height": 96,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
                           "width": 64,
                         }
                       }
@@ -1611,7 +1620,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1665,6 +1673,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1703,6 +1712,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1727,8 +1737,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Offre Un lit sous une rivière de la catégorie Concert, à 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
-                  accessibilityRole="link"
+                  accessibilityLabel="Offre "Un lit sous une rivière", de la catégorie "Concert", à une distance de 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -1777,7 +1787,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Offre Un lit sous une rivière de la catégorie Concert, à 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
+                  testID="Offre "Un lit sous une rivière", de la catégorie "Concert", à une distance de 49 km,  prix Dès 34 €. Possibilité de réserver 2 places."
                 >
                   <View
                     style={
@@ -1805,13 +1815,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "height": 96,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
                           "width": 64,
                         }
                       }
@@ -1943,7 +1946,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -1989,6 +1991,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
+                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -2059,8 +2062,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Offre I want something more de la catégorie Concert, à 49 km,  prix Dès 28 €. "
-                  accessibilityRole="link"
+                  accessibilityLabel="Offre "I want something more", de la catégorie "Concert", à une distance de 49 km,  prix Dès 28 €. "
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -2109,7 +2112,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       },
                     ]
                   }
-                  testID="Offre I want something more de la catégorie Concert, à 49 km,  prix Dès 28 €. "
+                  testID="Offre "I want something more", de la catégorie "Concert", à une distance de 49 km,  prix Dès 28 €. "
                 >
                   <View
                     style={
@@ -2137,13 +2140,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "height": 96,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
                           "width": 64,
                         }
                       }
@@ -2275,7 +2271,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                           ]
                         }
                         testID="distance_tag"
-                        withColor={true}
                       >
                         <Text
                           style={
@@ -2305,7 +2300,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           "alignSelf": "center",
           "bottom": 88,
           "position": "absolute",
-          "right": 28,
+          "right": 24,
           "zIndex": 1,
         }
       }

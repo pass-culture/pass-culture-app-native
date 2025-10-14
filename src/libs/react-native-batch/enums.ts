@@ -1,6 +1,7 @@
 export enum BatchEvent {
   hasBooked = 'has_booked',
   hasSeenAllTheHomepage = 'has_seen_all_the_homepage',
+  hasSeenBookingPage = 'has_seen_booking_page',
   hasSeenBookOfferForSurvey = 'has_seen_book_offer_for_survey',
   hasSeenCinemaOfferForSurvey = 'has_seen_cinema_for_survey',
   hasSeenConcertForSurvey = 'has_seen_concert_for_survey',

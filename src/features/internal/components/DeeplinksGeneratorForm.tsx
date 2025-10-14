@@ -28,11 +28,11 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
-import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
 import { getSpacing, Typo } from 'ui/theme'
@@ -190,24 +190,21 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    const placeholder = config.required ? `${name} (*)` : name
+    const label = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
     return (
       <TextInputContainer key={name}>
         {config.type === 'string' ? (
-          <TextInput
-            placeholder={placeholder}
+          <InputText
+            label={label}
             onBlur={onBlurValidate}
             onChangeText={onChangeText}
             defaultValue={screenParams[name] ? String(screenParams[name]) : undefined}
+            testID={`Entrée pour un ${name}`}
           />
         ) : null}
         {config.type === 'stringArray' ? (
-          <TextInput
-            placeholder={placeholder}
-            onBlur={onBlurValidate}
-            onChangeText={onChangeStringArray}
-          />
+          <InputText label={label} onBlur={onBlurValidate} onChangeText={onChangeStringArray} />
         ) : null}
         {config.type === 'boolean' ? (
           <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />

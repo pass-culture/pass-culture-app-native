@@ -1,22 +1,26 @@
 import { SearchResponse } from '@algolia/client-search'
+import { useIsFocused } from '@react-navigation/native'
 import React, { useMemo } from 'react'
-import { ScrollViewProps, View } from 'react-native'
+import { ScrollViewProps, View, ViewToken } from 'react-native'
+import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
+import { gridListLayoutActions, useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, SearchView, VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location'
+import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
+import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
@@ -27,12 +31,16 @@ import { Typo } from 'ui/theme'
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
-  venues?: SearchOfferHits['venues']
+  venues?: AlgoliaVenueOfferListItem[]
   venuesUserData: VenuesUserData
   artistSection?: React.ReactNode
-  setGridListLayout?: React.Dispatch<React.SetStateAction<GridListLayout>>
-  selectedGridListLayout?: GridListLayout
   shouldDisplayGridList?: boolean
+  onViewableVenuePlaylistItemsChanged?: (
+    items: Pick<ViewToken, 'key' | 'index'>[],
+    moduleId: string,
+    itemType: 'offer' | 'venue' | 'artist' | 'unknown',
+    playlistIndex?: number
+  ) => void
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -41,15 +49,15 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
   artistSection,
-  setGridListLayout,
-  selectedGridListLayout,
   shouldDisplayGridList,
+  onViewableVenuePlaylistItemsChanged,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const {
     searchState: { venue, offerCategories },
   } = useSearch()
+  const isFocused = useIsFocused()
 
   const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
@@ -68,6 +76,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const previousRoute = usePreviousRoute()
 
+  const selectedGridListLayout = useGridListLayout()
+
   const offerTitle = `Les offres${shouldDisplayAccessibilityContent ? ' dans des lieux accessibles' : ''}`
 
   const shouldDisplayVenuesPlaylist =
@@ -84,17 +94,24 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
-  const handleToggleChange = (layout: GridListLayout) => {
-    const fromLayout = layout === GridListLayout.GRID ? GridListLayout.LIST : GridListLayout.GRID
-    analytics.logHasClickedGridListToggle({ fromLayout })
-    setGridListLayout?.(layout)
+  const onGridListButtonPress = (layout: GridListLayout) => {
+    gridListLayoutActions.setLayout(layout)
+    analytics.logHasClickedGridListToggle({ fromLayout: selectedGridListLayout })
   }
 
   const getLayoutButtonProps = (layout: GridListLayout) => ({
     layout,
     isSelected: selectedGridListLayout === layout,
-    onPress: () => handleToggleChange(layout),
+    onPress: () => onGridListButtonPress(layout),
   })
+
+  const handleVenuePlaylistViewableItemsChanged = React.useCallback(
+    (items: Pick<ViewToken, 'key' | 'index'>[]) => {
+      if (!isFocused) return
+      onViewableVenuePlaylistItemsChanged?.(items, 'searchResultsVenuePlaylist', 'venue', 0)
+    },
+    [isFocused, onViewableVenuePlaylistItemsChanged]
+  )
 
   return (
     <View testID="searchListHeader">
@@ -118,11 +135,19 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       ) : null}
       {artistSection}
       {shouldDisplayVenuesPlaylist ? (
-        <StyledVenuePlaylist
-          venuePlaylistTitle={venuePlaylistTitle}
-          venues={venues}
-          isLocated={isLocated}
-        />
+        <IOScrollView>
+          <ObservedPlaylist onViewableItemsChanged={handleVenuePlaylistViewableItemsChanged}>
+            {({ listRef, handleViewableItemsChanged }) => (
+              <StyledVenuePlaylist
+                venuePlaylistTitle={venuePlaylistTitle}
+                venues={venues}
+                isLocated={isLocated}
+                playlistRef={listRef}
+                onViewableItemsChanged={handleViewableItemsChanged}
+              />
+            )}
+          </ObservedPlaylist>
+        </IOScrollView>
       ) : null}
       <HeaderSectionContainer>
         <TitleContainer>

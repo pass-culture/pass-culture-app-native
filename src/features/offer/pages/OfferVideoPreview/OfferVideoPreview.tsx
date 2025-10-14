@@ -7,6 +7,8 @@ import { RATIO169 } from 'features/home/components/helpers/getVideoPlayerDimensi
 import { YoutubePlayer } from 'features/home/components/modules/video/YoutubePlayer/YoutubePlayer'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
@@ -40,11 +42,20 @@ export const OfferVideoPreview: FunctionComponent = () => {
 
       {offer?.video?.id && isVideoSectionEnabled ? (
         <YoutubePlayer
+          title={offer.video.title ?? offer.name}
           videoId={offer.video.id}
           height={videoHeight}
           width={viewportWidth < MAX_WIDTH ? undefined : MAX_WIDTH}
           initialPlayerParams={{ autoplay: true }}
           thumbnail={<VideoThumbnailImage url={offer?.video.thumbUrl ?? ''} resizeMode="cover" />}
+          duration={
+            offer.video.durationSeconds
+              ? formatDuration(offer.video.durationSeconds, 'sec')
+              : undefined
+          }
+          onPlayPress={() =>
+            analytics.logConsultVideo({ from: 'offer', offerId: String(offer.id) })
+          }
         />
       ) : null}
     </Container>

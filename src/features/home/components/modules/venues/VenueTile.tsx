@@ -10,14 +10,14 @@ import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/V
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/location'
 import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
-import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Tag } from 'ui/designSystem/Tag/Tag'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -114,7 +114,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
   width,
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
-  borderRadius: theme.borderRadius.radius,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
 }))
 
@@ -123,7 +123,7 @@ const VenueTypeTile = styled.View<{ width: number; height: number }>(
     backgroundColor: theme.designSystem.color.background.subtle,
     width: width,
     height: height,
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: theme.designSystem.size.borderRadius.m,
     border: `1px solid ${theme.designSystem.color.border.default}`,
     alignItems: 'center',
     justifyContent: 'center',

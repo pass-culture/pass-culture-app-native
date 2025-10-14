@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 
@@ -19,13 +18,6 @@ const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCatego
 const meta: Meta<typeof SubcategoryButtonList> = {
   title: 'ui/buttons/SubcategoryButtonList',
   component: SubcategoryButtonList,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 

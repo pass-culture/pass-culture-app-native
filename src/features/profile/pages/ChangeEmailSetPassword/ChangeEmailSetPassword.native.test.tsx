@@ -6,7 +6,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 const mockShowSuccessSnackBar = jest.fn()
@@ -42,15 +42,17 @@ describe('<ChangeEmailSetPassword />', () => {
   })
 
   it('should enable the submit button when inputs are valid', async () => {
-    render(reactQueryProviderHOC(<ChangeEmailSetPassword />))
+    await renderAsync(reactQueryProviderHOC(<ChangeEmailSetPassword />))
 
-    const passwordInput = screen.getByTestId('Mot de passe')
-    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
+    const passwordInput = await screen.findByTestId('Mot de passe')
+    const confirmationInput = await screen.findByTestId('Confirmer le mot de passe')
 
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    expect(await screen.findByLabelText('Créer mon mot de passe')).toBeEnabled()
+    await waitFor(async () => {
+      expect(await screen.findByLabelText('Créer mon mot de passe')).toBeEnabled()
+    })
   })
 
   it('should disable the submit button when password is not strong enough', async () => {
@@ -86,7 +88,9 @@ describe('<ChangeEmailSetPassword />', () => {
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY321')
 
-    expect(await screen.findByText('Les mots de passe ne concordent pas')).toBeOnTheScreen()
+    expect(
+      await screen.findByText('Les mots de passe ne concordent pas', { hidden: true })
+    ).toBeOnTheScreen()
   })
 
   it('should navigate to email selection step on password creation success', async () => {

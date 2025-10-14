@@ -34,7 +34,7 @@ type Props = {
 export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress }) => {
   const { designSystem } = useTheme()
 
-  const { data: offers, isInitialLoading: isLoading } = useOffersStocksFromOfferQuery(offer)
+  const { data: offers, isLoading } = useOffersStocksFromOfferQuery(offer)
   const { selectedDate, dates } = useMovieCalendar()
   const { movieOffers, hasStocksOnlyAfter15Days } = useGetVenuesByDay(selectedDate, offers.offers)
 

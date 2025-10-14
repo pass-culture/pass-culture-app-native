@@ -71,8 +71,9 @@ export function StatusFlatList({
         name="selectedStatus"
         render={({ field: { value, onChange } }) => (
           <RadioSelector
-            checked={item.id === value}
+            radioGroupLabel="Statut"
             label={item.label}
+            checked={item.id === value}
             description={item.description}
             onPress={() => onChange(item.id)}
           />
@@ -142,10 +143,10 @@ const FlatListContainer = styled(View)({
 
 const BottomView = styled(View)(({ theme }) => ({
   alignItems: 'center',
-  paddingBottom: getSpacing(5),
-  paddingTop: getSpacing(3),
+  paddingBottom: theme.designSystem.size.spacing.xl,
+  paddingTop: theme.designSystem.size.spacing.m,
   backgroundColor: theme.designSystem.color.background.default,
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
 const HeaderHeightSpacer = styled(View).attrs<{ headerHeight: number }>({})<{

@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTabHookConfig } from 'features/navigation/TabBar/helpers'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { BackButton } from 'ui/components/headers/BackButton'

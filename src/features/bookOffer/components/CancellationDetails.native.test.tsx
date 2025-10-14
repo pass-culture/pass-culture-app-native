@@ -34,8 +34,8 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
 }))
 
 let mockOffer = { id: 1, isDuo: true } as unknown as OfferResponseV2
-jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
-  useBookingOffer: jest.fn(() => mockOffer),
+jest.mock('queries/offer/useBookingOfferQuery', () => ({
+  useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
 describe('<CancellationDetails /> when isDigital = true', () => {

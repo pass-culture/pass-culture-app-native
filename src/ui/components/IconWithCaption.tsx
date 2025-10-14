@@ -39,7 +39,6 @@ export const IconWithCaption = ({
 }
 
 const Container = styled(ViewGap)({
-  flex: 1,
   alignItems: 'center',
 })
 

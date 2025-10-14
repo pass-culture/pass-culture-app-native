@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AsyncErrorBoundary component should render correctly 1`] = `
 .c2 {
@@ -11,7 +11,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
   padding-right: 24px;
   min-height: 48px;
   width: 100%;
-  background-color: #eb0055;
+  background-color: #6123df;
   max-width: 500px;
   cursor: pointer;
   outline: none;

@@ -261,6 +261,17 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               }
               width={750}
             />
+            <View
+              height={421.875}
+              style={
+                {
+                  "backgroundColor": "#161617",
+                  "height": 421.875,
+                  "width": 750,
+                }
+              }
+              width={750}
+            />
           </View>
         </View>
         <RCTScrollView
@@ -303,7 +314,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   }
                 }
                 testID="tagWrapper"
-                withColor={true}
               >
                 <Text
                   style={
@@ -410,7 +420,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               }
             />
             <View
-              accessibilityRole="link"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -445,17 +455,10 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     },
                     {},
                     {
-                      "borderBottomLeftRadius": 12,
-                      "borderBottomRightRadius": 12,
-                      "borderTopLeftRadius": 12,
-                      "borderTopRightRadius": 12,
-                      "shadowColor": "#161617",
-                      "shadowOffset": {
-                        "height": 12,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 48,
+                      "borderBottomLeftRadius": 16,
+                      "borderBottomRightRadius": 16,
+                      "borderTopLeftRadius": 16,
+                      "borderTopRightRadius": 16,
                     },
                   ],
                   {
@@ -497,23 +500,16 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
-                    borderRadius={5}
+                    borderRadius={4}
                     size="small"
                     style={
                       {
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 5,
-                        "borderBottomRightRadius": 5,
-                        "borderTopLeftRadius": 5,
-                        "borderTopRightRadius": 5,
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 4,
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 4,
                         "height": 96,
-                        "shadowColor": "#696A6F",
-                        "shadowOffset": {
-                          "height": 4,
-                          "width": 0,
-                        },
-                        "shadowOpacity": 0.2,
-                        "shadowRadius": 4,
                         "width": 64,
                       }
                     }
@@ -527,11 +523,11 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           },
                           {
                             "backgroundColor": "#f1f1f4",
-                            "borderBottomLeftRadius": 5,
-                            "borderBottomRightRadius": 5,
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
                             "borderColor": "#90949d",
-                            "borderTopLeftRadius": 5,
-                            "borderTopRightRadius": 5,
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
                             "borderWidth": 1,
                             "height": 96,
                             "width": 64,
@@ -540,7 +536,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                       }
                     >
                       <FastImageView
-                        borderRadius={5}
+                        borderRadius={4}
                         defaultSource={null}
                         resizeMode="cover"
                         size="small"
@@ -675,10 +671,10 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 },
                 {
                   "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 40,
-                  "borderBottomRightRadius": 40,
-                  "borderTopLeftRadius": 40,
-                  "borderTopRightRadius": 40,
+                  "borderBottomLeftRadius": 999,
+                  "borderBottomRightRadius": 999,
+                  "borderTopLeftRadius": 999,
+                  "borderTopRightRadius": 999,
                   "paddingBottom": 10,
                   "paddingLeft": 10,
                   "paddingRight": 10,
