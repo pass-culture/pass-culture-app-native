@@ -35,11 +35,11 @@ const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 export const BonificationBirthPlace = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
-  const [countryList, setCountryList] = useState(COUNTRY_LIST)
-  const [showCityField, setShowCityField] = useState(false)
-
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
+
+  const [countryList, setCountryList] = useState(COUNTRY_LIST)
+  const [showCityField, setShowCityField] = useState(!!storedLegalRepresentative.birthCity)
 
   const { control, formState, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: {
@@ -121,18 +121,22 @@ export const BonificationBirthPlace = () => {
                           autoComplete="country"
                           errorMessage={error?.message}
                         />
-                        {valueInput && valueInput.length != 0 ? (
-                          <Touchable
-                            hitSlop={hitSlop}
-                            onPress={() => {
-                              reset()
-                              setShowCityField(false)
-                            }}
-                            accessibilityLabel="Réinitialiser la recherche"
-                            type="reset">
-                            <Invalidate />
-                          </Touchable>
-                        ) : null}
+                        <View style={{ flexDirection: 'row' }}>
+                          <Text>Selected country: {valueSelection}</Text>
+                          <Validate />
+                          {valueInput && valueInput.length != 0 ? (
+                            <Touchable
+                              hitSlop={hitSlop}
+                              onPress={() => {
+                                reset()
+                                setShowCityField(false)
+                              }}
+                              accessibilityLabel="Réinitialiser la recherche"
+                              type="reset">
+                              <Invalidate />
+                            </Touchable>
+                          ) : null}
+                        </View>
                         {valueInput &&
                           valueInput.length != 0 &&
                           countryList.map((country) => {
@@ -140,7 +144,7 @@ export const BonificationBirthPlace = () => {
                               <TouchableOpacity
                                 key={country.id}
                                 onPress={() => {
-                                  handleUserInputChange(country.name_fr)
+                                  setCountryList([])
                                   onChangeSelection(country.name_fr)
                                   onChangeInput(country.name_fr)
 

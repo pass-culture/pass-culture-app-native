@@ -2,7 +2,8 @@
 // data from https://data.aide-developpement.gouv.fr/explore/dataset/referentiel-pays/api/
 // delete subregion "French Southern and Antarctic Land"
 //   png: 'https://flagcdn.com/w320/lt.png',
-
+// use INSEE list
+// should we include countries that don't exist anymore?
 export interface Country {
   /** Unique numeric identifier. */
   id: number
