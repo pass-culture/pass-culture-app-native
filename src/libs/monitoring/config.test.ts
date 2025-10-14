@@ -2,7 +2,16 @@ import { env } from 'libs/environment/env'
 
 import { getSentryConfig } from './config'
 
+jest.mock('libs/packageJson', () => ({
+  getAppVersion: jest.fn(() => '1.2.3'),
+  getAppBuildVersion: jest.fn(() => '42'),
+}))
+
 describe('monitoring/config', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should return config object with correct sample rates as set in env variables', async () => {
     env.SENTRY_SAMPLE_RATE = '0.5'
     env.SENTRY_TRACES_SAMPLE_RATE = '0.25'
