@@ -11,13 +11,13 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceSettings } from 'features/cookies/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { InteractionManager } from 'react-native'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
+import { Anchor } from 'ui/components/anchor/Anchor'
+import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Anchor } from 'ui/components/anchor/Anchor'
-import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -64,12 +64,12 @@ export const CookiesSettings = ({
   }
 
   useEffect(() => {
-    InteractionManager.runAfterInteractions(() => {
-      if (!!offerId) {
+    runAfterInteractionsMobile(() => {
+      if (offerId) {
         scrollToAnchor('cookies-accordion')
       }
     })
-  }, [])
+  }, [offerId, scrollToAnchor])
 
   const inputLabel = 'Tout accepter'
   const { [CookieCategoriesEnum.video]: _videoCookiesInfo, ...otherCookiesInfo } = cookiesInfo

@@ -54,6 +54,7 @@ export const SecondaryPageWithBlurHeader = forwardRef<ScrollView, Props>(
     )
   }
 )
+SecondaryPageWithBlurHeader.displayName = 'SecondaryPageWithBlurHeader'
 
 interface StyledScrollViewProps {
   enableMaxWidth: boolean

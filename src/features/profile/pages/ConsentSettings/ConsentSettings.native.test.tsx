@@ -34,6 +34,7 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
   useFocusEffect: jest.fn(),
+  useRoute: () => ({ params: {} }),
 }))
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
@@ -57,6 +58,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('react-native/Libraries/Interaction/InteractionManager', () => ({
+  ...jest.requireActual('react-native/Libraries/Interaction/InteractionManager'),
+  runAfterInteractions: jest.fn((callback) => callback()), // Exécute le callback immédiatement
+}))
 
 const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies')
 
@@ -129,6 +135,7 @@ describe('<ConsentSettings/>', () => {
       cookiesConsent: consentStatus,
       setCookiesConsent: jest.fn(),
       setUserId: jest.fn(),
+      loadCookiesConsent: jest.fn(),
     })
 
     renderConsentSettings()

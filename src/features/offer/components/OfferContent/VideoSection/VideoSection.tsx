@@ -92,7 +92,7 @@ export const VideoSection = ({
         onManageCookiesPress={onManageCookiesPress}
       />
     )
-  }, [duration, maxWidth, title, videoHeight, videoThumbnail, viewportWidth])
+  }, [duration, maxWidth, onManageCookiesPress, title, videoHeight, videoThumbnail, viewportWidth])
 
   return (
     <React.Fragment>

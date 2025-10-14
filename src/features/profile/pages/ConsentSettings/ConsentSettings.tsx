@@ -17,6 +17,7 @@ import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieCho
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -68,14 +69,25 @@ export const ConsentSettings = () => {
     originalCookieChoicesRef.current
   )
 
+  const handleGoBack = useCallback(() => {
+    runAfterInteractionsMobile(() => {
+      if (offerId) {
+        navigate('Offer', { id: offerId })
+      } else {
+        goBack()
+      }
+    })
+  }, [goBack, navigate, offerId])
+
   const handleBack = useCallback(() => {
     if (hasUnsavedCookieChanges) showModal()
-    else goBack()
-  }, [hasUnsavedCookieChanges, showModal, goBack])
+    else handleGoBack()
+  }, [hasUnsavedCookieChanges, showModal, handleGoBack])
 
-  const handleSaveChoices = useCallback(() => {
+  const handleSaveChoices = useCallback(async () => {
+    hideModal()
     const { accepted, refused } = getCookiesChoiceFromCategories(currentCookieChoices)
-    setCookiesConsent({ mandatory: COOKIES_BY_CATEGORY.essential, accepted, refused })
+    await setCookiesConsent({ mandatory: COOKIES_BY_CATEGORY.essential, accepted, refused })
     startTrackingAcceptedCookies(accepted)
     analytics.logHasMadeAChoiceForCookies({ from: 'ConsentSettings', type: currentCookieChoices })
     showSuccessSnackBar({
@@ -84,14 +96,20 @@ export const ConsentSettings = () => {
     })
 
     originalCookieChoicesRef.current = currentCookieChoices
-    navigate(...getTabHookConfig('Profile'))
-  }, [navigate, setCookiesConsent, currentCookieChoices, showSuccessSnackBar])
+    runAfterInteractionsMobile(() => {
+      if (offerId) {
+        navigate('Offer', { id: offerId })
+      } else {
+        navigate(...getTabHookConfig('Profile'))
+      }
+    })
+  }, [currentCookieChoices, setCookiesConsent, showSuccessSnackBar, hideModal, offerId, navigate])
 
   const handleDiscardAndGoBack = useCallback(() => {
     setCurrentCookieChoices(originalCookieChoicesRef.current)
     hideModal()
-    goBack()
-  }, [hideModal, goBack])
+    handleGoBack()
+  }, [hideModal, handleGoBack])
 
   const modalDescription = 'Tes modifications ne seront pas prises en compte.'
 
