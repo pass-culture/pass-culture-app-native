@@ -7,3 +7,10 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Ouvrir la modale de localisation depuis le widget'
       - tapOn: 
           text: ".*France entière.*"
+
+- runFlow:
+    when:
+      visible: "Localisation"
+    commands:
+      - tapOn: 
+          text: ".*France entière.*"
