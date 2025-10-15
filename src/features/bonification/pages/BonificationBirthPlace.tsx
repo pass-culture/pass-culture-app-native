@@ -1,11 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { Image, Insets, Text, TouchableOpacity, View } from 'react-native'
+import { Insets, Text, TouchableOpacity, View } from 'react-native'
 
-import { COUNTRY_LIST } from 'features/bonification/countries'
+import { INSEE_COUNTRY_LIST } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
   legalRepresentativeActions,
@@ -38,10 +39,10 @@ export const BonificationBirthPlace = () => {
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
 
-  const [countryList, setCountryList] = useState(COUNTRY_LIST)
+  const [countryList, setCountryList] = useState(INSEE_COUNTRY_LIST)
   const [showCityField, setShowCityField] = useState(!!storedLegalRepresentative.birthCity)
 
-  const { control, formState, handleSubmit, reset } = useForm<FormValues>({
+  const { control, formState, handleSubmit, reset, watch } = useForm<FormValues>({
     defaultValues: {
       birthCountrySelection: storedLegalRepresentative.birthCountry ?? '',
       birthCity: storedLegalRepresentative.birthCity ?? '',
@@ -64,8 +65,8 @@ export const BonificationBirthPlace = () => {
 
   const handleUserInputChange = (input: string) => {
     setCountryList(
-      COUNTRY_LIST.filter((country) =>
-        country.name_fr.toLocaleLowerCase().startsWith(input.toLocaleLowerCase())
+      INSEE_COUNTRY_LIST.filter((country) =>
+        country.LIBCOG.toLocaleLowerCase().startsWith(input.toLocaleLowerCase())
       )
     )
   }
@@ -76,8 +77,8 @@ export const BonificationBirthPlace = () => {
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
 
   const findCountry = (countryName) => {
-    return COUNTRY_LIST.find(
-      (country) => country.lang_fr.toLocaleLowerCase() === countryName.toLocaleLowerCase()
+    return INSEE_COUNTRY_LIST.find(
+      (country) => country.LIBCOG.toLocaleLowerCase() === countryName.toLocaleLowerCase()
     )
   }
 
@@ -142,27 +143,20 @@ export const BonificationBirthPlace = () => {
                           countryList.map((country) => {
                             return (
                               <TouchableOpacity
-                                key={country.id}
+                                key={country.COG}
                                 onPress={() => {
                                   setCountryList([])
-                                  onChangeSelection(country.name_fr)
-                                  onChangeInput(country.name_fr)
-
-                                  if (valueInput === 'France') {
+                                  onChangeSelection(country.LIBCOG)
+                                  onChangeInput(country.LIBCOG)
+                                  if (
+                                    watch('birthCountrySelection').toLocaleLowerCase() === 'france'
+                                  ) {
                                     setShowCityField(true)
                                   } else setShowCityField(false)
                                 }}>
                                 <View style={{ flexDirection: 'row' }}>
-                                  {country.iso_4217 ? (
-                                    <Image
-                                      source={{
-                                        uri: `https://flagcdn.com/w320/${country.tld.slice(1)}.png`,
-                                      }}
-                                      style={{ width: 32, borderRadius: 4 }}
-                                    />
-                                  ) : null}
-                                  <Text>{country.name_fr}</Text>
-                                  {valueSelection === country.name_fr ? <Validate /> : null}
+                                  <Text>{country.LIBCOG}</Text>
+                                  {valueSelection === country.LIBCOG ? <Validate /> : null}
                                 </View>
                               </TouchableOpacity>
                             )
