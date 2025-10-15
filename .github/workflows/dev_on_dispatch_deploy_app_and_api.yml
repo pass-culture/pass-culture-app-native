@@ -1,0 +1,21 @@
+name: '1 [on_dispatch] Deploy AN and API'
+
+on:
+  push:
+    branches:
+      - tconte-pass/workflow-e2e
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+
+jobs:
+  steps:
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v4
+      with:
+        token: ${{ secrets.PAT }}
+        repository: pass-culture/pass-culture-main
+        event-type: native-e2e
+        client-payload: '{"message": "coucou"}'

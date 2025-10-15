@@ -2,6 +2,8 @@ name: 'E2E Web SmokeTest'
 
 on:
   push:
+    branches:
+      - master
 
 permissions:
   contents: read
@@ -71,7 +73,7 @@ jobs:
           echo "Running Maestro tests against on web Staging"
           export PATH=$HOME/.maestro/bin:$PATH
           maestro test .maestro/tests/SmokeTestWeb.yaml --headless
-          
+
       - name: Upload Maestro artifacts (logs & screenshots)
         if: failure()
         uses: actions/upload-artifact@v4
