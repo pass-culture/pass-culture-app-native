@@ -13,6 +13,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { Anchor } from 'ui/components/anchor/Anchor'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -98,7 +99,7 @@ export const CookiesSettings = ({
       </ChoiceContainer>
       {Object.keys(visibleCookiesInfo).map((cookie) =>
         (cookie as CookieCategoriesEnum) === CookieCategoriesEnum.video ? (
-          <Anchor name="cookies-accordion" key={cookie}>
+          <Anchor name={AnchorNames.COOKIES_ACCORDION} key={cookie}>
             <CookiesAccordion
               cookie={cookie as CookieCategoriesEnum}
               settingsCookiesChoice={settingsCookiesChoice}

@@ -6,6 +6,7 @@ import { OfferResponseV2 } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useRegisterAnchor } from 'ui/components/anchor/AnchorContext'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
@@ -31,7 +32,7 @@ export const ChroniclesSectionWithAnchor: FunctionComponent<ChroniclesSectionWit
 
   const handleLayout = useCallback(() => {
     if (chroniclesSectionRef.current) {
-      registerAnchor('chronicles-section', chroniclesSectionRef)
+      registerAnchor(AnchorNames.CHRONICLES_SECTION, chroniclesSectionRef)
     }
   }, [registerAnchor])
 
