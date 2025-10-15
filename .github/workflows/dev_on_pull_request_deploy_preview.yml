@@ -1,19 +1,25 @@
-name: '1 [on_pr] Deploy PR version to Firebase for preview'
+name: '1 [on_pr] Deploy PR version preview (API + Mobile)'
 
 on:
   pull_request:
     branches: [master]
     types:
       - opened
-      - edited
       - synchronize
+      - reopened
+      - ready_for_review
 
 permissions: write-all
 
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
-  deploy_on_firebase:
-    if: contains(github.event.pull_request.labels.*.name, 'preview')
-    name: Deploy PR version to Firebase
+  # 1) Deploy web version on Firebase for instant preview
+  deploy_web_on_firebase:
+    if: contains(github.event.pull_request.labels.*.name, 'preview') && !github.event.pull_request.draft
+    name: Deploy PR web version to Firebase
     uses: ./.github/workflows/dev_on_workflow_pr_preview.yml
     with:
       ENV: 'testing'
@@ -24,3 +30,34 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+
+  # 2) Request backend API deployment for native apps
+  request_api_preview:
+    if: contains(github.event.pull_request.labels.*.name, 'preview') && !github.event.pull_request.draft
+    name: Request API preview deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate through github app ghactionci
+        uses: actions/create-github-app-token@v2
+        id: github-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: |
+            pass-culture-main
+            pass-culture-app-native
+
+      - name: Dispatch to API repo to deploy preview environment
+        uses: peter-evans/repository-dispatch@v4
+        with:
+          token: ${{ steps.github-token.outputs.token }}
+          repository: pass-culture/pass-culture-main
+          event-type: deploy-preview-for-mobile
+          client-payload: |
+            {
+              "source_repo": "${{ github.repository }}",
+              "pr_number": "${{ github.event.pull_request.number }}",
+              "pr_branch": "${{ github.head_ref }}",
+              "sha": "${{ github.sha }}"
+            }

@@ -1,0 +1,361 @@
+name: '0 [on_dispatch] Build mobile preview with API URL'
+
+on:
+  repository_dispatch:
+    types: [api-preview-ready]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build_preview_mobile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Show received payload
+        run: |
+          echo "PR:     ${{ github.event.client_payload.pr_number }}"
+          echo "BRANCH: ${{ github.event.client_payload.pr_branch }}"
+          echo "SHA:    ${{ github.event.client_payload.sha }}"
+          echo "API_URL: ${{ github.event.client_payload.api_url }}"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/checkout@v4.2.1
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: OpenID Connect Authentication
+        id: 'openid-auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_preview_firebase_json
+
+      - name: Cache the node_modules
+        id: 'yarn-modules-cache'
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          compression-method: 'gzip'
+          bucket: 'passculture-metier-ehp'
+          path: |
+            **/node_modules
+          key: v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+          restore-keys: |
+            v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
+
+      - name: Yarn install
+        run: yarn install
+
+      - name: Comment on PR - Build started
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            🚀 **Preview mobile en cours de construction**
+
+            **Backend API :** `${{ github.event.client_payload.api_url }}`
+
+            Les builds Android et iOS sont en cours... (environ 20-30 minutes)
+
+            📊 [Suivre la progression](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          pr_number: ${{ github.event.client_payload.pr_number }}
+
+  build_android:
+    needs: build_preview_mobile
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/checkout@v4.2.1
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 11076708
+
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          bucket: 'passculture-metier-ehp'
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Yarn install
+        run: yarn install
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Secrets from Secret Manager
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/pc-native-android-google-service-testing
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-testing-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-testing-keystore
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_testing_firebase_json
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+
+      - name: Export firebase secret to file
+        run: |
+          echo '${{steps.secrets.outputs.FIREBASE_TOKEN}}' > app_distribution_credentials.json
+
+      - name: Render Sentry Template
+        uses: chuhlomin/render-template@v1.10
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
+
+      - name: Create a directory for keystores
+        run: mkdir --parents android/keystores/
+
+      - name: Setup android keystore for preview environment
+        run: |
+          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' | base64 --decode > android/keystores/testing.keystore
+
+      - name: Setup android keystore properties
+        uses: chuhlomin/render-template@v1.10
+        with:
+          template: templates_github_ci/testing.keystore.properties
+          vars: |
+            ENVIRONMENT: testing
+            ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+            ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
+          result_path: android/keystores/testing.keystore.properties
+
+      - name: Setup android Google services config
+        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+
+      - name: Deploy Android preview
+        run: bundle exec fastlane android deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env testing --verbose
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          API_BASE_URL: ${{ github.event.client_payload.api_url }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
+
+      - name: Create Sentry sourcemaps
+        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" testing'
+
+      - name: Save Android build URL
+        id: android_build
+        run: |
+          echo "build_url=https://appdistribution.firebase.google.com/testerapps/1:557258398232:android:981d2fd61e096ddf22816d" >> $GITHUB_OUTPUT
+
+  build_ios:
+    needs: build_preview_mobile
+    runs-on: macos-14
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4.2.1
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Setup yarn
+        run: npm install -g yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          bucket: 'passculture-metier-ehp'
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Yarn install
+        run: yarn install
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Select XCode version
+        run: |
+          XCODE_VERSION="$(cat ./.xcode-version)"
+          sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
+
+      - name: Show available XCode's SDKs
+        run: xcodebuild -showsdks
+
+      - name: Install cocoapods
+        run: cd ios/ && bundle exec pod install
+
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Secrets from Secret Manager
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
+            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/pc-native-ios-google-service-testing
+            MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
+            MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
+            MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
+            MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_testing_firebase_json
+
+      - name: Export firebase secret to file
+        run: |
+          echo '${{steps.secrets.outputs.FIREBASE_TOKEN}}' > app_distribution_credentials.json
+
+      - name: Render Sentry Template
+        run: |
+          cp templates_github_ci/.sentryclirc .sentryclirc
+          sed '$d' .sentryclirc
+          echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
+
+      - name: Setup iOS Google services config
+        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+
+      - name: Add ssh key needed
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ steps.secrets.outputs.MATCH_SSH_KEY }}
+
+      - name: Deploy iOS preview
+        run: bundle exec fastlane ios deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env testing --verbose
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          API_BASE_URL: ${{ github.event.client_payload.api_url }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ steps.secrets.outputs.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
+          MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
+          MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
+
+      - name: Create Sentry sourcemaps
+        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios" testing'
+
+      - name: Save iOS build URL
+        id: ios_build
+        run: |
+          echo "build_url=https://appdistribution.firebase.google.com/testerapps/1:557258398232:ios:7e115147acf19cda22816d" >> $GITHUB_OUTPUT
+
+  comment_build_links:
+    needs: [build_android, build_ios]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment build links on PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            ✅ **Preview mobile construite avec succès !**
+
+            **Backend API :** `${{ github.event.client_payload.api_url }}`
+
+            **Télécharger les builds :**
+            - 🤖 [Android sur Firebase App Distribution](https://appdistribution.firebase.google.com/testerapps/1:557258398232:android:981d2fd61e096ddf22816d)
+            - 🍎 [iOS sur Firebase App Distribution](https://appdistribution.firebase.google.com/testerapps/1:557258398232:ios:7e115147acf19cda22816d)
+
+            _Les builds sont disponibles dans Firebase App Distribution pour les testeurs autorisés._
+          pr_number: ${{ github.event.client_payload.pr_number }}
+
+  comment_build_partial:
+    needs: [build_android, build_ios]
+    if: always() && !success() && !failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment partial build on PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            ⚠️ **Preview mobile partiellement construite**
+
+            **Backend API :** `${{ github.event.client_payload.api_url }}`
+
+            - Android: ${{ needs.build_android.result == 'success' && '✅ Réussi' || '❌ Échoué' }}
+            - iOS: ${{ needs.build_ios.result == 'success' && '✅ Réussi' || '❌ Échoué' }}
+
+            **Télécharger les builds disponibles :**
+            ${{ needs.build_android.result == 'success' && '- 🤖 [Android sur Firebase App Distribution](https://appdistribution.firebase.google.com/testerapps/1:557258398232:android:981d2fd61e096ddf22816d)' || '' }}
+            ${{ needs.build_ios.result == 'success' && '- 🍎 [iOS sur Firebase App Distribution](https://appdistribution.firebase.google.com/testerapps/1:557258398232:ios:7e115147acf19cda22816d)' || '' }}
+
+            Consultez les logs dans [Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) pour plus de détails.
+          pr_number: ${{ github.event.client_payload.pr_number }}
+
+  comment_build_failure:
+    needs: [build_preview_mobile, build_android, build_ios]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment build failure on PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            ❌ **Erreur lors de la construction du preview mobile**
+
+            **Backend API :** `${{ github.event.client_payload.api_url }}`
+
+            Les builds ont échoué. Consultez les logs dans [Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) pour plus de détails.
+          pr_number: ${{ github.event.client_payload.pr_number }}

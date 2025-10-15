@@ -36,6 +36,13 @@ export default ({ mode }) => {
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
+
+  // Override with system environment variables (priority: system env > .env file)
+  // This allows CI to override API_BASE_URL dynamically for PR previews
+  if (process.env.API_BASE_URL) {
+    env.API_BASE_URL = process.env.API_BASE_URL
+  }
+
   const authToken = env.SENTRY_AUTH_TOKEN ?? process.env.SENTRY_AUTH_TOKEN // First case is for local dev, second for CI
 
   const proxyConfig = {

@@ -4,13 +4,23 @@ private_lane :load_env_file do |options|
   check_env_exists(
     env: ENV["ENV"],
   )
+
+  # Preserve API_BASE_URL from system environment if set (for PR previews)
+  api_base_url_override = ENV["API_BASE_URL"]
+
   Dotenv.overload(".env.secret")
   Dotenv.overload("../.env.#{ENV["ENV"]}")
   Dotenv.overload(".env.#{ENV["ENV"]}.secret")
+
+  # Restore API_BASE_URL if it was set in system environment
+  if api_base_url_override
+    ENV["API_BASE_URL"] = api_base_url_override
+    UI.important("API_BASE_URL overridden from system environment: #{api_base_url_override}")
+  end
 
   package=load_json(json_path:"package.json")
   UI.important("version: #{package["version"]}")
   UI.important("version: #{package["build"]}")
   ENV["VERSION"] = package["version"]
-  
+
 end
