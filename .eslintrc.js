@@ -13,9 +13,22 @@ module.exports = {
     'testing-library',
     'jest',
     'boundaries',
+    'eslint-plugin-react-hooks',
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  extends: ['eslint:recommended', 'plugin:@bam.tech/recommended', 'plugin:react/recommended', 'plugin:react-native/all', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'plugin:import/errors', 'plugin:react-hooks/recommended', 'plugin:boundaries/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@bam.tech/recommended',
+    'plugin:react/recommended',
+    'plugin:react-native/all',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:react-hooks/recommended',
+    'plugin:boundaries/recommended',
+    'plugin:storybook/recommended',
+    'plugin:react-hooks/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports

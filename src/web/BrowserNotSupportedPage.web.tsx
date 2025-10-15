@@ -38,13 +38,13 @@ const browserMessages: Record<
   }),
 }
 
+const Illustration = getPrimaryIllustration(PageNotFound)
+
 export const BrowserNotSupportedPage: React.FC<{
   browserVersion: number
   supportedBrowsers: SupportedBrowsers
   onPress: () => void
 }> = ({ browserVersion, supportedBrowsers, onPress }) => {
-  const Illustration = getPrimaryIllustration(PageNotFound)
-
   const isBrowserSupported = browserName in supportedBrowsers
   const minSupportedVersion = isBrowserSupported ? supportedBrowsers[browserName] : undefined
   const isUpToDate = isBrowserSupported && browserVersion >= (minSupportedVersion ?? 0)
