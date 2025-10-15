@@ -1,6 +1,5 @@
 import { ReactNativeOptions } from '@sentry/react-native'
 import { Platform } from 'react-native'
-import CodePush from 'react-native-code-push'
 
 import { env } from 'libs/environment/env'
 import { getAppBuildVersion, getAppVersion } from 'libs/packageJson'
@@ -11,17 +10,7 @@ import { reactNavigationIntegration } from './sentry'
 const sentryReactNavigationIntegration = reactNavigationIntegration()
 
 export async function getSentryConfig() {
-  let update
-  try {
-    update = await CodePush.getUpdateMetadata()
-  } catch (error) {
-    // silent fail
-  }
-
-  let release = `${getAppVersion()}-${Platform.OS}`
-  if (update) {
-    release += `+codepush:${update.label}`
-  }
+  const release = getAppVersion()
   const dist = `${getAppBuildVersion()}-${Platform.OS}`
 
   return {
