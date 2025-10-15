@@ -18,7 +18,7 @@ interface Props {
   initialColor?: ColorsType
   finalColor?: ColorsType
   onPress: () => void
-  scaleAnimatedValue?: Animated.Value
+  scaleAnimatedValue?: React.RefObject<Animated.Value>
   animationState?: {
     iconBackgroundColor: Animated.AnimatedInterpolation<ColorsType>
     iconBorderColor: Animated.AnimatedInterpolation<ColorsType>
@@ -31,7 +31,7 @@ interface Props {
 }
 
 export const RoundedButton = (props: Props) => {
-  const iconFactory = useIconFactory()
+  const iconFactory = useIconFactory() // pourquoi utiliser un contexte pour les icones alors que les icones ne sont que ici? Remplacer par une fonction
   const Icon = props.Icon ?? iconFactory.getIcon(props.iconName)
   const { icons, designSystem } = useTheme()
 
@@ -56,7 +56,9 @@ export const RoundedButton = (props: Props) => {
           style={{
             borderColor: props.animationState.iconBorderColor,
             backgroundColor: props.animationState.iconBackgroundColor,
-            transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
+            transform: props.scaleAnimatedValue?.current
+              ? [{ scale: props.scaleAnimatedValue.current }]
+              : undefined,
           }}>
           <AnimatedIcon
             Icon={Icon}
@@ -70,7 +72,9 @@ export const RoundedButton = (props: Props) => {
       ) : (
         <IconContainer
           style={{
-            transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
+            transform: props.scaleAnimatedValue?.current
+              ? [{ scale: props.scaleAnimatedValue.current }]
+              : undefined,
           }}>
           <Icon
             size={icons.sizes.small}

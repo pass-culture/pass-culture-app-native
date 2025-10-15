@@ -85,7 +85,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
 
-  const Illustration = getPrimaryIllustration(illustration)
+  const Illustration = getPrimaryIllustration(illustration) // passer illustation en tant que composant
 
   return (
     <Page>

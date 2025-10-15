@@ -1,5 +1,5 @@
 import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -16,10 +16,7 @@ type Props = {
 export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPress }: Props) => {
   const [showBanner, setShowBanner] = useState(false)
 
-  useEffect(() => {
-    if (suggestedEmail) setShowBanner(true)
-    return () => setShowBanner(false)
-  }, [suggestedEmail])
+  if (suggestedEmail) setShowBanner(true)
 
   const replaceEmail = useCallback(() => {
     setShowBanner(false)
