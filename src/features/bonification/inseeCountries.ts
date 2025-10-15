@@ -14,7 +14,7 @@ type INSEE_COUNTRY = {
   DATE_FIN: string
 }
 
-const inseeCountries: INSEE_COUNTRY[] = [
+export const INSEE_COUNTRY_LIST: INSEE_COUNTRY[] = [
   {
     COG: 99100,
     CRPAY: null,
@@ -2078,7 +2078,7 @@ const accumulatorCallback = (acc: INSEE_COUNTRY[], currentVal: INSEE_COUNTRY) =>
   return acc
 }
 
-const accumulator = inseeCountries.reduce(accumulatorCallback, [])
+const accumulator = INSEE_COUNTRY_LIST.reduce(accumulatorCallback, [])
 
 // console.log({ accumulator })
-process.stdout.write(JSON.stringify(accumulator) + '\n')
+// process.stdout.write(JSON.stringify(accumulator) + '\n')
