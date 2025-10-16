@@ -3,8 +3,9 @@ tags:
   - web
 ---
 - launchApp
-- waitForAnimationToEnd: # Because of split of index & navigationContainer (2 loading animations vs 1 before)
-    timeout: 30000
+- extendedWaitUntil:
+    visible: "Respect de ta vie privée"
+    timeout: 60000  
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/home/VerifyHomeScreen.yml
 - runFlow: subFolder/search/NavigateToCinemaCategory.yml
