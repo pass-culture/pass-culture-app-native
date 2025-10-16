@@ -207,6 +207,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -245,6 +246,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -431,6 +433,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -456,6 +459,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -715,6 +719,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -1085,6 +1090,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -1110,6 +1116,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -1369,6 +1376,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -1604,6 +1612,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -1974,6 +1983,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -2012,6 +2022,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -2198,6 +2209,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -2236,6 +2248,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -2422,6 +2435,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -2447,6 +2461,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -2841,6 +2856,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -2879,6 +2895,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -3065,6 +3082,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -3103,6 +3121,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -3289,6 +3308,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -3314,6 +3334,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -3573,6 +3594,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -3943,6 +3965,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -3968,6 +3991,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -4227,6 +4251,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -4462,6 +4487,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -4697,6 +4723,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -5067,6 +5094,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -5105,6 +5133,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -5291,6 +5320,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -5316,6 +5346,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -5575,6 +5606,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -5810,6 +5842,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="future"
                   />
                 </View>
                 <View
@@ -6180,6 +6213,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -6218,6 +6252,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -6404,6 +6439,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -6442,6 +6478,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -6628,6 +6665,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -6666,6 +6704,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="bottom-line"
+                  variant="complete"
                 />
               </View>
             </View>
@@ -6852,6 +6891,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     }
                   }
                   testID="top-line"
+                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -6877,6 +6917,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       }
                     }
                     testID="icon"
+                    variant="in_progress"
                   />
                 </View>
                 <View
