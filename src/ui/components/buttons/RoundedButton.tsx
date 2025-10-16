@@ -31,7 +31,7 @@ interface Props {
 }
 
 export const RoundedButton = (props: Props) => {
-  const iconFactory = useIconFactory() // pourquoi utiliser un contexte pour les icones alors que les icones ne sont que ici? Remplacer par une fonction
+  const iconFactory = useIconFactory() // TODO(PC-38419): investigate: why context? why not just a function?
   const Icon = props.Icon ?? iconFactory.getIcon(props.iconName)
   const { icons, designSystem } = useTheme()
 

@@ -5,13 +5,13 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
-import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ButtonProps = {
@@ -40,7 +40,7 @@ type Props = PropsWithChildren<{
 // EX: ScreenErrorProvider IS OUTSIDE NAVIGATION!
 export const GenericErrorPage: FunctionComponent<Props> = ({
   header,
-  illustration,
+  illustration: IllustrationComponent,
   title,
   subtitle,
   helmetTitle,
@@ -53,7 +53,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   const { top } = useSafeAreaInsets()
   const { designSystem } = useTheme()
   const colorScheme = useColorScheme()
-  const Illustration = getPrimaryIllustration(illustration)
 
   return (
     <React.Fragment>
@@ -80,7 +79,14 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
         <Container>
           <Placeholder height={top} />
           <Spacer.Flex flex={1} />
-          <IllustrationContainer>{Illustration ? <Illustration /> : null}</IllustrationContainer>
+          <IllustrationContainer>
+            {IllustrationComponent ? (
+              <IllustrationComponent
+                size={illustrationSizes.fullPage}
+                color={designSystem.color.icon.brandPrimary}
+              />
+            ) : null}
+          </IllustrationContainer>
           <TextContainer gap={4}>
             <StyledTitle {...getHeadingAttrs(1)}>{title}</StyledTitle>
             {subtitle ? <StyledSubtitle {...getHeadingAttrs(2)}>{subtitle}</StyledSubtitle> : null}
