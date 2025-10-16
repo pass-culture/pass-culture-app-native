@@ -281,6 +281,52 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 5.2 - iOS - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
+
+**RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  
+**Ticket** : [PC-37476](https://passculture.atlassian.net/browse/PC-37476)  
+**PR** : [#8789](https://github.com/pass-culture/pass-culture-app-native/pull/8789)
+
+**Problème** 😱  
+
+- **(E01)** Les composants à bascule (switch) et le lien "Politique de gestion des cookies" ne sont pas accessible aux lecteurs d'écrans. 
+
+- **(E03)** Les composants "https://passculture.app/accueil" et "support@passculture.app" ne sont pas atteignables aux lecteurs d'écrans.
+
+- **(E04)** Les composants "https://passculture.app/accueil" et "support@passculture.app" ne sont pas atteignables aux lecteurs d'écrans.
+
+- **(E05)** Le composant à bascule pour permettre l'orientation n'est pas utilisable au clavier ou avec un autre dispositif de pointage. 
+
+- **(E08)** Le composant à bascule pour la géolocalisation n'est pas utilisable au clavier ou avec un autre dispositif de pointage. 
+
+- **(E15)** Les composants de choix de séance ("9H00 10€" et "11h00 10€") doivent un seul et même bloc, actuellement ils sont composés de 3 éléments dont un vide et il n'y a pas de rôle.
+
+
+**Correction** 💡  
+
+- **(E01)** Utilisation du composant `LinkInsideText` qui est accessible pour lien "Politique de gestion des cookies" et ajout d'un accessibiltyLabel accessible pour les composants à bascule (switch). 
+
+- **(E03)** Utilisation du composant `LinkInsideText` qui est accessible.
+
+- **(E04)** Utilisation du composant `LinkInsideText` qui est accessible.
+
+- **(E05)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour permettre l'orientation. 
+
+- **(E08)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour la géolocalisation.
+
+- **(E15)** Ajoute d'un `accessibilityLabel` plus complet pour les composants de choix de séance ("9H00 10€" et "11h00 10€") pour les rendre d'un seul et même bloc.
+
+
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
 
 **RAAM** : [Critère 7.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-1)  
