@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Localisation'
-- tapOn: 'Choisir une localisation.*'
+- tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
 - inputText: 'Paris'
 
 - runFlow:
@@ -14,12 +14,12 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: Android
     commands:
-    - tapOn: "Paris0Paris"
+      - tapOn: 'Paris0Paris'
 
-- tapOn: "Valider et voir sur la carte"
+- tapOn: 'Valider et voir sur la carte'
 
 - assertVisible:
     text: 'Carte des lieux'
     optional: true
 - runFlow: ../venue/VerifyMapFilter.yml
-- tapOn: "Revenir en arrière"
+- tapOn: 'Revenir en arrière'

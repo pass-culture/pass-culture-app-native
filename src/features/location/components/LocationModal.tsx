@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
@@ -209,6 +208,7 @@ export const LocationModal = ({
                 ) : null}
               </React.Fragment>
             ) : null}
+            <StyledSeparator />
           </Li>
           {shouldDisplayEverywhereSection ? (
             <Li
@@ -217,15 +217,12 @@ export const LocationModal = ({
               accessibilityRole={AccessibilityRole.BUTTON}
               index={2}
               total={3}>
-              <StyledView>
-                <Separator.Horizontal />
-                <LocationModalButton
-                  onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-                  icon={WorldPosition}
-                  color={everywhereLocationModeColor}
-                  title={LocationLabel.everywhereLabel}
-                />
-              </StyledView>
+              <LocationModalButton
+                onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+                icon={WorldPosition}
+                color={everywhereLocationModeColor}
+                title={LocationLabel.everywhereLabel}
+              />
             </Li>
           ) : null}
         </VerticalUl>
@@ -244,15 +241,10 @@ const HeaderContainer = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const StyledView = styled(View)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xl,
-  gap: theme.designSystem.size.spacing.xl,
-}))
-
 const SliderContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xl,
+  marginVertical: theme.designSystem.size.spacing.l,
 }))
