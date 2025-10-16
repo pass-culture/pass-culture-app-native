@@ -46,7 +46,7 @@ export const OfferReactionHeaderButton = ({
     <View style={{ transform: [{ scale: defaultReaction === ReactionTypeEnum.DISLIKE ? -1 : 1 }] }}>
       <RoundedButton
         animationState={animationState}
-        scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
+        scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef}
         finalColor={color}
         initialColor={color}
         iconName={iconName}

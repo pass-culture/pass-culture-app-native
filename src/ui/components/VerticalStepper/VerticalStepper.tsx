@@ -141,7 +141,7 @@ const IconWrapper = styled.View<{ addMoreSpacingToIcons: boolean }>(
   })
 )
 
-export const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
+const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
   size: getSpacing(5),
 }))``
