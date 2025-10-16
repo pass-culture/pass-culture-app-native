@@ -296,6 +296,8 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -307,7 +309,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="Numéro de téléphone"
                             style={
                               {
                                 "color": "#161617",
@@ -449,6 +450,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         </View>
                       </View>
                       <TextInput
+                        accessibilityLabel="Champs de texte - Numéro de téléphone"
                         accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="tel"

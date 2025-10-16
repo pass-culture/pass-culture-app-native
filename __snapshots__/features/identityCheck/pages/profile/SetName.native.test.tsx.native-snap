@@ -345,6 +345,8 @@ exports[`<SetName/> should render correctly 1`] = `
               >
                 <View>
                   <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
                     style={
                       {
                         "alignItems": "flex-end",
@@ -356,7 +358,6 @@ exports[`<SetName/> should render correctly 1`] = `
                   >
                     <View>
                       <Text
-                        accessibilityLabel="Prénom"
                         style={
                           {
                             "color": "#161617",
@@ -412,6 +413,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   testID="styled-input-container"
                 >
                   <TextInput
+                    accessibilityLabel="Champs de texte - Prénom - Obligatoire"
                     accessibilityRequired={true}
                     autoComplete="given-name"
                     editable={true}
@@ -469,6 +471,8 @@ exports[`<SetName/> should render correctly 1`] = `
               >
                 <View>
                   <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
                     style={
                       {
                         "alignItems": "flex-end",
@@ -480,7 +484,6 @@ exports[`<SetName/> should render correctly 1`] = `
                   >
                     <View>
                       <Text
-                        accessibilityLabel="Nom"
                         style={
                           {
                             "color": "#161617",
@@ -536,6 +539,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   testID="styled-input-container"
                 >
                   <TextInput
+                    accessibilityLabel="Champs de texte - Nom - Obligatoire"
                     accessibilityRequired={true}
                     autoComplete="family-name"
                     editable={true}

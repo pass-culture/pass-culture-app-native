@@ -271,6 +271,8 @@ exports[`<SetCity/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
                     style={
                       {
                         "marginBottom": 8,
@@ -289,7 +291,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          accessibilityLabel="Indique ton code postal et choisis ta ville"
                           style={
                             {
                               "color": "#161617",
@@ -305,6 +306,8 @@ exports[`<SetCity/> should render correctly 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
                     style={
                       {
                         "marginBottom": 8,
@@ -361,6 +364,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   >
                     <TextInput
                       accessibilityHidden={false}
+                      accessibilityLabel="Champs de texte (recherche) - Indique ton code postal et choisis ta ville - Exemple : 75017"
                       autoComplete="postal-code"
                       autoCorrect={false}
                       editable={true}

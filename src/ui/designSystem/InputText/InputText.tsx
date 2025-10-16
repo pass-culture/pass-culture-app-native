@@ -4,11 +4,13 @@
  */
 
 import React, { forwardRef, useState } from 'react'
-import { TextInput as RNTextInput, View } from 'react-native'
+import { Platform, TextInput as RNTextInput, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
@@ -55,21 +57,25 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     props.onChangeText?.(value)
   }
 
-  const computedAccessibilityLabel = [customProps?.label, customProps?.accessibilityHint]
-    .filter(Boolean)
-    .join(' - ')
-
   const inputLabel =
     customProps.requiredIndicator === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
+
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    'Champs de texte',
+    customProps.label,
+    customProps.description,
+    customProps.requiredIndicator ? 'Obligatoire' : null,
+    customProps.accessibilityHint
+  )
+
+  const hiddenFromScreenReaderMobile = Platform.OS === 'web' ? {} : hiddenFromScreenReader()
 
   return (
     <ContainerWithMaxWidth gap={0}>
       <FlexInputLabel htmlFor={textInputID}>
-        <LabelContainer>
+        <LabelContainer {...hiddenFromScreenReaderMobile}>
           <View>
-            <Typo.Body style={props.labelStyle} accessibilityLabel={computedAccessibilityLabel}>
-              {inputLabel}
-            </Typo.Body>
+            <Typo.Body style={props.labelStyle}>{inputLabel}</Typo.Body>
             {customProps.description ? <Description>{customProps.description}</Description> : null}
           </View>
           {customProps.requiredIndicator === 'explicit' ? (
@@ -92,6 +98,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
+          accessibilityLabel={computedAccessibilityLabel}
           accessibilityRequired={!!customProps.requiredIndicator}
           multiline={props.multiline}
           maxLength={customProps.characterCount}

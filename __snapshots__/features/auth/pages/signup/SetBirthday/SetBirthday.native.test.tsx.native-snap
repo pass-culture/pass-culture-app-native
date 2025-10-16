@@ -106,6 +106,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <View
+      accessibilityLabel="Date de naissance - 1er décembre 2006"
+      accessible={true}
       gap={2}
       style={
         {
@@ -170,7 +172,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         testID="styled-input-container"
       >
         <Text
-          accessibilityLabel="1er décembre 2006"
           nativeID="testUuidV4"
           style={
             {
@@ -947,6 +948,8 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       }
     />
     <View
+      accessibilityLabel="Date de naissance - 1er décembre 2006"
+      accessible={true}
       gap={2}
       style={
         {
@@ -1011,7 +1014,6 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         testID="styled-input-container"
       >
         <Text
-          accessibilityLabel="1er décembre 2006"
           nativeID="testUuidV4"
           style={
             {

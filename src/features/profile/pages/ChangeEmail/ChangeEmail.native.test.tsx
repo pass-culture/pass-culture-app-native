@@ -30,7 +30,7 @@ describe('<ChangeEmail/>', () => {
   it('should display the change email label', async () => {
     await renderChangeEmail()
 
-    const fieldLabel = await screen.findByText('Adresse e-mail actuelle')
+    const fieldLabel = await screen.findByText('Adresse e-mail actuelle', { hidden: true })
 
     expect(fieldLabel).toBeOnTheScreen()
   })
