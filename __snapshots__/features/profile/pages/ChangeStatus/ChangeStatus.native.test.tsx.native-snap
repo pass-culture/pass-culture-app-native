@@ -160,12 +160,14 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
     </View>
   </View>,
   <View
+    isLandscape={false}
     style={
       {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginHorizontal": 0,
       }
     }
   >
@@ -2214,12 +2216,14 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
     </View>
   </View>,
   <View
+    isLandscape={false}
     style={
       {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginHorizontal": 0,
       }
     }
   >
@@ -4268,12 +4272,14 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
     </View>
   </View>,
   <View
+    isLandscape={false}
     style={
       {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginHorizontal": 0,
       }
     }
   >

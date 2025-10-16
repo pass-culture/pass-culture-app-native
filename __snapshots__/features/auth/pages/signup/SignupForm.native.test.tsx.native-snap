@@ -2,12 +2,14 @@
 
 exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -705,12 +707,14 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
 
 exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -1599,12 +1603,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
 
 exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -2750,12 +2756,14 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
 
 exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
