@@ -2,12 +2,14 @@
 
 exports[`<AccountSecurity/> with route params when user is connected and has a password should match snapshot with valid token 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -644,12 +646,14 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
 
 exports[`<AccountSecurity/> with route params when user is connected and has no password (sso) should show alternative wording 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -1197,12 +1201,14 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
 
 exports[`<AccountSecurity/> without route params should match snapshot when no token 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

@@ -2,14 +2,20 @@
 
 exports[`<OfflinePage /> should match snapshot with default message 1`] = `
 <View
+  isLandscape={false}
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "#ffffff",
-      "flexBasis": 0,
-      "flexGrow": 1,
-      "flexShrink": 1,
-    }
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "marginHorizontal": 0,
+      },
+      {
+        "alignItems": "center",
+      },
+    ]
   }
 >
   <View

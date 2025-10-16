@@ -2,12 +2,14 @@
 
 exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -890,12 +892,14 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
 
 exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

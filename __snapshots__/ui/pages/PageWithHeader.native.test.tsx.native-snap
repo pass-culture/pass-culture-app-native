@@ -2,12 +2,14 @@
 
 exports[`<PageWithHeader/> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -306,12 +308,14 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
 
 exports[`<PageWithHeader/> should render correctly on Android, with white header 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

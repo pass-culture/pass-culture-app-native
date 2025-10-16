@@ -2,12 +2,14 @@
 
 exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -387,12 +389,14 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
 
 exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

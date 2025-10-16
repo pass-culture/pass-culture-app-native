@@ -2,18 +2,25 @@
 
 exports[`<LoadingPage /> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
-    {
-      "alignItems": "center",
-      "alignSelf": "center",
-      "backgroundColor": "#ffffff",
-      "flexBasis": 0,
-      "flexDirection": "column",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "justifyContent": "center",
-      "width": "100%",
-    }
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "marginHorizontal": 0,
+      },
+      {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "justifyContent": "center",
+        "width": "100%",
+      },
+    ]
   }
 >
   <View>
