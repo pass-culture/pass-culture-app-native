@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -31,7 +31,7 @@ export const useCookies = () => {
   const { user: userProfileInfo } = useAuthContext()
   const { mutateAsync: persist } = usePersistCookieConsentMutation()
 
-  useEffect(() => {
+  const loadCookiesConsent = useCallback(() => {
     getCookiesChoice().then((cookies) => {
       if (cookies) {
         setConsentAndChoiceDateTime(cookies, setCookiesConsentInternalState)
@@ -40,6 +40,10 @@ export const useCookies = () => {
       }
     })
   }, [])
+
+  useEffect(() => {
+    loadCookiesConsent()
+  }, [loadCookiesConsent])
 
   const setCookiesConsent = async (cookiesConsent: Consent) => {
     setCookiesConsentInternalState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
@@ -85,6 +89,7 @@ export const useCookies = () => {
     cookiesConsent: cookiesConsentInternalState,
     setCookiesConsent,
     setUserId,
+    loadCookiesConsent,
   }
 }
 

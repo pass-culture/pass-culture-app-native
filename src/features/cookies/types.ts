@@ -44,6 +44,7 @@ export type CookiesChoiceByCategory = {
 export interface CookiesChoiceSettings {
   settingsCookiesChoice: CookiesChoiceByCategory
   setSettingsCookiesChoice: React.Dispatch<React.SetStateAction<CookiesChoiceByCategory>>
+  offerId?: number
 }
 
 export type UTMParams = {

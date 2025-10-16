@@ -21,6 +21,7 @@ const defaultUseCookies = {
   cookiesConsent: consentState,
   setCookiesConsent: jest.fn(),
   setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
 }
 const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 

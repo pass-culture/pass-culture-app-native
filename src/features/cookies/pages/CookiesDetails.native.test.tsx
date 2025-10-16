@@ -15,6 +15,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('ui/components/anchor/AnchorContext', () => ({
+  useScrollToAnchor: jest.fn,
+  useRegisterAnchor: jest.fn,
+}))
+
 describe('<CookiesDetails/>', () => {
   beforeEach(() => {
     setFeatureFlags()

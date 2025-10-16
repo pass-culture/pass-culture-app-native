@@ -17,6 +17,11 @@ jest.mock('uuid', () => {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('ui/components/anchor/AnchorContext', () => ({
+  useScrollToAnchor: jest.fn,
+  useRegisterAnchor: jest.fn,
+}))
+
 describe('<CookiesDetails/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

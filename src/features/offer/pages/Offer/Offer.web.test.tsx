@@ -2,6 +2,9 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SimilarOffersResponse } from 'api/gen'
+import { ConsentState } from 'features/cookies/enums'
+import * as Cookies from 'features/cookies/helpers/useCookies'
+import { ConsentStatus } from 'features/cookies/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -9,7 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20_000) // to avoid exceeded timeout
 
@@ -57,6 +60,16 @@ jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => (
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const consentState: ConsentStatus = { state: ConsentState.LOADING }
+
+const defaultUseCookies = {
+  cookiesConsent: consentState,
+  setCookiesConsent: jest.fn(),
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+}
+jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
