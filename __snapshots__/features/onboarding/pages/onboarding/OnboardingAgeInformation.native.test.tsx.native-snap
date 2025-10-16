@@ -233,6 +233,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       }
                     }
                     testID="top-line"
+                    variant="in_progress"
                   />
                   <View
                     addMoreSpacingToIcons={false}
@@ -1121,6 +1122,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       }
                     }
                     testID="top-line"
+                    variant="complete"
                   />
                   <View
                     addMoreSpacingToIcons={false}
@@ -1157,6 +1159,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       }
                     }
                     testID="bottom-line"
+                    variant="complete"
                   />
                 </View>
               </View>
@@ -1339,6 +1342,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       }
                     }
                     testID="top-line"
+                    variant="in_progress"
                   />
                   <View
                     addMoreSpacingToIcons={false}
