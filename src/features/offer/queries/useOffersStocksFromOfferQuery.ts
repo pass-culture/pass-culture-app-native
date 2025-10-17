@@ -1,4 +1,5 @@
 import { Hit } from '@algolia/client-search'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
@@ -9,6 +10,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { LocationMode } from 'libs/location/types'
+import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
 const DEFAULT_RADIUS_KM = 50
@@ -19,6 +21,12 @@ export const useOffersStocksFromOfferQuery = (
 ) => {
   const userLocation = useUserLocation(offer)
   const isUserUnderage = useIsUserUnderage()
+
+  const isOfferPreview = useQueryClient().getQueryData([
+    QueryKeys.OFFER,
+    QueryKeys.PREVIEW,
+    offer.id,
+  ])
 
   let searchQueryParameters: SearchQueryParameters = {
     ...initialSearchState,
@@ -33,19 +41,30 @@ export const useOffersStocksFromOfferQuery = (
   }
 
   const { data } = useFetchOffersQuery({
-    parameters: searchQueryParameters,
-    buildLocationParameterParams: {
-      userLocation,
-      selectedLocationMode: LocationMode.AROUND_ME,
-      aroundMeRadius: radiusKm ?? 'all',
-      aroundPlaceRadius: 'all',
+    params: {
+      parameters: searchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation,
+        selectedLocationMode: LocationMode.AROUND_ME,
+        aroundMeRadius: radiusKm ?? 'all',
+        aroundPlaceRadius: 'all',
+      },
+      isUserUnderage,
     },
-    isUserUnderage,
+    options: {
+      enabled: !isOfferPreview,
+    },
   })
 
   const offerIds = extractOfferIdsFromHits(data?.hits)
 
-  const offersStocks = useOffersStocksQuery({ offerIds }, convertOffererDatesToTimezone)
+  const offersStocks = useOffersStocksQuery(
+    { offerIds },
+    {
+      select: convertOffererDatesToTimezone,
+      enabled: !isOfferPreview,
+    }
+  )
 
   return { ...offersStocks, data: offersStocks.data ?? { offers: [] } }
 }
