@@ -8,13 +8,18 @@ export const BonificationBirthPlaceSchema = object().shape({
     .test(
       'isCountryValid',
       'Le pays ne doit pas contenir de chiffres ou de caractères spéciaux.',
-      (name) => !!name && isNameValid(name)
+      (value) => !value || isNameValid(value)
     ),
   birthCity: string()
-    .required('La ville de naissance est obligatoire pour les personnes nées en France')
+    .when('birthCountrySelection', {
+      is: (country) => country === 'France',
+      then: (schema) =>
+        schema.required('La ville de naissance est obligatoire pour les personnes nées en France'),
+      otherwise: (schema) => schema.optional(),
+    })
     .test(
       'isCityValid',
       'La ville ne doit pas contenir de chiffres ou de caractères spéciaux.',
-      (name) => !!name && isNameValid(name)
+      (value) => !value || isNameValid(value)
     ),
 })

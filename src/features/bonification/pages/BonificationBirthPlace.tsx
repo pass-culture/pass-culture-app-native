@@ -1,10 +1,10 @@
-/* eslint-disable react-native/no-inline-styles */
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { Insets, Text, TouchableOpacity, View } from 'react-native'
+// eslint-disable-next-line no-restricted-imports
+import { Insets, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 
 import { INSEE_COUNTRY_LIST } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
@@ -71,16 +71,8 @@ export const BonificationBirthPlace = () => {
     )
   }
 
-  // console.log('Input', watch('birthCountryInput'))
-  // console.log('Selection', watch('birthCountrySelection'))
-
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
-
-  const findCountry = (countryName) => {
-    return INSEE_COUNTRY_LIST.find(
-      (country) => country.LIBCOG.toLocaleLowerCase() === countryName.toLocaleLowerCase()
-    )
-  }
+  const row: ViewStyle = { flexDirection: 'row' }
 
   return (
     <PageWithHeader
@@ -94,10 +86,7 @@ export const BonificationBirthPlace = () => {
             <Controller
               control={control}
               name="birthCountrySelection"
-              render={({
-                field: { onChange: onChangeSelection, value: valueSelection },
-                fieldState: { error },
-              }) => (
+              render={({ field: { onChange: onChangeSelection, value: valueSelection } }) => (
                 <React.Fragment>
                   <Controller
                     control={control}
@@ -105,64 +94,67 @@ export const BonificationBirthPlace = () => {
                     render={({
                       field: { value: valueInput, onChange: onChangeInput },
                       fieldState: { error },
-                    }) => (
-                      <React.Fragment>
-                        <InputText
-                          label="Pays de naissance"
-                          value={valueInput}
-                          autoFocus
-                          onChangeText={(text) => {
-                            handleUserInputChange(text)
-                            onChangeInput(text)
-                          }}
-                          requiredIndicator="explicit"
-                          accessibilityHint={error?.message}
-                          testID="Entrée pour le pays de naissance"
-                          textContentType="countryName"
-                          autoComplete="country"
-                          errorMessage={error?.message}
-                        />
-                        <View style={{ flexDirection: 'row' }}>
-                          <Text>Selected country: {valueSelection}</Text>
-                          <Validate />
-                          {valueInput && valueInput.length != 0 ? (
-                            <Touchable
-                              hitSlop={hitSlop}
-                              onPress={() => {
-                                reset()
-                                setShowCityField(false)
-                              }}
-                              accessibilityLabel="Réinitialiser la recherche"
-                              type="reset">
-                              <Invalidate />
-                            </Touchable>
-                          ) : null}
-                        </View>
-                        {valueInput &&
-                          valueInput.length != 0 &&
-                          countryList.map((country) => {
-                            return (
-                              <TouchableOpacity
-                                key={country.COG}
+                    }) => {
+                      return (
+                        <React.Fragment>
+                          <InputText
+                            label="Pays de naissance"
+                            value={valueInput}
+                            autoFocus
+                            onChangeText={(text) => {
+                              handleUserInputChange(text)
+                              onChangeInput(text)
+                            }}
+                            requiredIndicator="explicit"
+                            accessibilityHint={error?.message}
+                            testID="Entrée pour le pays de naissance"
+                            textContentType="countryName"
+                            autoComplete="country"
+                            errorMessage={error?.message}
+                          />
+                          <View style={row}>
+                            <Text>Selected country: {valueSelection}</Text>
+                            <Validate />
+                            {valueInput && valueInput.length != 0 ? (
+                              <Touchable
+                                hitSlop={hitSlop}
                                 onPress={() => {
-                                  setCountryList([])
-                                  onChangeSelection(country.LIBCOG)
-                                  onChangeInput(country.LIBCOG)
-                                  if (
-                                    watch('birthCountrySelection').toLocaleLowerCase() === 'france'
-                                  ) {
-                                    setShowCityField(true)
-                                  } else setShowCityField(false)
-                                }}>
-                                <View style={{ flexDirection: 'row' }}>
-                                  <Text>{country.LIBCOG}</Text>
-                                  {valueSelection === country.LIBCOG ? <Validate /> : null}
-                                </View>
-                              </TouchableOpacity>
-                            )
-                          })}
-                      </React.Fragment>
-                    )}
+                                  reset()
+                                  setShowCityField(false)
+                                }}
+                                accessibilityLabel="Réinitialiser la recherche"
+                                type="reset">
+                                <Invalidate />
+                              </Touchable>
+                            ) : null}
+                          </View>
+                          {valueInput &&
+                            valueInput.length != 0 &&
+                            countryList.map((country) => {
+                              return (
+                                <TouchableOpacity
+                                  key={country.COG}
+                                  onPress={() => {
+                                    setCountryList([])
+                                    onChangeSelection(country.LIBCOG)
+                                    onChangeInput(country.LIBCOG)
+                                    if (
+                                      watch('birthCountrySelection').toLocaleLowerCase() ===
+                                      'france'
+                                    ) {
+                                      setShowCityField(true)
+                                    } else setShowCityField(false)
+                                  }}>
+                                  <View style={row}>
+                                    <Text>{country.LIBCOG}</Text>
+                                    {valueSelection === country.LIBCOG ? <Validate /> : null}
+                                  </View>
+                                </TouchableOpacity>
+                              )
+                            })}
+                        </React.Fragment>
+                      )
+                    }}
                   />
                 </React.Fragment>
               )}
