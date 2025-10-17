@@ -10,7 +10,7 @@ import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { Offer } from 'shared/offer/types'
 
-type FetchOfferArgs = {
+export type FetchOfferArgs = {
   parameters: SearchQueryParameters
   buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
