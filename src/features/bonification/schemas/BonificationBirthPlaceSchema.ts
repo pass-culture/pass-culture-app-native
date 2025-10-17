@@ -8,7 +8,7 @@ export const BonificationBirthPlaceSchema = object().shape({
     .test(
       'isCountryValid',
       'Le pays ne doit pas contenir de chiffres ou de caractères spéciaux.',
-      (value) => !value || isNameValid(value)
+      (name) => !!name && isNameValid(name)
     ),
   birthCity: string()
     .when('birthCountrySelection', {
@@ -20,6 +20,6 @@ export const BonificationBirthPlaceSchema = object().shape({
     .test(
       'isCityValid',
       'La ville ne doit pas contenir de chiffres ou de caractères spéciaux.',
-      (value) => !value || isNameValid(value)
+      (name) => !!name && isNameValid(name)
     ),
 })
