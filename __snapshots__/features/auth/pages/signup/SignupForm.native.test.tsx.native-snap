@@ -2082,6 +2082,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 "borderRadius": {
                   "button": 24,
                   "checkbox": 4,
+                  "radioButton": 20,
                   "radius": 8,
                   "tile": 12,
                 },
@@ -2501,6 +2502,12 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "offSet": 2,
                   "style": "solid",
                   "width": 2,
+                },
+                "radioButton": {
+                  "border": {
+                    "size": 2,
+                  },
+                  "size": 20,
                 },
                 "showTabBar": true,
                 "slider": {

@@ -195,6 +195,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           "borderRadius": {
             "button": 24,
             "checkbox": 4,
+            "radioButton": 20,
             "radius": 8,
             "tile": 12,
           },
@@ -614,6 +615,12 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             "offSet": 2,
             "style": "solid",
             "width": 2,
+          },
+          "radioButton": {
+            "border": {
+              "size": 2,
+            },
+            "size": 20,
           },
           "showTabBar": true,
           "slider": {
@@ -1037,6 +1044,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           "borderRadius": {
             "button": 24,
             "checkbox": 4,
+            "radioButton": 20,
             "radius": 8,
             "tile": 12,
           },
@@ -1456,6 +1464,12 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             "offSet": 2,
             "style": "solid",
             "width": 2,
+          },
+          "radioButton": {
+            "border": {
+              "size": 2,
+            },
+            "size": 20,
           },
           "showTabBar": true,
           "slider": {
