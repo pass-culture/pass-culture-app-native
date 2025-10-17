@@ -1,9 +1,9 @@
-// Last update 2025
-// https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/4cd91b1b-684b-44e0-af86-77b623fcb5f2
-// Converted with
-// https://www.convertcsv.com/csv-to-json.htm
-// Maybe remove CRPAY, LIBENR, DATE_DEBUT
-// Keep only 1 entry for each COG (keep the most recent one)
+/**
+ * Last update 2025
+ * https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/4cd91b1b-684b-44e0-af86-77b623fcb5f2
+ * Converted with: https://www.convertcsv.com/csv-to-json.htm
+ * Keep only 1 entry for each COG (keep the most recent one)
+ */
 
 type INSEE_COUNTRY = {
   COG: number
@@ -2060,25 +2060,3 @@ export const INSEE_COUNTRY_LIST: INSEE_COUNTRY[] = [
     DATE_FIN: '',
   },
 ]
-
-const accumulatorCallback = (acc: INSEE_COUNTRY[], currentVal: INSEE_COUNTRY) => {
-  const isCodeUsed = acc.some((country) => country.COG === currentVal.COG)
-  const countryWithSameCode = acc.filter((country) => country.COG === currentVal.COG)
-  if (!isCodeUsed) {
-    acc.push(currentVal)
-  } else if (countryWithSameCode[0]) {
-    const isCurrentValMoreRecent =
-      new Date(currentVal?.DATE_DEBUT) > new Date(countryWithSameCode[0]?.DATE_DEBUT)
-
-    if (isCurrentValMoreRecent) {
-      const indexOfExisingCountry = acc.findIndex((country) => country.COG === currentVal.COG)
-      acc.splice(indexOfExisingCountry, 1, currentVal)
-    }
-  }
-  return acc
-}
-
-const accumulator = INSEE_COUNTRY_LIST.reduce(accumulatorCallback, [])
-
-// console.log({ accumulator })
-// process.stdout.write(JSON.stringify(accumulator) + '\n')
