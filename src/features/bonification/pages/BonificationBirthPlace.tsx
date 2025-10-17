@@ -113,8 +113,11 @@ export const BonificationBirthPlace = () => {
                             errorMessage={error?.message}
                           />
                           <View style={row}>
-                            <Text>Selected country: {valueSelection}</Text>
-                            <Validate />
+                            <Text>
+                              Pays selectionné:
+                              {valueSelection.length === 0 ? ' Aucun' : valueSelection}
+                            </Text>
+                            {valueSelection.length === 0 ? null : <Validate />}
                             {valueInput && valueInput.length != 0 ? (
                               <Touchable
                                 hitSlop={hitSlop}
