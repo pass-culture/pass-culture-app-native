@@ -12,7 +12,6 @@ import {
   TouchableOpacityButtonProps,
 } from 'ui/components/buttons/AppButton/types'
 
-//faire une test avant et après memo
 export const AppButton = <T extends AppButtonProps>({
   icon: Icon,
   iconPosition = 'left',
