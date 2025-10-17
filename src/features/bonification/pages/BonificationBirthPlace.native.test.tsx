@@ -11,13 +11,7 @@ describe('BonificationBirthPlace', () => {
   it('Should navigate to next form when pressing "Continuer" when forms are filled', async () => {
     render(<BonificationBirthPlace />)
 
-    const countryOfBirthField = screen.getByTestId('Entrée pour le pays de naissance')
-    await userEvent.type(countryOfBirthField, 'France')
-    const cityOfBirthField = screen.getByTestId('Entrée pour la ville de naissance')
-    await userEvent.type(cityOfBirthField, 'Toulouse')
-
-    const button = screen.getByText('Continuer')
-    await userEvent.press(button)
+    await completeFormAndContinue()
 
     expect(navigate).toHaveBeenCalledWith('BonificationRecap')
   })
@@ -59,16 +53,28 @@ describe('BonificationBirthPlace', () => {
 
       render(<BonificationBirthPlace />)
 
-      const countryOfBirthField = screen.getByTestId('Entrée pour le pays de naissance')
-      await userEvent.type(countryOfBirthField, 'France')
-      const cityOfBirthField = screen.getByTestId('Entrée pour la ville de naissance')
-      await userEvent.type(cityOfBirthField, 'Toulouse')
-
-      const button = screen.getByText('Continuer')
-      await userEvent.press(button)
+      await completeFormAndContinue()
 
       expect(setBirthCountrySpy).toHaveBeenCalledWith('France')
       expect(setBirthCitySpy).toHaveBeenCalledWith('Toulouse')
     })
   })
 })
+
+async function completeFormAndContinue() {
+  // Fill the country input
+  const countryOfBirthField = screen.getByTestId('Entrée pour le pays de naissance')
+  await userEvent.type(countryOfBirthField, 'France')
+
+  // Select the suggested country
+  const countrySuggestion = screen.getByText('France')
+  await userEvent.press(countrySuggestion)
+
+  // Fill in the city input
+  const cityOfBirthField = screen.getByTestId('Entrée pour la ville de naissance')
+  await userEvent.type(cityOfBirthField, 'Toulouse')
+
+  // Attempt to go validate the form
+  const button = screen.getByText('Continuer')
+  await userEvent.press(button)
+}
