@@ -13,9 +13,21 @@ module.exports = {
     'testing-library',
     'jest',
     'boundaries',
+    'eslint-plugin-react-hooks',
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  extends: ['eslint:recommended', 'plugin:@bam.tech/recommended', 'plugin:react/recommended', 'plugin:react-native/all', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'plugin:import/errors', 'plugin:react-hooks/recommended', 'plugin:boundaries/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@bam.tech/recommended',
+    'plugin:react/recommended',
+    'plugin:react-native/all',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:boundaries/recommended',
+    'plugin:storybook/recommended',
+    'plugin:react-hooks/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
@@ -26,10 +38,26 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/config': 'warn',
+    'react-hooks/error-boundaries': 'warn',
+    'react-hooks/component-hook-factories': 'warn',
+    'react-hooks/gating': 'warn',
+    'react-hooks/globals': 'warn',
+    'react-hooks/immutability': 'warn',
+    'react-hooks/preserve-manual-memoization': 'warn',
+    'react-hooks/purity': 'warn',
+    'react-hooks/refs': 'warn',
+    'react-hooks/set-state-in-effect': 'warn',
+    'react-hooks/set-state-in-render': 'warn',
+    'react-hooks/static-components': 'warn',
+    'react-hooks/unsupported-syntax': 'warn',
+    'react-hooks/use-memo': 'warn',
+    'react-hooks/incompatible-library': 'warn',
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
     'react/no-unused-prop-types': 'error', // has false positives
     'local-rules/no-useless-hook': 'error',
-    'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',
     'local-rules/no-theme-from-theme': 'error',

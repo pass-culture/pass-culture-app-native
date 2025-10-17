@@ -55,7 +55,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
     <React.Fragment>
       <RoundedButton
         animationState={animationState}
-        scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
+        scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef}
         initialColor={favorite ? designSystem.color.background.brandPrimary : undefined}
         finalColor={
           favorite

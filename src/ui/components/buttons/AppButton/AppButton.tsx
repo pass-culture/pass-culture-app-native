@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -14,7 +14,7 @@ import {
 } from 'ui/components/buttons/AppButton/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
-const _AppButton = <T extends AppButtonProps>({
+export const AppButton = <T extends AppButtonProps>({
   icon: Icon,
   iconPosition = 'left',
   title: Title,
@@ -79,9 +79,6 @@ const _AppButton = <T extends AppButtonProps>({
     </TouchableOpacityButton>
   )
 }
-
-// memo is used to avoid useless rendering while props remain unchanged
-export const AppButton = memo(_AppButton)
 
 const TouchableOpacityButton =
   styled(TouchableOpacity)<TouchableOpacityButtonProps>(appButtonStyles)

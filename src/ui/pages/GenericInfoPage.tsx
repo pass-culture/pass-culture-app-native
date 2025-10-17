@@ -3,7 +3,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -19,6 +18,7 @@ import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type ButtonProps = {
@@ -69,7 +69,7 @@ type Props = PropsWithChildren<
 export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
   withSkipAction,
-  illustration,
+  illustration: IllustrationComponent,
   animation,
   title,
   subtitle,
@@ -78,14 +78,12 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   buttonTertiary,
   children,
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
 
   const headerHeight = useGetHeaderHeight()
   const { top } = useSafeAreaInsets()
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
-
-  const Illustration = getPrimaryIllustration(illustration)
 
   return (
     <Page>
@@ -100,7 +98,12 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <Spacer.Flex flex={1} />
 
         <IllustrationContainer animation={!!animation}>
-          {Illustration ? <Illustration /> : null}
+          {IllustrationComponent ? (
+            <IllustrationComponent
+              size={illustrationSizes.fullPage}
+              color={designSystem.color.icon.brandPrimary}
+            />
+          ) : null}
           {animation ? (
             <ThemedStyledLottieView source={animation} width="100%" height="100%" />
           ) : null}

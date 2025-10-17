@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo, MouseEventHandler, useCallback } from 'react'
+import React, { CSSProperties, MouseEventHandler, useCallback } from 'react'
 import styled from 'styled-components'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -12,7 +12,7 @@ import {
   TouchableOpacityButtonProps,
 } from 'ui/components/buttons/AppButton/types'
 
-const _AppButton = <T extends AppButtonProps>({
+export const AppButton = <T extends AppButtonProps>({
   icon: Icon,
   iconPosition = 'left',
   title: Title,
@@ -114,9 +114,6 @@ const _AppButton = <T extends AppButtonProps>({
     </ButtonComponent>
   )
 }
-
-// memo is used to avoid useless rendering while props remain unchanged
-export const AppButton = memo(_AppButton)
 
 const Button = styled.button<TouchableOpacityButtonProps>(appButtonWebStyles)
 const Link = styled.a<TouchableOpacityButtonProps>(appButtonWebStyles)

@@ -1,5 +1,5 @@
 import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -14,20 +14,16 @@ type Props = {
 }
 
 export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPress }: Props) => {
-  const [showBanner, setShowBanner] = useState(false)
-
-  useEffect(() => {
-    if (suggestedEmail) setShowBanner(true)
-    return () => setShowBanner(false)
-  }, [suggestedEmail])
-
   const replaceEmail = useCallback(() => {
-    setShowBanner(false)
     onSpellingHelpPress?.()
-    if (suggestedEmail) onEmailChange(suggestedEmail.full)
+    if (suggestedEmail) {
+      onEmailChange(suggestedEmail.full)
+    }
   }, [onEmailChange, onSpellingHelpPress, suggestedEmail])
 
-  if (!showBanner || !suggestedEmail) return null
+  if (!suggestedEmail) {
+    return null
+  }
 
   const emailMessage = `Veux-tu plutôt dire ${suggestedEmail.address}@${suggestedEmail.domain}\u00a0?`
 
