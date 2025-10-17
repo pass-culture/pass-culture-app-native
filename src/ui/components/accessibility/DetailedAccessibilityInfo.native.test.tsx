@@ -78,10 +78,10 @@ describe('DetailedAccessibilityInfo', () => {
       />
     )
 
-    expect(screen.getByLabelText('Handicap auditif: Non accessible')).toBeOnTheScreen()
-    expect(screen.getByLabelText('Handicap psychique ou cognitif: Accessible')).toBeOnTheScreen()
-    expect(screen.getByLabelText('Handicap moteur: Non accessible')).toBeOnTheScreen()
-    expect(screen.getByLabelText('Handicap visuel: Non accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText(/Handicap auditif: Non accessible/)).toBeOnTheScreen()
+    expect(screen.getByLabelText(/Handicap psychique ou cognitif: Accessible/)).toBeOnTheScreen()
+    expect(screen.getByLabelText(/Handicap moteur: Non accessible/)).toBeOnTheScreen()
+    expect(screen.getByLabelText(/Handicap visuel: Non accessible/)).toBeOnTheScreen()
   })
 
   it('should display multiple description info on separate lines', async () => {

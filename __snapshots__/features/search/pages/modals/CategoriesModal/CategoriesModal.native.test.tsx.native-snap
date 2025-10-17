@@ -359,7 +359,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               }
             >
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -499,7 +498,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -627,7 +625,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -755,7 +752,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -883,7 +879,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1011,7 +1006,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1139,7 +1133,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1267,7 +1260,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1395,7 +1387,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1523,7 +1514,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1651,7 +1641,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1779,7 +1768,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -1920,7 +1908,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {
@@ -2048,7 +2035,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </View>
               </View>
               <View
-                accessible={true}
                 style={
                   [
                     {

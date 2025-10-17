@@ -34,7 +34,7 @@ appId: ${MAESTRO_APP_ID}
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
 - tapOn:
-    id: event-card
+    text: '.*€.*'
     label: 'Sélection de la séance Duo'
 
 - runFlow:

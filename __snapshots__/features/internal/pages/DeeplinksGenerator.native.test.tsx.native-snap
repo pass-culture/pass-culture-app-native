@@ -242,6 +242,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <View
+                accessibilityLabel="Pages - Accordéon - Réduire l’accordéon"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -260,7 +261,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -286,7 +287,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     },
                   ]
                 }
-                testID="accordionTouchable"
+                testID="Pages - Accordéon - Réduire l’accordéon"
               >
                 <View
                   nativeID="testUuidV4"
@@ -1577,6 +1578,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <View
+                accessibilityLabel="Paramètres applicatifs (1) - Accordéon - Réduire l’accordéon"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1595,7 +1597,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1621,7 +1623,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     },
                   ]
                 }
-                testID="accordionTouchable"
+                testID="Paramètres applicatifs (1) - Accordéon - Réduire l’accordéon"
               >
                 <View
                   nativeID="testUuidV4"
@@ -1866,6 +1868,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <View
+                accessibilityLabel="Paramètres marketing - Accordéon - Réduire l’accordéon"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1884,7 +1887,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1910,7 +1913,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     },
                   ]
                 }
-                testID="accordionTouchable"
+                testID="Paramètres marketing - Accordéon - Réduire l’accordéon"
               >
                 <View
                   nativeID="testUuidV4"

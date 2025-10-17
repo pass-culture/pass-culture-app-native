@@ -238,7 +238,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -365,7 +364,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -491,7 +489,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
+                  accessible={false}
                   style={
                     [
                       {
@@ -715,7 +713,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -841,7 +838,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -992,7 +988,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1118,7 +1113,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1245,7 +1239,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1371,7 +1364,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1497,7 +1489,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1897,7 +1888,6 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -1994,7 +1984,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2091,7 +2080,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2188,7 +2176,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
