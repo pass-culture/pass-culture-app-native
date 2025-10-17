@@ -46,7 +46,7 @@ export const BonificationBirthPlace = () => {
     defaultValues: {
       birthCountrySelection: storedLegalRepresentative.birthCountry ?? '',
       birthCity: storedLegalRepresentative.birthCity ?? '',
-      birthCountryInput: '',
+      birthCountryInput: storedLegalRepresentative.birthCountry ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -59,7 +59,11 @@ export const BonificationBirthPlace = () => {
     // eslint-disable-next-line no-console
     console.log({ birthCountrySelection, birthCity })
     setBirthCountry(birthCountrySelection)
-    if (birthCountrySelection !== 'France' && birthCity) setBirthCity(birthCity)
+    if (birthCountrySelection === 'France' && birthCity) {
+      setBirthCity(birthCity)
+    } else {
+      setBirthCity('')
+    }
     navigate('BonificationRecap')
   }
 
