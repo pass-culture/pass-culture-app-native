@@ -3,7 +3,7 @@ import { object, string } from 'yup'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 
 export const BonificationBirthPlaceSchema = object().shape({
-  birthCountry: string()
+  birthCountrySelection: string()
     .required('Le pays de naissance est obligatoire')
     .test(
       'isCountryValid',
@@ -11,7 +11,12 @@ export const BonificationBirthPlaceSchema = object().shape({
       (name) => !!name && isNameValid(name)
     ),
   birthCity: string()
-    .required('La ville de naissance est obligatoire pour les personnes nées en France')
+    .when('birthCountrySelection', {
+      is: (country) => country === 'France',
+      then: (schema) =>
+        schema.required('La ville de naissance est obligatoire pour les personnes nées en France'),
+      otherwise: (schema) => schema.optional(),
+    })
     .test(
       'isCityValid',
       'La ville ne doit pas contenir de chiffres ou de caractères spéciaux.',
