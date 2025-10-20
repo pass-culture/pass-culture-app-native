@@ -10,6 +10,8 @@ import { GatedVideoSection } from 'features/offer/components/OfferContent/VideoS
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { analytics } from 'libs/analytics/provider'
+import { Anchor } from 'ui/components/anchor/Anchor'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -95,7 +97,7 @@ export const VideoSection = ({
   }, [duration, maxWidth, onManageCookiesPress, title, videoHeight, videoThumbnail, viewportWidth])
 
   return (
-    <React.Fragment>
+    <Anchor name={AnchorNames.VIDEO_PLAYBACK}>
       {isDesktopViewport ? (
         <ViewGap testID="video-section-without-divider" gap={4} style={style}>
           {hasVideoCookiesConsent ? renderVideoSection() : renderGatedVideoSection()}
@@ -107,7 +109,7 @@ export const VideoSection = ({
           </Container>
         </SectionWithDivider>
       )}
-    </React.Fragment>
+    </Anchor>
   )
 }
 

@@ -16,6 +16,10 @@ import {
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import { ConsentState } from 'features/cookies/enums'
+import * as Cookies from 'features/cookies/helpers/useCookies'
+import { ConsentStatus } from 'features/cookies/types'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -48,6 +52,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferContent } from './OfferContent'
 
@@ -59,11 +64,29 @@ const useFavoriteSpy = jest.spyOn(useFavorite, 'useFavorite')
 const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
 
 const mockShowErrorSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
+    showInfoSnackBar: mockShowInfoSnackBar,
   }),
 }))
+
+const consentState: ConsentStatus = { state: ConsentState.LOADING }
+
+const defaultUseCookies = {
+  cookiesConsent: consentState,
+  setCookiesConsent: jest.fn(),
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+}
+const useCookiesSpy = jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
+
+const consentValue = {
+  mandatory: COOKIES_BY_CATEGORY.essential,
+  accepted: ALL_OPTIONAL_COOKIES,
+  refused: [],
+}
 
 let mockComingSoonFooterHeight = 0
 jest.mock('ui/hooks/useLayout', () => ({
@@ -785,6 +808,13 @@ describe('<OfferContent />', () => {
 
     it('should navigate to OfferVideoPreview screen when pressing see video button', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
+      useCookiesSpy.mockReturnValueOnce({
+        ...defaultUseCookies,
+        cookiesConsent: {
+          state: ConsentState.HAS_CONSENT,
+          value: consentValue,
+        },
+      })
       renderOfferContent({})
 
       await screen.findByText('Réserver l’offre')
@@ -793,6 +823,20 @@ describe('<OfferContent />', () => {
 
       expect(mockNavigate).toHaveBeenCalledWith('OfferVideoPreview', {
         id: offerResponseSnap.id,
+      })
+    })
+
+    it("should display info snack bar when press on 'Voir la vidéo' and we don't have consent to video cookies", async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
+
+      renderOfferContent({})
+
+      await user.press(screen.getByText('Voir la vidéo'))
+
+      expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+        message:
+          'Pour lire la vidéo, tu dois accepter les cookies vidéo depuis ton profil dans la partie “Confidentialité"',
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
   })

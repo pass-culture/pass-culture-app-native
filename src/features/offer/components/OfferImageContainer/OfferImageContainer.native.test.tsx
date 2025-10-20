@@ -1,48 +1,85 @@
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
+import { ConsentState } from 'features/cookies/enums'
+import * as Cookies from 'features/cookies/helpers/useCookies'
+import { ConsentStatus } from 'features/cookies/types'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
-import { render, screen } from 'tests/utils'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { screen, waitFor, render } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
+jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('ui/components/anchor/AnchorContext', () => ({
+  useScrollToAnchor: () => jest.fn(),
+  useRegisterAnchor: () => jest.fn(),
+}))
+
+const consentState: ConsentStatus = { state: ConsentState.LOADING }
+
+const defaultUseCookies = {
+  cookiesConsent: consentState,
+  setCookiesConsent: jest.fn(),
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+}
+
+jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 
 describe('<OfferImageContainer />', () => {
-  it('should display image inside carousel when offer has only one image with no pagination', () => {
-    render(
-      <OfferImageContainer
-        images={[{ url: 'some_url_to_some_resource' }]}
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={jest.fn()}
-        imageDimensions={mockOfferImageDimensions}
-      />
-    )
-
-    expect(screen.getByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
-    expect(screen.queryByTestId('carousel-dot')).not.toBeOnTheScreen()
+  beforeEach(() => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
   })
 
-  it('should not display carousel dots when offer has only one', () => {
+  it('should display image inside carousel when offer has only one image with no pagination', async () => {
     render(
-      <OfferImageContainer
-        images={[{ url: 'some_url_to_some_resource' }]}
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={jest.fn()}
-        imageDimensions={mockOfferImageDimensions}
-      />
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+        />
+      )
     )
+
+    expect(await screen.findByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
+  })
+
+  it('should not display carousel dots when offer has only one', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+        />
+      )
+    )
+    await screen.findByTestId('offerImageContainerCarousel')
 
     expect(screen.queryByTestId('carousel-dot')).not.toBeOnTheScreen()
   })
 
   it('should display image inside carousel when offer has several images', async () => {
     render(
-      <OfferImageContainer
-        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={jest.fn()}
-        imageDimensions={mockOfferImageDimensions}
-      />
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+        />
+      )
     )
 
     expect(await screen.findByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
@@ -50,49 +87,59 @@ describe('<OfferImageContainer />', () => {
 
   it('should display carousel dots when offer has several images', async () => {
     render(
-      <OfferImageContainer
-        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={jest.fn()}
-        imageDimensions={mockOfferImageDimensions}
-      />
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+        />
+      )
     )
+
     await screen.findByTestId('offerImageContainerCarousel')
 
-    expect(screen.getAllByTestId('carousel-dot')).toHaveLength(2)
-  })
+    await waitFor(() => {
+      const dots = screen.queryAllByTestId('carousel-dot')
 
-  it('should display image placeholder outside carousel when image url defined', () => {
-    render(
-      <OfferImageContainer
-        images={undefined}
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={jest.fn()}
-        placeholderImage="placeholder_image"
-        imageDimensions={mockOfferImageDimensions}
-      />
-    )
-
-    expect(screen.getByTestId('placeholderImage')).toBeOnTheScreen()
-  })
-
-  it('should not set sticky position in native', () => {
-    render(
-      <OfferImageContainer
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={jest.fn()}
-        placeholderImage="placeholder_image"
-        imageDimensions={mockOfferImageDimensions}
-      />,
-      {
-        theme: { isNative: true, isDesktopViewport: true },
-      }
-    )
-
-    const container = screen.getByTestId('imageRenderer')
-
-    expect(container).not.toHaveStyle({
-      position: 'sticky',
+      expect(dots).toHaveLength(2)
     })
+  })
+
+  it('should display image placeholder outside carousel when image url defined', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={undefined}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          placeholderImage="placeholder_image"
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+        />
+      )
+    )
+
+    expect(await screen.findByTestId('placeholderImage')).toBeOnTheScreen()
+  })
+
+  it('should not set sticky position in native', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          placeholderImage="placeholder_image"
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+        />
+      ),
+      { theme: { isNative: true, isDesktopViewport: true } }
+    )
+
+    const container = await screen.findByTestId('imageRenderer')
+
+    expect(container).not.toHaveStyle({ position: 'sticky' })
   })
 })
