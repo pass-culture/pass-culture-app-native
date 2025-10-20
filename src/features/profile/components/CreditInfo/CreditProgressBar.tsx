@@ -1,9 +1,8 @@
 import React, { memo } from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
-import { getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 enum BarHeight {
   'normal' = 4.5,
@@ -34,8 +33,14 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
     <Container width={width}>
       <ProgressBarContainer height={height}>
         {height === 'normal' ? <BaseShadowGradient /> : null}
-        <LinearGradientBar progress={progress} color={color} testID="progress-bar">
-          <Text style={{ color: 'white' }}>{innerText}</Text>
+        <LinearGradientBar
+          progress={progress}
+          color={color}
+          // style={{ alignSelf: 'center' }}
+          testID="progress-bar">
+          <Typo.BodyAccent style={{ color: 'white', textAlign: 'center' }}>
+            {innerText}
+          </Typo.BodyAccent>
         </LinearGradientBar>
       </ProgressBarContainer>
     </Container>
@@ -45,8 +50,8 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
 export const CreditProgressBar = memo(
   styled(CreditProgressBarComponent).attrs<{
     color?: ColorsType
-  }>(({ theme }) => ({
-    color: theme.designSystem.color.background.brandPrimary,
+  }>(({ theme, color }) => ({
+    color: color ?? theme.designSystem.color.background.brandPrimary,
   }))``
 )
 type CreditProgressPropsWithoutWidth = Omit<CreditProgressBarProps, 'width'>
