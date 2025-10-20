@@ -344,7 +344,7 @@ describe('<Venue />', () => {
 
       await user.press(await screen.findByText('Rechercher une offre'))
 
-      expect(await screen.findByText('Rechercher dans ce lieu')).toBeOnTheScreen()
+      expect(await screen.findByText('Rechercher dans ce lieu', { hidden: true })).toBeOnTheScreen()
     })
 
     it('should display button "Lancer la recherche" disabled when opening the modal', async () => {

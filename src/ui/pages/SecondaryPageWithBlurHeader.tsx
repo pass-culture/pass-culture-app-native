@@ -1,5 +1,5 @@
-import React, { PropsWithChildren, ReactNode } from 'react'
-import { ScrollViewProps } from 'react-native'
+import React, { PropsWithChildren, ReactNode, forwardRef } from 'react'
+import { ScrollView, ScrollViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
@@ -17,37 +17,44 @@ type Props = PropsWithChildren<{
   enableMaxWidth?: boolean
 }>
 
-export const SecondaryPageWithBlurHeader = ({
-  title,
-  shouldDisplayBackButton,
-  onGoBack,
-  RightButton,
-  children,
-  scrollable = true,
-  scrollViewProps = {},
-  enableMaxWidth = true,
-}: Props) => {
-  const headerHeight = useGetHeaderHeight()
+export const SecondaryPageWithBlurHeader = forwardRef<ScrollView, Props>(
+  (
+    {
+      title,
+      shouldDisplayBackButton,
+      onGoBack,
+      RightButton,
+      children,
+      scrollable = true,
+      scrollViewProps = {},
+      enableMaxWidth = true,
+    },
+    ref
+  ) => {
+    const headerHeight = useGetHeaderHeight()
 
-  return (
-    <Page>
-      <PageHeaderWithoutPlaceholder
-        title={title}
-        shouldDisplayBackButton={shouldDisplayBackButton}
-        onGoBack={onGoBack}
-        RightButton={RightButton}
-      />
-      <StyledScrollView
-        {...scrollViewProps}
-        scrollEnabled={scrollable}
-        enableMaxWidth={enableMaxWidth}>
-        <Placeholder height={headerHeight} />
-        {children}
-      </StyledScrollView>
-      <BlurHeader height={headerHeight} />
-    </Page>
-  )
-}
+    return (
+      <Page>
+        <PageHeaderWithoutPlaceholder
+          title={title}
+          shouldDisplayBackButton={shouldDisplayBackButton}
+          onGoBack={onGoBack}
+          RightButton={RightButton}
+        />
+        <StyledScrollView
+          {...scrollViewProps}
+          ref={ref}
+          scrollEnabled={scrollable}
+          enableMaxWidth={enableMaxWidth}>
+          <Placeholder height={headerHeight} />
+          {children}
+        </StyledScrollView>
+        <BlurHeader height={headerHeight} />
+      </Page>
+    )
+  }
+)
+SecondaryPageWithBlurHeader.displayName = 'SecondaryPageWithBlurHeader'
 
 interface StyledScrollViewProps {
   enableMaxWidth: boolean

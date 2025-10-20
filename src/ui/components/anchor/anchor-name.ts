@@ -3,3 +3,4 @@ export type AnchorName =
   | 'offer-cine-availabilities'
   | 'venue-cine-availabilities'
   | 'chronicles-section'
+  | 'cookies-accordion'

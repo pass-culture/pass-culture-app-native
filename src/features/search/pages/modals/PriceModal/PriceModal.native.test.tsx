@@ -496,7 +496,7 @@ describe('<PriceModal/>', () => {
       expect(screen.getByText('Rechercher')).toBeEnabled()
     })
 
-    const rightLabelMaxInput = screen.getByText(`max : 80 €`)
+    const rightLabelMaxInput = screen.getByText(`max : 80 €`, { hidden: true })
 
     expect(rightLabelMaxInput).toBeOnTheScreen()
   })
@@ -624,7 +624,8 @@ describe('<PriceModal/>', () => {
       })
 
       const rightLabelMaxInput = screen.getByText(
-        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`
+        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`,
+        { hidden: true }
       )
 
       expect(rightLabelMaxInput).toBeOnTheScreen()
@@ -671,7 +672,8 @@ describe('<PriceModal/>', () => {
       })
 
       const rightLabelMaxInput = screen.getByText(
-        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`
+        `max : ${convertCentsToEuros(MAX_PRICE_IN_CENTS)} €`,
+        { hidden: true }
       )
 
       expect(rightLabelMaxInput).toBeOnTheScreen()

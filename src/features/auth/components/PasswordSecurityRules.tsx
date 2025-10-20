@@ -50,6 +50,9 @@ function containsSpecialCharacter(password: string): boolean {
   return SPECIAL_CHARACTER_REGEX.test(password)
 }
 
+export const PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL =
+  'Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial'
+
 export const PasswordSecurityRules: FunctionComponent<Props> = ({
   password,
   visible = true,
@@ -58,8 +61,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <HiddenAccessibleText nativeID={nativeID} displayBlock>
-        Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et
-        un caractère spécial
+        {PASSWORD_SECURITY_RULES_ACCESSIBILITY_LABEL}
       </HiddenAccessibleText>
       {visible ? (
         <RulesContainer

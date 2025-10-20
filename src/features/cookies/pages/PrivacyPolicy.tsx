@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { ScrollView } from 'react-native'
 
 import { ConsentState } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useModal } from 'ui/components/modals/useModal'
 
 export function PrivacyPolicy() {
@@ -14,6 +16,12 @@ export function PrivacyPolicy() {
     showModal: showCookiesConsentModal,
   } = useModal(false)
   const { isCookiesListUpToDate } = useIsCookiesListUpToDate()
+  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollYRef = useRef<number>(0)
+
+  const handleCheckScrollY = useRef(() => {
+    return scrollYRef.current
+  }).current
 
   useEffect(() => {
     switch (hasUserMadeCookieChoiceV2.state) {
@@ -38,5 +46,9 @@ export function PrivacyPolicy() {
     showCookiesConsentModal,
   ])
 
-  return <CookiesConsent visible={cookiesConsentModalVisible} hideModal={hideCookiesConsentModal} />
+  return (
+    <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+      <CookiesConsent visible={cookiesConsentModalVisible} hideModal={hideCookiesConsentModal} />
+    </AnchorProvider>
+  )
 }

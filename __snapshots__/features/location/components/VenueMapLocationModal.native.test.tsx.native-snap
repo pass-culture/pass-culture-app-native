@@ -497,7 +497,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                       {
                         "backgroundColor": "#f1f1f4",
                         "height": 1,
-                        "marginVertical": 24,
+                        "marginVertical": 16,
                         "width": "100%",
                       }
                     }
@@ -599,6 +599,16 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                       Ville, code postal, adresse
                     </Text>
                   </View>
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": 1,
+                        "marginVertical": 16,
+                        "width": "100%",
+                      }
+                    }
+                  />
                 </View>
               </View>
             </View>

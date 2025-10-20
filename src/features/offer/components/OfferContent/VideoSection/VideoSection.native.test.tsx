@@ -15,6 +15,7 @@ const defaultProps = {
   title: 'Peppa Pig',
   subtitle: 'le cochon rose',
   videoThumbnail: <FastImage />,
+  onManageCookiesPress: jest.fn(),
 }
 
 const user = userEvent.setup()

@@ -17,6 +17,7 @@ export const CookiesAccordion = ({
   cookie,
   settingsCookiesChoice,
   setSettingsCookiesChoice,
+  offerId,
 }: { cookie: CookieCategoriesEnum } & CookiesChoiceSettings) => {
   const info = cookiesInfo[cookie]
   const isEssential = cookie === CookieCategoriesEnum.essential
@@ -29,6 +30,8 @@ export const CookiesAccordion = ({
           ...prev,
           [cookie]: !settingsCookiesChoice[cookie],
         }))
+
+  const defaultOpen = cookie === CookieCategoriesEnum.video && !!offerId
 
   return (
     <React.Fragment>
@@ -45,7 +48,8 @@ export const CookiesAccordion = ({
             toggle={toggleSwitch}
             accessibilityLabel={info.title}
           />
-        }>
+        }
+        defaultOpen={defaultOpen}>
         <React.Fragment>
           <Typo.Body>{info.description}</Typo.Body>
           {info.caption ? (

@@ -18,7 +18,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
   hideModal,
   analyticsParams,
 }) => {
-  const { tiles } = useTheme()
+  const { tiles, contentPage } = useTheme()
   const PLAYLIST_ITEM_HEIGHT = tiles.sizes.large.height + tiles.maxCaptionHeight.videoModuleOffer
   const PLAYLIST_ITEM_WIDTH = tiles.sizes.large.width
 
@@ -43,6 +43,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
       renderFooter={undefined}
       keyExtractor={keyExtractor}
       tileType="video-module-offer"
+      contentContainerStyle={{ marginHorizontal: contentPage.marginHorizontal }}
     />
   )
 }

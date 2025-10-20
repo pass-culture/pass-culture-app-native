@@ -264,6 +264,8 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                 }
               >
                 <View
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
                   style={
                     {
                       "marginBottom": 8,
@@ -282,7 +284,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                       }
                     >
                       <Text
-                        accessibilityLabel="Entre ton adresse - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                         style={
                           {
                             "color": "#161617",
@@ -298,6 +299,8 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                   </View>
                 </View>
                 <View
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
                   style={
                     {
                       "marginBottom": 8,
@@ -354,6 +357,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                 >
                   <TextInput
                     accessibilityHidden={false}
+                    accessibilityLabel="Champs de texte (recherche) - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                     autoComplete="street-address"
                     autoCorrect={false}
                     editable={true}
@@ -867,6 +871,8 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
                   style={
                     {
                       "marginBottom": 8,
@@ -885,7 +891,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                       }
                     >
                       <Text
-                        accessibilityLabel="Entre ton adresse - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                         style={
                           {
                             "color": "#161617",
@@ -901,6 +906,8 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                   </View>
                 </View>
                 <View
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
                   style={
                     {
                       "marginBottom": 8,
@@ -957,6 +964,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                 >
                   <TextInput
                     accessibilityHidden={false}
+                    accessibilityLabel="Champs de texte (recherche) - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                     autoComplete="street-address"
                     autoCorrect={false}
                     editable={true}

@@ -286,6 +286,8 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             >
               <View>
                 <View
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
                   style={
                     {
                       "alignItems": "flex-end",
@@ -297,7 +299,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 >
                   <View>
                     <Text
-                      accessibilityLabel="Adresse e-mail actuelle"
                       style={
                         {
                           "color": "#161617",
@@ -354,6 +355,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
+                  accessibilityLabel="Champs de texte - Adresse e-mail actuelle - Exemple : tonadresse@email.com"
                   accessibilityRequired={false}
                   autoCapitalize="none"
                   autoComplete="email"

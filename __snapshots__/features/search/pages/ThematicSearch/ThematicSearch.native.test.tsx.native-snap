@@ -8,10 +8,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginBottom": 96,
     }
   }
-  tabBarHeight={72}
 >
   <View
     customHeight={16}
@@ -279,6 +277,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 </View>
                 <TextInput
                   accessibilityHidden={true}
+                  accessibilityLabel="Champs de texte (recherche)"
                   autoCorrect={false}
                   autoFocus={false}
                   editable={true}
@@ -3551,6 +3550,15 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
         </View>
       </View>
+      <View
+        customHeight={72}
+        enable={true}
+        style={
+          {
+            "height": 72,
+          }
+        }
+      />
     </View>
   </RCTScrollView>
 </View>

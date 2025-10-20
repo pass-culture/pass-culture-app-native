@@ -11,6 +11,7 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
   useFocusEffect: jest.fn(),
+  useRoute: () => ({ params: {} }),
 }))
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"

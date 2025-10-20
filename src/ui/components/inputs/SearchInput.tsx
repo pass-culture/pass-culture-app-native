@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
@@ -50,22 +52,30 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     }
   }
 
-  const computedAccessibilityLabel = [label, accessibilityHint].filter(Boolean).join(' - ')
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    'Champs de texte (recherche)',
+    label,
+    props.format ? `Exemple\u00a0: ${props.format}` : null,
+    isRequiredField ? 'Obligatoire' : null,
+    accessibilityHint
+  )
+
+  const hiddenFromScreenReaderMobile = Platform.OS === 'web' ? {} : hiddenFromScreenReader()
 
   return (
     <React.Fragment>
       {label ? (
-        <StyledView>
+        <StyledView {...hiddenFromScreenReaderMobile}>
           <FlexInputLabel htmlFor={searchInputID}>
             <LabelContainer>
-              <Typo.Body accessibilityLabel={computedAccessibilityLabel}>{label}</Typo.Body>
+              <Typo.Body>{label}</Typo.Body>
               {isRequiredField ? <RequiredLabel /> : null}
             </LabelContainer>
           </FlexInputLabel>
         </StyledView>
       ) : null}
       {props.format ? (
-        <StyledView>
+        <StyledView {...hiddenFromScreenReaderMobile}>
           <TextFormat>{`Exemple\u00a0: ${props.format}`}</TextFormat>
         </StyledView>
       ) : null}
@@ -89,6 +99,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           keyboardType={props.keyboardType ?? defaultKeyboardType}
           selectionColor={undefined}
           focusable={isFocusable}
+          accessibilityLabel={computedAccessibilityLabel}
           accessibilityHidden={!isFocusable}
           accessibilityRequired={isRequiredField}
           enablesReturnKeyAutomatically

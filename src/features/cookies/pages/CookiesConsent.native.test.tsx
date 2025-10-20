@@ -64,6 +64,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.mock('ui/components/anchor/AnchorContext', () => ({
+  useScrollToAnchor: jest.fn,
+  useRegisterAnchor: jest.fn,
+}))
+
 const CUSTOMIZE_NAVIGATION_SWITCH = /Personnaliser ta navigation - Interrupteur à bascule/
 const NAVIGATION_STATISTICS_SWITCH =
   /Enregistrer des statistiques de navigation - Interrupteur à bascule/

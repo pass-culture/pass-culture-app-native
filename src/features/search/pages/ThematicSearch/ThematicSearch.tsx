@@ -2,7 +2,6 @@ import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -27,15 +26,13 @@ import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { Page } from 'ui/pages/Page'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
+import { Spacer } from 'ui/theme'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
 }, {}) as Record<SearchGroupNameEnumv2, string>
 
 export const ThematicSearch: React.FC = () => {
-  const { tabBarHeight } = useCustomSafeInsets()
-
   const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
 
   const isWeb = Platform.OS === 'web'
@@ -156,7 +153,7 @@ export const ThematicSearch: React.FC = () => {
     : undefined
 
   return (
-    <StyledPage tabBarHeight={tabBarHeight}>
+    <Page>
       <ThematicSearchBar
         offerCategories={offerCategories}
         placeholder={`${titles[offerCategory]}...`}
@@ -181,14 +178,9 @@ export const ThematicSearch: React.FC = () => {
             </ObservedPlaylist>
           ) : null}
           {playlistsComponent[offerCategory]}
+          <Spacer.TabBar />
         </IntersectionObserverScrollView>
       </ThematicSearchBar>
-    </StyledPage>
+    </Page>
   )
 }
-
-const StyledPage = styled(Page)<{ tabBarHeight: number }>(({ theme, tabBarHeight }) => ({
-  marginBottom: theme.isDesktopViewport
-    ? theme.contentPage.marginVertical
-    : tabBarHeight + theme.contentPage.marginVertical,
-}))
