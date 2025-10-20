@@ -1,4 +1,5 @@
 import React from 'react'
+import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
@@ -9,6 +10,8 @@ import { BlockDescriptionItem } from 'features/profile/components/Tutorial/Block
 import { InformationStepContent } from 'features/profile/components/Tutorial/InformationStepContent'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -27,7 +30,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
-
+  const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
+  console.log({ enableBonification })
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
   const headerTitle = 'Comment ça marche\u00a0?'
@@ -80,6 +84,35 @@ export const ProfileTutorialAgeInformationCredit = () => {
                         key={2}
                         icon={<SmallClock />}
                         text="Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire."
+                      />,
+                    ]}
+                  />
+                </React.Fragment>
+              ),
+            },
+            {
+              creditStep: 'optional',
+              iconComponent: undefined,
+              children: (
+                <React.Fragment>
+                  <View style={{ flexDirection: 'row' }}>
+                    <CreditProgressBar progress={1} width="80%" />
+                    <Text>+</Text>
+                    <CreditProgressBar progress={1} width="10%" innerText="50€" />
+                  </View>
+                  <Spacer.Column numberOfSpaces={6} />
+                  <AccessibleUnorderedList
+                    Separator={<Spacer.Column numberOfSpaces={4} />}
+                    items={[
+                      <BlockDescriptionItem
+                        key={1}
+                        icon={<SmallLock />}
+                        text="Tu dois avoir débloqué le crédit de tes 18 ans."
+                      />,
+                      <BlockDescriptionItem
+                        key={2}
+                        icon={<SmallClock />}
+                        text="Ton éligibilité sera vérifiée à partir des infos de ton parent."
                       />,
                     ]}
                   />

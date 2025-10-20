@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
@@ -14,6 +15,8 @@ interface CreditProgressBarProps {
   progress: number
   color: ColorsType
   height?: 'normal' | 'small' | 'smaller'
+  width?: string
+  innerText?
 }
 
 const MINIMUM_PROGRESS_BAR_SIZE = 0.02
@@ -24,12 +27,16 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   color,
   progress,
   height = 'normal',
+  width = '100%',
+  innerText,
 }) => {
   return (
-    <Container>
+    <Container width={width}>
       <ProgressBarContainer height={height}>
         {height === 'normal' ? <BaseShadowGradient /> : null}
-        <LinearGradientBar progress={progress} color={color} testID="progress-bar" />
+        <LinearGradientBar progress={progress} color={color} testID="progress-bar">
+          <Text style={{ color: 'white' }}>{innerText}</Text>
+        </LinearGradientBar>
       </ProgressBarContainer>
     </Container>
   )
@@ -42,10 +49,11 @@ export const CreditProgressBar = memo(
     color: theme.designSystem.color.background.brandPrimary,
   }))``
 )
+type CreditProgressPropsWithoutWidth = Omit<CreditProgressBarProps, 'width'>
 
-const LinearGradientBar = styled.View.attrs<CreditProgressBarProps>(({ color }) => ({
+const LinearGradientBar = styled.View.attrs<CreditProgressPropsWithoutWidth>(({ color }) => ({
   color,
-}))<CreditProgressBarProps>(({ theme, progress, color }) => {
+}))<CreditProgressPropsWithoutWidth>(({ theme, progress, color }) => {
   let flex
   if (progress === 0) {
     flex = progress
@@ -74,12 +82,12 @@ const BaseShadowGradient = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
 }))
 
-const Container = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-}))
+const Container = styled.View<{ width: string }>`
+  width: ${({ width }) => width};
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
 
 const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>(
   ({ theme, height }) => ({

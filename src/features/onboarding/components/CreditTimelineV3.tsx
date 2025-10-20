@@ -18,7 +18,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Age = 17 | 18
 
-type CreditStep = 17 | 18 | 'information'
+type CreditStep = 17 | 18 | 'information' | 'optional'
 
 type CreditComponentPropsV3 = {
   creditStep: CreditStep
@@ -74,6 +74,32 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
           easing: customEaseInOut,
         }
 
+        if (props.creditStep === 'optional') {
+          const iconComponent = props.iconComponent ?? <GreyWarning />
+          return (
+            <InternalStep
+              key={'optional ' + index}
+              variant={StepVariant.complete}
+              isLast={isLast}
+              iconComponent={iconComponent}
+              addMoreSpacingToIcons>
+              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <StyledAnimatedView {...animatedViewProps}>
+                <View>
+                  <BodySecondary>{`Droit à l’aide`}</BodySecondary>
+                  <BodySecondary>{`Tu peux recevoir 50€ supplémentaires`}</BodySecondary>
+                  <Spacer.Column numberOfSpaces={1} />
+                  <StyledTitle3>
+                    Tu reçois{SPACE}
+                    <TitleSecondary>{'Proute' ?? ''}</TitleSecondary>
+                  </StyledTitle3>
+                  {props.children}
+                </View>
+              </StyledAnimatedView>
+              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+            </InternalStep>
+          )
+        }
         return (
           <InternalStep
             key={props.creditStep}
