@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
+import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
 import { getCookiesLastUpdate } from 'libs/firebase/firestore/getCookiesLastUpdate'
 import { getAppBuildVersion } from 'libs/packageJson'
 
@@ -14,6 +15,9 @@ export const useIsCookiesListUpToDate = () => {
   const [consentBuildVersion, setConsentBuildVersion] = useState<number>()
   const [consentChoiceDatetime, setConsentChoiceDatetime] = useState<string>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  // Watch the store to reload when cookies consent changes
+  const cookiesConsentState = useCookiesConsentStore((state) => state.cookiesConsent)
 
   // TODO(PC-34248): refacto cookies management
   useEffect(() => {
@@ -31,8 +35,8 @@ export const useIsCookiesListUpToDate = () => {
       }
     }
 
-    fetchData()
-  }, [])
+    void fetchData()
+  }, [cookiesConsentState])
 
   const isUpToDate = () => {
     // If no data from Firestore, consider that the cookie list is up to date

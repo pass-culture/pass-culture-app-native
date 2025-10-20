@@ -1,4 +1,4 @@
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { InteractionManager } from 'react-native'
 
@@ -52,14 +52,8 @@ export function Offer() {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
-  const { cookiesConsent, loadCookiesConsent, setCookiesConsent } = useCookies()
 
-  // To reload cookies at each screen display
-  useFocusEffect(
-    useCallback(() => {
-      loadCookiesConsent()
-    }, [loadCookiesConsent])
-  )
+  const { cookiesConsent, setCookiesConsent } = useCookies()
 
   const hasVideoCookiesConsent = shouldUseVideoCookies
     ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
