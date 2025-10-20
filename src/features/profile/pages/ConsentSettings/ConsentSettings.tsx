@@ -1,5 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
@@ -9,13 +10,15 @@ import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCook
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieChoicesChanged/haveCookieChoicesChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
+import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
@@ -36,6 +39,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const ConsentSettings = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
+  const { params } = useRoute<UseRouteType<'ConsentSettings'>>()
+  const offerId = params?.offerId
+
+  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollYRef = useRef<number>(0)
+
   const { showSuccessSnackBar } = useSnackBarContext()
   const { cookiesConsent, setCookiesConsent } = useCookies()
   const { visible, showModal, hideModal } = useModal(false)
@@ -60,14 +69,25 @@ export const ConsentSettings = () => {
     originalCookieChoicesRef.current
   )
 
+  const handleGoBack = useCallback(() => {
+    runAfterInteractionsMobile(() => {
+      if (offerId) {
+        navigate('Offer', { id: offerId })
+      } else {
+        goBack()
+      }
+    })
+  }, [goBack, navigate, offerId])
+
   const handleBack = useCallback(() => {
     if (hasUnsavedCookieChanges) showModal()
-    else goBack()
-  }, [hasUnsavedCookieChanges, showModal, goBack])
+    else handleGoBack()
+  }, [hasUnsavedCookieChanges, showModal, handleGoBack])
 
-  const handleSaveChoices = useCallback(() => {
+  const handleSaveChoices = useCallback(async () => {
+    hideModal()
     const { accepted, refused } = getCookiesChoiceFromCategories(currentCookieChoices)
-    setCookiesConsent({ mandatory: COOKIES_BY_CATEGORY.essential, accepted, refused })
+    await setCookiesConsent({ mandatory: COOKIES_BY_CATEGORY.essential, accepted, refused })
     startTrackingAcceptedCookies(accepted)
     analytics.logHasMadeAChoiceForCookies({ from: 'ConsentSettings', type: currentCookieChoices })
     showSuccessSnackBar({
@@ -76,58 +96,72 @@ export const ConsentSettings = () => {
     })
 
     originalCookieChoicesRef.current = currentCookieChoices
-    navigate(...getTabHookConfig('Profile'))
-  }, [navigate, setCookiesConsent, currentCookieChoices, showSuccessSnackBar])
+    runAfterInteractionsMobile(() => {
+      if (offerId) {
+        navigate('Offer', { id: offerId })
+      } else {
+        navigate(...getTabHookConfig('Profile'))
+      }
+    })
+  }, [currentCookieChoices, setCookiesConsent, showSuccessSnackBar, hideModal, offerId, navigate])
 
   const handleDiscardAndGoBack = useCallback(() => {
     setCurrentCookieChoices(originalCookieChoicesRef.current)
     hideModal()
-    goBack()
-  }, [hideModal, goBack])
+    handleGoBack()
+  }, [hideModal, handleGoBack])
 
   const modalDescription = 'Tes modifications ne seront pas prises en compte.'
 
+  const handleCheckScrollY = useRef(() => {
+    return scrollYRef.current
+  }).current
+
   return (
     <React.Fragment>
-      <SecondaryPageWithBlurHeader
-        onGoBack={handleBack}
-        title="Paramètres de confidentialité"
-        scrollable>
-        <Typo.Body>
-          L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer
-          ton expérience de navigation.
-        </Typo.Body>
+      <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
+        <SecondaryPageWithBlurHeader
+          onGoBack={handleBack}
+          title="Paramètres de confidentialité"
+          scrollable
+          ref={scrollViewRef}>
+          <Typo.Body>
+            L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer
+            ton expérience de navigation.
+          </Typo.Body>
 
-        <StyledBodyAccentXs>
-          Tu peux choisir d’accepter ou non l’activation de leur suivi.
-        </StyledBodyAccentXs>
+          <StyledBodyAccentXs>
+            Tu peux choisir d’accepter ou non l’activation de leur suivi.
+          </StyledBodyAccentXs>
 
-        <CookiesSettings
-          settingsCookiesChoice={currentCookieChoices}
-          setSettingsCookiesChoice={setCurrentCookieChoices}
-        />
-
-        <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
-        <StyledBody>
-          Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
-        </StyledBody>
-        <Typo.Body>
-          On te redemandera bien sûr ton consentement si notre politique évolue.
-        </Typo.Body>
-
-        <StyledBodyAccentXs>
-          Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
-          <ExternalTouchableLink
-            as={LinkInsideText}
-            wording="politique de gestion des cookies"
-            externalNav={{ url: env.COOKIES_POLICY_LINK }}
-            typography="BodyAccentXs"
-            accessibilityRole={AccessibilityRole.LINK}
+          <CookiesSettings
+            settingsCookiesChoice={currentCookieChoices}
+            setSettingsCookiesChoice={setCurrentCookieChoices}
+            offerId={offerId}
           />
-        </StyledBodyAccentXs>
 
-        <SaveButton wording="Enregistrer mes choix" onPress={handleSaveChoices} center />
-      </SecondaryPageWithBlurHeader>
+          <StyledTitle4 {...getHeadingAttrs(2)}>Tu as la main dessus</StyledTitle4>
+          <StyledBody>
+            Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
+          </StyledBody>
+          <Typo.Body>
+            On te redemandera bien sûr ton consentement si notre politique évolue.
+          </Typo.Body>
+
+          <StyledBodyAccentXs>
+            Pour plus d’informations, nous t’invitons à consulter notre {SPACE}
+            <ExternalTouchableLink
+              as={LinkInsideText}
+              wording="politique de gestion des cookies"
+              externalNav={{ url: env.COOKIES_POLICY_LINK }}
+              typography="BodyAccentXs"
+              accessibilityRole={AccessibilityRole.LINK}
+            />
+          </StyledBodyAccentXs>
+
+          <SaveButton wording="Enregistrer mes choix" onPress={handleSaveChoices} center />
+        </SecondaryPageWithBlurHeader>
+      </AnchorProvider>
 
       <AppModal
         title=""

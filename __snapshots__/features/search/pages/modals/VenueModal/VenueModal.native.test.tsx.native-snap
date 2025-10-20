@@ -431,6 +431,7 @@ exports[`VenueModal should render correctly 1`] = `
                 </View>
                 <TextInput
                   accessibilityHidden={false}
+                  accessibilityLabel="Champs de texte (recherche)"
                   autoCorrect={false}
                   editable={true}
                   enablesReturnKeyAutomatically={true}

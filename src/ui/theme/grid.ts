@@ -4,6 +4,7 @@ export enum BorderRadiusEnum {
   BUTTON = 24,
   BORDER_RADIUS = 8,
   CHECKBOX_RADIUS = 4,
+  RADIO_BUTTON_RADIUS = 20,
   TILE = 12,
 }
 

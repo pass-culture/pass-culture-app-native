@@ -243,6 +243,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           >
             <View>
               <View
+                accessibilityElementsHidden={true}
+                importantForAccessibility="no"
                 style={
                   {
                     "alignItems": "flex-end",
@@ -254,7 +256,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               >
                 <View>
                   <Text
-                    accessibilityLabel="Adresse e-mail"
                     style={
                       {
                         "color": "#161617",
@@ -323,6 +324,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               testID="styled-input-container"
             >
               <TextInput
+                accessibilityLabel="Champs de texte - Adresse e-mail - Exemple : tonadresse@email.com - Obligatoire"
                 accessibilityRequired={true}
                 autoCapitalize="none"
                 autoComplete="email"
@@ -375,6 +377,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         >
           <View>
             <View
+              accessibilityElementsHidden={true}
+              importantForAccessibility="no"
               style={
                 {
                   "alignItems": "flex-end",
@@ -386,7 +390,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             >
               <View>
                 <Text
-                  accessibilityLabel="Mot de passe"
                   style={
                     {
                       "color": "#161617",
@@ -442,6 +445,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             testID="styled-input-container"
           >
             <TextInput
+              accessibilityLabel="Champs de texte - Mot de passe - Obligatoire"
               accessibilityRequired={true}
               autoCapitalize="none"
               editable={true}

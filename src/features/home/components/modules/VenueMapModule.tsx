@@ -7,10 +7,14 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 export const VenueMapModule = () => {
   const { shouldDisplayVenueMap } = useShouldDisplayVenueMap()
 
-  return shouldDisplayVenueMap ? <StyledVenueMapBlock from="home" /> : null
+  return shouldDisplayVenueMap ? (
+    <Container>
+      <VenueMapBlock from="home" />
+    </Container>
+  ) : null
 }
 
-const StyledVenueMapBlock = styled(VenueMapBlock)(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.home.spaceBetweenModules,
 }))

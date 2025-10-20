@@ -11,12 +11,12 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
-import { CheckboxVariant } from 'ui/designSystem/Checkbox/types'
 import {
   CheckboxGroupDisplay,
   CheckboxGroupOption,
   CheckboxGroupProps,
 } from 'ui/designSystem/CheckboxGroup/types'
+import { SelectableVariant } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
 
 export const CheckboxGroup = ({
@@ -50,9 +50,9 @@ export const CheckboxGroup = ({
   const selectedValues = value ?? []
   const handleChange = (option: CheckboxGroupOption, newValue: boolean) => {
     if (disabled) return
-    let newValues: string[]
-    if (newValue) newValues = [...selectedValues, option.value]
-    else newValues = selectedValues.filter((value) => value !== option.value)
+    const newValues = newValue
+      ? [...selectedValues, option.value]
+      : selectedValues.filter((value) => value !== option.value)
     onChange?.(newValues)
   }
 
@@ -133,7 +133,7 @@ const Description = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-type VariantProps = { variant: CheckboxVariant }
+type VariantProps = { variant: SelectableVariant }
 type DisplayProps = { display: CheckboxGroupDisplay }
 const CheckboxContainer = styled.View<VariantProps & DisplayProps>(
   ({ theme, variant, display }) => {

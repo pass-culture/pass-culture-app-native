@@ -6,7 +6,7 @@ import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearch
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useGetFontScale } from 'shared/accessibility/useGetFontScale'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -66,6 +66,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
           )
         })}
       </CategoriesButtonsContainer>
+      <Spacer.BottomScreen />
     </StyledScrollView>
   )
 }

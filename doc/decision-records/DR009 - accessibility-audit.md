@@ -443,6 +443,33 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 9.8 - Pour chaque champ de formulaire qui attend un type de données et/ou un format spécifique, l’information correspondante est-elle disponible ?</summary>
+
+**RAAM** : [Critère 9.8](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-8)  
+**Ticket** : [PC-37493](https://passculture.atlassian.net/browse/PC-37493)  
+**PR** : [#8786](https://github.com/pass-culture/pass-culture-app-native/pull/8786)
+
+**Problème** 😱  
+
+- **(E09)** Pour le champ "Adresse e-mail" le format attendu est présent mais n'est pas lié à l'étiquette.
+
+- **(E11)** Pour les champs "Adresse e-mail" et le "Mot de passe", le format attendu est présent mais n'est pas lié à l'étiquette. 
+
+**Correction** 💡
+
+- **(E09 | E11)** Utilisation d'un accessibiltyLabel avec toutes les informations (label, format, obligation) ajouté directement dans l'input et les textes visibles par les utilisateurs sont ignorés aux lecteurs d'écrans pour éviter les doublons. 
+
+
+**Retours audit** 🔥
+
+Texte
+
+</details>
+
+<br>
+
 ## ✅ Corrections 31 octobre → 19 novembre
 
 <br>
