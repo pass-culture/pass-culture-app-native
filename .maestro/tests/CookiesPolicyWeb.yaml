@@ -1,0 +1,17 @@
+url: http://localhost:5173/
+tags:
+  - web
+---
+- runFlow: subFolder/commons/LaunchAppWeb.yml
+- runFlow: subFolder/cookies/SelectOneCookie.yml
+
+- runFlow: subFolder/commons/LaunchAppWeb.yml
+- runFlow: subFolder/cookies/SelectTwoCookies.yml
+
+- runFlow: subFolder/commons/LaunchAppWeb.yml
+- runFlow: subFolder/cookies/SelectThreeCookies.yml
+
+- runFlow: subFolder/commons/LaunchAppWeb.yml
+- runFlow: subFolder/cookies/SelectFourCookies.yml
+
+- stopApp
