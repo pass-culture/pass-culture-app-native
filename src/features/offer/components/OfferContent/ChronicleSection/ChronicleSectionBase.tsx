@@ -24,6 +24,8 @@ export const ChronicleSectionBase = ({
   onShowChroniclesWritersModal,
   style,
 }: ChronicleSectionProps) => {
+  const shouldDisplayAllReviewsButton = data.length > 1
+
   return (
     <View style={style}>
       <Gutter>
@@ -38,22 +40,25 @@ export const ChronicleSectionBase = ({
         shouldTruncate
         cardIcon={variantInfo.Icon}
       />
-      <Gutter>
-        <InternalTouchableLink
-          as={ButtonSecondaryBlack}
-          wording={ctaLabel}
-          navigateTo={navigateTo}
-          onBeforeNavigate={onBeforeNavigate}
-          // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{ alignSelf: 'center' }}
-        />
-      </Gutter>
+      {shouldDisplayAllReviewsButton ? (
+        <Gutter>
+          <InternalTouchableLink
+            as={ButtonSecondaryBlack}
+            wording={ctaLabel}
+            navigateTo={navigateTo}
+            onBeforeNavigate={onBeforeNavigate}
+            // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{ alignSelf: 'center' }}
+          />
+        </Gutter>
+      ) : null}
       <Gutter>
         <StyledButtonQuaternaryBlack
           wording={variantInfo.modalTitle}
           icon={InfoPlain}
           onPress={onShowChroniclesWritersModal}
+          withMarginTop={shouldDisplayAllReviewsButton}
         />
       </Gutter>
     </View>
@@ -77,6 +82,8 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xl,
-}))
+const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack)<{ withMarginTop: boolean }>(
+  ({ theme, withMarginTop }) => ({
+    marginTop: withMarginTop ? theme.designSystem.size.spacing.xl : undefined,
+  })
+)
