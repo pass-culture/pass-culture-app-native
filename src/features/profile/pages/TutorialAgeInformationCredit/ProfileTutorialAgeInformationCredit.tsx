@@ -27,10 +27,11 @@ import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrima
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Page } from 'ui/pages/Page'
-import { Again } from 'ui/svg/icons/Again'
 import { Clock } from 'ui/svg/icons/Clock'
+import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Lock } from 'ui/svg/icons/Lock'
+import { MoreFull } from 'ui/svg/icons/MoreFull'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -74,7 +75,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             />,
             <BlockDescriptionItem
               key={2}
-              icon={<SmallClock />}
+              icon={<SmallConfirmation />}
               text="Ton éligibilité sera vérifiée à partir des infos de ton parent."
             />,
           ]}
@@ -90,7 +91,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const separator: CreditComponentPropsV3 = {
     creditStep: 'separator',
     iconComponent: undefined,
-    children: <Again />,
+    children: <MoreFull />,
   }
 
   const stepperProps: CreditComponentPropsV3[] = [
@@ -200,6 +201,10 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
+
+const SmallConfirmation = styled(Confirmation).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
 
 const SmallLock = styled(Lock).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
