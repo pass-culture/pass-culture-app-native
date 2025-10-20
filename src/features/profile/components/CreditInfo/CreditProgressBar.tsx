@@ -5,6 +5,7 @@ import { ColorsType } from 'theme/types'
 import { Typo, getSpacing } from 'ui/theme'
 
 enum BarHeight {
+  'large' = 6,
   'normal' = 4.5,
   'small' = 2,
   'smaller' = 1,
@@ -13,7 +14,7 @@ enum BarHeight {
 interface CreditProgressBarProps {
   progress: number
   color: ColorsType
-  height?: 'normal' | 'small' | 'smaller'
+  height?: 'large' | 'normal' | 'small' | 'smaller'
   width?: string
   innerText?
 }
@@ -25,14 +26,14 @@ const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
 const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   color,
   progress,
-  height = 'normal',
+  height = 'large',
   width = '100%',
   innerText,
 }) => {
   return (
     <Container width={width}>
       <ProgressBarContainer height={height}>
-        {height === 'normal' ? <BaseShadowGradient /> : null}
+        {height === 'large' ? <BaseShadowGradient /> : null}
         <LinearGradientBar
           progress={progress}
           color={color}
@@ -98,7 +99,7 @@ const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>
   ({ theme, height }) => ({
     flexDirection: 'row',
     borderRadius: theme.designSystem.size.borderRadius.pill,
-    height: getSpacing(height ? BarHeight[height] : BarHeight.normal),
+    height: getSpacing(height ? BarHeight[height] : BarHeight.large),
     width: '100%',
     zIndex: theme.zIndex.progressbar,
     backgroundColor:

@@ -21,7 +21,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Age = 17 | 18
 
-type CreditStep = 17 | 18 | 'information' | 'optional'
+type CreditStep = 17 | 18 | 'information' | 'optional' | 'separator'
 
 export type CreditComponentPropsV3 = {
   creditStep: CreditStep
@@ -81,15 +81,18 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
           easing: customEaseInOut,
         }
 
-        if (props.creditStep === 'optional') {
-          const iconComponent = props.iconComponent ?? <GreyWarning />
+        if (props.creditStep === 'separator') {
           return (
-            <InternalStep
-              key={'optional ' + index}
-              variant={StepVariant.complete}
-              isLast={isLast}
-              iconComponent={iconComponent}
-              addMoreSpacingToIcons>
+            <InternalStep key={'separator ' + index} variant={StepVariant.unknown}>
+              <SeparatorStyledAnimatedView {...animatedViewProps}>
+                <View>{props.children}</View>
+              </SeparatorStyledAnimatedView>
+            </InternalStep>
+          )
+        }
+        if (props.creditStep === 'optional') {
+          return (
+            <InternalStep key={'optional ' + index} variant={StepVariant.unknown}>
               <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
               <DashedStyledAnimatedView {...animatedViewProps}>
                 <View>
@@ -183,4 +186,9 @@ const DashedStyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   padding: getSpacing(4),
   overflow: 'hidden',
   backgroundColor: theme.designSystem.color.background.info,
+}))
+
+const SeparatorStyledAnimatedView = styled(AnimatedView)(() => ({
+  overflow: 'hidden',
+  alignSelf: 'center',
 }))

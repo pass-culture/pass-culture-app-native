@@ -27,6 +27,7 @@ import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrima
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Page } from 'ui/pages/Page'
+import { Again } from 'ui/svg/icons/Again'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Lock } from 'ui/svg/icons/Lock'
@@ -86,6 +87,11 @@ export const ProfileTutorialAgeInformationCredit = () => {
       </React.Fragment>
     ),
   }
+  const separator: CreditComponentPropsV3 = {
+    creditStep: 'separator',
+    iconComponent: undefined,
+    children: <Again />,
+  }
 
   const stepperProps: CreditComponentPropsV3[] = [
     {
@@ -139,6 +145,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
 
   if (enableBonification) {
     stepperProps.splice(2, 0, bonificationStep)
+    stepperProps.splice(2, 0, separator)
   }
 
   return (
