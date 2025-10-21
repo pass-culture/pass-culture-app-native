@@ -112,6 +112,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "minWidth": 32,
                   "overflow": "hidden",
                 }
               }
@@ -137,6 +138,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               />
               <View
                 addMoreSpacingToIcons={true}
+                shouldHaveNoSpacing={false}
                 style={
                   {
                     "marginVertical": 10,
@@ -220,11 +222,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#90949d",
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -292,17 +294,15 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 999,
-                          "borderBottomRightRadius": 999,
-                          "borderTopLeftRadius": 999,
-                          "borderTopRightRadius": 999,
                           "flexDirection": "row",
                           "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
+                      width="100%"
                     >
                       <View
-                        height="normal"
+                        height="large"
                         style={
                           {
                             "backgroundColor": "#ffffff",
@@ -311,7 +311,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             "borderTopLeftRadius": 999,
                             "borderTopRightRadius": 999,
                             "flexDirection": "row",
-                            "height": 18,
+                            "height": 24,
                             "width": "100%",
                             "zIndex": 1,
                           }
@@ -349,7 +349,19 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             }
                           }
                           testID="progress-bar"
-                        />
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                                "textAlign": "center",
+                              }
+                            }
+                          />
+                        </View>
                       </View>
                     </View>
                     <View
@@ -431,6 +443,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "minWidth": 32,
                   "overflow": "hidden",
                 }
               }
@@ -456,6 +469,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               />
               <View
                 addMoreSpacingToIcons={true}
+                shouldHaveNoSpacing={false}
                 style={
                   {
                     "marginVertical": 10,
@@ -539,11 +553,11 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   collapsable={false}
                   style={
                     {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
                       "borderColor": "#90949d",
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
                       "borderWidth": 1,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -611,17 +625,15 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       style={
                         {
                           "alignItems": "center",
-                          "borderBottomLeftRadius": 999,
-                          "borderBottomRightRadius": 999,
-                          "borderTopLeftRadius": 999,
-                          "borderTopRightRadius": 999,
                           "flexDirection": "row",
                           "justifyContent": "center",
+                          "width": "100%",
                         }
                       }
+                      width="100%"
                     >
                       <View
-                        height="normal"
+                        height="large"
                         style={
                           {
                             "backgroundColor": "#ffffff",
@@ -630,7 +642,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             "borderTopLeftRadius": 999,
                             "borderTopRightRadius": 999,
                             "flexDirection": "row",
-                            "height": 18,
+                            "height": 24,
                             "width": "100%",
                             "zIndex": 1,
                           }
@@ -668,7 +680,19 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                             }
                           }
                           testID="progress-bar"
-                        />
+                        >
+                          <Text
+                            style={
+                              {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                                "textAlign": "center",
+                              }
+                            }
+                          />
+                        </View>
                       </View>
                     </View>
                     <View
@@ -829,6 +853,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "minWidth": 32,
                   "overflow": "hidden",
                 }
               }
@@ -853,6 +878,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               />
               <View
                 addMoreSpacingToIcons={true}
+                shouldHaveNoSpacing={false}
                 style={
                   {
                     "marginVertical": 10,

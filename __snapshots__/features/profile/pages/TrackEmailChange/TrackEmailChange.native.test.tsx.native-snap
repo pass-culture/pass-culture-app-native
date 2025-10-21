@@ -184,6 +184,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -209,6 +210,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -217,9 +219,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -407,6 +409,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -432,6 +435,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -662,6 +666,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -690,6 +695,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -1059,6 +1065,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -1084,6 +1091,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -1314,6 +1322,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -1342,6 +1351,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -1548,6 +1558,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -1576,6 +1587,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -1945,6 +1957,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -1970,6 +1983,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -1978,9 +1992,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -2168,6 +2182,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -2193,6 +2208,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -2201,9 +2217,9 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -2391,6 +2407,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -2416,6 +2433,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -2809,6 +2827,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -2834,6 +2853,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -2842,9 +2862,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -3032,6 +3052,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -3057,6 +3078,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -3065,9 +3087,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -3255,6 +3277,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -3280,6 +3303,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -3510,6 +3534,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -3538,6 +3563,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -3907,6 +3933,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -3932,6 +3959,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -4162,6 +4190,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -4190,6 +4219,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -4396,6 +4426,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -4424,6 +4455,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -4630,6 +4662,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -4658,6 +4691,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -5027,6 +5061,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -5052,6 +5087,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -5060,9 +5096,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -5250,6 +5286,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -5275,6 +5312,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -5505,6 +5543,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -5533,6 +5572,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -5739,6 +5779,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -5767,6 +5808,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -6136,6 +6178,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -6161,6 +6204,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -6169,9 +6213,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -6359,6 +6403,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -6384,6 +6429,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -6392,9 +6438,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -6582,6 +6628,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -6607,6 +6654,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -6615,9 +6663,9 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -6805,6 +6853,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -6830,6 +6879,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
