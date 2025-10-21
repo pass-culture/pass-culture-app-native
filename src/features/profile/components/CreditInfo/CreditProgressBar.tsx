@@ -39,9 +39,7 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
           color={color}
           // style={{ alignSelf: 'center' }}
           testID="progress-bar">
-          <Typo.BodyAccent style={{ color: 'white', textAlign: 'center' }}>
-            {innerText}
-          </Typo.BodyAccent>
+          <StyledBodyAccent>{innerText}</StyledBodyAccent>
         </LinearGradientBar>
       </ProgressBarContainer>
     </Container>
@@ -108,3 +106,8 @@ const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>
         : theme.designSystem.color.background.default,
   })
 )
+
+const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.designSystem.color.text.inverted,
+}))

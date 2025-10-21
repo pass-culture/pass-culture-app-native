@@ -37,7 +37,6 @@ interface Props {
 
 export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   const { seventeenYearsOldDeposit, eighteenYearsOldDeposit } = useDepositAmountsByAge()
-
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
@@ -173,7 +172,7 @@ const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) 
 const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
   borderWidth: getSpacing(0.25),
-  borderRadius: theme.designSystem.size.borderRadius.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   padding: getSpacing(4),
   overflow: 'hidden',
 }))
@@ -181,7 +180,7 @@ const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
 const DashedStyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.brandPrimary,
   borderWidth: getSpacing(0.25),
-  borderRadius: theme.designSystem.size.borderRadius.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   borderStyle: 'dashed',
   padding: getSpacing(4),
   overflow: 'hidden',

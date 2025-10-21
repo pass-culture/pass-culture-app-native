@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -18,6 +17,9 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -42,28 +44,29 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { navigate } = useNavigation<UseNavigationType>()
   const { designSystem } = useTheme()
-
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
-  console.log({ enableBonification })
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
   const headerTitle = 'Comment ça marche\u00a0?'
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
 
   const bonificationStep: CreditComponentPropsV3 = {
     creditStep: 'optional',
     iconComponent: undefined,
     children: (
       <React.Fragment>
-        <View style={{ flexDirection: 'row' }}>
+        <RowView>
           <CreditProgressBar progress={1} width="70%" />
           <Typo.BodyAccent style={{ paddingHorizontal: getSpacing(2) }}>+</Typo.BodyAccent>
           <CreditProgressBar
             progress={1}
             width="18%"
-            innerText="50€"
+            innerText={bonificationAmount}
             color={designSystem.color.background.brandSecondary}
           />
-        </View>
+        </RowView>
         <Spacer.Column numberOfSpaces={6} />
         <AccessibleUnorderedList
           Separator={<Spacer.Column numberOfSpaces={4} />}
@@ -84,6 +87,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
           icon={PlainArrowNext}
           wording="Tester mon éligibilité"
           onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
+          justifyContent="flex-start"
         />
       </React.Fragment>
     ),
@@ -217,3 +221,7 @@ const SmallClock = styled(Clock).attrs(({ theme }) => ({
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
+
+const RowView = styled.View({
+  flexDirection: 'row',
+})
