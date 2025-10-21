@@ -80,8 +80,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
       width={playerProps.width}>
       {playerVisible ? (
         <YoutubeRenderer ref={innerVideoRef} {...playerProps} onReady={handleOnReady} play={play} />
-      ) : null}
-
+      ) : (
       <PlayerPreview
         thumbnail={thumbnail}
         title={title}
@@ -91,6 +90,7 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
         width={playerProps.width}
         isLoading={hasLaunched}
       />
+      )}
     </Container>
   )
 })
