@@ -23,6 +23,15 @@ Les projets de refonte échouent souvent à cause d'hypothèses architecturales 
 - Le **Walking Skeleton** est notre assurance-vie architecturale. Il prouve que notre plan est viable sur un périmètre minuscule avant de nous engager massivement. Son produit est la **confiance**. Il ne doit pas être confondu avec un MVP, qui vise à valider un marché.
 - Le **Découpage Vertical** est notre métronome de livraison. Chaque tranche est un incrément de logiciel fonctionnel qui apporte de la valeur à l'utilisateur, permettant d'obtenir des retours rapides et de réduire les risques en continu.
 
+### Illustration des Principes et Refactoring
+
+Ce document illustre directement les principes du Walking Skeleton et du Découpage Vertical à travers les diagrammes suivants.
+
+- **Code qui suit ce principe :** Le diagramme de Gantt "Création d'un Nouveau Module (Ex: 'Gestion de Profil')" détaille un exemple concret de développement par tranches verticales, où chaque sprint ajoute une valeur fonctionnelle testable, en commençant par un Walking Skeleton. C'est un exemple de code qui, une fois implémenté selon ces étapes, suivrait ce principe.
+- **Code qui ne suit pas ce principe :** Les "Alternatives considérées" (Approche "Big Bang" et Découpage Horizontal) décrivent les anti-patterns. Tout code développé en suivant ces approches ne respecterait pas ce principe. Un exemple serait un module où l'UI est entièrement développée avant toute logique métier ou connexion API, ou un refactoring massif sans livraison incrémentale.
+- **Exemple dans le code pour illustrer ce principe :** Le diagramme de Gantt sert d'exemple détaillé pour illustrer comment un nouveau module est construit en respectant le Walking Skeleton et le Découpage Vertical.
+- **Illustration du refactoring :** Le processus décrit par le Walking Skeleton et le Découpage Vertical est en soi une approche de refactoring pour les fonctionnalités majeures ou les modules existants. Plutôt qu'un "Big Bang" refactor, il s'agit de déconstruire la refonte en petites tranches gérables, comme illustré par les sprints du diagramme de Gantt. Par exemple, si un module existant devait être refactorisé pour la "Gestion de Profil", il serait décomposé en ces mêmes sprints, remplaçant progressivement l'ancienne implémentation par les nouvelles tranches verticales.
+
 ## Diagramme
 
 Extrait de code
