@@ -30,7 +30,47 @@ Ce document illustre directement les principes du Walking Skeleton et du Découp
 - **Code qui suit ce principe :** Le diagramme de Gantt "Création d'un Nouveau Module (Ex: 'Gestion de Profil')" détaille un exemple concret de développement par tranches verticales, où chaque sprint ajoute une valeur fonctionnelle testable, en commençant par un Walking Skeleton. C'est un exemple de code qui, une fois implémenté selon ces étapes, suivrait ce principe.
 - **Code qui ne suit pas ce principe :** Les "Alternatives considérées" (Approche "Big Bang" et Découpage Horizontal) décrivent les anti-patterns. Tout code développé en suivant ces approches ne respecterait pas ce principe. Un exemple serait un module où l'UI est entièrement développée avant toute logique métier ou connexion API, ou un refactoring massif sans livraison incrémentale.
 - **Exemple dans le code pour illustrer ce principe :** Le diagramme de Gantt sert d'exemple détaillé pour illustrer comment un nouveau module est construit en respectant le Walking Skeleton et le Découpage Vertical.
-- **Illustration du refactoring :** Le processus décrit par le Walking Skeleton et le Découpage Vertical est en soi une approche de refactoring pour les fonctionnalités majeures ou les modules existants. Plutôt qu'un "Big Bang" refactor, il s'agit de déconstruire la refonte en petites tranches gérables, comme illustré par les sprints du diagramme de Gantt. Par exemple, si un module existant devait être refactorisé pour la "Gestion de Profil", il serait décomposé en ces mêmes sprints, remplaçant progressivement l'ancienne implémentation par les nouvelles tranches verticales.
+
+* **Illustration du refactoring :** Le processus décrit par le Walking Skeleton et le Découpage Vertical est en soi une approche de refactoring pour les fonctionnalités majeures ou les modules existants. Plutôt qu'un "Big Bang" refactor, il s'agit de déconstruire la refonte en petites tranches gérables, comme illustré par les sprints du diagramme de Gantt. Par exemple, si un module existant devait être refactorisé pour la "Gestion de Profil", il serait décomposé en ces mêmes sprints, remplaçant progressivement l'ancienne implémentation par les nouvelles tranches verticales.
+
+Pour une illustration concrète de l'application de ce principe de découpage vertical et de l'évolution du code à travers les différentes étapes, veuillez consulter le document détaillé : [Application du DR019 au module GenericHome (exemple-sf-ws.md)](../architecture/exemple-sf-ws.md).
+
+### Application Incrémentale des DRs et Validation du Découpage
+
+L'application du Walking Skeleton et du Découpage Vertical implique une intégration progressive des principes définis dans les autres DRs. Il est important de noter que chaque tranche ne vise pas une conformité totale à tous les DRs dès le départ, mais une livraison incrémentale de valeur et une amélioration continue de la qualité.
+
+**Analyse des Découpages 1, 2 et 3 :**
+
+- **Découpage 1 (Walking Skeleton) :** Se concentre sur la validation architecturale (feature flag, structure minimale). Il ne vise pas encore l'application détaillée des DRs de qualité de code, mais prouve la faisabilité technique du chemin choisi.
+- **Découpage 2 (Tranche Verticale #1 - Affichage et Pagination) :** Applique principalement **DR011 (Séparation des états - React Query)** pour la gestion de l'état serveur et la pagination. À ce stade, d'autres principes comme l'extraction des fonctions pures (DR012), l'isolation des effets de bord (DR013) ou la séparation UI/Logique (DR014) ne sont pas encore pleinement appliqués. C'est un choix délibéré pour maintenir la tranche petite et livrer rapidement une fonctionnalité de base.
+- **Découpage 3 (Tranche Verticale #2 - Optimisation de la Logique et Séparation des Responsabilités) :** Vient compléter le découpage précédent en appliquant de manière plus approfondie les principes de **DR012 (Fonctions pures)**, **DR013 (Isolation des effets de bord)**, **DR014 (Séparation UI/Logique/Navigation)** et **DR022 (SRP)**. C'est dans cette tranche que le code devient plus modulaire, testable et maintenable.
+
+**Pourquoi le Découpage 2 ne respecte pas tous les principes ?**
+
+Le Découpage 2 ne respecte pas encore tous les principes des DRs (DR012, DR013, DR014, etc.) car son objectif principal est de livrer la fonctionnalité de base d'affichage et de pagination de manière fonctionnelle et rapide. Tenter d'appliquer tous les principes de manière exhaustive dès cette tranche rendrait la tranche trop complexe, retarderait la livraison de valeur et irait à l'encontre de l'agilité prônée par le découpage vertical. La conformité complète est un objectif progressif, atteint sur plusieurs tranches.
+
+**Validité du Découpage en Tranches :**
+
+Oui, le découpage en ces trois tranches est pertinent et conforme à l'esprit du DR019 :
+- Chaque tranche délivre un incrément tangible et testable.
+- Le processus commence par une validation architecturale (Walking Skeleton).
+- Les principes des DRs sont appliqués progressivement, permettant au code d'évoluer vers une meilleure qualité et conformité.
+- Cette approche évite les refactorings "Big Bang" en décomposant le travail en étapes gérables et à valeur ajoutée.
+
+### Utilisation de DR022 (Principe de Responsabilité Unique - SRP)
+
+- **Application dans les découpages :**
+  - **Découpage 2 :** Le principe de SRP n'est pas encore pleinement respecté. Le composant `GenericHomeModern.tsx` à ce stade est encore un composant "god" qui gère à la fois la logique de données, la logique de pagination, et le rendu de l'UI.
+  - **Découpage 3 :** Le SRP est **correctement et explicitement appliqué**. L'exemple montre comment le composant monolithique est décomposé :
+    - `shouldDisplayVideoCarouselInHeader.ts` : Fonction pure avec une seule responsabilité (calculer un booléen).
+    - `useTrackAllModulesSeen.ts` : Hook dédié avec une seule responsabilité (tracking analytics).
+    - `useHomeViewModel.ts` : Hook avec la responsabilité unique de gérer la logique de la vue et de préparer les données.
+    - `HomeView.tsx` : Composant de présentation pur avec la responsabilité unique de rendre l'UI.
+    - `HomeListHeader.tsx` : Composant de présentation pour l'en-tête de la liste.
+    - Cette décomposition est une application directe et réussie du SRP.
+
+- **DR022 doit-il toujours être respecté ?**
+    Oui, le Principe de Responsabilité Unique (DR022) est un principe fondamental qui **doit toujours être visé**. C'est une pierre angulaire d'une architecture propre, de la maintenabilité et de la testabilité du code. Cependant, dans le cadre d'un développement incrémental (comme le découpage vertical), il peut y avoir des déviations temporaires. Il est acceptable qu'une tranche intermédiaire ne respecte pas encore parfaitement le SRP, *à condition qu'il y ait un plan pour le refactoriser dans les tranches suivantes* (comme démontré par le passage du Découpage 2 au Découpage 3). Le SRP est un principe directeur pour l'amélioration continue, et non une exigence absolue à chaque étape minuscule du développement. Les violations du SRP sont souvent la cause des "pain points" que les autres DRs cherchent à résoudre (composants complexes, tests difficiles, re-renders inutiles).
 
 ## Diagramme
 
