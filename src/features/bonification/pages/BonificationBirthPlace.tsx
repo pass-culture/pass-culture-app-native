@@ -56,8 +56,6 @@ export const BonificationBirthPlace = () => {
 
   async function saveBirthPlaceAndNavigate({ birthCountrySelection, birthCity }: FormValues) {
     if (disabled) return
-    // eslint-disable-next-line no-console
-    console.log({ birthCountrySelection, birthCity })
     setBirthCountry(birthCountrySelection)
     if (birthCountrySelection === 'France' && birthCity) {
       setBirthCity(birthCity)
