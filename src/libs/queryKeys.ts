@@ -63,6 +63,7 @@ export enum QueryKeys {
   VIDEO_OFFER = 'video_offer',
   REMINDERS = 'reminders',
   THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS = 'thematicSearchBooksGtlPlaylists',
+  PREVIEW = 'preview',
 }
 
 export enum MutationKeys {
