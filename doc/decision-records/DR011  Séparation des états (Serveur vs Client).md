@@ -320,6 +320,13 @@ graph LR
 1. Lors de la migration du `LocationWrapper`, l'état de géolocalisation et de permissions ira dans React Query.
 2. L'état des modes de localisation et des rayons ira dans un store Zustand `useLocationUIStore`.
 3. Le `FavoritesWrapper` (quick win) sera migré vers Zustand.
+4. Définir et documenter des standards d'utilisation pour React Query (création des queries, mutations, gestion des clés, etc.) afin d'assurer une implémentation homogène dans tout le projet.
+
+## Décisions associées
+
+- **[DR016 : Logiques portées par le Backend](./DR016%20%20Logiques%20portées%20par%20le%20Backend.md)** : Ce principe de séparation des états est complété par la décision de déplacer les logiques métier complexes et les orchestrations d'appels côté backend, afin de garder le client léger.
+
+- **[DR020 : Méthodologie de Refactorisation Legacy (Strangler Fig)](./DR020%20%20Méthodologie%20de%20Refactorisation%20Legacy%20(Strangler%20Fig).md)** : La migration des anciens `Context Wrappers` (qui mélangent les états) vers la nouvelle architecture définie ici se fera en suivant le pattern Strangler Fig, comme décrit dans cet ADR.
 
 ## Output
 
