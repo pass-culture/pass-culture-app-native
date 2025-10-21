@@ -6,6 +6,7 @@ import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { formatLikesCounter } from 'features/offer/helpers/formatLikesCounter/formatLikesCounter'
 import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -36,7 +37,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   ) : null
 
   const handleChroniclesPress = () => {
-    scrollToAnchor('chronicles-section')
+    scrollToAnchor(AnchorNames.CHRONICLES_SECTION)
   }
 
   const getChroniclesCounterElement = (): React.ReactNode => {

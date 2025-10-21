@@ -6,6 +6,7 @@ import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeni
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import type { VenueOffers } from 'features/venue/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,7 +19,7 @@ export const VenueMovies: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffer
 
   useEffect(() => {
     setButton(cinemaCTAButtonName, () => {
-      scrollToAnchor('venue-cine-availabilities')
+      scrollToAnchor(AnchorNames.VENUE_CINE_AVAILABILITIES)
     })
 
     return () => {
@@ -28,7 +29,7 @@ export const VenueMovies: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffer
 
   return (
     <Container>
-      <Anchor name="venue-cine-availabilities">
+      <Anchor name={AnchorNames.VENUE_CINE_AVAILABILITIES}>
         <InView
           onChange={(inView) => {
             showButton(!inView)

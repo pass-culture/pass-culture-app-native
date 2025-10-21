@@ -12,6 +12,7 @@ import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProv
 import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
 import { Anchor } from 'ui/components/anchor/Anchor'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo, getSpacing } from 'ui/theme'
@@ -34,7 +35,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
 
   useEffect(() => {
     setButton(cinemaCTAButtonName, () => {
-      scrollToAnchor('offer-cine-availabilities')
+      scrollToAnchor(AnchorNames.OFFER_CINE_AVAILABILITIES)
     })
 
     return () => {
@@ -45,13 +46,13 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
 
   const handleLayout = useCallback(() => {
     if (from === 'chronicles') {
-      scrollToAnchor('offer-cine-availabilities')
+      scrollToAnchor(AnchorNames.OFFER_CINE_AVAILABILITIES)
     }
   }, [from, scrollToAnchor])
 
   return (
     <Container testID="offer-new-xp-cine-block" gap={4} onLayout={handleLayout}>
-      <Anchor name="offer-cine-availabilities">
+      <Anchor name={AnchorNames.OFFER_CINE_AVAILABILITIES}>
         <InView
           onChange={(inView) => {
             showButton(!inView)
