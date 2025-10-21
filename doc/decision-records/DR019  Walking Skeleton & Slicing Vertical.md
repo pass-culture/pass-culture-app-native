@@ -1,51 +1,29 @@
-#### DR019 : Walking Skeleton & Slicing Vertical
-
-
+# DR019 : Walking Skeleton & Slicing Vertical
 
 > Statut : Adopté
 
-
-
-##### Décision
-
-
+## Décision
 
 Toute refonte ou nouvelle fonctionnalité majeure sera développée en suivant une stratégie en deux phases :
 
 1. **Phase 1 : Le Walking Skeleton.** Construire une version squelettique mais fonctionnelle de bout en bout pour valider l'architecture.
 2. **Phase 2 : Le Découpage Vertical (Vertical Slicing).** Livrer la fonctionnalité par tranches de valeur complètes et testables.
 
-
-
-##### Contexte
-
-
+## Contexte
 
 Les projets de refonte échouent souvent à cause d'hypothèses architecturales erronées découvertes trop tard, ou d'intégrations "Big Bang" catastrophiques. Nous avons besoin d'une méthode pour dérisquer nos initiatives et livrer de la valeur de manière continue.
 
-
-
-##### Alternatives considérées
-
-
+## Alternatives considérées
 
 - **Approche "Big Bang" :** Refactoriser un module entier en une seule fois. Rejeté car c'est une approche à très haut risque, qui retarde la livraison de valeur et rend les retours en arrière difficiles.
 - **Découpage Horizontal :** Construire par couches techniques (d'abord toute l'UI, puis toute la logique...). Rejeté car c'est un anti-pattern agile qui retarde l'intégration et la livraison de valeur réelle.
 
-
-
-##### Justification
-
-
+## Justification
 
 - Le **Walking Skeleton** est notre assurance-vie architecturale. Il prouve que notre plan est viable sur un périmètre minuscule avant de nous engager massivement. Son produit est la **confiance**. Il ne doit pas être confondu avec un MVP, qui vise à valider un marché.
 - Le **Découpage Vertical** est notre métronome de livraison. Chaque tranche est un incrément de logiciel fonctionnel qui apporte de la valeur à l'utilisateur, permettant d'obtenir des retours rapides et de réduire les risques en continu.
 
-
-
-##### Diagramme
-
-
+## Diagramme
 
 Extrait de code
 
@@ -100,21 +78,11 @@ gantt
     Livrable Clé : L'utilisateur voit un message clair si la modification échoue : crit, 3-S4, 1d
 ```
 
-
-
-
-
-##### Actions à implémenter
-
-
+## Actions à implémenter
 
 1. Organiser un atelier de découpage pour chaque nouvelle épopée afin de définir le Walking Skeleton et les tranches verticales.
 2. Le "Definition of Done" d'un Walking Skeleton inclut obligatoirement un test de bout en bout (E2E) qui passe et un pipeline CI/CD fonctionnel.
 
-
-
-##### Output
-
-
+## Output
 
 Un processus de développement prévisible et à faible risque qui livre de la valeur de manière itérative.
