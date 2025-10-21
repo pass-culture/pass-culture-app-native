@@ -7,7 +7,7 @@ export const useOrientationLocked = () => {
 
   const fetchOrientationLocked = useCallback(async () => {
     const storedValue = await AsyncStorage.getItem('orientationLocked')
-    const shouldLock = storedValue === null || storedValue === 'true'
+    const shouldLock = storedValue === 'true'
 
     setIsOrientationLocked(shouldLock)
 

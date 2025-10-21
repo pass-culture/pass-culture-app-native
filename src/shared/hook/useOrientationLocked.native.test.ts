@@ -13,13 +13,18 @@ describe('useOrientationLocked', () => {
     jest.clearAllMocks()
   })
 
-  it('should initialize with unlocked orientation', () => {
-    jest.spyOn(Orientation, 'isLocked').mockReturnValueOnce(true)
+  it('should initialize with unlocked orientation by default (no stored value)', async () => {
+    jest.spyOn(AsyncStorage, 'getItem').mockResolvedValueOnce(null)
 
     const { result } = renderHook(() => useOrientationLocked())
-    const isOrientationLocked = result.current[0]
 
-    expect(isOrientationLocked).toBe(true)
+    await waitFor(() => {
+      const isOrientationLocked = result.current[0]
+
+      expect(isOrientationLocked).toBe(false)
+    })
+
+    expect(Orientation.unlockAllOrientations).toHaveBeenCalledTimes(1)
   })
 
   it('should initialize with locked orientation if stored value is true', async () => {
@@ -50,6 +55,7 @@ describe('useOrientationLocked', () => {
     })
 
     expect(Orientation.lockToPortrait).not.toHaveBeenCalled()
+    expect(Orientation.unlockAllOrientations).toHaveBeenCalledTimes(1)
   })
 
   it('should lock orientation when toggling from unlocked state', async () => {
@@ -57,8 +63,8 @@ describe('useOrientationLocked', () => {
     jest
       .spyOn(Orientation, 'isLocked')
       .mockReturnValueOnce(false) // Initial call
-      .mockReturnValueOnce(false) // Call in toggleOrientation
-      .mockReturnValueOnce(false) // Call in useEffect
+      .mockReturnValueOnce(false) // During toggleOrientation
+      .mockReturnValueOnce(false) // After useEffect
 
     const { result } = renderHook(() => useOrientationLocked())
     const toggleOrientation = result.current[1]
