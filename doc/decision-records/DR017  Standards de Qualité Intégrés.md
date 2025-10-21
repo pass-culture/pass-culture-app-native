@@ -20,6 +20,121 @@ La nouvelle répartition sera la suivante :
 
 Cette approche vise à réduire le nombre de tests unitaires au profit des tests e2e, ce qui facilitera la CI et améliorera la pertinence de notre couverture de tests, garantissant ainsi une meilleure fiabilité et stabilité de l'application.
 
+### Principes et Patterns de Tests
+
+#### **Pain points adressés**
+
+* **✅ Test environment instable** : Isolation des dépendances pour garantir des tests fiables
+* **✅ 97 commits context/provider** : Tests comportementaux qui résistent aux refactors
+* **✅ Complexité maintenance** : Tests focalisés sur comportements vs implémentation (trophé de test)
+* **Responsabilité** : Tester les comportements sans couplage à l'implémentation (mais à l’utilisateur)
+* **Colocation** : Tests à côté du code testé dans chaque feature
+* **Utilisation typique** : Isolation des dépendances externes, tests de comportement
+
+#### **Test environment stable :**
+
+```tsx
+// ✅ Ce test doit toujours fonctionner
+render(<ComplexComponent />)
+expect(true).toBeTruthy()
+```
+
+```tsx
+// ✅ Bon pattern : Test du comportement utilisateur
+const ArtistContainer = () => {
+  const { data: artist, isLoading } = useArtistQuery()
+
+  if (isLoading) return <Loading />
+  return <ArtistCard name={artist.name} />
+}
+
+// Test focalisé sur l'expérience utilisateur
+test('should show loading then artist name', async () => {
+  // Setup: API retourne des données réelles via MSW
+  server.use(
+    rest.get('/api/artists/123', (req, res, ctx) =>
+      res(ctx.json({ name: 'Real Artist' }))
+    )
+  )
+
+  render(<ArtistContainer artistId="123" />)
+
+  // Comportement: utilisateur voit loading puis contenu
+  expect(screen.getByText('Chargement...')).toBeInTheDocument()
+  await waitFor(() => {
+    expect(screen.getByText('Real Artist')).toBeInTheDocument()
+  })
+})
+
+// ✅ Bon pattern : Mock les services externes, pas nos hooks
+beforeEach(() => {
+  // Mock la librairie externe, pas notre logique
+  jest.mock('algoliasearch', () => ({
+    search: jest.fn().mockResolvedValue({
+      hits: [{ name: 'Artist from Algolia' }]
+    })
+  }))
+})
+
+test('should display search results from API', async () => {
+  render(<SearchContainer query="artist" />)
+
+  // Notre useSearchQuery utilise la vraie logique avec Algolia mocké
+  await waitFor(() => {
+    expect(screen.getByText('Artist from Algolia')).toBeInTheDocument()
+  })
+})
+```
+
+#### **Règles d'isolation :**
+
+* Injecter un service de test (ou mocker) les librairies externes (`algoliasearch`), pas nos hooks
+* Mocker le backend via MSW, pas les appels individuels
+* Tester les comportements utilisateur, pas l'implémentation
+
+#### **Anti-patterns à éviter pour les Tests**
+
+```tsx
+// ❌ Anti-pattern : Test fragile couplé aux détails internes
+const ArtistContainer = () => {
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    setLoading(true)
+    fetchArtist().then(setData).finally(() => setLoading(false))
+  }, [])
+
+  return loading ? <Loading /> : <ArtistCard data={data} />
+}
+
+// Test cassant à chaque refactor
+test('should set loading to true then false', () => {
+  const { rerender } = render(<ArtistContainer />)
+  expect(mockSetLoading).toHaveBeenCalledWith(true)
+  expect(mockSetLoading).toHaveBeenCalledWith(false)
+})
+
+// ❌ Anti-pattern : Mock nos propres hooks = masque les régressions
+test('should display artist name', () => {
+  jest.mock('./useArtistQuery', () => ({
+    useArtistQuery: () => ({ data: { name: 'Fake Artist' } })
+  }))
+
+  render(<ArtistContainer />)
+  expect(screen.getByText('Fake Artist')).toBeInTheDocument()
+})
+
+// Si useArtistQuery casse, le test passe toujours
+```
+
+#### **Problèmes générés :**
+
+* Tests cassent à chaque refactor (couplage/dépendance à l’implémentation)
+* Fausse confiance (mocks cachent les vrais bugs)
+* Maintenance test = 2x temps développement feature
+* Environment instable = CI/CD non fiable
+
 ## Contexte
 
 Notre base de code utilise déjà TypeScript, mais nous avons des zones critiques sans tests, comme le helper `useSync.ts` (complexité 58, tests skippés). Ce hook, responsable de la synchronisation complexe des états de recherche, d'accessibilité et de localisation avec les paramètres de navigation, illustre parfaitement les défis de la dette technique : sa haute complexité et l'absence de tests le rendent difficile à maintenir, à déboguer et à faire évoluer, tout en augmentant le risque de régressions. Il représente un exemple concret de code qui ne suit pas les principes de qualité que nous souhaitons établir.
