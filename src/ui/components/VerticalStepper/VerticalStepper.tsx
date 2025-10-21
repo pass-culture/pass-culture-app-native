@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { DotSize, FirstOrLastProps, StepVariantProps } from 'ui/components/types'
@@ -34,9 +34,9 @@ const IN_PROGRESS_ICON_SIZE = getSpacing(3)
 const DOT_SIZE: DotSize = { width: 2, height: 3 }
 const SPECIAL_DOT_SIZE: DotSize = { width: 2, height: 2.5 }
 
-const BottomLine = (props: CustomComponentProps) => {
+const BottomLine = ({ variant, ...props }: CustomComponentProps) => {
   if (props.isLast) return <BottomFilledLine isLast />
-  switch (props.variant) {
+  switch (variant) {
     case StepVariant.in_progress:
     case StepVariant.future:
       return (
@@ -54,8 +54,8 @@ const BottomLine = (props: CustomComponentProps) => {
       return <BottomFilledLine testID="bottom-line" {...props} />
   }
 }
-const TopLine = (props: CustomComponentProps) => {
-  switch (props.variant) {
+const TopLine = ({ variant, ...props }: CustomComponentProps) => {
+  switch (variant) {
     case StepVariant.complete:
     case StepVariant.in_progress:
       return <TopFilledLine {...props} />
@@ -72,22 +72,22 @@ const TopLine = (props: CustomComponentProps) => {
       )
   }
 }
-const Icon = (props: CustomComponentProps) => {
+const Icon = ({ variant, ...props }: CustomComponentProps) => {
   if (props.iconComponent) return props.iconComponent
 
-  if (props.variant === StepVariant.complete) return <StepperValidateSuccess {...props} />
+  if (variant === StepVariant.complete) return <StepperValidateSuccess {...props} />
 
-  if (props.variant === StepVariant.in_progress) return <InProgressIcon {...props} />
+  if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
   return <FutureIcon {...props} />
 }
-export const VerticalStepper = memo(function VerticalStepper({
+export const VerticalStepper = ({
   variant,
   iconComponent,
   isFirst,
   isLast,
   addMoreSpacingToIcons,
-}: VerticalStepperProps) {
+}: VerticalStepperProps) => {
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} variant={variant} />
@@ -97,7 +97,7 @@ export const VerticalStepper = memo(function VerticalStepper({
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} variant={variant} />
     </Wrapper>
   )
-})
+}
 
 const Wrapper = styled.View({
   alignItems: 'center',

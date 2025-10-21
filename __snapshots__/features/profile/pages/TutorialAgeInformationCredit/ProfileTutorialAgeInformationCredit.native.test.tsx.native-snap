@@ -132,7 +132,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   }
                 }
                 testID="top-line"
-                variant="complete"
               />
               <View
                 addMoreSpacingToIcons={true}
@@ -169,7 +168,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   }
                 }
                 testID="bottom-line"
-                variant="complete"
               />
             </View>
           </View>
@@ -453,7 +451,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   }
                 }
                 testID="top-line"
-                variant="complete"
               />
               <View
                 addMoreSpacingToIcons={true}
@@ -490,7 +487,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   }
                 }
                 testID="bottom-line"
-                variant="complete"
               />
             </View>
           </View>
@@ -852,7 +848,6 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   }
                 }
                 testID="top-line"
-                variant="complete"
               />
               <View
                 addMoreSpacingToIcons={true}

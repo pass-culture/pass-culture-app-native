@@ -153,7 +153,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                     }
                   }
                   testID="top-line"
-                  variant="complete"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -192,7 +191,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                     }
                   }
                   testID="bottom-line"
-                  variant="complete"
                 />
               </View>
             </View>
@@ -387,7 +385,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                     }
                   }
                   testID="top-line"
-                  variant="in_progress"
                 />
                 <View
                   addMoreSpacingToIcons={false}
@@ -413,7 +410,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                       }
                     }
                     testID="icon"
-                    variant="in_progress"
                   />
                 </View>
                 <View
@@ -672,7 +668,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                       }
                     }
                     testID="icon"
-                    variant="future"
                   />
                 </View>
                 <View
@@ -916,7 +911,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                       }
                     }
                     testID="icon"
-                    variant="future"
                   />
                 </View>
                 <View
