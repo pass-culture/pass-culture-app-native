@@ -7,7 +7,16 @@
 La qualité n'est pas une option. Tout le code produit doit respecter les standards suivants :
 
 1. **TypeScript Stricte :** Le typage doit être utilisé de manière exhaustive pour garantir la sécurité de type.
-2. **Tests Automatisés :** Chaque fonctionnalité doit être couverte par une pyramide de tests appropriée (unitaires, intégration, et E2E pour les flux critiques).
+### Tests
+
+Malgré un nombre important de tests unitaires (>10k) et une couverture de code élevée, des bugs persistent, indiquant que nos tests actuels ne sont pas suffisamment pertinents. Nous allons donc adopter une approche de "qualité plutôt que quantité" pour notre stratégie de tests.
+
+La nouvelle répartition sera la suivante :
+*   **Tests Unitaires (U)** : Pour les fonctions individuelles.
+*   **Tests d'Intégration** : Pour les pages et les composants complexes.
+*   **Tests End-to-End (e2e)** : Pour les scénarios utilisateurs complets.
+
+Cette approche vise à réduire le nombre de tests unitaires au profit des tests e2e, ce qui facilitera la CI et améliorera la pertinence de notre couverture de tests, garantissant ainsi une meilleure fiabilité et stabilité de l'application.
 
 ## Contexte
 
