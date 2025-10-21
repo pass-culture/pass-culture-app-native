@@ -2,9 +2,8 @@ import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { browserName } from 'react-device-detect'
 import { ScrollView } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -12,6 +11,7 @@ import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
+import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { supportedBrowsers } from 'web/supportedBrowsers'
 
@@ -43,8 +43,7 @@ export const BrowserNotSupportedPage: React.FC<{
   supportedBrowsers: SupportedBrowsers
   onPress: () => void
 }> = ({ browserVersion, supportedBrowsers, onPress }) => {
-  const Illustration = getPrimaryIllustration(PageNotFound)
-
+  const { designSystem } = useTheme()
   const isBrowserSupported = browserName in supportedBrowsers
   const minSupportedVersion = isBrowserSupported ? supportedBrowsers[browserName] : undefined
   const isUpToDate = isBrowserSupported && browserVersion >= (minSupportedVersion ?? 0)
@@ -57,12 +56,12 @@ export const BrowserNotSupportedPage: React.FC<{
   return (
     <Root>
       <ContentScroll>
-        {Illustration ? (
-          <IllustrationContainer>
-            <Illustration />
-          </IllustrationContainer>
-        ) : null}
-
+        <IllustrationContainer>
+          <PageNotFound
+            size={illustrationSizes.fullPage}
+            color={designSystem.color.icon.brandPrimary}
+          />
+        </IllustrationContainer>
         <TextContainer gap={4}>
           <StyledTitle2 {...getHeadingAttrs(1)}>{message?.title}</StyledTitle2>
           <Typo.Body {...getHeadingAttrs(2)}>{message?.description}</Typo.Body>

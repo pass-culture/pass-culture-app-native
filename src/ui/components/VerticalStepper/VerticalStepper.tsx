@@ -1,5 +1,5 @@
-import React, { memo, useCallback } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import React from 'react'
+import styled from 'styled-components/native'
 
 import { DotSize, FirstOrLastProps, StepVariantProps } from 'ui/components/types'
 import { AutomaticVerticalDots } from 'ui/components/VerticalDots/AutomaticVerticalDots'
@@ -26,91 +26,78 @@ export type VerticalStepperProps = FirstOrLastProps &
 
 type CustomComponentProps = FirstOrLastProps & {
   testID?: string
+  variant: StepVariant
+  iconComponent?: React.JSX.Element
 }
 
 const IN_PROGRESS_ICON_SIZE = getSpacing(3)
 const DOT_SIZE: DotSize = { width: 2, height: 3 }
 const SPECIAL_DOT_SIZE: DotSize = { width: 2, height: 2.5 }
 
-export const VerticalStepper = memo(function VerticalStepper({
+const BottomLine = ({ variant, ...props }: CustomComponentProps) => {
+  if (props.isLast) return <BottomFilledLine isLast />
+  switch (variant) {
+    case StepVariant.in_progress:
+    case StepVariant.future:
+      return (
+        <AutomaticVerticalDots
+          dotSize={DOT_SIZE}
+          firstDotSize={SPECIAL_DOT_SIZE}
+          endsWithDot={false}
+          testID="bottom-line"
+          {...props}
+        />
+      )
+
+    // Only VerticalStepperVariant.complete in this default case
+    default:
+      return <BottomFilledLine testID="bottom-line" {...props} />
+  }
+}
+const TopLine = ({ variant, ...props }: CustomComponentProps) => {
+  switch (variant) {
+    case StepVariant.complete:
+    case StepVariant.in_progress:
+      return <TopFilledLine {...props} />
+
+    // Only VerticalStepperVariant.future in this default case
+    default:
+      return (
+        <AutomaticVerticalDots
+          dotSize={DOT_SIZE}
+          lastDotSize={SPECIAL_DOT_SIZE}
+          endsWithDot
+          {...props}
+        />
+      )
+  }
+}
+const Icon = ({ variant, ...props }: CustomComponentProps) => {
+  if (props.iconComponent) return props.iconComponent
+
+  if (variant === StepVariant.complete) return <StepperValidateSuccess {...props} />
+
+  if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
+
+  return <FutureIcon {...props} />
+}
+export const VerticalStepper = ({
   variant,
   iconComponent,
   isFirst,
   isLast,
   addMoreSpacingToIcons,
-}: VerticalStepperProps) {
-  const { designSystem } = useTheme()
-
-  const Icon = useCallback(
-    (props: CustomComponentProps) => {
-      if (iconComponent) return iconComponent
-
-      if (variant === StepVariant.complete)
-        return <StepperValidate color={designSystem.color.icon.success} size={20} {...props} />
-
-      if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
-
-      return <FutureIcon {...props} />
-    },
-    [iconComponent, designSystem.color.icon.success, variant]
-  )
-
-  const TopLine = useCallback(
-    (props: CustomComponentProps) => {
-      switch (variant) {
-        case StepVariant.complete:
-        case StepVariant.in_progress:
-          return <TopFilledLine {...props} />
-
-        // Only VerticalStepperVariant.future in this default case
-        default:
-          return (
-            <AutomaticVerticalDots
-              dotSize={DOT_SIZE}
-              lastDotSize={SPECIAL_DOT_SIZE}
-              endsWithDot
-              {...props}
-            />
-          )
-      }
-    },
-    [variant]
-  )
-
-  const BottomLine = useCallback(
-    (props: CustomComponentProps) => {
-      if (props.isLast) return <BottomFilledLine isLast />
-      switch (variant) {
-        case StepVariant.in_progress:
-        case StepVariant.future:
-          return (
-            <AutomaticVerticalDots
-              dotSize={DOT_SIZE}
-              firstDotSize={SPECIAL_DOT_SIZE}
-              endsWithDot={false}
-              testID="bottom-line"
-              {...props}
-            />
-          )
-
-        // Only VerticalStepperVariant.complete in this default case
-        default:
-          return <BottomFilledLine testID="bottom-line" {...props} />
-      }
-    },
-    [variant]
-  )
-
+}: VerticalStepperProps) => {
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
-      <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
+      <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} variant={variant} />
       <IconWrapper addMoreSpacingToIcons={!!addMoreSpacingToIcons}>
-        <Icon testID="icon" />
+        <Icon testID="icon" variant={variant} iconComponent={iconComponent} />
       </IconWrapper>
-      <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />
+      <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} variant={variant} />
     </Wrapper>
   )
-})
+}
 
 const Wrapper = styled.View({
   alignItems: 'center',
@@ -153,3 +140,8 @@ const IconWrapper = styled.View<{ addMoreSpacingToIcons: boolean }>(
     marginVertical: addMoreSpacingToIcons ? getSpacing(2.5) : getSpacing(0.5),
   })
 )
+
+const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.success,
+  size: getSpacing(5),
+}))``
