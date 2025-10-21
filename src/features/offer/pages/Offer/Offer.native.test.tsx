@@ -1,3 +1,5 @@
+import { ReactTestInstance } from 'react-test-renderer'
+
 import {
   BookingsResponse,
   GetRemindersResponse,
@@ -6,7 +8,7 @@ import {
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -302,17 +304,19 @@ describe('<Offer />', () => {
     })
 
     describe('cookies NOT consented', () => {
+      const mockSetCookiesConsent = jest.fn()
+
+      const acceptedWithoutVideo = [
+        ...COOKIES_BY_CATEGORY.customization,
+        ...COOKIES_BY_CATEGORY.performance,
+        ...COOKIES_BY_CATEGORY.marketing,
+      ]
+
       beforeEach(() => {
         setFeatureFlags([
           RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
           RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
         ])
-
-        const acceptedWithoutVideo = [
-          ...COOKIES_BY_CATEGORY.customization,
-          ...COOKIES_BY_CATEGORY.performance,
-          ...COOKIES_BY_CATEGORY.marketing,
-        ]
 
         mockUseCookies.mockImplementation(() => ({
           ...defaultUseCookies,
@@ -324,6 +328,7 @@ describe('<Offer />', () => {
               refused: [],
             },
           },
+          setCookiesConsent: mockSetCookiesConsent,
         }))
       })
 
@@ -336,6 +341,20 @@ describe('<Offer />', () => {
 
         expect(placeholder).toBeOnTheScreen()
         expect(screen.queryByRole('imagebutton')).not.toBeOnTheScreen()
+      })
+
+      it('should accept video cookies and display video player when pressing see video button below video player placeholder and wipVideoCookiesConsent FF activated', async () => {
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        await screen.findByText('Vidéo')
+
+        await user.press(screen.getAllByText('Voir la vidéo')[1] as ReactTestInstance)
+
+        expect(mockSetCookiesConsent).toHaveBeenCalledWith({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [...acceptedWithoutVideo, CookieNameEnum.VIDEO_PLAYBACK],
+          refused: [],
+        })
       })
     })
   })

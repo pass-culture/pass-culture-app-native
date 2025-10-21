@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react'
+import React, { ReactElement, useCallback, useState } from 'react'
 import { StyleProp, ViewStyle, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -21,6 +21,7 @@ type VideoSectionProps = {
   offerId: number
   offerSubcategory: SubcategoryIdEnum
   onManageCookiesPress: VoidFunction
+  onVideoConsentPress: VoidFunction
   videoId?: string
   subtitle?: string
   videoThumbnail?: ReactElement
@@ -46,10 +47,17 @@ export const VideoSection = ({
   duration,
   hasVideoCookiesConsent,
   onManageCookiesPress,
+  onVideoConsentPress,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
   const videoHeight = Math.min(viewportWidth, maxWidth) * playerRatio
+  const [playVideo, setPlayVideo] = useState(false)
+
+  const handleOnPlayPress = useCallback(() => {
+    void analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })
+    setPlayVideo(true)
+  }, [offerId])
 
   const renderVideoSection = useCallback(() => {
     return (
@@ -64,16 +72,19 @@ export const VideoSection = ({
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
           duration={duration ? formatDuration(duration, 'sec') : undefined}
-          onPlayPress={() => analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })}
+          onPlayPress={handleOnPlayPress}
+          play={playVideo}
         />
         <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>
     )
   }, [
     duration,
+    handleOnPlayPress,
     maxWidth,
     offerId,
     offerSubcategory,
+    playVideo,
     subtitle,
     title,
     userId,
@@ -82,6 +93,11 @@ export const VideoSection = ({
     videoThumbnail,
     viewportWidth,
   ])
+
+  const handleConsentAndPlay = useCallback(() => {
+    onVideoConsentPress()
+    setPlayVideo(true)
+  }, [onVideoConsentPress])
 
   const renderGatedVideoSection = useCallback(() => {
     return (
@@ -92,9 +108,19 @@ export const VideoSection = ({
         height={videoHeight}
         width={viewportWidth < maxWidth ? undefined : maxWidth}
         onManageCookiesPress={onManageCookiesPress}
+        onVideoConsentPress={handleConsentAndPlay}
       />
     )
-  }, [duration, maxWidth, onManageCookiesPress, title, videoHeight, videoThumbnail, viewportWidth])
+  }, [
+    duration,
+    handleConsentAndPlay,
+    maxWidth,
+    onManageCookiesPress,
+    title,
+    videoHeight,
+    videoThumbnail,
+    viewportWidth,
+  ])
 
   return (
     <Anchor name={AnchorNames.VIDEO_PLAYBACK}>

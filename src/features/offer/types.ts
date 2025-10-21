@@ -81,6 +81,7 @@ export type OfferContentProps = {
   onReactionButtonPress?: () => void
   userId?: number
   hasVideoCookiesConsent?: boolean
+  onVideoConsentPress: VoidFunction
 }
 
 export type OfferImageContainerDimensions = {

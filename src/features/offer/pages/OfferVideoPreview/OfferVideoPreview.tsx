@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { Animated, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -30,6 +30,14 @@ export const OfferVideoPreview: FunctionComponent = () => {
   const videoHeight = Math.min(viewportWidth, MAX_WIDTH) * RATIO169
   const { data: offer } = useOfferQuery({ offerId: params.id })
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const [playVideo, setPlayVideo] = useState(false)
+
+  const handleOnPlayPress = useCallback(() => {
+    if (offer?.id) {
+      void analytics.logConsultVideo({ from: 'offer', offerId: String(offer.id) })
+      setPlayVideo(true)
+    }
+  }, [offer?.id])
 
   return (
     <Container>
@@ -53,9 +61,8 @@ export const OfferVideoPreview: FunctionComponent = () => {
               ? formatDuration(offer.video.durationSeconds, 'sec')
               : undefined
           }
-          onPlayPress={() =>
-            analytics.logConsultVideo({ from: 'offer', offerId: String(offer.id) })
-          }
+          onPlayPress={handleOnPlayPress}
+          play={playVideo}
         />
       ) : null}
     </Container>

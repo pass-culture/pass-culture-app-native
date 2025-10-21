@@ -2,7 +2,7 @@ import React, { createRef } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image, View } from 'react-native'
 
-import { render, userEvent, waitFor, screen, act } from 'tests/utils/web'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils/web'
 
 import { YoutubePlayerRef } from './types'
 import { YoutubePlayer } from './YoutubePlayer'
@@ -18,7 +18,9 @@ describe('YoutubePlayer', () => {
   })
 
   it('should have default ref', async () => {
-    render(<YoutubePlayer height={300} thumbnail={<View />} ref={mockRef} videoId="id" />)
+    render(
+      <YoutubePlayer height={300} thumbnail={<View />} ref={mockRef} videoId="id" play={false} />
+    )
 
     await expect(mockRef.current?.getDuration()).resolves.toBe(0)
     await expect(mockRef.current?.getCurrentTime()).resolves.toBe(0)
@@ -42,6 +44,7 @@ describe('YoutubePlayer', () => {
         height={300}
         thumbnail={<Image source={{ uri: 'thumbnail.jpg' }} />}
         onReady={handleOnReady}
+        play={false}
       />
     )
 

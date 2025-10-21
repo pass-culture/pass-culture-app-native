@@ -25,6 +25,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onShowChroniclesWritersModal,
   headlineOffersCount,
   hasVideoCookiesConsent,
+  onVideoConsentPress,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
@@ -79,7 +80,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           headlineOffersCount={headlineOffersCount}
           onLayout={onLayout}
           onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-          hasVideoCookiesConsent={hasVideoCookiesConsent}>
+          hasVideoCookiesConsent={hasVideoCookiesConsent}
+          onVideoConsentPress={onVideoConsentPress}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

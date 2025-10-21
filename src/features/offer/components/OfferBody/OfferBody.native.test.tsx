@@ -624,7 +624,8 @@ describe('<OfferBody />', () => {
           distance={distance}
           chronicleVariantInfo={chronicleVariantInfoFixture}
           isVideoSectionEnabled={isVideoSectionEnabled}
-          hasVideoCookiesConsent={hasVideoCookiesConsent}>
+          hasVideoCookiesConsent={hasVideoCookiesConsent}
+          onVideoConsentPress={jest.fn()}>
           {children}
         </OfferBody>
       ),

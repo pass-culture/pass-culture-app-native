@@ -1,4 +1,4 @@
-import React, { ReactElement, forwardRef, useCallback, useRef, useState } from 'react'
+import React, { ReactElement, forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent, StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -67,6 +67,12 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
     setPlayerVisible(true)
   }, [hasLaunched, onPlayPress])
 
+  useEffect(() => {
+    if (play && !playerVisible) {
+      handleLaunchPlayer()
+    }
+  }, [play, playerVisible, handleLaunchPlayer])
+
   if (!noThumbnail && !thumbnail) {
     return null
   }
@@ -80,17 +86,17 @@ export const YoutubePlayer = forwardRef(function YoutubePlayer(
       width={playerProps.width}>
       {playerVisible ? (
         <YoutubeRenderer ref={innerVideoRef} {...playerProps} onReady={handleOnReady} play={play} />
-      ) : null}
-
-      <PlayerPreview
-        thumbnail={thumbnail}
-        title={title}
-        duration={duration}
-        onPress={handleLaunchPlayer}
-        height={playerProps.height}
-        width={playerProps.width}
-        isLoading={hasLaunched}
-      />
+      ) : (
+        <PlayerPreview
+          thumbnail={thumbnail}
+          title={title}
+          duration={duration}
+          onPress={handleLaunchPlayer}
+          height={playerProps.height}
+          width={playerProps.width}
+          isLoading={hasLaunched}
+        />
+      )}
     </Container>
   )
 })
