@@ -1,4 +1,4 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { NavigationAction, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -17,7 +17,6 @@ import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieCho
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -37,7 +36,7 @@ import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, addListener, dispatch } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { params } = useRoute<UseRouteType<'ConsentSettings'>>()
   const offerId = params?.offerId
@@ -58,6 +57,8 @@ export const ConsentSettings = () => {
     useState<CookiesChoiceByCategory>(loadedCookieChoices)
 
   const originalCookieChoicesRef = useRef(loadedCookieChoices)
+  const interceptedBackActionRef = useRef<NavigationAction | null>(null)
+  const bypassBeforeRemoveOnceRef = useRef(false)
 
   useEffect(() => {
     setCurrentCookieChoices(loadedCookieChoices)
@@ -69,14 +70,28 @@ export const ConsentSettings = () => {
     originalCookieChoicesRef.current
   )
 
-  const handleGoBack = useCallback(() => {
-    runAfterInteractionsMobile(() => {
-      if (offerId) {
-        navigate('Offer', { id: offerId })
-      } else {
-        goBack()
+  useEffect(() => {
+    const removeBeforeRemoveListener = addListener('beforeRemove', (event) => {
+      if (bypassBeforeRemoveOnceRef.current) {
+        bypassBeforeRemoveOnceRef.current = false
+        return
       }
+
+      if (!hasUnsavedCookieChanges) return
+
+      event.preventDefault()
+      if (!visible) showModal()
+      interceptedBackActionRef.current = event.data.action
     })
+    return removeBeforeRemoveListener
+  }, [addListener, hasUnsavedCookieChanges, visible, showModal])
+
+  const handleGoBack = useCallback(() => {
+    if (offerId) {
+      navigate('Offer', { id: offerId })
+    } else {
+      goBack()
+    }
   }, [goBack, navigate, offerId])
 
   const handleBack = useCallback(() => {
@@ -89,27 +104,44 @@ export const ConsentSettings = () => {
     const { accepted, refused } = getCookiesChoiceFromCategories(currentCookieChoices)
     await setCookiesConsent({ mandatory: COOKIES_BY_CATEGORY.essential, accepted, refused })
     startTrackingAcceptedCookies(accepted)
-    analytics.logHasMadeAChoiceForCookies({ from: 'ConsentSettings', type: currentCookieChoices })
-    showSuccessSnackBar({
-      message: 'Ton choix a bien été enregistré.',
-      timeout: SNACK_BAR_TIME_OUT,
+    void analytics.logHasMadeAChoiceForCookies({
+      from: 'ConsentSettings',
+      type: currentCookieChoices,
     })
 
     originalCookieChoicesRef.current = currentCookieChoices
-    runAfterInteractionsMobile(() => {
+    interceptedBackActionRef.current = null
+
+    const navigateToOfferOrProfile = () => {
       if (offerId) {
         navigate('Offer', { id: offerId })
       } else {
         navigate(...getTabHookConfig('Profile'))
       }
+    }
+
+    navigateToOfferOrProfile()
+    showSuccessSnackBar({
+      message: 'Ton choix a bien été enregistré.',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   }, [currentCookieChoices, setCookiesConsent, showSuccessSnackBar, hideModal, offerId, navigate])
 
   const handleDiscardAndGoBack = useCallback(() => {
     setCurrentCookieChoices(originalCookieChoicesRef.current)
     hideModal()
+
+    const pending = interceptedBackActionRef.current
+    interceptedBackActionRef.current = null
+
+    if (pending) {
+      dispatch(pending)
+      return
+    }
+
+    bypassBeforeRemoveOnceRef.current = true
     handleGoBack()
-  }, [hideModal, handleGoBack])
+  }, [hideModal, handleGoBack, dispatch])
 
   const modalDescription = 'Tes modifications ne seront pas prises en compte.'
 
