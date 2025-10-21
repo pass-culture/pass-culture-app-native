@@ -68,18 +68,17 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const searchNavigationConfig = useNavigateToSearchWithVenueOffers(venue)
   const isFocused = useIsFocused()
 
-  const { hits = [], nbHits = 0 } = venueOffers ?? {}
+  const { hits = [] } = venueOffers ?? {}
   const { artists = [] } = venueArtists ?? {}
   const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
 
-  const showSeeMore = nbHits > hits.length && !playlists.length
-  const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
+  const onPressSeeMore = () => analytics.logVenueSeeMoreClicked(venue.id)
 
   const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
     <SeeMore
       width={width}
       height={height}
-      navigateTo={showSeeMore ? searchNavigationConfig : undefined}
+      navigateTo={searchNavigationConfig}
       onPress={() => analytics.logVenueSeeMoreClicked(venue.id)}
     />
   )
@@ -170,12 +169,13 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
             itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
             onPressSeeMore={onPressSeeMore}
             renderItem={renderItem}
-            titleSeeMoreLink={showSeeMore ? searchNavigationConfig : undefined}
+            titleSeeMoreLink={searchNavigationConfig}
             renderFooter={renderFooter}
             keyExtractor={keyExtractor}
             FlatListComponent={FlatList}
             playlistRef={listRef}
             onViewableItemsChanged={handleViewableItemsChanged}
+            forceNativeSeeMore
           />
         )}
       </ObservedPlaylist>
