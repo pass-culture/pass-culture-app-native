@@ -810,6 +810,84 @@ exports[`<Venue /> should match snapshot 1`] = `
                               </Text>
                             </Text>
                           </View>
+                          <View
+                            style={
+                              {
+                                "backgroundColor": "#f1f1f4",
+                                "height": 20,
+                                "marginLeft": 16,
+                                "marginRight": 12,
+                                "width": 1,
+                              }
+                            }
+                          />
+                          <View
+                            accessibilityLabel="Voir plus d’offres de la sélection Toutes les offres"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "opacity": 1,
+                                "paddingBottom": 4,
+                                "paddingLeft": 4,
+                                "paddingRight": 4,
+                                "paddingTop": 4,
+                                "userSelect": "auto",
+                              }
+                            }
+                            testID="Voir plus d’offres de la sélection Toutes les offres"
+                          >
+                            <View
+                              fill="none"
+                              height={16}
+                              width={16}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                  "marginLeft": 8,
+                                }
+                              }
+                            >
+                              Voir tout
+                            </Text>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -956,6 +1034,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                 },
                                 "venue": {},
+                              },
+                              {
+                                "dataFooter": true,
                               },
                             ]
                           }
@@ -1590,6 +1671,195 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         Dès le 18 août
                                       </Text>
                                     </View>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                highlighted={false}
+                                leadingItem={
+                                  {
+                                    "_geoloc": {
+                                      "lat": 47.8898,
+                                      "lng": -2.83593,
+                                    },
+                                    "objectID": "223339",
+                                    "offer": {
+                                      "dates": [
+                                        1629312300,
+                                        1629485100,
+                                        1629657900,
+                                      ],
+                                      "isDigital": false,
+                                      "isDuo": true,
+                                      "name": "Black Widow - VF",
+                                      "prices": [
+                                        0,
+                                        0,
+                                        0,
+                                      ],
+                                      "subcategoryId": "CINE_PLEIN_AIR",
+                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                    },
+                                    "venue": {},
+                                  }
+                                }
+                                style={
+                                  {
+                                    "width": 16,
+                                  }
+                                }
+                                width={16}
+                              />
+                            </View>
+                            <View
+                              onFocusCapture={[Function]}
+                              style={
+                                [
+                                  {
+                                    "flexDirection": "row",
+                                  },
+                                  null,
+                                ]
+                              }
+                            >
+                              <View
+                                height={240}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "height": 240,
+                                    "justifyContent": "center",
+                                    "width": 160,
+                                  }
+                                }
+                                width={160}
+                              >
+                                <View
+                                  numberOfSpaces={2}
+                                  style={
+                                    {
+                                      "height": 8,
+                                    }
+                                  }
+                                />
+                                <View
+                                  accessibilityLabel="En voir plus"
+                                  accessibilityRole="button"
+                                  accessibilityState={
+                                    {
+                                      "busy": undefined,
+                                      "checked": undefined,
+                                      "disabled": undefined,
+                                      "expanded": undefined,
+                                      "selected": undefined,
+                                    }
+                                  }
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  collapsable={false}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "opacity": 1,
+                                      "userSelect": "auto",
+                                    }
+                                  }
+                                  testID="En voir plus"
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "flexDirection": "row",
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      numberOfSpaces={16}
+                                      style={
+                                        {
+                                          "width": 64,
+                                        }
+                                      }
+                                    />
+                                    <View
+                                      style={
+                                        {
+                                          "alignItems": "center",
+                                          "aspectRatio": 1,
+                                          "backgroundColor": "#ffffff",
+                                          "borderBottomLeftRadius": 32,
+                                          "borderBottomRightRadius": 32,
+                                          "borderColor": "#90949d",
+                                          "borderStyle": "solid",
+                                          "borderTopLeftRadius": 32,
+                                          "borderTopRightRadius": 32,
+                                          "borderWidth": 1,
+                                          "height": 64,
+                                          "justifyContent": "center",
+                                          "width": 64,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        height={32}
+                                        width={32}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
+                                    <View
+                                      numberOfSpaces={16}
+                                      style={
+                                        {
+                                          "width": 64,
+                                        }
+                                      }
+                                    />
+                                  </View>
+                                  <View
+                                    numberOfSpaces={2}
+                                    style={
+                                      {
+                                        "height": 8,
+                                      }
+                                    }
+                                  />
+                                  <View
+                                    style={
+                                      {
+                                        "flexDirection": "row",
+                                      }
+                                    }
+                                  >
+                                    <Text
+                                      style={
+                                        {
+                                          "color": "#6123df",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 16,
+                                          "lineHeight": 25.6,
+                                        }
+                                      }
+                                    >
+                                      En voir plus
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
@@ -3923,6 +4193,84 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               </Text>
                             </Text>
                           </View>
+                          <View
+                            style={
+                              {
+                                "backgroundColor": "#f1f1f4",
+                                "height": 20,
+                                "marginLeft": 16,
+                                "marginRight": 12,
+                                "width": 1,
+                              }
+                            }
+                          />
+                          <View
+                            accessibilityLabel="Voir plus d’offres de la sélection Toutes les offres"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              {
+                                "busy": undefined,
+                                "checked": undefined,
+                                "disabled": undefined,
+                                "expanded": undefined,
+                                "selected": undefined,
+                              }
+                            }
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            collapsable={false}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "opacity": 1,
+                                "paddingBottom": 4,
+                                "paddingLeft": 4,
+                                "paddingRight": 4,
+                                "paddingTop": 4,
+                                "userSelect": "auto",
+                              }
+                            }
+                            testID="Voir plus d’offres de la sélection Toutes les offres"
+                          >
+                            <View
+                              fill="none"
+                              height={16}
+                              width={16}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <Text
+                              style={
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                  "marginLeft": 8,
+                                }
+                              }
+                            >
+                              Voir tout
+                            </Text>
+                          </View>
                         </View>
                       </View>
                       <View
@@ -4069,6 +4417,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                 },
                                 "venue": {},
+                              },
+                              {
+                                "dataFooter": true,
                               },
                             ]
                           }
@@ -4703,6 +5054,195 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         Dès le 18 août
                                       </Text>
                                     </View>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                highlighted={false}
+                                leadingItem={
+                                  {
+                                    "_geoloc": {
+                                      "lat": 47.8898,
+                                      "lng": -2.83593,
+                                    },
+                                    "objectID": "223339",
+                                    "offer": {
+                                      "dates": [
+                                        1629312300,
+                                        1629485100,
+                                        1629657900,
+                                      ],
+                                      "isDigital": false,
+                                      "isDuo": true,
+                                      "name": "Black Widow - VF",
+                                      "prices": [
+                                        0,
+                                        0,
+                                        0,
+                                      ],
+                                      "subcategoryId": "CINE_PLEIN_AIR",
+                                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                    },
+                                    "venue": {},
+                                  }
+                                }
+                                style={
+                                  {
+                                    "width": 16,
+                                  }
+                                }
+                                width={16}
+                              />
+                            </View>
+                            <View
+                              onFocusCapture={[Function]}
+                              style={
+                                [
+                                  {
+                                    "flexDirection": "row",
+                                  },
+                                  null,
+                                ]
+                              }
+                            >
+                              <View
+                                height={240}
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "height": 240,
+                                    "justifyContent": "center",
+                                    "width": 160,
+                                  }
+                                }
+                                width={160}
+                              >
+                                <View
+                                  numberOfSpaces={2}
+                                  style={
+                                    {
+                                      "height": 8,
+                                    }
+                                  }
+                                />
+                                <View
+                                  accessibilityLabel="En voir plus"
+                                  accessibilityRole="button"
+                                  accessibilityState={
+                                    {
+                                      "busy": undefined,
+                                      "checked": undefined,
+                                      "disabled": undefined,
+                                      "expanded": undefined,
+                                      "selected": undefined,
+                                    }
+                                  }
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  collapsable={false}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "opacity": 1,
+                                      "userSelect": "auto",
+                                    }
+                                  }
+                                  testID="En voir plus"
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "flexDirection": "row",
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      numberOfSpaces={16}
+                                      style={
+                                        {
+                                          "width": 64,
+                                        }
+                                      }
+                                    />
+                                    <View
+                                      style={
+                                        {
+                                          "alignItems": "center",
+                                          "aspectRatio": 1,
+                                          "backgroundColor": "#ffffff",
+                                          "borderBottomLeftRadius": 32,
+                                          "borderBottomRightRadius": 32,
+                                          "borderColor": "#90949d",
+                                          "borderStyle": "solid",
+                                          "borderTopLeftRadius": 32,
+                                          "borderTopRightRadius": 32,
+                                          "borderWidth": 1,
+                                          "height": 64,
+                                          "justifyContent": "center",
+                                          "width": 64,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        height={32}
+                                        width={32}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
+                                    <View
+                                      numberOfSpaces={16}
+                                      style={
+                                        {
+                                          "width": 64,
+                                        }
+                                      }
+                                    />
+                                  </View>
+                                  <View
+                                    numberOfSpaces={2}
+                                    style={
+                                      {
+                                        "height": 8,
+                                      }
+                                    }
+                                  />
+                                  <View
+                                    style={
+                                      {
+                                        "flexDirection": "row",
+                                      }
+                                    }
+                                  >
+                                    <Text
+                                      style={
+                                        {
+                                          "color": "#6123df",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 16,
+                                          "lineHeight": 25.6,
+                                        }
+                                      }
+                                    >
+                                      En voir plus
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
