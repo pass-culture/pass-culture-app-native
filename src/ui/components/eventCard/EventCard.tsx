@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
@@ -36,25 +37,28 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
     }
     onPress()
   }
+
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    title,
+    subtitleLeft,
+    subtitleRight
+  )
+
   return (
     <StyledTouchableOpacity
       testID="event-card"
       disabled={isDisabled}
-      onPress={handleEventCardPress}>
-      <Title accessibilityLabel={title} numberOfLines={1} disabled={isDisabled}>
+      onPress={handleEventCardPress}
+      accessibilityLabel={computedAccessibilityLabel}>
+      <Title numberOfLines={1} disabled={isDisabled}>
         {title}
       </Title>
-
       <SubtitleContainer>
-        <SubtitleLeft
-          accessibilityLabel={subtitleLeft}
-          numberOfLines={1}
-          disabled={isDisabled}
-          hasSubtitleRight={hasSubtitleRight}>
+        <SubtitleLeft numberOfLines={1} disabled={isDisabled} hasSubtitleRight={hasSubtitleRight}>
           {subtitleLeft}
         </SubtitleLeft>
         {hasSubtitleRight ? (
-          <SubtitleRight accessibilityLabel={subtitleRight} numberOfLines={1} disabled={isDisabled}>
+          <SubtitleRight numberOfLines={1} disabled={isDisabled}>
             {subtitleRight}
           </SubtitleRight>
         ) : null}

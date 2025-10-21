@@ -576,7 +576,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -707,7 +706,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   />
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",

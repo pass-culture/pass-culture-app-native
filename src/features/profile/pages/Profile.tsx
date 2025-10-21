@@ -188,7 +188,7 @@ const OnlineProfile: React.FC = () => {
                       navigateTo={getProfilePropConfig('NotificationsSettings')}
                     />
                   </Li>
-                  <LiWithMarginVertical>
+                  <LiWithMarginVertical accessible={false}>
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}

@@ -27,7 +27,7 @@ describe('Accordion', () => {
 
     expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
-    await user.press(screen.getByText('accordion title'))
+    await user.press(screen.getByText(/accordion title/))
 
     act(() => {
       jest.runAllTimers()
@@ -39,14 +39,18 @@ describe('Accordion', () => {
   it('should expand for accessibility the accordion after pressing the title', async () => {
     await renderAccordion()
 
-    expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: false })
+    expect(
+      screen.getByTestId('accordion title - Accordéon - Développer l’accordéon')
+    ).toHaveAccessibilityState({ expanded: false })
 
-    await user.press(screen.getByText('accordion title'))
+    await user.press(screen.getByText(/accordion title/))
     act(() => {
       jest.runAllTimers()
     })
 
-    expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: true })
+    expect(
+      screen.getByTestId('accordion title - Accordéon - Réduire l’accordéon')
+    ).toHaveAccessibilityState({ expanded: true })
   })
 
   it('correct arrow animation,', async () => {

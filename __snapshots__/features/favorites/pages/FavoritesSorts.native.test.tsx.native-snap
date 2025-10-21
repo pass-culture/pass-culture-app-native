@@ -237,7 +237,6 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
             }
           >
             <View
-              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -355,7 +354,6 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 {
                   "display": "flex",
@@ -474,7 +472,6 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 {
                   "display": "flex",

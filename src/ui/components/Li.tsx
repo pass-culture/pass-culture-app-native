@@ -55,7 +55,6 @@ export const Li: React.FC<LiProps> = ({
   return (
     <StyledView
       {...rest}
-      accessible
       accessibilityRole={isWeb ? AccessibilityRole.LISTITEM : accessibilityRole}>
       {children}
     </StyledView>

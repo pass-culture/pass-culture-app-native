@@ -226,11 +226,10 @@ exports[`LegalNotices should render correctly 1`] = `
           <Text
             accessibilityLabel="https://passculture.app/accueil, lien externe"
             accessibilityRole="link"
-            color="#161617"
             onPress={[Function]}
             style={
               {
-                "color": "#161617",
+                "color": "#6123df",
                 "cursor": "pointer",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
@@ -332,11 +331,10 @@ exports[`LegalNotices should render correctly 1`] = `
           <Text
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
             accessibilityRole="link"
-            color="#161617"
             onPress={[Function]}
             style={
               {
-                "color": "#161617",
+                "color": "#6123df",
                 "cursor": "pointer",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
