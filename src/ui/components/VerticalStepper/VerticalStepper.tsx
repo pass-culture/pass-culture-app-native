@@ -141,15 +141,24 @@ const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
   backgroundColor: theme.designSystem.separator.color.default,
 }))
 
-const IconWrapper = styled.View<{ addMoreSpacingToIcons: boolean; shouldHaveNoSpacing: boolean }>(
-  ({ addMoreSpacingToIcons, shouldHaveNoSpacing }) => ({
-    marginVertical: addMoreSpacingToIcons
-      ? getSpacing(2.5)
-      : shouldHaveNoSpacing
-        ? 0
-        : getSpacing(0.5),
-  })
-)
+interface IconWrapperProps {
+  addMoreSpacingToIcons?: boolean
+  shouldHaveNoSpacing?: boolean
+}
+
+const getVerticalSpacing = ({ addMoreSpacingToIcons, shouldHaveNoSpacing }: IconWrapperProps) => {
+  if (addMoreSpacingToIcons) {
+    return getSpacing(2.5)
+  }
+  if (shouldHaveNoSpacing) {
+    return 0
+  }
+  return getSpacing(0.5)
+}
+
+const IconWrapper = styled.View<IconWrapperProps>((props) => ({
+  marginVertical: getVerticalSpacing(props),
+}))
 
 const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
