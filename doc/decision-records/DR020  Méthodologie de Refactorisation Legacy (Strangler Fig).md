@@ -25,6 +25,37 @@ Le pattern Strangler Fig est la méthode la plus sûre pour moderniser un systè
 - **Rollback immédiat :** Si un problème survient, il suffit de désactiver un feature flag pour revenir à l'ancien système.
 - **L'ACL** protège notre nouveau code des concepts et de la complexité du legacy.
 
+### Diagramme : Application du Strangler Fig au module `GenericHome`
+
+```mermaid
+graph TD
+    subgraph "Avant : Module Monolithique (GenericHome Legacy)"
+        LegacyHome["GenericHome.tsx (Legacy)"]
+        LegacyHome -- Contient --> PaginationLogic["Logique de Pagination Manuelle"]
+        LegacyHome -- Contient --> DataEnrichment["Enrichissement de Données"]
+        LegacyHome -- Contient --> AnalyticsTracking["Tracking Analytics Direct"]
+        LegacyHome -- Contient --> UI_Render["Rendu UI"]
+    end
+
+    subgraph "Après : Application Strangler Fig"
+        UserRequest["Requête Utilisateur"]
+        FeatureFlag{"Feature Flag (ex: useModernHome)"}
+        UserRequest --> FeatureFlag
+
+        FeatureFlag -- true --> NewHome["Nouveau Module Home (ADRs 11-16)"]
+        FeatureFlag -- false --> LegacyHome["GenericHome.tsx (Legacy)"]
+
+        NewHome -- Utilise --> RQ_Pagination["useInfiniteQuery (DR011)"]
+        NewHome -- Utilise --> PureFunc_Logic["Fonctions Pures (DR012)"]
+        NewHome -- Utilise --> Hooks_SideEffects["Hooks d'Effets de Bord (DR013)"]
+        NewHome -- Utilise --> HomeViewModel["useHomeViewModel (DR014)"]
+        NewHome -- Utilise --> HomeView["HomeView (DR014)"]
+        NewHome -- Utilise --> HomeListHeader["HomeListHeader (DR022)"]
+
+        LegacyHome -- (sera supprimé) --> End[Fin]
+    end
+```
+
 ## Diagramme
 
 Extrait de code
