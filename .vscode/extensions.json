@@ -17,7 +17,6 @@
     "mikestead.dotenv",
     "firsttris.vscode-jest-runner",
     "shopify.ruby-lsp",
-    "jetpack-io.devbox",
     "pinage404.nix-extension-pack",
     "github.vscode-github-actions",
   ]
