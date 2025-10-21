@@ -66,7 +66,7 @@ describe('BonificationBirthPlace', () => {
 async function completeForm() {
   // Fill the country input
   const countryOfBirthField = screen.getByTestId('Entrée pour le pays de naissance')
-  await userEvent.type(countryOfBirthField, 'France')
+  await userEvent.type(countryOfBirthField, 'fra')
 
   // Select the suggested country
   const countrySuggestion = screen.getByText('France')

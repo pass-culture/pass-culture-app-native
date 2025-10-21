@@ -68,7 +68,7 @@ export const BonificationBirthPlace = () => {
   const handleUserInputChange = (input: string) => {
     setCountryList(
       INSEE_COUNTRY_LIST.filter((country) =>
-        country.LIBCOG.toLocaleLowerCase().startsWith(input.toLocaleLowerCase())
+        country.LIBCOG.toLocaleLowerCase().includes(input.toLocaleLowerCase())
       )
     )
   }
