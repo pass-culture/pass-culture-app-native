@@ -4,7 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 // eslint-disable-next-line no-restricted-imports
-import { Insets, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { Insets, Text, TouchableOpacity } from 'react-native'
+import { styled } from 'styled-components/native'
 
 import { INSEE_COUNTRY_LIST } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
@@ -74,7 +75,6 @@ export const BonificationBirthPlace = () => {
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
-  const row: ViewStyle = { flexDirection: 'row' }
 
   return (
     <PageWithHeader
@@ -113,7 +113,7 @@ export const BonificationBirthPlace = () => {
                           autoComplete="country"
                           errorMessage={error?.message}
                         />
-                        <View style={row}>
+                        <RowView>
                           <Text>
                             Pays selectionné:
                             {valueSelection.length === 0 ? ' Aucun' : valueSelection}
@@ -131,7 +131,7 @@ export const BonificationBirthPlace = () => {
                               <Invalidate />
                             </Touchable>
                           ) : null}
-                        </View>
+                        </RowView>
                         {valueInput &&
                           valueInput.length != 0 &&
                           countryList.map((country) => {
@@ -148,10 +148,10 @@ export const BonificationBirthPlace = () => {
                                     setShowCityField(true)
                                   } else setShowCityField(false)
                                 }}>
-                                <View style={row}>
+                                <RowView>
                                   <Text>{country.LIBCOG}</Text>
                                   {valueSelection === country.LIBCOG ? <Validate /> : null}
-                                </View>
+                                </RowView>
                               </TouchableOpacity>
                             )
                           })}
@@ -195,3 +195,7 @@ export const BonificationBirthPlace = () => {
     />
   )
 }
+
+const RowView = styled.View({
+  flexDirection: 'row',
+})
