@@ -26,6 +26,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onShowChroniclesWritersModal,
   userId,
   hasVideoCookiesConsent,
+  onVideoConsentPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -56,7 +57,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onLayout={onLayout}
         userId={userId}
         onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-        hasVideoCookiesConsent={hasVideoCookiesConsent}>
+        hasVideoCookiesConsent={hasVideoCookiesConsent}
+        onVideoConsentPress={onVideoConsentPress}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

@@ -65,6 +65,7 @@ type OfferContentBaseProps = OfferContentProps &
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
     onShowChroniclesWritersModal: () => void
+    onVideoConsentPress?: () => void
     chronicles?: ChronicleCardData[]
     likesCount?: number
     headlineOffersCount?: number
@@ -95,6 +96,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onLayout,
   userId,
   hasVideoCookiesConsent,
+  onVideoConsentPress,
   children,
 }) => {
   const theme = useTheme()
@@ -123,7 +125,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const scrollYRef = useRef<number>(0)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
-    analytics.logConsultWholeOffer(offer.id)
+    void analytics.logConsultWholeOffer(offer.id)
   })
 
   const { shouldTriggerBatchSurveyEvent, trackBatchEvent, trackEventHasSeenOfferOnce } =
@@ -231,11 +233,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const onSeeMoreButtonPress = (chronicleId: number) => {
     // It's dirty but necessary to use from parameter for the logs
     navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
-    analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
+    void analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
   const handleOnSeeAllReviewsPress = () => {
-    analytics.logClickInfoReview({
+    void analytics.logClickInfoReview({
       from: 'offer',
       offerId: offer.id.toString(),
       categoryName: subcategory.categoryId,
@@ -321,7 +323,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               chronicleVariantInfo={chronicleVariantInfo}
               userId={userId}
               isVideoSectionEnabled={isVideoSectionEnabled}
-              hasVideoCookiesConsent={hasVideoCookiesConsent}>
+              hasVideoCookiesConsent={hasVideoCookiesConsent}
+              onVideoConsentPress={onVideoConsentPress}>
               {theme.isDesktopViewport ? (
                 <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
                   {offerCtaButton}

@@ -12,6 +12,7 @@ import { Typo } from 'ui/theme'
 type Props = {
   height: number
   onManageCookiesPress: VoidFunction
+  onVideoConsentPress: VoidFunction
   thumbnail?: ReactElement
   title?: string
   duration?: Duration
@@ -25,6 +26,7 @@ export const GatedVideoSection = ({
   duration,
   width,
   onManageCookiesPress,
+  onVideoConsentPress,
 }: Props) => {
   const { designSystem, isDesktopViewport } = useTheme()
 
@@ -46,6 +48,7 @@ export const GatedVideoSection = ({
           wording="Voir la vidéo"
           color={designSystem.color.text.default}
           mediumWidth={isDesktopViewport}
+          onPress={onVideoConsentPress}
         />
         <ButtonTertiaryBlack
           wording="Gérer mes cookies"

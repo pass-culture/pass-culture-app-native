@@ -19,6 +19,7 @@ const defaultProps: ComponentProps<typeof VideoSection> = {
   videoThumbnail: <FastImage />,
   onManageCookiesPress: jest.fn(),
   hasVideoCookiesConsent: false,
+  onVideoConsentPress: jest.fn(),
 }
 
 const user = userEvent.setup()

@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react'
+import React, { ReactElement, useCallback, useState } from 'react'
 import { StyleProp, ViewStyle, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -21,6 +21,7 @@ type VideoSectionProps = {
   offerId: number
   offerSubcategory: SubcategoryIdEnum
   onManageCookiesPress: VoidFunction
+  onVideoConsentPress: VoidFunction
   videoId?: string
   subtitle?: string
   videoThumbnail?: ReactElement
@@ -46,6 +47,7 @@ export const VideoSection = ({
   duration,
   hasVideoCookiesConsent,
   onManageCookiesPress,
+  onVideoConsentPress,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
@@ -92,6 +94,11 @@ export const VideoSection = ({
     viewportWidth,
   ])
 
+  const handleConsentAndPlay = useCallback(() => {
+    onVideoConsentPress()
+    setPlayVideo(true)
+  }, [onVideoConsentPress])
+
   const renderGatedVideoSection = useCallback(() => {
     return (
       <GatedVideoSection
@@ -101,9 +108,19 @@ export const VideoSection = ({
         height={videoHeight}
         width={viewportWidth < maxWidth ? undefined : maxWidth}
         onManageCookiesPress={onManageCookiesPress}
+        onVideoConsentPress={handleConsentAndPlay}
       />
     )
-  }, [duration, maxWidth, onManageCookiesPress, title, videoHeight, videoThumbnail, viewportWidth])
+  }, [
+    duration,
+    handleConsentAndPlay,
+    maxWidth,
+    onManageCookiesPress,
+    title,
+    videoHeight,
+    videoThumbnail,
+    viewportWidth,
+  ])
 
   return (
     <Anchor name={AnchorNames.VIDEO_PLAYBACK}>
