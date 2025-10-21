@@ -50,6 +50,12 @@ export const VideoSection = ({
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
   const videoHeight = Math.min(viewportWidth, maxWidth) * playerRatio
+  const [playVideo, setPlayVideo] = useState(false)
+
+  const handleOnPlayPress = useCallback(() => {
+    void analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })
+    setPlayVideo(true)
+  }, [offerId])
 
   const renderVideoSection = useCallback(() => {
     return (
@@ -64,16 +70,19 @@ export const VideoSection = ({
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
           duration={duration ? formatDuration(duration, 'sec') : undefined}
-          onPlayPress={() => analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })}
+          onPlayPress={handleOnPlayPress}
+          play={playVideo}
         />
         <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>
     )
   }, [
     duration,
+    handleOnPlayPress,
     maxWidth,
     offerId,
     offerSubcategory,
+    playVideo,
     subtitle,
     title,
     userId,
