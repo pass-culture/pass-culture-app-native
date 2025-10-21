@@ -6,10 +6,15 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ConsentSettings } from './ConsentSettings'
 
-const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    push: jest.fn(),
+    goBack: jest.fn(),
+    dispatch: jest.fn(),
+    addListener: jest.fn(),
+  }),
   useFocusEffect: jest.fn(),
   useRoute: () => ({ params: {} }),
 }))

@@ -5,6 +5,7 @@ import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import * as useCookies from 'features/cookies/helpers/useCookies'
+import { ConsentStatus } from 'features/cookies/types'
 import type * as CookiesTypes from 'features/cookies/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
@@ -32,7 +33,13 @@ const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+  useNavigation: () => ({
+    navigate: mockNavigate,
+    push: jest.fn(),
+    goBack: jest.fn(),
+    dispatch: jest.fn(),
+    addListener: jest.fn(),
+  }),
   useFocusEffect: jest.fn(),
   useRoute: () => ({ params: {} }),
 }))
@@ -64,7 +71,38 @@ jest.mock('react-native/Libraries/Interaction/InteractionManager', () => ({
   runAfterInteractions: jest.fn((callback) => callback()), // Exécute le callback immédiatement
 }))
 
-const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies')
+const refusedDefault = [
+  ...COOKIES_BY_CATEGORY.marketing,
+  ...COOKIES_BY_CATEGORY.customization,
+  ...COOKIES_BY_CATEGORY.video,
+]
+
+const cookiesConsentStable: ConsentStatus = {
+  state: ConsentState.HAS_CONSENT,
+  value: {
+    mandatory: COOKIES_BY_CATEGORY.essential,
+    accepted: [],
+    refused: refusedDefault,
+  },
+}
+
+const setCookiesConsentMock = jest.fn(async (consent) => {
+  await storage.saveObject(COOKIES_CONSENT_KEY, {
+    buildVersion,
+    deviceId,
+    choiceDatetime: Today.toISOString(),
+    consent,
+  })
+})
+
+const useCookiesMockStable = {
+  cookiesConsent: cookiesConsentStable,
+  setCookiesConsent: setCookiesConsentMock,
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+}
+
+const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies').mockReturnValue(useCookiesMockStable)
 
 const ACCEPT_ALL_SWITCH = /Tout accepter - Interrupteur à bascule/
 const BROWSING_STATISTICS_SWITCH =
