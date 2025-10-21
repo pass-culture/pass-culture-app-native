@@ -142,11 +142,9 @@ export const BonificationBirthPlace = () => {
                                   setCountryList([])
                                   onChangeSelection(country.LIBCOG)
                                   onChangeInput(country.LIBCOG)
-                                  if (
+                                  setShowCityField(
                                     watch('birthCountrySelection').toLocaleLowerCase() === 'france'
-                                  ) {
-                                    setShowCityField(true)
-                                  } else setShowCityField(false)
+                                  )
                                 }}>
                                 <RowView>
                                   <Text>{country.LIBCOG}</Text>

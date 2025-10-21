@@ -1,5 +1,3 @@
-// BonificationBirthPlaceSchema.test.js
-
 import { ValidationError } from 'yup'
 
 import { BonificationBirthPlaceSchema } from './BonificationBirthPlaceSchema'
