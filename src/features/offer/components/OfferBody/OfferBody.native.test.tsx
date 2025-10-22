@@ -1,5 +1,6 @@
 import * as reactNavigation from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import {
   CategoryIdEnum,
@@ -446,7 +447,7 @@ describe('<OfferBody />', () => {
     it('should redirect to venue page when pressing proposed by section when venue is permanent', async () => {
       renderOfferBody({ offer: offerWithDifferentAddress })
 
-      await user.press(screen.getByText('Proposé par'))
+      await user.press(screen.getAllByText('Lieu différent')[1] as ReactTestInstance)
 
       expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
     })

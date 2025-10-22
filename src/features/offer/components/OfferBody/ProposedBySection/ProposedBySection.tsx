@@ -28,43 +28,38 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
   const { icons, designSystem, isDesktopViewport } = useTheme()
 
   const content = (
-    <ViewGap gap={4}>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Proposé par</Typo.Title3>
-      <InfoHeader
-        title={name}
-        rightComponent={
-          navigateTo ? (
-            <RightFilled size={icons.sizes.extraSmall} testID="RightFilled" />
-          ) : undefined
-        }
-        defaultThumbnailSize={AVATAR_SMALL}
-        thumbnailComponent={
-          <Avatar
-            size={AVATAR_SMALL}
-            rounded={false}
-            borderRadius={designSystem.size.borderRadius.m}>
-            {imageUrl ? (
-              <FullSizeImage url={imageUrl} testID="VenueImage" />
-            ) : (
-              <DefaultVenueAvatar testID="DefaultImage">
-                <Venue color={designSystem.color.icon.inverted} size={29} />
-              </DefaultVenueAvatar>
-            )}
-          </Avatar>
-        }
-      />
-    </ViewGap>
+    <InfoHeader
+      title={name}
+      rightComponent={
+        navigateTo ? <RightFilled size={icons.sizes.extraSmall} testID="RightFilled" /> : undefined
+      }
+      defaultThumbnailSize={AVATAR_SMALL}
+      thumbnailComponent={
+        <Avatar size={AVATAR_SMALL} rounded={false} borderRadius={designSystem.size.borderRadius.m}>
+          {imageUrl ? (
+            <FullSizeImage url={imageUrl} testID="VenueImage" />
+          ) : (
+            <DefaultVenueAvatar testID="DefaultImage">
+              <Venue color={designSystem.color.icon.inverted} size={29} />
+            </DefaultVenueAvatar>
+          )}
+        </Avatar>
+      }
+    />
   )
 
   const Wrapper = isDesktopViewport ? Fragment : StyledSectionWithDivider
 
   return (
     <Wrapper>
-      {navigateTo ? (
-        <InternalTouchableLink navigateTo={navigateTo}>{content}</InternalTouchableLink>
-      ) : (
-        content
-      )}
+      <ViewGap gap={4}>
+        <Typo.Title3 {...getHeadingAttrs(2)}>Proposé par</Typo.Title3>
+        {navigateTo ? (
+          <InternalTouchableLink navigateTo={navigateTo}>{content}</InternalTouchableLink>
+        ) : (
+          content
+        )}
+      </ViewGap>
     </Wrapper>
   )
 }
