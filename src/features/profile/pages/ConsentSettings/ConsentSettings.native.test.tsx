@@ -5,6 +5,7 @@ import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import * as useCookies from 'features/cookies/helpers/useCookies'
+import { ConsentStatus } from 'features/cookies/types'
 import type * as CookiesTypes from 'features/cookies/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
@@ -16,6 +17,7 @@ import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -30,11 +32,24 @@ mockdate.set(Today)
 const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 
 const mockNavigate = jest.fn()
+const mockDispatch = jest.fn()
+
+let mockRouteParams = {}
+let beforeRemoveHandler
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+  useNavigation: () => ({
+    navigate: mockNavigate,
+    push: jest.fn(),
+    goBack: jest.fn(),
+    dispatch: mockDispatch,
+    addListener: jest.fn((event: string, cb) => {
+      if (event === 'beforeRemove') beforeRemoveHandler = cb
+      return jest.fn()
+    }),
+  }),
   useFocusEffect: jest.fn(),
-  useRoute: () => ({ params: {} }),
+  useRoute: () => ({ params: mockRouteParams }),
 }))
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
@@ -46,8 +61,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: jest.fn(),
+  goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
 
@@ -64,7 +80,46 @@ jest.mock('react-native/Libraries/Interaction/InteractionManager', () => ({
   runAfterInteractions: jest.fn((callback) => callback()), // Exécute le callback immédiatement
 }))
 
-const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies')
+const refusedDefault = [
+  ...COOKIES_BY_CATEGORY.marketing,
+  ...COOKIES_BY_CATEGORY.customization,
+  ...COOKIES_BY_CATEGORY.video,
+]
+
+const cookiesConsentStable: ConsentStatus = {
+  state: ConsentState.HAS_CONSENT,
+  value: {
+    mandatory: COOKIES_BY_CATEGORY.essential,
+    accepted: [],
+    refused: refusedDefault,
+  },
+}
+
+const setCookiesConsentMock = jest.fn(async (consent) => {
+  await storage.saveObject(COOKIES_CONSENT_KEY, {
+    buildVersion,
+    deviceId,
+    choiceDatetime: Today.toISOString(),
+    consent,
+  })
+})
+
+const useCookiesMockStable = {
+  cookiesConsent: cookiesConsentStable,
+  setCookiesConsent: setCookiesConsentMock,
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+}
+
+const useCookiesSpyOn = jest.spyOn(useCookies, 'useCookies').mockReturnValue(useCookiesMockStable)
+
+const mockShowModal = jest.fn()
+const useModalSpy = jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
+  visible: false,
+  showModal: mockShowModal,
+  hideModal: jest.fn(),
+  toggleModal: jest.fn(),
+})
 
 const ACCEPT_ALL_SWITCH = /Tout accepter - Interrupteur à bascule/
 const BROWSING_STATISTICS_SWITCH =
@@ -78,6 +133,8 @@ describe('<ConsentSettings/>', () => {
   beforeEach(() => {
     mockdate.set(Today)
     setFeatureFlags()
+    mockGoBack.mockClear()
+    mockDispatch.mockClear()
   })
 
   it('should render correctly', async () => {
@@ -190,6 +247,80 @@ describe('<ConsentSettings/>', () => {
       timeout: SNACK_BAR_TIME_OUT,
     })
     expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+  })
+
+  it('should opens confirm modal on beforeRemove when there are unsaved changes', async () => {
+    renderConsentSettings()
+
+    await user.press(await screen.findByTestId(BROWSING_STATISTICS_SWITCH))
+
+    const preventDefault = jest.fn()
+    beforeRemoveHandler({ data: { action: { type: 'GO_BACK' } }, preventDefault })
+
+    expect(preventDefault).toHaveBeenCalledWith()
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should discard without pending action: bypass guard once and go back', async () => {
+    useModalSpy.mockReturnValueOnce({
+      visible: true,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+
+    renderConsentSettings()
+
+    await user.press(screen.getByText('Quitter sans enregistrer'))
+
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should discard with pending action: re-dispatches intercepted action (swipe/back)', async () => {
+    useModalSpy.mockReturnValueOnce({
+      visible: true,
+      showModal: jest.fn(),
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+
+    renderConsentSettings()
+
+    await user.press(await screen.findByTestId(BROWSING_STATISTICS_SWITCH))
+
+    const pendingAction = { type: 'GO_BACK' }
+    const preventDefault = jest.fn()
+    beforeRemoveHandler({ data: { action: pendingAction }, preventDefault })
+
+    await user.press(screen.getByText('Quitter sans enregistrer'))
+
+    expect(mockDispatch).toHaveBeenCalledWith(pendingAction)
+  })
+
+  it('save with offerId: navigates to Offer and shows snackbar', async () => {
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
+
+    mockRouteParams = { offerId: 116656 }
+
+    renderConsentSettings()
+
+    await user.press(screen.getByText('Enregistrer mes choix'))
+
+    expect(mockNavigate).toHaveBeenCalledWith('Offer', { id: 116656 })
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Ton choix a bien été enregistré.',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
+
+  it('beforeRemove without changes: does not prevent or open modal', async () => {
+    renderConsentSettings()
+
+    const preventDefault = jest.fn()
+    beforeRemoveHandler({ data: { action: { type: 'GO_BACK' } }, preventDefault })
+
+    expect(preventDefault).not.toHaveBeenCalled()
+    expect(mockShowModal).not.toHaveBeenCalled()
   })
 })
 
