@@ -34,11 +34,7 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
     <Container width={width}>
       <ProgressBarContainer height={height}>
         {height === 'large' ? <BaseShadowGradient /> : null}
-        <LinearGradientBar
-          progress={progress}
-          color={color}
-          // style={{ alignSelf: 'center' }}
-          testID="progress-bar">
+        <LinearGradientBar progress={progress} color={color} testID="progress-bar">
           <StyledBodyAccent>{innerText}</StyledBodyAccent>
         </LinearGradientBar>
       </ProgressBarContainer>

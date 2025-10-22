@@ -76,7 +76,7 @@ const TopLine = ({ variant, ...props }: CustomComponentProps) => {
 const Icon = ({ variant, ...props }: CustomComponentProps) => {
   if (props.iconComponent) return props.iconComponent
 
-  if (variant === StepVariant.complete) return <StepperValidateSuccess size={32} {...props} />
+  if (variant === StepVariant.complete) return <StepperValidateSuccess {...props} />
 
   if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
@@ -104,12 +104,12 @@ export const VerticalStepper = ({
   )
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled.View(({ theme }) => ({
   alignItems: 'center',
   flex: 1,
-  minWidth: 32, // we add a width for when no icon is present
+  minWidth: theme.designSystem.size.spacing.xxl, // we add a width for when no icon is present
   overflow: 'hidden',
-})
+}))
 
 const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.border.default,
@@ -162,4 +162,5 @@ const IconWrapper = styled.View<IconWrapperProps>((props) => ({
 
 const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
+  size: theme.designSystem.size.spacing.xxl,
 }))``
