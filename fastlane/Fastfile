@@ -55,7 +55,8 @@ platform :ios do
       sh "cd .. && \
       yarn hotupdater:deploy:ios:#{ENV['ENV']} \
           -m \"#{escaped_release_notes}\" \
-          -t #{version} "
+          -t #{version} \
+          -f "
       
     else
       match(
@@ -121,7 +122,8 @@ platform :android do
       sh "cd .. && \
       yarn hotupdater:deploy:android:#{ENV['ENV']} \
           -m \"#{escaped_release_notes}\" \
-          -t #{version} "
+          -t #{version}  \
+          -f "
       
     else
       build
