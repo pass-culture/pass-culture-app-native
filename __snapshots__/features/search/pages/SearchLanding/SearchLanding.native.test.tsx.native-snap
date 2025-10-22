@@ -319,7 +319,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     </View>
                     <TextInput
                       accessibilityHidden={true}
-                      accessibilityLabel="Champs de texte (recherche)"
+                      accessibilityLabel="Champs de recherche"
                       autoCorrect={false}
                       autoFocus={false}
                       editable={true}

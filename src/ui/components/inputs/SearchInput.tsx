@@ -53,7 +53,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   }
 
   const computedAccessibilityLabel = getComputedAccessibilityLabel(
-    'Champs de texte (recherche)',
+    'Champs de recherche',
     label,
     props.format ? `Exemple\u00a0: ${props.format}` : null,
     isRequiredField ? 'Obligatoire' : null,
