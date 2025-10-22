@@ -213,6 +213,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "minWidth": 32,
                       "overflow": "hidden",
                     }
                   }
@@ -238,6 +239,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   />
                   <View
                     addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
                     style={
                       {
                         "marginVertical": 2,
@@ -439,6 +441,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "minWidth": 32,
                       "overflow": "hidden",
                     }
                   }
@@ -467,6 +470,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   </View>
                   <View
                     addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
                     style={
                       {
                         "marginVertical": 2,
@@ -1103,6 +1107,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "minWidth": 32,
                       "overflow": "hidden",
                     }
                   }
@@ -1128,6 +1133,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   />
                   <View
                     addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
                     style={
                       {
                         "marginVertical": 2,
@@ -1321,6 +1327,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "minWidth": 32,
                       "overflow": "hidden",
                     }
                   }
@@ -1346,6 +1353,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   />
                   <View
                     addMoreSpacingToIcons={false}
+                    shouldHaveNoSpacing={false}
                     style={
                       {
                         "marginVertical": 2,

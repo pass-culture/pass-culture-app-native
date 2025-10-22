@@ -133,6 +133,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -158,6 +159,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -166,9 +168,9 @@ exports[`Stepper navigation should render correctly 1`] = `
                 >
                   <View
                     fill="none"
-                    height={20}
+                    height={32}
                     testID="icon"
-                    width={20}
+                    width={32}
                   >
                     <Text>
                       icon-SVG-Mock
@@ -365,6 +367,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -390,6 +393,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                 />
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -620,6 +624,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -648,6 +653,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,
@@ -863,6 +869,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "minWidth": 32,
                     "overflow": "hidden",
                   }
                 }
@@ -891,6 +898,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                 </View>
                 <View
                   addMoreSpacingToIcons={false}
+                  shouldHaveNoSpacing={false}
                   style={
                     {
                       "marginVertical": 2,

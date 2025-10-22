@@ -58,6 +58,7 @@ const TopLine = ({ variant, ...props }: CustomComponentProps) => {
   switch (variant) {
     case StepVariant.complete:
     case StepVariant.in_progress:
+    case StepVariant.unknown:
       return <TopFilledLine {...props} />
 
     // Only VerticalStepperVariant.future in this default case
@@ -79,6 +80,8 @@ const Icon = ({ variant, ...props }: CustomComponentProps) => {
 
   if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
+  if (variant === StepVariant.unknown) return null
+
   return <FutureIcon {...props} />
 }
 export const VerticalStepper = ({
@@ -88,10 +91,12 @@ export const VerticalStepper = ({
   isLast,
   addMoreSpacingToIcons,
 }: VerticalStepperProps) => {
+  const noIcon = variant === StepVariant.unknown && !iconComponent
+
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} variant={variant} />
-      <IconWrapper addMoreSpacingToIcons={!!addMoreSpacingToIcons}>
+      <IconWrapper addMoreSpacingToIcons={!!addMoreSpacingToIcons} shouldHaveNoSpacing={noIcon}>
         <Icon testID="icon" variant={variant} iconComponent={iconComponent} />
       </IconWrapper>
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} variant={variant} />
@@ -99,11 +104,12 @@ export const VerticalStepper = ({
   )
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled.View(({ theme }) => ({
   alignItems: 'center',
   flex: 1,
+  minWidth: theme.designSystem.size.spacing.xxl, // we add a width for when no icon is present
   overflow: 'hidden',
-})
+}))
 
 const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.border.default,
@@ -135,13 +141,26 @@ const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
   backgroundColor: theme.designSystem.separator.color.default,
 }))
 
-const IconWrapper = styled.View<{ addMoreSpacingToIcons: boolean }>(
-  ({ addMoreSpacingToIcons }) => ({
-    marginVertical: addMoreSpacingToIcons ? getSpacing(2.5) : getSpacing(0.5),
-  })
-)
+interface IconWrapperProps {
+  addMoreSpacingToIcons?: boolean
+  shouldHaveNoSpacing?: boolean
+}
+
+const getVerticalSpacing = ({ addMoreSpacingToIcons, shouldHaveNoSpacing }: IconWrapperProps) => {
+  if (addMoreSpacingToIcons) {
+    return getSpacing(2.5)
+  }
+  if (shouldHaveNoSpacing) {
+    return 0
+  }
+  return getSpacing(0.5)
+}
+
+const IconWrapper = styled.View<IconWrapperProps>((props) => ({
+  marginVertical: getVerticalSpacing(props),
+}))
 
 const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
-  size: getSpacing(5),
+  size: theme.designSystem.size.spacing.xxl,
 }))``
