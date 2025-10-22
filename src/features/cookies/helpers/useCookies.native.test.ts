@@ -54,8 +54,8 @@ describe('useCookies', () => {
     mockAuthContextWithoutUser({ persist: true })
   })
 
-  beforeEach(() => {
-    storage.clear(COOKIES_CONSENT_KEY)
+  beforeEach(async () => {
+    await storage.clear(COOKIES_CONSENT_KEY)
   })
 
   describe('state', () => {
@@ -162,7 +162,7 @@ describe('useCookies', () => {
     })
 
     it('should start tracking accepted cookies when consent is already in storage', async () => {
-      storage.saveObject(COOKIES_CONSENT_KEY, {
+      await storage.saveObject(COOKIES_CONSENT_KEY, {
         buildVersion,
         deviceId,
         choiceDatetime: TODAY.toISOString(),
@@ -207,7 +207,7 @@ describe('useCookies', () => {
     })
 
     it('should clear consent and choice date when user has made choice 6 months ago', async () => {
-      storage.saveObject(COOKIES_CONSENT_KEY, {
+      await storage.saveObject(COOKIES_CONSENT_KEY, {
         userId: FAKE_USER_ID,
         deviceId,
         choiceDatetime: EXACTLY_SIX_MONTHS_AGO.toISOString(),
