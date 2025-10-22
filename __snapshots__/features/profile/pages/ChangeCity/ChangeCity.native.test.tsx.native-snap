@@ -366,7 +366,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 >
                   <TextInput
                     accessibilityHidden={false}
-                    accessibilityLabel="Champs de texte (recherche) - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                    accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
                     autoComplete="postal-code"
                     autoCorrect={false}
                     editable={true}
@@ -1031,7 +1031,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 >
                   <TextInput
                     accessibilityHidden={false}
-                    accessibilityLabel="Champs de texte (recherche) - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                    accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
                     autoComplete="postal-code"
                     autoCorrect={false}
                     editable={true}
@@ -1696,7 +1696,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 >
                   <TextInput
                     accessibilityHidden={false}
-                    accessibilityLabel="Champs de texte (recherche) - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                    accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
                     autoComplete="postal-code"
                     autoCorrect={false}
                     editable={true}

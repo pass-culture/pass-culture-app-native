@@ -359,7 +359,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                 >
                   <TextInput
                     accessibilityHidden={false}
-                    accessibilityLabel="Champs de texte (recherche) - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                    accessibilityLabel="Champs de recherche - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                     autoComplete="street-address"
                     autoCorrect={false}
                     editable={true}
@@ -968,7 +968,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                 >
                   <TextInput
                     accessibilityHidden={false}
-                    accessibilityLabel="Champs de texte (recherche) - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                    accessibilityLabel="Champs de recherche - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                     autoComplete="street-address"
                     autoCorrect={false}
                     editable={true}

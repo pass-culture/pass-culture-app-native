@@ -448,6 +448,44 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 9.2 - Chaque champ de formulaire a-t-il une étiquette accessible aux technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 9.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-2)  
+**Ticket** : [PC-37489](https://passculture.atlassian.net/browse/PC-37489)  
+**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
+
+**Problème** 😱 
+
+- **(E01 | E07 | E11 | E12 | E14)** Les champs de formulaire suivant ne possèdent pas d'étiquette correctement liée et ne sont pas accessible lorsqu’on navigue avec un lecteur d'écran : 
+  - "Ville, code postal, adresse"
+  - "Adresse e-mail"
+  - "Indique ton code postal et choisis ta ville"
+  - "Prix minimum (en €)"
+  - "Prix maximum (en €)"
+
+- **(E05 | E08 | E14)** Les composants à bascule (switch)
+  - "Tout accepter"
+  - "Personnaliser ta navigation"
+  - "Enregistrer des statistiques de navigation"
+  - "Mesurer l’efficacité de nos publicités"
+  - "Lire les contenus vidéos"
+  - "Permettre l'orientation"
+  - "Activer ma géolocalisation"
+  - "Uniquement les offres gratuites"
+
+
+**Correction** 💡  
+Texte
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 9.3 - Chaque étiquette associée à un champ de formulaire est-elle pertinente?</summary>
 
 **RAAM** : [Critère 9.3](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-3)  
