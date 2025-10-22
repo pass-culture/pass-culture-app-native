@@ -19,5 +19,6 @@
     "shopify.ruby-lsp",
     "pinage404.nix-extension-pack",
     "github.vscode-github-actions",
+    "blazejkustra.react-compiler-marker"
   ]
 }
