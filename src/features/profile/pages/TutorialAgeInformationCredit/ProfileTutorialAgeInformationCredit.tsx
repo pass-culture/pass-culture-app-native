@@ -33,9 +33,9 @@ import { Clock } from 'ui/svg/icons/Clock'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Lock } from 'ui/svg/icons/Lock'
-import { MoreFull } from 'ui/svg/icons/MoreFull'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
+import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -95,7 +95,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const separator: CreditComponentPropsV3 = {
     creditStep: 'separator',
     iconComponent: undefined,
-    children: <MoreFull />,
+    children: <StyledPlainMore />,
   }
 
   const stepperProps: CreditComponentPropsV3[] = [
@@ -225,3 +225,8 @@ const GreyOffers = styled(Offers).attrs(({ theme }) => ({
 const RowView = styled.View({
   flexDirection: 'row',
 })
+
+const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  size: theme.icons.sizes.smaller,
+}))``

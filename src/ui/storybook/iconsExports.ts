@@ -79,7 +79,6 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Map } from 'ui/svg/icons/Map'
 import { MapPin } from 'ui/svg/icons/MapPin'
 import { More } from 'ui/svg/icons/More'
-import { MoreFull } from 'ui/svg/icons/MoreFull'
 import { NoId } from 'ui/svg/icons/NoId'
 import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -218,7 +217,6 @@ export const SecondaryAndBiggerIcons = {
   MagnifyingGlassFilled,
   MapPin,
   More,
-  MoreFull,
   NoId,
   NoPhone,
   OfferEvent,
