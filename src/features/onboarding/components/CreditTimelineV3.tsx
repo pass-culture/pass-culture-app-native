@@ -95,7 +95,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
               <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
               <DashedStyledAnimatedView {...animatedViewProps}>
                 <View>
-                  <BodySecondary>{`Droit à l’aide`}</BodySecondary>
+                  <StyledBody>Droit à l’aide</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
                   <StyledTitle3>
                     Tu peux recevoir{SPACE}
@@ -120,7 +120,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
             <TouchableWithoutFeedback onPress={() => analytics.logTrySelectDeposit(age)}>
               <StyledAnimatedView {...animatedViewProps}>
                 <View>
-                  <BodySecondary>{`à ${props.creditStep} ans`}</BodySecondary>
+                  <StyledBody>{`à ${props.creditStep} ans`}</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
                   <StyledTitle3>
                     Tu reçois{SPACE}
@@ -138,7 +138,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   )
 }
 
-const BodySecondary = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
