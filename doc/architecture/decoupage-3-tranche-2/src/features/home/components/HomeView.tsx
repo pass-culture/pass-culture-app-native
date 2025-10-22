@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react';
 import { FlatList, View, Text, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { Spinner } from 'ui/components/Spinner';
 import { HomepageModule } from 'features/home/types';
-import { HomeListHeader, HomeListHeaderProps } from './HomeListHeader';
+import { HomeListHeaderComponent, HomeListHeaderComponentProps } from './HomeListHeaderComponent';
 
 type HomeViewProps = {
   enrichedModules: HomepageModule[];
@@ -40,7 +40,7 @@ export const HomeView: FunctionComponent<HomeViewProps> = ({
       ListFooterComponent={isFetchingNextPage ? <Spinner /> : null}
       onEndReached={handleLoadMore}
       onEndReachedThreshold={0.5}
-      ListHeaderComponent={<HomeListHeader {...homeListHeaderProps} />}
+      ListHeaderComponent={<HomeListHeaderComponent {...homeListHeaderProps} />}
     />
   );
 };

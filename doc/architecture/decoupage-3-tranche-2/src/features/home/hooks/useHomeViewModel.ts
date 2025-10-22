@@ -11,6 +11,8 @@ import { useTrackAllModulesSeen } from './useTrackAllModulesSeen';
 import { shouldDisplayVideoCarouselInHeader } from 'features/home/helpers/shouldDisplayVideoCarouselInHeader';
 import { Spinner } from 'ui/components/Spinner';
 import { PageContent, Spacer, VideoCarouselModule } from 'src/features/home/pages/GenericHome';
+import { fetchHomepageModules } from 'src/features/home/api/fetchHomepageModules';
+import { HomeListHeaderComponentProps } from 'src/features/home/components/HomeListHeaderComponent';
 
 type HomeViewModel = {
   enrichedModules: HomepageModule[];
@@ -19,19 +21,12 @@ type HomeViewModel = {
   isError: boolean;
   handleScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   handleLoadMore: () => void;
-  ListHeaderComponent: React.ReactElement;
+  homeListHeaderProps: HomeListHeaderComponentProps;
   shouldDisplayVideoInHeader: boolean;
   videoCarouselModules: HomepageModule[];
 }
 
-const fetchHomepageModules = async (pageParam = 0, allModules: HomepageModule[]): Promise<{ modules: HomepageModule[], nextPage: number | undefined }> => {
-  const pageSize = 10;
-  const start = pageParam * pageSize;
-  const end = start + pageSize;
-  const paginatedModules = allModules.slice(start, end);
-  const nextPage = end < allModules.length ? pageParam + 1 : undefined;
-  return { modules: paginatedModules, nextPage };
-};
+
 
 export function useHomeViewModel(initialModules: HomepageModule[], homeId: string, thematicHeader: ThematicHeader | undefined, Header: React.JSX.Element, HomeBanner?: React.JSX.Element): HomeViewModel {
   const { height: screenHeight } = useWindowDimensions();
@@ -90,24 +85,15 @@ export function useHomeViewModel(initialModules: HomepageModule[], homeId: strin
 
   const videoCarouselModules = enrichedModules.filter(isVideoCarouselModule);
 
-  const ListHeaderComponent = useMemo(
-    () => (
-      <View testID="listHeader">
-        {Header}
-        <Spacer.Column numberOfSpaces={6} />
-        {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
-          <VideoCarouselModule
-            index={0}
-            homeEntryId={homeId}
-            {...videoCarouselModules[0]}
-            autoplay
-          />
-        ) : null}
-        <PageContent>{HomeBanner}</PageContent>
-      </View>
-    ),
-    [Header, shouldDisplayVideoInHeader, videoCarouselModules, homeId, HomeBanner]
-  );
+
+
+  const homeListHeaderProps = useMemo(() => ({
+    Header,
+    HomeBanner,
+    shouldDisplayVideoInHeader,
+    videoCarouselModules,
+    homeId,
+  }), [Header, HomeBanner, shouldDisplayVideoInHeader, videoCarouselModules, homeId]);
 
   return {
     enrichedModules,
@@ -116,7 +102,7 @@ export function useHomeViewModel(initialModules: HomepageModule[], homeId: strin
     isError,
     handleScroll: scrollListenerToThrottle,
     handleLoadMore,
-    ListHeaderComponent,
+    homeListHeaderProps,
     shouldDisplayVideoInHeader,
     videoCarouselModules,
   };
