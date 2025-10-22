@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+// prettier-ignore
 import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
 import { Spacer, PageContent, VideoCarouselModule } from 'src/features/home/pages/GenericHome';

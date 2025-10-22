@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+// prettier-ignore
 import React, { FunctionComponent } from 'react';
 import { FlatList, View, Text, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { Spinner } from 'ui/components/Spinner';

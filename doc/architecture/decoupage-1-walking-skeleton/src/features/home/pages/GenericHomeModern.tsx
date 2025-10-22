@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+// prettier-ignore
 import React, { FunctionComponent } from 'react'
 import { View, Text } from 'react-native'
 

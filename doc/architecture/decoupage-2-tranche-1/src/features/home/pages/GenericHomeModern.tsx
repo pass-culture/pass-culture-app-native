@@ -1,3 +1,6 @@
+/* eslint-disable */
+// prettier-ignore
+// @ts-nocheck
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import {
