@@ -391,7 +391,8 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E06)** Les éléments dans le "plan du site" sont tronqué car ils n'utilisent pas de composant bouton.
 - **(E09)** Les tags ont une hauteur limité, ce qui empeche un texte de s'afficher sur 2 ou 3 lignes.
 - **(E12)** La page de statut de la demande de déblocage du crédit ne scroll pas, car on bloque sa hauteur.
-- **(E15)** Les options dans le calendrir ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes.
+- **(E15)** Les options dans le calendrier ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes. De plus, lorsque le bouton "Voir plus" est activé, il devient impossible de faire défiler l’écran jusqu'en bas.
+
 
 **Correction** 💡
 
@@ -399,7 +400,7 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E06)** Utilisation de boutons pour tous les éléments du plan du site, qui gère mieux le passage à la ligne et ne tronque pas le texte.
 - **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes.
 - **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller.
-- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que`width` pour permettre d'afficher le texte des options sur plusieurs lignes.
+- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que `width` pour permettre d'afficher le texte des options sur plusieurs lignes. Pour le bas de l'écran, suppression d'un ScrollView suprerficielle. 
 
 </details>
 
@@ -515,6 +516,38 @@ Texte
 </details>
 
 <br>
+
+<details>
+
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ?</summary>
+
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-37501](https://passculture.atlassian.net/browse/PC-37501)  
+**PR** : [#8795](https://github.com/pass-culture/pass-culture-app-native/pull/8795), [#8812](https://github.com/pass-culture/pass-culture-app-native/pull/8812)
+
+**Problème** 😱  
+
+- **(E01)** L'orientation en mode paysage est bloqué par défaut sur l'application. Pour la débloquer il faut se rendre dans la section "Préférences d‘affichage" qui est difficilement accessible lors de la consultation de l’application la première fois (car l'onboarding ajoute plusieurs étapes).
+
+- **(E02)** Des contenus disparaissent (tronqués) lors de la consultation en mode paysage.
+
+- **(E14)** En mode paysage, la liste des résultats est très peu visible.
+
+
+**Correction** 💡  
+
+- **(E01)** Déblocage de l’orientation en mode paysage par défaut, pour prendre en compte les paramètres du téléphone. 
+
+- **(E02 | E14)** Ajout de bordures horizontales en mode paysage pour éviter que des éléments soient tronqués ou cachés. 
+
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
 
 ## ✅ Corrections 31 octobre → 19 novembre
 

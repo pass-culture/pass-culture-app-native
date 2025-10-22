@@ -2,12 +2,14 @@
 
 exports[`DMSIntroduction foreign version should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -602,12 +604,14 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
 
 exports[`DMSIntroduction french version should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

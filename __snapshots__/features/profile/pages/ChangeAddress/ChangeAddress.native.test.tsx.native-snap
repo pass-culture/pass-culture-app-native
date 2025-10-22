@@ -2,12 +2,14 @@
 
 exports[`<SetAddress/> from mandatory udpate personal data screen should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -609,12 +611,14 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
 
 exports[`<SetAddress/> without previous screen should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

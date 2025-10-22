@@ -2,13 +2,22 @@
 
 exports[`GenericHome With not displayed skeleton by default should display real content 1`] = `
 <View
+  isLandscape={false}
   style={
-    {
-      "backgroundColor": "#ffffff",
-      "flexBasis": 1,
-      "flexGrow": 1,
-      "flexShrink": 0,
-    }
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "marginHorizontal": 0,
+      },
+      {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
   }
 >
   <View
@@ -182,13 +191,22 @@ exports[`GenericHome With not displayed skeleton by default should display real 
 
 exports[`GenericHome With not displayed skeleton by default should display skeleton 1`] = `
 <View
+  isLandscape={false}
   style={
-    {
-      "backgroundColor": "#ffffff",
-      "flexBasis": 1,
-      "flexGrow": 1,
-      "flexShrink": 0,
-    }
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "marginHorizontal": 0,
+      },
+      {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
   }
 >
   <RCTScrollView
