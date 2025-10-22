@@ -14,7 +14,8 @@ src/features/{featureName}/
   ├── components/    # Composants React spécifiques à la feature
   ├── queries/       # ou api/ : appels API et hooks associés
   ├── store/         # Gestion d'état (Zustand, Redux)
-  ├── helpers/       # Fonctions utilitaires spécifiques
+  ├── core/          # Fonctions spécifiques au métier et au domaine
+  ├── helpers/       # Fonctions utilitaires non spécifiques
   ├── fixtures/      # Données de test
   ├── types.ts       # Types spécifiques à la feature
   └── constants.ts   # Constantes
