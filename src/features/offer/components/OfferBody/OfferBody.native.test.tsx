@@ -465,33 +465,6 @@ describe('<OfferBody />', () => {
     })
   })
 
-  describe('MovieScreeningCalendar', () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-      stocks: [
-        {
-          beginningDatetime: '2024-02-27T11:10:00Z',
-          features: ['VO'],
-          id: 6091,
-          isBookable: false,
-          isExpired: false,
-          isForbiddenToUnderage: false,
-          isSoldOut: true,
-          price: 570,
-        },
-      ],
-    }
-
-    it('should render <MovieScreeningCalendar /> when offer is a movie screening', async () => {
-      renderOfferBody({
-        offer,
-      })
-
-      expect(await screen.findByLabelText('Mardi 27 Février')).toBeOnTheScreen()
-    })
-  })
-
   it('should redirect to artist page when FF is enabled', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,

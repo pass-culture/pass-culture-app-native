@@ -55,7 +55,6 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   ENABLE_VENUES_FROM_OFFER_INDEX = 'enableVenuesFromOfferIndex',
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
-  TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
   WIP_ARTIST_PAGE = 'wipArtistPage',
   WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
   WIP_ARTISTS_SUGGESTIONS_IN_SEARCH = 'wipArtistsSuggestionsInSearch',

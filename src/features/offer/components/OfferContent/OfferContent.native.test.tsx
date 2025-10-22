@@ -242,7 +242,7 @@ describe('<OfferContent />', () => {
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
-    setFeatureFlags([RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER])
+    setFeatureFlags()
     mockRegisterAnchor.mockClear()
     useRegisterAnchorSpy.mockReturnValue(mockRegisterAnchor)
   })
