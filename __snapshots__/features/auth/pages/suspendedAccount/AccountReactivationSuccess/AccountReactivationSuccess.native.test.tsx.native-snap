@@ -274,5 +274,14 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

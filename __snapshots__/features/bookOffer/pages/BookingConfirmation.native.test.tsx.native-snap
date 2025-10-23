@@ -472,5 +472,14 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

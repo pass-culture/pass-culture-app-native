@@ -384,6 +384,15 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;
 
@@ -771,5 +780,14 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;
