@@ -12,12 +12,12 @@ import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
+import FrenchRepublicAnimation from 'ui/animations/french_republic_animation.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
@@ -55,7 +55,7 @@ export function BeneficiaryAccountCreated() {
 
   return (
     <GenericInfoPage
-      animation={TutorialPassLogo}
+      animation={FrenchRepublicAnimation}
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{
@@ -77,14 +77,14 @@ export function BeneficiaryAccountCreated() {
   )
 }
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginTop: getSpacing(4),
-})
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
-const ProgressBarContainer = styled.View({
-  paddingHorizontal: getSpacing(10),
-})
+const ProgressBarContainer = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xxxl,
+}))
 
 const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
