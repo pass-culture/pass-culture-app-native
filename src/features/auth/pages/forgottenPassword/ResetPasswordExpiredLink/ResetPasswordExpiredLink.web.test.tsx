@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -9,7 +9,7 @@ import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
 const navigationProps = {
   route: { params: { email: 'test@email.com' } },
-} as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
+} as NativeStackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 jest.mock('libs/firebase/analytics/analytics')
 

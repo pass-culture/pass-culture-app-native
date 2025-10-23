@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -25,7 +25,7 @@ type BirthdayForm = {
 }
 
 export const BonificationBirthDate = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthDate } = legalRepresentativeActions

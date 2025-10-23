@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 // eslint-disable-next-line no-restricted-imports
@@ -35,7 +35,7 @@ const inset = 10 // arbitrary hitSlop zone inset for touchable
 const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 
 export const BonificationBirthPlace = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions

@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { QueryClient } from '@tanstack/react-query'
 import React from 'react'
 
@@ -77,7 +77,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
 
 const navigationProps = {
   route: { params: { email: 'test@email.com' } },
-} as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
+} as NativeStackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 function renderResetPasswordExpiredLink() {
   return renderAsync(

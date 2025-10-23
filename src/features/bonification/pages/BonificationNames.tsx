@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -28,7 +28,7 @@ type FormValues = {
 }
 
 export const BonificationNames = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setFirstName, setCommonName, setGivenName } = legalRepresentativeActions

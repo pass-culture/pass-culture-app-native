@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
@@ -22,7 +22,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationIntroduction = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
 
   return (
     <PageWithHeader

@@ -1,5 +1,5 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 
-export const RootStackNavigatorBase = createStackNavigator<RootStackParamList>()
+export const RootStackNavigatorBase = createNativeStackNavigator<RootStackParamList>()
