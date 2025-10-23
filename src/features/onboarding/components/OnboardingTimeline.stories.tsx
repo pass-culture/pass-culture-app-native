@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { ANIMATION_DELAY } from 'features/home/api/useShowSkeleton'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { OnboardingTimeline } from './OnboardingTimeline'
@@ -11,7 +10,7 @@ const meta: Meta<typeof OnboardingTimeline> = {
   component: OnboardingTimeline,
   parameters: {
     // Wait for animation to finish before snapshot
-    chromatic: { delay: ANIMATION_DELAY },
+    chromatic: { delay: 700 },
   },
 }
 export default meta
