@@ -162,5 +162,6 @@ const IconWrapper = styled.View<IconWrapperProps>((props) => ({
 
 const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
+  color2: theme.designSystem.color.icon.inverted,
   size: theme.designSystem.size.spacing.xxl,
 }))``

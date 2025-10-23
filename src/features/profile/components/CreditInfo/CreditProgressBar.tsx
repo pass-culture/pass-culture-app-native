@@ -79,7 +79,7 @@ const BaseShadowGradient = styled.View(({ theme }) => ({
   width: '100%',
   height: '100%',
   borderRadius: theme.designSystem.size.borderRadius.pill,
-  backgroundColor: theme.designSystem.color.background.subtle,
+  backgroundColor: theme.designSystem.color.background.disabled,
 }))
 
 const Container = styled.View<{ width: string }>`

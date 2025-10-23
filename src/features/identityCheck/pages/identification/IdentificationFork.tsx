@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
@@ -7,6 +7,7 @@ import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStack
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
@@ -16,6 +17,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
+import { UbbleDark } from 'ui/svg/icons/UbbleDark'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
@@ -31,6 +33,8 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
   const {
     data: { shouldDisplayReassuranceMention },
   } = useRemoteConfigQuery()
+  const { colorScheme } = useTheme()
+  const isDarkMode = colorScheme === ColorScheme.DARK
   return (
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />
@@ -57,7 +61,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
       <IdentificationForkButton
         Title={<Typo.BodyAccent>Ma pièce d’identité</Typo.BodyAccent>}
         Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
-        icon={Ubble}
+        icon={isDarkMode ? UbbleDark : Ubble}
         navigateTo={getSubscriptionPropConfig('SelectIDOrigin')}
         onBeforeNavigate={analytics.logChooseUbbleMethod}
         key={1}
