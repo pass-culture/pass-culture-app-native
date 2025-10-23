@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -18,7 +18,7 @@ import { getSpacing, Typo } from 'ui/theme'
 
 import { useVenueMapFilters } from '../../hook/useVenueMapFilters'
 
-type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapTypeFilter'>
+type Props = NativeStackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapTypeFilter'>
 
 const titleId = uuidv4()
 

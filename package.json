@@ -111,7 +111,7 @@
     "@react-navigation/bottom-tabs": "^6.6.1",
     "@react-navigation/devtools": "^7.0.38",
     "@react-navigation/native": "^6.1.17",
-    "@react-navigation/stack": "^6.4.1",
+    "@react-navigation/native-stack": "6.9.13",
     "@react-oauth/google": "^0.11.1",
     "@sentry/react": "^8.55.0",
     "@sentry/react-native": "^6.4.0",
@@ -324,7 +324,7 @@
     "vite-plugin-html": "^3.2.2"
   },
   "resolutions": {
-    "@react-navigation/core": "6.2.2",
+    "@react-navigation/core": "^6.4.10",
     "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
     "ansi-regex": "^5.0.1",
     "color-name": "1.1.*",

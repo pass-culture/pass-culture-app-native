@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -54,7 +54,7 @@ export const SetAddress = () => {
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
   const [query, setQuery] = useState<string>(storedAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)

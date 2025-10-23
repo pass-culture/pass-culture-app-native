@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useState } from 'react'
 import { styled } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -25,7 +25,7 @@ enum FormValues {
 }
 
 export const BonificationTitle = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setTitle: storeTitle } = legalRepresentativeActions

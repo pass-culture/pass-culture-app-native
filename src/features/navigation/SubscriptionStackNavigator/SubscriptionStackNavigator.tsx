@@ -1,4 +1,4 @@
-import { StackNavigationOptions } from '@react-navigation/stack'
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
@@ -56,7 +56,7 @@ type SubscriptionRouteConfig = {
   name: SubscriptionStackRouteName
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
-  options?: StackNavigationOptions
+  options?: NativeStackNavigationOptions
 }
 
 const subscriptionScreens: SubscriptionRouteConfig[] = [

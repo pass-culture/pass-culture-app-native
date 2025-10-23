@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useState } from 'react'
 
 import {
@@ -15,7 +15,7 @@ import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const BonificationRecap = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
   const { title, firstName, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
