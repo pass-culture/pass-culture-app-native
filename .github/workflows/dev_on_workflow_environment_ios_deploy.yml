@@ -74,7 +74,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get Secret from Secret Manager
         id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
         with:
           secrets: |-
             FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
@@ -87,7 +87,7 @@ jobs:
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
       - name: Get Secret for App Distribution from Secret Manager (EHP only)
         id: 'app_distribution_secret'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
         with:
           secrets: |-
             FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
@@ -138,7 +138,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
         id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        uses: 'google-github-actions/get-secretmanager-secrets@v3'
         with:
           secrets: |-
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
