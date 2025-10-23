@@ -51,6 +51,16 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
       title: 'BonificationError',
       navigationTarget: getSubscriptionPropConfig('BonificationError'),
     },
+    {
+      id: uuidv4(),
+      title: 'BonificationGranted',
+      navigationTarget: getSubscriptionPropConfig('BonificationGranted'),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRefused',
+      navigationTarget: getSubscriptionPropConfig('BonificationRefused'),
+    },
   ],
 }
 
