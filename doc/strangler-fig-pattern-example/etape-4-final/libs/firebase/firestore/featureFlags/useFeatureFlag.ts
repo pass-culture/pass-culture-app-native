@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/libs/firebase/firestore/featureFlags/useFeatureFlag.ts
 
 import { RemoteStoreFeatureFlags } from '../types';

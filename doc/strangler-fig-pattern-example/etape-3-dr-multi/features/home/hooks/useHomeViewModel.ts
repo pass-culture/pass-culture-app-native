@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/features/home/hooks/useHomeViewModel.ts
 
 import React, { useCallback, useEffect, useMemo } from 'react';

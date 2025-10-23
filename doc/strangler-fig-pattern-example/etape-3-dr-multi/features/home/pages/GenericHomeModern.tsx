@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 import React, { FunctionComponent, useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { HomepageModule, HomepageModuleType, ThematicHeader } from '../types'

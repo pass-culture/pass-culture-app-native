@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/libs/analytics/index.ts
 
 // Fonction simplifiée pour l'exemple

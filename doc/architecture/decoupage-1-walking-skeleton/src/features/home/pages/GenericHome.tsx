@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 import React, { FunctionComponent } from 'react'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'

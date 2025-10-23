@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/ui-mocks.ts
 
 import React from 'react';

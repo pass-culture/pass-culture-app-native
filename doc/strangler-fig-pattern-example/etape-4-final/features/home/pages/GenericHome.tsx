@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 import React, { FunctionComponent } from 'react'
 
 // Le feature flag et le composant legacy ne sont plus nécessaires

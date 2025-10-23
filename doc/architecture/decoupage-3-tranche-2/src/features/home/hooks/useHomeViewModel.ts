@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions, View } from 'react-native';
 import { useInfiniteQuery } from '@tanstack/react-query';

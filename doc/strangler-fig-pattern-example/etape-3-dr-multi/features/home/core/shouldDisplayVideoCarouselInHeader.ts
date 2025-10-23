@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/features/home/core/shouldDisplayVideoCarouselInHeader.ts
 
 import { HomepageModule, HomepageModuleType, ThematicHeader } from '../types';

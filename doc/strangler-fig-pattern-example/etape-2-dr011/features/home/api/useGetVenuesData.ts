@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/features/home/api/useGetVenuesData.ts
 
 import { HomepageModule } from '../types';

@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/libs/firebase/firestore/types.ts
 
 export enum RemoteStoreFeatureFlags {

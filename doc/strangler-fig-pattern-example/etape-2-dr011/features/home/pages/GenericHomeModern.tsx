@@ -1,6 +1,3 @@
-/* eslint-disable */
-// prettier-ignore
-// @ts-nocheck
 import { useInfiniteQuery } from '../../../libs/tanstack/react-query' // Import du mock
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import {

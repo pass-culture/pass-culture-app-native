@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 import { useCallback } from 'react';
 import useFunctionOnce from 'libs/hooks/useFunctionOnce';
 import { analytics } from 'libs/analytics/provider';

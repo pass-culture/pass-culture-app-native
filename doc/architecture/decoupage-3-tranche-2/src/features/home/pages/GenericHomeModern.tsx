@@ -1,6 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 import { HomeView } from 'features/home/components/HomeView'
 import { useHomeViewModel } from 'features/home/hooks/useHomeViewModel'
 import React, { FunctionComponent } from 'react'

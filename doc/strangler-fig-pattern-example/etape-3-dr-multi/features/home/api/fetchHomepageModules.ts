@@ -1,7 +1,4 @@
 
-/* eslint-disable */
-// @ts-nocheck
-// prettier-ignore
 // doc/strangler-fig-pattern-example/features/home/api/fetchHomepageModules.ts
 
 import { HomepageModule } from '../types';
