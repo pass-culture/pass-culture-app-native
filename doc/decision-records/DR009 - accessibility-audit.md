@@ -452,7 +452,7 @@ Texte
 
 **RAAM** : [Critère 9.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-2)  
 **Ticket** : [PC-37489](https://passculture.atlassian.net/browse/PC-37489)  
-**PR** : [#XXXX](https://github.com/pass-culture/pass-culture-app-native/pull/XXXX)
+**PR** : [#8814](https://github.com/pass-culture/pass-culture-app-native/pull/8814)
 
 **Problème** 😱 
 
@@ -463,7 +463,7 @@ Texte
   - "Prix minimum (en €)"
   - "Prix maximum (en €)"
 
-- **(E05 | E08 | E14)** Les composants à bascule (switch)
+- **(E05 | E08 | E14)** Les composants à bascule (switch) ne possèdent pas d'étiquette correctement liée et ne sont pas accessible lorsqu’on navigue avec un lecteur d'écran :
   - "Tout accepter"
   - "Personnaliser ta navigation"
   - "Enregistrer des statistiques de navigation"
@@ -475,7 +475,24 @@ Texte
 
 
 **Correction** 💡  
-Texte
+
+- **(E01 | E07 | E11 | E12 | E14)** Ajout du label et informations complémentaires de l'input directement dans l'`accessibilityLabel` : 
+  - "Ville, code postal, adresse"
+  - "Adresse e-mail"
+  - "Indique ton code postal et choisis ta ville"
+  - "Prix minimum (en €)"
+  - "Prix maximum (en €)"
+
+- **(E05 | E08 | E14)** Ajout du label et informations complémentaires des composants à bascule (switch) directement dans l'`accessibilityLabel` :
+  - "Tout accepter"
+  - "Personnaliser ta navigation"
+  - "Enregistrer des statistiques de navigation"
+  - "Mesurer l’efficacité de nos publicités"
+  - "Lire les contenus vidéos"
+  - "Permettre l'orientation"
+  - "Activer ma géolocalisation"
+  - "Uniquement les offres gratuites"
+
 
 **Retours audit** 🔥
 Texte
