@@ -11,13 +11,23 @@ import { Typo } from 'ui/theme'
 
 type Props = {
   height: number
+  onManageCookiesPress: VoidFunction
+  onVideoConsentPress: VoidFunction
   thumbnail?: ReactElement
   title?: string
   duration?: Duration
   width?: number
 }
 
-export const GatedVideoSection = ({ height, thumbnail, title, duration, width }: Props) => {
+export const GatedVideoSection = ({
+  height,
+  thumbnail,
+  title,
+  duration,
+  width,
+  onManageCookiesPress,
+  onVideoConsentPress,
+}: Props) => {
   const { designSystem, isDesktopViewport } = useTheme()
 
   return (
@@ -38,11 +48,13 @@ export const GatedVideoSection = ({ height, thumbnail, title, duration, width }:
           wording="Voir la vidéo"
           color={designSystem.color.text.default}
           mediumWidth={isDesktopViewport}
+          onPress={onVideoConsentPress}
         />
         <ButtonTertiaryBlack
           wording="Gérer mes cookies"
           mediumWidth={isDesktopViewport}
           icon={Parameters}
+          onPress={onManageCookiesPress}
         />
       </ButtonContainer>
     </Container>

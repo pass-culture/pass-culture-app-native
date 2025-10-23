@@ -2,12 +2,14 @@
 
 exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -347,6 +349,8 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -358,7 +362,6 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="Numéro de téléphone"
                             style={
                               {
                                 "color": "#161617",
@@ -506,6 +509,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         </View>
                       </View>
                       <TextInput
+                        accessibilityLabel="Champs de texte - Numéro de téléphone - 0639980123"
                         accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="tel"

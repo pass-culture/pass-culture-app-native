@@ -2,12 +2,14 @@
 
 exports[`DebugScreen should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -450,6 +452,8 @@ exports[`DebugScreen should render correctly 1`] = `
               >
                 <View>
                   <View
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no"
                     style={
                       {
                         "alignItems": "flex-end",
@@ -461,7 +465,6 @@ exports[`DebugScreen should render correctly 1`] = `
                   >
                     <View>
                       <Text
-                        accessibilityLabel="Description du problème"
                         style={
                           [
                             {
@@ -527,6 +530,7 @@ exports[`DebugScreen should render correctly 1`] = `
                   testID="styled-input-container"
                 >
                   <TextInput
+                    accessibilityLabel="Champs de texte - Description du problème - Obligatoire"
                     accessibilityRequired={true}
                     editable={true}
                     isEmpty={true}

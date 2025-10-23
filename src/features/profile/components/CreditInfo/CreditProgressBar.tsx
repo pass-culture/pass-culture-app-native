@@ -2,9 +2,10 @@ import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
-import { getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 enum BarHeight {
+  'large' = 6,
   'normal' = 4.5,
   'small' = 2,
   'smaller' = 1,
@@ -13,7 +14,9 @@ enum BarHeight {
 interface CreditProgressBarProps {
   progress: number
   color: ColorsType
-  height?: 'normal' | 'small' | 'smaller'
+  height?: 'large' | 'normal' | 'small' | 'smaller'
+  width?: string
+  innerText?
 }
 
 const MINIMUM_PROGRESS_BAR_SIZE = 0.02
@@ -23,13 +26,17 @@ const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
 const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   color,
   progress,
-  height = 'normal',
+  height = 'large',
+  width = '100%',
+  innerText,
 }) => {
   return (
-    <Container>
+    <Container width={width}>
       <ProgressBarContainer height={height}>
-        {height === 'normal' ? <BaseShadowGradient /> : null}
-        <LinearGradientBar progress={progress} color={color} testID="progress-bar" />
+        {height === 'large' ? <BaseShadowGradient /> : null}
+        <LinearGradientBar progress={progress} color={color} testID="progress-bar">
+          <StyledBodyAccent>{innerText}</StyledBodyAccent>
+        </LinearGradientBar>
       </ProgressBarContainer>
     </Container>
   )
@@ -38,14 +45,15 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
 export const CreditProgressBar = memo(
   styled(CreditProgressBarComponent).attrs<{
     color?: ColorsType
-  }>(({ theme }) => ({
-    color: theme.designSystem.color.background.brandPrimary,
+  }>(({ theme, color }) => ({
+    color: color ?? theme.designSystem.color.background.brandPrimary,
   }))``
 )
+type CreditProgressPropsWithoutWidth = Omit<CreditProgressBarProps, 'width'>
 
-const LinearGradientBar = styled.View.attrs<CreditProgressBarProps>(({ color }) => ({
+const LinearGradientBar = styled.View.attrs<CreditProgressPropsWithoutWidth>(({ color }) => ({
   color,
-}))<CreditProgressBarProps>(({ theme, progress, color }) => {
+}))<CreditProgressPropsWithoutWidth>(({ theme, progress, color }) => {
   let flex
   if (progress === 0) {
     flex = progress
@@ -71,21 +79,21 @@ const BaseShadowGradient = styled.View(({ theme }) => ({
   width: '100%',
   height: '100%',
   borderRadius: theme.designSystem.size.borderRadius.pill,
-  backgroundColor: theme.designSystem.color.background.subtle,
+  backgroundColor: theme.designSystem.color.background.disabled,
 }))
 
-const Container = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: theme.designSystem.size.borderRadius.pill,
-}))
+const Container = styled.View<{ width: string }>`
+  width: ${({ width }) => width};
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
 
 const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>(
   ({ theme, height }) => ({
     flexDirection: 'row',
     borderRadius: theme.designSystem.size.borderRadius.pill,
-    height: getSpacing(height ? BarHeight[height] : BarHeight.normal),
+    height: getSpacing(height ? BarHeight[height] : BarHeight.large),
     width: '100%',
     zIndex: theme.zIndex.progressbar,
     backgroundColor:
@@ -94,3 +102,8 @@ const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>
         : theme.designSystem.color.background.default,
   })
 )
+
+const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.designSystem.color.text.inverted,
+}))

@@ -60,7 +60,9 @@ const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
   ({ theme, withGreyContainer }) => ({
     padding: withGreyContainer ? getSpacing(6) : undefined,
     borderRadius: theme.designSystem.size.borderRadius.m,
-    backgroundColor: withGreyContainer ? theme.designSystem.color.background.subtle : undefined,
+    backgroundColor: withGreyContainer ? theme.designSystem.color.background.default : undefined,
+    borderColor: withGreyContainer ? theme.designSystem.color.border.default : undefined,
+    borderWidth: 1,
     marginHorizontal: theme.contentPage.marginHorizontal,
     marginBottom: getSpacing(2),
     alignSelf: theme.isDesktopViewport ? 'flex-start' : undefined,

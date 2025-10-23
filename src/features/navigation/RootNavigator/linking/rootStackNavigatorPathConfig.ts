@@ -179,6 +179,12 @@ export const rootStackNavigatorPathConfig = {
       BonificationError: {
         path: 'bonification/erreur',
       },
+      BonificationGranted: {
+        path: 'bonification/accordee',
+      },
+      BonificationRefused: {
+        path: 'bonification/refuse',
+      },
     },
   },
   AccountSecurityBuffer: {

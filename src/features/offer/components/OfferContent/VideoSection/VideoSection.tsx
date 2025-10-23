@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react'
+import React, { ReactElement, useCallback, useState } from 'react'
 import { StyleProp, ViewStyle, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -10,6 +10,8 @@ import { GatedVideoSection } from 'features/offer/components/OfferContent/VideoS
 import { MAX_WIDTH_VIDEO } from 'features/offer/constant'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { analytics } from 'libs/analytics/provider'
+import { Anchor } from 'ui/components/anchor/Anchor'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -18,6 +20,8 @@ type VideoSectionProps = {
   title: string
   offerId: number
   offerSubcategory: SubcategoryIdEnum
+  onManageCookiesPress: VoidFunction
+  onVideoConsentPress: VoidFunction
   videoId?: string
   subtitle?: string
   videoThumbnail?: ReactElement
@@ -42,10 +46,18 @@ export const VideoSection = ({
   userId,
   duration,
   hasVideoCookiesConsent,
+  onManageCookiesPress,
+  onVideoConsentPress,
 }: VideoSectionProps) => {
   const { isDesktopViewport } = useTheme()
   const { width: viewportWidth } = useWindowDimensions()
   const videoHeight = Math.min(viewportWidth, maxWidth) * playerRatio
+  const [playVideo, setPlayVideo] = useState(false)
+
+  const handleOnPlayPress = useCallback(() => {
+    void analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })
+    setPlayVideo(true)
+  }, [offerId])
 
   const renderVideoSection = useCallback(() => {
     return (
@@ -60,16 +72,19 @@ export const VideoSection = ({
           width={viewportWidth < maxWidth ? undefined : maxWidth}
           initialPlayerParams={{ autoplay: true }}
           duration={duration ? formatDuration(duration, 'sec') : undefined}
-          onPlayPress={() => analytics.logConsultVideo({ from: 'offer', offerId: String(offerId) })}
+          onPlayPress={handleOnPlayPress}
+          play={playVideo}
         />
         <FeedBackVideo offerId={offerId} offerSubcategory={offerSubcategory} userId={userId} />
       </React.Fragment>
     )
   }, [
     duration,
+    handleOnPlayPress,
     maxWidth,
     offerId,
     offerSubcategory,
+    playVideo,
     subtitle,
     title,
     userId,
@@ -79,6 +94,11 @@ export const VideoSection = ({
     viewportWidth,
   ])
 
+  const handleConsentAndPlay = useCallback(() => {
+    onVideoConsentPress()
+    setPlayVideo(true)
+  }, [onVideoConsentPress])
+
   const renderGatedVideoSection = useCallback(() => {
     return (
       <GatedVideoSection
@@ -87,12 +107,23 @@ export const VideoSection = ({
         duration={duration ? formatDuration(duration, 'sec') : undefined}
         height={videoHeight}
         width={viewportWidth < maxWidth ? undefined : maxWidth}
+        onManageCookiesPress={onManageCookiesPress}
+        onVideoConsentPress={handleConsentAndPlay}
       />
     )
-  }, [duration, maxWidth, title, videoHeight, videoThumbnail, viewportWidth])
+  }, [
+    duration,
+    handleConsentAndPlay,
+    maxWidth,
+    onManageCookiesPress,
+    title,
+    videoHeight,
+    videoThumbnail,
+    viewportWidth,
+  ])
 
   return (
-    <React.Fragment>
+    <Anchor name={AnchorNames.VIDEO_PLAYBACK}>
       {isDesktopViewport ? (
         <ViewGap testID="video-section-without-divider" gap={4} style={style}>
           {hasVideoCookiesConsent ? renderVideoSection() : renderGatedVideoSection()}
@@ -104,7 +135,7 @@ export const VideoSection = ({
           </Container>
         </SectionWithDivider>
       )}
-    </React.Fragment>
+    </Anchor>
   )
 }
 

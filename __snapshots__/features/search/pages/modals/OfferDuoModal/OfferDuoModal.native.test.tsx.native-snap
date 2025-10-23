@@ -368,35 +368,40 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   }
                 }
               >
-                <Text
-                  accessibilityDescribedBy="testUuidV4"
+                <View
+                  accessibilityLabel="Uniquement les offres duo - Seules les sorties seront affichées"
                   accessibilityRole="header"
-                  htmlFor="testUuidV4"
-                  id="testUuidV4"
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
+                  accessible={true}
                 >
-                  Uniquement les offres duo
-                </Text>
-                <Text
-                  nativeID="testUuidV4"
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
+                  <Text
+                    accessibilityDescribedBy="testUuidV4"
+                    htmlFor="testUuidV4"
+                    id="testUuidV4"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
-                  }
-                >
-                  Seules les sorties seront affichées
-                </Text>
+                  >
+                    Uniquement les offres duo
+                  </Text>
+                  <Text
+                    nativeID="testUuidV4"
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Seules les sorties seront affichées
+                  </Text>
+                </View>
               </View>
               <View
                 style={

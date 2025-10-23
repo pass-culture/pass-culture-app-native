@@ -2,12 +2,14 @@
 
 exports[`Accessibility should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -205,7 +207,6 @@ exports[`Accessibility should render correctly 1`] = `
         }
       >
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -322,7 +323,6 @@ exports[`Accessibility should render correctly 1`] = `
           />
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -439,7 +439,6 @@ exports[`Accessibility should render correctly 1`] = `
           />
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -556,7 +555,6 @@ exports[`Accessibility should render correctly 1`] = `
           />
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -673,7 +671,6 @@ exports[`Accessibility should render correctly 1`] = `
           />
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -790,7 +787,6 @@ exports[`Accessibility should render correctly 1`] = `
           />
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -907,7 +903,6 @@ exports[`Accessibility should render correctly 1`] = `
           />
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",

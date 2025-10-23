@@ -181,6 +181,7 @@ const renderOfferContent = ({
         subcategory={subcategory}
         chronicleVariantInfo={chronicleVariantInfoFixture}
         onShowChroniclesWritersModal={jest.fn()}
+        onVideoConsentPress={jest.fn()}
       />,
       setupQueryClient
     ),

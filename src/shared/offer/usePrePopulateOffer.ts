@@ -51,6 +51,16 @@ export const usePrePopulateOffer = () => {
 
   const prePopulateOffer = (offer: PartialOffer) => {
     queryClient.setQueryData([QueryKeys.OFFER, offer.offerId], mergeOfferData(offer))
+
+    const isOfferFetched = queryClient.getQueryData([
+      QueryKeys.OFFER,
+      QueryKeys.PREVIEW,
+      offer.offerId,
+    ])
+
+    if (isOfferFetched === undefined) {
+      queryClient.setQueryData([QueryKeys.OFFER, QueryKeys.PREVIEW, offer.offerId], true)
+    }
   }
 
   return prePopulateOffer

@@ -36,7 +36,7 @@ const ValidateSvg: React.FunctionComponent<ValidateProps> = ({
 }
 
 export const Validate = styled(ValidateSvg).attrs(({ color, color2, size, theme }) => ({
-  color: color ?? theme.designSystem.color.icon.default,
-  color2: color2 ?? theme.designSystem.color.icon.brandPrimary,
+  color: color ?? theme.designSystem.color.icon.brandPrimary,
+  color2: color2 ?? theme.designSystem.color.icon.inverted,
   size: size ?? theme.icons.sizes.smaller,
 }))``

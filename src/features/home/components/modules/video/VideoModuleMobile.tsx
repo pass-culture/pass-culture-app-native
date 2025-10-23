@@ -91,7 +91,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
 
 const StyledView = styled.View(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.l,
-  marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
 const Container = styled.View(({ theme }) => ({
@@ -163,10 +162,11 @@ const ColorCategoryBackground = styled.View<{
 }))
 
 const VideoOfferContainer = styled.View(({ theme }) => ({
+  overflow: 'visible',
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const VideoMonoOfferTileWrapper = styled(View)(({ theme }) => ({
+const VideoMonoOfferTileWrapper = styled.View(({ theme }) => ({
   flexGrow: 1,
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))

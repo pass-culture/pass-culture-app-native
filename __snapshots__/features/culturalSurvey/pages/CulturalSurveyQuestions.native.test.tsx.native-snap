@@ -2,12 +2,14 @@
 
 exports[`CulturalSurveyQuestions page should render the page with correct layout 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -288,7 +290,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         }
       >
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -462,7 +463,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -635,7 +635,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -808,7 +807,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -981,7 +979,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -1134,7 +1131,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -1287,7 +1283,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -1460,7 +1455,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -1633,7 +1627,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",
@@ -1806,7 +1799,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
           </View>
         </View>
         <View
-          accessible={true}
           style={
             {
               "display": "flex",

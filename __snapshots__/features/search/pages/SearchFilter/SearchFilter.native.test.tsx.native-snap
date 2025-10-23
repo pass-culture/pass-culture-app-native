@@ -2,22 +2,26 @@
 
 exports[`<SearchFilter/> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
   <View
+    isLandscape={false}
     style={
       {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginHorizontal": 0,
       }
     }
   >
@@ -212,7 +216,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
-            accessible={true}
             isFirstSectionItem={true}
             style={
               [
@@ -336,7 +339,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [
@@ -483,7 +485,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [
@@ -616,7 +617,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [
@@ -749,7 +749,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessible={true}
             isFirstSectionItem={false}
             style={
               [

@@ -6,7 +6,7 @@
 import { ElementType } from 'react'
 
 import { CheckboxProps } from 'ui/designSystem/Checkbox/Checkbox'
-import { CheckboxVariant } from 'ui/designSystem/Checkbox/types'
+import { SelectableVariant } from 'ui/designSystem/types'
 
 export type CheckboxGroupOptionSimple = Omit<
   CheckboxProps,
@@ -41,6 +41,6 @@ export type CheckboxGroupProps = {
   value: string[]
   onChange: (value: string[]) => void
   display?: CheckboxGroupDisplay
-  variant?: CheckboxVariant
+  variant?: SelectableVariant
   disabled?: boolean
 }

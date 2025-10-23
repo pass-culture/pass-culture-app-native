@@ -53,4 +53,18 @@ describe('ChroniclesSection', () => {
 
     jest.useRealTimers()
   })
+
+  it('should not display all reviews button when there is only one review', () => {
+    render(
+      <ChronicleSection
+        variantInfo={chronicleVariantInfoFixture}
+        ctaLabel="Voir tous les avis"
+        data={[chroniclesSnap[0]]}
+        navigateTo={{ screen: 'Offer' }}
+        onShowChroniclesWritersModal={jest.fn()}
+      />
+    )
+
+    expect(screen.queryByText('Voir tous les avis')).not.toBeOnTheScreen()
+  })
 })

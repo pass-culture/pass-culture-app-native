@@ -26,19 +26,15 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onShowChroniclesWritersModal,
   userId,
   hasVideoCookiesConsent,
+  onVideoConsentPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
     navigate('OfferPreview', { id: offer.id, defaultIndex })
-  }
-
-  const handleVideoPress = () => {
-    navigate('OfferVideoPreview', { id: offer.id })
   }
 
   const { onLayout, height: comingSoonFooterHeight } = useLayout()
@@ -50,7 +46,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        onSeeVideoPress={shouldShowVideoSection ? handleVideoPress : undefined}
         isVideoSectionEnabled={isVideoSectionEnabled}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
@@ -62,7 +57,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onLayout={onLayout}
         userId={userId}
         onShowChroniclesWritersModal={onShowChroniclesWritersModal}
-        hasVideoCookiesConsent={hasVideoCookiesConsent}>
+        hasVideoCookiesConsent={hasVideoCookiesConsent}
+        onVideoConsentPress={onVideoConsentPress}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

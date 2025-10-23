@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.362.0",
-  "build": 10362000,
+  "version": "1.364.0",
+  "build": 10364000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -85,7 +85,7 @@
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
-    "update:tools": "nix flake update && direnv exec . devbox update && git commit --only flake.lock devbox.lock --message '(BSR) chore(deps): update tools'"
+    "update:tools": "nix flake update && git commit --only flake.lock --message '(BSR) chore(deps): update tools'"
   },
   "dependencies": {
     "@algolia/client-search": "^4.24.0",
@@ -285,6 +285,7 @@
     "eslint-plugin-local-rules": "^1.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-native": "^3.8.1",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-storybook": "9.0.18",

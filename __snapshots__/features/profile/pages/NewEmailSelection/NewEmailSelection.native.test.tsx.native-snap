@@ -2,12 +2,14 @@
 
 exports[`<NewEmailSelection /> should match snapshot 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -218,6 +220,8 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
         >
           <View>
             <View
+              accessibilityElementsHidden={true}
+              importantForAccessibility="no"
               style={
                 {
                   "alignItems": "flex-end",
@@ -229,7 +233,6 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             >
               <View>
                 <Text
-                  accessibilityLabel="Nouvelle adresse e-mail"
                   style={
                     {
                       "color": "#161617",
@@ -286,6 +289,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             testID="styled-input-container"
           >
             <TextInput
+              accessibilityLabel="Champs de texte - Nouvelle adresse e-mail - Exemple : tonadresse@email.com"
               accessibilityRequired={false}
               autoCapitalize="none"
               autoComplete="email"

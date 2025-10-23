@@ -13,6 +13,7 @@ import { View, ViewStyle } from 'react-native'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { useDaysSelector } from 'features/offer/helpers/useDaysSelector/useDaysSelector'
 import { Anchor } from 'ui/components/anchor/Anchor'
+import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { useLayout } from 'ui/hooks/useLayout'
 
@@ -99,7 +100,7 @@ export const MovieCalendarProvider: React.FC<{
     <MovieCalendarContext.Provider value={value}>
       {isVisible ? (
         <View style={containerStyle}>
-          <Anchor name="movie-calendar">
+          <Anchor name={AnchorNames.MOVIE_CALENDAR}>
             <MovieCalendar
               dates={dates}
               selectedDate={selectedDate}

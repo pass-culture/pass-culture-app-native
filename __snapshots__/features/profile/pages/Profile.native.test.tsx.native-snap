@@ -2,12 +2,14 @@
 
 exports[`Profile component should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -238,7 +240,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -365,7 +366,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -491,7 +491,7 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
+                  accessible={false}
                   style={
                     [
                       {
@@ -715,7 +715,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -841,7 +840,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -992,7 +990,6 @@ exports[`Profile component should render correctly 1`] = `
                 }
               >
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1118,7 +1115,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1245,7 +1241,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1371,7 +1366,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1497,7 +1491,6 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -1897,7 +1890,6 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -1994,7 +1986,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2091,7 +2082,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",
@@ -2188,7 +2178,6 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessible={true}
                       style={
                         {
                           "display": "flex",

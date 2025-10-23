@@ -357,7 +357,7 @@ describe('Signup Form', () => {
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
-      await screen.findAllByText('Mot de passe')
+      await screen.findAllByText('Mot de passe', { hidden: true })
 
       await user.press(screen.getByText('Quitter'))
       await user.press(screen.getByText('Abandonner l’inscription'))

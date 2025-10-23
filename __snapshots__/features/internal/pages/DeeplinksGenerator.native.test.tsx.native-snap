@@ -2,12 +2,14 @@
 
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -242,6 +244,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <View
+                accessibilityLabel="Pages - Accordéon - Réduire l’accordéon"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -260,7 +263,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -286,7 +289,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     },
                   ]
                 }
-                testID="accordionTouchable"
+                testID="Pages - Accordéon - Réduire l’accordéon"
               >
                 <View
                   nativeID="testUuidV4"
@@ -1577,6 +1580,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <View
+                accessibilityLabel="Paramètres applicatifs (1) - Accordéon - Réduire l’accordéon"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1595,7 +1599,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1621,7 +1625,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     },
                   ]
                 }
-                testID="accordionTouchable"
+                testID="Paramètres applicatifs (1) - Accordéon - Réduire l’accordéon"
               >
                 <View
                   nativeID="testUuidV4"
@@ -1734,6 +1738,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -1745,7 +1751,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="videoModuleId"
                             style={
                               {
                                 "color": "#161617",
@@ -1789,6 +1794,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - videoModuleId"
                         accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
@@ -1864,6 +1870,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             >
               <View
+                accessibilityLabel="Paramètres marketing - Accordéon - Réduire l’accordéon"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1882,7 +1889,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1908,7 +1915,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     },
                   ]
                 }
-                testID="accordionTouchable"
+                testID="Paramètres marketing - Accordéon - Réduire l’accordéon"
               >
                 <View
                   nativeID="testUuidV4"
@@ -2021,6 +2028,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -2032,7 +2041,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="utm_campaign"
                             style={
                               {
                                 "color": "#161617",
@@ -2076,6 +2084,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - utm_campaign"
                         accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
@@ -2162,6 +2171,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -2173,7 +2184,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="utm_source"
                             style={
                               {
                                 "color": "#161617",
@@ -2217,6 +2227,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - utm_source"
                         accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
@@ -2303,6 +2314,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -2314,7 +2327,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="utm_medium"
                             style={
                               {
                                 "color": "#161617",
@@ -2358,6 +2370,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - utm_medium"
                         accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
@@ -2444,6 +2457,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -2455,7 +2470,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="utm_content"
                             style={
                               {
                                 "color": "#161617",
@@ -2499,6 +2513,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - utm_content"
                         accessibilityRequired={false}
                         editable={true}
                         isEmpty={true}
@@ -2585,6 +2600,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -2596,7 +2613,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="utm_gen (*)"
                             style={
                               {
                                 "color": "#161617",
@@ -2640,6 +2656,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - utm_gen (*)"
                         accessibilityRequired={false}
                         defaultValue="marketing"
                         editable={true}

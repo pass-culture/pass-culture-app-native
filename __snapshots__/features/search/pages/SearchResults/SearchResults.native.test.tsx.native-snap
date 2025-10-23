@@ -2,12 +2,14 @@
 
 exports[`<SearchResults/> should render SearchResults 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -211,6 +213,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     </View>
                     <TextInput
                       accessibilityHidden={true}
+                      accessibilityLabel="Champs de recherche"
                       autoCorrect={false}
                       autoFocus={false}
                       editable={true}
@@ -289,7 +292,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             }
           >
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -429,7 +431,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -519,7 +520,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -618,7 +618,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -717,7 +716,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {
@@ -816,7 +814,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
             <View
-              accessible={true}
               style={
                 [
                   {

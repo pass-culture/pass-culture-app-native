@@ -30,23 +30,29 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
     onShowChroniclesWritersModal,
   } = props
 
+  const shouldDisplayAllReviewsButton = data.length > 1
+
   return (
     <React.Fragment>
       {isDesktopViewport ? (
         <View style={style}>
           <Gutter>
             <Row>
-              <StyledTitle3 {...getHeadingAttrs(3)}>{variantInfo.titleSection}</StyledTitle3>
-              <InternalTouchableLink
-                as={ButtonSecondaryBlack}
-                icon={Show}
-                wording={ctaLabel}
-                navigateTo={navigateTo}
-                // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{ width: 'auto', borderWidth: 0, paddingLeft: getSpacing(2) }}
-                onBeforeNavigate={onBeforeNavigate}
-              />
+              <StyledTitle3 withBorderRight={shouldDisplayAllReviewsButton} {...getHeadingAttrs(3)}>
+                {variantInfo.titleSection}
+              </StyledTitle3>
+              {shouldDisplayAllReviewsButton ? (
+                <InternalTouchableLink
+                  as={ButtonSecondaryBlack}
+                  icon={Show}
+                  wording={ctaLabel}
+                  navigateTo={navigateTo}
+                  // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
+                  // eslint-disable-next-line react-native/no-inline-styles
+                  style={{ width: 'auto', borderWidth: 0, paddingLeft: getSpacing(2) }}
+                  onBeforeNavigate={onBeforeNavigate}
+                />
+              ) : null}
             </Row>
             {variantInfo.subtitleSection ? (
               <StyledBodyAccentXs>{variantInfo.subtitleSection}</StyledBodyAccentXs>
@@ -86,11 +92,17 @@ const Gutter = styled.View(({ theme }) => ({
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
-  borderRightWidth: StyleSheet.hairlineWidth,
-  borderRightColor: theme.designSystem.color.border.default,
-  paddingRight: theme.designSystem.size.spacing.s,
-}))
+const StyledTitle3 = styled(Typo.Title3)<{ withBorderRight: boolean }>(
+  ({ theme, withBorderRight }) => ({
+    ...(withBorderRight
+      ? {
+          borderRightWidth: StyleSheet.hairlineWidth,
+          borderRightColor: theme.designSystem.color.border.default,
+          paddingRight: theme.designSystem.size.spacing.s,
+        }
+      : undefined),
+  })
+)
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

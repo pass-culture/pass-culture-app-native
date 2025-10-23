@@ -8,6 +8,9 @@ import {
   SimilarOffersResponse,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
+import { ConsentState } from 'features/cookies/enums'
+import * as Cookies from 'features/cookies/helpers/useCookies'
+import { ConsentStatus } from 'features/cookies/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -59,6 +62,16 @@ useRoute.mockReturnValue({
 // Mock to display one messaging app button
 const mockGetInstalledApps = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps') as jest.Mock
 mockGetInstalledApps.mockResolvedValue([Network.snapchat])
+
+const consentState: ConsentStatus = { state: ConsentState.LOADING }
+
+const defaultUseCookies = {
+  cookiesConsent: consentState,
+  setCookiesConsent: jest.fn(),
+  setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
+}
+jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 
 // Performance measuring is run 10 times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 20000

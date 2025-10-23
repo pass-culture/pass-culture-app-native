@@ -6,6 +6,9 @@ import styled from 'styled-components/native'
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
@@ -18,9 +21,9 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Age = 17 | 18
 
-type CreditStep = 17 | 18 | 'information'
+type CreditStep = 17 | 18 | 'information' | 'optional' | 'separator'
 
-type CreditComponentPropsV3 = {
+export type CreditComponentPropsV3 = {
   creditStep: CreditStep
   iconComponent?: React.JSX.Element
   children?: React.ReactNode
@@ -34,6 +37,9 @@ interface Props {
 
 export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   const { seventeenYearsOldDeposit, eighteenYearsOldDeposit } = useDepositAmountsByAge()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
 
   const depositsByAge = new Map<Props['age'], string>([
     [17, seventeenYearsOldDeposit],
@@ -74,6 +80,34 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
           easing: customEaseInOut,
         }
 
+        if (props.creditStep === 'separator') {
+          return (
+            <InternalStep key={'separator ' + index} variant={StepVariant.unknown}>
+              <SeparatorStyledAnimatedView {...animatedViewProps}>
+                <View>{props.children}</View>
+              </SeparatorStyledAnimatedView>
+            </InternalStep>
+          )
+        }
+        if (props.creditStep === 'optional') {
+          return (
+            <InternalStep key={'optional ' + index} variant={StepVariant.unknown}>
+              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+              <DashedStyledAnimatedView {...animatedViewProps}>
+                <View>
+                  <StyledBody>Droit à l’aide</StyledBody>
+                  <Spacer.Column numberOfSpaces={1} />
+                  <StyledTitle3>
+                    Tu peux recevoir{SPACE}
+                    <TitleSecondary>{`${bonificationAmount} supplémentaires`}</TitleSecondary>
+                  </StyledTitle3>
+                  {props.children}
+                </View>
+              </DashedStyledAnimatedView>
+              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+            </InternalStep>
+          )
+        }
         return (
           <InternalStep
             key={props.creditStep}
@@ -86,7 +120,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
             <TouchableWithoutFeedback onPress={() => analytics.logTrySelectDeposit(age)}>
               <StyledAnimatedView {...animatedViewProps}>
                 <View>
-                  <BodySecondary>{`à ${props.creditStep} ans`}</BodySecondary>
+                  <StyledBody>{`à ${props.creditStep} ans`}</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
                   <StyledTitle3>
                     Tu reçois{SPACE}
@@ -104,7 +138,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   )
 }
 
-const BodySecondary = styled(Typo.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
 }))
 
@@ -138,7 +172,22 @@ const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) 
 const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
   borderWidth: getSpacing(0.25),
-  borderRadius: theme.designSystem.size.borderRadius.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
   padding: getSpacing(4),
   overflow: 'hidden',
+}))
+
+const DashedStyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
+  borderColor: theme.designSystem.color.border.brandPrimary,
+  borderWidth: getSpacing(0.25),
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  borderStyle: 'dashed',
+  padding: getSpacing(4),
+  overflow: 'hidden',
+  backgroundColor: theme.designSystem.color.background.info,
+}))
+
+const SeparatorStyledAnimatedView = styled(AnimatedView)(() => ({
+  overflow: 'hidden',
+  alignSelf: 'center',
 }))

@@ -2,12 +2,14 @@
 
 exports[`DisplayPreference should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -246,35 +248,40 @@ exports[`DisplayPreference should render correctly 1`] = `
                   }
                 }
               >
-                <Text
-                  accessibilityDescribedBy="testUuidV4"
+                <View
+                  accessibilityLabel="Permettre l’orientation - L’affichage en mode paysage peut être moins optimal"
                   accessibilityRole="header"
-                  htmlFor="testUuidV4"
-                  id="testUuidV4"
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
+                  accessible={true}
                 >
-                  Permettre l’orientation
-                </Text>
-                <Text
-                  nativeID="testUuidV4"
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
+                  <Text
+                    accessibilityDescribedBy="testUuidV4"
+                    htmlFor="testUuidV4"
+                    id="testUuidV4"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
                     }
-                  }
-                >
-                  L’affichage en mode paysage peut être moins optimal
-                </Text>
+                  >
+                    Permettre l’orientation
+                  </Text>
+                  <Text
+                    nativeID="testUuidV4"
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    L’affichage en mode paysage peut être moins optimal
+                  </Text>
+                </View>
               </View>
               <View
                 style={

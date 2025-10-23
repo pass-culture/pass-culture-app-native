@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
@@ -38,11 +38,18 @@ export const useOfferQuery = <T = OfferResponseV2>({
   select?: (data: OfferResponseV2) => T | undefined
 }) => {
   const { logType } = useLogTypeFromRemoteConfig()
+  const queryClient = useQueryClient()
 
-  return useQuery({
+  const query = useQuery({
     queryKey: [QueryKeys.OFFER, offerId],
-    queryFn: () => getOfferById(offerId, logType),
+    queryFn: async () => {
+      const offer = await getOfferById(offerId, logType)
+      queryClient.setQueryData([QueryKeys.OFFER, QueryKeys.PREVIEW, offerId], false)
+      return offer
+    },
     enabled: !!offerId,
     select,
   })
+
+  return query
 }

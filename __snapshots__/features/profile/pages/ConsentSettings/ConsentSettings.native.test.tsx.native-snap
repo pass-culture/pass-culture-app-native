@@ -2,12 +2,14 @@
 
 exports[`<ConsentSettings/> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -487,6 +489,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
         <View
+          accessibilityLabel="Personnaliser ta navigation - Accordéon - Développer l’accordéon"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -505,7 +508,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -531,7 +534,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               },
             ]
           }
-          testID="accordionTouchable"
+          testID="Personnaliser ta navigation - Accordéon - Développer l’accordéon"
         >
           <View
             nativeID="testUuidV4"
@@ -830,6 +833,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
         <View
+          accessibilityLabel="Enregistrer des statistiques de navigation - Accordéon - Développer l’accordéon"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -848,7 +852,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -874,7 +878,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               },
             ]
           }
-          testID="accordionTouchable"
+          testID="Enregistrer des statistiques de navigation - Accordéon - Développer l’accordéon"
         >
           <View
             nativeID="testUuidV4"
@@ -1173,6 +1177,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
         <View
+          accessibilityLabel="Mesurer l’efficacité de nos publicités - Accordéon - Développer l’accordéon"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -1191,7 +1196,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1217,7 +1222,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               },
             ]
           }
-          testID="accordionTouchable"
+          testID="Mesurer l’efficacité de nos publicités - Accordéon - Développer l’accordéon"
         >
           <View
             nativeID="testUuidV4"
@@ -1525,6 +1530,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
         <View
+          accessibilityLabel="Assurer la sécurité, prévenir la fraude et corriger les bugs - Accordéon - Développer l’accordéon"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -1543,7 +1549,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1569,7 +1575,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               },
             ]
           }
-          testID="accordionTouchable"
+          testID="Assurer la sécurité, prévenir la fraude et corriger les bugs - Accordéon - Développer l’accordéon"
         >
           <View
             nativeID="testUuidV4"

@@ -2,12 +2,14 @@
 
 exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -281,6 +283,8 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             >
               <View>
                 <View
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no"
                   style={
                     {
                       "alignItems": "flex-end",
@@ -292,7 +296,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 >
                   <View>
                     <Text
-                      accessibilityLabel="Adresse e-mail"
                       style={
                         {
                           "color": "#161617",
@@ -349,6 +352,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 testID="styled-input-container"
               >
                 <TextInput
+                  accessibilityLabel="Champs de texte - Adresse e-mail - Exemple : tonadresse@email.com"
                   accessibilityRequired={false}
                   autoCapitalize="none"
                   autoComplete="email"
@@ -703,12 +707,14 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
 
 exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -1036,6 +1042,8 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         >
           <View>
             <View
+              accessibilityElementsHidden={true}
+              importantForAccessibility="no"
               style={
                 {
                   "alignItems": "flex-end",
@@ -1047,7 +1055,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             >
               <View>
                 <Text
-                  accessibilityLabel="Mot de passe"
                   style={
                     {
                       "color": "#161617",
@@ -1091,6 +1098,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             testID="styled-input-container"
           >
             <TextInput
+              accessibilityLabel="Champs de texte - Mot de passe - Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
               accessibilityRequired={false}
               autoCapitalize="none"
               autoFocus={true}
@@ -1595,12 +1603,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
 
 exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -1989,6 +1999,8 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
             }
           />
           <View
+            accessibilityLabel="Date de naissance - 1er décembre 2006"
+            accessible={true}
             gap={2}
             style={
               {
@@ -2053,7 +2065,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               testID="styled-input-container"
             >
               <Text
-                accessibilityLabel="1er décembre 2006"
                 nativeID="testUuidV4"
                 style={
                   {
@@ -2077,6 +2088,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 "borderRadius": {
                   "button": 24,
                   "checkbox": 4,
+                  "radioButton": 20,
                   "radius": 8,
                   "tile": 12,
                 },
@@ -2497,6 +2509,12 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "style": "solid",
                   "width": 2,
                 },
+                "radioButton": {
+                  "border": {
+                    "size": 2,
+                  },
+                  "size": 20,
+                },
                 "showTabBar": true,
                 "slider": {
                   "markerSize": 36,
@@ -2738,12 +2756,14 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
 
 exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >

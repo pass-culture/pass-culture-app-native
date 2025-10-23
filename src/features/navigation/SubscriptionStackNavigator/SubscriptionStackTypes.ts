@@ -60,13 +60,15 @@ export type SubscriptionStackParamList = {
   EduConnectErrors: { code?: string; logoutUrl?: string }
   EduConnectErrorsPage: { code?: string; logoutUrl?: string }
   // Bonification
-  BonificationIntroduction: undefined
-  BonificationTitle: undefined
-  BonificationNames: undefined
   BonificationBirthDate: undefined
   BonificationBirthPlace: undefined
-  BonificationRecap: undefined
   BonificationError: undefined
+  BonificationGranted: undefined
+  BonificationIntroduction: undefined
+  BonificationNames: undefined
+  BonificationRecap: undefined
+  BonificationRefused: undefined
+  BonificationTitle: undefined
 } & CulturalSurveyRootStackParamList
 
 export type SubscriptionStackRouteName = keyof SubscriptionStackParamList

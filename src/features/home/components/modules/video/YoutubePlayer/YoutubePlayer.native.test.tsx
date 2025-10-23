@@ -27,7 +27,14 @@ describe('YoutubePlayer', () => {
 
   it('should have default ref', async () => {
     render(
-      <YoutubePlayer height={300} thumbnail={<View />} ref={mockRef} videoId="id" title="Vidéo" />
+      <YoutubePlayer
+        height={300}
+        thumbnail={<View />}
+        ref={mockRef}
+        videoId="id"
+        title="Vidéo"
+        play={false}
+      />
     )
 
     await expect(mockRef.current?.getDuration()).resolves.toBe(0)
@@ -53,6 +60,7 @@ describe('YoutubePlayer', () => {
         thumbnail={<Image source={{ uri: 'thumbnail.jpg' }} />}
         onReady={handleOnReady}
         title="Vidéo"
+        play={false}
       />
     )
 

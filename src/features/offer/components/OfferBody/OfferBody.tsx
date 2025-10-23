@@ -47,6 +47,7 @@ type Props = {
   subcategory: Subcategory
   children: ReactNode
   chronicleVariantInfo: ChronicleVariantInfo
+  onVideoConsentPress: VoidFunction
   likesCount?: number
   chroniclesCount?: number | null
   distance?: string | null
@@ -70,6 +71,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   userId,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
+  onVideoConsentPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -125,13 +127,17 @@ export const OfferBody: FunctionComponent<Props> = ({
     if (!artists[0]) return
     const mainArtistName = artists[0].name
     const mainArtistId = artists[0].id
-    analytics.logConsultArtist({
+    void analytics.logConsultArtist({
       offerId: offer.id.toString(),
       artistId: mainArtistId,
       artistName: mainArtistName,
       from: 'offer',
     })
     navigate('Artist', { id: artists[0].id })
+  }
+
+  const handleManageCookiesPress = () => {
+    navigate('ProfileStackNavigator', { screen: 'ConsentSettings', params: { offerId: offer.id } })
   }
 
   const fullAddressOffer = formatFullAddress(
@@ -211,6 +217,8 @@ export const OfferBody: FunctionComponent<Props> = ({
           userId={userId}
           duration={offer.video?.durationSeconds}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
+          onManageCookiesPress={handleManageCookiesPress}
+          onVideoConsentPress={onVideoConsentPress}
         />
       ) : null}
 

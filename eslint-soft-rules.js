@@ -15,6 +15,24 @@ const softRules = {
     'local-rules/queries-must-be-in-queries-folder': 'warn',
     'boundaries/element-types': ['warn', boundariesRule],
   },
+  reactRules: {
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/config': 'warn',
+    'react-hooks/error-boundaries': 'warn',
+    'react-hooks/component-hook-factories': 'warn',
+    'react-hooks/gating': 'warn',
+    'react-hooks/globals': 'warn',
+    'react-hooks/immutability': 'warn',
+    'react-hooks/preserve-manual-memoization': 'warn',
+    'react-hooks/purity': 'warn',
+    'react-hooks/refs': 'warn',
+    'react-hooks/set-state-in-effect': 'warn',
+    'react-hooks/set-state-in-render': 'warn',
+    'react-hooks/static-components': 'warn',
+    'react-hooks/unsupported-syntax': 'warn',
+    'react-hooks/use-memo': 'warn',
+    'react-hooks/incompatible-library': 'warn',
+  },
 }
 
 const getConditionalRules = (scope, rules) =>

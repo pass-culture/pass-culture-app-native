@@ -2,12 +2,14 @@
 
 exports[`SetPhoneValidationCode should match snapshot 1`] = `
 <View
+  isLandscape={false}
   style={
     {
       "backgroundColor": "#ffffff",
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
+      "marginHorizontal": 0,
     }
   }
 >
@@ -300,6 +302,8 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -311,7 +315,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       >
                         <View>
                           <Text
-                            accessibilityLabel="Code de validation"
                             style={
                               {
                                 "color": "#161617",
@@ -368,6 +371,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
+                        accessibilityLabel="Champs de texte - Code de validation - Format : 6 chiffres"
                         accessibilityRequired={false}
                         autoCapitalize="none"
                         autoComplete="one-time-code"

@@ -281,6 +281,52 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 5.2 - iOS - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
+
+**RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  
+**Ticket** : [PC-37476](https://passculture.atlassian.net/browse/PC-37476)  
+**PR** : [#8789](https://github.com/pass-culture/pass-culture-app-native/pull/8789)
+
+**Problème** 😱  
+
+- **(E01)** Les composants à bascule (switch) et le lien "Politique de gestion des cookies" ne sont pas accessible aux lecteurs d'écrans. 
+
+- **(E03)** Les composants "https://passculture.app/accueil" et "support@passculture.app" ne sont pas atteignables aux lecteurs d'écrans.
+
+- **(E04)** Les composants "https://passculture.app/accueil" et "support@passculture.app" ne sont pas atteignables aux lecteurs d'écrans.
+
+- **(E05)** Le composant à bascule pour permettre l'orientation n'est pas utilisable au clavier ou avec un autre dispositif de pointage. 
+
+- **(E08)** Le composant à bascule pour la géolocalisation n'est pas utilisable au clavier ou avec un autre dispositif de pointage. 
+
+- **(E15)** Les composants de choix de séance ("9H00 10€" et "11h00 10€") doivent un seul et même bloc, actuellement ils sont composés de 3 éléments dont un vide et il n'y a pas de rôle.
+
+
+**Correction** 💡  
+
+- **(E01)** Utilisation du composant `LinkInsideText` qui est accessible pour lien "Politique de gestion des cookies" et ajout d'un accessibiltyLabel accessible pour les composants à bascule (switch). 
+
+- **(E03)** Utilisation du composant `LinkInsideText` qui est accessible.
+
+- **(E04)** Utilisation du composant `LinkInsideText` qui est accessible.
+
+- **(E05)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour permettre l'orientation. 
+
+- **(E08)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour la géolocalisation.
+
+- **(E15)** Ajoute d'un `accessibilityLabel` plus complet pour les composants de choix de séance ("9H00 10€" et "11h00 10€") pour les rendre d'un seul et même bloc.
+
+
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
 
 **RAAM** : [Critère 7.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-1)  
@@ -345,7 +391,8 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E06)** Les éléments dans le "plan du site" sont tronqué car ils n'utilisent pas de composant bouton.
 - **(E09)** Les tags ont une hauteur limité, ce qui empeche un texte de s'afficher sur 2 ou 3 lignes.
 - **(E12)** La page de statut de la demande de déblocage du crédit ne scroll pas, car on bloque sa hauteur.
-- **(E15)** Les options dans le calendrir ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes.
+- **(E15)** Les options dans le calendrier ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes. De plus, lorsque le bouton "Voir plus" est activé, il devient impossible de faire défiler l’écran jusqu'en bas.
+
 
 **Correction** 💡
 
@@ -353,7 +400,7 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E06)** Utilisation de boutons pour tous les éléments du plan du site, qui gère mieux le passage à la ligne et ne tronque pas le texte.
 - **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes.
 - **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller.
-- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que`width` pour permettre d'afficher le texte des options sur plusieurs lignes.
+- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que `width` pour permettre d'afficher le texte des options sur plusieurs lignes. Pour le bas de l'écran, suppression d'un ScrollView suprerficielle. 
 
 </details>
 
@@ -391,6 +438,61 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E14)** Ajout de la mention "actif/incatif" sur les tabs de la recherche via l'`accessibilityLabel`.
 
 - **(E15)** Ajout de la mention "accessible/inaccessible" sur les critères d'accessibilité via l'`accessibilityLabel`.
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 9.2 - Chaque champ de formulaire a-t-il une étiquette accessible aux technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 9.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-2)  
+**Ticket** : [PC-37489](https://passculture.atlassian.net/browse/PC-37489)  
+**PR** : [#8814](https://github.com/pass-culture/pass-culture-app-native/pull/8814)
+
+**Problème** 😱 
+
+- **(E01 | E07 | E11 | E12 | E14)** Les champs de formulaire suivant ne possèdent pas d'étiquette correctement liée et ne sont pas accessible lorsqu’on navigue avec un lecteur d'écran : 
+  - "Ville, code postal, adresse"
+  - "Adresse e-mail"
+  - "Indique ton code postal et choisis ta ville"
+  - "Prix minimum (en €)"
+  - "Prix maximum (en €)"
+
+- **(E05 | E08 | E14)** Les composants à bascule (switch) ne possèdent pas d'étiquette correctement liée et ne sont pas accessible lorsqu’on navigue avec un lecteur d'écran :
+  - "Tout accepter"
+  - "Personnaliser ta navigation"
+  - "Enregistrer des statistiques de navigation"
+  - "Mesurer l’efficacité de nos publicités"
+  - "Lire les contenus vidéos"
+  - "Permettre l'orientation"
+  - "Activer ma géolocalisation"
+  - "Uniquement les offres gratuites"
+
+
+**Correction** 💡  
+
+- **(E01 | E07 | E11 | E12 | E14)** Ajout du label et informations complémentaires de l'input directement dans l'`accessibilityLabel` : 
+  - "Ville, code postal, adresse"
+  - "Adresse e-mail"
+  - "Indique ton code postal et choisis ta ville"
+  - "Prix minimum (en €)"
+  - "Prix maximum (en €)"
+
+- **(E05 | E08 | E14)** Ajout du label et informations complémentaires des composants à bascule (switch) directement dans l'`accessibilityLabel` :
+  - "Tout accepter"
+  - "Personnaliser ta navigation"
+  - "Enregistrer des statistiques de navigation"
+  - "Mesurer l’efficacité de nos publicités"
+  - "Lire les contenus vidéos"
+  - "Permettre l'orientation"
+  - "Activer ma géolocalisation"
+  - "Uniquement les offres gratuites"
+
 
 **Retours audit** 🔥
 Texte
@@ -442,6 +544,65 @@ Texte
 </details>
 
 <br>
+
+<details>
+
+<summary> 🟠 Critère 9.8 - Pour chaque champ de formulaire qui attend un type de données et/ou un format spécifique, l’information correspondante est-elle disponible ?</summary>
+
+**RAAM** : [Critère 9.8](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-8)  
+**Ticket** : [PC-37493](https://passculture.atlassian.net/browse/PC-37493)  
+**PR** : [#8786](https://github.com/pass-culture/pass-culture-app-native/pull/8786)
+
+**Problème** 😱  
+
+- **(E09)** Pour le champ "Adresse e-mail" le format attendu est présent mais n'est pas lié à l'étiquette.
+
+- **(E11)** Pour les champs "Adresse e-mail" et le "Mot de passe", le format attendu est présent mais n'est pas lié à l'étiquette. 
+
+**Correction** 💡
+
+- **(E09 | E11)** Utilisation d'un accessibiltyLabel avec toutes les informations (label, format, obligation) ajouté directement dans l'input et les textes visibles par les utilisateurs sont ignorés aux lecteurs d'écrans pour éviter les doublons. 
+
+
+**Retours audit** 🔥
+
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ?</summary>
+
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-37501](https://passculture.atlassian.net/browse/PC-37501)  
+**PR** : [#8795](https://github.com/pass-culture/pass-culture-app-native/pull/8795), [#8812](https://github.com/pass-culture/pass-culture-app-native/pull/8812)
+
+**Problème** 😱  
+
+- **(E01)** L'orientation en mode paysage est bloqué par défaut sur l'application. Pour la débloquer il faut se rendre dans la section "Préférences d‘affichage" qui est difficilement accessible lors de la consultation de l’application la première fois (car l'onboarding ajoute plusieurs étapes).
+
+- **(E02)** Des contenus disparaissent (tronqués) lors de la consultation en mode paysage.
+
+- **(E14)** En mode paysage, la liste des résultats est très peu visible.
+
+
+**Correction** 💡  
+
+- **(E01)** Déblocage de l’orientation en mode paysage par défaut, pour prendre en compte les paramètres du téléphone. 
+
+- **(E02 | E14)** Ajout de bordures horizontales en mode paysage pour éviter que des éléments soient tronqués ou cachés. 
+
+
+**Retours audit** 🔥
+Texte
+
+</details>
+
+<br>
+
 
 ## ✅ Corrections 31 octobre → 19 novembre
 

@@ -1,10 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
-import { Consent, ConsentStatus, CookiesConsent } from 'features/cookies/types'
+import { useCookiesConsentStore } from 'features/cookies/store/cookiesConsentStore'
+import { Consent, CookiesConsent } from 'features/cookies/types'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { BatchPush } from 'libs/react-native-batch'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -25,25 +26,33 @@ const removeCookiesConsentAndChoiceDate = async (cookiesChoice: CookiesConsent):
 }
 
 export const useCookies = () => {
-  const [cookiesConsentInternalState, setCookiesConsentInternalState] = useState<ConsentStatus>({
-    state: ConsentState.LOADING,
-  })
+  const cookiesConsentInternalState = useCookiesConsentStore((state) => state.cookiesConsent)
   const { user: userProfileInfo } = useAuthContext()
   const { mutateAsync: persist } = usePersistCookieConsentMutation()
 
-  useEffect(() => {
-    getCookiesChoice().then((cookies) => {
+  const loadCookiesConsent = useCallback(() => {
+    const { isInitialized, cookiesConsent, setCookiesConsentState } =
+      useCookiesConsentStore.getState()
+
+    if (isInitialized && cookiesConsent.state !== ConsentState.LOADING) {
+      return
+    }
+
+    void (async () => {
+      const cookies = await getCookiesChoice()
       if (cookies) {
-        setConsentAndChoiceDateTime(cookies, setCookiesConsentInternalState)
+        setConsentAndChoiceDateTime(cookies)
       } else {
-        setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
+        setCookiesConsentState({ state: ConsentState.UNKNOWN })
       }
-    })
+    })()
   }, [])
 
-  const setCookiesConsent = async (cookiesConsent: Consent) => {
-    setCookiesConsentInternalState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
+  useEffect(() => {
+    loadCookiesConsent()
+  }, [loadCookiesConsent])
 
+  const setCookiesConsent = async (cookiesConsent: Consent) => {
     const oldCookiesChoice = await getCookiesChoice()
     const deviceId = await getDeviceId()
 
@@ -56,6 +65,11 @@ export const useCookies = () => {
     }
 
     await persist(newCookiesChoice)
+
+    useCookiesConsentStore
+      .getState()
+      .setCookiesConsentState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
+
     if (cookiesConsent.accepted.includes(CookieNameEnum.BATCH)) {
       BatchPush.requestNotificationAuthorization() // For iOS and Android 13
     }
@@ -85,27 +99,25 @@ export const useCookies = () => {
     cookiesConsent: cookiesConsentInternalState,
     setCookiesConsent,
     setUserId,
+    loadCookiesConsent,
   }
 }
 
-const setConsentAndChoiceDateTime = (
-  cookies: CookiesConsent,
-  setCookiesConsentInternalState: Dispatch<SetStateAction<ConsentStatus>>
-) => {
+const setConsentAndChoiceDateTime = (cookies: CookiesConsent) => {
+  const { setCookiesConsentState } = useCookiesConsentStore.getState()
+
   if (cookies.consent) {
-    setCookiesConsentInternalState({
+    setCookiesConsentState({
       state: ConsentState.HAS_CONSENT,
       value: cookies.consent,
     })
     startTrackingAcceptedCookies(cookies.consent.accepted)
   } else {
-    setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
+    setCookiesConsentState({ state: ConsentState.UNKNOWN })
   }
 
-  if (cookies.choiceDatetime) {
-    if (isConsentChoiceExpired(new Date(cookies.choiceDatetime))) {
-      removeCookiesConsentAndChoiceDate(cookies)
-      setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
-    }
+  if (cookies.choiceDatetime && isConsentChoiceExpired(new Date(cookies.choiceDatetime))) {
+    void removeCookiesConsentAndChoiceDate(cookies)
+    setCookiesConsentState({ state: ConsentState.UNKNOWN })
   }
 }

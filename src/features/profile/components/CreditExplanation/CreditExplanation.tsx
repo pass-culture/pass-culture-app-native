@@ -60,7 +60,7 @@ const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
   justifyContent: 'flex-start',
 })(({ theme }) => ({
   textAlign: 'left',
-  backgroundColor: theme.designSystem.color.background.subtle,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({

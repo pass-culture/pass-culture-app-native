@@ -155,6 +155,7 @@ describe('useSearchResults', () => {
           { id: '2', name: 'Artist 2' },
           { id: '3', name: 'Artist 3' },
           { id: '4', name: 'Artist 4' },
+          { id: '5', name: 'Artist 4' },
         ])
       )
     })

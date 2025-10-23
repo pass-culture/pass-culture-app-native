@@ -1,5 +1,6 @@
 import * as reactNavigation from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import {
   CategoryIdEnum,
@@ -446,7 +447,7 @@ describe('<OfferBody />', () => {
     it('should redirect to venue page when pressing proposed by section when venue is permanent', async () => {
       renderOfferBody({ offer: offerWithDifferentAddress })
 
-      await user.press(screen.getByText('Proposé par'))
+      await user.press(screen.getAllByText('Lieu différent')[1] as ReactTestInstance)
 
       expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
     })
@@ -462,33 +463,6 @@ describe('<OfferBody />', () => {
       await user.press(screen.getByText('Proposé par'))
 
       expect(mockNavigate).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('MovieScreeningCalendar', () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-      stocks: [
-        {
-          beginningDatetime: '2024-02-27T11:10:00Z',
-          features: ['VO'],
-          id: 6091,
-          isBookable: false,
-          isExpired: false,
-          isForbiddenToUnderage: false,
-          isSoldOut: true,
-          price: 570,
-        },
-      ],
-    }
-
-    it('should render <MovieScreeningCalendar /> when offer is a movie screening', async () => {
-      renderOfferBody({
-        offer,
-      })
-
-      expect(await screen.findByLabelText('Mardi 27 Février')).toBeOnTheScreen()
     })
   })
 
@@ -592,6 +566,17 @@ describe('<OfferBody />', () => {
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
+  it('should redirect to cookies management when pressing manage cookies button', async () => {
+    renderOfferBody({ isVideoSectionEnabled: true })
+
+    await user.press(await screen.findByText('Gérer mes cookies'))
+
+    expect(mockNavigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      screen: 'ConsentSettings',
+      params: { offerId: offerResponseSnap.id },
+    })
+  })
+
   type RenderOfferBodyType = Partial<ComponentProps<typeof OfferBody>> & {
     isDesktopViewport?: boolean
   }
@@ -601,6 +586,8 @@ describe('<OfferBody />', () => {
     subcategory = mockSubcategory,
     isDesktopViewport,
     distance,
+    isVideoSectionEnabled,
+    hasVideoCookiesConsent,
     children,
   }: RenderOfferBodyType) {
     render(
@@ -609,7 +596,10 @@ describe('<OfferBody />', () => {
           offer={offer}
           subcategory={subcategory}
           distance={distance}
-          chronicleVariantInfo={chronicleVariantInfoFixture}>
+          chronicleVariantInfo={chronicleVariantInfoFixture}
+          isVideoSectionEnabled={isVideoSectionEnabled}
+          hasVideoCookiesConsent={hasVideoCookiesConsent}
+          onVideoConsentPress={jest.fn()}>
           {children}
         </OfferBody>
       ),

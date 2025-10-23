@@ -1,3 +1,5 @@
+import { ReactTestInstance } from 'react-test-renderer'
+
 import {
   BookingsResponse,
   GetRemindersResponse,
@@ -6,7 +8,7 @@ import {
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
-import { ConsentState } from 'features/cookies/enums'
+import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -80,6 +82,7 @@ const defaultUseCookies = {
   cookiesConsent: consentState,
   setCookiesConsent: jest.fn(),
   setUserId: jest.fn(),
+  loadCookiesConsent: jest.fn(),
 }
 const mockUseCookies = jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 
@@ -261,85 +264,98 @@ describe('<Offer />', () => {
     })
   })
 
-  it('should display video section when FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
-    renderOfferPage({ mockOffer: offerResponseSnap })
-
-    expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
-  })
-
-  it('should display offer placeholder on init', async () => {
-    renderOfferPage({ mockOffer: offerResponseSnap, mockIsLoading: true })
-
-    expect(await screen.findByTestId('OfferContentPlaceholder')).toBeOnTheScreen()
-  })
-
-  it('should display video player when wipVideoCookiesConsent FF deactivated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
-    renderOfferPage({ mockOffer: offerResponseSnap })
-
-    expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
-    expect(screen.getByRole('imagebutton')).toBeOnTheScreen()
-  })
-
-  it('should display video player when wipVideoCookiesConsent FF activated and video cookies consented', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
-      RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
-    ])
-
-    mockUseCookies
-      .mockReturnValueOnce({
-        ...defaultUseCookies,
-        cookiesConsent: {
-          state: ConsentState.HAS_CONSENT,
-          value: consentValue,
-        },
-      })
-      // 2 re-render
-      .mockReturnValueOnce({
-        ...defaultUseCookies,
-        cookiesConsent: {
-          state: ConsentState.HAS_CONSENT,
-          value: consentValue,
-        },
-      })
-
-    renderOfferPage({ mockOffer: offerResponseSnap })
-
-    expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
-    expect(screen.getByRole('imagebutton')).toBeOnTheScreen()
-  })
-
-  it('should display video player placeholder when wipVideoCookiesConsent FF activated and video cookies not consented', async () => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
-      RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
-    ])
-    mockUseCookies.mockReturnValueOnce({
-      ...defaultUseCookies,
-      cookiesConsent: {
-        state: ConsentState.HAS_CONSENT,
-        value: {
-          ...consentValue,
-          accepted: [
-            ...COOKIES_BY_CATEGORY.customization,
-            ...COOKIES_BY_CATEGORY.performance,
-            ...COOKIES_BY_CATEGORY.marketing,
-          ],
-        },
-      },
+  describe('video section', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
     })
 
-    renderOfferPage({ mockOffer: offerResponseSnap })
+    afterEach(() => {
+      mockUseCookies.mockReset().mockReturnValue(defaultUseCookies)
+    })
 
-    expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
-    expect(
-      screen.getByText(
-        'En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.'
-      )
-    ).toBeOnTheScreen()
+    describe('cookies consented', () => {
+      beforeEach(() => {
+        mockUseCookies.mockImplementation(() => ({
+          ...defaultUseCookies,
+          cookiesConsent: {
+            state: ConsentState.HAS_CONSENT,
+            value: consentValue,
+          },
+        }))
+      })
+
+      it('should display video player when wipVideoCookiesConsent FF deactivated', async () => {
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
+        expect(await screen.findByRole('imagebutton')).toBeOnTheScreen()
+      })
+
+      it('should display video player when wipVideoCookiesConsent FF activated and video cookies consented', async () => {
+        setFeatureFlags([
+          RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
+          RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
+        ])
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
+        expect(await screen.findByRole('imagebutton')).toBeOnTheScreen()
+      })
+    })
+
+    describe('cookies NOT consented', () => {
+      const mockSetCookiesConsent = jest.fn()
+
+      const acceptedWithoutVideo = [
+        ...COOKIES_BY_CATEGORY.customization,
+        ...COOKIES_BY_CATEGORY.performance,
+        ...COOKIES_BY_CATEGORY.marketing,
+      ]
+
+      beforeEach(() => {
+        setFeatureFlags([
+          RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
+          RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
+        ])
+
+        mockUseCookies.mockImplementation(() => ({
+          ...defaultUseCookies,
+          cookiesConsent: {
+            state: ConsentState.HAS_CONSENT,
+            value: {
+              mandatory: COOKIES_BY_CATEGORY.essential,
+              accepted: acceptedWithoutVideo,
+              refused: [],
+            },
+          },
+          setCookiesConsent: mockSetCookiesConsent,
+        }))
+      })
+
+      it('should display video player placeholder when cookies not consented', async () => {
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        const placeholder = await screen.findByText(
+          'En visionnant cette vidéo, tu t’engages à accepter les cookies liés à Youtube.'
+        )
+
+        expect(placeholder).toBeOnTheScreen()
+        expect(screen.queryByRole('imagebutton')).not.toBeOnTheScreen()
+      })
+
+      it('should accept video cookies and display video player when pressing see video button below video player placeholder and wipVideoCookiesConsent FF activated', async () => {
+        renderOfferPage({ mockOffer: offerResponseSnap })
+
+        await screen.findByText('Vidéo')
+
+        await user.press(screen.getAllByText('Voir la vidéo')[1] as ReactTestInstance)
+
+        expect(mockSetCookiesConsent).toHaveBeenCalledWith({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: [...acceptedWithoutVideo, CookieNameEnum.VIDEO_PLAYBACK],
+          refused: [],
+        })
+      })
+    })
   })
 })

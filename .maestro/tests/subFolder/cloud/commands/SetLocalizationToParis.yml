@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 'Choisir une localisation.*'
+      - tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
       - inputText: 'Paris'
       - hideKeyboard
       - tapOn: 'Paris Paris'
@@ -17,7 +17,7 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - tapOn: 'Ouvrir la modale de localisation depuis le widget'
-      - tapOn: 'Choisir une localisation.*'
+      - tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
       - inputText: 'Paris'
       - tapOn: 'Paris Paris'
       - tapOn: 'Valider la localisation'

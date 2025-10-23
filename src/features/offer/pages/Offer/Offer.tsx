@@ -52,7 +52,8 @@ export function Offer() {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
-  const { cookiesConsent } = useCookies()
+
+  const { cookiesConsent, setCookiesConsent } = useCookies()
 
   const hasVideoCookiesConsent = shouldUseVideoCookies
     ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
@@ -87,24 +88,33 @@ export function Offer() {
   )
 
   const handleOnShowRecoButtonPress = () => {
-    analytics.logClickAllClubRecos({
+    void analytics.logClickAllClubRecos({
       offerId: offerId.toString(),
       from: 'offer',
       categoryName: categoryId,
     })
     hideChroniclesWritersModal()
-    InteractionManager.runAfterInteractions(() => {
+    void InteractionManager.runAfterInteractions(() => {
       navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
     })
   }
 
   const handleOnShowChroniclesWritersModal = () => {
-    analytics.logClickWhatsClub({
+    void analytics.logClickWhatsClub({
       offerId: offerId.toString(),
       from: 'offer',
       categoryName: categoryId,
     })
     showChroniclesWritersModal()
+  }
+
+  const handleOnVideoConsentPress = () => {
+    const currentConsent = cookiesConsent.value ?? { accepted: [], mandatory: [], refused: [] }
+
+    void setCookiesConsent({
+      ...currentConsent,
+      accepted: [...currentConsent.accepted, CookieNameEnum.VIDEO_PLAYBACK],
+    })
   }
 
   const { data } = useFetchHeadlineOffersCountQuery(offer)
@@ -159,6 +169,7 @@ export function Offer() {
         userId={user?.id}
         onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
+        onVideoConsentPress={handleOnVideoConsentPress}
       />
     </Page>
   )

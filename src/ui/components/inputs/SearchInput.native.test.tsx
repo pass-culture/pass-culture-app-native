@@ -42,7 +42,7 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(screen.getByText('Exemple : 75011')).toBeOnTheScreen()
+    expect(screen.getByText('Exemple : 75011', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should not display format when no format is given', async () => {
@@ -56,7 +56,7 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(screen.queryByText('Exemple : 75011')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Exemple : 75011', { hidden: true })).not.toBeOnTheScreen()
   })
 
   it('should display "Obligatoire" when isRequiredField = true and has label', async () => {
@@ -70,7 +70,7 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
+    expect(screen.getByText('Obligatoire', { hidden: true })).toBeOnTheScreen()
   })
 
   it('should not display "Obligatoire" when isRequiredField = false and has label', async () => {
@@ -83,6 +83,6 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(screen.queryByText('Obligatoire')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Obligatoire', { hidden: true })).not.toBeOnTheScreen()
   })
 })

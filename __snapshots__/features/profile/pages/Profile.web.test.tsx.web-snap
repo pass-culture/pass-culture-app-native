@@ -144,7 +144,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 
 <div>
   <div
-    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginInline-1j93nrh"
   >
     <div
       class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
@@ -212,7 +212,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-alignSelf-k200y r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
+              class="css-view-175oi2r r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-rs99b7 r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
               <div
                 class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
@@ -1242,7 +1242,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 
 <div>
   <div
-    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginInline-1j93nrh"
   >
     <div
       class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
@@ -1310,7 +1310,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-rs99b7 r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
             >
               <div
                 class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
