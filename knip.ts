@@ -6,9 +6,14 @@ const defaultConfig: KnipConfig = {
   entry: ['index.js!', 'src/index.tsx!', 'server/src/index.ts!'],
   project: ['src/**/*.{ts,tsx}!'], // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
   ignore: [
-    // PC-35376 - should delete this line
-    'src/**/*.stories.old.tsx',
-    // PC-36439 - should delete those lines
+    'src/**/*.stories.old.tsx', // TODO(PC-35376): should delete this line
+    'src/features/bookings/components/BookingListItem.tsx', // TODO(PC-35897): remove
+    'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
+    'src/ui/designSystem/Banner/*', // TODO(PC-38130): remove
+    'src/ui/designSystem/RadioButton/*', // TODO(PC-36310): remove
+    'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
+    'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
+    // TODO(PC-36439): should delete those lines
     'src/features/bookings/queries/useOngoingOrEndedBookingQuery.ts',
     'src/queries/bookings/useUserHasBookingsQuery.ts',
     'src/**/*.ios.*',
@@ -18,19 +23,6 @@ const defaultConfig: KnipConfig = {
     'src/api/gen/**',
     'src/**/fixtures/**',
     'src/**/__mocks__/**',
-    'src/features/bookings/components/BookingListItem.tsx', // TODO(PC-35897): remove
-    'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
-    'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
-    'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
-    'src/ui/designSystem/RadioButton/helpers/colors.ts', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/helpers/hover.ts', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/helpers/index.ts', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/styles/RadioButtonLabel.styles.tsx', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/styles/RadioCircle.styles.tsx', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/types.ts', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/RadioButton.tsx', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/RadioButtonDefault.tsx', // TODO(PC-36310): remove
-    'src/ui/designSystem/RadioButton/RadioButtonDetailed.tsx', // TODO(PC-36310): remove
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
