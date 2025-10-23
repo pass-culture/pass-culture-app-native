@@ -13,14 +13,14 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { useGetVenuesData } from '../api/useGetVenuesData'
-import { enrichModulesWithData } from '../core/enrichModulesWithData'
-import { useGetOffersDataQuery } from '../queries/useGetOffersDataQuery'
-import { HomepageModule, isOffersModule, isVenuesModule, HomepageModuleType } from '../types'
-import { isCloseToBottom } from '../../../libs/analytics'
-import { Spinner } from '../../../ui/components/Spinner'
+import { useGetVenuesData } from '../../../../../etape-0-legacy/features/home/api/useGetVenuesData'
+import { enrichModulesWithData } from '../../../../../etape-0-legacy/features/home/core/enrichModulesWithData'
+import { useGetOffersDataQuery } from '../../../../../etape-0-legacy/features/home/queries/useGetOffersDataQuery'
+import { HomepageModule, isOffersModule, isVenuesModule, HomepageModuleType } from '../../../../../etape-0-legacy/features/home/types/types'
+import { isCloseToBottom } from '../../../../../etape-0-legacy/libs/analytics'
+import { Spinner } from '../../../../../etape-0-legacy/ui/components/Spinner'
 
-import { PageContent, Spacer, VideoCarouselModule } from '../../ui-mocks';
+import { PageContent, Spacer, VideoCarouselModule } from '../../../../../etape-0-legacy/ui-mocks';
 
 type GenericHomeProps = {
   // ... props
