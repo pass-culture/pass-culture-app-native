@@ -9,8 +9,8 @@ const defaultConfig: KnipConfig = {
     'src/**/*.stories.old.tsx', // TODO(PC-35376): should delete this line
     'src/features/bookings/components/BookingListItem.tsx', // TODO(PC-35897): remove
     'src/features/bookings/components/BookingListItemLabel.tsx', // TODO(PC-35897): remove
-    'src/ui/designSystem/Banner/*', // TODO(PC-38130): remove
-    'src/ui/designSystem/RadioButton/*', // TODO(PC-36310): remove
+    'src/ui/designSystem/Banner/**', // TODO(PC-38130): remove
+    'src/ui/designSystem/RadioButton/**', // TODO(PC-36310): remove
     'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
     'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
     // TODO(PC-36439): should delete those lines

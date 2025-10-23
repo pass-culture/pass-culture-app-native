@@ -70,30 +70,32 @@ export const Banner: FunctionComponent<Props> = ({
         {description ? <Typo.BodyS>{description}</Typo.BodyS> : null}
         {links.length > 0 ? (
           <LinksContainer gap={3}>
-            {links.map((link, index) => {
-              if (link.navigateTo) {
-                return (
-                  <InternalTouchableLink
-                    key={index}
-                    as={BannerLink}
-                    wording={link.wording}
-                    icon={link.icon ?? PlainArrowNext}
-                    navigateTo={link.navigateTo}
-                    accessibilityRole={AccessibilityRole.BUTTON}
-                  />
-                )
-              }
-              if (link.externalNav) {
-                return (
-                  <ExternalTouchableLink
-                    key={index}
-                    as={BannerLink}
-                    wording={link.wording}
-                    icon={link.icon ?? ExternalSiteFilled}
-                    externalNav={link.externalNav}
-                    accessibilityRole={AccessibilityRole.LINK}
-                  />
-                )
+            {links.map((link) => {
+              if (link.wording) {
+                if (link.navigateTo) {
+                  return (
+                    <InternalTouchableLink
+                      key={link.wording.toString()}
+                      as={BannerLink}
+                      wording={link.wording}
+                      icon={link.icon ?? PlainArrowNext}
+                      navigateTo={link.navigateTo}
+                      accessibilityRole={AccessibilityRole.BUTTON}
+                    />
+                  )
+                }
+                if (link.externalNav) {
+                  return (
+                    <ExternalTouchableLink
+                      key={link.wording.toString()}
+                      as={BannerLink}
+                      wording={link.wording}
+                      icon={link.icon ?? ExternalSiteFilled}
+                      externalNav={link.externalNav}
+                      accessibilityRole={AccessibilityRole.LINK}
+                    />
+                  )
+                }
               }
               return null
             })}
