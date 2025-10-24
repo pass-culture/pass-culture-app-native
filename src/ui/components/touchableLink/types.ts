@@ -2,15 +2,17 @@ import { ElementType } from 'react'
 import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 
 import { UrlParamsProps } from 'features/navigation/helpers/openUrl'
-import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsType } from 'theme/types'
 
-export type InternalNavigationProps = {
+export type InternalNavigationProps<
+  RouteName extends keyof RootStackParamList = keyof RootStackParamList,
+> = {
   enableNavigate?: boolean // It is used by offline mode to prevent navigation
   navigateTo: {
-    screen: RootNavigateParams[0]
-    params?: RootNavigateParams[1]
+    screen: RouteName
+    params?: RootStackParamList[RouteName]
     withPush?: boolean // If true, uses push instead of navigate
     withReset?: boolean // If true, use reset instead of navigate
     fromRef?: boolean // If true, uses navigateFromRef/pushFromRef instead of navigate/push
@@ -47,7 +49,9 @@ type TouchableLinkGenericProps = {
 
 export type ExternalTouchableLinkProps = TouchableLinkGenericProps & ExternalNavigationProps
 
-export type InternalTouchableLinkProps = TouchableLinkGenericProps & InternalNavigationProps
+export type InternalTouchableLinkProps<
+  RouteName extends keyof RootStackParamList = keyof RootStackParamList,
+> = TouchableLinkGenericProps & InternalNavigationProps<RouteName>
 
 export type TouchableLinkProps = TouchableLinkGenericProps & {
   handleNavigation?: () => void

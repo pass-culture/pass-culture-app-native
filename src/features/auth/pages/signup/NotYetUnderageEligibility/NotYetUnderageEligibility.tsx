@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
