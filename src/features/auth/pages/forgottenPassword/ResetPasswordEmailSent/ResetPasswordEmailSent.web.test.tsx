@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
@@ -23,7 +23,7 @@ describe('<ResetPasswordEmailSent/>', () => {
 
 const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
-} as StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
+} as NativeStackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 function renderResetPasswordEmailSent() {
   return render(

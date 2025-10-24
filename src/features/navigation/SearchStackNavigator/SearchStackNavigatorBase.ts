@@ -1,5 +1,5 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { SearchStackParamList } from './SearchStackTypes'
 
-export const SearchStackNavigatorBase = createStackNavigator<SearchStackParamList>()
+export const SearchStackNavigatorBase = createNativeStackNavigator<SearchStackParamList>()

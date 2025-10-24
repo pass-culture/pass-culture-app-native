@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
@@ -11,7 +11,7 @@ import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
-type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
+type Props = NativeStackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
 
 export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()

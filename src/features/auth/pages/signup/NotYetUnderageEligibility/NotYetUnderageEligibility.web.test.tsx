@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -8,7 +8,7 @@ import { NotYetUnderageEligibility } from './NotYetUnderageEligibility'
 
 const navigationProps = {
   route: { params: { eligibilityStartDatetime: '2019-12-01T00:00:00Z' } },
-} as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
+} as NativeStackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 jest.mock('libs/firebase/analytics/analytics')
 

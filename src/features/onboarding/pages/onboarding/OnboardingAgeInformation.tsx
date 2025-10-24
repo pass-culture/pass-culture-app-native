@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
@@ -17,7 +17,7 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = StackScreenProps<OnboardingStackParamList, 'OnboardingAgeInformation'>
+type Props = NativeStackScreenProps<OnboardingStackParamList, 'OnboardingAgeInformation'>
 
 const onSignupPress = () => {
   analytics.logSignUpClicked({ from: 'onboarding' })

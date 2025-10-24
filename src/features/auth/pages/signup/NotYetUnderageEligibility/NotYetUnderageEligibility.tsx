@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
@@ -7,7 +7,7 @@ import { formatToReadableFrenchDate } from 'libs/dates'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 
-type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
+type Props = NativeStackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   const formatedDate = formatToReadableFrenchDate(props.route.params.eligibilityStartDatetime)
