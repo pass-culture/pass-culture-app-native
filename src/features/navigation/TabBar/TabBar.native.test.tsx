@@ -1,4 +1,4 @@
-import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
+import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs'
 import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native'
 import React from 'react'
 
@@ -41,6 +41,7 @@ const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 
 const mockTabNavigationState: TabNavigationState<ParamListBase> = {
   history: [{ key: 'Home-LzN9F8ePccY3NzxcsunpQ', type: 'route' }],
+  preloadedRouteKeys: [],
   stale: false,
   type: 'tab',
   key: 'tab-oMaiLEoOIhNl7W4ZcsYSD',

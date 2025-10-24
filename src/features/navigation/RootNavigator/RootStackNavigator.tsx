@@ -36,7 +36,7 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
-import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -48,6 +48,7 @@ import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialSc
 import { useShowMandatoryUpdatePersonalData } from 'features/navigation/RootNavigator/useShowMandatoryUpdatePersonalData'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
+import { isTabNavigatorScreen } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
@@ -424,21 +425,15 @@ export const RootNavigator: React.ComponentType = () => {
 
   const initialScreen = useInitialScreen()
 
-  const currentRoute = useCurrentRoute()
-  const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
+  const currentRoute = navigationRef.getCurrentRoute()
+  const showHeaderQuickAccess = currentRoute && isTabNavigatorScreen(currentRoute.name)
   const headerWithQuickAccess = showHeaderQuickAccess ? (
     <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
   ) : null
 
   useEffect(() => {
-    const incrementLoggedInSessionCount = async () => {
-      const loggedInSessionCount =
-        (await storage.readObject<number>('logged_in_session_count')) || 0
-      await storage.saveObject('logged_in_session_count', loggedInSessionCount + 1)
-    }
-
     if (isLoggedIn) {
-      incrementLoggedInSessionCount()
+      void incrementLoggedInSessionCount()
     }
   }, [isLoggedIn])
 
@@ -446,8 +441,9 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
-  const mainAccessibilityRole: AccessibilityRole | undefined =
-    determineAccessibilityRole(currentRoute)
+  const mainAccessibilityRole: AccessibilityRole | undefined = determineAccessibilityRole(
+    currentRoute ?? null
+  )
 
   return (
     <TabNavigationStateProvider>
@@ -471,3 +467,8 @@ const Main = styled.View({
   flexDirection: 'column',
   flexGrow: 1,
 })
+
+const incrementLoggedInSessionCount = async () => {
+  const loggedInSessionCount = (await storage.readObject<number>('logged_in_session_count')) || 0
+  await storage.saveObject('logged_in_session_count', loggedInSessionCount + 1)
+}

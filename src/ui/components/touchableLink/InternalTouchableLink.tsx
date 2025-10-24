@@ -18,7 +18,8 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   ...rest
 }) => {
   // We use nullish operator here because TabBar uses InternalTouchableLink but navigateTo is undefined during launch
-  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
+  // @ts-expect-error TODO(PC-38642): Fix types
+  const internalLinkProps = useLinkProps({ screen, params })
   const { navigate, push, reset } = useNavigation<UseNavigationType>()
   const { screen, params, fromRef, withPush, withReset } = navigateTo
 
@@ -28,8 +29,10 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
         ? resetFromRef(screen, params)
         : reset({ index: 0, routes: [{ name: screen, params }] })
     } else if (withPush) {
+      // @ts-expect-error TODO(PC-38642): Fix types
       fromRef ? pushFromRef(screen, params) : push(screen, params)
     } else {
+      // @ts-expect-error TODO(PC-38642): Fix types
       fromRef ? navigateFromRef(screen, params) : navigate(screen, params)
     }
   }, [navigate, push, reset, fromRef, withPush, withReset, params, screen])
@@ -42,6 +45,7 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
       handleNavigation={enableNavigate ? handleNavigation : undefined}
       onBeforeNavigate={onBeforeNavigate}
       onAfterNavigate={onAfterNavigate}
+      // @ts-expect-error TODO(PC-38642): Fix types
       linkProps={internalLinkProps}
       {...rest}
     />

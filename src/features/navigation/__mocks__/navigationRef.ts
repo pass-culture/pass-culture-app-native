@@ -19,6 +19,10 @@ export const navigationRef: typeof actualNavigationRef = {
   reset: jest.fn(),
   resetRoot: jest.fn(),
   setParams: jest.fn(),
+  preload: jest.fn(),
+  navigateDeprecated: jest.fn(),
+  replaceParams: jest.fn(),
+  setOptions: jest.fn<never, never, never>(),
   current: null,
 }
 

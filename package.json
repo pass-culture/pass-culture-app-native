@@ -108,10 +108,10 @@
     "@react-native-firebase/perf": "^22.2.1",
     "@react-native-firebase/remote-config": "^22.2.1",
     "@react-native-google-signin/google-signin": "^10.1.0",
-    "@react-navigation/bottom-tabs": "^6.6.1",
+    "@react-navigation/bottom-tabs": "^7.4.9",
     "@react-navigation/devtools": "^7.0.38",
-    "@react-navigation/native": "^6.1.17",
-    "@react-navigation/stack": "^6.4.1",
+    "@react-navigation/native": "^7.1.18",
+    "@react-navigation/stack": "^7.4.10",
     "@react-oauth/google": "^0.11.1",
     "@sentry/react": "^8.55.0",
     "@sentry/react-native": "^6.4.0",
@@ -324,7 +324,6 @@
     "vite-plugin-html": "^3.2.2"
   },
   "resolutions": {
-    "@react-navigation/core": "6.2.2",
     "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
     "ansi-regex": "^5.0.1",
     "color-name": "1.1.*",
@@ -344,7 +343,8 @@
     "@babel/plugin-syntax-typescript": "^7.23.3",
     "@babel/types": "^7.23.6",
     "tar-fs": "3.1.1",
-    "path-to-regexp": "8.0.0"
+    "path-to-regexp": "8.0.0",
+    "@react-navigation/core@^7.12.4": "patch:@react-navigation/core@npm%3A7.12.4#./.yarn/patches/@react-navigation-core-npm-7.12.4-a16b7fb8fb.patch"
   },
   "exports": {
     ".": "./index.js",

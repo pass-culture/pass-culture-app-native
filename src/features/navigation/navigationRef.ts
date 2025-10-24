@@ -10,6 +10,7 @@ export const navigateFromRef = <RouteName extends keyof RootStackParamList>(
     : [RouteName, RootStackParamList[RouteName]]
 ) => {
   if (navigationRef.isReady()) {
+    // @ts-expect-error TODO(PC-38642): Fix types
     navigationRef.navigate(...args)
   }
 }

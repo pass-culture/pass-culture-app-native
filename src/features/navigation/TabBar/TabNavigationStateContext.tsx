@@ -20,6 +20,7 @@ const DEFAULT_TAB_NAVIGATION_STATE: TabNavigationStateType = {
   routes: DEFAULT_TAB_ROUTES,
   stale: false,
   type: 'tab',
+  preloadedRouteKeys: [],
 }
 const DEFAULT_TAB_NAVIGATION_CONTEXT = {
   tabRoutes: DEFAULT_TAB_ROUTES,

@@ -1,5 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
+import {
+  CommonActions,
+  NavigationContainer,
+  createNavigationContainerRef,
+} from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
@@ -136,6 +140,6 @@ async function simulateNavigate<RouteName extends keyof StackParamList>(
     : [RouteName, StackParamList[RouteName]]
 ) {
   await act(async () => {
-    navigationRef.navigate(...args)
+    navigationRef.dispatch(CommonActions.navigate({ name: args[0], params: args[1] }))
   })
 }
