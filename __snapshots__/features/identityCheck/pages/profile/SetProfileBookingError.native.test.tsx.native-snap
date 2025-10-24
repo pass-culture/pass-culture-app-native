@@ -387,5 +387,14 @@ Un problème est survenu !
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

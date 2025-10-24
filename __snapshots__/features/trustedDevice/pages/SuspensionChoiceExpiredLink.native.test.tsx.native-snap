@@ -404,5 +404,14 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

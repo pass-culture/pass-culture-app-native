@@ -683,5 +683,14 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

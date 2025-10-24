@@ -273,6 +273,15 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;
 
@@ -549,5 +558,14 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

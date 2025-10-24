@@ -641,6 +641,15 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;
 
@@ -1196,6 +1205,15 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;
 
@@ -1840,5 +1858,14 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       </View>
     </View>
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      {
+        "height": 8,
+      }
+    }
+  />
 </View>
 `;

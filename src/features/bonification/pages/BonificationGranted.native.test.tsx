@@ -10,19 +10,10 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('BonificationGranted', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should go navigate to profile when pressing "Consulter mon profil"', async () => {
+  it('should go navigate to home when pressing "J’en profite"', async () => {
     render(<BonificationGranted />)
 
-    const button = screen.getByText('Consulter mon profil')
-    await userEvent.press(button)
-
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
-  })
-
-  it('should go navigate to home when pressing "Revenir à l’accueil"', async () => {
-    render(<BonificationGranted />)
-
-    const button = screen.getByText('Revenir à l’accueil')
+    const button = screen.getByText('J’en profite')
     await userEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
