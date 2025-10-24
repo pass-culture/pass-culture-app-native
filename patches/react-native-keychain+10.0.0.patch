@@ -1,0 +1,24 @@
+--- /Users/pierre/Projects/pass-culture-app-native/node_modules/react-native-keychain/ios/RNKeychainManager/RNKeychainManager.m	2025-10-24 17:13:56.415944481 +0200
++++ /Users/pierre/.gemini/tmp/30c06a10c8d0a2125aef9796c2bcabe87b88ec1ae36663a176b871649c1780c6/RNKeychainManager.m.modified	2025-10-24 17:13:39.160909510 +0200
+@@ -482,6 +482,10 @@
+     (__bridge NSString *)kSecUseOperationPrompt: authenticationPrompt
+   } mutableCopy];
+ 
++  if (@available(macOS 10.15, iOS 13.0, *)) {
++      query[(__bridge NSString *)kSecUseDataProtectionKeychain] = @(YES);
++  }
++
+   if (accessGroup != nil) {
+     query[(__bridge NSString *)kSecAttrAccessGroup] = accessGroup;
+   }
+@@ -594,6 +598,10 @@
+     (__bridge NSString *)kSecUseOperationPrompt: authenticationPrompt
+   } mutableCopy];
+ 
++  if (@available(macOS 10.15, iOS 13.0, *)) {
++      query[(__bridge NSString *)kSecUseDataProtectionKeychain] = @(YES);
++  }
++
+   if (accessGroup != nil) {
+     query[(__bridge NSString *)kSecAttrAccessGroup] = accessGroup;
+   }
