@@ -30,7 +30,6 @@ export const TabNavigator: React.FC = () => {
   return (
     <TabStackNavigatorBase.Navigator
       initialRouteName={initialRouteName}
-      // @ts-expect-error: types are not compatible with react-native@0.78, upgrade to react-navigation@7 to fix this
       tabBar={renderTabBar}
       screenOptions={TAB_NAVIGATOR_SCREEN_OPTIONS}
       backBehavior="history">
