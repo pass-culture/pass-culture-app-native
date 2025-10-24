@@ -109,22 +109,12 @@ describe('<VenueOffers />', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should display "En voir plus" button if they are more hits to see than the one displayed', async () => {
+  it('should display "En voir plus" button', async () => {
     renderVenueOffers({ playlists: [] })
 
     await screen.findByLabelText('Toutes les offres')
 
     expect(screen.getByText('En voir plus')).toBeOnTheScreen()
-  })
-
-  it(`should not display "En voir plus" button if they are no more hits to see than the one displayed`, async () => {
-    renderVenueOffers({
-      venueOffers: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
-    })
-
-    await screen.findByLabelText('Toutes les offres')
-
-    expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
