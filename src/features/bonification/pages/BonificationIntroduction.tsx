@@ -69,27 +69,21 @@ export const BonificationIntroduction = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <React.Fragment>
+        <ViewGap gap={3}>
           <ButtonPrimary
             wording="Commencer"
             isLoading={false}
             type="submit"
             accessibilityLabel="Commencer la demande"
-            onPress={() => {
-              navigate('BonificationNames')
-            }}
+            onPress={() => navigate('BonificationNames')}
           />
           <ExternalTouchableLink
             as={ButtonTertiaryBlack}
             wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_LINK }}
-            onBeforeNavigate={() => {
-              // ANALYTICS?
-              console.log('KO')
-            }}
             icon={ExternalSiteFilled}
           />
-        </React.Fragment>
+        </ViewGap>
       }
     />
   )
@@ -100,4 +94,6 @@ const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const Container = styled.View({ alignItems: 'center' })
+const Container = styled.View({
+  alignItems: 'center',
+})

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { Offers } from 'ui/svg/icons/Offers'
+import { Code } from 'ui/svg/icons/Code'
 
 export const BonificationBanner: FunctionComponent = () => {
   // TODO(PC-38487): Use value from backend
@@ -14,7 +14,7 @@ export const BonificationBanner: FunctionComponent = () => {
   return (
     <Banner
       label="Une aide pourrait t’être attribuée, voyons ensemble si tu peux y être éligible"
-      Icon={Offers}
+      Icon={Code}
       links={[
         {
           navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
