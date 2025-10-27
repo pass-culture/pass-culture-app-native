@@ -120,7 +120,10 @@ export const ConsentSettings = () => {
       }
     }
 
+    // Ignore the next navigation event
+    bypassBeforeRemoveOnceRef.current = true
     navigateToOfferOrProfile()
+
     showSuccessSnackBar({
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
