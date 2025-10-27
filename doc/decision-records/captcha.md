@@ -41,6 +41,16 @@ Options :
 - [EU Captcha](#eu-captcha)
 - [InputGuard](#inputguard)
 - [TrustCaptcha](#trustcaptcha)
+- [MTCaptcha](#mtcaptcha)
+- [Friendly Captcha](#friendly-captcha)
+- [CaptchaFox](#captchafox)
+- [Private Captcha](#private-captcha)
+- [Swetrix](#swetrix)
+- [Altcha Sentinel](#altcha-sentinel)
+- [Altcha Open Source](#altcha-open-source)
+- [mCaptcha](#mcaptcha)
+- [hCaptcha](#hcaptcha)
+- [Cloudflare Turnstile](#cloudflare-turnstile)
 
 ## Decision Outcome
 
@@ -114,7 +124,7 @@ Solution uniquement pour du [PHP](https://sblam.com/install.html) ❌
 - Accessibilité : "accessible by users with disabilities" ✅
   - il y aurait un captcha audio
 - Hébergement : self hosted
-- Licence : Open Source : EUPL 1.2
+- Licence : [Open Source](https://code.europa.eu/eu-captcha/EU-CAPTCHA) : EUPL 1.2
 
 App faite en java -> nécessite de savoir déployer une app en Java
 
@@ -135,27 +145,146 @@ App faite en java -> nécessite de savoir déployer une app en Java
 
 [Site](https://www.trustcomponent.com/en/products/captcha)
 
-- Coût : [290€ / mois](https://www.trustcomponent.com/en/products/captcha/pricing)
+- Coût : [290€ / mois](https://www.trustcomponent.com/en/products/captcha/pricing) ; Besoin de les contacter
 - Sécurité :
 - Volume : 150K / mois
 - Performance :
 - Fiabilité :
 - Accessibilité :
-- Hébergement : self hosted / monde / europe / france
-- Licence : Open Source / Closed Source
+- Hébergement : Europe
+- Licence : Closed Source
 
 Possibilité de les contacter pour dépasser les plans prévus
 
-###
+### MTCaptcha
 
-- Coût :
+[Site](https://www.mtcaptcha.com/)
+
+- Coût : [$969 / an ou $1734 / an](https://www.mtcaptcha.com/pricing) ❌
+- Sécurité :
+- Volume : 1M ou 2M
+- Performance :
+- Fiabilité :
+- Accessibilité : VPAT and WCAG 2.1 AAA Compliant
+- Hébergement : monde
+- Licence : Closed Source
+
+### Friendly Captcha
+
+[Site](https://friendlycaptcha.com/fr/)
+
+- Coût : [200€ / 50K requests / mois pour ; Besoin de les contacter](https://friendlycaptcha.com/#pricing) ❌
+- Sécurité :
+- Volume :
+- Performance :
+- Fiabilité :
+- Accessibilité : [Compliant with WCAG, EAA, ADA, and more](https://friendlycaptcha.com/accessibility/)
+- Hébergement : monde
+- Licence : Closed Source
+
+### CaptchaFox
+
+[Site](https://captchafox.com/)
+
+- Coût : [85 € / 100K requests / mois ; Besoin de les contacter](https://captchafox.com/pricing)
 - Sécurité :
 - Volume :
 - Performance :
 - Fiabilité :
 - Accessibilité :
-- Hébergement : self hosted / monde / europe / france
-- Licence : Open Source / Closed Source
+- Hébergement : Europe
+- Licence : Closed Source
+
+### Private Captcha
+
+[Site](https://privatecaptcha.com/)
+
+- Coût : €11988 / year ; [29€ / mois self hostable](https://privatecaptcha.com/self-hosting/#pricing) ✅
+- Sécurité :
+- Volume :
+- Performance :
+- Fiabilité :
+- Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
+- Hébergement : self hosted / Europe
+- Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
+
+### Swetrix
+
+[Site](https://captcha.swetrix.com/)
+
+- Coût : [99€ / 2M requests / mois](https://swetrix.com/#pricing)
+- Sécurité :
+- Volume :
+- Performance :
+- Fiabilité :
+- Accessibilité :
+- Hébergement : self hosted / Europe
+- Licence : [Open Source](https://github.com/Swetrix/swetrix) : AGPL 3.0
+
+### Altcha Sentinel
+
+[Site](https://altcha.org/fr/)
+
+- Coût : [Sentinel 74€ / mois](https://altcha.org/docs/v2/sentinel/pricing/#licensing-plans)
+- Sécurité :
+- Volume : Illimité
+- Performance :
+- Fiabilité :
+- Accessibilité : [Conforme à WCAG/EAA](https://altcha.org/fr/docs/v2/compliance/#accessibility)
+- Hébergement : self hosted / USA / Europe
+- Licence : Closed Source ?
+
+### Altcha Open Source
+
+[Site](https://altcha.org/fr/)
+
+- Coût : Gratuit en self hosted
+- Sécurité :
+- Volume : Illimité
+- Performance :
+- Fiabilité :
+- Accessibilité : [Conforme à WCAG/EAA](https://altcha.org/fr/docs/v2/compliance/#accessibility)
+- Hébergement : self hosted
+- Licence : [Open Source](https://github.com/altcha-org/altcha) : MIT
+
+### mCaptcha
+
+[Site](https://mcaptcha.org/)
+
+- Coût : gratuit
+- Sécurité :
+- Volume : illimité
+- Performance :
+- Fiabilité :
+- Accessibilité :
+- Hébergement : self hosted
+- Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
+
+### hCaptcha
+
+[Site](https://www.hcaptcha.com/) (site (mal-)traduit automatiquement)
+
+- Coût : [$99 / 100K requests / month](https://www.hcaptcha.com/pricing) ; besoin de les contacter
+- Sécurité :
+- Volume :
+- Performance :
+- Fiabilité :
+- Accessibilité : WCAG 2.1
+- Hébergement : monde
+- Licence : Closed Source
+
+### Cloudflare Turnstile
+
+[Site](https://www.cloudflare.com/application-services/products/turnstile/)
+
+- Coût : [Besoin de les contacter](https://www.cloudflare.com/application-services/products/turnstile/)
+- Sécurité :
+- Volume : Illimité
+- Performance :
+- Fiabilité :
+- Accessibilité :
+- Hébergement : monde
+- Licence : Closed Source
 
 ## More Information
 
