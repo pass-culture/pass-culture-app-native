@@ -8,9 +8,14 @@ import { CollapsibleTextButton } from 'ui/components/CollapsibleText/Collapsible
 type CollapsibleTextProps = {
   // Minimum number of lines when collapsible is collapsed.
   numberOfLines: number
+  onExpandPress?: VoidFunction
 } & PropsWithChildren
 
-export function CollapsibleText({ numberOfLines, children }: Readonly<CollapsibleTextProps>) {
+export function CollapsibleText({
+  numberOfLines,
+  onExpandPress,
+  children,
+}: Readonly<CollapsibleTextProps>) {
   const [defaultLinesCount, setDefaultLinesCount] = useState<number>()
   const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
@@ -24,6 +29,9 @@ export function CollapsibleText({ numberOfLines, children }: Readonly<Collapsibl
   )
 
   const handleExpandButtonPress = () => {
+    if (!isExpanded) {
+      onExpandPress?.()
+    }
     setIsExpanded((prevExpanded) => !prevExpanded)
   }
 
