@@ -36,6 +36,7 @@ type Props = {
     artistId: string,
     playlistIndex?: number
   ) => void
+  onExpandBioPress: () => void
 }
 
 export const ArtistBody: FunctionComponent<Props> = ({
@@ -43,6 +44,7 @@ export const ArtistBody: FunctionComponent<Props> = ({
   artistPlaylist,
   artistTopOffers,
   onViewableItemsChanged,
+  onExpandBioPress,
 }) => {
   const { goBack } = useGoBack('Offer')
   const { appBarHeight } = useTheme()
@@ -79,7 +81,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
             {capitalizedDescriptionWithDot ? (
               <Description gap={1}>
                 <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
-                <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
+                <CollapsibleText
+                  numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}
+                  onExpandPress={onExpandBioPress}>
                   {highlightLinks(capitalizedDescriptionWithDot)}
                 </CollapsibleText>
               </Description>
