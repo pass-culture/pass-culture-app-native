@@ -1,5 +1,4 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
-import { uniqBy } from 'lodash'
 import { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
@@ -7,18 +6,13 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { VenueOffers } from 'features/venue/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
-import {
-  determineAllOffersAreEventsAndNotCinema,
-  filterOfferHitWithImage,
-  filterValidOfferHit,
-  sortHitOffersByDate,
-} from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { selectVenueOffers } from 'queries/selectors/selectVenueOffers'
 
 type UseVenueOffersParams = {
   userLocation: Position
@@ -88,26 +82,12 @@ export const useVenueOffersQuery = ({
 
     enabled: !!venue,
 
-    select: ([venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults]) => {
-      const filterFn = includeHitsWithoutImage ? filterValidOfferHit : filterOfferHitWithImage
-      const hits = [venueSearchedOffersResults, venueTopOffersResults]
-        .flatMap((result) => result?.hits)
-        .filter(filterFn)
-        .map(transformHits)
-
-      const uniqHits = uniqBy(hits, 'objectID')
-
-      if (determineAllOffersAreEventsAndNotCinema(hits, mapping)) uniqHits.sort(sortHitOffersByDate)
-
-      const headlineOffer = headlineOfferResults?.hits[0]
-        ? transformHits(headlineOfferResults?.hits[0])
-        : undefined
-
-      return {
-        hits: uniqHits,
-        nbHits: uniqHits.length,
-        headlineOffer,
-      }
-    },
+    select: ([venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults]) =>
+      selectVenueOffers({
+        venueOffers: [venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults],
+        transformHits,
+        includeHitsWithoutImage,
+        mapping,
+      }),
   })
 }
