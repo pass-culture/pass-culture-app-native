@@ -28,6 +28,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logClickBookOffer: jest.fn(),
   logClickCopyDebugInfo: jest.fn(),
   logClickEmailOrganizer: jest.fn(),
+  logClickExpandArtistBio: jest.fn(),
   logClickForceUpdate: jest.fn(),
   logClickInfoReview: jest.fn(),
   logClickMailDebugInfo: jest.fn(),

@@ -171,6 +171,8 @@ export const logEventAnalytics = {
   },
   logClickEmailOrganizer: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EMAIL_ORGANIZER }),
+  logClickExpandArtistBio: (params: { artistId: string; artistName: string; from: Referrals }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_EXPAND_ARTIST_BIO }, params),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
   logClickInfoReview: (params: {
