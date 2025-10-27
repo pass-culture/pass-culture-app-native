@@ -13,10 +13,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const cinemaCTAButtonName = 'Accéder aux séances'
 
-export const VenueMovies: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffers }) => {
+export const VenueMovies: React.FC<{ venueMovieOffers: VenueOffers }> = ({ venueMovieOffers }) => {
   const { setButton, showButton } = useOfferCTA()
   const scrollToAnchor = useScrollToAnchor()
-
   useEffect(() => {
     setButton(cinemaCTAButtonName, () => {
       scrollToAnchor(AnchorNames.VENUE_CINE_AVAILABILITIES)
@@ -38,7 +37,7 @@ export const VenueMovies: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffer
         </InView>
       </Anchor>
 
-      <MoviesScreeningCalendar venueOffers={venueOffers} />
+      <MoviesScreeningCalendar venueMovieOffers={venueMovieOffers} />
     </Container>
   )
 }
