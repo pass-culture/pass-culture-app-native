@@ -129,7 +129,7 @@ const renderMoviesScreeningCalendar = ({
   render(
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
-        <MoviesScreeningCalendar venueOffers={venueOffers} />
+        <MoviesScreeningCalendar venueMovieOffers={venueOffers} />
       </AnchorProvider>
     ),
     {

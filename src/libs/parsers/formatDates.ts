@@ -308,16 +308,3 @@ export const getTimeZonedDate = ({ date, timezone }: { date: Date | string; time
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
 }
-
-export const formatDateTimezone = ({
-  limitDate,
-  shouldDisplayWeekDay,
-  timezone,
-}: {
-  limitDate: string
-  shouldDisplayWeekDay?: boolean
-  timezone?: string
-}): string => {
-  const limit = timezone ? getTimeZonedDate({ date: limitDate, timezone }) : new Date(limitDate)
-  return `${formatToCompleteFrenchDate({ date: limit, shouldDisplayWeekDay })}, ${formatToHour(limit)}`
-}

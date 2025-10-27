@@ -5,7 +5,7 @@ import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
-import { formatDateTimezone, formatToFrenchDate } from 'libs/parsers/formatDates'
+import { formatToCompleteFrenchDateTime, formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -46,15 +46,12 @@ export const BookingInformations = () => {
     )
 
   if (mapping[offer.subcategoryId].isEvent) {
-    let message = ''
-
-    if (stock.beginningDatetime) {
-      message = formatDateTimezone({
-        limitDate: stock.beginningDatetime,
-        shouldDisplayWeekDay: true,
-        timezone: offer.venue.timezone,
-      })
-    }
+    let message = stock.beginningDatetime
+      ? formatToCompleteFrenchDateTime({
+          date: new Date(stock.beginningDatetime),
+          shouldDisplayWeekDay: true,
+        })
+      : ''
 
     if (offer.extraData?.durationMinutes) {
       message += ` - Durée\u00a0: ${formatDuration(offer.extraData.durationMinutes).label}`
