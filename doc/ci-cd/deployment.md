@@ -126,7 +126,8 @@ The CI will detect the tag `patch/vX.X.X` and launch the lanes `deploy-ios-stagi
 - Figure out which version (and then tag) you want to deploy. If you patched a version Staging, it could be `patch/v1.X.Y`
 - `yarn trigger:production:deploy <tag>`
 
-This will create a tag `prod-hard-deploy`. The CI will detect the tag and launch the lane [`hard-deploy-android-production`](../../.github/workflows/dev_on_push_workflow_main.yml#L173) & [`hard-deploy-ios-production`](../../.github/workflows/dev_on_push_workflow_main.yml#L183)
+This will create a tag `prod-hard-deploy`. The CI will detect the tag and launch the job to deploy the production web version.
+The builds for iOS and Android were already generated at the MES time and are available on the Google Play Console and App Store Connect interfaces.
 
 [1]: https://www.notion.so/passcultureapp/Processus-d-ploiement-MES-MEP-App-Native-bc75cbf31d6146ee88c8c031eb14b655
 [2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios

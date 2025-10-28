@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { DomainsCredit, EligibilityType } from 'api/gen/api'
+import { BonificationBanner } from 'features/bonification/banners/BonificationBanner'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
@@ -12,6 +13,8 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { setDateOneDayEarlier } from 'libs/dates'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
@@ -37,6 +40,14 @@ export function CreditHeader({
   depositExpirationDate,
   eligibility,
 }: CreditHeaderProps) {
+  const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
+  // TODO(PC-38487): Use value from backend
+  const showBonificationBanner =
+    enableBonification &&
+    domainsCredit &&
+    eligibility === EligibilityType['age-17-18'] &&
+    age === 18
+
   const { designSystem } = useTheme()
   const {
     data: { homeEntryIdFreeOffers },
@@ -85,55 +96,67 @@ export function CreditHeader({
       : undefined
 
   return (
-    <HeaderWithGreyContainer
-      title={name}
-      bannerText={bannerText}
-      subtitle={<Subtitle {...subtitleProps} />}
-      withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
-      {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (
-        <InternalTouchableLink
-          navigateTo={{
-            screen: 'ThematicHome',
-            params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
-          }}>
-          <GenericBanner LeftIcon={<Offers color={designSystem.color.icon.brandPrimary} />}>
-            <ViewGap gap={1}>
-              <Typo.BodyAccent>L’aventure continue&nbsp;!</Typo.BodyAccent>
-              <StyledBody numberOfLines={3}>
-                Tu peux profiter d’offres gratuites autour de toi.
-              </StyledBody>
-            </ViewGap>
-          </GenericBanner>
-        </InternalTouchableLink>
-      ) : (
-        <React.Fragment>
-          {isDepositExpired || isCreditEmpty ? null : (
-            <React.Fragment>
-              <CreditInfo totalCredit={domainsCredit.all} />
-              <BeneficiaryCeilings domainsCredit={domainsCredit} />
-            </React.Fragment>
-          )}
-          {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
-            <ViewWithMarginTop top={6}>
-              <Typo.Body>
-                {
-                  /* @ts-expect-error: because of noUncheckedIndexedAccess */
-                  incomingCreditLabelsMap[age].label
-                }
-                {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
-                <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
-              </Typo.Body>
+    <React.Fragment>
+      <HeaderWithGreyContainer
+        title={name}
+        bannerText={bannerText}
+        subtitle={<Subtitle {...subtitleProps} />}
+        withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
+        {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (
+          <InternalTouchableLink
+            navigateTo={{
+              screen: 'ThematicHome',
+              params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
+            }}>
+            <GenericBanner LeftIcon={<Offers color={designSystem.color.icon.brandPrimary} />}>
+              <ViewGap gap={1}>
+                <Typo.BodyAccent>L’aventure continue&nbsp;!</Typo.BodyAccent>
+                <StyledBody numberOfLines={3}>
+                  Tu peux profiter d’offres gratuites autour de toi.
+                </StyledBody>
+              </ViewGap>
+            </GenericBanner>
+          </InternalTouchableLink>
+        ) : (
+          <React.Fragment>
+            {isDepositExpired || isCreditEmpty ? null : (
+              <React.Fragment>
+                <CreditInfo totalCredit={domainsCredit.all} />
+                <BeneficiaryCeilings domainsCredit={domainsCredit} />
+              </React.Fragment>
+            )}
+            {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
+              <ViewWithMarginTop top={6}>
+                <Typo.Body>
+                  {
+                    /* @ts-expect-error: because of noUncheckedIndexedAccess */
+                    incomingCreditLabelsMap[age].label
+                  }
+                  {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
+                  <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
+                </Typo.Body>
+              </ViewWithMarginTop>
+            ) : null}
+            {isCreditEmpty ? <EmptyCredit age={age} eligibility={eligibility} /> : null}
+            <ViewWithMarginTop top={1}>
+              <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
             </ViewWithMarginTop>
-          ) : null}
-          {isCreditEmpty ? <EmptyCredit age={age} eligibility={eligibility} /> : null}
-          <ViewWithMarginTop top={1}>
-            <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
-          </ViewWithMarginTop>
-        </React.Fragment>
-      )}
-    </HeaderWithGreyContainer>
+          </React.Fragment>
+        )}
+      </HeaderWithGreyContainer>
+      {showBonificationBanner ? (
+        <BannerContainer>
+          <BonificationBanner />
+        </BannerContainer>
+      ) : null}
+    </React.Fragment>
   )
 }
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
