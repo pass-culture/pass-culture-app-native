@@ -4,10 +4,12 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
 
-import { useColorScheme, colorSchemeActions, ColorScheme } from './useColorScheme'
+import { ColorScheme, colorSchemeActions, useColorScheme } from './useColorScheme'
 
 const useColorSchemeSpy = jest.spyOn(ReactNative, 'useColorScheme')
 useColorSchemeSpy.mockReturnValue(ColorScheme.LIGHT)
+
+const setColorSchemeSpy = jest.spyOn(colorSchemeActions, 'setColorScheme')
 
 describe('useColorScheme', () => {
   beforeEach(() => {
@@ -25,11 +27,24 @@ describe('useColorScheme', () => {
       expect(result.current).toBe(ColorScheme.LIGHT)
     })
 
+    it('should set default to system theme', () => {
+      renderHook(() => useColorScheme())
+
+      expect(setColorSchemeSpy).toHaveBeenNthCalledWith(1, { colorScheme: ColorScheme.SYSTEM })
+    })
+
     it('should return default to light mode when feature flag disable', () => {
       setFeatureFlags()
       const { result } = renderHook(() => useColorScheme())
 
       expect(result.current).toBe(ColorScheme.LIGHT)
+    })
+
+    it('should not set default to system theme when feature flag disable', () => {
+      setFeatureFlags()
+      renderHook(() => useColorScheme())
+
+      expect(setColorSchemeSpy).not.toHaveBeenCalled()
     })
   })
 

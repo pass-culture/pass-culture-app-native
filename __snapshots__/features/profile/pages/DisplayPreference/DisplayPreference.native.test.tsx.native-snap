@@ -418,12 +418,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Thème - Mode clair - Affichage classique - sélectionné"
+                  accessibilityLabel="Thème - Mode clair - Affichage classique - non sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
                       "busy": undefined,
-                      "checked": true,
+                      "checked": false,
                       "disabled": undefined,
                       "expanded": undefined,
                       "selected": undefined,
@@ -453,31 +453,31 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "backgroundColor": "#ffffff",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#90949d",
+                      "borderColor": "#cbcdd2",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
-                      "borderWidth": 2,
+                      "borderWidth": 1,
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "opacity": 1,
-                      "paddingBottom": 15,
-                      "paddingLeft": 15,
-                      "paddingRight": 15,
-                      "paddingTop": 15,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
                       "userSelect": "auto",
                     }
                   }
-                  testID="Thème - Mode clair - Affichage classique - sélectionné"
+                  testID="Thème - Mode clair - Affichage classique - non sélectionné"
                 >
                   <View
-                    isSelected={true}
+                    isSelected={false}
                     style={
                       {
                         "alignItems": "center",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
-                        "borderColor": "#6123df",
+                        "borderColor": "#90949d",
                         "borderStyle": "solid",
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
@@ -490,10 +490,10 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   >
                     <View
-                      isSelected={true}
+                      isSelected={false}
                       style={
                         {
-                          "backgroundColor": "#6123df",
+                          "backgroundColor": "transparent",
                           "borderBottomLeftRadius": 16,
                           "borderBottomRightRadius": 16,
                           "borderTopLeftRadius": 16,
