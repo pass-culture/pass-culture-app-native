@@ -33,7 +33,16 @@ import { LENGTH_XXS, LENGTH_XS, LENGTH_S, LENGTH_M, LENGTH_L, Typo } from 'ui/th
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps
+type OnPressLinkProps = {
+  wording: string
+  icon?: FunctionComponent<AccessibleIcon>
+  onPress: () => void
+  onBeforeNavigate?: () => void
+  navigateTo?: never
+  externalNav?: never
+}
+
+type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps | OnPressLinkProps
 
 type BannerImageSize =
   | typeof LENGTH_XXS
@@ -50,7 +59,7 @@ type BannerImage = {
 type TouchableProps =
   | {
       onPress: () => void
-      onBeforeNavigate?: never
+      onBeforeNavigate?: () => void
       navigateTo?: never
       externalNav?: never
     }
@@ -81,6 +90,7 @@ type Props = {
   image?: BannerImage
   onClose?: () => void
   links?: BannerLink[]
+  testID?: string
 } & TouchableProps
 
 const DEFAULT_ITEM_HEIGHT = LENGTH_XXS
@@ -94,6 +104,7 @@ export const Banner: FunctionComponent<Props> = ({
   image,
   onClose,
   links = [],
+  testID,
   ...touchableProps
 }) => {
   const theme = useTheme()
@@ -128,7 +139,7 @@ export const Banner: FunctionComponent<Props> = ({
   const accessibilityLabel = getComputedAccessibilityLabel(accessibilityPrefix, label, description)
 
   return (
-    <Container background={background}>
+    <Container background={background} testID={testID}>
       {Icon ? (
         <Icon color={iconColor} size={theme.icons.sizes.small} />
       ) : (
@@ -152,6 +163,7 @@ export const Banner: FunctionComponent<Props> = ({
                       wording={link.wording}
                       icon={link.icon ?? PlainArrowNext}
                       navigateTo={link.navigateTo}
+                      onBeforeNavigate={link.onBeforeNavigate}
                       accessibilityRole={AccessibilityRole.BUTTON}
                     />
                   )
@@ -164,7 +176,20 @@ export const Banner: FunctionComponent<Props> = ({
                       wording={link.wording}
                       icon={link.icon ?? ExternalSiteFilled}
                       externalNav={link.externalNav}
+                      onBeforeNavigate={link.onBeforeNavigate}
                       accessibilityRole={AccessibilityRole.LINK}
+                    />
+                  )
+                }
+
+                if (link.onPress) {
+                  return (
+                    <BannerLink
+                      key={link.wording.toString()}
+                      wording={link.wording}
+                      icon={link.icon ?? PlainArrowNext}
+                      onPress={link.onPress}
+                      accessibilityRole={AccessibilityRole.BUTTON}
                     />
                   )
                 }
@@ -201,7 +226,7 @@ const Container = styled.View<{ background: string }>(({ theme, background }) =>
 
 const TextContainerView = styled.View(({ theme }) => ({
   flex: 1,
-  gap: theme.designSystem.size.spacing.m,
+  gap: theme.designSystem.size.spacing.xs,
 }))
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
@@ -236,6 +261,8 @@ const StyledTouchableOpacity = styledButton(Touchable)<{
   ...getHoverStyle({ underlineColor: color }),
 }))
 
-const LinksContainer = styled(ViewGap)({
+const LinksContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'flex-start',
-})
+  marginTop: theme.designSystem.size.spacing.s,
+  marginRight: theme.designSystem.size.spacing.l,
+}))

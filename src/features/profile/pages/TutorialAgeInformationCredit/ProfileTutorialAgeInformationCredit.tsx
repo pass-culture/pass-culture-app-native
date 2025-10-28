@@ -23,21 +23,17 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Page } from 'ui/pages/Page'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit = () => {
@@ -169,19 +165,17 @@ export const ProfileTutorialAgeInformationCredit = () => {
         <Spacer.Column numberOfSpaces={6} />
         <CreditTimelineV3 age={17} stepperProps={stepperProps} testID="seventeen-timeline" />
         <Spacer.Column numberOfSpaces={4} />
-        <InfoBanner
-          message={`Des questions sur ton crédit\u00a0?${LINE_BREAK}Les récents ajustements du dispositif peuvent en être la raison.`}>
-          <Spacer.Column numberOfSpaces={2} />
-          <ExternalTouchableLink
-            as={ButtonQuaternarySecondary}
-            externalNav={{ url: env.FAQ_LINK_CREDIT_V3 }}
-            wording="Plus d’infos dans notre FAQ"
-            icon={ExternalSiteFilled}
-            justifyContent="flex-start"
-            onBeforeNavigate={() => analytics.logHasClickedTutorialFAQ()}
-            inline
-          />
-        </InfoBanner>
+        <Banner
+          label="Des questions sur ton crédit&nbsp;?"
+          description="Les récents ajustements du dispositif peuvent en être la raison."
+          links={[
+            {
+              wording: 'Plus d’infos dans notre FAQ',
+              externalNav: { url: env.FAQ_LINK_CREDIT_V3 },
+              onBeforeNavigate: () => analytics.logHasClickedTutorialFAQ(),
+            },
+          ]}
+        />
         <Spacer.Column numberOfSpaces={12} />
       </StyledScrollView>
       <ContentHeader

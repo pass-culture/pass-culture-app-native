@@ -13,7 +13,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SuggestedCity } from 'libs/place/types'
 import { useCities } from 'libs/place/useCities'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -21,6 +20,7 @@ import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing } from 'ui/theme'
 
@@ -140,9 +140,9 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
       </Form.MaxWidth>
       {isPostalCodeIneligible ? (
         <InfoBannerContainer>
-          <InfoBanner
-            icon={Error}
-            message="Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture."
+          <Banner
+            Icon={Error}
+            label="Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture."
           />
         </InfoBannerContainer>
       ) : (

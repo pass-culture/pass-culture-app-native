@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { Info } from 'ui/svg/icons/Info'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -16,21 +15,31 @@ export const DeviceInformationsBanner: React.FC<DeviceInformationsBanner> = ({
   osAndSource,
   location,
   loginDate,
-}) => (
-  <InfoBanner
-    message={
+}) => {
+  const { designSystem, icons } = useTheme()
+  return (
+    <Container>
+      <InfoPlain color={designSystem.color.icon.brandSecondary} size={icons.sizes.small} />
       <CaptionRegular>
-        <Typo.BodyAccentXs>Appareil utilisé&nbsp;: </Typo.BodyAccentXs> {osAndSource}
+        <Typo.BodyAccentS>Appareil utilisé&nbsp;: </Typo.BodyAccentS> {osAndSource}
         {LINE_BREAK}
-        <Typo.BodyAccentXs>Lieu&nbsp;: </Typo.BodyAccentXs> {location}
+        <Typo.BodyAccentS>Lieu&nbsp;: </Typo.BodyAccentS> {location}
         {LINE_BREAK}
-        <Typo.BodyAccentXs>Date et heure&nbsp;: </Typo.BodyAccentXs> {loginDate}
+        <Typo.BodyAccentS>Date et heure&nbsp;: </Typo.BodyAccentS> {loginDate}
       </CaptionRegular>
-    }
-    icon={Info}
-  />
-)
+    </Container>
+  )
+}
 
-const CaptionRegular = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
+  width: '100%',
+  flexDirection: 'row',
+  backgroundColor: theme.designSystem.color.background.info,
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  padding: theme.designSystem.size.spacing.l,
+  gap: theme.designSystem.size.spacing.s,
+}))
+
+const CaptionRegular = styled(Typo.BodyAccentS)(({ theme }) => ({
   fontFamily: theme.fontFamily.regular,
 }))

@@ -989,17 +989,17 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
         }
       />
       <View
-        backgroundColor="#f3edff"
+        background="#f3edff"
         style={
           {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "backgroundColor": "#f3edff",
             "borderBottomLeftRadius": 8,
             "borderBottomRightRadius": 8,
             "borderTopLeftRadius": 8,
             "borderTopRightRadius": 8,
             "flexDirection": "row",
-            "justifyContent": "space-between",
+            "gap": 12,
             "paddingBottom": 16,
             "paddingLeft": 16,
             "paddingRight": 16,
@@ -1008,11 +1008,23 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
         }
       >
         <View
+          fill="#320096"
+          height={24}
+          width={24}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Des questions sur ton crédit ? - Les récents ajustements du dispositif peuvent en être la raison."
+          accessibilityRole="none"
           style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
+              "gap": 4,
             }
           }
         >
@@ -1021,115 +1033,100 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
+                "fontSize": 14,
+                "lineHeight": 22.4,
               }
             }
-            textColor="#161617"
           >
             Des questions sur ton crédit ?
-Les récents ajustements du dispositif peuvent en être la raison.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 14,
+                "lineHeight": 22.4,
+              }
+            }
+          >
+            Les récents ajustements du dispositif peuvent en être la raison.
           </Text>
           <View
-            numberOfSpaces={2}
+            gap={3}
             style={
               {
-                "height": 8,
+                "alignItems": "flex-start",
+                "gap": 12,
+                "marginRight": 16,
+                "marginTop": 8,
               }
             }
-          />
-          <View
-            accessibilityLabel="Plus d’infos dans notre FAQ"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderBottomLeftRadius": 0,
-                "borderBottomRightRadius": 0,
-                "borderTopLeftRadius": 0,
-                "borderTopRightRadius": 0,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginTop": 0,
-                "maxWidth": 500,
-                "minHeight": 20,
-                "opacity": 1,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "userSelect": "auto",
-                "width": "auto",
-              }
-            }
-            testID="Plus d’infos dans notre FAQ"
           >
             <View
+              accessibilityLabel="Lien externe - Plus d’infos dans notre FAQ"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
+                  "cursor": "pointer",
                   "flexDirection": "row",
+                  "opacity": 1,
                 }
               }
             >
               <View
                 style={
                   {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
                     "marginRight": 8,
+                    "marginTop": 2,
                   }
                 }
               >
                 <View
                   accessibilityLabel="Nouvelle fenêtre"
                   height={16}
-                  testID="button-icon-left"
                   width={16}
                 >
                   <Text>
-                    button-icon-left-SVG-Mock
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
                 style={
                   {
-                    "color": "#320096",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
-                    "maxWidth": "100%",
                   }
                 }
               >

@@ -266,17 +266,17 @@ exports[`<SetName/> should render correctly 1`] = `
                 }
               />
               <View
-                backgroundColor="#f3edff"
+                background="#f3edff"
                 style={
                   {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "backgroundColor": "#f3edff",
                     "borderBottomLeftRadius": 8,
                     "borderBottomRightRadius": 8,
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
                     "flexDirection": "row",
-                    "justifyContent": "space-between",
+                    "gap": 12,
                     "paddingBottom": 16,
                     "paddingLeft": 16,
                     "paddingRight": 16,
@@ -285,27 +285,22 @@ exports[`<SetName/> should render correctly 1`] = `
                 }
               >
                 <View
-                  style={
-                    {
-                      "paddingRight": 16,
-                    }
-                  }
+                  height={24}
+                  width={24}
                 >
-                  <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
                 </View>
                 <View
+                  accessibilityLabel="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite."
+                  accessibilityRole="none"
                   style={
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "gap": 4,
                     }
                   }
                 >
@@ -314,11 +309,10 @@ exports[`<SetName/> should render correctly 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
                       }
                     }
-                    textColor="#161617"
                   >
                     Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   </Text>

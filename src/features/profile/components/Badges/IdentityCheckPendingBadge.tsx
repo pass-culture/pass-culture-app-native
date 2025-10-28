@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Clock } from 'ui/svg/icons/Clock'
 
 export const IdentityCheckPendingBadge = () => (
-  <InfoBanner
+  <Banner
     testID="identity-check-pending-badge"
-    icon={Clock}
-    message="Ton inscription est en cours de traitement."
+    Icon={Clock}
+    label="Ton inscription est en cours de traitement."
   />
 )

@@ -15,6 +15,8 @@ import { act, fireEvent, renderAsync, screen, userEvent } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const props = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),

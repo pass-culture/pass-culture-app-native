@@ -6,6 +6,8 @@ import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const firstName = 'John'
 const lastName = 'Doe'
 

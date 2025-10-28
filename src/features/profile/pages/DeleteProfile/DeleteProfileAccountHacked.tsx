@@ -4,11 +4,10 @@ import React, { FC } from 'react'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Info } from 'ui/svg/icons/Info'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
@@ -41,10 +40,7 @@ export const DeleteProfileAccountHacked: FC = () => {
           Pour des raisons de <Typo.BodyAccent>sécurité</Typo.BodyAccent>, nous te conseillons de
           suspendre ton compte temporairement.
         </Typo.Body>
-        <InfoBanner
-          icon={Info}
-          message="Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte"
-        />
+        <Banner label="Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte" />
       </ViewGap>
     </GenericInfoPage>
   )

@@ -5,6 +5,8 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const mockOnSpellingHelpPress = jest.fn()
 const props: ComponentProps<typeof EmailInputWithSpellingHelp> = {
   email: '',

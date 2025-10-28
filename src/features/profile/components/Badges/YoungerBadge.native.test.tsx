@@ -4,6 +4,8 @@ import React from 'react'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 mockdate.set(new Date('2021-12-15T00:00:00.000Z'))
 const eligibilityStartDatetime = new Date('2021-12-17T00:00:00.000Z')
 

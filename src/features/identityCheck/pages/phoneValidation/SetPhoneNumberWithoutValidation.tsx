@@ -17,13 +17,12 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Info } from 'ui/svg/icons/Info'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -83,10 +82,7 @@ export const SetPhoneNumberWithoutValidation = () => {
         <ViewGap gap={8}>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
-            <InfoBanner
-              icon={Info}
-              message="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations."
-            />
+            <Banner label="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations." />
           </ViewGap>
           <Form.MaxWidth>
             <Controller

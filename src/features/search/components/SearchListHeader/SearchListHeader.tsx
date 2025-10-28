@@ -22,9 +22,9 @@ import { LocationMode } from 'libs/location/types'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer } from 'shared/offer/types'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { GridLayoutButton } from 'ui/components/buttons/GridLayoutButton'
 import { ListLayoutButton } from 'ui/components/buttons/ListLayoutButton'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Error } from 'ui/svg/icons/Error'
 import { Typo } from 'ui/theme'
 
@@ -130,7 +130,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           testID="banner-container"
           accessibilityRole={AccessibilityRole.STATUS}
           nbHits={nbHits}>
-          <InfoBanner message={unavailableOfferMessage} icon={Error} />
+          <Banner label={unavailableOfferMessage} Icon={Error} />
         </BannerOfferNotPresentContainer>
       ) : null}
       {artistSection}

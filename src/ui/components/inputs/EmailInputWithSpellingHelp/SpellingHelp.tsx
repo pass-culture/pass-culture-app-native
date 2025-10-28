@@ -2,10 +2,8 @@ import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Spacer } from 'ui/theme'
 
 type Props = {
   suggestedEmail?: MailSuggestion
@@ -29,22 +27,17 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
 
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={2} />
-      <InfoBanner message={emailMessage}>
-        <Spacer.Column numberOfSpaces={2} />
-        <ButtonQuaternarySecondary
-          numberOfLines={2}
-          justifyContent="flex-start"
-          onPress={replaceEmail}
-          icon={PlainArrowNext}
-          wording="Appliquer la modification"
-          inline
-        />
-      </InfoBanner>
+      <Banner
+        Icon={PlainArrowNext}
+        label={emailMessage}
+        description="Appliquer la modification"
+        onPress={replaceEmail}
+      />
     </Container>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
   maxWidth: theme.forms.maxWidth,
+  marginTop: theme.designSystem.size.spacing.l,
 }))

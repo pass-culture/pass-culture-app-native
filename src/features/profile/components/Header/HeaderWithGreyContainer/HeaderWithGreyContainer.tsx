@@ -1,9 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { Info } from 'ui/svg/icons/Info'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { getSpacing, Typo } from 'ui/theme'
 
 type PropsWithChildren = {
@@ -35,7 +34,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
 
       {bannerText ? (
         <BannerContainer withMarginBottom>
-          <InfoBanner message={bannerText} icon={Info} />
+          <Banner label={bannerText} />
         </BannerContainer>
       ) : null}
 

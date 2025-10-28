@@ -11,15 +11,11 @@ import { EditableField } from 'features/profile/components/EditableFiled/Editabl
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { SectionRow } from 'ui/components/SectionRow'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
-import { Spacer } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 function onEmailChangeClick() {
@@ -75,17 +71,15 @@ export function PersonalData() {
         accessibilityLabel="Modifier mon adresse de résidence"
       />
       <ViewGap gap={8}>
-        <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
-          <Spacer.Column numberOfSpaces={3} />
-          <ExternalTouchableLink
-            as={ButtonQuaternarySecondary}
-            externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
-            wording="Comment gérer tes données personnelles&nbsp;?"
-            icon={ExternalSiteFilled}
-            justifyContent="flex-start"
-            inline
-          />
-        </InfoBanner>
+        <Banner
+          label="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+          links={[
+            {
+              wording: 'Comment gérer tes données personnelles\u00a0?',
+              externalNav: { url: env.FAQ_LINK_PERSONAL_DATA },
+            },
+          ]}
+        />
         <SectionRow
           title="Supprimer mon compte"
           type="navigable"

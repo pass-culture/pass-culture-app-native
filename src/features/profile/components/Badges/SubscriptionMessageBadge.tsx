@@ -1,5 +1,6 @@
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
+import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
@@ -8,55 +9,39 @@ import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/forma
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer } from 'ui/theme'
 
-type CallToActionProps = {
-  subscriptionMessage: SubscriptionMessage
-}
-
-const CallToAction = ({ subscriptionMessage }: CallToActionProps) => {
-  const isMailAppAvailable = useIsMailAppAvailable()
+const getCallToActionLink = (
+  subscriptionMessage: SubscriptionMessage,
+  isMailAppAvailable: boolean
+) => {
   const { callToActionTitle, callToActionLink, callToActionIcon } =
     subscriptionMessage.callToAction ?? {}
 
-  if (!callToActionTitle || !callToActionLink) return null
+  if (!callToActionTitle || !callToActionLink) return []
 
-  const shouldOpenInbox = !!callToActionLink && checkShouldOpenInbox(callToActionLink)
+  const shouldOpenInbox = checkShouldOpenInbox(callToActionLink)
 
-  const sharedButtonProps = {
-    wording: callToActionTitle,
-    numberOfLines: 2,
-    justifyContent: 'flex-start' as BaseButtonProps['justifyContent'],
-    inline: true as BaseButtonProps['inline'],
+  if (isMailAppAvailable && shouldOpenInbox) {
+    return [
+      {
+        icon: matchSubscriptionMessageIconToSvg(callToActionIcon, EmailFilled),
+        wording: callToActionTitle,
+        onPress: openInbox,
+      },
+    ]
   }
 
-  return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={2} />
-      {isMailAppAvailable && shouldOpenInbox ? (
-        <ButtonQuaternarySecondary
-          onPress={openInbox}
-          icon={matchSubscriptionMessageIconToSvg(callToActionIcon, EmailFilled)}
-          {...sharedButtonProps}
-        />
-      ) : (
-        <ExternalTouchableLink
-          as={ButtonQuaternarySecondary}
-          externalNav={{ url: callToActionLink }}
-          openInNewWindow={false}
-          icon={ExternalSiteFilled}
-          {...sharedButtonProps}
-        />
-      )}
-    </React.Fragment>
-  )
+  return [
+    {
+      icon: matchSubscriptionMessageIconToSvg(callToActionIcon, ExternalSiteFilled),
+      wording: callToActionTitle,
+      externalNav: { url: callToActionLink },
+    },
+  ]
 }
 
 type SubscriptionMessageBadgeProps = {
@@ -70,43 +55,47 @@ export const SubscriptionMessageBadge = ({
   subscriptionMessage,
   remoteActivationBannerOptions,
 }: SubscriptionMessageBadgeProps) => {
+  const isMailAppAvailable = useIsMailAppAvailable()
   const { callToAction, popOverIcon, userMessage, updatedAt } = subscriptionMessage
 
   const icon = callToAction?.callToActionIcon
     ? Clock
     : matchSubscriptionMessageIconToSvg(popOverIcon)
 
+  const links = getCallToActionLink(subscriptionMessage, isMailAppAvailable)
+
   return (
-    <React.Fragment>
+    <Container>
       {updatedAt ? (
-        <React.Fragment>
+        <SubtitleContainer>
           <Subtitle
             startSubtitle="Dossier mis à jour le&nbsp;:"
             boldEndSubtitle={formatDateToLastUpdatedAtMessage(updatedAt)}
           />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
+        </SubtitleContainer>
       ) : null}
-
-      <Spacer.Column numberOfSpaces={2} />
-
       {disableActivation ? (
-        <React.Fragment>
+        <RemoteActivationBannerContainer>
           <RemoteActivationBanner
             from="profile"
             remoteActivationBannerOptions={remoteActivationBannerOptions}
           />
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
+        </RemoteActivationBannerContainer>
       ) : null}
-
-      <InfoBanner
-        icon={icon}
-        message={userMessage}
-        withLightColorMessage={!!callToAction?.callToActionTitle}
-        testID="subscription-message-badge">
-        <CallToAction subscriptionMessage={subscriptionMessage} />
-      </InfoBanner>
-    </React.Fragment>
+      <Banner Icon={icon} label={userMessage} testID="subscription-message-badge" links={links} />
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))
+
+const SubtitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+
+const RemoteActivationBannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

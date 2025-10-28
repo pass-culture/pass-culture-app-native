@@ -916,17 +916,17 @@ exports[`PersonalData should render personal data success 1`] = `
         }
       >
         <View
-          backgroundColor="#f3edff"
+          background="#f3edff"
           style={
             {
-              "alignItems": "center",
+              "alignItems": "flex-start",
               "backgroundColor": "#f3edff",
               "borderBottomLeftRadius": 8,
               "borderBottomRightRadius": 8,
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
               "flexDirection": "row",
-              "justifyContent": "space-between",
+              "gap": 12,
               "paddingBottom": 16,
               "paddingLeft": 16,
               "paddingRight": 16,
@@ -935,11 +935,23 @@ exports[`PersonalData should render personal data success 1`] = `
           }
         >
           <View
+            fill="#320096"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            accessibilityLabel="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter."
+            accessibilityRole="none"
             style={
               {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
+                "gap": 4,
               }
             }
           >
@@ -948,123 +960,91 @@ exports[`PersonalData should render personal data success 1`] = `
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
                 }
               }
-              textColor="#161617"
             >
               Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.
             </Text>
             <View
-              numberOfSpaces={3}
+              gap={3}
               style={
                 {
-                  "height": 12,
+                  "alignItems": "flex-start",
+                  "gap": 12,
+                  "marginRight": 16,
+                  "marginTop": 8,
                 }
               }
-            />
-            <View
-              accessibilityLabel="Comment gérer tes données personnelles ?"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "marginTop": 0,
-                      "maxWidth": 500,
-                      "minHeight": 20,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "width": "auto",
-                    },
-                    {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Comment gérer tes données personnelles ?"
             >
               <View
-                style={
+                accessibilityLabel="Lien externe - Comment gérer tes données personnelles ?"
+                accessibilityRole="link"
+                accessibilityState={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
                   }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "cursor": "pointer",
+                      "flexDirection": "row",
+                    },
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
               >
                 <View
                   style={
                     {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
                       "marginRight": 8,
+                      "marginTop": 2,
                     }
                   }
                 >
                   <View
                     accessibilityLabel="Nouvelle fenêtre"
                     height={16}
-                    testID="button-icon-left"
                     width={16}
                   >
                     <Text>
-                      button-icon-left-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
                 </View>
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
                     {
-                      "color": "#320096",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
-                      "maxWidth": "100%",
                     }
                   }
                 >

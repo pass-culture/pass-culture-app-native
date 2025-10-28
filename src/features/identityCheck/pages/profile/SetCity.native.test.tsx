@@ -10,6 +10,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/network/NetInfoWrapper')
 

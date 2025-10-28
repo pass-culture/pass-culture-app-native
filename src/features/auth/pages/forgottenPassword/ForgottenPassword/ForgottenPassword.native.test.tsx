@@ -14,6 +14,7 @@ import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 import { ForgottenPassword } from './ForgottenPassword'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('libs/monitoring/services')
 jest.mock('libs/monitoring/errors')

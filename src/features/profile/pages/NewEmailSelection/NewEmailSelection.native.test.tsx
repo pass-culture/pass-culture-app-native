@@ -17,6 +17,8 @@ import {
 } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.useFakeTimers()
 
 useRoute.mockReturnValue({ params: { token: 'new_email_selection_token' } })

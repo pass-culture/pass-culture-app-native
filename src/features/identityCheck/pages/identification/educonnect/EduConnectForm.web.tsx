@@ -5,12 +5,11 @@ import styled from 'styled-components/native'
 import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { useEduConnectLoginMutation } from 'features/identityCheck/queries/useEduConnectLoginMutation'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const EduConnectForm = () => {
@@ -47,10 +46,7 @@ export const EduConnectForm = () => {
 
             <Spacer.Column numberOfSpaces={4} />
 
-            <InfoBanner
-              icon={Info}
-              message="Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
-            />
+            <Banner label="Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur." />
 
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>

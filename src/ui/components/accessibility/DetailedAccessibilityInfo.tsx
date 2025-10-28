@@ -7,12 +7,9 @@ import { analytics } from 'libs/analytics/provider'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
 import { Accordion } from 'ui/components/Accordion'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { Separator } from 'ui/components/Separator'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -66,18 +63,16 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
       <Spacer.Row numberOfSpaces={12} />
       <FlexContainer>
         <Spacer.Column numberOfSpaces={2} />
-        <InfoBanner message="Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.">
-          <Spacer.Column numberOfSpaces={2} />
-          <ExternalTouchableLink
-            as={ButtonQuaternarySecondary}
-            externalNav={{ url }}
-            onBeforeNavigate={() => analytics.logAccessibilityBannerClicked(acceslibreId)}
-            wording="Voir plus d’infos sur l’accessibilité du lieu"
-            icon={ExternalSiteFilled}
-            justifyContent="flex-start"
-            inline
-          />
-        </InfoBanner>
+        <Banner
+          label="Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre."
+          links={[
+            {
+              externalNav: { url },
+              onBeforeNavigate: () => analytics.logAccessibilityBannerClicked(acceslibreId),
+              wording: 'Voir plus d’infos sur l’accessibilité du lieu',
+            },
+          ]}
+        />
       </FlexContainer>
       <Spacer.Column numberOfSpaces={2} />
     </Container>
