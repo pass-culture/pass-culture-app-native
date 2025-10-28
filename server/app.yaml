@@ -19,3 +19,7 @@ handlers:
 
 automatic_scaling:
   max_instances: 20
+
+skip_files:
+  - tests
+  - .yarn/cache
