@@ -1,4 +1,4 @@
-import { NativeConfig } from '@bam.tech/react-native-config'
+import { NativeConfig } from 'react-native-config'
 import { ValidationError } from 'yup'
 
 import { Environment, EnvironmentSchema } from 'libs/environment/schema'
@@ -9,13 +9,16 @@ const isValidationError = (error: unknown): error is ValidationError =>
   error instanceof ValidationError
 
 export const parseBooleanVariables = (config: NativeConfig) => {
-  const configWithActualBooleans: Record<string, string | boolean> = { ...config }
+  const configWithActualBooleans: Record<string, string | boolean> = {}
 
   Object.keys(config).forEach((key) => {
-    if (config[key] === 'true') {
+    const value = config[key]
+    if (value === 'true') {
       configWithActualBooleans[key] = true
-    } else if (config[key] === 'false') {
+    } else if (value === 'false') {
       configWithActualBooleans[key] = false
+    } else if (value !== undefined) {
+      configWithActualBooleans[key] = value
     }
   })
 
