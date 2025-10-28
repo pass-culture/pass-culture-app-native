@@ -16,7 +16,7 @@ project.ext.envConfigFiles = [
         productionrelease: ".env.production",
         "": ".env.testing",                         // Default (must be the last in the list so as not to override others)
 ]
-apply from: project(':bam.tech_react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 // Allows to read json (ie: package.json)
 import groovy.json.JsonSlurper
