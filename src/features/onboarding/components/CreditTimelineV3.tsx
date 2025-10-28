@@ -93,7 +93,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
           return (
             <InternalStep key={'optional ' + index} variant={StepVariant.unknown}>
               <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
-              <DashedStyledAnimatedView {...animatedViewProps}>
+              <DashedStyledView {...animatedViewProps}>
                 <View>
                   <StyledBody>Droit à l’aide</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
@@ -103,7 +103,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
                   </StyledTitle3>
                   {props.children}
                 </View>
-              </DashedStyledAnimatedView>
+              </DashedStyledView>
               <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
             </InternalStep>
           )
@@ -177,7 +177,7 @@ const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const DashedStyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
+const DashedStyledView = styled.View(({ theme }) => ({
   borderColor: theme.designSystem.color.border.brandPrimary,
   borderWidth: getSpacing(0.25),
   borderRadius: theme.designSystem.size.borderRadius.m,

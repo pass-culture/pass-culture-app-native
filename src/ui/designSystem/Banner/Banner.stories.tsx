@@ -11,6 +11,7 @@ import { BannerType } from 'ui/designSystem/Banner/enums'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { Offers } from 'ui/svg/icons/Offers'
 import { LENGTH_S } from 'ui/theme'
 
 import { Banner } from './Banner'
@@ -32,6 +33,13 @@ const variantConfig: Variants<typeof Banner> = [
     label: 'Default',
     props: {
       label: 'Banner label',
+    },
+  },
+  {
+    label: 'Default with custom icon',
+    props: {
+      label: 'Banner label',
+      Icon: Offers,
     },
   },
   {
