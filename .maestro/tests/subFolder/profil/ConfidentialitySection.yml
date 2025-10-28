@@ -16,3 +16,4 @@ appId: ${MAESTRO_APP_ID}
 - scroll
 - assertVisible: '.*politique de gestion des cookies'
 - tapOn: 'Enregistrer mes choix'
+- tapOn: 'Enregistrer mes choix'
