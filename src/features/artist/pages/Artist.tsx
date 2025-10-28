@@ -5,6 +5,7 @@ import { ViewToken } from 'react-native'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -55,12 +56,21 @@ export const Artist: FunctionComponent = () => {
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
   if (isLoading || !artist || !enableArtistPage) return null
 
+  const handleOnExpandBioPress = () => {
+    void analytics.logClickExpandArtistBio({
+      artistId: artist.id,
+      artistName: artist.name,
+      from: 'artist',
+    })
+  }
+
   return (
     <ArtistBody
       artist={artist}
       artistPlaylist={artistPlaylist}
       artistTopOffers={artistTopOffers}
       onViewableItemsChanged={handleViewableItemsChanged}
+      onExpandBioPress={handleOnExpandBioPress}
     />
   )
 }

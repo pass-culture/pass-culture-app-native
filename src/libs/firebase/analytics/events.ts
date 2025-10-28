@@ -30,6 +30,7 @@ export enum AnalyticsEvent {
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CLICK_COPY_DEBUG_INFO = 'ClickCopyDebugInfo',
   CLICK_EMAIL_ORGANIZER = 'ClickEmailOrganizer',
+  CLICK_EXPAND_ARTIST_BIO = 'ClickExpandArtistBio',
   CLICK_FORCE_UPDATE = 'ClickForceUpdate',
   CLICK_INFO_REVIEW = 'ClickInfoReview',
   CLICK_MAIL_DEBUG_INFO = 'ClickMailDebugInfo',
