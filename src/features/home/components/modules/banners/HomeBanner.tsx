@@ -102,15 +102,6 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       )
     }
 
-    // TODO(PC-38487): Use value from backend
-    if (enableBonification) {
-      return (
-        <BannerContainer>
-          <BonificationBanner />
-        </BannerContainer>
-      )
-    }
-
     if (!isLoggedIn) {
       return (
         <BannerContainer>
@@ -127,6 +118,15 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       banner.text
     ) {
       return renderSystemBanner(systemBannerIcons[banner.name], banner.title, banner.text)
+    }
+
+    // TODO(PC-38487): Use value from backend
+    if (enableBonification) {
+      return (
+        <BannerContainer>
+          <BonificationBanner />
+        </BannerContainer>
+      )
     }
 
     return null
