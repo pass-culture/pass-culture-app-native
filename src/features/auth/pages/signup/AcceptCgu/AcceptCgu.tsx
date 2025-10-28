@@ -60,11 +60,11 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   }
 
   const handleSignup = useCallback(
-    async (token: string) => {
+    async (token: string, marketingEmailSubscription: boolean) => {
       setErrorMessage(null)
       try {
-        const emailSubscription = isChecked.marketingEmailSubscription
-          ? true
+        const emailSubscription = isSSOSubscription
+          ? marketingEmailSubscription
           : (previousSignupData.marketingEmailSubscription ?? false)
         setIsFetching(true)
         await signUp(token, emailSubscription)
@@ -74,7 +74,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         setIsFetching(false)
       }
     },
-    [isChecked.marketingEmailSubscription, previousSignupData.marketingEmailSubscription, signUp]
+    [isSSOSubscription, previousSignupData.marketingEmailSubscription, signUp]
   )
 
   const {
@@ -99,11 +99,12 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     if (settings?.isRecaptchaEnabled) {
       openReCaptchaChallenge()
     } else {
-      handleSignup('dummyToken')
+      handleSignup('dummyToken', isChecked.marketingEmailSubscription)
     }
   }, [
     isChecked.acceptCgu,
     isChecked.acceptDataCharter,
+    isChecked.marketingEmailSubscription,
     settings?.isRecaptchaEnabled,
     openReCaptchaChallenge,
     handleSignup,
