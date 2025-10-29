@@ -32,16 +32,16 @@ Options :
   - [TrustCaptcha](#trustcaptcha)
   - [MTCaptcha](#mtcaptcha)
   - [Friendly Captcha](#friendly-captcha)
-  - [CaptchaFox](#captchafox)
   - [Private Captcha](#private-captcha)
   - [Swetrix](#swetrix)
   - [Altcha Sentinel](#altcha-sentinel)
   - [Altcha Open Source](#altcha-open-source)
   - [mCaptcha](#mcaptcha)
-  - [hCaptcha](#hcaptcha)
   - [Cloudflare Turnstile](#cloudflare-turnstile)
 - Trop cher :
   - [Captcha](#captcha)
+  - [hCaptcha](#hcaptcha)
+  - [CaptchaFox](#captchafox)
 
 ## Justification
 
@@ -178,19 +178,6 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : monde
 - Licence : Closed Source
 
-#### CaptchaFox
-
-[Site](https://captchafox.com/)
-
-- Coût : [85 € / 100K requests / mois ; Besoin de les contacter](https://captchafox.com/pricing)
-- Sécurité :
-- Volume :
-- Performance :
-- Fiabilité :
-- Accessibilité :
-- Hébergement : Europe
-- Licence : Closed Source
-
 #### Private Captcha
 
 [Site](https://privatecaptcha.com/)
@@ -256,19 +243,6 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
 
-#### hCaptcha
-
-[Site](https://www.hcaptcha.com/) (site (mal-)traduit automatiquement)
-
-- Coût : [$99 / 100K requests / month](https://www.hcaptcha.com/pricing) ; besoin de les contacter
-- Sécurité :
-- Volume :
-- Performance :
-- Fiabilité :
-- Accessibilité : WCAG 2.1
-- Hébergement : monde
-- Licence : Closed Source
-
 #### Cloudflare Turnstile
 
 [Site](https://www.cloudflare.com/application-services/products/turnstile/)
@@ -284,12 +258,32 @@ Possibilité de les contacter pour dépasser les plans prévus
 
 ### Trop chère
 
+Certaines options, il faut les contacter pour avoir une offre custom
+
+Les offres où le prix / volume sont proches où au dessus de notre limite ont été écartées
+
 #### Captcha
 
 [Forfait avancé](https://www.captcha.eu/fr/)
 
-- Coût : [179,90€ / mois](https://www.captcha.eu/fr/#pricing) ; Possibilité de les contacter
-- Volume : Jusqu'à 100 000 demandes/mois ❌
+- Coût / Volume : [179,90€ / 100K requests / mois](https://www.captcha.eu/fr/#pricing) ; Possibilité de les contacter
+
+#### hCaptcha
+
+[Site](https://www.hcaptcha.com/) (site (mal-)traduit automatiquement)
+
+- Coût / Volume : [$99 / 100K requests / month](https://www.hcaptcha.com/pricing) ; besoin de les contacter ❌
+- Accessibilité : WCAG 2.1
+- Hébergement : monde
+- Licence : Closed Source
+
+#### CaptchaFox
+
+[Site](https://captchafox.com/)
+
+- Coût / Volume : [85 € / 100K requests / mois ; Besoin de les contacter](https://captchafox.com/pricing) ❌
+- Hébergement : Europe
+- Licence : Closed Source
 
 ## Réferences
 
