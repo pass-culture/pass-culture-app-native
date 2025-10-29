@@ -16,7 +16,30 @@ Objectif : Économiser plus de 1000€ par mois sans perdre en sécurité
 
 ## Alternatives considered
 
-_List the alternatives that were considered, with a brief explanation of why they were not chosen._
+Listes provenant de :
+
+- [AlternativeTo](https://alternativeto.net/software/recaptcha/)
+- [European Alternative](https://european-alternatives.eu/category/captcha-services)
+
+Options :
+
+- [Captcha](#captcha)
+- [CaptchaText](#captcha-text)
+- [Captcheck](#captcheck)
+- [Sblam](#sblam)
+- [EU Captcha](#eu-captcha)
+- [InputGuard](#inputguard)
+- [TrustCaptcha](#trustcaptcha)
+- [MTCaptcha](#mtcaptcha)
+- [Friendly Captcha](#friendly-captcha)
+- [CaptchaFox](#captchafox)
+- [Private Captcha](#private-captcha)
+- [Swetrix](#swetrix)
+- [Altcha Sentinel](#altcha-sentinel)
+- [Altcha Open Source](#altcha-open-source)
+- [mCaptcha](#mcaptcha)
+- [hCaptcha](#hcaptcha)
+- [Cloudflare Turnstile](#cloudflare-turnstile)
 
 ## Justification
 
@@ -47,33 +70,6 @@ _
 - Accessibilité : 🤷
 - Hébergement : self hosted / monde / europe / france
 - Licence : Open Source / Closed Source
-
-## Considered Options
-
-Listes provenant de :
-
-- [AlternativeTo](https://alternativeto.net/software/recaptcha/)
-- [European Alternative](https://european-alternatives.eu/category/captcha-services)
-
-Options :
-
-- [Captcha](#captcha)
-- [CaptchaText](#captcha-text)
-- [Captcheck](#captcheck)
-- [Sblam](#sblam)
-- [EU Captcha](#eu-captcha)
-- [InputGuard](#inputguard)
-- [TrustCaptcha](#trustcaptcha)
-- [MTCaptcha](#mtcaptcha)
-- [Friendly Captcha](#friendly-captcha)
-- [CaptchaFox](#captchafox)
-- [Private Captcha](#private-captcha)
-- [Swetrix](#swetrix)
-- [Altcha Sentinel](#altcha-sentinel)
-- [Altcha Open Source](#altcha-open-source)
-- [mCaptcha](#mcaptcha)
-- [hCaptcha](#hcaptcha)
-- [Cloudflare Turnstile](#cloudflare-turnstile)
 
 ## Pros and Cons of the Options
 
