@@ -312,6 +312,7 @@ export const theme = {
   },
   radioButton: {
     size: getSpacing(5),
+    innerDotSize: getSpacing(2.5),
     border: {
       size: 2,
     },

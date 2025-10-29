@@ -27,7 +27,7 @@ export const RadioLabelTextSelected = styled(Typo.BodyAccent)<RadioTextProps>(
   })
 )
 
-export const RadioDescriptionText = styled(Typo.BodyAccentXs)<RadioTextProps>(
+export const RadioDescriptionText = styled(Typo.BodyXs)<RadioTextProps>(
   ({ radioState, theme, isHover }) => ({
     color: radioState.disabled
       ? theme.designSystem.color.text.disabled

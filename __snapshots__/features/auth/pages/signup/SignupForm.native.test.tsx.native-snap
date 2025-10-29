@@ -2513,6 +2513,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "border": {
                     "size": 2,
                   },
+                  "innerDotSize": 10,
                   "size": 20,
                 },
                 "showTabBar": true,

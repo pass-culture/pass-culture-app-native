@@ -22,18 +22,18 @@ export const RadioOuterCircle = styled.View<RadioCircleProps>(
     alignItems: 'center',
     borderRadius: theme.borderRadius.radioButton,
     borderWidth: theme.radioButton.border.size,
-    ...getBorderHoverStyle({ radioState, theme, isHover }),
     ...getRadioColors(radioState, theme, {
       componentPart: 'circle',
       variant,
     }),
+    ...getBorderHoverStyle({ radioState, theme, isHover }),
   })
 )
 
 export const RadioInnerDot = styled.View<RadioCircleProps>(
   ({ theme, variant, isHover, radioState }) => ({
-    width: theme.designSystem.size.spacing.m,
-    height: theme.designSystem.size.spacing.m,
+    width: theme.radioButton.innerDotSize,
+    height: theme.radioButton.innerDotSize,
     borderRadius: theme.designSystem.size.spacing.m / 2,
     justifyContent: 'center',
     alignItems: 'center',
