@@ -12,9 +12,10 @@ import { useTimer } from 'libs/hooks/useTimer'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { formatToHour } from 'libs/parsers/formatDates'
-import { WarningBanner } from 'ui/components/banners/WarningBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { Banner } from 'ui/designSystem/Banner/Banner'
+import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -106,8 +107,9 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <WarningBanner
-              message={`Tu as dépassé le nombre de 3 demandes de lien autorisées.${retryMessage}`}
+            <Banner
+              type={BannerType.ALERT}
+              label={`Tu as dépassé le nombre de 3 demandes de lien autorisées.${retryMessage}`}
             />
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>

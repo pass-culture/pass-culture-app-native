@@ -14,6 +14,7 @@ import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/monitoring/services')
 
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
