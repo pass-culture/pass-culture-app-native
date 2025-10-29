@@ -20,7 +20,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
-  const { designSystem } = useTheme()
+  const theme = useTheme()
 
   const age = getAge(user?.birthDate)
 
@@ -67,7 +67,7 @@ export const RecreditBirthdayNotification = () => {
         <ProgressBarContainer>
           <AnimatedProgressBar
             progress={1}
-            color={designSystem.color.background.brandPrimary}
+            color={theme.designSystem.color.background.brandPrimary}
             icon={categoriesIcons.Show}
             isAnimated
           />

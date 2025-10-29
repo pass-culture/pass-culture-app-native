@@ -6,13 +6,13 @@ import styled from 'styled-components'
 
 import LottieView from 'libs/lottie'
 import achievements_success from 'ui/animations/achievements_success.json'
+import french_republic_animation from 'ui/animations/french_republic_animation.json'
 import geolocalisation from 'ui/animations/geolocalisation.json'
 import lottie_loading from 'ui/animations/lottie_loading.json'
 import notif_basic_medium from 'ui/animations/notif_basic_medium.json'
 import onboarding_birthday_cake from 'ui/animations/onboarding_birthday_cake.json'
 import onboarding_unlock from 'ui/animations/onboarding_unlock.json'
 import qpi_thanks from 'ui/animations/qpi_thanks.json'
-import tutorial_pass_logo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimationObject } from 'ui/animations/type'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
@@ -60,8 +60,8 @@ const LottieAnimations = {
     hasBackground: false,
     isSmallAnimation: false,
   },
-  tutorial_pass_logo: {
-    source: tutorial_pass_logo,
+  french_republic_animation: {
+    source: french_republic_animation,
     hasBackground: false,
     isSmallAnimation: false,
   },

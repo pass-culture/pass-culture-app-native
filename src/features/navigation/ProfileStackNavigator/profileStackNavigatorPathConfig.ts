@@ -44,7 +44,7 @@ export const profileStackNavigatorPathConfig = {
         path: 'profil/suppression/information',
       },
       DebugScreen: {
-        path: 'profil/débuggage',
+        path: 'profil/debuggage',
       },
       ConfirmDeleteProfile: {
         path: 'profil/suppression',

@@ -55,6 +55,7 @@ describe('<ArtistBody />', () => {
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
         />
       )
     )
@@ -72,6 +73,7 @@ describe('<ArtistBody />', () => {
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
         />
       )
     )
@@ -92,6 +94,7 @@ describe('<ArtistBody />', () => {
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
         />
       )
     )
@@ -112,6 +115,7 @@ describe('<ArtistBody />', () => {
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
         />
       )
     )
@@ -127,6 +131,7 @@ describe('<ArtistBody />', () => {
           artistPlaylist={[]}
           artistTopOffers={[]}
           onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
         />
       )
     )

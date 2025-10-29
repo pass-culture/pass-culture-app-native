@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
+import { BonificationBanner } from 'features/bonification/banners/BonificationBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -49,6 +50,7 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
+  const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const showRemoteGenericBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const { options: remoteGenericBannerOptions } = useFeatureFlagOptions(
@@ -118,8 +120,18 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       return renderSystemBanner(systemBannerIcons[banner.name], banner.title, banner.text)
     }
 
+    // TODO(PC-38487): Use value from backend
+    if (enableBonification) {
+      return (
+        <BannerContainer>
+          <BonificationBanner />
+        </BannerContainer>
+      )
+    }
+
     return null
   }, [
+    enableBonification,
     disableActivation,
     remoteActivationBannerOptions,
     isLoggedIn,

@@ -247,6 +247,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         </ButtonContainer>
         {isDesktopViewport ? <Spacer.Flex flex={1} /> : null}
       </Container>
+      <Spacer.BottomScreen />
     </Page>
   )
 }

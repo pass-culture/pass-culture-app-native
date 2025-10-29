@@ -77,6 +77,25 @@ describe('CollapsibleTextContent', () => {
     expect(screen.getByText('Voir plus')).toBeOnTheScreen()
   })
 
+  it('should trigger onExpandPress prop when pressing on "Voir plus" button', async () => {
+    const mockOnExpandPress = jest.fn()
+    render(
+      <CollapsibleText numberOfLines={NUMBER_OF_LINES} onExpandPress={mockOnExpandPress}>
+        {TEXT}
+      </CollapsibleText>
+    )
+
+    const text = screen.getByText(TEXT)
+    await act(async () => {
+      fireEvent(text, 'onLayout', mockOnLayoutWithButton)
+      fireEvent(text, 'onTextLayout', mockOnTextLayoutWhenEllipsis)
+    })
+
+    await user.press(screen.getByText('Voir plus'))
+
+    expect(mockOnExpandPress).toHaveBeenCalledTimes(1)
+  })
+
   it('should not display Voir plus button', async () => {
     render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
