@@ -7,9 +7,10 @@ import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGeneri
 import { remoteBannerSchema } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
+import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Typo, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenRemoteBanners = () => {
@@ -51,8 +52,9 @@ export const CheatcodesScreenRemoteBanners = () => {
           />
         ) : null}
         {genericBannerError ? (
-          <ErrorBanner
-            message={`La bannière RemoteGenericBanner ne s‘affichera pas à cause de l’erreur suivante:\n${genericBannerError}`}
+          <Banner
+            type={BannerType.ERROR}
+            label={`La bannière RemoteGenericBanner ne s‘affichera pas à cause de l’erreur suivante:\n${genericBannerError}`}
           />
         ) : null}
 
@@ -66,8 +68,9 @@ export const CheatcodesScreenRemoteBanners = () => {
           />
         ) : null}
         {activationBannerError ? (
-          <ErrorBanner
-            message={`La bannière RemoteActivationBanner ne s‘affichera pas à cause de l’erreur suivante:\n${activationBannerError}`}
+          <Banner
+            type={BannerType.ERROR}
+            label={`La bannière RemoteActivationBanner ne s‘affichera pas à cause de l’erreur suivante\u00a0:\n${activationBannerError}`}
           />
         ) : null}
       </ViewGap>

@@ -5,8 +5,9 @@ import styled from 'styled-components/native'
 import { BookingResponse } from 'api/gen'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
-import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { Separator } from 'ui/components/Separator'
+import { Banner } from 'ui/designSystem/Banner/Banner'
+import { BannerType } from 'ui/designSystem/Banner/enums'
 import { getSpacing } from 'ui/theme'
 
 export const BookingDetailsContentMobile = ({
@@ -30,10 +31,9 @@ export const BookingDetailsContentMobile = ({
     <View testID="booking_details_mobile">
       <SectionContainer>
         <TicketCutoutContainer>{topBlock}</TicketCutoutContainer>
-
         {errorBannerMessage ? (
           <ErrorBannerContainer>
-            <ErrorBanner message={errorBannerMessage} />
+            <Banner type={BannerType.ERROR} label={errorBannerMessage} />
           </ErrorBannerContainer>
         ) : null}
       </SectionContainer>
