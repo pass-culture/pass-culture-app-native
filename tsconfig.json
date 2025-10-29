@@ -39,7 +39,8 @@
     "react-native.config.js",
     "rn-cli.config.js",
     "coverage/**",
-    "./server/**"
+    "./server/**",
+    "doc/**"
   ],
   "extends": "@react-native/typescript-config/tsconfig.json"
 }
