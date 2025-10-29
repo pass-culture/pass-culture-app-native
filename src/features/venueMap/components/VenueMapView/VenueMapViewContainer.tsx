@@ -10,7 +10,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { LayoutChangeEvent, LayoutRectangle, ViewToken } from 'react-native'
+import { LayoutChangeEvent, LayoutRectangle, PixelRatio, ViewToken } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -44,6 +44,10 @@ import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { LENGTH_L } from 'ui/theme'
 
 import { VenueMapView } from './VenueMapView'
+
+const BOTTOM_SHEET_HEIGHT_MIN = 130
+const BOTTOM_SHEET_HEIGHT_MAX = 180
+const BOTTOM_SHEET_HEIGHT_MAX_ZOOMED = 220
 
 export const VenueMapViewContainer: FunctionComponent = () => {
   const offersPlaylistType = useVenueMapStore((state) => state.offersPlaylistType)
@@ -84,6 +88,8 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const bottomSheetRef = useRef<BottomSheet>(null)
   const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
 
+  const fontScale = PixelRatio.getFontScale()
+
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
 
@@ -106,13 +112,15 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   })
 
   const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length
-  const contentViewHeight = useMemo(
-    () => ({
-      min: hasOffers ? 160 : 130,
-      max: hasOffers ? 160 + LENGTH_L : 130,
-    }),
-    [hasOffers]
-  )
+  const contentViewHeight = useMemo(() => {
+    const heightAdjustedFontScale =
+      fontScale > 1 ? BOTTOM_SHEET_HEIGHT_MAX_ZOOMED : BOTTOM_SHEET_HEIGHT_MAX
+
+    return {
+      min: hasOffers ? heightAdjustedFontScale : BOTTOM_SHEET_HEIGHT_MIN,
+      max: hasOffers ? heightAdjustedFontScale + LENGTH_L : BOTTOM_SHEET_HEIGHT_MIN,
+    }
+  }, [fontScale, hasOffers])
 
   const snapPoints = useMemo(() => {
     const bottomInset = tabBarHeight + bottom
