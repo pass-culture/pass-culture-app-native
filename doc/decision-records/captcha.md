@@ -23,23 +23,25 @@ Listes provenant de :
 
 Options :
 
-- [Captcha](#captcha)
-- [CaptchaText](#captcha-text)
-- [Captcheck](#captcheck)
-- [Sblam](#sblam)
-- [EU Captcha](#eu-captcha)
-- [InputGuard](#inputguard)
-- [TrustCaptcha](#trustcaptcha)
-- [MTCaptcha](#mtcaptcha)
-- [Friendly Captcha](#friendly-captcha)
-- [CaptchaFox](#captchafox)
-- [Private Captcha](#private-captcha)
-- [Swetrix](#swetrix)
-- [Altcha Sentinel](#altcha-sentinel)
-- [Altcha Open Source](#altcha-open-source)
-- [mCaptcha](#mcaptcha)
-- [hCaptcha](#hcaptcha)
-- [Cloudflare Turnstile](#cloudflare-turnstile)
+- Pas encore éliminés :
+  - [CaptchaText](#captcha-text)
+  - [Captcheck](#captcheck)
+  - [Sblam](#sblam)
+  - [EU Captcha](#eu-captcha)
+  - [InputGuard](#inputguard)
+  - [TrustCaptcha](#trustcaptcha)
+  - [MTCaptcha](#mtcaptcha)
+  - [Friendly Captcha](#friendly-captcha)
+  - [CaptchaFox](#captchafox)
+  - [Private Captcha](#private-captcha)
+  - [Swetrix](#swetrix)
+  - [Altcha Sentinel](#altcha-sentinel)
+  - [Altcha Open Source](#altcha-open-source)
+  - [mCaptcha](#mcaptcha)
+  - [hCaptcha](#hcaptcha)
+  - [Cloudflare Turnstile](#cloudflare-turnstile)
+- Trop cher :
+  - [Captcha](#captcha)
 
 ## Justification
 
@@ -73,14 +75,9 @@ _
 
 ## Pros and Cons of the Options
 
-### Captcha
+### Pas encore éliminé
 
-[Forfait avancé](https://www.captcha.eu/fr/#pricing)
-
-- Coût : 179,90€ / mois
-- Volume : Jusqu'à 100 000 demandes/mois ❌
-
-### Captcha Text
+#### Captcha Text
 
 [Site](https://www.captchatext.com/)
 
@@ -91,7 +88,7 @@ _
 - Fiabilité :
 - Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
 
-### Captcheck
+#### Captcheck
 
 [Site](https://captcheck.netsyms.com/)
 
@@ -101,13 +98,13 @@ _
 
 En anglais uniquement ❌
 
-### Sblam
+#### Sblam
 
 [Site](https://sblam.com/en.html)
 
 Solution uniquement pour du [PHP](https://sblam.com/install.html) ❌
 
-### EU Captcha
+#### EU Captcha
 
 [Annonce](https://interoperable-europe.ec.europa.eu/collection/eupl/news/eu-captcha-under-eupl-12)
 
@@ -127,7 +124,7 @@ Solution uniquement pour du [PHP](https://sblam.com/install.html) ❌
 
 App faite en java -> nécessite de savoir déployer une app en Java
 
-### InputGuard
+#### InputGuard
 
 [Site](https://zenofx.com/inputguard/)
 
@@ -140,7 +137,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Hébergement : self hosted / monde
 - Licence : Closed Source
 
-### TrustCaptcha
+#### TrustCaptcha
 
 [Site](https://www.trustcomponent.com/en/products/captcha)
 
@@ -155,7 +152,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 
 Possibilité de les contacter pour dépasser les plans prévus
 
-### MTCaptcha
+#### MTCaptcha
 
 [Site](https://www.mtcaptcha.com/)
 
@@ -168,7 +165,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : monde
 - Licence : Closed Source
 
-### Friendly Captcha
+#### Friendly Captcha
 
 [Site](https://friendlycaptcha.com/fr/)
 
@@ -181,7 +178,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : monde
 - Licence : Closed Source
 
-### CaptchaFox
+#### CaptchaFox
 
 [Site](https://captchafox.com/)
 
@@ -194,7 +191,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : Europe
 - Licence : Closed Source
 
-### Private Captcha
+#### Private Captcha
 
 [Site](https://privatecaptcha.com/)
 
@@ -207,7 +204,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : self hosted / Europe
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
 
-### Swetrix
+#### Swetrix
 
 [Site](https://captcha.swetrix.com/)
 
@@ -220,7 +217,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : self hosted / Europe
 - Licence : [Open Source](https://github.com/Swetrix/swetrix) : AGPL 3.0
 
-### Altcha Sentinel
+#### Altcha Sentinel
 
 [Site](https://altcha.org/fr/)
 
@@ -233,7 +230,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : self hosted / USA / Europe
 - Licence : Closed Source ?
 
-### Altcha Open Source
+#### Altcha Open Source
 
 [Site](https://altcha.org/fr/)
 
@@ -246,7 +243,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/altcha-org/altcha) : MIT
 
-### mCaptcha
+#### mCaptcha
 
 [Site](https://mcaptcha.org/)
 
@@ -259,7 +256,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
 
-### hCaptcha
+#### hCaptcha
 
 [Site](https://www.hcaptcha.com/) (site (mal-)traduit automatiquement)
 
@@ -272,7 +269,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : monde
 - Licence : Closed Source
 
-### Cloudflare Turnstile
+#### Cloudflare Turnstile
 
 [Site](https://www.cloudflare.com/application-services/products/turnstile/)
 
@@ -284,6 +281,15 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Accessibilité :
 - Hébergement : monde
 - Licence : Closed Source
+
+### Trop chère
+
+#### Captcha
+
+[Forfait avancé](https://www.captcha.eu/fr/)
+
+- Coût : [179,90€ / mois](https://www.captcha.eu/fr/#pricing) ; Possibilité de les contacter
+- Volume : Jusqu'à 100 000 demandes/mois ❌
 
 ## Réferences
 
