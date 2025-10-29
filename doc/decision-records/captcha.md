@@ -1,18 +1,41 @@
----
-status: draft
-# date: {YYYY-MM-DD when the decision was last updated}
-decision-makers: { list everyone involved in the decision }
-# consulted: {list everyone whose opinions are sought (typically subject-matter experts); and with whom there is a two-way communication}
-# informed: {list everyone who is kept up-to-date on progress; and with whom there is a one-way communication}
----
+# DR000 - Remplacer reCAPTCHA
 
-# Remplacer reCAPTCHA
+> Status : Adopted or Replaced or Withdrawn
 
-## Context and Problem Statement
+## Decision
+
+_Explain the decision taken, specifying the choices made and why this solution was chosen._
+
+Chosen option: "{title of option 1}", because {justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
+
+## Context
 
 Problème : On dépense 1200€ chaque mois juste pour vérifier que nos utilisateurs ne sont pas des robots
 
 Objectif : Économiser plus de 1000€ par mois sans perdre en sécurité
+
+## Alternatives considered
+
+_List the alternatives that were considered, with a brief explanation of why they were not chosen._
+
+## Justification
+
+_List the reasons why this choice fits the context and stands out from the alternatives._
+
+{Describe how the implementation of/compliance with the ADR can/will be confirmed. Are the design that was decided for and its implementation in line with the decision made? E.g., a design/code review or a test with a library such as ArchUnit can help validate this. Not that although we classify this element as optional, it is included in many ADRs.}
+
+## Consequences
+
+_Describe the impact of this decision, both positive and negative. Mention the short- and long-term implications.
+_
+
+- Good, because {positive consequence, e.g., improvement of one or more desired qualities, …}
+- Bad, because {negative consequence, e.g., compromising one or more desired qualities, …}
+- … <!-- numbers of consequences can vary -->
+
+## Actions to be implemented
+
+1.
 
 ## Decision Drivers
 
@@ -51,26 +74,6 @@ Options :
 - [mCaptcha](#mcaptcha)
 - [hCaptcha](#hcaptcha)
 - [Cloudflare Turnstile](#cloudflare-turnstile)
-
-## Decision Outcome
-
-Chosen option: "{title of option 1}", because {justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
-
-<!-- This is an optional element. Feel free to remove. -->
-
-### Consequences
-
-- Good, because {positive consequence, e.g., improvement of one or more desired qualities, …}
-- Bad, because {negative consequence, e.g., compromising one or more desired qualities, …}
-- … <!-- numbers of consequences can vary -->
-
-<!-- This is an optional element. Feel free to remove. -->
-
-### Confirmation
-
-{Describe how the implementation of/compliance with the ADR can/will be confirmed. Are the design that was decided for and its implementation in line with the decision made? E.g., a design/code review or a test with a library such as ArchUnit can help validate this. Not that although we classify this element as optional, it is included in many ADRs.}
-
-<!-- This is an optional element. Feel free to remove. -->
 
 ## Pros and Cons of the Options
 
@@ -286,7 +289,7 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : monde
 - Licence : Closed Source
 
-## More Information
+## Réferences
 
 À lire
 
