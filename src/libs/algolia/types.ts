@@ -302,6 +302,14 @@ export type MultipleOffersResult = {
   nbHits: number
 }[]
 
+export type MultipleVenueOffersResult = (
+  | {
+      hits: AlgoliaOffer[]
+      nbHits: number
+    }
+  | undefined
+)[]
+
 export type PlaylistOffersParams = {
   offerParams: SearchQueryParameters
   locationParams: BuildLocationParameterParams

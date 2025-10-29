@@ -22,6 +22,8 @@ import {
   mockedBookingOfferResponseV2,
   mockedBookingStockResponseV2,
 } from 'fixtures/booking'
+import { mockedAlgoliaOffer } from 'fixtures/venueOffers'
+import { AlgoliaOffer } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { createDateBuilder } from 'tests/createBuilder'
 
@@ -100,6 +102,7 @@ export const mockBuilder = {
   bookingOfferResponseAddressV2: createMockBuilder<BookingOfferResponseAddressV2>(
     mockedBookingOfferResponseAddressV2
   ),
+  algoliaOfferResponse: createMockBuilder<AlgoliaOffer>(mockedAlgoliaOffer),
 }
 
 export const dateBuilder = createDateBuilder()

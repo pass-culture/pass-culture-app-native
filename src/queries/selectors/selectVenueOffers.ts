@@ -7,17 +7,8 @@ import {
   sortHitOffersByDate,
   determineAllOffersAreEventsAndNotCinema,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
+import { AlgoliaOffer, HitOffer, MultipleVenueOffersResult } from 'libs/algolia/types'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
-
-type MultipleVenueOffersResult = (
-  | {
-      hits: AlgoliaOffer[]
-      nbHits: number
-    }
-  | undefined
-)[]
-
 type Props = {
   venueOffers: MultipleVenueOffersResult
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
@@ -34,7 +25,7 @@ export const selectVenueOffers = ({
   const [venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults] = venueOffers
   const filterFn = includeHitsWithoutImage ? filterValidOfferHit : filterOfferHitWithImage
   const hits = [venueSearchedOffersResults, venueTopOffersResults]
-    .flatMap((result) => result?.hits)
+    .flatMap((result) => result?.hits ?? [])
     .filter(filterFn)
     .map(transformHits)
 
