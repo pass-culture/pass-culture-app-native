@@ -29,9 +29,6 @@ Options :
   - [Sblam](#sblam)
   - [EU Captcha](#eu-captcha)
   - [InputGuard](#inputguard)
-  - [TrustCaptcha](#trustcaptcha)
-  - [MTCaptcha](#mtcaptcha)
-  - [Friendly Captcha](#friendly-captcha)
   - [Private Captcha](#private-captcha)
   - [Swetrix](#swetrix)
   - [Altcha Sentinel](#altcha-sentinel)
@@ -42,6 +39,9 @@ Options :
   - [Captcha](#captcha)
   - [hCaptcha](#hcaptcha)
   - [CaptchaFox](#captchafox)
+  - [MTCaptcha](#mtcaptcha)
+  - [TrustCaptcha](#trustcaptcha)
+  - [Friendly Captcha](#friendly-captcha)
 
 ## Justification
 
@@ -102,7 +102,7 @@ En anglais uniquement ❌
 
 [Site](https://sblam.com/en.html)
 
-Solution uniquement pour du [PHP](https://sblam.com/install.html) ❌
+Solution faite uniquement pour s'intégrer dans du [PHP](https://sblam.com/install.html) ❌
 
 #### EU Captcha
 
@@ -135,47 +135,6 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Fiabilité :
 - Accessibilité : "User friendly, accessible interface"
 - Hébergement : self hosted / monde
-- Licence : Closed Source
-
-#### TrustCaptcha
-
-[Site](https://www.trustcomponent.com/en/products/captcha)
-
-- Coût : [290€ / mois](https://www.trustcomponent.com/en/products/captcha/pricing) ; Besoin de les contacter
-- Sécurité :
-- Volume : 150K / mois
-- Performance :
-- Fiabilité :
-- Accessibilité :
-- Hébergement : Europe
-- Licence : Closed Source
-
-Possibilité de les contacter pour dépasser les plans prévus
-
-#### MTCaptcha
-
-[Site](https://www.mtcaptcha.com/)
-
-- Coût : [$969 / an ou $1734 / an](https://www.mtcaptcha.com/pricing) ❌
-- Sécurité :
-- Volume : 1M ou 2M
-- Performance :
-- Fiabilité :
-- Accessibilité : VPAT and WCAG 2.1 AAA Compliant
-- Hébergement : monde
-- Licence : Closed Source
-
-#### Friendly Captcha
-
-[Site](https://friendlycaptcha.com/fr/)
-
-- Coût : [200€ / 50K requests / mois pour ; Besoin de les contacter](https://friendlycaptcha.com/#pricing) ❌
-- Sécurité :
-- Volume :
-- Performance :
-- Fiabilité :
-- Accessibilité : [Compliant with WCAG, EAA, ADA, and more](https://friendlycaptcha.com/accessibility/)
-- Hébergement : monde
 - Licence : Closed Source
 
 #### Private Captcha
@@ -283,6 +242,35 @@ Les offres où le prix / volume sont proches où au dessus de notre limite ont �
 
 - Coût / Volume : [85 € / 100K requests / mois ; Besoin de les contacter](https://captchafox.com/pricing) ❌
 - Hébergement : Europe
+- Licence : Closed Source
+
+#### MTCaptcha
+
+[Site](https://www.mtcaptcha.com/)
+
+- Coût : [$969 / an ou $1734 / an](https://www.mtcaptcha.com/pricing) ❌
+- Volume : 1M ou 2M
+- Accessibilité : VPAT and WCAG 2.1 AAA Compliant
+- Hébergement : monde
+- Licence : Closed Source
+
+#### TrustCaptcha
+
+[Site](https://www.trustcomponent.com/en/products/captcha)
+
+- Coût / Volume : [290€ / 150K requests / mois](https://www.trustcomponent.com/en/products/captcha/pricing) ; Besoin de les contacter ❌
+- Hébergement : Europe
+- Licence : Closed Source
+
+Possibilité de les contacter pour dépasser les plans prévus
+
+#### Friendly Captcha
+
+[Site](https://friendlycaptcha.com/fr/)
+
+- Coût / Volume : [200€ / 50K requests / mois pour ; Besoin de les contacter](https://friendlycaptcha.com/#pricing) ❌
+- Accessibilité : [Compliant with WCAG, EAA, ADA, and more](https://friendlycaptcha.com/accessibility/)
+- Hébergement : monde
 - Licence : Closed Source
 
 ## Réferences
