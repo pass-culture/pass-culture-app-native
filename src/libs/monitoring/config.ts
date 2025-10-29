@@ -9,8 +9,8 @@ import { reactNavigationIntegration } from './sentry'
 // Construct a new instrumentation instance. This is needed to communicate between the integration and React
 const sentryReactNavigationIntegration = reactNavigationIntegration()
 
-export async function getSentryConfig() {
-  const release = getAppVersion()
+export function getSentryConfig() {
+  const release = `${getAppVersion()}-${Platform.OS}`
   const dist = `${getAppBuildVersion()}-${Platform.OS}`
 
   return {

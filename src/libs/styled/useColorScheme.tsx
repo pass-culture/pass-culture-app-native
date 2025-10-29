@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useColorScheme as useSystemColorScheme } from 'react-native'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -10,11 +11,15 @@ export enum ColorScheme {
   SYSTEM = 'system',
 }
 
-export type ColorSchemeType = ColorScheme.LIGHT | ColorScheme.DARK
+export type ColorSchemeType = ColorScheme.LIGHT | ColorScheme.DARK | undefined
+
+type State = { colorScheme: ColorScheme | undefined }
+
+const defaultState: State = { colorScheme: undefined }
 
 const colorSchemeStore = createStore({
   name: 'colorScheme',
-  defaultState: { colorScheme: ColorScheme.LIGHT },
+  defaultState,
   actions: (set) => ({
     setColorScheme: ({ colorScheme }: { colorScheme: ColorScheme }) => {
       set({ colorScheme })
@@ -23,27 +28,36 @@ const colorSchemeStore = createStore({
   selectors: {
     selectColorScheme:
       () =>
-      (state): ColorScheme =>
+      (state): ColorScheme | undefined =>
         state.colorScheme,
   },
   options: { persist: true },
 })
 
 export const colorSchemeActions = colorSchemeStore.actions
-export const useStoredColorScheme: () => ColorScheme = colorSchemeStore.hooks.useColorScheme
+export const useStoredColorScheme: () => ColorScheme | undefined =
+  colorSchemeStore.hooks.useColorScheme
 
 export const useColorScheme = (): ColorSchemeType => {
   const storedScheme = useStoredColorScheme()
   const systemScheme = useSystemColorScheme()
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
+  const { setColorScheme } = colorSchemeActions
+
+  useEffect(() => {
+    if (enableDarkMode && storedScheme === undefined) {
+      setColorScheme({ colorScheme: ColorScheme.SYSTEM })
+    }
+  }, [enableDarkMode, storedScheme, setColorScheme])
 
   if (!enableDarkMode) {
     return ColorScheme.LIGHT
   }
 
-  if (storedScheme === ColorScheme.SYSTEM) {
+  const effectiveScheme = storedScheme ?? ColorScheme.SYSTEM
+  if (effectiveScheme === ColorScheme.SYSTEM) {
     return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
   }
 
-  return storedScheme
+  return effectiveScheme
 }

@@ -66,7 +66,6 @@ const ScrollContainer = styled.ScrollView.attrs<{ bottom: number }>(({ bottom })
     paddingBottom: bottom,
   },
 }))<{ bottom: number }>(({ theme }) => ({
-  flex: 1,
   paddingHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: theme.contentPage.marginVertical,
 }))
