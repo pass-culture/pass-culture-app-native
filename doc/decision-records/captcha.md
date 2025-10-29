@@ -25,8 +25,6 @@ Options :
 
 - Pas encore éliminés :
   - [CaptchaText](#captcha-text)
-  - [Captcheck](#captcheck)
-  - [Sblam](#sblam)
   - [EU Captcha](#eu-captcha)
   - [InputGuard](#inputguard)
   - [Private Captcha](#private-captcha)
@@ -42,6 +40,9 @@ Options :
   - [MTCaptcha](#mtcaptcha)
   - [TrustCaptcha](#trustcaptcha)
   - [Friendly Captcha](#friendly-captcha)
+- Autre raison :
+  - [Captcheck](#captcheck)
+  - [Sblam](#sblam)
 
 ## Justification
 
@@ -87,22 +88,8 @@ _
 - Performance :
 - Fiabilité :
 - Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
-
-#### Captcheck
-
-[Site](https://captcheck.netsyms.com/)
-
-- Coût : gratuit ✅
-- Hébergement : self hosted / monde
-- Licence : Open Source
-
-En anglais uniquement ❌
-
-#### Sblam
-
-[Site](https://sblam.com/en.html)
-
-Solution faite uniquement pour s'intégrer dans du [PHP](https://sblam.com/install.html) ❌
+- Hébergement : self hosted / monde / europe / france
+- Licence : Open Source / Closed Source
 
 #### EU Captcha
 
@@ -272,6 +259,24 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Accessibilité : [Compliant with WCAG, EAA, ADA, and more](https://friendlycaptcha.com/accessibility/)
 - Hébergement : monde
 - Licence : Closed Source
+
+### Autre raison
+
+#### Captcheck
+
+[Site](https://captcheck.netsyms.com/)
+
+- Coût : gratuit ✅
+- Hébergement : self hosted / monde
+- Licence : Open Source
+
+En anglais uniquement ❌
+
+#### Sblam
+
+[Site](https://sblam.com/en.html)
+
+Solution faite uniquement pour s'intégrer dans du [PHP](https://sblam.com/install.html) ❌
 
 ## Réferences
 
