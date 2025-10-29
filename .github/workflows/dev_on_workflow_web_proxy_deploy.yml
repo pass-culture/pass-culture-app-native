@@ -68,6 +68,10 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
+
+      - name: Cleanup .yarn cache
+        run: rm -rf server/.yarn/cache
+
       - name: 'Push proxy for input env'
         run: cd server && yarn deploy:${{ inputs.ENV }} && cd ..
 
