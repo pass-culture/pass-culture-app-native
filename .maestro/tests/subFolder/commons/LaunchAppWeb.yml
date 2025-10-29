@@ -1,0 +1,7 @@
+url: http://localhost:5173/
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Respect de ta vie privée"
+    timeout: 60000
