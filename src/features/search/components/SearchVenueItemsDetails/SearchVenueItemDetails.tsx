@@ -6,32 +6,27 @@ import { GUTTER_DP, Typo } from 'ui/theme'
 
 interface SearchVenueItemDetailsProps {
   width: number
-  height: number
   name: string
   shortAddress: string
 }
 
 export const SearchVenueItemDetails = ({
   width,
-  height,
   name,
   shortAddress,
 }: SearchVenueItemDetailsProps) => {
   return (
-    <Container maxWidth={width} minHeight={height}>
+    <Container maxWidth={width}>
       <VenueName>{name}</VenueName>
       <ShortAddressLabel>{shortAddress}</ShortAddressLabel>
     </Container>
   )
 }
 
-const Container = styled.View<{ maxWidth: number; minHeight: number }>(
-  ({ maxWidth, minHeight }) => ({
-    maxWidth,
-    marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
-    minHeight,
-  })
-)
+const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
+  maxWidth,
+  marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
+}))
 
 const VenueName = styled(Typo.BodyAccent).attrs({
   numberOfLines: 2,

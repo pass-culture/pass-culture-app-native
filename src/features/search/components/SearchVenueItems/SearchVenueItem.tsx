@@ -19,7 +19,6 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { ImageTile } from 'ui/components/ImageTile'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Tag } from 'ui/designSystem/Tag/Tag'
-import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -30,8 +29,6 @@ interface SearchVenueItemProps {
   searchId?: string
   searchGroupLabel?: ContentfulLabelCategories
 }
-
-const MAX_VENUE_CAPTION_HEIGHT = getSpacing(19)
 
 const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefined) => ({
   ...venue,
@@ -61,7 +58,7 @@ const UnmemoizedSearchVenueItem = ({
   const imageUri = venue.banner_url ?? ''
 
   const handlePressVenue = () => {
-    analytics.logConsultVenue({
+    void analytics.logConsultVenue({
       venueId: venue.objectID,
       searchId,
       from: 'searchVenuePlaylist',
@@ -73,7 +70,6 @@ const UnmemoizedSearchVenueItem = ({
   return (
     <View {...getHeadingAttrs(3)}>
       <SearchVenueTouchableLink
-        height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         navigateTo={{
           screen: 'Venue',
@@ -104,7 +100,6 @@ const UnmemoizedSearchVenueItem = ({
           )}
           <SearchVenueItemDetails
             width={width}
-            height={height + MAX_VENUE_CAPTION_HEIGHT}
             name={venue.name}
             shortAddress={[venue.city, venue.postalCode].filter(Boolean).join(', ')}
           />
@@ -119,12 +114,10 @@ export const SearchVenueItem = memo(UnmemoizedSearchVenueItem)
 const SearchVenueTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.default,
 }))<{
-  height: number
   width: number
   isFocus?: boolean
-}>(({ height, width, theme, isFocus }) => ({
+}>(({ width, theme, isFocus }) => ({
   width,
-  maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
