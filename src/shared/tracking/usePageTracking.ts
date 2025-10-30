@@ -51,6 +51,7 @@ interface TrackingHandlers {
     artistId?: string
     playlistIndex?: number
     searchId?: string
+    entryId?: string
   }) => void
 
   /**
@@ -150,6 +151,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
       artistId?: string
       playlistIndex?: number
       searchId?: string
+      entryId?: string
     }) => {
       const {
         moduleId,
@@ -160,6 +162,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
         artistId,
         playlistIndex,
         searchId,
+        entryId,
       } = params
 
       if (!moduleId || !viewableItems.length) {
@@ -184,6 +187,7 @@ export function usePageTracking(config: UsePageTrackingConfig): TrackingHandlers
         extra,
         ...(artistId ? { artistId } : {}),
         ...(searchId ? { searchId } : {}),
+        ...(entryId ? { entryId } : {}),
       }
 
       try {
@@ -261,9 +265,19 @@ export function createViewableItemsHandler(
     callId?: string
     artistId?: string
     searchId?: string
+    entryId?: string
   }) => {
-    const { index, moduleId, moduleType, viewableItems, homeEntryId, callId, artistId, searchId } =
-      params
+    const {
+      index,
+      moduleId,
+      moduleType,
+      viewableItems,
+      homeEntryId,
+      callId,
+      artistId,
+      searchId,
+      entryId,
+    } = params
 
     // Infer itemType from moduleType if possible
     const itemType = inferItemTypeFromModuleType(moduleType)
@@ -281,6 +295,7 @@ export function createViewableItemsHandler(
       artistId,
       playlistIndex: index,
       searchId,
+      entryId,
     })
   }
 }
