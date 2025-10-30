@@ -3,7 +3,6 @@ import { useQueryClient } from '@tanstack/react-query'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
-import { convertOffererDatesToTimezone } from 'features/offer/queries/selectors/convertOffererDatesToTimezone'
 import { useFetchOffersQuery } from 'features/offer/queries/useFetchOffersQuery'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -61,7 +60,6 @@ export const useOffersStocksFromOfferQuery = (
   const offersStocks = useOffersStocksQuery(
     { offerIds },
     {
-      select: convertOffererDatesToTimezone,
       enabled: !isOfferPreview,
     }
   )
