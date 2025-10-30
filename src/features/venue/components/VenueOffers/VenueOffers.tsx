@@ -80,7 +80,7 @@ export function VenueOffers({
   }
 
   if (isOfferAMovieScreening) {
-    return <VenueMovies venueOffers={venueOffers} />
+    return <VenueMovies venueMovieOffers={venueOffers} />
   }
 
   return (

@@ -7,7 +7,6 @@ import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
@@ -76,7 +75,9 @@ describe('<BookingInformations />', () => {
     mockUseBookingOffer.mockReturnValueOnce(cinePleinAirOffer)
     render(<BookingInformations />)
 
-    expect(await screen.findByText('Mardi 1er décembre 2020, 01h00 - Durée : 1h')).toBeOnTheScreen()
+    expect(
+      await screen.findByText('Mardi 1er décembre 2020 à 00h00 - Durée : 1h')
+    ).toBeOnTheScreen()
   })
 
   it('should display `Gratuit` if price is 0', async () => {
@@ -197,20 +198,6 @@ describe('<BookingInformations />', () => {
 
     render(<BookingInformations />)
 
-    expect(await screen.findByText('Mardi 1er décembre 2020, 01h00')).toBeOnTheScreen()
-  })
-
-  describe('formatDateTimezone()', () => {
-    it.each`
-      limitDate                       | expected
-      ${'2021-02-23T13:45:00'}        | ${'Mardi 23 février 2021, 13h45'}
-      ${new Date(2021, 4, 3, 9, 30)}  | ${'Lundi 3 mai 2021, 09h30'}
-      ${new Date(2021, 11, 16, 9, 3)} | ${'Jeudi 16 décembre 2021, 09h03'}
-    `(
-      'should format Date $limitDate to string "$expected"',
-      ({ limitDate, expected }: { limitDate: string; expected: string }) => {
-        expect(formatDateTimezone({ limitDate, shouldDisplayWeekDay: true })).toEqual(expected)
-      }
-    )
+    expect(await screen.findByText('Mardi 1er décembre 2020 à 00h00')).toBeOnTheScreen()
   })
 })

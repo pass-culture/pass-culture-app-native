@@ -20,6 +20,7 @@ import {
   getUniqueSortedTimestamps,
   groupByYearAndMonth,
   joinArrayElement,
+  formatToCompleteFrenchDateTime,
 } from './formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -577,4 +578,17 @@ describe('getTimeStampInMillis', () => {
       1736870746000, 1736870749000, 1736970749000,
     ])
   })
+})
+
+describe('formatToCompleteFrenchDateTime()', () => {
+  it.each`
+    date                            | expected
+    ${new Date(2021, 4, 3, 9, 30)}  | ${'Lundi 3 mai 2021 à 09h30'}
+    ${new Date(2021, 11, 16, 9, 3)} | ${'Jeudi 16 décembre 2021 à 09h03'}
+  `(
+    'should format Date $dates to string "$expected"',
+    ({ date, expected }: { date: Date; expected: string }) => {
+      expect(formatToCompleteFrenchDateTime({ date, shouldDisplayWeekDay: true })).toEqual(expected)
+    }
+  )
 })

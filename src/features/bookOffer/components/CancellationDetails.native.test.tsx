@@ -3,7 +3,6 @@ import React from 'react'
 
 import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -12,21 +11,6 @@ import { CancellationDetails } from './CancellationDetails'
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 const pastDate = '2021-01-02T00:00:00'
 const futureDate = '2021-01-06T00:00:00'
-
-describe('formatDateTimezone()', () => {
-  it.each`
-    limitDate                        | expected
-    ${'2021-02-23T13:45:00'}         | ${'23 février 2021, 13h45'}
-    ${new Date(2021, 4, 3, 9, 30)}   | ${'3 mai 2021, 09h30'}
-    ${new Date(2021, 11, 16, 15, 0)} | ${'16 décembre 2021, 15h00'}
-    ${new Date(2021, 11, 16, 9, 3)}  | ${'16 décembre 2021, 09h03'}
-  `(
-    'should format Date $limitDate to string "$expected"',
-    ({ limitDate, expected }: { limitDate: string; expected: string }) => {
-      expect(formatDateTimezone({ limitDate, shouldDisplayWeekDay: false })).toEqual(expected)
-    }
-  )
-})
 
 let mockStock: OfferStockResponse | undefined = undefined
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
