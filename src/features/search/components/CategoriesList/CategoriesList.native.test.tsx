@@ -74,7 +74,7 @@ describe('CategoriesList', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
-      payload: { ...initialSearchState, offerCategories: ['SPECTACLES'] },
+      payload: { ...initialSearchState, offerCategories: ['SPECTACLES'], searchId: 'testUuidV4' },
     })
   })
 
