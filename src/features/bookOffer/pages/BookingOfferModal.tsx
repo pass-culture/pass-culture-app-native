@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
@@ -154,9 +154,11 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { top } = useCustomSafeInsets()
   const { modal } = useTheme()
 
-  const stocksWithCategory = useMemo(() => {
-    return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
-  }, [bookingState.date, bookingState.hour, offer?.stocks])
+  const stocksWithCategory = getStockWithCategory(
+    offer?.stocks,
+    bookingState.date,
+    bookingState.hour
+  )
   const hasPricesStep = stocksWithCategory.length > 1 || offer?.isEvent
 
   const modalLeftIconProps = {
