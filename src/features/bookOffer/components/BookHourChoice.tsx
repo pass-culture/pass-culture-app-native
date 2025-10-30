@@ -95,7 +95,7 @@ const getHourChoiceForSingleStock = (
         index={index}
         key={stock.id}
         price={stock.price}
-        hour={formatHour(stock.beginningDatetime, venue?.timezone).replace(':', 'h')}
+        hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
         selected={stock.id === bookingState.stockId}
         onPress={() => {
           dispatch({ type: 'SELECT_HOUR', payload: stock.beginningDatetime ?? '' })
