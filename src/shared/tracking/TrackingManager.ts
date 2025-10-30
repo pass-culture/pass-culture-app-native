@@ -16,9 +16,9 @@ type PlaylistTrackingInfo = {
   viewedAt: Date
   items: { key: string; index: number | null }[]
   extra?: Record<string, string | undefined>
-  artistId?: string
   searchId?: string
   pageLocation?: string
+  entryId?: string
 }
 
 export type PageTrackingInfo = {
@@ -34,8 +34,8 @@ export interface TrackingData {
   index?: number
   items: { key: string; index: number | null }[]
   extra?: Record<string, string | undefined>
-  artistId?: string
   searchId?: string
+  entryId?: string
 }
 
 interface PageTrackingConfig {
@@ -66,8 +66,8 @@ class TrackingBuffer {
       index = -1,
       items,
       extra,
-      artistId,
       searchId,
+      entryId,
     } = trackingData
 
     const existing = this.data.get(moduleId)
@@ -79,8 +79,8 @@ class TrackingBuffer {
       viewedAt: new Date(),
       items: this.mergeItems(existing?.items || [], items),
       extra: { ...existing?.extra, ...extra },
-      ...(artistId ? { artistId } : {}),
       ...(searchId ? { searchId } : {}),
+      ...(entryId ? { entryId } : {}),
       pageLocation: this.config.pageLocation,
     }
 
@@ -352,9 +352,9 @@ class TrackingManagerService {
             itemsCount: playlist.items.length,
             items: playlist.items.map((item) => `${item.index ?? 'null'}:${item.key}`).join(','),
             extra: playlist.extra,
-            artistId: playlist.artistId,
             viewedAt: playlist.viewedAt.toISOString(),
             searchId: playlist.searchId,
+            entryId: playlist.entryId,
           })),
         },
       })
@@ -383,7 +383,6 @@ class TrackingManagerService {
             itemType: p.itemType,
             itemsCount: p.items.length,
             hasCallId: Boolean(p.callId),
-            hasArtistId: Boolean(p.artistId),
             hasSearchId: Boolean(p.searchId),
           })),
         },
