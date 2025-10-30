@@ -608,6 +608,25 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
+
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
+**Ticket** : [PC-38162](https://passculture.atlassian.net/browse/PC-38162)  
+**PR** : [#8850](https://github.com/pass-culture/pass-culture-app-native/pull/8850)
+
+**Problème** 😱  
+- **(E14)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
+
+**Correction** 💡  
+- **(E14)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur. 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
 ## ✅ Corrections 19 novembre → 15 décembre
 
 <br>
@@ -705,7 +724,7 @@ Texte
 **Correction** 💡  
 Texte
 
-**Retours audit** 🔥
+**Retours audit** 🔥  
 Texte
 
 </details>
