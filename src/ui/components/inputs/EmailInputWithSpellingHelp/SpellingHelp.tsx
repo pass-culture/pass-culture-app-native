@@ -3,7 +3,6 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 type Props = {
   suggestedEmail?: MailSuggestion
@@ -28,10 +27,8 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
   return (
     <Container>
       <Banner
-        Icon={PlainArrowNext}
         label={emailMessage}
-        description="Appliquer la modification"
-        onPress={replaceEmail}
+        links={[{ wording: 'Appliquer la modification', onPress: replaceEmail }]}
       />
     </Container>
   )

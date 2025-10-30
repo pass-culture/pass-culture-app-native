@@ -7,6 +7,7 @@ import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { theme } from 'theme'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -19,6 +20,7 @@ import { Banner } from './Banner'
 const meta: Meta<typeof Banner> = {
   title: 'design system/Banner',
   component: Banner,
+  parameters: { chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.md] } },
 }
 export default meta
 
@@ -112,7 +114,7 @@ const variantConfig: Variants<typeof Banner> = [
     props: {
       label: 'Banner label',
       description,
-      image: { uri, size: LENGTH_S },
+      image: { uri },
       onClose: () => alert('Close button clicked'),
       links: [
         {
