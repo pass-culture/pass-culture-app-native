@@ -1,6 +1,19 @@
 # DR000 - Remplacer reCAPTCHA
 
-> Status : Adopted or Replaced or Withdrawn
+> Status : Draft
+
+## TODO
+
+1. [x] Lister les alternatives
+1. [x] Éliminer des alternatives critères basiques
+1. [ ] Éliminer des alternatives critères plus avancés
+1. Audit
+   - [ ] Audit sécurité
+   - [ ] Audit accessibilité
+   - [ ] Audit protection des données personnelles
+1. [ ] Éliminer des alternatives suites aux audits
+1. [ ] Faire des PoC
+1. [ ] Implémenter la solution retenue
 
 ## Decision
 
