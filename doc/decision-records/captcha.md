@@ -84,25 +84,27 @@ _
 - Performance : Temps de réponse équivalent ou plus rapide
 - Fiabilité : Pas de panne ou bug pendant 1 mois après migration
 - Accessibilité : 🤷
+- Protection des données :
 - Hébergement : self hosted / monde / europe / france
 - Licence : Open Source / Closed Source
 
 ## Pros and Cons of the Options
 
-### Pas encore éliminé
+### Pas encore éliminés
 
 #### Captcha Text
 
 [Site](https://www.captchatext.com/)
 
-- Coût : $300 / an ✅
-- Sécurité :
+- Coût : [$29 / an](https://www.captchatext.com/index.html#itsfree) ✅
+- Sécurité : [SOC2 Compliant](https://www.captchatext.com/compliance.html)
 - Volume : Unlimited Traffic Handling | Unlimited Evals/Assessments ✅
-- Performance :
+- Performance : Serveur notamment en Europe, et validation sans rechargement de la page
 - Fiabilité :
 - Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
-- Hébergement : self hosted / monde / europe / france
-- Licence : Open Source / Closed Source
+- Protection des données : [GDPR Compliant](https://www.captchatext.com/compliance.html) ; [Privacy Policy](https://www.captchatext.com/privacy.html)
+- Hébergement : monde
+- Licence : Closed Source
 
 #### EU Captcha
 
@@ -119,6 +121,7 @@ _
 - Fiabilité :
 - Accessibilité : "accessible by users with disabilities" ✅
   - il y aurait un captcha audio
+- Protection des données :
 - Hébergement : self hosted
 - Licence : [Open Source](https://code.europa.eu/eu-captcha/EU-CAPTCHA) : EUPL 1.2
 
@@ -134,6 +137,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité : "User friendly, accessible interface"
+- Protection des données :
 - Hébergement : self hosted / monde
 - Licence : Closed Source
 
@@ -147,6 +151,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
+- Protection des données :
 - Hébergement : self hosted / Europe
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
 
@@ -160,6 +165,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité :
+- Protection des données :
 - Hébergement : self hosted / Europe
 - Licence : [Open Source](https://github.com/Swetrix/swetrix) : AGPL 3.0
 
@@ -173,6 +179,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité : [Conforme à WCAG/EAA](https://altcha.org/fr/docs/v2/compliance/#accessibility)
+- Protection des données :
 - Hébergement : self hosted / USA / Europe
 - Licence : Closed Source ?
 
@@ -186,6 +193,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité : [Conforme à WCAG/EAA](https://altcha.org/fr/docs/v2/compliance/#accessibility)
+- Protection des données :
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/altcha-org/altcha) : MIT
 
@@ -199,6 +207,7 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité :
+- Protection des données :
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
 
@@ -212,10 +221,11 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Performance :
 - Fiabilité :
 - Accessibilité :
+- Protection des données :
 - Hébergement : monde
 - Licence : Closed Source
 
-### Trop chère
+### Trop cher
 
 Certaines options, il faut les contacter pour avoir une offre custom
 
