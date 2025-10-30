@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { EventCard, EventCardProps, EVENT_CARD_WIDTH } from 'ui/components/eventCard/EventCard'
-import { Spacer, getSpacing } from 'ui/theme'
 
 type Props = {
   data: EventCardProps[]
@@ -14,9 +13,12 @@ type Props = {
 
 export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId }) => {
   const [webViewWidth, setWebViewWidth] = useState(0)
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
 
-  const numColumns = Math.max(Math.floor(webViewWidth / (EVENT_CARD_WIDTH + getSpacing(4))), 1)
+  const numColumns = Math.max(
+    Math.floor(webViewWidth / (EVENT_CARD_WIDTH + designSystem.size.spacing.l)),
+    1
+  )
 
   const analyticsParams = { analyticsFrom, offerId }
 
@@ -46,10 +48,7 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
     )
   }
 
-  const isLastColumn = (index: number) => {
-    if (index === data.length - 1 || index === data.length - 2) return true
-    return false
-  }
+  const isLastColumn = (index: number) => index >= data.length - 2
 
   return (
     <ScrollViewContainer
@@ -63,34 +62,37 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
         return (
           <React.Fragment key={JSON.stringify([topEventCardData, bottomEventCardData])}>
             <View>
-              <EventCardContainer isLast={isLastColumn(index)}>
-                {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
-                <EventCard {...topEventCardData} {...analyticsParams} />
-              </EventCardContainer>
+              {topEventCardData ? (
+                <EventCardContainer isLast={isLastColumn(index)} isBottom={false}>
+                  <EventCard {...topEventCardData} {...analyticsParams} />
+                </EventCardContainer>
+              ) : null}
               {bottomEventCardData ? (
-                <React.Fragment>
-                  <Spacer.Column numberOfSpaces={3} />
-                  <EventCardContainer isLast={isLastColumn(index)}>
-                    <EventCard {...bottomEventCardData} {...analyticsParams} />
-                  </EventCardContainer>
-                </React.Fragment>
+                <EventCardContainer isLast={isLastColumn(index)} isBottom>
+                  <EventCard {...bottomEventCardData} {...analyticsParams} />
+                </EventCardContainer>
               ) : null}
             </View>
           </React.Fragment>
         )
       })}
-      <Spacer.Row numberOfSpaces={6} />
     </ScrollViewContainer>
   )
 }
 
-const EventCardContainer = styled(View)<{ isLast: boolean }>(({ isLast }) => ({
-  marginRight: isLast ? 0 : getSpacing(3),
+const EventCardContainer = styled(View)<{ isLast: boolean; isBottom: boolean }>(
+  ({ isLast, isBottom, theme }) => ({
+    marginTop: isBottom ? theme.designSystem.size.spacing.m : 0,
+    marginRight: isLast ? 0 : theme.designSystem.size.spacing.m,
+  })
+)
+
+const ScrollViewContainer = styled.ScrollView(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.s,
 }))
 
-const ScrollViewContainer = styled.ScrollView({
-  paddingVertical: getSpacing(2),
-})
-const FlatListLineSpacer = () => <Spacer.Column numberOfSpaces={4} />
+const FlatListLineSpacer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
 
-const Container = styled(View)({ marginRight: getSpacing(4) })
+const Container = styled(View)(({ theme }) => ({ marginRight: theme.designSystem.size.spacing.l }))

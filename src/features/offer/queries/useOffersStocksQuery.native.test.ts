@@ -1,5 +1,6 @@
 import { OffersStocksResponseV2 } from 'api/gen'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
+import { convertOffererDatesToTimezone } from 'features/offer/queries/selectors/convertOffererDatesToTimezone'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -7,6 +8,8 @@ import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
+
+const timezonedOffersStocksResponseSnap = convertOffererDatesToTimezone(offersStocksResponseSnap)
 
 describe('useOffersStocksQuery', () => {
   beforeEach(() => {
@@ -23,6 +26,8 @@ describe('useOffersStocksQuery', () => {
 
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offersStocksResponseSnap))
+    expect(JSON.stringify(result.current.data)).toEqual(
+      JSON.stringify(timezonedOffersStocksResponseSnap)
+    )
   })
 })
