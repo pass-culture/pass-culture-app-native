@@ -102,6 +102,8 @@ _
 - Performance : Serveur notamment en Europe, et validation sans rechargement de la page
 - Fiabilité :
 - Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
+  - il y a un captcha audio
+  - quand je tente de faire la démo au clavier, je n'arrive pas à cocher la checkbox ⚠️
 - Protection des données : [GDPR Compliant](https://www.captchatext.com/compliance.html) ; [Privacy Policy](https://www.captchatext.com/privacy.html)
 - Hébergement : monde
 - Licence : Closed Source
