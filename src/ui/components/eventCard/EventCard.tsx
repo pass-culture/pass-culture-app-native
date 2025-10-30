@@ -13,7 +13,7 @@ export const EVENT_CARD_HEIGHT = getSpacing(19)
 export const EVENT_CARD_WIDTH = getSpacing(30)
 
 export type EventCardProps = {
-  onPress: () => void
+  onPress: VoidFunction
   isDisabled: boolean
   title: string
   subtitleLeft: string
