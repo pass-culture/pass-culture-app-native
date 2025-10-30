@@ -89,13 +89,10 @@ const EventCardContainer = styled(View)<{ isLast: boolean; isBottom: boolean }>(
 
 const ScrollViewContainer = styled.ScrollView(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.s,
-  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const FlatListLineSpacer = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.designSystem.color.background.subtle,
-  marginVertical: theme.designSystem.size.spacing.l,
+  marginVertical: theme.designSystem.size.spacing.s,
 }))
 
 const Container = styled(View)(({ theme }) => ({ marginRight: theme.designSystem.size.spacing.l }))
