@@ -6,6 +6,7 @@ import * as SetMarketingParams from 'features/cookies/helpers/setMarketingParams
 import * as Tracking from 'features/cookies/helpers/startTracking'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import { UTMParams } from 'features/cookies/types'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics/provider'
 import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
@@ -42,16 +43,19 @@ const mockStartTrackingAcceptedCookies = jest.spyOn(
   'startTrackingAcceptedCookies'
 )
 
-const UTM_PARAMS = {
+const UTM_PARAMS: UTMParams['params'] = {
   utm_campaign: 'test',
   utm_medium: 'test',
   utm_source: 'test',
+  utm_content: 'test',
+  utm_gen: 'marketing',
+  campaign_date: new Date().getTime().toString(),
 }
 
 jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
   params: UTM_PARAMS,
   key: 'UTMParams',
-  name: 'UTMParams',
+  name: 'Home',
 })
 
 const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')

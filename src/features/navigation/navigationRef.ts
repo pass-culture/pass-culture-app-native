@@ -10,7 +10,7 @@ export const navigateFromRef = <RouteName extends keyof RootStackParamList>(
     : [RouteName, RootStackParamList[RouteName]]
 ) => {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(...args)
+    navigationRef.dispatch(CommonActions.navigate({ name: args[0], params: args[1] }))
   }
 }
 
