@@ -16,7 +16,7 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { getSpacing } from 'ui/theme'
 
@@ -70,9 +70,9 @@ export const Ticket = ({
       : undefined
   }
   const infoBanner = (
-    <InfoBanner
-      message={`Tu auras besoin de ta carte d’identité pour ${properties.isEvent ? 'accéder à l’évènement' : 'récupérer ta réservation'}.`}
-      icon={IdCard}
+    <Banner
+      label={`Tu auras besoin de ta carte d’identité pour ${properties.isEvent ? 'accéder à l’évènement' : 'récupérer ta réservation'}.`}
+      Icon={IdCard}
     />
   )
 

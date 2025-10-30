@@ -6,11 +6,10 @@ import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Discl
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
-import { Info } from 'ui/svg/icons/Info'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { getSpacing } from 'ui/theme'
 
 export function ChangeEmailContent({
@@ -49,10 +48,7 @@ export function ChangeEmailContent({
             onEmailChange={() => undefined}
           />
           <InfoBannerContainer>
-            <InfoBanner
-              icon={Info}
-              message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
-            />
+            <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
           </InfoBannerContainer>
           <ButtonContainer paddingBottom={bottom}>
             <ButtonPrimary

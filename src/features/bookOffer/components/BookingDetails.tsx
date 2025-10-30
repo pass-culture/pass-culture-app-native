@@ -30,10 +30,10 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { Spacer, Typo } from 'ui/theme'
@@ -197,9 +197,9 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     <Loader message={loadingMessage} />
   ) : (
     <Container>
-      <InfoBanner
-        message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
-        icon={Error}
+      <Banner
+        label="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
+        Icon={Error}
       />
       <Spacer.Column numberOfSpaces={6} />
 

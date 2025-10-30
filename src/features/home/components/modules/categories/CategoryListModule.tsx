@@ -9,12 +9,8 @@ import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
-import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
-import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Bulb } from 'ui/svg/icons/Bulb'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
@@ -113,17 +109,19 @@ export const CategoryListModule = ({
       </StyledView>
       {enableHomeSatisfactionQualtrics && !homeSatisfactionQualtricsPressed ? (
         <BannerContainer>
-          <GenericColoredBanner
-            message="Un avis sur cette page&nbsp;? Partage-nous tes idées pour nous aider à l’améliorer&nbsp;!"
-            Icon={Bulb}>
-            <ExternalTouchableLink
-              wording="Répondre au court questionnaire"
-              as={StyledButtonQuaternaryBlack}
-              externalNav={{ url: 'https://passculture.qualtrics.com/jfe/form/SV_dgtDyqEDDDlH8xg' }}
-              icon={ExternalSiteFilled}
-              onBeforeNavigate={handleQualtricsButtonPress}
-            />
-          </GenericColoredBanner>
+          <Banner
+            label="Un avis sur cette page&nbsp;? Partage-nous tes idées pour nous aider à l’améliorer&nbsp;!"
+            Icon={Bulb}
+            links={[
+              {
+                wording: 'Répondre au court questionnaire',
+                externalNav: {
+                  url: 'https://passculture.qualtrics.com/jfe/form/SV_dgtDyqEDDDlH8xg',
+                },
+                onBeforeNavigate: handleQualtricsButtonPress,
+              },
+            ]}
+          />
         </BannerContainer>
       ) : null}
     </Container>
@@ -161,11 +159,4 @@ const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
 const BannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
   marginTop: theme.designSystem.size.spacing.xxxl,
-}))
-
-const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
-  justifyContent: 'flex-start',
-  inline: true,
-})(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.s,
 }))

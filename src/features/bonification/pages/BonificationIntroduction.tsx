@@ -6,7 +6,6 @@ import { styled } from 'styled-components/native'
 
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { env } from 'libs/environment/env'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -14,6 +13,7 @@ import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
@@ -61,9 +61,9 @@ export const BonificationIntroduction = () => {
             <Typo.Body>
               Ces infos nous servirons à vérifier si tu es éligible à l’allocation.
             </Typo.Body>
-            <InfoBanner
-              icon={Info}
-              message="Il se peut que tu ne sois pas éligible et que ta demande soit refusée."
+            <Banner
+              label="Il se peut que tu ne sois pas éligible et que ta demande soit refusée."
+              Icon={Info}
             />
           </ViewGap>
         </Form.MaxWidth>

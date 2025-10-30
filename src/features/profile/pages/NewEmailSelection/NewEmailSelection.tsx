@@ -10,7 +10,6 @@ import { useNewEmailSelectionMutation } from 'features/profile/helpers/useNewEma
 import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelection/schema/newEmailSelectionSchema'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
@@ -19,8 +18,8 @@ import {
   SNACK_BAR_TIME_OUT_LONG,
   useSnackBarContext,
 } from 'ui/components/snackBar/SnackBarContext'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Info } from 'ui/svg/icons/Info'
 import { getSpacing } from 'ui/theme'
 
 type FormValues = {
@@ -81,10 +80,7 @@ export const NewEmailSelection = () => {
           autoFocus
         />
         <Container>
-          <InfoBanner
-            icon={Info}
-            message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
-          />
+          <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
         </Container>
         <ButtonPrimary
           wording="Modifier mon adresse e-mail"
@@ -96,4 +92,7 @@ export const NewEmailSelection = () => {
   )
 }
 
-const Container = styled.View({ marginTop: getSpacing(4), marginBottom: getSpacing(10) })
+const Container = styled.View({
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(10),
+})

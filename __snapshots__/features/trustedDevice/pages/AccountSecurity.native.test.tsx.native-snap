@@ -198,46 +198,39 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
            de cette connexion :
         </Text>
         <View
-          backgroundColor="#f3edff"
           style={
             {
-              "alignItems": "center",
               "backgroundColor": "#f3edff",
               "borderBottomLeftRadius": 8,
               "borderBottomRightRadius": 8,
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
               "flexDirection": "row",
-              "justifyContent": "space-between",
+              "gap": 8,
               "paddingBottom": 16,
               "paddingLeft": 16,
               "paddingRight": 16,
               "paddingTop": 16,
+              "width": "100%",
             }
           }
         >
           <View
-            style={
-              {
-                "paddingRight": 16,
-              }
-            }
+            fill="#320096"
+            height={24}
+            width={24}
           >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
-          <View
+          <Text
             style={
               {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 14,
+                "lineHeight": 22.4,
               }
             }
           >
@@ -246,71 +239,48 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
                 }
               }
-              textColor="#161617"
             >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Appareil utilisé : 
-                </Text>
-                 
-                iOS - iPhone 13
-                
-
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Lieu : 
-                </Text>
-                 
-                Paris
-                
-
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Date et heure : 
-                </Text>
-                 
-                Le 09/06/2023 à 10h00
-              </Text>
+              Appareil utilisé : 
             </Text>
-          </View>
+             
+            iOS - iPhone 13
+            
+
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Lieu : 
+            </Text>
+             
+            Paris
+            
+
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Date et heure : 
+            </Text>
+             
+            Le 09/06/2023 à 10h00
+          </Text>
         </View>
         <Text
           style={
@@ -851,46 +821,39 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
            de cette connexion :
         </Text>
         <View
-          backgroundColor="#f3edff"
           style={
             {
-              "alignItems": "center",
               "backgroundColor": "#f3edff",
               "borderBottomLeftRadius": 8,
               "borderBottomRightRadius": 8,
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
               "flexDirection": "row",
-              "justifyContent": "space-between",
+              "gap": 8,
               "paddingBottom": 16,
               "paddingLeft": 16,
               "paddingRight": 16,
               "paddingTop": 16,
+              "width": "100%",
             }
           }
         >
           <View
-            style={
-              {
-                "paddingRight": 16,
-              }
-            }
+            fill="#320096"
+            height={24}
+            width={24}
           >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
-          <View
+          <Text
             style={
               {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 14,
+                "lineHeight": 22.4,
               }
             }
           >
@@ -899,71 +862,48 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
                 }
               }
-              textColor="#161617"
             >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Appareil utilisé : 
-                </Text>
-                 
-                iOS - iPhone 13
-                
-
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Lieu : 
-                </Text>
-                 
-                Paris
-                
-
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Date et heure : 
-                </Text>
-                 
-                Le 09/06/2023 à 10h00
-              </Text>
+              Appareil utilisé : 
             </Text>
-          </View>
+             
+            iOS - iPhone 13
+            
+
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Lieu : 
+            </Text>
+             
+            Paris
+            
+
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Date et heure : 
+            </Text>
+             
+            Le 09/06/2023 à 10h00
+          </Text>
         </View>
         <Text
           style={
@@ -1415,46 +1355,39 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
            de cette connexion :
         </Text>
         <View
-          backgroundColor="#f3edff"
           style={
             {
-              "alignItems": "center",
               "backgroundColor": "#f3edff",
               "borderBottomLeftRadius": 8,
               "borderBottomRightRadius": 8,
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
               "flexDirection": "row",
-              "justifyContent": "space-between",
+              "gap": 8,
               "paddingBottom": 16,
               "paddingLeft": 16,
               "paddingRight": 16,
               "paddingTop": 16,
+              "width": "100%",
             }
           }
         >
           <View
-            style={
-              {
-                "paddingRight": 16,
-              }
-            }
+            fill="#320096"
+            height={24}
+            width={24}
           >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
-          <View
+          <Text
             style={
               {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 14,
+                "lineHeight": 22.4,
               }
             }
           >
@@ -1463,71 +1396,48 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
                 }
               }
-              textColor="#161617"
             >
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                  }
-                }
-              >
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Appareil utilisé : 
-                </Text>
-                 
-                Indéterminé
-                
-
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Lieu : 
-                </Text>
-                 
-                Indéterminé
-                
-
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  Date et heure : 
-                </Text>
-                 
-                Indéterminé
-              </Text>
+              Appareil utilisé : 
             </Text>
-          </View>
+             
+            Indéterminé
+            
+
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Lieu : 
+            </Text>
+             
+            Indéterminé
+            
+
+            <Text
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 14,
+                  "lineHeight": 22.4,
+                }
+              }
+            >
+              Date et heure : 
+            </Text>
+             
+            Indéterminé
+          </Text>
         </View>
         <Text
           style={

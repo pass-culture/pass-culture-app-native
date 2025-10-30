@@ -9,9 +9,9 @@ import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setN
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -77,7 +77,7 @@ export const SetName = () => {
         <Form.MaxWidth>
           <Typo.Title3 {...getHeadingAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <InfoBanner icon={IdCard} message={pageConfigByType[type].bannerMessage} />
+          <Banner Icon={IdCard} label={pageConfigByType[type].bannerMessage} />
           <Spacer.Column numberOfSpaces={4} />
           <Controller
             control={control}

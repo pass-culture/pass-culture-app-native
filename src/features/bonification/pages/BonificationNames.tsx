@@ -10,10 +10,10 @@ import {
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -64,9 +64,9 @@ export const BonificationNames = () => {
         <Form.MaxWidth>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>Quel est son nom et prénom&nbsp;?</Typo.Title3>
-            <InfoBanner
-              icon={IdCard}
-              message="Plus tu seras précis sur ces informations, plus on aura de chances de trouver la personne en question."
+            <Banner
+              Icon={IdCard}
+              label="Plus tu seras précis sur ces informations, plus on aura de chances de trouver la personne en question."
             />
             <Controller
               control={control}

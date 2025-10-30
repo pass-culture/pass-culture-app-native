@@ -6,12 +6,9 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
 import { env } from 'libs/environment/env'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
@@ -58,17 +55,12 @@ export const DeleteProfileConfirmation = () => {
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>Tes réservations en cours seront également annulées et supprimées.</Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
-      <InfoBanner message="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.">
-        <Spacer.Column numberOfSpaces={2} />
-        <ExternalTouchableLink
-          as={ButtonQuaternarySecondary}
-          externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
-          wording="Consultez notre FAQ"
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          inline
-        />
-      </InfoBanner>
+      <Banner
+        label="L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir."
+        links={[
+          { wording: 'Consultez notre FAQ', externalNav: { url: env.FAQ_LINK_RIGHT_TO_ERASURE } },
+        ]}
+      />
     </GenericInfoPage>
   )
 }

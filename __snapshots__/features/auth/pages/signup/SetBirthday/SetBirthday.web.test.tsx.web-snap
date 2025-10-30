@@ -164,27 +164,25 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
       >
         <div
-          class="css-view-175oi2r r-paddingRight-i023vh"
+          class="css-view-175oi2r"
         >
           <div
-            class="css-view-175oi2r"
+            class="css-text-146c3p1"
+            dir="ltr"
           >
-            <div
-              class="css-text-146c3p1"
-              dir="ltr"
-            >
-              undefined-SVG-Mock
-            </div>
+            undefined-SVG-Mock
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+          role="presentation"
         >
           <div
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
             dir="ltr"
           >
             Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
@@ -1484,27 +1482,25 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
       >
         <div
-          class="css-view-175oi2r r-paddingRight-i023vh"
+          class="css-view-175oi2r"
         >
           <div
-            class="css-view-175oi2r"
+            class="css-text-146c3p1"
+            dir="ltr"
           >
-            <div
-              class="css-text-146c3p1"
-              dir="ltr"
-            >
-              undefined-SVG-Mock
-            </div>
+            undefined-SVG-Mock
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+          role="presentation"
         >
           <div
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
             dir="ltr"
           >
             Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.

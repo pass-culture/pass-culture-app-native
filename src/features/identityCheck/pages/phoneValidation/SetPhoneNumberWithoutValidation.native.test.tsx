@@ -11,6 +11,7 @@ import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { SetPhoneNumberWithoutValidation } from './SetPhoneNumberWithoutValidation'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/jwt/jwt')
 
 const patchProfile = jest.spyOn(API.api, 'patchNativeV1Profile')

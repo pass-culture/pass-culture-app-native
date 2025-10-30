@@ -12,10 +12,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -100,7 +100,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
-        <InfoBanner message={bannerMessage} icon={IdCard} />
+        <Banner label={bannerMessage} Icon={IdCard} />
         <Spacer.Column numberOfSpaces={10} />
         <Controller
           control={control}

@@ -6,8 +6,9 @@ import { renderAsync, screen, userEvent, waitFor, waitForButtonToBePressable } f
 
 import { ChangeEmail } from './ChangeEmail'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('libs/subcategories/useSubcategories')
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

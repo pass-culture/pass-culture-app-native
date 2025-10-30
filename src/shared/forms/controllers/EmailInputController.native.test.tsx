@@ -11,6 +11,8 @@ type EmailForm = {
 
 const user = userEvent.setup()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.useFakeTimers()
 
 describe('<EmailInputController />', () => {

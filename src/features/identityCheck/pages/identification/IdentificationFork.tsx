@@ -8,11 +8,10 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { ColorScheme } from 'libs/styled/useColorScheme'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
@@ -67,20 +66,17 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         key={1}
       />
       {shouldDisplayReassuranceMention ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
-          <InfoBanner message="pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois.">
-            <Spacer.Column numberOfSpaces={2} />
-            <ExternalTouchableLink
-              as={ButtonQuaternarySecondary}
-              externalNav={{ url: env.PRIVACY_POLICY_LINK }}
-              wording="Voir la charte des données personnelles"
-              icon={ExternalSiteFilled}
-              justifyContent="flex-start"
-              inline
-            />
-          </InfoBanner>
-        </React.Fragment>
+        <BannerContainer>
+          <Banner
+            label="pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois."
+            links={[
+              {
+                wording: 'Voir la charte des données personnelles',
+                externalNav: { url: env.PRIVACY_POLICY_LINK },
+              },
+            ]}
+          />
+        </BannerContainer>
       ) : null}
       <Spacer.Column numberOfSpaces={10} />
     </Container>
@@ -91,6 +87,10 @@ const Container = styled.View({
   marginHorizontal: getSpacing(1),
   marginVertical: getSpacing(3),
 })
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const StyledSeparatorWithText = styled.View({
   marginVertical: getSpacing(6),

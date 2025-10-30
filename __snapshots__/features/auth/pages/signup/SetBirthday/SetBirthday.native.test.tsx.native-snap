@@ -39,17 +39,17 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     }
   >
     <View
-      backgroundColor="#f3edff"
+      background="#f3edff"
       style={
         {
-          "alignItems": "center",
+          "alignItems": "flex-start",
           "backgroundColor": "#f3edff",
           "borderBottomLeftRadius": 8,
           "borderBottomRightRadius": 8,
           "borderTopLeftRadius": 8,
           "borderTopRightRadius": 8,
           "flexDirection": "row",
-          "justifyContent": "space-between",
+          "gap": 12,
           "paddingBottom": 16,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -58,27 +58,22 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     >
       <View
-        style={
-          {
-            "paddingRight": 16,
-          }
-        }
+        height={24}
+        width={24}
       >
-        <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
+        accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+        accessibilityRole="none"
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
+            "gap": 4,
           }
         }
       >
@@ -87,11 +82,10 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
+              "fontSize": 14,
+              "lineHeight": 22.4,
             }
           }
-          textColor="#161617"
         >
           Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
         </Text>
@@ -888,17 +882,17 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     }
   >
     <View
-      backgroundColor="#f3edff"
+      background="#f3edff"
       style={
         {
-          "alignItems": "center",
+          "alignItems": "flex-start",
           "backgroundColor": "#f3edff",
           "borderBottomLeftRadius": 8,
           "borderBottomRightRadius": 8,
           "borderTopLeftRadius": 8,
           "borderTopRightRadius": 8,
           "flexDirection": "row",
-          "justifyContent": "space-between",
+          "gap": 12,
           "paddingBottom": 16,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -907,27 +901,22 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       }
     >
       <View
-        style={
-          {
-            "paddingRight": 16,
-          }
-        }
+        height={24}
+        width={24}
       >
-        <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
+        accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+        accessibilityRole="none"
         style={
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
+            "gap": 4,
           }
         }
       >
@@ -936,11 +925,10 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
+              "fontSize": 14,
+              "lineHeight": 22.4,
             }
           }
-          textColor="#161617"
         >
           Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
         </Text>

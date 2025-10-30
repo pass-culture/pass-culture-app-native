@@ -23,9 +23,10 @@ import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
+import { Banner } from 'ui/designSystem/Banner/Banner'
+import { BannerType } from 'ui/designSystem/Banner/enums'
 
 const scrollIndicatorInsets = { right: 1 }
 
@@ -112,7 +113,7 @@ export const BookingDetailsContent = ({
             }
             rightBlock={
               <React.Fragment>
-                {isNoTicket ? null : <ErrorBanner message={errorBannerMessage} />}
+                {isNoTicket ? null : <Banner type={BannerType.ERROR} label={errorBannerMessage} />}
                 {booking.stock.offer.bookingContact || booking.ticket.withdrawal.details ? (
                   <BookingPrecisions
                     bookingContactEmail={booking.stock.offer.bookingContact}

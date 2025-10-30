@@ -21,11 +21,11 @@ import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'shared/currency/fo
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Close } from 'ui/svg/icons/Close'
 import { Error } from 'ui/svg/icons/Error'
 
@@ -309,7 +309,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
         <Form.MaxWidth>
           {isLoggedInAndBeneficiary && depositTypeIsNotGrantFree ? (
             <Container>
-              <InfoBanner message={bannerTitle} icon={Error} testID="creditBanner" />
+              <Banner label={bannerTitle} Icon={Error} testID="creditBanner" />
             </Container>
           ) : null}
           <Controller

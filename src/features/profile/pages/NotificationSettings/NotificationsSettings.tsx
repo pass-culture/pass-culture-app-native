@@ -23,14 +23,13 @@ import {
 } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -150,10 +149,7 @@ export const NotificationsSettings = () => {
       <Container>
         {isLoggedIn ? null : (
           <React.Fragment>
-            <InfoBanner
-              message="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
-              icon={Info}
-            />
+            <Banner label="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture." />
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         )}
@@ -195,10 +191,7 @@ export const NotificationsSettings = () => {
           {!isLoggedIn || areNotificationsEnabled ? null : (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
-              <InfoBanner
-                message="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications."
-                icon={Info}
-              />
+              <Banner label="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications." />
             </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={6} />
