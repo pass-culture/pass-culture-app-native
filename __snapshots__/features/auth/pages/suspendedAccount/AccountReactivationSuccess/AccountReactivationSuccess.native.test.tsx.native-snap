@@ -82,206 +82,213 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
       />
     </View>
   </View>
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+      }
+    }
+    showsVerticalScrollIndicator={false}
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      animation={true}
-      style={
-        {
-          "alignItems": "center",
-          "height": "30%",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
-      <View>
-        undefined-Lottie-Mock
-      </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Ton compte a été réactivé
-      </Text>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        On est ravi de te revoir !
-Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
-      </Text>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
+    <View>
       <View
-        accessibilityLabel="Découvrir le catalogue"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        height={16}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "height": 16,
+          }
         }
-        testID="Découvrir le catalogue"
+      />
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        animation={true}
+        style={
+          {
+            "alignItems": "center",
+            "height": "30%",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
+        }
       >
-        <View
+        <View>
+          undefined-Lottie-Mock
+        </View>
+      </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
           style={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
             }
           }
         >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          Ton compte a été réactivé
+        </Text>
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          On est ravi de te revoir !
+Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
+        </Text>
+      </View>
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Découvrir le catalogue"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Découvrir le catalogue"
+        >
+          <View
             style={
               {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               }
             }
           >
-            Découvrir le catalogue
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Découvrir le catalogue
+            </Text>
+          </View>
         </View>
       </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
+  </RCTScrollView>
 </View>
 `;

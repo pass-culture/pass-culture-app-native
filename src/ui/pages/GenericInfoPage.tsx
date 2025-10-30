@@ -246,18 +246,19 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
           ) : null}
         </ButtonContainer>
         {isDesktopViewport ? <Spacer.Flex flex={1} /> : null}
+        <Spacer.BottomScreen />
       </Container>
-      <Spacer.BottomScreen />
     </Page>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { flexGrow: 1, justifyContent: 'space-between' },
+})(({ theme }) => ({
   flex: 1,
-  justifyContent: 'space-between',
   paddingHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: theme.contentPage.marginVertical,
-  overflow: 'scroll',
 }))
 
 const Header = styled(PageHeaderWithoutPlaceholder)({

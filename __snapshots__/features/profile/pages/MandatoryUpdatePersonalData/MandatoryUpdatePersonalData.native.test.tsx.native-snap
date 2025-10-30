@@ -82,325 +82,332 @@ exports[`<MandatoryUpdatePersonalData /> should render correctly 1`] = `
       />
     </View>
   </View>
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+      }
+    }
+    showsVerticalScrollIndicator={false}
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      animation={false}
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
+        height={16}
         style={
           {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "height": 16,
           }
         }
-      >
-        Mets à jour ton profil
-      </Text>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          }
-        }
-      >
-        Pour mieux t’accompagner, on a besoin de vérifier que tes informations personnelles sont toujours à jour.
-C’est rapide, promis.
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
-    >
+      />
       <View
-        accessibilityLabel="Charte des données personnelles"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        flex={1}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "height": "auto",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "backgroundColor": "transparent",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
-        testID="Charte des données personnelles"
+      />
+      <View
+        animation={false}
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
+        }
       >
         <View
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
           style={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
             }
           }
+        >
+          Mets à jour ton profil
+        </Text>
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Pour mieux t’accompagner, on a besoin de vérifier que tes informations personnelles sont toujours à jour.
+C’est rapide, promis.
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "marginBottom": 24,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Charte des données personnelles"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "height": "auto",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Charte des données personnelles"
         >
           <View
             style={
               {
+                "alignItems": "center",
                 "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
               }
             }
           >
             <View
-              accessibilityLabel="Nouvelle fenêtre"
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={2}
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
-            }
-          >
-            Charte des données personnelles
-          </Text>
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon-left"
+                width={20}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Charte des données personnelles
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
       <View
-        accessibilityLabel="Commencer"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        flex={1}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
         }
-        testID="Commencer"
+      />
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+          }
+        }
       >
         <View
-          style={
+          accessibilityLabel="Commencer"
+          accessibilityState={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
             }
           }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Commencer"
         >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          <View
             style={
               {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               }
             }
           >
-            Commencer
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Commencer
+            </Text>
+          </View>
         </View>
       </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
+  </RCTScrollView>
 </View>
 `;

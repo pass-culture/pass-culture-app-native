@@ -82,368 +82,375 @@ exports[`DeactivateProfileSuccess component should render delete profile success
       />
     </View>
   </View>
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+      }
+    }
+    showsVerticalScrollIndicator={false}
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      animation={false}
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
+        height={16}
         style={
           {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "height": 16,
+          }
+        }
+      />
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        animation={false}
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           }
         }
       >
-        Ton compte a été désactivé
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
-    >
+        <View
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
       <View
         gap={4}
         style={
           {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Ton compte a été désactivé
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "marginBottom": 24,
+          }
+        }
+      >
+        <View
+          gap={4}
+          style={
+            {
+              "gap": 16,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            <Text
+              accessibilityHidden={true}
+              accessibilityRole="image"
+            >
+              😢
+               
+            </Text>
+            On est super triste de te voir partir.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Tu as 
+            60
+             jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
+          </Text>
+        </View>
+      </View>
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
             "gap": 16,
           }
         }
       >
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          <Text
-            accessibilityHidden={true}
-            accessibilityRole="image"
-          >
-            😢
-             
-          </Text>
-          On est super triste de te voir partir.
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Tu as 
-          60
-           jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            }
-          }
-        >
-          Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
-        </Text>
-      </View>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Retourner à l’accueil"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Retourner à l’accueil"
-      >
         <View
-          style={
+          accessibilityLabel="Retourner à l’accueil"
+          accessibilityState={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
             }
           }
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
-          >
-            Retourner à l’accueil
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Réactiver mon compte"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
           }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
             [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
               {
-                "userSelect": "auto",
+                "opacity": 1,
               },
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "borderColor": "#6123df",
-                "borderStyle": "solid",
-                "borderWidth": 2,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Réactiver mon compte"
-      >
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            }
+            ]
           }
+          testID="Retourner à l’accueil"
         >
           <View
             style={
               {
+                "alignItems": "center",
                 "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
+              }
+            }
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Retourner à l’accueil
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Réactiver mon compte"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "borderColor": "#6123df",
+                  "borderStyle": "solid",
+                  "borderWidth": 2,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Réactiver mon compte"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
               }
             }
           >
             <View
-              height={24}
-              testID="button-icon-left"
-              width={24}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#6123df",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
               }
-            }
-          >
-            Réactiver mon compte
-          </Text>
+            >
+              <View
+                height={24}
+                testID="button-icon-left"
+                width={24}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#6123df",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Réactiver mon compte
+            </Text>
+          </View>
         </View>
       </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
+  </RCTScrollView>
 </View>
 `;
