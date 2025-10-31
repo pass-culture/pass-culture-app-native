@@ -5,7 +5,6 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 
 // if __DEV__ import if you want to debug
@@ -73,7 +72,7 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView>
       <ReactQueryClientProvider>
         <ThemeWrapper>
           <SafeAreaProvider>
