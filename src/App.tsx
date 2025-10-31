@@ -4,7 +4,7 @@ import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox } from 'react-native'
-import 'react-native-gesture-handler' // @react-navigation
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import 'react-native-get-random-values' // required for `uuid` module to work
 
 // if __DEV__ import if you want to debug
@@ -72,49 +72,51 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <ReactQueryClientProvider>
-      <ThemeWrapper>
-        <SafeAreaProvider>
-          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-            <AnalyticsInitializer>
-              {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-              <NetInfoWrapper>
-                <FirestoreNetworkObserver />
-                <SettingsWrapper>
-                  <AuthWrapper>
-                    <LocationWrapper>
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <SplashScreenProvider>
-                                      <ShareAppWrapper>
-                                        <OfflineModeContainer>
-                                          <ScreenErrorProvider>
-                                            <AppNavigationContainer />
-                                          </ScreenErrorProvider>
-                                        </OfflineModeContainer>
-                                      </ShareAppWrapper>
-                                    </SplashScreenProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
-                    </LocationWrapper>
-                  </AuthWrapper>
-                </SettingsWrapper>
-              </NetInfoWrapper>
-            </AnalyticsInitializer>
-          </ErrorBoundary>
-        </SafeAreaProvider>
-      </ThemeWrapper>
-    </ReactQueryClientProvider>
+    <GestureHandlerRootView>
+      <ReactQueryClientProvider>
+        <ThemeWrapper>
+          <SafeAreaProvider>
+            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+              <AnalyticsInitializer>
+                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
+                <NetInfoWrapper>
+                  <FirestoreNetworkObserver />
+                  <SettingsWrapper>
+                    <AuthWrapper>
+                      <LocationWrapper>
+                        <AccessibilityFiltersWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <SplashScreenProvider>
+                                        <ShareAppWrapper>
+                                          <OfflineModeContainer>
+                                            <ScreenErrorProvider>
+                                              <AppNavigationContainer />
+                                            </ScreenErrorProvider>
+                                          </OfflineModeContainer>
+                                        </ShareAppWrapper>
+                                      </SplashScreenProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </AccessibilityFiltersWrapper>
+                      </LocationWrapper>
+                    </AuthWrapper>
+                  </SettingsWrapper>
+                </NetInfoWrapper>
+              </AnalyticsInitializer>
+            </ErrorBoundary>
+          </SafeAreaProvider>
+        </ThemeWrapper>
+      </ReactQueryClientProvider>
+    </GestureHandlerRootView>
   )
 }
 
