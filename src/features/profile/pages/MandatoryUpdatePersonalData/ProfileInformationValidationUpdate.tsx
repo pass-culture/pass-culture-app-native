@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Summary } from 'features/identityCheck/components/Summary'
@@ -24,7 +24,10 @@ export const ProfileInformationValidationUpdate = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const [navigatorName, screenConfig] = getProfileHookConfig('UpdatePersonalDataConfirmation')
 
-  const { mutateAsync: postProfile, isPending } = usePostProfileMutation({
+  // isPending from react-query is not support with mutateAsync
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { mutateAsync: postProfile } = usePostProfileMutation({
     onSuccess: () => {
       reset({
         index: 1,
@@ -67,7 +70,9 @@ export const ProfileInformationValidationUpdate = () => {
       schoolType: null,
     }
 
+    setIsLoading(true)
     await postProfile(profile)
+    setIsLoading(false)
   }, [postProfile, user])
 
   const onChangeInformation = () =>
@@ -93,7 +98,7 @@ export const ProfileInformationValidationUpdate = () => {
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}
-        isLoading={isPending}
+        isLoading={isLoading}
       />
     </ViewGap>
   )
