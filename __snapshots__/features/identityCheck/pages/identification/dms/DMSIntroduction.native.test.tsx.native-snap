@@ -152,462 +152,469 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       />
     </View>
   </View>
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+      }
+    }
+    showsVerticalScrollIndicator={false}
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={65}
-      style={
-        {
-          "height": 65,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      animation={false}
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        accessibilityLabel="demarches-simplifiees.fr"
-        fill="none"
-        height={64}
-        width={240}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
+        height={65}
         style={
           {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "height": 65,
           }
         }
-      >
-        Identifie-toi sur le site demarches-simplifiees.fr
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-          }
-        }
-      >
-        Pour t’identifier tu vas avoir besoin de : 
-      </Text>
+      />
       <View
-        accessibilityRole="list"
+        flex={1}
         style={
           {
-            "flexDirection": "column",
-            "paddingLeft": 0,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
-      >
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              10 minutes de ton temps
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Un justificatif de domicile
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              testID="BicolorProfile"
-              width={24}
-            >
-              <Text>
-                BicolorProfile-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Un selfie avec ta pièce d’identité
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-      </View>
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Le traitement de ton dossier peut prendre jusqu’à 5 jours.
-      </Text>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
+      />
       <View
-        accessibilityLabel="Aller sur demarches-simplifiees.fr"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        animation={false}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
         }
-        testID="Aller sur demarches-simplifiees.fr"
       >
         <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            }
-          }
+          accessibilityLabel="demarches-simplifiees.fr"
+          fill="none"
+          height={64}
+          width={240}
         >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Nouvelle fenêtre"
-              height={24}
-              testID="button-icon-left"
-              width={24}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
-            }
-          >
-            Aller sur demarches-simplifiees.fr
+          <Text>
+            undefined-SVG-Mock
           </Text>
         </View>
       </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Identifie-toi sur le site demarches-simplifiees.fr
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginBottom": 20,
+            }
+          }
+        >
+          Pour t’identifier tu vas avoir besoin de : 
+        </Text>
+        <View
+          accessibilityRole="list"
+          style={
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                10 minutes de ton temps
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Un justificatif de domicile
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                testID="BicolorProfile"
+                width={24}
+              >
+                <Text>
+                  BicolorProfile-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Un selfie avec ta pièce d’identité
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+        </View>
+        <Text
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            }
+          }
+        >
+          Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+        </Text>
+      </View>
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Aller sur demarches-simplifiees.fr"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Aller sur demarches-simplifiees.fr"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={24}
+                testID="button-icon-left"
+                width={24}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Aller sur demarches-simplifiees.fr
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
+  </RCTScrollView>
 </View>
 `;
 
@@ -763,411 +770,418 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       />
     </View>
   </View>
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+      }
+    }
+    showsVerticalScrollIndicator={false}
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={65}
-      style={
-        {
-          "height": 65,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      animation={false}
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        accessibilityLabel="demarches-simplifiees.fr"
-        fill="none"
-        height={64}
-        width={240}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
+        height={65}
         style={
           {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "height": 65,
           }
         }
-      >
-        Identifie-toi sur le site demarches-simplifiees.fr
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-          }
-        }
-      >
-        Pour t’identifier tu vas avoir besoin de : 
-      </Text>
+      />
       <View
-        accessibilityRole="list"
+        flex={1}
         style={
           {
-            "flexDirection": "column",
-            "paddingLeft": 0,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
-      >
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              10 minutes de ton temps
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Ta pièce d’identité française en cours de validité
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
-          <View
-            gap={3.75}
-            style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 15,
-              }
-            }
-          >
-            <View
-              height={24}
-              testID="BicolorProfile"
-              width={24}
-            >
-              <Text>
-                BicolorProfile-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                {
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                }
-              }
-            >
-              Un selfie avec ta pièce d’identité
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={4.5}
-            style={
-              {
-                "height": 18,
-              }
-            }
-          />
-        </View>
-      </View>
-      <Text
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-          }
-        }
-      >
-        Le traitement de ton dossier peut prendre jusqu’à 5 jours.
-      </Text>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
+      />
       <View
-        accessibilityLabel="Aller sur demarches-simplifiees.fr"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        animation={false}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
         }
-        testID="Aller sur demarches-simplifiees.fr"
       >
         <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            }
-          }
+          accessibilityLabel="demarches-simplifiees.fr"
+          fill="none"
+          height={64}
+          width={240}
         >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Nouvelle fenêtre"
-              height={24}
-              testID="button-icon-left"
-              width={24}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
-            }
-          >
-            Aller sur demarches-simplifiees.fr
+          <Text>
+            undefined-SVG-Mock
           </Text>
         </View>
       </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Identifie-toi sur le site demarches-simplifiees.fr
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "marginBottom": 24,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "marginBottom": 20,
+            }
+          }
+        >
+          Pour t’identifier tu vas avoir besoin de : 
+        </Text>
+        <View
+          accessibilityRole="list"
+          style={
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                10 minutes de ton temps
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Ta pièce d’identité française en cours de validité
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              {
+                "display": "flex",
+              }
+            }
+          >
+            <View
+              gap={3.75}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 15,
+                }
+              }
+            >
+              <View
+                height={24}
+                testID="BicolorProfile"
+                width={24}
+              >
+                <Text>
+                  BicolorProfile-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Un selfie avec ta pièce d’identité
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                {
+                  "height": 18,
+                }
+              }
+            />
+          </View>
+        </View>
+        <Text
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 19.2,
+            }
+          }
+        >
+          Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+        </Text>
+      </View>
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Aller sur demarches-simplifiees.fr"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Aller sur demarches-simplifiees.fr"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                  "marginRight": 8,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={24}
+                testID="button-icon-left"
+                width={24}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Aller sur demarches-simplifiees.fr
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          {
+            "height": 8,
+          }
+        }
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
+  </RCTScrollView>
 </View>
 `;

@@ -82,112 +82,88 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       />
     </View>
   </View>
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "space-between",
+      }
+    }
+    showsVerticalScrollIndicator={false}
     style={
       {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "space-between",
-        "overflow": "scroll",
         "paddingHorizontal": 24,
         "paddingVertical": 24,
       }
     }
   >
-    <View
-      height={16}
-      style={
-        {
-          "height": 16,
-        }
-      }
-    />
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      animation={false}
-      style={
-        {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginBottom": 24,
-        }
-      }
-    >
+    <View>
       <View
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-          "marginBottom": 24,
-        }
-      }
-    >
-      <Text
-        accessibilityRole="header"
+        height={16}
         style={
           {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "height": 16,
           }
         }
-      >
-        Oups !
-      </Text>
-      <Text
-        accessibilityRole="header"
+      />
+      <View
+        flex={1}
         style={
           {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
-      >
-        Custom subtitle
-      </Text>
-    </View>
-    <View
-      style={
-        {
-          "marginBottom": 24,
-        }
-      }
-    >
+      />
       <View
-        gap={2}
+        animation={false}
         style={
           {
             "alignItems": "center",
-            "gap": 8,
+            "justifyContent": "center",
+            "marginBottom": 24,
+          }
+        }
+      >
+        <View
+          height={156}
+          width={200}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           }
         }
       >
         <Text
+          accessibilityRole="header"
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            }
+          }
+        >
+          Oups !
+        </Text>
+        <Text
+          accessibilityRole="header"
           style={
             {
               "color": "#161617",
@@ -198,10 +174,252 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             }
           }
         >
-          Si tu as besoin d’aide n’hésite pas à :
+          Custom subtitle
         </Text>
+      </View>
+      <View
+        style={
+          {
+            "marginBottom": 24,
+          }
+        }
+      >
         <View
-          accessibilityLabel="Consulter l’article d’aide"
+          gap={2}
+          style={
+            {
+              "alignItems": "center",
+              "gap": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              }
+            }
+          >
+            Si tu as besoin d’aide n’hésite pas à :
+          </Text>
+          <View
+            accessibilityLabel="Consulter l’article d’aide"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Consulter l’article d’aide"
+          >
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                    "marginRight": 8,
+                  }
+                }
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
+                }
+              >
+                Consulter l’article d’aide
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        flex={1}
+        style={
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      />
+      <View
+        gap={4}
+        style={
+          {
+            "alignItems": "center",
+            "gap": 16,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Renvoyer l’email"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#6123df",
+                  "borderBottomLeftRadius": 24,
+                  "borderBottomRightRadius": 24,
+                  "borderTopLeftRadius": 24,
+                  "borderTopRightRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Renvoyer l’email"
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                }
+              }
+            >
+              Renvoyer l’email
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Retourner à l’accueil"
           accessibilityState={
             {
               "busy": undefined,
@@ -259,7 +477,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
               },
             ]
           }
-          testID="Consulter l’article d’aide"
+          testID="Retourner à l’accueil"
         >
           <View
             style={
@@ -279,7 +497,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
                 height={20}
                 testID="button-icon-left"
                 width={20}
@@ -302,231 +519,21 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                 }
               }
             >
-              Consulter l’article d’aide
+              Retourner à l’accueil
             </Text>
           </View>
         </View>
       </View>
-    </View>
-    <View
-      flex={1}
-      style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        }
-      }
-    />
-    <View
-      gap={4}
-      style={
-        {
-          "alignItems": "center",
-          "gap": 16,
-        }
-      }
-    >
       <View
-        accessibilityLabel="Renvoyer l’email"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        customHeight={8}
+        enable={true}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#6123df",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Renvoyer l’email"
-      >
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            }
-          }
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
-            }
-          >
-            Renvoyer l’email
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Retourner à l’accueil"
-        accessibilityState={
           {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
+            "height": 8,
           }
         }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "backgroundColor": "transparent",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Retourner à l’accueil"
-      >
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              }
-            }
-          >
-            <View
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
-            }
-          >
-            Retourner à l’accueil
-          </Text>
-        </View>
-      </View>
+      />
     </View>
-  </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      {
-        "height": 8,
-      }
-    }
-  />
+  </RCTScrollView>
 </View>
 `;

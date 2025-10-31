@@ -23,7 +23,7 @@ export const CheatcodesScreenGenericInfoPage = () => {
         wording: 'ButtonPrimary',
         navigateTo: {
           screen: 'CheatcodesStackNavigator',
-          params: { screen: screen },
+          params: { screen: 'CheatcodesNavigationGenericPages' },
         },
         icon: PlainArrowPrevious,
       }}
@@ -36,7 +36,7 @@ export const CheatcodesScreenGenericInfoPage = () => {
         wording: 'ButtonTertiary',
         navigateTo: {
           screen: 'CheatcodesStackNavigator',
-          params: { screen: screen },
+          params: { screen: 'CheatcodesNavigationGenericPages' },
         },
         icon: PlainArrowPrevious,
       }}>
