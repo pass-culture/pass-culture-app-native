@@ -614,6 +614,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             "border": {
               "size": 2,
             },
+            "innerDotSize": 10,
             "size": 20,
           },
           "showTabBar": true,
@@ -1457,6 +1458,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             "border": {
               "size": 2,
             },
+            "innerDotSize": 10,
             "size": 20,
           },
           "showTabBar": true,

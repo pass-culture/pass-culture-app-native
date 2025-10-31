@@ -37,7 +37,7 @@ export const RadioButtonDefault = ({
     setValue(selected ? '' : label)
   }, [selected, label, setValue])
   const radioState = {
-    selected,
+    selected: error ? false : selected,
     error: error ?? false,
     disabled: disabled ?? false,
   }

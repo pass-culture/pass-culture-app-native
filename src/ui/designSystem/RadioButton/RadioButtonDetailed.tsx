@@ -9,7 +9,7 @@ import styled from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
-import { getRadioColors } from 'ui/designSystem/RadioButton/helpers'
+import { getBorderHoverStyle, getRadioColors } from 'ui/designSystem/RadioButton/helpers'
 import {
   ContentContainer,
   RadioButtonDefaultContainer,
@@ -38,7 +38,7 @@ export const RadioButtonDetailed = ({
     setValue(selected ? '' : label)
   }, [selected, label, setValue])
   const radioState = {
-    selected,
+    selected: error ? false : selected,
     error: error ?? false,
     disabled: disabled ?? false,
   }
@@ -90,8 +90,9 @@ const RadioButtonContainer = styled(RadioButtonDefaultContainer)<ContainerProps>
   radioState,
   variant,
   collapsed,
+  isHover,
 }) => {
-  const { borderColor, backgroundColor } = getRadioColors(radioState, theme, {
+  const { backgroundColor } = getRadioColors(radioState, theme, {
     componentPart: 'container',
     variant,
     collapsed: !!collapsed,
@@ -99,8 +100,8 @@ const RadioButtonContainer = styled(RadioButtonDefaultContainer)<ContainerProps>
   return {
     backgroundColor,
     borderWidth: 1,
-    borderColor,
     borderRadius: theme.designSystem.size.borderRadius.m,
     padding: theme.designSystem.size.spacing.l,
+    ...getBorderHoverStyle({ radioState, theme, isHover }),
   }
 })
