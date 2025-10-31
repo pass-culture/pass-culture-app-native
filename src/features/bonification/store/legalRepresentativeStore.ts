@@ -2,7 +2,7 @@ import { Title } from 'features/bonification/pages/BonificationTitle'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
-  firstName: string | null
+  firstNames: string[] | null
   givenName: string | null
   commonName: string | null
   title: Title | null
@@ -12,7 +12,7 @@ type State = {
 }
 
 const defaultState: State = {
-  firstName: null,
+  firstNames: null,
   givenName: null,
   commonName: null,
   title: null,
@@ -25,7 +25,7 @@ const legalRepresentativeStore = createStore({
   name: 'legal-representative',
   defaultState,
   actions: (set) => ({
-    setFirstName: (firstName: string) => set({ firstName }),
+    setFirstNames: (firstNames: string[]) => set({ firstNames }),
     setGivenName: (givenName: string) => set({ givenName }),
     setCommonName: (commonName: string) => set({ commonName }),
     setTitle: (title: Title) => set({ title }),

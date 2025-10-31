@@ -12,6 +12,7 @@ import {
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { DynamicInputList } from 'ui/components/inputs/DynamicInputList/DynamicInputList'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { InputText } from 'ui/designSystem/InputText/InputText'
@@ -22,7 +23,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
-  firstName: string
+  firstNames: string[]
   givenName: string
   commonName?: string
 }
@@ -31,11 +32,11 @@ export const BonificationNames = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
   const storedLegalRepresentative = useLegalRepresentative()
-  const { setFirstName, setCommonName, setGivenName } = legalRepresentativeActions
+  const { setFirstNames, setCommonName, setGivenName } = legalRepresentativeActions
 
   const { control, formState, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      firstName: storedLegalRepresentative.firstName ?? '',
+      firstNames: storedLegalRepresentative.firstNames ?? [],
       givenName: storedLegalRepresentative.givenName ?? '',
       commonName: storedLegalRepresentative.commonName ?? '',
     },
@@ -43,15 +44,15 @@ export const BonificationNames = () => {
     mode: 'all',
   })
 
+  const firstNameErrors = formState.errors.firstNames?.map?.((e) => e?.message)
+
   const disabled = !formState.isValid
 
-  async function saveNameAndNavigate({ firstName, givenName, commonName }: FormValues) {
+  async function saveNameAndNavigate({ firstNames, givenName, commonName }: FormValues) {
     if (disabled) return
-    // eslint-disable-next-line no-console
-    console.log({ firstName, givenName, commonName })
-    setFirstName(firstName)
-    if (commonName) setCommonName(commonName)
+    setFirstNames(firstNames)
     setGivenName(givenName)
+    if (commonName) setCommonName(commonName)
     navigate('BonificationTitle')
   }
 
@@ -70,19 +71,21 @@ export const BonificationNames = () => {
             />
             <Controller
               control={control}
-              name="firstName"
-              render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
-                  label="Prénom"
-                  value={value}
-                  autoFocus
-                  onChangeText={onChange}
+              name="firstNames"
+              render={({ field: { onChange, value } }) => (
+                <DynamicInputList
+                  inputs={[
+                    { label: 'Prénom', testID: 'Entrée pour le prénom' },
+                    { label: 'Deuxième prénom', testID: 'Entrée pour le deuxieme prénom' },
+                    { label: 'Troisième prénom', testID: 'Entrée pour le troisième prénom' },
+                    { label: 'Quatrième prénom', testID: 'Entrée pour le quatrième prénom' },
+                  ]}
+                  addMoreInputWording="Ajouter un prénom"
                   requiredIndicator="explicit"
-                  accessibilityHint={error?.message}
-                  testID="Entrée pour le prénom"
-                  textContentType="givenName"
-                  autoComplete="given-name"
-                  errorMessage={error?.message}
+                  initialValues={value}
+                  onValuesChange={onChange}
+                  errors={firstNameErrors}
+                  autoFocus
                 />
               )}
             />
