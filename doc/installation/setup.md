@@ -33,6 +33,10 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 `brew install gitleaks`
 
+#### Setup pre-commit hook
+
+`git config core.hooksPath ./.githooks`
+
 ### Load project environment
 
 ```sh
