@@ -38,9 +38,9 @@ describe('BonificationNames', () => {
     })
 
     it('should show previously saved data if there is any', () => {
-      const { setFirstName } = legalRepresentativeActions
+      const { setFirstNames } = legalRepresentativeActions
       const firstName = 'Jean'
-      setFirstName(firstName)
+      setFirstNames([firstName])
       render(<BonificationNames />)
 
       const firstNameField = screen.getByDisplayValue(firstName)
@@ -49,7 +49,7 @@ describe('BonificationNames', () => {
     })
 
     it('should save form to store when pressing "Continuer"', async () => {
-      const setFirstNameSpy = jest.spyOn(legalRepresentativeActions, 'setFirstName')
+      const setFirstNameSpy = jest.spyOn(legalRepresentativeActions, 'setFirstNames')
       const setGivenNameSpy = jest.spyOn(legalRepresentativeActions, 'setGivenName')
 
       render(<BonificationNames />)
@@ -62,7 +62,7 @@ describe('BonificationNames', () => {
       const button = screen.getByText('Continuer')
       await userEvent.press(button)
 
-      expect(setFirstNameSpy).toHaveBeenCalledWith('Jaques')
+      expect(setFirstNameSpy).toHaveBeenCalledWith(['Jaques'])
       expect(setGivenNameSpy).toHaveBeenCalledWith('Dupont')
     })
   })
