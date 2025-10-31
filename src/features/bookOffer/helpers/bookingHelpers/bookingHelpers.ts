@@ -169,3 +169,13 @@ export function getStockWithCategory(
 
   return stocks.filter(getAllAvailableStockWithCategoryFromOffer)
 }
+
+export const shouldDisplayPricesStep = (
+  stocks?: OfferStockResponse[],
+  date?: Date,
+  hour?: string,
+  isEvent?: boolean
+) => {
+  const stocksWithCategory = getStockWithCategory(stocks, date, hour)
+  return stocksWithCategory.length > 1 || isEvent === true
+}
