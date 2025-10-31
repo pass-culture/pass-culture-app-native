@@ -12,7 +12,7 @@ import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOf
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { shouldDisplayPricesStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -154,12 +154,12 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { top } = useCustomSafeInsets()
   const { modal } = useTheme()
 
-  const stocksWithCategory = getStockWithCategory(
+  const hasPricesStep = shouldDisplayPricesStep(
     offer?.stocks,
     bookingState.date,
-    bookingState.hour
+    bookingState.hour,
+    offer?.isEvent
   )
-  const hasPricesStep = stocksWithCategory.length > 1 || offer?.isEvent
 
   const modalLeftIconProps = {
     leftIcon,
