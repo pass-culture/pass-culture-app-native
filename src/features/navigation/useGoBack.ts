@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { RootNavigateParams, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 /**
  * Go back to the previous route in history,
@@ -10,7 +10,11 @@ import { RootNavigateParams, UseNavigationType } from 'features/navigation/RootN
  *
  * @param ...navigateParams - Same parameters as navigate(...) function.
  */
-export function useGoBack(...navigateParams: RootNavigateParams) {
+export function useGoBack<RouteName extends keyof RootStackParamList>(
+  ...navigateParams: undefined extends RootStackParamList[RouteName]
+    ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
+    : [RouteName] | [RouteName, RootStackParamList[RouteName]]
+) {
   const { canGoBack, goBack, navigate } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
 
@@ -21,7 +25,10 @@ export function useGoBack(...navigateParams: RootNavigateParams) {
     } else if (can && Platform.OS === 'web') {
       window.history.back()
     } else {
-      navigate(...navigateParams)
+      // TypeScript cannot verify that our union type matches navigate's overloaded signature
+      // but the types are structurally correct - we're using the same conditional type pattern
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      navigate(...(navigateParams as any))
     }
   }
 

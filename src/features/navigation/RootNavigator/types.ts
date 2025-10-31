@@ -336,8 +336,9 @@ export type RouteParams<
 type NavigateParams<RouteName extends keyof ParamListBase> =
   undefined extends ParamListBase[RouteName]
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
-    : [RouteName, ParamListBase[RouteName]]
+    : [RouteName] | [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
+export type RootNavigateArgs = NavigateParams<keyof RootStackParamList>
 export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 

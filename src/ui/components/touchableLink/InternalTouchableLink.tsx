@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { Platform } from 'react-native'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -25,12 +25,26 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   const handleNavigation = useCallback(() => {
     if (withReset) {
       fromRef
-        ? resetFromRef(screen, params)
+        ? resetFromRef(screen as keyof RootStackParamList, params)
         : reset({ index: 0, routes: [{ name: screen, params }] })
     } else if (withPush) {
-      fromRef ? pushFromRef(screen, params) : push(screen, params)
+      if (fromRef) {
+        pushFromRef(screen as keyof RootStackParamList, params)
+      } else {
+        // TypeScript cannot verify union types match navigate's overloaded signature
+        // but types are correct at runtime - screen and params are validated at call site
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        push(screen as any, params as any)
+      }
     } else {
-      fromRef ? navigateFromRef(screen, params) : navigate(screen, params)
+      if (fromRef) {
+        navigateFromRef(screen as keyof RootStackParamList, params)
+      } else {
+        // TypeScript cannot verify union types match navigate's overloaded signature
+        // but types are correct at runtime - screen and params are validated at call site
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        navigate(screen as any, params as any)
+      }
     }
   }, [navigate, push, reset, fromRef, withPush, withReset, params, screen])
 

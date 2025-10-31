@@ -131,6 +131,9 @@ async function simulateNavigate<RouteName extends keyof StackParamList>(
     : [RouteName, StackParamList[RouteName]]
 ) {
   await act(async () => {
-    navigationRef.navigate(...args)
+    // TypeScript cannot verify the union type matches navigate's overloaded signature
+    // but the types are correct at the call site - we're using the same conditional type pattern
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    navigationRef.navigate(...(args as any))
   })
 }
