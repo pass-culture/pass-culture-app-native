@@ -22,7 +22,7 @@ export type BaseRadioProps = {
   disabled: boolean
   error: boolean
   value: string | null
-  setValue: (value: string) => void
+  setValue: React.Dispatch<React.SetStateAction<string>> | VoidFunction
   variant: Variant
   description?: string | null
   collapsed?: React.ReactNode | null
