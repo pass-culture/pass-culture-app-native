@@ -131,7 +131,8 @@ _
 
 #### Private Captcha Self Hosted
 
-Exclusivement la partie self hosted ; [voir ici pour la partie SaaS](#private-captcha-saas)
+Exclusivement la partie self hosted ;
+[voir ici pour la partie SaaS](#private-captcha-saas)
 
 [Site](https://privatecaptcha.com/)
 
@@ -140,9 +141,11 @@ Exclusivement la partie self hosted ; [voir ici pour la partie SaaS](#private-ca
 - Coût : [29€ / mois self hostable](https://privatecaptcha.com/self-hosting/#pricing) ✅
 - Sécurité :
 - Volume :
-- Performance :
+- Performance : [script is 7% of the size of Google reCAPTCHA script](https://privatecaptcha.com/)
 - Fiabilité :
 - Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
+  - [la vérification résout un problème cryptographique en arrière plan](https://privatecaptcha.com/faq/) ([Proof of Work])
+  - la vérification ne demande rien d'autre que de cocher une case
 - Protection des données : [GDPR/CCPA ready : No personal data processing](https://privatecaptcha.com/) ; [Data Processing Agreement](https://privatecaptcha.com/legal/dpa/)
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
@@ -151,45 +154,57 @@ Exclusivement la partie self hosted ; [voir ici pour la partie SaaS](#private-ca
 
 [Site](https://captcha.swetrix.com/)
 
+[Demo](https://captcha.swetrix.com/demo)
+
 - Coût : [99€ / 2M requests / mois](https://swetrix.com/#pricing)
 - Sécurité :
 - Volume :
 - Performance :
 - Fiabilité :
 - Accessibilité :
-- Protection des données :
-- Hébergement : self hosted / Europe
+  - je n'arrive pas à accéder au bouton "submit" au clavier ⚠️
+- Protection des données : [GDPR Compliant](https://swetrix.com/data-policy#gdpr-compliance)
+- Hébergement : self hosted / Europe (Allemagne)
 - Licence : [Open Source](https://github.com/Swetrix/swetrix) : AGPL 3.0
+
+De ce que j'en comprends, Swetrix est un outil de tracking / analytics ; les Captcha ne sont pas leur coeur de métier
 
 #### Altcha Sentinel
 
-Exclusivement la partie Sentinel ; [voir ici pour la partie Open Source](#altcha-open-source)
+Exclusivement la partie Sentinel ;
+[voir ici pour la partie Open Source](#altcha-open-source)
 
 [Site](https://altcha.org/fr/)
 
+[Demo](https://altcha.org/fr/docs/v2/sentinel/features/adaptive-captcha/)
+
 - Coût : [Sentinel 74€ / mois](https://altcha.org/docs/v2/sentinel/pricing/#licensing-plans)
-- Sécurité :
+- Sécurité : [SOC 2, ISO 27001](https://altcha.org/docs/v2/compliance/security/)
 - Volume : Illimité
 - Performance :
 - Fiabilité :
-- Accessibilité : [Conforme à WCAG/EAA](https://altcha.org/fr/docs/v2/compliance/#accessibility)
-- Protection des données :
+- Accessibilité : Conforme à [WCAG 2.2 AA](https://altcha.org/docs/v2/compliance/wcag/)/[EAA](https://altcha.org/docs/v2/compliance/european-accessibility-act-2025/)
+- Protection des données : [GDPR Compliant](https://altcha.org/docs/v2/compliance/gdpr/)
 - Hébergement : self hosted / USA / Europe
 - Licence : Closed Source ?
 
 #### Altcha Open Source
 
-Exclusivement la partie Open Source ; [voir ici pour la partie Sentinel](#altcha-sentinel)
+Exclusivement la partie Open Source ;
+[voir ici pour la partie Sentinel](#altcha-sentinel)
 
-[Site](https://altcha.org/fr/)
+[Site](https://altcha.org/fr/open-source-captcha/)
+
+[Demo](https://altcha.org/fr/open-source-captcha/#demo)
 
 - Coût : Gratuit en self hosted
-- Sécurité :
+- Sécurité : [SOC 2, ISO 27001](https://altcha.org/docs/v2/compliance/security/)
 - Volume : Illimité
 - Performance :
 - Fiabilité :
-- Accessibilité : [Conforme à WCAG/EAA](https://altcha.org/fr/docs/v2/compliance/#accessibility)
-- Protection des données :
+- Accessibilité : Conforme à [WCAG 2.2 AA](https://altcha.org/docs/v2/compliance/wcag/)/[EAA](https://altcha.org/docs/v2/compliance/european-accessibility-act-2025/)
+  - en dark mode, je n'ai pas d'indication visuel que mon focus est sur la checkbox ⚠️
+- Protection des données : [GDPR Compliant](https://altcha.org/docs/v2/compliance/gdpr/)
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/altcha-org/altcha) : MIT
 
@@ -197,13 +212,17 @@ Exclusivement la partie Open Source ; [voir ici pour la partie Sentinel](#altcha
 
 [Site](https://mcaptcha.org/)
 
+[Demo](https://showcase.mcaptcha.org/) ([le backend de démo est down](https://github.com/mCaptcha/showcase/issues/8))
+
 - Coût : gratuit
-- Sécurité :
+- Sécurité : [Security](https://mcaptcha.org/security)
 - Volume : illimité
 - Performance :
 - Fiabilité :
 - Accessibilité :
-- Protection des données :
+  - pas directement mentionnée mais ça fonctionne sur du [Proof of Work]
+    d'après [la page d'accueil](https://mcaptcha.org/) donc l'user ne devrait pas à avoir à résoudre des puzzles
+- Protection des données : [Privacy Policy](https://mcaptcha.org/privacy-policy)
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
 
@@ -211,12 +230,15 @@ Exclusivement la partie Open Source ; [voir ici pour la partie Sentinel](#altcha
 
 [Site](https://www.cloudflare.com/application-services/products/turnstile/)
 
+[Démo](https://dash.cloudflare.com/sign-up?to=/:account/turnstile)
+
 - Coût : [Besoin de les contacter](https://www.cloudflare.com/application-services/products/turnstile/)
 - Sécurité :
 - Volume : Illimité
 - Performance :
 - Fiabilité :
 - Accessibilité :
+  - ça n'en parle pas directement, [ça semble décrire](https://www.cloudflare.com/application-services/products/turnstile/#how-it-works) un mécanisme de [Proof of Work]
 - Protection des données :
 - Hébergement : monde
 - Licence : Closed Source
@@ -281,7 +303,8 @@ Possibilité de les contacter pour dépasser les plans prévus
 
 #### Private Captcha SaaS
 
-Exclusivement la partie SaaS ; [voir ici pour la partie self hosted](#private-captcha-self-hosted)
+Exclusivement la partie SaaS ;
+[voir ici pour la partie self hosted](#private-captcha-self-hosted)
 
 [Site](https://privatecaptcha.com/)
 
@@ -332,3 +355,5 @@ Le repo a été archivé ❌
 
 - https://www.w3.org/TR/turingtest/
 - https://design.numerique.gouv.fr/articles/2024-11-28-captcha-et-accessibilite/
+
+[Proof of Work]: https://en.wikipedia.org/wiki/Proof_of_work
