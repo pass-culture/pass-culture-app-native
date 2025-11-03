@@ -3,7 +3,7 @@ import { array, object, string } from 'yup'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 
 export const BonificationNamesSchema = object().shape({
-  firstNameList: array()
+  firstNames: array()
     .of(
       string().test(
         'isNameValidOptional',
