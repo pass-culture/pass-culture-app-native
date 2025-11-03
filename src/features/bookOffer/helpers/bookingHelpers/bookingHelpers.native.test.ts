@@ -401,8 +401,8 @@ describe('getStockWithCategory', () => {
 })
 
 describe('shouldDisplayPricesStep', () => {
-  const date = new Date('2023-04-01T20:00:00Z')
   const hour = '2023-04-01T20:00:00Z'
+  const date = new Date(hour)
 
   it('should return true when stocks have several prices', () => {
     const stocks = [
