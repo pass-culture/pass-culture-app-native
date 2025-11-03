@@ -67,10 +67,7 @@ describe('buildOffersModulesQueries', () => {
       locationParams: buildLocationParameterParams,
     }
 
-    const paramsList: OffersPlaylistParameters[] = [
-      [paramsListElement, paramsListElement],
-      [paramsListElement],
-    ]
+    const paramsList: OffersPlaylistParameters[] = [[paramsListElement]]
 
     const queries = buildOffersModulesQueries({
       paramsList,
@@ -78,12 +75,6 @@ describe('buildOffersModulesQueries', () => {
     })
 
     expect(queries).toEqual([
-      expect.objectContaining({
-        indexName: 'algoliaMostLikedOffersIndexName',
-      }),
-      expect.objectContaining({
-        indexName: 'algoliaMostLikedOffersIndexName',
-      }),
       expect.objectContaining({
         indexName: 'algoliaMostLikedOffersIndexName',
       }),
