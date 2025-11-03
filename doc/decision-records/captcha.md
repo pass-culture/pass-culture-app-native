@@ -38,9 +38,8 @@ Options :
 
 - Pas encore éliminés :
   - [CaptchaText](#captcha-text)
-  - [EU Captcha](#eu-captcha)
   - [InputGuard](#inputguard)
-  - [Private Captcha](#private-captcha)
+  - [Private Captcha Self Hosted](#private-captcha-self-hosted)
   - [Swetrix](#swetrix)
   - [Altcha Sentinel](#altcha-sentinel)
   - [Altcha Open Source](#altcha-open-source)
@@ -53,9 +52,11 @@ Options :
   - [MTCaptcha](#mtcaptcha)
   - [TrustCaptcha](#trustcaptcha)
   - [Friendly Captcha](#friendly-captcha)
+  - [Private Captcha SaaS](#private-captcha-saas)
 - Autre raison :
   - [Captcheck](#captcheck)
   - [Sblam](#sblam)
+  - [EU Captcha](#eu-captcha)
 
 ## Justification
 
@@ -108,27 +109,6 @@ _
 - Hébergement : monde
 - Licence : Closed Source
 
-#### EU Captcha
-
-[Annonce](https://interoperable-europe.ec.europa.eu/collection/eupl/news/eu-captcha-under-eupl-12)
-
-[Site](https://ec.europa.eu/isa2/actions/developing-open-source-captcha_en/)
-
-[Repository](https://code.europa.eu/eu-captcha/EU-CAPTCHA)
-
-- Coût : gratuit
-- Sécurité :
-- Volume :
-- Performance :
-- Fiabilité :
-- Accessibilité : "accessible by users with disabilities" ✅
-  - il y aurait un captcha audio
-- Protection des données :
-- Hébergement : self hosted
-- Licence : [Open Source](https://code.europa.eu/eu-captcha/EU-CAPTCHA) : EUPL 1.2
-
-App faite en java -> nécessite de savoir déployer une app en Java
-
 #### InputGuard
 
 [Site](https://zenofx.com/inputguard/)
@@ -143,18 +123,18 @@ App faite en java -> nécessite de savoir déployer une app en Java
 - Hébergement : self hosted / monde
 - Licence : Closed Source
 
-#### Private Captcha
+#### Private Captcha Self Hosted
 
 [Site](https://privatecaptcha.com/)
 
-- Coût : €11988 / year ; [29€ / mois self hostable](https://privatecaptcha.com/self-hosting/#pricing) ✅
+- Coût : [29€ / mois self hostable](https://privatecaptcha.com/self-hosting/#pricing) ✅
 - Sécurité :
 - Volume :
 - Performance :
 - Fiabilité :
 - Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
 - Protection des données :
-- Hébergement : self hosted / Europe
+- Hébergement : self hosted
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
 
 #### Swetrix
@@ -285,6 +265,15 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Hébergement : monde
 - Licence : Closed Source
 
+#### Private Captcha SaaS
+
+[Site](https://privatecaptcha.com/)
+
+- Coût : [€999 / 1M requests / month](https://privatecaptcha.com/#pricing)
+- Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
+- Hébergement : Europe
+- Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
+
 ### Autre raison
 
 #### Captcheck
@@ -302,6 +291,24 @@ En anglais uniquement ❌
 [Site](https://sblam.com/en.html)
 
 Solution faite uniquement pour s'intégrer dans du [PHP](https://sblam.com/install.html) ❌
+
+#### EU Captcha
+
+[Annonce](https://interoperable-europe.ec.europa.eu/collection/eupl/news/eu-captcha-under-eupl-12)
+
+[Site](https://ec.europa.eu/isa2/actions/developing-open-source-captcha_en/)
+
+[Repository](https://code.europa.eu/eu-captcha/EU-CAPTCHA)
+
+- Coût : gratuit
+- Accessibilité : "accessible by users with disabilities" ✅
+  - il y aurait un captcha audio
+- Hébergement : self hosted
+- Licence : [Open Source](https://code.europa.eu/eu-captcha/EU-CAPTCHA) : EUPL 1.2
+
+App faite en java -> nécessite de savoir déployer une app en Java
+
+Le repo a été archivé ❌
 
 ## Réferences
 
