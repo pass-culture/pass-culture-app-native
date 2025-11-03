@@ -102,7 +102,7 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xs,
   alignItems: 'center',
   flexDirection: 'row',
 }))

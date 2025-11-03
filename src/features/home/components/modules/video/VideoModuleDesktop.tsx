@@ -196,10 +196,11 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
   width: THUMBNAIL_WIDTH,
 })
 
-const StyledTitleContainer = styled.View({
-  flexDirection: 'row',
+const StyledTitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
   alignItems: 'center',
-})
+  flexDirection: 'row',
+}))
 
 const StyledMultiOfferList = styled(View)<{
   hasOnlyTwoOffers: boolean
