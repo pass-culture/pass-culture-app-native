@@ -96,16 +96,16 @@ jobs:
     if: needs.check-storybook-folder-changes.outputs.folder_changed == 'true'
     secrets:
       CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-  soft-deploy-testing:
-    needs: yarn-tester
-    if: github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
-    with:
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-      ENV: testing
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # soft-deploy-testing:
+  #   needs: yarn-tester
+  #   if: github.ref == 'refs/heads/master'
+  #   uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
+  #   with:
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #     ENV: testing
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-android-testing:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/testing')
@@ -117,7 +117,7 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-testing:
-    needs: yarn-tester
+    # needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/testing')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
@@ -166,29 +166,29 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-testing:
-    needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
-    # see https://stackoverflow.com/a/66358138 for details
-    if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: testing
-      BUCKET_NAME: passculture-metier-ehp-testing-decliweb
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-perf:
-    needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
-    if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: perf
-      BUCKET_NAME: passculture-metier-ehp-perf-decliweb
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-testing:
+  #   needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
+  #   # see https://stackoverflow.com/a/66358138 for details
+  #   if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
+  #   uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+  #   with:
+  #     ENV: testing
+  #     BUCKET_NAME: passculture-metier-ehp-testing-decliweb
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-perf:
+  #   needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
+  #   if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
+  #   uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+  #   with:
+  #     ENV: perf
+  #     BUCKET_NAME: passculture-metier-ehp-perf-decliweb
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-staging:
     needs: [yarn-tester]
     if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
