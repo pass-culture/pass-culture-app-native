@@ -49,7 +49,7 @@ describe('BonificationRecap', () => {
   it('should show previously saved data', () => {
     prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
-    const nameField = screen.getByText('Monsieur Jean Dupont')
+    const nameField = screen.getByText('Monsieur Jean DUPONT')
     const countryField = screen.getByText(birthCountry)
     const birthDateField = screen.getByText(new Date(birthDate).toLocaleDateString())
 
@@ -87,10 +87,10 @@ describe('BonificationRecap', () => {
 })
 
 function prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry) {
-  const { setTitle, setFirstName, setGivenName, setBirthDate, setBirthCountry } =
+  const { setTitle, setFirstNames, setGivenName, setBirthDate, setBirthCountry } =
     legalRepresentativeActions
   setTitle(title)
-  setFirstName(firstName)
+  setFirstNames([firstName])
   setGivenName(givenName)
   setBirthDate(new Date(birthDate))
   setBirthCountry(birthCountry)

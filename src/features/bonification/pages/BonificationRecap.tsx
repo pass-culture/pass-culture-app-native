@@ -16,7 +16,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 
 export const BonificationRecap = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
-  const { title, firstName, commonName, givenName, birthDate, birthCity, birthCountry } =
+  const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
 
@@ -33,17 +33,17 @@ export const BonificationRecap = () => {
     }, 4000)
   }
 
-  if (!title || !firstName || !givenName || !birthDate || !birthCountry) {
+  if (!title || !firstNames || !givenName || !birthDate || !birthCountry) {
     throw new Error("Couldn't retrieve data from storage")
   }
 
   const recapData = [
-    { title: 'Nom', value: `${title} ${firstName} ${givenName}` },
+    { title: 'Nom', value: `${title} ${firstNames?.join(' ')} ${givenName.toUpperCase()}` },
     { title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() },
     { title: 'Pays de naissance', value: birthCountry },
   ]
 
-  if (commonName) recapData.splice(1, 0, { title: 'Nom d’usage', value: commonName })
+  if (commonName) recapData.splice(1, 0, { title: 'Nom d’usage', value: commonName.toUpperCase() })
   if (birthCity) recapData.push({ title: 'Ville de naissance', value: birthCity })
 
   return (
