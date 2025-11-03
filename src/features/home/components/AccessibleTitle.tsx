@@ -10,18 +10,25 @@ export type AccessibleTitleProps = {
   title: string
   TitleComponent?: ComponentType<ComponentProps<typeof Typo.Title3>>
   withMargin?: boolean
+  accessibilityLabel?: string
 }
 
 export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   title,
   TitleComponent = Typo.Title3,
   withMargin = true,
+  accessibilityLabel,
 }) => {
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
+  const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(
+    accessibilityLabel ?? ''
+  )
   const StyledTitleComponent = styled(TitleComponent || Typo.Title3)({})
   return (
     <TitleWrapper testID="playlistTitle" withMargin={withMargin}>
-      <StyledTitleComponent numberOfLines={2} accessibilityLabel={titleText}>
+      <StyledTitleComponent
+        numberOfLines={2}
+        accessibilityLabel={accessibilityLabel ? accessibilityLabelTitleText : titleText}>
         <StyledTitleComponent {...hiddenFromScreenReader()}>
           {titleText}
           {titleEmoji ? (
