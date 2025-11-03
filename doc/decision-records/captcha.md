@@ -97,7 +97,10 @@ _
 
 [Site](https://www.captchatext.com/)
 
+[Démo](https://www.captchatext.com/examples.html)
+
 - Coût : [$29 / an](https://www.captchatext.com/index.html#itsfree) ✅
+  - No Branding and No Backlinks : $299 / an
 - Sécurité : [SOC2 Compliant](https://www.captchatext.com/compliance.html)
 - Volume : Unlimited Traffic Handling | Unlimited Evals/Assessments ✅
 - Performance : Serveur notamment en Europe, et validation sans rechargement de la page
@@ -105,6 +108,7 @@ _
 - Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
   - il y a un captcha audio
   - quand je tente de faire la démo au clavier, je n'arrive pas à cocher la checkbox ⚠️
+  - parfois ça demande un mot qui commence par une majuscule, à l'audio, ça ne s'entend pas ⚠️
 - Protection des données : [GDPR Compliant](https://www.captchatext.com/compliance.html) ; [Privacy Policy](https://www.captchatext.com/privacy.html)
 - Hébergement : monde
 - Licence : Closed Source
@@ -113,19 +117,25 @@ _
 
 [Site](https://zenofx.com/inputguard/)
 
-- Coût : besoin de les contacter
+[Démo](https://zenofx.com/contact.html)
+
+- Coût : [59.88€ / Fair use (not suitable for high volume sites) / site / an](https://zenofx.com/inputguard/order.html) ; [besoin de les contacter](https://zenofx.com/inputguard/)
 - Sécurité :
 - Volume :
 - Performance :
 - Fiabilité :
-- Accessibilité : "User friendly, accessible interface"
-- Protection des données :
+- Accessibilité : ["User friendly, accessible interface"](https://zenofx.com/inputguard/)
+- Protection des données : ["No user data is ever collected or submitted to 3rd parties" ; GDPR (DSGVO) compliant](https://zenofx.com/inputguard/)
 - Hébergement : self hosted / monde
 - Licence : Closed Source
 
 #### Private Captcha Self Hosted
 
+Exclusivement la partie self hosted ; [voir ici pour la partie SaaS](#private-captcha-saas)
+
 [Site](https://privatecaptcha.com/)
+
+[Démo](https://privatecaptcha.com/)
 
 - Coût : [29€ / mois self hostable](https://privatecaptcha.com/self-hosting/#pricing) ✅
 - Sécurité :
@@ -133,7 +143,7 @@ _
 - Performance :
 - Fiabilité :
 - Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
-- Protection des données :
+- Protection des données : [GDPR/CCPA ready : No personal data processing](https://privatecaptcha.com/) ; [Data Processing Agreement](https://privatecaptcha.com/legal/dpa/)
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
 
@@ -153,6 +163,8 @@ _
 
 #### Altcha Sentinel
 
+Exclusivement la partie Sentinel ; [voir ici pour la partie Open Source](#altcha-open-source)
+
 [Site](https://altcha.org/fr/)
 
 - Coût : [Sentinel 74€ / mois](https://altcha.org/docs/v2/sentinel/pricing/#licensing-plans)
@@ -166,6 +178,8 @@ _
 - Licence : Closed Source ?
 
 #### Altcha Open Source
+
+Exclusivement la partie Open Source ; [voir ici pour la partie Sentinel](#altcha-sentinel)
 
 [Site](https://altcha.org/fr/)
 
@@ -266,6 +280,8 @@ Possibilité de les contacter pour dépasser les plans prévus
 - Licence : Closed Source
 
 #### Private Captcha SaaS
+
+Exclusivement la partie SaaS ; [voir ici pour la partie self hosted](#private-captcha-self-hosted)
 
 [Site](https://privatecaptcha.com/)
 
