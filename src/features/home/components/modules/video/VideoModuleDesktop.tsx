@@ -54,9 +54,13 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   return (
     <React.Fragment>
       <StyledTitleContainer>
-        <AccessibleTitle title={props.title} />
+        <AccessibleTitle
+          title={props.title}
+          accessibilityLabel={`Média vidéo\u00a0: ${props.title}`}
+        />
         {renderTitleSeeMore()}
       </StyledTitleContainer>
+      <Description>{props.videoDescription}</Description>
       <View testID="desktop-video-module">
         <ColorCategoryBackgroundWrapper>
           <ColorCategoryBackground
@@ -194,7 +198,6 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
 
 const StyledTitleContainer = styled.View({
   flexDirection: 'row',
-  marginBottom: getSpacing(5),
   alignItems: 'center',
 })
 
@@ -216,3 +219,9 @@ const StyledSeparator = styled(Separator.Horizontal)<{
 const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
   marginVertical: 0,
 })
+
+const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  color: theme.designSystem.color.text.subtle,
+}))
