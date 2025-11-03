@@ -19,7 +19,9 @@ export const buildOffersModulesQueries = ({
   // We flatten the paramList as an offer module have a list of additionalParameters
   const queries = flatten(paramsList).map((params) => {
     const query: OfferModuleQuery = {
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+      indexName: params.offerParams.isSortedByLikes
+        ? env.ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME
+        : env.ALGOLIA_OFFERS_INDEX_NAME,
       query: params.offerParams.query,
       params: {
         ...buildHitsPerPage(params.offerParams.hitsPerPage),
