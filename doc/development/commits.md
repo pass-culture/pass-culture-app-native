@@ -1,4 +1,4 @@
-# Commit comique
+# Commit bonnes pratiques
 
 ## Martin Fowler (Refactoring) :
 
@@ -22,5 +22,7 @@
 
 1. ✅ Compiler sans erreurs
 2. ✅ Passer tous les tests
-3. ✅ Être revertable individuellement
+3. ✅ Être réversible individuellement
 4. ✅ Raconter une étape logique
+
+Les commits vont être écrasés à la fin de la PR mais avant la PR ces directives permettent de comprendre plus facilement le chemin parcouru par le développeur, et l'histoire qu'il veut raconter.
