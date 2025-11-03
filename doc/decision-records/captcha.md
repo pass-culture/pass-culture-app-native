@@ -15,13 +15,15 @@
 1. [ ] Faire des PoC
 1. [ ] Implémenter la solution retenue
 
-## Decision
+<!--
+## Décision
 
 _Explain the decision taken, specifying the choices made and why this solution was chosen._
 
 Chosen option: "{title of option 1}", because {justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
+-->
 
-## Context
+## Contexte
 
 Problème : On dépense 1200€ chaque mois juste pour vérifier que nos utilisateurs ne sont pas des robots
 
@@ -58,6 +60,7 @@ Options :
   - [Sblam](#sblam)
   - [EU Captcha](#eu-captcha)
 
+<!--
 ## Justification
 
 _List the reasons why this choice fits the context and stands out from the alternatives._
@@ -71,11 +74,11 @@ _
 
 - Good, because {positive consequence, e.g., improvement of one or more desired qualities, …}
 - Bad, because {negative consequence, e.g., compromising one or more desired qualities, …}
-- … <!-- numbers of consequences can vary -->
 
 ## Actions to be implemented
 
 1.
+-->
 
 ## Decision Drivers
 
@@ -308,7 +311,7 @@ Exclusivement la partie SaaS ;
 
 [Site](https://privatecaptcha.com/)
 
-- Coût : [€999 / 1M requests / month](https://privatecaptcha.com/#pricing)
+- Coût : [€999 / 1M requests / month](https://privatecaptcha.com/#pricing) ❌
 - Accessibilité : [screen reader friendly, WCAG 2.2 compliant](https://privatecaptcha.com/use-case/accessibility/)
 - Hébergement : Europe
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
