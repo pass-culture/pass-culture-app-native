@@ -6,7 +6,7 @@
 
 1. [x] Lister les alternatives
 1. [x] Éliminer des alternatives critères basiques
-1. [ ] Éliminer des alternatives critères plus avancés
+1. [x] Éliminer des alternatives critères plus avancés
 1. Audit
    - [ ] Audit sécurité
    - [ ] Audit accessibilité
