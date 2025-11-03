@@ -13,6 +13,7 @@ describe('BonificationNames', () => {
 
     const firstNameField = screen.getByTestId('Entrée pour le prénom')
     await userEvent.type(firstNameField, 'Jaques')
+
     const birthNameField = screen.getByTestId('Entrée pour le nom')
     await userEvent.type(birthNameField, 'Dupont')
 
@@ -29,6 +30,35 @@ describe('BonificationNames', () => {
     await userEvent.press(button)
 
     expect(goBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not navigate if required fields are empty', async () => {
+    render(<BonificationNames />)
+
+    const button = screen.getByText('Continuer')
+    await userEvent.press(button)
+
+    expect(navigate).not.toHaveBeenCalled()
+  })
+
+  it('should disable the "Continuer" button when form is invalid', () => {
+    render(<BonificationNames />)
+
+    const button = screen.getByText('Continuer')
+
+    expect(button).toBeDisabled()
+  })
+
+  it('should submit successfully even if common name is empty', async () => {
+    render(<BonificationNames />)
+
+    await userEvent.type(screen.getByTestId('Entrée pour le prénom'), 'Jean')
+    await userEvent.type(screen.getByTestId('Entrée pour le nom'), 'Dupont')
+
+    const button = screen.getByText('Continuer')
+    await userEvent.press(button)
+
+    expect(navigate).toHaveBeenCalledWith('BonificationTitle')
   })
 
   describe('Data persistence', () => {
@@ -56,13 +86,20 @@ describe('BonificationNames', () => {
 
       const firstNameField = screen.getByTestId('Entrée pour le prénom')
       await userEvent.type(firstNameField, 'Jaques')
+
+      const addButton = screen.getByText('Ajouter un prénom')
+      await userEvent.press(addButton)
+
+      const secondNameField = screen.getByTestId('Entrée pour le deuxieme prénom')
+      await userEvent.type(secondNameField, 'Marie')
+
       const birthNameField = screen.getByTestId('Entrée pour le nom')
       await userEvent.type(birthNameField, 'Dupont')
 
       const button = screen.getByText('Continuer')
       await userEvent.press(button)
 
-      expect(setFirstNameSpy).toHaveBeenCalledWith(['Jaques'])
+      expect(setFirstNameSpy).toHaveBeenCalledWith(['Jaques', 'Marie'])
       expect(setGivenNameSpy).toHaveBeenCalledWith('Dupont')
     })
   })
