@@ -16,6 +16,12 @@ const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.unmock('@react-navigation/native')
+jest.unmock('@react-navigation/native-stack')
+
+jest.mock('react-native-safe-area-context', () => ({
+  ...jest.requireActual('react-native-safe-area-context'),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
 
 const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })
 jest.mock('features/auth/context/AuthContext', () => ({
