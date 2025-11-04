@@ -1769,6 +1769,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
@@ -2059,6 +2060,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
@@ -2202,6 +2204,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
@@ -2345,6 +2348,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
@@ -2488,6 +2492,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
@@ -2631,6 +2636,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
