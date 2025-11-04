@@ -1,8 +1,7 @@
 package com.passculture
 
-import android.os.Bundle // react-native-splash-screen
+import android.os.Bundle
 import com.facebook.react.ReactActivity
-import org.devio.rn.splashscreen.SplashScreen // react-native-lottie-splash-screen
 import com.facebook.react.ReactActivityDelegate //@react-navigation
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
@@ -17,8 +16,6 @@ class MainActivity : ReactActivity() {
      * This is used to schedule rendering of the component.
      */
     override fun getMainComponentName() : String = "PassCulture"
-
-    init { SplashScreen.show(this,R.id.lottie); SplashScreen.setAnimationFinished(true) } // react-native-lottie-splash-screen
 
     // react-native-orientation-locker
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,7 +11,6 @@ import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking/linking'
-import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { useColorScheme } from 'libs/styled/useColorScheme'
 
@@ -35,36 +34,24 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 
 export const AppNavigationContainer = () => {
   const colorScheme = useColorScheme()
-  const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
 
   useReduxDevToolsExtension(navigationRef)
 
-  const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
 
   useEffect(() => {
     async function restoreNavStateOnReload() {
-      try {
-        if (Platform.OS !== 'web') return // Only restore state if we're on web
-        if (!hasWindowReloaded()) return // Only restore state if we can detect window reload
+      if (Platform.OS !== 'web') return // Only restore state if we're on web
+      if (!hasWindowReloaded()) return // Only restore state if we can detect window reload
 
-        const savedState = await storage.readObject<NavigationState>('react_navigation_persistence')
-        if (!savedState) return // Only restore state if there is a saved state
+      const savedState = await storage.readObject<NavigationState>('react_navigation_persistence')
+      if (!savedState) return // Only restore state if there is a saved state
 
-        setInitialNavigationState(savedState)
-      } finally {
-        setIsNavReady(true)
-      }
+      setInitialNavigationState(savedState)
     }
     restoreNavStateOnReload()
   }, [])
-
-  useEffect(() => {
-    if (isNavReady) {
-      hideSplashScreen?.()
-    }
-  }, [isNavReady, hideSplashScreen])
 
   return (
     <NavigationContainer

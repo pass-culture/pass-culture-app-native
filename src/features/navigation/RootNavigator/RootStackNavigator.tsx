@@ -67,7 +67,6 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
@@ -417,7 +416,6 @@ export const RootNavigator: React.ComponentType = () => {
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
-  const { isSplashScreenHidden } = useSplashScreenContext()
 
   useShowMandatoryUpdatePersonalData()
 
@@ -455,8 +453,7 @@ export const RootNavigator: React.ComponentType = () => {
           <AccessibleTabBar id={tabBarId} />
         </View>
       ) : null}
-      {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden ? <PrivacyPolicy /> : null}
+      <PrivacyPolicy />
     </TabNavigationStateProvider>
   )
 }

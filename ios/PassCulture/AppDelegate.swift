@@ -7,7 +7,6 @@ import HotUpdater
 import RNBatchPush
 import Firebase
 import Batch
-import Lottie
 
 
 @main
@@ -45,28 +44,8 @@ class AppDelegate: RCTAppDelegate {
     RNBatch.start()
     BatchUNUserNotificationCenterDelegate.registerAsDelegate()
     BatchUNUserNotificationCenterDelegate.sharedInstance.showForegroundNotifications = true
-    
-    // react-native-lottie-splash-screen
-    let success = super.application(application, didFinishLaunchingWithOptions: launchOptions)
-    
-    if success {
-      // We add this logic to get access to rootview
-      guard let rootView = self.window.rootViewController?.view else {
-        return success
-      }
-      
-      let t = Dynamic()
-      let animationView = t.createAnimationView(rootView: rootView, lottieName: "splashscreen")
-      
-      // register LottieSplashScreen to RNSplashScreen
-      RNSplashScreen.showLottieSplash(animationView, inRootView: rootView)
-      // play lottie animation
-      t.play(animationView: animationView)
-      // We want the animation layout to be forced to remove when hide is called, so we use this
-      RNSplashScreen.setAnimationFinished(true)
-    }
-    
-    return success
+
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
   
   // Deeplink configuration

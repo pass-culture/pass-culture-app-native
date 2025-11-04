@@ -3,7 +3,6 @@ import { LayoutChangeEvent, Platform } from 'react-native'
 
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocation } from 'libs/location/location'
-import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 
 const START_OFFSET = 1000
@@ -11,9 +10,6 @@ const TOOLTIP_DISPLAY_DURATION = 8000
 
 export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
   const touchableRef = React.useRef<HTMLButtonElement>(null)
-
-  const { isSplashScreenHidden } = useSplashScreenContext()
-  const isNativeSplashScreenHidden = isSplashScreenHidden || Platform.OS === 'web'
 
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
@@ -52,7 +48,7 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
       return
     }
 
-    if (!isNativeSplashScreenHidden || !enableTooltip) return
+    if (!enableTooltip) return
 
     const displayTooltipIfNeeded = async () => {
       const timesLocationTooltipHasBeenDisplayed = Number(
@@ -73,7 +69,7 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
       clearTimeout(timeoutOff)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
-  }, [isNativeSplashScreenHidden, geolocPosition])
+  }, [geolocPosition])
 
   return {
     isTooltipVisible,

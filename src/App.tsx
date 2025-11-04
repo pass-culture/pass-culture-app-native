@@ -35,7 +35,6 @@ import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
-import { SplashScreenProvider } from 'libs/splashscreen/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
@@ -90,15 +89,13 @@ const App: FunctionComponent = function () {
                               <SnackBarProvider>
                                 <CulturalSurveyContextProvider>
                                   <SubscriptionContextProvider>
-                                    <SplashScreenProvider>
-                                      <ShareAppWrapper>
-                                        <OfflineModeContainer>
-                                          <ScreenErrorProvider>
-                                            <AppNavigationContainer />
-                                          </ScreenErrorProvider>
-                                        </OfflineModeContainer>
-                                      </ShareAppWrapper>
-                                    </SplashScreenProvider>
+                                    <ShareAppWrapper>
+                                      <OfflineModeContainer>
+                                        <ScreenErrorProvider>
+                                          <AppNavigationContainer />
+                                        </ScreenErrorProvider>
+                                      </OfflineModeContainer>
+                                    </ShareAppWrapper>
                                   </SubscriptionContextProvider>
                                 </CulturalSurveyContextProvider>
                               </SnackBarProvider>
