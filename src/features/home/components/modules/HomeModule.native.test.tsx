@@ -234,7 +234,7 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(videoModuleFixture)
 
-    await screen.findByLabelText('Découvre Lujipeka')
+    await screen.findByLabelText('Média vidéo : Découvre Lujipeka')
 
     await waitFor(async () => {
       expect(await screen.findByTestId('mobile-video-module')).toBeOnTheScreen()

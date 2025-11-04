@@ -621,6 +621,26 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 3.11 - Pour chaque média temporel pré-enregistré, le contenu textuel adjacent permet-il d’identifier clairement le média temporel ?</summary>
+
+**RAAM** : [Critère 3.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-11)  
+**Ticket** : [PC-37472](https://passculture.atlassian.net/browse/PC-37472)  
+**PR** : [#8863](https://github.com/pass-culture/pass-culture-app-native/pull/8863)
+
+**Problème** 😱  
+- **(E02)** Les vidéos ne sont pas clairement identifiables.
+
+**Correction** 💡  
+- **(E02)** Une description de la vidéo a été ajoutée entre le titre et la vidéo. 
+- **(E02)** Le label d'accessibilité du titre de la vidéo précise qu'il s'agit d'un média vidéo. 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
 ## ✅ Corrections 19 novembre → 15 décembre
 
 <br>
