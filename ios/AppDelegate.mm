@@ -5,16 +5,12 @@
 #import <React/RCTBundleURLProvider.h>
 #import <ReactAppDependencyProvider/RCTAppDependencyProvider.h>
 
-
-#import "RNSplashScreen.h" // react-native-lottie-splash-screen
 #import <HotUpdater/HotUpdater.h> // @hot-updater
 #import <RNBatchPush/RNBatch.h>
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
 #import "ReactNativeConfig.h"
-
-#import <PassCulture-Swift.h>
 
 
 @implementation AppDelegate
@@ -51,25 +47,7 @@
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
 
-  // react-native-lottie-splash-screen
-  BOOL success = [super application:application didFinishLaunchingWithOptions:launchOptions];
-
-  if (success) {
-    //We add this logic to get access to rootview
-    UIView *rootView = self.window.rootViewController.view;
-
-    Dynamic *t = [Dynamic new];
-    UIView *animationUIView = (UIView *)[t createAnimationViewWithRootView:rootView lottieName:@"splashscreen"];
-
-    // register LottieSplashScreen to RNSplashScreen
-    [RNSplashScreen showLottieSplash:animationUIView inRootView:rootView];
-    // play lottie animation
-    [t playWithAnimationView:animationUIView];
-    // We want the animation layout to be forced to remove when hide is called, so we use this
-    [RNSplashScreen setAnimationFinished:true];
-  }
-
-  return success;
+  return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 
