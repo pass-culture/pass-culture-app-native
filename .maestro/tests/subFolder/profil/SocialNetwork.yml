@@ -2,7 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-      text: 'Instagram'
+      text: 'Version.*'
 - tapOn: 'Instagram'
 - waitForAnimationToEnd
 
