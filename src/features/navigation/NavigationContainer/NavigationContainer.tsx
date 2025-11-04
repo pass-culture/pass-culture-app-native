@@ -14,7 +14,6 @@ import { linking } from 'features/navigation/RootNavigator/linking/linking'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { useColorScheme } from 'libs/styled/useColorScheme'
-import { LoadingPage } from 'ui/pages/LoadingPage'
 
 import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
@@ -67,16 +66,11 @@ export const AppNavigationContainer = () => {
     }
   }, [isNavReady, hideSplashScreen])
 
-  if (!isNavReady) {
-    return <LoadingPage />
-  }
-
   return (
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
       onStateChange={onNavigationStateChange}
-      fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
       theme={getNavThemeConfig(theme)}>

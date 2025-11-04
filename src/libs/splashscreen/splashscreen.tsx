@@ -3,7 +3,7 @@ import SplashScreen from 'react-native-lottie-splash-screen'
 
 import { SplashScreenContextInterface } from './types'
 
-const MIN_SPLASHSCREEN_DURATION_IN_MS = 2000
+const MIN_SPLASHSCREEN_DURATION_IN_MS = 0
 
 const SplashScreenContext = createContext<SplashScreenContextInterface>({
   isSplashScreenHidden: false,

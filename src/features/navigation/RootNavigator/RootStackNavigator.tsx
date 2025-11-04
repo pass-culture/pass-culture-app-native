@@ -70,7 +70,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
-import { LoadingPage } from 'ui/pages/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { determineAccessibilityRole } from './determineAccessibilityRole'
@@ -441,10 +440,6 @@ export const RootNavigator: React.ComponentType = () => {
       incrementLoggedInSessionCount()
     }
   }, [isLoggedIn])
-
-  if (!initialScreen) {
-    return <LoadingPage />
-  }
 
   const mainAccessibilityRole: AccessibilityRole | undefined =
     determineAccessibilityRole(currentRoute)
