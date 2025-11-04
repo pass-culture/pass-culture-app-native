@@ -1,10 +1,13 @@
 # also update on Sentry https://pass-culture.sentry.io/settings/projects/jeunes/ownership/
 
+# errors/ and navigation/ are not included because they cannot be owned by a single team
+
 src/features/accessibility/                          @pass-culture/jeunes-conversion
 src/features/achievements/                           @pass-culture/jeunes-activation
 src/features/artist/                                 @pass-culture/jeunes-decouverte
 src/features/auth/                                   @pass-culture/jeunes-activation
 src/features/birthdayNotifications/                  @pass-culture/jeunes-conversion
+src/features/bonification/                           @pass-culture/jeunes-activation
 src/features/bookings/                               @pass-culture/jeunes-conversion
 src/features/bookOffer/                              @pass-culture/jeunes-conversion
 src/features/chronicle/                              @pass-culture/jeunes-decouverte
@@ -12,20 +15,23 @@ src/features/cookies/                                @pass-culture/jeunes-activa
 src/features/culturalSurvey/                         @pass-culture/jeunes-activation
 src/features/deeplinks/                              @pass-culture/jeunes-decouverte
 src/features/favorites/                              @pass-culture/jeunes-decouverte
+src/features/forceUpdate/                            @pass-culture/jeunes-activation
 src/features/gtlPlaylist/                            @pass-culture/jeunes-conversion
 src/features/headlineOffer/                          @pass-culture/jeunes-decouverte
 src/features/home/                                   @pass-culture/jeunes-decouverte
 src/features/identityCheck/                          @pass-culture/jeunes-activation
 src/features/internal/                               @pass-culture/jeunes-decouverte
 src/features/location/                               @pass-culture/jeunes-conversion
+src/features/maintenance/                            @pass-culture/jeunes-activation
 src/features/notifications/                          @pass-culture/jeunes-activation
 src/features/offer/                                  @pass-culture/jeunes-decouverte
+src/features/onboarding/                             @pass-culture/jeunes-activation
 src/features/profile/                                @pass-culture/jeunes-activation
 src/features/reactions/                              @pass-culture/jeunes-decouverte
+src/features/remoteBanners/                          @pass-culture/jeunes-activation
 src/features/search/                                 @pass-culture/jeunes-conversion
 src/features/share/                                  @pass-culture/jeunes-activation
 src/features/subscription/                           @pass-culture/jeunes-activation
 src/features/trustedDevice/                          @pass-culture/jeunes-activation
-src/features/tutorial/                               @pass-culture/jeunes-activation
 src/features/venue/                                  @pass-culture/jeunes-decouverte
 src/features/venueMap/                               @pass-culture/jeunes-decouverte
