@@ -21,6 +21,7 @@ export interface ThematicSearchPlaylist {
     viewableItems: ViewToken<unknown>[]
     changed: ViewToken<unknown>[]
   }) => void
+  searchId?: string
 }
 
 export function ThematicSearchPlaylist({
@@ -29,8 +30,9 @@ export function ThematicSearchPlaylist({
   route,
   playlistRef,
   onViewableItemsChanged,
+  searchId,
 }: Readonly<ThematicSearchPlaylist>) {
-  const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist })
+  const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist, searchId })
   return (
     <PassPlaylist
       data={playlist.offers.hits}

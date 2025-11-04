@@ -1,5 +1,5 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
-import React, { ReactNode, useEffect, useMemo } from 'react'
+import React, { ReactNode, useEffect, useMemo, useState } from 'react'
 import { Platform, ViewToken } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { v4 as uuidv4 } from 'uuid'
@@ -39,7 +39,8 @@ export const ThematicSearch: React.FC = () => {
   const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
   const { selectedLocationMode } = useLocation()
-  const searchIdGenerated = uuidv4()
+  const [fallbackSearchId] = useState(uuidv4)
+  const currentSearchId = params?.searchId ?? fallbackSearchId
 
   const {
     hits: { venues },
@@ -110,15 +111,9 @@ export const ThematicSearch: React.FC = () => {
   const handleVenuePlaylistViewableItemsChanged = React.useCallback(
     (items: Pick<ViewToken, 'key' | 'index'>[]) => {
       if (!isFocused) return
-      handleTrackViewableItems(
-        items,
-        venuePlaylistTitle,
-        'venue',
-        params?.searchId ?? searchIdGenerated,
-        0
-      )
+      handleTrackViewableItems(items, venuePlaylistTitle, 'venue', currentSearchId, 0)
     },
-    [handleTrackViewableItems, isFocused, params?.searchId, searchIdGenerated, venuePlaylistTitle]
+    [currentSearchId, handleTrackViewableItems, isFocused, venuePlaylistTitle]
   )
 
   const handleOfferPlaylistViewableItemsChanged = React.useCallback(
@@ -129,15 +124,9 @@ export const ThematicSearch: React.FC = () => {
       playlistIndex?: number
     ) => {
       if (!isFocused) return
-      handleTrackViewableItems(
-        items,
-        moduleId,
-        itemType,
-        params?.searchId ?? searchIdGenerated,
-        playlistIndex
-      )
+      handleTrackViewableItems(items, moduleId, itemType, currentSearchId, playlistIndex)
     },
-    [handleTrackViewableItems, isFocused, params?.searchId, searchIdGenerated]
+    [currentSearchId, handleTrackViewableItems, isFocused]
   )
 
   if (!offerCategory) return null
@@ -147,30 +136,35 @@ export const ThematicSearch: React.FC = () => {
       <BookPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
         onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
+        searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.CINEMA]: (
       <CinemaPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
         onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
+        searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: (
       <FilmsPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
         onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
+        searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.MUSIQUE]: (
       <MusicPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
         onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
+        searchId={currentSearchId}
       />
     ),
     [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: (
       <ConcertsAndFestivalsPlaylists
         shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
         onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged}
+        searchId={currentSearchId}
       />
     ),
   }

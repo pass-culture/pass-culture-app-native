@@ -18,6 +18,7 @@ const FILMS_PLAYLISTS_TITLES = [
 export const FilmsPlaylists: React.FC<ThematicPlaylistProps> = ({
   shouldDisplayVenuesPlaylist,
   onViewableItemsChanged,
+  searchId,
 }) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
@@ -37,6 +38,7 @@ export const FilmsPlaylists: React.FC<ThematicPlaylistProps> = ({
       isLoading={areFilmsPlaylistsLoading}
       shouldDisplayVenuesPlaylist={shouldDisplayVenuesPlaylist}
       onViewableItemsChanged={onViewableItemsChanged}
+      searchId={searchId}
     />
   )
 }
