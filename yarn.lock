@@ -11195,7 +11195,6 @@ __metadata:
     react-native-keychain: ^10.0.0
     react-native-launch-navigator: 1.0.9
     react-native-linear-gradient: ^2.8.3
-    react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^4.0.0
     react-native-maps: 1.23.12
     react-native-modal: 13.0.1
@@ -14236,13 +14235,6 @@ __metadata:
   dependencies:
     mimic-response: ^3.1.0
   checksum: d377cf47e02d805e283866c3f50d3d21578b779731e8c5072d6ce8c13cc31493db1c2f6784da9d1d5250822120cefa44f1deab112d5981015f2e17444b763812
-  languageName: node
-  linkType: hard
-
-"dedent@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "dedent@npm:0.6.0"
-  checksum: fe2c0f5adb0b24407988e4adcd22befa0a27259091d4c40574c72da29fa6a6989e15a522ffc0f934ba6bb511b6498b315e7cdcf4a33a310cfaf1a8555a106484
   languageName: node
   linkType: hard
 
@@ -18375,7 +18367,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:2.2.4, invariant@npm:^2.2.2, invariant@npm:^2.2.4":
+"invariant@npm:2.2.4, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -20672,31 +20664,6 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
-  languageName: node
-  linkType: hard
-
-"lottie-ios@npm:3.2.3":
-  version: 3.2.3
-  resolution: "lottie-ios@npm:3.2.3"
-  checksum: 70d1c2e99c3ff4267168402e7c026a1b912de20fa9424eef13175fe17fcaf0da508c9440197e2bc93ab6bc1640e4dad9124bb2cdd0956b9cec89159905c3f8e7
-  languageName: node
-  linkType: hard
-
-"lottie-react-native@npm:^5.1.3":
-  version: 5.1.6
-  resolution: "lottie-react-native@npm:5.1.6"
-  dependencies:
-    invariant: ^2.2.2
-    react-native-safe-modules: ^1.0.3
-  peerDependencies:
-    lottie-ios: ^3.4.0
-    react: "*"
-    react-native: ">=0.46"
-    react-native-windows: ">=0.63.x"
-  peerDependenciesMeta:
-    react-native-windows:
-      optional: true
-  checksum: e051e3c3e50b6d0c766895ac122cdccdd1acb76daec6eac9538a2892d8e52ab9e0b5580ab258c37d04b1924bc9962c9b8fdcced0a81d332a6076bfa045783f50
   languageName: node
   linkType: hard
 
@@ -23956,18 +23923,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-lottie-splash-screen@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "react-native-lottie-splash-screen@npm:1.1.2"
-  dependencies:
-    lottie-ios: 3.2.3
-    lottie-react-native: ^5.1.3
-  peerDependencies:
-    react-native: ">=0.57.0"
-  checksum: 57236b3957059c9ba1af82eff6bf8337fc529de87721d761db26fa2011b621f3d288d52d511c6f2cc3d7bf11edf62f994bee312d5fdfa77d51b8ad47159e6abb
-  languageName: node
-  linkType: hard
-
 "react-native-map-clustering@npm:^4.0.0":
   version: 4.0.0
   resolution: "react-native-map-clustering@npm:4.0.0"
@@ -24114,17 +24069,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 57d27eac29288a906e97055512cde656369fe3bdc2bc9f26ca078bd0b340e5535d7619d6bcc0f10b68630fe7e721099fcd64d15eb8101b146ddb660ae36e1d64
-  languageName: node
-  linkType: hard
-
-"react-native-safe-modules@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "react-native-safe-modules@npm:1.0.3"
-  dependencies:
-    dedent: ^0.6.0
-  peerDependencies:
-    react-native: "*"
-  checksum: df30e1935dfb32ece9be57cd21ccbbecd058a68942536ff6c543f591e5488cc22f17093131eaabf490b6e187caa78e802a4b2e55c890af1c48a3f012dd57c9f2
   languageName: node
   linkType: hard
 
