@@ -1,5 +1,5 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
-import { TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
+import { Insets, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
@@ -47,6 +47,7 @@ type CustomInputTextProps = InputProps & {
     onPress: () => void
     accessibilityLabel: string
     testID?: string
+    hitSlop?: Insets
   }
   characterCount?: number
 }
