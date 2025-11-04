@@ -1,0 +1,27 @@
+#!/bin/bash
+
+DIR=$(git rev-parse --show-toplevel)
+
+########################
+## CHECK SECRET LEAKS ##
+########################
+
+cd $DIR
+
+echo "Running gitleaks..."
+
+output=$(gitleaks git --max-archive-depth=2 --max-decode-depth=2 --staged --verbose --exit-code 1 2>&1)
+status=$?
+
+if [ $status -ne 0 ]; then
+    echo -e "❌ Secrets were detected by gitleaks"
+    echo -e "$output"
+    exit 1
+fi
+
+############################
+## END CHECK SECRET LEAKS ##
+############################
+
+# return 0-exit code
+exit 0
