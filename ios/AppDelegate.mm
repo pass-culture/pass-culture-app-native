@@ -47,9 +47,6 @@
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
 
-  // DEBUG: Add delay to see splash screen (remove this later)
-  [NSThread sleepForTimeInterval:3.0];
-
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
