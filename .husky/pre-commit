@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+set -o errexit
+set -o pipefail
+set -o nounset
+
 DIR=$(git rev-parse --show-toplevel)
 
 ########################
 ## CHECK SECRET LEAKS ##
 ########################
 
-cd $DIR
+cd "$DIR"
 
 echo "Running gitleaks..."
 
