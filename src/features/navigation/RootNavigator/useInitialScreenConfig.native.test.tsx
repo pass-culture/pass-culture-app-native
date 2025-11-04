@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

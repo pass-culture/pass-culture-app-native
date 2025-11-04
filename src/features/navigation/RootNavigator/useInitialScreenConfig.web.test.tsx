@@ -8,9 +8,7 @@ import { renderHook, waitFor } from 'tests/utils/web'
 import { useInitialScreen } from './useInitialScreenConfig'
 
 const wrapper = (props: { children: unknown }) =>
-  reactQueryProviderHOC(
-    <>{props.children as React.JSX.Element}</>
-  )
+  reactQueryProviderHOC(<React.Fragment>{props.children as React.JSX.Element}</React.Fragment>)
 
 jest.mock('libs/firebase/analytics/analytics')
 
