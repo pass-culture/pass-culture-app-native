@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationBanner } from 'features/bonification/banners/BonificationBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
@@ -62,6 +63,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { user } = useAuthContext()
 
   const shouldRenderSystemBanner = banner.name ? bannersToRender.includes(banner.name) : false
 
@@ -120,18 +122,16 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       return renderSystemBanner(systemBannerIcons[banner.name], banner.title, banner.text)
     }
 
-    // TODO(PC-38487): Use value from backend
-    if (enableBonification) {
+    if (enableBonification && user?.isEligibleForBonification) {
       return (
         <BannerContainer>
-          <BonificationBanner />
+          <BonificationBanner bonificationStatus={user?.bonificationStatus} />
         </BannerContainer>
       )
     }
 
     return null
   }, [
-    enableBonification,
     disableActivation,
     remoteActivationBannerOptions,
     isLoggedIn,
@@ -139,6 +139,9 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     banner.name,
     banner.title,
     banner.text,
+    enableBonification,
+    user?.isEligibleForBonification,
+    user?.bonificationStatus,
     renderSystemBanner,
   ])
 

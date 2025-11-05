@@ -5,12 +5,12 @@
  * Keep only 1 entry for each COG (keep the most recent one)
  */
 
-type INSEE_COUNTRY = {
+type InseeCountry = {
   COG: number
   LIBCOG: string
 }
 
-export const INSEE_COUNTRY_LIST: INSEE_COUNTRY[] = [
+export const INSEE_COUNTRY_LIST: InseeCountry[] = [
   {
     COG: 99100,
     LIBCOG: 'France',

@@ -2,11 +2,14 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 
+import { GenderEnum } from 'api/gen'
+import { usePostBonusQuotientFamilialMutation } from 'features/bonification/queries/usePostBonusQuotientFamilialMutation'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { Summary } from 'features/identityCheck/components/Summary'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -19,18 +22,31 @@ export const BonificationRecap = () => {
   const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
+  const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
+    onSuccess: () => {
+      resetLegalRepresentative()
+      navigateToHome()
+    },
+    onError: (_error) => {
+      navigate('BonificationError')
+      // LOG TO SENTRY?
+    },
+  })
 
   const [accepted, setAccepted] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   const submit = () => {
-    setLoading(true)
-
-    setTimeout(() => {
-      setLoading(false)
-      resetLegalRepresentative() // change this to onSuccess of API call
-      navigate('BonificationError')
-    }, 4000)
+    if (title && firstNames && givenName && birthDate && birthCountry) {
+      mutate({
+        gender: title === 'Madame' ? GenderEnum.Mme : GenderEnum['M.'],
+        firstNames,
+        commonName,
+        lastName: givenName,
+        birthDate: new Date(birthDate).toString(),
+        birthCountryCogCode: birthCountry,
+        birthCityCogCode: birthCity,
+      })
+    }
   }
 
   if (!title || !firstNames || !givenName || !birthDate || !birthCountry) {
@@ -65,7 +81,7 @@ export const BonificationRecap = () => {
       fixedBottomChildren={
         <ViewGap gap={4}>
           <ButtonPrimary
-            isLoading={loading}
+            isLoading={isPending}
             type="submit"
             wording="Envoyer"
             accessibilityLabel="Envoyer les informations"
