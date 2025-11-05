@@ -67,10 +67,6 @@ export function VenueOffers({
     venue,
   })
 
-  const isOfferAMovieScreening = venueOffers?.hits.some(
-    (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  )
-
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />
   }
@@ -79,8 +75,12 @@ export function VenueOffers({
     return <NoOfferPlaceholder />
   }
 
-  if (isOfferAMovieScreening) {
-    return <VenueMovies venueMovieOffers={venueOffers} />
+  const hasAMovieScreeningOffer = venueOffers?.hits.some(
+    (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+  )
+
+  if (hasAMovieScreeningOffer) {
+    return <VenueMovies venueOffers={venueOffers} />
   }
 
   return (
