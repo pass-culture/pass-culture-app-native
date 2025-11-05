@@ -3,13 +3,14 @@ import { ViewStyle, View } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
+import { InputSize } from 'ui/designSystem/InputText/types'
 import { getSpacing, padding } from 'ui/theme'
 
 type Props = {
   isError?: boolean
   isFocus?: boolean
   isDisabled?: boolean
-  inputHeight?: 'small' | 'regular' | 'tall'
+  inputHeight?: InputSize
   style?: ViewStyle
   children?: React.ReactNode
 }

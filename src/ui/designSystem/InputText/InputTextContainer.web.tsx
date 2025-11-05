@@ -6,10 +6,8 @@
 import React from 'react'
 
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import {
-  InputTextContainerBase,
-  InputTextContainerBaseProps,
-} from 'ui/designSystem/InputText/InputTextContainerBase'
+import { InputTextContainerBase } from 'ui/designSystem/InputText/InputTextContainerBase'
+import { InputTextContainerBaseProps } from 'ui/designSystem/InputText/types'
 
 export const InputTextContainer: React.FC<InputTextContainerBaseProps> = (props) => {
   const hoverProps = useHandleHover()

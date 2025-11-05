@@ -6,13 +6,10 @@ import { FilterBehaviour } from 'features/search/enums'
 import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { Close } from 'ui/svg/icons/Close'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { Typo } from 'ui/theme/typography'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
@@ -63,18 +60,14 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
         />
       }>
       <StyledScrollView>
-        <SubtitleContainer>
-          <SearchIcon />
-          <Typo.BodyAccent>Trouver un lieu culturel</Typo.BodyAccent>
-        </SubtitleContainer>
         <Container>
           <SearchInput
+            testID="searchInput"
+            label="Trouver un lieu culturel"
+            description="Exemple&nbsp;: Cinéma, librairie, magasin…"
             autoFocus
-            LeftIcon={StyledMagnifyingGlass}
-            inputHeight="regular"
             onChangeText={doChangeVenue}
-            onPressRightIcon={doResetVenue}
-            placeholder="Cinéma, librairie, magasin…"
+            onClear={doResetVenue}
             value={venueQuery}
           />
           {shouldShowSuggestedVenues ? (
@@ -85,20 +78,6 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     </AppModal>
   )
 }
-
-const SubtitleContainer = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: theme.designSystem.size.spacing.s,
-}))
-
-const SearchIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
-
-const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.modal.spacing.MD,
