@@ -39,14 +39,14 @@ Listes provenant de :
 Options :
 
 - Pas encore éliminés :
-  - [CaptchaText](#captcha-text)
-  - [InputGuard](#inputguard)
   - [Private Captcha Self Hosted](#private-captcha-self-hosted)
-  - [Swetrix](#swetrix)
-  - [Altcha Sentinel](#altcha-sentinel)
-  - [Altcha Open Source](#altcha-open-source)
   - [mCaptcha](#mcaptcha)
+  - [Altcha Open Source](#altcha-open-source)
+  - [Altcha Sentinel](#altcha-sentinel)
   - [Cloudflare Turnstile](#cloudflare-turnstile)
+  - [CaptchaText](#captcha-text)
+  - [Swetrix](#swetrix)
+  - [InputGuard](#inputguard)
 - Trop cher :
   - [Captcha](#captcha)
   - [hCaptcha](#hcaptcha)
@@ -60,13 +60,19 @@ Options :
   - [Sblam](#sblam)
   - [EU Captcha](#eu-captcha)
 
-<!--
 ## Justification
 
-_List the reasons why this choice fits the context and stands out from the alternatives._
+Bonus pour les solutions qui :
 
-{Describe how the implementation of/compliance with the ADR can/will be confirmed. Are the design that was decided for and its implementation in line with the decision made? E.g., a design/code review or a test with a library such as ArchUnit can help validate this. Not that although we classify this element as optional, it is included in many ADRs.}
+- fonctionnent avec un [Proof of Work] :
+  - plus accessible qu'un CAPTCHA audio
+  - mieux pour la vie privée
+- sont le coeur de métier des créateurs
+- où le prix est indiqué sans devoir contacter les commerciaux
+- auto hébergée ou hébergée en france
+- open source
 
+<!--
 ## Consequences
 
 _Describe the impact of this decision, both positive and negative. Mention the short- and long-term implications.
@@ -96,42 +102,6 @@ _
 
 ### Pas encore éliminés
 
-#### Captcha Text
-
-[Site](https://www.captchatext.com/)
-
-[Démo](https://www.captchatext.com/examples.html)
-
-- Coût : [$29 / an](https://www.captchatext.com/index.html#itsfree) ✅
-  - No Branding and No Backlinks : $299 / an
-- Sécurité : [SOC2 Compliant](https://www.captchatext.com/compliance.html)
-- Volume : Unlimited Traffic Handling | Unlimited Evals/Assessments ✅
-- Performance : Serveur notamment en Europe, et validation sans rechargement de la page
-- Fiabilité :
-- Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
-  - il y a un captcha audio
-  - quand je tente de faire la démo au clavier, je n'arrive pas à cocher la checkbox ⚠️
-  - parfois ça demande un mot qui commence par une majuscule, à l'audio, ça ne s'entend pas ⚠️
-- Protection des données : [GDPR Compliant](https://www.captchatext.com/compliance.html) ; [Privacy Policy](https://www.captchatext.com/privacy.html)
-- Hébergement : monde
-- Licence : Closed Source
-
-#### InputGuard
-
-[Site](https://zenofx.com/inputguard/)
-
-[Démo](https://zenofx.com/contact.html)
-
-- Coût : [59.88€ / Fair use (not suitable for high volume sites) / site / an](https://zenofx.com/inputguard/order.html) ; [besoin de les contacter](https://zenofx.com/inputguard/)
-- Sécurité :
-- Volume :
-- Performance :
-- Fiabilité :
-- Accessibilité : ["User friendly, accessible interface"](https://zenofx.com/inputguard/)
-- Protection des données : ["No user data is ever collected or submitted to 3rd parties" ; GDPR (DSGVO) compliant](https://zenofx.com/inputguard/)
-- Hébergement : self hosted / monde
-- Licence : Closed Source
-
 #### Private Captcha Self Hosted
 
 Exclusivement la partie self hosted ;
@@ -153,43 +123,23 @@ Exclusivement la partie self hosted ;
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/PrivateCaptcha/PrivateCaptcha) : PolyForm Noncommercial License 1.0.0
 
-#### Swetrix
+#### mCaptcha
 
-[Site](https://captcha.swetrix.com/)
+[Site](https://mcaptcha.org/)
 
-[Demo](https://captcha.swetrix.com/demo)
+[Demo](https://showcase.mcaptcha.org/) ([le backend de démo est down](https://github.com/mCaptcha/showcase/issues/8))
 
-- Coût : [99€ / 2M requests / mois](https://swetrix.com/#pricing)
-- Sécurité :
-- Volume :
+- Coût : gratuit
+- Sécurité : [Security](https://mcaptcha.org/security)
+- Volume : illimité
 - Performance :
 - Fiabilité :
 - Accessibilité :
-  - je n'arrive pas à accéder au bouton "submit" au clavier ⚠️
-- Protection des données : [GDPR Compliant](https://swetrix.com/data-policy#gdpr-compliance)
-- Hébergement : self hosted / Europe (Allemagne)
-- Licence : [Open Source](https://github.com/Swetrix/swetrix) : AGPL 3.0
-
-De ce que j'en comprends, Swetrix est un outil de tracking / analytics ; les Captcha ne sont pas leur coeur de métier
-
-#### Altcha Sentinel
-
-Exclusivement la partie Sentinel ;
-[voir ici pour la partie Open Source](#altcha-open-source)
-
-[Site](https://altcha.org/fr/)
-
-[Demo](https://altcha.org/fr/docs/v2/sentinel/features/adaptive-captcha/)
-
-- Coût : [Sentinel 74€ / mois](https://altcha.org/docs/v2/sentinel/pricing/#licensing-plans)
-- Sécurité : [SOC 2, ISO 27001](https://altcha.org/docs/v2/compliance/security/)
-- Volume : Illimité
-- Performance :
-- Fiabilité :
-- Accessibilité : Conforme à [WCAG 2.2 AA](https://altcha.org/docs/v2/compliance/wcag/)/[EAA](https://altcha.org/docs/v2/compliance/european-accessibility-act-2025/)
-- Protection des données : [GDPR Compliant](https://altcha.org/docs/v2/compliance/gdpr/)
-- Hébergement : self hosted / USA / Europe
-- Licence : Closed Source ?
+  - pas directement mentionnée mais ça fonctionne sur du [Proof of Work]
+    d'après [la page d'accueil](https://mcaptcha.org/) donc l'user ne devrait pas à avoir à résoudre des puzzles
+- Protection des données : [Privacy Policy](https://mcaptcha.org/privacy-policy)
+- Hébergement : self hosted
+- Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
 
 #### Altcha Open Source
 
@@ -211,23 +161,24 @@ Exclusivement la partie Open Source ;
 - Hébergement : self hosted
 - Licence : [Open Source](https://github.com/altcha-org/altcha) : MIT
 
-#### mCaptcha
+#### Altcha Sentinel
 
-[Site](https://mcaptcha.org/)
+Exclusivement la partie Sentinel ;
+[voir ici pour la partie Open Source](#altcha-open-source)
 
-[Demo](https://showcase.mcaptcha.org/) ([le backend de démo est down](https://github.com/mCaptcha/showcase/issues/8))
+[Site](https://altcha.org/fr/)
 
-- Coût : gratuit
-- Sécurité : [Security](https://mcaptcha.org/security)
-- Volume : illimité
+[Demo](https://altcha.org/fr/docs/v2/sentinel/features/adaptive-captcha/)
+
+- Coût : [Sentinel 74€ / mois](https://altcha.org/docs/v2/sentinel/pricing/#licensing-plans)
+- Sécurité : [SOC 2, ISO 27001](https://altcha.org/docs/v2/compliance/security/)
+- Volume : Illimité
 - Performance :
 - Fiabilité :
-- Accessibilité :
-  - pas directement mentionnée mais ça fonctionne sur du [Proof of Work]
-    d'après [la page d'accueil](https://mcaptcha.org/) donc l'user ne devrait pas à avoir à résoudre des puzzles
-- Protection des données : [Privacy Policy](https://mcaptcha.org/privacy-policy)
-- Hébergement : self hosted
-- Licence : [Open Source](https://github.com/mCaptcha/mCaptcha) : AGPL 3.0
+- Accessibilité : Conforme à [WCAG 2.2 AA](https://altcha.org/docs/v2/compliance/wcag/)/[EAA](https://altcha.org/docs/v2/compliance/european-accessibility-act-2025/)
+- Protection des données : [GDPR Compliant](https://altcha.org/docs/v2/compliance/gdpr/)
+- Hébergement : self hosted / USA / Europe
+- Licence : Closed Source ?
 
 #### Cloudflare Turnstile
 
@@ -244,6 +195,61 @@ Exclusivement la partie Open Source ;
   - ça n'en parle pas directement, [ça semble décrire](https://www.cloudflare.com/application-services/products/turnstile/#how-it-works) un mécanisme de [Proof of Work]
 - Protection des données :
 - Hébergement : monde
+- Licence : Closed Source
+
+#### Captcha Text
+
+[Site](https://www.captchatext.com/)
+
+[Démo](https://www.captchatext.com/examples.html)
+
+- Coût : [$29 / an](https://www.captchatext.com/index.html#itsfree) ✅
+  - No Branding and No Backlinks : $299 / an
+- Sécurité : [SOC2 Compliant](https://www.captchatext.com/compliance.html)
+- Volume : Unlimited Traffic Handling | Unlimited Evals/Assessments ✅
+- Performance : Serveur notamment en Europe, et validation sans rechargement de la page
+- Fiabilité :
+- Accessibilité : WCAG 2.2 AAA | [VPAT Report](https://www.captchatext.com/VPAT.html) ✅
+  - il y a un captcha audio
+  - quand je tente de faire la démo au clavier, je n'arrive pas à cocher la checkbox ⚠️
+  - parfois ça demande un mot qui commence par une majuscule, à l'audio, ça ne s'entend pas ⚠️
+- Protection des données : [GDPR Compliant](https://www.captchatext.com/compliance.html) ; [Privacy Policy](https://www.captchatext.com/privacy.html)
+- Hébergement : monde
+- Licence : Closed Source
+
+#### Swetrix
+
+[Site](https://captcha.swetrix.com/)
+
+[Demo](https://captcha.swetrix.com/demo)
+
+- Coût : [99€ / 2M requests / mois](https://swetrix.com/#pricing)
+- Sécurité :
+- Volume :
+- Performance :
+- Fiabilité :
+- Accessibilité :
+  - je n'arrive pas à accéder au bouton "submit" au clavier ⚠️
+- Protection des données : [GDPR Compliant](https://swetrix.com/data-policy#gdpr-compliance)
+- Hébergement : self hosted / Europe (Allemagne)
+- Licence : [Open Source](https://github.com/Swetrix/swetrix) : AGPL 3.0
+
+De ce que j'en comprends, Swetrix est un outil de tracking / analytics ; les Captcha ne sont pas leur coeur de métier
+
+#### InputGuard
+
+[Site](https://zenofx.com/inputguard/)
+
+[Démo](https://zenofx.com/contact.html)
+
+- Coût : [59.88€ / Fair use (not suitable for high volume sites) / site / an](https://zenofx.com/inputguard/order.html) ; [besoin de les contacter](https://zenofx.com/inputguard/)
+- Sécurité :
+- Volume :
+- Performance :
+- Fiabilité :
+- Accessibilité : ["User friendly, accessible interface"](https://zenofx.com/inputguard/)
+- Protection des données : ["No user data is ever collected or submitted to 3rd parties" ; GDPR (DSGVO) compliant](https://zenofx.com/inputguard/)
+- Hébergement : self hosted / monde
 - Licence : Closed Source
 
 ### Trop cher
