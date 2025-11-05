@@ -7,10 +7,8 @@ import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
@@ -27,16 +25,14 @@ export const LocationSearchWidget = () => {
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   return (
-    <Container>
-      <Separator.Vertical />
-
+    <Container highlighted={isWidgetHighlighted}>
       <LocationButton
         onPress={showLocationModal}
         testID="Ouvrir la modale de localisation depuis la recherche">
         {isWidgetHighlighted ? (
-          <LocationPointerFilled testID="location pointer filled" />
+          <LocationPointerHighlighted testID="location pointer filled" />
         ) : (
-          <SmallLocationPointerNotFilled testID="location pointer not filled" />
+          <LocationPointerDefault testID="location pointer not filled" />
         )}
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
@@ -44,19 +40,26 @@ export const LocationSearchWidget = () => {
     </Container>
   )
 }
-const Container = styled.View(({ theme }) => ({
+const Container = styled.View<{ highlighted: boolean }>(({ theme, highlighted }) => ({
   flexDirection: 'row',
   height: theme.designSystem.size.spacing.xxl,
-  marginLeft: theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.l,
+  paddingHorizontal: theme.designSystem.size.spacing.s,
+  borderWidth: 1,
+  backgroundColor: highlighted ? theme.designSystem.color.background.subtle : 'transparent',
+  borderColor: highlighted
+    ? theme.designSystem.color.border.focused
+    : theme.designSystem.color.border.default,
 }))
 
-const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
+const LocationPointerHighlighted = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.extraSmall,
 }))({})
 
-const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ theme }) => ({
+const LocationPointerDefault = styled(LocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.locked,
 }))``
 
 const LocationTitle = styled(Typo.BodyAccentXs).attrs({

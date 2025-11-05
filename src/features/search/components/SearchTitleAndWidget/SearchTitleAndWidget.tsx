@@ -1,10 +1,12 @@
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
+import { SearchView } from 'features/search/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Typo } from 'ui/theme'
@@ -23,7 +25,15 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
 }) => {
   const subtitle = 'Toutes les offres à portée de main'
   const { isDesktopViewport } = useTheme()
-  const shouldDisplayMobileLocationWidget = shouldDisplaySubtitle && !isDesktopViewport
+  const route = useRoute()
+
+  const isMobileViewport = !isDesktopViewport
+  const shouldDisplayMobileLocationWidget = shouldDisplaySubtitle
+
+  const currentView = route.name
+  const shouldDisplayMobileLocationSearchWidget =
+    currentView === SearchView.Results || currentView === SearchView.Thematic
+
   return (
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
@@ -40,11 +50,15 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
           shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>
         }
       </TitleContainer>
-      <View testID="InsideLocationWidget">
-        {shouldDisplayMobileLocationWidget ? (
-          <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
-        ) : null}
-      </View>
+      {isMobileViewport ? (
+        <LocationSearchContainer>
+          {shouldDisplayMobileLocationWidget ? (
+            <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
+          ) : shouldDisplayMobileLocationSearchWidget ? (
+            <LocationSearchWidget />
+          ) : null}
+        </LocationSearchContainer>
+      ) : null}
     </TitleAndWidgetContainer>
   )
 }
@@ -81,4 +95,11 @@ const StyledTitleMainView = styled.View({
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
   maxWidth: '75%',
+})
+
+const LocationSearchContainer = styled.View({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
 })
