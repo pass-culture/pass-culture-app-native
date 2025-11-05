@@ -8,8 +8,8 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Spinner } from 'ui/components/Spinner'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -56,14 +56,13 @@ export const ChangeAddress = () => {
                     }}
                     value={value}
                     label={label}
-                    format="34 avenue de l’Opéra"
+                    description="Exemple&nbsp;: 34 avenue de l’Opéra"
                     autoComplete="street-address"
                     textContentType="fullStreetAddress"
                     accessibilityHint={errorMessage}
-                    onPressRightIcon={resetSearch}
+                    onClear={resetSearch}
                     returnKeyType="next"
                     testID="Entrée pour l’adresse"
-                    searchInputID="street-address-input"
                   />
                 )}
               />
