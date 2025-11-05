@@ -80,6 +80,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               <Text
                 accessibilityRole="header"
                 htmlFor="testUuidV4"
+                small={true}
                 style={
                   {
                     "color": "#161617",

@@ -70,7 +70,11 @@ describe('SearchHeader component', () => {
   })
 
   it('should show LocationWidget when isDesktopViewport is false and SearchView is Landing', async () => {
-    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
+    renderSearchHeader({
+      shouldDisplaySubtitle: true,
+      isDesktopViewport: false,
+      isMobileViewport: true,
+    })
 
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('LocationWidget'))
@@ -80,46 +84,36 @@ describe('SearchHeader component', () => {
   })
 
   it('should not show LocationWidget when isDesktopViewport is false and searchView is not landing', async () => {
-    renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: false })
+    renderSearchHeader({
+      shouldDisplaySubtitle: false,
+      isDesktopViewport: false,
+      isMobileViewport: true,
+    })
 
     await waitFor(() => {
       expect(screen.queryByTestId('LocationWidget')).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should show SearchLocationWidget when isDesktopViewport is false', async () => {
-    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
-
-    await waitFor(() => {
-      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
-
-      expect(
-        searchHeaderTitleContainer.queryByText(LocationLabel.everywhereLabel)
-      ).not.toBeOnTheScreen()
     })
   })
 
   it('should not show LocationWidget when isDesktopViewport is true', async () => {
-    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: true })
+    renderSearchHeader({
+      shouldDisplaySubtitle: true,
+      isDesktopViewport: true,
+      isMobileViewport: false,
+    })
 
     await waitFor(() => {
       expect(screen.queryByTestId('LocationWidget')).not.toBeOnTheScreen()
     })
   })
 
-  it('should show SearchLocationWidget when isDesktopViewport is true', async () => {
-    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: true })
-
-    await waitFor(() => {
-      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
-
-      expect(searchHeaderTitleContainer.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
-    })
-  })
-
-  it('should show LocationSearchWidget when isDesktopViewport is false and searchView is Results or Thematic', async () => {
+  it('should show LocationSearchWidget when isMobileViewport is true and searchView is Results or Thematic', async () => {
     mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
-    renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: false })
+    renderSearchHeader({
+      shouldDisplaySubtitle: false,
+      isMobileViewport: true,
+      isDesktopViewport: false,
+    })
 
     await waitFor(() => {
       const insideLocationSearchWidget = within(screen.getByTestId('LocationSearchWidget'))
@@ -128,9 +122,13 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should not show LocationSearchWidget when isDesktopViewport is true and searchView is Results or Thematic', async () => {
+  it('should not show LocationSearchWidget when isMobileViewport is false and searchView is Results or Thematic', async () => {
     mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
-    renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: true })
+    renderSearchHeader({
+      shouldDisplaySubtitle: false,
+      isMobileViewport: false,
+      isDesktopViewport: true,
+    })
 
     await waitFor(() => {
       expect(screen.queryByTestId('LocationSearchWidget')).not.toBeOnTheScreen()
@@ -141,9 +139,14 @@ describe('SearchHeader component', () => {
 interface RenderSearchHeaderProps {
   shouldDisplaySubtitle: boolean
   isDesktopViewport?: boolean
+  isMobileViewport?: boolean
 }
 
-function renderSearchHeader({ shouldDisplaySubtitle, isDesktopViewport }: RenderSearchHeaderProps) {
+function renderSearchHeader({
+  shouldDisplaySubtitle,
+  isDesktopViewport,
+  isMobileViewport,
+}: RenderSearchHeaderProps) {
   const searchInputID = uuidv4()
 
   return render(
@@ -156,7 +159,10 @@ function renderSearchHeader({ shouldDisplaySubtitle, isDesktopViewport }: Render
       />
     ),
     {
-      theme: { isDesktopViewport: isDesktopViewport ?? false },
+      theme: {
+        isDesktopViewport: isDesktopViewport ?? false,
+        isMobileViewport: isMobileViewport ?? false,
+      },
     }
   )
 }

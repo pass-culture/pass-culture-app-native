@@ -27,11 +27,10 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   const subtitle = 'Toutes les offres à portée de main'
   const { isMobileViewport, isDesktopViewport } = useTheme()
   const route = useRoute()
-
-  const shouldDisplayMobileLocationWidget = shouldDisplaySubtitle
-
   const currentView = route.name
-  const shouldDisplayMobileLocationSearchWidget =
+
+  const shouldDisplayMobileLocationBigWidget = shouldDisplaySubtitle
+  const shouldDisplayMobileLocationSmallWidget =
     currentView === SearchView.Results || currentView === SearchView.Thematic
 
   return (
@@ -42,24 +41,21 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
             <StyledTitleMainText
               htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
-              smallTitle={shouldDisplayMobileLocationSearchWidget}>
+              small={shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
           {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
         </TitleMainWrapper>
-        {
-          // eslint-disable-next-line local-rules/use-ternary-operator-in-jsx
-          shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>
-        }
+        {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
       </TitleContainer>
       {isMobileViewport ? (
         <React.Fragment>
-          {shouldDisplayMobileLocationWidget ? (
+          {shouldDisplayMobileLocationBigWidget ? (
             <View testID="LocationWidget">
               <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
             </View>
-          ) : shouldDisplayMobileLocationSearchWidget ? (
+          ) : shouldDisplayMobileLocationSmallWidget ? (
             <LocationSearchWidgetContainer testID="LocationSearchWidget">
               <LocationSearchWidget />
             </LocationSearchWidgetContainer>
@@ -70,9 +66,9 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   )
 }
 
-const StyledTitleMainText = styledInputLabel(InputLabel)<{ smallTitle?: boolean }>(
-  ({ theme, smallTitle = false }) => ({
-    ...(smallTitle ? theme.designSystem.typography.title3 : theme.designSystem.typography.title1),
+const StyledTitleMainText = styledInputLabel(InputLabel)<{ small?: boolean }>(
+  ({ theme, small = false }) => ({
+    ...(small ? theme.designSystem.typography.title3 : theme.designSystem.typography.title1),
     color: theme.designSystem.color.text.default,
   })
 )

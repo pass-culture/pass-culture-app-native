@@ -96,12 +96,13 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   <Text
                     accessibilityRole="header"
                     htmlFor="testUuidV4"
+                    small={false}
                     style={
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 19,
-                        "lineHeight": 30.4,
+                        "fontSize": 28,
+                        "lineHeight": 44.8,
                       }
                     }
                   >
