@@ -29,9 +29,9 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   const route = useRoute()
   const currentView = route.name
 
-  const shouldDisplayMobileLocationBigWidget = shouldDisplaySubtitle
+  const shouldDisplayMobileLocationBigWidget = isMobileViewport && shouldDisplaySubtitle
   const shouldDisplayMobileLocationSmallWidget =
-    currentView === SearchView.Results || currentView === SearchView.Thematic
+    isMobileViewport && (currentView === SearchView.Results || currentView === SearchView.Thematic)
 
   return (
     <TitleAndWidgetContainer>
@@ -49,18 +49,14 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
         </TitleMainWrapper>
         {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
       </TitleContainer>
-      {isMobileViewport ? (
-        <React.Fragment>
-          {shouldDisplayMobileLocationBigWidget ? (
-            <View testID="LocationWidget">
-              <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
-            </View>
-          ) : shouldDisplayMobileLocationSmallWidget ? (
-            <LocationSearchWidgetContainer testID="LocationSearchWidget">
-              <LocationSearchWidget />
-            </LocationSearchWidgetContainer>
-          ) : null}
-        </React.Fragment>
+      {shouldDisplayMobileLocationBigWidget ? (
+        <View testID="LocationWidget">
+          <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
+        </View>
+      ) : shouldDisplayMobileLocationSmallWidget ? (
+        <LocationSearchWidgetContainer testID="LocationSearchWidget">
+          <LocationSearchWidget />
+        </LocationSearchWidgetContainer>
       ) : null}
     </TitleAndWidgetContainer>
   )
