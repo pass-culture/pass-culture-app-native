@@ -24,13 +24,12 @@ export const BonificationRecap = () => {
   const { resetLegalRepresentative } = legalRepresentativeActions
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
-      console.log('OK')
       resetLegalRepresentative()
       navigateToHome()
     },
-    onError: (error) => {
-      console.log('KO', error)
+    onError: (_error) => {
       navigate('BonificationError')
+      // LOG TO SENTRY?
     },
   })
 
