@@ -48,9 +48,10 @@ export const Artist: FunctionComponent = () => {
         viewableItems: items,
         artistId,
         playlistIndex,
+        entryId: params.id,
       })
     },
-    [pageTracking]
+    [pageTracking, params.id]
   )
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted

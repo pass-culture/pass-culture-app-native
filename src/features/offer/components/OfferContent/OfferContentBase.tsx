@@ -267,9 +267,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         itemType,
         viewableItems: items,
         playlistIndex,
+        entryId: offer.id.toString(),
       })
     },
-    [pageTracking]
+    [offer.id, pageTracking]
   )
 
   return (

@@ -174,4 +174,5 @@ export type ThematicPlaylistProps = {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  searchId?: string
 }
