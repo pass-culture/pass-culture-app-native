@@ -100,8 +100,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 28,
-                        "lineHeight": 44.8,
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
                       }
                     }
                   >
@@ -124,7 +124,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               </Text>
             </View>
             <View
-              testID="InsideLocationWidget"
+              testID="LocationWidget"
             >
               <View
                 accessibilityLabel="Ouvrir la modale de localisation depuis le widget"

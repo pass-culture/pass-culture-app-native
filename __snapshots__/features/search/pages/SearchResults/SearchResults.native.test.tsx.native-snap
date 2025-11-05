@@ -100,8 +100,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 28,
-                        "lineHeight": 44.8,
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
                       }
                     }
                   >
@@ -110,9 +110,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 </View>
               </View>
             </View>
-            <View
-              testID="InsideLocationWidget"
-            />
           </View>
         </View>
         <View>
