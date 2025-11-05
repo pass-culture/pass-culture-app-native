@@ -25,10 +25,9 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   title,
 }) => {
   const subtitle = 'Toutes les offres à portée de main'
-  const { isDesktopViewport } = useTheme()
+  const { isMobileViewport, isDesktopViewport } = useTheme()
   const route = useRoute()
 
-  const isMobileViewport = !isDesktopViewport
   const shouldDisplayMobileLocationWidget = shouldDisplaySubtitle
 
   const currentView = route.name
@@ -40,7 +39,10 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
           <StyledTitleMainView>
-            <StyledTitleMainText htmlFor={searchInputID} {...getHeadingAttrs(1)}>
+            <StyledTitleMainText
+              htmlFor={searchInputID}
+              {...getHeadingAttrs(1)}
+              smallTitle={shouldDisplayMobileLocationSearchWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
@@ -68,10 +70,12 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   )
 }
 
-const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.designSystem.typography.title3,
-  color: theme.designSystem.color.text.default,
-}))
+const StyledTitleMainText = styledInputLabel(InputLabel)<{ smallTitle?: boolean }>(
+  ({ theme, smallTitle = false }) => ({
+    ...(smallTitle ? theme.designSystem.typography.title3 : theme.designSystem.typography.title1),
+    color: theme.designSystem.color.text.default,
+  })
+)
 
 const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xs,
