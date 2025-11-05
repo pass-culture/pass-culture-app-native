@@ -53,7 +53,8 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
         <View testID="LocationWidget">
           <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
         </View>
-      ) : shouldDisplayMobileLocationSmallWidget ? (
+      ) : null}
+      {shouldDisplayMobileLocationSmallWidget ? (
         <LocationSearchWidgetContainer testID="LocationSearchWidget">
           <LocationSearchWidget />
         </LocationSearchWidgetContainer>
