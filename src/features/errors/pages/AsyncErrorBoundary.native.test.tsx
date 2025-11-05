@@ -87,6 +87,29 @@ describe('AsyncErrorBoundary component', () => {
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     })
+
+    it('when error is not an error instance', () => {
+      const plainErrorObject = {
+        isComponentError: true,
+        componentStack: 'in MyComponent (at App.js:10)',
+      }
+
+      render(
+        <AsyncErrorBoundary
+          error={plainErrorObject as unknown as Error}
+          resetErrorBoundary={jest.fn()}
+        />
+      )
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('Captured non-error object'),
+        {
+          extra: { error: plainErrorObject },
+        }
+      )
+    })
   })
 
   it.each([
