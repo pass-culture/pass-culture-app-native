@@ -3,7 +3,6 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { LocationSearchWidgetBadge } from 'features/location/components/LocationSearchWidgetBadge'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
@@ -47,7 +46,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
             <StyledTitleMainText
               htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
-              small={shouldDisplayMobileLocationSmallWidget}>
+              small={showNewSearchHeader && shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
@@ -62,7 +61,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       ) : null}
       {shouldDisplayMobileLocationSmallWidget ? (
         <LocationSearchWidgetContainer testID="LocationSearchWidget">
-          {showNewSearchHeader ? <LocationSearchWidgetBadge /> : <LocationSearchWidget />}
+          {showNewSearchHeader ? <LocationSearchWidgetBadge /> : null}
         </LocationSearchWidgetContainer>
       ) : null}
     </TitleAndWidgetContainer>

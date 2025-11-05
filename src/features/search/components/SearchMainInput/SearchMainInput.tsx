@@ -5,8 +5,9 @@ import {
   TextInput as RNTextInput,
   TextInputSubmitEditingEventData,
 } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Search } from 'ui/svg/icons/Search'
 
@@ -29,6 +30,7 @@ type Props = QueryProps &
     searchInputID?: string
     accessibilityDescribedBy?: string
     children?: never
+    showLocationButton?: boolean
     placeholder?: string
   }
 
@@ -40,12 +42,19 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     resetQuery,
     isFocus = false,
     onFocus,
+    showLocationButton = false,
     disableInputClearButton,
     placeholder = 'Offre, artiste, lieu culturel...',
     ...props
   }: Props,
   ref
 ) {
+  const { isDesktopViewport } = useTheme()
+
+  const renderSearchChildren = () => {
+    const hideLocationSearchWidget = !showLocationButton || isDesktopViewport
+    return hideLocationSearchWidget ? null : <LocationSearchWidget />
+  }
   return (
     <StyledSearchInput
       ref={ref}
@@ -61,7 +70,9 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       inputHeight="regular"
       testID="searchInput"
       disableClearButton={disableInputClearButton}
-      {...props}></StyledSearchInput>
+      {...props}>
+      {renderSearchChildren()}
+    </StyledSearchInput>
   )
 })
 
