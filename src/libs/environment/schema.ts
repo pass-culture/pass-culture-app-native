@@ -58,6 +58,7 @@ export const EnvironmentSchema = yup.object({
   HOT_UPDATER_FIREBASE_STORAGE_BUCKET: yup.string().required(),
   IOS_APP_ID: yup.string().required(),
   IOS_APP_STORE_ID: yup.string().required(),
+  IOS_KEYCHAIN_SERVICE_KEY: yup.string().required(),
   PASSCULTURE_DOWNLOAD_APP_URL: yup.string().required(),
   PRIVACY_POLICY_LINK: yup.string().required(),
   RESIZE_IMAGE_ON_DEMAND_URL: yup.string().required(),

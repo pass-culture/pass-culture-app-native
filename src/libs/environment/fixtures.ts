@@ -63,6 +63,7 @@ export const env: Environment = {
   HOT_UPDATER_FIREBASE_STORAGE_BUCKET: 'pc-native-testing.appspot.com',
   IOS_APP_ID: 'app.ios',
   IOS_APP_STORE_ID: '1557887412',
+  IOS_KEYCHAIN_SERVICE_KEY: 'rn_keychain_service_key',
   PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
   PUBLIC_URL: 'https://web.example.com',
