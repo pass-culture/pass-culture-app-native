@@ -1,9 +1,10 @@
 import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
-import { TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
+import { Insets, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { ColorsType } from 'theme/types'
+import { InputSize } from 'ui/designSystem/InputText/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
@@ -47,13 +48,14 @@ type CustomInputTextProps = InputProps & {
     onPress: () => void
     accessibilityLabel: string
     testID?: string
+    hitSlop?: Insets
   }
   characterCount?: number
 }
 
 type CustomSearchInputProps = InputProps & {
   label?: string
-  inputHeight?: 'small' | 'regular' | 'tall'
+  inputHeight?: InputSize
   format?: string
   LeftIcon?: React.FC
   onPressRightIcon?: () => void

@@ -327,6 +327,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 isDisabled={false}
                 isError={false}
                 isFocused={false}
+                isHover={false}
                 size="small"
                 style={
                   {
@@ -1073,6 +1074,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
             isDisabled={false}
             isError={false}
             isFocused={false}
+            isHover={false}
             size="small"
             style={
               {

@@ -329,6 +329,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       isDisabled={false}
                       isError={false}
                       isFocused={false}
+                      isHover={false}
                       size="small"
                       style={
                         {
