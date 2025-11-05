@@ -15,12 +15,13 @@ import { useCitiesByPostalCodeQuery } from 'libs/place/queries/useCitiesByPostal
 import { SuggestedCity } from 'libs/place/types'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { RequiredIndicator } from 'ui/components/inputs/types'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { Banner } from 'ui/designSystem/Banner/Banner'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing } from 'ui/theme'
 
@@ -30,7 +31,7 @@ type CitySearchInputProps = {
   city?: SuggestedCity
   onCitySelected?: (city?: SuggestedCity) => void
   label?: string
-  isRequiredField?: boolean
+  requiredIndicator?: RequiredIndicator
 }
 
 type PostalCodeForm = { postalCode: string }
@@ -39,7 +40,7 @@ export const CitySearchInput = ({
   city,
   onCitySelected,
   label,
-  isRequiredField = false,
+  requiredIndicator,
 }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { data: settings } = useSettingsContext()
@@ -136,15 +137,14 @@ export const CitySearchInput = ({
                 }}
                 value={value}
                 label={label ?? 'Indique ton code postal et choisis ta ville'}
-                format="75017"
-                onPressRightIcon={resetSearch}
+                description="Exemple&nbsp;: 75017"
+                onClear={resetSearch}
                 keyboardType="number-pad"
                 accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
                 autoComplete="postal-code"
                 textContentType="postalCode"
-                searchInputID="postal-code-input"
-                isRequiredField={isRequiredField}
+                requiredIndicator={requiredIndicator}
               />
               <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
             </StyledView>

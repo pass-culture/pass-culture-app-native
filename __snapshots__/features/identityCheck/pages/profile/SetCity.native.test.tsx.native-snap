@@ -273,16 +273,22 @@ exports[`<SetCity/> should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no"
+                    gap={0}
                     style={
                       {
-                        "marginBottom": 8,
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "gap": 0,
+                        "maxWidth": 500,
+                        "width": "100%",
                       }
                     }
                   >
                     <View>
                       <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
                         style={
                           {
                             "alignItems": "flex-end",
@@ -292,65 +298,58 @@ exports[`<SetCity/> should render correctly 1`] = `
                           }
                         }
                       >
-                        <Text
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
+                        <View>
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
                             }
-                          }
-                        >
-                          Indique ton code postal et choisis ta ville
-                        </Text>
+                          >
+                            Indique ton code postal et choisis ta ville
+                          </Text>
+                          <Text
+                            style={
+                              {
+                                "color": "#696a6f",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 2,
+                              }
+                            }
+                          >
+                            Exemple : 75017
+                          </Text>
+                        </View>
                       </View>
                     </View>
-                  </View>
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no"
-                    style={
-                      {
-                        "marginBottom": 8,
-                      }
-                    }
-                  >
-                    <Text
+                    <View
+                      isDisabled={false}
+                      isError={false}
+                      isFocused={false}
+                      isHover={false}
+                      size="small"
                       style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                      Exemple : 75017
-                    </Text>
-                  </View>
-                  <View
-                    height="small"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
-                    style={
-                      [
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
                           "borderColor": "#90949d",
                           "borderStyle": "solid",
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
+                          "borderTopLeftRadius": 8,
+                          "borderTopRightRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "height": 40,
+                          "marginTop": 4,
                           "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
                         },
@@ -360,7 +359,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                           "borderTopLeftRadius": 8,
                           "borderTopRightRadius": 8,
                         },
-                      ]
                     }
                     testID="styled-input-container"
                   >
@@ -398,15 +396,14 @@ exports[`<SetCity/> should render correctly 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                          },
-                          {},
-                        ]
-                      }
-                      testID="Entrée pour la ville"
-                      textAlignVertical="center"
-                      textContentType="postalCode"
-                      value=""
-                    />
+                          }
+                        }
+                        testID="Entrée pour la ville"
+                        textAlignVertical="center"
+                        textContentType="postalCode"
+                        value=""
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
