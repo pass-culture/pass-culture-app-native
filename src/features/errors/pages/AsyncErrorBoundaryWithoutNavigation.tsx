@@ -5,7 +5,7 @@ import { FallbackProps } from 'react-error-boundary'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo, isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { LogTypeEnum, ScreenError, AsyncError, MonitoringError } from 'libs/monitoring/errors'
+import { AsyncError, LogTypeEnum, MonitoringError, ScreenError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -48,7 +48,15 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       !shouldApiErrorNotCaptured
 
     if (shouldCaptureError) {
-      eventMonitoring.captureException(error)
+      const isErrorInstance = error instanceof Error
+      if (isErrorInstance) {
+        eventMonitoring.captureException(error)
+      } else {
+        // When is not an instance of Error
+        eventMonitoring.captureException(new Error('Captured non-error object'), {
+          extra: { error },
+        })
+      }
     }
   }, [error, logType])
 
