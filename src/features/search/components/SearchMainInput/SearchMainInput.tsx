@@ -29,7 +29,6 @@ type Props = QueryProps &
     searchInputID?: string
     accessibilityDescribedBy?: string
     children?: never
-    showLocationButton?: boolean
     placeholder?: string
   }
 
@@ -41,7 +40,6 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     resetQuery,
     isFocus = false,
     onFocus,
-    showLocationButton = false,
     disableInputClearButton,
     placeholder = 'Offre, artiste, lieu culturel...',
     ...props

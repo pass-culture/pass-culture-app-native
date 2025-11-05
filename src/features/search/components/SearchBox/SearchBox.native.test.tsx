@@ -12,7 +12,6 @@ import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/sea
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates, Position } from 'libs/location/location'
-import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -82,7 +81,7 @@ jest.mock('react-instantsearch-core', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: Position = DEFAULT_POSITION
+const mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -423,19 +422,6 @@ describe('SearchBox component', () => {
     renderSearchBox()
 
     expect(screen.queryByText(venue.label)).not.toBeOnTheScreen()
-  })
-
-  it('should not display locationSearchWidget when isDesktopViewport = true', async () => {
-    mockSearchState = {
-      ...initialSearchState,
-      locationFilter: { locationType: LocationMode.EVERYWHERE },
-    }
-    useRoute.mockReturnValueOnce({ name: SearchView.Results })
-
-    mockPosition = DEFAULT_POSITION
-    renderSearchBox()
-
-    expect(await screen.findByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
   })
 
   describe('shouldRedirectToThematicSearch', () => {

@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -5,6 +6,7 @@ import { setSettings } from 'features/auth/tests/setSettings'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
+import { SearchView } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,6 +17,8 @@ jest.mock('libs/firebase/analytics/analytics')
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
+const mockUseRoute = useRoute as jest.Mock
+
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
@@ -69,7 +73,7 @@ describe('SearchHeader component', () => {
     renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 
     await waitFor(() => {
-      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+      const insideLocationWidget = within(screen.getByTestId('LocationWidget'))
 
       expect(insideLocationWidget.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     })
@@ -79,9 +83,7 @@ describe('SearchHeader component', () => {
     renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: false })
 
     await waitFor(() => {
-      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
-
-      expect(insideLocationWidget.queryByText(LocationLabel.everywhereLabel)).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('LocationWidget')).not.toBeOnTheScreen()
     })
   })
 
@@ -101,9 +103,7 @@ describe('SearchHeader component', () => {
     renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: true })
 
     await waitFor(() => {
-      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
-
-      expect(insideLocationWidget.queryByText(LocationLabel.everywhereLabel)).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('LocationWidget')).not.toBeOnTheScreen()
     })
   })
 
@@ -114,6 +114,26 @@ describe('SearchHeader component', () => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
       expect(searchHeaderTitleContainer.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
+    })
+  })
+
+  it('should show LocationSearchWidget when isDesktopViewport is false and searchView is Results or Thematic', async () => {
+    mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
+    renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: false })
+
+    await waitFor(() => {
+      const insideLocationSearchWidget = within(screen.getByTestId('LocationSearchWidget'))
+
+      expect(insideLocationSearchWidget.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
+    })
+  })
+
+  it('should not show LocationSearchWidget when isDesktopViewport is true and searchView is Results or Thematic', async () => {
+    mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
+    renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: true })
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('LocationSearchWidget')).not.toBeOnTheScreen()
     })
   })
 })

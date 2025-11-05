@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
@@ -51,20 +52,24 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
         }
       </TitleContainer>
       {isMobileViewport ? (
-        <LocationSearchContainer>
+        <React.Fragment>
           {shouldDisplayMobileLocationWidget ? (
-            <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
+            <View testID="LocationWidget">
+              <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
+            </View>
           ) : shouldDisplayMobileLocationSearchWidget ? (
-            <LocationSearchWidget />
+            <LocationSearchWidgetContainer testID="LocationSearchWidget">
+              <LocationSearchWidget />
+            </LocationSearchWidgetContainer>
           ) : null}
-        </LocationSearchContainer>
+        </React.Fragment>
       ) : null}
     </TitleAndWidgetContainer>
   )
 }
 
 const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.designSystem.typography.title1,
+  ...theme.designSystem.typography.title3,
   color: theme.designSystem.color.text.default,
 }))
 
@@ -97,9 +102,8 @@ const StyledTitleMainView = styled.View({
   maxWidth: '75%',
 })
 
-const LocationSearchContainer = styled.View({
+const LocationSearchWidgetContainer = styled.View({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'center',
 })

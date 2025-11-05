@@ -27,7 +27,6 @@ export const Home: Story = {
   render: (args) => <SearchMainInput {...args} />,
   args: {
     ...baseProps,
-    showLocationButton: true,
   },
 }
 

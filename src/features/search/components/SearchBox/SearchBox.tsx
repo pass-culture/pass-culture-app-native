@@ -293,10 +293,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     showSuggestions,
   ])
 
-  const showLocationButton =
-    (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
-    !isFocusOnSuggestions
-
   const disableInputClearButton =
     (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
     !isFocusOnSuggestions &&
@@ -325,7 +321,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               onSubmitQuery={onSubmitQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
-              showLocationButton={showLocationButton}
               accessibilityDescribedBy={accessibilityDescribedBy}
               disableInputClearButton={disableInputClearButton}
               placeholder={placeholder}
