@@ -19,9 +19,9 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { getSpacing, Typo } from 'ui/theme'
@@ -131,14 +131,13 @@ export const SetAddress = () => {
                 onChangeText={onChangeAddress}
                 value={query}
                 label={label}
-                format="34 avenue de l’Opéra"
+                description="Exemple&nbsp;: 34 avenue de l’Opéra"
                 autoComplete="street-address"
                 textContentType="fullStreetAddress"
                 accessibilityHint={errorMessage}
-                onPressRightIcon={resetSearch}
+                onClear={resetSearch}
                 returnKeyType="next"
                 testID="Entrée pour l’adresse"
-                searchInputID="street-address-input"
               />
               <InputError visible={hasError} errorMessage={errorMessage} numberOfSpacesTop={2} />
             </Container>

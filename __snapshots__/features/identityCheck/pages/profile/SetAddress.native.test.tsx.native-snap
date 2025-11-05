@@ -1,226 +1,201 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SetAddress/> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "marginHorizontal": 0,
+    }
   }
 >
   <View
     accessibilityRole="header"
     style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
       customHeight={16}
       enable={true}
       style={
-        [
-          {
-            "height": 16,
-          },
-        ]
+        {
+          "height": 16,
+        }
       }
     />
     <View
       style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
       }
     >
       <View
+        positionInHeader="left"
         style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+          {
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
         }
+        testID="back-button-container"
       >
         <View
-          positionInHeader="left"
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
               {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "opacity": 1,
               },
             ]
           }
-          testID="back-button-container"
+          testID="Revenir en arrière"
         >
           <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
+            height={24}
+            testID="icon-back"
+            width={24}
           >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
+            <Text>
+              icon-back-SVG-Mock
             </Text>
           </View>
-        </View>
-        <Text
-          numberOfLines={1}
-          style={
-            [
+          <Text
+            style={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 17,
-                "lineHeight": 27.2,
-                "textAlign": "center",
-              },
-            ]
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          numberOfLines={2}
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
           }
         >
           Profil
         </Text>
-        <View
-          positionInHeader="right"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="close-button-container"
-        />
       </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
     </View>
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
   >
     <View
       onLayout={[Function]}
       style={
         [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
           {
             "paddingBottom": 0,
           },
@@ -229,15 +204,13 @@ exports[`<SetAddress/> should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
+          }
         }
       >
         <RCTScrollView
@@ -253,11 +226,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
           keyboardShouldPersistTaps="handled"
           onContentSizeChange={[Function]}
           onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
+          style={{}}
         >
           <View>
             <View
@@ -269,151 +238,149 @@ exports[`<SetAddress/> should render correctly 1`] = `
             />
             <View
               style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
+                {
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
               }
             >
               <Text
+                accessibilityRole="header"
                 style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
+                  }
                 }
               >
                 Quelle est ton adresse ?
               </Text>
               <View
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginTop": 20,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                    "marginTop": 20,
+                  }
                 }
               >
                 <View
+                  gap={0}
                   style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
+                    {
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "gap": 0,
+                      "maxWidth": 500,
+                      "width": "100%",
+                    }
                   }
                 >
                   <View>
                     <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
                       style={
-                        [
-                          {
-                            "alignItems": "flex-end",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "width": "100%",
-                          },
-                        ]
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
                       }
                     >
-                      <Text
-                        style={
-                          [
+                      <View>
+                        <Text
+                          style={
                             {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Medium",
                               "fontSize": 16,
                               "lineHeight": 25.6,
-                            },
-                          ]
-                        }
-                      >
-                        Recherche et sélectionne ton adresse
-                      </Text>
+                            }
+                          }
+                        >
+                          Entre ton adresse
+                        </Text>
+                        <Text
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 2,
+                            }
+                          }
+                        >
+                          Exemple : 34 avenue de l’Opéra
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
-                  }
-                >
-                  <Text
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
                     style={
-                      [
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        },
-                      ]
-                    }
-                  >
-                    Exemple : 34 avenue de l’Opéra
-                  </Text>
-                </View>
-                <View
-                  height="small"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
-                  style={
-                    [
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
                         "borderColor": "#90949d",
-                        "borderRadius": 22,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
+                        "marginTop": 4,
                         "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
                         "paddingTop": 0,
                         "width": "100%",
-                      },
-                      {
-                        "borderRadius": 24,
-                        "outlineOffset": 0,
-                      },
-                    ]
-                  }
-                  testID="styled-input-container"
-                >
-                  <TextInput
-                    accessibilityDescribedBy="testUuidV4"
-                    accessibilityHidden={false}
-                    autoComplete="street-address"
-                    autoCorrect={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={true}
-                    isEmpty={true}
-                    multiline={false}
-                    nativeID="street-address-input"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder=""
-                    placeholderTextColor="#696a6f"
-                    returnKeyType="next"
-                    selectionColor="#696a6f"
-                    style={
-                      [
+                      }
+                    }
+                    testID="styled-input-container"
+                  >
+                    <View
+                      style={
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
+                      }
+                    >
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                      accessibilityRequired={false}
+                      autoComplete="street-address"
+                      editable={true}
+                      isEmpty={true}
+                      multiline={false}
+                      nativeID="Entrée pour l’adresse"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="next"
+                      style={
                         {
                           "color": "#161617",
                           "flexBasis": 0,
@@ -426,58 +393,24 @@ exports[`<SetAddress/> should render correctly 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="Entrée pour l’adresse"
-                    textAlignVertical="center"
-                    textContentType="fullStreetAddress"
-                    value=""
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  {
-                    "transform": [
-                      {
-                        "rotate": "18deg",
-                      },
-                    ],
-                    "width": 32,
-                  }
-                }
-              >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                        }
+                      }
+                      testID="Entrée pour l’adresse"
+                      textAlignVertical="center"
+                      textContentType="fullStreetAddress"
+                      value=""
+                    />
+                  </View>
                 </View>
               </View>
             </View>
             <View
               accessibilityRole="radiogroup"
               style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "overflowY": "scroll",
-                  },
-                ]
+                {
+                  "flexGrow": 1,
+                  "overflowY": "scroll",
+                }
               }
             />
           </View>
@@ -485,18 +418,16 @@ exports[`<SetAddress/> should render correctly 1`] = `
         <View
           onLayout={[Function]}
           style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
+            {
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 20,
+              "paddingHorizontal": 20,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
+            }
           }
         >
           <View
@@ -536,7 +467,10 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
                     "maxWidth": 500,
@@ -558,27 +492,23 @@ exports[`<SetAddress/> should render correctly 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
               }
             >
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
+                  {
+                    "color": "#696a6f",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  }
                 }
               >
                 Continuer
@@ -589,11 +519,9 @@ exports[`<SetAddress/> should render correctly 1`] = `
             customHeight={8}
             enable={true}
             style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
+              {
+                "height": 8,
+              }
             }
           />
         </View>
@@ -603,17 +531,15 @@ exports[`<SetAddress/> should render correctly 1`] = `
   <View
     height={65}
     style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
     }
   >
     <BlurView
@@ -624,13 +550,11 @@ exports[`<SetAddress/> should render correctly 1`] = `
           {
             "backgroundColor": "transparent",
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
         ]
       }
     />
