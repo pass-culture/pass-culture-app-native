@@ -1,3 +1,4 @@
+import { InseeCountry } from 'features/bonification/inseeCountries'
 import { Title } from 'features/bonification/pages/BonificationTitle'
 import { createStore } from 'libs/store/createStore'
 
@@ -8,7 +9,7 @@ type State = {
   title: Title | null
   birthDate: Date | null
   birthCity: string | null
-  birthCountry: string | null
+  birthCountry: InseeCountry | null
 }
 
 const defaultState: State = {
@@ -31,7 +32,7 @@ const legalRepresentativeStore = createStore({
     setTitle: (title: Title) => set({ title }),
     setBirthDate: (birthDate: Date) => set({ birthDate }),
     setBirthCity: (birthCity: string) => set({ birthCity }),
-    setBirthCountry: (birthCountry: string) => set({ birthCountry }),
+    setBirthCountry: (birthCountry: InseeCountry) => set({ birthCountry }),
     resetLegalRepresentative: () => set(defaultState),
   }),
   selectors: {

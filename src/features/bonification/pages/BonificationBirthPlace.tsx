@@ -7,7 +7,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { Insets, Text, TouchableOpacity } from 'react-native'
 import { styled } from 'styled-components/native'
 
-import { INSEE_COUNTRY_LIST } from 'features/bonification/inseeCountries'
+import { INSEE_COUNTRY_LIST, InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
   legalRepresentativeActions,
@@ -27,7 +27,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
-  birthCountrySelection: string
+  birthCountrySelection: InseeCountry
   birthCountryInput?: string
   birthCity?: string
 }
@@ -45,9 +45,9 @@ export const BonificationBirthPlace = () => {
 
   const { control, formState, handleSubmit, reset, watch } = useForm<FormValues>({
     defaultValues: {
-      birthCountrySelection: storedLegalRepresentative.birthCountry ?? '',
+      birthCountrySelection: storedLegalRepresentative.birthCountry ?? {},
       birthCity: storedLegalRepresentative.birthCity ?? '',
-      birthCountryInput: storedLegalRepresentative.birthCountry ?? '',
+      birthCountryInput: storedLegalRepresentative.birthCountry?.LIBCOG ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -58,7 +58,7 @@ export const BonificationBirthPlace = () => {
   async function saveBirthPlaceAndNavigate({ birthCountrySelection, birthCity }: FormValues) {
     if (disabled) return
     setBirthCountry(birthCountrySelection)
-    if (birthCountrySelection === 'France' && birthCity) {
+    if (birthCountrySelection.LIBCOG === 'France' && birthCity) {
       setBirthCity(birthCity)
     } else {
       setBirthCity('')
@@ -116,9 +116,11 @@ export const BonificationBirthPlace = () => {
                         <RowView>
                           <Text>
                             Pays selectionné:
-                            {valueSelection.length === 0 ? ' Aucun' : valueSelection}
+                            {valueSelection?.LIBCOG?.length === 0
+                              ? ' Aucun'
+                              : valueSelection?.LIBCOG}
                           </Text>
-                          {valueSelection.length === 0 ? null : <Validate />}
+                          {valueSelection?.LIBCOG?.length === 0 ? null : <Validate />}
                           {valueInput && valueInput.length != 0 ? (
                             <Touchable
                               hitSlop={hitSlop}
@@ -140,15 +142,16 @@ export const BonificationBirthPlace = () => {
                                 key={country.COG}
                                 onPress={() => {
                                   setCountryList([])
-                                  onChangeSelection(country.LIBCOG)
+                                  onChangeSelection(country)
                                   onChangeInput(country.LIBCOG)
                                   setShowCityField(
-                                    watch('birthCountrySelection').toLocaleLowerCase() === 'france'
+                                    watch('birthCountrySelection')?.LIBCOG?.toLocaleLowerCase() ===
+                                      'france'
                                   )
                                 }}>
                                 <RowView>
                                   <Text>{country.LIBCOG}</Text>
-                                  {valueSelection === country.LIBCOG ? <Validate /> : null}
+                                  {valueSelection.LIBCOG === country.LIBCOG ? <Validate /> : null}
                                 </RowView>
                               </TouchableOpacity>
                             )

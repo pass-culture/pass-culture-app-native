@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
+import { InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import { render, screen, userEvent } from 'tests/utils'
@@ -34,14 +35,14 @@ describe('BonificationBirthPlace', () => {
 
     it('should show previously saved data if there is any', () => {
       const { setBirthCountry, setBirthCity } = legalRepresentativeActions
-      const birthCountry = 'France'
+      const birthCountry: InseeCountry = { LIBCOG: 'France', COG: 1234 }
       const birthCity = 'Toulouse'
       setBirthCountry(birthCountry)
       setBirthCity(birthCity)
 
       render(<BonificationBirthPlace />)
 
-      const countryField = screen.getByDisplayValue(birthCountry)
+      const countryField = screen.getByDisplayValue(birthCountry.LIBCOG)
       const cityField = screen.getByDisplayValue(birthCity)
 
       expect(countryField.props.value).toBe(birthCountry)

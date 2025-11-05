@@ -5,7 +5,7 @@
  * Keep only 1 entry for each COG (keep the most recent one)
  */
 
-type InseeCountry = {
+export type InseeCountry = {
   COG: number
   LIBCOG: string
 }
