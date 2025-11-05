@@ -66,6 +66,7 @@ import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
+import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
 import { Lock } from 'ui/svg/icons/Lock'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
@@ -208,6 +209,7 @@ export const SecondaryAndBiggerIcons = {
   LifeBuoy,
   LocationBuilding,
   LocationBuildingFilled,
+  LocationPointerNotFilled,
   Lock,
   Logo,
   LostId,

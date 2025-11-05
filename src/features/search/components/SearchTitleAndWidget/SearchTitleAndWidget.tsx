@@ -4,10 +4,12 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
+import { LocationSearchWidgetBadge } from 'features/location/components/LocationSearchWidgetBadge'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
 import { SearchView } from 'features/search/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Typo } from 'ui/theme'
@@ -33,6 +35,10 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   const shouldDisplayMobileLocationSmallWidget =
     isMobileViewport && (currentView === SearchView.Results || currentView === SearchView.Thematic)
 
+  const {
+    data: { showNewSearchHeader },
+  } = useRemoteConfigQuery()
+
   return (
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
@@ -56,7 +62,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       ) : null}
       {shouldDisplayMobileLocationSmallWidget ? (
         <LocationSearchWidgetContainer testID="LocationSearchWidget">
-          <LocationSearchWidget />
+          {showNewSearchHeader ? <LocationSearchWidgetBadge /> : <LocationSearchWidget />}
         </LocationSearchWidgetContainer>
       ) : null}
     </TitleAndWidgetContainer>
