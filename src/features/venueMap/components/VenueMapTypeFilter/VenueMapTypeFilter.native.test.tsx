@@ -32,6 +32,10 @@ const mockNavigation: StackScreenProps<
   push: jest.fn(),
   pop: jest.fn(),
   popToTop: jest.fn(),
+  preload: jest.fn(),
+  navigateDeprecated: jest.fn(),
+  replaceParams: jest.fn(),
+  popTo: jest.fn(),
 }
 
 jest.mock('features/venueMap/store/venuesFilterStore')

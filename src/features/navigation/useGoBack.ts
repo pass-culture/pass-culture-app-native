@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
@@ -11,7 +11,7 @@ import { RootNavigateParams, UseNavigationType } from 'features/navigation/RootN
  * @param ...navigateParams - Same parameters as navigate(...) function.
  */
 export function useGoBack(...navigateParams: RootNavigateParams) {
-  const { canGoBack, goBack, navigate } = useNavigation<UseNavigationType>()
+  const { canGoBack, goBack, dispatch } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
 
   function customGoBack() {
@@ -21,7 +21,8 @@ export function useGoBack(...navigateParams: RootNavigateParams) {
     } else if (can && Platform.OS === 'web') {
       window.history.back()
     } else {
-      navigate(...navigateParams)
+      const [name, params] = navigateParams
+      dispatch(CommonActions.navigate({ name, params, pop: true }))
     }
   }
 
