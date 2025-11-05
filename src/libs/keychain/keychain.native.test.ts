@@ -1,4 +1,5 @@
 import * as Keychain from '__mocks__/react-native-keychain'
+import { env } from 'libs/environment/env'
 
 import { getRefreshToken, saveRefreshToken } from './keychain'
 
@@ -13,7 +14,7 @@ describe('keychain', () => {
       expect(Keychain.setGenericPassword).toHaveBeenCalledWith(
         'PASSCULTURE_REFRESH_TOKEN',
         'fake_access_token',
-        { service: 'rn_keychain_service_key' }
+        { service: env.IOS_KEYCHAIN_SERVICE_KEY }
       )
     })
 
