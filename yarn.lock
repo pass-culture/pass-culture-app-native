@@ -11147,6 +11147,7 @@ __metadata:
     globalthis: ^1.0.2
     highlight-words-core: ^1.2.2
     hot-updater: ^0.20.11
+    husky: ^9.1.7
     instantsearch.js: ^4.74.2
     intl: ^1.2.5
     jest: ^30.0.5
@@ -18045,6 +18046,15 @@ __metadata:
   version: 2.1.0
   resolution: "human-signals@npm:2.1.0"
   checksum: b87fd89fce72391625271454e70f67fe405277415b48bcc0117ca73d31fa23a4241787afdc8d67f5a116cf37258c052f59ea82daffa72364d61351423848e3b8
+  languageName: node
+  linkType: hard
+
+"husky@npm:^9.1.7":
+  version: 9.1.7
+  resolution: "husky@npm:9.1.7"
+  bin:
+    husky: bin.js
+  checksum: c2412753f15695db369634ba70f50f5c0b7e5cb13b673d0826c411ec1bd9ddef08c1dad89ea154f57da2521d2605bd64308af748749b27d08c5f563bcd89975f
   languageName: node
   linkType: hard
 
