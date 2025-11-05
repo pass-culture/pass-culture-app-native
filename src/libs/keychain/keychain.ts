@@ -3,8 +3,8 @@ import { getGenericPassword, resetGenericPassword, setGenericPassword } from 're
 
 const REFRESH_TOKEN_KEY = 'PASSCULTURE_REFRESH_TOKEN'
 
-// firebase sometimes overrides the default keychain credentials on iOS, see https://github.com/oblador/react-native-keychain/issues/363
-const keychainOptions = Platform.OS === 'ios' ? { service: 'service_key' } : {}
+// we need to set a string service key specific to the lib for iOS to keep the keychain persistence
+const keychainOptions = Platform.OS === 'ios' ? { service: 'rn_keychain_service_key' } : {}
 
 function handleKeychainError(error: unknown, operation: string): never {
   const errorMessage = error instanceof Error ? error.message : 'unknown error'

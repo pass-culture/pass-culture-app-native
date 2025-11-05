@@ -13,7 +13,7 @@ describe('keychain', () => {
       expect(Keychain.setGenericPassword).toHaveBeenCalledWith(
         'PASSCULTURE_REFRESH_TOKEN',
         'fake_access_token',
-        { service: 'service_key' }
+        { service: 'rn_keychain_service_key' }
       )
     })
 
