@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { FC } from 'react'
 import { Platform } from 'react-native'
 
 import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
@@ -7,7 +7,7 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
 
-export const CategoriesList = memo(function CategoriesButtons() {
+export const CategoriesList: FC = () => {
   const isWeb = Platform.OS === 'web'
 
   const sortedCategories = useSortedSearchCategories()
@@ -32,4 +32,4 @@ export const CategoriesList = memo(function CategoriesButtons() {
       hideVenueMapLocationModal={hideVenueMapLocationModal}
     />
   )
-})
+}
