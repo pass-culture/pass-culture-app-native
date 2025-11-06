@@ -3,7 +3,6 @@ import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 export const HISTORY_KEY = 'search_history'
 export const MAX_HISTORY_RESULTS = 20
 export const MIN_HISTORY_RESULTS = 2
-export const LIST_ITEM_HEIGHT = 130
 export const DEFAULT_RADIUS = 50
 export const ALL_CATEGORIES_LABEL = 'Toutes les catégories'
 
