@@ -9,11 +9,11 @@ export function AccessibilityDeclarationMobileAndroid() {
       platformName="Android"
       osVersion="15"
       storeLink={{ url: `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}` }}
-      conformityEN="37.50%"
-      conformityRAAM="44.19%"
+      auditDate="31/10/2025"
+      conformityEN="41.67%"
+      conformityRAAM="62.79%"
       nonAccessibleContent={[
         'Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.',
-        'Des images légendées ne sont pas correctement restituées par les lecteurs d’écran.',
         'Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants.',
         'Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle.',
         'Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents.',
@@ -26,7 +26,6 @@ export function AccessibilityDeclarationMobileAndroid() {
         'Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran.',
         'Certains éléments ne sont pas accessibles au clavier ou au pointage.',
         'Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance.',
-        'L’information n’est pas toujours structurée par des titres hiérarchisés.',
         'Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran.',
         'Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance.',
         'L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités.',

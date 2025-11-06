@@ -1,6 +1,6 @@
 # 🌈 Suivi des corrections d’accessibilité
 
-| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 19 novembre | 15 décembre |
+| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | 15 décembre |
 | ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ----------- |
 | Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | ⏳          | ⏳          |
 |            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | ⏳          | ⏳          |
@@ -405,7 +405,7 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 
 <summary> 🟢🟢 Critère 8.6 - Dans chaque écran, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</summary>
 
-**RAAM** : [Critère 8.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
+**RAAM** : [Critère 8.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-6)  
 **Ticket** : [PC-37486](https://passculture.atlassian.net/browse/PC-37486)  
 **PR** : [#8753](https://github.com/pass-culture/pass-culture-app-native/pull/8753)
 
@@ -594,30 +594,7 @@ Texte
 
 <br>
 
-## ✅ Corrections 31 octobre → 19 novembre
-
-<br>
-
-<details>
-
-<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
-
-**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
-**Ticket** : [PC-38162](https://passculture.atlassian.net/browse/PC-38162)  
-**PR** : [#8850](https://github.com/pass-culture/pass-culture-app-native/pull/8850)
-
-**Problème** 😱
-
-- **(E14)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
-
-**Correction** 💡
-
-- **(E14)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur.
-
-**Retours audit** 🔥  
-Texte
-
-</details>
+## ✅ Corrections 31 octobre → 28 novembre
 
 <br>
 
@@ -641,7 +618,73 @@ Texte
 
 </details>
 
-## ✅ Corrections 19 novembre → 15 décembre
+<br>
+
+<details>
+
+<summary> 🟠 Critère 5.2 - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
+
+**RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  
+**Ticket** : [PC-38647](https://passculture.atlassian.net/browse/PC-38647)  
+**PR** : [#8878](https://github.com/pass-culture/pass-culture-app-native/pull/8878)
+
+**Problème** 😱  
+- **(E01)** Les liens sont bien contrôlable par le calvier ou tout dispositif de pointage, mais l'intitulé ne semble pas bon, à la suite du lien dit : "Link one of one" ou "One link found, swipe to move to the link". 
+
+**Correction** 💡  
+- **(E01)** Le problème de “One … found, swipe to move to the …” est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint 
+
+  1. **La lecture “One link found…” vient du moteur VoiceOver d’iOS, pas du code JavaScript ni de React Native (dans notre cas au pass Culture).**  
+  Quand VoiceOver détecte un élément accessible (accessibilityRole="link", button, etc.), il envoie directement les messages système depuis UIKit (le moteur natif d’Apple). 
+  React Native ne fait ici que déclarer des attributs d’accessibilité via ses props (accessibilityRole, accessibilityLabel, etc.).
+  Ensuite, c’est iOS qui décide quoi lire et dans quelle langue. Donc ce message ne passe même pas par la couche JavaScript.
+
+  2. **React Native transmet simplement les propriétés d’accessibilité natives**  
+  Quand on écris : <Text accessibilityRole="link" accessibilityLabel="Politique de cookies" />
+  React Native fait juste une passerelle vers : "UIAccessibilityTraitsLink accessibilityLabel = @"Politique de cookies"", dans le moteur natif d’iOS.
+  Aucune traduction, aucun hint automatique ne vient de React Native, tout est géré par Apple via UIAccessibility.
+
+  3. **Pourquoi on entend encore l’anglais ?**  
+  Ce n’est donc pas une erreur de React Native, mais une incohérence interne à iOS car les voix françaises utilisent encore des hints anglais, par manque de traduction. 
+  J'ai essayé les différentes voix françaises en normal et premium et j'ai toujours le même résultat.
+  C’est le même comportement qu’on retrouve dans Swift, SwiftUI ou UIKit si on fait une application iOS pure, on aura exactement la même phrase en anglais dans ces conditions.
+
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
+
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
+**Ticket** : [PC-38162](https://passculture.atlassian.net/browse/PC-38162), [PC-38367](https://passculture.atlassian.net/browse/PC-38367)  
+**PR** : [#8850](https://github.com/pass-culture/pass-culture-app-native/pull/8850), [#8866](https://github.com/pass-culture/pass-culture-app-native/pull/8866)
+
+**Problème** 😱
+
+- **(E14)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
+
+- **(E15)** Dans la calendrier les dates sont illisible (Lun. > L…) car la largeur utilisé pour le composant des dates possède une largeur maximum. 
+
+**Correction** 💡
+
+- **(E14)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur.
+
+- **(E15)** Suppression de la taille maximale dans le composant des dates du calendrier (Lun. > L…), ce qui permet au texte de prendre la place nécessaire.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+## ✅ Corrections 28 novembre → 15 décembre
 
 <br>
 
