@@ -83,11 +83,15 @@ export const HorizontalOfferTile = ({
       ? geolocPosition
       : userLocation
 
-  const distanceToOffer = getDistance(_geoloc, {
-    userLocation: userPosition,
-    selectedPlace,
-    selectedLocationMode,
-  })
+  const distanceToOffer = getDistance(
+    _geoloc,
+    {
+      userLocation: userPosition,
+      selectedPlace,
+      selectedLocationMode,
+    },
+    subcategoryId
+  )
   const { categoryId, appLabel } = useSubcategory(subcategoryId)
   const { logClickOnOffer } = useLogClickOnOffer()
 

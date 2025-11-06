@@ -57,11 +57,15 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     dates,
     releaseDate,
   })
-  const displayDistance = getDistance(offer._geoloc, {
-    userLocation,
-    selectedPlace,
-    selectedLocationMode,
-  })
+  const displayDistance = getDistance(
+    offer._geoloc,
+    {
+      userLocation,
+      selectedPlace,
+      selectedLocationMode,
+    },
+    subcategoryId
+  )
 
   const categoryId = mapping[subcategoryId]
 

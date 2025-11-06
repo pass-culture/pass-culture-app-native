@@ -8,6 +8,7 @@ import {
   ExpenseDomain,
   FavoriteResponse,
   SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
   YoungStatusType,
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
@@ -113,8 +114,20 @@ describe('<Favorite /> component', () => {
       mockUseLocation.mockReturnValue(AROUND_ME_POSITION)
     })
 
-    it('should show distance', async () => {
+    it('should not show distance for online offer', async () => {
       renderFavorite()
+      await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
+
+      expect(screen.queryByText('19 km')).not.toBeOnTheScreen()
+    })
+
+    it('should show distance for offline offer', async () => {
+      renderFavorite({
+        favorite: {
+          ...favorite,
+          offer: { ...favorite.offer, subcategoryId: SubcategoryIdEnum.SPECTACLE_REPRESENTATION },
+        },
+      })
       await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
 
       expect(await screen.findByText('19 km')).toBeOnTheScreen()
