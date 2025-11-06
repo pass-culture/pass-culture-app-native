@@ -8,6 +8,9 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const birthCountry: InseeCountry = { LIBCOG: 'France', COG: 99100 }
+const birthCity = 'Toulouse'
+
 describe('BonificationBirthPlace', () => {
   it('Should navigate to next form when pressing "Continuer" when forms are filled', async () => {
     render(<BonificationBirthPlace />)
@@ -35,8 +38,6 @@ describe('BonificationBirthPlace', () => {
 
     it('should show previously saved data if there is any', () => {
       const { setBirthCountry, setBirthCity } = legalRepresentativeActions
-      const birthCountry: InseeCountry = { LIBCOG: 'France', COG: 1234 }
-      const birthCity = 'Toulouse'
       setBirthCountry(birthCountry)
       setBirthCity(birthCity)
 
@@ -45,7 +46,7 @@ describe('BonificationBirthPlace', () => {
       const countryField = screen.getByDisplayValue(birthCountry.LIBCOG)
       const cityField = screen.getByDisplayValue(birthCity)
 
-      expect(countryField.props.value).toBe(birthCountry)
+      expect(countryField.props.value).toBe(birthCountry.LIBCOG)
       expect(cityField.props.value).toBe(birthCity)
     })
 
@@ -58,8 +59,8 @@ describe('BonificationBirthPlace', () => {
       await completeForm()
       await goToNextScreen()
 
-      expect(setBirthCountrySpy).toHaveBeenCalledWith('France')
-      expect(setBirthCitySpy).toHaveBeenCalledWith('Toulouse')
+      expect(setBirthCountrySpy).toHaveBeenCalledWith(birthCountry)
+      expect(setBirthCitySpy).toHaveBeenCalledWith(birthCity)
     })
   })
 })
@@ -70,12 +71,12 @@ async function completeForm() {
   await userEvent.type(countryOfBirthField, 'fra')
 
   // Select the suggested country
-  const countrySuggestion = screen.getByText('France')
+  const countrySuggestion = screen.getByText(birthCountry.LIBCOG)
   await userEvent.press(countrySuggestion)
 
   // Fill in the city input
   const cityOfBirthField = screen.getByTestId('Entrée pour la ville de naissance')
-  await userEvent.type(cityOfBirthField, 'Toulouse')
+  await userEvent.type(cityOfBirthField, birthCity)
 }
 
 async function goToNextScreen() {

@@ -5,10 +5,10 @@ import { BonificationBirthPlaceSchema } from './BonificationBirthPlaceSchema'
 describe('BonificationBirthPlaceSchema', () => {
   describe('valid schemas', () => {
     it.each([
-      { birthCountrySelection: 'France', birthCity: 'Paris' },
-      { birthCountrySelection: 'États-Unis', birthCity: 'New York' },
-      { birthCountrySelection: 'Royaume-Uni' },
-      { birthCountrySelection: 'Espagne', birthCity: 'Madrid' },
+      { birthCountrySelection: { LIBCOG: 'France', COG: 99100 }, birthCity: 'Paris' },
+      { birthCountrySelection: { LIBCOG: 'États-Unis', COG: 99100 }, birthCity: 'New York' },
+      { birthCountrySelection: { LIBCOG: 'Royaume-Uni', COG: 99100 } },
+      { birthCountrySelection: { LIBCOG: 'Espagne', COG: 99100 }, birthCity: 'Madrid' },
     ])('should accept a valid object: %p', async (data) => {
       const result = await BonificationBirthPlaceSchema.validate(data)
 
@@ -22,14 +22,14 @@ describe('BonificationBirthPlaceSchema', () => {
       const validation = BonificationBirthPlaceSchema.validate(input)
 
       await expect(validation).rejects.toEqual(
-        new ValidationError('Le pays de naissance est obligatoire')
+        new ValidationError('Le pays de naissance est obligatoire.')
       )
     })
 
     it.each(['France123', 'France!', 'Allemagne_'])(
       'should reject if birthCountrySelection contains invalid characters: %s',
       async (country) => {
-        const input = { birthCountrySelection: country, birthCity: 'Paris' }
+        const input = { birthCountrySelection: { LIBCOG: country, COG: 99100 }, birthCity: 'Paris' }
         const validation = BonificationBirthPlaceSchema.validate(input)
 
         await expect(validation).rejects.toEqual(
@@ -42,12 +42,12 @@ describe('BonificationBirthPlaceSchema', () => {
   describe('birthCity validation', () => {
     describe('when country is "France"', () => {
       it('should reject if birthCity is missing', async () => {
-        const input = { birthCountrySelection: 'France' }
+        const input = { birthCountrySelection: { LIBCOG: 'France', COG: 99100 } }
         const validation = BonificationBirthPlaceSchema.validate(input)
 
         await expect(validation).rejects.toEqual(
           new ValidationError(
-            'La ville de naissance est obligatoire pour les personnes nées en France'
+            'La ville de naissance est obligatoire pour les personnes nées en France.'
           )
         )
       })
@@ -55,7 +55,7 @@ describe('BonificationBirthPlaceSchema', () => {
 
     describe('when country is not "France"', () => {
       it('should be valid if birthCity is missing', async () => {
-        const input = { birthCountrySelection: 'Espagne' }
+        const input = { birthCountrySelection: { LIBCOG: 'Espagne', COG: 99100 } }
         const result = await BonificationBirthPlaceSchema.validate(input)
 
         expect(result).toEqual(input)
