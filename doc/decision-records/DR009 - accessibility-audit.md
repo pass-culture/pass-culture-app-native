@@ -659,6 +659,29 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 6.2 - iOS - Dans chaque écran, les textes sont-ils restitués par les technologies d’assistance dans la langue principale de l’écran ?</summary>
+
+**RAAM** : [Critère 6.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-6-2)  
+**Ticket** : [PC-37479](https://passculture.atlassian.net/browse/PC-37479)  
+**PR** : [#8883](https://github.com/pass-culture/pass-culture-app-native/pull/8883)
+
+**Problème** 😱  
+- **(E05 | E14 | E16)** L'état des boutons radio (checked/unchecked) ne sont pas restitués par le lecteur d'écran dans la langue de traitement principale.
+
+- **(E09 | E11 | E13)** Non-conformité de typologie similaire à celle décrite sur l'écran "E05". Présente également ici, mais non redétaillée. (concerne les composants qui ouvrent et ferment du contenu (bloc "Accessibilité" de l'onglet "Infos pratiques" ) -> vocalise collapsed/extended)
+
+**Correction** 💡  
+- **(E05 | E09 | E11 | E13 | E14 | E16)** Comme pour le critère 5.2, le problème de la lecteur des aides à la compréhension de l'interface en anglais est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
