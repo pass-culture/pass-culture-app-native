@@ -684,6 +684,34 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 9.9 - Dans chaque formulaire, les erreurs de saisie sont-elles accessibles ?</summary>
+
+**RAAM** : [Critère 9.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-9)  
+**Ticket** : [PC-37494](https://passculture.atlassian.net/browse/PC-37494)  
+**PR** : [#8882](https://github.com/pass-culture/pass-culture-app-native/pull/8882)
+
+**Problème** 😱  
+- **(E07)** Les messages d'erreurs suivant ne sont pas restitués par le lecteur d'écran à la prise de focus sur le champ : 
+  - Le message d'erreur du champ "Adresse e-mail".
+  - Le message d'erreur "E-mail ou mot de passe incorrect".
+
+- **(E11)** Le message d'erreur suivant n'est restitué par le lecteur d'écran à la prise de focus sur le champ : Le message d'erreur du champ "Adresse e-mail".
+
+- **(E12)** Le message d'erreur de l'ensemble des champs du parcours (ex. lorsque l'utilisateur saisit un chiffre dans le champ "Prénom", le message "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.")
+
+**Correction** 💡  
+- **(E07 | E11 | E12)** Pour l'ensemble des champs de texte ou de recherche, nous avons ajouté le message d'erreur directement dans l'`accessibilityLabel`, ce qui à la prise de focus, permet d'avoir le message d'erreur (en plus de toutes les autres informations nécessaires à la compréhension du champ).
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+
 ## ✅ Corrections 28 novembre → 15 décembre
 
 <br>
