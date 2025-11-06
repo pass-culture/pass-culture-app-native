@@ -231,6 +231,7 @@ exports[`ChangeCity should render correctly 1`] = `
                   >
                     <input
                       aria-label="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                      aria-required="false"
                       autocapitalize="sentences"
                       autocomplete="postal-code"
                       autocorrect="off"

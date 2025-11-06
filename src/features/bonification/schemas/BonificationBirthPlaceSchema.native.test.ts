@@ -27,9 +27,7 @@ describe('BonificationBirthPlaceSchema', () => {
 
   describe('birthCountrySelection validation', () => {
     it('should reject if birthCountrySelection is missing', async () => {
-      const input = birthCity
-
-      const validation = BonificationBirthPlaceSchema.validate(input)
+      const validation = BonificationBirthPlaceSchema.validate(birthCity)
 
       await expect(validation).rejects.toEqual(
         new ValidationError('Le pays de naissance est obligatoire.')

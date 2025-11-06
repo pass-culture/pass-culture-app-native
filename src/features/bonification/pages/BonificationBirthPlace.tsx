@@ -3,9 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-// eslint-disable-next-line no-restricted-imports
-import { Insets, Text, TouchableOpacity } from 'react-native'
-import { styled } from 'styled-components/native'
 
 import { INSEE_COUNTRY_LIST, InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
@@ -13,18 +10,18 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
+import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Validate } from 'ui/svg/icons/Validate'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -33,23 +30,27 @@ type FormValues = {
   birthCountryInput?: string
   birthCity?: SuggestedCity
 }
-const inset = 10 // arbitrary hitSlop zone inset for touchable
-const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
 
 export const BonificationBirthPlace = () => {
   const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
 
-  const storedLegalRepresentative = useLegalRepresentative()
+  const { birthCountry, birthCity } = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
 
-  const [countryList, setCountryList] = useState(INSEE_COUNTRY_LIST)
-  const [showCityField, setShowCityField] = useState(!!storedLegalRepresentative.birthCity)
+  const [countryList, setCountryList] = useState(
+    birthCountry?.LIBCOG
+      ? INSEE_COUNTRY_LIST.filter((country) =>
+          country.LIBCOG.toLocaleLowerCase().includes(birthCountry?.LIBCOG.toLocaleLowerCase())
+        )
+      : INSEE_COUNTRY_LIST
+  )
+  const [showCityField, setShowCityField] = useState(!!birthCity)
 
   const { control, formState, handleSubmit, reset, watch } = useForm<FormValues>({
     defaultValues: {
-      birthCountrySelection: storedLegalRepresentative.birthCountry ?? {},
-      birthCity: storedLegalRepresentative.birthCity ?? {},
-      birthCountryInput: storedLegalRepresentative.birthCountry?.LIBCOG ?? '',
+      birthCountrySelection: birthCountry ?? undefined,
+      birthCity: birthCity ?? undefined,
+      birthCountryInput: birthCountry?.LIBCOG ?? undefined,
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -100,64 +101,52 @@ export const BonificationBirthPlace = () => {
                   }) => {
                     return (
                       <React.Fragment>
-                        <InputText
-                          label="Tapes le nom du pays et choisis le pays"
-                          value={valueInput}
-                          autoFocus
+                        <SearchInput
                           onChangeText={(text) => {
                             handleUserInputChange(text)
                             onChangeInput(text)
                           }}
-                          requiredIndicator="explicit"
+                          value={valueInput}
+                          label="Tapes le nom du pays et choisis le pays"
+                          format="France"
+                          onPressRightIcon={() => {
+                            reset()
+                            setShowCityField(false)
+                          }}
+                          keyboardType="default"
                           accessibilityHint={error?.message}
                           testID="Entrée pour le pays de naissance"
-                          textContentType="countryName"
                           autoComplete="country"
-                          errorMessage={error?.message}
+                          textContentType="countryName"
+                          searchInputID="country-name-input"
+                          isRequiredField
                         />
-                        <RowView>
-                          <Text>
-                            Pays selectionné:
-                            {valueSelection?.LIBCOG?.length === 0
-                              ? ' Aucun'
-                              : valueSelection?.LIBCOG}
-                          </Text>
-                          {valueSelection?.LIBCOG?.length === 0 ? null : <Validate />}
-                          {valueInput && valueInput.length != 0 ? (
-                            <Touchable
-                              hitSlop={hitSlop}
-                              onPress={() => {
-                                reset()
-                                setShowCityField(false)
-                              }}
-                              accessibilityLabel="Réinitialiser la recherche"
-                              type="reset">
-                              <Invalidate />
-                            </Touchable>
-                          ) : null}
-                        </RowView>
-                        {valueInput &&
-                          valueInput.length != 0 &&
-                          countryList.map((country) => {
-                            return (
-                              <TouchableOpacity
-                                key={country.COG}
-                                onPress={() => {
-                                  setCountryList([])
-                                  onChangeSelection(country)
-                                  onChangeInput(country.LIBCOG)
-                                  setShowCityField(
-                                    watch('birthCountrySelection')?.LIBCOG?.toLocaleLowerCase() ===
-                                      'france'
-                                  )
-                                }}>
-                                <RowView>
-                                  <Text>{country.LIBCOG}</Text>
-                                  {valueSelection.LIBCOG === country.LIBCOG ? <Validate /> : null}
-                                </RowView>
-                              </TouchableOpacity>
-                            )
-                          })}
+                        {valueInput && valueInput.length != 0 ? (
+                          <VerticalUl>
+                            {countryList.map((country, index) => {
+                              return (
+                                <Li key={country.COG}>
+                                  <AddressOption
+                                    label={country.LIBCOG}
+                                    selected={country ? country.COG === valueSelection?.COG : false}
+                                    onPressOption={() => {
+                                      setCountryList([])
+                                      onChangeSelection(country)
+                                      onChangeInput(country.LIBCOG)
+                                      setShowCityField(
+                                        watch(
+                                          'birthCountrySelection'
+                                        )?.LIBCOG?.toLocaleLowerCase() === 'france'
+                                      )
+                                    }}
+                                    optionKey={country.LIBCOG}
+                                    accessibilityLabel={`Proposition de pays ${index + 1}\u00a0: ${country.LIBCOG}`}
+                                  />
+                                </Li>
+                              )
+                            })}
+                          </VerticalUl>
+                        ) : null}
                       </React.Fragment>
                     )
                   }}
@@ -193,7 +182,3 @@ export const BonificationBirthPlace = () => {
     />
   )
 }
-
-const RowView = styled.View({
-  flexDirection: 'row',
-})
