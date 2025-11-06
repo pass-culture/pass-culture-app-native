@@ -20,7 +20,7 @@ const position = {
 }
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const algoliaSpy = jest.spyOn(useAlgoliaSimilarOffersAPI, 'useAlgoliaSimilarOffersQuery')
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')

@@ -16,7 +16,7 @@ jest.mock('react-instantsearch-core', () => ({
   }),
 }))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({

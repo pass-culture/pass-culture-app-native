@@ -6,8 +6,8 @@ import { bookingsSnapV2 as mockBookings } from 'features/bookings/fixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { act, render, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -23,8 +23,8 @@ mockUseBookings.mockReturnValue({
   refetch: jest.fn(),
 } as unknown as UseQueryResult<BookingsResponseV2, Error>)
 
-jest.mock('libs/subcategories/useSubcategories')
-const mockUseSubcategories = jest.mocked(useSubcategories)
+jest.mock('queries/subcategories/useSubcategoriesQuery')
+const mockUseSubcategories = jest.mocked(useSubcategoriesQuery)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
 } as UseQueryResult<SubcategoriesResponseModelv2, Error>)

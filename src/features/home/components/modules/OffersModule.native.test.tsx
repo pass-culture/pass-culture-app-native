@@ -55,7 +55,7 @@ const nativeEventEnd = {
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const user = userEvent.setup()
 jest.useFakeTimers()

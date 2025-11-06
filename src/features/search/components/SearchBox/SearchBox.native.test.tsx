@@ -20,7 +20,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SearchBox } from './SearchBox'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

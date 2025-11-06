@@ -35,7 +35,7 @@ jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const defaultParams = {
   date: null,

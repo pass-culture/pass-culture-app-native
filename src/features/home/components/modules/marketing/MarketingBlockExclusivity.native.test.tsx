@@ -29,8 +29,8 @@ const propsWithPublicationDateTomorrow = {
 
 jest.mock('libs/subcategories/useSubcategory')
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: {
       subcategories: mockSubcategories,
     },

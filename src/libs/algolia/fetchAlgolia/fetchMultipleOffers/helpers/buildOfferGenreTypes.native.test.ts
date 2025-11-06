@@ -3,7 +3,7 @@ import { buildOfferGenreTypes } from 'libs/algolia/fetchAlgolia/fetchMultipleOff
 import { useGenreTypeMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 describe('buildOfferGenreTypes', () => {
   const {

@@ -143,7 +143,7 @@ mockUseRoute.mockReturnValue({ name: 'venueMap' })
 
 const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const venue = mockedSuggestedVenue
 

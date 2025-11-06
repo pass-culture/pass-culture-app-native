@@ -10,7 +10,7 @@ import { SiteMapScreen } from './SiteMapScreen'
 
 jest.mock('libs/jwt/jwt')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

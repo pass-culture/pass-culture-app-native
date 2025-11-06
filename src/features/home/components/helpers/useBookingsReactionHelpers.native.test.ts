@@ -10,8 +10,8 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))

@@ -1,10 +1,10 @@
 import { hasAThematicSearch } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
 import { CategoryCriteria } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 
 export const useAvailableCategories = (): CategoryCriteria[] => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const searchGroupsEnum = data?.searchGroups.map((searchGroup) => searchGroup.name) ?? []
   const categories = Object.values(availableCategories).filter((category) =>
     searchGroupsEnum.includes(category.facetFilter)

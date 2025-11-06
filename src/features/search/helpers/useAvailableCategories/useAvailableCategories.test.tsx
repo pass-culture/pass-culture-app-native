@@ -5,8 +5,8 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 
 let mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))

@@ -19,7 +19,7 @@ useModalAPISpy.mockReturnValue({
   hideModal: jest.fn(),
   toggleModal: jest.fn(),
 })
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
