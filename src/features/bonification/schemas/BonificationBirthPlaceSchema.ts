@@ -18,10 +18,16 @@ export const BonificationBirthPlaceSchema = object({
     .required('Le pays de naissance est obligatoire.')
     .nullable(),
 
-  birthCity: string().when('birthCountrySelection', {
+  birthCity: object().when('birthCountrySelection', {
     is: (country: InseeCountry | null | undefined) => country?.LIBCOG === 'France',
     then: (schema) =>
-      schema.required('La ville de naissance est obligatoire pour les personnes nées en France.'),
+      schema
+        .shape({
+          name: string().required('Le nom de la ville est requis.'),
+          code: string().required('Le code INSEE de la ville est requis.'),
+          postalCode: string().required('Le code postal est requis.'),
+        })
+        .required('La ville de naissance est obligatoire pour les personnes nées en France.'),
     otherwise: (schema) => schema.optional(),
   }),
 })

@@ -1,5 +1,6 @@
 import { InseeCountry } from 'features/bonification/inseeCountries'
 import { Title } from 'features/bonification/pages/BonificationTitle'
+import { SuggestedCity } from 'libs/place/types'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
@@ -8,7 +9,7 @@ type State = {
   commonName: string | null
   title: Title | null
   birthDate: Date | null
-  birthCity: string | null
+  birthCity: SuggestedCity | null
   birthCountry: InseeCountry | null
 }
 
@@ -31,7 +32,7 @@ const legalRepresentativeStore = createStore({
     setCommonName: (commonName: string) => set({ commonName }),
     setTitle: (title: Title) => set({ title }),
     setBirthDate: (birthDate: Date) => set({ birthDate }),
-    setBirthCity: (birthCity: string) => set({ birthCity }),
+    setBirthCity: (birthCity: SuggestedCity | null) => set({ birthCity }),
     setBirthCountry: (birthCountry: InseeCountry) => set({ birthCountry }),
     resetLegalRepresentative: () => set(defaultState),
   }),

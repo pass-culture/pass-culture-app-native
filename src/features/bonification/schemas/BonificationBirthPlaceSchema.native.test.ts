@@ -3,12 +3,21 @@ import { ValidationError } from 'yup'
 import { BonificationBirthPlaceSchema } from './BonificationBirthPlaceSchema'
 
 describe('BonificationBirthPlaceSchema', () => {
+  const birthCity = {
+    name: 'Paris',
+    code: '75056',
+    postalCode: '75017',
+  }
+
   describe('valid schemas', () => {
     it.each([
-      { birthCountrySelection: { LIBCOG: 'France', COG: 99100 }, birthCity: 'Paris' },
-      { birthCountrySelection: { LIBCOG: 'États-Unis', COG: 99100 }, birthCity: 'New York' },
+      {
+        birthCountrySelection: { LIBCOG: 'France', COG: 99100 },
+        birthCity: birthCity,
+      },
+      { birthCountrySelection: { LIBCOG: 'États-Unis', COG: 99100 } },
       { birthCountrySelection: { LIBCOG: 'Royaume-Uni', COG: 99100 } },
-      { birthCountrySelection: { LIBCOG: 'Espagne', COG: 99100 }, birthCity: 'Madrid' },
+      { birthCountrySelection: { LIBCOG: 'Espagne', COG: 99100 } },
     ])('should accept a valid object: %p', async (data) => {
       const result = await BonificationBirthPlaceSchema.validate(data)
 
@@ -18,7 +27,8 @@ describe('BonificationBirthPlaceSchema', () => {
 
   describe('birthCountrySelection validation', () => {
     it('should reject if birthCountrySelection is missing', async () => {
-      const input = { birthCity: 'Paris' }
+      const input = birthCity
+
       const validation = BonificationBirthPlaceSchema.validate(input)
 
       await expect(validation).rejects.toEqual(
@@ -29,7 +39,7 @@ describe('BonificationBirthPlaceSchema', () => {
     it.each(['France123', 'France!', 'Allemagne_'])(
       'should reject if birthCountrySelection contains invalid characters: %s',
       async (country) => {
-        const input = { birthCountrySelection: { LIBCOG: country, COG: 99100 }, birthCity: 'Paris' }
+        const input = { birthCountrySelection: { LIBCOG: country, COG: 99100 }, birthCity }
         const validation = BonificationBirthPlaceSchema.validate(input)
 
         await expect(validation).rejects.toEqual(
@@ -45,11 +55,7 @@ describe('BonificationBirthPlaceSchema', () => {
         const input = { birthCountrySelection: { LIBCOG: 'France', COG: 99100 } }
         const validation = BonificationBirthPlaceSchema.validate(input)
 
-        await expect(validation).rejects.toEqual(
-          new ValidationError(
-            'La ville de naissance est obligatoire pour les personnes nées en France.'
-          )
-        )
+        await expect(validation).rejects.toEqual(new ValidationError('Le code postal est requis.'))
       })
     })
 

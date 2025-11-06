@@ -14,6 +14,8 @@ import {
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
+import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -29,7 +31,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type FormValues = {
   birthCountrySelection: InseeCountry
   birthCountryInput?: string
-  birthCity?: string
+  birthCity?: SuggestedCity
 }
 const inset = 10 // arbitrary hitSlop zone inset for touchable
 const hitSlop: Insets = { top: inset, right: inset, bottom: inset, left: inset }
@@ -46,7 +48,7 @@ export const BonificationBirthPlace = () => {
   const { control, formState, handleSubmit, reset, watch } = useForm<FormValues>({
     defaultValues: {
       birthCountrySelection: storedLegalRepresentative.birthCountry ?? {},
-      birthCity: storedLegalRepresentative.birthCity ?? '',
+      birthCity: storedLegalRepresentative.birthCity ?? {},
       birthCountryInput: storedLegalRepresentative.birthCountry?.LIBCOG ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
@@ -61,7 +63,7 @@ export const BonificationBirthPlace = () => {
     if (birthCountrySelection.LIBCOG === 'France' && birthCity) {
       setBirthCity(birthCity)
     } else {
-      setBirthCity('')
+      setBirthCity(null)
     }
     navigate('BonificationRecap')
   }
@@ -99,7 +101,7 @@ export const BonificationBirthPlace = () => {
                     return (
                       <React.Fragment>
                         <InputText
-                          label="Pays de naissance"
+                          label="Tapes le nom du pays et choisis le pays"
                           value={valueInput}
                           autoFocus
                           onChangeText={(text) => {
@@ -166,17 +168,12 @@ export const BonificationBirthPlace = () => {
               <Controller
                 control={control}
                 name="birthCity"
-                render={({ field: { onChange, value }, fieldState: { error } }) => (
-                  <InputText
-                    label="Ville de naissance"
-                    value={value}
-                    onChangeText={onChange}
-                    requiredIndicator="explicit"
-                    accessibilityHint={error?.message}
-                    testID="Entrée pour la ville de naissance"
-                    textContentType="addressCity"
-                    autoComplete="postal-address-locality"
-                    errorMessage={error?.message}
+                render={({ field: { value, onChange } }) => (
+                  <CitySearchInput
+                    city={value}
+                    onCitySelected={onChange}
+                    label="Indique le code postal et choisis la ville"
+                    isRequiredField
                   />
                 )}
               />

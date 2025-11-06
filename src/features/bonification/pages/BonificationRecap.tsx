@@ -41,7 +41,7 @@ export const BonificationRecap = () => {
         lastName: givenName,
         birthDate: new Date(birthDate).toISOString().substring(0, 10),
         birthCountryCogCode: birthCountry.COG.toString(),
-        birthCityCogCode: birthCity,
+        birthCityCogCode: birthCity?.code,
       })
     }
   }
@@ -57,7 +57,7 @@ export const BonificationRecap = () => {
   ]
 
   if (commonName) recapData.splice(1, 0, { title: 'Nom d’usage', value: commonName.toUpperCase() })
-  if (birthCity) recapData.push({ title: 'Ville de naissance', value: birthCity })
+  if (birthCity?.name) recapData.push({ title: 'Ville de naissance', value: birthCity?.name })
 
   return (
     <PageWithHeader
