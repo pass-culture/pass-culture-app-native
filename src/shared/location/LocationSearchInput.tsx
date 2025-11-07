@@ -1,14 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { SuggestedPlace } from 'libs/place/types'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getSpacing } from 'ui/theme'
 
 interface LocationSearchInputProps {
   selectedPlace: SuggestedPlace | null
@@ -27,7 +23,6 @@ export const LocationSearchInput = ({
   onResetPlace,
   onSetSelectedPlace,
 }: LocationSearchInputProps) => {
-  const { designSystem } = useTheme()
   const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
 
   const onChangePlace = (text: string) => {
@@ -41,14 +36,11 @@ export const LocationSearchInput = ({
   return (
     <StyledView>
       <SearchInput
+        label="Recherche un ville, une adresse..."
         autoFocus
-        LeftIcon={StyledMagnifyingGlass}
-        inputHeight="regular"
         onChangeText={onChangePlace}
-        onPressRightIcon={onResetPlace}
-        placeholder={LOCATION_PLACEHOLDER}
+        onClear={onResetPlace}
         value={placeQuery}
-        textStyle={selectedPlace ? designSystem.typography.button : designSystem.typography.body}
       />
       {shouldShowSuggestedPlaces ? (
         <StyledView>
@@ -59,8 +51,6 @@ export const LocationSearchInput = ({
   )
 }
 
-const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
-
-const StyledView = styled(View)({ paddingTop: getSpacing(4) })
+const StyledView = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
