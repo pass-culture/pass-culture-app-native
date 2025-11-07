@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useHomepageData } from 'features/home/api/useHomepageData'
+import { useHomepage } from 'features/home/api/useHomepageData'
 import {
   formattedVenuesModule,
   highlightHeaderFixture,
@@ -31,7 +31,7 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 }))
 
 jest.mock('features/home/api/useHomepageData')
-const mockUseHomepageData = useHomepageData as jest.MockedFunction<typeof useHomepageData>
+const mockUseHomepageData = useHomepage as jest.MockedFunction<typeof useHomepage>
 
 const defaultUseLocation: Partial<ILocationContext> = {
   userLocation: {

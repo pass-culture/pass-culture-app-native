@@ -18,7 +18,7 @@ export const useLaunchPerformanceObserver = (): void => {
           'nativeLaunchStart',
           CustomMarks.SCREEN_INTERACTIVE
         )
-        console.log({ tti: tti })
+        console.log(`TTI: ${tti.duration}`)
 
         if (__DEV__ || !tti.duration) {
           return
