@@ -2,31 +2,28 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { View } from 'react-native'
 
-import { INSEE_COUNTRY_LIST, InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type FormValues = {
+import { CountryPicker } from './CountryPicker'
+
+export type FormValues = {
   birthCountrySelection: InseeCountry
   birthCountryInput?: string
   birthCity?: SuggestedCity
@@ -38,13 +35,6 @@ export const BonificationBirthPlace = () => {
   const { birthCountry, birthCity } = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
 
-  const [countryList, setCountryList] = useState(
-    birthCountry?.LIBCOG
-      ? INSEE_COUNTRY_LIST.filter((country) =>
-          country.LIBCOG.toLocaleLowerCase().includes(birthCountry?.LIBCOG.toLocaleLowerCase())
-        )
-      : INSEE_COUNTRY_LIST
-  )
   const [showCityField, setShowCityField] = useState(!!birthCity)
 
   const { control, formState, handleSubmit, reset, watch } = useForm<FormValues>({
@@ -70,14 +60,6 @@ export const BonificationBirthPlace = () => {
     navigate(...getSubscriptionHookConfig('BonificationRecap'))
   }
 
-  const handleUserInputChange = (input: string) => {
-    setCountryList(
-      INSEE_COUNTRY_LIST.filter((country) =>
-        country.LIBCOG.toLocaleLowerCase().includes(input.toLocaleLowerCase())
-      )
-    )
-  }
-
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveBirthPlaceAndNavigate))
 
   return (
@@ -101,58 +83,17 @@ export const BonificationBirthPlace = () => {
                     fieldState: { error },
                   }) => {
                     return (
-                      <View>
-                        <SearchInput
-                          onChangeText={(text) => {
-                            handleUserInputChange(text)
-                            onChangeInput(text)
-                          }}
-                          value={valueInput}
-                          label="Pays de naissance"
-                          format="France"
-                          onPressRightIcon={() => {
-                            reset({
-                              birthCountrySelection: {},
-                              birthCity: {},
-                              birthCountryInput: '',
-                            }) // strange that I have to specify empty values (or else resets to store values if present)
-                            setShowCityField(false)
-                          }}
-                          keyboardType="default"
-                          accessibilityHint={error?.message}
-                          testID="Entrée pour le pays de naissance"
-                          autoComplete="country"
-                          textContentType="countryName"
-                          searchInputID="country-name-input"
-                          isRequiredField
-                        />
-                        {valueInput && valueInput.length != 0 ? (
-                          <VerticalUl>
-                            {countryList.map((country, index) => {
-                              return (
-                                <Li key={country.COG}>
-                                  <AddressOption
-                                    label={country.LIBCOG}
-                                    selected={country ? country.COG === valueSelection?.COG : false}
-                                    onPressOption={() => {
-                                      setCountryList([])
-                                      onChangeSelection(country)
-                                      onChangeInput(country.LIBCOG)
-                                      setShowCityField(
-                                        watch(
-                                          'birthCountrySelection'
-                                        )?.LIBCOG?.toLocaleLowerCase() === 'france'
-                                      )
-                                    }}
-                                    optionKey={country.LIBCOG}
-                                    accessibilityLabel={`Proposition de pays ${index + 1}\u00a0: ${country.LIBCOG}`}
-                                  />
-                                </Li>
-                              )
-                            })}
-                          </VerticalUl>
-                        ) : null}
-                      </View>
+                      <CountryPicker
+                        error={error}
+                        birthCountry={birthCountry}
+                        onChangeInput={onChangeInput}
+                        onChangeSelection={onChangeSelection}
+                        reset={reset}
+                        setShowCityField={setShowCityField}
+                        valueInput={valueInput}
+                        valueSelection={valueSelection}
+                        watch={watch}
+                      />
                     )
                   }}
                 />
