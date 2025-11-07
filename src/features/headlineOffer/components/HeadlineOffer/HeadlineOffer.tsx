@@ -44,6 +44,8 @@ const Container = styled(InternalTouchableLink)(({ theme }) => ({
   height: theme.isDesktopViewport ? HEADLINE_OFFER_LARGE_VIEWPORT : HEADLINE_OFFER_SMALL_VIEWPORT,
   width: '100%',
   justifyContent: 'end',
+  borderColor: theme.designSystem.color.border.subtle,
+  borderWidth: 1,
 }))
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({

@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { BlurView } from 'ui/components/BlurView'
+import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -48,7 +48,7 @@ export const ContentHeader = ({
         // https://github.com/Kureev/react-native-blur/issues/511
         Platform.OS === 'android' ? null : (
           <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
-            <Blurred blurType="light" blurAmount={8} />
+            <BlurryWrapper />
           </BlurNativeContainer>
         )
       }
@@ -78,10 +78,6 @@ export const ContentHeader = ({
     </HeaderContainer>
   )
 }
-
-const Blurred = styled(BlurView)({
-  flex: 1,
-})
 
 const BlurNativeContainer = styled(Animated.View)<{ height: number }>(({ height }) => ({
   position: 'absolute',
