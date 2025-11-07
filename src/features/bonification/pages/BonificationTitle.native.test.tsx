@@ -17,7 +17,10 @@ describe('BonificationTitle', () => {
     const button = screen.getByText('Continuer')
     await userEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('BonificationBirthDate')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationBirthDate',
+    })
   })
 
   it('should go back when pressing go back button', async () => {

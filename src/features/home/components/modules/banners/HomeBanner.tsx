@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { BonificationBanner } from 'features/bonification/banners/BonificationBanner'
+import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'

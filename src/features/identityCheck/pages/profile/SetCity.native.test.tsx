@@ -61,8 +61,11 @@ describe('<SetCity/>', () => {
 
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
-      type: ProfileTypes.IDENTITY_CHECK,
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+      params: {
+        type: ProfileTypes.IDENTITY_CHECK,
+      },
+      screen: 'SetAddress',
     })
   })
 
@@ -81,8 +84,11 @@ describe('<SetCity/>', () => {
 
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
-      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+      params: {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      },
+      screen: 'SetAddress',
     })
   })
 

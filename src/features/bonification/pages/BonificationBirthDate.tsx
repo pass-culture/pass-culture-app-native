@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -10,7 +9,8 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -25,7 +25,7 @@ type BirthdayForm = {
 }
 
 export const BonificationBirthDate = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setBirthDate } = legalRepresentativeActions
@@ -50,7 +50,7 @@ export const BonificationBirthDate = () => {
     ({ birthdate }: BirthdayForm) => {
       if (birthdate) {
         setBirthDate(birthdate)
-        navigate('BonificationBirthPlace')
+        navigate(...getSubscriptionHookConfig('BonificationBirthPlace'))
       }
     },
     [navigate, setBirthDate]
