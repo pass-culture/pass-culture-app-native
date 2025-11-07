@@ -108,7 +108,7 @@ export const BonificationBirthPlace = () => {
                             onChangeInput(text)
                           }}
                           value={valueInput}
-                          label="Tapes le nom du pays et choisis le pays"
+                          label="Pays de naissance"
                           format="France"
                           onPressRightIcon={() => {
                             reset({
@@ -166,7 +166,7 @@ export const BonificationBirthPlace = () => {
                   <CitySearchInput
                     city={value}
                     onCitySelected={onChange}
-                    label="Indique le code postal et choisis la ville"
+                    label="Commune de naissance"
                     isRequiredField
                   />
                 )}
