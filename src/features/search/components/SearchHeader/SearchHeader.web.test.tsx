@@ -79,7 +79,7 @@ describe('SearchHeader component', () => {
     })
 
     const locationFilterButton = screen.getByTestId(
-      'Ouvrir la modale de localisation depuis le widget'
+      'France entière - Ouvrir la modale de localisation'
     )
 
     expect(locationFilterButton).toHaveFocus()

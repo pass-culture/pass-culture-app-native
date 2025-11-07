@@ -124,7 +124,7 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    await screen.findByTestId('Ouvrir la modale de localisation depuis le widget')
+    await screen.findByTestId('France entière - Ouvrir la modale de localisation')
 
     expect(screen.getByText(LocationLabel.everywhereLabel)).toBeTruthy()
   })
@@ -136,7 +136,7 @@ describe('HomeHeader', () => {
 
     await waitFor(() => {
       expect(
-        screen.queryByTestId('Ouvrir la modale de localisation depuis le widget')
+        screen.queryByTestId('France entière - Ouvrir la modale de localisation')
       ).not.toBeOnTheScreen()
     })
   })
