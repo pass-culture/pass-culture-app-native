@@ -1,14 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -40,7 +39,7 @@ export const SetCity = () => {
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const storedCity = useCity()
   const { setCity: setStoreCity } = cityActions
   const {
@@ -55,7 +54,7 @@ export const SetCity = () => {
 
   const onSubmit = ({ city }: CityForm) => {
     setStoreCity(city)
-    navigate('SetAddress', { type })
+    navigate(...getSubscriptionHookConfig('SetAddress', { type }))
   }
 
   return (

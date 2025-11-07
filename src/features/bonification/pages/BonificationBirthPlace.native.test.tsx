@@ -39,7 +39,10 @@ describe('BonificationBirthPlace', () => {
     await completeForm()
     await goToNextScreen()
 
-    expect(navigate).toHaveBeenCalledWith('BonificationRecap')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationRecap',
+    })
   })
 
   it('Should go back when pressing go back button', async () => {

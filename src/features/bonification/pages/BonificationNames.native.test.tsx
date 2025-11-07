@@ -20,7 +20,10 @@ describe('BonificationNames', () => {
     const button = screen.getByText('Continuer')
     await userEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('BonificationTitle')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationTitle',
+    })
   })
 
   it('should go back when pressing go back button', async () => {
@@ -58,7 +61,10 @@ describe('BonificationNames', () => {
     const button = screen.getByText('Continuer')
     await userEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('BonificationTitle')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationTitle',
+    })
   })
 
   describe('Data persistence', () => {

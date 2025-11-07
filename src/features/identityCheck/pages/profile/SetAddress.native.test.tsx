@@ -103,8 +103,11 @@ describe('<SetAddress/>', () => {
     await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.name))
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
-      type: ProfileTypes.IDENTITY_CHECK,
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
+      params: {
+        type: 'identityCheck',
+      },
+      screen: 'SetStatus',
     })
   })
 

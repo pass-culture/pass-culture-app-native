@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -9,7 +8,8 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DynamicInputList } from 'ui/components/inputs/DynamicInputList/DynamicInputList'
@@ -29,7 +29,7 @@ type FormValues = {
 }
 
 export const BonificationNames = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setFirstNames, setCommonName, setGivenName } = legalRepresentativeActions
@@ -53,7 +53,7 @@ export const BonificationNames = () => {
     setFirstNames(firstNames)
     setGivenName(givenName)
     if (commonName) setCommonName(commonName)
-    navigate('BonificationTitle')
+    navigate(...getSubscriptionHookConfig('BonificationTitle'))
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(saveNameAndNavigate))

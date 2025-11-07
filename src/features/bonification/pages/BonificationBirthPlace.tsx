@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -11,7 +10,8 @@ import {
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -32,7 +32,7 @@ type FormValues = {
 }
 
 export const BonificationBirthPlace = () => {
-  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { birthCountry, birthCity } = useLegalRepresentative()
   const { setBirthCountry, setBirthCity } = legalRepresentativeActions
@@ -66,7 +66,7 @@ export const BonificationBirthPlace = () => {
     } else {
       setBirthCity(null)
     }
-    navigate('BonificationRecap')
+    navigate(...getSubscriptionHookConfig('BonificationRecap'))
   }
 
   const handleUserInputChange = (input: string) => {
