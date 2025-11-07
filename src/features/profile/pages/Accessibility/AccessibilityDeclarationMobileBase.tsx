@@ -208,7 +208,7 @@ export function AccessibilityDeclarationMobileBase({
           <ExternalTouchableLink
             as={LinkInsideText}
             wording="support@passculture.app"
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
             justifyContent="flex-start"
             externalNav={contactSupport.forGenericQuestion}
             accessibilityRole={AccessibilityRole.LINK}
