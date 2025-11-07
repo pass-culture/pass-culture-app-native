@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { CountryPicker } from 'features/bonification/components/CountryPicker'
 import { InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
@@ -20,8 +21,6 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-import { CountryPicker } from './CountryPicker'
 
 export type FormValues = {
   birthCountrySelection: InseeCountry

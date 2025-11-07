@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { BonificationBanner } from 'features/bonification/banners/BonificationBanner'
+import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'

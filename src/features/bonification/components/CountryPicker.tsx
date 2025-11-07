@@ -8,7 +8,7 @@ import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 
-import { FormValues } from './BonificationBirthPlace'
+import { FormValues } from '../pages/BonificationBirthPlace'
 
 export const CountryPicker: React.FC<{
   error: FieldError | undefined
