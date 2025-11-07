@@ -2,7 +2,7 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
-import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
+import { fetchHomepageById, fetchHomepageNatifContent } from 'libs/contentful/fetchHomepages'
 import { LogTypeEnum, ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -25,4 +25,11 @@ export const useGetHomepageListQuery = (logType: LogTypeEnum): UseQueryResult<Ho
     queryKey: [QueryKeys.HOMEPAGE_MODULES],
     queryFn: () => getHomepageNatifContent(logType),
     staleTime: STALE_TIME_CONTENTFUL,
+  })
+
+export const useFetchHomepageByIdQuery = (homepageId: string): UseQueryResult<Homepage> =>
+  useQuery<Homepage>({
+    queryKey: [QueryKeys.HOMEPAGE_MODULES, homepageId],
+    queryFn: () => fetchHomepageById(homepageId),
+    staleTime: 60 * 60 * 1000,
   })

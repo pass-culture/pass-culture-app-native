@@ -3,7 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { BookingsResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
-import { useHomepageData } from 'features/home/api/useHomepageData'
+import { useHomepage } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -33,7 +33,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 jest.mock('features/home/api/useHomepageData')
-const mockUseHomepageData = useHomepageData as jest.Mock
+const mockUseHomepageData = useHomepage as jest.Mock
 
 jest.mock('libs/location/location')
 

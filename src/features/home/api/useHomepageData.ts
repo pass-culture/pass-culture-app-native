@@ -1,25 +1,59 @@
-import { useMemo } from 'react'
+import { UserOnboardingRole } from 'features/onboarding/enums'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 
-import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
-import { Homepage } from 'features/home/types'
-import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-
-import { useGetHomepageListQuery } from '../queries/useGetHomepageListQuery'
-
-const emptyHomepage: Homepage = {
-  id: '-1',
-  modules: [],
-  tags: [],
+enum HomepageType {
+  GENERAL = 'general',
+  BENEFICIARY = 'beneficiary',
+  FREE_BENEFICIARY = 'free_beneficiary',
+  WITHOUT_BOOKING = 'without_booking',
 }
 
-export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
-  const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
-  const { logType } = useLogTypeFromRemoteConfig()
+const getHomepageType = (
+  isLoggedIn: boolean,
+  isFreeBeneficiary: boolean,
+  isBeneficiary: boolean,
+  hasBookings: boolean,
+  onboardingRole: UserOnboardingRole
+): HomepageType => {
+  if (!isLoggedIn) {
+    if (onboardingRole === UserOnboardingRole.EIGHTEEN) {
+      return HomepageType.BENEFICIARY
+    }
+    if (onboardingRole === UserOnboardingRole.UNDERAGE) {
+      return HomepageType.FREE_BENEFICIARY
+    }
+    return HomepageType.GENERAL
+  }
 
-  // this fetches all homepages available in contentful
-  const { data: homepages } = useGetHomepageListQuery(logType)
+  if (isFreeBeneficiary) return HomepageType.FREE_BENEFICIARY
+  if (isBeneficiary) return hasBookings ? HomepageType.BENEFICIARY : HomepageType.WITHOUT_BOOKING
 
-  const homepage = selectHomepageEntry(homepages ?? []) ?? emptyHomepage
+  return HomepageType.GENERAL
+}
 
-  return useMemo(() => homepage, [homepage])
+export const getHomepagId = (
+  isLoggedIn: boolean,
+  isFreeBeneficiary: boolean,
+  isBeneficiary: boolean,
+  hasBookings: boolean,
+  onboardingRole: UserOnboardingRole,
+  remoteConfig: CustomRemoteConfig
+): string => {
+  const homepageType = getHomepageType(
+    isLoggedIn,
+    isFreeBeneficiary,
+    isBeneficiary,
+    hasBookings,
+    onboardingRole
+  )
+  switch (homepageType) {
+    case HomepageType.BENEFICIARY:
+      return remoteConfig.homeEntryIdBeneficiary
+    case HomepageType.FREE_BENEFICIARY:
+      return remoteConfig.homeEntryIdFreeBeneficiary
+    case HomepageType.GENERAL:
+      return remoteConfig.homeEntryIdGeneral
+    case HomepageType.WITHOUT_BOOKING:
+      return remoteConfig.homeEntryIdWithoutBooking
+  }
 }
