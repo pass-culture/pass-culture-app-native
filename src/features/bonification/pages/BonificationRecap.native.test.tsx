@@ -68,9 +68,7 @@ describe('BonificationRecap', () => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
     })
 
-    // I had to remove resetLegalRepresentative from code as it happens to early and crashes the page
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should clear previously saved data', async () => {
+    it('should clear previously saved data', async () => {
       const resetLegalRepresentativeSpy = jest.spyOn(
         legalRepresentativeActions,
         'resetLegalRepresentative'
@@ -115,10 +113,11 @@ describe('BonificationRecap', () => {
     })
   })
 
-  it('should navigate to error screen if store is missing data', async () => {
-    expect(() => render(reactQueryProviderHOC(<BonificationRecap />))).toThrow(
-      new Error("Couldn't retrieve data from storage")
-    )
+  it('should show error message if store is missing data', async () => {
+    render(reactQueryProviderHOC(<BonificationRecap />))
+    const errorMessage = await screen.findByText('Nous ne retrouvons pas les données du formulaire')
+
+    expect(errorMessage).toBeTruthy()
   })
 })
 

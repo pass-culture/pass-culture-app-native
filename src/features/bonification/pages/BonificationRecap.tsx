@@ -3,7 +3,10 @@ import React, { useState } from 'react'
 
 import { GenderEnum } from 'api/gen'
 import { usePostBonusQuotientFamilialMutation } from 'features/bonification/queries/usePostBonusQuotientFamilialMutation'
-import { useLegalRepresentative } from 'features/bonification/store/legalRepresentativeStore'
+import {
+  legalRepresentativeActions,
+  useLegalRepresentative,
+} from 'features/bonification/store/legalRepresentativeStore'
 import { Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -17,12 +20,12 @@ export const BonificationRecap = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
-  // const { resetLegalRepresentative } = legalRepresentativeActions
+  const { resetLegalRepresentative } = legalRepresentativeActions
 
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
-      navigate('TabNavigator', { screen: 'Home' }) // we navigate first or error will be thrown
-      // resetLegalRepresentative()
+      navigate('TabNavigator', { screen: 'Home' })
+      resetLegalRepresentative()
     },
     onError: (_error) => {
       navigate(...getSubscriptionHookConfig('BonificationError'))
@@ -46,17 +49,23 @@ export const BonificationRecap = () => {
     }
   }
 
-  if (!title || !firstNames || !givenName || !birthDate || !birthCountry) {
-    throw new Error("Couldn't retrieve data from storage")
-  }
-
   const recapData = [
-    { title: 'Nom', value: `${title} ${firstNames?.join(' ')} ${givenName.toUpperCase()}` },
-    { title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() },
-    { title: 'Pays de naissance', value: birthCountry.LIBCOG.toString() },
+    {
+      title: 'Erreur',
+      value: 'Nous ne retrouvons pas les données du formulaire',
+    },
   ]
 
-  if (commonName) recapData.splice(1, 0, { title: 'Nom d’usage', value: commonName.toUpperCase() })
+  if (title && firstNames?.length && givenName)
+    recapData.splice(0, 1, {
+      title: 'Nom',
+      value: `${title} ${firstNames?.join(' ')} ${givenName.toUpperCase()}`,
+    })
+  if (commonName) recapData.push({ title: 'Nom d’usage', value: commonName.toUpperCase() })
+  if (birthDate)
+    recapData.push({ title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() })
+  if (birthCountry)
+    recapData.push({ title: 'Pays de naissance', value: birthCountry.LIBCOG.toString() })
   if (birthCity?.name) recapData.push({ title: 'Ville de naissance', value: birthCity?.name })
 
   return (
