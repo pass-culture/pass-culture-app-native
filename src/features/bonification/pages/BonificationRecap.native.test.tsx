@@ -47,6 +47,17 @@ describe('BonificationRecap', () => {
     expect(birthDateField).toBeTruthy()
   })
 
+  it('should navigate to error screen when pressing "Envoyer" and data is missing', async () => {
+    prepareDataAndRender(undefined, undefined, undefined, undefined, undefined)
+
+    await validateAndSubmitForm()
+
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationError',
+    })
+  })
+
   describe('when submission succeeds', () => {
     beforeEach(() => {
       mockServer.postApi('/v1/subscription/bonus/quotient_familial', {
@@ -57,13 +68,7 @@ describe('BonificationRecap', () => {
     it('should navigate to home when pressing "Envoyer"', async () => {
       prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
-      const checkbox = screen.getByText(
-        'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
-      )
-      await userEvent.press(checkbox)
-
-      const button = screen.getByText('Envoyer')
-      await userEvent.press(button)
+      await validateAndSubmitForm()
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
     })
@@ -76,13 +81,7 @@ describe('BonificationRecap', () => {
 
       prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
-      const checkbox = screen.getByText(
-        'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
-      )
-      await userEvent.press(checkbox)
-
-      const button = screen.getByText('Envoyer')
-      await userEvent.press(button)
+      await validateAndSubmitForm()
 
       expect(resetLegalRepresentativeSpy).toHaveBeenCalledWith()
     })
@@ -98,13 +97,7 @@ describe('BonificationRecap', () => {
     it('should navigate to error screen when pressing "Envoyer"', async () => {
       prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
-      const checkbox = screen.getByText(
-        'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
-      )
-      await userEvent.press(checkbox)
-
-      const button = screen.getByText('Envoyer')
-      await userEvent.press(button)
+      await validateAndSubmitForm()
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: undefined,
@@ -120,6 +113,16 @@ describe('BonificationRecap', () => {
     expect(errorMessage).toBeTruthy()
   })
 })
+
+async function validateAndSubmitForm() {
+  const checkbox = screen.getByText(
+    'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
+  )
+  await userEvent.press(checkbox)
+
+  const button = screen.getByText('Envoyer')
+  await userEvent.press(button)
+}
 
 function prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry) {
   const { setTitle, setFirstNames, setGivenName, setBirthDate, setBirthCountry } =

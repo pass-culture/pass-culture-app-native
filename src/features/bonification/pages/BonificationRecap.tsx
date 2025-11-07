@@ -46,6 +46,8 @@ export const BonificationRecap = () => {
         birthCountryCogCode: birthCountry.COG.toString(),
         birthCityCogCode: birthCity?.code,
       })
+    } else {
+      navigate(...getSubscriptionHookConfig('BonificationError'))
     }
   }
 
