@@ -2367,22 +2367,44 @@ d’options
         }
       }
     >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
+      <View
         style={
-          [
-            {
-              "backgroundColor": "transparent",
-            },
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      >
+        <BlurView
+          blurAmount={5}
+          blurType="light"
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+              },
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+          testID="blurry-wrapper"
+        />
+        <View
+          style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-            },
-          ]
-        }
-      />
+            }
+          }
+        />
+      </View>
     </View>
     <View
       marginRight={24}
@@ -3574,8 +3596,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       {
                         "borderBottomLeftRadius": 16,
                         "borderBottomRightRadius": 16,
+                        "borderColor": "#cbcdd2",
                         "borderTopLeftRadius": 16,
                         "borderTopRightRadius": 16,
+                        "borderWidth": 1,
                         "height": 245,
                         "justifyContent": "end",
                         "opacity": 1,
@@ -5480,22 +5504,44 @@ d’options
         }
       }
     >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
+      <View
         style={
-          [
-            {
-              "backgroundColor": "transparent",
-            },
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      >
+        <BlurView
+          blurAmount={5}
+          blurType="light"
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+              },
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+          testID="blurry-wrapper"
+        />
+        <View
+          style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-            },
-          ]
-        }
-      />
+            }
+          }
+        />
+      </View>
     </View>
     <View
       marginRight={24}
@@ -8575,22 +8621,44 @@ d’options
         }
       }
     >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
+      <View
         style={
-          [
-            {
-              "backgroundColor": "transparent",
-            },
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      >
+        <BlurView
+          blurAmount={5}
+          blurType="light"
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+              },
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+          testID="blurry-wrapper"
+        />
+        <View
+          style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-            },
-          ]
-        }
-      />
+            }
+          }
+        />
+      </View>
     </View>
     <View
       marginRight={24}

@@ -2590,12 +2590,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Réaliser un audit interne sur les parcours clés de la version web
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -2764,12 +2764,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Former un développeur à l’audit d’accessibilité numérique des applications mobiles
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -2851,12 +2851,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Mettre en place un process de vérification d’accessibilité RGAA pour les nouvelles fonctionnalités
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -2938,12 +2938,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Revoir l’accessibilité de tous les mails transactionnels
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3025,12 +3025,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Atteindre 100% d’accessibilité de la version web sur les parcours clés
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3112,12 +3112,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Informer des modalités de mises en accessibilité des offres
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3199,12 +3199,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Renforcer la visibilité sur le pass d’offres accessibles auprès des publics concernés (partenariats et inscriptions d’AC spécialisées…)
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3286,12 +3286,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Proposer un mode sombre aux utilisateurs
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3373,12 +3373,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Mettre en place un design system 100% accessible
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3502,12 +3502,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3589,12 +3589,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3676,12 +3676,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3781,12 +3781,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 </Text>
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3886,12 +3886,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 </Text>
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -3973,12 +3973,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Sensibilisation des équipes internes aux enjeux d’accessibilité
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4252,12 +4252,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Mettre en place une charte graphique 100% accessible
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4339,12 +4339,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Réaliser un nouvel audit d’accessibilité du portail pro par un cabinet externe
                  
                 <View
-                  backgroundColor="#f9df81"
+                  backgroundColor="#fbebb2"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#f9df81",
+                      "backgroundColor": "#fbebb2",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4468,12 +4468,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Formation des équipes produit aux enjeux de l’accessibilité
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4555,12 +4555,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4660,12 +4660,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 </Text>
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4765,12 +4765,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 </Text>
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4852,12 +4852,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Diffusion d’information sur le pass Culture via les MDPH (Maisons départementales des personnes handicapées)
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -4957,12 +4957,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 </Text>
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5044,12 +5044,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5173,12 +5173,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Constitution du pôle Accessibilité
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5260,12 +5260,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Nomination de 2 personnes référentes sur l’accessibilité numérique
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5347,12 +5347,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Formation de l’ensemble des développeurs travaillant sur le présent site
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5434,12 +5434,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5521,12 +5521,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Audit d’accessibilité pour le présent site
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5608,12 +5608,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Publication de la déclaration de mise en conformité pour le présent site
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5695,12 +5695,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Rencontre avec des utilisateurs en situation de handicap
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
@@ -5782,12 +5782,12 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 Formation du pôle Communication, Marketing, Recherche
                  
                 <View
-                  backgroundColor="#91e1b5"
+                  backgroundColor="#b9ecd0"
                   style={
                     {
                       "alignItems": "center",
                       "alignSelf": "flex-start",
-                      "backgroundColor": "#91e1b5",
+                      "backgroundColor": "#b9ecd0",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
