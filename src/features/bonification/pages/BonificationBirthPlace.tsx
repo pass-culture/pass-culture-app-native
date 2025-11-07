@@ -48,9 +48,9 @@ export const BonificationBirthPlace = () => {
 
   const { control, formState, handleSubmit, reset, watch } = useForm<FormValues>({
     defaultValues: {
-      birthCountrySelection: birthCountry ?? undefined,
-      birthCity: birthCity ?? undefined,
-      birthCountryInput: birthCountry?.LIBCOG ?? undefined,
+      birthCountrySelection: birthCountry ?? {},
+      birthCity: birthCity ?? {},
+      birthCountryInput: birthCountry?.LIBCOG ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -110,7 +110,11 @@ export const BonificationBirthPlace = () => {
                           label="Tapes le nom du pays et choisis le pays"
                           format="France"
                           onPressRightIcon={() => {
-                            reset()
+                            reset({
+                              birthCountrySelection: {},
+                              birthCity: {},
+                              birthCountryInput: '',
+                            }) // strange that I have to specify empty values (or else resets to store values if present)
                             setShowCityField(false)
                           }}
                           keyboardType="default"
