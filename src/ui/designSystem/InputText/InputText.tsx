@@ -14,7 +14,6 @@ import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenRea
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
-import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import {
   getCustomInputTextProps,
@@ -76,7 +75,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   const hiddenFromScreenReaderMobile = Platform.OS === 'web' ? {} : hiddenFromScreenReader()
 
   return (
-    <ContainerWithMaxWidth gap={0}>
+    <Container>
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer {...hiddenFromScreenReaderMobile}>
           <View>
@@ -135,11 +134,18 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           ) : null}
         </FooterContainer>
       ) : null}
-    </ContainerWithMaxWidth>
+    </Container>
   )
 }
 
 export const InputText = forwardRef<RNTextInput, InputTextProps>(WithRefTextInput)
+
+const Container = styled.View({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  width: '100%',
+})
 
 const IconTouchableOpacity = styledButton(Touchable)<{ onMouseDown: (event: Event) => void }>({
   maxWidth: getSpacing(15),
