@@ -65,11 +65,18 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   return
 }
 
-export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {
-  return homepageNatifEntries.map((entry) => ({
-    tags: entry.metadata.tags.map((tag) => tag.sys.id),
-    id: entry.sys.id,
-    modules: adaptHomepageNatifModules(entry.fields.modules),
-    thematicHeader: adaptThematicHeader(entry),
-  }))
+export const adaptHomepageEntry = (homepageNatifEntry?: HomepageNatifEntry): Homepage => {
+  if (!homepageNatifEntry)
+    return {
+      tags: [],
+      id: '',
+      modules: [],
+      thematicHeader: undefined,
+    }
+  return {
+    tags: homepageNatifEntry.metadata.tags.map((tag) => tag.sys.id),
+    id: homepageNatifEntry.sys.id,
+    modules: adaptHomepageNatifModules(homepageNatifEntry.fields.modules),
+    thematicHeader: adaptThematicHeader(homepageNatifEntry),
+  }
 }
