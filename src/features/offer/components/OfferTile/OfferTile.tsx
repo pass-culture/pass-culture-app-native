@@ -43,13 +43,17 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const prePopulateOffer = usePrePopulateOffer()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
-  const { offerId, name, date, price, categoryId, thumbUrl, offerLocation } = props
+  const { offerId, name, date, price, categoryId, thumbUrl, offerLocation, subcategoryId } = props
 
-  const distanceFromOffer = getDistance(offerLocation, {
-    userLocation,
-    selectedPlace,
-    selectedLocationMode,
-  })
+  const distanceFromOffer = getDistance(
+    offerLocation,
+    {
+      userLocation,
+      selectedPlace,
+      selectedLocationMode,
+    },
+    subcategoryId
+  )
 
   const interactionTagLabel = getInteractionTagLabel(interactionTag)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
