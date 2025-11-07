@@ -1,16 +1,18 @@
 import * as reactNavigationNative from '@react-navigation/native'
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 import { Platform } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useHomepageData } from 'features/home/api/useHomepageData'
+import { EMPTY_HOMEPAGE } from 'features/home/api/useHomepageData'
 import {
   formattedVenuesModule,
   highlightHeaderFixture,
 } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
-import { Color, ThematicHeaderType } from 'features/home/types'
+import { useFetchHomepageByIdQuery } from 'features/home/queries/useGetHomepageQuery'
+import { Color, Homepage, ThematicHeaderType } from 'features/home/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
@@ -30,8 +32,41 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
-jest.mock('features/home/api/useHomepageData')
-const mockUseHomepageData = useHomepageData as jest.MockedFunction<typeof useHomepageData>
+jest.mock('features/home/queries/useGetHomepageQuery')
+const mockUseHomepageData = useFetchHomepageByIdQuery as jest.MockedFunction<
+  typeof useFetchHomepageByIdQuery
+>
+
+const mockUseFetchHomepageByIdQueryValue: UseQueryResult<Homepage, Error> = {
+  data: EMPTY_HOMEPAGE,
+  isLoading: false,
+  error: null,
+  isSuccess: true,
+  isError: false,
+  refetch: jest.fn(),
+  status: 'success',
+  failureCount: 0,
+  isFetched: true,
+  isFetchedAfterMount: true,
+  isFetching: false,
+  isPending: false,
+  isEnabled: false,
+  isInitialLoading: false,
+  isLoadingError: false,
+  isPlaceholderData: false,
+  isRefetchError: false,
+  isStale: false,
+  dataUpdatedAt: Date.now(),
+  errorUpdatedAt: 0,
+  errorUpdateCount: 0,
+  isRefetching: false,
+  failureReason: new Error(),
+  isPaused: false,
+  fetchStatus: 'fetching',
+  promise: Promise.resolve(EMPTY_HOMEPAGE),
+}
+
+mockUseHomepageData.mockReturnValue(mockUseFetchHomepageByIdQueryValue)
 
 const defaultUseLocation: Partial<ILocationContext> = {
   userLocation: {
@@ -91,16 +126,19 @@ describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
   mockUseHomepageData.mockReturnValue({
-    modules,
-    id: 'fakeEntryId',
-    thematicHeader: {
-      title: 'HeaderTitle',
-      subtitle: 'HeaderSubtitle',
-      type: ThematicHeaderType.Category,
-      imageUrl: 'url.com/image',
-      color: Color.Lilac,
+    ...mockUseFetchHomepageByIdQueryValue,
+    data: {
+      modules,
+      id: 'fakeEntryId',
+      thematicHeader: {
+        title: 'HeaderTitle',
+        subtitle: 'HeaderSubtitle',
+        type: ThematicHeaderType.Category,
+        imageUrl: 'url.com/image',
+        color: Color.Lilac,
+      },
+      tags: [],
     },
-    tags: [],
   })
 
   beforeEach(() => {
@@ -118,7 +156,10 @@ describe('ThematicHome', () => {
 
   describe('header', () => {
     it('should show highlight header when provided', async () => {
-      mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
+      mockUseHomepageData.mockReturnValueOnce({
+        ...mockUseFetchHomepageByIdQueryValue,
+        data: highlightHeaderFixture,
+      })
 
       renderThematicHome()
 
@@ -129,7 +170,10 @@ describe('ThematicHome', () => {
     it('should show highlight animated header when provided and platform is iOS', async () => {
       Platform.OS = 'ios'
 
-      mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
+      mockUseHomepageData.mockReturnValueOnce({
+        ...mockUseFetchHomepageByIdQueryValue,
+        data: highlightHeaderFixture,
+      })
 
       renderThematicHome()
 
@@ -148,7 +192,10 @@ describe('ThematicHome', () => {
           introductionParagraph: 'IntroductionParagraph',
         },
       }
-      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderDataWithIntroduction)
+      mockUseHomepageData.mockReturnValueOnce({
+        ...mockUseFetchHomepageByIdQueryValue,
+        data: mockedHighlightHeaderDataWithIntroduction,
+      })
 
       renderThematicHome()
 
@@ -159,7 +206,10 @@ describe('ThematicHome', () => {
     it('should not show highlight animated header when provided and platform is Android', async () => {
       Platform.OS = 'android'
 
-      mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
+      mockUseHomepageData.mockReturnValueOnce({
+        ...mockUseFetchHomepageByIdQueryValue,
+        data: highlightHeaderFixture,
+      })
 
       renderThematicHome()
 
@@ -169,14 +219,17 @@ describe('ThematicHome', () => {
 
     it('should show category header when provided', async () => {
       mockUseHomepageData.mockReturnValueOnce({
-        modules,
-        tags: [],
-        id: 'fakeEntryId',
-        thematicHeader: {
-          type: ThematicHeaderType.Category,
-          subtitle: 'Un sous-titre',
-          title: 'Catégorie cinéma',
-          color: Color.Lilac,
+        ...mockUseFetchHomepageByIdQueryValue,
+        data: {
+          modules,
+          tags: [],
+          id: 'fakeEntryId',
+          thematicHeader: {
+            type: ThematicHeaderType.Category,
+            subtitle: 'Un sous-titre',
+            title: 'Catégorie cinéma',
+            color: Color.Lilac,
+          },
         },
       })
 

@@ -31,7 +31,7 @@ const Header = () => (
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, id } = useHomepageData() || {}
+  const { modules, id: homepageId } = useHomepageData()
   const { hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } = useLocation()
   const { isLoggedIn, user } = useAuthContext()
 
@@ -65,10 +65,10 @@ export const Home: FunctionComponent = () => {
   }, [showAchievementModal, modalToShow])
 
   useEffect(() => {
-    if (id) {
-      analytics.logConsultHome({ homeEntryId: id })
+    if (homepageId) {
+      analytics.logConsultHome({ homeEntryId: homepageId })
     }
-  }, [id])
+  }, [homepageId])
 
   useEffect(() => {
     if (
@@ -104,7 +104,7 @@ export const Home: FunctionComponent = () => {
     <React.Fragment>
       <GenericHome
         modules={modules}
-        homeId={id}
+        homeId={homepageId ?? ''}
         Header={<Header />}
         HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}
