@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { View } from 'react-native'
 
 import { INSEE_COUNTRY_LIST, InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
@@ -100,7 +101,7 @@ export const BonificationBirthPlace = () => {
                     fieldState: { error },
                   }) => {
                     return (
-                      <React.Fragment>
+                      <View>
                         <SearchInput
                           onChangeText={(text) => {
                             handleUserInputChange(text)
@@ -151,7 +152,7 @@ export const BonificationBirthPlace = () => {
                             })}
                           </VerticalUl>
                         ) : null}
-                      </React.Fragment>
+                      </View>
                     )
                   }}
                 />
