@@ -125,7 +125,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               </Text>
             </View>
             <View
-              testID="LocationWidget"
+              testID="InsideLocationWidget"
             >
               <View
                 accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
