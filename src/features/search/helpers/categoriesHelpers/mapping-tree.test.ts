@@ -15,4 +15,10 @@ describe('MappingTree', () => {
       expect.objectContaining(bookTreeResultFixture.SearchGroup.children.ROMANS_ET_LITTERATURE)
     )
   })
+
+  it('should not return escape games category', () => {
+    const result = createMappingTree(mockedSubcateroriesV2Response, mockedUndefinedFacets)
+
+    expect(result.JEUX_JEUX_VIDEOS.children?.ESCAPE_GAMES).toBeUndefined()
+  })
 })

@@ -2,6 +2,7 @@ import {
   BookType,
   GenreType,
   GTL,
+  NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
   SearchGroupNameEnumv2,
   SubcategoriesResponseModelv2,
@@ -100,29 +101,19 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
   }, {})
 }
 
-export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData?: FacetData) {
-  /**
-   * We want to create a mapping tree that looks like this:
-   * {
-   *   'SearchGroup': {
-   *     label: 'Tout',
-   *     children: {
-   *       'NativeCategoryOne': {
-   *         label: 'Tout',
-   *       },
-   *       'NativeCategoryTwo': {
-   *         label: 'Évènement',
-   *         genreTypeKey: 'EventType',
-   *         children: {
-   *           'GenreType': {
-   *             label: 'Cinéma',
-   *           },
-   *         }
-   *       },
-   *     }
-   *   }
-   * }
-   */
+export function createMappingTree(
+  originalData: SubcategoriesResponseModelv2,
+  facetsData?: FacetData
+) {
+  const data = { ...originalData }
+
+  const nativeCategoriesToHide = [NativeCategoryIdEnumv2.ESCAPE_GAMES]
+
+  const nativeCategories = data.nativeCategories.filter(
+    (nativeCategory) => !nativeCategoriesToHide.includes(nativeCategory.name)
+  )
+
+  data.nativeCategories = nativeCategories
 
   return data.searchGroups
     .filter(
@@ -157,13 +148,10 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
 
       result[searchGroup.name] = {
         label: searchGroup.value || ALL_CATEGORIES_LABEL,
-        children:
-          searchGroup.name === SearchGroupNameEnumv2.LIVRES
-            ? {
-                ...mappedNativeCategories,
-                ...mapBookCategories(data),
-              }
-            : mappedNativeCategories,
+        children: {
+          ...mappedNativeCategories,
+          ...(searchGroup.name === SearchGroupNameEnumv2.LIVRES ? mapBookCategories(data) : {}),
+        },
       }
 
       return Object.entries(result).reduce((res, [key, value]) => {

@@ -346,6 +346,14 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Romans et littérature')).toBeOnTheScreen()
     })
 
+    it('should not display escape games category', async () => {
+      renderCategories()
+
+      await screen.findByText('Livres papier')
+
+      expect(screen.queryByText('Escape games')).not.toBeOnTheScreen()
+    })
+
     it('should go back to native categories view', async () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
