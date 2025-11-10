@@ -41,7 +41,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { navigate } = useNavigation<UseNavigationType>()
-  const { user } = useAuthContext()
+  const { user, isLoggedIn } = useAuthContext()
   const { designSystem } = useTheme()
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { onScroll, headerTransition } = useOpacityTransition()
@@ -105,7 +105,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             />,
           ]}
         />
-        {wasBonificationReceived ? null : (
+        {wasBonificationReceived || !isLoggedIn ? null : (
           <ButtonTertiaryPrimary
             icon={PlainArrowNext}
             wording={getWording(bonificationStatus)}

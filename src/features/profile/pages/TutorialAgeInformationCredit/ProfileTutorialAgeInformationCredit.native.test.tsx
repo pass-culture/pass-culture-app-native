@@ -99,6 +99,21 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       expect(link).not.toBeOnTheScreen()
     })
 
+    it('should not show link if user is disconnected', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: undefined,
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.queryByText('Tester mon éligibilité')
+
+      expect(link).not.toBeOnTheScreen()
+    })
+
     it('should disable link if user made a request for bonus credit', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: {
