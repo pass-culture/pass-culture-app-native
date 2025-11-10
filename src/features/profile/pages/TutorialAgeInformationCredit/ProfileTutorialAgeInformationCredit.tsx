@@ -106,7 +106,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             />,
           ]}
         />
-        {wasBonificationReceived || !isLoggedIn ? null : (
+        {wasBonificationReceived || !user?.isEligibleForBonification || !isLoggedIn ? null : (
           <ButtonTertiaryPrimary
             icon={bonificationStatus === FraudCheckStatus.pending ? ClockFilled : PlainArrowNext}
             wording={getWording(bonificationStatus)}

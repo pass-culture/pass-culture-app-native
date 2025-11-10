@@ -85,6 +85,25 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       expect(link).toBeEnabled()
     })
 
+    it("should not show link if user isn't eligible", async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: {
+          ...beneficiaryUser,
+          isEligibleForBonification: false,
+          bonificationStatus: undefined,
+        },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.queryByText('Tester mon éligibilité')
+
+      expect(link).not.toBeOnTheScreen()
+    })
+
     it('should show step to disconnected users', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: undefined,
