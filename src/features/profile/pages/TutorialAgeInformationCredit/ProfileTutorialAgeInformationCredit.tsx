@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { FraudCheckStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -49,10 +50,33 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
+  const bonificationStatus: FraudCheckStatus | null | undefined = user?.bonificationStatus
+  const wasBonificationReceived = bonificationStatus === FraudCheckStatus.ok
+
+  const getWording = (status: FraudCheckStatus | null | undefined): string => {
+    switch (status) {
+      case FraudCheckStatus.pending:
+        return 'En cours de traitement'
+      case FraudCheckStatus.ok:
+        return 'Bonus obtenu'
+      default:
+        return 'Tester mon éligibilité'
+    }
+  }
+  const getDisabled = (status: FraudCheckStatus | null | undefined): boolean => {
+    switch (status) {
+      case FraudCheckStatus.pending:
+      case FraudCheckStatus.ok:
+        return true
+      default:
+        return false
+    }
+  }
 
   const bonificationStep: CreditComponentPropsV3 = {
     creditStep: 'optional',
     iconComponent: undefined,
+    bonificationStatus: bonificationStatus,
     children: (
       <React.Fragment>
         <RowView>
@@ -81,12 +105,15 @@ export const ProfileTutorialAgeInformationCredit = () => {
             />,
           ]}
         />
-        <ButtonTertiaryPrimary
-          icon={PlainArrowNext}
-          wording="Tester mon éligibilité"
-          onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
-          justifyContent="flex-start"
-        />
+        {wasBonificationReceived ? null : (
+          <ButtonTertiaryPrimary
+            icon={PlainArrowNext}
+            wording={getWording(bonificationStatus)}
+            disabled={getDisabled(bonificationStatus)}
+            onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
+            justifyContent="flex-start"
+          />
+        )}
       </React.Fragment>
     ),
   }

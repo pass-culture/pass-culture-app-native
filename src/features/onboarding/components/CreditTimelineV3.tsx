@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { FraudCheckStatus } from 'api/gen'
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
@@ -26,6 +27,7 @@ type CreditStep = 17 | 18 | 'information' | 'optional' | 'separator'
 export type CreditComponentPropsV3 = {
   creditStep: CreditStep
   iconComponent?: React.JSX.Element
+  bonificationStatus?: FraudCheckStatus | null | undefined
   children?: React.ReactNode
 }
 
@@ -93,7 +95,9 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
           return (
             <InternalStep key={'optional ' + index} variant={StepVariant.unknown}>
               <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
-              <DashedStyledView {...animatedViewProps}>
+              <DashedStyledView
+                bonificationStatus={props.bonificationStatus}
+                {...animatedViewProps}>
                 <View>
                   <StyledBody>Droit à l’aide</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
@@ -177,15 +181,22 @@ const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const DashedStyledView = styled.View(({ theme }) => ({
-  borderColor: theme.designSystem.color.border.brandPrimary,
-  borderWidth: getSpacing(0.25),
-  borderRadius: theme.designSystem.size.borderRadius.m,
-  borderStyle: 'dashed',
-  padding: getSpacing(4),
-  overflow: 'hidden',
-  backgroundColor: theme.designSystem.color.background.info,
-}))
+const DashedStyledView = styled.View<{ bonificationStatus: FraudCheckStatus | null | undefined }>(
+  ({ theme, bonificationStatus }) => ({
+    borderColor: theme.designSystem.color.border.brandPrimary,
+    borderWidth: getSpacing(0.25),
+    borderRadius: theme.designSystem.size.borderRadius.m,
+    borderStyle: 'dashed',
+    padding: getSpacing(4),
+    overflow: 'hidden',
+    backgroundColor:
+      bonificationStatus === FraudCheckStatus.ok
+        ? theme.designSystem.color.background.default
+        : bonificationStatus === FraudCheckStatus.pending
+          ? theme.designSystem.color.background.disabled
+          : theme.designSystem.color.background.info,
+  })
+)
 
 const SeparatorStyledAnimatedView = styled(AnimatedView)(() => ({
   overflow: 'hidden',

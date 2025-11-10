@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { FraudCheckStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { beneficiaryUser } from 'fixtures/user'
@@ -49,7 +50,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       ])
     })
 
-    it('should show if eligible', () => {
+    it('should step show if eligible', () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: { ...beneficiaryUser, isEligibleForBonification: true },
         isLoggedIn: true,
@@ -64,7 +65,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       expect(title).toBeOnTheScreen()
     })
 
-    it('should not show if not eligible', async () => {
+    it('should not show step if not eligible', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: { ...beneficiaryUser, isEligibleForBonification: false },
         isLoggedIn: true,
@@ -77,6 +78,65 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       const title = screen.queryByText('Droit à l’aide')
 
       expect(title).not.toBeOnTheScreen()
+    })
+
+    it('should not show link if bonus credit already obtained', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: {
+          ...beneficiaryUser,
+          isEligibleForBonification: true,
+          bonificationStatus: FraudCheckStatus.ok,
+        },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.queryByText('Tester mon éligibilité')
+
+      expect(link).not.toBeOnTheScreen()
+    })
+
+    it('should disable link if user made a request for bonus credit', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: {
+          ...beneficiaryUser,
+          isEligibleForBonification: true,
+          bonificationStatus: FraudCheckStatus.pending,
+        },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.queryByText('En cours de traitement')
+
+      expect(link).toBeOnTheScreen()
+      expect(link).toBeDisabled()
+    })
+
+    it("should show link if user hasn't made a request for bonus credit", async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: {
+          ...beneficiaryUser,
+          isEligibleForBonification: true,
+          bonificationStatus: undefined,
+        },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.getByText('Tester mon éligibilité')
+
+      expect(link).toBeOnTheScreen()
+      expect(link).toBeEnabled()
     })
   })
 })
