@@ -41,8 +41,8 @@ const mockPlaces = [
   },
 ] as const satisfies readonly SuggestedPlace[]
 
-jest.mock('libs/place/usePlaces', () => ({
-  usePlaces: () => ({ data: mockPlaces, isLoading: false }),
+jest.mock('libs/place/queries/usePlacesQuery', () => ({
+  usePlacesQuery: () => ({ data: mockPlaces, isLoading: false }),
 }))
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

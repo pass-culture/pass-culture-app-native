@@ -1,7 +1,7 @@
 import React from 'react'
 
-import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
 import { CinemaPlaylists } from 'features/search/pages/ThematicSearch/Cinema/CinemaPlaylists'
+import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/queries/useThematicSearchPlaylistsQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -26,7 +26,7 @@ const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Films à l’affiche'
 
 const useThematicSearchPlaylistsSpy = jest
-  .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
+  .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylistsQuery')
   .mockReturnValue({
     playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
     isLoading: false,

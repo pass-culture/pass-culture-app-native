@@ -9,7 +9,7 @@ import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
-import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
+import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { Step } from 'ui/components/Step/Step'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
@@ -26,7 +26,7 @@ export const TrackEmailChangeContent = () => {
   const { replace, reset } = useNavigation<UseNavigationType>()
 
   const { user } = useAuthContext()
-  const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatus()
+  const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatusQuery()
 
   const hasPasswordStep = !user?.hasPassword || requestStatus?.hasRecentlyResetPassword
   const currentStep = getEmailUpdateStep(

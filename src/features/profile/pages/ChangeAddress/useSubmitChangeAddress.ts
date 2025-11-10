@@ -14,7 +14,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useAddresses } from 'libs/place/useAddresses'
+import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -71,7 +71,7 @@ export const useSubmitChangeAddress = () => {
     data: addresses = [],
     isLoading,
     isError,
-  } = useAddresses({
+  } = useAddressesQuery({
     query: debouncedQuery,
     cityCode: storedCity?.code ?? '',
     postalCode: storedCity?.postalCode ?? '',

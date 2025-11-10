@@ -13,7 +13,7 @@ import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -139,7 +139,7 @@ export function NonBeneficiaryBanner({
   const today = new Date()
   const { data: subscription } = useGetStepperInfoQuery()
   const { banner } = useActivationBanner()
-  const { options: remoteActivationBannerOptions } = useFeatureFlagOptions(
+  const { options: remoteActivationBannerOptions } = useFeatureFlagOptionsQuery(
     RemoteStoreFeatureFlags.DISABLE_ACTIVATION
   )
 

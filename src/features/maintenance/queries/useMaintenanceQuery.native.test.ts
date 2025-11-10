@@ -1,4 +1,4 @@
-import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
+import { useMaintenanceQuery } from 'features/maintenance/queries/useMaintenanceQuery'
 import { getMaintenance } from 'libs/firebase/firestore/getMaintenance/getMaintenance'
 import { MAINTENANCE } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -71,6 +71,6 @@ describe('useMaintenance', () => {
 })
 
 const renderUseMaintenance = () =>
-  renderHook(useMaintenance, {
+  renderHook(useMaintenanceQuery, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

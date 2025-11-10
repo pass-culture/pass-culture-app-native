@@ -10,13 +10,13 @@ import * as Auth from 'features/auth/context/AuthContext'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
+import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen, userEvent } from 'tests/utils'
 
 const useEmailUpdateStatusSpy = jest
-  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
+  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatusQuery')
   .mockReturnValue({
     data: {
       newEmail: 'john@doe.com',

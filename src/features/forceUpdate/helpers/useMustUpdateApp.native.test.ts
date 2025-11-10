@@ -1,12 +1,12 @@
-import * as useMinimalBuildNumber from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { MustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
+import * as useMinimalBuildNumber from 'features/forceUpdate/queries/useMinimalBuildNumberQuery'
 import * as PackageJson from 'libs/packageJson'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
 
-const useGetMinimalBuildNumberSpy = jest.spyOn(useMinimalBuildNumber, 'useMinimalBuildNumber')
+const useGetMinimalBuildNumberSpy = jest.spyOn(useMinimalBuildNumber, 'useMinimalBuildNumberQuery')
 
 const buildVersion = 10_304_000
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)

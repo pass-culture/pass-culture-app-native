@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
-import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
+import { useThematicSearchPlaylistsQuery } from 'features/search/pages/ThematicSearch/queries/useThematicSearchPlaylistsQuery'
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -26,7 +26,7 @@ export const FilmsPlaylists: React.FC<ThematicPlaylistProps> = ({
   const { userLocation } = useLocation()
 
   const { playlists: filmsPlaylists, isLoading: areFilmsPlaylistsLoading } =
-    useThematicSearchPlaylists({
+    useThematicSearchPlaylistsQuery({
       playlistTitles: FILMS_PLAYLISTS_TITLES,
       fetchMethod: () => fetchFilmsOffers({ userLocation, isReplicaAlgoliaIndexActive }),
       queryKey: QueryKeys.FILMS_OFFERS,

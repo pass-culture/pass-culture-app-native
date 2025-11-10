@@ -27,8 +27,8 @@ const mockVenues = [
   },
 ] as const satisfies readonly Venue[]
 
-jest.mock('libs/place/useVenues', () => ({
-  useVenues: () => ({ data: mockVenues, isLoading: false }),
+jest.mock('libs/place/queries/useVenuesQuery', () => ({
+  useVenuesQuery: () => ({ data: mockVenues, isLoading: false }),
 }))
 
 jest.mock('libs/itinerary/useItinerary')

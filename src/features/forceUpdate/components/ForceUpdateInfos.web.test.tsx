@@ -7,7 +7,7 @@ import { ForceUpdateInfos } from './ForceUpdateInfos'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
+jest.mock('features/forceUpdate/queries/useMinimalBuildNumberQuery')
 
 describe('<ForceUpdateInfos/>', () => {
   beforeEach(() => setFeatureFlags())

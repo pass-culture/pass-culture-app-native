@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { fetchConcertsAndFestivalsOffers } from 'features/search/pages/ThematicSearch/api/fetchConcertsAndFestivalsOffers'
-import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
+import { useThematicSearchPlaylistsQuery } from 'features/search/pages/ThematicSearch/queries/useThematicSearchPlaylistsQuery'
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { ThematicPlaylistProps } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -22,7 +22,7 @@ export const ConcertsAndFestivalsPlaylists: React.FC<ThematicPlaylistProps> = ({
   const { userLocation } = useLocation()
 
   const { playlists: concertsAndFestivals, isLoading: areConcertsAndFestivalsPlaylistsLoading } =
-    useThematicSearchPlaylists({
+    useThematicSearchPlaylistsQuery({
       playlistTitles: CONCERTS_AND_FESTIVALS_PLAYLISTS_TITLES,
       fetchMethod: () =>
         fetchConcertsAndFestivalsOffers({ userLocation, isReplicaAlgoliaIndexActive }),

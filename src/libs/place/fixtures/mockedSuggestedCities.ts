@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { CitiesResponse } from 'libs/place/useCities'
+import { CitiesResponse } from 'libs/place/queries/useCitiesQuery'
 import { toMutable } from 'shared/types/toMutable'
 
 export const mockedSuggestedCities = toMutable([

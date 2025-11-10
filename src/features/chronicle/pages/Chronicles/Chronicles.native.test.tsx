@@ -29,8 +29,8 @@ const mockScrollToIndex = jest.fn()
 jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation(mockScrollToIndex)
 
 const mockChronicles = offerChroniclesFixture.chronicles
-jest.mock('features/chronicle/api/useChronicles/useChronicles', () => ({
-  useChronicles: () => ({ data: mockChronicles, isLoading: false }),
+jest.mock('features/chronicle/queries/useChroniclesQuery', () => ({
+  useChroniclesQuery: () => ({ data: mockChronicles, isLoading: false }),
 }))
 
 const mockNavigate = jest.fn()
