@@ -1,6 +1,8 @@
 import React from 'react'
 
+import * as Auth from 'features/auth/context/AuthContext'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -10,6 +12,14 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.useFakeTimers()
+
+const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
+  user: undefined,
+  isLoggedIn: false,
+  setIsLoggedIn: jest.fn(),
+  isUserLoading: false,
+  refetchUser: jest.fn(),
+})
 
 describe('<ProfileTutorialAgeInformationCredit />', () => {
   beforeEach(() => {
@@ -29,5 +39,44 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
     await userEvent.press(link)
 
     expect(analytics.logHasClickedTutorialFAQ).toHaveBeenCalledTimes(1)
+  })
+
+  describe('bonification step', () => {
+    beforeEach(() => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
+        RemoteStoreFeatureFlags.ENABLE_BONIFICATION,
+      ])
+    })
+
+    it('should show if eligible', () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: { ...beneficiaryUser, isEligibleForBonification: true },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const title = screen.getByText('Droit à l’aide')
+
+      expect(title).toBeOnTheScreen()
+    })
+
+    it('should not show if not eligible', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: { ...beneficiaryUser, isEligibleForBonification: false },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const title = screen.queryByText('Droit à l’aide')
+
+      expect(title).not.toBeOnTheScreen()
+    })
   })
 })
