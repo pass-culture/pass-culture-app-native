@@ -1,6 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { DefaultTheme } from 'styled-components/dist/types'
 import styled from 'styled-components/native'
 
 import { FraudCheckStatus } from 'api/gen'
@@ -27,7 +28,7 @@ type CreditStep = 17 | 18 | 'information' | 'optional' | 'separator'
 export type CreditComponentPropsV3 = {
   creditStep: CreditStep
   iconComponent?: React.JSX.Element
-  bonificationStatus?: FraudCheckStatus | null | undefined
+  bonificationStatus?: FraudCheckStatus | null
   children?: React.ReactNode
 }
 
@@ -189,12 +190,7 @@ const DashedStyledView = styled.View<{ bonificationStatus: FraudCheckStatus | nu
     borderStyle: 'dashed',
     padding: getSpacing(4),
     overflow: 'hidden',
-    backgroundColor:
-      bonificationStatus === FraudCheckStatus.ok
-        ? theme.designSystem.color.background.default
-        : bonificationStatus === FraudCheckStatus.pending
-          ? theme.designSystem.color.background.disabled
-          : theme.designSystem.color.background.info,
+    backgroundColor: getBackgroundColorByStatus(bonificationStatus, theme),
   })
 )
 
@@ -202,3 +198,17 @@ const SeparatorStyledAnimatedView = styled(AnimatedView)(() => ({
   overflow: 'hidden',
   alignSelf: 'center',
 }))
+
+const getBackgroundColorByStatus = (
+  status: FraudCheckStatus | null | undefined,
+  theme: DefaultTheme
+) => {
+  switch (status) {
+    case FraudCheckStatus.ok:
+      return theme.designSystem.color.background.default
+    case FraudCheckStatus.pending:
+      return theme.designSystem.color.background.disabled
+    default:
+      return theme.designSystem.color.background.info
+  }
+}
