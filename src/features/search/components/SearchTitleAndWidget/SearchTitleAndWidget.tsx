@@ -57,14 +57,14 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
         {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
       </TitleContainer>
       {shouldDisplayMobileLocationBigWidget ? (
-        <View testID="LocationWidget">
+        <View testID="InsideLocationWidget">
           <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
         </View>
       ) : null}
       {shouldDisplayMobileLocationSmallWidget ? (
-        <LocationSearchWidgetContainer testID="LocationSearchWidget">
+        <LocationWidgetBadgeContainer testID="LocationWidgetBadge">
           <LocationWidgetBadge />
-        </LocationSearchWidgetContainer>
+        </LocationWidgetBadgeContainer>
       ) : null}
     </TitleAndWidgetContainer>
   )
@@ -106,7 +106,7 @@ const StyledTitleMainView = styled.View({
   maxWidth: '75%',
 })
 
-const LocationSearchWidgetContainer = styled.View({
+const LocationWidgetBadgeContainer = styled.View({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

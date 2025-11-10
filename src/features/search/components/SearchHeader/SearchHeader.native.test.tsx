@@ -8,6 +8,9 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchView } from 'features/search/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { LocationLabel } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor, within } from 'tests/utils'
@@ -77,7 +80,7 @@ describe('SearchHeader component', () => {
     })
 
     await waitFor(() => {
-      const insideLocationWidget = within(screen.getByTestId('LocationWidget'))
+      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
       expect(insideLocationWidget.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     })
@@ -91,7 +94,7 @@ describe('SearchHeader component', () => {
     })
 
     await waitFor(() => {
-      expect(screen.queryByTestId('LocationWidget')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('InsideLocationWidget')).not.toBeOnTheScreen()
     })
   })
 
@@ -103,35 +106,45 @@ describe('SearchHeader component', () => {
     })
 
     await waitFor(() => {
-      expect(screen.queryByTestId('LocationWidget')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('InsideLocationWidget')).not.toBeOnTheScreen()
     })
   })
 
-  it('should show LocationSearchWidget when isMobileViewport is true and searchView is Results or Thematic', async () => {
-    mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
-    renderSearchHeader({
-      shouldDisplaySubtitle: false,
-      isMobileViewport: true,
-      isDesktopViewport: false,
+  describe('LocationWidgetBadge', () => {
+    beforeEach(() => {
+      jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValueOnce({
+        ...remoteConfigResponseFixture,
+        data: { ...DEFAULT_REMOTE_CONFIG, displayNewSearchHeader: true },
+      })
+      mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
     })
 
-    await waitFor(() => {
-      const insideLocationSearchWidget = within(screen.getByTestId('LocationSearchWidget'))
+    it('should show LocationWidgetBadge when isMobileViewport is true and searchView is Results or Thematic', async () => {
+      renderSearchHeader({
+        shouldDisplaySubtitle: false,
+        isMobileViewport: true,
+        isDesktopViewport: false,
+      })
 
-      expect(insideLocationSearchWidget.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
+      await waitFor(() => {
+        const insideLocationSearchWidget = within(screen.getByTestId('LocationWidgetBadge'))
+
+        expect(
+          insideLocationSearchWidget.getByText(LocationLabel.everywhereLabel)
+        ).toBeOnTheScreen()
+      })
     })
-  })
 
-  it('should not show LocationSearchWidget when isMobileViewport is false and searchView is Results or Thematic', async () => {
-    mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
-    renderSearchHeader({
-      shouldDisplaySubtitle: false,
-      isMobileViewport: false,
-      isDesktopViewport: true,
-    })
+    it('should not show LocationWidgetBadge when isMobileViewport is false and searchView is Results or Thematic', async () => {
+      renderSearchHeader({
+        shouldDisplaySubtitle: false,
+        isMobileViewport: false,
+        isDesktopViewport: true,
+      })
 
-    await waitFor(() => {
-      expect(screen.queryByTestId('LocationSearchWidget')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('LocationWidgetBadge')).not.toBeOnTheScreen()
+      })
     })
   })
 })
