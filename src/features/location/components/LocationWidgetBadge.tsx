@@ -11,7 +11,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
 
-export const LocationSearchWidgetBadge = () => {
+export const LocationWidgetBadge = () => {
   const { place, selectedLocationMode } = useLocation()
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
@@ -26,13 +26,11 @@ export const LocationSearchWidgetBadge = () => {
 
   return (
     <Container highlighted={isWidgetHighlighted}>
-      <LocationButton
-        onPress={showLocationModal}
-        testID="Ouvrir la modale de localisation depuis la recherche">
+      <LocationButton onPress={showLocationModal} testID="LocationWidgetBadgeButton">
         {isWidgetHighlighted ? (
-          <LocationPointerHighlighted testID="location pointer filled" />
+          <LocationPointerHighlighted testID="location pointer highlighted" />
         ) : (
-          <LocationPointerDefault testID="location pointer not filled" />
+          <LocationPointerDefault testID="location pointer default" />
         )}
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>

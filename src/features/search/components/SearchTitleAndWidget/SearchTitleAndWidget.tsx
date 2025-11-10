@@ -3,8 +3,8 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { LocationSearchWidgetBadge } from 'features/location/components/LocationSearchWidgetBadge'
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { LocationWidgetBadge } from 'features/location/components/LocationWidgetBadge'
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
 import { SearchView } from 'features/search/types'
@@ -30,13 +30,15 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   const route = useRoute()
   const currentView = route.name
 
-  const shouldDisplayMobileLocationBigWidget = isMobileViewport && shouldDisplaySubtitle
-  const shouldDisplayMobileLocationSmallWidget =
-    isMobileViewport && (currentView === SearchView.Results || currentView === SearchView.Thematic)
-
   const {
     data: { displayNewSearchHeader },
   } = useRemoteConfigQuery()
+
+  const shouldDisplayMobileLocationBigWidget = isMobileViewport && shouldDisplaySubtitle
+  const shouldDisplayMobileLocationSmallWidget =
+    displayNewSearchHeader &&
+    isMobileViewport &&
+    (currentView === SearchView.Results || currentView === SearchView.Thematic)
 
   return (
     <TitleAndWidgetContainer>
@@ -46,7 +48,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
             <StyledTitleMainText
               htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
-              small={displayNewSearchHeader && shouldDisplayMobileLocationSmallWidget}>
+              small={shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
@@ -61,7 +63,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       ) : null}
       {shouldDisplayMobileLocationSmallWidget ? (
         <LocationSearchWidgetContainer testID="LocationSearchWidget">
-          {displayNewSearchHeader ? <LocationSearchWidgetBadge /> : null}
+          <LocationWidgetBadge />
         </LocationSearchWidgetContainer>
       ) : null}
     </TitleAndWidgetContainer>

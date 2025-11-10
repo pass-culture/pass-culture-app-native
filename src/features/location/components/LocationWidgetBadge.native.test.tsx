@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { LocationSearchWidgetBadge } from 'features/location/components/LocationSearchWidgetBadge'
+import { LocationWidgetBadge } from 'features/location/components/LocationWidgetBadge'
 import { useLocation } from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -28,15 +28,15 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-describe('LocationSearchWidgetBadge', () => {
+describe('LocationWidgetBadge', () => {
   it('should show modal when pressing widget', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'test' },
     })
-    render(<LocationSearchWidgetBadge />)
+    render(<LocationWidgetBadge />)
 
-    const button = screen.getByTestId('Ouvrir la modale de localisation depuis la recherche')
+    const button = screen.getByTestId('LocationWidgetBadgeButton')
 
     await user.press(button)
 
@@ -56,9 +56,9 @@ describe('LocationSearchWidgetBadge', () => {
         selectedLocationMode: LocationMode.AROUND_ME,
       })
 
-      render(<LocationSearchWidgetBadge />)
+      render(<LocationWidgetBadge />)
 
-      expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
+      expect(screen.getByTestId('location pointer highlighted')).toBeOnTheScreen()
       expect(screen.getByText(LocationLabel.aroundMeLabel)).toBeOnTheScreen()
     }
   )
@@ -77,9 +77,9 @@ describe('LocationSearchWidgetBadge', () => {
         selectedLocationMode: LocationMode.EVERYWHERE,
       })
 
-      render(<LocationSearchWidgetBadge />)
+      render(<LocationWidgetBadge />)
 
-      expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
+      expect(screen.getByTestId('location pointer default')).toBeOnTheScreen()
       expect(screen.getByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
     }
   )
@@ -92,9 +92,9 @@ describe('LocationSearchWidgetBadge', () => {
       selectedLocationMode: LocationMode.AROUND_PLACE,
     })
 
-    render(<LocationSearchWidgetBadge />)
+    render(<LocationWidgetBadge />)
 
-    expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
+    expect(screen.getByTestId('location pointer highlighted')).toBeOnTheScreen()
     expect(screen.getByText('my place')).toBeOnTheScreen()
   })
 
@@ -102,7 +102,7 @@ describe('LocationSearchWidgetBadge', () => {
     jest.useFakeTimers()
     render(
       <NavigationContainer>
-        <LocationSearchWidgetBadge />
+        <LocationWidgetBadge />
       </NavigationContainer>
     )
 
