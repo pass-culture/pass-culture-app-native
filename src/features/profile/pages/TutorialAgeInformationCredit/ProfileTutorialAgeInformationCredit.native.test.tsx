@@ -50,7 +50,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       ])
     })
 
-    it('should step show if eligible', () => {
+    it('should show step to connected users', () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: { ...beneficiaryUser, isEligibleForBonification: true },
         isLoggedIn: true,
@@ -65,10 +65,30 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       expect(title).toBeOnTheScreen()
     })
 
-    it('should not show step if not eligible', async () => {
+    it("should show link if user is eligible and hasn't made a request for bonus credit", async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: { ...beneficiaryUser, isEligibleForBonification: false },
+        user: {
+          ...beneficiaryUser,
+          isEligibleForBonification: true,
+          bonificationStatus: undefined,
+        },
         isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.getByText('Tester mon éligibilité')
+
+      expect(link).toBeOnTheScreen()
+      expect(link).toBeEnabled()
+    })
+
+    it('should show step to disconnected users', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: undefined,
+        isLoggedIn: false,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
         refetchUser: jest.fn(),
@@ -77,10 +97,25 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
       const title = screen.queryByText('Droit à l’aide')
 
-      expect(title).not.toBeOnTheScreen()
+      expect(title).toBeOnTheScreen()
     })
 
-    it('should not show link if bonus credit already obtained', async () => {
+    it('should not show link if user is disconnected', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: undefined,
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = screen.queryByText('Tester mon éligibilité')
+
+      expect(link).not.toBeOnTheScreen()
+    })
+
+    it('should not show link if bonus credit was already obtained', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: {
           ...beneficiaryUser,
@@ -99,22 +134,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       expect(link).not.toBeOnTheScreen()
     })
 
-    it('should not show link if user is disconnected', async () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        user: undefined,
-        isLoggedIn: false,
-        setIsLoggedIn: jest.fn(),
-        isUserLoading: false,
-        refetchUser: jest.fn(),
-      })
-      render(<ProfileTutorialAgeInformationCredit />)
-
-      const link = screen.queryByText('Tester mon éligibilité')
-
-      expect(link).not.toBeOnTheScreen()
-    })
-
-    it('should disable link if user made a request for bonus credit', async () => {
+    it('should disable link if user currently has request for bonus credit', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         user: {
           ...beneficiaryUser,
@@ -132,26 +152,6 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
       expect(link).toBeOnTheScreen()
       expect(link).toBeDisabled()
-    })
-
-    it("should show link if user hasn't made a request for bonus credit", async () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: undefined,
-        },
-        isLoggedIn: true,
-        setIsLoggedIn: jest.fn(),
-        isUserLoading: false,
-        refetchUser: jest.fn(),
-      })
-      render(<ProfileTutorialAgeInformationCredit />)
-
-      const link = screen.getByText('Tester mon éligibilité')
-
-      expect(link).toBeOnTheScreen()
-      expect(link).toBeEnabled()
     })
   })
 })

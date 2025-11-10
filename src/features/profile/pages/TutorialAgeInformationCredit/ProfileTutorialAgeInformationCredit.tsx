@@ -173,7 +173,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
     },
   ]
 
-  if (enableBonification && user?.isEligibleForBonification) {
+  if (enableBonification) {
     stepperProps.splice(2, 0, bonificationStep)
     stepperProps.splice(2, 0, separator)
   }
