@@ -16,7 +16,7 @@
   "homepage": ".",
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
-    "android": "yarn preandroid && react-native run-android",
+    "android": "react-native run-android",
     "android:prod": "yarn android --mode=productionDebug --appId=app.passculture.webapp",
     "android:staging": "yarn android --mode=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --mode=apptestingDebug --appId=app.passculture.testing",

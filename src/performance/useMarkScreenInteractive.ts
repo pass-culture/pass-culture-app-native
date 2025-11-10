@@ -20,7 +20,6 @@ export const useMarkScreenInteractive = () => {
       let interactionHandle
 
       const shouldMarkPerformance =
-        !__DEV__ &&
         initialScreenName === 'TabNavigator' &&
         !wasPerformanceMarkedThisSession &&
         !hasFocusOfHomeBeenLost
