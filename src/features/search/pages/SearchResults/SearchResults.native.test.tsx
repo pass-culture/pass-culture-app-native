@@ -465,4 +465,28 @@ describe('<SearchResults/>', () => {
       })
     })
   })
+
+  describe('When searchId not defined', () => {
+    beforeEach(() => {
+      mockUseSearch.mockReturnValue({
+        ...DEFAULT_MOCK_USE_SEARCH,
+        searchState: { ...mockSearchState, searchId: undefined },
+      })
+    })
+
+    afterEach(() => {
+      mockUseSearch.mockReturnValue(DEFAULT_MOCK_USE_SEARCH)
+    })
+
+    it('should generate searchId and dispatch it in the state', async () => {
+      render(reactQueryProviderHOC(<SearchResults />))
+
+      await screen.findByText('Rechercher')
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: { ...mockSearchState, searchId: 'testUuidV4' },
+      })
+    })
+  })
 })

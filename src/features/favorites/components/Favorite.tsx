@@ -57,7 +57,8 @@ export const Favorite: React.FC<Props> = (props) => {
       lat: offer.coordinates?.latitude,
       lng: offer.coordinates?.longitude,
     },
-    { userLocation, selectedPlace, selectedLocationMode }
+    { userLocation, selectedPlace, selectedLocationMode },
+    offer.subcategoryId
   )
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()

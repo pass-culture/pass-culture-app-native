@@ -1,4 +1,4 @@
-# v1.365.0
+# v1.366.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -62,6 +62,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/send_offer_webapp_link_by_email/{offer_id}
 - /native/v1/send_phone_validation_code
 - /native/v1/signin
+- /native/v1/subscription/bonus/quotient_familial
 - /native/v1/subscription/honor_statement
 - /native/v1/subscription/profile
 - /native/v1/ubble_identification

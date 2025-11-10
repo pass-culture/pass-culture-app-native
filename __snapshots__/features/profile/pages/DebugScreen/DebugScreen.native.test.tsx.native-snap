@@ -500,6 +500,7 @@ exports[`DebugScreen should render correctly 1`] = `
                   isDisabled={false}
                   isError={false}
                   isFocused={false}
+                  isHover={false}
                   size="small"
                   style={
                     [

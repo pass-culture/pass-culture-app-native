@@ -264,6 +264,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             isDisabled={false}
             isError={false}
             isFocused={false}
+            isHover={false}
             size="small"
             style={
               {

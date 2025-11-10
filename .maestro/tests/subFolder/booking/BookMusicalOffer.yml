@@ -17,6 +17,16 @@ appId: ${MAESTRO_APP_ID}
           start: 50%, 49%
           end: 50%, 37%
 
+- runFlow:
+    label: 'Swipe vers les offres pour éviter tap sur la tabBar'
+    when:
+      platform: Android
+    commands:
+    - swipe:
+        from:
+          text: 'Les offres'
+        direction: UP
+
 - tapOn: 'CD'
 
 - runFlow:

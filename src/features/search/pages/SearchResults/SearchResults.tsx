@@ -1,5 +1,5 @@
 import { useNavigationState } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import { ViewToken } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
@@ -33,9 +33,10 @@ export const SearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
+  const [searchIdGenerated] = useState(uuidv4)
 
   const netInfo = useNetInfoContext()
-  const { isFocusOnSuggestions, searchState } = useSearch()
+  const { isFocusOnSuggestions, searchState, dispatch } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
 
@@ -70,6 +71,13 @@ export const SearchResults = () => {
     pageLocation: 'searchresults',
   })
 
+  useEffect(() => {
+    // searchId generation when search results is the app entry point (deeplinks generator)
+    if (!searchState.searchId) {
+      dispatch({ type: 'SET_STATE', payload: { ...searchState, searchId: searchIdGenerated } })
+    }
+  }, [searchState.searchId, searchIdGenerated, dispatch, searchState])
+
   // Handler for modules with the new system
   const handleViewableItemsChanged = React.useCallback(
     (
@@ -95,7 +103,7 @@ export const SearchResults = () => {
 
   useEffect(() => {
     if (shouldRefetchResults) {
-      refetch()
+      void refetch()
     }
   }, [refetch, shouldRefetchResults])
 
@@ -104,11 +112,12 @@ export const SearchResults = () => {
       const [lastPage] = data.pages.slice(-1)
 
       if (lastPage && lastPage.offers.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.offers.page, searchState.searchId)
+        const currentSearchId = searchState.searchId ?? searchIdGenerated
+        void analytics.logSearchScrollToPage(lastPage.offers.page, currentSearchId)
       }
-      fetchNextPage()
+      void fetchNextPage()
     }
-  }, [hasNextPage, data, fetchNextPage, searchState.searchId])
+  }, [data, hasNextPage, fetchNextPage, searchState.searchId, searchIdGenerated])
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 

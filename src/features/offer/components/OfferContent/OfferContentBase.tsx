@@ -136,7 +136,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const distance = venue.coordinates
     ? getDistance(
         { lat: venue.coordinates.latitude, lng: venue.coordinates.longitude },
-        { userLocation, selectedPlace, selectedLocationMode }
+        { userLocation, selectedPlace, selectedLocationMode },
+        offer.subcategoryId
       )
     : null
 
@@ -267,9 +268,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         itemType,
         viewableItems: items,
         playlistIndex,
+        entryId: offer.id.toString(),
       })
     },
-    [pageTracking]
+    [offer.id, pageTracking]
   )
 
   return (

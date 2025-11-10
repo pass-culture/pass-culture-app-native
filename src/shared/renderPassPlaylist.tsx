@@ -18,6 +18,7 @@ export const useRenderPassPlaylist = ({
   route,
   playlist,
   venue,
+  searchId,
 }: Readonly<
   CinemaPlaylistPropsContainingVenue | Omit<GtlPlaylistProps, 'onViewableItemsChanged'>
 >): CustomListRenderItem<Offer> => {
@@ -33,12 +34,12 @@ export const useRenderPassPlaylist = ({
           item={item}
           moduleId={entryId}
           analyticsFrom={analyticsFrom}
-          searchId={currentRoute.params?.searchId}
+          searchId={currentRoute.params?.searchId ?? searchId}
           index={index}
           venueId={venue?.id}
         />
       )
     },
-    [analyticsFrom, currentRoute.params?.searchId, venue?.id, entryId]
+    [entryId, analyticsFrom, currentRoute.params?.searchId, searchId, venue?.id]
   )
 }

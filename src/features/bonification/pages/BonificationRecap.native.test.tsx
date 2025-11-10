@@ -1,19 +1,21 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-jest.useFakeTimers()
+jest.mock('libs/jwt/jwt')
 
 const title = 'Monsieur'
 const firstName = 'Jean'
 const givenName = 'Dupont'
 const birthDate = '1975-10-10T00:00:00.000Z'
-const birthCountry = 'Belgique'
+const birthCountry: InseeCountry = { LIBCOG: 'Belgique', COG: 99131 }
 
 describe('BonificationRecap', () => {
   beforeEach(() => {
@@ -21,36 +23,23 @@ describe('BonificationRecap', () => {
     resetLegalRepresentative()
   })
 
-  it('should navigate to next form when pressing "Envoyer" when checkbox is checked', async () => {
-    prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
-
-    const checkbox = screen.getByText(
-      'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
-    )
-    await userEvent.press(checkbox)
-
-    const button = screen.getByText('Envoyer')
-    await userEvent.press(button)
-
-    await jest.runAllTimers() // to account for the setTimout (will be removed when real API is called)
-
-    expect(navigate).toHaveBeenCalledWith('BonificationError')
-  })
-
-  it('should go navigate to first screen when pressing "Modifier les informations"', async () => {
+  it('should navigate to name screen when pressing "Modifier les informations"', async () => {
     prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
     const button = screen.getByText('Modifier les informations')
     await userEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('BonificationNames')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationNames',
+    })
   })
 
   it('should show previously saved data', () => {
     prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
     const nameField = screen.getByText('Monsieur Jean DUPONT')
-    const countryField = screen.getByText(birthCountry)
+    const countryField = screen.getByText(birthCountry.LIBCOG)
     const birthDateField = screen.getByText(new Date(birthDate).toLocaleDateString())
 
     expect(nameField).toBeTruthy()
@@ -58,33 +47,82 @@ describe('BonificationRecap', () => {
     expect(birthDateField).toBeTruthy()
   })
 
-  it('should clear previously saved data when submitting the data', async () => {
-    const resetLegalRepresentativeSpy = jest.spyOn(
-      legalRepresentativeActions,
-      'resetLegalRepresentative'
-    )
+  it('should navigate to error screen when pressing "Envoyer" and data is missing', async () => {
+    prepareDataAndRender(undefined, undefined, undefined, undefined, undefined)
 
-    prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+    await validateAndSubmitForm()
 
-    const checkbox = screen.getByText(
-      'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
-    )
-    await userEvent.press(checkbox)
-
-    const button = screen.getByText('Envoyer')
-    await userEvent.press(button)
-
-    await jest.runAllTimers() // to account for the setTimout (will be removed when real API is called)
-
-    expect(resetLegalRepresentativeSpy).toHaveBeenCalledWith()
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationError',
+    })
   })
 
-  it('should navigate to error screen if store is missing data', async () => {
-    expect(() => render(<BonificationRecap />)).toThrow(
-      new Error("Couldn't retrieve data from storage")
-    )
+  describe('when submission succeeds', () => {
+    beforeEach(() => {
+      mockServer.postApi('/v1/subscription/bonus/quotient_familial', {
+        responseOptions: { statusCode: 204 },
+      })
+    })
+
+    it('should navigate to home when pressing "Envoyer"', async () => {
+      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+
+      await validateAndSubmitForm()
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+
+    it('should clear previously saved data', async () => {
+      const resetLegalRepresentativeSpy = jest.spyOn(
+        legalRepresentativeActions,
+        'resetLegalRepresentative'
+      )
+
+      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+
+      await validateAndSubmitForm()
+
+      expect(resetLegalRepresentativeSpy).toHaveBeenCalledWith()
+    })
+  })
+
+  describe('when submission fails', () => {
+    beforeEach(() => {
+      mockServer.postApi('/v1/subscription/bonus/quotient_familial', {
+        responseOptions: { statusCode: 400 },
+      })
+    })
+
+    it('should navigate to error screen when pressing "Envoyer"', async () => {
+      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+
+      await validateAndSubmitForm()
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'BonificationError',
+      })
+    })
+  })
+
+  it('should show error message if store is missing data', async () => {
+    render(reactQueryProviderHOC(<BonificationRecap />))
+    const errorMessage = await screen.findByText('Nous ne retrouvons pas les données du formulaire')
+
+    expect(errorMessage).toBeTruthy()
   })
 })
+
+async function validateAndSubmitForm() {
+  const checkbox = screen.getByText(
+    'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
+  )
+  await userEvent.press(checkbox)
+
+  const button = screen.getByText('Envoyer')
+  await userEvent.press(button)
+}
 
 function prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry) {
   const { setTitle, setFirstNames, setGivenName, setBirthDate, setBirthCountry } =
@@ -94,5 +132,5 @@ function prepareDataAndRender(title, firstName, givenName, birthDate, birthCount
   setGivenName(givenName)
   setBirthDate(new Date(birthDate))
   setBirthCountry(birthCountry)
-  render(<BonificationRecap />)
+  render(reactQueryProviderHOC(<BonificationRecap />))
 }

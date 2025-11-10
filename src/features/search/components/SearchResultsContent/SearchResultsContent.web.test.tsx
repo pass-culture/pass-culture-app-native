@@ -67,11 +67,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity', () => ({
-  useScrollToBottomOpacity: () => ({
-    handleScroll: jest.fn(),
-  }),
-}))
 jest.mock('features/location/helpers/useLocationState', () => ({
   useLocationState: () => ({
     onModalHideRef: { current: jest.fn() },
@@ -106,7 +101,7 @@ describe('SearchResultsContent component', () => {
     ])
     render(reactQueryProviderHOC(<SearchResultsContent {...DEFAULT_SEARCH_RESULT_CONTENT_PROPS} />))
 
-    await screen.findByTestId('searchResultsList')
+    await screen.findByTestId('searchResultsFlashlist')
 
     expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
     expect(screen.queryByText('Carte')).not.toBeOnTheScreen()

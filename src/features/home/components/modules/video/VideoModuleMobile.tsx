@@ -34,8 +34,12 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   return (
     <Container>
       <StyledTitleContainer>
-        <AccessibleTitle title={props.title} />
+        <AccessibleTitle
+          title={props.title}
+          accessibilityLabel={`Média vidéo\u00a0: ${props.title}`}
+        />
       </StyledTitleContainer>
+      <Description>{props.videoDescription}</Description>
       <View testID="mobile-video-module">
         <StyledTouchableHighlight
           onPress={props.showVideoModal}
@@ -97,11 +101,11 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const StyledTitleContainer = styled.View({
-  marginBottom: getSpacing(5),
+const StyledTitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
   alignItems: 'center',
   flexDirection: 'row',
-})
+}))
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.lockedInverted,
@@ -169,4 +173,10 @@ const VideoOfferContainer = styled.View(({ theme }) => ({
 const VideoMonoOfferTileWrapper = styled.View(({ theme }) => ({
   flexGrow: 1,
   marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  color: theme.designSystem.color.text.subtle,
 }))

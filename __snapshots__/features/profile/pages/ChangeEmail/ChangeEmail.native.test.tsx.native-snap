@@ -332,6 +332,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 isDisabled={true}
                 isError={false}
                 isFocused={false}
+                isHover={false}
                 size="small"
                 style={
                   {

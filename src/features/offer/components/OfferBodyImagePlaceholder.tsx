@@ -21,6 +21,8 @@ export const OfferBodyImagePlaceholder: FunctionComponent<Props> = ({ categoryId
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
+  borderColor: theme.designSystem.color.border.subtle,
+  borderWidth: 1,
 }))({
   position: 'absolute',
 })

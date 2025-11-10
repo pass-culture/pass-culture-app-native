@@ -383,12 +383,12 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     }
                   >
                     <View
-                      backgroundColor="#91e1b5"
+                      backgroundColor="#b9ecd0"
                       style={
                         {
                           "alignItems": "center",
                           "alignSelf": "flex-start",
-                          "backgroundColor": "#91e1b5",
+                          "backgroundColor": "#b9ecd0",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -617,12 +617,12 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     }
                   >
                     <View
-                      backgroundColor="#f9df81"
+                      backgroundColor="#fbebb2"
                       style={
                         {
                           "alignItems": "center",
                           "alignSelf": "flex-start",
-                          "backgroundColor": "#f9df81",
+                          "backgroundColor": "#fbebb2",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,
@@ -1506,12 +1506,12 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     }
                   >
                     <View
-                      backgroundColor="#91e1b5"
+                      backgroundColor="#b9ecd0"
                       style={
                         {
                           "alignItems": "center",
                           "alignSelf": "flex-start",
-                          "backgroundColor": "#91e1b5",
+                          "backgroundColor": "#b9ecd0",
                           "borderBottomLeftRadius": 4,
                           "borderBottomRightRadius": 4,
                           "borderTopLeftRadius": 4,

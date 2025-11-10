@@ -39,8 +39,8 @@ export const useOffersStocksFromOfferQuery = (
     searchQueryParameters = { ...searchQueryParameters, objectIds: [offer.id.toString()] }
   }
 
-  const { data } = useFetchOffersQuery({
-    params: {
+  const { data: offerIds = [] } = useFetchOffersQuery(
+    {
       parameters: searchQueryParameters,
       buildLocationParameterParams: {
         userLocation,
@@ -50,15 +50,14 @@ export const useOffersStocksFromOfferQuery = (
       },
       isUserUnderage,
     },
-    options: {
+    {
       enabled: !isOfferPreview,
-    },
-  })
-
-  const offerIds = extractOfferIdsFromHits(data?.hits)
+      select: (data) => extractOfferIdsFromHits(data.hits),
+    }
+  )
 
   const offersStocks = useOffersStocksQuery(
-    { offerIds },
+    { offerIds: offerIds },
     {
       enabled: !isOfferPreview,
     }
@@ -67,9 +66,5 @@ export const useOffersStocksFromOfferQuery = (
   return { ...offersStocks, data: offersStocks.data ?? { offers: [] } }
 }
 
-const extractOfferIdsFromHits = (hits: Hit<Offer>[] | undefined) => {
-  if (!hits) {
-    return []
-  }
-  return hits.reduce<number[]>((previous, current) => [...previous, +current.objectID], [])
-}
+const extractOfferIdsFromHits = (hits: Hit<Offer>[] = []) =>
+  hits.reduce<number[]>((previous, current) => [...previous, +current.objectID], [])

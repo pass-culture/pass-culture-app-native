@@ -57,6 +57,11 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     props.onChangeText?.(value)
   }
 
+  const preventInputFocusOnMouseDown = (event: Event) => {
+    event?.preventDefault?.()
+    event?.stopPropagation?.()
+  }
+
   const inputLabel =
     customProps.requiredIndicator === 'symbol' ? `${customProps.label}\u00A0*` : customProps.label
 
@@ -108,7 +113,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           <IconTouchableOpacity
             testID={customProps.rightButton.testID}
             accessibilityLabel={customProps.rightButton.accessibilityLabel}
-            onPress={customProps.rightButton.onPress}>
+            onPress={customProps.rightButton.onPress}
+            hitSlop={customProps.rightButton.hitSlop}
+            onMouseDown={preventInputFocusOnMouseDown}>
             <StyledIcon />
           </IconTouchableOpacity>
         ) : null}
@@ -134,7 +141,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
 
 export const InputText = forwardRef<RNTextInput, InputTextProps>(WithRefTextInput)
 
-const IconTouchableOpacity = styledButton(Touchable)({
+const IconTouchableOpacity = styledButton(Touchable)<{ onMouseDown: (event: Event) => void }>({
   maxWidth: getSpacing(15),
 })
 

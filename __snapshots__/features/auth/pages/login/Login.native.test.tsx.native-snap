@@ -301,6 +301,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               isDisabled={false}
               isError={false}
               isFocused={false}
+              isHover={false}
               size="small"
               style={
                 {
@@ -422,6 +423,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             isDisabled={false}
             isError={false}
             isFocused={false}
+            isHover={false}
             size="small"
             style={
               {

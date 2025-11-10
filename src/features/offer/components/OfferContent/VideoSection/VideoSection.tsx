@@ -150,4 +150,6 @@ const Container = styled(ViewGap)(({ theme }) => ({
 const StyledYoutubePlayer = styled(YoutubePlayer)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
   overflow: 'hidden',
+  borderColor: theme.designSystem.color.border.subtle,
+  borderWidth: 1,
 }))

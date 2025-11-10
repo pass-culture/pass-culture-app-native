@@ -9,7 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -80,7 +80,7 @@ describe('VideoModule', () => {
 
     const multiOfferList = screen.getByTestId('video-multi-offers-module-list')
 
-    await screen.findByLabelText(videoModuleFixture.title)
+    await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)
 
     expect(multiOfferList).toBeOnTheScreen()
   })
@@ -122,7 +122,7 @@ describe('VideoModule', () => {
 
     const seeMoreWording = screen.getByText('Voir tout')
 
-    await screen.findByLabelText(videoModuleFixture.title)
+    await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)
 
     expect(seeMoreWording).toBeOnTheScreen()
   })
@@ -135,7 +135,7 @@ describe('VideoModule', () => {
 
     const seeMoreWording = screen.queryByText('Voir tout')
 
-    await screen.findByLabelText(videoModuleFixture.title)
+    await screen.findByLabelText(`Média vidéo : ${videoModuleFixture.title}`)
 
     expect(seeMoreWording).not.toBeOnTheScreen()
   })

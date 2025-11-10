@@ -12,6 +12,7 @@ import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
+  isEligibleForBonification: false,
   bookedOffers: {},
   domainsCredit: {
     all: { initial: 0, remaining: 0 },

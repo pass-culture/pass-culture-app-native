@@ -23,6 +23,7 @@ export interface GtlPlaylistProps {
   noMarginBottom?: boolean
   playlistRef?: Ref<FlatList>
   onViewableItemsChanged?: (info: { viewableItems: ViewToken<unknown>[] }) => void
+  searchId?: string
 }
 
 export function GtlPlaylist({
@@ -33,11 +34,12 @@ export function GtlPlaylist({
   noMarginBottom,
   onViewableItemsChanged,
   playlistRef,
+  searchId,
 }: Readonly<GtlPlaylistProps>) {
   const entryId = playlist.entryId
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() => {
-    analytics.logAllTilesSeen({
+    void analytics.logAllTilesSeen({
       moduleId: entryId,
       numberOfTiles: playlist.offers.hits.length,
       venueId: venue?.id,
@@ -45,7 +47,7 @@ export function GtlPlaylist({
   })
 
   const logModuleDisplayedOnce = useFunctionOnce(() => {
-    analytics.logModuleDisplayed({
+    void analytics.logModuleDisplayed({
       moduleId: entryId,
       displayedOn: analyticsFrom,
       venueId: venue?.id,
@@ -54,7 +56,13 @@ export function GtlPlaylist({
 
   const handleLogModuleDisplayedScrolling = useLogScrollHandler(logModuleDisplayedOnce)
 
-  const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist, venue })
+  const renderPassPlaylist = useRenderPassPlaylist({
+    analyticsFrom,
+    route,
+    playlist,
+    venue,
+    searchId,
+  })
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)
 

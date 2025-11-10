@@ -769,6 +769,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     isDisabled={false}
                     isError={false}
                     isFocused={false}
+                    isHover={false}
                     size="small"
                     style={
                       {
@@ -892,6 +893,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   isDisabled={false}
                   isError={false}
                   isFocused={false}
+                  isHover={false}
                   size="small"
                   style={
                     {

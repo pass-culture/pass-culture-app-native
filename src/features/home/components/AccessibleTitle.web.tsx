@@ -1,5 +1,4 @@
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleTitleProps } from 'features/home/components/AccessibleTitle'
@@ -11,13 +10,18 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   title,
   TitleComponent = Typo.Title3,
   withMargin = true,
+  accessibilityLabel,
 }) => {
-  const { width: windowWidth } = useWindowDimensions()
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
+  const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(
+    accessibilityLabel ?? ''
+  )
   const StyledTitleComponent = styled(TitleComponent || Typo.Title3)({})
   return (
-    <TitleWrapper testID="playlistTitle" windowWidth={windowWidth} withMargin={withMargin}>
-      <StyledTitleComponent numberOfLines={2}>
+    <TitleWrapper testID="playlistTitle" withMargin={withMargin}>
+      <StyledTitleComponent
+        numberOfLines={2}
+        accessibilityLabel={accessibilityLabel ? accessibilityLabelTitleText : titleText}>
         {titleText}
         {titleEmoji ? (
           <span aria-hidden>
@@ -31,10 +35,9 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
 }
 
 const TitleWrapper = styled.View<{ windowWidth?: number; withMargin?: boolean }>(
-  ({ windowWidth, withMargin, theme }) => {
+  ({ withMargin, theme }) => {
     return {
       marginHorizontal: withMargin ? theme.contentPage.marginHorizontal : undefined,
-      width: windowWidth,
     }
   }
 )

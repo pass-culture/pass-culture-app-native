@@ -15,7 +15,10 @@ describe('BonificationIntroduction', () => {
     const button = screen.getByText('Commencer')
     await userEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('BonificationNames')
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'BonificationNames',
+    })
   })
 
   it('Should navigate to FAQ when pressing "Consulter l’article d’aide"', async () => {
