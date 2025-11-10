@@ -19,7 +19,7 @@ export type CustomRemoteConfig = {
   showAccessScreeningButton: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
   test_param: string
-  showNewSearchHeader: boolean
+  displayNewSearchHeader: boolean
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.

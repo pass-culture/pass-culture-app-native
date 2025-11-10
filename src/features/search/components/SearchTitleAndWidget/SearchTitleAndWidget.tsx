@@ -35,7 +35,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
     isMobileViewport && (currentView === SearchView.Results || currentView === SearchView.Thematic)
 
   const {
-    data: { showNewSearchHeader },
+    data: { displayNewSearchHeader },
   } = useRemoteConfigQuery()
 
   return (
@@ -46,7 +46,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
             <StyledTitleMainText
               htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
-              small={showNewSearchHeader && shouldDisplayMobileLocationSmallWidget}>
+              small={displayNewSearchHeader && shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
@@ -61,7 +61,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       ) : null}
       {shouldDisplayMobileLocationSmallWidget ? (
         <LocationSearchWidgetContainer testID="LocationSearchWidget">
-          {showNewSearchHeader ? <LocationSearchWidgetBadge /> : null}
+          {displayNewSearchHeader ? <LocationSearchWidgetBadge /> : null}
         </LocationSearchWidgetContainer>
       ) : null}
     </TitleAndWidgetContainer>

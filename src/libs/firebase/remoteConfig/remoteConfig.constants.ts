@@ -27,4 +27,5 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
     [SubscriptionTheme.ACTIVITES]: '',
   },
   test_param: 'A',
+  displayNewSearchHeader: false,
 }

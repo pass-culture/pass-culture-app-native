@@ -8,6 +8,7 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Search } from 'ui/svg/icons/Search'
 
@@ -50,9 +51,13 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   ref
 ) {
   const { isDesktopViewport } = useTheme()
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
 
   const renderSearchChildren = () => {
-    const hideLocationSearchWidget = !showLocationButton || isDesktopViewport
+    const hideLocationSearchWidget =
+      !!displayNewSearchHeader || !showLocationButton || isDesktopViewport
     return hideLocationSearchWidget ? null : <LocationSearchWidget />
   }
   return (
