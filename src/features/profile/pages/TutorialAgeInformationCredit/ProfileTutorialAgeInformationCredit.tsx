@@ -30,6 +30,7 @@ import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Page } from 'ui/pages/Page'
 import { Clock } from 'ui/svg/icons/Clock'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
@@ -107,7 +108,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
         />
         {wasBonificationReceived || !isLoggedIn ? null : (
           <ButtonTertiaryPrimary
-            icon={PlainArrowNext}
+            icon={bonificationStatus === FraudCheckStatus.pending ? ClockFilled : PlainArrowNext}
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
             onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
