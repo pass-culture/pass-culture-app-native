@@ -1,4 +1,4 @@
-import { StackNavigationOptions } from '@react-navigation/stack'
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -16,7 +16,7 @@ type OnboardingRouteConfig = {
   name: OnboardingStackRouteName
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
-  options: StackNavigationOptions
+  options: NativeStackNavigationOptions
 }
 
 const onboardingScreens: OnboardingRouteConfig[] = [

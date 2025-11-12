@@ -1,9 +1,9 @@
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 
-type OfferNavigation = StackNavigationProp<RootStackParamList, 'Offer'>
+type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 
 type Params = {
   isBookingFreeOffer: boolean

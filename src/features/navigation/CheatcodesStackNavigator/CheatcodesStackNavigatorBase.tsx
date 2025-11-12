@@ -1,5 +1,5 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 
-export const CheatcodesStackNavigatorBase = createStackNavigator<CheatcodesStackParamList>()
+export const CheatcodesStackNavigatorBase = createNativeStackNavigator<CheatcodesStackParamList>()

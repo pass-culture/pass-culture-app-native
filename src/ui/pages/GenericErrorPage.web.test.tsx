@@ -12,7 +12,7 @@ jest.mock('libs/firebase/analytics/analytics')
 // We unmock these modules to make sure they are not used because
 // navigation with @react-navigation is not always defined in GenericErrorPage
 jest.unmock('@react-navigation/native')
-jest.unmock('@react-navigation/stack')
+jest.unmock('@react-navigation/native-stack')
 jest.unmock('@react-navigation/bottom-tabs')
 jest.unmock('features/navigation/useGoBack')
 
