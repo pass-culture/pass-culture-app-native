@@ -555,6 +555,146 @@ export interface BookingDisplayStatusRequest {
 }
 /**
  * @export
+ * @interface BookingListItemOfferResponse
+ */
+export interface BookingListItemOfferResponse {
+  /**
+   * @type {BookingListItemOfferResponseTimezone}
+   * @memberof BookingListItemOfferResponse
+   */
+  address?: BookingListItemOfferResponseTimezone | null
+  /**
+   * @type {number}
+   * @memberof BookingListItemOfferResponse
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponse
+   */
+  imageUrl?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemOfferResponse
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemOfferResponse
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponse
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingListItemOfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {BookingListItemVenueResponse}
+   * @memberof BookingListItemOfferResponse
+   */
+  venue: BookingListItemVenueResponse
+  /**
+   * @type {number}
+   * @memberof BookingListItemOfferResponse
+   */
+  withdrawalDelay?: number | null
+  /**
+   * @type {WithdrawalTypeEnum}
+   * @memberof BookingListItemOfferResponse
+   */
+  withdrawalType?: WithdrawalTypeEnum | null
+}
+/**
+ * @export
+ * @interface BookingListItemOfferResponseTimezone
+ */
+export interface BookingListItemOfferResponseTimezone {
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponseTimezone
+   */
+  timezone: string
+}
+/**
+ * @export
+ * @interface BookingListItemResponse
+ */
+export interface BookingListItemResponse {
+  /**
+   * @type {ActivationCodeResponse}
+   * @memberof BookingListItemResponse
+   */
+  activationCode?: ActivationCodeResponse | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  dateCreated: string
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
+  id: number
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
+  quantity: number
+  /**
+   * @type {BookingListItemStockResponse}
+   * @memberof BookingListItemResponse
+   */
+  stock: BookingListItemStockResponse
+}
+/**
+ * @export
+ * @interface BookingListItemStockResponse
+ */
+export interface BookingListItemStockResponse {
+  /**
+   * @type {string}
+   * @memberof BookingListItemStockResponse
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {BookingListItemOfferResponse}
+   * @memberof BookingListItemStockResponse
+   */
+  offer: BookingListItemOfferResponse
+}
+/**
+ * @export
+ * @interface BookingListItemVenueResponse
+ */
+export interface BookingListItemVenueResponse {
+  /**
+   * @type {string}
+   * @memberof BookingListItemVenueResponse
+   */
+  city?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingListItemVenueResponse
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingListItemVenueResponse
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingListItemVenueResponse
+   */
+  timezone: string
+}
+/**
+ * @export
  * @interface BookingOfferExtraData
  */
 export interface BookingOfferExtraData {
@@ -1145,6 +1285,17 @@ export interface BookingVenueResponseV2 {
    * @memberof BookingVenueResponseV2
    */
   timezone: string
+}
+/**
+ * @export
+ * @interface BookingsListResponseV2
+ */
+export interface BookingsListResponseV2 {
+  /**
+   * @type {Array<BookingListItemResponse>}
+   * @memberof BookingsListResponseV2
+   */
+  bookings: Array<BookingListItemResponse>
 }
 /**
  * @export
@@ -5897,6 +6048,64 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_booking <GET>
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2BookingsbookingId(booking_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'booking_id' is not null or undefined
+      if (booking_id === null || booking_id === undefined) {
+        throw new RequiredError(
+          'booking_id',
+          'Required parameter booking_id was null or undefined when calling getNativeV2BookingsbookingId.'
+        )
+      }
+      let pathname = `/native/v2/bookings/{booking_id}`.replace(
+        `{${'booking_id'}}`,
+        encodeURIComponent(String(booking_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_bookings_list <GET>
+     * @param {string} status 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2Bookingsstatus(status: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'status' is not null or undefined
+      if (status === null || status === undefined) {
+        throw new RequiredError(
+          'status',
+          'Required parameter status was null or undefined when calling getNativeV2Bookingsstatus.'
+        )
+      }
+      let pathname = `/native/v2/bookings/{status}`.replace(
+        `{${'status'}}`,
+        encodeURIComponent(String(status))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_offer_v2 <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -7493,6 +7702,30 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_booking <GET>
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2BookingsbookingId(booking_id: number, options?: any): Promise<BookingResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2BookingsbookingId(booking_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_bookings_list <GET>
+     * @param {string} status 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2Bookingsstatus(status: string, options?: any): Promise<BookingsListResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2Bookingsstatus(status, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_offer_v2 <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -8394,6 +8627,30 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2Bookings(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2Bookings(options)
+  }
+  /**
+    * 
+    * @summary get_booking <GET>
+    * @param {number} booking_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2BookingsbookingId(booking_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2BookingsbookingId(booking_id, options)
+  }
+  /**
+    * 
+    * @summary get_bookings_list <GET>
+    * @param {string} status 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2Bookingsstatus(status: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2Bookingsstatus(status, options)
   }
   /**
     * 
