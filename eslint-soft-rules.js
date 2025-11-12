@@ -14,6 +14,7 @@ const softRules = {
     'local-rules/queries-only-in-use-query-functions': 'warn',
     'local-rules/queries-must-be-in-queries-folder': 'warn',
     'boundaries/element-types': ['warn', boundariesRule],
+    'local-rules/query-hooks-must-return-use-query-result': 'warn',
   },
   reactRules: {
     'react-hooks/rules-of-hooks': 'warn',
