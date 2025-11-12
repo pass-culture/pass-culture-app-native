@@ -297,7 +297,7 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
         Si vous avez des retours au sujet de notre traitement, n’hésitez pas à écrire à
       </Text>
       <View
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
         accessibilityState={
           {
             "busy": undefined,
@@ -355,7 +355,7 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
             },
           ]
         }
-        testID="Ouvrir le gestionnaire mail pour contacter le support"
+        testID="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
       >
         <View
           style={

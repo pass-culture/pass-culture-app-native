@@ -26,7 +26,8 @@ export const BulletListItem: React.FC<BulletListItemProps> = ({
   accessibilityRole,
   children,
 }) => {
-  const baseText = text ?? children
+  const nodes = [text, children].filter(Boolean)
+  const baseText = <React.Fragment>{nodes}</React.Fragment>
   const accessibilityLabel = extractTextFromReactNode(baseText)
 
   return (

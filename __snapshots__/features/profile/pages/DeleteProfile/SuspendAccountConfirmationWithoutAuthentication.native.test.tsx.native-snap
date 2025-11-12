@@ -256,7 +256,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           }
         >
           <View
-            accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les   conditions générales d’utilisation"
+            accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations seront annulées sauf pour certains cas précisés dans les conditions générales d’utilisation"
             accessibilityRole="link"
             accessible={true}
             style={

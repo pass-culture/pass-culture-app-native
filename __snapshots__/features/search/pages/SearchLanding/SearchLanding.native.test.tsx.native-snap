@@ -127,7 +127,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               testID="InsideLocationWidget"
             >
               <View
-                accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+                accessibilityLabel="Ma position - Ouvrir la modale de localisation"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -172,7 +172,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                   ]
                 }
-                testID="Ouvrir la modale de localisation depuis le widget"
+                testID="Ma position - Ouvrir la modale de localisation"
               >
                 <View
                   isActive={true}
@@ -203,7 +203,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   </View>
                 </View>
                 <Text
-                  numberOfLines={1}
+                  numberOfLines={3}
                   style={
                     {
                       "color": "#161617",
@@ -212,6 +212,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "lineHeight": 19.2,
                       "maxWidth": 100,
                       "paddingTop": 4,
+                      "textAlign": "center",
                     }
                   }
                 >
