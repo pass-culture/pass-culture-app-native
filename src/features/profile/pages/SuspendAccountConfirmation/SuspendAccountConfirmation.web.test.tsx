@@ -5,14 +5,16 @@ import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
+import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
+type useEmailUpdateStatusMock = ReturnType<
+  (typeof useEmailUpdateStatus)['useEmailUpdateStatusQuery']
+>
 
-jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
+jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatusQuery').mockReturnValue({
   data: {
     expired: false,
     newEmail: '',

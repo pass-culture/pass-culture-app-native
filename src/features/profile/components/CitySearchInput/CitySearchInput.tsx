@@ -11,8 +11,8 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { useCitiesQuery } from 'libs/place/queries/useCitiesQuery'
 import { SuggestedCity } from 'libs/place/types'
-import { useCities } from 'libs/place/useCities'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -46,7 +46,7 @@ export const CitySearchInput = ({
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
-  const { data: cities = [], isLoading, isError, isSuccess } = useCities(postalCodeQuery)
+  const { data: cities = [], isLoading, isError, isSuccess } = useCitiesQuery(postalCodeQuery)
 
   const {
     control,

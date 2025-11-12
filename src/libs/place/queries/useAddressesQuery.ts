@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_ADDRESSES = 5 * 60 * 1000
 
-export const useAddresses = ({
+export const useAddressesQuery = ({
   query,
   limit,
   cityCode,

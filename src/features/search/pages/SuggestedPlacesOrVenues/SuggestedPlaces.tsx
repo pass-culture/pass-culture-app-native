@@ -6,8 +6,8 @@ import styled from 'styled-components/native'
 import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
 import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { MIN_QUERY_LENGTH, usePlacesQuery } from 'libs/place/queries/usePlacesQuery'
 import { SuggestedPlace } from 'libs/place/types'
-import { MIN_QUERY_LENGTH, usePlaces } from 'libs/place/usePlaces'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
@@ -38,7 +38,7 @@ type Props = {
 }
 
 export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPlace }) => {
-  const { data: places = [], isLoading } = usePlaces({ query })
+  const { data: places = [], isLoading } = usePlacesQuery({ query })
 
   if (isLoading) {
     return <Spinner testID="loader" />

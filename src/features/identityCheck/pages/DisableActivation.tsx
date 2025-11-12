@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { validateRemoteBanner } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Hourglass } from 'ui/svg/icons/Hourglass'
@@ -14,7 +14,7 @@ import { LINE_BREAK } from 'ui/theme/constants'
 const isWeb = Platform.OS === 'web'
 
 export const DisableActivation = () => {
-  const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+  const { options } = useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const validatedOptions = validateRemoteBanner(options)
   const title =
     validatedOptions?.title ??

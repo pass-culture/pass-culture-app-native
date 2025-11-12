@@ -5,7 +5,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { remoteBannerSchema } from 'features/remoteBanners/utils/remoteBannerSchema'
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -14,10 +14,10 @@ import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Typo, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenRemoteBanners = () => {
-  const { options: showGenericBannerOptions } = useFeatureFlagOptions(
+  const { options: showGenericBannerOptions } = useFeatureFlagOptionsQuery(
     RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER
   )
-  const { options: disableActivationOptions } = useFeatureFlagOptions(
+  const { options: disableActivationOptions } = useFeatureFlagOptionsQuery(
     RemoteStoreFeatureFlags.DISABLE_ACTIVATION
   )
   const [genericBannerError, setGenericBannerError] = useState('')

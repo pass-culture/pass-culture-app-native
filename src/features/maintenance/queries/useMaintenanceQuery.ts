@@ -7,7 +7,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const UNKNOWN_MAINTENANCE: Maintenance = { status: MAINTENANCE.UNKNOWN, message: undefined }
 
-export const useMaintenance = (): Maintenance => {
+export const useMaintenanceQuery = (): Maintenance => {
   const { data } = useQuery({
     queryKey: [QueryKeys.MAINTENANCE],
     queryFn: getMaintenance,

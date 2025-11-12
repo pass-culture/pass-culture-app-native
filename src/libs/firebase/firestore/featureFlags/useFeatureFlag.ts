@@ -1,6 +1,6 @@
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean => {
-  return useFeatureFlagOptions(featureFlag).isFeatureFlagActive
+  return useFeatureFlagOptionsQuery(featureFlag).isFeatureFlagActive
 }

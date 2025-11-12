@@ -1,4 +1,4 @@
-import { CitiesResponse } from 'libs/place/useCities'
+import { CitiesResponse } from 'libs/place/queries/useCitiesQuery'
 
 const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 

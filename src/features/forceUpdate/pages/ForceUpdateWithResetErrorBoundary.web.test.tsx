@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as useMinimalBuildNumberModule from 'features/forceUpdate/helpers/useMinimalBuildNumber'
+import * as useMinimalBuildNumberModule from 'features/forceUpdate/queries/useMinimalBuildNumberQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -8,14 +8,14 @@ import { ForceUpdateWithResetErrorBoundary } from './ForceUpdateWithResetErrorBo
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
+jest.mock('features/forceUpdate/queries/useMinimalBuildNumberQuery')
 
 describe('<ForceUpdateWithResetErrorBoundary/>', () => {
   beforeEach(() => setFeatureFlags())
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
+      jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumberQuery').mockReturnValueOnce({
         minimalBuildNumber: 10_304_000,
         isLoading: false,
         error: null,
