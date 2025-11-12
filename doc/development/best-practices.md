@@ -3,8 +3,7 @@
 ### Why
 
 - To have a shared understanding of the best practices within the team
-- To have a reference for new developers
-- To have a reference for existing developers
+- To have a reference for new and existing developers
 
 #### Key points
 
