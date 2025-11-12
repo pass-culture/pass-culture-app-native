@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -22,7 +22,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationIntroduction = () => {
-  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   return (
     <PageWithHeader
@@ -75,7 +75,7 @@ export const BonificationIntroduction = () => {
             isLoading={false}
             type="submit"
             accessibilityLabel="Commencer la demande"
-            onPress={() => navigate('BonificationNames')}
+            onPress={() => navigate(...getSubscriptionHookConfig('BonificationNames'))}
           />
           <ExternalTouchableLink
             as={ButtonTertiaryBlack}

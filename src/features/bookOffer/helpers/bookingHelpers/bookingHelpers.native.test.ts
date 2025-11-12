@@ -11,6 +11,7 @@ import {
   getStockSortedByPriceFromHour,
   getDistinctPricesFromAllStock,
   getStockWithCategory,
+  shouldDisplayPricesStep,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -396,5 +397,55 @@ describe('getStockWithCategory', () => {
       stock3,
       stock4,
     ])
+  })
+})
+
+describe('shouldDisplayPricesStep', () => {
+  const hour = '2023-04-01T20:00:00Z'
+  const date = new Date(hour)
+
+  it('should return true when stocks have several prices', () => {
+    const stocks = [
+      {
+        ...stock1,
+        beginningDatetime: hour,
+      },
+      {
+        ...stock2,
+        beginningDatetime: hour,
+      },
+    ]
+    const isEvent = false
+    const hasPricesStep = shouldDisplayPricesStep(stocks, date, hour, isEvent)
+
+    expect(hasPricesStep).toEqual(true)
+  })
+
+  it('should return false when stocks have only one price', () => {
+    const stocks = [
+      {
+        ...stock1,
+        beginningDatetime: hour,
+      },
+    ]
+    const isEvent = false
+
+    const hasPricesStep = shouldDisplayPricesStep(stocks, date, hour, isEvent)
+
+    expect(hasPricesStep).toEqual(false)
+  })
+
+  it('should return true when stocks is event and has only one price', () => {
+    const stocks = [
+      {
+        ...stock1,
+        beginningDatetime: hour,
+      },
+    ]
+    const isEvent = true
+
+    const hasPricesStep = shouldDisplayPricesStep(stocks, date, hour, isEvent)
+
+    expect(hasPricesStep).toEqual(true)
   })
 })

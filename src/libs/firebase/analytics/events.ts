@@ -22,7 +22,7 @@ export enum AnalyticsEvent {
   CANCEL_BOOKING_FUNNEL = 'CancelBookingFunnel',
   CANCEL_SIGNUP = 'CancelSignup',
   CATEGORY_BLOCK_CLICKED = 'CategoryBlockClicked',
-  CHANGE_ORIENTATION_TOGGLE = 'logChangeOrientationToggle',
+  CHANGE_ORIENTATION_TOGGLE = 'ChangeOrientationToggle',
   CHANGE_SEARCH_LOCATION = 'ChangeSearchLocation',
   CHOOSE_EDUCONNECT_METHOD = 'ChooseEduConnectMethod',
   CHOOSE_UBBLE_METHOD = 'ChooseUbbleMethod',

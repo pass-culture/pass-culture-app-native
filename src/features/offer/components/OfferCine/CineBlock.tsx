@@ -34,7 +34,8 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   const distance = venue.coordinates
     ? getDistance(
         { lat: venue.coordinates.latitude, lng: venue.coordinates.longitude },
-        { userLocation, selectedPlace, selectedLocationMode }
+        { userLocation, selectedPlace, selectedLocationMode },
+        offer.subcategoryId
       )
     : null
 

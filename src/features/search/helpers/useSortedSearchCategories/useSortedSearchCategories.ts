@@ -7,7 +7,7 @@ import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categori
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematicPageList/useHasAThematicPageList'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { BackgroundColorKey, BorderColorKey } from 'theme/types'
 
@@ -31,16 +31,17 @@ export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): num
 export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categories = useAvailableCategories()
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const hasAThematicSearch = useHasAThematicPageList()
   const { searchState, dispatch } = useSearch()
+  const searchId = uuidv4()
   const navigateTo = (facetFilter: SearchGroupNameEnumv2) => {
     const searchTabConfig = getSearchPropConfig(
       hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
       {
         offerCategories: [facetFilter],
         isFullyDigitalOffersCategory: data && isOnlyOnline(data, facetFilter),
-        searchId: uuidv4(),
+        searchId,
       }
     )
     return searchTabConfig
@@ -49,7 +50,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const onBeforeNavigate = (facetFilter: SearchGroupNameEnumv2) => {
     dispatch({
       type: 'SET_STATE',
-      payload: { ...searchState, offerCategories: [facetFilter] },
+      payload: { ...searchState, offerCategories: [facetFilter], searchId },
     }) // we'd rather have it in url params but URL is not the only source of truth. When it is, this dispatch should be removed.
   }
   return categories

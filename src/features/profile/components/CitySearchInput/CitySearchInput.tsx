@@ -29,11 +29,18 @@ const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${c
 type CitySearchInputProps = {
   city?: SuggestedCity
   onCitySelected?: (city?: SuggestedCity) => void
+  label?: string
+  isRequiredField?: boolean
 }
 
 type PostalCodeForm = { postalCode: string }
 
-export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) => {
+export const CitySearchInput = ({
+  city,
+  onCitySelected,
+  label,
+  isRequiredField = false,
+}: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { data: settings } = useSettingsContext()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
@@ -123,7 +130,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                   handlePostalCodeChange(text)
                 }}
                 value={value}
-                label="Indique ton code postal et choisis ta ville"
+                label={label ?? 'Indique ton code postal et choisis ta ville'}
                 format="75017"
                 onPressRightIcon={resetSearch}
                 keyboardType="number-pad"
@@ -132,6 +139,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 autoComplete="postal-code"
                 textContentType="postalCode"
                 searchInputID="postal-code-input"
+                isRequiredField={isRequiredField}
               />
               <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
             </StyledView>

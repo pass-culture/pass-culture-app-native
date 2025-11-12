@@ -12,6 +12,8 @@ const ThumbnailPlaceholderContainer = styled.View<{ height: number; width: numbe
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.designSystem.color.background.subtle,
+    borderColor: theme.designSystem.color.border.subtle,
+    borderWidth: 1,
   })
 )
 

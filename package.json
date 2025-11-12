@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.365.2",
-  "build": 10365002,
+  "version": "1.366.0",
+  "build": 10366000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -85,7 +85,8 @@
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
-    "update:tools": "nix flake update && git commit --only flake.lock --message '(BSR) chore(deps): update tools'"
+    "update:tools": "nix flake update && git commit --only flake.lock --message '(BSR) chore(deps): update tools'",
+    "prepare": "husky"
   },
   "dependencies": {
     "@algolia/client-search": "^4.24.0",
@@ -96,7 +97,7 @@
     "@hookform/resolvers": "^2.9.11",
     "@hot-updater/react-native": "^0.20.11",
     "@openspacelabs/react-native-zoomable-view": "^2.1.5",
-    "@pass-culture/design-system": "0.4.1",
+    "@pass-culture/design-system": "0.5.1",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-clipboard/clipboard": "^1.16.2",
@@ -296,6 +297,7 @@
     "firebase-tools": "^14.7.0",
     "geckodriver": "^3.2.0",
     "hot-updater": "^0.20.11",
+    "husky": "^9.1.7",
     "jest": "^30.0.5",
     "jest-axe": "^9.0.0",
     "jest-canvas-mock": "^2.3.1",

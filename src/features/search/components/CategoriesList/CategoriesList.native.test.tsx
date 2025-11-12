@@ -19,7 +19,7 @@ useModalAPISpy.mockReturnValue({
   hideModal: jest.fn(),
   toggleModal: jest.fn(),
 })
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -74,7 +74,7 @@ describe('CategoriesList', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
-      payload: { ...initialSearchState, offerCategories: ['SPECTACLES'] },
+      payload: { ...initialSearchState, offerCategories: ['SPECTACLES'], searchId: 'testUuidV4' },
     })
   })
 

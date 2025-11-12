@@ -33,7 +33,7 @@ jest.mock('uuid', () => {
   }
 })
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()

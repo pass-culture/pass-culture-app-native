@@ -1127,22 +1127,44 @@ Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 1
         }
       }
     >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
+      <View
         style={
-          [
-            {
-              "backgroundColor": "transparent",
-            },
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      >
+        <BlurView
+          blurAmount={5}
+          blurType="light"
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+              },
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+          testID="blurry-wrapper"
+        />
+        <View
+          style={
             {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-            },
-          ]
-        }
-      />
+            }
+          }
+        />
+      </View>
     </View>
     <View
       marginRight={64}

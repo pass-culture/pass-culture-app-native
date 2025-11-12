@@ -18,6 +18,7 @@ export type ThematicSearchPlaylistListProps = {
     itemType: 'offer' | 'venue' | 'artist' | 'unknown',
     playlistIndex?: number
   ) => void
+  searchId?: string
 }
 
 export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProps> = ({
@@ -25,6 +26,7 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
   isLoading: arePlaylistsLoading,
   shouldDisplayVenuesPlaylist,
   onViewableItemsChanged,
+  searchId,
 }) => {
   const isFocused = useIsFocused()
 
@@ -61,6 +63,7 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
                   route="ThematicSearch"
                   playlistRef={listRef}
                   onViewableItemsChanged={handleViewableItemsChanged}
+                  searchId={searchId}
                 />
               )}
             </ObservedPlaylist>

@@ -7684,10 +7684,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pass-culture/design-system@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@pass-culture/design-system@npm:0.4.1"
-  checksum: 90260eefd7ffc5cc965000ec86f6741f029af82f78db146495907f2cae35594b903e1f9af2fa661d62fd854f4666a8fe96fa0cf9aa9c120e6d5804e578d83bbe
+"@pass-culture/design-system@npm:0.5.1":
+  version: 0.5.1
+  resolution: "@pass-culture/design-system@npm:0.5.1"
+  checksum: ee3e991b846d951a94cbf7acea9bc365945924f60721c732e8df7e769ccb9620e7c6189d7e35eb4f75e58a586748c7cd564ea3a52243f8ac80850a7d56b602dd
   languageName: node
   linkType: hard
 
@@ -11030,7 +11030,7 @@ __metadata:
     "@hot-updater/react-native": ^0.20.11
     "@lhci/cli": ^0.14.0
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
-    "@pass-culture/design-system": 0.4.1
+    "@pass-culture/design-system": 0.5.1
     "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-native-async-storage/async-storage": ^1.17.11
     "@react-native-clipboard/clipboard": ^1.16.2
@@ -11146,6 +11146,7 @@ __metadata:
     globalthis: ^1.0.2
     highlight-words-core: ^1.2.2
     hot-updater: ^0.20.11
+    husky: ^9.1.7
     instantsearch.js: ^4.74.2
     intl: ^1.2.5
     jest: ^30.0.5
@@ -18044,6 +18045,15 @@ __metadata:
   version: 2.1.0
   resolution: "human-signals@npm:2.1.0"
   checksum: b87fd89fce72391625271454e70f67fe405277415b48bcc0117ca73d31fa23a4241787afdc8d67f5a116cf37258c052f59ea82daffa72364d61351423848e3b8
+  languageName: node
+  linkType: hard
+
+"husky@npm:^9.1.7":
+  version: 9.1.7
+  resolution: "husky@npm:9.1.7"
+  bin:
+    husky: bin.js
+  checksum: c2412753f15695db369634ba70f50f5c0b7e5cb13b673d0826c411ec1bd9ddef08c1dad89ea154f57da2521d2605bd64308af748749b27d08c5f563bcd89975f
   languageName: node
   linkType: hard
 

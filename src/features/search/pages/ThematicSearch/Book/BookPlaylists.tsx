@@ -22,6 +22,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
   shouldDisplayVenuesPlaylist,
   onViewableItemsChanged,
+  searchId,
 }) => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
@@ -80,6 +81,7 @@ export const BookPlaylists: React.FC<ThematicPlaylistProps> = ({
                 noMarginBottom
                 playlistRef={listRef}
                 onViewableItemsChanged={handleViewableItemsChanged}
+                searchId={searchId}
               />
             )}
           </ObservedPlaylist>

@@ -367,6 +367,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                     <TextInput
                       accessibilityHidden={false}
                       accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                      accessibilityRequired={false}
                       autoComplete="postal-code"
                       autoCorrect={false}
                       editable={true}

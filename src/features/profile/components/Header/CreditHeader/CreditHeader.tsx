@@ -2,7 +2,8 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { DomainsCredit, EligibilityType } from 'api/gen/api'
-import { BonificationBanner } from 'features/bonification/banners/BonificationBanner'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
@@ -41,12 +42,8 @@ export function CreditHeader({
   eligibility,
 }: CreditHeaderProps) {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
-  // TODO(PC-38487): Use value from backend
-  const showBonificationBanner =
-    enableBonification &&
-    domainsCredit &&
-    eligibility === EligibilityType['age-17-18'] &&
-    age === 18
+  const { user } = useAuthContext()
+  const showBonificationBanner = enableBonification && user?.isEligibleForBonification
 
   const { designSystem } = useTheme()
   const {
@@ -146,7 +143,7 @@ export function CreditHeader({
       </HeaderWithGreyContainer>
       {showBonificationBanner ? (
         <BannerContainer>
-          <BonificationBanner />
+          <BonificationBanner bonificationStatus={user?.bonificationStatus} />
         </BannerContainer>
       ) : null}
     </React.Fragment>

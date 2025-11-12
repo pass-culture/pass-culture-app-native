@@ -55,4 +55,29 @@ describe('buildOffersModulesQueries', () => {
 
     expect(queries).toEqual([expectedResult, expectedResult, expectedResult])
   })
+
+  it('should use the most liked offers index when isSortedByLikes param  is true', () => {
+    const parameters = {
+      ...searchQueryParametersFixture,
+      isSortedByLikes: true,
+    }
+
+    const paramsListElement = {
+      offerParams: parameters,
+      locationParams: buildLocationParameterParams,
+    }
+
+    const paramsList: OffersPlaylistParameters[] = [[paramsListElement]]
+
+    const queries = buildOffersModulesQueries({
+      paramsList,
+      isUserUnderage,
+    })
+
+    expect(queries).toEqual([
+      expect.objectContaining({
+        indexName: 'algoliaMostLikedOffersIndexName',
+      }),
+    ])
+  })
 })

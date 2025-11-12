@@ -1,11 +1,15 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
+import { FraudCheckStatus } from 'api/gen'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Code } from 'ui/svg/icons/Code'
 
-export const BonificationBanner: FunctionComponent = () => {
-  // TODO(PC-38487): Use value from backend
+export const BonificationBanner = ({
+  bonificationStatus,
+}: {
+  bonificationStatus: FraudCheckStatus | undefined | null
+}) => {
   const onClose = () =>
     alert(
       'TODO(PC-38487): Récupérer la valeur depuis le backend pour permettre de cacher la bannière. Actuellement la bannière s’affiche en fonction de la valeur du feature flag "ENABLE_BONIFICATION".'
@@ -18,7 +22,8 @@ export const BonificationBanner: FunctionComponent = () => {
       links={[
         {
           navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
-          wording: 'Je veux vérifier',
+          wording: bonificationStatus === 'pending' ? 'Demande en cours' : 'Je veux vérifier',
+          // handle all cases in PC-38488
         },
       ]}
       onClose={onClose}

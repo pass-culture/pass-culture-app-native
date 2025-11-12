@@ -29,7 +29,7 @@ import {
   SearchState,
 } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
 
@@ -348,7 +348,7 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 }
 
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
-  const { data: subcategories } = useSubcategories()
+  const { data: subcategories } = useSubcategoriesQuery()
   const { facets } = useSearchResults()
   if (!searchGroup || !subcategories) return []
 
@@ -371,7 +371,7 @@ export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
 export const useSubcategoryIdsFromSearchGroups = (
   searchGroups: SearchGroupNameEnumv2[]
 ): SubcategoryIdEnumv2[] => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
 
   if (!data || !searchGroups.length) return []
 

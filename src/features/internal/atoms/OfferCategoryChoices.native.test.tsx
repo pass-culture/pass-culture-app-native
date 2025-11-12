@@ -6,8 +6,8 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { userEvent, render, screen } from 'tests/utils'
 
 let mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))

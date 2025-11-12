@@ -348,7 +348,9 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             }
           }
         >
-          L’audit de conformité réalisé le 17/07/2025 par la société Access42 révèle que l’application est conforme à 
+          L’audit de conformité réalisé le 
+          31/10/2025
+           par la société Access42 révèle que l’application est conforme à 
           <Text
             style={
               {
@@ -359,7 +361,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            37.50%
+            41.67%
           </Text>
            à la norme européenne EN 301 549 v.3.2.1.
         </Text>
@@ -384,7 +386,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            44.19%
+            62.79%
           </Text>
            au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
         </Text>
@@ -455,7 +457,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 1 sur 20 - Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance."
+            accessibilityLabel="Non conformité – Liste - Élément 1 sur 18 - Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance."
             accessible={true}
             style={
               {
@@ -510,62 +512,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 2 sur 20 - Des images légendées ne sont pas correctement restituées par les lecteurs d’écran."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                Des images légendées ne sont pas correctement restituées par les lecteurs d’écran.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 3 sur 20 - Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants."
+            accessibilityLabel="Non conformité – Liste - Élément 2 sur 18 - Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants."
             accessible={true}
             style={
               {
@@ -620,7 +567,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 4 sur 20 - Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle."
+            accessibilityLabel="Non conformité – Liste - Élément 3 sur 18 - Certains contenus audio/vidéo pré-enregistrés ne disposent pas d’alternative textuelle."
             accessible={true}
             style={
               {
@@ -675,7 +622,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 5 sur 20 - Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents."
+            accessibilityLabel="Non conformité – Liste - Élément 4 sur 18 - Certains contenus audio/vidéo ne sont pas sous-titrés ou leurs sous-titres ne sont pas pertinents."
             accessible={true}
             style={
               {
@@ -730,7 +677,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 6 sur 20 - Certains médias ne sont pas clairement identifiés par un texte adjacent."
+            accessibilityLabel="Non conformité – Liste - Élément 5 sur 18 - Certains médias ne sont pas clairement identifiés par un texte adjacent."
             accessible={true}
             style={
               {
@@ -785,7 +732,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 7 sur 20 - Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués)."
+            accessibilityLabel="Non conformité – Liste - Élément 6 sur 18 - Certains composants d’interface ne sont pas accessibles aux technologies d’assistance (nom, rôle, état non restitués)."
             accessible={true}
             style={
               {
@@ -840,7 +787,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 8 sur 20 - Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible."
+            accessibilityLabel="Non conformité – Liste - Élément 7 sur 18 - Certains intitulés visibles ne sont pas cohérents ou présents dans l’alternative accessible."
             accessible={true}
             style={
               {
@@ -895,7 +842,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 9 sur 20 - Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible."
+            accessibilityLabel="Non conformité – Liste - Élément 8 sur 18 - Certains champs de formulaire ne sont pas correctement étiquetés ou leur étiquette n’est pas accessible."
             accessible={true}
             style={
               {
@@ -950,7 +897,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 10 sur 20 - Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes."
+            accessibilityLabel="Non conformité – Liste - Élément 9 sur 18 - Certains champs de formulaire ne sont pas groupés ou ne sont pas reliés à leurs légendes."
             accessible={true}
             style={
               {
@@ -1005,7 +952,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 11 sur 20 - Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance."
+            accessibilityLabel="Non conformité – Liste - Élément 10 sur 18 - Les messages d’erreur ne sont pas toujours annoncés aux technologies d’assistance."
             accessible={true}
             style={
               {
@@ -1060,7 +1007,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 12 sur 20 - Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran."
+            accessibilityLabel="Non conformité – Liste - Élément 11 sur 18 - Certains messages de statut (comme les retours de validation) ne sont pas restitués aux lecteurs d’écran."
             accessible={true}
             style={
               {
@@ -1115,7 +1062,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 13 sur 20 - Certains éléments ne sont pas accessibles au clavier ou au pointage."
+            accessibilityLabel="Non conformité – Liste - Élément 12 sur 18 - Certains éléments ne sont pas accessibles au clavier ou au pointage."
             accessible={true}
             style={
               {
@@ -1170,7 +1117,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 14 sur 20 - Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance."
+            accessibilityLabel="Non conformité – Liste - Élément 13 sur 18 - Certains contenus ne sont pas lus dans la bonne langue par les technologies d’assistance."
             accessible={true}
             style={
               {
@@ -1225,62 +1172,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 15 sur 20 - L’information n’est pas toujours structurée par des titres hiérarchisés."
-            accessible={true}
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              style={
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "height": 25.6,
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  borderColor="#161617"
-                  fillColor="#161617"
-                  height={3}
-                  width={3}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginLeft": 12,
-                  }
-                }
-              >
-                L’information n’est pas toujours structurée par des titres hiérarchisés.
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityLabel="Non conformité – Liste - Élément 16 sur 20 - Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran."
+            accessibilityLabel="Non conformité – Liste - Élément 14 sur 18 - Certaines listes ne sont pas reconnues comme telles par les lecteurs d’écran."
             accessible={true}
             style={
               {
@@ -1335,7 +1227,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 17 sur 20 - Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance."
+            accessibilityLabel="Non conformité – Liste - Élément 15 sur 18 - Certains écrans ne sont pas du tout accessibles avec les technologies d’assistance."
             accessible={true}
             style={
               {
@@ -1390,7 +1282,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 18 sur 20 - L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités."
+            accessibilityLabel="Non conformité – Liste - Élément 16 sur 18 - L’agrandissement du texte jusqu’à 200 % entraîne parfois des pertes de contenu ou de fonctionnalités."
             accessible={true}
             style={
               {
@@ -1445,7 +1337,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 19 sur 20 - Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée."
+            accessibilityLabel="Non conformité – Liste - Élément 17 sur 18 - Certains contenus nécessitent des gestes complexes (comme le balayage) sans méthode alternative simple proposée."
             accessible={true}
             style={
               {
@@ -1500,7 +1392,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Non conformité – Liste - Élément 20 sur 20 - L’affichage en mode paysage n’est pas toujours correctement géré."
+            accessibilityLabel="Non conformité – Liste - Élément 18 sur 18 - L’affichage en mode paysage n’est pas toujours correctement géré."
             accessible={true}
             style={
               {
@@ -2242,7 +2134,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
            
           <Text
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support, lien externe"
             accessibilityRole="link"
             onPress={[Function]}
             style={

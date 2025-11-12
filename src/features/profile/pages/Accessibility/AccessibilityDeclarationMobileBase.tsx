@@ -19,6 +19,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type Props = {
   platformName: string
   storeLink: { url: string }
+  auditDate: string
   conformityEN: string
   conformityRAAM: string
   nonAccessibleContent: string[]
@@ -32,6 +33,7 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 export function AccessibilityDeclarationMobileBase({
   platformName,
   storeLink,
+  auditDate,
   conformityEN,
   conformityRAAM,
   nonAccessibleContent,
@@ -81,7 +83,7 @@ export function AccessibilityDeclarationMobileBase({
       <ViewGap gap={6}>
         <TitleText>Résultats des tests</TitleText>
         <Typo.Body>
-          L’audit de conformité réalisé le 17/07/2025 par la société Access42 révèle que
+          L’audit de conformité réalisé le {auditDate} par la société Access42 révèle que
           l’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la norme
           européenne EN 301 549 v.3.2.1.
         </Typo.Body>
@@ -206,7 +208,7 @@ export function AccessibilityDeclarationMobileBase({
           <ExternalTouchableLink
             as={LinkInsideText}
             wording="support@passculture.app"
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
             justifyContent="flex-start"
             externalNav={contactSupport.forGenericQuestion}
             accessibilityRole={AccessibilityRole.LINK}

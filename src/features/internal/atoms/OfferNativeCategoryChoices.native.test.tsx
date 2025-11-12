@@ -4,7 +4,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferNativeCategoryChoices } from 'features/internal/atoms/OfferNativeCategoryChoices'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('libs/firebase/analytics/analytics')
 const user = userEvent.setup()

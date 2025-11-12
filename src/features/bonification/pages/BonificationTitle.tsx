@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useState } from 'react'
 import { styled } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -8,7 +7,8 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
@@ -25,7 +25,7 @@ enum FormValues {
 }
 
 export const BonificationTitle = () => {
-  const { navigate } = useNavigation<NativeStackNavigationProp<SubscriptionStackParamList>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const storedLegalRepresentative = useLegalRepresentative()
   const { setTitle: storeTitle } = legalRepresentativeActions
@@ -37,7 +37,7 @@ export const BonificationTitle = () => {
 
   const saveTitleAndNavigate = () => {
     if (title) storeTitle(title)
-    navigate('BonificationBirthDate')
+    navigate(...getSubscriptionHookConfig('BonificationBirthDate'))
   }
   return (
     <PageWithHeader

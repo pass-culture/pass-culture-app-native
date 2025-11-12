@@ -86,7 +86,9 @@ const UnmemoizedSearchVenueItem = ({
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         <View>
-          {distance ? <StyledDistanceTag label={`à ${distance}`} /> : null}
+          {distance ? (
+            <StyledDistanceTag hasVenueImage={hasVenueImage} label={`à ${distance}`} />
+          ) : null}
           {hasVenueImage ? (
             <ImageTile width={width} height={height} uri={imageUri} />
           ) : (
@@ -135,10 +137,12 @@ const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
   })
 )
 
-const StyledDistanceTag = styled(Tag)({
+const StyledDistanceTag = styled(Tag)<{ hasVenueImage?: boolean }>(({ theme, hasVenueImage }) => ({
   flex: 1,
   position: 'absolute',
   zIndex: 2,
   top: 8,
   right: 8,
-})
+  borderColor: hasVenueImage ? undefined : theme.designSystem.color.border.subtle,
+  borderWidth: hasVenueImage ? undefined : 1,
+}))

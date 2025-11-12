@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { FraudCheckStatus } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
@@ -28,6 +30,7 @@ import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Page } from 'ui/pages/Page'
 import { Clock } from 'ui/svg/icons/Clock'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
@@ -39,6 +42,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { navigate } = useNavigation<UseNavigationType>()
+  const { user, isLoggedIn } = useAuthContext()
   const { designSystem } = useTheme()
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { onScroll, headerTransition } = useOpacityTransition()
@@ -47,10 +51,33 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
+  const bonificationStatus: FraudCheckStatus | null | undefined = user?.bonificationStatus
+  const wasBonificationReceived = bonificationStatus === FraudCheckStatus.ok
+
+  const getWording = (status: FraudCheckStatus | null | undefined): string => {
+    switch (status) {
+      case FraudCheckStatus.pending:
+        return 'En cours de traitement'
+      case FraudCheckStatus.ok:
+        return 'Bonus obtenu'
+      default:
+        return 'Tester mon éligibilité'
+    }
+  }
+  const getDisabled = (status: FraudCheckStatus | null | undefined): boolean => {
+    switch (status) {
+      case FraudCheckStatus.pending:
+      case FraudCheckStatus.ok:
+        return true
+      default:
+        return false
+    }
+  }
 
   const bonificationStep: CreditComponentPropsV3 = {
     creditStep: 'optional',
     iconComponent: undefined,
+    bonificationStatus: bonificationStatus,
     children: (
       <React.Fragment>
         <RowView>
@@ -79,12 +106,15 @@ export const ProfileTutorialAgeInformationCredit = () => {
             />,
           ]}
         />
-        <ButtonTertiaryPrimary
-          icon={PlainArrowNext}
-          wording="Tester mon éligibilité"
-          onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
-          justifyContent="flex-start"
-        />
+        {wasBonificationReceived || !user?.isEligibleForBonification || !isLoggedIn ? null : (
+          <ButtonTertiaryPrimary
+            icon={bonificationStatus === FraudCheckStatus.pending ? ClockFilled : PlainArrowNext}
+            wording={getWording(bonificationStatus)}
+            disabled={getDisabled(bonificationStatus)}
+            onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
+            justifyContent="flex-start"
+          />
+        )}
       </React.Fragment>
     ),
   }

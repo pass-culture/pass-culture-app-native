@@ -52,8 +52,8 @@ jest.mock('features/location/helpers/useLocationState', () => ({
 }))
 
 const mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))
@@ -62,7 +62,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 // FIXME(PC-37597): un-skip flaky tests
 // eslint-disable-next-line jest/no-disabled-tests
-describe.skip('<SearchListHeader />', () => {
+describe('<SearchListHeader />', () => {
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])

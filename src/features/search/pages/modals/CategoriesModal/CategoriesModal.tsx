@@ -24,7 +24,7 @@ import {
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -57,7 +57,7 @@ export const CategoriesModal = ({
   onClose,
   facets,
 }: CategoriesModalProps) => {
-  const { data = PLACEHOLDER_DATA } = useSubcategories()
+  const { data = PLACEHOLDER_DATA } = useSubcategoriesQuery()
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 

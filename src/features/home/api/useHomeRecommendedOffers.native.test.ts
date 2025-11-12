@@ -22,7 +22,7 @@ const position = {
 const mockModuleId = 'abcd'
 mockdate.set(new Date('2022-11-25T00:00+00:00'))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('libs/firebase/analytics/analytics')
 

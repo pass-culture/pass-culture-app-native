@@ -9,6 +9,7 @@ import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -54,8 +55,26 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
     <LocationPointerNotFilled />
   )
 
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    locationTitle,
+    'Ouvrir la modale de localisation'
+  )
+
   return (
     <React.Fragment>
+      <StyledTouchable
+        testID={computedAccessibilityLabel}
+        onPress={showLocationModal}
+        accessibilityLabel={computedAccessibilityLabel}
+        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
+        <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
+        <StyledCaption numberOfLines={3}>{locationTitle}</StyledCaption>
+      </StyledTouchable>
+      {shouldShowHomeLocationModal ? (
+        <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      ) : (
+        <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      )}
       {enableTooltip ? (
         <StyledTooltip
           label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
@@ -64,19 +83,6 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
           widgetWidth={widgetWidth}
         />
       ) : null}
-      <StyledTouchable
-        testID="Ouvrir la modale de localisation depuis le widget"
-        onPress={showLocationModal}
-        accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
-        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
-        <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
-        <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
-      </StyledTouchable>
-      {shouldShowHomeLocationModal ? (
-        <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
-      ) : (
-        <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
-      )}
     </React.Fragment>
   )
 }
@@ -95,6 +101,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.xs,
+  textAlign: 'center',
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
 }))
 

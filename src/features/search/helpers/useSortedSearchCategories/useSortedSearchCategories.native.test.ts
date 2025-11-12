@@ -9,7 +9,7 @@ import {
   useSortedSearchCategories,
 } from './useSortedSearchCategories'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockUseSearch = jest.fn(() => ({
   searchState: initialSearchState,

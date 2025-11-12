@@ -45,7 +45,11 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
       isDuo: !!(attachedOffer.isDuo && user?.isBeneficiary),
     })
   )
-  const distance = getDistance(offer._geoloc, { userLocation, selectedPlace, selectedLocationMode })
+  const distance = getDistance(
+    offer._geoloc,
+    { userLocation, selectedPlace, selectedLocationMode },
+    attachedOffer.subcategoryId
+  )
   const distanceLabel = distance ? `à ${distance}` : undefined
 
   if (date) details.push(date)

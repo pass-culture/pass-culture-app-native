@@ -67,9 +67,10 @@ export const Venue: FunctionComponent = () => {
         itemType,
         viewableItems: items,
         playlistIndex,
+        entryId: params.id.toString(),
       })
     },
-    [pageTracking]
+    [pageTracking, params.id]
   )
 
   const enableSearchWithQuery = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SEARCH_IN_VENUE_PAGE)

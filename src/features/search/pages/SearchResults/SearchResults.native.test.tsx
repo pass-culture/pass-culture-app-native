@@ -177,7 +177,7 @@ jest.mock('react-instantsearch-core', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
 
@@ -462,6 +462,30 @@ describe('<SearchResults/>', () => {
 
       await waitFor(() => {
         expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+      })
+    })
+  })
+
+  describe('When searchId not defined', () => {
+    beforeEach(() => {
+      mockUseSearch.mockReturnValue({
+        ...DEFAULT_MOCK_USE_SEARCH,
+        searchState: { ...mockSearchState, searchId: undefined },
+      })
+    })
+
+    afterEach(() => {
+      mockUseSearch.mockReturnValue(DEFAULT_MOCK_USE_SEARCH)
+    })
+
+    it('should generate searchId and dispatch it in the state', async () => {
+      render(reactQueryProviderHOC(<SearchResults />))
+
+      await screen.findByText('Rechercher')
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: { ...mockSearchState, searchId: 'testUuidV4' },
       })
     })
   })

@@ -3509,7 +3509,7 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
         Contacter l’équipe support à l’adresse
          
         <Text
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+          accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support, lien externe"
           accessibilityRole="link"
           onPress={[Function]}
           style={

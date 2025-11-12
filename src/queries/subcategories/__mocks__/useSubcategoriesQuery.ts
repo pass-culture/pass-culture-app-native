@@ -1,6 +1,6 @@
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 
-export const useSubcategories = jest.fn().mockReturnValue({
+export const useSubcategoriesQuery = jest.fn().mockReturnValue({
   data: subcategoriesDataTest,
   isLoading: false,
 })

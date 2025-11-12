@@ -21,9 +21,9 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
@@ -50,7 +50,7 @@ export function Offer() {
     }),
   })
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
-  const { data: subcategories } = useSubcategories()
+  const { data: subcategories } = useSubcategoriesQuery()
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { cookiesConsent, setCookiesConsent } = useCookies()

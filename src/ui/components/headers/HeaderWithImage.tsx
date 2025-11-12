@@ -26,7 +26,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
 }) => {
   const { appContentWidth } = useTheme()
 
-  const blurImageStyle = { height: imageHeight, width: appContentWidth }
+  const blurImageStyle = { height: imageHeight, width: appContentWidth, opacity: 0.7 }
 
   return (
     <Container style={style}>

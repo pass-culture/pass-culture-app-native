@@ -6,17 +6,17 @@ import { VenueOffers } from 'features/venue/types'
 import { getDates } from 'shared/date/getDates'
 
 type Props = {
-  venueMovieOffers: VenueOffers
+  venueOffers: VenueOffers
 }
 
-export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueMovieOffers }) => {
-  const offerIds = venueMovieOffers.hits.map((offer) => Number(offer.objectID))
+export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
+  const offerIds = venueOffers.hits.map((offer) => Number(offer.objectID))
 
   const next15Dates = getDates(new Date(), 15)
 
   return (
     <MovieCalendarProvider initialDates={next15Dates}>
-      <VenueCalendar venueOffers={venueMovieOffers} offerIds={offerIds} />
+      <VenueCalendar venueOffers={venueOffers} offerIds={offerIds} />
     </MovieCalendarProvider>
   )
 }

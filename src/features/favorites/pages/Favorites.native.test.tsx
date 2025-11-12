@@ -11,7 +11,7 @@ import { render, screen } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 jest.mock('libs/jwt/jwt')

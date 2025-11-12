@@ -34,6 +34,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_gitleaks": {
+      "locked": {
+        "lastModified": 1761166759,
+        "narHash": "sha256-DTTTjEVRxEBLHoiCJ2xZL+IOZ7Vw2PnnGintfZt16QM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "01b6809f7f9d1183a2b3e081f0a1e6f8f415cb09",
+        "type": "github"
+      }
+    },
     "nixpkgs_nodejs": {
       "locked": {
         "lastModified": 1705204527,
@@ -70,6 +86,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
+        "nixpkgs_gitleaks": "nixpkgs_gitleaks",
         "nixpkgs_nodejs": "nixpkgs_nodejs",
         "nixpkgs_ruby": "nixpkgs_ruby"
       }

@@ -1,3 +1,4 @@
+import { SubcategoryIdEnum } from 'api/gen'
 import { UserProps, getDistance } from 'libs/location/getDistance'
 import { LocationMode } from 'libs/location/types'
 
@@ -54,4 +55,12 @@ describe('getDistance()', () => {
       expect(getDistance(offerPosition, userPosition)).toEqual(expectedResult)
     }
   )
+
+  it('should return undefined when the offer is an online offer', () => {
+    const ONLINE_OFFER_SUBCATEGORY_ID = SubcategoryIdEnum.PODCAST
+
+    const distance = getDistance(OFFER_POSITION, USER_POSITION, ONLINE_OFFER_SUBCATEGORY_ID)
+
+    expect(distance).toBeUndefined()
+  })
 })

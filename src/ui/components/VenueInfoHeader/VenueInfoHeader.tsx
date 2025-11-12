@@ -54,6 +54,8 @@ const VenueThumbnail = styled(Image)<{ height: number; width: number }>(
     borderRadius: theme.designSystem.size.borderRadius.s,
     height,
     width,
+    borderColor: theme.designSystem.color.border.subtle,
+    borderWidth: 1,
   })
 )
 

@@ -11,10 +11,10 @@ import {
   SubcategoryLabelMapping,
   SubcategoryOfferLabelMapping,
 } from 'libs/subcategories/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 
 export const useSubcategoriesMapping = (): SubcategoriesMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
@@ -27,7 +27,7 @@ export const useSubcategoriesMapping = (): SubcategoriesMapping => {
 }
 
 export const useCategoryIdMapping = (): CategoryIdMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
@@ -40,7 +40,7 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
 }
 
 export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
@@ -53,7 +53,7 @@ export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
 }
 
 export const useSubcategoryOfferLabelMapping = (): SubcategoryOfferLabelMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
@@ -66,7 +66,7 @@ export const useSubcategoryOfferLabelMapping = (): SubcategoryOfferLabelMapping 
 }
 
 const useHomeLabelMapping = (): HomeLabelMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { homepageLabels = [] } = data || {}
 
   return useMemo(() => {
@@ -80,7 +80,7 @@ const useHomeLabelMapping = (): HomeLabelMapping => {
 
 export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
   const homeLabelMapping = useHomeLabelMapping()
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { subcategories = [] } = data || {}
 
   return useMemo(() => {
@@ -93,7 +93,7 @@ export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
 }
 
 export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { searchGroups = [] } = data || {}
 
   return useMemo(() => {
@@ -106,7 +106,7 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
 }
 
 export const useGenreTypeMapping = (): GenreTypeMapping => {
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { genreTypes = [] } = data || {}
 
   return useMemo(() => {

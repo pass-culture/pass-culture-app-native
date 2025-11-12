@@ -20,8 +20,8 @@ jest.mock('features/reactions/queries/useReactionMutation', () => ({
 }))
 
 const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))

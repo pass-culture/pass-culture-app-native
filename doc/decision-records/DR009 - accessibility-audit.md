@@ -1,11 +1,11 @@
 # 🌈 Suivi des corrections d’accessibilité
 
-| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 19 novembre | 15 décembre |
+| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | 15 décembre |
 | ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ----------- |
-| Android    | RAAM 1.1   | 35.71%     | 44.19%       | ⏳         | ⏳          | ⏳          |
-|            | EN 301-549 | 35.42%     | 37.50%       | ⏳         | ⏳          | ⏳          |
-| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | ⏳         | ⏳          | ⏳          |
-|            | EN 301-549 | 20.83%     | 25.00%       | ⏳         | ⏳          | ⏳          |
+| Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | ⏳          | ⏳          |
+|            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | ⏳          | ⏳          |
+| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | 58.14%     | ⏳          | ⏳          |
+|            | EN 301-549 | 20.83%     | 25.00%       | 29.17%     | ⏳          | ⏳          |
 
 <br>
 
@@ -233,7 +233,7 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <details>
 
-<summary> 🟠 Critère 1.1 - Android - Chaque élément graphique de décoration est-il ignoré par les technologies d’assistance ?</summary>
+<summary> 🟢🟢 Critère 1.1 - Android - Chaque élément graphique de décoration est-il ignoré par les technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 1.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-1)  
 **Ticket** : [PC-38204](https://passculture.atlassian.net/browse/PC-38204)  
@@ -242,7 +242,6 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 **Problème** 😱
 
 - **(E06)** Les puces de listes sont ignorée, mais on peut toujours les atteindre.
-
 
 **Correction** 💡
 
@@ -254,19 +253,19 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <details>
 
-<summary> 🟠 Critère 1.9 - Chaque élément graphique légendé est-il correctement restitué par les technologies d’assistance ?</summary>
+<summary> 🟢🟢 Critère 1.9 - Chaque élément graphique légendé est-il correctement restitué par les technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 1.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-1-9)  
 **Ticket** : [PC-37464](https://passculture.atlassian.net/browse/PC-37464)  
 **PR** : [#8762](https://github.com/pass-culture/pass-culture-app-native/pull/8762)
 
-**Problème** 😱  
+**Problème** 😱
 
 - **(E09)** La légende du copyright de l'illustration du lieu n'est pas reliée correctement à l’image qu’elle décrit car le bouton n'est pas focusable aux lecteurs d'écrans.
 
 - **(E15)** La légende du copyright de l'affiche du film n'est pas reliée correctement à l’image qu’elle décrit.
 
-**Correction** 💡  
+**Correction** 💡
 
 - **(E09)** Ajout de la légende du copyright de l'illustration du lieu directement dans l'`accessibilityLabel` du bouton de l'image.
 
@@ -281,42 +280,39 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 5.2 - iOS - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
+<summary> 🔴🔴 Critère 5.2 - iOS - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
 
 **RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  
 **Ticket** : [PC-37476](https://passculture.atlassian.net/browse/PC-37476)  
 **PR** : [#8789](https://github.com/pass-culture/pass-culture-app-native/pull/8789)
 
-**Problème** 😱  
+**Problème** 😱
 
-- **(E01)** Les composants à bascule (switch) et le lien "Politique de gestion des cookies" ne sont pas accessible aux lecteurs d'écrans. 
+- **(E01)** Les composants à bascule (switch) et le lien "Politique de gestion des cookies" ne sont pas accessible aux lecteurs d'écrans.
 
 - **(E03)** Les composants "https://passculture.app/accueil" et "support@passculture.app" ne sont pas atteignables aux lecteurs d'écrans.
 
 - **(E04)** Les composants "https://passculture.app/accueil" et "support@passculture.app" ne sont pas atteignables aux lecteurs d'écrans.
 
-- **(E05)** Le composant à bascule pour permettre l'orientation n'est pas utilisable au clavier ou avec un autre dispositif de pointage. 
+- **(E05)** Le composant à bascule pour permettre l'orientation n'est pas utilisable au clavier ou avec un autre dispositif de pointage.
 
-- **(E08)** Le composant à bascule pour la géolocalisation n'est pas utilisable au clavier ou avec un autre dispositif de pointage. 
+- **(E08)** Le composant à bascule pour la géolocalisation n'est pas utilisable au clavier ou avec un autre dispositif de pointage.
 
 - **(E15)** Les composants de choix de séance ("9H00 10€" et "11h00 10€") doivent un seul et même bloc, actuellement ils sont composés de 3 éléments dont un vide et il n'y a pas de rôle.
 
+**Correction** 💡
 
-**Correction** 💡  
-
-- **(E01)** Utilisation du composant `LinkInsideText` qui est accessible pour lien "Politique de gestion des cookies" et ajout d'un accessibiltyLabel accessible pour les composants à bascule (switch). 
+- **(E01)** Utilisation du composant `LinkInsideText` qui est accessible pour lien "Politique de gestion des cookies" et ajout d'un accessibiltyLabel accessible pour les composants à bascule (switch).
 
 - **(E03)** Utilisation du composant `LinkInsideText` qui est accessible.
 
 - **(E04)** Utilisation du composant `LinkInsideText` qui est accessible.
 
-- **(E05)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour permettre l'orientation. 
+- **(E05)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour permettre l'orientation.
 
 - **(E08)** Utilisation d'un nouveau `accessibiltyRole` et d'un `accessibilityLabel` pour rendre accessible le composant à bascule pour la géolocalisation.
 
 - **(E15)** Ajoute d'un `accessibilityLabel` plus complet pour les composants de choix de séance ("9H00 10€" et "11h00 10€") pour les rendre d'un seul et même bloc.
-
-
 
 **Retours audit** 🔥
 Texte
@@ -327,7 +323,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
+<summary> 🟢🟢 Critère 7.1 - Dans chaque écran, l’information est-elle structurée par l’utilisation appropriée de titres ?</summary>
 
 **RAAM** : [Critère 7.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-1)  
 **Ticket** : [PC-38205](https://passculture.atlassian.net/browse/PC-38205)  
@@ -351,23 +347,23 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
+<summary> 🔴🔴 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
 
 **RAAM** : [Critère 7.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-2)  
 **Ticket** : [PC-38209](https://passculture.atlassian.net/browse/PC-38209)  
 **PR** : [#8778](https://github.com/pass-culture/pass-culture-app-native/pull/8778)
 
-**Problème** 😱  
+**Problème** 😱
 
-- **(E02)** Les options de recherche dans la modale "Localisation" ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+- **(E02)** Les options de recherche dans la modale "Localisation" ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif.
 
-- **(E04)** Les éléments de listes des déclarations d'accessibilité ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+- **(E04)** Les éléments de listes des déclarations d'accessibilité ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif.
 
-- **(E06)** Les éléments du plan du site ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif. 
+- **(E06)** Les éléments du plan du site ne sont pas structuré comme liste car les `accessibilityRole="list"` ou `accessibilityRole="listitem"` ne fonctionnent pas en natif.
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E02 | E04 | E06)** Création d'un `accessiblityLabel="groupLabel – Liste - Élément X sur X - accessibilityLabel"` pour compenser le manque d'`accessibilityRole` `list` ou `listitem`.
-
 
 **Retours audit** 🔥
 Texte
@@ -378,7 +374,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 1</summary>
+<summary> 🔴🔴 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 1</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
 **Ticket** : [PC-37484](https://passculture.atlassian.net/browse/PC-37484)  
@@ -393,14 +389,13 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 - **(E12)** La page de statut de la demande de déblocage du crédit ne scroll pas, car on bloque sa hauteur.
 - **(E15)** Les options dans le calendrier ont une hauteur et largeur limité, ce qui empeche un texte de s'afficher sur 2 lignes. De plus, lorsque le bouton "Voir plus" est activé, il devient impossible de faire défiler l’écran jusqu'en bas.
 
-
 **Correction** 💡
 
 - **(E01 / E03 / E04)** Pour les liens tronqué, nous avons utilisé le nouveau composant `LinkInsideText`
 - **(E06)** Utilisation de boutons pour tous les éléments du plan du site, qui gère mieux le passage à la ligne et ne tronque pas le texte.
 - **(E09)** Utilisation d'une `minHeight` plutôt que `height` pour permettre d'afficher le texte des tags sur plusieurs lignes.
 - **(E12)** Utilisation de `flexGrow: 1` plutot que `flex: 1` dans la `ScrollView` pour permettre à la page de scroller.
-- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que `width` pour permettre d'afficher le texte des options sur plusieurs lignes. Pour le bas de l'écran, suppression d'un ScrollView suprerficielle. 
+- **(E15)** Utilisation d'une `minHeight` plutôt que `height` et d'une "minWidth`plutôt que `width` pour permettre d'afficher le texte des options sur plusieurs lignes. Pour le bas de l'écran, suppression d'un ScrollView suprerficielle.
 
 </details>
 
@@ -408,32 +403,31 @@ Certains éléments ne sont plus lisible lorsqu'il y a un zoom 200% :
 
 <details>
 
-<summary> 🟠 Critère 8.6 - Dans chaque écran, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</summary>
+<summary> 🟢🟢 Critère 8.6 - Dans chaque écran, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</summary>
 
-**RAAM** : [Critère 8.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
+**RAAM** : [Critère 8.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-6)  
 **Ticket** : [PC-37486](https://passculture.atlassian.net/browse/PC-37486)  
 **PR** : [#8753](https://github.com/pass-culture/pass-culture-app-native/pull/8753)
 
-**Problème** 😱  
+**Problème** 😱
 
 - **(E02)** Le bouton de menu actif dans la navigation en bas d'écran n'a pas de mention "actif/non actif" accessible aux lecteurs d'écrans.
 
 - **(E08)** Le toggle de localisation n'a pas de mention "coché/non coché" accessible aux lecteurs d'écrans.
 
-- **(E11)** Dans la liste des obligations pour la conception du mot de passe, les coches n'ont pas de mention "validé / invalidé" accessible aux lecteurs d'écrans. 
+- **(E11)** Dans la liste des obligations pour la conception du mot de passe, les coches n'ont pas de mention "validé / invalidé" accessible aux lecteurs d'écrans.
 
 - **(E14)** Les tabs liste / grille n'ont pas d'indication de sélection accessible aux lecteurs d'écrans.
 
 - **(E15)** Les indications "accessible / non accessible" du bloc d'accessibilité des offres et lieux ne sont pas accessibles aux lecteurs d'écrans.
 
-
-**Correction** 💡  
+**Correction** 💡
 
 - **(E02)** Ajout de la mention "actif/incactif" sur les boutons du menu de navigation via l'`accessibilityLabel`.
 
-- **(E08)** Ajout de la mention "coché/non coché" sur tous les toggles via l'`accessibilityLabel`. 
+- **(E08)** Ajout de la mention "coché/non coché" sur tous les toggles via l'`accessibilityLabel`.
 
-- **(E11)** Ajout de la mention "validé/invalidé" sur les critères du mot de passe via l'`accessibilityLabel`. 
+- **(E11)** Ajout de la mention "validé/invalidé" sur les critères du mot de passe via l'`accessibilityLabel`.
 
 - **(E14)** Ajout de la mention "actif/incatif" sur les tabs de la recherche via l'`accessibilityLabel`.
 
@@ -448,15 +442,16 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.2 - Chaque champ de formulaire a-t-il une étiquette accessible aux technologies d’assistance ?</summary>
+<summary> 🟢🟢 Critère 9.2 - Chaque champ de formulaire a-t-il une étiquette accessible aux technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 9.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-2)  
 **Ticket** : [PC-37489](https://passculture.atlassian.net/browse/PC-37489)  
 **PR** : [#8814](https://github.com/pass-culture/pass-culture-app-native/pull/8814)
 
-**Problème** 😱 
+**Problème** 😱
 
-- **(E01 | E07 | E11 | E12 | E14)** Les champs de formulaire suivant ne possèdent pas d'étiquette correctement liée et ne sont pas accessible lorsqu’on navigue avec un lecteur d'écran : 
+- **(E01 | E07 | E11 | E12 | E14)** Les champs de formulaire suivant ne possèdent pas d'étiquette correctement liée et ne sont pas accessible lorsqu’on navigue avec un lecteur d'écran :
+
   - "Ville, code postal, adresse"
   - "Adresse e-mail"
   - "Indique ton code postal et choisis ta ville"
@@ -473,10 +468,10 @@ Texte
   - "Activer ma géolocalisation"
   - "Uniquement les offres gratuites"
 
+**Correction** 💡
 
-**Correction** 💡  
+- **(E01 | E07 | E11 | E12 | E14)** Ajout du label et informations complémentaires de l'input directement dans l'`accessibilityLabel` :
 
-- **(E01 | E07 | E11 | E12 | E14)** Ajout du label et informations complémentaires de l'input directement dans l'`accessibilityLabel` : 
   - "Ville, code postal, adresse"
   - "Adresse e-mail"
   - "Indique ton code postal et choisis ta ville"
@@ -493,7 +488,6 @@ Texte
   - "Activer ma géolocalisation"
   - "Uniquement les offres gratuites"
 
-
 **Retours audit** 🔥
 Texte
 
@@ -503,7 +497,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.3 - Chaque étiquette associée à un champ de formulaire est-elle pertinente?</summary>
+<summary> 🟢🟢 Critère 9.3 - Chaque étiquette associée à un champ de formulaire est-elle pertinente?</summary>
 
 **RAAM** : [Critère 9.3](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-3)  
 **Ticket** : [PC-37490](https://passculture.atlassian.net/browse/PC-37490)  
@@ -523,7 +517,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.6 - Dans chaque formulaire, les champs de même nature sont-ils identifiés, si nécessaire ?</summary>
+<summary> 🟢🟢 Critère 9.6 - Dans chaque formulaire, les champs de même nature sont-ils identifiés, si nécessaire ?</summary>
 
 **RAAM** : [Critère 9.6](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-6)  
 **Ticket** : [PC-37492](https://passculture.atlassian.net/browse/PC-37492)  
@@ -547,22 +541,21 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.8 - Pour chaque champ de formulaire qui attend un type de données et/ou un format spécifique, l’information correspondante est-elle disponible ?</summary>
+<summary> 🟢🟢 Critère 9.8 - Pour chaque champ de formulaire qui attend un type de données et/ou un format spécifique, l’information correspondante est-elle disponible ?</summary>
 
 **RAAM** : [Critère 9.8](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-8)  
 **Ticket** : [PC-37493](https://passculture.atlassian.net/browse/PC-37493)  
 **PR** : [#8786](https://github.com/pass-culture/pass-culture-app-native/pull/8786)
 
-**Problème** 😱  
+**Problème** 😱
 
 - **(E09)** Pour le champ "Adresse e-mail" le format attendu est présent mais n'est pas lié à l'étiquette.
 
-- **(E11)** Pour les champs "Adresse e-mail" et le "Mot de passe", le format attendu est présent mais n'est pas lié à l'étiquette. 
+- **(E11)** Pour les champs "Adresse e-mail" et le "Mot de passe", le format attendu est présent mais n'est pas lié à l'étiquette.
 
 **Correction** 💡
 
-- **(E09 | E11)** Utilisation d'un accessibiltyLabel avec toutes les informations (label, format, obligation) ajouté directement dans l'input et les textes visibles par les utilisateurs sont ignorés aux lecteurs d'écrans pour éviter les doublons. 
-
+- **(E09 | E11)** Utilisation d'un accessibiltyLabel avec toutes les informations (label, format, obligation) ajouté directement dans l'input et les textes visibles par les utilisateurs sont ignorés aux lecteurs d'écrans pour éviter les doublons.
 
 **Retours audit** 🔥
 
@@ -574,13 +567,13 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ?</summary>
+<summary> 🔴🔴 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ?</summary>
 
 **RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
 **Ticket** : [PC-37501](https://passculture.atlassian.net/browse/PC-37501)  
 **PR** : [#8795](https://github.com/pass-culture/pass-culture-app-native/pull/8795), [#8812](https://github.com/pass-culture/pass-culture-app-native/pull/8812)
 
-**Problème** 😱  
+**Problème** 😱
 
 - **(E01)** L'orientation en mode paysage est bloqué par défaut sur l'application. Pour la débloquer il faut se rendre dans la section "Préférences d‘affichage" qui est difficilement accessible lors de la consultation de l’application la première fois (car l'onboarding ajoute plusieurs étapes).
 
@@ -588,13 +581,11 @@ Texte
 
 - **(E14)** En mode paysage, la liste des résultats est très peu visible.
 
+**Correction** 💡
 
-**Correction** 💡  
+- **(E01)** Déblocage de l’orientation en mode paysage par défaut, pour prendre en compte les paramètres du téléphone.
 
-- **(E01)** Déblocage de l’orientation en mode paysage par défaut, pour prendre en compte les paramètres du téléphone. 
-
-- **(E02 | E14)** Ajout de bordures horizontales en mode paysage pour éviter que des éléments soient tronqués ou cachés. 
-
+- **(E02 | E14)** Ajout de bordures horizontales en mode paysage pour éviter que des éléments soient tronqués ou cachés.
 
 **Retours audit** 🔥
 Texte
@@ -603,8 +594,117 @@ Texte
 
 <br>
 
+## ✅ Corrections 31 octobre → 28 novembre
 
-## ✅ Corrections 31 octobre → 19 novembre
+<br>
+
+<details>
+
+<summary> 🟠 Critère 3.11 - Pour chaque média temporel pré-enregistré, le contenu textuel adjacent permet-il d’identifier clairement le média temporel ?</summary>
+
+**RAAM** : [Critère 3.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-11)  
+**Ticket** : [PC-37472](https://passculture.atlassian.net/browse/PC-37472)  
+**PR** : [#8863](https://github.com/pass-culture/pass-culture-app-native/pull/8863)
+
+**Problème** 😱  
+- **(E02)** Les vidéos ne sont pas clairement identifiables.
+
+**Correction** 💡  
+- **(E02)** Une description de la vidéo a été ajoutée entre le titre et la vidéo. 
+- **(E02)** Le label d'accessibilité du titre de la vidéo précise qu'il s'agit d'un média vidéo. 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 5.1 - c) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 5.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-1)  
+**Ticket** : [PC-37475](https://passculture.atlassian.net/browse/PC-37475)  
+**PR** : [#8889](https://github.com/pass-culture/pass-culture-app-native/pull/8889)
+
+**Problème** 😱  
+- **(E02)** Le bouton qui permet d'ouvrir la modale de localisation ne reprend pas dans le nom accessible le nom de la localisation (quand cette dernière est renseignée). 
+- **(E03)** Le lien "support@passculture.app" a pour nom accessible "ouvrir le gestionnaire mail pour contacter le support". 
+- **(E04)** Non-conformité de typologie similaire à celle décrite sur l'écran "E03". Présente également ici, mais non redétaillée.. 
+- **(E11)** Le composant de sélection de la date (vocalise des données incohérentes "1900" etc.).
+- **(E14)** Les offres de chaque section ont un nom accessible qui ne reprend pas l'intégralité du contenu visible (il manque parfois l'information sur le nombre de "J'aime", et également parfois le lieu comme par exemple dans la section "Les librairies et bibliothèques").
+
+**Correction** 💡  
+- **(E02)** Reprise du nom visible au début de l'accessibilityLabel du bouton qui permet d'ouvrir la modale de localisation.
+- **(E03 | E04 )** Reprise du nom visible au début de l'accessibilityLabel des boutons "support@passculture.app".
+- **(E11)** Le composant de sélection de la date vocalise les données qui sont séléctionnée depuis une mise à jour de la librairie utilisé pour créer le date picker. 
+- **(E14)** Ajoute de tous les éléments présents visuellement directement dans l'accessibilityLabel des offres. 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 5.2 - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
+
+**RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  
+**Ticket** : [PC-38647](https://passculture.atlassian.net/browse/PC-38647)  
+**PR** : [#8878](https://github.com/pass-culture/pass-culture-app-native/pull/8878)
+
+**Problème** 😱  
+- **(E01)** Les liens sont bien contrôlable par le calvier ou tout dispositif de pointage, mais l'intitulé ne semble pas bon, à la suite du lien dit : "Link one of one" ou "One link found, swipe to move to the link". 
+
+**Correction** 💡  
+- **(E01)** Le problème de “One … found, swipe to move to the …” est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint 
+
+  1. **La lecture “One link found…” vient du moteur VoiceOver d’iOS, pas du code JavaScript ni de React Native (dans notre cas au pass Culture).**  
+  Quand VoiceOver détecte un élément accessible (accessibilityRole="link", button, etc.), il envoie directement les messages système depuis UIKit (le moteur natif d’Apple). 
+  React Native ne fait ici que déclarer des attributs d’accessibilité via ses props (accessibilityRole, accessibilityLabel, etc.).
+  Ensuite, c’est iOS qui décide quoi lire et dans quelle langue. Donc ce message ne passe même pas par la couche JavaScript.
+
+  2. **React Native transmet simplement les propriétés d’accessibilité natives**  
+  Quand on écris : <Text accessibilityRole="link" accessibilityLabel="Politique de cookies" />
+  React Native fait juste une passerelle vers : "UIAccessibilityTraitsLink accessibilityLabel = @"Politique de cookies"", dans le moteur natif d’iOS.
+  Aucune traduction, aucun hint automatique ne vient de React Native, tout est géré par Apple via UIAccessibility.
+
+  3. **Pourquoi on entend encore l’anglais ?**  
+  Ce n’est donc pas une erreur de React Native, mais une incohérence interne à iOS car les voix françaises utilisent encore des hints anglais, par manque de traduction. 
+  J'ai essayé les différentes voix françaises en normal et premium et j'ai toujours le même résultat.
+  C’est le même comportement qu’on retrouve dans Swift, SwiftUI ou UIKit si on fait une application iOS pure, on aura exactement la même phrase en anglais dans ces conditions.
+
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 6.2 - iOS - Dans chaque écran, les textes sont-ils restitués par les technologies d’assistance dans la langue principale de l’écran ?</summary>
+
+**RAAM** : [Critère 6.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-6-2)  
+**Ticket** : [PC-37479](https://passculture.atlassian.net/browse/PC-37479)  
+**PR** : [#8883](https://github.com/pass-culture/pass-culture-app-native/pull/8883)
+
+**Problème** 😱  
+- **(E05 | E14 | E16)** L'état des boutons radio (checked/unchecked) ne sont pas restitués par le lecteur d'écran dans la langue de traitement principale.
+
+- **(E09 | E11 | E13)** Non-conformité de typologie similaire à celle décrite sur l'écran "E05". Présente également ici, mais non redétaillée. (concerne les composants qui ouvrent et ferment du contenu (bloc "Accessibilité" de l'onglet "Infos pratiques" ) -> vocalise collapsed/extended)
+
+**Correction** 💡  
+- **(E05 | E09 | E11 | E13 | E14 | E16)** Comme pour le critère 5.2, le problème de la lecteur des aides à la compréhension de l'interface en anglais est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
 
 <br>
 
@@ -612,27 +712,62 @@ Texte
 
 <summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
 
-**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-X-X)  
-**Ticket** : [PC-38162](https://passculture.atlassian.net/browse/PC-38162)  
-**PR** : [#8850](https://github.com/pass-culture/pass-culture-app-native/pull/8850)
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
+**Ticket** : [PC-38162](https://passculture.atlassian.net/browse/PC-38162), [PC-38367](https://passculture.atlassian.net/browse/PC-38367)  
+**PR** : [#8850](https://github.com/pass-culture/pass-culture-app-native/pull/8850), [#8866](https://github.com/pass-culture/pass-culture-app-native/pull/8866)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(E14)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
 
-**Correction** 💡  
-- **(E14)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur. 
+- **(E15)** Dans la calendrier les dates sont illisible (Lun. > L…) car la largeur utilisé pour le composant des dates possède une largeur maximum. 
+
+**Correction** 💡
+
+- **(E14)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur.
+
+- **(E15)** Suppression de la taille maximale dans le composant des dates du calendrier (Lun. > L…), ce qui permet au texte de prendre la place nécessaire.
 
 **Retours audit** 🔥  
 Texte
 
 </details>
 
-## ✅ Corrections 19 novembre → 15 décembre
+<br>
+
+<details>
+
+<summary> 🟠 Critère 9.9 - Dans chaque formulaire, les erreurs de saisie sont-elles accessibles ?</summary>
+
+**RAAM** : [Critère 9.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-9)  
+**Ticket** : [PC-37494](https://passculture.atlassian.net/browse/PC-37494)  
+**PR** : [#8882](https://github.com/pass-culture/pass-culture-app-native/pull/8882)
+
+**Problème** 😱  
+- **(E07)** Les messages d'erreurs suivant ne sont pas restitués par le lecteur d'écran à la prise de focus sur le champ : 
+  - Le message d'erreur du champ "Adresse e-mail".
+  - Le message d'erreur "E-mail ou mot de passe incorrect".
+
+- **(E11)** Le message d'erreur suivant n'est restitué par le lecteur d'écran à la prise de focus sur le champ : Le message d'erreur du champ "Adresse e-mail".
+
+- **(E12)** Le message d'erreur de l'ensemble des champs du parcours (ex. lorsque l'utilisateur saisit un chiffre dans le champ "Prénom", le message "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.")
+
+**Correction** 💡  
+- **(E07 | E11 | E12)** Pour l'ensemble des champs de texte ou de recherche, nous avons ajouté le message d'erreur directement dans l'`accessibilityLabel`, ce qui à la prise de focus, permet d'avoir le message d'erreur (en plus de toutes les autres informations nécessaires à la compréhension du champ).
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+
+## ✅ Corrections 28 novembre → 15 décembre
 
 <br>
 
 ## 💡 Questions
-
 
 </details>
 
@@ -672,6 +807,7 @@ Si je supprime ce `accessibilityLabel`, les emojis dans le titre sont lus, même
 En réalité, nous n'avions pas testé correctement le plan du site avec le TalkBack. En plus de la restitution de toute la page lors de l'activation du TalkBack, de la restitution en appuyant un élément, on peut utiliser le swipe pour "naviguer" à travers les éléments. En swipant, on arrive bien a reproduire le problème qu'avait constaté l'auditeur. On endend bien un "click" entre les éléments. Mais ce n'était pas la restitution du svg "point" comme le pensait l'auditeur.
 
 Le son que nous entendions entre les éléments du plan du site était la restitution d'un texte vide. Ce texte vide était dû à la mauvaise utilisation d'un composant texte, utilisé comme conteneur, alors qu'il fallait utilisé une simple `View`. Une fois le composant texte remplacé par une `View`, nous n'avions plus le bruit parasite entre chaque element.
+
 </details>
 
 <br>

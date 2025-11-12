@@ -7,6 +7,7 @@ import * as Auth from 'features/auth/context/AuthContext'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
+import * as bookingHelpers from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
@@ -52,7 +53,7 @@ jest.mock('queries/offer/useBookingOfferQuery', () => ({
   useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
@@ -204,6 +205,33 @@ describe('<BookingOfferModalComponent />', () => {
     renderBookingOfferModal({})
 
     expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
+  })
+
+  it('should call shouldDisplayPricesStep with correct parameters', () => {
+    const shouldDisplayPricesStepSpy = jest.spyOn(bookingHelpers, 'shouldDisplayPricesStep')
+    const hour = '2024-03-14T14:00:00.000Z'
+    const date = new Date(hour)
+
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: {
+        offerId: mockOffer.id,
+        step: Step.DATE,
+        date: date,
+        hour: hour,
+      } as BookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    })
+    renderBookingOfferModal({})
+
+    expect(shouldDisplayPricesStepSpy).toHaveBeenCalledWith(
+      mockOffer.stocks,
+      date,
+      hour,
+      mockOffer.isEvent
+    )
+
+    shouldDisplayPricesStepSpy.mockRestore()
   })
 
   describe('when booking step is confirmation', () => {
