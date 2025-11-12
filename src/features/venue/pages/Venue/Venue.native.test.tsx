@@ -47,7 +47,7 @@ const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/location/location')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 const venueId = venueDataTest.id
 jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery')
 const mockUseGTLPlaylists = useGTLPlaylistsQuery as jest.Mock

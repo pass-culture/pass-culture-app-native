@@ -27,7 +27,7 @@ import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',

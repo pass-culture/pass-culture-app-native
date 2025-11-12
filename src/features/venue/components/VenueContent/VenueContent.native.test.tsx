@@ -28,7 +28,7 @@ jest.mock('queries/venue/useVenueOffersQuery', () => ({
   useVenueOffersQuery: () => ({ isLoading: false }),
 }))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('libs/location/location')
 jest.mock('features/search/context/SearchWrapper')

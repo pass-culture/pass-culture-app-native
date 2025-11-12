@@ -14,7 +14,7 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 let mockStep: Step | undefined = undefined
 jest.mock('features/bookOffer/context/useBookingContext', () => ({

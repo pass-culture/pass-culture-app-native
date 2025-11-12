@@ -14,8 +14,8 @@ jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
 const mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))

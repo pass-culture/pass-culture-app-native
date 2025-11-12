@@ -3,7 +3,7 @@ import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 describe('useCategoryId', () => {
   it.each`

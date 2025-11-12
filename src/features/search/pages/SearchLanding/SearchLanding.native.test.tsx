@@ -164,7 +164,7 @@ jest.mock('react-instantsearch-core', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
 

@@ -33,7 +33,7 @@ mockUseVenueOffers.mockReturnValue({
 })
 jest.mock('libs/location/location')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const venueId = venueDataTest.id
 useRoute.mockImplementation(() => ({ params: { id: venueId } }))

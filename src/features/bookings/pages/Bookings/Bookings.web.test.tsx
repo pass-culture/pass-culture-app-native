@@ -11,15 +11,15 @@ import {
 import { bookingsSnap } from 'features/bookings/fixtures'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
 
-jest.mock('libs/subcategories/useSubcategories')
-const mockUseSubcategories = jest.mocked(useSubcategories)
+jest.mock('queries/subcategories/useSubcategoriesQuery')
+const mockUseSubcategories = jest.mocked(useSubcategoriesQuery)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
 } as UseQueryResult<SubcategoriesResponseModelv2, Error>)

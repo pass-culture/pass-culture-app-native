@@ -10,7 +10,7 @@ import { renderHook } from 'tests/utils'
 
 import { adaptOffersPlaylistParameters } from './adaptOffersPlaylistParameters'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('queries/profile/usePatchProfileMutation')
 mockdate.set(new Date('2020-10-01T00:00+00:00'))

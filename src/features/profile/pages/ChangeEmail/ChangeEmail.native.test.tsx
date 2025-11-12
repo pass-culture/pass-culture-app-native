@@ -8,7 +8,7 @@ import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

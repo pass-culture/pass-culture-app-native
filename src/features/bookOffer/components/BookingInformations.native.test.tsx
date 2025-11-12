@@ -19,7 +19,7 @@ jest.mock('features/bookOffer/helpers/useBookingStock')
 const mockedUseBooking = jest.mocked(useBookingContext)
 const mockedUseBookingStock = jest.mocked(useBookingStock)
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const cinePleinAirOffer = {
   ...baseOffer,

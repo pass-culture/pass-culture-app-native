@@ -13,7 +13,7 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   push: jest.fn(),
 })
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 describe('ChroniclesSection', () => {
   const user = userEvent.setup()

@@ -10,8 +10,8 @@ import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,
@@ -36,7 +36,7 @@ export const OnGoingBookingsList: FunctionComponent = () => {
     isFetching,
     refetch,
   } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
-  const { isLoading: subcategoriesIsLoading } = useSubcategories()
+  const { isLoading: subcategoriesIsLoading } = useSubcategoriesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
