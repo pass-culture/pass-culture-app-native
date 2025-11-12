@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { ChangeBeneficiaryEmailBody, EmailChangeConfirmationResponse } from 'api/gen'
 
-export const useConfirmChangeEmailMutationV2 = ({
+export const useConfirmChangeEmailV2Mutation = ({
   onSuccess,
   onError,
 }: {

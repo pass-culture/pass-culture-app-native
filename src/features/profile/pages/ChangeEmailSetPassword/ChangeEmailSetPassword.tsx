@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useChangeEmailSetPasswordMutation } from 'features/profile/helpers/useChangeEmailSetPasswordMutation'
+import { useChangeEmailSetPasswordMutation } from 'features/profile/queries/useChangeEmailSetPasswordMutation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
