@@ -29,7 +29,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   { ...props },
   forwardedRef
 ) => {
-  const { onFocus, onBlur: onBlurDefault, isFocus } = useHandleFocus()
+  const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const [textLength, setTextLength] = useState(0)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomInputTextProps(props)
@@ -48,6 +48,14 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
     if (nativeProps.onBlur) {
       // @ts-expect-error pass event later when needed
       nativeProps.onBlur()
+    }
+  }
+
+  function onFocus() {
+    onFocusDefault()
+    if (nativeProps.onFocus) {
+      // @ts-expect-error pass event later when needed
+      nativeProps.onFocus()
     }
   }
 

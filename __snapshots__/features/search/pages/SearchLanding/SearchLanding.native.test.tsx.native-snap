@@ -110,19 +110,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   </Text>
                 </View>
               </View>
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "marginTop": 4,
-                  }
-                }
-              >
-                Toutes les offres à portée de main
-              </Text>
             </View>
             <View
               testID="InsideLocationWidget"
@@ -265,81 +252,105 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   }
                 >
                   <View
-                    height="regular"
-                    isDisabled={false}
-                    isError={false}
-                    isFocus={false}
                     style={
-                      [
+                      {
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <View>
+                      <View
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no"
+                        style={
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View>
+                          <Text
+                            style={
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              }
+                            }
+                          >
+                            Recherche par offre, lieu, artiste
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      isDisabled={false}
+                      isError={false}
+                      isFocused={false}
+                      isHover={false}
+                      size="small"
+                      style={
                         {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
-                          "borderBottomLeftRadius": 24,
-                          "borderBottomRightRadius": 24,
-                          "borderColor": "#90949d",
-                          "borderStyle": "solid",
-                          "borderTopLeftRadius": 24,
-                          "borderTopRightRadius": 24,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "height": 48,
-                          "paddingBottom": 0,
-                          "paddingLeft": 17,
-                          "paddingRight": 17,
-                          "paddingTop": 0,
-                          "width": "100%",
-                        },
-                        {
                           "borderBottomLeftRadius": 8,
                           "borderBottomRightRadius": 8,
+                          "borderColor": "#90949d",
+                          "borderStyle": "solid",
                           "borderTopLeftRadius": 8,
                           "borderTopRightRadius": 8,
-                        },
-                        {
-                          "flex": 1,
-                        },
-                      ]
-                    }
-                    testID="styled-input-container"
-                  >
-                    <View
-                      style={
-                        {
-                          "flexShrink": 0,
-                          "marginRight": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "marginTop": 4,
+                          "paddingBottom": 0,
+                          "paddingLeft": 9,
+                          "paddingRight": 9,
+                          "paddingTop": 0,
+                          "width": "100%",
                         }
                       }
+                      testID="styled-input-container"
                     >
                       <View
-                        height={20}
-                        width={20}
+                        style={
+                          {
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
-                    </View>
-                    <TextInput
-                      accessibilityHidden={true}
-                      accessibilityLabel="Champs de recherche"
-                      autoCorrect={false}
-                      autoFocus={false}
-                      editable={true}
-                      enablesReturnKeyAutomatically={true}
-                      focusable={false}
-                      isEmpty={true}
-                      multiline={false}
-                      nativeID="testUuidV4"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      onSubmitEditing={[Function]}
-                      placeholder="Offre, artiste, lieu culturel..."
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="search"
-                      selectionColor="#696a6f"
-                      style={
-                        [
+                      <TextInput
+                        accessibilityLabel="Champs de texte - Recherche par offre, lieu, artiste"
+                        accessibilityRequired={false}
+                        editable={true}
+                        isEmpty={true}
+                        multiline={false}
+                        nativeID="searchInput"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        onSubmitEditing={[Function]}
+                        placeholder=""
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="search"
+                        style={
                           {
                             "color": "#161617",
                             "flexBasis": 0,
@@ -352,14 +363,13 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                          },
-                          {},
-                        ]
-                      }
-                      testID="searchInput"
-                      textAlignVertical="center"
-                      value=""
-                    />
+                          }
+                        }
+                        testID="searchInput"
+                        textAlignVertical="center"
+                        value=""
+                      />
+                    </View>
                   </View>
                 </View>
               </View>

@@ -18,7 +18,6 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
-import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -27,17 +26,16 @@ import { analytics } from 'libs/analytics/provider'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
-  searchInputID: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
   offerCategories?: SearchGroupNameEnumv2[]
-  placeholder?: string
 }
 
 const accessibilityDescribedBy = uuidv4()
@@ -46,12 +44,10 @@ const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
 const CINEMA_KEYWORD_PATTERN = /\bCIN[ÉE]MA?S?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
-  searchInputID,
   accessibleHiddenTitle,
   addSearchHistory,
   searchInHistory,
   offerCategories,
-  placeholder,
   ...props
 }) => {
   const { isDesktopViewport } = useTheme()
@@ -293,10 +289,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     showSuggestions,
   ])
 
-  const showLocationButton =
-    (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
-    !isFocusOnSuggestions
-
   const disableInputClearButton =
     (currentView === SearchView.Results || currentView === SearchView.Thematic) &&
     !isFocusOnSuggestions &&
@@ -316,19 +308,18 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           ) : null}
           <FlexView>
             <HiddenSuggestionsButton />
-            <SearchMainInput
+            <SearchInput
+              label="Recherche par offre, lieu, artiste"
               ref={inputRef}
-              searchInputID={searchInputID}
-              query={displayedQuery}
-              setQuery={setQuery}
-              isFocusable={isFocusOnSuggestions}
-              onSubmitQuery={onSubmitQuery}
-              resetQuery={resetQuery}
+              value={displayedQuery}
+              onChangeText={setQuery}
+              onSubmitEditing={onSubmitQuery}
+              onClear={resetQuery}
+              nativeAutoFocus={Platform.OS !== 'web'}
               onFocus={onFocus}
-              showLocationButton={showLocationButton}
-              accessibilityDescribedBy={accessibilityDescribedBy}
-              disableInputClearButton={disableInputClearButton}
-              placeholder={placeholder}
+              focusable={isFocusOnSuggestions}
+              testID="searchInput"
+              disableClearButton={disableInputClearButton}
             />
           </FlexView>
         </SearchInputA11yContainer>

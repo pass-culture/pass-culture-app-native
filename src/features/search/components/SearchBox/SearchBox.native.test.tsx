@@ -14,7 +14,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location/location'
-import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -88,7 +87,7 @@ jest.mock('react-instantsearch-core', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: Position = DEFAULT_POSITION
+const mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -176,7 +175,9 @@ describe('SearchBox component', () => {
 
   it('should render SearchBox', async () => {
     renderSearchBox()
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     expect(searchInput).toBeOnTheScreen()
   })
@@ -189,7 +190,9 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -208,7 +211,9 @@ describe('SearchBox component', () => {
   it('should display error message when query submitted is longer than 150 characters', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     await user.type(searchInput, queryWithMoreThan150characters, { submitEditing: true })
 
@@ -224,7 +229,9 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -255,7 +262,9 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
     await user.type(searchInput, 'j')
     const resetSearchInputButton = screen.getByTestId('Réinitialiser la recherche')
     await user.press(resetSearchInputButton)
@@ -299,7 +308,9 @@ describe('SearchBox component', () => {
   it('should show the text typed by the user', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
     await user.type(searchInput, 'Some text')
 
     expect(searchInput.props.value).toBe('Some text')
@@ -308,7 +319,9 @@ describe('SearchBox component', () => {
   it('should not execute a search if input is empty', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     await user.type(searchInput, '')
 
@@ -366,7 +379,9 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -386,7 +401,9 @@ describe('SearchBox component', () => {
     useRoute.mockReturnValueOnce({ name: SearchView.Landing })
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+    const searchInput = screen.getByLabelText(
+      'Champs de texte - Recherche par offre, lieu, artiste'
+    )
 
     await user.type(searchInput, '')
 
@@ -431,19 +448,6 @@ describe('SearchBox component', () => {
     expect(screen.queryByText(venue.label)).not.toBeOnTheScreen()
   })
 
-  it('should not display locationSearchWidget when isDesktopViewport = true', async () => {
-    mockSearchState = {
-      ...initialSearchState,
-      locationFilter: { locationType: LocationMode.EVERYWHERE },
-    }
-    useRoute.mockReturnValueOnce({ name: SearchView.Results })
-
-    mockPosition = DEFAULT_POSITION
-    renderSearchBox()
-
-    expect(await screen.findByText(LocationLabel.everywhereLabel)).toBeOnTheScreen()
-  })
-
   describe('shouldRedirectToThematicSearch', () => {
     it('should not update searchState when current route is not searchLanding', async () => {
       // TODO(PC-32646): useRoute is called every time a letter is inputted +1 (sic!)
@@ -454,7 +458,9 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = screen.getByLabelText(
+        'Champs de texte - Recherche par offre, lieu, artiste'
+      )
 
       await user.type(searchInput, 'Livres', { submitEditing: true })
 
@@ -489,7 +495,9 @@ describe('SearchBox component', () => {
         useRoute.mockReturnValue({ name: SearchView.Landing })
         renderSearchBox()
 
-        const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+        const searchInput = screen.getByLabelText(
+          'Champs de texte - Recherche par offre, lieu, artiste'
+        )
         await user.type(searchInput, queryText, { submitEditing: true })
 
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -520,7 +528,9 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = screen.getByLabelText(
+        'Champs de texte - Recherche par offre, lieu, artiste'
+      )
 
       await user.type(searchInput, 'cinéma', { submitEditing: true })
 
@@ -538,7 +548,9 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = screen.getByLabelText(
+        'Champs de texte - Recherche par offre, lieu, artiste'
+      )
 
       await user.type(searchInput, '')
 
@@ -698,7 +710,9 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+      const searchInput = screen.getByLabelText(
+        'Champs de texte - Recherche par offre, lieu, artiste'
+      )
 
       await user.type(searchInput, 'HP', { submitEditing: true })
 
@@ -753,7 +767,6 @@ describe('SearchBox component', () => {
         .mockReturnValueOnce({ name: SearchView.Thematic })
 
       const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
-      const BOOK_SEARCH_BOX_PLACEHOLDER = 'Livres'
 
       mockSearchState = {
         ...mockSearchState,
@@ -774,9 +787,11 @@ describe('SearchBox component', () => {
         ],
       }
 
-      renderSearchBox(false, BOOK_OFFER_CATEGORIES, BOOK_SEARCH_BOX_PLACEHOLDER)
+      renderSearchBox(false, BOOK_OFFER_CATEGORIES)
 
-      const searchInput = screen.getByPlaceholderText(BOOK_SEARCH_BOX_PLACEHOLDER)
+      const searchInput = screen.getByLabelText(
+        'Champs de texte - Recherche par offre, lieu, artiste'
+      )
 
       await user.type(searchInput, 'HP', { submitEditing: true })
 
@@ -797,33 +812,22 @@ describe('SearchBox component', () => {
 
 const renderSearchBox = (
   isDesktopViewport?: boolean,
-  offerCategories?: SearchGroupNameEnumv2[],
-  placeholder?: string
+  offerCategories?: SearchGroupNameEnumv2[]
 ) => {
   return render(
-    <DummySearchBox offerCategories={offerCategories} placeholder={placeholder} />,
+    <DummySearchBox offerCategories={offerCategories} />,
 
     { theme: { isDesktopViewport: isDesktopViewport ?? false } }
   )
 }
 
-const DummySearchBox = ({
-  placeholder,
-  offerCategories,
-}: {
-  offerCategories?: SearchGroupNameEnumv2[]
-  placeholder?: string
-}) => {
-  const searchInputID = uuidv4()
-
+const DummySearchBox = ({ offerCategories }: { offerCategories?: SearchGroupNameEnumv2[] }) => {
   return (
     <React.Fragment>
       <SearchBox
-        searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
         offerCategories={offerCategories}
-        placeholder={placeholder}
       />
     </React.Fragment>
   )
