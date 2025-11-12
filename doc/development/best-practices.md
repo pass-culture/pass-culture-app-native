@@ -12,12 +12,9 @@ These rules apply to files that you make changes to.
 If you can't respect one of these rules, be sure to explain why with a comment.
 If you consider correcting the issue is too time consuming/complex: create a ticket. Link the ticket in the code.
 
-- In the production code: remove type assertions with `as` (type assertions are removed at compile-time, there is no runtime checking associated with a type assertion. There won’t be an exception or `null` generated if the type assertion is wrong). In certain cases `as const` is acceptable (for example when defining readonly arrays/objects). Using `as` in tests is tolerable.
-- Remove bypass type checking with `any` (when you want to accept anything because you will be blindly passing it through without interacting with it, you can use `unknown`). Using `any` in tests is tolerable.
-- Remove non-null assertion operators (just like other type assertions, this doesn’t change the runtime behavior of your code, so it’s important to only use `!` when you know that the value can’t be `null` or `undefined`).
-- Remove all `@ts-expect-error` and `@eslint-disable`.
+- In the production code: remove type assertions with `as` (type assertions are removed at compile-time, there is no runtime checking associated with a type assertion. There won't be an exception or `null` generated if the type assertion is wrong). In certain cases `as const` is acceptable (for example when defining readonly arrays/objects). Using `as` in tests is tolerable.
+- Remove all `@eslint-disable`.
 - Remove all warnings, and errors that we are used to ignore (`yarn test:lint`, `yarn test:types`, `yarn start:web`...).
-- Use `gap` (`ViewGap`) instead of `<Spacer.Column />`, `<Spacer.Row />` or `<Spacer.Flex />`.
 - Don't add new "alias hooks" (hooks created to group other hooks together). When adding new logic, this hook will progressively become more complex and harder to maintain.
 - Remove logic from components that should be dumb.
 - undefined != null : undefined should be used for optionals and null when no value
@@ -43,7 +40,6 @@ If you consider correcting the issue is too time consuming/complex: create a tic
 
 - Avoid mocking internal parts of our code. Ideally, mock only external calls.
 - When you see a local variable that is over-written in every test, mock it.
-- Prefer `user` to `fireEvent`.
 - When mocking feature flags, use `setFeatureFlags`. If not possible, mention which one(s) you want to mock in a comment (example: `jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true) // WIP_NEW_OFFER_TILE in renderPassPlaylist.tsx` )
 - In component tests, replace `await act(async () => {})` and `await waitFor(/* ... */)` by `await screen.findBySomething()`.
 - In hooks tests, use `act` by default and `waitFor` as a last resort.
