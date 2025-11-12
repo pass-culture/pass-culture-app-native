@@ -71,6 +71,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
             variant={variant}
             description={option.description}
             collapsed={option.collapsed}
+            asset={option.asset}
             sizing={computedRadioButtonSizing(option.sizing, display)}
           />
         ))}
@@ -82,13 +83,16 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
 const computedRadioButtonSizing = (
   sizing: SelectableSizing | undefined,
   display: RadioButtonGroupDisplay
-) => (sizing ? sizing : display === 'horizontal' ? 'hug' : 'fill')
+) => {
+  if (sizing) return sizing
+  return display === 'horizontal' ? 'hug' : 'fill'
+}
 
 const RadioButtonGroupContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
 }))
 
-export const RadioButtonListContainer = styled.View<{
+const RadioButtonListContainer = styled.View<{
   variant: Variant
   display: RadioButtonGroupDisplay
 }>(({ theme, variant, display }) => ({
@@ -100,14 +104,14 @@ export const RadioButtonListContainer = styled.View<{
       : theme.designSystem.size.spacing.s,
 }))
 
-export const ErrorContainer = styled.View(({ theme }) => ({
+const ErrorContainer = styled.View(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   gap: theme.designSystem.size.spacing.xs,
 }))
 
-export const TitleContainer = styled.View(({ theme }) => ({
+const TitleContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.xs,
 }))
 
