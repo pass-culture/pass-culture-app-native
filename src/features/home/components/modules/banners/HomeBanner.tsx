@@ -52,14 +52,12 @@ const bannersToRender = [
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
-  const showRemoteGenericBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
-  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const { options: remoteGenericBannerOptions } = useFeatureFlagOptionsQuery(
-    RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER
-  )
-  const { options: remoteActivationBannerOptions } = useFeatureFlagOptionsQuery(
-    RemoteStoreFeatureFlags.DISABLE_ACTIVATION
-  )
+
+  const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
+    useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+
+  const { options: remoteGenericBannerOptions, isFeatureFlagActive: showRemoteGenericBanner } =
+    useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
