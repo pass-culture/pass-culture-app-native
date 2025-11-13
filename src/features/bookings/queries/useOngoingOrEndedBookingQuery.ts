@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
 import { BookingReponse, BookingsResponse } from 'api/gen'
-import { convertOffererDatesToTimezone } from 'features/bookings/queries/selectors/convertOffererDatesToTimezone'
+import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsResponseV2DatesToTimezone'
 import { findOngoingOrEndedBooking } from 'features/bookings/queries/selectors/findOngoingOrEndedBooking'
 import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 
@@ -19,7 +19,7 @@ const findOngoingOrEndedBookingV1 = (bookings: BookingsResponse | null, id: numb
   return onGoingBooking ?? (endedBooking || null)
 }
 
-export const useOngoingOrEndedBookingQuery = (id: number, enabled: boolean) =>
+export const useOngoingOrEndedBookingQuery = (id: number, enabled = true) =>
   useBookingsQueryV2(enabled, (data) =>
-    findOngoingOrEndedBooking(convertOffererDatesToTimezone(data), id)
+    findOngoingOrEndedBooking(convertBookingsResponseV2DatesToTimezone(data), id)
   )
