@@ -269,14 +269,11 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             }
           >
             <View
-              gap={0}
               style={
                 {
                   "alignItems": "flex-start",
                   "display": "flex",
                   "flexDirection": "column",
-                  "gap": 0,
-                  "maxWidth": 500,
                   "width": "100%",
                 }
               }
@@ -1029,14 +1026,11 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           }
         />
         <View
-          gap={0}
           style={
             {
               "alignItems": "flex-start",
               "display": "flex",
               "flexDirection": "column",
-              "gap": 0,
-              "maxWidth": 500,
               "width": "100%",
             }
           }

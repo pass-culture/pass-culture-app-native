@@ -266,14 +266,11 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                 }
               >
                 <View
-                  gap={0}
                   style={
                     {
                       "alignItems": "flex-start",
                       "display": "flex",
                       "flexDirection": "column",
-                      "gap": 0,
-                      "maxWidth": 500,
                       "width": "100%",
                     }
                   }
@@ -455,7 +452,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                       testID="Réinitialiser la recherche"
                     >
                       <View
-                        fill="#161617"
                         height={24}
                         width={24}
                       >
@@ -883,14 +879,11 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                 }
               >
                 <View
-                  gap={0}
                   style={
                     {
                       "alignItems": "flex-start",
                       "display": "flex",
                       "flexDirection": "column",
-                      "gap": 0,
-                      "maxWidth": 500,
                       "width": "100%",
                     }
                   }
@@ -1072,7 +1065,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                       testID="Réinitialiser la recherche"
                     >
                       <View
-                        fill="#161617"
                         height={24}
                         width={24}
                       >

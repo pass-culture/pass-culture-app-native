@@ -7841,7 +7841,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <View
-                                fill="#696a6f"
                                 height={16}
                                 testID="invalid-icon"
                                 width={16}
@@ -7943,7 +7942,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <View
-                                fill="#696a6f"
                                 height={16}
                                 testID="invalid-icon"
                                 width={16}
@@ -8045,7 +8043,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               }
                             >
                               <View
-                                fill="#696a6f"
                                 height={16}
                                 testID="invalid-icon"
                                 width={16}
