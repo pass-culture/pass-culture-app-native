@@ -11,6 +11,7 @@ import {
   useOngoingOrEndedBookingQuery,
   useOngoingOrEndedBookingQueryV2,
 } from 'features/bookings/queries'
+import { convertBookingDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsResponseV2DatesToTimezone'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -18,22 +19,16 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useBookingsByIdQuery } from 'queries/bookings/useBookingsByIdQuery'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const BookingDetails = () => {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const enableNewBookingPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE)
-  const { user, isLoggedIn } = useAuthContext()
-  const netInfo = useNetInfoContext()
-
+  const { user } = useAuthContext()
   return enableNewBookingPage ? (
-    <BookingDetailsContainer
-      bookingId={params.id}
-      enabledQuery={!!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn}
-      user={user}
-    />
+    <BookingDetailsContainer bookingId={params.id} user={user} />
   ) : (
     <BookingDetailsContainerOld bookingId={params.id} />
   )
@@ -95,13 +90,20 @@ const BookingDetailsContainerOld = ({ bookingId }: { bookingId: number }) => {
 
 const BookingDetailsContainer = ({
   bookingId,
-  enabledQuery,
   user,
 }: {
   bookingId: number
-  enabledQuery: boolean
   user: UserProfileResponseWithoutSurvey | undefined
 }) => {
+  const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
+
+  const useBookingById = () =>
+    useBookingsByIdQuery(bookingId, { select: convertBookingDateToTimezone })
+
+  const useOngoingOrEndedBookings = () => useOngoingOrEndedBookingQueryV2(bookingId)
+
+  const useActiveQuery = enableNewBookings ? useBookingById : useOngoingOrEndedBookings
+
   const {
     data: booking,
     status,
@@ -110,7 +112,7 @@ const BookingDetailsContainer = ({
     isError,
     error,
     dataUpdatedAt,
-  } = useOngoingOrEndedBookingQueryV2(bookingId, enabledQuery)
+  } = useActiveQuery()
 
   const mapping = useSubcategoriesMapping()
   const { logType } = useLogTypeFromRemoteConfig()
@@ -143,7 +145,7 @@ const BookingDetailsContainer = ({
 
   const properties = getBookingPropertiesV2.getBookingProperties(
     booking,
-    mapping[booking.stock.offer.subcategoryId].isEvent
+    mapping[booking.stock?.offer?.subcategoryId]?.isEvent
   )
 
   // FIXME(PC-36440): To remove when no need for Old/new container
