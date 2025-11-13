@@ -8,7 +8,6 @@ import React from 'react'
 import { SelectableAssetProps, SelectableSizing } from 'ui/designSystem/types'
 
 export type RadioPart = 'container' | 'circle' | 'round'
-export type RadioState = 'selected' | 'disabledSelected' | 'disabled' | 'error' | 'default'
 export type Variant = 'default' | 'detailed'
 
 export type RadioStateObject = {
