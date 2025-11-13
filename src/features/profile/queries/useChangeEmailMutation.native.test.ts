@@ -1,5 +1,5 @@
 import { replace } from '__mocks__/@react-navigation/native'
-import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
+import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailMutation'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'

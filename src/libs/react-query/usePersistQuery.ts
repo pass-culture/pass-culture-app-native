@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/queries-must-be-in-queries-folder */
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {
   QueryKey,

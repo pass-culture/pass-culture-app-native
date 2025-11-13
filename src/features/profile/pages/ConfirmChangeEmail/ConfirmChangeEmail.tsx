@@ -7,7 +7,7 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useConfirmChangeEmailMutationV2'
+import { useConfirmChangeEmailV2Mutation } from 'features/profile/queries/useConfirmChangeEmailV2Mutation'
 import { isTimestampExpired } from 'libs/dates'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -20,7 +20,7 @@ export function ConfirmChangeEmail() {
   const { params } = useRoute<UseRouteType<'ConfirmChangeEmail'>>()
   const loginRoutine = useLoginRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { mutate, isPending } = useConfirmChangeEmailMutationV2({
+  const { mutate, isPending } = useConfirmChangeEmailV2Mutation({
     onSuccess: async ({
       accessToken,
       refreshToken,
