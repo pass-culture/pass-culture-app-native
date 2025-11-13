@@ -6,6 +6,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { BaseRadioProps, Variant } from 'ui/designSystem/RadioButton/types'
 import { SelectableSizing } from 'ui/designSystem/types'
@@ -42,14 +43,14 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
 }: Props) => {
   const [value, setValue] = useState('')
   return (
-    <RadioButtonGroupContainer>
+    <RadioButtonGroupContainer accessibilityRole={AccessibilityRole.GROUP}>
       <TitleContainer>
         <Typo.Body>{label}</Typo.Body>
         <Description>{description}</Description>
         {error ? (
           <ErrorContainer>
             <ErrorIcon />
-            <Error>{error && errorText}</Error>
+            <ErrorText>{errorText}</ErrorText>
           </ErrorContainer>
         ) : null}
       </TitleContainer>
@@ -119,7 +120,7 @@ const Description = styled(Typo.BodyXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const Error = styled(Typo.BodyXs)(({ theme }) => ({
+const ErrorText = styled(Typo.BodyXs)(({ theme }) => ({
   color: theme.designSystem.color.text.error,
 }))
 
