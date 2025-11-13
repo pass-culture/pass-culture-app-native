@@ -44,9 +44,11 @@ const Container = styled.View<{ highlighted: boolean }>(({ theme, highlighted })
   borderRadius: theme.designSystem.size.borderRadius.l,
   paddingHorizontal: theme.designSystem.size.spacing.s,
   borderWidth: 1,
-  backgroundColor: highlighted ? theme.designSystem.color.background.subtle : 'transparent',
+  backgroundColor: highlighted
+    ? theme.designSystem.color.background.subtle
+    : theme.designSystem.color.background.default,
   borderColor: highlighted
-    ? theme.designSystem.color.border.focused
+    ? theme.designSystem.color.border.selected
     : theme.designSystem.color.border.default,
 }))
 
@@ -57,7 +59,7 @@ const LocationPointerHighlighted = styled(LocationPointer).attrs(({ theme }) => 
 
 const LocationPointerDefault = styled(LocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.designSystem.color.icon.locked,
+  color: theme.designSystem.color.icon.default,
 }))``
 
 const LocationTitle = styled(Typo.BodyAccentXs).attrs({
@@ -65,6 +67,7 @@ const LocationTitle = styled(Typo.BodyAccentXs).attrs({
 })(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.xs,
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
+  color: theme.designSystem.color.text.default,
 }))
 
 const LocationButton = styled(TouchableOpacity)(({ theme }) => ({
