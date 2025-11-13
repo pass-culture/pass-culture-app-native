@@ -14,4 +14,5 @@ export const highlightOfferModuleFixture: HighlightOfferModule = {
   color: Color.SkyBlue,
   isGeolocated: true,
   aroundRadius: 50,
+  localizationArea: undefined,
 }

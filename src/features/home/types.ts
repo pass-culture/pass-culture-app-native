@@ -357,6 +357,7 @@ export type HighlightOfferModule = {
   isGeolocated?: boolean
   aroundRadius?: number
   displayBookingAllowedDatetime?: boolean
+  localizationArea?: LocationCircleArea
 }
 
 export type OffersPlaylistParameters = PlaylistOffersParams[]
