@@ -2,10 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - runFlow:
     when:
-      visible: 'Paris'
+      visible: '.*Paris.*'
     commands:
-      - tapOn: 'Paris'
-      - tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
-      - inputText: 'Paris'
-      - hideKeyboard
-      - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
+      - tapOn: '.*Paris.*'
+      - tapOn: 'Valider la localisation'

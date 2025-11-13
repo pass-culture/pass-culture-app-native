@@ -1,22 +1,14 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Localisation'
-- tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
-- inputText: 'Paris'
-
 - runFlow:
     when:
-      platform: iOS
+      visible: 'Localisation'
     commands:
-      - tapOn: 'Paris Paris'
+    - tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
+    - inputText: 'Paris'
+    - tapOn: 'Paris Paris'
+    - tapOn: 'Valider et voir sur la carte'
 
-- runFlow:
-    when:
-      platform: Android
-    commands:
-      - tapOn: 'Paris0Paris'
-
-- tapOn: 'Valider et voir sur la carte'
 
 - assertVisible:
     text: 'Carte des lieux'
