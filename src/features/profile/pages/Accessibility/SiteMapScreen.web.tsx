@@ -31,60 +31,57 @@ export function SiteMapScreen() {
   return (
     <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
       <StyledVerticalUl>
-        {visibleSiteMapLinks.map((item, parentIdx) => {
-          const visibleSubPages = item.subPages.filter(
-            (subPage) => !subPage.isLoggedIn || isLoggedIn
+        {visibleSiteMapLinks.flatMap((item) => {
+          const parentJsx = (
+            <Li
+              key={item.wording}
+              groupLabel="Plan du site"
+              total={visibleSiteMapLinks.length}
+              index={visibleSiteMapLinks.indexOf(item)}
+              accessibilityLabel={item.wording}
+              accessibilityRole={AccessibilityRole.BUTTON}>
+              <ItemContainer>
+                <BulletContainer>
+                  <Bullet />
+                </BulletContainer>
+                <ListText>
+                  <InternalTouchableLink
+                    as={Button}
+                    wording={item.wording}
+                    navigateTo={item.navigateTo}
+                  />
+                </ListText>
+              </ItemContainer>
+            </Li>
           )
-          return (
-            <React.Fragment key={item.wording}>
+
+          const childrenJsx = item.subPages
+            .filter((subPage) => !subPage.isLoggedIn || isLoggedIn)
+            .map((subPage, idx) => (
               <Li
-                groupLabel="Plan du site"
-                total={visibleSiteMapLinks.length}
-                index={parentIdx}
-                accessibilityLabel={item.wording}
+                key={subPage.wording}
+                groupLabel={item.wording}
+                index={idx}
+                total={item.subPages.length}
+                accessibilityLabel={subPage.wording}
                 accessibilityRole={AccessibilityRole.BUTTON}>
-                <ItemContainer>
+                <NestedItemContainer>
                   <BulletContainer>
-                    <Bullet />
+                    <NestedBullet />
                   </BulletContainer>
                   <ListText>
                     <InternalTouchableLink
                       as={Button}
-                      wording={item.wording}
-                      navigateTo={item.navigateTo}
+                      typography="BodyAccentXs"
+                      wording={subPage.wording}
+                      navigateTo={subPage.navigateTo}
                     />
                   </ListText>
-                </ItemContainer>
+                </NestedItemContainer>
               </Li>
-              {visibleSubPages.length > 0 ? (
-                <StyledVerticalUl>
-                  {visibleSubPages.map((subPage, idx) => (
-                    <Li
-                      key={subPage.wording}
-                      groupLabel={item.wording}
-                      total={visibleSubPages.length}
-                      index={idx}
-                      accessibilityLabel={subPage.wording}
-                      accessibilityRole={AccessibilityRole.BUTTON}>
-                      <NestedItemContainer>
-                        <BulletContainer>
-                          <NestedBullet />
-                        </BulletContainer>
-                        <ListText>
-                          <InternalTouchableLink
-                            as={Button}
-                            typography="BodyAccentXs"
-                            wording={subPage.wording}
-                            navigateTo={subPage.navigateTo}
-                          />
-                        </ListText>
-                      </NestedItemContainer>
-                    </Li>
-                  ))}
-                </StyledVerticalUl>
-              ) : null}
-            </React.Fragment>
-          )
+            ))
+
+          return [parentJsx, ...childrenJsx]
         })}
       </StyledVerticalUl>
     </SecondaryPageWithBlurHeader>
