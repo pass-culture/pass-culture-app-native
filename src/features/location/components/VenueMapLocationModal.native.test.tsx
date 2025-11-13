@@ -51,8 +51,8 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 >
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
-jest.mock('libs/place/usePlaces', () => ({
-  usePlaces: () => ({ data: mockPlaces, isLoading: false }),
+jest.mock('libs/place/queries/usePlacesQuery', () => ({
+  usePlacesQuery: () => ({ data: mockPlaces, isLoading: false }),
 }))
 
 jest.mock('features/search/context/SearchWrapper', () => ({

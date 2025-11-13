@@ -8,7 +8,7 @@ import { FilterBehaviour } from 'features/search/enums'
 import { getDescription } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DescriptionContext } from 'features/search/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { Sort } from 'ui/svg/icons/Sort'
 
@@ -18,7 +18,7 @@ type Props = {
 
 export const Category = ({ onClose }: Props) => {
   const { searchState } = useSearch()
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { facets } = useSearchResults()
   const {
     visible: categoriesModalVisible,

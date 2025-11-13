@@ -1,4 +1,3 @@
-import { useSubcategories as mockUseSubcategories } from 'libs/subcategories/__mocks__/useSubcategories'
 import {
   categoryIdMappingSnap,
   subcategoriesMappingSnap,
@@ -17,9 +16,11 @@ import {
 } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: mockUseSubcategories,
-}))
+jest.mock('queries/subcategories/useSubcategoriesQuery')
+
+const mockUseSubcategories = jest.requireMock<{
+  useSubcategoriesQuery: jest.Mock
+}>('queries/subcategories/useSubcategoriesQuery').useSubcategoriesQuery
 
 describe('useCategoryIdMapping', () => {
   it('should match category id mapping', () => {

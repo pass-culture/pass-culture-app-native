@@ -19,7 +19,7 @@ type ThematicSearchPlaylists = {
   queryKey: string
 }
 
-export function useThematicSearchPlaylists({
+export function useThematicSearchPlaylistsQuery({
   playlistTitles,
   fetchMethod,
   queryKey,

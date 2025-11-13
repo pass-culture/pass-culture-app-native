@@ -8,7 +8,7 @@ import {
 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
@@ -23,7 +23,7 @@ export const OfferNativeCategoryChoices = (props: Props) => {
     [] as NativeCategoryIdEnumv2[]
   )
 
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const { categories, onChange } = props
 
   const nativeCategories = useMemo(() => {

@@ -14,7 +14,7 @@ jest.mock('libs/location/location', () => ({
   useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
 }))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 describe('useAdaptOffersPlaylistParameters', () => {
   const {

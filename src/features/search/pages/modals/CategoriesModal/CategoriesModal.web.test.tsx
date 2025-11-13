@@ -7,7 +7,7 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { CategoriesModal } from './CategoriesModal'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({

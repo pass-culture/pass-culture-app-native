@@ -9,7 +9,7 @@ import { ScreensUsedByMarketing } from 'features/internal/config/deeplinksExport
 import { LocationMode } from 'libs/location/types'
 import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 mockdate.set(new Date('2022-08-09T00:00:00Z'))
 

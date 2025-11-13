@@ -265,7 +265,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           
 
           <View
-            accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations sont annulées sauf pour certains cas précisés dans les "
+            accessibilityLabel="Les conséquences – Liste - Élément 1 sur 3 - tes réservations sont annulées sauf pour certains cas précisés dans les  conditions générales d’utilisation"
             accessibilityRole="link"
             accessible={true}
             style={

@@ -12,6 +12,7 @@ const useQueryWeb = <
     UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
     'queryKey' | 'initialData'
   >
+  // eslint-disable-next-line local-rules/no-queries-outside-query-files, local-rules/queries-only-in-use-query-functions
 ) => useQuery({ queryKey, queryFn, ...options })
 
 export { useQueryWeb as usePersistQuery }

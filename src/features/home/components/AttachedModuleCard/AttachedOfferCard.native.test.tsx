@@ -8,7 +8,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen } from 'tests/utils'
 
@@ -40,8 +40,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/subcategories/useCategoryId')
-jest.mock('libs/subcategories/useSubcategories')
-const mockUseSubcategories = jest.mocked(useSubcategories)
+jest.mock('queries/subcategories/useSubcategoriesQuery')
+const mockUseSubcategories = jest.mocked(useSubcategoriesQuery)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
   data: PLACEHOLDER_DATA,

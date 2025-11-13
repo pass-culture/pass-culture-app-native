@@ -21,7 +21,7 @@ export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
 const STALE_TIME_CITIES = 5 * 60 * 1000
 
-export const useCities = (postalCode: string, options?: Options) =>
+export const useCitiesQuery = (postalCode: string, options?: Options) =>
   useQuery({
     queryKey: [QueryKeys.CITIES, postalCode],
     queryFn: () => fetchCities(postalCode),

@@ -6,10 +6,10 @@ import styled, { useTheme } from 'styled-components/native'
 import { SubcategoryIdEnum, SubcategoryIdEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
-import { useChronicles } from 'features/chronicle/api/useChronicles/useChronicles'
 import { ChronicleOfferInfo } from 'features/chronicle/components/ChronicleOfferInfo/ChronicleOfferInfo.web'
 import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubcategory'
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
+import { useChroniclesQuery } from 'features/chronicle/queries/useChroniclesQuery'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -37,7 +37,7 @@ export const Chronicles: FunctionComponent = () => {
   const subcategoriesMapping = useSubcategoriesMapping()
   const chronicleVariantInfo =
     chronicleVariant[offer?.subcategoryId ?? SubcategoryIdEnum.LIVRE_PAPIER]
-  const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
+  const { data: chronicleCardsData } = useChroniclesQuery<ChronicleCardData[]>({
     offerId,
     select: ({ chronicles }) =>
       offerChroniclesToChronicleCardData(chronicles, chronicleVariantInfo.subtitleItem),

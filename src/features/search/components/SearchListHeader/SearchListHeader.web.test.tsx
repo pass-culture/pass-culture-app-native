@@ -52,8 +52,8 @@ jest.mock('features/location/helpers/useLocationState', () => ({
 }))
 
 const mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
+jest.mock('queries/subcategories/useSubcategoriesQuery', () => ({
+  useSubcategoriesQuery: () => ({
     data: mockData,
   }),
 }))

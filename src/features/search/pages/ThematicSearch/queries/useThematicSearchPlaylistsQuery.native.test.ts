@@ -3,7 +3,7 @@ import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useThematicSearchPlaylists } from './useThematicSearchPlaylists'
+import { useThematicSearchPlaylistsQuery } from './useThematicSearchPlaylistsQuery'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -28,7 +28,7 @@ describe('useThematicSearchPlaylists', () => {
   it('should fetch thematic search playlists offers', async () => {
     renderHook(
       () =>
-        useThematicSearchPlaylists({
+        useThematicSearchPlaylistsQuery({
           playlistTitles: PLAYLISTS_TITLES,
           fetchMethod: fetchThematicSearchPlaylistsOffers,
           queryKey: '',
@@ -45,7 +45,7 @@ describe('useThematicSearchPlaylists', () => {
     const OFFER_WITH_IMAGE = defaultThematicSearchOffer.hits.find((hit) => hit.offer.thumbUrl)
     const { result } = renderHook(
       () =>
-        useThematicSearchPlaylists({
+        useThematicSearchPlaylistsQuery({
           playlistTitles: PLAYLISTS_TITLES,
           fetchMethod: fetchThematicSearchPlaylistsOffers,
           queryKey: '',

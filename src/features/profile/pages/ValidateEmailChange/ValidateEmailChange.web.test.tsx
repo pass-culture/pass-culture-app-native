@@ -8,8 +8,8 @@ import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-jest.mock('features/profile/helpers/useEmailUpdateStatus', () => ({
-  useEmailUpdateStatus: jest.fn().mockReturnValue({
+jest.mock('features/profile/queries/useEmailUpdateStatusQuery', () => ({
+  useEmailUpdateStatusQuery: jest.fn().mockReturnValue({
     data: {
       newEmail: 'john@doe.com',
     },

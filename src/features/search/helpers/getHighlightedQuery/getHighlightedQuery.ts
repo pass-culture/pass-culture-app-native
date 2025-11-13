@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/queries-must-be-in-queries-folder */
 export function getHighlightedQuery(query: string, partToHighlight: string): string {
   if (partToHighlight === '') return query
 

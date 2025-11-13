@@ -10,12 +10,12 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { data: subcategoriesData } = useSubcategories()
+  const { data: subcategoriesData } = useSubcategoriesQuery()
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [queryHistory, setQueryHistory] = useState<string>('')

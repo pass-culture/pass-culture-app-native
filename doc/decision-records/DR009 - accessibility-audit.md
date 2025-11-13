@@ -622,6 +622,34 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 5.1 - c) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 5.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-1)  
+**Ticket** : [PC-37475](https://passculture.atlassian.net/browse/PC-37475)  
+**PR** : [#8889](https://github.com/pass-culture/pass-culture-app-native/pull/8889)
+
+**Problème** 😱  
+- **(E02)** Le bouton qui permet d'ouvrir la modale de localisation ne reprend pas dans le nom accessible le nom de la localisation (quand cette dernière est renseignée). 
+- **(E03)** Le lien "support@passculture.app" a pour nom accessible "ouvrir le gestionnaire mail pour contacter le support". 
+- **(E04)** Non-conformité de typologie similaire à celle décrite sur l'écran "E03". Présente également ici, mais non redétaillée.. 
+- **(E11)** Le composant de sélection de la date (vocalise des données incohérentes "1900" etc.).
+- **(E14)** Les offres de chaque section ont un nom accessible qui ne reprend pas l'intégralité du contenu visible (il manque parfois l'information sur le nombre de "J'aime", et également parfois le lieu comme par exemple dans la section "Les librairies et bibliothèques").
+
+**Correction** 💡  
+- **(E02)** Reprise du nom visible au début de l'accessibilityLabel du bouton qui permet d'ouvrir la modale de localisation.
+- **(E03 | E04 )** Reprise du nom visible au début de l'accessibilityLabel des boutons "support@passculture.app".
+- **(E11)** Le composant de sélection de la date vocalise les données qui sont séléctionnée depuis une mise à jour de la librairie utilisé pour créer le date picker. 
+- **(E14)** Ajoute de tous les éléments présents visuellement directement dans l'accessibilityLabel des offres. 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 5.2 - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
 
 **RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  

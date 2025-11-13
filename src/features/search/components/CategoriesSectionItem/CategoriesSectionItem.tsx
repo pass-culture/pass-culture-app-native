@@ -11,7 +11,7 @@ import {
 import { DescriptionContext } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -39,7 +39,7 @@ export const CategoriesSectionItem = <N,>({
   handleSelect,
   handleGetIcon,
 }: CategoriesSectionItemProps<N>) => {
-  const { data: subcategoriesData } = useSubcategories()
+  const { data: subcategoriesData } = useSubcategoriesQuery()
   const displaySearchNbFacetResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
   )

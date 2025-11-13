@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/queries-must-be-in-queries-folder */
 import { SearchQueryParameters } from 'libs/algolia/types'
 
 export function getSearchVenueQuery(parameters: SearchQueryParameters) {

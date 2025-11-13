@@ -7,7 +7,7 @@ import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categori
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematicPageList/useHasAThematicPageList'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { BackgroundColorKey, BorderColorKey } from 'theme/types'
 
@@ -31,7 +31,7 @@ export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): num
 export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const categories = useAvailableCategories()
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
   const hasAThematicSearch = useHasAThematicPageList()
   const { searchState, dispatch } = useSearch()
   const searchId = uuidv4()

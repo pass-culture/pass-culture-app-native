@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
-import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
+import { useChangeEmailMutation } from 'features/profile/queries/useChangeEmailMutation'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'

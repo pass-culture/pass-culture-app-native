@@ -202,7 +202,7 @@ exports[`Home page should render correctly 1`] = `
                   </Text>
                 </View>
                 <View
-                  accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+                  accessibilityLabel="Ma position - Ouvrir la modale de localisation"
                   accessibilityRole="button"
                   accessibilityState={
                     {
@@ -247,7 +247,7 @@ exports[`Home page should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Ouvrir la modale de localisation depuis le widget"
+                  testID="Ma position - Ouvrir la modale de localisation"
                 >
                   <View
                     isActive={true}
@@ -278,7 +278,7 @@ exports[`Home page should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
-                    numberOfLines={1}
+                    numberOfLines={3}
                     style={
                       {
                         "color": "#161617",
@@ -287,6 +287,7 @@ exports[`Home page should render correctly 1`] = `
                         "lineHeight": 19.2,
                         "maxWidth": 100,
                         "paddingTop": 4,
+                        "textAlign": "center",
                       }
                     }
                   >

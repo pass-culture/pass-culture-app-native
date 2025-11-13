@@ -6,11 +6,11 @@ import {
   getRecommendationParameters,
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
+import * as recommendedIdsAPI from 'features/home/queries/recommendation/useHomeRecommendedIdsQuery'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
 import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { QueryKeys } from 'libs/queryKeys'
-import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { renderHook } from 'tests/utils'
@@ -22,7 +22,7 @@ const position = {
 const mockModuleId = 'abcd'
 mockdate.set(new Date('2022-11-25T00:00+00:00'))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 jest.mock('libs/firebase/analytics/analytics')
 

@@ -1,6 +1,6 @@
 import { GenreType } from 'api/gen'
+import { RecommendedIdsRequest } from 'features/home/queries/recommendation/types'
 import { RecommendedOffersParameters } from 'features/home/types'
-import { RecommendedIdsRequest } from 'libs/recommendation/types'
 
 export const buildRecommendationOfferTypesList = ({
   bookTypes,

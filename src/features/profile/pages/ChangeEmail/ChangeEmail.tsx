@@ -6,7 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
-import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
+import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
@@ -27,7 +27,7 @@ export function ChangeEmail() {
       return replace(...getProfileHookConfig('ChangeEmail', { showModal: false }))
   }
 
-  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChangeQuery()
   const { user } = useAuthContext()
 
   return (

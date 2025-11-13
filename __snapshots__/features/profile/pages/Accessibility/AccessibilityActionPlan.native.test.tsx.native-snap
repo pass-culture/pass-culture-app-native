@@ -1537,7 +1537,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         </Text>
       </Text>
       <View
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
         accessibilityState={
           {
             "busy": undefined,
@@ -1595,7 +1595,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             },
           ]
         }
-        testID="Ouvrir le gestionnaire mail pour contacter le support"
+        testID="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
       >
         <View
           style={
@@ -3710,7 +3710,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Plan annuel 2024 – Liste - Élément 4 sur 10 - Publier la déclaration d’accessibilité du site"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 4 sur 10 - Publier la déclaration d’accessibilité du site https://pass.culture.fr/"
             accessible={true}
             style={
               {
@@ -3815,7 +3815,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Plan annuel 2024 – Liste - Élément 5 sur 10 - Formation des Product Manager du site"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 5 sur 10 - Formation des Product Manager du site https://passculture.pro/"
             accessible={true}
             style={
               {
@@ -4007,7 +4007,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Plan annuel 2024 – Liste - Élément 7 sur 10 - Rendre le site 100% accessible"
+            accessibilityLabel="Plan annuel 2024 – Liste - Élément 7 sur 10 - Rendre le site 100% accessible https://passculture.app/"
             accessible={true}
             style={
               {
@@ -4589,7 +4589,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Plan annuel 2023 – Liste - Élément 3 sur 7 - Formation des développeurs du site"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 3 sur 7 - Formation des développeurs du site https://passculture.pro/"
             accessible={true}
             style={
               {
@@ -4694,7 +4694,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Plan annuel 2023 – Liste - Élément 4 sur 7 - Réalisation d’un audit d’accessibilité du site"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 4 sur 7 - Réalisation d’un audit d’accessibilité du site https://passculture.pro/"
             accessible={true}
             style={
               {
@@ -4886,7 +4886,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Plan annuel 2023 – Liste - Élément 6 sur 7 - Maquettage d’un nouveau site 100% accessible"
+            accessibilityLabel="Plan annuel 2023 – Liste - Élément 6 sur 7 - Maquettage d’un nouveau site 100% accessible https://pass.culture.fr/"
             accessible={true}
             style={
               {

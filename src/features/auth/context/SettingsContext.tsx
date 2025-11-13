@@ -1,10 +1,8 @@
-import { useQuery, UseQueryResult } from '@tanstack/react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 import React, { memo, useContext, useMemo } from 'react'
 
-import { api } from 'api/api'
 import { SettingsResponse } from 'api/gen'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { QueryKeys } from 'libs/queryKeys'
+import { useAppSettingsQuery } from 'features/auth/queries/useAppSettingsQuery'
 
 export interface ISettingsContext {
   data: UseQueryResult<SettingsResponse>['data']
@@ -25,22 +23,9 @@ export const SettingsWrapper = memo(function SettingsWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const { data, isLoading } = useAppSettings()
+  const { data, isLoading } = useAppSettingsQuery()
 
   const value = useMemo(() => ({ data, isLoading }), [data, isLoading])
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
 })
-
-// arbitrary. Should not change that often though
-const STALE_TIME_APP_SETTINGS = 5 * 60 * 1000
-
-function useAppSettings() {
-  const netInfo = useNetInfoContext()
-  return useQuery({
-    queryKey: [QueryKeys.SETTINGS],
-    queryFn: () => api.getNativeV1Settings(),
-    enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
-    staleTime: STALE_TIME_APP_SETTINGS,
-  })
-}

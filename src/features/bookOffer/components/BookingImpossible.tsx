@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useNotifyWebappLinkSent } from 'features/bookOffer/queries/useNotifyWebappLinkSent'
+import { useNotifyWebappLinkSentMutation } from 'features/bookOffer/queries/useNotifyWebappLinkSentMutation'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
@@ -21,7 +21,7 @@ export const BookingImpossible: React.FC = () => {
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()
-  const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSent()
+  const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSentMutation()
 
   useEffect(() => {
     if (typeof offerId == 'undefined') return

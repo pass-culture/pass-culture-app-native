@@ -27,7 +27,7 @@ jest.mock('queries/offer/useBookingOfferQuery', () => ({
   useBookingOfferQuery: jest.fn(() => mockOffer),
 }))
 
-jest.mock('libs/subcategories/useSubcategories')
+jest.mock('queries/subcategories/useSubcategoriesQuery')
 
 const onPressBookOffer = jest.fn()
 

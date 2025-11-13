@@ -1,4 +1,4 @@
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import {
   FIRESTORE_ROOT_COLLECTION,
   RemoteStoreDocuments,
@@ -265,6 +265,6 @@ describe.skip('useFeatureFlagOptions', () => {
 })
 
 const renderUseFeatureFlag = (featureFlag: RemoteStoreFeatureFlags) =>
-  renderHook(() => useFeatureFlagOptions(featureFlag), {
+  renderHook(() => useFeatureFlagOptionsQuery(featureFlag), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

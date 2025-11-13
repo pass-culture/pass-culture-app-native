@@ -8,7 +8,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
+import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -25,7 +25,8 @@ export function SuspendAccountConfirmation({
   route: { params },
   navigation,
 }: SuspendAccountConfirmationProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
+    useEmailUpdateStatusQuery()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)

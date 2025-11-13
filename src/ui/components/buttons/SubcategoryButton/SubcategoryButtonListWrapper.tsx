@@ -10,7 +10,7 @@ import {
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { NativeCategoryEnum } from 'features/search/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { getSearchParams } from 'ui/components/buttons/SubcategoryButton/helpers'
 import { SubcategoryButtonItem } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
@@ -20,7 +20,7 @@ type Props = {
 }
 
 export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory }) => {
-  const { data: subcategories = PLACEHOLDER_DATA } = useSubcategories()
+  const { data: subcategories = PLACEHOLDER_DATA } = useSubcategoriesQuery()
   const { searchState, dispatch } = useSearch()
 
   const { designSystem } = useTheme()

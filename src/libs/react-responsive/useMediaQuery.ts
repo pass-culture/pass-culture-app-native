@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/queries-must-be-in-queries-folder */
 import { Platform, useWindowDimensions } from 'react-native'
 
 interface MediaQuery {

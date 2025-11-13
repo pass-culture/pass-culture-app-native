@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useEmailUpdateStatus = () => {
+export const useEmailUpdateStatusQuery = () => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery({

@@ -21,7 +21,7 @@ import { CreateHistoryItem, SearchState, SearchView } from 'features/search/type
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Typo } from 'ui/theme'
 
@@ -54,7 +54,7 @@ export function AutocompleteOfferItem({
   const currentRoute = routes?.at(-1)?.name
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { disabilities } = useAccessibilityFiltersContext()
-  const { data } = useSubcategories()
+  const { data } = useSubcategoriesQuery()
 
   const availableCategories = useAvailableCategories()
 

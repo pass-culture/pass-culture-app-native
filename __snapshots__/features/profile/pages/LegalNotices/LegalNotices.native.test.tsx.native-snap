@@ -331,7 +331,7 @@ exports[`LegalNotices should render correctly 1`] = `
           Nous contacter :
            
           <Text
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support, lien externe"
             accessibilityRole="link"
             onPress={[Function]}
             style={
