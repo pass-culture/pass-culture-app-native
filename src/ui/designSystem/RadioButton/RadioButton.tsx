@@ -11,24 +11,24 @@ import { BaseRadioProps } from 'ui/designSystem/RadioButton/types'
 
 export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   label,
-  disabled,
-  error,
+  disabled = false,
+  error = false,
   value,
   collapsed,
   description,
   asset,
-  sizing,
+  sizing = 'hug',
   variant,
   setValue,
 }) =>
   variant === 'detailed' ? (
     <RadioButtonDetailed
       label={label}
-      disabled={!!disabled}
-      error={error ?? false}
+      disabled={disabled}
+      error={error}
       value={value}
       setValue={setValue}
-      sizing={collapsed ? 'fill' : (sizing ?? 'hug')}
+      sizing={collapsed ? 'fill' : sizing}
       collapsed={collapsed}
       description={description ?? null}
       asset={asset ?? null}
@@ -37,8 +37,8 @@ export const RadioButton: FunctionComponent<BaseRadioProps> = ({
   ) : (
     <RadioButtonDefault
       label={label}
-      disabled={!!disabled}
-      error={error ?? false}
+      disabled={disabled}
+      error={error}
       value={value}
       setValue={setValue}
       variant={variant}

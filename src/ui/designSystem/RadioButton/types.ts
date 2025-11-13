@@ -8,7 +8,6 @@ import React from 'react'
 import { SelectableAssetProps, SelectableSizing } from 'ui/designSystem/types'
 
 export type RadioPart = 'container' | 'circle' | 'round'
-export type RadioState = 'selected' | 'disabledSelected' | 'disabled' | 'error' | 'default'
 export type Variant = 'default' | 'detailed'
 
 export type RadioStateObject = {
@@ -22,7 +21,7 @@ export type BaseRadioProps = {
   disabled: boolean
   error: boolean
   value: string | null
-  setValue: (value: string) => void
+  setValue: React.Dispatch<React.SetStateAction<string>> | VoidFunction
   variant: Variant
   description?: string | null
   collapsed?: React.ReactNode | null

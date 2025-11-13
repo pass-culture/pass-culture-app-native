@@ -12,24 +12,32 @@ export const getBorderHoverStyle = ({
   theme,
   radioState,
   isHover,
+  radioStateBorderColorError,
 }: {
   theme: DefaultTheme
   radioState: RadioStateObject
   isHover?: boolean
-}) =>
-  radioState.disabled || radioState.error
-    ? {}
+  radioStateBorderColorError?: string
+}) => {
+  if (radioState.disabled) return {}
+  return radioState.error && radioStateBorderColorError
+    ? { borderColor: radioStateBorderColorError }
     : getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimary, isHover })
+}
 
 export const getTextHoverStyle = ({
   theme,
   radioState,
   isHover,
+  radioStateBorderColorError,
 }: {
   theme: DefaultTheme
   radioState: RadioStateObject
   isHover?: boolean
-}) =>
-  radioState.disabled || radioState.error
-    ? {}
+  radioStateBorderColorError?: string
+}) => {
+  if (radioState.disabled) return {}
+  return radioState.error && radioStateBorderColorError
+    ? { borderColor: radioStateBorderColorError }
     : getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimary, isHover })
+}
