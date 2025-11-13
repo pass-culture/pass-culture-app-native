@@ -5,7 +5,7 @@
 
 import React, { forwardRef, useState } from 'react'
 import { Platform, TextInput as RNTextInput, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -35,13 +35,8 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   const customProps = getCustomInputTextProps(props)
   const textInputID = nativeProps.testID ?? uuidv4()
 
+  const theme = useTheme()
   const Icon = customProps.rightButton?.icon
-  const StyledIcon =
-    Icon &&
-    styled(Icon).attrs(({ theme }) => ({
-      color: theme.designSystem.color.icon.default,
-      size: theme.icons.sizes.small,
-    }))``
 
   function onBlur() {
     onBlurDefault()
@@ -116,14 +111,14 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           maxLength={customProps.characterCount}
           onChangeText={handleChangeText}
         />
-        {customProps.rightButton && StyledIcon ? (
+        {customProps.rightButton && Icon ? (
           <IconTouchableOpacity
             testID={customProps.rightButton.testID}
             accessibilityLabel={customProps.rightButton.accessibilityLabel}
             onPress={customProps.rightButton.onPress}
             hitSlop={customProps.rightButton.hitSlop}
             onMouseDown={preventInputFocusOnMouseDown}>
-            <StyledIcon />
+            <Icon size={theme.icons.sizes.small} />
           </IconTouchableOpacity>
         ) : null}
       </InputTextContainer>
