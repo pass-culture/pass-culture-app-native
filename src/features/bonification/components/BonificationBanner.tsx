@@ -16,6 +16,49 @@ enum BonificationBannerType {
   DEFAULT = 'Default',
 }
 
+const BANNER_CONFIG = {
+  [BonificationBannerType.DEFAULT]: {
+    type: BannerType.DEFAULT,
+    label: (amount: string) =>
+      `Un bonus de ${amount} pourrait t’être attribué, voyons si tu peux y être éligible.`,
+    links: [
+      {
+        navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
+        wording: 'Je veux vérifier',
+      },
+    ],
+    Icon: Code,
+  },
+  [BonificationBannerType.PENDING]: {
+    type: BannerType.ALERT,
+    label: 'Dossier en cours de vérification. On te notifiera rapidement.',
+    links: [],
+    Icon: Code,
+  },
+  [BonificationBannerType.ERROR]: {
+    type: BannerType.ERROR,
+    label: 'Nous n’avons pas trouvé de correspondance pour ce dossier.',
+    links: [
+      {
+        navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
+        wording: 'Je veux vérifier',
+      },
+    ],
+    Icon: WarningFilled,
+  },
+}
+
+const BANNER_CONFIG_MAP = {
+  [FraudCheckStatus.error]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [FraudCheckStatus.ko]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [FraudCheckStatus.suspiscious]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [FraudCheckStatus.pending]: BANNER_CONFIG[BonificationBannerType.PENDING],
+  [FraudCheckStatus.ok]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  [FraudCheckStatus.canceled]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  [FraudCheckStatus.started]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  default: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+}
+
 export const BonificationBanner = ({
   bonificationStatus,
 }: {
@@ -30,50 +73,14 @@ export const BonificationBanner = ({
       'TODO(PC-38487): Récupérer la valeur depuis le backend pour permettre de cacher la bannière. Actuellement la bannière s’affiche en fonction de la valeur du feature flag "ENABLE_BONIFICATION".'
     )
 
-  const BANNER_CONFIG = {
-    [BonificationBannerType.DEFAULT]: {
-      type: BannerType.DEFAULT,
-      label: `Un bonus de ${bonificationAmount} pourrait t’être attribué, voyons si tu peux y être éligible.`,
-      links: [
-        {
-          navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
-          wording: 'Je veux vérifier',
-        },
-      ],
-      Icon: Code,
-    },
-    [BonificationBannerType.PENDING]: {
-      type: BannerType.ALERT,
-      label: 'Dossier en cours de vérification. On te notifiera rapidement.',
-      links: [],
-      Icon: Code,
-    },
-    [BonificationBannerType.ERROR]: {
-      type: BannerType.ERROR,
-      label: 'Nous n’avons pas trouvé de correspondance pour ce dossier.',
-      links: [
-        {
-          navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
-          wording: 'Je veux vérifier',
-        },
-      ],
-      Icon: WarningFilled,
-    },
-  }
-
-  const BANNER_CONFIG_MAP = {
-    [FraudCheckStatus.error]: BANNER_CONFIG[BonificationBannerType.ERROR],
-    [FraudCheckStatus.ko]: BANNER_CONFIG[BonificationBannerType.ERROR],
-    [FraudCheckStatus.suspiscious]: BANNER_CONFIG[BonificationBannerType.ERROR],
-    [FraudCheckStatus.pending]: BANNER_CONFIG[BonificationBannerType.PENDING],
-    [FraudCheckStatus.ok]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-    [FraudCheckStatus.canceled]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-    [FraudCheckStatus.started]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-    default: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-  }
   const bannerConfig =
     (bonificationStatus && BANNER_CONFIG_MAP[bonificationStatus]) ||
     BANNER_CONFIG[BonificationBannerType.DEFAULT]
 
-  return <Banner {...bannerConfig} onClose={onClose} />
+  const label =
+    typeof bannerConfig.label === 'function'
+      ? bannerConfig.label(bonificationAmount)
+      : bannerConfig.label
+
+  return <Banner {...bannerConfig} label={label} onClose={onClose} />
 }
