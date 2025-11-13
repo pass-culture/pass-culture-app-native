@@ -710,6 +710,27 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
+
+**RAAM** : [Critère 7.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-2)  
+**Ticket** : [PC-38648](https://passculture.atlassian.net/browse/PC-38648)  
+**PR** : [#8905](https://github.com/pass-culture/pass-culture-app-native/pull/8905)
+
+**Problème** 😱  
+La liste du bloc "Profil" indique "sur 12" en non connecté, alors qu'il y a 9 éléments.
+
+**Correction** 💡  
+Le nombre d'élément de la liste est bien calculée en fonction de la connexion ou non connexion de l'utilisateur.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
