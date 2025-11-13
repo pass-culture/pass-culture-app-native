@@ -15,6 +15,7 @@ const profile = {
     name: 'city',
     code: '75000',
     postalCode: '75000',
+    departementCode: '75',
   },
   name: {
     firstName: 'first name',

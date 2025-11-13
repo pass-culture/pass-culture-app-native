@@ -33,6 +33,16 @@ export interface SuggestedCity {
   name: string
   code: string
   postalCode: string
+  departementCode: string
 }
 
 export type Collection = FeatureCollection<Point, Properties>
+
+export type CitiesResponse = Array<{
+  nom: string
+  code: string
+  codeDepartement: string
+  codeRegion: string
+  codesPostaux: string[]
+  population: number
+}>

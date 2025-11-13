@@ -26,6 +26,7 @@ export const BonificationBirthPlaceSchema = object({
           name: string().required('Le nom de la ville est requis.'),
           code: string().required('Le code INSEE de la ville est requis.'),
           postalCode: string().required('Le code postal est requis.'),
+          departementCode: string().required('Le numéro de département est requis.'),
         })
         .required('La ville de naissance est obligatoire pour les personnes nées en France.'),
     otherwise: (schema) => schema.optional(),
