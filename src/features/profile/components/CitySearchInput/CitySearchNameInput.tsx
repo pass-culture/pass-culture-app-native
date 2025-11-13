@@ -74,7 +74,7 @@ export const CitySearchNameInput = ({
   }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
 
   const onSubmit = useCallback(
-    ({ cityName: cityName }: CityNameForm) => {
+    ({ cityName }: CityNameForm) => {
       onCitySelected?.()
       debouncedSetCityName(cityName)
     },
