@@ -10,6 +10,12 @@ import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Code } from 'ui/svg/icons/Code'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 
+enum BonificationBannerType {
+  ERROR = 'Error',
+  PENDING = 'Pending',
+  DEFAULT = 'Default',
+}
+
 export const BonificationBanner = ({
   bonificationStatus,
 }: {
@@ -24,9 +30,9 @@ export const BonificationBanner = ({
       'TODO(PC-38487): Récupérer la valeur depuis le backend pour permettre de cacher la bannière. Actuellement la bannière s’affiche en fonction de la valeur du feature flag "ENABLE_BONIFICATION".'
     )
 
-  const bannerVariants = {
-    ['Default']: {
-      bannerType: BannerType.DEFAULT,
+  const BANNER_CONFIG = {
+    [BonificationBannerType.DEFAULT]: {
+      type: BannerType.DEFAULT,
       label: `Un bonus de ${bonificationAmount} pourrait t’être attribué, voyons si tu peux y être éligible.`,
       links: [
         {
@@ -34,16 +40,16 @@ export const BonificationBanner = ({
           wording: 'Je veux vérifier',
         },
       ],
-      icon: Code,
+      Icon: Code,
     },
-    ['Pending']: {
-      bannerType: BannerType.ALERT,
+    [BonificationBannerType.PENDING]: {
+      type: BannerType.ALERT,
       label: 'Dossier en cours de vérification. On te notifiera rapidement.',
       links: [],
-      icon: Code,
+      Icon: Code,
     },
-    ['Error']: {
-      bannerType: BannerType.ERROR,
+    [BonificationBannerType.ERROR]: {
+      type: BannerType.ERROR,
       label: 'Nous n’avons pas trouvé de correspondance pour ce dossier.',
       links: [
         {
@@ -51,24 +57,23 @@ export const BonificationBanner = ({
           wording: 'Je veux vérifier',
         },
       ],
-      icon: WarningFilled,
+      Icon: WarningFilled,
     },
   }
 
-  const banner =
-    bonificationStatus === FraudCheckStatus.error
-      ? bannerVariants['Error']
-      : bonificationStatus === FraudCheckStatus.pending
-        ? bannerVariants['Pending']
-        : bannerVariants['Default']
+  const BANNER_CONFIG_MAP = {
+    [FraudCheckStatus.error]: BANNER_CONFIG[BonificationBannerType.ERROR],
+    [FraudCheckStatus.ko]: BANNER_CONFIG[BonificationBannerType.ERROR],
+    [FraudCheckStatus.suspiscious]: BANNER_CONFIG[BonificationBannerType.ERROR],
+    [FraudCheckStatus.pending]: BANNER_CONFIG[BonificationBannerType.PENDING],
+    [FraudCheckStatus.ok]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+    [FraudCheckStatus.canceled]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+    [FraudCheckStatus.started]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+    default: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  }
+  const bannerConfig =
+    (bonificationStatus && BANNER_CONFIG_MAP[bonificationStatus]) ||
+    BANNER_CONFIG[BonificationBannerType.DEFAULT]
 
-  return (
-    <Banner
-      label={banner.label}
-      Icon={banner.icon}
-      links={banner.links}
-      onClose={onClose}
-      type={banner.bannerType}
-    />
-  )
+  return <Banner {...bannerConfig} onClose={onClose} />
 }
