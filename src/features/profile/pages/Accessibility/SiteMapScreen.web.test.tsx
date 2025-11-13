@@ -1,11 +1,10 @@
 import React from 'react'
 
+import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
-
-import { SiteMapScreen } from './SiteMapScreen'
 
 jest.mock('libs/firebase/analytics/analytics')
 

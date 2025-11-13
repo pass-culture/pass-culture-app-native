@@ -1,12 +1,11 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-
-import { SiteMapScreen } from './SiteMapScreen'
 
 jest.mock('libs/jwt/jwt')
 

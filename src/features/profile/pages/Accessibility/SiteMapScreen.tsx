@@ -5,20 +5,19 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
+import { SiteMapScreenContent } from 'features/profile/pages/Accessibility/SiteMapScreenContent'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
 import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Dot } from 'ui/svg/icons/Dot'
 import { Typo } from 'ui/theme'
 
-export function SiteMapScreen() {
+export const SiteMapScreen = () => {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
   const { isLoggedIn } = useAuthContext()
   const sortedCategories = useSortedSearchCategories()
@@ -30,66 +29,44 @@ export function SiteMapScreen() {
 
   return (
     <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
-      <StyledVerticalUl>
-        {visibleSiteMapLinks.map((item, parentIdx) => {
-          const visibleSubPages = item.subPages.filter(
-            (subPage) => !subPage.isLoggedIn || isLoggedIn
-          )
-          return (
-            <React.Fragment key={item.wording}>
-              <Li
-                groupLabel="Plan du site"
-                total={visibleSiteMapLinks.length}
-                index={parentIdx}
-                accessibilityLabel={item.wording}
-                accessibilityRole={AccessibilityRole.BUTTON}>
-                <ItemContainer>
-                  <BulletContainer>
-                    <Bullet />
-                  </BulletContainer>
-                  <ListText>
-                    <InternalTouchableLink
-                      as={Button}
-                      wording={item.wording}
-                      navigateTo={item.navigateTo}
-                    />
-                  </ListText>
-                </ItemContainer>
-              </Li>
-              {visibleSubPages.length > 0 ? (
-                <StyledVerticalUl>
-                  {visibleSubPages.map((subPage, idx) => (
-                    <Li
-                      key={subPage.wording}
-                      groupLabel={item.wording}
-                      total={visibleSubPages.length}
-                      index={idx}
-                      accessibilityLabel={subPage.wording}
-                      accessibilityRole={AccessibilityRole.BUTTON}>
-                      <NestedItemContainer>
-                        <BulletContainer>
-                          <NestedBullet />
-                        </BulletContainer>
-                        <ListText>
-                          <InternalTouchableLink
-                            as={Button}
-                            typography="BodyAccentXs"
-                            wording={subPage.wording}
-                            navigateTo={subPage.navigateTo}
-                          />
-                        </ListText>
-                      </NestedItemContainer>
-                    </Li>
-                  ))}
-                </StyledVerticalUl>
-              ) : null}
-            </React.Fragment>
-          )
-        })}
-      </StyledVerticalUl>
+      <SiteMapScreenContent visibleSiteMapLinks={visibleSiteMapLinks} isLoggedIn={isLoggedIn} />
     </SecondaryPageWithBlurHeader>
   )
 }
+
+export const ParentListItem = ({ wording, navigateTo }) => {
+  return (
+    <ItemContainer>
+      <BulletContainer>
+        <Bullet />
+      </BulletContainer>
+      <ListText>
+        <InternalTouchableLink as={Button} wording={wording} navigateTo={navigateTo} />
+      </ListText>
+    </ItemContainer>
+  )
+}
+
+export const SubPagesListItem = ({ wording, navigateTo }) => {
+  return (
+    <NestedItemContainer>
+      <BulletContainer>
+        <NestedBullet />
+      </BulletContainer>
+      <ListText>
+        <InternalTouchableLink
+          as={Button}
+          typography="BodyAccentXs"
+          wording={wording}
+          navigateTo={navigateTo}
+        />
+      </ListText>
+    </NestedItemContainer>
+  )
+}
+export const StyledVerticalUl = styled(VerticalUl)({
+  width: '100%',
+})
 
 const Button = styledButton(AppButton).attrs<BaseButtonProps>(({ theme }) => {
   const Title = styled(Typo.Button)({
@@ -132,7 +109,3 @@ const ListText = styled.View(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.m,
   flex: 1,
 }))
-
-const StyledVerticalUl = styled(VerticalUl)({
-  width: '100%',
-})
