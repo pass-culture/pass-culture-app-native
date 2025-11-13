@@ -123,7 +123,7 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
         storedProfileInfos: {
           name: { firstName: 'Jean', lastName: 'Dupont' },
-          city: { name: 'Paris', postalCode: '75011', code: '1234' },
+          city: { name: 'Paris', postalCode: '75011', code: '1234', departementCode: '75' },
           address: '1 rue du Test',
           status: ActivityIdEnum.STUDENT,
         },

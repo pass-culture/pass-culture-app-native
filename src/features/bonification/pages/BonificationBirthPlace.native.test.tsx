@@ -4,8 +4,8 @@ import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
-import { CITIES_API_URL, CitiesResponse } from 'libs/place/queries/useCitiesQuery'
-import { SuggestedCity } from 'libs/place/types'
+import { CITIES_API_URL } from 'libs/place/queries/constants'
+import { CitiesResponse, SuggestedCity } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -17,6 +17,7 @@ const birthCity: SuggestedCity = {
   name: 'Paris',
   code: '75056',
   postalCode: '75017',
+  departementCode: '75',
 }
 
 describe('BonificationBirthPlace', () => {
@@ -68,10 +69,10 @@ describe('BonificationBirthPlace', () => {
       renderBonificationBirthPlace()
 
       const countryField = screen.getByDisplayValue(birthCountry.LIBCOG)
-      const cityField = screen.getByDisplayValue(birthCity.postalCode)
+      const cityField = screen.getByDisplayValue(birthCity.name)
 
       expect(countryField.props.value).toBe(birthCountry.LIBCOG)
-      expect(cityField.props.value).toBe(birthCity.postalCode)
+      expect(cityField.props.value).toBe(birthCity.name)
     })
 
     it('should save form to store when pressing "Continuer"', async () => {
@@ -100,10 +101,11 @@ async function completeForm() {
 
   // Fill in the city input
   const cityOfBirthField = screen.getByTestId('Entrée pour la ville')
-  await userEvent.type(cityOfBirthField, birthCity.postalCode)
+  await userEvent.type(cityOfBirthField, birthCity.name)
 
   // Select the suggested city
-  const citySuggestion = screen.getByText(birthCity.name)
+  const label = `${birthCity.name} (${birthCity.departementCode})`
+  const citySuggestion = screen.getByText(label)
   await userEvent.press(citySuggestion)
 }
 

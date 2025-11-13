@@ -1,10 +1,12 @@
-import { CitiesResponse } from 'libs/place/queries/useCitiesQuery'
+import { CitiesResponse } from 'libs/place/types'
 
 const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
-export const fetchCities = async (postalCode: string): Promise<CitiesResponse> => {
+export const fetchCitiesByName = async (name: string): Promise<CitiesResponse> => {
   const queryParams = new URLSearchParams()
-  queryParams.append('codePostal', postalCode)
+  queryParams.append('nom', name)
+  queryParams.append('limit', '10')
+  queryParams.append('boost', 'population') // sort results by biggest cities in terms of population
   const url = `${CITIES_API_URL}?${queryParams.toString()}`
 
   try {

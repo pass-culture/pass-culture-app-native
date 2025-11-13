@@ -22,6 +22,7 @@ export const useRehydrateProfile = () => {
             name: profileInfo.city,
             postalCode: profileInfo.postalCode,
             code: '',
+            departementCode: '',
           },
         },
       })

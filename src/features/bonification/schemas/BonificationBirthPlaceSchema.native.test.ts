@@ -1,12 +1,15 @@
 import { ValidationError } from 'yup'
 
+import { SuggestedCity } from 'libs/place/types'
+
 import { BonificationBirthPlaceSchema } from './BonificationBirthPlaceSchema'
 
 describe('BonificationBirthPlaceSchema', () => {
-  const birthCity = {
+  const birthCity: SuggestedCity = {
     name: 'Paris',
     code: '75056',
     postalCode: '75017',
+    departementCode: '75',
   }
 
   describe('valid schemas', () => {
@@ -53,7 +56,9 @@ describe('BonificationBirthPlaceSchema', () => {
         const input = { birthCountrySelection: { LIBCOG: 'France', COG: 99100 } }
         const validation = BonificationBirthPlaceSchema.validate(input)
 
-        await expect(validation).rejects.toEqual(new ValidationError('Le code postal est requis.'))
+        await expect(validation).rejects.toEqual(
+          new ValidationError('Le numéro de département est requis.')
+        )
       })
     })
 

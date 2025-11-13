@@ -6,12 +6,11 @@ import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { object, string } from 'yup'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useCitiesByPostalCodeQuery } from 'libs/place/queries/useCitiesByPostalCodeQuery'
+import { useCitiesByNameQuery } from 'libs/place/queries/useCitiesByNameQuery'
 import { SuggestedCity } from 'libs/place/types'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -20,11 +19,9 @@ import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
-import { Banner } from 'ui/designSystem/Banner/Banner'
-import { Error } from 'ui/svg/icons/Error'
 import { getSpacing } from 'ui/theme'
 
-const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
+const keyExtractor = ({ name, departementCode }: SuggestedCity) => `${name}-${departementCode}`
 
 type CitySearchInputProps = {
   city?: SuggestedCity
@@ -33,25 +30,18 @@ type CitySearchInputProps = {
   isRequiredField?: boolean
 }
 
-type PostalCodeForm = { postalCode: string }
+type CityNameForm = { cityName: string }
 
-export const CitySearchInput = ({
+export const CitySearchNameInput = ({
   city,
   onCitySelected,
   label,
   isRequiredField = false,
 }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { data: settings } = useSettingsContext()
-  const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
-  const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
-  const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
-  const {
-    data: cities = [],
-    isLoading,
-    isError,
-    isSuccess,
-  } = useCitiesByPostalCodeQuery(postalCodeQuery)
+  const [cityNameQuery, setCityNameQuery] = useState<string>(city?.name ?? '')
+  const debouncedSetCityName = useRef(debounce(setCityNameQuery, 500)).current
+  const { data: cities = [], isLoading, isError, isSuccess } = useCitiesByNameQuery(cityNameQuery)
 
   const {
     control,
@@ -59,24 +49,22 @@ export const CitySearchInput = ({
     watch,
     setError,
     reset: resetForm,
-  } = useForm<PostalCodeForm>({
-    resolver: yupResolver(object().shape({ postalCode: string() })),
-    defaultValues: { postalCode: city?.postalCode ?? '' },
+  } = useForm<CityNameForm>({
+    resolver: yupResolver(object().shape({ cityName: string() })),
+    defaultValues: { cityName: city?.name ?? '' },
   })
 
   useEffect(() => {
     if (isSuccess) {
       const isEmpty = cities.length === 0
       if (isEmpty)
-        setError('postalCode', {
-          message:
-            'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).',
+        setError('cityName', {
+          message: 'Cette ville est introuvable. Vérifie l’orthographe.',
         })
     }
     if (isError) {
       showErrorSnackBar({
-        message:
-          'Nous avons eu un problème pour trouver la ville associée à ton code postal. Réessaie plus tard.',
+        message: 'Nous avons eu un problème pour trouver la ville. Réessaie plus tard.',
         timeout: SNACK_BAR_TIME_OUT,
       })
       eventMonitoring.captureException(
@@ -86,18 +74,15 @@ export const CitySearchInput = ({
   }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
 
   const onSubmit = useCallback(
-    ({ postalCode }: PostalCodeForm) => {
+    ({ cityName: cityName }: CityNameForm) => {
       onCitySelected?.()
-      debouncedSetPostalCode(postalCode)
+      debouncedSetCityName(cityName)
     },
-    [debouncedSetPostalCode, onCitySelected]
+    [debouncedSetCityName, onCitySelected]
   )
 
-  const handlePostalCodeChange = (postalCode: string) => {
-    setPostalCodeQuery(postalCode)
-    if (settings) {
-      setIsPostalCodeIneligible(settings.ineligiblePostalCodes.includes(postalCode))
-    }
+  const handleCityNameChange = (cityName: string) => {
+    setCityNameQuery(cityName)
   }
 
   useEffect(() => {
@@ -106,7 +91,6 @@ export const CitySearchInput = ({
   }, [onSubmit, handleSubmit, watch])
 
   const onPressOption = (cityKey: string) => {
-    if (isPostalCodeIneligible) return
     const city = cities.find(
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
@@ -115,9 +99,8 @@ export const CitySearchInput = ({
   }
 
   const resetSearch = () => {
-    resetForm({ postalCode: '' })
-    setPostalCodeQuery('')
-    setIsPostalCodeIneligible(false)
+    resetForm({ cityName: '' })
+    setCityNameQuery('')
     onCitySelected?.()
   }
 
@@ -126,24 +109,24 @@ export const CitySearchInput = ({
       <Form.MaxWidth>
         <Controller
           control={control}
-          name="postalCode"
+          name="cityName"
           render={({ field: { value, onChange }, fieldState: { error } }) => (
             <StyledView>
               <SearchInput
                 onChangeText={(text) => {
                   onChange(text)
-                  handlePostalCodeChange(text)
+                  handleCityNameChange(text)
                 }}
                 value={value}
-                label={label ?? 'Indique ton code postal et choisis ta ville'}
-                format="75017"
+                label={label ?? 'Indique le nom de la ville'}
+                format="Paris"
                 onPressRightIcon={resetSearch}
-                keyboardType="number-pad"
+                keyboardType="default"
                 accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
-                autoComplete="postal-code"
-                textContentType="postalCode"
-                searchInputID="postal-code-input"
+                autoComplete="postal-address-locality"
+                textContentType="addressCity"
+                searchInputID="city-name-input"
                 isRequiredField={isRequiredField}
               />
               <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
@@ -151,33 +134,28 @@ export const CitySearchInput = ({
           )}
         />
       </Form.MaxWidth>
-      {isPostalCodeIneligible ? (
-        <InfoBannerContainer>
-          <Banner
-            Icon={Error}
-            label="Malheureusement, ton code postal correspond à une zone qui n’est pas éligible au pass Culture."
-          />
-        </InfoBannerContainer>
-      ) : (
-        <React.Fragment>
-          {isLoading ? <Spinner /> : null}
-          <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
-            <VerticalUl>
-              {cities.map((cityOption, index) => (
-                <Li key={cityOption.name}>
+
+      <React.Fragment>
+        {isLoading ? <Spinner /> : null}
+        <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
+          <VerticalUl>
+            {cities.map((cityOption, index) => {
+              const cityLabel = `${cityOption.name} (${cityOption.departementCode})`
+              return (
+                <Li key={cityLabel}>
                   <AddressOption
-                    label={cityOption.name}
+                    label={cityLabel}
                     selected={city ? keyExtractor(cityOption) === keyExtractor(city) : false}
                     onPressOption={onPressOption}
                     optionKey={keyExtractor(cityOption)}
-                    accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${cityOption.name}`}
+                    accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${cityLabel}`}
                   />
                 </Li>
-              ))}
-            </VerticalUl>
-          </CitiesContainer>
-        </React.Fragment>
-      )}
+              )
+            })}
+          </VerticalUl>
+        </CitiesContainer>
+      </React.Fragment>
     </React.Fragment>
   )
 }
@@ -187,7 +165,5 @@ const CitiesContainer = styled.View({
   overflowY: 'scroll',
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
-
-const InfoBannerContainer = styled.View({ marginTop: getSpacing(4) })
 
 const StyledView = styled.View({ marginBottom: getSpacing(2) })
