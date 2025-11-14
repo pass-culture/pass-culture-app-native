@@ -31,13 +31,17 @@ export function SiteMapScreen() {
   return (
     <SecondaryPageWithBlurHeader title="Plan du site" enableMaxWidth={false} onGoBack={goBack}>
       <StyledVerticalUl>
-        {visibleSiteMapLinks.flatMap((item) => {
+        {visibleSiteMapLinks.map((item, parentIndex) => {
+          const visibleSubPages = item.subPages.filter(
+            (subPage) => !subPage.isLoggedIn || isLoggedIn
+          )
+
           const parentJsx = (
             <Li
               key={item.wording}
               groupLabel="Plan du site"
               total={visibleSiteMapLinks.length}
-              index={visibleSiteMapLinks.indexOf(item)}
+              index={parentIndex}
               accessibilityLabel={item.wording}
               accessibilityRole={AccessibilityRole.BUTTON}>
               <ItemContainer>
@@ -55,31 +59,29 @@ export function SiteMapScreen() {
             </Li>
           )
 
-          const childrenJsx = item.subPages
-            .filter((subPage) => !subPage.isLoggedIn || isLoggedIn)
-            .map((subPage, idx) => (
-              <Li
-                key={subPage.wording}
-                groupLabel={item.wording}
-                index={idx}
-                total={item.subPages.length}
-                accessibilityLabel={subPage.wording}
-                accessibilityRole={AccessibilityRole.BUTTON}>
-                <NestedItemContainer>
-                  <BulletContainer>
-                    <NestedBullet />
-                  </BulletContainer>
-                  <ListText>
-                    <InternalTouchableLink
-                      as={Button}
-                      typography="BodyAccentXs"
-                      wording={subPage.wording}
-                      navigateTo={subPage.navigateTo}
-                    />
-                  </ListText>
-                </NestedItemContainer>
-              </Li>
-            ))
+          const childrenJsx = visibleSubPages.map((subPage, subIndex) => (
+            <Li
+              key={subPage.wording}
+              groupLabel={item.wording}
+              index={subIndex}
+              total={visibleSubPages.length}
+              accessibilityLabel={subPage.wording}
+              accessibilityRole={AccessibilityRole.BUTTON}>
+              <NestedItemContainer>
+                <BulletContainer>
+                  <NestedBullet />
+                </BulletContainer>
+                <ListText>
+                  <InternalTouchableLink
+                    as={Button}
+                    typography="BodyAccentXs"
+                    wording={subPage.wording}
+                    navigateTo={subPage.navigateTo}
+                  />
+                </ListText>
+              </NestedItemContainer>
+            </Li>
+          ))
 
           return [parentJsx, ...childrenJsx]
         })}
