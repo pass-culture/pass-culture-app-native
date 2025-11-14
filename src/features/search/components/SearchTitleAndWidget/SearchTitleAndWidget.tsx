@@ -1,10 +1,14 @@
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { LocationWidgetBadge } from 'features/location/components/LocationWidgetBadge'
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
+import { SearchView } from 'features/search/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Typo } from 'ui/theme'
@@ -22,37 +26,56 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   title,
 }) => {
   const subtitle = 'Toutes les offres à portée de main'
-  const { isDesktopViewport } = useTheme()
-  const shouldDisplayMobileLocationWidget = shouldDisplaySubtitle && !isDesktopViewport
+  const { isMobileViewport, isDesktopViewport } = useTheme()
+  const route = useRoute()
+  const currentView = route.name
+
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
+
+  const shouldDisplayMobileLocationBigWidget = isMobileViewport && shouldDisplaySubtitle
+  const shouldDisplayMobileLocationSmallWidget =
+    displayNewSearchHeader &&
+    isMobileViewport &&
+    (currentView === SearchView.Results || currentView === SearchView.Thematic)
+
   return (
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
           <StyledTitleMainView>
-            <StyledTitleMainText htmlFor={searchInputID} {...getHeadingAttrs(1)}>
+            <StyledTitleMainText
+              htmlFor={searchInputID}
+              {...getHeadingAttrs(1)}
+              small={shouldDisplayMobileLocationSmallWidget}>
               {title}
             </StyledTitleMainText>
           </StyledTitleMainView>
           {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
         </TitleMainWrapper>
-        {
-          // eslint-disable-next-line local-rules/use-ternary-operator-in-jsx
-          shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>
-        }
+        {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
       </TitleContainer>
-      <View testID="InsideLocationWidget">
-        {shouldDisplayMobileLocationWidget ? (
+      {shouldDisplayMobileLocationBigWidget ? (
+        <View testID="InsideLocationWidget">
           <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
-        ) : null}
-      </View>
+        </View>
+      ) : null}
+      {shouldDisplayMobileLocationSmallWidget ? (
+        <LocationWidgetBadgeContainer testID="LocationWidgetBadge">
+          <LocationWidgetBadge />
+        </LocationWidgetBadgeContainer>
+      ) : null}
     </TitleAndWidgetContainer>
   )
 }
 
-const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.designSystem.typography.title1,
-  color: theme.designSystem.color.text.default,
-}))
+const StyledTitleMainText = styledInputLabel(InputLabel)<{ small?: boolean }>(
+  ({ theme, small = false }) => ({
+    ...(small ? theme.designSystem.typography.title3 : theme.designSystem.typography.title1),
+    color: theme.designSystem.color.text.default,
+  })
+)
 
 const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xs,
@@ -81,4 +104,10 @@ const StyledTitleMainView = styled.View({
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
   maxWidth: '75%',
+})
+
+const LocationWidgetBadgeContainer = styled.View({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
 })

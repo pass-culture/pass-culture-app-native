@@ -96,6 +96,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   <Text
                     accessibilityRole="header"
                     htmlFor="testUuidV4"
+                    small={false}
                     style={
                       {
                         "color": "#161617",
@@ -110,9 +111,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 </View>
               </View>
             </View>
-            <View
-              testID="InsideLocationWidget"
-            />
           </View>
         </View>
         <View>

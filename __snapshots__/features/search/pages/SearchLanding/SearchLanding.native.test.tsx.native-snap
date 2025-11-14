@@ -96,6 +96,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   <Text
                     accessibilityRole="header"
                     htmlFor="testUuidV4"
+                    small={false}
                     style={
                       {
                         "color": "#161617",

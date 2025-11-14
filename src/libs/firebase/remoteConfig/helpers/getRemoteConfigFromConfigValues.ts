@@ -37,4 +37,5 @@ export const getRemoteConfigFromConfigValues = (
   displayMandatoryUpdatePersonalData: getConfigValue(
     parameters.displayMandatoryUpdatePersonalData
   ).asBoolean(),
+  displayNewSearchHeader: getConfigValue(parameters.displayNewSearchHeader).asBoolean(),
 })
