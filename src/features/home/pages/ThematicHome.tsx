@@ -3,7 +3,6 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useHomepageData } from 'features/home/api/useHomepageData'
 import {
   MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
   AnimatedCategoryThematicHomeHeader,
@@ -14,10 +13,11 @@ import {
 } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
-import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
+import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { GenericHome } from 'features/home/pages/GenericHome'
+import { useFetchHomepageByIdQuery } from 'features/home/queries/useGetHomepageListQuery'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
@@ -30,7 +30,7 @@ import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureSc
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
 
@@ -106,7 +106,9 @@ export const ThematicHome: FunctionComponent = () => {
   const { goBack } = useGoBack('Chronicles')
   const { navigate } = useNavigation<UseNavigationType>()
   const isFromDeeplink = params.from === 'deeplink'
-  const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
+  const { data: { modules = [], id: fetchedHomeId, thematicHeader } = {} } =
+    useFetchHomepageByIdQuery(params.homeId)
+  const homeId = fetchedHomeId || params.homeId
   const {
     userLocation,
     hasGeolocPosition,
@@ -130,17 +132,17 @@ export const ThematicHome: FunctionComponent = () => {
       ? params.moduleItemId
       : undefined
   useEffect(() => {
-    if (!id) {
+    if (!homeId) {
       return
     }
     analytics.logConsultThematicHome({
-      homeEntryId: id,
+      homeEntryId: homeId,
       from: params.from,
       moduleId: params.moduleId,
       moduleListId: params.moduleListId,
       moduleItemId,
     })
-  }, [id, params.from, params.homeId, params.moduleId, moduleItemId, params.moduleListId])
+  }, [homeId, params.from, params.homeId, params.moduleId, moduleItemId, params.moduleListId])
 
   useEffect(() => {
     switch (true) {
@@ -170,7 +172,7 @@ export const ThematicHome: FunctionComponent = () => {
     <Page>
       <GenericHome
         modules={modules}
-        homeId={id}
+        homeId={homeId}
         thematicHeader={thematicHeader}
         Header={
           <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
@@ -183,7 +185,7 @@ export const ThematicHome: FunctionComponent = () => {
       <ThematicHomeHeader
         thematicHeader={thematicHeader}
         headerTransition={headerTransition}
-        homeId={params.homeId}
+        homeId={homeId}
         onBackPress={handleBackPress}
       />
       {/* Animated header is called only for iOS */}

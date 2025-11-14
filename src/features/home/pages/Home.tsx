@@ -5,21 +5,26 @@ import styled from 'styled-components/native'
 
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useHomepageData } from 'features/home/api/useHomepageData'
-import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { getHomepagId } from 'features/home/api/useHomepageData'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
+import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { GenericHome } from 'features/home/pages/GenericHome'
+import { useFetchHomepageByIdQuery } from 'features/home/queries/useGetHomepageListQuery'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRoleFromOnboarding'
+import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
+import { isUserFreeBeneficiary } from 'features/profile/helpers/isUserFreeBeneficiary'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics/provider'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
-import { useBookingsQueryV2 } from 'queries/bookings'
+import { useBookingsQueryV2, useUserHasBookingsQuery } from 'queries/bookings'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -31,10 +36,21 @@ const Header = () => (
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, id } = useHomepageData() || {}
+  const { isLoggedIn, user } = useAuthContext()
+  const userHasBookings = useUserHasBookingsQuery()
+  const onboardingRole = useUserRoleFromOnboarding()
+  const { data: remoteConfig } = useRemoteConfigQuery()
+  const homepageId = getHomepagId(
+    isLoggedIn && !!user,
+    isUserFreeBeneficiary(user),
+    isUserBeneficiary(user),
+    userHasBookings,
+    onboardingRole,
+    remoteConfig
+  )
+  const { data: { modules = [] } = {} } = useFetchHomepageByIdQuery(homepageId)
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
-  const { isLoggedIn, user } = useAuthContext()
 
   const {
     visible: onboardingSubscriptionModalVisible,
@@ -66,10 +82,10 @@ export const Home: FunctionComponent = () => {
   }, [showAchievementModal, modalToShow])
 
   useEffect(() => {
-    if (id) {
-      analytics.logConsultHome({ homeEntryId: id })
+    if (homepageId) {
+      analytics.logConsultHome({ homeEntryId: homepageId })
     }
-  }, [id])
+  }, [homepageId])
 
   // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
@@ -118,7 +134,7 @@ export const Home: FunctionComponent = () => {
     <React.Fragment>
       <GenericHome
         modules={modules}
-        homeId={id}
+        homeId={homepageId}
         Header={<Header />}
         HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}

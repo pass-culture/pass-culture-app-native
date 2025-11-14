@@ -7,7 +7,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useHomepageData } from './useHomepageData'
+import { useHomepage } from './useHomepageData'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -28,7 +28,7 @@ describe('useHomepageModules', () => {
   })
 
   it('calls the API and returns the data', async () => {
-    const { result } = renderHook(useHomepageData, {
+    const { result } = renderHook(useHomepage, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -41,7 +41,7 @@ describe('useHomepageModules', () => {
 
   it('calls the API and returns the data of a thematic home page', async () => {
     const entryId = homepageEntryIds[1]
-    const { result } = renderHook(() => useHomepageData(entryId), {
+    const { result } = renderHook(() => useHomepage(entryId), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

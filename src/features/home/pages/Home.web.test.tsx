@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
-import { useHomepageData } from 'features/home/api/useHomepageData'
+import { useHomepage } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -19,7 +19,7 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 }))
 
 jest.mock('features/home/api/useHomepageData')
-const mockUseHomepageData = useHomepageData as jest.Mock
+const mockUseHomepageData = useHomepage as jest.Mock
 
 jest.mock('libs/location/location')
 
