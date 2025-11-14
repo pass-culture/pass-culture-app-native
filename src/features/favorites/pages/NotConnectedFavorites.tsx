@@ -47,8 +47,8 @@ export const NotConnectedFavorites = () => {
           <StyledAuthenticationButton
             key={2}
             type="login"
-            onAdditionalPress={() => analytics.logSignInFromFavorite()}
             params={{ from: StepperOrigin.FAVORITE }}
+            onBeforeNavigate={() => analytics.logSignInFromFavorite()}
           />
         </ButtonContainer>
         <Spacer.Flex flex={1} />
