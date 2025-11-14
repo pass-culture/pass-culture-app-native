@@ -107,7 +107,7 @@ export const BonificationBirthPlace = () => {
                     city={value}
                     onCitySelected={onChange}
                     label="Commune de naissance"
-                    isRequiredField
+                    requiredIndicator="explicit"
                   />
                 )}
               />

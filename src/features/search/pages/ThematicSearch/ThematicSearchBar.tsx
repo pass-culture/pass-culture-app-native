@@ -19,11 +19,13 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 type Props = {
   offerCategories: SearchGroupNameEnumv2[]
   title: string
+  placeholder?: string
 }
 export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   children,
   offerCategories,
   title,
+  placeholder,
 }) => {
   const { isFocusOnSuggestions } = useSearch()
 
@@ -56,6 +58,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         offerCategories={offerCategories}
+        placeholder={placeholder}
       />
       <Spacer.Column numberOfSpaces={2} />
       {isFocusOnSuggestions ? (

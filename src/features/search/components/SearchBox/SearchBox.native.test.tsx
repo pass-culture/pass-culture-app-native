@@ -175,9 +175,7 @@ describe('SearchBox component', () => {
 
   it('should render SearchBox', async () => {
     renderSearchBox()
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     expect(searchInput).toBeOnTheScreen()
   })
@@ -190,9 +188,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -211,9 +207,7 @@ describe('SearchBox component', () => {
   it('should display error message when query submitted is longer than 150 characters', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await user.type(searchInput, queryWithMoreThan150characters, { submitEditing: true })
 
@@ -229,9 +223,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -262,9 +254,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
     await user.type(searchInput, 'j')
     const resetSearchInputButton = screen.getByTestId('Réinitialiser la recherche')
     await user.press(resetSearchInputButton)
@@ -308,9 +298,7 @@ describe('SearchBox component', () => {
   it('should show the text typed by the user', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
     await user.type(searchInput, 'Some text')
 
     expect(searchInput.props.value).toBe('Some text')
@@ -319,9 +307,7 @@ describe('SearchBox component', () => {
   it('should not execute a search if input is empty', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await user.type(searchInput, '')
 
@@ -379,9 +365,7 @@ describe('SearchBox component', () => {
 
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await user.type(searchInput, 'j', { submitEditing: true })
 
@@ -401,9 +385,7 @@ describe('SearchBox component', () => {
     useRoute.mockReturnValueOnce({ name: SearchView.Landing })
     renderSearchBox()
 
-    const searchInput = screen.getByLabelText(
-      'Champs de texte - Recherche par offre, lieu, artiste'
-    )
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await user.type(searchInput, '')
 
@@ -458,9 +440,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByLabelText(
-        'Champs de texte - Recherche par offre, lieu, artiste'
-      )
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
       await user.type(searchInput, 'Livres', { submitEditing: true })
 
@@ -495,9 +475,7 @@ describe('SearchBox component', () => {
         useRoute.mockReturnValue({ name: SearchView.Landing })
         renderSearchBox()
 
-        const searchInput = screen.getByLabelText(
-          'Champs de texte - Recherche par offre, lieu, artiste'
-        )
+        const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
         await user.type(searchInput, queryText, { submitEditing: true })
 
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -528,9 +506,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByLabelText(
-        'Champs de texte - Recherche par offre, lieu, artiste'
-      )
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
       await user.type(searchInput, 'cinéma', { submitEditing: true })
 
@@ -548,10 +524,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByLabelText(
-        'Champs de texte - Recherche par offre, lieu, artiste'
-      )
-
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
       await user.type(searchInput, '')
 
       expect(mockDispatch).not.toHaveBeenCalled()
@@ -710,9 +683,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox()
 
-      const searchInput = screen.getByLabelText(
-        'Champs de texte - Recherche par offre, lieu, artiste'
-      )
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
       await user.type(searchInput, 'HP', { submitEditing: true })
 
@@ -789,9 +760,7 @@ describe('SearchBox component', () => {
 
       renderSearchBox(false, BOOK_OFFER_CATEGORIES)
 
-      const searchInput = screen.getByLabelText(
-        'Champs de texte - Recherche par offre, lieu, artiste'
-      )
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
       await user.type(searchInput, 'HP', { submitEditing: true })
 

@@ -264,30 +264,6 @@ exports[`ChangeCity should render correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68"
-                    data-testid="styled-input-container"
-                  >
-                    <input
-                      aria-label="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
-                      aria-required="false"
-                      autocapitalize="sentences"
-                      autocomplete="postal-code"
-                      autocorrect="off"
-                      class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1nu0hr2 r-fontSize-cygvgh r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
-                      data-testid="Entrée pour la ville"
-                      dir="ltr"
-                      enterkeyhint="search"
-                      id="postal-code-input"
-                      inputmode="numeric"
-                      placeholder=""
-                      rows="1"
-                      spellcheck="false"
-                      style="--placeholderTextColor: #696a6f;"
-                      value=""
-                      virtualkeyboardpolicy="auto"
-                    />
-                  </div>
-                  <div
                     role="alert"
                   />
                 </div>

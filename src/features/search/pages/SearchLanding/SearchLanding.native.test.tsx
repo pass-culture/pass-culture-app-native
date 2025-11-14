@@ -280,7 +280,7 @@ describe('<SearchLanding />', () => {
     it('should not display artists suggestions when wipArtistsSuggestionsInSearch FF deactivated', async () => {
       render(reactQueryProviderHOC(<SearchLanding />))
 
-      await screen.findByLabelText('Champs de texte - Recherche par offre, lieu, artiste')
+      await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
 
       expect(screen.queryByText('Artistes')).not.toBeOnTheScreen()
     })
@@ -365,7 +365,7 @@ describe('<SearchLanding />', () => {
 
       render(reactQueryProviderHOC(<SearchLanding />))
 
-      await screen.findByLabelText('Champs de texte - Recherche par offre, lieu, artiste')
+      await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
