@@ -5,28 +5,13 @@ import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
-import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { statusActions, useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
-import {
-  handlePostProfileError,
-  handlePostProfileSuccess,
-} from 'features/identityCheck/queries/profileSubmissionHandlers'
-import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
-import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { StatusFlatList, StatusForm } from './StatusFlatList'
 
@@ -36,17 +21,9 @@ const schema = yup.object().shape({
 
 export const SetStatus = () => {
   const { params } = useRoute<UseRouteType<'SetStatus'>>()
-  const { reset } = useNavigation<UseNavigationType>()
-  const { refetchUser } = useAuthContext()
-  const { navigateForwardToStepper } = useNavigateForwardToStepper()
-  const { showErrorSnackBar } = useSnackBarContext()
-  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
-  )
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const type = params?.type ?? ProfileTypes.IDENTITY_CHECK // Fallback to most common scenario
-
-  const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
 
   const identityCheckAndRecapExistingDataConfig = 'Profil'
   const pageConfigByType = {
@@ -55,34 +32,8 @@ export const SetStatus = () => {
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
-  const saveStep = useSaveStep()
-  const storedName = useName()
-  const storedCity = useCity()
-  const storedAddress = useAddress()
   const storedStatus = useStatus()
   const { setStatus: setStoreStatus } = statusActions
-  const storedFreeOfferId = useFreeOfferId()
-
-  const { mutateAsync: postProfile } = usePostProfileMutation({
-    onSuccess: () =>
-      handlePostProfileSuccess({
-        isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
-        storedFreeOfferId,
-        navigateForwardToStepper,
-        reset,
-        refetchUser,
-      }),
-    onError: () =>
-      handlePostProfileError({
-        isBookingFreeOffer,
-        enableBookingFreeOfferFifteenSixteen,
-        storedFreeOfferId,
-        reset,
-        showErrorSnackBar,
-        SNACK_BAR_TIME_OUT,
-      }),
-  })
 
   // isLoading from react-query is not support with mutateAsync
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -108,21 +59,12 @@ export const SetStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
-
-      const profile = {
-        name: storedName,
-        city: storedCity,
-        address: storedAddress,
-        status: formValues.selectedStatus,
-        hasSchoolTypes: false,
-        schoolType: null,
-      }
       setIsLoading(true)
-      await postProfile(profile)
-      await saveStep(IdentityCheckStep.PROFILE)
+      await setStoreStatus(formValues.selectedStatus)
+      await navigate(...getSubscriptionHookConfig('ActivationProfileRecap', { type }))
       setIsLoading(false)
     },
-    [postProfile, saveStep, storedAddress, storedCity, storedName]
+    [navigate, setStoreStatus, type]
   )
 
   const headerHeight = useGetHeaderHeight()
@@ -133,8 +75,8 @@ export const SetStatus = () => {
       <StatusFlatList
         handleSubmit={handleSubmit}
         isLoading={isLoading}
-        selectedStatus={selectedStatus}
         submitStatus={submitStatus}
+        isChangeStatus={false}
         titleID={titleID}
         control={control}
         headerHeight={headerHeight}

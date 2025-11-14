@@ -1928,7 +1928,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
       }
     >
       <View
-        accessibilityLabel="Continuer vers l’étape suivante"
+        accessibilityLabel="Valider mes informations et continuer"
         accessibilityState={
           {
             "busy": undefined,
@@ -1985,7 +1985,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
             },
           ]
         }
-        testID="Continuer vers l’étape suivante"
+        testID="Valider mes informations et continuer"
       >
         <View
           style={
@@ -2008,7 +2008,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
               }
             }
           >
-            Continuer
+            Valider mes informations
           </Text>
         </View>
       </View>
@@ -3985,7 +3985,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Continuer vers l’étape suivante"
+        accessibilityLabel="Valider mes informations et continuer"
         accessibilityState={
           {
             "busy": undefined,
@@ -4042,7 +4042,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
             },
           ]
         }
-        testID="Continuer vers l’étape suivante"
+        testID="Valider mes informations et continuer"
       >
         <View
           style={
@@ -4065,7 +4065,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
               }
             }
           >
-            Continuer
+            Valider mes informations
           </Text>
         </View>
       </View>
@@ -6042,7 +6042,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
       }
     >
       <View
-        accessibilityLabel="Continuer vers l’étape suivante"
+        accessibilityLabel="Valider mes informations et continuer"
         accessibilityState={
           {
             "busy": undefined,
@@ -6099,7 +6099,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
             },
           ]
         }
-        testID="Continuer vers l’étape suivante"
+        testID="Valider mes informations et continuer"
       >
         <View
           style={
@@ -6122,7 +6122,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
               }
             }
           >
-            Continuer
+            Valider mes informations
           </Text>
         </View>
       </View>

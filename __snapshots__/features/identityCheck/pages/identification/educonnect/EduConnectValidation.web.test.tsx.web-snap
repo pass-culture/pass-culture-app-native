@@ -169,7 +169,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                   dir="ltr"
                 >
-                  Tu valides que ces informations sont correctes ?
+                  Voici les informations que nous avons récupérées. Vérifie qu’elles sont correctes.
                 </div>
                 <div
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-gap-1fdih9r r-paddingBlock-nj0m1c r-paddingInline-cxgwc0"

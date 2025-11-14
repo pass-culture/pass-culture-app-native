@@ -98,6 +98,9 @@ export const rootStackNavigatorPathConfig = {
       SetStatus: {
         path: 'verification-identite/profil/statut',
       },
+      ActivationProfileRecap: {
+        path: 'verification-identite/profil/recapitulatif',
+      },
       SetProfileBookingError: {
         path: 'verification-identite/profil/statut/erreur',
       },

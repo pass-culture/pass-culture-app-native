@@ -40,6 +40,7 @@ import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phon
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { SetPhoneNumberWithoutValidation } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumberWithoutValidation'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
+import { ActivationProfileRecap } from 'features/identityCheck/pages/profile/ActivationProfileRecap'
 import { ProfileInformationValidationCreate } from 'features/identityCheck/pages/profile/ProfileInformationValidationCreate'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
@@ -114,6 +115,11 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
     name: 'SetStatus',
     component: withAuthProtection(SetStatus),
     options: { title: 'Ton statut | Profil' },
+  },
+  {
+    name: 'ActivationProfileRecap',
+    component: withAuthProtection(ActivationProfileRecap),
+    options: { title: 'Recapitulatif | Profil' },
   },
   {
     name: 'SetProfileBookingError',

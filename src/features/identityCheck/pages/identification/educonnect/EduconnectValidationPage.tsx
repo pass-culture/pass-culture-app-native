@@ -28,7 +28,7 @@ export const EduconnectValidationPage: FC<Props> = ({
       title="Informations personnelles"
       scrollChildren={
         <Summary
-          title="Tu valides que ces informations sont correctes&nbsp;?"
+          title="Voici les informations que nous avons récupérées. Vérifie qu’elles sont correctes."
           data={[
             { title: 'Ton prénom', testID: 'validation-first-name', value: firstName },
             { title: 'Ton nom de famille', testID: 'validation-name', value: lastName },
