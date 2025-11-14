@@ -35,6 +35,8 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 }
 
 export const AppNavigationContainer = () => {
+  const t0 = performance.now()
+  console.log(`Most nested of App (AppNavigationContainer) start ${t0}`)
   const colorScheme = useColorScheme()
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()

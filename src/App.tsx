@@ -1,7 +1,7 @@
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 import { HotUpdater, getUpdateSource } from '@hot-updater/react-native'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, StrictMode, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox } from 'react-native'
 import 'react-native-gesture-handler' // @react-navigation
@@ -51,6 +51,8 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  const t0 = performance.now()
+  console.log(`Start of App ${t0}`)
   useLaunchPerformanceObserver()
 
   useOrientationLocked()
@@ -71,6 +73,8 @@ const App: FunctionComponent = function () {
     })
   }, [])
 
+  const t1 = performance.now()
+  console.log(`Start of returning App JSX ${t1}`)
   return (
     <ReactQueryClientProvider>
       <ThemeWrapper>

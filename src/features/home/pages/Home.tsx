@@ -30,6 +30,8 @@ const Header = () => (
 )
 
 export const Home: FunctionComponent = () => {
+  const t0 = performance.now()
+  console.log(`Home start ${t0}`)
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
@@ -114,6 +116,8 @@ export const Home: FunctionComponent = () => {
     editor.save()
   }, [bookings, user?.firstDepositActivationDate])
 
+  const t1 = performance.now()
+  console.log(`Home start of returning JSX ${t1}`)
   return (
     <React.Fragment>
       <GenericHome
