@@ -141,19 +141,19 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Set Address',
+      title: 'SetAddress',
       navigationTarget: getSubscriptionPropConfig('SetAddress', {
         type: ProfileTypes.IDENTITY_CHECK,
       }),
     },
     {
       id: uuidv4(),
-      title: 'Set City',
+      title: 'SetCity',
       navigationTarget: getSubscriptionPropConfig('SetCity', { type: ProfileTypes.IDENTITY_CHECK }),
     },
     {
       id: uuidv4(),
-      title: 'Set Name',
+      title: 'SetName',
       navigationTarget: getSubscriptionPropConfig('SetName', { type: ProfileTypes.IDENTITY_CHECK }),
     },
     {
@@ -173,8 +173,15 @@ const identityCheckCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'Set Status',
+      title: 'SetStatus',
       navigationTarget: getSubscriptionPropConfig('SetStatus', {
+        type: ProfileTypes.IDENTITY_CHECK,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'ActivationProfileRecap',
+      navigationTarget: getSubscriptionPropConfig('ActivationProfileRecap', {
         type: ProfileTypes.IDENTITY_CHECK,
       }),
     },

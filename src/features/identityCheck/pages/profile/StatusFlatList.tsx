@@ -30,7 +30,6 @@ export type StatusForm = {
 interface Props {
   handleSubmit: UseFormHandleSubmit<StatusForm>
   isLoading: boolean
-  selectedStatus: ActivityIdEnum | null
   submitStatus: (formValues: StatusForm) => Promise<void>
   titleID: string
   control: Control<StatusForm>
@@ -41,7 +40,6 @@ interface Props {
 export function StatusFlatList({
   handleSubmit,
   isLoading,
-  selectedStatus,
   submitStatus,
   titleID,
   control,
@@ -116,10 +114,8 @@ export function StatusFlatList({
         <ButtonPrimary
           type="submit"
           onPress={handleSubmit(submitStatus)}
-          wording={selectedStatus ? 'Continuer' : 'Valider mon statut'}
-          accessibilityLabel={
-            selectedStatus ? 'Continuer vers l’étape suivante' : 'Valider mon statut'
-          }
+          wording="Continuer"
+          accessibilityLabel="Continuer vers l’étape suivante"
           isLoading={isLoading}
           disabled={!formIsValid}
         />
