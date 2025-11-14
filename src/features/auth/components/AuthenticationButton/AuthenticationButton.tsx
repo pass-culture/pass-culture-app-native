@@ -23,6 +23,7 @@ type SignupProps = {
 type Props = {
   linkColor?: ColorsType
   onAdditionalPress?: () => void
+  onBeforeNavigate?: () => void | Promise<void>
   children?: never
 } & (LoginProps | SignupProps)
 
@@ -31,6 +32,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   linkColor,
   params = {},
   onAdditionalPress: onPress,
+  onBeforeNavigate,
 }) => {
   const { designSystem } = useTheme()
   const isLogin = type === 'login'
@@ -53,7 +55,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
           navigateTo={nextNavigation}
           wording={wording}
           color={color}
-          onBeforeNavigate={onPress}
+          onBeforeNavigate={onBeforeNavigate ?? onPress}
           accessibilityRole={AccessibilityRole.BUTTON}
         />
       </ButtonContainer>
