@@ -349,38 +349,43 @@ exports[`<SetCity/> should render correctly 1`] = `
                           "paddingRight": 9,
                           "paddingTop": 0,
                           "width": "100%",
-                        },
-                        {
-                          "borderBottomLeftRadius": 8,
-                          "borderBottomRightRadius": 8,
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                        },
-                    }
-                    testID="styled-input-container"
-                  >
-                    <TextInput
-                      accessibilityHidden={false}
-                      accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
-                      accessibilityRequired={false}
-                      autoComplete="postal-code"
-                      autoCorrect={false}
-                      editable={true}
-                      enablesReturnKeyAutomatically={true}
-                      focusable={true}
-                      isEmpty={true}
-                      keyboardType="number-pad"
-                      multiline={false}
-                      nativeID="postal-code-input"
-                      onBlur={[Function]}
-                      onChangeText={[Function]}
-                      onFocus={[Function]}
-                      placeholder=""
-                      placeholderTextColor="#696a6f"
-                      returnKeyType="search"
-                      selectionColor="#696a6f"
-                      style={
-                        [
+                        }
+                      }
+                      testID="styled-input-container"
+                    >
+                      <View
+                        style={
+                          {
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          }
+                        }
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <TextInput
+                        accessibilityLabel="Champs de texte - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                        accessibilityRequired={false}
+                        autoComplete="postal-code"
+                        editable={true}
+                        isEmpty={true}
+                        keyboardType="number-pad"
+                        multiline={false}
+                        nativeID="Entrée pour la ville"
+                        onBlur={[Function]}
+                        onChangeText={[Function]}
+                        onFocus={[Function]}
+                        placeholder=""
+                        placeholderTextColor="#696a6f"
+                        returnKeyType="search"
+                        style={
                           {
                             "color": "#161617",
                             "flexBasis": 0,

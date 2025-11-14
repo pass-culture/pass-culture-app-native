@@ -20,6 +20,7 @@ type Props = {
   title?: string
   shouldDisplaySubtitle?: boolean
   withArrow?: boolean
+  placeholder?: string
 }
 
 export const SearchHeader = memo(function SearchHeader({
@@ -30,6 +31,7 @@ export const SearchHeader = memo(function SearchHeader({
   withArrow = false,
   title = 'Rechercher',
   offerCategories,
+  placeholder,
 }: Props) {
   const { goBack } = useNavigation()
   const { dispatch } = useSearch()
@@ -63,6 +65,7 @@ export const SearchHeader = memo(function SearchHeader({
             addSearchHistory={addSearchHistory}
             searchInHistory={searchInHistory}
             offerCategories={offerCategories}
+            placeholder={placeholder}
           />
         </View>
       </HeaderContainer>

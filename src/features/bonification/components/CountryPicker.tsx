@@ -4,9 +4,9 @@ import { View } from 'react-native'
 
 import { INSEE_COUNTRY_LIST, InseeCountry } from 'features/bonification/inseeCountries'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 
 import { FormValues } from '../pages/BonificationBirthPlace'
 
@@ -55,8 +55,8 @@ export const CountryPicker: React.FC<{
         }}
         value={valueInput}
         label="Pays de naissance"
-        format="France"
-        onPressRightIcon={() => {
+        description="Exemple&nbsp;: France"
+        onClear={() => {
           reset({
             birthCountrySelection: {},
             birthCity: {},
@@ -69,8 +69,7 @@ export const CountryPicker: React.FC<{
         testID="Entrée pour le pays de naissance"
         autoComplete="country"
         textContentType="countryName"
-        searchInputID="country-name-input"
-        isRequiredField
+        requiredIndicator="explicit"
       />
       {valueInput && valueInput.length != 0 ? (
         <VerticalUl>

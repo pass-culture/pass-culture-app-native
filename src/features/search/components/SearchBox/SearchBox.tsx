@@ -18,6 +18,7 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
+import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -26,7 +27,6 @@ import { analytics } from 'libs/analytics/provider'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SEARCH_DEBOUNCE_MS = 500
@@ -36,6 +36,7 @@ type Props = UseSearchBoxProps & {
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
   offerCategories?: SearchGroupNameEnumv2[]
+  placeholder?: string
 }
 
 const accessibilityDescribedBy = uuidv4()
@@ -48,6 +49,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   addSearchHistory,
   searchInHistory,
   offerCategories,
+  placeholder,
   ...props
 }) => {
   const { isDesktopViewport } = useTheme()
@@ -308,18 +310,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
           ) : null}
           <FlexView>
             <HiddenSuggestionsButton />
-            <SearchInput
-              label="Recherche par offre, lieu, artiste"
+            <SearchMainInput
               ref={inputRef}
-              value={displayedQuery}
-              onChangeText={setQuery}
-              onSubmitEditing={onSubmitQuery}
-              onClear={resetQuery}
-              nativeAutoFocus={Platform.OS !== 'web'}
+              query={displayedQuery}
+              setQuery={setQuery}
+              onSubmitQuery={onSubmitQuery}
+              resetQuery={resetQuery}
+              isFocusable={isFocusOnSuggestions}
               onFocus={onFocus}
-              focusable={isFocusOnSuggestions}
-              testID="searchInput"
-              disableClearButton={disableInputClearButton}
+              disableInputClearButton={disableInputClearButton}
+              placeholder={placeholder}
             />
           </FlexView>
         </SearchInputA11yContainer>

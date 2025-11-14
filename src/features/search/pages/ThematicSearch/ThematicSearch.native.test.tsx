@@ -153,9 +153,7 @@ describe('<ThematicSearch/>', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         const QUERY = 'Harry'
         render(reactQueryProviderHOC(<ThematicSearch />))
-        const searchInput = screen.getByLabelText(
-          'Champs de texte - Recherche par offre, lieu, artiste'
-        )
+        const searchInput = screen.getByPlaceholderText('Livres...')
         await user.type(searchInput, QUERY, { submitEditing: true })
         await screen.findByText('Romans et littérature')
 
