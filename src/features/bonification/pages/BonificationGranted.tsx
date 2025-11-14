@@ -26,7 +26,7 @@ export function BonificationGranted() {
       buttonPrimary={{ wording: 'J’en profite', navigateTo: navigateToHomeConfig }}>
       <React.Fragment>
         <StyledBody>
-          {bonificationAmount} ont été ajoutés à ton crédit pour explorer la culture.{' '}
+          {bonificationAmount} ont été ajoutés à ton crédit pour explorer la culture.
         </StyledBody>
         <ProgressBarContainer>
           <AnimatedProgressBar
