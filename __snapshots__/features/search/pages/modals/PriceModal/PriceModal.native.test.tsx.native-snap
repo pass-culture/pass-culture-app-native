@@ -724,14 +724,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               >
                 <View
-                  gap={0}
                   style={
                     {
                       "alignItems": "flex-start",
                       "display": "flex",
                       "flexDirection": "column",
-                      "gap": 0,
-                      "maxWidth": 500,
                       "width": "100%",
                     }
                   }
@@ -835,14 +832,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </View>
               </View>
               <View
-                gap={0}
                 style={
                   {
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "column",
-                    "gap": 0,
-                    "maxWidth": 500,
                     "width": "100%",
                   }
                 }

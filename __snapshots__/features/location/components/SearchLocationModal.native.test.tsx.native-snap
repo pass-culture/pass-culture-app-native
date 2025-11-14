@@ -535,19 +535,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         Choisir une localisation
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                          "marginTop": 4,
-                        }
-                      }
-                    >
-                      Ville, code postal, adresse
-                    </Text>
                   </View>
                   <View
                     style={

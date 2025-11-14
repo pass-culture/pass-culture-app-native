@@ -186,7 +186,6 @@ export const LocationModal = ({
               icon={MagnifyingGlassFilled}
               color={customLocationModeColor}
               title={AROUND_PLACE_TITLE}
-              subtitle={LOCATION_PLACEHOLDER}
             />
             {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
               <React.Fragment>

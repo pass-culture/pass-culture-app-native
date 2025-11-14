@@ -210,13 +210,13 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                     </View>
                     <TextInput
-                      accessibilityHidden={true}
+                      accessibilityHidden={false}
                       accessibilityLabel="Champs de recherche"
                       autoCorrect={false}
                       autoFocus={false}
                       editable={true}
                       enablesReturnKeyAutomatically={true}
-                      focusable={false}
+                      focusable={true}
                       isEmpty={true}
                       multiline={false}
                       nativeID="testUuidV4"

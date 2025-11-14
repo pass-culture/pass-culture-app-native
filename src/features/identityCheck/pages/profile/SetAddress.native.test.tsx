@@ -52,11 +52,10 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  //TODO(PC-36587): unskip this test
-  it.skip('should render correctly', async () => {
+  it('should render correctly', async () => {
     renderSetAddress()
 
-    await screen.findByText('Recherche et sélectionne ton adresse')
+    await screen.findByTestId('Entrée pour l’adresse')
 
     expect(screen).toMatchSnapshot()
   })

@@ -588,7 +588,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               }
             >
               <View
-                fill="#161617"
                 height={20}
                 testID="button-icon-left"
                 width={20}
@@ -1129,7 +1128,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
               }
             >
               <View
-                fill="#161617"
                 height={20}
                 testID="button-icon-left"
                 width={20}
@@ -1759,7 +1757,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               }
             >
               <View
-                fill="#161617"
                 height={20}
                 testID="button-icon-left"
                 width={20}

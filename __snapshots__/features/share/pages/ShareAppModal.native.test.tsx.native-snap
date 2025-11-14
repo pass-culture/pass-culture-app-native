@@ -431,7 +431,6 @@ exports[`ShareAppModal should match snapshot 1`] = `
                     }
                   >
                     <View
-                      fill="#161617"
                       height={16}
                       testID="button-icon-left"
                       width={16}

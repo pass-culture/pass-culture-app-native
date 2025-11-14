@@ -603,7 +603,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
               }
             >
               <View
-                fill="#161617"
                 height={20}
                 testID="button-icon-left"
                 width={20}

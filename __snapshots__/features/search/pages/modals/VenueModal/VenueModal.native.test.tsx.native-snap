@@ -347,14 +347,11 @@ exports[`VenueModal should render correctly 1`] = `
               }
             >
               <View
-                gap={0}
                 style={
                   {
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "column",
-                    "gap": 0,
-                    "maxWidth": 500,
                     "width": "100%",
                   }
                 }
@@ -534,7 +531,6 @@ exports[`VenueModal should render correctly 1`] = `
                     testID="Réinitialiser la recherche"
                   >
                     <View
-                      fill="#161617"
                       height={24}
                       width={24}
                     >

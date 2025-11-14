@@ -62,7 +62,6 @@ export const SearchHeader = memo(function SearchHeader({
         </RowContainer>
         <View>
           <SearchBox
-            searchInputID={searchInputID}
             addSearchHistory={addSearchHistory}
             searchInHistory={searchInHistory}
             offerCategories={offerCategories}

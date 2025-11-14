@@ -11,7 +11,6 @@ import { SearchView } from 'features/search/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -25,7 +24,6 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   searchInputID,
   title,
 }) => {
-  const subtitle = 'Toutes les offres à portée de main'
   const { isMobileViewport, isDesktopViewport } = useTheme()
   const route = useRoute()
   const currentView = route.name
@@ -54,7 +52,6 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
           </StyledTitleMainView>
           {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
         </TitleMainWrapper>
-        {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
       </TitleContainer>
       {shouldDisplayMobileLocationBigWidget ? (
         <View testID="InsideLocationWidget">
@@ -76,11 +73,6 @@ const StyledTitleMainText = styledInputLabel(InputLabel)<{ small?: boolean }>(
     color: theme.designSystem.color.text.default,
   })
 )
-
-const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xs,
-  color: theme.designSystem.color.text.subtle,
-}))
 
 const TitleAndWidgetContainer = styled.View({
   flexDirection: 'row',

@@ -25,9 +25,9 @@ import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/Cheat
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { env } from 'libs/environment/env'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { getSpacing } from 'ui/theme'
 
 const isMatching = (searchValue: string, str: string): boolean =>
@@ -190,10 +190,10 @@ export function CheatcodesMenu(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="Cheatcodes">
       <StyledSearchInput
-        placeholder="Rechercher..."
+        label="Rechercher..."
         value={searchValue}
         onChangeText={setSearchValue}
-        onPressRightIcon={resetSearch}
+        onClear={resetSearch}
       />
       {filteredFeaturesButtons.length ? (
         <React.Fragment>
@@ -216,8 +216,7 @@ export function CheatcodesMenu(): React.JSX.Element {
 }
 
 const StyledSearchInput = styled(SearchInput).attrs({
-  inputContainerStyle: {
-    flex: 1,
+  containerStyle: {
     marginBottom: getSpacing(4),
   },
 })``

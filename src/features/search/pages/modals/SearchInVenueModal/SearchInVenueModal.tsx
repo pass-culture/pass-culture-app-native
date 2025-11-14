@@ -6,11 +6,10 @@ import { useSearchInVenueModal } from 'features/search/pages/modals/SearchInVenu
 import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { Venue } from 'features/venue/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { Close } from 'ui/svg/icons/Close'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
@@ -67,21 +66,17 @@ export const SearchInVenueModal = ({
       <SearchInputContainer>
         <SearchInput
           autoFocus
-          LeftIcon={StyledMagnifyingGlass}
-          onPressRightIcon={doResetVenue}
+          onClear={doResetVenue}
           onChangeText={setSearchInVenueQuery}
           value={searchInVenueQuery}
           label="Rechercher dans ce lieu"
           onSubmitEditing={doApplySearch}
+          testID="searchInput"
         />
       </SearchInputContainer>
     </AppModal>
   )
 }
-
-const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
 
 const SearchInputContainer = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.xl,

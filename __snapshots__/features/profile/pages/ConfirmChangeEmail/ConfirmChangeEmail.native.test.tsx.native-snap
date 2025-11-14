@@ -347,7 +347,6 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
               }
             >
               <View
-                fill="#161617"
                 height={20}
                 testID="button-icon-left"
                 width={20}
