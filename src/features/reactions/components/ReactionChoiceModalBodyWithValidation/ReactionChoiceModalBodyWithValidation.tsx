@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { FlexStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponseV2, OfferResponse, ReactionTypeEnum } from 'api/gen'
+import { ReactionTypeEnum, SubcategoryIdEnum } from 'api/gen'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useSubcategory } from 'libs/subcategories'
 import { Separator } from 'ui/components/Separator'
@@ -13,19 +13,23 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  offer: OfferResponse | BookingOfferResponseV2
+  subcategoryId: SubcategoryIdEnum
+  offerName: string
   dateUsed: string
   handleOnPressReactionButton: (reactionType: ReactionTypeEnum) => void
   reactionStatus?: ReactionTypeEnum | null
+  imageUrl?: string
 }
 
 export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = ({
-  offer,
+  subcategoryId,
+  offerName,
   dateUsed,
   reactionStatus,
   handleOnPressReactionButton,
+  imageUrl,
 }) => {
-  const { categoryId } = useSubcategory(offer.subcategoryId)
+  const { categoryId } = useSubcategory(subcategoryId)
 
   return (
     <Container gap={6}>
@@ -33,11 +37,11 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
       <ViewGap gap={4}>
         <Separator.Horizontal />
         <HorizontalTileContainer gap={4}>
-          <HorizontalTile categoryId={categoryId} imageUrl={offer.image?.url}>
+          <HorizontalTile categoryId={categoryId} imageUrl={imageUrl}>
             <Column flex={1}>
               <Row>
                 <OfferNameContainer>
-                  <OfferName title={offer.name} />
+                  <OfferName title={offerName} />
                 </OfferNameContainer>
               </Row>
               <SubtitleContainer gap={1}>

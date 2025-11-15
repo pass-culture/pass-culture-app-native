@@ -71,7 +71,10 @@ export const IncomingReactionModalContainer = ({
 
   return (
     <ReactionChoiceModal
-      offer={offer}
+      offerId={offer.id}
+      offerName={offer.name}
+      imageUrl={offer.image?.url}
+      subcategoryId={offer.subcategoryId}
       dateUsed={dateUsed ? `le ${formatToSlashedFrenchDate(dateUsed)}` : ''}
       closeModal={handleCloseModalWithUpdate}
       visible={reactionModalVisible}

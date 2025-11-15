@@ -11,7 +11,7 @@ import {
   useOngoingOrEndedBookingQuery,
   useOngoingOrEndedBookingQueryV2,
 } from 'features/bookings/queries'
-import { convertBookingDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsResponseV2DatesToTimezone'
+import { convertBookingResponseDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -98,7 +98,7 @@ const BookingDetailsContainer = ({
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
   const useBookingById = () =>
-    useBookingsByIdQuery(bookingId, { select: convertBookingDateToTimezone })
+    useBookingsByIdQuery(bookingId, { select: convertBookingResponseDateToTimezone })
 
   const useOngoingOrEndedBookings = () => useOngoingOrEndedBookingQueryV2(bookingId)
 

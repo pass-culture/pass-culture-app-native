@@ -5,6 +5,7 @@ export { getOfferRules } from './getOfferRules'
 export { getBookingLabelForActivationCode } from './getBookingLabelForActivationCode'
 export { getBookingLabels } from './getBookingLabels'
 export { getEventOnSiteWithdrawLabel } from './getEventOnSiteWithdrawLabel'
+export { getBookingListItemProperties } from './v2/getBookingListItemProperties'
 export {
   daysCountdown,
   displayExpirationMessage,

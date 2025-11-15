@@ -1,15 +1,15 @@
 import mockdate from 'mockdate'
 
-import { BookingResponse } from 'api/gen'
-import { bookingsSnapV2 } from 'features/bookings/fixtures'
+import { ongoingBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getBookingLabelsV2 } from 'features/bookings/helpers'
 
 describe('getBookingLabels', () => {
+  const mockBooking = ongoingBookingsV2ListSnap.bookings[0]
+
   it('should return the correct dateLabel for permanent bookings', () => {
-    const booking = bookingsSnapV2.ongoingBookings[0]
     const properties = { isPermanent: true }
 
-    const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
+    const labels = getBookingLabelsV2.getBookingLabels(mockBooking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'Permanent',
@@ -21,23 +21,21 @@ describe('getBookingLabels', () => {
   })
 
   it('should not return the location for digital bookings', () => {
-    const booking = bookingsSnapV2.ongoingBookings[0]
     const properties = { isDigital: true }
 
-    const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
+    const labels = getBookingLabelsV2.getBookingLabels(mockBooking, properties)
 
     expect(labels.locationLabel).toEqual('')
   })
 
   it('should return the correct date and location for events', () => {
-    const booking = bookingsSnapV2.ongoingBookings[0]
     const properties = { isEvent: true }
 
-    const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
+    const labels = getBookingLabelsV2.getBookingLabels(mockBooking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 20h00',
-      dayLabel: '15 mars 2021',
+      dateLabel: 'Le 14 mars 2024 à 20h00',
+      dayLabel: '14 mars 2024',
       hourLabel: '20h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: '',
@@ -45,43 +43,41 @@ describe('getBookingLabels', () => {
   })
 
   it('should return the correct withdrawal date and location for events if starting today', () => {
-    mockdate.set(new Date('2021-03-15T18:00:00')) // 2 hours before
-    const booking = bookingsSnapV2.ongoingBookings[0]
+    mockdate.set(new Date('2024-03-14T18:00:00')) // 2 hours before
     const properties = { isEvent: true }
 
-    const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
+    const labels = getBookingLabelsV2.getBookingLabels(mockBooking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 20h00',
-      dayLabel: '15 mars 2021',
+      dateLabel: 'Le 14 mars 2024 à 20h00',
+      dayLabel: '14 mars 2024',
       hourLabel: '20h00',
       locationLabel: 'Maison de la Brique, Drancy',
-      withdrawLabel: 'Aujourd’hui',
+      withdrawLabel: 'Billet à retirer sur place aujourd’hui',
     })
   })
 
   it('should return the correct withdrawal date and location for events if starting tomorrow', () => {
-    mockdate.set(new Date('2021-03-14T19:00:00')) // 25 hours before
-    const booking = bookingsSnapV2.ongoingBookings[0]
+    mockdate.set(new Date('2024-03-13T19:00:00')) // 25 hours before
     const properties = { isEvent: true }
 
-    const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
+    const labels = getBookingLabelsV2.getBookingLabels(mockBooking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 20h00',
-      dayLabel: '15 mars 2021',
+      dateLabel: 'Le 14 mars 2024 à 20h00',
+      dayLabel: '14 mars 2024',
       hourLabel: '20h00',
       locationLabel: 'Maison de la Brique, Drancy',
-      withdrawLabel: 'Demain',
+      withdrawLabel: 'Billet à retirer sur place d’ici demain',
     })
   })
 
   it('should return the correct withdrawal date if expires today for physical bookings', () => {
     mockdate.set(new Date('2021-03-15T21:00:00'))
     const booking = {
-      ...bookingsSnapV2.ongoingBookings[0],
-      expirationDate: '2021-03-15T23:00:00', // expires in 2 hours
-    } as unknown as BookingResponse
+      ...mockBooking,
+      activationCode: { code: 'toto', expirationDate: '2021-03-15T23:00:00' }, // expires in 2 hours
+    }
     const properties = { isPhysical: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
@@ -97,9 +93,9 @@ describe('getBookingLabels', () => {
   it('should return the correct withdrawal date if expires tomorrow for physical bookings', () => {
     mockdate.set(new Date('2021-03-15T21:00:00'))
     const booking = {
-      ...bookingsSnapV2.ongoingBookings[0],
-      expirationDate: '2021-03-16T22:00:00', // expires in 25 hours
-    } as unknown as BookingResponse
+      ...mockBooking,
+      activationCode: { code: 'toto', expirationDate: '2021-03-16T22:00:00' }, // expires in 25 hours
+    }
     const properties = { isPhysical: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
 
@@ -113,10 +109,9 @@ describe('getBookingLabels', () => {
   })
 
   it('should return the correct dateLabel for digital bookings with activation codes but no expiration date', () => {
-    const booking = bookingsSnapV2.ongoingBookings[0]
     const properties = { isDigital: true, hasActivationCode: true }
 
-    const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
+    const labels = getBookingLabelsV2.getBookingLabels(mockBooking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'À activer',
@@ -128,12 +123,9 @@ describe('getBookingLabels', () => {
   })
 
   it('should return the correct dateLabel for digital bookings with activation codes with expiration date', () => {
-    const booking: BookingResponse = {
-      ...bookingsSnapV2.ongoingBookings[0],
-      ticket: {
-        ...bookingsSnapV2.ongoingBookings[0].ticket,
-        activationCode: { code: 'toto', expirationDate: '2021-03-15T23:01:37.925926' },
-      },
+    const booking = {
+      ...mockBooking,
+      activationCode: { code: 'toto', expirationDate: '2021-03-15T23:01:37.925926' },
     }
     const properties = { isDigital: true, hasActivationCode: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)

@@ -3,7 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from 'api/api'
 import { BookingsResponseV2, BookingsListResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsResponseV2DatesToTimezone'
+import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
+import { BookingStatus } from 'features/bookings/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { CustomQueryOptions } from 'libs/react-query/types'
@@ -45,5 +46,12 @@ export const useBookingsByStatusQuery = <TSelect = BookingsListResponseV2>(
     ...options,
   })
 
-export const useBookingsV2WithConvertedTimezoneQuery = (enabled: boolean) =>
-  useBookingsQuery(enabled, (data) => convertBookingsResponseV2DatesToTimezone(data))
+type BookingStatusValue = `${BookingStatus}Bookings`
+export const useBookingsV2WithConvertedTimezoneQuery = <TSelect = BookingsListResponseV2>(
+  select: (data: BookingsResponseV2, status: BookingStatusValue) => TSelect,
+  status: BookingStatusValue,
+  enabled = true
+) =>
+  useBookingsQuery(enabled, (data) =>
+    select(convertBookingsResponseV2DatesToTimezone(data), status)
+  )

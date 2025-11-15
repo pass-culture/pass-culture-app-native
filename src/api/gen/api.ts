@@ -618,6 +618,16 @@ export interface BookingListItemOfferResponseTimezone {
    * @type {string}
    * @memberof BookingListItemOfferResponseTimezone
    */
+  city?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponseTimezone
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponseTimezone
+   */
   timezone: string
 }
 /**
@@ -631,10 +641,30 @@ export interface BookingListItemResponse {
    */
   activationCode?: ActivationCodeResponse | null
   /**
+   * @type {boolean}
+   * @memberof BookingListItemResponse
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingListItemResponse
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
    * @type {string}
    * @memberof BookingListItemResponse
    */
   dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  dateUsed?: string | null
   /**
    * @type {number}
    * @memberof BookingListItemResponse
@@ -650,6 +680,16 @@ export interface BookingListItemResponse {
    * @memberof BookingListItemResponse
    */
   stock: BookingListItemStockResponse
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingListItemResponse
+   */
+  userReaction?: ReactionTypeEnum | null
 }
 /**
  * @export
@@ -672,11 +712,6 @@ export interface BookingListItemStockResponse {
  * @interface BookingListItemVenueResponse
  */
 export interface BookingListItemVenueResponse {
-  /**
-   * @type {string}
-   * @memberof BookingListItemVenueResponse
-   */
-  city?: string | null
   /**
    * @type {number}
    * @memberof BookingListItemVenueResponse

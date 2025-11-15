@@ -2,6 +2,7 @@ import type { ReadonlyDeep } from 'type-fest'
 
 import {
   BookingCancellationReasons,
+  BookingsListResponseV2,
   BookingsResponse,
   BookingsResponseV2,
   SubcategoryIdEnum,
@@ -357,6 +358,7 @@ export const bookingsSnap = toMutable({
             },
             timezone: 'Europe/Paris',
           },
+          image: { url: '' },
           extraData: null,
           isPermanent: false,
           isDigital: true,
@@ -491,6 +493,7 @@ export const bookingsSnap = toMutable({
             },
             timezone: 'Europe/Paris',
           },
+          image: { url: '' },
           extraData: {
             ean: '123456789',
           },
@@ -672,3 +675,87 @@ export const emptyBookingsSnap = toMutable({
   ongoingBookings: [],
   hasBookingsAfter18: true,
 } as const satisfies ReadonlyDeep<BookingsResponseV2>)
+
+export const endedBookingsV2ListSnap = toMutable({
+  bookings: [
+    {
+      id: 987,
+      cancellationDate: '2021-03-15T23:01:37.925926',
+      cancellationReason: BookingCancellationReasons.BENEFICIARY,
+      dateCreated: '2021-02-15T23:01:37.925926',
+      dateUsed: null,
+      totalAmount: 1900,
+      quantity: 10,
+      userReaction: null,
+      canReact: true,
+      activationCode: { code: '', expirationDate: null },
+      stock: {
+        beginningDatetime: '2021-03-14T20:00:00',
+        offer: {
+          id: 147874,
+          name: 'Harry Potter',
+          isPermanent: false,
+          isDigital: true,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+          venue: {
+            id: 2185,
+            name: 'Maison de la Brique',
+            timezone: 'Europe/Paris',
+          },
+
+          address: {
+            city: 'Drancy',
+            label: null,
+            timezone: 'Europe/Paris',
+          },
+          withdrawalType: WithdrawalTypeEnum.on_site,
+          withdrawalDelay: null,
+          imageUrl:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA',
+        },
+      },
+    },
+  ],
+} as const satisfies ReadonlyDeep<BookingsListResponseV2>)
+
+export const ongoingBookingsV2ListSnap = toMutable({
+  bookings: [
+    {
+      id: 765,
+      cancellationDate: null,
+      cancellationReason: null,
+      dateCreated: '2024-02-15T23:01:37.925926',
+      dateUsed: null,
+      totalAmount: 1900,
+      quantity: 10,
+      userReaction: null,
+      canReact: true,
+      activationCode: { code: '', expirationDate: null },
+      stock: {
+        beginningDatetime: '2024-03-14T20:00:00',
+        offer: {
+          id: 147874,
+          name: 'Percy Jackson',
+          isPermanent: false,
+          isDigital: true,
+          subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+          venue: {
+            id: 2185,
+            name: 'Maison de la Brique',
+            timezone: 'Europe/Paris',
+          },
+
+          address: {
+            city: 'Drancy',
+            label: null,
+            timezone: 'Europe/Paris',
+          },
+          withdrawalType: WithdrawalTypeEnum.on_site,
+          withdrawalDelay: null,
+          imageUrl:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA',
+        },
+      },
+    },
+  ],
+} as const satisfies ReadonlyDeep<BookingsListResponseV2>)
