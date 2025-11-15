@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingResponse, WithdrawalTypeEnum } from 'api/gen'
+import { BookingListItemResponse, WithdrawalTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import {
   getBookingLabelsV2,
-  getBookingPropertiesV2,
+  getBookingListItemProperties,
   expirationDateUtilsV2,
 } from 'features/bookings/helpers'
 import {
@@ -27,17 +27,19 @@ import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  booking: BookingResponse
-  eligibleBookingsForArchive?: BookingResponse[]
+  booking: BookingListItemResponse
+  eligibleBookingsForArchive?: BookingListItemResponse[]
 }
 
 export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Props) => {
-  const daysLeft = daysCountdown(booking.dateCreated)
-  const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
-  const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
+  const { stock, dateCreated } = booking
+  const { offer } = stock
 
-  const { stock } = booking
-  const bookingProperties = getBookingPropertiesV2.getBookingProperties(booking, isEvent)
+  const daysLeft = daysCountdown(dateCreated)
+  const { isEvent } = useSubcategory(offer.subcategoryId)
+  const categoryId = useCategoryId(offer.subcategoryId)
+
+  const bookingProperties = getBookingListItemProperties(booking, isEvent)
   const { dateLabel, withdrawLabel } = getBookingLabelsV2.getBookingLabels(
     booking,
     bookingProperties
@@ -60,15 +62,15 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
   } = useModal(false)
 
   const { share: shareOffer, shareContent } = getShareOffer({
-    offer: stock.offer,
+    offer,
     utmMedium: 'booking',
   })
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'bookings', offerId: stock.offer.id })
+    analytics.logShare({ type: 'Offer', from: 'bookings', offerId: offer.id })
     shareOffer()
     showShareOfferModal()
-  }, [stock.offer.id, shareOffer, showShareOfferModal])
+  }, [offer.id, shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>
@@ -81,7 +83,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
           })
         }}
         accessibilityLabel={accessibilityLabel}>
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
+        <OfferImage imageUrl={stock.offer.imageUrl ?? ''} categoryId={categoryId} size="tall" />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
           {dateLabel ? <DateLabel>{dateLabel}</DateLabel> : null}
@@ -89,7 +91,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
           <Spacer.Flex />
           {withdrawLabel ? (
             <React.Fragment>
-              {booking.ticket.withdrawal.type === WithdrawalTypeEnum.on_site ? (
+              {offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
                 <WithdrawContainer testID="on-site-withdrawal-container">
                   <OfferEvent />
                   <OnSiteWithdrawalCaption numberOfLines={2}>

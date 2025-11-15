@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
 import { BookingReponse, BookingsResponse } from 'api/gen'
-import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsResponseV2DatesToTimezone'
+import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { findOngoingOrEndedBooking } from 'features/bookings/queries/selectors/findOngoingOrEndedBooking'
 import { useBookingsQuery, useBookingsQueryV2 } from 'queries/bookings'
 

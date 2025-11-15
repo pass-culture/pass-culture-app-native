@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { BookingsResponseV2 } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsResponseV2DatesToTimezone'
+import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { mockBuilder } from 'tests/mockBuilder'
 
 const offerWithoutAddress = mockBuilder.bookingOfferResponseV2({
@@ -32,7 +32,7 @@ const bookingsResponseV2Mock: BookingsResponseV2 = {
   hasBookingsAfter18: false,
 }
 
-describe('convertBookingsResponseV2DatesToTimezone', () => {
+describe('convertBookingsDatesToTimezone', () => {
   beforeEach(() => mockdate.set(CURRENT_DATE))
 
   it('should return the converted offerer dates in local timezone of offer address when present', () => {

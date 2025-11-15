@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  BookingsListResponseV2,
   BookingsResponseV2,
   GetAvailableReactionsResponse,
   ReactionTypeEnum,
@@ -8,6 +9,10 @@ import {
 } from 'api/gen'
 import { bookingsSnapV2, emptyBookingsSnap } from 'features/bookings/fixtures'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
+import {
+  endedBookingsV2ListSnap,
+  ongoingBookingsV2ListSnap,
+} from 'features/bookings/fixtures/bookingsSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -189,6 +194,34 @@ describe('Bookings', () => {
     await screen.findByText('Mes réservations')
 
     expect(screen.queryByTestId('pastille')).toBeNull()
+  })
+
+  describe('with bookings api that returns bookings by status ongoing | ended', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING])
+      mockServer.getApi<BookingsListResponseV2>('/v2/bookings/ongoing', ongoingBookingsV2ListSnap)
+      mockServer.getApi<BookingsListResponseV2>('/v2/bookings/ended', endedBookingsV2ListSnap)
+    })
+
+    it('should display ongoing bookings', async () => {
+      const offerName = ongoingBookingsV2ListSnap.bookings[0]?.stock.offer.name as string
+
+      renderBookings()
+
+      await screen.findByText('En cours')
+
+      expect(await screen.findByText(offerName)).toBeOnTheScreen()
+    })
+
+    it('should display ended bookings', async () => {
+      const offerName = endedBookingsV2ListSnap.bookings[0]?.stock.offer.name as string
+
+      renderBookings()
+
+      await user.press(await screen.findByText('Terminées'))
+
+      expect(await screen.findByText(offerName)).toBeOnTheScreen()
+    })
   })
 })
 

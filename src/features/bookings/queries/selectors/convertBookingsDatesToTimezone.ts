@@ -1,11 +1,20 @@
-import { BookingsResponseV2, BookingResponse } from 'api/gen'
+import {
+  BookingsResponseV2,
+  BookingResponse,
+  BookingListItemResponse,
+  BookingsListResponseV2,
+} from 'api/gen'
 import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
 const convertBookingsListDatesToTimezone = (bookings: BookingResponse[]): BookingResponse[] => {
-  return bookings?.map(convertBookingDateToTimezone)
+  return bookings?.map(convertBookingResponseDateToTimezone)
 }
 
-export const convertBookingDateToTimezone = (booking: BookingResponse): BookingResponse => {
+export const convertBookingResponseDateToTimezone = <
+  T extends BookingResponse | BookingListItemResponse,
+>(
+  booking: T
+): T => {
   const timezone = booking.stock.offer.address?.timezone ?? booking.stock.offer.venue.timezone
   return {
     ...booking,
@@ -28,5 +37,14 @@ export const convertBookingsResponseV2DatesToTimezone = (
     hasBookingsAfter18: bookings.hasBookingsAfter18,
     ongoingBookings: convertBookingsListDatesToTimezone(bookings.ongoingBookings),
     endedBookings: convertBookingsListDatesToTimezone(bookings.endedBookings),
+  }
+}
+
+export const convertBookingsListResponseV2DatesToTimezone = (
+  bookingsResponse: BookingsListResponseV2
+): BookingsListResponseV2 => {
+  return {
+    ...bookingsResponse,
+    bookings: bookingsResponse.bookings.map(convertBookingResponseDateToTimezone),
   }
 }

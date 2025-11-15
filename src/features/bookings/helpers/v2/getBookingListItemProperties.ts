@@ -1,20 +1,17 @@
-import { BookingResponse } from 'api/gen'
+import { BookingListItemResponse } from 'api/gen'
 import { BookingProperties } from 'features/bookings/types'
 
 const isDuoBooking = (quantity: number) => quantity === 2
 
-export const getBookingProperties = (
-  booking: BookingResponse,
+export const getBookingListItemProperties = (
+  booking: BookingListItemResponse,
   isEvent: boolean
 ): BookingProperties => {
   if (!booking) {
     return {}
   }
 
-  const {
-    stock,
-    ticket: { activationCode },
-  } = booking
+  const { stock, activationCode } = booking
   const { offer } = stock
 
   return {
