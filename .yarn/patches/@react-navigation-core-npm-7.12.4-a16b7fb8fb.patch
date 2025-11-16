@@ -1,0 +1,73 @@
+diff --git a/lib/module/getPathFromState.js b/lib/module/getPathFromState.js
+index ef4e3af1375a07ec26b076d678638b2f2b113321..de233b42a856fe18306dead5983c696a5609bf78 100644
+--- a/lib/module/getPathFromState.js
++++ b/lib/module/getPathFromState.js
+@@ -47,9 +47,10 @@ const getNormalizedConfigs = options => {
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+-export function getPathFromState(state, options) {
++export function getPathFromState(state, options, isTabScreen) {
+   if (state == null) {
+     throw Error(`Got '${String(state)}' for the navigation state. You must pass a valid state object.`);
+   }
+@@ -68,6 +69,10 @@ export function getPathFromState(state, options) {
+     let currentOptions = configs;
+     const focusedRoute = getActiveRoute(state);
+ 
++    if (isTabScreen && isTabScreen(route.name)) {
++      currentOptions = configs?.TabNavigator?.screens || configs
++    }
++
+     // Keep all the route names that appeared during going deeper in config in case the pattern is resolved to undefined
+     const nestedRouteNames = [];
+     let hasNext = true;
+diff --git a/lib/typescript/src/getPathFromState.d.ts b/lib/typescript/src/getPathFromState.d.ts
+index 9a56b11555f049c1bb9a27e62b353ed6bb25f252..ebb30811c49976aa4abb943145c2e99838210a85 100644
+--- a/lib/typescript/src/getPathFromState.d.ts
++++ b/lib/typescript/src/getPathFromState.d.ts
+@@ -33,8 +33,9 @@ type State = NavigationState | Omit<PartialState<NavigationState>, 'stale'>;
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+-export declare function getPathFromState<ParamList extends {}>(state: State, options?: Options<ParamList>): string;
++export declare function getPathFromState<ParamList extends {}>(state: State, options?: Options<ParamList>, isTabScreen?: (name: string) => boolean): string;
+ export {};
+ //# sourceMappingURL=getPathFromState.d.ts.map
+\ No newline at end of file
+diff --git a/src/getPathFromState.tsx b/src/getPathFromState.tsx
+index 5d73366f95d858b9ddbe9d1598a6bd80b6fee7d2..ba212ab1e97f4f65bf617751e537a01db27e9b6d 100644
+--- a/src/getPathFromState.tsx
++++ b/src/getPathFromState.tsx
+@@ -84,11 +84,13 @@ const getNormalizedConfigs = (options?: Options<{}>) => {
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+ export function getPathFromState<ParamList extends {}>(
+   state: State,
+-  options?: Options<ParamList>
++  options?: Options<ParamList>,
++  isTabScreen?: (name: string) => boolean
+ ): string {
+   if (state == null) {
+     throw Error(
+@@ -120,6 +122,10 @@ export function getPathFromState<ParamList extends {}>(
+ 
+     const focusedRoute = getActiveRoute(state);
+ 
++    if (isTabScreen && isTabScreen(route.name as any)) {
++      currentOptions = configs?.TabNavigator?.screens as any || configs
++    }
++
+     // Keep all the route names that appeared during going deeper in config in case the pattern is resolved to undefined
+     const nestedRouteNames = [];
+ 
