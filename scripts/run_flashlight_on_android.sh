@@ -166,6 +166,23 @@ clean_disk() {
     df -h
 }
 
+clean_build_artifacts() {
+    log_info "Cleaning up build artifacts to maximize space for emulator..."
+    df -h
+    
+    log_and_run "Removing Gradle caches" \
+        rm -rf "$HOME/.gradle/caches/"
+        
+    log_and_run "Removing project build directories" \
+        rm -rf "$REPO_ROOT/android/build" "$REPO_ROOT/android/app/build"
+
+    log_and_run "Cleaning yarn cache" \
+        yarn cache clean
+        
+    log_info "Cleanup complete."
+    df -h
+}
+
 recreate_emulator() {
     local EMULATOR_NAME="$1"
     local SDK_VERSION="$2"
@@ -182,6 +199,8 @@ recreate_emulator() {
             --device "$DEVICE_NAME" \
             --force
 
+    clean_build_artifacts
+    
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background with a 4GB partition (log: ${EMULATOR_LOG_FILE})..."
     emulator \
