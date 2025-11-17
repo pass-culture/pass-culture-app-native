@@ -9,7 +9,8 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >
@@ -301,7 +302,8 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >

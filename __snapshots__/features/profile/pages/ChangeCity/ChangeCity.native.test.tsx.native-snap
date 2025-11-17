@@ -9,7 +9,8 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >
@@ -676,7 +677,8 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >
@@ -1343,7 +1345,8 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >

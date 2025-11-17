@@ -9,7 +9,8 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >
@@ -429,7 +430,8 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >
