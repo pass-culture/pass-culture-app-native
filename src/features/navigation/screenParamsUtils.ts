@@ -167,6 +167,9 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
     moduleId: identityFn,
     moduleListId: identityFn,
+    moduleItemId: identityFn,
+    latitude: identityFn,
+    longitude: identityFn,
   },
 }
 

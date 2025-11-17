@@ -102,11 +102,22 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
 )
 
 export const ThematicHome: FunctionComponent = () => {
-  const { params } = useRoute<UseRouteType<'ThematicHome'>>()
+  const {
+    params: {
+      from,
+      latitude,
+      longitude,
+      videoModuleId,
+      homeId,
+      moduleId,
+      moduleListId,
+      moduleItemId,
+    },
+  } = useRoute<UseRouteType<'ThematicHome'>>()
   const { goBack } = useGoBack('Chronicles')
   const { navigate } = useNavigation<UseNavigationType>()
-  const isFromDeeplink = params.from === 'deeplink'
-  const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
+  const isFromDeeplink = from === 'deeplink'
+  const { modules, id, thematicHeader } = useHomepageData(homeId) || {}
   const {
     userLocation,
     hasGeolocPosition,
@@ -125,24 +136,34 @@ export const ThematicHome: FunctionComponent = () => {
           : getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT),
     })
 
-  const moduleItemId =
-    'moduleItemId' in params && typeof params.moduleItemId === 'string'
-      ? params.moduleItemId
-      : undefined
   useEffect(() => {
     if (!id) {
       return
     }
-    analytics.logConsultThematicHome({
+    void analytics.logConsultThematicHome({
       homeEntryId: id,
-      from: params.from,
-      moduleId: params.moduleId,
-      moduleListId: params.moduleListId,
+      from,
+      moduleId,
+      moduleListId,
       moduleItemId,
     })
-  }, [id, params.from, params.homeId, params.moduleId, moduleItemId, params.moduleListId])
+  }, [id, from, homeId, moduleId, moduleItemId, moduleListId])
+
+  const hasLocationUrlParams = !!(latitude && longitude)
 
   useEffect(() => {
+    if (hasLocationUrlParams) {
+      setSelectedLocationMode(LocationMode.AROUND_PLACE)
+      setPlace({
+        label: 'Géolocalisation',
+        geolocation: {
+          latitude,
+          longitude,
+        },
+        info: '',
+      })
+      return
+    }
     switch (true) {
       case isFromDeeplink && hasGeolocPosition:
         setSelectedLocationMode(LocationMode.AROUND_ME)
@@ -163,7 +184,7 @@ export const ThematicHome: FunctionComponent = () => {
   }, [hasGeolocPosition, isFromDeeplink])
 
   const handleBackPress = () => {
-    params.from === 'chronicles' ? goBack() : navigate(...homeNavigationConfig)
+    from === 'chronicles' ? goBack() : navigate(...homeNavigationConfig)
   }
 
   return (
@@ -177,13 +198,13 @@ export const ThematicHome: FunctionComponent = () => {
         }
         shouldDisplayScrollToTop
         onScroll={onScroll}
-        videoModuleId={params.videoModuleId}
+        videoModuleId={videoModuleId}
       />
       {/* ThematicHomeHeader is called after Body to implement the BlurView for iOS */}
       <ThematicHomeHeader
         thematicHeader={thematicHeader}
         headerTransition={headerTransition}
-        homeId={params.homeId}
+        homeId={homeId}
         onBackPress={handleBackPress}
       />
       {/* Animated header is called only for iOS */}
