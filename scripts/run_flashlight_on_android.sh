@@ -175,18 +175,19 @@ recreate_emulator() {
     install_platforms_and_image "$SDK_VERSION"
     IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
 
-    log_and_run "Creating AVD '$EMULATOR_NAME'" \
+    log_and_run "Creating AVD '$EMULATOR_NAME' (without launching)" \
         avdmanager create avd \
             --name "$EMULATOR_NAME" \
             --package "$IMAGE_PACKAGE" \
             --device "$DEVICE_NAME" \
-            --disk 4G \
             --force
 
     local EMULATOR_LOG_FILE="emulator-boot.log"
-    log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
+    log_info "Starting emulator '$EMULATOR_NAME' in the background with a 4GB partition (log: ${EMULATOR_LOG_FILE})..."
     emulator \
         -avd "$EMULATOR_NAME" \
+        -partition-size 4096 \
+        -wipe-data \
         -no-window -no-audio -no-snapshot -no-boot-anim \
         > "$EMULATOR_LOG_FILE" 2>&1 &
 
