@@ -180,6 +180,7 @@ recreate_emulator() {
             --name "$EMULATOR_NAME" \
             --package "$IMAGE_PACKAGE" \
             --device "$DEVICE_NAME" \
+            --disk 4G \
             --force
 
     local EMULATOR_LOG_FILE="emulator-boot.log"
