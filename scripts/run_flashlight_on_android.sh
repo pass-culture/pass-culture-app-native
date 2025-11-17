@@ -161,8 +161,6 @@ clean_disk() {
     sudo rm -rf /usr/share/swift
     # Remove Haskell (ghc)
     sudo rm -rf /opt/ghc
-    # Runner-images set of tools
-    sudo rm -rf /opt/hostedtoolcache
     # Remove some packages in /var/cache
     sudo apt-get clean
     df -h
