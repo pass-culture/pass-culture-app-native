@@ -6,7 +6,7 @@ import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPla
 import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
 import { Venue } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useVenues } from 'libs/place/useVenues'
+import { useVenuesQuery } from 'libs/place/queries/useVenuesQuery'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
@@ -32,7 +32,7 @@ type Props = {
 }
 
 export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVenue }) => {
-  const { data: venues = [], isLoading } = useVenues(query)
+  const { data: venues = [], isLoading } = useVenuesQuery(query)
 
   if (isLoading) {
     return <Spinner />

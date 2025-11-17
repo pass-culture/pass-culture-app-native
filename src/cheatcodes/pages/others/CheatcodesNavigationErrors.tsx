@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query'
 import React, { createElement, FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -6,14 +5,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
+import { MAX_ASYNC_TEST_REQ_COUNT, useErrorAsyncQuery } from 'cheatcodes/queries/useErrorAsyncQuery'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { AsyncError, LogTypeEnum, ScreenError } from 'libs/monitoring/errors'
-import { QueryKeys } from 'libs/queryKeys'
+import { ScreenError } from 'libs/monitoring/errors'
 import { Typo } from 'ui/theme'
 
 const errorsCheatcodeCategory: CheatcodeCategory = {
@@ -39,8 +38,6 @@ const errorsCheatcodeCategory: CheatcodeCategory = {
 
 export const cheatcodesNavigationErrorsButtons: CheatcodeCategory[] = [errorsCheatcodeCategory]
 
-const MAX_ASYNC_TEST_REQ_COUNT = 3
-
 // Define the component outside the render path to make it stable.
 const MaintenanceScreenForCheatcode = () => (
   <Maintenance message="Some maintenance message that is set in Firestore" />
@@ -53,23 +50,10 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const { logType } = useLogTypeFromRemoteConfig()
 
-  const { refetch: errorAsyncQuery, isFetching } = useQuery({
-    queryKey: [QueryKeys.ERROR_ASYNC],
-    queryFn: () => errorAsync(),
-    gcTime: 0,
-    enabled: false,
-  })
-
-  async function errorAsync() {
-    setAsyncTestReqCount((v) => ++v)
-    if (asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', {
-        retry: errorAsyncQuery,
-        logType: LogTypeEnum.ERROR,
-      })
-    }
-    return null
-  }
+  const { refetch: errorAsyncQuery, isFetching } = useErrorAsyncQuery(
+    asyncTestReqCount,
+    setAsyncTestReqCount
+  )
 
   if (screenError) {
     throw screenError

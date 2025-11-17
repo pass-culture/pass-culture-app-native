@@ -4,8 +4,8 @@ import { InteractionManager } from 'react-native'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
-import { useChronicles } from 'features/chronicle/api/useChronicles/useChronicles'
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
+import { useChroniclesQuery } from 'features/chronicle/queries/useChroniclesQuery'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
@@ -22,7 +22,7 @@ export const Chronicles: FunctionComponent = () => {
   const subcategoriesMapping = useSubcategoriesMapping()
   const chronicleVariantInfo =
     chronicleVariant[offer?.subcategoryId ?? SubcategoryIdEnum.LIVRE_PAPIER]
-  const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
+  const { data: chronicleCardsData } = useChroniclesQuery<ChronicleCardData[]>({
     offerId,
     select: ({ chronicles }) =>
       offerChroniclesToChronicleCardData(chronicles, chronicleVariantInfo.subtitleItem),

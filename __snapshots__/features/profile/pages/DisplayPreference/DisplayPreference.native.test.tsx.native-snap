@@ -734,12 +734,12 @@ exports[`DisplayPreference should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  accessibilityLabel="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
+                  accessibilityLabel="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
                       "busy": undefined,
-                      "checked": false,
+                      "checked": true,
                       "disabled": undefined,
                       "expanded": undefined,
                       "selected": undefined,
@@ -769,31 +769,31 @@ exports[`DisplayPreference should render correctly 1`] = `
                       "backgroundColor": "#ffffff",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
+                      "borderColor": "#90949d",
                       "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
-                      "borderWidth": 1,
+                      "borderWidth": 2,
                       "flexDirection": "row",
                       "flexGrow": 1,
                       "opacity": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "paddingBottom": 15,
+                      "paddingLeft": 15,
+                      "paddingRight": 15,
+                      "paddingTop": 15,
                       "userSelect": "auto",
                     }
                   }
-                  testID="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - non sélectionné"
+                  testID="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
                 >
                   <View
-                    isSelected={false}
+                    isSelected={true}
                     style={
                       {
                         "alignItems": "center",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
-                        "borderColor": "#90949d",
+                        "borderColor": "#6123df",
                         "borderStyle": "solid",
                         "borderTopLeftRadius": 8,
                         "borderTopRightRadius": 8,
@@ -806,10 +806,10 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   >
                     <View
-                      isSelected={false}
+                      isSelected={true}
                       style={
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#6123df",
                           "borderBottomLeftRadius": 16,
                           "borderBottomRightRadius": 16,
                           "borderTopLeftRadius": 16,

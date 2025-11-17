@@ -10,9 +10,6 @@ const softRules = {
     'local-rules/no-theme-colors': 'warn',
   },
   archi: {
-    'local-rules/no-queries-outside-query-files': 'warn',
-    'local-rules/queries-only-in-use-query-functions': 'warn',
-    'local-rules/queries-must-be-in-queries-folder': 'warn',
     'boundaries/element-types': ['warn', boundariesRule],
   },
   reactRules: {

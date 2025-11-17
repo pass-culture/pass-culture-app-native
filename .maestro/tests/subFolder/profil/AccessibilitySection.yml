@@ -1,5 +1,8 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- scrollUntilVisible:
+    element:
+        text: 'Confidentialité'
 - tapOn: 'Accessibilité'
 - assertVisible: 'Accessibilité'
 

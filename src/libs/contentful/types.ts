@@ -503,6 +503,9 @@ type HighlightOfferFields = {
   isGeolocated?: boolean
   aroundRadius?: number
   displayBookingAllowedDatetime?: boolean
+  latitude?: number
+  longitude?: number
+  radius?: number
 }
 
 export type TrendBlockFields = {

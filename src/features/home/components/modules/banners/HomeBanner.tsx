@@ -11,8 +11,8 @@ import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNaviga
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
+import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
@@ -52,14 +52,12 @@ const bannersToRender = [
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
-  const showRemoteGenericBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
-  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const { options: remoteGenericBannerOptions } = useFeatureFlagOptions(
-    RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER
-  )
-  const { options: remoteActivationBannerOptions } = useFeatureFlagOptions(
-    RemoteStoreFeatureFlags.DISABLE_ACTIVATION
-  )
+
+  const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
+    useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+
+  const { options: remoteGenericBannerOptions, isFeatureFlagActive: showRemoteGenericBanner } =
+    useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()

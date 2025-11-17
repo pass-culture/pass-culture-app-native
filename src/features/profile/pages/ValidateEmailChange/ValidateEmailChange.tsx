@@ -10,7 +10,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
-import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
+import { useEmailUpdateStatusQuery } from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -25,7 +25,8 @@ type ValidateEmailChangeProps = NativeStackScreenProps<
 >
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
+    useEmailUpdateStatusQuery()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)

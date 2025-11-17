@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
+
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
 
-import { api } from 'api/api'
+import { useResetPasswordExpiredLinkQuery } from 'features/auth/queries/useResetPasswordExpiredLinkQuery'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
-import { QueryKeys } from 'libs/queryKeys'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
@@ -22,17 +21,7 @@ export function ResetPasswordExpiredLink(props: Props) {
     isFetching,
     isError,
     isSuccess,
-  } = useQuery({
-    queryKey: [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
-
-    queryFn: () => {
-      analytics.logResendEmailResetPasswordExpiredLink()
-      return api.postNativeV1RequestPasswordReset({ email })
-    },
-    gcTime: 0,
-    enabled: false,
-    retry: (failureCount) => failureCount <= 1,
-  })
+  } = useResetPasswordExpiredLinkQuery(email)
 
   useEffect(() => {
     if (isError)

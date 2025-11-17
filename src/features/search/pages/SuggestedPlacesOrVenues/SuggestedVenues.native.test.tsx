@@ -26,8 +26,8 @@ const mockVenues: Venue[] = []
 const useVenuesWithoutData = { data: mockVenues, isLoading: false }
 const useVenuesWithData = { data: mockedSuggestedVenues, isLoading: false }
 const mockUseVenues = jest.fn(() => useVenuesWithoutData)
-jest.mock('libs/place/useVenues', () => ({
-  useVenues: () => mockUseVenues(),
+jest.mock('libs/place/queries/useVenuesQuery', () => ({
+  useVenuesQuery: () => mockUseVenues(),
 }))
 
 const mockSetSelectedVenue = jest.fn()

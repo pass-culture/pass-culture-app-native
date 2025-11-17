@@ -118,6 +118,7 @@ export const ProfileInformationValidationCreate = () => {
       name: city,
       postalCode,
       code: '', // not used in usePostProfileMutation but needed by typing
+      departementCode: '',
     }
     const profile = {
       name: {

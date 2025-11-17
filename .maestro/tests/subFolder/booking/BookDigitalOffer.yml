@@ -6,7 +6,8 @@ appId: ${MAESTRO_APP_ID}
       text: 'Les offres'
     direction: UP
 - tapOn:
-    id: "native-category-value"
+    text: "Abonnement presse en ligne"
+    index: 2
 
 - tapOn: "Réserver l’offre"
 

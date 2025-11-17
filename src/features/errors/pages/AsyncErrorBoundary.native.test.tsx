@@ -3,8 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { ApiError } from 'api/ApiError'
 import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
-import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
+import { useMaintenanceQuery } from 'features/maintenance/queries/useMaintenanceQuery'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -33,8 +33,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-jest.mock('features/maintenance/helpers/useMaintenance/useMaintenance')
-const mockUseMaintenance = useMaintenance as jest.Mock
+jest.mock('features/maintenance/queries/useMaintenanceQuery')
+const mockUseMaintenance = useMaintenanceQuery as jest.Mock
 
 const user = userEvent.setup()
 jest.useFakeTimers()

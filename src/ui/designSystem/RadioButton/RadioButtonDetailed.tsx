@@ -92,7 +92,7 @@ const RadioButtonContainer = styled(RadioButtonDefaultContainer)<ContainerProps>
   collapsed,
   isHover,
 }) => {
-  const { backgroundColor } = getRadioColors(radioState, theme, {
+  const { backgroundColor, borderColor } = getRadioColors(radioState, theme, {
     componentPart: 'container',
     variant,
     collapsed: !!collapsed,
@@ -102,6 +102,6 @@ const RadioButtonContainer = styled(RadioButtonDefaultContainer)<ContainerProps>
     borderWidth: 1,
     borderRadius: theme.designSystem.size.borderRadius.m,
     padding: theme.designSystem.size.spacing.l,
-    ...getBorderHoverStyle({ radioState, theme, isHover }),
+    ...getBorderHoverStyle({ radioState, theme, isHover, radioStateBorderColorError: borderColor }),
   }
 })

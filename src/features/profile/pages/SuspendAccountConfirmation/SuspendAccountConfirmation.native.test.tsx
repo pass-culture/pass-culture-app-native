@@ -8,14 +8,16 @@ import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
+import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'
 import { render, screen, userEvent } from 'tests/utils'
 
-type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
+type useEmailUpdateStatusMock = ReturnType<
+  (typeof useEmailUpdateStatus)['useEmailUpdateStatusQuery']
+>
 
 const useEmailUpdateStatusSpy = jest
-  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
+  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatusQuery')
   .mockReturnValue({
     data: {
       expired: false,

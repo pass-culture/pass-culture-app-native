@@ -6,11 +6,11 @@ import {
   getRecommendationParameters,
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
+import * as recommendedIdsAPI from 'features/home/queries/recommendation/useHomeRecommendedIdsQuery'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
 import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { QueryKeys } from 'libs/queryKeys'
-import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { renderHook } from 'tests/utils'

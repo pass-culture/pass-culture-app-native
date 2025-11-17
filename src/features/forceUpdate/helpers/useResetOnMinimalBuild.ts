@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
-import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
+import { useMinimalBuildNumberQuery } from 'features/forceUpdate/queries/useMinimalBuildNumberQuery'
 import { getAppBuildVersion } from 'libs/packageJson'
 
 export function useResetOnMinimalBuild(resetErrorBoundary: () => void) {
-  const { minimalBuildNumber, isLoading } = useMinimalBuildNumber()
+  const { minimalBuildNumber, isLoading } = useMinimalBuildNumberQuery()
 
   // This first hook will be like a componentWillUnmount
   useEffect(() => resetErrorBoundary, [resetErrorBoundary])

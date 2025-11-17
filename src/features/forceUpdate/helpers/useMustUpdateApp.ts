@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
+import { useMinimalBuildNumberQuery } from 'features/forceUpdate/queries/useMinimalBuildNumberQuery'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
 
@@ -11,7 +11,7 @@ export enum MustUpdateAppState {
 }
 
 export const useMustUpdateApp: () => MustUpdateAppState = () => {
-  const { minimalBuildNumber, isLoading, error } = useMinimalBuildNumber()
+  const { minimalBuildNumber, isLoading, error } = useMinimalBuildNumberQuery()
   const appBuildVersion = getAppBuildVersion()
 
   useEffect(() => {

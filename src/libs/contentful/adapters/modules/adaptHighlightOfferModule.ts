@@ -1,5 +1,6 @@
 import { HighlightOfferModule, HomepageModuleType } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
+import { buildLocalization } from 'libs/contentful/adapters/modules/helpers/buildLocalization'
 import { HighlightOfferContentModel } from 'libs/contentful/types'
 
 export const adaptHighlightOfferModule = (
@@ -12,6 +13,12 @@ export const adaptHighlightOfferModule = (
 
   const { offerId, offerTag, offerEan } = module.fields
   if (!offerId && !offerTag && !offerEan) return null
+
+  const localizationArea = buildLocalization(
+    module.fields.latitude,
+    module.fields.longitude,
+    module.fields.radius
+  )
 
   return {
     type: HomepageModuleType.HighlightOfferModule,
@@ -26,5 +33,6 @@ export const adaptHighlightOfferModule = (
     isGeolocated: module.fields.isGeolocated,
     aroundRadius: module.fields.aroundRadius,
     displayBookingAllowedDatetime: module.fields.displayBookingAllowedDatetime,
+    localizationArea,
   }
 }

@@ -80,6 +80,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               <Text
                 accessibilityRole="header"
                 htmlFor="testUuidV4"
+                small={false}
                 style={
                   {
                     "color": "#161617",
@@ -94,9 +95,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
             </View>
           </View>
         </View>
-        <View
-          testID="InsideLocationWidget"
-        />
       </View>
     </View>
     <View>

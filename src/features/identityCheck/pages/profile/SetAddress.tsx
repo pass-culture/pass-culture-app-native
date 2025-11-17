@@ -14,7 +14,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useAddresses } from 'libs/place/useAddresses'
+import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -65,7 +65,7 @@ export const SetAddress = () => {
     data: addresses = [],
     isLoading,
     isError,
-  } = useAddresses({
+  } = useAddressesQuery({
     query: debouncedQuery,
     cityCode: storedCity?.code ?? '',
     postalCode: storedCity?.postalCode ?? '',

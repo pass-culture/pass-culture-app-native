@@ -37,6 +37,7 @@ type Props = Pick<
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
   withMargin?: boolean
   contentContainerStyle?: StyleProp<ViewStyle>
+  forceNativeSeeMore?: boolean
 }
 
 export const PassPlaylist = ({
@@ -60,11 +61,12 @@ export const PassPlaylist = ({
   FlatListComponent,
   withMargin = true,
   contentContainerStyle,
+  forceNativeSeeMore,
   ...props
 }: Props) => {
   const { isTouch } = useTheme()
 
-  const showTitleSeeMore = !!onPressSeeMore && !isTouch
+  const showTitleSeeMore = !!onPressSeeMore && (!isTouch || !!forceNativeSeeMore)
   const showFooterSeeMore = !!onPressSeeMore && isTouch
 
   type SizeProps = {

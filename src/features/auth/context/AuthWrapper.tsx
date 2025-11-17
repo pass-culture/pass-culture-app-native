@@ -1,19 +1,15 @@
-import { useQuery } from '@tanstack/react-query'
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { api } from 'api/api'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
+import { useUserProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 // eslint-disable-next-line no-restricted-imports
-import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useAppStateChange } from 'libs/appState'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { QueryKeys } from 'libs/queryKeys'
 import { storage } from 'libs/storage'
 const NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS = 1000
 
@@ -36,7 +32,7 @@ export const AuthWrapper = memo(function AuthWrapper({
     data: user,
     refetch: refetchUser,
     isLoading: isUserLoading,
-  } = useUserProfileInfo(isLoggedIn)
+  } = useUserProfileInfoQuery(isLoggedIn)
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
@@ -111,16 +107,3 @@ export const AuthWrapper = memo(function AuthWrapper({
    */
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
-
-const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
-const useUserProfileInfo = (isLoggedIn: boolean, options = {}) => {
-  const netInfo = useNetInfoContext()
-  return useQuery<UserProfileResponseWithoutSurvey>({
-    queryKey: [QueryKeys.USER_PROFILE],
-    queryFn: () => api.getNativeV1Me(),
-    enabled: !!netInfo.isConnected && isLoggedIn,
-    staleTime: STALE_TIME_USER_PROFILE,
-    meta: { persist: true },
-    ...options,
-  })
-}

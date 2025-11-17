@@ -40,6 +40,9 @@ module.exports = {
   rules: {
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
     'react/no-unused-prop-types': 'error', // has false positives
+    'local-rules/no-queries-outside-query-files': 'error',
+    'local-rules/queries-only-in-use-query-functions': 'error',
+    'local-rules/queries-must-be-in-queries-folder': 'error',
     'local-rules/no-useless-hook': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',

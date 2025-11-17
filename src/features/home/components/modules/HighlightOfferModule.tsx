@@ -3,9 +3,11 @@ import styled from 'styled-components/native'
 
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
+import { getLocalizationCompliance } from 'features/home/components/modules/business/helpers/getLocalizationCompliance'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
@@ -26,6 +28,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     index,
     homeEntryId,
     displayBookingAllowedDatetime,
+    localizationArea,
   } = props
 
   const highlightOffer = useHighlightOffer({
@@ -36,6 +39,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     isGeolocated,
     aroundRadius,
   })
+  const { userLocation: position } = useLocation()
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
@@ -48,6 +52,10 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   if (!highlightOffer) return null
+
+  const isLocalizationCompliant = getLocalizationCompliance(localizationArea, position)
+
+  if (!isLocalizationCompliant) return null
 
   return (
     <StyledViewGap gap={5}>

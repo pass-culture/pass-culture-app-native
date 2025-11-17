@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
+import { useMaintenanceQuery } from 'features/maintenance/queries/useMaintenanceQuery'
 import { MAINTENANCE } from 'libs/firebase/firestore/types'
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 }
 
 export const MaintenanceErrorPage = ({ resetErrorBoundary }: Props) => {
-  const { status, message } = useMaintenance()
+  const { status, message } = useMaintenanceQuery()
   // This first hook will be like a componentWillUnmount
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => resetErrorBoundary, [])

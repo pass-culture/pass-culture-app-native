@@ -12,7 +12,7 @@ import {
 } from 'features/bonification/store/legalRepresentativeStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
-import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
+import { CitySearchNameInput } from 'features/profile/components/CitySearchInput/CitySearchNameInput'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -103,7 +103,7 @@ export const BonificationBirthPlace = () => {
                 control={control}
                 name="birthCity"
                 render={({ field: { value, onChange } }) => (
-                  <CitySearchInput
+                  <CitySearchNameInput
                     city={value}
                     onCitySelected={onChange}
                     label="Commune de naissance"

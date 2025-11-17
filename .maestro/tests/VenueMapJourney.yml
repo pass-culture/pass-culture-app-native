@@ -4,7 +4,7 @@ tags:
   - local
   - squad-decouverte
 ---
-- runFlow: subFolder/commons/LaunchAppWithPermissions.yml
+- runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml
 
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
@@ -14,7 +14,6 @@ tags:
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 
 - runFlow: subFolder/cloud/commands/SetLocalizationToEverywhere.yml
-- runFlow: subFolder/cloud/commands/SetEverywhere.yml
 - runFlow: subFolder/venue/AccessVenueMapFromSearch.yml
 - runFlow: subFolder/venue/VerifyVenueMap.yml
 - runFlow: subFolder/cloud/commands/SetLocalizationToEverywhere.yml

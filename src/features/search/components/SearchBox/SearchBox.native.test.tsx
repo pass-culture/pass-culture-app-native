@@ -11,6 +11,8 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -53,6 +55,10 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(remoteConfigResponseFixture)
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true

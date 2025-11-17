@@ -12,8 +12,9 @@ jest.mock('libs/jwt/jwt')
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
+const mockUseAuthContext = jest.fn()
 jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+  useAuthContext: () => mockUseAuthContext(),
 }))
 
 const mockUseSearch = jest.fn(() => ({
@@ -29,7 +30,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('SiteMapScreen', () => {
-  beforeEach(() => setFeatureFlags())
+  beforeEach(() => {
+    mockUseAuthContext.mockReturnValue({ isLoggedIn: true })
+    setFeatureFlags()
+  })
 
   it('should render correctly', async () => {
     render(reactQueryProviderHOC(<SiteMapScreen />))
@@ -85,6 +89,28 @@ describe('SiteMapScreen', () => {
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       screen: 'NotificationsSettings',
       params: undefined,
+    })
+  })
+
+  describe('SiteMapScreen accessibility labels', () => {
+    it('should show correct accessibilityLabel count when user is logged in', async () => {
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+      render(reactQueryProviderHOC(<SiteMapScreen />))
+      await screen.findByText('Plan du site')
+
+      expect(
+        screen.getByLabelText('Profil – Liste - Élément 1 sur 12 - Créer un compte')
+      ).toBeTruthy()
+    })
+
+    it('should show correct accessibilityLabel count when user is not logged in', async () => {
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
+      render(reactQueryProviderHOC(<SiteMapScreen />))
+      await screen.findByText('Plan du site')
+
+      expect(
+        screen.getByLabelText('Profil – Liste - Élément 1 sur 9 - Créer un compte')
+      ).toBeTruthy()
     })
   })
 })

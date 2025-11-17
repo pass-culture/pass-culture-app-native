@@ -34,7 +34,7 @@ appId: ${MAESTRO_APP_ID}
       - scroll
       - tapOn:
           text: 'CD'
-          index: 2
+          index: 3
 
 - runFlow:
     when:
@@ -47,7 +47,6 @@ appId: ${MAESTRO_APP_ID}
       - scroll
       - tapOn:
           text: "CD"
-          index: 2
 
 - tapOn:
     id: 'animated-icon-favorite'
@@ -79,7 +78,7 @@ appId: ${MAESTRO_APP_ID}
       - scroll
       - tapOn:
           text: "CD"
-          index: 2
+          index: 3
 
 - runFlow:
     when:
@@ -88,7 +87,7 @@ appId: ${MAESTRO_APP_ID}
     - scroll
     - tapOn: 
         text: "CD"
-        index: 2
+        index: 3
     - tapOn:
         id: 'animated-icon-favorite'
     - tapOn:
