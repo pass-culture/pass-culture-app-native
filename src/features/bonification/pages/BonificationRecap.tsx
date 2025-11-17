@@ -98,7 +98,7 @@ export const BonificationRecap = () => {
           />
           <ButtonSecondary
             type="button"
-            wording="Modifier les informations"
+            wording="Modifier mes informations"
             onPress={() => {
               navigate(...getSubscriptionHookConfig('BonificationNames'))
             }}

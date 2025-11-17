@@ -146,7 +146,7 @@ export const ActivationProfileRecap = () => {
               accessibilityLabel="Confirmer et envoyer les informations"
               onPress={submit}
             />
-            <ButtonSecondary wording="Modifier les informations" onPress={updateInformation} />
+            <ButtonSecondary wording="Modifier mes informations" onPress={updateInformation} />
           </ViewGap>
         )
       }

@@ -535,7 +535,7 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
               </View>
             </View>
             <View
-              accessibilityLabel="Modifier les informations"
+              accessibilityLabel="Modifier mes informations"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -587,7 +587,7 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Modifier les informations"
+              testID="Modifier mes informations"
             >
               <View
                 style={
@@ -610,7 +610,7 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
                     }
                   }
                 >
-                  Modifier les informations
+                  Modifier mes informations
                 </Text>
               </View>
             </View>
