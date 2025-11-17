@@ -15,7 +15,7 @@ export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
   const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
-  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
+  const timeoutRef = useRef<number | undefined>(undefined)
   const delayedReplace: typeof replace = (...args) => {
     timeoutRef.current = setTimeout(() => {
       replace(...args)

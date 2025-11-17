@@ -23,8 +23,8 @@ export const AuthWrapper = memo(function AuthWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const timeoutRef = useRef<NodeJS.Timeout>(null)
-  const navigationTimeoutRef = useRef<NodeJS.Timeout>(null)
+  const timeoutRef = useRef<number>(null)
+  const navigationTimeoutRef = useRef<number>(null)
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()

@@ -7,7 +7,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
-  const timer = useRef<NodeJS.Timeout>(null)
+  const timer = useRef<number>(null)
 
   useEffect(
     () => () => {
