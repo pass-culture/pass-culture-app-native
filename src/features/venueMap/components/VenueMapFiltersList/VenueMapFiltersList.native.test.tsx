@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
@@ -10,7 +10,7 @@ import { render, screen, userEvent } from 'tests/utils'
 const mockNavigate = jest.fn()
 const mockGoBack = jest.fn()
 
-const mockNavigation: StackScreenProps<
+const mockNavigation: NativeStackScreenProps<
   VenueMapFiltersModalStackParamList,
   'VenueMapFiltersList'
 >['navigation'] = {

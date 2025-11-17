@@ -1,5 +1,5 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { ProfileStackParamList } from './ProfileStackTypes'
 
-export const ProfileStackNavigatorBase = createStackNavigator<ProfileStackParamList>()
+export const ProfileStackNavigatorBase = createNativeStackNavigator<ProfileStackParamList>()

@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
@@ -11,7 +11,7 @@ import { SignupConfirmationEmailSentPage } from './SignupConfirmationEmailSentPa
 
 const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
-} as StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
+} as NativeStackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 jest.mock('libs/firebase/analytics/analytics')
 

@@ -12,7 +12,7 @@ jest.mock('libs/location/location')
 
 jest.unmock('@react-navigation/native')
 
-jest.unmock('@react-navigation/stack')
+jest.unmock('@react-navigation/native-stack')
 
 jest.mock('features/auth/context/AuthContext')
 

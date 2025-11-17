@@ -18,6 +18,9 @@ export const navigationRef: typeof actualNavigationRef = {
   removeListener: jest.fn(),
   reset: jest.fn(),
   resetRoot: jest.fn(),
+  setOptions: jest.fn(() => {
+    throw new Error('Cannot call setOptions outside a screen')
+  }),
   setParams: jest.fn(),
   current: null,
 }

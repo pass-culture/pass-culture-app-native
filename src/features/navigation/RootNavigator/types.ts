@@ -4,7 +4,7 @@ import {
   ParamListBase,
   RouteProp,
 } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
@@ -318,7 +318,7 @@ export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<AllNavParam
  *
  * const navigation = useNavigation<UseNavigationType>()
  */
-export type UseNavigationType = StackNavigationProp<RootStackParamList>
+export type UseNavigationType = NativeStackNavigationProp<RootStackParamList>
 /**
  * Type helper to access route params
  *
@@ -336,7 +336,7 @@ export type RouteParams<
 type NavigateParams<RouteName extends keyof ParamListBase> =
   undefined extends ParamListBase[RouteName]
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
-    : [RouteName, ParamListBase[RouteName]]
+    : [RouteName] | [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
 export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
