@@ -63,7 +63,17 @@ accept_licence() {
 }
 
 sdkmanager_install_accepting_licence() {
-    accept_licence | sdkmanager "$@" >/dev/null
+    local output_file
+    output_file=$(mktemp)
+    
+    if ! (accept_licence | sdkmanager "$@" > "$output_file" 2>&1); then
+        log_error "sdkmanager failed. See output below:"
+        cat "$output_file" >&2
+        rm "$output_file"
+        return 1
+    fi
+    
+    rm "$output_file"
 }
 
 verify_package_installed() {
@@ -163,7 +173,7 @@ recreate_emulator() {
     local SDK_VERSION="$2"
     local DEVICE_NAME="$3"
     local IMAGE_PACKAGE
-    clean_disk
+
     install_platforms_and_image "$SDK_VERSION"
     IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
 
@@ -198,6 +208,8 @@ recreate_emulator() {
 
 log_info "Repository root detected at: $REPO_ROOT"
 verify_dependencies "curl" "unzip" "yarn" "corepack" "node"
+
+clean_disk
 
 log_and_run "Ensuring AVD storage directory exists" mkdir --parents "$ANDROID_AVD_HOME"
 
