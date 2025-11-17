@@ -2304,7 +2304,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSentry (6.9.0):
+  - RNSentry (6.22.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2325,7 +2325,7 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - Sentry/HybridSDK (= 8.45.0)
+    - Sentry/HybridSDK (= 8.56.2)
     - Yoga
   - RNShare (12.2.1):
     - DoubleConversion
@@ -2397,7 +2397,7 @@ PODS:
   - SDWebImageWebPCoder (0.8.5):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry/HybridSDK (8.45.0)
+  - Sentry/HybridSDK (8.56.2)
   - SocketRocket (0.7.1)
   - SSZipArchive (2.2.3)
   - Yoga (0.0.0)
@@ -2919,12 +2919,12 @@ SPEC CHECKSUMS:
   RNPermissions: 57959c69d512e865639e7c312005ac7d610e0064
   RNReanimated: 54fbd14d2d88e242e8f8ad46376db0c78ae88bd1
   RNScreens: 39b2b81ef7e0d93386810ac7c1860b6248bb1e15
-  RNSentry: 543763794405e437f9e6a7b7ab7c2e645e7bff4e
+  RNSentry: 4784bc1989fcf63d534afe69274dfb662cf241ef
   RNShare: c7be3f1eb30ce8814a67ee22b4fda59dcfb07454
   RNSVG: 02ef1157622e9e59e31c257e48a0dc943411c7bf
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
-  Sentry: f7c0c4b82e2f7e5909a660544dfaff84e35d5e03
+  Sentry: b53951377b78e21a734f5dc8318e333dbfc682d7
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 66a9fd80007d5d5fce19d1676ce17b4d5e16e9b1
