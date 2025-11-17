@@ -758,6 +758,27 @@ Texte
 
 <details>
 
+<summary> 🟠 Critère 9.1 - Chaque champ de formulaire a-t-il une étiquette visible ?</summary>
+
+**RAAM** : [Critère 9.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-1)  
+**Ticket** : [PC-38816](https://passculture.atlassian.net/browse/PC-38816)  
+**PR** : [#8903](https://github.com/pass-culture/pass-culture-app-native/pull/8903)
+
+**Problème** 😱  
+- **(E14)** Le champ "Offre, artiste, lieu culturel..." est un placeholder et disparait donc au premier caractère saisit.
+
+**Correction** 💡  
+- **(E14)** Implémentation d'un nouveau SearchInput en lien avec le design-system qui intègre directement un label au-dessus qui ne disparaît pas lors de la saisie.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
 <summary> 🟠 Critère 9.9 - Dans chaque formulaire, les erreurs de saisie sont-elles accessibles ?</summary>
 
 **RAAM** : [Critère 9.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-9)  

@@ -144,8 +144,6 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
 export const InputText = forwardRef<RNTextInput, InputTextProps>(WithRefTextInput)
 
 const Container = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
 })

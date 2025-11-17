@@ -316,6 +316,96 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   textAlignVertical="center"
                   value=""
                 />
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "height": 32,
+                      "marginLeft": 4,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#f1f1f4",
+                        "height": "100%",
+                        "width": 1,
+                      }
+                    }
+                  />
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "marginLeft": 4,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Ouvrir la modale de localisation depuis la recherche"
+                  >
+                    <View
+                      height={16}
+                      testID="location pointer not filled"
+                      width={16}
+                    >
+                      <Text>
+                        location pointer not filled-SVG-Mock
+                      </Text>
+                    </View>
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginLeft": 4,
+                          "maxWidth": 100,
+                        }
+                      }
+                    >
+                      France entière
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>

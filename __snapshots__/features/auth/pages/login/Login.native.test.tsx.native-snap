@@ -234,8 +234,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             style={
               {
                 "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
                 "width": "100%",
               }
             }
@@ -366,8 +364,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           style={
             {
               "alignItems": "flex-start",
-              "display": "flex",
-              "flexDirection": "column",
               "width": "100%",
             }
           }

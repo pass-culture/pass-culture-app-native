@@ -441,8 +441,6 @@ exports[`DebugScreen should render correctly 1`] = `
                 style={
                   {
                     "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
                     "width": "100%",
                   }
                 }

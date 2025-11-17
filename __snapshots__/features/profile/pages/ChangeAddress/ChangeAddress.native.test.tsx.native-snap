@@ -269,8 +269,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                   style={
                     {
                       "alignItems": "flex-start",
-                      "display": "flex",
-                      "flexDirection": "column",
                       "width": "100%",
                     }
                   }
@@ -882,8 +880,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "flex-start",
-                      "display": "flex",
-                      "flexDirection": "column",
                       "width": "100%",
                     }
                   }

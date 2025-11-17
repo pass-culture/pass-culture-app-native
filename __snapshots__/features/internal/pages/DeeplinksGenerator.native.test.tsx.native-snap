@@ -1727,8 +1727,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
                         "width": "100%",
                       }
                     }
@@ -2015,8 +2013,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
                         "width": "100%",
                       }
                     }
@@ -2156,8 +2152,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
                         "width": "100%",
                       }
                     }
@@ -2297,8 +2291,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
                         "width": "100%",
                       }
                     }
@@ -2438,8 +2430,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
                         "width": "100%",
                       }
                     }
@@ -2579,8 +2569,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
                         "width": "100%",
                       }
                     }

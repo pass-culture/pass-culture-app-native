@@ -727,8 +727,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     {
                       "alignItems": "flex-start",
-                      "display": "flex",
-                      "flexDirection": "column",
                       "width": "100%",
                     }
                   }
@@ -835,8 +833,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 style={
                   {
                     "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
                     "width": "100%",
                   }
                 }

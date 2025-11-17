@@ -272,8 +272,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
               style={
                 {
                   "alignItems": "flex-start",
-                  "display": "flex",
-                  "flexDirection": "column",
                   "width": "100%",
                 }
               }
@@ -1029,8 +1027,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           style={
             {
               "alignItems": "flex-start",
-              "display": "flex",
-              "flexDirection": "column",
               "width": "100%",
             }
           }

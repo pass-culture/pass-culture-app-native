@@ -197,7 +197,7 @@ exports[`ChangeCity should render correctly 1`] = `
                   class="css-view-175oi2r r-marginBottom-5oul0u"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-width-13qz1uu"
+                    class="css-view-175oi2r r-alignItems-1habvwh r-width-13qz1uu"
                   >
                     <label
                       class="c3 c4"
