@@ -142,22 +142,7 @@ install_platforms_and_image() {
     verify_package_installed "$IMAGE_PACKAGE"
 }
 
-recreate_emulator() {
-    local EMULATOR_NAME="$1"
-    local SDK_VERSION="$2"
-    local DEVICE_NAME="$3"
-    local IMAGE_PACKAGE
-
-    install_platforms_and_image "$SDK_VERSION"
-    IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
-
-    log_and_run "Creating AVD '$EMULATOR_NAME'" \
-        avdmanager create avd \
-            --name "$EMULATOR_NAME" \
-            --package "$IMAGE_PACKAGE" \
-            --device "$DEVICE_NAME" \
-            --force
-
+clean_disk() {
     log_info "Free up space"
     df -h
     # Remove .NET SDKs
@@ -171,6 +156,23 @@ recreate_emulator() {
     # Remove some packages in /var/cache
     sudo apt-get clean
     df -h
+}
+
+recreate_emulator() {
+    local EMULATOR_NAME="$1"
+    local SDK_VERSION="$2"
+    local DEVICE_NAME="$3"
+    local IMAGE_PACKAGE
+    clean_disk
+    install_platforms_and_image "$SDK_VERSION"
+    IMAGE_PACKAGE=$(image_for_sdk "$SDK_VERSION")
+
+    log_and_run "Creating AVD '$EMULATOR_NAME'" \
+        avdmanager create avd \
+            --name "$EMULATOR_NAME" \
+            --package "$IMAGE_PACKAGE" \
+            --device "$DEVICE_NAME" \
+            --force
 
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
