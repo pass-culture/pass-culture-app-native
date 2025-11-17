@@ -51,23 +51,22 @@ export type Referrals =
 type BaseThematicHome = {
   homeId: string
   videoModuleId?: string
+  moduleId?: string
+  moduleListId?: string
+  moduleItemId?: string
+  latitude?: number
+  longitude?: number
 }
 
 type OtherThematicBlockHome = {
   from?: 'deeplink' | 'chronicles'
-  moduleId?: string
-  moduleListId?: string
 }
 
 type CategoryBlockThematicHome = {
   from: 'category_block'
-  moduleId: string
-  moduleListId: string
 }
 type HighlightThematicBlockThematicHome = {
   from: 'highlight_thematic_block'
-  moduleId: string
-  moduleListId?: never
 }
 
 export type ThematicHomeParams = BaseThematicHome &

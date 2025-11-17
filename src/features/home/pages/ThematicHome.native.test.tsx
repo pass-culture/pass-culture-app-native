@@ -317,6 +317,32 @@ describe('ThematicHome', () => {
     expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
+  it('should set the location if present in url parameters', async () => {
+    const latitude = 12
+    const longitude = 14
+
+    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
+    useRoute.mockReturnValueOnce({
+      params: { entryId: 'fakeEntryId', latitude, longitude },
+    })
+    renderThematicHome()
+
+    await screen.findByText('Suivre')
+
+    expect(defaultUseLocation.setSelectedLocationMode).toHaveBeenCalledWith(
+      LocationMode.AROUND_PLACE
+    )
+
+    expect(defaultUseLocation.setPlace).toHaveBeenCalledWith({
+      label: 'Géolocalisation',
+      geolocation: {
+        latitude,
+        longitude,
+      },
+      info: '',
+    })
+  })
+
   describe('localization', () => {
     it.each`
       hasGeolocPosition | from                | selectedLocationMode         | expectedLocationMode

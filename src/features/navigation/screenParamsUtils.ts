@@ -167,6 +167,9 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
     moduleId: identityFn,
     moduleListId: identityFn,
+    moduleItemId: identityFn,
+    latitude: parseNumber,
+    longitude: parseNumber,
   },
 }
 
@@ -175,6 +178,10 @@ export const screenParamsParser: ParamsParsers = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function identityFn(value: any) {
   return value
+}
+
+function parseNumber(value?: string) {
+  return value ? Number(value) : undefined
 }
 
 function parseObject(value?: string) {
