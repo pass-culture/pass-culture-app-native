@@ -11208,7 +11208,7 @@ __metadata:
     react-native-reanimated-carousel: ^4.0.2
     react-native-safe-area-context: ^5.5.1
     react-native-screens: ^4.11.1
-    react-native-share: ^8.2.2
+    react-native-share: ^12.2.1
     react-native-svg: ^15.12.1
     react-native-svg-web: ^1.0.9
     react-native-tracking-transparency: ^0.1.2
@@ -24152,10 +24152,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-share@npm:^8.2.2":
-  version: 8.2.2
-  resolution: "react-native-share@npm:8.2.2"
-  checksum: 0f69911fda2ca1856b439d8b4fcc2ac9c74bd92590fb6a7db60282181f0a9612f218985b3c69b0bbe73da5395a3aa197e91ac8de9a05c07c0b0da5a096a0e294
+"react-native-share@npm:^12.2.1":
+  version: 12.2.1
+  resolution: "react-native-share@npm:12.2.1"
+  checksum: 133eb039207c2a831a267dd03a0de09ecab798624a751b50b6e52e2306598974ccdf60225a2048ea4606577f01b76ed27fe3462fb8b89314008322f605b73694
   languageName: node
   linkType: hard
 

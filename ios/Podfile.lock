@@ -2327,8 +2327,27 @@ PODS:
     - ReactCommon/turbomodule/core
     - Sentry/HybridSDK (= 8.45.0)
     - Yoga
-  - RNShare (8.2.2):
+  - RNShare (12.2.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNSVG (15.12.1):
     - DoubleConversion
     - glog
@@ -2901,7 +2920,7 @@ SPEC CHECKSUMS:
   RNReanimated: 54fbd14d2d88e242e8f8ad46376db0c78ae88bd1
   RNScreens: 39b2b81ef7e0d93386810ac7c1860b6248bb1e15
   RNSentry: 543763794405e437f9e6a7b7ab7c2e645e7bff4e
-  RNShare: d82e10f6b7677f4b0048c23709bd04098d5aee6c
+  RNShare: c7be3f1eb30ce8814a67ee22b4fda59dcfb07454
   RNSVG: 02ef1157622e9e59e31c257e48a0dc943411c7bf
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
