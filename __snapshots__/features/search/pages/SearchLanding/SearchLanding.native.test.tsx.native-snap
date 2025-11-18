@@ -89,7 +89,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "alignItems": "center",
                       "flexWrap": "wrap",
                       "justifyContent": "flex-start",
-                      "maxWidth": "75%",
                     }
                   }
                 >

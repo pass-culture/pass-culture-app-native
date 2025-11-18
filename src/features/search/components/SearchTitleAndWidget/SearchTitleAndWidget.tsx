@@ -95,7 +95,6 @@ const StyledTitleMainView = styled.View({
   alignItems: 'center',
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
-  maxWidth: '75%',
 })
 
 const LocationWidgetBadgeContainer = styled.View({
