@@ -481,6 +481,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               "reduceMotionV": "system",
             }
           }
+          nativeID="0"
         >
           <View
             gap={6}
@@ -3577,6 +3578,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               "reduceMotionV": "system",
             }
           }
+          nativeID="2"
         >
           <View
             gap={6}
@@ -6986,6 +6988,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               "reduceMotionV": "system",
             }
           }
+          nativeID="1"
         >
           <View
             gap={6}

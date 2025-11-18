@@ -7,7 +7,6 @@ exports[`VenueModal should render correctly 1`] = `
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
-  hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[Function]}
   onModalHide={[Function]}

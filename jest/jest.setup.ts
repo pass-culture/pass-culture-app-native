@@ -1,6 +1,6 @@
+import { EmitterSubscription, Keyboard } from 'react-native'
 /* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
-
 // @ts-ignore jest can have access to this file but typescript does not know it
 // We can see it
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
@@ -36,3 +36,12 @@ jest.mock('react-native-orientation-locker')
 jest.mock('shared/accessibility/useGetFontScale', () => ({
   useGetFontScale: () => ({ fontScale: 1 }),
 }))
+
+// It would be better to put it in the __mocks__ folder, but I haven't been able to do that.
+// Mock Keyboard.addListener to avoid "TypeError: Cannot read property 'remove' of undefined"
+jest.spyOn(Keyboard, 'addListener').mockImplementation(
+  () =>
+    ({
+      remove: jest.fn(),
+    }) as unknown as EmitterSubscription
+)

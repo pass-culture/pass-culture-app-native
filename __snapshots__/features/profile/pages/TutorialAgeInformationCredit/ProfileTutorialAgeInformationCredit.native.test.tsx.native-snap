@@ -194,230 +194,221 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 }
               }
             />
-            <RNGestureHandlerButton
-              collapsable={false}
-              delayLongPress={600}
-              enabled={true}
-              exclusive={true}
-              handlerTag={-1}
-              handlerType="NativeViewGestureHandler"
-              innerRef={null}
-              onGestureHandlerEvent={[Function]}
-              onGestureHandlerStateChange={[Function]}
-              rippleColor="transparent"
-              style={
-                [
-                  undefined,
-                  {
-                    "cursor": undefined,
-                  },
-                ]
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
-              touchSoundDisabled={false}
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#90949d",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": [
+                    {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
+              }
             >
-              <View
-                accessible={true}
-                collapsable={false}
-              >
-                <View
-                  collapsable={false}
+              <View>
+                <Text
                   style={
                     {
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#90949d",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1,
-                      "overflow": "hidden",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                      "transform": [
-                        {
-                          "scale": 0.95,
-                        },
-                      ],
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  <View>
-                    <Text
-                      style={
-                        {
-                          "color": "#320096",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
+                  à 17 ans
+                </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    {
+                      "height": 4,
+                    }
+                  }
+                />
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                      "marginBottom": 8,
+                    }
+                  }
+                >
+                  Tu reçois
+                   
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
                       }
-                    >
-                      à 17 ans
-                    </Text>
+                    }
+                  >
+                    50 €
+                  </Text>
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    }
+                  }
+                  width="100%"
+                >
+                  <View
+                    height="large"
+                    style={
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 999,
+                        "borderBottomRightRadius": 999,
+                        "borderTopLeftRadius": 999,
+                        "borderTopRightRadius": 999,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": "100%",
+                        "zIndex": 1,
+                      }
+                    }
+                  >
                     <View
-                      numberOfSpaces={1}
                       style={
                         {
-                          "height": 4,
-                        }
-                      }
-                    />
-                    <Text
-                      accessibilityRole="header"
-                      style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 19,
-                          "lineHeight": 30.4,
-                          "marginBottom": 8,
-                        }
-                      }
-                    >
-                      Tu reçois
-                       
-                      <Text
-                        accessibilityRole="header"
-                        style={
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
-                          }
-                        }
-                      >
-                        50 €
-                      </Text>
-                    </Text>
-                    <View
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "justifyContent": "center",
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 999,
+                          "borderBottomRightRadius": 999,
+                          "borderTopLeftRadius": 999,
+                          "borderTopRightRadius": 999,
+                          "height": "100%",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 0,
                           "width": "100%",
                         }
                       }
-                      width="100%"
-                    >
-                      <View
-                        height="large"
-                        style={
-                          {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 999,
-                            "borderBottomRightRadius": 999,
-                            "borderTopLeftRadius": 999,
-                            "borderTopRightRadius": 999,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": "100%",
-                            "zIndex": 1,
-                          }
-                        }
-                      >
-                        <View
-                          style={
-                            {
-                              "backgroundColor": "#f1f1f4",
-                              "borderBottomLeftRadius": 999,
-                              "borderBottomRightRadius": 999,
-                              "borderTopLeftRadius": 999,
-                              "borderTopRightRadius": 999,
-                              "height": "100%",
-                              "left": 0,
-                              "position": "absolute",
-                              "top": 0,
-                              "width": "100%",
-                            }
-                          }
-                        />
-                        <View
-                          color="#6123df"
-                          progress={0.5}
-                          style={
-                            {
-                              "backgroundColor": "#6123df",
-                              "borderBottomLeftRadius": 999,
-                              "borderBottomRightRadius": 999,
-                              "borderTopLeftRadius": 999,
-                              "borderTopRightRadius": 999,
-                              "flexBasis": 0,
-                              "flexGrow": 0.5,
-                              "flexShrink": 1,
-                            }
-                          }
-                          testID="progress-bar"
-                        >
-                          <Text
-                            style={
-                              {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                                "textAlign": "center",
-                              }
-                            }
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        {
-                          "height": 16,
-                        }
-                      }
                     />
                     <View
+                      color="#6123df"
+                      progress={0.5}
                       style={
                         {
-                          "alignItems": "center",
-                          "flexDirection": "row",
+                          "backgroundColor": "#6123df",
+                          "borderBottomLeftRadius": 999,
+                          "borderBottomRightRadius": 999,
+                          "borderTopLeftRadius": 999,
+                          "borderTopRightRadius": 999,
+                          "flexBasis": 0,
+                          "flexGrow": 0.5,
                           "flexShrink": 1,
                         }
                       }
+                      testID="progress-bar"
                     >
-                      <View
-                        style={
-                          {
-                            "height": 16,
-                            "marginRight": 8,
-                            "width": 16,
-                          }
-                        }
-                      >
-                        <View
-                          height={16}
-                          width={16}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
                       <Text
                         style={
                           {
-                            "color": "#161617",
-                            "flexShrink": 1,
+                            "color": "#ffffff",
                             "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
                           }
                         }
-                      >
-                        Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit.
-                      </Text>
+                      />
                     </View>
                   </View>
                 </View>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    {
+                      "height": 16,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexShrink": 1,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "height": 16,
+                        "marginRight": 8,
+                        "width": 16,
+                      }
+                    }
+                  >
+                    <View
+                      height={16}
+                      width={16}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      }
+                    }
+                  >
+                    Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit.
+                  </Text>
+                </View>
               </View>
-            </RNGestureHandlerButton>
+            </View>
             <View
               numberOfSpaces={3}
               style={
@@ -525,309 +516,300 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 }
               }
             />
-            <RNGestureHandlerButton
-              collapsable={false}
-              delayLongPress={600}
-              enabled={true}
-              exclusive={true}
-              handlerTag={-1}
-              handlerType="NativeViewGestureHandler"
-              innerRef={null}
-              onGestureHandlerEvent={[Function]}
-              onGestureHandlerStateChange={[Function]}
-              rippleColor="transparent"
-              style={
-                [
-                  undefined,
-                  {
-                    "cursor": undefined,
-                  },
-                ]
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
-              touchSoundDisabled={false}
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#90949d",
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": [
+                    {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
+              }
             >
-              <View
-                accessible={true}
-                collapsable={false}
-              >
-                <View
-                  collapsable={false}
+              <View>
+                <Text
                   style={
                     {
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#90949d",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1,
-                      "overflow": "hidden",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                      "transform": [
-                        {
-                          "scale": 0.95,
-                        },
-                      ],
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                     }
                   }
                 >
-                  <View>
-                    <Text
-                      style={
-                        {
-                          "color": "#320096",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
+                  à 18 ans
+                </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    {
+                      "height": 4,
+                    }
+                  }
+                />
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                      "marginBottom": 8,
+                    }
+                  }
+                >
+                  Tu reçois
+                   
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
                       }
-                    >
-                      à 18 ans
-                    </Text>
+                    }
+                  >
+                    150 €
+                  </Text>
+                </Text>
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    }
+                  }
+                  width="100%"
+                >
+                  <View
+                    height="large"
+                    style={
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 999,
+                        "borderBottomRightRadius": 999,
+                        "borderTopLeftRadius": 999,
+                        "borderTopRightRadius": 999,
+                        "flexDirection": "row",
+                        "height": 24,
+                        "width": "100%",
+                        "zIndex": 1,
+                      }
+                    }
+                  >
                     <View
-                      numberOfSpaces={1}
                       style={
                         {
-                          "height": 4,
+                          "backgroundColor": "#f1f1f4",
+                          "borderBottomLeftRadius": 999,
+                          "borderBottomRightRadius": 999,
+                          "borderTopLeftRadius": 999,
+                          "borderTopRightRadius": 999,
+                          "height": "100%",
+                          "left": 0,
+                          "position": "absolute",
+                          "top": 0,
+                          "width": "100%",
                         }
                       }
                     />
-                    <Text
-                      accessibilityRole="header"
+                    <View
+                      color="#6123df"
+                      progress={1}
                       style={
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 19,
-                          "lineHeight": 30.4,
-                          "marginBottom": 8,
+                          "backgroundColor": "#6123df",
+                          "borderBottomLeftRadius": 999,
+                          "borderBottomRightRadius": 999,
+                          "borderTopLeftRadius": 999,
+                          "borderTopRightRadius": 999,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         }
                       }
+                      testID="progress-bar"
                     >
-                      Tu reçois
-                       
                       <Text
-                        accessibilityRole="header"
                         style={
                           {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 19,
-                            "lineHeight": 30.4,
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
                           }
                         }
-                      >
-                        150 €
-                      </Text>
-                    </Text>
+                      />
+                    </View>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    {
+                      "height": 24,
+                    }
+                  }
+                />
+                <View
+                  accessibilityRole="list"
+                  style={
+                    {
+                      "flexDirection": "column",
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "display": "flex",
+                      }
+                    }
+                  >
                     <View
                       style={
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
-                          "justifyContent": "center",
-                          "width": "100%",
+                          "flexShrink": 1,
                         }
                       }
-                      width="100%"
                     >
                       <View
-                        height="large"
                         style={
                           {
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 999,
-                            "borderBottomRightRadius": 999,
-                            "borderTopLeftRadius": 999,
-                            "borderTopRightRadius": 999,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": "100%",
-                            "zIndex": 1,
+                            "height": 16,
+                            "marginRight": 8,
+                            "width": 16,
                           }
                         }
                       >
                         <View
-                          style={
-                            {
-                              "backgroundColor": "#f1f1f4",
-                              "borderBottomLeftRadius": 999,
-                              "borderBottomRightRadius": 999,
-                              "borderTopLeftRadius": 999,
-                              "borderTopRightRadius": 999,
-                              "height": "100%",
-                              "left": 0,
-                              "position": "absolute",
-                              "top": 0,
-                              "width": "100%",
-                            }
-                          }
-                        />
-                        <View
-                          color="#6123df"
-                          progress={1}
-                          style={
-                            {
-                              "backgroundColor": "#6123df",
-                              "borderBottomLeftRadius": 999,
-                              "borderBottomRightRadius": 999,
-                              "borderTopLeftRadius": 999,
-                              "borderTopRightRadius": 999,
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            }
-                          }
-                          testID="progress-bar"
+                          height={16}
+                          width={16}
                         >
-                          <Text
-                            style={
-                              {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                                "textAlign": "center",
-                              }
-                            }
-                          />
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
                         </View>
                       </View>
+                      <Text
+                        style={
+                          {
+                            "color": "#161617",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Tu as jusqu’à la veille de tes 19 ans pour confirmer ton identité et activer ton crédit.
+                      </Text>
                     </View>
                     <View
-                      numberOfSpaces={6}
+                      numberOfSpaces={4}
                       style={
                         {
-                          "height": 24,
+                          "height": 16,
                         }
                       }
                     />
+                  </View>
+                  <View
+                    style={
+                      {
+                        "display": "flex",
+                      }
+                    }
+                  >
                     <View
-                      accessibilityRole="list"
                       style={
                         {
-                          "flexDirection": "column",
-                          "paddingBottom": 4,
-                          "paddingLeft": 4,
-                          "paddingRight": 4,
-                          "paddingTop": 4,
-                          "width": "100%",
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexShrink": 1,
                         }
                       }
                     >
                       <View
                         style={
                           {
-                            "display": "flex",
+                            "height": 16,
+                            "marginRight": 8,
+                            "width": 16,
                           }
                         }
                       >
                         <View
-                          style={
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                            }
-                          }
+                          height={16}
+                          width={16}
                         >
-                          <View
-                            style={
-                              {
-                                "height": 16,
-                                "marginRight": 8,
-                                "width": 16,
-                              }
-                            }
-                          >
-                            <View
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                          <Text
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            Tu as jusqu’à la veille de tes 19 ans pour confirmer ton identité et activer ton crédit.
+                          <Text>
+                            undefined-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={4}
-                          style={
-                            {
-                              "height": 16,
-                            }
-                          }
-                        />
                       </View>
-                      <View
+                      <Text
                         style={
                           {
-                            "display": "flex",
+                            "color": "#161617",
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
                           }
                         }
                       >
-                        <View
-                          style={
-                            {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "flexShrink": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "height": 16,
-                                "marginRight": 8,
-                                "width": 16,
-                              }
-                            }
-                          >
-                            <View
-                              height={16}
-                              width={16}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                          <Text
-                            style={
-                              {
-                                "color": "#161617",
-                                "flexShrink": 1,
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 19.2,
-                              }
-                            }
-                          >
-                            Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire.
-                          </Text>
-                        </View>
-                      </View>
+                        Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire.
+                      </Text>
                     </View>
                   </View>
                 </View>
               </View>
-            </RNGestureHandlerButton>
+            </View>
             <View
               numberOfSpaces={3}
               style={

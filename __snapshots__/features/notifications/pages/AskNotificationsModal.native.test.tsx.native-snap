@@ -3,7 +3,6 @@
 exports[`AskNotificationsModal should render properly 1`] = `
 <Modal
   animationType="fade"
-  hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
   transparent={true}

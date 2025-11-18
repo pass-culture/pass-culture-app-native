@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useMemo } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import BaseFastImage, { FastImageProps } from 'react-native-fast-image'
+import BaseFastImage, { FastImageProps } from '@d11/react-native-fast-image'
+import React, { FunctionComponent, useMemo } from 'react'
 
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 

@@ -1,7 +1,7 @@
 import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 
-import FastImage from '__mocks__/react-native-fast-image'
+import FastImage from '__mocks__/@d11/react-native-fast-image'
 import { SubcategoryIdEnum } from 'api/gen'
 import { VideoSection } from 'features/offer/components/OfferContent/VideoSection/VideoSection'
 import { analytics } from 'libs/analytics/provider'
