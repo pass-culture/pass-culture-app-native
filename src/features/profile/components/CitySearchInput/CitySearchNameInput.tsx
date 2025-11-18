@@ -14,11 +14,12 @@ import { useCitiesByNameQuery } from 'libs/place/queries/useCitiesByNameQuery'
 import { SuggestedCity } from 'libs/place/types'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { RequiredIndicator } from 'ui/components/inputs/types'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { getSpacing } from 'ui/theme'
 
 const keyExtractor = ({ name, departementCode }: SuggestedCity) => `${name}-${departementCode}`
@@ -27,7 +28,7 @@ type CitySearchInputProps = {
   city?: SuggestedCity
   onCitySelected?: (city?: SuggestedCity) => void
   label?: string
-  isRequiredField?: boolean
+  requiredIndicator?: RequiredIndicator
 }
 
 type CityNameForm = { cityName: string }
@@ -36,7 +37,7 @@ export const CitySearchNameInput = ({
   city,
   onCitySelected,
   label,
-  isRequiredField = false,
+  requiredIndicator,
 }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const [cityNameQuery, setCityNameQuery] = useState<string>(city?.name ?? '')
@@ -119,15 +120,14 @@ export const CitySearchNameInput = ({
                 }}
                 value={value}
                 label={label ?? 'Indique le nom de la ville'}
-                format="Paris"
-                onPressRightIcon={resetSearch}
+                description="Exemple&nbsp;: Paris"
+                onClear={resetSearch}
                 keyboardType="default"
                 accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
                 autoComplete="postal-address-locality"
                 textContentType="addressCity"
-                searchInputID="city-name-input"
-                isRequiredField={isRequiredField}
+                requiredIndicator={requiredIndicator}
               />
               <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
             </StyledView>

@@ -32,7 +32,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
-  searchInputID: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
@@ -46,7 +45,6 @@ const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
 const CINEMA_KEYWORD_PATTERN = /\bCIN[ÉE]MA?S?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
-  searchInputID,
   accessibleHiddenTitle,
   addSearchHistory,
   searchInHistory,
@@ -318,17 +316,15 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             <HiddenSuggestionsButton />
             <SearchMainInput
               ref={inputRef}
-              searchInputID={searchInputID}
               query={displayedQuery}
               setQuery={setQuery}
-              isFocusable={isFocusOnSuggestions}
               onSubmitQuery={onSubmitQuery}
               resetQuery={resetQuery}
+              isFocusable={isFocusOnSuggestions}
               onFocus={onFocus}
-              showLocationButton={showLocationButton}
-              accessibilityDescribedBy={accessibilityDescribedBy}
               disableInputClearButton={disableInputClearButton}
               placeholder={placeholder}
+              showLocationButton={showLocationButton}
             />
           </FlexView>
         </SearchInputA11yContainer>

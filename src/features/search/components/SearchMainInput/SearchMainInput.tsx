@@ -9,7 +9,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { SearchInput as SearchInputLegacy } from 'ui/components/inputs/SearchInput'
+import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { Search } from 'ui/svg/icons/Search'
 
 type QueryProps = {
@@ -46,6 +47,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     showLocationButton = false,
     disableInputClearButton,
     placeholder = 'Offre, artiste, lieu culturel...',
+    isFocusable,
     ...props
   }: Props,
   ref
@@ -60,7 +62,21 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       !!displayNewSearchHeader || !showLocationButton || isDesktopViewport
     return hideLocationSearchWidget ? null : <LocationSearchWidget />
   }
-  return (
+  return displayNewSearchHeader ? (
+    <SearchInput
+      label="Recherche par offre, lieu, artiste"
+      ref={ref}
+      value={query}
+      onChangeText={setQuery}
+      onSubmitEditing={onSubmitQuery}
+      onClear={resetQuery}
+      nativeAutoFocus={Platform.OS !== 'web'}
+      onFocus={onFocus}
+      focusable={isFocusable}
+      testID="searchInput"
+      disableClearButton={disableInputClearButton}
+    />
+  ) : (
     <StyledSearchInput
       ref={ref}
       placeholder={placeholder}
@@ -75,13 +91,14 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       inputHeight="regular"
       testID="searchInput"
       disableClearButton={disableInputClearButton}
+      isFocusable={isFocusable}
       {...props}>
       {renderSearchChildren()}
     </StyledSearchInput>
   )
 })
 
-const StyledSearchInput = styled(SearchInput).attrs({
+const StyledSearchInput = styled(SearchInputLegacy).attrs({
   inputContainerStyle: {
     flex: 1,
   },

@@ -5,7 +5,7 @@
 
 import React, { forwardRef, useState } from 'react'
 import { Platform, TextInput as RNTextInput, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -14,7 +14,6 @@ import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenRea
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
-import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import {
   getCustomInputTextProps,
@@ -30,25 +29,28 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   { ...props },
   forwardedRef
 ) => {
-  const { onFocus, onBlur: onBlurDefault, isFocus } = useHandleFocus()
+  const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const [textLength, setTextLength] = useState(0)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomInputTextProps(props)
   const textInputID = nativeProps.testID ?? uuidv4()
 
+  const theme = useTheme()
   const Icon = customProps.rightButton?.icon
-  const StyledIcon =
-    Icon &&
-    styled(Icon).attrs(({ theme }) => ({
-      color: theme.designSystem.color.icon.default,
-      size: theme.icons.sizes.small,
-    }))``
 
   function onBlur() {
     onBlurDefault()
     if (nativeProps.onBlur) {
       // @ts-expect-error pass event later when needed
       nativeProps.onBlur()
+    }
+  }
+
+  function onFocus() {
+    onFocusDefault()
+    if (nativeProps.onFocus) {
+      // @ts-expect-error pass event later when needed
+      nativeProps.onFocus()
     }
   }
 
@@ -76,7 +78,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   const hiddenFromScreenReaderMobile = Platform.OS === 'web' ? {} : hiddenFromScreenReader()
 
   return (
-    <ContainerWithMaxWidth gap={0}>
+    <Container>
       <FlexInputLabel htmlFor={textInputID}>
         <LabelContainer {...hiddenFromScreenReaderMobile}>
           <View>
@@ -109,14 +111,14 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           maxLength={customProps.characterCount}
           onChangeText={handleChangeText}
         />
-        {customProps.rightButton && StyledIcon ? (
+        {customProps.rightButton && Icon ? (
           <IconTouchableOpacity
             testID={customProps.rightButton.testID}
             accessibilityLabel={customProps.rightButton.accessibilityLabel}
             onPress={customProps.rightButton.onPress}
             hitSlop={customProps.rightButton.hitSlop}
             onMouseDown={preventInputFocusOnMouseDown}>
-            <StyledIcon />
+            <Icon size={theme.icons.sizes.small} />
           </IconTouchableOpacity>
         ) : null}
       </InputTextContainer>
@@ -135,11 +137,16 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
           ) : null}
         </FooterContainer>
       ) : null}
-    </ContainerWithMaxWidth>
+    </Container>
   )
 }
 
 export const InputText = forwardRef<RNTextInput, InputTextProps>(WithRefTextInput)
+
+const Container = styled.View({
+  alignItems: 'flex-start',
+  width: '100%',
+})
 
 const IconTouchableOpacity = styledButton(Touchable)<{ onMouseDown: (event: Event) => void }>({
   maxWidth: getSpacing(15),

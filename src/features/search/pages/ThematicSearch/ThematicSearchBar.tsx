@@ -25,7 +25,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   children,
   offerCategories,
   title,
-  placeholder = 'Rechercher',
+  placeholder,
 }) => {
   const { isFocusOnSuggestions } = useSearch()
 

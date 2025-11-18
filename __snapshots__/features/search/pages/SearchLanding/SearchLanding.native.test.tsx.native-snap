@@ -110,19 +110,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   </Text>
                 </View>
               </View>
-              <Text
-                style={
-                  {
-                    "color": "#696a6f",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "marginTop": 4,
-                  }
-                }
-              >
-                Toutes les offres à portée de main
-              </Text>
             </View>
             <View
               testID="InsideLocationWidget"

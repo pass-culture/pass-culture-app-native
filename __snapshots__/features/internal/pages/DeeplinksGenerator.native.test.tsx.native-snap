@@ -1724,14 +1724,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    gap={0}
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
                         "width": "100%",
                       }
                     }
@@ -2015,14 +2010,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    gap={0}
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
                         "width": "100%",
                       }
                     }
@@ -2159,14 +2149,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    gap={0}
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
                         "width": "100%",
                       }
                     }
@@ -2303,14 +2288,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    gap={0}
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
                         "width": "100%",
                       }
                     }
@@ -2447,14 +2427,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    gap={0}
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
                         "width": "100%",
                       }
                     }
@@ -2591,14 +2566,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 >
                   <View
-                    gap={0}
                     style={
                       {
                         "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "column",
-                        "gap": 0,
-                        "maxWidth": 500,
                         "width": "100%",
                       }
                     }

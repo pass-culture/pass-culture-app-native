@@ -1,32 +1,24 @@
 import React from 'react'
-import { Circle, Path } from 'react-native-svg'
+import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-const InvalidateSvg: React.FunctionComponent<AccessibleIcon> = ({
-  size,
-  color,
-  accessibilityLabel,
-  testID,
-  backgroundColor,
-}) => {
+const InvalidateSvg: React.FC<AccessibleIcon> = ({ size, color, accessibilityLabel, testID }) => {
   return (
     <AccessibleSvg
       width={size}
       height={size}
-      viewBox="0 0 48 48"
+      viewBox="0 0 24 24"
       accessibilityLabel={accessibilityLabel}
-      testID={testID}
-      fill={color}>
-      {backgroundColor ? <Circle r={10} cx={24} cy={24} fill={backgroundColor} /> : null}
+      testID={testID}>
       <Path
         fill={color}
+        d="M11.9998 1.99969C17.5225 1.99969 21.9996 6.477 21.9998 11.9997C21.9998 17.5225 17.5226 21.9997 11.9998 21.9997C6.47706 21.9995 1.99976 17.5224 1.99976 11.9997C1.99993 6.47711 6.47717 1.99987 11.9998 1.99969ZM9.20776 7.79364C8.81768 7.40319 8.18451 7.40195 7.7937 7.79169C7.40298 8.18165 7.40215 8.8148 7.79175 9.20575L10.5828 12.0026L7.80933 14.7946C7.42034 15.1862 7.423 15.8194 7.81421 16.2087C8.20606 16.5979 8.83907 16.5956 9.22827 16.2038L11.9988 13.4138L14.7947 16.1911C15.1864 16.5803 15.8195 16.5788 16.2087 16.1872C16.598 15.7954 16.5956 15.1624 16.2039 14.7731L13.4099 11.9968L16.1882 9.22528C16.5791 8.8353 16.58 8.20221 16.1902 7.81122C15.8001 7.42067 15.167 7.4195 14.7761 7.80927L11.9929 10.5847L9.20776 7.79364Z"
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44ZM15.5872 15.5844C16.369 14.8041 17.6353 14.8054 18.4156 15.5872L23.9882 21.1706L29.5524 15.6192C30.3343 14.839 31.6007 14.8405 32.3808 15.6224C33.161 16.4044 33.1595 17.6707 32.3776 18.4509L26.8214 23.9943L32.4095 29.5462C33.1931 30.3247 33.1972 31.5911 32.4187 32.3746C31.6402 33.1582 30.3739 33.1623 29.5903 32.3838L23.9999 26.8296L18.4578 32.4094C17.6794 33.1931 16.4131 33.1974 15.6294 32.419C14.8457 31.6406 14.8414 30.3743 15.6198 29.5906L21.1667 24.006L15.5844 18.4128C14.8041 17.631 14.8054 16.3647 15.5872 15.5844Z"
       />
     </AccessibleSvg>
   )

@@ -273,16 +273,17 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                 }
               >
                 <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
                   style={
                     {
-                      "marginBottom": 8,
+                      "alignItems": "flex-start",
+                      "width": "100%",
                     }
                   }
                 >
                   <View>
                     <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
                       style={
                         {
                           "alignItems": "flex-end",
@@ -292,100 +293,97 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                         }
                       }
                     >
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
-                        }
-                      >
-                        Indique ton code postal et choisis ta ville
-                      </Text>
+                        >
+                          Indique ton code postal et choisis ta ville
+                        </Text>
+                        <Text
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 2,
+                            }
+                          }
+                        >
+                          Exemple : 75017
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
-                  style={
-                    {
-                      "marginBottom": 8,
-                    }
-                  }
-                >
-                  <Text
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
                     style={
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      }
-                    }
-                  >
-                    Exemple : 75017
-                  </Text>
-                </View>
-                <View
-                  height="small"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
-                  style={
-                    [
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
                         "borderColor": "#90949d",
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
+                        "marginTop": 4,
                         "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
                         "paddingTop": 0,
                         "width": "100%",
-                      },
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ]
-                  }
-                  testID="styled-input-container"
-                >
-                  <TextInput
-                    accessibilityHidden={false}
-                    accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
-                    accessibilityRequired={false}
-                    autoComplete="postal-code"
-                    autoCorrect={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={true}
-                    isEmpty={false}
-                    keyboardType="number-pad"
-                    multiline={false}
-                    nativeID="postal-code-input"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder=""
-                    placeholderTextColor="#696a6f"
-                    returnKeyType="search"
-                    selectionColor="#696a6f"
-                    style={
-                      [
+                      }
+                    }
+                    testID="styled-input-container"
+                  >
+                    <View
+                      style={
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
+                      }
+                    >
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                      accessibilityRequired={false}
+                      autoComplete="postal-code"
+                      editable={true}
+                      isEmpty={false}
+                      keyboardType="number-pad"
+                      multiline={false}
+                      nativeID="Entrée pour la ville"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="search"
+                      style={
                         {
                           "color": "#161617",
                           "flexBasis": 0,
@@ -398,72 +396,75 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="Entrée pour la ville"
-                    textAlignVertical="center"
-                    textContentType="postalCode"
-                    value="75001"
-                  />
-                  <View
-                    accessibilityLabel="Réinitialiser la recherche"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
+                        }
                       }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    hitSlop={
-                      {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Réinitialiser la recherche"
-                  >
+                      testID="Entrée pour la ville"
+                      textAlignVertical="center"
+                      textContentType="postalCode"
+                      value="75001"
+                    />
                     <View
-                      fill="#696a6f"
-                      height={20}
-                      width={20}
+                      accessibilityLabel="Réinitialiser la recherche"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      hitSlop={
+                        {
+                          "bottom": 10,
+                          "left": 10,
+                          "right": 10,
+                          "top": 10,
+                        }
+                      }
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "maxWidth": 60,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Réinitialiser la recherche"
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -939,16 +940,17 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                 }
               >
                 <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
                   style={
                     {
-                      "marginBottom": 8,
+                      "alignItems": "flex-start",
+                      "width": "100%",
                     }
                   }
                 >
                   <View>
                     <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
                       style={
                         {
                           "alignItems": "flex-end",
@@ -958,100 +960,97 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                         }
                       }
                     >
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
-                        }
-                      >
-                        Indique ton code postal et choisis ta ville
-                      </Text>
+                        >
+                          Indique ton code postal et choisis ta ville
+                        </Text>
+                        <Text
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 2,
+                            }
+                          }
+                        >
+                          Exemple : 75017
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
-                  style={
-                    {
-                      "marginBottom": 8,
-                    }
-                  }
-                >
-                  <Text
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
                     style={
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      }
-                    }
-                  >
-                    Exemple : 75017
-                  </Text>
-                </View>
-                <View
-                  height="small"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
-                  style={
-                    [
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
                         "borderColor": "#90949d",
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
+                        "marginTop": 4,
                         "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
                         "paddingTop": 0,
                         "width": "100%",
-                      },
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ]
-                  }
-                  testID="styled-input-container"
-                >
-                  <TextInput
-                    accessibilityHidden={false}
-                    accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
-                    accessibilityRequired={false}
-                    autoComplete="postal-code"
-                    autoCorrect={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={true}
-                    isEmpty={false}
-                    keyboardType="number-pad"
-                    multiline={false}
-                    nativeID="postal-code-input"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder=""
-                    placeholderTextColor="#696a6f"
-                    returnKeyType="search"
-                    selectionColor="#696a6f"
-                    style={
-                      [
+                      }
+                    }
+                    testID="styled-input-container"
+                  >
+                    <View
+                      style={
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
+                      }
+                    >
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                      accessibilityRequired={false}
+                      autoComplete="postal-code"
+                      editable={true}
+                      isEmpty={false}
+                      keyboardType="number-pad"
+                      multiline={false}
+                      nativeID="Entrée pour la ville"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="search"
+                      style={
                         {
                           "color": "#161617",
                           "flexBasis": 0,
@@ -1064,72 +1063,75 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="Entrée pour la ville"
-                    textAlignVertical="center"
-                    textContentType="postalCode"
-                    value="75001"
-                  />
-                  <View
-                    accessibilityLabel="Réinitialiser la recherche"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
+                        }
                       }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    hitSlop={
-                      {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Réinitialiser la recherche"
-                  >
+                      testID="Entrée pour la ville"
+                      textAlignVertical="center"
+                      textContentType="postalCode"
+                      value="75001"
+                    />
                     <View
-                      fill="#696a6f"
-                      height={20}
-                      width={20}
+                      accessibilityLabel="Réinitialiser la recherche"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      hitSlop={
+                        {
+                          "bottom": 10,
+                          "left": 10,
+                          "right": 10,
+                          "top": 10,
+                        }
+                      }
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "maxWidth": 60,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Réinitialiser la recherche"
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1605,16 +1607,17 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
                   style={
                     {
-                      "marginBottom": 8,
+                      "alignItems": "flex-start",
+                      "width": "100%",
                     }
                   }
                 >
                   <View>
                     <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
                       style={
                         {
                           "alignItems": "flex-end",
@@ -1624,100 +1627,97 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                         }
                       }
                     >
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
                           }
-                        }
-                      >
-                        Indique ton code postal et choisis ta ville
-                      </Text>
+                        >
+                          Indique ton code postal et choisis ta ville
+                        </Text>
+                        <Text
+                          style={
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                              "marginTop": 2,
+                            }
+                          }
+                        >
+                          Exemple : 75017
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no"
-                  style={
-                    {
-                      "marginBottom": 8,
-                    }
-                  }
-                >
-                  <Text
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
                     style={
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      }
-                    }
-                  >
-                    Exemple : 75017
-                  </Text>
-                </View>
-                <View
-                  height="small"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
-                  style={
-                    [
                       {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
                         "borderColor": "#90949d",
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
                         "borderWidth": 1,
                         "flexDirection": "row",
                         "height": 40,
+                        "marginTop": 4,
                         "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
                         "paddingTop": 0,
                         "width": "100%",
-                      },
-                      {
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                      },
-                    ]
-                  }
-                  testID="styled-input-container"
-                >
-                  <TextInput
-                    accessibilityHidden={false}
-                    accessibilityLabel="Champs de recherche - Indique ton code postal et choisis ta ville - Exemple : 75017"
-                    accessibilityRequired={false}
-                    autoComplete="postal-code"
-                    autoCorrect={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={true}
-                    isEmpty={false}
-                    keyboardType="number-pad"
-                    multiline={false}
-                    nativeID="postal-code-input"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder=""
-                    placeholderTextColor="#696a6f"
-                    returnKeyType="search"
-                    selectionColor="#696a6f"
-                    style={
-                      [
+                      }
+                    }
+                    testID="styled-input-container"
+                  >
+                    <View
+                      style={
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        }
+                      }
+                    >
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Indique ton code postal et choisis ta ville - Exemple : 75017"
+                      accessibilityRequired={false}
+                      autoComplete="postal-code"
+                      editable={true}
+                      isEmpty={false}
+                      keyboardType="number-pad"
+                      multiline={false}
+                      nativeID="Entrée pour la ville"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="search"
+                      style={
                         {
                           "color": "#161617",
                           "flexBasis": 0,
@@ -1730,72 +1730,75 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="Entrée pour la ville"
-                    textAlignVertical="center"
-                    textContentType="postalCode"
-                    value="75001"
-                  />
-                  <View
-                    accessibilityLabel="Réinitialiser la recherche"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
+                        }
                       }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    hitSlop={
-                      {
-                        "bottom": 10,
-                        "left": 10,
-                        "right": 10,
-                        "top": 10,
-                      }
-                    }
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Réinitialiser la recherche"
-                  >
+                      testID="Entrée pour la ville"
+                      textAlignVertical="center"
+                      textContentType="postalCode"
+                      value="75001"
+                    />
                     <View
-                      fill="#696a6f"
-                      height={20}
-                      width={20}
+                      accessibilityLabel="Réinitialiser la recherche"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      hitSlop={
+                        {
+                          "bottom": 10,
+                          "left": 10,
+                          "right": 10,
+                          "top": 10,
+                        }
+                      }
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "maxWidth": 60,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Réinitialiser la recherche"
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
