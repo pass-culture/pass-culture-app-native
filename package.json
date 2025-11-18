@@ -115,7 +115,7 @@
     "@react-navigation/native-stack": "6.9.13",
     "@react-oauth/google": "^0.11.1",
     "@sentry/react": "^8.55.0",
-    "@sentry/react-native": "^6.4.0",
+    "@sentry/react-native": "^6.22.0",
     "@sentry/types": "^8.55.0",
     "@shopify/flash-list": "^2.0.2",
     "@storybook/testing-library": "^0.2.2",

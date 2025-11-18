@@ -1,8 +1,9 @@
-import * as ActualSentryModule from '@sentry/react-native'
-
-const MockedSentryModule =
-  jest.createMockFromModule<typeof ActualSentryModule>('@sentry/react-native')
-
 module.exports = {
-  ...MockedSentryModule,
+  init: jest.fn(),
+  captureException: jest.fn(),
+  captureMessage: jest.fn(),
+  addBreadcrumb: jest.fn(),
+  setUser: jest.fn(),
+  setExtras: jest.fn(),
+  reactNavigationIntegration: jest.fn(),
 }
