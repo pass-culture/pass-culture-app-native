@@ -10,64 +10,57 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotConnectedFavorites = () => {
   const { bottom } = useSafeAreaInsets()
 
   const onBeforeSignupNavigate = () => {
-    analytics.logSignUpFromFavorite()
-    analytics.logSignUpClicked({ from: 'favorite' })
+    void analytics.logSignUpFromFavorite()
+    void analytics.logSignUpClicked({ from: 'favorite' })
   }
 
   return (
-    <Page>
-      <ScrollContainer bottom={bottom} showsVerticalScrollIndicator={false}>
-        <Spacer.Flex flex={1} />
-        <IllustrationContainer>
-          <Illustration />
-        </IllustrationContainer>
-        <TextContainer gap={4}>
-          <StyledTitle2 {...getHeadingAttrs(1)}>
-            Identifie-toi pour retrouver tes favoris
-          </StyledTitle2>
-          <StyledBody {...getHeadingAttrs(2)}>
-            Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
-          </StyledBody>
-        </TextContainer>
-        <ButtonContainer gap={4}>
-          <InternalTouchableLink
-            key={1}
-            as={ButtonPrimary}
-            wording="Créer un compte"
-            navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
-            onBeforeNavigate={onBeforeSignupNavigate}
-          />
-          <StyledAuthenticationButton
-            key={2}
-            type="login"
-            onAdditionalPress={() => analytics.logSignInFromFavorite()}
-            params={{ from: StepperOrigin.FAVORITE }}
-          />
-        </ButtonContainer>
-        <Spacer.Flex flex={1} />
-        <Spacer.TabBar />
-      </ScrollContainer>
-    </Page>
+    <Container bottom={bottom}>
+      <IllustrationContainer>
+        <Illustration />
+      </IllustrationContainer>
+      <TextContainer gap={4}>
+        <StyledTitle2 {...getHeadingAttrs(1)}>
+          Identifie-toi pour retrouver tes favoris
+        </StyledTitle2>
+        <StyledBody {...getHeadingAttrs(2)}>
+          Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
+        </StyledBody>
+      </TextContainer>
+      <ButtonContainer gap={4}>
+        <InternalTouchableLink
+          key={1}
+          as={ButtonPrimary}
+          wording="Créer un compte"
+          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
+          onBeforeNavigate={onBeforeSignupNavigate}
+        />
+        <StyledAuthenticationButton
+          key={2}
+          type="login"
+          onAdditionalPress={() => void analytics.logSignInFromFavorite()}
+          params={{ from: StepperOrigin.FAVORITE }}
+        />
+      </ButtonContainer>
+    </Container>
   )
 }
 
-const ScrollContainer = styled.ScrollView.attrs<{ bottom: number }>(({ bottom }) => ({
-  contentContainerStyle: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingBottom: bottom,
-  },
-}))<{ bottom: number }>(({ theme }) => ({
+const Container = styled(Page)<{ bottom: number }>(({ theme, bottom }) => ({
+  flex: 1,
+  justifyContent: 'space-between',
+  alignItems: 'center',
   paddingHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: theme.contentPage.marginVertical,
+  paddingBottom: bottom,
+  display: 'flex',
 }))
 
 const IllustrationContainer = styled.View(({ theme }) => ({
