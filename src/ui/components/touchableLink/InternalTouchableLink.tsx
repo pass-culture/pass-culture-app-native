@@ -17,8 +17,7 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   onAfterNavigate,
   ...rest
 }) => {
-  // We use nullish operator here because TabBar uses InternalTouchableLink but navigateTo is undefined during launch
-  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
+  const internalLinkProps = useLinkProps({ to: navigateTo })
   const { navigate, push, reset } = useNavigation<UseNavigationType>()
   const { screen, params, fromRef, withPush, withReset } = navigateTo
 

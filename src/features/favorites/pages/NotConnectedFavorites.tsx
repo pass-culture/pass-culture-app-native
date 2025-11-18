@@ -44,7 +44,7 @@ export const NotConnectedFavorites = () => {
             navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
             onBeforeNavigate={onBeforeSignupNavigate}
           />
-          <StyledAuthenticationButton
+          <AuthenticationButton
             key={2}
             type="login"
             onAdditionalPress={() => analytics.logSignInFromFavorite()}
@@ -85,10 +85,6 @@ const ButtonContainer = styled(ViewGap)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
 }))
-
-const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.designSystem.color.text.brandSecondary,
-}))``
 
 const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
