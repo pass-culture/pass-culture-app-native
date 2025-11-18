@@ -1,36 +1,46 @@
-import React, { useEffect, memo } from 'react'
+import React, { memo, useEffect, useRef } from 'react'
 import { Animated, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 
 import { SnackBarProgressBarProps } from './SnackBarProgressBar.types'
 
 const NotMemoizedProgressBar = (props: SnackBarProgressBarProps) => {
   const windowWidth = useWindowDimensions().width
 
-  const progressBarCompletion = new Animated.Value(0)
+  const progress = useRef(new Animated.Value(0)).current
 
-  function animateProgressBarWidth() {
-    props.timeout &&
-      Animated.timing(progressBarCompletion, {
-        toValue: windowWidth,
+  function animateProgressBar() {
+    if (props.timeout) {
+      Animated.timing(progress, {
+        toValue: 1,
         duration: props.timeout,
-        useNativeDriver: false,
+        useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
       }).start()
+    }
   }
 
   useEffect(() => {
-    progressBarCompletion.setValue(0)
-    animateProgressBarWidth()
+    progress.setValue(0)
+    animateProgressBar()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.refresher])
+  }, [props.refresher, props.timeout])
+
+  const translateX = progress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-windowWidth / 2, 0],
+  })
 
   return (
     <StyledAnimatedView
       testID="snackbar-progressbar"
       backgroundColor={props.color}
-      width={progressBarCompletion}
+      style={{
+        width: windowWidth,
+        transform: [{ translateX: translateX }, { scaleX: progress }],
+      }}
     />
   )
 }
@@ -39,10 +49,7 @@ export const SnackBarProgressBar = memo(NotMemoizedProgressBar)
 
 const StyledAnimatedView = styled(Animated.View)<{
   backgroundColor: ColorsType
-  width: Animated.Value
-}>(({ backgroundColor, width }) => ({
+}>(({ backgroundColor }) => ({
   height: 4,
   backgroundColor: backgroundColor,
-  // @ts-expect-error: avoid typescript error due to not supported Animated Css/Styles types
-  width: width._value /* The alternative is to use inline style */,
 }))
