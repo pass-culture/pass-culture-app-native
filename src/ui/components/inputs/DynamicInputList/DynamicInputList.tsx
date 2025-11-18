@@ -43,24 +43,40 @@ export const DynamicInputList = ({
 
   const [visibleInputs, setVisibleInputs] = useState<VisibleInput[]>(() => {
     const firstInputIndex = 0
+    if (initialValues && initialValues.length > 0) {
+      return initialValues
+        .map((value, index) => {
+          const inputConfig = inputs[index]
+          if (!inputConfig) {
+            return null
+          }
+          return {
+            id: index,
+            value: value || '',
+            ...inputConfig,
+          }
+        })
+        .filter((input): input is VisibleInput => input !== null)
+    }
+
     const firstInput = inputs[firstInputIndex]
     if (!firstInput) return []
-    return [{ id: firstInputIndex, value: initialValues?.[firstInputIndex] || '', ...firstInput }]
+    return [{ id: firstInputIndex, value: '', ...firstInput }]
   })
 
   const maxInputsLength = inputs.length
-  const maxVisibleInputsLenght = visibleInputs.length
-  const canAddMoreInputs = maxVisibleInputsLenght < maxInputsLength
+  const maxVisibleInputsLength = visibleInputs.length
+  const canAddMoreInputs = maxVisibleInputsLength < maxInputsLength
 
   const handleAddInput = () => {
     if (canAddMoreInputs) {
-      const nextInput = inputs[maxVisibleInputsLenght]
+      const nextInput = inputs[maxVisibleInputsLength]
       if (!nextInput) return
       const updated = [
         ...visibleInputs,
         {
-          id: maxVisibleInputsLenght,
-          value: initialValues?.[maxVisibleInputsLenght]?.trim() || '',
+          id: maxVisibleInputsLength,
+          value: initialValues?.[maxVisibleInputsLength]?.trim() || '',
           ...nextInput,
         },
       ]

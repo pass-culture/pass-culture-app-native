@@ -80,7 +80,7 @@ describe('<DynamicInputList />', () => {
       <DynamicInputList
         inputs={baseInputs}
         addMoreInputWording="Ajouter un prénom"
-        initialValues={['Jean', 'Pierre', 'Paul']}
+        initialValues={['Jean']}
       />
     )
 
