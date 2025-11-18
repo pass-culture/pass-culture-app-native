@@ -263,7 +263,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -351,7 +351,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -422,7 +422,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -490,7 +490,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -558,7 +558,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -626,7 +626,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -694,7 +694,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"
@@ -762,7 +762,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                       >
                         <div
                           class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
-                          style="margin-left: 2px;"
+                          style="transform: translateX(2px);"
                         >
                           <div
                             class="css-view-175oi2r"

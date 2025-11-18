@@ -547,7 +547,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "width": 28,
                               },
                               {
-                                "marginLeft": 2,
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
                               },
                             ]
                           }
@@ -696,7 +700,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "width": 28,
                               },
                               {
-                                "marginLeft": 2,
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
                               },
                             ]
                           }

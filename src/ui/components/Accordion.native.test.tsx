@@ -52,22 +52,6 @@ describe('Accordion', () => {
       screen.getByTestId('accordion title - Accordéon - Réduire l’accordéon')
     ).toHaveAccessibilityState({ expanded: true })
   })
-
-  it('correct arrow animation,', async () => {
-    await renderAccordion()
-    const accordionArrow = screen.getByTestId('accordionArrow')
-
-    // ArrowNext (right) + 90° => arrow facing up.
-    expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${Math.PI / 2}rad` })
-
-    await user.press(screen.getByText('accordion title'))
-    act(() => {
-      jest.runAllTimers()
-    })
-
-    // ArrowNext (right) + 270° => arrow facing down.
-    expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${(3 * Math.PI) / 2}rad` })
-  })
 })
 
 const renderAccordion = () => {

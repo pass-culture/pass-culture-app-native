@@ -360,7 +360,11 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "width": 28,
                       },
                       {
-                        "marginLeft": 2,
+                        "transform": [
+                          {
+                            "translateX": 2,
+                          },
+                        ],
                       },
                     ]
                   }
@@ -479,7 +483,11 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "width": 28,
                       },
                       {
-                        "marginLeft": 2,
+                        "transform": [
+                          {
+                            "translateX": 2,
+                          },
+                        ],
                       },
                     ]
                   }
@@ -823,7 +831,11 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "width": 28,
                       },
                       {
-                        "marginLeft": 2,
+                        "transform": [
+                          {
+                            "translateX": 2,
+                          },
+                        ],
                       },
                     ]
                   }
@@ -1167,7 +1179,11 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "width": 28,
                       },
                       {
-                        "marginLeft": 2,
+                        "transform": [
+                          {
+                            "translateX": 2,
+                          },
+                        ],
                       },
                     ]
                   }
@@ -1511,7 +1527,11 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         "width": 28,
                       },
                       {
-                        "marginLeft": 26,
+                        "transform": [
+                          {
+                            "translateX": 26,
+                          },
+                        ],
                       },
                     ]
                   }

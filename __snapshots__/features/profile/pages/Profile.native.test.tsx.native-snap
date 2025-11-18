@@ -653,7 +653,11 @@ exports[`Profile component should render correctly 1`] = `
                                     "width": 28,
                                   },
                                   {
-                                    "marginLeft": 26,
+                                    "transform": [
+                                      {
+                                        "translateX": 26,
+                                      },
+                                    ],
                                   },
                                 ]
                               }

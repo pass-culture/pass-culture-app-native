@@ -365,7 +365,11 @@ exports[`DisplayPreference should render correctly 1`] = `
                             "borderTopRightRadius": 32,
                             "height": 28,
                             "justifyContent": "center",
-                            "marginLeft": 2,
+                            "transform": [
+                              {
+                                "translateX": 2,
+                              },
+                            ],
                             "width": 28,
                           }
                         }

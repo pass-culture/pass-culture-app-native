@@ -497,7 +497,11 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "width": 28,
                               },
                               {
-                                "marginLeft": 2,
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
                               },
                             ]
                           }
@@ -657,7 +661,11 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "width": 28,
                               },
                               {
-                                "marginLeft": 2,
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
                               },
                             ]
                           }
