@@ -98,7 +98,6 @@ const StyledTitleMainView = styled.View<{ shouldDisplayMobileLocationSmallWidget
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
     maxWidth: shouldDisplayMobileLocationSmallWidget ? 'inherit' : '75%',
-    backgroundColor: 'red',
   })
 )
 
