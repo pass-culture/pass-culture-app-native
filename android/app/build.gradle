@@ -24,8 +24,6 @@ def packageSlurper = new JsonSlurper()
 
 def packageJson = packageSlurper.parse file('../../package.json')
 
-apply from: "../../node_modules/react-native-code-push/android/codepush.gradle" // @codepush
-
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -125,7 +123,6 @@ android {
         resValue "string", "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
         versionCode (packageJson.build as Integer)
         versionName packageJson.version
-        buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_PUBLIC_KEY_ANDROID")}\"" // @codepush
         multiDexEnabled true
         resConfigs "fr" // https://developer.android.com/studio/build/shrink-code#unused-alt-resources
         manifestPlaceholders = [GOOGLE_MAPS_API_PUBLIC_KEY: project.env.get("GOOGLE_MAPS_API_PUBLIC_KEY")] // env variable in the Manifest.xml

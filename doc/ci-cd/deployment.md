@@ -25,21 +25,6 @@ Most of the time, when developing a feature, you probably didn't change the nati
 
 Then the build is faster as only the javascript code is published. The download and installation of the modification will be automatic when you open the app.
 
-#### Troubleshooting
-
-<details>
-  <summary>I don't see my changes on testing</summary>
-
-If you don't see your changes, try to check if the codepush was correctly downloaded. To do so, go to "CheatCodes", and click on the "check update" button.
-
-3 possibilities:
-
-- it displays "no update found": you are up-to-date
-- it shows "New version available on AppCenter" you need to go to AppCenter for [iOS][5] & [Android][6]
-- it downloads the update and restarts the app
-
-</details>
-
 ### Hard deploy (manual)
 
 If you modified native code, you need to hard deploy:
@@ -49,43 +34,9 @@ If you modified native code, you need to hard deploy:
 This will bump the patch number, create a tag `testing/vX.X.X+1` and push it.
 The **CI** will detect the tag and launch the lanes [`hard-deploy-android-testing`](../../.github/workflows/dev_on_push_workflow_main.yml#L133) & [`dhard-eploy-ios-testing`](../../.github/workflows/dev_on_push_workflow_main.yml#L143).
 
-## Hotfix (CodePush)
-
-### When
-
-> ⚠️ Only if there is a bug really urgent in production, that we need to fix very quickly.
-> If not urgent (but still can't wait until the next MEP), it's better for the user experience to release a new version (see Production/Hard deploy to release a new production version).
-
-### How
-
-- List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y` (`git fetch --tag`and then `git tag | grep vX.X`)
-- Two cases:
-  - There is already a previous hotfix on this version (`hotfix-production-vX.X.X.Y`): checkout on the tag with the biggest `Y`
-  - It is the first hotfix on this version : Checkout on the tag `vX.X.X` (could be `patch/vX.X.X`) with the bigger minor `X`
-- Cherry-pick all the commits of the feature `git cherry-pick <commit-hash>`
-- Check if tests are OK `yarn test`
-- `git tag hotfix-staging-vX.X.X-(Y+1)`
-- `git push origin hotfix-staging-vX.X.X-(Y+1) --no-verify`: this will deploy it to `staging`
-- Validate the fix with the PO on staging app (version X.X.X)
-- If it is OK for the PO, deploy it to production:
-- `git tag hotfix-production-vX.X.X-(Y+1)`
-- `git push origin hotfix-production-vX.X.X-(Y+1) --no-verify`: this will deploy it to `production`
-- ⚠️ Check your code push targets the actual production version (one code push targets only one version)
-
-### Troubleshooting
-
-<details>
-  <summary>I don't see my CodePush on staging/prod app</summary>
-
-Check if you can find it on AppCenter. Example for [staging iOS][7].
-
-![img](./CodePushOnAppCenter.png)
-
-</details>
-
 ## Staging (MES)
 
-You can review & download the **staging** apps on AppCenter for [iOS][5] & [Android][6] of using this [url][8].
+You can review & download the **staging** apps on AppCenter for [iOS][5] & [Android][6] of using this [url][7].
 
 ### Hard deploy
 
@@ -98,7 +49,7 @@ It will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 <details>
   <summary>Problem during MES automation</summary>
 
-In case there is a problem with the automation when you want to deploy the new staging version from a specific commit you can manually trigger the [GithubAction][9] :
+In case there is a problem with the automation when you want to deploy the new staging version from a specific commit you can manually trigger the [GithubAction][8] :
 
 - Click the `Run workflow` button select the `master` branch and give the commit from which you want to create a version
 
@@ -135,6 +86,5 @@ The builds for iOS and Android were already generated at the MES time and are av
 [4]: https://app.testing.passculture.team/accueil
 [5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
 [6]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
-[7]: https://appcenter.ms/orgs/pass-Culture/apps/PassCulture-staging-ios/distribute/code-push
-[8]: https://app.staging.passculture.team/accueil
-[9]: https://github.com/pass-culture/pass-culture-app-native/actions/workflows/jira_create_and_push_staging_testing_deploy_tags.yml
+[7]: https://app.staging.passculture.team/accueil
+[8]: https://github.com/pass-culture/pass-culture-app-native/actions/workflows/jira_create_and_push_staging_testing_deploy_tags.yml

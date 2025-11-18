@@ -26,7 +26,6 @@ flowchart TB
   end
   subgraph technique
     Sentry["Sentry : erreurs tracking"]
-    Codepush["Codepush : Update Over The Air"]
   end
   subgraph distribution
     Apple["Apple test flight"]
@@ -78,10 +77,8 @@ architecture-beta
   App:B --> T:Firebase_Analytics
 
   service Sentry(cloud)[Sentry erreurs tracking] in technique
-  service Codepush(cloud)[Codepush Update Over The Air] in technique
 
   App:R --> L:Sentry
-  App:R --> L:Codepush
 
   service Apple_TestFlight(cloud)[Apple test flight] in distribution
   service Firebase_App_Distribution(cloud)[Firebase App Distribution] in distribution

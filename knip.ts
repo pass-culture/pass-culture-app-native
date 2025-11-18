@@ -45,7 +45,6 @@ const productionConfig: KnipConfig = {
   ignore: [
     ...(defaultConfig.ignore || []),
     'src/features/bookings/components/Ticket/ControlComponent.tsx',
-    'src/libs/tick.ts', // only used in a codepush button appearing in cheatcodes, should be deleted soon
   ],
   rules: {
     dependencies: 'off',

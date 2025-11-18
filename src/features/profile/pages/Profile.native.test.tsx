@@ -92,7 +92,7 @@ const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoCo
 
 jest.mock('libs/jwt/jwt')
 
-const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
+jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
@@ -147,20 +147,6 @@ describe('Profile component', () => {
     renderProfile()
 
     expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
-  })
-
-  it('should display the version with the CodePush version label', async () => {
-    const mockVersion = 'Version\u00A01.10.5-123'
-    useVersionSpy.mockReturnValueOnce(mockVersion)
-    renderProfile()
-
-    expect(await screen.findByText(mockVersion)).toBeOnTheScreen()
-  })
-
-  it('should not display the Code push version label when it is not available', async () => {
-    renderProfile()
-
-    expect(await screen.findByText('Version\u00A01.10.5')).toBeOnTheScreen()
   })
 
   describe('user settings section', () => {

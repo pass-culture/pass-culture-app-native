@@ -96,7 +96,6 @@ describe('useSimilarOffersQuery', () => {
             credentials: 'omit',
             headers: {
               'app-version': '1.10.5',
-              'code-push-id': 'abel',
               'commit-hash': '13371337',
               'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
               platform: 'ios',
@@ -130,7 +129,6 @@ describe('useSimilarOffersQuery', () => {
             credentials: 'omit',
             headers: {
               'app-version': '1.10.5',
-              'code-push-id': 'abel',
               'commit-hash': '13371337',
               'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
               platform: 'ios',
