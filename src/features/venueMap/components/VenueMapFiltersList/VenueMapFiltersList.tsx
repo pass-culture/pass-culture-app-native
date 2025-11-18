@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -13,7 +13,7 @@ import { FilterGroupData } from 'features/venueMap/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 
-type Props = StackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapFiltersList'>
+type Props = NativeStackScreenProps<VenueMapFiltersModalStackParamList, 'VenueMapFiltersList'>
 
 const titleId = uuidv4()
 

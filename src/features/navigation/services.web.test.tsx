@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
@@ -16,7 +16,7 @@ class ResizeObserver {
 global.ResizeObserver = ResizeObserver
 
 jest.unmock('@react-navigation/native')
-jest.unmock('@react-navigation/stack')
+jest.unmock('@react-navigation/native-stack')
 jest.unmock('@react-navigation/bottom-tabs')
 
 jest.mock('react-native-safe-area-context', () => ({
@@ -95,8 +95,8 @@ type TabParamList = {
   Screen5: undefined
   Screen6: undefined
 }
-const Stack = createStackNavigator<StackParamList>()
-const Stack2 = createStackNavigator<StackParamList2>()
+const Stack = createNativeStackNavigator<StackParamList>()
+const Stack2 = createNativeStackNavigator<StackParamList2>()
 const TabNavigator = createBottomTabNavigator<TabParamList>()
 
 const navigationRef = createNavigationContainerRef<StackParamList>()
@@ -136,6 +136,9 @@ async function simulateNavigate<RouteName extends keyof StackParamList>(
     : [RouteName, StackParamList[RouteName]]
 ) {
   await act(async () => {
-    navigationRef.navigate(...args)
+    // TypeScript cannot verify the union type matches navigate's overloaded signature
+    // but the types are correct at the call site - we're using the same conditional type pattern
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    navigationRef.navigate(...(args as any))
   })
 }

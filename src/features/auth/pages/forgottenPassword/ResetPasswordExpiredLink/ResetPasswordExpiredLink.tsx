@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
 
 import { useResetPasswordExpiredLinkQuery } from 'features/auth/queries/useResetPasswordExpiredLinkQuery'
@@ -8,7 +8,7 @@ import { env } from 'libs/environment/env'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
-type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
+type Props = NativeStackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 export function ResetPasswordExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()

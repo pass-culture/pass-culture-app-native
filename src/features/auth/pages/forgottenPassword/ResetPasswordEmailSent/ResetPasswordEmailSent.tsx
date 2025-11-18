@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
@@ -12,7 +12,7 @@ import { env } from 'libs/environment/env'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
-type Props = Pick<StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>, 'route'>
+type Props = Pick<NativeStackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>, 'route'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate } = useNavigation<UseNavigationType>()

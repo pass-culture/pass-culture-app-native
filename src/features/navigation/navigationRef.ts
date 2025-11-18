@@ -10,7 +10,10 @@ export const navigateFromRef = <RouteName extends keyof RootStackParamList>(
     : [RouteName, RootStackParamList[RouteName]]
 ) => {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(...args)
+    // TypeScript cannot verify that our union type matches navigate's overloaded signature
+    // but the types are structurally correct - we're using the same conditional type pattern
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    navigationRef.navigate(...(args as any))
   }
 }
 
@@ -20,7 +23,8 @@ export const pushFromRef = <RouteName extends keyof RootStackParamList>(
     : [RouteName, RootStackParamList[RouteName]]
 ) => {
   if (navigationRef.isReady()) {
-    navigationRef.dispatch(StackActions.push.apply(null, args))
+    const [name, params] = args
+    navigationRef.dispatch(StackActions.push(name, params))
   }
 }
 

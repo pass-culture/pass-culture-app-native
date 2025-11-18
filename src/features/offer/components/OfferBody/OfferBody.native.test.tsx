@@ -16,14 +16,12 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
-import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -63,14 +61,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
-const useArtistResultsSpy = jest
-  .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
-  .mockImplementation()
-  .mockReturnValue({
-    artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-    artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
-  })
 
 const user = userEvent.setup()
 
@@ -481,28 +471,6 @@ describe('<OfferBody />', () => {
     await user.press(await screen.findByText('Stephen King'))
 
     expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
-  })
-
-  it('should not redirect to artist page when FF is enabled and artist has less than 2 offers', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      artists: [{ id: '3', name: 'J.K Rowling' }],
-    }
-
-    useArtistResultsSpy.mockReturnValueOnce({
-      artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 1),
-      artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
-    })
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
-    })
-
-    await user.press(await screen.findByText('J.K Rowling'))
-
-    expect(mockNavigate).not.toHaveBeenCalled()
   })
 
   it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {

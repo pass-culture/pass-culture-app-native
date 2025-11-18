@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
@@ -17,7 +17,7 @@ describe('OnboardingAgeInformation', () => {
 })
 
 const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+  const navProps = { route: { params: navigationParams } } as NativeStackScreenProps<
     OnboardingStackParamList,
     'OnboardingAgeInformation'
   >

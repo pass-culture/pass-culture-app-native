@@ -89,21 +89,27 @@ describe('<VenueMap />', () => {
     expect(await screen.findByTestId('venue-map-view')).toBeOnTheScreen()
   })
 
-  // TODO(PC-38119): flaky test to fix
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('Should display venue map header', async () => {
+  it('should display venue map header', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
-    await screen.findAllByTestId(/[A-Z]+Label/)
+    const header = await screen.findByRole('header', { name: 'Carte des lieux' })
 
-    Object.keys(FILTERS_VENUE_TYPE_MAPPING).forEach((id) => {
-      expect(screen.getByTestId(`${id}Label`)).toBeOnTheScreen()
+    expect(header).toBeOnTheScreen()
+
+    const filterKeys = Object.keys(FILTERS_VENUE_TYPE_MAPPING)
+
+    // Promises array for each filter
+    const filterPromises = filterKeys.map((id) => screen.findByTestId(`${id}Label`))
+
+    // Wait for all promises to resolve
+    const filterElements = await Promise.all(filterPromises)
+
+    filterElements.forEach((element) => {
+      expect(element).toBeOnTheScreen()
     })
-
-    expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
   })
 
-  it('Should handle go back action when pressing go back button', async () => {
+  it('should handle go back action when pressing go back button', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
@@ -112,7 +118,7 @@ describe('<VenueMap />', () => {
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('Should reset venue type code in store when pressing go back button', async () => {
+  it('should reset venue type code in store when pressing go back button', async () => {
     const spy = jest.spyOn(venuesFilterActions, 'setVenuesFilters')
     render(reactQueryProviderHOC(<VenueMap />))
 
@@ -122,7 +128,7 @@ describe('<VenueMap />', () => {
     await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, []))
   })
 
-  it('Should reset store + filters when unmounting', async () => {
+  it('should reset store + filters when unmounting', async () => {
     const spyClearStore = jest.spyOn(venueMapStore, 'clearVenueMapStore')
 
     const { unmount } = render(reactQueryProviderHOC(<VenueMap />))

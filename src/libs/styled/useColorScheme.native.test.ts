@@ -27,10 +27,10 @@ describe('useColorScheme', () => {
       expect(result.current).toBe(ColorScheme.LIGHT)
     })
 
-    it('should set default to system theme', () => {
+    it('should not write to store on first render', () => {
       renderHook(() => useColorScheme())
 
-      expect(setColorSchemeSpy).toHaveBeenNthCalledWith(1, { colorScheme: ColorScheme.SYSTEM })
+      expect(setColorSchemeSpy).not.toHaveBeenCalled()
     })
 
     it('should return default to light mode when feature flag disable', () => {

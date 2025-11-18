@@ -1,5 +1,5 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 
-export const VenueMapFiltersStack = createStackNavigator<VenueMapFiltersModalStackParamList>()
+export const VenueMapFiltersStack = createNativeStackNavigator<VenueMapFiltersModalStackParamList>()

@@ -464,6 +464,7 @@
 				CODE_SIGN_ENTITLEMENTS = PassCulture/PassCulture.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "$(IOS_TEAM_ID)";
@@ -504,6 +505,7 @@
 				CODE_SIGN_ENTITLEMENTS = PassCulture/PassCulture.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "$(IOS_TEAM_ID)";
 				ENABLE_BITCODE = NO;

@@ -1,4 +1,4 @@
-import { StackNavigationOptions } from '@react-navigation/stack'
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -86,7 +86,7 @@ type RouteConfig = {
   name: RootScreenNames
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
-  options?: StackNavigationOptions
+  options?: NativeStackNavigationOptions
 }
 
 const rootScreens: RouteConfig[] = [
@@ -364,11 +364,14 @@ const RootStackNavigator = withWebWrapper(
             <RootStackNavigatorBase.Screen
               name="VenueMapFiltersStackNavigator"
               component={VenueMapFiltersStackNavigator}
-              options={{
-                presentation: 'modal',
-                ...FILTERS_MODAL_NAV_OPTIONS,
-                cardStyle: { marginTop: top, borderTopLeftRadius: 20, borderTopRightRadius: 20 },
-              }}
+              options={
+                {
+                  presentation: 'modal',
+                  ...FILTERS_MODAL_NAV_OPTIONS,
+                  // cardStyle is not officially supported in native-stack but may work in some scenarios
+                  cardStyle: { marginTop: top, borderTopLeftRadius: 20, borderTopRightRadius: 20 },
+                } as NativeStackNavigationOptions
+              }
             />
           )}
           <RootStackNavigatorBase.Screen name="Achievements">

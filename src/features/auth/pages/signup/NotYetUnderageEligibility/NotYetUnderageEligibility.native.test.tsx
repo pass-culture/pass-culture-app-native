@@ -1,4 +1,4 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
@@ -15,7 +15,7 @@ jest.mock('features/navigation/navigationRef')
 
 const navigationProps = {
   route: { params: { eligibilityStartDatetime: '2019-12-01T00:00:00Z' } },
-} as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
+} as NativeStackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
