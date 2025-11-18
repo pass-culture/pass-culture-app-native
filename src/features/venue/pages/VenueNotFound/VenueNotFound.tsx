@@ -7,7 +7,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
-  const timer = useRef<NodeJS.Timeout>(null)
+  const timer = useRef<number>(null)
 
   useEffect(
     () => () => {
