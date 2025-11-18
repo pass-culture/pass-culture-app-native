@@ -3,21 +3,19 @@ import React from 'react'
 import { dispatch, reset, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import { ActivityIdEnum } from 'api/gen'
-import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivationProfileRecap } from 'features/identityCheck/pages/profile/ActivationProfileRecap'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
-import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
+import { addressActions } from 'features/identityCheck/pages/profile/store/addressStore'
+import { cityActions } from 'features/identityCheck/pages/profile/store/cityStore'
+import { nameActions } from 'features/identityCheck/pages/profile/store/nameStore'
+import * as resetProfileStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import { statusActions } from 'features/identityCheck/pages/profile/store/statusStore'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
+import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
 
@@ -37,51 +35,19 @@ const mockUseMutationSuccess = () => {
   }))
 }
 
-const mockStatus = ActivityIdEnum.STUDENT
-const profile = {
-  name: { firstName: 'Jean', lastName: 'Dupont' },
-  city: { name: 'Paris', postalCode: '75011' },
-  address: '1 rue du désespoir',
-  status: mockStatus,
-}
+const firstName = 'Jean'
+const lastName = 'Dupont'
+const cityName = 'Paris'
+const postalCode = '75011'
+const address = '1 rue du désespoir'
+const status = ActivityIdEnum.STUDENT
+const offerId = 1234
+const offerIdNull = null
 
 jest.mock('libs/jwt/jwt')
 
-jest.mock('features/identityCheck/pages/profile/store/nameStore')
-;(useName as jest.Mock).mockReturnValue(profile.name)
-
-jest.mock('features/identityCheck/pages/profile/store/cityStore')
-;(useCity as jest.Mock).mockReturnValue(profile.city)
-
-jest.mock('features/identityCheck/pages/profile/store/addressStore')
-;(useAddress as jest.Mock).mockReturnValue(profile.address)
-
-jest.mock('features/identityCheck/pages/profile/store/statusStore')
-;(useStatus as jest.Mock).mockReturnValue(profile.status)
-
-let mockOfferId: number | null = 123456
-jest.mock('features/offer/store/freeOfferIdStore', () => ({
-  useFreeOfferId: () => mockOfferId,
-}))
-
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({
-    dispatch: jest.fn(),
-    ...mockState,
-    profile: {
-      name: { firstName: 'Jean', lastName: 'Dupont' },
-      city: { name: 'Paris', postalCode: '75011' },
-      address: '1 rue du désespoir',
-      status: mockStatus,
-    },
-  })),
-}))
-
-const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
+  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
 
 const mockRefetchUser = jest.fn()
@@ -93,19 +59,19 @@ const user = userEvent.setup()
 
 describe('<ActivationProfileRecap />', () => {
   beforeEach(() => {
+    resetProfileStores.resetProfileStores()
     setFeatureFlags()
-    mockServer.postApi('/v1/subscription/profile', {})
     mockUseMutationSuccess()
   })
 
   it('should render correctly', () => {
-    renderActivationProfileRecap()
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display user info correctly', () => {
-    renderActivationProfileRecap()
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     expect(screen.getByText('DUPONT')).toBeTruthy()
     expect(screen.getByText('Jean')).toBeTruthy()
@@ -115,13 +81,13 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should display correct infos in identity check', async () => {
-    renderActivationProfileRecap()
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
   it('should navigate to stepper on press "Confirmer"', async () => {
-    renderActivationProfileRecap()
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -138,8 +104,8 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should reset profile stores after submission succeeds', async () => {
-    const resetStoresSpy = jest.spyOn(resetStores, 'resetProfileStores')
-    renderActivationProfileRecap()
+    const resetStoresSpy = jest.spyOn(resetProfileStores, 'resetProfileStores')
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -147,7 +113,7 @@ describe('<ActivationProfileRecap />', () => {
   })
 
   it('should call refetchUser after submission succeeds', async () => {
-    renderActivationProfileRecap()
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -158,9 +124,7 @@ describe('<ActivationProfileRecap />', () => {
     mockUseMutationError({ content: {}, name: 'ApiError', statusCode: 400, message: 'erreur' })
     useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } })
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
-    mockOfferId = 123
-
-    renderActivationProfileRecap()
+    prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
     await user.press(screen.getByText('Confirmer'))
 
@@ -168,7 +132,7 @@ describe('<ActivationProfileRecap />', () => {
       routes: [
         {
           name: 'SubscriptionStackNavigator',
-          state: { routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }] },
+          state: { routes: [{ name: 'SetProfileBookingError', params: { offerId } }] },
         },
       ],
     })
@@ -181,16 +145,14 @@ describe('<ActivationProfileRecap />', () => {
     })
 
     it('should display correct infos in booking free offer 15-16 years', async () => {
-      mockOfferId = 123
-      renderActivationProfileRecap()
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
       expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     })
 
     it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
       setFeatureFlags()
-      mockOfferId = 123
-      renderActivationProfileRecap()
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
       await user.press(screen.getByText('Confirmer'))
 
@@ -198,22 +160,18 @@ describe('<ActivationProfileRecap />', () => {
     })
 
     it('should navigate to Offer screen if booking free offer and offer ID exists when FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
-      mockOfferId = 123
-      renderActivationProfileRecap()
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId)
 
       await user.press(screen.getByText('Confirmer'))
 
       await waitFor(() => {
-        expect(reset).toHaveBeenCalledWith({
-          routes: [{ name: 'Offer', params: { id: mockOfferId } }],
-        })
+        expect(reset).toHaveBeenCalledWith({ routes: [{ name: 'Offer', params: { id: offerId } }] })
       })
     })
 
     it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
       setFeatureFlags()
-      mockOfferId = null
-      renderActivationProfileRecap()
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
       await user.press(screen.getByText('Confirmer'))
 
@@ -221,8 +179,7 @@ describe('<ActivationProfileRecap />', () => {
     })
 
     it('should navigate to error screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
-      mockOfferId = null
-      renderActivationProfileRecap()
+      prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerIdNull)
 
       await user.press(screen.getByText('Confirmer'))
 
@@ -238,6 +195,18 @@ describe('<ActivationProfileRecap />', () => {
   })
 })
 
-const renderActivationProfileRecap = () => {
-  return render(reactQueryProviderHOC(<ActivationProfileRecap />))
+function prepareDataAndRender(firstName, lastName, cityName, postalCode, address, status, offerId) {
+  const { setName } = nameActions
+  const { setCity } = cityActions
+  const { setAddress } = addressActions
+  const { setStatus } = statusActions
+  const { setFreeOfferId } = freeOfferIdActions
+
+  setName({ firstName, lastName })
+  setCity({ name: cityName, postalCode, code: 'PARIS_CODE', departementCode: '75' })
+  setAddress(address)
+  setStatus(status)
+  setFreeOfferId(offerId)
+
+  render(reactQueryProviderHOC(<ActivationProfileRecap />))
 }
