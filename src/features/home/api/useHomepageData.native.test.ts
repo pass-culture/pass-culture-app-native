@@ -35,110 +35,46 @@ describe('getHomepagId', () => {
     jest.restoreAllMocks()
   })
 
-  it('should return beneficiary home when user is logged in and beneficiary and has bookings', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: true,
-        isFreeBeneficiary: false,
-        isBeneficiary: true,
-        hasBookings: true,
-        onboardingRole: UserOnboardingRole.UNKNOWN,
-      },
-      mockConfig
-    )
+  it.each`
+    isLoggedIn | isFreeBeneficiary | isBeneficiary | hasBookings | onboardingRole                 | expectedHomeEntry
+    ${true}    | ${false}          | ${true}       | ${true}     | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdBeneficiary}
+    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.EIGHTEEN} | ${mockConfig.homeEntryIdBeneficiary}
+    ${true}    | ${false}          | ${true}       | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdWithoutBooking}
+    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNDERAGE} | ${mockConfig.homeEntryIdFreeBeneficiary}
+    ${true}    | ${true}           | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdFreeBeneficiary}
+    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+    ${true}    | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+  `(
+    `should return remote config $expectedHomeEntry when isLoggedIn=$isLoggedIn, isFreeBeneficiary=$isFreeBeneficiary, isBeneficiary, hasBookings=$hasBookings, onboardingRole=$onboardingRole`,
+    ({
+      isLoggedIn,
+      isFreeBeneficiary,
+      isBeneficiary,
+      hasBookings,
+      onboardingRole,
+      expectedHomeEntry,
+    }: {
+      isLoggedIn: boolean
+      isFreeBeneficiary: boolean
+      isBeneficiary: boolean
+      hasBookings: boolean
+      onboardingRole: UserOnboardingRole
+      expectedHomeEntry: string
+    }) => {
+      const homeId = getHomepageId(
+        {
+          isLoggedIn,
+          isFreeBeneficiary,
+          isBeneficiary,
+          hasBookings,
+          onboardingRole,
+        },
+        mockConfig
+      )
 
-    expect(homeId).toBe(mockConfig.homeEntryIdBeneficiary)
-  })
-
-  it('should return beneficiary home when user is not logged in and onboarding role is EIGHTEEN', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: false,
-        isFreeBeneficiary: false,
-        isBeneficiary: false,
-        hasBookings: false,
-        onboardingRole: UserOnboardingRole.EIGHTEEN,
-      },
-      mockConfig
-    )
-
-    expect(homeId).toBe(mockConfig.homeEntryIdBeneficiary)
-  })
-
-  it('should return beneficiary "without booking" home when user is logged in, is beneficiary and has no bookings', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: true,
-        isFreeBeneficiary: false,
-        isBeneficiary: true,
-        hasBookings: false,
-        onboardingRole: UserOnboardingRole.UNKNOWN,
-      },
-      mockConfig
-    )
-
-    expect(homeId).toBe(mockConfig.homeEntryIdWithoutBooking)
-  })
-
-  it('should return free beneficiary home when user is not logged in and has onboarding role UNDERAGE', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: false,
-        isFreeBeneficiary: false,
-        isBeneficiary: false,
-        hasBookings: false,
-        onboardingRole: UserOnboardingRole.UNDERAGE,
-      },
-      mockConfig
-    )
-
-    expect(homeId).toBe(mockConfig.homeEntryIdFreeBeneficiary)
-  })
-
-  it('should return free beneficiary home when user is logged in and is free beneficiary', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: true,
-        isFreeBeneficiary: true,
-        isBeneficiary: false,
-        hasBookings: false,
-        onboardingRole: UserOnboardingRole.UNKNOWN,
-      },
-      mockConfig
-    )
-
-    expect(homeId).toBe(mockConfig.homeEntryIdFreeBeneficiary)
-  })
-
-  it('should return general home when user is not logged in and onboarding role is neither EIGHTEEN nor UNDERAGE', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: false,
-        isFreeBeneficiary: false,
-        isBeneficiary: false,
-        hasBookings: false,
-        onboardingRole: UserOnboardingRole.UNKNOWN,
-      },
-      mockConfig
-    )
-
-    expect(homeId).toBe(mockConfig.homeEntryIdGeneral)
-  })
-
-  it('should return general home when user is logged in and is neither beneficiary nor free beneficiary', () => {
-    const homeId = getHomepageId(
-      {
-        isLoggedIn: true,
-        isFreeBeneficiary: false,
-        isBeneficiary: false,
-        hasBookings: false,
-        onboardingRole: UserOnboardingRole.UNKNOWN,
-      },
-      mockConfig
-    )
-
-    expect(homeId).toBe(mockConfig.homeEntryIdGeneral)
-  })
+      expect(homeId).toBe(expectedHomeEntry)
+    }
+  )
 })
 
 describe('useHomepageModules', () => {
