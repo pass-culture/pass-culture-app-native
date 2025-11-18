@@ -173,8 +173,11 @@ clean_build_artifacts() {
     log_and_run "Removing Gradle caches" \
         rm -rf "$HOME/.gradle/caches/"
         
-    log_and_run "Removing project build directories" \
-        rm -rf "$REPO_ROOT/android/build" "$REPO_ROOT/android/app/build"
+    log_info "Removing large, non-essential project build directories..."
+    rm -rf "$REPO_ROOT/android/app/build/intermediates"
+    rm -rf "$REPO_ROOT/android/app/build/generated"
+    rm -rf "$REPO_ROOT/android/app/build/tmp"
+    log_success "Done."
 
     log_and_run "Cleaning yarn cache" \
         yarn cache clean
@@ -200,7 +203,7 @@ recreate_emulator() {
             --force
 
     clean_build_artifacts
-    
+
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background with a 4GB partition (log: ${EMULATOR_LOG_FILE})..."
     emulator \
