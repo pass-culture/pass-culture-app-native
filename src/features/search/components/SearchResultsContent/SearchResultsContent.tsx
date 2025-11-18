@@ -53,6 +53,7 @@ import { FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -147,6 +148,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
+
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
 
   const gridListLayout = useGridListLayout()
 
@@ -466,34 +471,36 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
-      <View>
-        <FilterButtonList
-          items={getFilterButtonListItem({
-            shouldDisplayCalendarModal,
-            showCalendarModal,
-            showDatesHoursModal,
-            appliedFilters,
-            searchState,
-            showVenueModal,
-            isVenue,
-            showCategoriesModal,
-            showSearchPriceModal,
-            hasDuoOfferToggle,
-            showOfferDuoModal,
-            showAccessibilityModal,
-          })}
-          contentContainerStyle={{
-            marginBottom: designSystem.size.spacing.s,
-            paddingHorizontal: designSystem.size.spacing.l,
-          }}>
-          <StyledLi>
-            <FilterButton
-              activeFilters={activeFiltersCount}
-              navigateTo={{ screen: 'SearchFilter' }}
-            />
-          </StyledLi>
-        </FilterButtonList>
-      </View>
+      {displayNewSearchHeader ? null : (
+        <View>
+          <FilterButtonList
+            items={getFilterButtonListItem({
+              shouldDisplayCalendarModal,
+              showCalendarModal,
+              showDatesHoursModal,
+              appliedFilters,
+              searchState,
+              showVenueModal,
+              isVenue,
+              showCategoriesModal,
+              showSearchPriceModal,
+              hasDuoOfferToggle,
+              showOfferDuoModal,
+              showAccessibilityModal,
+            })}
+            contentContainerStyle={{
+              marginBottom: designSystem.size.spacing.s,
+              paddingHorizontal: designSystem.size.spacing.l,
+            }}>
+            <StyledLi>
+              <FilterButton
+                activeFilters={activeFiltersCount}
+                navigateTo={{ screen: 'SearchFilter' }}
+              />
+            </StyledLi>
+          </FilterButtonList>
+        </View>
+      )}
       <Container testID="searchResults">{renderSearchList()}</Container>
       {shouldRenderScrollToTopButton ? (
         <ScrollToTopContainer>
@@ -612,6 +619,9 @@ const SearchResultsPlaceHolder = () => {
     ),
     []
   )
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
 
   return (
     <Container>
@@ -619,7 +629,9 @@ const SearchResultsPlaceHolder = () => {
         data={FAVORITE_LIST_PLACEHOLDER}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
-        ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
+        ListHeaderComponent={
+          <HeaderSearchResultsPlaceholder displayNewSearchHeader={displayNewSearchHeader} />
+        }
         ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />

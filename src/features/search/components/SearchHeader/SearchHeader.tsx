@@ -1,13 +1,14 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { memo } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndWidget/SearchTitleAndWidget'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { CreateHistoryItem } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { Spacer } from 'ui/theme'
@@ -21,6 +22,7 @@ type Props = {
   shouldDisplaySubtitle?: boolean
   withArrow?: boolean
   placeholder?: string
+  withFilterButton?: boolean
 }
 
 export const SearchHeader = memo(function SearchHeader({
@@ -32,9 +34,12 @@ export const SearchHeader = memo(function SearchHeader({
   title = 'Rechercher',
   offerCategories,
   placeholder,
+  withFilterButton = false,
 }: Props) {
   const { goBack } = useNavigation()
-  const { dispatch } = useSearch()
+  const { dispatch, searchState } = useSearch()
+
+  const activeFiltersCount = useFilterCount(searchState)
 
   const onGoBack = () => {
     dispatch({
@@ -60,14 +65,22 @@ export const SearchHeader = memo(function SearchHeader({
             title={title}
           />
         </RowContainer>
-        <View>
-          <SearchBox
-            addSearchHistory={addSearchHistory}
-            searchInHistory={searchInHistory}
-            offerCategories={offerCategories}
-            placeholder={placeholder}
-          />
-        </View>
+        <Container>
+          <SearchBoxContainer>
+            <SearchBox
+              addSearchHistory={addSearchHistory}
+              searchInHistory={searchInHistory}
+              offerCategories={offerCategories}
+              placeholder={placeholder}
+            />
+          </SearchBoxContainer>
+          {withFilterButton ? (
+            <FilterButton
+              activeFilters={activeFiltersCount}
+              navigateTo={{ screen: 'SearchFilter' }}
+            />
+          ) : null}
+        </Container>
       </HeaderContainer>
     </React.Fragment>
   )
@@ -93,3 +106,15 @@ const RowContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   paddingBottom: theme.designSystem.size.spacing.l,
 }))
+
+const Container = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'flex-end',
+  gap: theme.designSystem.size.spacing.s,
+  width: '100%',
+}))
+
+const SearchBoxContainer = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+})
