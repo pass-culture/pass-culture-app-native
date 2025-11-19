@@ -63,7 +63,17 @@ accept_licence() {
 }
 
 sdkmanager_install_accepting_licence() {
-    accept_licence | sdkmanager "$@" >/dev/null
+    local output_file
+    output_file=$(mktemp)
+    
+    if ! (accept_licence | sdkmanager "$@" > "$output_file" 2>&1); then
+        log_error "sdkmanager failed. See output below:"
+        cat "$output_file" >&2
+        rm "$output_file"
+        return 1
+    fi
+    
+    rm "$output_file"
 }
 
 verify_package_installed() {
@@ -142,6 +152,40 @@ install_platforms_and_image() {
     verify_package_installed "$IMAGE_PACKAGE"
 }
 
+clean_disk() {
+    log_info "Free up space"
+    df -h
+    # Remove .NET SDKs
+    sudo rm -rf /usr/share/dotnet
+    # Remove Swift toolchain
+    sudo rm -rf /usr/share/swift
+    # Remove Haskell (ghc)
+    sudo rm -rf /opt/ghc
+    # Remove some packages in /var/cache
+    sudo apt-get clean
+    df -h
+}
+
+clean_build_artifacts() {
+    log_info "Cleaning up build artifacts to maximize space for emulator..."
+    df -h
+    
+    log_and_run "Removing Gradle caches" \
+        rm -rf "$HOME/.gradle/caches/"
+        
+    log_info "Removing large, non-essential project build directories..."
+    rm -rf "$REPO_ROOT/android/app/build/intermediates"
+    rm -rf "$REPO_ROOT/android/app/build/generated"
+    rm -rf "$REPO_ROOT/android/app/build/tmp"
+    log_success "Done."
+
+    log_and_run "Cleaning yarn cache" \
+        yarn cache clean
+        
+    log_info "Cleanup complete."
+    df -h
+}
+
 recreate_emulator() {
     local EMULATOR_NAME="$1"
     local SDK_VERSION="$2"
@@ -158,15 +202,7 @@ recreate_emulator() {
             --device "$DEVICE_NAME" \
             --force
 
-    log_info "Free up space"
-    df -h
-    # Remove .NET SDKs
-    sudo rm -rf /usr/share/dotnet
-    # Remove Swift toolchain
-    sudo rm -rf /usr/share/swift
-    # Remove Haskell (ghc)
-    sudo rm -rf /opt/ghc
-    df -h
+    clean_build_artifacts
 
     local EMULATOR_LOG_FILE="emulator-boot.log"
     log_info "Starting emulator '$EMULATOR_NAME' in the background (log: ${EMULATOR_LOG_FILE})..."
@@ -192,6 +228,8 @@ recreate_emulator() {
 
 log_info "Repository root detected at: $REPO_ROOT"
 verify_dependencies "curl" "unzip" "yarn" "corepack" "node"
+
+clean_disk
 
 log_and_run "Ensuring AVD storage directory exists" mkdir --parents "$ANDROID_AVD_HOME"
 
