@@ -1,32 +1,19 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
+import React from 'react'
+import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
+import { useProfileViewModel } from 'features/profile/pages/useProfileViewModel'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
-import { shareApp } from 'features/share/helpers/shareApp'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { ScreenPerformance } from 'performance/ScreenPerformance'
-import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { getAge } from 'shared/user/getAge'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -37,8 +24,6 @@ import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlu
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { useDebounce } from 'ui/hooks/useDebounce'
-import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Bulb } from 'ui/svg/icons/Bulb'
@@ -56,104 +41,29 @@ import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
-const isWeb = Platform.OS === 'web'
-
-const DEBOUNCE_TOGGLE_DELAY_MS = 5000
-
 const OnlineProfile: React.FC = () => {
-  useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
-  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
-  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
-  const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
-
-  const { dispatch: favoritesDispatch } = useFavoritesState()
-  const { isLoggedIn, user } = useAuthContext()
-  const signOut = useLogoutRoutine()
-  const version = useVersion()
-  const scrollViewRef = useRef<ScrollView | null>(null)
-  const userAge = getAge(user?.birthDate)
   const {
-    data: { displayInAppFeedback },
-  } = useRemoteConfigQuery()
-  const {
+    disableActivation,
+    enablePassForAll,
+    enableDebugSection,
+    isLoggedIn,
+    user,
+    userAge,
+    signOut,
+    displayInAppFeedback,
+    isGeolocSwitchActive,
     geolocPositionError,
-    permissionState,
-    requestGeolocPermission,
-    showGeolocPermissionModal,
-  } = useLocation()
-  const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
-    permissionState === GeolocPermissionState.GRANTED
-  )
-  const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
-
-  const isDepositExpired = user?.depositExpirationDate
-    ? new Date(user?.depositExpirationDate) < new Date()
-    : false
-
-  const isExpiredOrCreditEmptyWithNoUpcomingCredit =
-    userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty)
-
-  const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
-
-  useFocusEffect(
-    useCallback(() => {
-      if (permissionState === GeolocPermissionState.GRANTED) {
-        setIsGeolocSwitchActive(true)
-      } else {
-        setIsGeolocSwitchActive(false)
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [geolocPositionError, permissionState])
-  )
-
-  const switchGeolocation = useCallback(async () => {
-    if (permissionState === GeolocPermissionState.GRANTED) {
-      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
-      showGeolocPermissionModal()
-    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      showGeolocPermissionModal()
-    } else {
-      await requestGeolocPermission()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [permissionState])
-
-  const debouncedLogLocationToggle = useDebounce(
-    analytics.logLocationToggle,
-    DEBOUNCE_TOGGLE_DELAY_MS
-  )
-
-  function scrollToTop() {
-    if (scrollViewRef?.current) {
-      scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
-    }
-  }
-  const debouncedScrollToTop = useDebounce(scrollToTop, 400)
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      debouncedScrollToTop()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn])
-
-  const logProfilScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
-
-  function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
-    if (isCloseToBottom(nativeEvent)) {
-      logProfilScrolledToBottom()
-    }
-  }
-
-  const onShareBannerPress = useCallback(() => {
-    analytics.logShareApp({ from: 'profile' })
-    shareApp('profile_banner')
-  }, [])
-
-  // If no dark mode and no rotation mode in web this section is empty
-  const hidePreferenceSection = !enableDarkMode && isWeb
-  const shouldShowAchievementsSection = user?.isBeneficiary
+    switchGeolocation,
+    debouncedLogLocationToggle,
+    shouldDisplayTutorial,
+    hidePreferenceSection,
+    shouldShowAchievementsSection,
+    isWeb,
+    scrollViewRef,
+    onScroll,
+    onShareBannerPress,
+    version,
+  } = useProfileViewModel()
 
   return (
     <Page>
@@ -196,7 +106,7 @@ const OnlineProfile: React.FC = () => {
                       active={isGeolocSwitchActive}
                       accessibilityHint={geolocPositionError?.message}
                       toggle={() => {
-                        switchGeolocation()
+                        void switchGeolocation()
                         debouncedLogLocationToggle(!isGeolocSwitchActive)
                       }}
                       toggleLabel="Activer ma géolocalisation"
