@@ -9,7 +9,6 @@ import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialN
 import { useProfileViewModel } from 'features/profile/pages/useProfileViewModel'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -48,13 +47,12 @@ const OnlineProfile: React.FC = () => {
     enableDebugSection,
     isLoggedIn,
     user,
-    userAge,
     signOut,
     displayInAppFeedback,
     isGeolocSwitchActive,
     geolocPositionError,
-    switchGeolocation,
-    debouncedLogLocationToggle,
+    toggleGeolocation,
+    onConsultTutorial,
     shouldDisplayTutorial,
     hidePreferenceSection,
     shouldShowAchievementsSection,
@@ -105,10 +103,7 @@ const OnlineProfile: React.FC = () => {
                       title="Activer ma géolocalisation"
                       active={isGeolocSwitchActive}
                       accessibilityHint={geolocPositionError?.message}
-                      toggle={() => {
-                        void switchGeolocation()
-                        debouncedLogLocationToggle(!isGeolocSwitchActive)
-                      }}
+                      toggle={toggleGeolocation}
                       toggleLabel="Activer ma géolocalisation"
                     />
                     <InputError
@@ -127,9 +122,7 @@ const OnlineProfile: React.FC = () => {
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
                         navigateTo={getProfilePropConfig('ProfileTutorialAgeInformationCredit')}
-                        onPress={() =>
-                          analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
-                        }
+                        onPress={onConsultTutorial}
                         icon={LifeBuoy}
                       />
                     </Li>

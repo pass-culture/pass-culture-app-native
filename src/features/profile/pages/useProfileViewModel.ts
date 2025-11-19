@@ -35,8 +35,8 @@ type ProfileViewModel = {
 
   isGeolocSwitchActive: boolean
   geolocPositionError: ReturnType<typeof useLocation>['geolocPositionError']
-  switchGeolocation: () => Promise<void>
-  debouncedLogLocationToggle: (active: boolean) => void
+  toggleGeolocation: () => void
+  onConsultTutorial: () => void
 
   isCreditEmpty: boolean
   isDepositExpired: boolean
@@ -147,6 +147,15 @@ export function useProfileViewModel(): ProfileViewModel {
     void shareApp('profile_banner')
   }, [])
 
+  const toggleGeolocation = useCallback(() => {
+    void switchGeolocation()
+    void debouncedLogLocationToggle(!isGeolocSwitchActive)
+  }, [switchGeolocation, debouncedLogLocationToggle, isGeolocSwitchActive])
+
+  const onConsultTutorial = useCallback(() => {
+    void analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
+  }, [userAge])
+
   return {
     disableActivation,
     enablePassForAll,
@@ -160,8 +169,8 @@ export function useProfileViewModel(): ProfileViewModel {
 
     isGeolocSwitchActive,
     geolocPositionError,
-    switchGeolocation,
-    debouncedLogLocationToggle,
+    toggleGeolocation,
+    onConsultTutorial,
 
     isCreditEmpty,
     isDepositExpired,
