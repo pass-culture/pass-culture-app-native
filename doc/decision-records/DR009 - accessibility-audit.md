@@ -804,6 +804,27 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650)  
+**PR** : [#8919](https://github.com/pass-culture/pass-culture-app-native/pull/8919)
+
+**Problème** 😱  
+- **(E02)** En format portrait, les playlists avec des cartes horizontales sont coupées par le nootch.
+
+**Correction** 💡  
+- En format paysage, les marges sont dynamiques, dépendant de la taille du nootch de chaque appareil. Cependant la visibilité partielles des prochaines cartes dans ces playlists est voulue pour inciter au scroll horizontal.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
 
 ## ✅ Corrections 28 novembre → 15 décembre
 
