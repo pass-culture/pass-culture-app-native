@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components/native'
  * We compute the total height of the navbar here as well
  */
 export const useCustomSafeInsets = () => {
-  const { bottom, top } = useSafeAreaInsets()
+  const { bottom, top, right, left } = useSafeAreaInsets()
   const {
     tabBar: { height },
   } = useTheme()
@@ -16,5 +16,7 @@ export const useCustomSafeInsets = () => {
     bottom: 0.5 * bottom,
     tabBarHeight: 0.5 * bottom + height,
     top,
+    right,
+    left,
   }
 }

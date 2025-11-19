@@ -10,7 +10,8 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "marginHorizontal": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
       },
       {
         "alignItems": "center",

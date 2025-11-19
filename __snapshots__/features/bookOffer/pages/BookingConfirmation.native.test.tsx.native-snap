@@ -9,7 +9,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >

@@ -80,7 +80,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
 
 <div>
   <div
-    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginInline-1j93nrh"
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
   >
     <button
       aria-label="Revenir en arrière"

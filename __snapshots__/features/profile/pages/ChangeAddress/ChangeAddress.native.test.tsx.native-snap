@@ -9,7 +9,8 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >
@@ -620,7 +621,8 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
       "flexBasis": 0,
       "flexGrow": 1,
       "flexShrink": 1,
-      "marginHorizontal": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
     }
   }
 >

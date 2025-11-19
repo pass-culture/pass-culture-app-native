@@ -10,7 +10,8 @@ exports[`GenericHome With not displayed skeleton by default should display real 
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "marginHorizontal": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
       },
       {
         "flexBasis": 1,
@@ -199,7 +200,8 @@ exports[`GenericHome With not displayed skeleton by default should display skele
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "marginHorizontal": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
       },
       {
         "flexBasis": 1,

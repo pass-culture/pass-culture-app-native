@@ -3,12 +3,17 @@ import { ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-const StyledPage = styled.View<{ isLandscape: boolean }>(({ theme, isLandscape }) => ({
-  backgroundColor: theme.designSystem.color.background.default,
-  flex: 1,
-  marginHorizontal: isLandscape ? theme.designSystem.size.spacing.xxxxl : 0,
-}))
+const StyledPage = styled.View<{ isLandscape: boolean }>(({ theme, isLandscape }) => {
+  const { right, left } = useCustomSafeInsets()
+  return {
+    backgroundColor: theme.designSystem.color.background.default,
+    flex: 1,
+    marginRight: isLandscape ? right : 0,
+    marginLeft: isLandscape ? left : 0,
+  }
+})
 
 export const Page: React.FC<ViewProps> = ({ children, ...rest }) => {
   const isLandscape = useIsLandscape()
