@@ -45,8 +45,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(BUILD)</string>
-	<key>CodePushDeploymentKey</key>
-	<string>$(CODEPUSH_PUBLIC_KEY_IOS)</string>
 	<key>Env</key>
 	<string>$(ENV)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

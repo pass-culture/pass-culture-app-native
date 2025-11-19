@@ -2,7 +2,6 @@
 import { Platform } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment/env'
 import { Headers } from 'libs/fetch'
@@ -66,7 +65,6 @@ export const safeFetch = async (
     headers: {
       ...options.headers,
       'app-version': getAppVersion(),
-      'code-push-id': await getCodePushId(),
       ...(env.COMMIT_HASH ? { 'commit-hash': env.COMMIT_HASH } : {}),
       'device-id': await getDeviceId(),
       platform: Platform.OS,
