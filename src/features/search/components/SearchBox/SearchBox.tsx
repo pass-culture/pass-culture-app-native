@@ -339,6 +339,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
 const RowContainer = styled.View({
   flexDirection: 'row',
+  width: '100%',
 })
 
 const SearchInputContainer = styled.View({
