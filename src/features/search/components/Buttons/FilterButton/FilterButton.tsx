@@ -48,15 +48,21 @@ const StyledTouchableLink = styled(InternalTouchableLink)<{
   displayNewSearchHeader?: boolean
 }>(({ theme, displayNewSearchHeader }) => ({
   display: 'flex',
-  width: displayNewSearchHeader ? theme.inputs.height.small : theme.designSystem.size.spacing.xxl,
-  height: displayNewSearchHeader ? theme.inputs.height.small : theme.designSystem.size.spacing.xxl,
+  width: displayNewSearchHeader
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xxl,
+  height: displayNewSearchHeader
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xxl,
 }))
 
 const RoundContainer = styled.View<{ displayNewSearchHeader?: boolean }>(
   ({ theme, displayNewSearchHeader }) => ({
     alignItems: 'center',
     justifyContent: 'center',
-    width: displayNewSearchHeader ? theme.inputs.height.small : theme.designSystem.size.spacing.xxl,
+    width: displayNewSearchHeader
+      ? theme.designSystem.size.spacing.xxxl
+      : theme.designSystem.size.spacing.xxl,
     height: displayNewSearchHeader
       ? theme.inputs.height.small
       : theme.designSystem.size.spacing.xxl,
