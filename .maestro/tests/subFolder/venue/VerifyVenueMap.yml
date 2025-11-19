@@ -4,7 +4,9 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Localisation'
     commands:
-    - tapOn: 'Localisation – Liste - Élément 2 sur 3 - Choisir une localisation.*'
+    - tapOn: 
+        text: '.*Choisir une localisation.*'
+        point: "50%,25%"
     - inputText: 'Paris'
     - tapOn: 'Paris Paris'
     - tapOn: 'Valider et voir sur la carte'

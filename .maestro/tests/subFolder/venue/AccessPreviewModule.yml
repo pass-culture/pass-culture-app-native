@@ -1,8 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 
-    text: 'Livre'
-    index: 2
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres Livre visible dans les résultats de recherche"
+    outputVariable: 'offerResult'
+- tapOn: .*${offerResult}.*
 
 - runFlow:
     when:
