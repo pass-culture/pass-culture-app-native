@@ -235,6 +235,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               style={
                 {
                   "flexDirection": "row",
+                  "width": "100%",
                 }
               }
             >

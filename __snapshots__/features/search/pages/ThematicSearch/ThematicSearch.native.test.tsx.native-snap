@@ -122,6 +122,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           style={
             {
               "flexDirection": "row",
+              "width": "100%",
             }
           }
         >

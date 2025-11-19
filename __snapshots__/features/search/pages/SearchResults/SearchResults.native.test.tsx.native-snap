@@ -139,6 +139,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 {
                   "flexDirection": "row",
+                  "width": "100%",
                 }
               }
             >
