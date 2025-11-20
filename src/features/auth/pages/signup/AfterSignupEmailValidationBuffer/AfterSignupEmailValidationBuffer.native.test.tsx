@@ -10,6 +10,7 @@ import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as datesLib from 'libs/dates'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils'
@@ -42,6 +43,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AfterSignupEmailValidationBuffer />', () => {
   beforeAll(() => {
+    setFeatureFlags()
     useRoute.mockImplementation(() => ({
       params: {
         token: 'reerereskjlmkdlsf',
