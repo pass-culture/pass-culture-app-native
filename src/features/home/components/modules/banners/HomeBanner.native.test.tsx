@@ -40,7 +40,7 @@ describe('<HomeBanner/>', () => {
     } as ILocationContext)
   })
 
-  describe('when feature flag showRemoteGenericBanner is enable', () => {
+  describe('when feature flag showRemoteGenericBanner is enabled', () => {
     beforeEach(() => {
       setFeatureFlags([
         {
@@ -72,7 +72,7 @@ describe('<HomeBanner/>', () => {
     })
   })
 
-  describe('when feature flag showTechnicalProblemBanner is enable', () => {
+  describe('when feature flag showTechnicalProblemBanner is enabled', () => {
     beforeEach(() => {
       setFeatureFlags([
         {
