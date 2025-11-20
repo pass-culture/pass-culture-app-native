@@ -58,6 +58,19 @@ describe('<RadioButtonGroup />', () => {
     expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
   })
 
+  it('should prevent RadioButton to be unchecked when already selected', async () => {
+    render(<RadioButtonGroup {...{ ...baseProps, disabled: true }} />)
+    await user.press(screen.getByLabelText('RadioButton_1'))
+
+    expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
+    expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
+
+    await user.press(screen.getByLabelText('RadioButton_1'))
+
+    expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
+    expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
+  })
+
   it('should render Error text when RadioButtonGroup is in error', () => {
     render(<RadioButtonGroup {...{ ...baseProps, error: true }} />)
 
