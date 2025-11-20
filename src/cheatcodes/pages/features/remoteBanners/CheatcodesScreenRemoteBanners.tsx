@@ -20,9 +20,6 @@ export const CheatcodesScreenRemoteBanners = () => {
   const { options: disableActivationOptions } = useFeatureFlagOptionsQuery(
     RemoteStoreFeatureFlags.DISABLE_ACTIVATION
   )
-  const { isFeatureFlagActive: isTechnicalProblemBannerActive } = useFeatureFlagOptionsQuery(
-    RemoteStoreFeatureFlags.SHOW_TECHNICAL_PROBLEM_BANNER
-  )
   const [genericBannerError, setGenericBannerError] = useState('')
   const [activationBannerError, setActivationBannerError] = useState('')
 
@@ -73,16 +70,9 @@ export const CheatcodesScreenRemoteBanners = () => {
         {activationBannerError ? (
           <Banner
             type={BannerType.ERROR}
-            label={`La bannière RemoteActivationBanner ne s'affichera pas à cause de l'erreur suivante\u00a0:\n${activationBannerError}`}
+            label={`La bannière RemoteActivationBanner ne s‘affichera pas à cause de l’erreur suivante\u00a0:\n${activationBannerError}`}
           />
         ) : null}
-
-        <StyledSeparator />
-
-        <Typo.Title3>TechnicalProblemBanner</Typo.Title3>
-        <Typo.Body>
-          Feature Flag Status: {isTechnicalProblemBannerActive ? '✅ Active' : '❌ Inactive'}
-        </Typo.Body>
       </ViewGap>
     </CheatcodesTemplateScreen>
   )
