@@ -9,7 +9,7 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Ma position'
       - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
 
-- tapOn: 'Offre, artiste, lieu culturel...'
+- tapOn: 'Champs de texte - Recherche par offre, lieu, artiste'
 
 - inputText: 'One piece'
 - pressKey: Enter

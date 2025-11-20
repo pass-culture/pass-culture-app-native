@@ -12,7 +12,7 @@ onFlowStart:
 
 - runFlow: subFolder/commons/StopApp.yml
 - runFlow: subFolder/links/DeepLinksToHome.yml
-- runFlow: subFolder/commons/GoToFavoritesFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 
 - runFlow: subFolder/auth/LoginWithWrongEmail.yml
 - runFlow: subFolder/auth/LoginWithWrongPassword.yml
