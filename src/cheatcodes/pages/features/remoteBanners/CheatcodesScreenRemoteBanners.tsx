@@ -5,6 +5,8 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { remoteBannerSchema } from 'features/remoteBanners/utils/remoteBannerSchema'
+import { TechnicalProblemBanner } from 'features/technicalProblemBanner/components/TechnicalProblemBanner'
+import { technicalProblemBannerSchema } from 'features/technicalProblemBanner/utils/technicalProblemBannerSchema'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Separator } from 'ui/components/Separator'
@@ -20,8 +22,12 @@ export const CheatcodesScreenRemoteBanners = () => {
   const { options: disableActivationOptions } = useFeatureFlagOptionsQuery(
     RemoteStoreFeatureFlags.DISABLE_ACTIVATION
   )
+  const { options: technicalProblemBannerOptions } = useFeatureFlagOptionsQuery(
+    RemoteStoreFeatureFlags.SHOW_TECHNICAL_PROBLEM_BANNER
+  )
   const [genericBannerError, setGenericBannerError] = useState('')
   const [activationBannerError, setActivationBannerError] = useState('')
+  const [technicalProblemBannerError, setTechnicalProblemBannerError] = useState('')
 
   useEffect(() => {
     setGenericBannerError('')
@@ -40,6 +46,15 @@ export const CheatcodesScreenRemoteBanners = () => {
       setActivationBannerError(String(error))
     }
   }, [disableActivationOptions])
+
+  useEffect(() => {
+    setTechnicalProblemBannerError('')
+    try {
+      technicalProblemBannerSchema.validateSync(technicalProblemBannerOptions)
+    } catch (error) {
+      setTechnicalProblemBannerError(String(error))
+    }
+  }, [technicalProblemBannerOptions])
 
   return (
     <CheatcodesTemplateScreen title="RemoteBanners 🆒" flexDirection="column">
@@ -70,7 +85,20 @@ export const CheatcodesScreenRemoteBanners = () => {
         {activationBannerError ? (
           <Banner
             type={BannerType.ERROR}
-            label={`La bannière RemoteActivationBanner ne s‘affichera pas à cause de l’erreur suivante\u00a0:\n${activationBannerError}`}
+            label={`La bannière RemoteActivationBanner ne s'affichera pas à cause de l'erreur suivante\u00a0:\n${activationBannerError}`}
+          />
+        ) : null}
+
+        <StyledSeparator />
+
+        <Typo.Title3>TechnicalProblemBanner</Typo.Title3>
+        {technicalProblemBannerOptions ? (
+          <TechnicalProblemBanner options={technicalProblemBannerOptions} />
+        ) : null}
+        {technicalProblemBannerError ? (
+          <Banner
+            type={BannerType.ERROR}
+            label={`La bannière TechnicalProblemBanner ne s'affichera pas à cause de l'erreur suivante\u00a0:\n${technicalProblemBannerError}`}
           />
         ) : null}
       </ViewGap>

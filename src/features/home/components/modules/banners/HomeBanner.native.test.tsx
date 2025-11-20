@@ -72,6 +72,29 @@ describe('<HomeBanner/>', () => {
     })
   })
 
+  describe('when feature flag showTechnicalProblemBanner is enable', () => {
+    beforeEach(() => {
+      setFeatureFlags([
+        {
+          featureFlag: RemoteStoreFeatureFlags.SHOW_TECHNICAL_PROBLEM_BANNER,
+          options: {
+            severity: 'error',
+            label: 'Problème technique',
+            message: 'Nous rencontrons des difficultés',
+          },
+        },
+      ])
+    })
+
+    it('should display technical problem banner', async () => {
+      renderHomeBanner({})
+      const technicalBanner = await screen.findByText('Problème technique')
+
+      expect(technicalBanner).toBeOnTheScreen()
+      expect(screen.getByText('Nous rencontrons des difficultés')).toBeOnTheScreen()
+    })
+  })
+
   describe('user is not logged in', () => {
     it('should display SignupBanner when user is not logged in', async () => {
       mockSubscriptionStepper()
