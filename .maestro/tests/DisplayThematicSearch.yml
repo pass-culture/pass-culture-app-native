@@ -3,8 +3,7 @@ jsengine: graaljs
 tags:
   - nightlyAndroid
   - nightlyIOS
-  - local
-  - squad-decouverte
+  - squad-coonversion
   - UI
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
@@ -13,9 +12,5 @@ onFlowStart:
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/commons/StopApp.yml
 - runFlow: subFolder/links/DeepLinksToThematicSearch.yml
-- assertWithAI: 
-    assertion: "Analyse la capture d’écran et signale tout défaut visuel : éléments coupés, textes tronqués ou qui se chevauchent, images étirées, alignements incorrects, marges incohérentes, éléments non centrés, problèmes de lisibilité ou de contraste. Indique où se situe chaque problème et décris précisément ce qui ne va pas, uniquement sur la base de ce qui est visible à l’écran."
-- scroll
-- assertNoDefectsWithAI
-- assertWithAI: 
-    assertion: "Analyse la capture d’écran et signale tout défaut visuel : éléments coupés, textes tronqués ou qui se chevauchent, images étirées, alignements incorrects, marges incohérentes, éléments non centrés, problèmes de lisibilité ou de contraste. Indique où se situe chaque problème et décris précisément ce qui ne va pas, uniquement sur la base de ce qui est visible à l’écran."
+- runFlow: subFolder/commons/ScreenAnalysis.yml
+- runFlow: subFolder/commons/StopApp.yml
