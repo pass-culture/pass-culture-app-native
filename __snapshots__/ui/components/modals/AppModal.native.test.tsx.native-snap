@@ -152,6 +152,9 @@ exports[`<AppModal /> on big screen 1`] = `
         }
       }
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -437,6 +440,9 @@ exports[`<AppModal /> on small screen 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -677,6 +683,9 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -963,6 +972,9 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -1249,6 +1261,9 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -1535,6 +1550,9 @@ exports[`<AppModal /> with left icon render 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -1889,6 +1907,9 @@ exports[`<AppModal /> with minimal props 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -2175,6 +2196,9 @@ exports[`<AppModal /> with right icon render 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -2521,6 +2545,9 @@ exports[`<AppModal /> without children 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
