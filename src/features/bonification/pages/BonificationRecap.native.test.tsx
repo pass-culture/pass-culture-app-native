@@ -23,10 +23,10 @@ describe('BonificationRecap', () => {
     resetLegalRepresentative()
   })
 
-  it('should navigate to name screen when pressing "Modifier les informations"', async () => {
+  it('should navigate to name screen when pressing "Modifier mes informations"', async () => {
     prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
-    const button = screen.getByText('Modifier les informations')
+    const button = screen.getByText('Modifier mes informations')
     await userEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {

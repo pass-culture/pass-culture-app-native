@@ -1928,7 +1928,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Valider mon statut"
+        accessibilityLabel="Continuer vers l’étape suivante"
         accessibilityState={
           {
             "busy": undefined,
@@ -1985,7 +1985,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             },
           ]
         }
-        testID="Valider mon statut"
+        testID="Continuer vers l’étape suivante"
       >
         <View
           style={
@@ -2008,7 +2008,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             }
           >
-            Valider mon statut
+            Continuer
           </Text>
         </View>
       </View>

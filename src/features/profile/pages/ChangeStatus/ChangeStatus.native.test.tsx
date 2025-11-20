@@ -21,14 +21,8 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 const mockStatus: ActivityIdEnum | null = null
 
 const profile = {
-  name: {
-    firstName: 'Jean',
-    lastName: 'Dupont',
-  },
-  city: {
-    name: 'Paris',
-    postalCode: '75011',
-  },
+  name: { firstName: 'Jean', lastName: 'Dupont' },
+  city: { name: 'Paris', postalCode: '75011' },
   address: '1 rue du désespoir',
   status: mockStatus,
 }
@@ -127,7 +121,7 @@ describe('<ChangeStatus/>', () => {
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
-      await user.press(screen.getByText('Continuer'))
+      await user.press(screen.getByText('Valider mes informations'))
 
       expect(analytics.logUpdateStatus).toHaveBeenCalledWith({
         oldStatus: beneficiaryUser.activityId,
@@ -135,12 +129,12 @@ describe('<ChangeStatus/>', () => {
       })
     })
 
-    it('should navigate to PersonalData when press "Continuer"', async () => {
+    it('should navigate to PersonalData when press "Valider mes informations"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
-      await user.press(screen.getByText('Continuer'))
+      await user.press(screen.getByText('Valider mes informations'))
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         screen: 'PersonalData',
@@ -148,12 +142,12 @@ describe('<ChangeStatus/>', () => {
       })
     })
 
-    it('should show snackbar on success when clicking on "Continuer"', async () => {
+    it('should show snackbar on success when clicking on "Valider mes informations"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
-      await user.press(screen.getByText('Continuer'))
+      await user.press(screen.getByText('Valider mes informations'))
 
       expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
         message: 'Ton statut a bien été modifié\u00a0!',
@@ -179,12 +173,12 @@ describe('<ChangeStatus/>', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should navigate and reset to UpdatePersonalDataConfirmation when press "Continuer"', async () => {
+    it('should navigate and reset to UpdatePersonalDataConfirmation when press "Valider mes informations"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
-      await user.press(screen.getByText('Continuer'))
+      await user.press(screen.getByText('Valider mes informations'))
 
       expect(reset).toHaveBeenCalledWith({
         index: 1,
@@ -201,12 +195,12 @@ describe('<ChangeStatus/>', () => {
       })
     })
 
-    it('should not show snackbar on success when clicking on "Continuer"', async () => {
+    it('should not show snackbar on success when clicking on "Valider mes informations"', async () => {
       renderChangedStatus()
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
 
       await user.press(screen.getByText('Employé'))
-      await user.press(screen.getByText('Continuer'))
+      await user.press(screen.getByText('Valider mes informations'))
 
       expect(mockShowSuccessSnackBar).not.toHaveBeenCalled()
     })

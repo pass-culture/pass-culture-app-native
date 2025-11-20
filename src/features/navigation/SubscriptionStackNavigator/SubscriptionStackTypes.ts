@@ -25,6 +25,7 @@ export type SubscriptionStackParamList = {
   SetAddress?: ProfileScreenType
   SetStatus?: ProfileScreenType
   SetProfileBookingError?: { offerId?: number }
+  ActivationProfileRecap?: ProfileScreenType
   // Identification
   ComeBackLater: undefined
   DMSIntroduction?: { isForeignDMSInformation: boolean }

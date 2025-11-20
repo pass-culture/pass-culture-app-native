@@ -96,9 +96,7 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should display correct infos in identity check', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { type: ProfileTypes.IDENTITY_CHECK },
-    })
+    useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.IDENTITY_CHECK } })
     renderProfileInformationValidation()
 
     expect(await screen.findByText('Profil')).toBeTruthy()
@@ -112,7 +110,6 @@ describe('ProfileInformationValidationCreate', () => {
 
   it('should navigate to Offer when press "Continuer"', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
-
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Continuer'))
@@ -126,7 +123,6 @@ describe('ProfileInformationValidationCreate', () => {
 
   it('should navigate to SetName when press "Modifier mes informations"', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
-
     renderProfileInformationValidation()
 
     await user.press(screen.getByText('Modifier mes informations'))
@@ -161,12 +157,7 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should navigate to error screen if posting profile fails', async () => {
-    mockUseMutationError({
-      content: {},
-      name: 'ApiError',
-      statusCode: 400,
-      message: 'erreur',
-    })
+    mockUseMutationError({ content: {}, name: 'ApiError', statusCode: 400, message: 'erreur' })
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     renderProfileInformationValidation()
 
@@ -183,12 +174,7 @@ describe('ProfileInformationValidationCreate', () => {
   })
 
   it('should show data from auth context for "recapExistingData" screen variant', () => {
-    useRoute.mockReturnValueOnce({
-      params: {
-        type: ProfileTypes.RECAP_EXISTING_DATA,
-      },
-    })
-
+    useRoute.mockReturnValueOnce({ params: { type: ProfileTypes.RECAP_EXISTING_DATA } })
     mockAuthContextWithUser({
       ...nonBeneficiaryUser,
       firstName: 'Bernard',

@@ -1,6 +1,6 @@
 # 🌈 Suivi des corrections d’accessibilité
 
-| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | 15 décembre |
+| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | Début 2026 |
 | ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ----------- |
 | Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | ⏳          | ⏳          |
 |            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | ⏳          | ⏳          |
@@ -806,7 +806,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
 
 **RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
 **Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650)  
@@ -825,6 +825,26 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données [...] les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?</summary>
+
+**RAAM** : [Critère 9.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-11)  
+**Ticket** : [PC-37495](https://passculture.atlassian.net/browse/PC-37495)  
+**PR** : [#8911](https://github.com/pass-culture/pass-culture-app-native/pull/8911)
+
+**Problème** 😱  
+- **(E12)** Le formulaire transmet des données sensibles sur l'utilisateur, mais elles ne peuvent pas être modifiées, mises à jour ou récupérées par l'utilisateur.
+
+**Correction** 💡  
+- **(E12)** Ajout d'une étape de vérification des données ajouté par l'utilisateur juste avant d'enregistrer les données dans le backend. De plus, l'utilisateur à la possiblité de modifier ces données s'il s'est trompé.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
 
 ## ✅ Corrections 28 novembre → 15 décembre
 
