@@ -1,10 +1,6 @@
 import { CSSObject } from 'styled-components'
 
 import { ModalContainerProps } from 'ui/components/modals/AppModal'
-import { getSpacing } from 'ui/theme'
-
-const BORDER_HORIZTONAL_RADIUS = getSpacing(5)
-const BORDER_VERTICAL_RADIUS = getSpacing(4)
 
 export const appModalContainerStyle = ({
   theme,
@@ -20,12 +16,12 @@ export const appModalContainerStyle = ({
   return {
     alignItems: 'center',
     backgroundColor: theme.designSystem.color.background.default,
-    borderTopStartRadius: BORDER_VERTICAL_RADIUS,
-    borderTopEndRadius: BORDER_VERTICAL_RADIUS,
-    borderTopRightRadius: BORDER_HORIZTONAL_RADIUS,
-    borderTopLeftRadius: BORDER_HORIZTONAL_RADIUS,
+    borderTopRightRadius: theme.designSystem.size.borderRadius.l,
+    borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
     flexDirection: 'column',
     justifyContent: 'center',
+    width: '100%',
+    height,
     ...(noPadding
       ? {
           paddingRight: isLandscape ? rightNootch : 0,
@@ -35,20 +31,14 @@ export const appModalContainerStyle = ({
           padding: theme.modal.spacing.MD,
         }),
     ...(noPaddingBottom ? {} : { paddingBottom: theme.modal.spacing.LG }),
-    width: '100%',
-    height,
     ...(theme.isDesktopViewport
       ? {
-          borderBottomStartRadius: BORDER_VERTICAL_RADIUS,
-          borderBottomEndRadius: BORDER_VERTICAL_RADIUS,
-          borderBottomRightRadius: BORDER_HORIZTONAL_RADIUS,
-          borderBottomLeftRadius: BORDER_HORIZTONAL_RADIUS,
+          borderBottomRightRadius: theme.designSystem.size.borderRadius.l,
+          borderBottomLeftRadius: theme.designSystem.size.borderRadius.l,
           maxHeight: desktopConstraints?.maxHeight,
           maxWidth: desktopConstraints?.maxWidth,
         }
       : {
-          borderBottomStartRadius: 0,
-          borderBottomEndRadius: 0,
           borderBottomRightRadius: 0,
           borderBottomLeftRadius: 0,
           maxHeight,
