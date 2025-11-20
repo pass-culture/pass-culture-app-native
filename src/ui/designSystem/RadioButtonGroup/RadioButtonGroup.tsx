@@ -101,7 +101,7 @@ const RadioButtonListContainer = styled.View<{
   flexDirection: display === 'vertical' ? 'column' : 'row',
   gap:
     variant == 'default' || display === 'horizontal'
-      ? theme.designSystem.size.spacing.l
+      ? theme.designSystem.size.spacing.xl
       : theme.designSystem.size.spacing.s,
 }))
 
