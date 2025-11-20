@@ -38,7 +38,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
-    'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
+    'react/no-unstable-nested-components': 'error',
     'react/no-unused-prop-types': 'error', // has false positives
     'local-rules/no-queries-outside-query-files': 'error',
     'react-hooks/use-memo': 'error',

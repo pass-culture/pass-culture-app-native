@@ -3,7 +3,6 @@ const { boundariesRule } = require('./eslint-custom-rules/boundaries-rule')
 
 const softRules = {
   cleancode: {
-    'react/no-unstable-nested-components': 'error', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/no-spacer': 'warn',
     'local-rules/no-ts-expect-error': 'warn',
     'local-rules/no-get-spacing': 'warn',
