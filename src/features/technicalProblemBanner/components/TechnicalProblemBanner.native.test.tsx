@@ -5,6 +5,9 @@ import { TechnicalProblemBannerType } from 'features/technicalProblemBanner/util
 import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('@react-native-firebase/firestore')
+
 const mockOptions: TechnicalProblemBannerType = {
   severity: 'error',
   label: 'Problème technique',
@@ -82,12 +85,12 @@ describe('<TechnicalProblemBanner/>', () => {
     const alertOptions: TechnicalProblemBannerType = {
       severity: 'alert',
       label: 'Attention',
-      message: 'Message d’avertissement',
+      message: 'Il y a un problème technique.',
     }
 
     render(<TechnicalProblemBanner options={alertOptions} />)
 
     expect(screen.getByText('Attention')).toBeOnTheScreen()
-    expect(screen.getByText("Message d'avertissement")).toBeOnTheScreen()
+    expect(screen.getByText('Il y a un problème technique.')).toBeOnTheScreen()
   })
 })

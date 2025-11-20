@@ -87,6 +87,9 @@ describe('<HomeBanner/>', () => {
     })
 
     it('should display technical problem banner', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({ banner: null })
+
       renderHomeBanner({})
       const technicalBanner = await screen.findByText('Problème technique')
 
