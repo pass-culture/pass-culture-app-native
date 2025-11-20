@@ -42,7 +42,8 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
-          <StyledTitleMainView>
+          <StyledTitleMainView
+            shouldDisplayMobileLocationSmallWidget={shouldDisplayMobileLocationSmallWidget}>
             <StyledTitleMainText
               htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
@@ -91,12 +92,14 @@ const TitleMainWrapper = styled.View({
   justifyContent: 'flex-start',
 })
 
-const StyledTitleMainView = styled.View({
-  alignItems: 'center',
-  flexWrap: 'wrap',
-  justifyContent: 'flex-start',
-  maxWidth: '75%',
-})
+const StyledTitleMainView = styled.View<{ shouldDisplayMobileLocationSmallWidget?: boolean }>(
+  ({ shouldDisplayMobileLocationSmallWidget }) => ({
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    maxWidth: shouldDisplayMobileLocationSmallWidget ? 'inherit' : '75%',
+  })
+)
 
 const LocationWidgetBadgeContainer = styled.View({
   display: 'flex',

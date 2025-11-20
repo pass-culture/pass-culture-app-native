@@ -68,9 +68,13 @@ const FilterPillsPlaceholder = () => {
   )
 }
 
-export const HeaderSearchResultsPlaceholder = () => (
+export const HeaderSearchResultsPlaceholder = ({
+  displayNewSearchHeader,
+}: {
+  displayNewSearchHeader: boolean
+}) => (
   <React.Fragment>
-    <FilterPillsPlaceholder />
+    {displayNewSearchHeader ? null : <FilterPillsPlaceholder />}
     <TitleContainer>
       <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
     </TitleContainer>

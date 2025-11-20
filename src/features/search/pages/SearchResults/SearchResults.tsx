@@ -19,6 +19,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -49,6 +50,10 @@ export const SearchResults = () => {
   const previousGeolocPosition = usePrevious(geolocPosition)
 
   const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
+
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
 
   const {
     hits,
@@ -134,11 +139,12 @@ export const SearchResults = () => {
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
-          <Container>
+          <Container displayNewSearchHeader={displayNewSearchHeader}>
             <SearchHeader
               searchInputID={searchInputID}
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
+              withFilterButton={displayNewSearchHeader}
             />
           </Container>
           {isFocusOnSuggestions ? (
@@ -170,4 +176,10 @@ export const SearchResults = () => {
   )
 }
 
-const Container = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.s }))
+const Container = styled.View<{ displayNewSearchHeader: boolean }>(
+  ({ theme, displayNewSearchHeader }) => ({
+    marginBottom: displayNewSearchHeader
+      ? theme.designSystem.size.spacing.l
+      : theme.designSystem.size.spacing.s,
+  })
+)

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -22,12 +23,17 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters = 0, navi
         })
       : 'Voir tous les filtres'
 
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
+
   return (
     <StyledTouchableLink
       navigateTo={navigateTo}
       title={accessibilityLabel}
+      displayNewSearchHeader={displayNewSearchHeader}
       accessibilityLabel={accessibilityLabel}>
-      <RoundContainer>
+      <RoundContainer displayNewSearchHeader={displayNewSearchHeader}>
         <StyledFilterIcon />
       </RoundContainer>
       {activeFilters > 0 ? (
@@ -39,21 +45,34 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters = 0, navi
 
 const StyledTouchableLink = styled(InternalTouchableLink)<{
   navigateTo?: InternalTouchableLinkProps['navigateTo']
-}>(({ theme }) => ({
+  displayNewSearchHeader?: boolean
+}>(({ theme, displayNewSearchHeader }) => ({
   display: 'flex',
-  width: theme.designSystem.size.spacing.xxl,
-  height: theme.designSystem.size.spacing.xxl,
+  width: displayNewSearchHeader
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xxl,
+  height: displayNewSearchHeader
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xxl,
 }))
 
-const RoundContainer = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: theme.designSystem.size.spacing.xxl,
-  height: theme.designSystem.size.spacing.xxl,
-  borderRadius: theme.designSystem.size.borderRadius.l,
-  borderWidth: 1,
-  borderColor: theme.designSystem.color.border.default,
-}))
+const RoundContainer = styled.View<{ displayNewSearchHeader?: boolean }>(
+  ({ theme, displayNewSearchHeader }) => ({
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: displayNewSearchHeader
+      ? theme.designSystem.size.spacing.xxxl
+      : theme.designSystem.size.spacing.xxl,
+    height: displayNewSearchHeader
+      ? theme.inputs.height.small
+      : theme.designSystem.size.spacing.xxl,
+    borderRadius: displayNewSearchHeader
+      ? theme.designSystem.size.borderRadius.xl
+      : theme.designSystem.size.borderRadius.l,
+    borderWidth: 1,
+    borderColor: theme.designSystem.color.border.default,
+  })
+)
 
 const StyledFilterIcon = styled(FilterIcon).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
