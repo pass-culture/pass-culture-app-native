@@ -18,10 +18,11 @@ export const useArchiveBookingMutation = ({
 
   return useMutation({
     mutationFn: () => api.postNativeV1BookingsbookingIdToggleDisplay({ ended: true }, bookingId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QueryKeys.BOOKINGS],
-      })
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] }),
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] }),
+      ])
       onSuccess()
     },
     onError,
