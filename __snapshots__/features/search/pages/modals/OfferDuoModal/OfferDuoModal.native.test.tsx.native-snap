@@ -491,7 +491,11 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }

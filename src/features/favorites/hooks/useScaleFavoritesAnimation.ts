@@ -1,5 +1,7 @@
-import { useRef, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Animated } from 'react-native'
+
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 
 export const useScaleAnimation = (nbFavorites?: number) => {
   const scaleAnimation = useRef(new Animated.Value(1))
@@ -10,12 +12,12 @@ export const useScaleAnimation = (nbFavorites?: number) => {
         Animated.timing(scaleAnimation.current, {
           toValue: 1.2,
           duration: 200,
-          useNativeDriver: false,
+          useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
         }),
         Animated.timing(scaleAnimation.current, {
           toValue: 1,
           duration: 200,
-          useNativeDriver: false,
+          useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
         }),
       ]).start()
     }

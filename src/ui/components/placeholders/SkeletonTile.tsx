@@ -4,6 +4,8 @@ import { Animated, Easing, Platform, StyleSheet } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
+
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient)
 
 interface DimensionProps {
@@ -30,7 +32,7 @@ const useWaveAnimation = (width: number) => {
         toValue: 1,
         duration: 1200,
         easing: Easing.linear,
-        useNativeDriver: false,
+        useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
       })
     ).start()
   })

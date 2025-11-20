@@ -22,6 +22,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -122,12 +123,13 @@ export const Favorite: React.FC<Props> = (props) => {
         toValue: 0,
         delay: 0,
         duration: 300,
-        useNativeDriver: false,
+        useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
       }),
       Animated.timing(animatedCollapse, {
         toValue: 0,
         delay: 100,
         duration: 300,
+        // height animation not compatible with native driver use
         useNativeDriver: false,
       }),
     ]).start(() => {
@@ -135,14 +137,17 @@ export const Favorite: React.FC<Props> = (props) => {
     })
   }
 
-  const animatedViewStyle = {
-    opacity: animatedOpacity,
+  const animatedCollapseStyle = {
     height: height
       ? animatedCollapse.interpolate({
           inputRange: [0, 1],
           outputRange: [0, height],
         })
       : undefined,
+  }
+
+  const animatedOpacityStyle = {
+    opacity: animatedOpacity,
   }
 
   const {
@@ -192,48 +197,50 @@ export const Favorite: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <Animated.View onLayout={onLayout} style={animatedViewStyle}>
-        <Container>
-          <StyledTouchableLink
-            navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
-            onBeforeNavigate={handlePressOffer}
-            accessibilityLabel={accessibilityLabel}>
-            <Row gap={SPACER_BETWEEN_IMAGE_AND_CONTENT}>
-              <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-              <ContentContainer gap={2}>
-                <LeftContent>
-                  <OfferName numberOfLines={2}>{offer.name}</OfferName>
-                  <Body>{appLabel}</Body>
-                  {formattedDate ? <Body>{formattedDate}</Body> : null}
-                  {displayPrice ? <Price>{displayPrice}</Price> : null}
-                </LeftContent>
-                <RightContent>
-                  {distanceToOffer ? <Distance>{distanceToOffer}</Distance> : null}
-                </RightContent>
-              </ContentContainer>
-            </Row>
-          </StyledTouchableLink>
-          <ShareContainer>
-            <RoundedButton
-              iconName="share"
-              onPress={pressShareOffer}
-              accessibilityLabel={`Partager l’offre ${offer.name}`}
-            />
-          </ShareContainer>
-        </Container>
-        <FavoriteButtonsContainer gap={5}>
-          <ButtonContainer>
-            <ButtonSecondary
-              wording="Supprimer"
-              accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
-              onPress={onRemove}
-              buttonHeight="tall"
-              disabled={isPending}
-            />
-          </ButtonContainer>
-          {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}
-        </FavoriteButtonsContainer>
-        <LineSeparator />
+      <Animated.View onLayout={onLayout} style={animatedCollapseStyle}>
+        <Animated.View style={animatedOpacityStyle}>
+          <Container>
+            <StyledTouchableLink
+              navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
+              onBeforeNavigate={handlePressOffer}
+              accessibilityLabel={accessibilityLabel}>
+              <Row gap={SPACER_BETWEEN_IMAGE_AND_CONTENT}>
+                <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
+                <ContentContainer gap={2}>
+                  <LeftContent>
+                    <OfferName numberOfLines={2}>{offer.name}</OfferName>
+                    <Body>{appLabel}</Body>
+                    {formattedDate ? <Body>{formattedDate}</Body> : null}
+                    {displayPrice ? <Price>{displayPrice}</Price> : null}
+                  </LeftContent>
+                  <RightContent>
+                    {distanceToOffer ? <Distance>{distanceToOffer}</Distance> : null}
+                  </RightContent>
+                </ContentContainer>
+              </Row>
+            </StyledTouchableLink>
+            <ShareContainer>
+              <RoundedButton
+                iconName="share"
+                onPress={pressShareOffer}
+                accessibilityLabel={`Partager l’offre ${offer.name}`}
+              />
+            </ShareContainer>
+          </Container>
+          <FavoriteButtonsContainer gap={5}>
+            <ButtonContainer>
+              <ButtonSecondary
+                wording="Supprimer"
+                accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
+                onPress={onRemove}
+                buttonHeight="tall"
+                disabled={isPending}
+              />
+            </ButtonContainer>
+            {isAComingSoonOffer ? null : <ButtonContainer>{BookingButton}</ButtonContainer>}
+          </FavoriteButtonsContainer>
+          <LineSeparator />
+        </Animated.View>
       </Animated.View>
       {shareContent ? (
         <WebShareModal

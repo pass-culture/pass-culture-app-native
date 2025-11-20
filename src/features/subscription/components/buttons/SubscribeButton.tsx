@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import NotificationAnimation from 'ui/animations/notif_basic_medium.json'
-import { ToggleButtonSize, ToggleButton } from 'ui/components/buttons/ToggleButton'
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
+import { ToggleButton, ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 
 type Activable<T> = {
   active: T
@@ -26,7 +27,7 @@ export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
     Animated.timing(animationProgress.current, {
       toValue: active ? 1 : 0,
       duration: active && shouldAnimateIcon.current ? 1000 : 0,
-      useNativeDriver: false,
+      useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
     }).start()
   }, [active])
 

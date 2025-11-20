@@ -18,6 +18,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { extractTextFromReactNode } from 'shared/extractTextFromReactNode/extractTextFromReactNode'
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -58,28 +59,42 @@ export const Accordion = ({
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
-  const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
+
+  const layoutAnimController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
+  const transformAnimController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
+
   const openOnce = useFunctionOnce(onOpenOnce)
   const Title = titleComponent || StyledTitle
 
-  const bodyHeight = animatedController.interpolate({
+  const bodyHeight = layoutAnimController.interpolate({
     inputRange: [0, 1],
     outputRange: [0, bodySectionHeight],
   })
 
-  const arrowAngle = animatedController.interpolate({
+  const arrowAngle = transformAnimController.interpolate({
     inputRange: [0, 1],
     outputRange: [`${Math.PI / 2}rad`, `${(3 * Math.PI) / 2}rad`],
   })
 
   const toggleListItem = () => {
+    const toValue = open ? 0 : 1
     !open && setShowChildren(true) // Display children before opening animation begins
-    Animated.timing(animatedController, {
-      duration: 300,
-      toValue: open ? 0 : 1,
-      easing: Easing.bezier(0.4, 0.0, 0.2, 1),
-      useNativeDriver: false,
-    }).start(() => {
+
+    Animated.parallel([
+      Animated.timing(layoutAnimController, {
+        duration: 300,
+        toValue,
+        easing: Easing.bezier(0.4, 0, 0.2, 1),
+        // height animation not compatible with native driver use
+        useNativeDriver: false,
+      }),
+      Animated.timing(transformAnimController, {
+        duration: 300,
+        toValue,
+        easing: Easing.bezier(0.4, 0, 0.2, 1),
+        useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
+      }),
+    ]).start(() => {
       setOpen((prevOpen) => {
         prevOpen && setShowChildren(false) // Hide children after closing animation ends
         return !prevOpen

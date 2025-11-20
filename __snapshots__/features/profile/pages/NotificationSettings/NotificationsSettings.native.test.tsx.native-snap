@@ -402,7 +402,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -574,7 +578,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -842,7 +850,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -1019,7 +1031,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -1188,7 +1204,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -1357,7 +1377,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -1526,7 +1550,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -1695,7 +1723,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -1864,7 +1896,11 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -2479,7 +2515,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -2648,7 +2688,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -2863,7 +2907,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -3040,7 +3088,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -3209,7 +3261,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -3378,7 +3434,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -3547,7 +3607,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -3716,7 +3780,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }
@@ -3885,7 +3953,11 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                               "width": 28,
                             },
                             {
-                              "marginLeft": 2,
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
                             },
                           ]
                         }

@@ -4,6 +4,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckFilled } from 'ui/svg/icons/CheckFilled'
@@ -31,7 +32,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const { toggle, active = false, disabled = false, checkboxID, testID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
-  const marginLeft = animatedValue.interpolate({
+  const translateX = animatedValue.interpolate({
     inputRange: [0, 1],
     outputRange: [TOGGLE_PATH_START, TOGGLE_PATH_END],
   })
@@ -41,7 +42,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
       toValue: active ? 1 : 0,
       duration: 200,
       easing: Easing.bezier(0, 0.75, 0, 0.75),
-      useNativeDriver: false,
+      useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
     }).start()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
@@ -72,7 +73,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         accessibilityState={{ checked: active }}
         accessibilityChecked={active}>
         <StyledBackgroundColor active={active}>
-          <StyledToggle style={{ marginLeft }} disabled={disabled}>
+          <StyledToggle style={{ transform: [{ translateX }] }} disabled={disabled}>
             {disabled ? <Lock /> : null}
             {!!active && !disabled ? <Check /> : null}
           </StyledToggle>

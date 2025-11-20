@@ -497,7 +497,11 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                                 "width": 28,
                               },
                               {
-                                "marginLeft": 2,
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
                               },
                             ]
                           }
@@ -659,7 +663,11 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                                 "width": 28,
                               },
                               {
-                                "marginLeft": 2,
+                                "transform": [
+                                  {
+                                    "translateX": 2,
+                                  },
+                                ],
                               },
                             ]
                           }
