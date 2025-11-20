@@ -146,6 +146,9 @@ exports[`<AuthenticationModal /> should render correctly 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",

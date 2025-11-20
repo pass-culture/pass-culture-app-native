@@ -146,8 +146,11 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
   >
     <View
       height={1318}
+      isLandscape={false}
+      leftNootch={16}
       maxHeight={1334}
       noPadding={true}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -166,6 +169,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           "maxHeight": 1334,
           "maxWidth": 960,
           "paddingBottom": 32,
+          "paddingLeft": 0,
+          "paddingRight": 0,
           "width": "100%",
         }
       }

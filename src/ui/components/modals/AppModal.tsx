@@ -9,12 +9,13 @@ import {
   ViewProps,
 } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
-import { CSSObject } from 'styled-components'
+import { CSSObject, DefaultTheme } from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { appModalContainerStyle } from 'ui/components/modals/appModalContainerStyle'
 // eslint-disable-next-line no-restricted-imports
@@ -59,6 +60,7 @@ type Props = {
 // Without this, the margin is recomputed with arbitrary values
 const styles = StyleSheet.create({ modal: { margin: 'auto' } })
 
+const MAX_HEIGHT = 650
 const DESKTOP_FULLSCREEN_RATIO = 0.75
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -105,7 +107,7 @@ export const AppModal: FunctionComponent<Props> = ({
   } as ModalIconProps
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
-  const { bottom, top } = useCustomSafeInsets()
+  const { bottom, top, right, left } = useCustomSafeInsets()
   const { isSmallScreen, modal, isDesktopViewport } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -113,6 +115,7 @@ export const AppModal: FunctionComponent<Props> = ({
   const [headerHeight, setHeaderHeight] = useState(50)
   const scrollViewRef = useRef<ScrollView | null>(null)
   const fullscreenScrollViewRef = useRef<ScrollView | null>(null)
+  const isLandscape = useIsLandscape()
 
   const getDesktopMaxHeight = useCallback(() => {
     if (isFullscreen || isUpToStatusBar) {
@@ -242,6 +245,9 @@ export const AppModal: FunctionComponent<Props> = ({
           desktopConstraints={containerDesktopConstraints}
           onLayout={onLayout}
           noPadding={noPadding}
+          isLandscape={isLandscape}
+          rightNootch={right}
+          leftNootch={left}
           noPaddingBottom={noPaddingBottom}>
           {customModalHeader ? (
             <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
@@ -333,23 +339,43 @@ const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {
   }
 })
 
-const MAX_HEIGHT = 650
-const ModalContainer = styled.View<{
+export type ModalContainerProps = {
+  theme: DefaultTheme
   height?: number
-  desktopConstraints?: CSSObject
   maxHeight?: number
   noPadding?: boolean
   noPaddingBottom?: boolean
-}>(({ height, desktopConstraints, maxHeight, noPadding, theme, noPaddingBottom }) => {
-  return appModalContainerStyle({
-    theme,
+  desktopConstraints?: Pick<CSSObject, 'maxWidth' | 'maxHeight'>
+  isLandscape: boolean
+  rightNootch: number
+  leftNootch: number
+}
+
+const ModalContainer = styled.View<ModalContainerProps>(
+  ({
     height,
     desktopConstraints,
-    maxHeight: maxHeight ?? MAX_HEIGHT,
+    maxHeight,
     noPadding,
+    theme,
     noPaddingBottom,
-  })
-})
+    isLandscape,
+    rightNootch,
+    leftNootch,
+  }) => {
+    return appModalContainerStyle({
+      theme,
+      height,
+      desktopConstraints,
+      maxHeight: maxHeight ?? MAX_HEIGHT,
+      noPadding,
+      noPaddingBottom,
+      isLandscape,
+      rightNootch,
+      leftNootch,
+    })
+  }
+)
 
 const StyledScrollView = styled(ScrollView)<{
   modalSpacing?: ModalSpacing

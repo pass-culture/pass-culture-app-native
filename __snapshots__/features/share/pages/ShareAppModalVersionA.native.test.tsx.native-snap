@@ -111,6 +111,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
   >
     <View
       height={425}
+      isLandscape={false}
       style={
         {
           "alignItems": "center",
