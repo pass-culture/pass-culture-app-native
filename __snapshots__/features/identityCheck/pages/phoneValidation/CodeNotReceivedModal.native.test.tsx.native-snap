@@ -146,6 +146,9 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -635,6 +638,9 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",

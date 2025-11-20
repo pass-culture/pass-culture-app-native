@@ -146,6 +146,9 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -636,6 +639,9 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
@@ -1126,6 +1132,9 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
