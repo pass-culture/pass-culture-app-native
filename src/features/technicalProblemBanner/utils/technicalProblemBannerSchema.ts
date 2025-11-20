@@ -2,7 +2,7 @@ import { InferType, object, string } from 'yup'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
-export const technicalProblemBannerSchema = object({
+const technicalProblemBannerSchema = object({
   severity: string().oneOf(['default', 'success', 'alert', 'error']).required(),
   label: string().required(),
   message: string().required(),
