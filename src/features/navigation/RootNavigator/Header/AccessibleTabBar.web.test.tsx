@@ -19,7 +19,7 @@ import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 
@@ -29,11 +29,16 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
 
-const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
-}))
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  const mockNavigate = jest.fn()
+  return {
+    ...actualNav,
+    useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+    useNavigationState: jest.fn(() => ({ name: 'TabNavigator', key: 'tab-1' })),
+    NavigationContainer: actualNav.NavigationContainer,
+  }
+})
 
 const mockSearchState = {
   ...initialSearchState,
@@ -41,12 +46,14 @@ const mockSearchState = {
 }
 const mockDispatch = jest.fn()
 const mockShowSuggestions = jest.fn()
+const mockHideSuggestions = jest.fn()
 const mockIsFocusOnSuggestions = false
 
 const defaultUseSearch = {
   searchState: mockSearchState,
   dispatch: mockDispatch,
   showSuggestions: mockShowSuggestions,
+  hideSuggestions: mockHideSuggestions,
   isFocusOnSuggestions: mockIsFocusOnSuggestions,
 }
 const mockedUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => defaultUseSearch)
@@ -157,13 +164,15 @@ describe('AccessibleTabBar', () => {
     const searchButton = await screen.findByText('Recherche')
     fireEvent.click(searchButton)
 
-    expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getSearchHookConfig('SearchLanding', {
-        ...mockSearchState,
-        query: '',
-        locationFilter: mockedLocation,
-      })
-    )
+    await waitFor(() => {
+      expect(navigateFromRefSpy).toHaveBeenCalledWith(
+        ...getSearchHookConfig('SearchLanding', {
+          ...mockSearchState,
+          query: '',
+          locationFilter: mockedLocation,
+        })
+      )
+    })
   })
 })
 
