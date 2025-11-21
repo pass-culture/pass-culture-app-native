@@ -31,10 +31,10 @@ const Header = () => (
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, id } = useHomepageData() || {}
+  const { isLoggedIn, user } = useAuthContext()
+  const { modules = [], id: homepageId } = useHomepageData() ?? {}
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
-  const { isLoggedIn, user } = useAuthContext()
 
   const {
     visible: onboardingSubscriptionModalVisible,
@@ -66,10 +66,10 @@ export const Home: FunctionComponent = () => {
   }, [showAchievementModal, modalToShow])
 
   useEffect(() => {
-    if (id) {
-      analytics.logConsultHome({ homeEntryId: id })
+    if (homepageId) {
+      analytics.logConsultHome({ homeEntryId: homepageId })
     }
-  }, [id])
+  }, [homepageId])
 
   // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
@@ -118,7 +118,7 @@ export const Home: FunctionComponent = () => {
     <React.Fragment>
       <GenericHome
         modules={modules}
-        homeId={id}
+        homeId={homepageId ?? ''}
         Header={<Header />}
         HomeBanner={<HomeBanner isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}

@@ -16,6 +16,13 @@ import {
 } from 'features/home/types'
 import { ContentTypes } from 'libs/contentful/types'
 
+export const emptyHomepage: Homepage = {
+  tags: [],
+  id: '',
+  modules: [],
+  thematicHeader: undefined,
+}
+
 export const formattedBusinessModule: BusinessModule = {
   type: HomepageModuleType.BusinessModule,
   id: '20SId61p6EFTG7kgBTFrOa',
