@@ -5,6 +5,7 @@ import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
@@ -29,6 +30,7 @@ const catchErrorSilently = async (fn: () => Promise<unknown>) => {
 
 describe('<AccountSecurityBuffer/>', () => {
   beforeEach(() => {
+    setFeatureFlags()
     useRoute
       .mockReturnValueOnce({ params: ROUTE_PARAMS })
       .mockReturnValueOnce({ params: ROUTE_PARAMS })

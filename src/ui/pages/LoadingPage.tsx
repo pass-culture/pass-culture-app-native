@@ -1,16 +1,21 @@
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
-import LoadingAnimation from 'ui/animations/lottie_loading.json'
+import { ColorScheme, useColorScheme } from 'libs/styled/useColorScheme'
+import LoaderDarkMode from 'ui/animations/Loader_Darkmode.json'
+import LoaderLightmode from 'ui/animations/Loader_Lightmode.json'
 import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
 
 import { ThemedStyledLottieView } from '../animations/ThemedStyledLottieView'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
+  const colorScheme = useColorScheme()
+
+  const source = colorScheme === ColorScheme.DARK ? LoaderDarkMode : LoaderLightmode
   return (
     <Container>
-      <ThemedStyledLottieView width={150} height={150} source={LoadingAnimation} />
+      <ThemedStyledLottieView width={150} height={150} source={source} />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )
@@ -18,17 +23,18 @@ const UnmemoizedLoadingPage: FunctionComponent = () => {
 
 export const LoadingPage = memo(UnmemoizedLoadingPage)
 
-const Container = styled(Page)({
+const Container = styled(Page)(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.default,
   flexDirection: 'column',
   flexGrow: 1,
   justifyContent: 'center',
   alignSelf: 'center',
   alignItems: 'center',
   width: '100%',
-})
+}))
 
 const LoadingText = styled(Typo.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
-  color: theme.designSystem.color.background.brandPrimary,
+  color: theme.designSystem.color.text.brandPrimary,
 }))

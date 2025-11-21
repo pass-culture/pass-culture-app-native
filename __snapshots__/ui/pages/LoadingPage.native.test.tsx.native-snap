@@ -16,6 +16,7 @@ exports[`<LoadingPage /> should render correctly 1`] = `
       {
         "alignItems": "center",
         "alignSelf": "center",
+        "backgroundColor": "#ffffff",
         "flexDirection": "column",
         "flexGrow": 1,
         "justifyContent": "center",
