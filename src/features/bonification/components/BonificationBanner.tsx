@@ -61,17 +61,18 @@ const BANNER_CONFIG_MAP = {
 
 export const BonificationBanner = ({
   bonificationStatus,
+  onCloseCallback,
 }: {
   bonificationStatus: FraudCheckStatus | undefined | null
+  onCloseCallback: () => void
 }) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
 
-  const onClose = () =>
-    alert(
-      'TODO(PC-38487): Récupérer la valeur depuis le backend pour permettre de cacher la bannière. Actuellement la bannière s’affiche en fonction de la valeur du feature flag "ENABLE_BONIFICATION".'
-    )
+  const onClose = () => {
+    onCloseCallback()
+  }
 
   const bannerConfig =
     (bonificationStatus && BANNER_CONFIG_MAP[bonificationStatus]) ||

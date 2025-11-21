@@ -7,6 +7,7 @@ export type StorageKey =
   | 'cookies'
   | 'device_id'
   | 'first_time_review_has_been_requested'
+  | 'has_closed_bonification_banner'
   | 'has_seen_birthday_notification_card'
   | 'has_seen_booking_page'
   | 'has_seen_share_app_modal'
