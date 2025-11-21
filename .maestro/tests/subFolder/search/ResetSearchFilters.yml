@@ -1,5 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- tapOn: "Voir tous les filtres : 1 filtre actif"
 - tapOn: "Prix"
 - tapOn: "Réinitialiser"
+- tapOn: 'Appliquer le filtre'
 - tapOn: 'Rechercher'

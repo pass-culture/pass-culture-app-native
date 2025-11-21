@@ -1,0 +1,8 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertWithAI: 
+    assertion: "Analyse la capture d’écran et signale tout défaut visuel : éléments coupés, textes tronqués ou qui se chevauchent, images étirées, alignements incorrects, marges incohérentes, éléments non centrés, problèmes de lisibilité ou de contraste. Indique où se situe chaque problème et décris précisément ce qui ne va pas, uniquement sur la base de ce qui est visible à l’écran."
+- scroll
+- assertNoDefectsWithAI
+- assertWithAI: 
+    assertion: "Analyse la capture d’écran et signale tout défaut visuel : éléments coupés, textes tronqués ou qui se chevauchent, images étirées, alignements incorrects, marges incohérentes, éléments non centrés, problèmes de lisibilité ou de contraste. Indique où se situe chaque problème et décris précisément ce qui ne va pas, uniquement sur la base de ce qui est visible à l’écran."

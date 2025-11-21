@@ -1,0 +1,16 @@
+appId: ${MAESTRO_APP_ID}
+jsengine: graaljs
+tags:
+  - nightlyAndroid
+  - nightlyIOS
+  - squad-coonversion
+  - UI
+onFlowStart:
+  - runScript: subFolder/links/DeepLinks.js
+  - runScript: subFolder/commons/Button.js
+---
+- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/commons/StopApp.yml
+- runFlow: subFolder/links/DeepLinksToThematicSearch.yml
+- runFlow: subFolder/commons/ScreenAnalysis.yml
+- runFlow: subFolder/commons/StopApp.yml
