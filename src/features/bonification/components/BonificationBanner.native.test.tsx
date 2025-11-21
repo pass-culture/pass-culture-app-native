@@ -10,7 +10,12 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('BonificationBanner', () => {
   it('should show default banner', () => {
     render(
-      reactQueryProviderHOC(<BonificationBanner bonificationStatus={FraudCheckStatus.started} />)
+      reactQueryProviderHOC(
+        <BonificationBanner
+          bonificationStatus={FraudCheckStatus.started}
+          onCloseCallback={jest.fn()}
+        />
+      )
     )
 
     const bannerLabel = screen.getByText(
@@ -22,7 +27,12 @@ describe('BonificationBanner', () => {
 
   it('should show error banner', () => {
     render(
-      reactQueryProviderHOC(<BonificationBanner bonificationStatus={FraudCheckStatus.error} />)
+      reactQueryProviderHOC(
+        <BonificationBanner
+          bonificationStatus={FraudCheckStatus.error}
+          onCloseCallback={jest.fn()}
+        />
+      )
     )
 
     const bannerLabel = screen.getByText(
@@ -34,7 +44,12 @@ describe('BonificationBanner', () => {
 
   it('should show pending banner', () => {
     render(
-      reactQueryProviderHOC(<BonificationBanner bonificationStatus={FraudCheckStatus.pending} />)
+      reactQueryProviderHOC(
+        <BonificationBanner
+          bonificationStatus={FraudCheckStatus.pending}
+          onCloseCallback={jest.fn()}
+        />
+      )
     )
 
     const bannerLabel = screen.getByText(
