@@ -20,6 +20,7 @@ export const reset = jest.fn()
 export const setOptions = jest.fn()
 export const setParams = jest.fn()
 export const useLinkProps = jest.fn()
+export const popTo = jest.fn()
 
 export const navigation = {
   addListener,
@@ -31,6 +32,7 @@ export const navigation = {
   isFocused,
   navigate,
   pop,
+  popTo,
   popToTop,
   push,
   removeListener,

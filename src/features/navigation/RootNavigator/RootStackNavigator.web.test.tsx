@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, Route } from '@react-navigation/native'
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
@@ -82,7 +82,7 @@ describe('<RootNavigator />', () => {
   it('should display quick access button if show tabBar and current route is TabNavigator', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    await renderRootNavigator()
+    await renderRootNavigator({ name: 'TabNavigator', key: '' })
 
     await act(async () => {})
 
@@ -103,12 +103,12 @@ describe('<RootNavigator />', () => {
   })
 })
 
-const renderRootNavigator = async () =>
+const renderRootNavigator = async (currentRoute?: Route<string>) =>
   act(async () => {
     return render(
       reactQueryProviderHOC(
         <NavigationContainer>
-          <RootNavigator />
+          <RootNavigator currentRoute={currentRoute} />
         </NavigationContainer>
       )
     )

@@ -6,12 +6,12 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchState } from 'features/search/types'
 
 export const useNavigateToSearch = (routeName) => {
-  const { navigate, dispatch } = useNavigation<UseNavigationType>()
+  const { popTo, dispatch } = useNavigation<UseNavigationType>()
   const navigateToSearch = (
     newSearchState: SearchState,
     newAccessibilityFilter?: DisabilitiesProperties
   ): void => {
-    navigate('TabNavigator', {
+    popTo('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: {
         screen: routeName,

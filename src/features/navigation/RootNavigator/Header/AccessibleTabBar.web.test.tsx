@@ -29,11 +29,16 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
 
-const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
-}))
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  const mockNavigate = jest.fn()
+  return {
+    ...actualNav,
+    useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+    useNavigationState: jest.fn(() => ({ name: 'TabNavigator', key: 'tab-1' })),
+    NavigationContainer: actualNav.NavigationContainer,
+  }
+})
 
 const mockSearchState = {
   ...initialSearchState,
@@ -41,12 +46,14 @@ const mockSearchState = {
 }
 const mockDispatch = jest.fn()
 const mockShowSuggestions = jest.fn()
+const mockHideSuggestions = jest.fn()
 const mockIsFocusOnSuggestions = false
 
 const defaultUseSearch = {
   searchState: mockSearchState,
   dispatch: mockDispatch,
   showSuggestions: mockShowSuggestions,
+  hideSuggestions: mockHideSuggestions,
   isFocusOnSuggestions: mockIsFocusOnSuggestions,
 }
 const mockedUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => defaultUseSearch)

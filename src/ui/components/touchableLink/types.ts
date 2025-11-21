@@ -51,16 +51,14 @@ export type InternalTouchableLinkProps = TouchableLinkGenericProps & InternalNav
 
 export type TouchableLinkProps = TouchableLinkGenericProps & {
   handleNavigation?: () => void
-  linkProps?:
-    | {
-        href: string
-        accessibilityRole: 'link' // In useLinkPropsType "link" is not assignable to type 'AccessibilityRole.LINK'
-        onPress: () => void
-      }
-    | {
-        href: string
-        target: string
-      }
+  linkProps?: {
+    href?: string
+    role?: 'link'
+    accessibilityRole?: 'link'
+    target?: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onPress?: (...args: any[]) => void
+  }
 }
 
 export type HandleNavigationWrapperProps = Pick<

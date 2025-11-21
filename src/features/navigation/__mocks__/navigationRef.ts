@@ -22,6 +22,9 @@ export const navigationRef: typeof actualNavigationRef = {
     throw new Error('Cannot call setOptions outside a screen')
   }),
   setParams: jest.fn(),
+  preload: jest.fn(),
+  replaceParams: jest.fn(),
+  navigateDeprecated: jest.fn(),
   current: null,
 }
 
