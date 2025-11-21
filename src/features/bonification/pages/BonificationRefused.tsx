@@ -1,7 +1,10 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -9,16 +12,39 @@ import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { SadFace } from 'ui/svg/icons/SadFace'
+import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
-enum BonificationRefusedType {
+export enum BonificationRefusedType {
   PARENT_NOT_FOUND = 'parent_not_found',
-  CHILD_NOT_FOUND = 'child_not_found',
+  CHILD_NOT_FOUND_FOR_PARENT = 'child_not_found_for_parent',
   FAMILY_QUOTIENT_TOO_HIGH = 'family_quotient_too_high',
   TOO_MANY_RETRIES = 'too_many_retries',
 }
 
-const PAGE_CONFIG = {
+interface PrimaryButtonConfig {
+  wording: string
+  navigateTo: InternalNavigationProps['navigateTo']
+}
+interface TertiaryButtonConfig {
+  wording?: string
+  navigateTo?: InternalNavigationProps['navigateTo']
+  Icon?: React.FunctionComponent<AccessibleIcon> | undefined
+}
+
+interface PageConfigEntry {
+  Illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+  title: string
+  firstText: string
+  secondText?: string
+  thirdText?: string
+  bannerText?: string
+  primaryButton: PrimaryButtonConfig
+  tertiaryButton: TertiaryButtonConfig
+}
+type PageConfigMap = Record<BonificationRefusedType, PageConfigEntry>
+
+const PAGE_CONFIG: PageConfigMap = {
   [BonificationRefusedType.PARENT_NOT_FOUND]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier n’a pas pu être validé',
@@ -34,7 +60,7 @@ const PAGE_CONFIG = {
       Icon: Invalidate,
     },
   },
-  [BonificationRefusedType.CHILD_NOT_FOUND]: {
+  [BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier n’a pas pu être validé',
     firstText:
@@ -83,7 +109,11 @@ const PAGE_CONFIG = {
 }
 
 export function BonificationRefused() {
-  const pageConfig = PAGE_CONFIG[BonificationRefusedType.TOO_MANY_RETRIES] // refused code will come from back
+  const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
+  const bonificationRefusedType =
+    params?.bonificationRefusedType ?? BonificationRefusedType.PARENT_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
+
+  const pageConfig = PAGE_CONFIG[bonificationRefusedType] // refused code will come from back
   return (
     <GenericInfoPage
       illustration={pageConfig.Illustration}
