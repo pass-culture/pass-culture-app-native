@@ -32,8 +32,7 @@ const Header = () => (
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
-  const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
-    useLocation()
+  const { hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } = useLocation()
   const { isLoggedIn, user } = useAuthContext()
 
   const {
@@ -70,19 +69,6 @@ export const Home: FunctionComponent = () => {
       analytics.logConsultHome({ homeEntryId: id })
     }
   }, [id])
-
-  // This effect was made for the use of the marketing team (internal usage)
-  useEffect(() => {
-    if (params?.latitude && params?.longitude) {
-      setPlace({
-        geolocation: { latitude: params.latitude, longitude: params.longitude },
-        label: 'Custom',
-        info: 'custom',
-        type: undefined,
-      })
-      setSelectedLocationMode(LocationMode.AROUND_PLACE)
-    }
-  }, [params?.latitude, params?.longitude, setPlace, setSelectedLocationMode])
 
   useEffect(() => {
     if (
