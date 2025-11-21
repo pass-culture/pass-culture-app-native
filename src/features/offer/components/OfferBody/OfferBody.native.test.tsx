@@ -23,7 +23,7 @@ import { Position } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
@@ -48,6 +48,12 @@ const mockNavigate = jest.fn()
 jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
   navigate: mockNavigate,
 }))
+
+const useRouteSpy = jest.spyOn(reactNavigation, 'useRoute').mockReturnValue({
+  key: '',
+  name: '',
+  params: { from: 'searchresults' },
+})
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -117,6 +123,26 @@ describe('<OfferBody />', () => {
     expect(
       await screen.findByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
     ).toBeOnTheScreen()
+  })
+
+  it('should log ConsultOffer from deeplink if comming from deeplinks', async () => {
+    useRouteSpy.mockReturnValueOnce({
+      params: { from: 'deeplink', id: offerResponseSnap.id },
+      key: '',
+      name: '',
+    })
+    renderOfferBody({ offer: offerResponseSnap })
+
+    await screen.findByText(offerResponseSnap.name)
+
+    await waitFor(() =>
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(
+        1,
+        expect.objectContaining({
+          from: 'deeplink',
+        })
+      )
+    )
   })
 
   it('should display artists', async () => {

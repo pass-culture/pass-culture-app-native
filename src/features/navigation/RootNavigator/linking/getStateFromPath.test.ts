@@ -1,7 +1,6 @@
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
 import { linking } from 'features/navigation/RootNavigator/linking/linking'
-import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { storage } from 'libs/storage'
@@ -37,14 +36,7 @@ describe('getStateFromPath()', () => {
     const state = customGetStateFromPath(path, linking.config)
     const expectedState = { routes: [{ name: 'Offer', params: { id: 777 }, path }] }
 
-    await waitFor(() => {
-      expect(state).toEqual(expectedState)
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        offerId: '777',
-        from: 'deeplink',
-        isHeadline: false,
-      })
-    })
+    expect(state).toEqual(expectedState)
   })
 
   describe('utm params', () => {
