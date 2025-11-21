@@ -29,7 +29,7 @@ interface PrimaryButtonConfig {
 interface TertiaryButtonConfig {
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
-  Icon?: React.FunctionComponent<AccessibleIcon> | undefined
+  Icon?: React.FunctionComponent<AccessibleIcon>
 }
 
 interface PageConfigEntry {
@@ -44,7 +44,7 @@ interface PageConfigEntry {
 }
 type PageConfigMap = Record<BonificationRefusedType, PageConfigEntry>
 
-const PAGE_CONFIG: PageConfigMap = {
+export const PAGE_CONFIG: PageConfigMap = {
   [BonificationRefusedType.PARENT_NOT_FOUND]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier n’a pas pu être validé',
