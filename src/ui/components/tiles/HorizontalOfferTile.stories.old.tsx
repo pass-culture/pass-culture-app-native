@@ -1,3 +1,4 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
@@ -7,6 +8,7 @@ import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/Variants
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
 
+const Stack = createNativeStackNavigator()
 const meta: Meta<typeof HorizontalOfferTile> = {
   title: 'ui/tiles/HorizontalOfferTile',
   component: HorizontalOfferTile,
@@ -48,10 +50,17 @@ const variantConfig: Variants<typeof HorizontalOfferTile> = [
 export const Template: VariantsStory<typeof HorizontalOfferTile> = {
   name: 'HorizontalOfferTile',
   render: (props) => (
-    <VariantsTemplate
-      variants={variantConfig}
-      Component={HorizontalOfferTile}
-      defaultProps={{ ...props }}
-    />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="HorizontalOfferTile"
+        component={() => (
+          <VariantsTemplate
+            variants={variantConfig}
+            Component={HorizontalOfferTile}
+            defaultProps={{ ...props }}
+          />
+        )}
+      />
+    </Stack.Navigator>
   ),
 }
