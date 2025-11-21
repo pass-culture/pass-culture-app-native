@@ -9,9 +9,6 @@ appId: ${MAESTRO_APP_ID}
         element:
           text: "Catégorie Médias & presse"
     - tapOn: "Catégorie Médias & presse"
-    - assertVisible: 
-        text: "Catégories"
-        enabled: true
 
 - runFlow:
     when:
@@ -22,9 +19,11 @@ appId: ${MAESTRO_APP_ID}
           text: 'Médias & presse'
     - tapOn: 'Médias & presse'
 
-- tapOn: 'Catégories'
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- tapOn: 'Catégorie'
 
 - assertVisible: 'Médias & presse'
 - tapOn: 'Presse en ligne'
+- tapOn: 'Appliquer le filtre'
 
 - tapOn: 'Rechercher'

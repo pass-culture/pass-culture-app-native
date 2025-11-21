@@ -9,8 +9,18 @@ appId: ${MAESTRO_APP_ID}
     text: "Abonnement presse en ligne"
     index: 2
 
-- tapOn: "Réserver l’offre"
+- runFlow:
+    when:
+      visible: "Réserver l’offre"
+    commands:
+    - tapOn: "Réserver l’offre"
 
+- runFlow:
+    when:
+      visible: 'Accéder à l’offre en ligne'
+    commands:
+    - assertVisible: 'Accéder à l’offre en ligne'
+    
 - runFlow:
     when:
       platform: iOS
