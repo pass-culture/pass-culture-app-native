@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
-import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 /**
@@ -11,7 +10,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
  * @param ...navigateParams - Same parameters as navigate(...) function.
  */
 export function useGoBack<RouteName extends keyof RootStackParamList>(
-  ...navigateParams: undefined extends RootStackParamList[RouteName]
+  ..._navigateParams: undefined extends RootStackParamList[RouteName]
     ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
     : [RouteName] | [RouteName, RootStackParamList[RouteName]]
 ) {
@@ -43,5 +42,5 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
     return can
   }
 
-  return { goBack: customGoBack, canGoBack: customCanGoBack }
+  return { goBack, canGoBack: customCanGoBack }
 }
