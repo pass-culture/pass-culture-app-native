@@ -51,6 +51,7 @@ module.exports = {
       '|@pass-culture/design-system' +
       '|search-insights' +
       '|react-native-gesture-handler' +
+      '|@react-navigation' +
       ')',
   ],
   coverageReporters: ['json'],

@@ -1,4 +1,4 @@
-import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
+import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs'
 import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native'
 import React from 'react'
 
@@ -44,6 +44,7 @@ const mockTabNavigationState: TabNavigationState<ParamListBase> = {
   stale: false,
   type: 'tab',
   key: 'tab-oMaiLEoOIhNl7W4ZcsYSD',
+  preloadedRouteKeys: [],
   index: 0,
   routeNames: ['Home', '_DeeplinkOnlyHome1'],
   routes: [
