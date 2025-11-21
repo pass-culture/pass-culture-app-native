@@ -25,31 +25,13 @@ jest.useFakeTimers()
 
 describe('ReactionChoiceModal', () => {
   it('should display body with validation when body type is validation', () => {
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        from={ReactionFromEnum.HOME}
-        bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-      />
-    )
+    renderReactionChoiceModal({})
 
     expect(screen.getByText('Partage-nous ton avis !')).toBeOnTheScreen()
   })
 
   it('should not display body with redirection when body type is validation', () => {
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        from={ReactionFromEnum.HOME}
-        bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-      />
-    )
+    renderReactionChoiceModal({})
 
     expect(
       screen.queryByText('Qu’as-tu pensé de tes dernières réservations ?')
@@ -57,47 +39,20 @@ describe('ReactionChoiceModal', () => {
   })
 
   it('should display body with redirection when body type is redirection', () => {
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        from={ReactionFromEnum.HOME}
-        bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
-      />
-    )
+    renderReactionChoiceModal({ bodyType: ReactionChoiceModalBodyEnum.REDIRECTION })
 
     expect(screen.getByText('Qu’as-tu pensé de tes dernières réservations ?')).toBeOnTheScreen()
   })
 
   it('should not display body with validation when body type is redirection', () => {
-    render(
-      <ReactionChoiceModal
-        offer={mockOffer}
-        dateUsed="2023-05-30"
-        visible
-        closeModal={mockCloseModal}
-        from={ReactionFromEnum.HOME}
-        bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
-      />
-    )
+    renderReactionChoiceModal({ bodyType: ReactionChoiceModalBodyEnum.REDIRECTION })
 
     expect(screen.queryByText('Partage-nous ton avis !')).not.toBeOnTheScreen()
   })
 
   describe('With reaction validation', () => {
     it('should activate J’aime button when pressing it and it is deactivated', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
       await user.press(screen.getByText('J’aime'))
 
@@ -106,16 +61,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should deactivate J’aime button when pressing it and it is activated', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
       await user.press(screen.getByText('J’aime'))
       await user.press(screen.getByText('J’aime'))
@@ -125,16 +71,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should activate Je n’aime pas button when pressing it and it is deactivated', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
       await user.press(screen.getByText('Je n’aime pas'))
 
@@ -143,16 +80,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should deactivate Je n’aime pas button when pressing it and it is activated', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
       await user.press(screen.getByText('Je n’aime pas'))
       await user.press(screen.getByText('Je n’aime pas'))
@@ -162,16 +90,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should reset the buttons when closing modal', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
       await user.press(screen.getByText('J’aime'))
 
@@ -181,16 +100,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should close the modal when pressing close icon', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING })
 
       await user.press(screen.getByTestId('Fermer la modale'))
 
@@ -199,17 +109,7 @@ describe('ReactionChoiceModal', () => {
 
     it('should save reaction when click on reaction button', async () => {
       const mockHandleSave = jest.fn()
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          onSave={mockHandleSave}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING, onSave: mockHandleSave })
 
       await user.press(screen.getByText('J’aime'))
       await user.press(screen.getByTestId('Valider la réaction'))
@@ -222,17 +122,7 @@ describe('ReactionChoiceModal', () => {
 
     it('should trigger ValidationReaction log when click on reaction button', async () => {
       const mockHandleSave = jest.fn()
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          onSave={mockHandleSave}
-          from={ReactionFromEnum.ENDED_BOOKING}
-          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-        />
-      )
+      renderReactionChoiceModal({ from: ReactionFromEnum.ENDED_BOOKING, onSave: mockHandleSave })
 
       await user.press(screen.getByText('J’aime'))
       await user.press(screen.getByTestId('Valider la réaction'))
@@ -248,16 +138,7 @@ describe('ReactionChoiceModal', () => {
 
   describe('With redirection', () => {
     it('should close the modal when pressing close icon', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.HOME}
-          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
-        />
-      )
+      renderReactionChoiceModal({ bodyType: ReactionChoiceModalBodyEnum.REDIRECTION })
 
       await user.press(screen.getByTestId('Fermer la modale'))
 
@@ -265,16 +146,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should close the modal when pressing "Plus tard" button', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.HOME}
-          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
-        />
-      )
+      renderReactionChoiceModal({ bodyType: ReactionChoiceModalBodyEnum.REDIRECTION })
 
       await user.press(screen.getByText('Plus tard'))
 
@@ -282,16 +154,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should redirect to ended bookings when pressing "Donner mon avis" button', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.HOME}
-          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
-        />
-      )
+      renderReactionChoiceModal({ bodyType: ReactionChoiceModalBodyEnum.REDIRECTION })
 
       await user.press(screen.getByText('Donner mon avis'))
 
@@ -301,16 +164,7 @@ describe('ReactionChoiceModal', () => {
     })
 
     it('should close the modal when pressing "Donner mon avis" button', async () => {
-      render(
-        <ReactionChoiceModal
-          offer={mockOffer}
-          dateUsed="2023-05-30"
-          visible
-          closeModal={mockCloseModal}
-          from={ReactionFromEnum.HOME}
-          bodyType={ReactionChoiceModalBodyEnum.REDIRECTION}
-        />
-      )
+      renderReactionChoiceModal({ bodyType: ReactionChoiceModalBodyEnum.REDIRECTION })
 
       await user.press(screen.getByText('Donner mon avis'))
 
@@ -318,3 +172,27 @@ describe('ReactionChoiceModal', () => {
     })
   })
 })
+
+const renderReactionChoiceModal = ({
+  onSave,
+  from = ReactionFromEnum.HOME,
+  bodyType = ReactionChoiceModalBodyEnum.VALIDATION,
+}: {
+  onSave?: VoidFunction
+  from?: ReactionFromEnum
+  bodyType?: ReactionChoiceModalBodyEnum
+}) =>
+  render(
+    <ReactionChoiceModal
+      offerId={mockOffer.id}
+      offerName={mockOffer.name}
+      imageUrl={mockOffer.images.image1.url}
+      subcategoryId={mockOffer.subcategoryId}
+      dateUsed="2023-05-30"
+      visible
+      closeModal={mockCloseModal}
+      onSave={onSave}
+      from={from}
+      bodyType={bodyType}
+    />
+  )

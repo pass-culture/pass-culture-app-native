@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingResponse } from 'api/gen'
+import { BookingListItemResponse } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
@@ -23,8 +23,8 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  booking: BookingResponse
-  handleShowReactionModal: (booking: BookingResponse) => void
+  booking: BookingListItemResponse
+  handleShowReactionModal: (booking: BookingListItemResponse) => void
   handleShowShareOfferModal: (shareContent: ShareContent | null) => void
 }
 
@@ -67,7 +67,7 @@ export const EndedBookingItem = ({
       prePopulateOffer({
         ...offer,
         categoryId: subcategory.categoryId,
-        thumbUrl: offer.image?.url,
+        thumbUrl: offer.imageUrl ?? '',
         name: offer.name,
         offerId: offer.id,
       })
@@ -104,7 +104,7 @@ export const EndedBookingItem = ({
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
         <ContentContainerGap gap={4}>
-          <OfferImage imageUrl={stock.offer.image?.url} categoryId={subcategory.categoryId} />
+          <OfferImage imageUrl={stock.offer.imageUrl ?? ''} categoryId={subcategory.categoryId} />
           <AttributesView>
             <BookingItemTitle title={stock.offer.name} />
             <EndedReasonAndDate gap={1}>

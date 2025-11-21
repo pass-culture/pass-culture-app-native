@@ -34,6 +34,7 @@ exports[`EndedBookings should render correctly 1`] = `
   data={
     [
       {
+        "activationCode": null,
         "canReact": true,
         "cancellationDate": "2021-03-15T23:01:37.925926",
         "cancellationReason": "BENEFICIARY",
@@ -68,6 +69,10 @@ exports[`EndedBookings should render correctly 1`] = `
             "bookingContact": null,
             "extraData": null,
             "id": 147874,
+            "image": {
+              "url": "",
+            },
+            "imageUrl": "",
             "isDigital": true,
             "isPermanent": false,
             "name": "Avez-vous déjà vu ?",
@@ -82,6 +87,8 @@ exports[`EndedBookings should render correctly 1`] = `
               "publicName": "Maison de la Brique en mousse",
               "timezone": "Europe/Paris",
             },
+            "withdrawalDelay": null,
+            "withdrawalType": "on_site",
           },
           "price": 400,
           "priceCategoryLabel": "Cat 4",
@@ -106,6 +113,7 @@ exports[`EndedBookings should render correctly 1`] = `
         "userReaction": null,
       },
       {
+        "activationCode": null,
         "canReact": false,
         "confirmationDate": "2021-02-15T23:01:37.925926",
         "dateCreated": "2021-02-15T23:01:37.925926",
@@ -138,6 +146,7 @@ exports[`EndedBookings should render correctly 1`] = `
             "bookingContact": null,
             "extraData": null,
             "id": 147875,
+            "imageUrl": undefined,
             "isDigital": true,
             "isPermanent": false,
             "name": "Avez-vous déjà vu ?",
@@ -152,6 +161,8 @@ exports[`EndedBookings should render correctly 1`] = `
               "publicName": "Maison de la Brique en mousse",
               "timezone": "Europe/Paris",
             },
+            "withdrawalDelay": null,
+            "withdrawalType": "on_site",
           },
           "price": 400,
           "priceCategoryLabel": "Cat 4",
@@ -545,6 +556,7 @@ exports[`EndedBookings should render correctly 1`] = `
         highlighted={false}
         leadingItem={
           {
+            "activationCode": null,
             "canReact": true,
             "cancellationDate": "2021-03-15T23:01:37.925926",
             "cancellationReason": "BENEFICIARY",
@@ -579,6 +591,10 @@ exports[`EndedBookings should render correctly 1`] = `
                 "bookingContact": null,
                 "extraData": null,
                 "id": 147874,
+                "image": {
+                  "url": "",
+                },
+                "imageUrl": "",
                 "isDigital": true,
                 "isPermanent": false,
                 "name": "Avez-vous déjà vu ?",
@@ -593,6 +609,8 @@ exports[`EndedBookings should render correctly 1`] = `
                   "publicName": "Maison de la Brique en mousse",
                   "timezone": "Europe/Paris",
                 },
+                "withdrawalDelay": null,
+                "withdrawalType": "on_site",
               },
               "price": 400,
               "priceCategoryLabel": "Cat 4",

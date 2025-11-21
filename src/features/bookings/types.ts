@@ -10,3 +10,8 @@ export type BookingProperties = {
 }
 
 export type Booking = BookingReponse
+
+export enum BookingStatus {
+  ONGOING = 'ongoing',
+  ENDED = 'ended',
+}

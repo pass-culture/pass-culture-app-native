@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingResponse, ReactionTypeEnum } from 'api/gen'
+import { BookingListItemResponse, ReactionTypeEnum } from 'api/gen'
 import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -10,7 +10,7 @@ import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
-  booking: BookingResponse
+  booking: BookingListItemResponse
   handlePressShareOffer: VoidFunction
   handleShowReactionModal: VoidFunction
 }
@@ -21,6 +21,7 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
   handleShowReactionModal,
 }) => {
   const { stock, userReaction, canReact } = booking
+
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const ReactionIcon = useReactionIcon(userReaction)

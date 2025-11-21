@@ -10,6 +10,7 @@ export enum QueryKeys {
   AVAILABLE_REACTION = 'availableReaction',
   BOOKINGS = 'bookings',
   BOOKINGSV2 = 'bookingsV2',
+  BOOKINGSLIST = 'bookingsList',
   CINEMA_OFFERS = 'cinemaOffers',
   CITIES = 'cities',
   COOKIES_DATA = 'cookiesData',
