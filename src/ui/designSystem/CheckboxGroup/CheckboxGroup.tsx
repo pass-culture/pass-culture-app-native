@@ -66,7 +66,7 @@ export const CheckboxGroup = ({
 
       <CheckboxContainer variant={variant} display={display}>
         {options.map((option) => {
-          const isChecked = selectedValues.includes(option.value)
+          const isChecked = selectedValues.includes?.(option.value)
 
           const commonProps = {
             label: option.label,

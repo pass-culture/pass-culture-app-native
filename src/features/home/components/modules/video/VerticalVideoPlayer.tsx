@@ -50,6 +50,66 @@ export interface VideoPlayerProps {
   homeEntryId: string
 }
 
+interface PlayerCalqueProps {
+  hasFinishedPlaying: boolean
+  playerHeight: number
+  windowWidth: number
+  onPressReplay: () => void
+  onPressNext: () => void
+  hasMultipleSources: boolean
+  onPressPlay: () => void
+  videoState: string
+}
+
+const PlayerCalque = ({
+  hasFinishedPlaying,
+  playerHeight,
+  windowWidth,
+  onPressReplay,
+  onPressNext,
+  hasMultipleSources,
+  onPressPlay,
+  videoState,
+}: PlayerCalqueProps) => {
+  const { designSystem } = useTheme()
+
+  if (hasFinishedPlaying) {
+    return (
+      <VerticalVideoEndView
+        style={{ height: playerHeight, width: windowWidth }}
+        onPressReplay={onPressReplay}
+        onPressNext={onPressNext}
+        hasMultipleSources={hasMultipleSources}
+      />
+    )
+  }
+
+  return (
+    <PressListener onPress={onPressPlay}>
+      <Calque
+        style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
+        start={{ x: 0, y: 0.9 }}
+        end={{ x: 0, y: 1 }}
+        colors={[
+          colorAlpha(designSystem.color.background.lockedInverted, 0.9),
+          colorAlpha(designSystem.color.background.lockedInverted, 0.9),
+        ]}>
+        <ButtonsContainer>
+          <IconContainer>
+            <StyledPlayIcon />
+          </IconContainer>
+          <Spacer.Column numberOfSpaces={1.5} />
+          <StyledCaption>
+            {videoState === PlayerState.UNSTARTED
+              ? VideoPlayerButtonsWording.START_PLAYING
+              : VideoPlayerButtonsWording.CONTINUE_PLAYING}
+          </StyledCaption>
+        </ButtonsContainer>
+      </Calque>
+    </PressListener>
+  )
+}
+
 export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   videoSources,
   currentIndex,
@@ -140,46 +200,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     }
   }
 
-  const PlayerCalque = () => {
-    const { designSystem } = useTheme()
-
-    if (hasFinishedPlaying) {
-      return (
-        <VerticalVideoEndView
-          style={{ height: playerHeight, width: windowWidth }}
-          onPressReplay={handleReplayVideo}
-          onPressNext={playNextVideo}
-          hasMultipleSources={videoSources.length > 1}
-        />
-      )
-    }
-
-    return (
-      <PressListener onPress={togglePlay}>
-        <Calque
-          style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
-          start={{ x: 0, y: 0.9 }}
-          end={{ x: 0, y: 1 }}
-          colors={[
-            colorAlpha(designSystem.color.background.lockedInverted, 0.9),
-            colorAlpha(designSystem.color.background.lockedInverted, 0.9),
-          ]}>
-          <ButtonsContainer>
-            <IconContainer>
-              <StyledPlayIcon />
-            </IconContainer>
-            <Spacer.Column numberOfSpaces={1.5} />
-            <StyledCaption>
-              {videoState === PlayerState.UNSTARTED
-                ? VideoPlayerButtonsWording.START_PLAYING
-                : VideoPlayerButtonsWording.CONTINUE_PLAYING}
-            </StyledCaption>
-          </ButtonsContainer>
-        </Calque>
-      </PressListener>
-    )
-  }
-
   return (
     <IntersectionObserver
       onChange={(inView) => intersectionObserverListener(inView)}
@@ -218,7 +238,16 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           onPress={togglePlay}
         />
       ) : (
-        <PlayerCalque />
+        <PlayerCalque
+          hasFinishedPlaying={hasFinishedPlaying}
+          playerHeight={playerHeight}
+          windowWidth={windowWidth}
+          onPressReplay={handleReplayVideo}
+          onPressNext={playNextVideo}
+          hasMultipleSources={videoSources.length > 1}
+          onPressPlay={togglePlay}
+          videoState={videoState}
+        />
       )}
 
       {isPlaying ? (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { SubscriptionThematicIllustration } from 'features/subscription/components/SubscriptionThematicIllustration'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
@@ -12,7 +12,11 @@ interface Props {
 }
 
 export const SubscriptionThematicButton = ({ thematic, checked, onPress }: Props) => {
-  const Icon = () => <SubscriptionThematicIllustration thematic={thematic} size="small" />
+  const Icon = useCallback(
+    () => <SubscriptionThematicIllustration thematic={thematic} size="small" />,
+    [thematic]
+  )
+
   return (
     <Checkbox
       isChecked={checked}

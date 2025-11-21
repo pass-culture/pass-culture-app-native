@@ -3,7 +3,6 @@ const { boundariesRule } = require('./eslint-custom-rules/boundaries-rule')
 
 const softRules = {
   cleancode: {
-    'react/no-unstable-nested-components': 'warn', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/no-spacer': 'warn',
     'local-rules/no-ts-expect-error': 'warn',
     'local-rules/no-get-spacing': 'warn',
@@ -13,7 +12,6 @@ const softRules = {
     'boundaries/element-types': ['warn', boundariesRule],
   },
   reactRules: {
-    'react-hooks/rules-of-hooks': 'warn',
     'react-hooks/config': 'warn',
     'react-hooks/error-boundaries': 'warn',
     'react-hooks/component-hook-factories': 'warn',
@@ -27,7 +25,6 @@ const softRules = {
     'react-hooks/set-state-in-render': 'warn',
     'react-hooks/static-components': 'warn',
     'react-hooks/unsupported-syntax': 'warn',
-    'react-hooks/use-memo': 'warn',
     'react-hooks/incompatible-library': 'warn',
   },
 }

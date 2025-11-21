@@ -1,8 +1,9 @@
 import { format } from 'date-fns'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { LocaleConfig, Calendar as RNCalendar } from 'react-native-calendars'
-import { Theme } from 'react-native-calendars/src/types'
+import { MarkingProps } from 'react-native-calendars/src/calendar/day/marking'
+import { DateData, Theme } from 'react-native-calendars/src/types'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
@@ -121,6 +122,60 @@ const RNCalendarTheme = {
   marginHorizontal: getSpacing(-2.5),
 }
 
+type CalendarDayProps = {
+  date?: string & DateData
+  marking?: MarkingProps
+  selectDay: ReturnType<typeof useSelectDay>
+  currency: Currency
+  euroToPacificFrancRate: number
+  offerId: number | undefined
+  hasSeveralPrices?: boolean
+  stocks: OfferStockResponse[]
+  markedDates: MarkedDates
+  minDate: string
+}
+
+const CalendarDay: React.FC<CalendarDayProps> = ({
+  date,
+  marking = defaultMarking,
+  selectDay,
+  currency,
+  euroToPacificFrancRate,
+  offerId,
+  hasSeveralPrices,
+  stocks,
+  markedDates,
+  minDate,
+}) => {
+  const { price, status, selected } = marking as Marking
+
+  if (!date) {
+    eventMonitoring.captureException('Calendar displayed without selectable day', {
+      extra: { offerId, stocks, markedDates, minDate, selectDay, date, marking },
+    })
+    return null
+  }
+
+  if (selected && offerId) {
+    void analytics.logBookingOfferConfirmDates(offerId)
+  }
+
+  const onPress = selectDay({ date, selected, status })
+
+  return (
+    <Container onPress={onPress} disabled={!onPress}>
+      <DayComponent status={status} selected={selected} date={date} />
+      {typeof price === 'number' ? (
+        <Caption status={status}>
+          {getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)}
+        </Caption>
+      ) : (
+        <Spacer.Column numberOfSpaces={getSpacing(1)} />
+      )}
+    </Container>
+  )
+}
+
 export const Calendar: React.FC<Props> = ({
   stocks,
   userRemainingCredit,
@@ -134,41 +189,34 @@ export const Calendar: React.FC<Props> = ({
   const selectDay = useSelectDay()
   const theme = useTheme()
 
-  const DayComponentWrapper: React.ComponentProps<typeof RNCalendar>['dayComponent'] = ({
-    date,
-    marking = defaultMarking,
-  }) => {
-    // problem in the definition of marking in the library:
-    // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
-    const { price, status, selected } = marking as Marking
+  const renderDay = useCallback<
+    NonNullable<React.ComponentProps<typeof RNCalendar>['dayComponent']>
+  >(
+    (props) => (
+      <CalendarDay
+        {...props}
+        selectDay={selectDay}
+        currency={currency}
+        euroToPacificFrancRate={euroToPacificFrancRate}
+        offerId={offerId}
+        hasSeveralPrices={hasSeveralPrices}
+        stocks={stocks}
+        markedDates={markedDates}
+        minDate={minDate}
+      />
+    ),
+    [
+      selectDay,
+      currency,
+      euroToPacificFrancRate,
+      offerId,
+      hasSeveralPrices,
+      stocks,
+      markedDates,
+      minDate,
+    ]
+  )
 
-    // This case is normally not possible. We add a Sentry log to ensure this
-    if (!date) {
-      eventMonitoring.captureException('Calendar displayed without selectable day', {
-        extra: { offerId, stocks, markedDates, minDate, selectDay, date, marking },
-      })
-      return null
-    }
-
-    if (selected && offerId) {
-      analytics.logBookingOfferConfirmDates(offerId)
-    }
-
-    const onPress = selectDay({ date, selected, status })
-
-    return (
-      <Container onPress={onPress} disabled={!onPress}>
-        <DayComponent status={status} selected={selected} date={date} />
-        {typeof price === 'number' ? (
-          <Caption status={status}>
-            {getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)}
-          </Caption>
-        ) : (
-          <Spacer.Column numberOfSpaces={getSpacing(1)} />
-        )}
-      </Container>
-    )
-  }
   return (
     <RNCalendar
       style={RNCalendarTheme}
@@ -180,7 +228,7 @@ export const Calendar: React.FC<Props> = ({
       renderArrow={renderArrow}
       theme={calendarHeaderStyle(theme)}
       markedDates={markedDates}
-      dayComponent={DayComponentWrapper}
+      dayComponent={renderDay}
     />
   )
 }

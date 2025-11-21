@@ -4,7 +4,7 @@
  */
 
 import type { Meta } from '@storybook/react-vite'
-import React, { useState } from 'react'
+import React from 'react'
 
 import {
   CheckboxGroupOptionDetailed,
@@ -202,14 +202,8 @@ const variantConfig: Variants<typeof CheckboxGroup> = [
 export const Template: VariantsStory<typeof CheckboxGroup> = {
   name: 'CheckboxGroup',
   render: (props) => {
-    const [selected, setSelected] = useState(props.value ?? [])
-
     return (
-      <VariantsTemplate
-        variants={variantConfig}
-        Component={CheckboxGroup}
-        defaultProps={{ ...props, value: selected, onChange: setSelected }}
-      />
+      <VariantsTemplate variants={variantConfig} Component={CheckboxGroup} defaultProps={props} />
     )
   },
 }
