@@ -14,6 +14,13 @@ function toLinkProps<T extends keyof RootStackParamList>(
   return { screen, params } as LinkProps<RootStackParamList, T>
 }
 
+function toLinkProps<T extends keyof RootStackParamList>(
+  screen: T,
+  params?: RootStackParamList[T]
+): LinkProps<RootStackParamList, T> {
+  return { screen, params } as LinkProps<RootStackParamList, T>
+}
+
 export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps> = ({
   navigateTo,
   enableNavigate = true,
