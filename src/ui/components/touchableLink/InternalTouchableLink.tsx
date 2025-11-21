@@ -1,5 +1,5 @@
-import { useLinkProps, useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import { useLinkProps, useNavigation, LinkProps } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { Platform } from 'react-native'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
@@ -10,6 +10,13 @@ import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
 const isWeb = Platform.OS === 'web'
 
+function toLinkProps<T extends keyof RootStackParamList>(
+  screen: T,
+  params?: RootStackParamList[T]
+): LinkProps<RootStackParamList, T> {
+  return { screen, params } as LinkProps<RootStackParamList, T>
+}
+
 export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps> = ({
   navigateTo,
   enableNavigate = true,
@@ -17,10 +24,14 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   onAfterNavigate,
   ...rest
 }) => {
-  // We use nullish operator here because TabBar uses InternalTouchableLink but navigateTo is undefined during launch
-  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
   const { navigate, push, reset } = useNavigation<UseNavigationType>()
   const { screen, params, fromRef, withPush, withReset } = navigateTo
+
+  const linkConfig = useMemo(
+    () => (navigateTo ? toLinkProps(screen, params) : toLinkProps('TabNavigator' as const)),
+    [navigateTo, screen, params]
+  )
+  const internalLinkProps = useLinkProps<RootStackParamList>(linkConfig)
 
   const handleNavigation = useCallback(() => {
     if (withReset) {
