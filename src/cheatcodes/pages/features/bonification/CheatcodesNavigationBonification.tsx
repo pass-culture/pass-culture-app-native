@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
+import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -58,8 +59,31 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused',
-      navigationTarget: getSubscriptionPropConfig('BonificationRefused'),
+      title: 'BonificationRefused PARENT_NOT_FOUND',
+      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+        bonificationRefusedType: BonificationRefusedType.PARENT_NOT_FOUND,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRefused CHILD_NOT_FOUND_FOR_PARENT',
+      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+        bonificationRefusedType: BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRefused FAMILY_QUOTIENT_TOO_HIGH',
+      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+        bonificationRefusedType: BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH,
+      }),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRefused TOO_MANY_RETRIES',
+      navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
+        bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+      }),
     },
   ],
 }

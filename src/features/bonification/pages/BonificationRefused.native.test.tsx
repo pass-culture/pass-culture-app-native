@@ -1,18 +1,77 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
-import { BonificationRefused } from 'features/bonification/pages/BonificationRefused'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import {
+  BonificationRefused,
+  BonificationRefusedType,
+  PAGE_CONFIG,
+} from 'features/bonification/pages/BonificationRefused'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('BonificationRefused', () => {
-  it('should go navigate to home when pressing "Revenir à l’accueil"', async () => {
-    render(<BonificationRefused />)
+  describe('Parent not found', () => {
+    it('should go navigate to home when pressing "Corriger les informations"', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.PARENT_NOT_FOUND },
+      })
+      render(<BonificationRefused />)
 
-    const button = screen.getByText('Revenir à l’accueil')
-    await userEvent.press(button)
+      const button = screen.getByText(
+        PAGE_CONFIG[BonificationRefusedType.PARENT_NOT_FOUND].primaryButton.wording
+      )
+      await userEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+  })
+
+  describe('Too many retries', () => {
+    it('should go navigate to home when pressing "Revenir à l’accueil"', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
+      })
+      render(<BonificationRefused />)
+
+      const button = screen.getByText(
+        PAGE_CONFIG[BonificationRefusedType.TOO_MANY_RETRIES].primaryButton.wording
+      )
+      await userEvent.press(button)
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+  })
+
+  describe('Child not found', () => {
+    it('should go navigate to home when pressing "Renouveler ma demande"', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT },
+      })
+      render(<BonificationRefused />)
+
+      const button = screen.getByText(
+        PAGE_CONFIG[BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT].primaryButton.wording
+      )
+      await userEvent.press(button)
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+  })
+
+  describe('Family quotient too high', () => {
+    it('should go navigate to home when pressing "Revenir vers le catalogue"', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH },
+      })
+      render(<BonificationRefused />)
+
+      const button = screen.getByText(
+        PAGE_CONFIG[BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH].primaryButton.wording
+      )
+      await userEvent.press(button)
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
   })
 })

@@ -1,3 +1,4 @@
+import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { ProfileScreenType } from 'features/identityCheck/pages/profile/types'
 import {
   CulturalSurveyRootStackParamList,
@@ -68,7 +69,7 @@ export type SubscriptionStackParamList = {
   BonificationIntroduction: undefined
   BonificationNames: undefined
   BonificationRecap: undefined
-  BonificationRefused: undefined
+  BonificationRefused?: { bonificationRefusedType: BonificationRefusedType }
   BonificationTitle: undefined
 } & CulturalSurveyRootStackParamList
 
