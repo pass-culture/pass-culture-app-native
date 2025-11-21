@@ -55,6 +55,7 @@ import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
+import { RoundedCardIllustration } from 'ui/svg/icons/RoundedCardIllustration'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ShareChat } from 'ui/svg/icons/ShareChat'
 import { SharePhones } from 'ui/svg/icons/SharePhones'
@@ -104,6 +105,7 @@ export const BasicsIllustrations = {
   UserError,
   UserFavorite,
   UserIdentification,
+  RoundedCardIllustration,
 }
 
 export const SimpleAchievementIllustrations = {
