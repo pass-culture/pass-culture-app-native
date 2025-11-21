@@ -24,7 +24,7 @@ const titleId = uuidv4()
 
 export const VenueMapActivityFilter: FunctionComponent<Props> = ({ navigation, route }) => {
   const { title, filterGroup } = route.params
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { popTo } = useNavigation<UseNavigationType>()
   const { activeFilters: venueFilters, toggleMacroFilter } = useVenueMapFilters()
   const { addVenuesFilters, removeVenuesFilters } = venuesFilterActions
 
@@ -37,7 +37,7 @@ export const VenueMapActivityFilter: FunctionComponent<Props> = ({ navigation, r
   }
 
   const onClose = () => {
-    navigate('VenueMap')
+    popTo('VenueMap')
   }
 
   const toggleAll = () => {

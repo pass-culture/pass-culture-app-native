@@ -41,7 +41,7 @@ import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
-  const { navigate, addListener, dispatch } = useNavigation<UseNavigationType>()
+  const { popTo, addListener, dispatch } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { params, key } = useRoute<UseRouteType<'ConsentSettings'>>()
   const offerId = params?.offerId
@@ -105,11 +105,11 @@ export const ConsentSettings = () => {
 
   const handleGoBack = useCallback(() => {
     if (offerId) {
-      navigate('Offer', { id: offerId })
+      popTo('Offer', { id: offerId })
     } else {
       goBack()
     }
-  }, [goBack, navigate, offerId])
+  }, [goBack, popTo, offerId])
 
   const handleBack = useCallback(() => {
     if (hasUnsavedCookieChanges) showModal()
@@ -129,23 +129,20 @@ export const ConsentSettings = () => {
     originalCookieChoicesRef.current = currentCookieChoices
     interceptedBackActionRef.current = null
 
-    const navigateToOfferOrProfile = () => {
-      if (offerId) {
-        navigate('Offer', { id: offerId })
-      } else {
-        navigate(...getTabHookConfig('Profile'))
-      }
-    }
-
     // Ignore the next navigation event
     bypassBeforeRemoveOnceRef.current = true
-    navigateToOfferOrProfile()
+
+    if (offerId) {
+      popTo('Offer', { id: offerId })
+    } else {
+      popTo(...getTabHookConfig('Profile'))
+    }
 
     showSuccessSnackBar({
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-  }, [currentCookieChoices, setCookiesConsent, showSuccessSnackBar, hideModal, offerId, navigate])
+  }, [currentCookieChoices, setCookiesConsent, showSuccessSnackBar, hideModal, offerId, popTo])
 
   const handleDiscardAndGoBack = useCallback(() => {
     setCurrentCookieChoices(originalCookieChoicesRef.current)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, popTo, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
@@ -228,7 +228,7 @@ describe('SearchBox component', () => {
     await user.type(searchInput, 'j', { submitEditing: true })
 
     expect(useRoute).toHaveBeenCalledTimes(2)
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+    expect(popTo).toHaveBeenCalledWith('TabNavigator', {
       params: {
         params: {
           ...initialSearchState,
@@ -478,7 +478,7 @@ describe('SearchBox component', () => {
         const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
         await user.type(searchInput, queryText, { submitEditing: true })
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        expect(popTo).toHaveBeenCalledWith('TabNavigator', {
           params: {
             params: {
               ...initialSearchState,

@@ -24,12 +24,14 @@ const venueSelected: Venue = {
   info: '',
 }
 const mockNavigate = jest.fn()
+const mockPopTo = jest.fn()
 
 useRoute.mockImplementationOnce(() => ({ params: { id: venueId } }))
 
 jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   navigate: mockNavigate,
   push: jest.fn(),
+  popTo: mockPopTo,
 })
 
 const mockDismissModal = jest.fn()
@@ -78,7 +80,7 @@ describe('<SearchInVenueModal />', () => {
 
     await user.press(screen.getByText('Lancer la recherche'))
 
-    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
+    expect(mockPopTo).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: {
         screen: 'SearchResults',

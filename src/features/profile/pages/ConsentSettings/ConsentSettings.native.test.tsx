@@ -31,7 +31,7 @@ const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 
-const mockNavigate = jest.fn()
+const mockPopTo = jest.fn()
 const mockDispatch = jest.fn()
 
 let mockRouteParams = {}
@@ -39,7 +39,8 @@ let beforeRemoveHandler
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({
-    navigate: mockNavigate,
+    navigate: jest.fn(),
+    popTo: mockPopTo,
     push: jest.fn(),
     goBack: jest.fn(),
     dispatch: mockDispatch,
@@ -250,7 +251,7 @@ describe('<ConsentSettings/>', () => {
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(mockPopTo).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
   })
 
   it('should opens confirm modal on beforeRemove when there are unsaved changes', async () => {
@@ -310,7 +311,7 @@ describe('<ConsentSettings/>', () => {
 
     await user.press(screen.getByText('Enregistrer mes choix'))
 
-    expect(mockNavigate).toHaveBeenCalledWith('Offer', { id: 116656 })
+    expect(mockPopTo).toHaveBeenCalledWith('Offer', { id: 116656 })
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,

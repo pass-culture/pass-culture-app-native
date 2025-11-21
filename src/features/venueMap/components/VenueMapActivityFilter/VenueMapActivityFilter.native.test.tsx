@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { popTo } from '__mocks__/@react-navigation/native'
 import { Activity } from 'api/gen'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { VenueMapActivityFilter } from 'features/venueMap/components/VenueMapActivityFilter/VenueMapActivityFilter'
@@ -32,6 +32,10 @@ const mockNavigation: NativeStackScreenProps<
   push: jest.fn(),
   pop: jest.fn(),
   popToTop: jest.fn(),
+  popTo: jest.fn(),
+  preload: jest.fn(),
+  replaceParams: jest.fn(),
+  navigateDeprecated: jest.fn(),
 }
 
 jest.mock('features/venueMap/store/venuesFilterStore')
@@ -60,7 +64,7 @@ describe('VenueMapActivityFilter', () => {
 
     await user.press(screen.getByLabelText('Fermer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+    expect(popTo).toHaveBeenNthCalledWith(1, 'VenueMap')
   })
 
   it('should trigger goBack when pressing modal back button', async () => {
