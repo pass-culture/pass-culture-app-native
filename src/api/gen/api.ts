@@ -669,6 +669,11 @@ export interface BookingListItemResponse {
    * @type {number}
    * @memberof BookingListItemResponse
    */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
   id: number
   /**
    * @type {number}

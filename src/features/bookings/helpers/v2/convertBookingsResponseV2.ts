@@ -4,10 +4,11 @@ import {
   BookingsListResponseV2,
   BookingsResponseV2,
 } from 'api/gen'
+import { BookingsStatusValue } from 'features/bookings/types'
 
 export const convertBookingsResponseV2 = (
   bookings: BookingsResponseV2,
-  status: 'ongoingBookings' | 'endedBookings'
+  status: BookingsStatusValue
 ): BookingsListResponseV2 => ({
   bookings: bookings[status].map(convertBooking),
 })

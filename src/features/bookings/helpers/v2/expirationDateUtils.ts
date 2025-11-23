@@ -68,7 +68,7 @@ export const formattedExpirationDate = (dateCreated: string) => {
 }
 
 export const isDigitalBookingWithoutExpirationDate = (booking: BookingListItemResponse) =>
-  booking.stock.offer.isDigital && !booking.activationCode?.expirationDate
+  booking.stock.offer.isDigital && !booking.expirationDate
 
 export const isFreeBookingInSubcategories = (booking: BookingListItemResponse) =>
   booking.totalAmount === 0 &&

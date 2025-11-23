@@ -171,10 +171,7 @@ describe('expirationDateUtils', () => {
       it('when booking is digital with expiration date', () => {
         const value = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate({
           ...bookingsSnapV2.endedBookings[0],
-          activationCode: {
-            code: '123',
-            expirationDate: '2021-03-15T23:01:37.925926',
-          },
+          expirationDate: '2021-03-15T23:01:37.925926',
         })
 
         expect(value).toEqual(false)
@@ -196,10 +193,7 @@ describe('expirationDateUtils', () => {
       it('when booking is not digital with expiration date', () => {
         const value = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate({
           ...bookingsSnapV2.endedBookings[0],
-          activationCode: {
-            code: '123',
-            expirationDate: '2021-03-15T23:01:37.925926',
-          },
+          expirationDate: '2021-03-15T23:01:37.925926',
           stock: {
             ...bookingsSnapV2.endedBookings[0].stock,
 

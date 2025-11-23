@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { BookingsResponseV2, BookingsListResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
-import { BookingStatus } from 'features/bookings/types'
+import { BookingsStatusValue } from 'features/bookings/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { CustomQueryOptions } from 'libs/react-query/types'
@@ -37,7 +37,7 @@ export const useBookingsQuery = <TData = BookingsResponseV2>(
   })
 
 export const useBookingsByStatusQuery = <TSelect = BookingsListResponseV2>(
-  status: string,
+  status: 'ongoing' | 'ended',
   options?: CustomQueryOptions<BookingsListResponseV2, TSelect>
 ) =>
   useQuery({
@@ -46,10 +46,9 @@ export const useBookingsByStatusQuery = <TSelect = BookingsListResponseV2>(
     ...options,
   })
 
-type BookingStatusValue = `${BookingStatus}Bookings`
 export const useBookingsV2WithConvertedTimezoneQuery = <TSelect = BookingsListResponseV2>(
-  select: (data: BookingsResponseV2, status: BookingStatusValue) => TSelect,
-  status: BookingStatusValue,
+  select: (data: BookingsResponseV2, status: BookingsStatusValue) => TSelect,
+  status: BookingsStatusValue,
   enabled = true
 ) =>
   useBookingsQuery(enabled, (data) =>

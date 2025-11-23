@@ -41,13 +41,8 @@ const getDateLabel = (booking: BookingListItemResponse, properties: BookingPrope
   }
 
   if (properties.isPhysical) {
-    if (!booking.activationCode?.expirationDate) return ''
-    return formatEventDateLabel(
-      booking.activationCode?.expirationDate,
-      false,
-      'day',
-      'À retirer avant le '
-    )
+    if (!booking.expirationDate) return ''
+    return formatEventDateLabel(booking.expirationDate, false, 'day', 'À retirer avant le ')
   }
 
   return ''
@@ -75,7 +70,7 @@ const getWithdrawLabel = (
         )
       : getEventWithdrawLabel(booking.stock)
 
-  if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.activationCode?.expirationDate)
+  if (properties.isPhysical) return getPhysicalWithdrawLabel(booking.expirationDate)
 
   return ''
 }

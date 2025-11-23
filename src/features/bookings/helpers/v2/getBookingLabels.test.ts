@@ -76,7 +76,7 @@ describe('getBookingLabels', () => {
     mockdate.set(new Date('2021-03-15T21:00:00'))
     const booking = {
       ...mockBooking,
-      activationCode: { code: 'toto', expirationDate: '2021-03-15T23:00:00' }, // expires in 2 hours
+      expirationDate: '2021-03-15T23:00:00', // expires in 2 hours
     }
     const properties = { isPhysical: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)
@@ -94,7 +94,7 @@ describe('getBookingLabels', () => {
     mockdate.set(new Date('2021-03-15T21:00:00'))
     const booking = {
       ...mockBooking,
-      activationCode: { code: 'toto', expirationDate: '2021-03-16T22:00:00' }, // expires in 25 hours
+      expirationDate: '2021-03-16T22:00:00', // expires in 25 hours
     }
     const properties = { isPhysical: true }
     const labels = getBookingLabelsV2.getBookingLabels(booking, properties)

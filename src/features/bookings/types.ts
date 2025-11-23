@@ -1,4 +1,5 @@
 import { BookingReponse } from 'api/gen'
+import { BookingsStatus } from 'features/bookings/enum'
 
 export type BookingProperties = {
   isDuo?: boolean
@@ -11,7 +12,4 @@ export type BookingProperties = {
 
 export type Booking = BookingReponse
 
-export enum BookingStatus {
-  ONGOING = 'ongoing',
-  ENDED = 'ended',
-}
+export type BookingsStatusValue = `${BookingsStatus}Bookings`

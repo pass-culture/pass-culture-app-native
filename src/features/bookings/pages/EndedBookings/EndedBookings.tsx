@@ -1,3 +1,4 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
@@ -8,11 +9,11 @@ import {
   PostReactionRequest,
   ReactionTypeEnum,
   BookingListItemOfferResponse,
+  BookingsListResponseV2,
 } from 'api/gen'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
-import { BookingStatus } from 'features/bookings/types'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
@@ -20,7 +21,6 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
-import { useActiveBookingsQuery } from 'queries/bookings/useActiveBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -28,10 +28,14 @@ import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 const keyExtractor: (item: BookingListItemResponse) => string = (item) => item.id.toString()
 
-export const EndedBookings: FunctionComponent = () => {
+type Props = {
+  useEndedBookingsQuery: () => UseQueryResult<BookingsListResponseV2, Error>
+}
+
+export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
-  const { data: bookings } = useActiveBookingsQuery(BookingStatus.ENDED)()
+  const { data: bookings } = useEndedBookingsQuery()
 
   const { bookings: endedBookings = [] } = bookings ?? {}
 

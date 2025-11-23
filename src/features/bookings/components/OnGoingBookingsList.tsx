@@ -1,16 +1,15 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingListItemResponse } from 'api/gen'
+import { BookingListItemResponse, BookingsListResponseV2 } from 'api/gen'
 import { expirationDateUtilsV2 } from 'features/bookings/helpers'
-import { BookingStatus } from 'features/bookings/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { useActiveBookingsQuery } from 'queries/bookings/useActiveBookingsQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import {
   BookingHitPlaceholder,
@@ -26,16 +25,14 @@ import { OnGoingBookingItem } from './OnGoingBookingItem'
 
 const ANIMATION_DURATION = 700
 
-export const OnGoingBookingsList: FunctionComponent = () => {
+type Props = {
+  useOngoingBookingsQuery: () => UseQueryResult<BookingsListResponseV2, Error>
+}
+
+export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookingsQuery }) => {
   const netInfo = useNetInfoContext()
 
-  const {
-    data: bookings,
-    isLoading,
-    isFetching,
-    refetch,
-  } = useActiveBookingsQuery(BookingStatus.ONGOING)()
-
+  const { data: bookings, isLoading, isFetching, refetch } = useOngoingBookingsQuery()
   const { bookings: ongoingBookings = [] } = bookings ?? {}
 
   const { isLoading: subcategoriesIsLoading } = useSubcategoriesQuery()

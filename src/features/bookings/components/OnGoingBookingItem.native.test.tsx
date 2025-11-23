@@ -107,10 +107,7 @@ describe('OnGoingBookingItem', () => {
         ...initialBooking,
         totalAmount: 0,
         dateCreated: new Date('2021-02-15T00:00:00Z').toDateString(),
-        activationCode: {
-          code: '',
-          expirationDate: null,
-        },
+        expirationDate: null,
         stock: {
           ...initialBooking.stock,
           offer: {
@@ -171,7 +168,7 @@ describe('OnGoingBookingItem', () => {
       const booking = {
         ...initialBooking,
         dateCreated: new Date('2021-02-15T00:00:00Z').toDateString(),
-        activationCode: { code: '', expirationDate: null },
+        expirationDate: null,
         stock: {
           ...initialBooking.stock,
           offer: {

@@ -4,9 +4,14 @@ import styled from 'styled-components/native'
 
 import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
-import { BookingsTab } from 'features/bookings/enum'
+import {
+  BookingsTab,
+  mapBookingsStatusToActiveTab,
+  mapBookingsToActiveTab,
+} from 'features/bookings/enum'
+import { convertBookingsResponseV2 } from 'features/bookings/helpers/v2/convertBookingsResponseV2'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
-import { BookingStatus } from 'features/bookings/types'
+import { convertBookingsListResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
@@ -15,7 +20,10 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
-import { useActiveBookingsQuery } from 'queries/bookings/useActiveBookingsQuery'
+import {
+  useBookingsByStatusQuery,
+  useBookingsV2WithConvertedTimezoneQuery,
+} from 'queries/bookings/useBookingsQuery'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -40,7 +48,23 @@ export const Bookings = () => {
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
 
-  const { data: bookings } = useActiveBookingsQuery(BookingStatus.ENDED)()
+  const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
+
+  const useBookingByStatus = () =>
+    useBookingsByStatusQuery(mapBookingsStatusToActiveTab[activeTab], {
+      select: convertBookingsListResponseV2DatesToTimezone,
+    })
+
+  const useBookingsV2 = () =>
+    useBookingsV2WithConvertedTimezoneQuery(
+      convertBookingsResponseV2,
+      mapBookingsToActiveTab[activeTab],
+      true
+    )
+
+  const useActiveBookingsQuery = enableNewBookings ? useBookingByStatus : useBookingsV2
+
+  const { data: bookings } = useActiveBookingsQuery()
 
   const { mutateAsync: addReaction, isPending } = useReactionMutation()
   const { bookings: endedBookings = [] } = bookings ?? {}
@@ -86,8 +110,8 @@ export const Bookings = () => {
   )
 
   const tabPanels = {
-    [BookingsTab.CURRENT]: <OnGoingBookingsList />,
-    [BookingsTab.COMPLETED]: <EndedBookings />,
+    [BookingsTab.CURRENT]: <OnGoingBookingsList useOngoingBookingsQuery={useActiveBookingsQuery} />,
+    [BookingsTab.COMPLETED]: <EndedBookings useEndedBookingsQuery={useActiveBookingsQuery} />,
   }
 
   const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0
