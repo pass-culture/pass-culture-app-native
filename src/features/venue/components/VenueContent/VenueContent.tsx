@@ -15,8 +15,10 @@ import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemo
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   venue: VenueResponse
@@ -72,6 +74,9 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
+  const isLandscape = useIsLandscape()
+  const { right, left } = useCustomSafeInsets()
+
   const { isButtonVisible, wording } = useOfferCTA()
 
   const renderVenueCTA = useCallback(() => {
@@ -94,6 +99,8 @@ export const VenueContent: React.FunctionComponent<Props> = ({
         <VenueHeaderWrapper
           header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
           <ContentContainer
+            rightNootch={isLandscape ? right : 0}
+            leftNootch={isLandscape ? left : 0}
             onScroll={handleScroll}
             scrollEventThrottle={16}
             bounces={false}
@@ -115,9 +122,15 @@ const Container = styled.View(({ theme }) => ({
 
 const ContentContainer = styled(IntersectionObserverScrollView).attrs({
   scrollIndicatorInsets: { right: 1 },
-})({
+})<{
+  rightNootch?: number
+  leftNootch?: number
+}>(({ rightNootch, leftNootch }) => ({
   overflow: 'visible',
-})
+  marginLeft: rightNootch,
+  marginRight: leftNootch,
+}))
+
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
