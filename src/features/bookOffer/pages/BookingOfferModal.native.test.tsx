@@ -18,7 +18,7 @@ import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
@@ -370,7 +370,12 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(screen.getByText('Confirmer la réservation'))
 
-        expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: 20, bookingId: 1 })
+        await waitFor(() => {
+          expect(navigate).toHaveBeenCalledWith('BookingConfirmation', {
+            offerId: 20,
+            bookingId: 1,
+          })
+        })
       })
     })
 

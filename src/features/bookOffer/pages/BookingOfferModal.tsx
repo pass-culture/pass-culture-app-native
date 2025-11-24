@@ -22,6 +22,7 @@ import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
@@ -73,7 +74,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       dismissModal()
 
       if (offerId) {
-        analytics.logBookingConfirmation({
+        void analytics.logBookingConfirmation({
           ...apiRecoParams,
           offerId: offerId.toString(),
           bookingId: bookingId.toString(),
@@ -85,19 +86,21 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
           logOfferConversion(algoliaOfferId)
         }
         if (offer?.subcategoryId === SubcategoryIdEnum.SEANCE_CINE) {
-          analytics.logHasBookedCineScreeningOffer({
+          void analytics.logHasBookedCineScreeningOffer({
             offerId,
           })
         }
         if (!!selectedStock && !!offer?.subcategoryId) {
-          campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
+          void campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
             af_offer_id: offerId,
             af_booking_id: selectedStock.id,
             af_price: selectedStock.price,
             af_category: offer.subcategoryId,
           })
         }
-        navigate('BookingConfirmation', { offerId, bookingId })
+        runAfterInteractionsMobile(() => {
+          navigate('BookingConfirmation', { offerId, bookingId })
+        })
       }
     },
     [
