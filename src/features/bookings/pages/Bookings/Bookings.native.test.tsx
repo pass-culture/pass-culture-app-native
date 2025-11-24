@@ -203,7 +203,7 @@ describe('Bookings', () => {
       mockServer.getApi<BookingsListResponseV2>('/v2/bookings/ended', endedBookingsV2ListSnap)
     })
 
-    it.only('should display ongoing bookings', async () => {
+    it('should display ongoing bookings', async () => {
       const offerName = ongoingBookingsV2ListSnap.bookings[0]?.stock.offer.name
 
       renderBookings()
