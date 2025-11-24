@@ -407,7 +407,7 @@ const RootStackNavigator = withWebWrapper(
             component={OfferVideoPreviewWithAsyncErrorBoundry}
             options={{
               title: 'Vidéo de l’offre',
-              presentation: 'modal',
+              presentation: isWeb ? 'modal' : 'containedModal',
               ...FILTERS_MODAL_NAV_OPTIONS,
             }}></RootStackNavigatorBase.Screen>
         </RootStackNavigatorBase.Navigator>
