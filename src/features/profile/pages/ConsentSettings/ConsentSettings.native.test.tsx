@@ -5,8 +5,8 @@ import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import * as useCookies from 'features/cookies/helpers/useCookies'
-import { ConsentStatus } from 'features/cookies/types'
 import type * as CookiesTypes from 'features/cookies/types'
+import { ConsentStatus } from 'features/cookies/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics/provider'
@@ -50,6 +50,7 @@ jest.mock('@react-navigation/native', () => ({
   }),
   useFocusEffect: jest.fn(),
   useRoute: () => ({ params: mockRouteParams }),
+  usePreventRemoveContext: () => ({ setPreventRemove: jest.fn() }),
 }))
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
