@@ -1,0 +1,19 @@
+appId: app.passculture.webapp
+---
+- runFlow:
+    when:
+        platform: Android
+    commands:
+    - openLink:
+        link: ${output.links.staging.android.thematicSearch}
+        autoVerify: true
+- runFlow:
+    when:
+        platform: iOS
+    commands:
+    - openLink:
+        link: ${output.links.staging.ios.thematicSearch}
+        autoVerify: true
+- waitForAnimationToEnd
+- runFlow: ../../subFolder/cookies/AcceptCookiesOptional.yml
+- assertVisible: 'Cinéma'

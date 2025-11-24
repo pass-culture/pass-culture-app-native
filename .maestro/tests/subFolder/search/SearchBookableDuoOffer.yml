@@ -17,9 +17,12 @@ onFlowStart:
 
 - tapOn: "Films à l'affiche"
 
-- tapOn: 'Catégories'
+- tapOn: "Voir tous les filtres : 1 filtre actif"
+
+- tapOn: 'Catégorie'
 
 - assertVisible: "Films à l'affiche"
+- tapOn: 'Appliquer le filtre'
 
 - tapOn: 'Rechercher'
 - tapOn: '.*Voir tous les filtres.*'
