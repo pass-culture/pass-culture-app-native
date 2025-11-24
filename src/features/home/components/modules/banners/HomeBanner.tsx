@@ -11,6 +11,7 @@ import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNaviga
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
+import { TechnicalProblemBanner } from 'features/technicalProblemBanner/components/TechnicalProblemBanner'
 import { useFeatureFlagOptionsQuery } from 'libs/firebase/firestore/featureFlags/queries/useFeatureFlagOptionsQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -58,6 +59,11 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const { options: remoteGenericBannerOptions, isFeatureFlagActive: showRemoteGenericBanner } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
+
+  const {
+    options: technicalProblemBannerOptions,
+    isFeatureFlagActive: showTechnicalProblemBanner,
+  } = useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.SHOW_TECHNICAL_PROBLEM_BANNER)
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -145,6 +151,11 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   return (
     <React.Fragment>
+      {showTechnicalProblemBanner && technicalProblemBannerOptions ? (
+        <TechnicalProblemBannerContainer>
+          <TechnicalProblemBanner options={technicalProblemBannerOptions} />
+        </TechnicalProblemBannerContainer>
+      ) : null}
       {showRemoteGenericBanner && remoteGenericBannerOptions ? (
         <RemoteGenericBannerContainer>
           <RemoteGenericBanner
@@ -163,5 +174,9 @@ const BannerContainer = styled.View(({ theme }) => ({
 }))
 
 const RemoteGenericBannerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const TechnicalProblemBannerContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))

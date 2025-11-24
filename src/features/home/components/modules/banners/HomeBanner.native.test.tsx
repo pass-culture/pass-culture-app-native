@@ -40,7 +40,7 @@ describe('<HomeBanner/>', () => {
     } as ILocationContext)
   })
 
-  describe('when feature flag showRemoteGenericBanner is enable', () => {
+  describe('when feature flag showRemoteGenericBanner is enabled', () => {
     beforeEach(() => {
       setFeatureFlags([
         {
@@ -69,6 +69,32 @@ describe('<HomeBanner/>', () => {
       const remoteBanner = await screen.findByText('title 1')
 
       expect(remoteBanner).toBeOnTheScreen()
+    })
+  })
+
+  describe('when feature flag showTechnicalProblemBanner is enabled', () => {
+    beforeEach(() => {
+      setFeatureFlags([
+        {
+          featureFlag: RemoteStoreFeatureFlags.SHOW_TECHNICAL_PROBLEM_BANNER,
+          options: {
+            severity: 'error',
+            label: 'Problème technique',
+            message: 'Nous rencontrons des difficultés',
+          },
+        },
+      ])
+    })
+
+    it('should display technical problem banner', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({ banner: null })
+
+      renderHomeBanner({})
+      const technicalBanner = await screen.findByText('Problème technique')
+
+      expect(technicalBanner).toBeOnTheScreen()
+      expect(screen.getByText('Nous rencontrons des difficultés')).toBeOnTheScreen()
     })
   })
 
