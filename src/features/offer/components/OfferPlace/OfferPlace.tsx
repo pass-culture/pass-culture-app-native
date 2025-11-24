@@ -17,6 +17,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 export type OfferPlaceProps = {
   offer: OfferResponseV2
   subcategory: Subcategory
+  isOfferAtSameAddressAsVenue: boolean
   distance?: string | null
 }
 
@@ -38,7 +39,12 @@ const mergeVenueData =
     ...(prevData ?? {}),
   })
 
-export const OfferPlace: FC<OfferPlaceProps> = ({ offer, subcategory, distance }) => {
+export const OfferPlace: FC<OfferPlaceProps> = ({
+  offer,
+  subcategory,
+  distance,
+  isOfferAtSameAddressAsVenue,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
@@ -70,6 +76,7 @@ export const OfferPlace: FC<OfferPlaceProps> = ({ offer, subcategory, distance }
           distance={distance}
           subcategory={subcategory}
           handleOnSeeVenuePress={handleOnSeeVenuePress}
+          isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
         />
       )}
     </OfferPlaceWrapper>

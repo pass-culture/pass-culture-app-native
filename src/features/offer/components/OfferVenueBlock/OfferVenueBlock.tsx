@@ -19,6 +19,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type Props = {
   title: string
   offer: OfferResponseV2
+  isOfferAtSameAddressAsVenue: boolean
   onChangeVenuePress?: VoidFunction
   onSeeVenuePress?: VoidFunction
   onSeeItineraryPress?: VoidFunction
@@ -32,6 +33,7 @@ export function OfferVenueBlock({
   title,
   offer,
   distance,
+  isOfferAtSameAddressAsVenue,
 }: Readonly<Props>) {
   const venueBlockVenue = getVenue(offer.venue)
   const venueBlockAddress = getAddress(offer.address)
@@ -59,6 +61,7 @@ export function OfferVenueBlock({
           title={isOfferAddressDifferent ? addressLabel : venueName}
           subtitle={venueAddress}
           venueImageUrl={isOfferAddressDifferent ? '' : venueImageUrl}
+          isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
         />
 
         {onChangeVenuePress ? (

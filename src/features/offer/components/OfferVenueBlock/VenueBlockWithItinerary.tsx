@@ -50,6 +50,7 @@ export const VenueBlockWithItinerary = ({
           subtitle={venueAddress}
           thumbnailSize={thumbnailSize}
           venueImageUrl={venue.bannerUrl ?? undefined}
+          isOfferAtSameAddressAsVenue
         />
       ) : null}
       {shouldDisplayItineraryButton ? (

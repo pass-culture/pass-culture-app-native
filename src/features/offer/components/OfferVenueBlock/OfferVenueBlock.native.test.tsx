@@ -35,31 +35,62 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should display title', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.getByText('Lieu de retrait')).toBeOnTheScreen()
   })
 
   it('should render venue name', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
   })
 
   it('should render address', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.getByText('75008 PARIS 8, 2 RUE LAMENNAIS')).toBeOnTheScreen()
   })
 
   it('should render distance when user chose geolocation', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="105 km" />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+        distance="105 km"
+      />
+    )
 
     expect(screen.getByText('à 105 km')).toBeOnTheScreen()
   })
 
   it("should not render distance when user chose 'France entière'", () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.queryByText('à 105 km')).not.toBeOnTheScreen()
   })
@@ -69,13 +100,25 @@ describe('<OfferVenueBlock />', () => {
       ...offerResponseSnap,
       venue: { ...offerResponseSnap.venue, bannerUrl: undefined },
     }
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerWithNoImageVenue} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerWithNoImageVenue}
+      />
+    )
 
     expect(screen.getByTestId('VenuePreviewPlaceholder')).toBeOnTheScreen()
   })
 
   it('should not render placeholder instead of thumbnail when venue has an image', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.queryByTestId('VenuePreviewPlaceholder')).not.toBeOnTheScreen()
   })
@@ -83,6 +126,7 @@ describe('<OfferVenueBlock />', () => {
   it("should render 'Changer le lieu de retrait' button when onChangeVenuePress is defined", () => {
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onChangeVenuePress={jest.fn()}
@@ -94,7 +138,12 @@ describe('<OfferVenueBlock />', () => {
 
   it("should render 'Changer de cinéma' button when venue is a cinema and onChangeVenuePress is defined", () => {
     render(
-      <OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} onChangeVenuePress={jest.fn()} />
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={cinemaOffer}
+        onChangeVenuePress={jest.fn()}
+      />
     )
 
     expect(screen.getByText('Changer de cinéma')).toBeOnTheScreen()
@@ -104,6 +153,7 @@ describe('<OfferVenueBlock />', () => {
     const onChangeVenuePress = jest.fn()
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onChangeVenuePress={onChangeVenuePress}
@@ -116,25 +166,45 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it("should not render 'Changer le lieu de retrait' button when onChangeVenuePress is undefined", () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
   })
 
   it('should render copy address button', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
   })
 
   it('should not render copy address button when offer is cinema', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} />)
+    render(
+      <OfferVenueBlock isOfferAtSameAddressAsVenue title="Lieu de retrait" offer={cinemaOffer} />
+    )
 
     expect(screen.queryByText('Copier l’adresse')).not.toBeOnTheScreen()
   })
 
   it('should handle copy address button press', async () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     await user.press(screen.getByText('Copier l’adresse'))
 
@@ -144,6 +214,7 @@ describe('<OfferVenueBlock />', () => {
   it('should render see itinerary button', () => {
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeItineraryPress={jest.fn()}
@@ -157,6 +228,7 @@ describe('<OfferVenueBlock />', () => {
     const onSeeItineraryPress = jest.fn()
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeItineraryPress={onSeeItineraryPress}
@@ -169,7 +241,13 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should not render see itinerary button when onSeeItineraryPress is undefined', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
   })
@@ -177,6 +255,7 @@ describe('<OfferVenueBlock />', () => {
   it('should not render see itinerary button when offer is cinema', () => {
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={cinemaOffer}
         onSeeItineraryPress={jest.fn()}
@@ -189,6 +268,7 @@ describe('<OfferVenueBlock />', () => {
   it('should display right icon when venue is permanent', () => {
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeVenuePress={jest.fn()}
@@ -208,6 +288,7 @@ describe('<OfferVenueBlock />', () => {
 
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeVenuePress={jest.fn()}
@@ -221,6 +302,7 @@ describe('<OfferVenueBlock />', () => {
     const onSeeVenuePress = jest.fn()
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeVenuePress={onSeeVenuePress}
@@ -232,8 +314,37 @@ describe('<OfferVenueBlock />', () => {
     expect(onSeeVenuePress).toHaveBeenCalledTimes(1)
   })
 
+  it('should not handle see venue button press when offer is not at same address as venue', async () => {
+    const onSeeVenuePress = jest.fn()
+    mockUseVenueBlock.mockReturnValueOnce({
+      venueName: 'PATHE BEAUGRENELLE',
+      venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+      isOfferAddressDifferent: true,
+      onCopyAddressPress: mockOnCopyAddressPress,
+    })
+
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue={false}
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+        onSeeVenuePress={onSeeVenuePress}
+      />
+    )
+
+    await user.press(screen.getByText(offerResponseSnap.venue.name))
+
+    expect(onSeeVenuePress).not.toHaveBeenCalled()
+  })
+
   it('should not render see venue button when onSeeVenuePress is undefined', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(
+      <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+      />
+    )
 
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
@@ -242,6 +353,7 @@ describe('<OfferVenueBlock />', () => {
     const onSeeItineraryPress = jest.fn()
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeItineraryPress={onSeeItineraryPress}
@@ -263,6 +375,7 @@ describe('<OfferVenueBlock />', () => {
 
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={{
           ...offerResponseSnap,
@@ -285,6 +398,7 @@ describe('<OfferVenueBlock />', () => {
 
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={{
           ...offerResponseSnap,
@@ -307,6 +421,7 @@ describe('<OfferVenueBlock />', () => {
 
     render(
       <OfferVenueBlock
+        isOfferAtSameAddressAsVenue={false}
         title="Lieu de retrait"
         offer={offerResponseSnap}
         onSeeVenuePress={jest.fn()}

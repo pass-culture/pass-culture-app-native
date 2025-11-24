@@ -65,6 +65,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
           venueImageUrl={venueBlockVenue.bannerUrl ?? undefined}
           distance={distance}
           hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
+          isOfferAtSameAddressAsVenue
         />
 
         <React.Fragment>

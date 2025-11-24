@@ -145,7 +145,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     offer.venue.city
   )
 
-  const hasSameAddress = fullAddressOffer === fullAddressVenue
+  const isOfferAtSameAddressAsVenue = fullAddressOffer === fullAddressVenue
 
   const hasVenuePage = offer.venue.isPermanent
 
@@ -180,7 +180,9 @@ export const OfferBody: FunctionComponent<Props> = ({
         <GroupWithSeparator
           showTopComponent={hasVenuePage}
           TopComponent={
-            isCinemaOffer || !hasSameAddress ? null : <OfferVenueButton venue={offer.venue} />
+            isCinemaOffer || !isOfferAtSameAddressAsVenue ? null : (
+              <OfferVenueButton venue={offer.venue} />
+            )
           }
           showBottomComponent={summaryInfoItems.length > 0}
           BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
@@ -216,7 +218,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         />
       ) : null}
 
-      {hasSameAddress ? null : (
+      {isOfferAtSameAddressAsVenue ? null : (
         <ProposedBySection
           name={offer.venue.name}
           imageUrl={offer.venue.bannerUrl}
@@ -226,7 +228,12 @@ export const OfferBody: FunctionComponent<Props> = ({
         />
       )}
 
-      <OfferPlace offer={offer} subcategory={subcategory} distance={distance} />
+      <OfferPlace
+        offer={offer}
+        subcategory={subcategory}
+        distance={distance}
+        isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
+      />
     </Container>
   )
 }
