@@ -29,11 +29,11 @@ export const IdentityCheckDMS = () => {
           <Spacer.Column numberOfSpaces={5} />
           <IdCardWithMagnifyingGlass />
           <Spacer.Column numberOfSpaces={5} />
-          <CenteredTitle title="Créer un dossier sur le site des Démarches Simplifiées" />
+          <CenteredTitle title="Créer un dossier sur le site Démarche Numérique" />
           <Spacer.Column numberOfSpaces={5} />
           <StyledBody>
             La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site
-            des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+            Démarche Numérique afin d’obtenir ton pass Culture.
           </StyledBody>
 
           <ButtonContainer>

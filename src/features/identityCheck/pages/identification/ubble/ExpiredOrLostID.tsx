@@ -19,7 +19,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
       illustration={IdCardError}
       title="Ta pièce d’identité expirée ou perdue"
       buttonPrimary={{
-        wording: 'Aller sur demarches-simplifiees.fr',
+        wording: 'Aller sur demarche.numerique.gouv.fr',
         externalNav: { url: env.DMS_FRENCH_CITIZEN_URL },
       }}>
       <ViewGap gap={6}>
@@ -31,7 +31,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
           Si ta pièce d’identité est expirée, elle sera refusée pour débloquer ton crédit.
         </StyledBody>
         <StyledBody>
-          Tu peux tout de même déposer un dossier en passant par demarches-simplifiees.fr
+          Tu peux tout de même déposer un dossier en passant par demarche.numerique.gouv.fr
         </StyledBody>
       </ViewGap>
     </GenericInfoPage>

@@ -30,7 +30,7 @@ describe('<DMSModal/>', () => {
   it('should call hideModal function when clicking on Close icon', async () => {
     render(<DMSModal visible hideModal={hideModalMock} />)
     const rightIcon = screen.getByTestId(
-      'Fermer la modale pour transmettre un document sur le site Démarches Simplifiée'
+      'Fermer la modale pour transmettre un document sur le site Démarche Numérique'
     )
     await user.press(rightIcon)
 

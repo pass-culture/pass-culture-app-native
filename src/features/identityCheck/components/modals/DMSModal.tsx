@@ -27,12 +27,12 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
   <AppModal
     visible={visible}
     title="Transmettre un document"
-    rightIconAccessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+    rightIconAccessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarche Numérique"
     rightIcon={Close}
     onRightIconPress={hideModal}>
     <StyledBody>
-      Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera
-      plus long&nbsp;!
+      Tu peux aussi compléter ton dossier sur Démarche Numérique. Attention le traitement sera plus
+      long&nbsp;!
     </StyledBody>
     <Spacer.Column numberOfSpaces={8} />
     <ExternalTouchableLink

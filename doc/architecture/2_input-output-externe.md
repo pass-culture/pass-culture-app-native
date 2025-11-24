@@ -10,7 +10,7 @@ flowchart TB
     Ubble["Ubble"]
     Google["Google SSO"]
     Educonnect["EduConnect"]
-    DMS["Démarche Simplifiée"]
+    DMS["Démarche Numérique"]
   end
   subgraph tracking
     Algolia_Analytics["Algolia Analytics : tracking actions"]

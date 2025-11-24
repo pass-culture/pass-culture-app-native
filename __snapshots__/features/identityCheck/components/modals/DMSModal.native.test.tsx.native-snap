@@ -239,7 +239,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+            accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarche Numérique"
             accessibilityRole="button"
             accessibilityState={
               {
@@ -285,7 +285,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+            testID="Fermer la modale pour transmettre un document sur le site Démarche Numérique"
           >
             <View
               height={20}
@@ -336,7 +336,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 }
               }
             >
-              Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long !
+              Tu peux aussi compléter ton dossier sur Démarche Numérique. Attention le traitement sera plus long !
             </Text>
             <View
               numberOfSpaces={8}
