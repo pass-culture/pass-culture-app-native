@@ -1,409 +1,418 @@
+import { createComponentForStaticNavigation } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+import { Artist } from 'features/artist/pages/Artist'
+import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
+import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
+import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
+import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
+import { Login } from 'features/auth/pages/login/Login'
+import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
+import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
+import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
+import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
+import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
+import { SignupForm } from 'features/auth/pages/signup/SignupForm'
+import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
+import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
+import { AccountStatusScreenHandler } from 'features/auth/pages/suspendedAccount/AccountStatusScreenHandler/AccountStatusScreenHandler'
+import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
+import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
+import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
+import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
+import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
+import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
+import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
+import { Favorites } from 'features/favorites/pages/Favorites'
+import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { Home } from 'features/home/pages/Home'
+import { ThematicHome } from 'features/home/pages/ThematicHome'
+import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
+import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { cheatcodesStackNavigatorPathConfig } from 'features/navigation/CheatcodesStackNavigator/cheatcodesStackNavigatorPathConfig'
 import { onboardingStackNavigatorPathConfig } from 'features/navigation/OnboardingStackNavigator/onboardingStackNavigatorPathConfig'
 import { profileStackNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileStackNavigatorPathConfig'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { subscriptionStackNavigatorPathConfig } from 'features/navigation/SubscriptionStackNavigator/subscriptionStackNavigatorPathConfig'
+import { Offer } from 'features/offer/pages/Offer/Offer'
+import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
+import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
+import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
+import { Profile } from 'features/profile/pages/Profile'
+import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
+import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
+import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
+import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { SearchView } from 'features/search/types'
+import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
+import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
+import { AccountSecurityBuffer } from 'features/trustedDevice/pages/AccountSecurityBuffer'
+import { SuspensionChoice } from 'features/trustedDevice/pages/SuspensionChoice'
+import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
+import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
+import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
+import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
+import { Bookings } from 'ui/svg/icons/Bookings'
+import { PageNotFound } from 'ui/svg/icons/PageNotFound'
+import { Venue } from 'ui/svg/icons/Venue'
 
-export const rootStackNavigatorPathConfig = {
-  ...cheatcodesStackNavigatorPathConfig,
-  ...profileStackNavigatorPathConfig,
-  ...onboardingStackNavigatorPathConfig,
-  TabNavigator: {
-    screens: {
-      Home: {
-        path: 'accueil',
-        parse: screenParamsParser['Home'],
+const rootStackNavigatorPathsConfig = {
+  groups: {
+    Account: {
+      screens: {
+        AccountCreated: {
+          screen: AccountCreated,
+          path: 'creation-compte/confirmation',
+          options: { title: 'Compte créé\u00a0!' },
+        },
+        AfterSignupEmailValidationBuffer: {
+          screen: AfterSignupEmailValidationBuffer,
+          path: 'signup-confirmation',
+          parse: screenParamsParser.AfterSignupEmailValidationBuffer,
+          alias: ['creation-compte/validation-email'],
+        },
+        AccountStatusScreenHandler: {
+          screen: AccountStatusScreenHandler,
+          path: 'compte-desactive',
+          options: { title: 'Compte désactivé' },
+        },
+        SuspendedAccountUponUserRequest: {
+          screen: AccountStatusScreenHandler,
+          path: 'compte-suspendu-a-la-demande',
+          options: { title: 'Compte désactivé' },
+        },
+        FraudulentSuspendedAccount: {
+          screen: FraudulentSuspendedAccount,
+          path: 'compte-suspendu-pour-fraude',
+          options: { title: 'Compte suspendu' },
+        },
+        AccountReactivationSuccess: {
+          screen: AccountReactivationSuccess,
+          path: 'compte-reactive',
+          options: { title: 'Compte réactivé' },
+        },
+        AccountSecurityBuffer: {
+          screen: AccountSecurityBuffer,
+          path: 'securisation-compte',
+        },
+        AccountSecurity: {
+          screen: AccountSecurity,
+          path: 'securisation-compte/choix',
+          parse: screenParamsParser['ReinitializePassword'],
+          options: { title: 'Demande de sécurisation de compte' },
+        },
+        MandatoryUpdatePersonalData: {
+          screen: MandatoryUpdatePersonalData,
+          options: { title: 'Confirmation de la validité de tes données personnelles' },
+        },
+        Achievements: {
+          path: 'profil/succes',
+        },
+        OnboardingSubscription: {
+          screen: OnboardingSubscription,
+          path: 'choix-abonnement',
+          options: { title: 'Choix des thèmes à suivre' },
+        },
+        BannedCountryError: {
+          screen: BannedCountryError,
+          path: 'erreur-pays',
+        },
       },
-      _DeeplinkOnlyHome1: {
-        path: 'home',
-        parse: screenParamsParser['Home'],
+    },
+    Authentication: {
+      screens: {
+        ChangeEmailExpiredLink: {
+          screen: ChangeEmailExpiredLink,
+          path: 'lien-modification-email-expire',
+          parse: screenParamsParser['ReinitializePassword'],
+          options: { title: 'Lien de modification de l’email expiré' },
+        },
+        ForgottenPassword: {
+          screen: ForgottenPassword,
+          path: 'mot-de-passe-oublie',
+          parse: screenParamsParser['ReinitializePassword'],
+          options: { title: 'Mot de passe oublié' },
+        },
+        Login: {
+          screen: Login,
+          path: 'connexion',
+          parse: screenParamsParser.Login,
+          options: { title: 'Connexion' },
+        },
+        ReinitializePassword: {
+          screen: ReinitializePassword,
+          path: 'mot-de-passe-perdu',
+          parse: screenParamsParser.ReinitializePassword,
+          options: { title: 'Réinitialiser le mot de passe' },
+        },
+        ResetPasswordEmailSent: {
+          screen: ResetPasswordEmailSent,
+          path: 'email-modification-mot-de-passe-envoye',
+          options: { title: 'Email modification mot de passe envoyé' },
+        },
+        ResetPasswordExpiredLink: {
+          screen: ResetPasswordExpiredLink,
+          path: 'email-modification-mot-de-passe-expire',
+          options: { title: 'Email modification mot de passe expiré' },
+        },
+        SignupForm: {
+          screen: SignupForm,
+          path: 'creation-compte',
+          alias: ['creation-compte/email'],
+          options: { title: 'Création de compte' },
+        },
+        SignupConfirmationEmailSent: {
+          screen: SignupConfirmationEmailSent,
+          path: 'email-confirmation-creation-compte/envoye',
+          options: { title: 'Email création de compte envoyé' },
+        },
+        SignupConfirmationExpiredLink: {
+          screen: SignupConfirmationExpiredLink,
+          path: 'email-confirmation-creation-compte/expire',
+          options: { title: 'Email création de compte expiré' },
+        },
       },
-      Bookings: {
-        path: 'reservations',
+    },
+    Birthday: {
+      screens: {
+        EighteenBirthday: {
+          screen: EighteenBirthday,
+          path: 'anniversaire-18-ans',
+          alias: ['eighteen'],
+          options: { title: 'Anniversaire 18 ans' },
+        },
+        RecreditBirthdayNotification: {
+          screen: RecreditBirthdayNotification,
+          path: 'recharge-credit-anniversaire',
+          alias: ['recredit-birthday'],
+          options: { title: 'Notification rechargement anniversaire' },
+        },
+        VerifyEligibility: {
+          screen: VerifyEligibility,
+          path: 'verification-eligibilite',
+          options: { title: 'Vérification éligibilité' },
+        },
+        NotYetUnderageEligibility: {
+          screen: NotYetUnderageEligibility,
+          path: 'cest-pour-bientot',
+          options: { title: 'C’est pour bientôt' },
+        },
       },
-      _DeeplinkOnlyBookings1: {
-        path: 'bookings',
+    },
+    Booking: {
+      screens: {
+        BookingDetails: {
+          screen: BookingDetails,
+          path: 'reservation/:id/details',
+          parse: screenParamsParser.BookingDetails,
+          alias: ['booking/:id/details'],
+        },
+        BookingConfirmation: {
+          screen: BookingConfirmation,
+          path: 'reservation/:offerId/confirmation',
+          parse: screenParamsParser.BookingConfirmation,
+          alias: ['booking/:offerId/confirmation'],
+          options: { title: 'Confirmation de réservation' },
+        },
       },
-      Favorites: {
-        path: 'favoris',
+    },
+    Misc: {
+      screens: {
+        FavoritesSorts: {
+          screen: FavoritesSorts,
+          path: 'favoris/tri',
+          options: { title: 'Tri des favoris' },
+        },
+        SearchFilter: {
+          screen: SearchFilter,
+          path: 'recherche/filtres',
+          parse: screenParamsParser.SearchFilter,
+          stringify: screenParamsStringifier.SearchFilter,
+          options: { title: 'Filtres de recherche' },
+        },
+        ThematicHome: {
+          screen: ThematicHome,
+          path: 'accueil-thematique',
+          parse: screenParamsParser.ThematicHome,
+          alias: ['thematic-home'],
+          options: { title: 'Page d’accueil thématique' },
+        },
+        Artist: {
+          screen: Artist,
+          path: 'artiste/:id',
+          alias: ['artist/:id'],
+          options: { title: 'Artiste' },
+        },
+        Chronicles: {
+          screen: Chronicles,
+          path: 'avis-du-book-club/:offerId/:chronicleId',
+          parse: screenParamsParser.Chronicles,
+          alias: ['chronicles/:offerId/:chronicleId'],
+          options: { title: 'Avis du book club' },
+        },
       },
-      Profile: {
-        path: 'profil',
+    },
+    Offer: {
+      screens: {
+        Offer: {
+          screen: Offer,
+          path: 'offre/:id',
+          parse: screenParamsParser.Offer,
+          alias: ['offer/:id', 'offre', 'offer'],
+        },
+        OfferPreview: {
+          screen: OfferPreview,
+          path: 'offre/:id/apercu',
+          parse: screenParamsParser.OfferPreview,
+          alias: ['offer/:id/apercu', 'offre/apercu', 'offer/apercu'],
+          options: { title: 'Aperçu de l’offre' },
+        },
+        OfferVideoPreview: {
+          screen: OfferVideoPreview,
+          path: 'offre/:id/video',
+          parse: screenParamsParser.OfferVideoPreview,
+        },
       },
-      SearchStackNavigator: {
-        screens: {
-          SearchLanding: {
-            path: 'recherche/accueil',
-            parse: screenParamsParser[SearchView.Landing],
-            stringify: screenParamsStringifier[SearchView.Landing],
-          },
-          SearchResults: {
-            path: 'recherche/resultats',
-            parse: screenParamsParser[SearchView.Results],
-            stringify: screenParamsStringifier[SearchView.Results],
-          },
-          ThematicSearch: {
-            path: 'recherche/thematique',
-            parse: screenParamsParser[SearchView.Thematic],
-            stringify: screenParamsStringifier[SearchView.Thematic],
-          },
+    },
+    Suspension: {
+      screens: {
+        SuspensionChoice: {
+          screen: SuspensionChoice,
+          path: 'securisation-compte/suspension',
+          options: { title: 'Demande de suspension de compte' },
+        },
+        SuspensionChoiceExpiredLink: {
+          screen: SuspensionChoiceExpiredLink,
+          path: 'securisation-compte/lien-suspension-compte-expire',
+          options: { title: 'Lien de suspension de compte expiré' },
+        },
+        SuspiciousLoginSuspendedAccount: {
+          screen: SuspiciousLoginSuspendedAccount,
+          path: 'securisation-compte/suspension-confirmee',
+          options: { title: 'Confirmation de suspension de compte' },
+        },
+      },
+    },
+    Tools: {
+      screens: {
+        DeeplinksGenerator: {
+          screen: DeeplinksGenerator,
+          path: 'liens/generateur',
+          options: { title: 'Générateur de lien' },
+        },
+        UTMParameters: {
+          screen: UTMParameters,
+          path: 'liens/utm',
+          options: { title: 'Paramètres UTM' },
+        },
+        PageNotFound: {
+          screen: PageNotFound,
+          path: '*',
+          options: { title: 'Page introuvable' },
+        },
+      },
+    },
+    Venue: {
+      screens: {
+        Venue: {
+          screen: Venue,
+          path: 'lieu/:id',
+          parse: screenParamsParser.Venue,
+          alias: ['venue/:id'],
+          options: { title: 'Lieu' },
+        },
+        VenueMap: {
+          screen: VenueMap,
+          path: 'carte-des-lieux',
+          options: { title: 'Carte des lieux' },
+        },
+        VenuePreviewCarousel: {
+          screen: VenuePreviewCarousel,
+          path: 'lieu/:id/apercu',
+          parse: screenParamsParser.VenuePreviewCarousel,
+          alias: ['venue/:id/apercu', 'lieu/apercu', 'venue/apercu'],
+          options: { title: 'Aperçu du lieu' },
         },
       },
     },
   },
-  SubscriptionStackNavigator: {
-    screens: {
-      CulturalSurveyIntro: {
-        path: 'questionnaire-pratiques-initiales/introduction',
+}
+
+export const searchStackNavigatorConfig = {
+  screens: {
+    SearchLanding: {
+      screen: SearchLanding,
+      linking: {
+        path: 'recherche/accueil',
+        parse: screenParamsParser[SearchView.Landing],
+        stringify: screenParamsStringifier[SearchView.Landing],
       },
-      CulturalSurveyQuestions: {
-        path: 'questionnaire-pratiques-initiales/questions',
+    },
+    SearchResults: {
+      screen: SearchResults,
+      linking: {
+        path: 'recherche/resultats',
+        parse: screenParamsParser[SearchView.Results],
+        stringify: screenParamsStringifier[SearchView.Results],
       },
-      CulturalSurveyThanks: {
-        path: 'questionnaire-pratiques-initiales/merci',
-      },
-      FAQWebview: {
-        path: 'questionnaire-pratiques-initiales/foire-aux-questions',
-      },
-      Stepper: {
-        path: 'verification-identite',
-      },
-      DisableActivation: {
-        path: 'creation-compte/desactivation',
-      },
-      SetPhoneNumberWithoutValidation: {
-        path: 'creation-compte/telephone-sans-validation',
-      },
-      SetPhoneNumber: {
-        path: 'creation-compte/telephone',
-      },
-      SetPhoneValidationCode: {
-        path: 'creation-compte/code-de-validation-telephone',
-      },
-      PhoneValidationTooManyAttempts: {
-        path: 'creation-compte/code-de-validation-trop-d-essais',
-      },
-      PhoneValidationTooManySMSSent: {
-        path: 'creation-compte/code-de-validation-trop-de-sms',
-      },
-      SetName: {
-        path: 'creation-profil/nom-prenom',
-      },
-      SetCity: {
-        path: 'creation-profil/ville',
-      },
-      SetAddress: {
-        path: 'creation-profil/adresse',
-      },
-      SetStatus: {
-        path: 'verification-identite/profil/statut',
-      },
-      ActivationProfileRecap: {
-        path: 'verification-identite/profil/recapitulatif',
-      },
-      SetProfileBookingError: {
-        path: 'verification-identite/profil/statut/erreur',
-      },
-      ProfileInformationValidationCreate: {
-        path: 'verification-identite/profil/validation-informations',
-      },
-      UbbleWebview: {
-        path: 'identification/verification-manuelle-piece-identite',
-      },
-      EduConnectForm: {
-        path: 'educonnect-formulaire',
-      },
-      EduConnectValidation: {
-        path: 'educonnect/validation',
-      },
-      IdentityCheckEnd: {
-        path: 'verification-identite/fin',
-      },
-      IdentityCheckUnavailable: {
-        path: 'verification-identite/verification-indisponible',
-      },
-      IdentityCheckPending: {
-        path: 'verification-identite/demande-en-attente',
-      },
-      IdentityCheckDMS: {
-        path: 'verification-identite/demarches-simplifiees',
-      },
-      IdentificationFork: {
-        path: 'identification/fourche',
-      },
-      IdentityCheckHonor: {
-        path: 'confirmation',
-      },
-      BeneficiaryRequestSent: {
-        path: 'demande-beneficiaire-envoyee',
-      },
-      BeneficiaryAccountCreated: {
-        path: 'creation-compte/confirmation-beneficiaire',
-      },
-      EduConnectErrors: {
-        path: 'educonnect/erreur',
-      },
-      DMSIntroduction: {
-        path: 'identification/redirection-demarches-simplifiees',
-      },
-      ExpiredOrLostID: {
-        path: 'identification/document-identite-perdu-ou-expire',
-      },
-      SelectIDOrigin: {
-        path: 'identification/origine-document-identite',
-      },
-      SelectIDStatus: {
-        path: 'identification/statut-document-identite',
-      },
-      SelectPhoneStatus: {
-        path: 'identification/statut-telephone',
-      },
-      ComeBackLater: {
-        path: 'identification/reviens-plus-tard',
-      },
-      BonificationIntroduction: {
-        path: 'bonification/introduction',
-      },
-      BonificationNames: {
-        path: 'bonification/noms',
-      },
-      BonificationTitle: {
-        path: 'bonification/civilite',
-      },
-      BonificationBirthDate: {
-        path: 'bonification/date-de-naissance',
-      },
-      BonificationBirthPlace: {
-        path: 'bonification/lieu-de-naissance',
-      },
-      BonificationRecap: {
-        path: 'bonification/resume',
-      },
-      BonificationError: {
-        path: 'bonification/erreur',
-      },
-      BonificationGranted: {
-        path: 'bonification/accordee',
-      },
-      BonificationRefused: {
-        path: 'bonification/refuse',
+    },
+    ThematicSearch: {
+      screen: ThematicSearch,
+      linking: {
+        path: 'recherche/thematique',
+        parse: screenParamsParser[SearchView.Thematic],
+        stringify: screenParamsStringifier[SearchView.Thematic],
       },
     },
   },
-  AccountSecurityBuffer: {
-    path: 'securisation-compte',
+}
+
+export const SearchStackNavigator = createNativeStackNavigator(searchStackNavigatorConfig)
+export const SearchStackScreen = createComponentForStaticNavigation(SearchStackNavigator, 'Search')
+
+export const tabNavigatorConfig = {
+  screens: {
+    Home: {
+      screen: Home,
+      linking: {
+        path: 'accueil',
+        parse: screenParamsParser.Home,
+        alias: ['home'],
+      },
+    },
+    Bookings: {
+      screen: Bookings,
+      linking: {
+        path: 'reservations',
+        alias: ['bookings'],
+      },
+    },
+    Favorites: {
+      screen: Favorites,
+      linking: {
+        path: 'favoris',
+      },
+    },
+    Profile: {
+      screen: Profile,
+      linking: {
+        path: 'profil',
+      },
+    },
+    SearchStackNavigator,
   },
-  AccountSecurity: {
-    path: 'securisation-compte/choix',
-    parse: screenParamsParser['ReinitializePassword'],
+}
+
+export const rootStackNavigatorPathConfig = {
+  CheatcodesStackNavigator: cheatcodesStackNavigatorPathConfig,
+  ProfileStackNavigator: {
+    screens: profileStackNavigatorPathConfig,
   },
-  SuspensionChoice: {
-    path: 'securisation-compte/suspension',
+  OnboardingStackNavigator: onboardingStackNavigatorPathConfig,
+  SubscriptionStackNavigator: {
+    screens: subscriptionStackNavigatorPathConfig,
   },
-  SuspensionChoiceExpiredLink: {
-    path: 'securisation-compte/lien-suspension-compte-expire',
-  },
-  SuspiciousLoginSuspendedAccount: {
-    path: 'securisation-compte/suspension-confirmee',
-  },
-  Offer: {
-    path: 'offre/:id',
-    parse: screenParamsParser['Offer'],
-  },
-  _DeeplinkOnlyOffer1: {
-    path: 'offer/:id',
-    parse: screenParamsParser['Offer'],
-  },
-  _DeeplinkOnlyOffer2: {
-    path: 'offre',
-    parse: screenParamsParser['Offer'],
-  },
-  _DeeplinkOnlyOffer3: {
-    path: 'offer',
-    parse: screenParamsParser['Offer'],
-  },
-  OfferPreview: {
-    path: 'offre/:id/apercu',
-    parse: screenParamsParser['OfferPreview'],
-  },
-  _DeeplinkOnlyOfferPreview1: {
-    path: 'offer/:id/apercu',
-    parse: screenParamsParser['OfferPreview'],
-  },
-  _DeeplinkOnlyOfferPreview2: {
-    path: 'offre/apercu',
-    parse: screenParamsParser['OfferPreview'],
-  },
-  _DeeplinkOnlyOfferPreview3: {
-    path: 'offer/apercu',
-    parse: screenParamsParser['OfferPreview'],
-  },
-  OfferVideoPreview: {
-    path: 'offre/:id/video',
-    parse: screenParamsParser['OfferVideoPreview'],
-  },
-  BookingDetails: {
-    path: 'reservation/:id/details',
-    parse: screenParamsParser['BookingDetails'],
-  },
-  _DeeplinkOnlyBookingDetails1: {
-    path: 'booking/:id/details',
-    parse: screenParamsParser['BookingDetails'],
-  },
-  BookingConfirmation: {
-    path: 'reservation/:offerId/confirmation',
-    parse: screenParamsParser['BookingConfirmation'],
-  },
-  _DeeplinkOnlyBookingConfirmation1: {
-    path: 'booking/:offerId/confirmation',
-    parse: screenParamsParser['BookingConfirmation'],
-  },
-  EighteenBirthday: {
-    path: 'anniversaire-18-ans',
-  },
-  _DeeplinkOnlyEighteenBirthday1: {
-    path: 'eighteen',
-  },
-  RecreditBirthdayNotification: {
-    path: 'recharge-credit-anniversaire',
-  },
-  _DeeplinkOnlyRecreditBirthdayNotification1: {
-    path: 'recredit-birthday',
-  },
-  PageNotFound: {
-    path: '*',
-  },
-  AccountCreated: {
-    path: 'creation-compte/confirmation',
-  },
-  AfterSignupEmailValidationBuffer: {
-    path: 'signup-confirmation',
-    parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
-  },
-  _DeeplinkOnlyAfterSignupEmailValidationBuffer1: {
-    path: 'creation-compte/validation-email',
-    parse: screenParamsParser['AfterSignupEmailValidationBuffer'],
-  },
-  BannedCountryError: {
-    path: 'erreur-pays',
-  },
-  ChangeEmailExpiredLink: {
-    path: 'lien-modification-email-expire',
-  },
-  FavoritesSorts: {
-    path: 'favoris/tri',
-  },
-  ForgottenPassword: {
-    path: 'mot-de-passe-oublie',
-  },
-  AccountStatusScreenHandler: {
-    path: 'compte-desactive',
-  },
-  SuspendedAccountUponUserRequest: {
-    path: 'compte-suspendu-a-la-demande',
-  },
-  FraudulentSuspendedAccount: {
-    path: 'compte-suspendu-pour-fraude',
-  },
-  AccountReactivationSuccess: {
-    path: 'compte-reactive',
-  },
-  Login: {
-    path: 'connexion',
-    parse: screenParamsParser['Login'],
-  },
-  OnboardingSubscription: {
-    path: 'choix-abonnement',
-  },
-  ReinitializePassword: {
-    path: 'mot-de-passe-perdu',
-    parse: screenParamsParser['ReinitializePassword'],
-  },
-  ResetPasswordEmailSent: {
-    path: 'email-modification-mot-de-passe-envoye',
-  },
-  ResetPasswordExpiredLink: {
-    path: 'email-modification-mot-de-passe-expire',
-  },
-  SignupForm: {
-    path: 'creation-compte',
-  },
-  _DeeplinkOnlySignupForm1: {
-    path: 'creation-compte/email',
-  },
-  SignupConfirmationEmailSent: {
-    path: 'email-confirmation-creation-compte/envoye',
-  },
-  SignupConfirmationExpiredLink: {
-    path: 'email-confirmation-creation-compte/expire',
-  },
-  SearchFilter: {
-    path: 'recherche/filtres',
-    parse: screenParamsParser['SearchFilter'],
-    stringify: screenParamsStringifier['SearchFilter'],
-  },
-  VerifyEligibility: {
-    path: 'verification-eligibilite',
-  },
-  NotYetUnderageEligibility: {
-    path: 'cest-pour-bientot',
-  },
-  Venue: {
-    path: 'lieu/:id',
-    parse: screenParamsParser['Venue'],
-  },
-  _DeeplinkOnlyVenue1: {
-    path: 'venue/:id',
-    parse: screenParamsParser['Venue'],
-  },
-  VenueMap: {
-    path: 'carte-des-lieux',
-  },
-  VenuePreviewCarousel: {
-    path: 'lieu/:id/apercu',
-    parse: screenParamsParser['VenuePreviewCarousel'],
-  },
-  _DeeplinkOnlyVenuePreviewCarousel1: {
-    path: 'venue/:id/apercu',
-    parse: screenParamsParser['VenuePreviewCarousel'],
-  },
-  _DeeplinkOnlyVenuePreviewCarousel2: {
-    path: 'lieu/apercu',
-    parse: screenParamsParser['VenuePreviewCarousel'],
-  },
-  _DeeplinkOnlyVenuePreviewCarousel3: {
-    path: 'venue/apercu',
-    parse: screenParamsParser['VenuePreviewCarousel'],
-  },
-  Artist: {
-    path: 'artiste/:id',
-  },
-  _DeeplinkOnlyArtist1: {
-    path: 'artist/:id',
-  },
-  DeeplinksGenerator: {
-    path: 'liens/generateur',
-  },
-  UTMParameters: {
-    path: 'liens/utm',
-  },
-  ThematicHome: {
-    path: 'accueil-thematique',
-    parse: screenParamsParser['ThematicHome'],
-  },
-  _DeeplinkOnlyThematicHome1: {
-    path: 'thematic-home',
-    parse: screenParamsParser['ThematicHome'],
-  },
-  Achievements: {
-    path: 'profil/succes',
-  },
-  Chronicles: {
-    path: 'avis-du-book-club/:offerId/:chronicleId',
-    parse: screenParamsParser['Chronicles'],
-  },
-  _DeeplinkOnlyChronicles1: {
-    path: 'chronicles/:offerId/:chronicleId',
-    parse: screenParamsParser['Chronicles'],
-  },
+  TabStackNavigator: tabNavigatorConfig,
+  ...rootStackNavigatorPathsConfig,
 }

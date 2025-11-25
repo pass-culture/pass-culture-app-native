@@ -1,5 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createComponentForStaticNavigation } from '@react-navigation/native'
 
-import { TabParamList } from 'features/navigation/TabBar/TabStackNavigatorTypes'
+import { tabNavigatorConfig } from 'features/navigation/RootNavigator/linking/rootStackNavigatorPathConfig'
 
-export const TabStackNavigatorBase = createBottomTabNavigator<TabParamList>()
+export const TabStackNavigator = createBottomTabNavigator(tabNavigatorConfig)
+
+export const TabsScreen = createComponentForStaticNavigation(TabStackNavigator, 'Root')

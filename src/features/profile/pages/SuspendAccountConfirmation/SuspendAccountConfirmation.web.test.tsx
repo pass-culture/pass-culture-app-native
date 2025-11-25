@@ -3,7 +3,7 @@ import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { EmailHistoryEventTypeEnum } from 'api/gen'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import * as useEmailUpdateStatus from 'features/profile/queries/useEmailUpdateStatusQuery'

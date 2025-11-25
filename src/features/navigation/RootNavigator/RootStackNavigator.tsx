@@ -374,6 +374,10 @@ const RootStackNavigator = withWebWrapper(
               }
             />
           )}
+          {/* <RootStackNavigatorBase.Screen
+            name="Achievements"
+            getComponent={() => require('features/achievements/pages/Achievements').default}
+          /> */}
           <RootStackNavigatorBase.Screen name="Achievements">
             {() => <SuspenseAchievements />}
           </RootStackNavigatorBase.Screen>
@@ -389,19 +393,8 @@ const RootStackNavigator = withWebWrapper(
           <RootStackNavigatorBase.Screen
             name="Offer"
             component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer1"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer2"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer3"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+            options={{ title: 'Offre' }}
+          />
           <RootStackNavigatorBase.Screen
             name="OfferVideoPreview"
             component={OfferVideoPreviewWithAsyncErrorBoundry}
@@ -409,7 +402,8 @@ const RootStackNavigator = withWebWrapper(
               title: 'Vidéo de l’offre',
               presentation: isWeb ? 'modal' : 'containedModal',
               ...FILTERS_MODAL_NAV_OPTIONS,
-            }}></RootStackNavigatorBase.Screen>
+            }}
+          />
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )
