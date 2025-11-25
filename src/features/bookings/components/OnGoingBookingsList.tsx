@@ -51,7 +51,6 @@ export const OnGoingBookingsList: FunctionComponent = () => {
 
   const onRefetch = netInfo.isConnected && netInfo.isInternetReachable ? refetch : refetchOffline
   const onGoingBookingsCount = ongoingBookings.length
-  const hasBookings = onGoingBookingsCount > 0
 
   const logBookingsScrolledToBottom = useFunctionOnce(analytics.logBookingsScrolledToBottom)
 
@@ -85,7 +84,6 @@ export const OnGoingBookingsList: FunctionComponent = () => {
       ListHeaderComponent={onGoingBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
       ListEmptyComponent={<NoBookingsView />}
       ItemSeparatorComponent={ItemSeparatorComponent}
-      scrollEnabled={hasBookings}
       onScroll={onScroll}
       scrollEventThrottle={16}
     />
