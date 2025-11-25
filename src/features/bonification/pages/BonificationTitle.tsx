@@ -7,8 +7,8 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'

@@ -8,7 +8,7 @@ import { Search } from 'ui/svg/icons/Search'
 import { TabBarProfile } from 'ui/svg/icons/TabBarProfile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-import { TabRouteName } from './TabStackNavigatorTypes'
+import { TabRouteName } from '../navigators/TabNavigator/types'
 
 type Props = {
   route: TabRouteName

@@ -7,8 +7,8 @@ import { ApiError } from 'api/ApiError'
 import { MaintenancePageType } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { MutationKeys } from 'libs/queryKeys'
 
 export const useIdentificationUrlMutation = () => {

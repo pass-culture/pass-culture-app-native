@@ -2,7 +2,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import { useEffect } from 'react'
 
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabNavigationStateType } from 'features/navigation/TabBar/TabStackNavigatorTypes'
+import { TabNavigationStateType } from 'features/navigation/navigators/TabNavigator/types'
 
 type TabBarProps = Pick<BottomTabBarProps, 'state'>
 

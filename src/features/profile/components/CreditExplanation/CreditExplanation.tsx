@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'

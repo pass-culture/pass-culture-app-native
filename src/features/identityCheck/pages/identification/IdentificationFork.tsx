@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'

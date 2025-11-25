@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Typo } from 'ui/theme'

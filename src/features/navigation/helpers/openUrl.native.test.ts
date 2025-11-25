@@ -4,7 +4,7 @@ import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScre
 import { DeeplinkParts } from 'features/deeplinks/types'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { act } from 'tests/utils'

@@ -1,4 +1,4 @@
-import { TabParamList, TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
+import { TabParamList, TabRouteName } from 'features/navigation/navigators/TabNavigator/types'
 
 export function getTabPropConfig<Screen extends TabRouteName>(
   screen: Screen,

@@ -4,8 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import {

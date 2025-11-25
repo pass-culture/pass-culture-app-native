@@ -3,7 +3,7 @@ import React from 'react'
 import { styled } from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
