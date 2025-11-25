@@ -63,7 +63,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
             error={error}
             value={value}
             setValue={
-              disabled
+              disabled || value == option.label
                 ? () => {
                     return
                   }

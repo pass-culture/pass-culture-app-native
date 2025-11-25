@@ -1,7 +1,7 @@
 import {
   CheatcodesStackParamList,
   CheatcodesStackRouteName,
-} from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
+} from 'features/navigation/CheatcodesStackNavigator/types'
 
 export function getCheatcodesHookConfig<Screen extends CheatcodesStackRouteName>(
   screen: Screen,

@@ -50,7 +50,7 @@ import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { SubscriptionStackNavigatorBase } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackNavigatorBase'
-import { SubscriptionStackRouteName } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { SubscriptionStackRouteName } from 'features/navigation/SubscriptionStackNavigator/types'
 
 type SubscriptionRouteConfig = {
   name: SubscriptionStackRouteName

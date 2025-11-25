@@ -73,28 +73,49 @@ const App: FunctionComponent = function () {
 
   return (
     <GestureHandlerRootView>
+      {/* OK */}
       <ReactQueryClientProvider>
+        {/* OK */}
         <ThemeWrapper>
+          {/* Zustand  ? */}
           <SafeAreaProvider>
+            {/* OK */}
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+              {/* OK */}
               <AnalyticsInitializer>
+                {/* Remove */}
                 {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
                 <NetInfoWrapper>
-                  <FirestoreNetworkObserver />
+                  {/* Zustand  -> SystemStore */}
+                  <FirestoreNetworkObserver /> {/* Zustand  -> SystemStore ? */}
                   <SettingsWrapper>
+                    {/* React Query */}
                     <AuthWrapper>
+                      {/* Refacto à supprimer ? */}
                       <LocationWrapper>
+                        {/* Zustand */}
                         <AccessibilityFiltersWrapper>
+                          {/* Zustand */}
                           <FavoritesWrapper>
+                            {/* ?? Zustand ? */}
                             <SearchAnalyticsWrapper>
+                              {/* Zustand */}
                               <SearchWrapper>
+                                {/* ?? Zustand ? prio faible */}
                                 <SnackBarProvider>
+                                  {/* OK */}
                                   <CulturalSurveyContextProvider>
+                                    {/* Hybride / RQ + Zustand */}
                                     <SubscriptionContextProvider>
+                                      {/* ?? Zustand ? */}
                                       <SplashScreenProvider>
+                                        {/* En cours d'investigation côté découverte */}
                                         <ShareAppWrapper>
+                                          {/* OK until react navigation modal */}
                                           <OfflineModeContainer>
+                                            {/* regarder si on peut pas le déplacer -> container pas context */}
                                             <ScreenErrorProvider>
+                                              {/* à regarder -> passer en hook */}
                                               <AppNavigationContainer />
                                             </ScreenErrorProvider>
                                           </OfflineModeContainer>

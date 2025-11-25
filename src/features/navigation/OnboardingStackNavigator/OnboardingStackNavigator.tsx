@@ -3,7 +3,7 @@ import React from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { OnboardingStackNavigatorBase } from 'features/navigation/OnboardingStackNavigator/OnboardingStackNavigatorBase'
-import { OnboardingStackRouteName } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { OnboardingStackRouteName } from 'features/navigation/OnboardingStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { OnboardingAgeInformation } from 'features/onboarding/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingAgeSelectionFork } from 'features/onboarding/pages/onboarding/OnboardingAgeSelectionFork'

@@ -1,7 +1,7 @@
 import {
   OnboardingStackParamList,
   OnboardingStackRouteName,
-} from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+} from 'features/navigation/OnboardingStackNavigator/types'
 
 export function getOnboardingHookConfig<Screen extends OnboardingStackRouteName>(
   screen: Screen,
