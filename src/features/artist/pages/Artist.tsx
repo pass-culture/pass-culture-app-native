@@ -4,7 +4,7 @@ import { ViewToken } from 'react-native'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { useArtistQuery } from 'features/artist/queries/useArtistQuery'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

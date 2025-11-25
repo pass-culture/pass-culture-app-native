@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { storage } from 'libs/storage'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'

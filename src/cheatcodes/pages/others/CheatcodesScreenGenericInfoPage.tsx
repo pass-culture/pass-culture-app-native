@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'

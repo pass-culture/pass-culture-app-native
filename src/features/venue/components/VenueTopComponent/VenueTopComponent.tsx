@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { VenueResponse } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { VenueTopComponentBase } from 'features/venue/components/VenueTopComponent/VenueTopComponentBase'
 
 type Props = {

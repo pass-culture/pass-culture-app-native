@@ -5,8 +5,11 @@ import styled from 'styled-components/native'
 import { Banner, BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import {
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'

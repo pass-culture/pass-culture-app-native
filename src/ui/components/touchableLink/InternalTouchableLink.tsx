@@ -2,22 +2,18 @@ import { useLinkProps, useNavigation, LinkProps } from '@react-navigation/native
 import React, { FunctionComponent, useCallback } from 'react'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
-function toLinkProps<T extends keyof RootStackParamList>(
+const toLinkProps = <T extends keyof RootStackParamList>(
   screen: T,
   params?: RootStackParamList[T]
-): LinkProps<RootStackParamList, T> {
-  return { screen, params } as LinkProps<RootStackParamList, T>
-}
-
-function toLinkProps<T extends keyof RootStackParamList>(
-  screen: T,
-  params?: RootStackParamList[T]
-): LinkProps<RootStackParamList, T> {
+): LinkProps<RootStackParamList, T> => {
   return { screen, params } as LinkProps<RootStackParamList, T>
 }
 

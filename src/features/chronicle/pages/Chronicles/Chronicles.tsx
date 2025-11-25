@@ -6,7 +6,7 @@ import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
 import { useChroniclesQuery } from 'features/chronicle/queries/useChroniclesQuery'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { analytics } from 'libs/analytics/provider'
 import { useSubcategoriesMapping } from 'libs/subcategories'

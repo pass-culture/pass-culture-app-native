@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'

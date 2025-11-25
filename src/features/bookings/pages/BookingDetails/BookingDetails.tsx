@@ -9,7 +9,7 @@ import { getBookingProperties, getBookingPropertiesV2 } from 'features/bookings/
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { convertBookingResponseDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

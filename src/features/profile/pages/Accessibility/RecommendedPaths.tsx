@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
+import { getProfileHookConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BulletListItem } from 'ui/components/BulletListItem'

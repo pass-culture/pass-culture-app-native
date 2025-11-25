@@ -2,7 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Unlock } from 'ui/svg/icons/Unlock'

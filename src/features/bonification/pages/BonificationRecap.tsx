@@ -11,8 +11,8 @@ import {
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
 import { Summary } from 'features/identityCheck/components/Summary'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

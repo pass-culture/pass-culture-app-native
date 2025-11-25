@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import {
   AccountSecurityStatus,
   useAccountSuspendTokenValidationQuery,

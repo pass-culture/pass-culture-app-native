@@ -11,7 +11,7 @@ import { isBookClubSubcategory } from 'features/chronicle/helpers/isBookClubSubc
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
 import { useChroniclesQuery } from 'features/chronicle/queries/useChroniclesQuery'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'

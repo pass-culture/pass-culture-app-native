@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 
 import { OfferResponseV2 } from 'api/gen'
-import { UseRouteType, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { UseRouteType, StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { Subcategory } from 'libs/subcategories/types'
