@@ -164,7 +164,7 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
   {
     name: 'IdentityCheckDMS',
     component: IdentityCheckDMS,
-    options: { title: 'Démarches-Simplifiées' },
+    options: { title: 'Démarche Numérique' },
   },
   {
     name: 'IdentificationFork',

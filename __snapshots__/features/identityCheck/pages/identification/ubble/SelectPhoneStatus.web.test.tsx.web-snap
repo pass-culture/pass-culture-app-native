@@ -154,7 +154,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
                   dir="ltr"
                 >
-                  Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
+                  Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarche.numerique.gouv.fr mais le traitement sera plus long.
                 </div>
                 <div
                   class="css-view-175oi2r r-height-mabqd8"

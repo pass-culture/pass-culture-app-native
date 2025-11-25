@@ -55,8 +55,11 @@ export const DMSIntroduction = (): React.JSX.Element => {
     <GenericInfoPage
       withGoBack
       illustration={StyledLogoDMS}
-      title="Identifie-toi sur le site demarches-simplifiees.fr"
-      buttonPrimary={{ wording: 'Aller sur demarches-simplifiees.fr', ...toDMSWebsiteButtonProps }}>
+      title="Identifie-toi sur le site demarche.numerique.gouv.fr"
+      buttonPrimary={{
+        wording: 'Aller sur demarche.numerique.gouv.fr',
+        ...toDMSWebsiteButtonProps,
+      }}>
       <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
       <VerticalUl>
         {informationListItem.map((informationItem) => (

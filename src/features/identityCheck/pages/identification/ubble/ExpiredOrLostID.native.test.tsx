@@ -32,10 +32,10 @@ describe('ExpiredOrLostID', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open ants url on press "Aller sur demarches-simplifiees.fr"', async () => {
+  it('should open ants url on press "Aller sur demarche.numerique.gouv.fr"', async () => {
     render(<ExpiredOrLostID />)
 
-    await user.press(screen.getByText('Aller sur demarches-simplifiees.fr'))
+    await user.press(screen.getByText('Aller sur demarche.numerique.gouv.fr'))
 
     expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })

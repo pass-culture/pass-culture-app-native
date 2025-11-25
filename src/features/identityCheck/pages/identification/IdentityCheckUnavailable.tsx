@@ -50,7 +50,7 @@ export function IdentityCheckUnavailable() {
         <StyledBody>Nous reviendrons vers toi dès que le service sera rétabli.</StyledBody>
         {params?.withDMS ? (
           <StyledBody>
-            Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées. Nous
+            Tu peux nous transmettre ton dossier via la plateforme Démarche Numérique. Nous
             reviendrons vers toi d’ici quelques jours.
           </StyledBody>
         ) : null}

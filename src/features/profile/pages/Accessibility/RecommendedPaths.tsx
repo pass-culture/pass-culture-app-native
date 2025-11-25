@@ -50,8 +50,8 @@ export function RecommendedPaths() {
           <ExternalTouchableLink
             as={LinkInsideText}
             typography="BodyAccentXs"
-            wording="Démarches simplifiées"
-            externalNav={{ url: 'https://www.demarches-simplifiees.fr/' }}
+            wording="Démarche Numérique"
+            externalNav={{ url: 'https://demarche.numerique.gouv.fr/' }}
             accessibilityRole={AccessibilityRole.LINK}
           />
         </BulletListItem>
@@ -59,7 +59,7 @@ export function RecommendedPaths() {
       <Spacer.Column numberOfSpaces={5} />
       <Typo.Body>
         Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses
-        identifiants EduConnect ou de passer par la plateforme Démarches simplifiées.
+        identifiants EduConnect ou de passer par la plateforme Démarche Numérique.
         {LINE_BREAK}
         Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère
         de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est

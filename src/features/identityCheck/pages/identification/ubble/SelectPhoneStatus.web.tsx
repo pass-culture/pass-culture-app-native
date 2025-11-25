@@ -41,7 +41,7 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
         Gagne du temps en vérifiant ton identité sur un smartphone&nbsp;! Tu peux aussi passer par
-        le site demarches-simplifiees.fr mais le traitement sera plus long.
+        le site demarche.numerique.gouv.fr mais le traitement sera plus long.
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       <AccessibleUnorderedList

@@ -290,7 +290,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                     }
                   }
                 >
-                  Créer un dossier sur le site des Démarches Simplifiées
+                  Créer un dossier sur le site Démarche Numérique
                 </Text>
               </View>
               <View
@@ -312,7 +312,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   }
                 }
               >
-                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site des Démarches Simplifiées afin d’obtenir ton pass Cutlure.
+                La vérification de ton identité n’a pas pu aboutir. Tu peux créer un dossier sur le site Démarche Numérique afin d’obtenir ton pass Culture.
               </Text>
               <View
                 style={
