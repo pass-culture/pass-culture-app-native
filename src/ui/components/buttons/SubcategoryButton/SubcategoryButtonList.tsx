@@ -2,6 +2,7 @@ import React from 'react'
 import { FlexStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import {
   SubcategoryButton,
   SubcategoryButtonItem,
@@ -13,15 +14,18 @@ type SubcategoryButtonListProps = {
 
 export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   subcategoryButtonContent,
-}) => (
-  <StyledScrollView
-    horizontal={subcategoryButtonContent.length > 2}
-    showsHorizontalScrollIndicator={false}>
-    {subcategoryButtonContent.map((item) => (
-      <SubcategoryButton key={item.label} {...item} />
-    ))}
-  </StyledScrollView>
-)
+}) => {
+  const isLandscape = useIsLandscape()
+  return (
+    <StyledScrollView
+      horizontal={subcategoryButtonContent.length > 2 || isLandscape}
+      showsHorizontalScrollIndicator={false}>
+      {subcategoryButtonContent.map((item) => (
+        <SubcategoryButton key={item.label} {...item} />
+      ))}
+    </StyledScrollView>
+  )
+}
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: theme.isMobileViewport
