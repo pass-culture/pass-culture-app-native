@@ -1,4 +1,4 @@
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { OfferHeaderViewModel, UseOfferHeaderParams } from 'features/offerRefacto/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'

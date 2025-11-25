@@ -2,10 +2,10 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarInnerComponent } from 'features/navigation/TabBar/TabBarInnerComponent'
-import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -15,7 +15,7 @@ interface Props {
   navigateTo: InternalNavigationProps['navigateTo']
   enableNavigate?: boolean
   onPress?: () => void
-  tabName: TabRouteName
+  tabName: TabScreens
 }
 
 const isWeb = Platform.OS === 'web'
@@ -30,7 +30,7 @@ export const TabBarComponent: React.FC<Props> = ({
 }) => {
   const BicolorIcon = mapTabRouteToIcon({ route: tabName })
   const accessibilityLabelSelected = isSelected ? 'actif' : 'inactif'
-  const accessibilityLabel = `${menu[tabName].accessibilityLabel} - ${accessibilityLabelSelected}`
+  const accessibilityLabel = `${menu[tabName].accessibilityLabel ?? ''} - ${accessibilityLabelSelected}`
 
   return (
     <TabComponentContainer

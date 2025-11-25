@@ -19,7 +19,7 @@ import {
 } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { ValidStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { PlaylistType } from 'features/offer/enums'
 import { UserProfile } from 'features/share/types'

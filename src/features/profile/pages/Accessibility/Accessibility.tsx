@@ -4,7 +4,7 @@ import React from 'react'
 import {
   AccessibilityRootStackParamList,
   UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { createAccessibilityRow } from 'features/profile/pages/Accessibility/createAccessibilityRow'
 import { env } from 'libs/environment/env'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'

@@ -292,6 +292,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,
@@ -657,6 +658,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,

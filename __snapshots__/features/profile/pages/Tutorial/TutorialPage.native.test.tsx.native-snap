@@ -243,24 +243,20 @@ exports[`TutorialPage should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <View
+    collapsable={false}
     style={
-      [
-        {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-        {
-          "opacity": 0,
-          "transform": [
-            {
-              "scale": 0.95,
-            },
-          ],
-        },
-        {},
-      ]
+      {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": [
+          {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View

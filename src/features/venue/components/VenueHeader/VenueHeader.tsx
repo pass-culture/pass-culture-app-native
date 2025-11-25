@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { WebShareModal } from 'features/share/pages/WebShareModal'

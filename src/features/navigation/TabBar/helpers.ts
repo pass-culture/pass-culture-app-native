@@ -1,5 +1,6 @@
+import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
+
 import { getTabHookConfig } from './getTabHookConfig'
-import { TabRouteName } from './TabStackNavigatorTypes'
 
 export function getShouldDisplayTab({
   isLoggedIn,
@@ -8,7 +9,7 @@ export function getShouldDisplayTab({
   isLoggedIn: boolean
   isBeneficiary: boolean
 }) {
-  return function (name: TabRouteName): boolean {
+  return function (name: TabScreens): boolean {
     if (name.startsWith('Bookings') && (!isLoggedIn || !isBeneficiary)) {
       return false
     }

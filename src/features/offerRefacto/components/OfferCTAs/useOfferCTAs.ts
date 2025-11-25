@@ -11,7 +11,7 @@ import {
   StepperOrigin,
   UseNavigationType,
   UseRouteType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsProfileIncomplete } from 'features/offer/helpers/getIsProfileIncomplete/getIsProfileIncomplete'

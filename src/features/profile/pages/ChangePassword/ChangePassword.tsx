@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
 import { useChangePasswordMutation } from 'features/auth/queries/useChangePasswordMutation'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/analytics/provider'

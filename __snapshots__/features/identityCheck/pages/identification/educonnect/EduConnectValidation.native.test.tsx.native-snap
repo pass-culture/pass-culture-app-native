@@ -429,6 +429,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,

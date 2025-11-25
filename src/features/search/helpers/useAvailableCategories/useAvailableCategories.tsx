@@ -1,4 +1,4 @@
-import { hasAThematicSearch } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+import { hasAThematicSearch } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { CategoryCriteria } from 'features/search/enums'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'

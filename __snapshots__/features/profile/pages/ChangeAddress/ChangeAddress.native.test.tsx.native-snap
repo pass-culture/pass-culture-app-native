@@ -514,6 +514,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,
@@ -1196,6 +1197,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
         </RCTScrollView>
         <BVLinearGradient
           bottomViewHeight={0}
+          collapsable={false}
           colors={
             [
               16777215,

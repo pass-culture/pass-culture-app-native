@@ -11,7 +11,7 @@ import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels
 import { getTicketVariant } from 'features/bookings/helpers/getTicketVariant'
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { BookingProperties } from 'features/bookings/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { UserProfile } from 'features/share/types'

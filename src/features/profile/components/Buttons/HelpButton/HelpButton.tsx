@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { UserProfile } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { getAge } from 'shared/user/getAge'

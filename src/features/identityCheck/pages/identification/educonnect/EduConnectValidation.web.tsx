@@ -8,7 +8,7 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
 import { EduconnectValidationPage } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 export function EduConnectValidation() {

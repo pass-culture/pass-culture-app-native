@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { CategoryThematicHeader, Color, ThematicHeaderType } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 

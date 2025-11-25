@@ -1,7 +1,7 @@
 import { SubcategoryIdEnum, SubscriptionStatus } from 'api/gen'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { DEFAULT_CTA_WORDING } from 'features/offerRefacto/constants'
 import { CTAContext, CTAType, CTAWordingAndAction } from 'features/offerRefacto/types'

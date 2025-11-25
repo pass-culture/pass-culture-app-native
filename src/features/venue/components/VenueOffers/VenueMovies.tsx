@@ -4,7 +4,7 @@ import { InView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'

@@ -3,7 +3,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
