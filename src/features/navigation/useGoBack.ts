@@ -2,7 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
 import { usePreviousRouteName } from 'features/navigation/helpers/usePreviousRouteName'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 
 /**
  * Go back to the previous route in history,

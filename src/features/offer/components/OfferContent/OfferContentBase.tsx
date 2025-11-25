@@ -26,7 +26,7 @@ import { AdvicesWritersModal } from 'features/advices/pages/AdvicesWritersModal/
 import { AdviceCardData, AdviceVariantInfo } from 'features/advices/types'
 import { PRO_ADVICE_VARIANT_CONFIG } from 'features/clubAdvices/constants'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { AdviceSectionWithAnchor } from 'features/offer/components/OfferContent/AdviceSection/AdviceSectionWithAnchor'
 import { ClubAdviceSection } from 'features/offer/components/OfferContent/ClubAdviceSection/ClubAdviceSection'

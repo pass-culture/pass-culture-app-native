@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

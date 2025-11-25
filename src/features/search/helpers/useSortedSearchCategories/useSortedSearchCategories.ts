@@ -2,7 +2,7 @@ import type { ImageSourcePropType } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
+import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoryLabelParts } from 'features/search/helpers/getCategoryLabelParts/getCategoryLabelParts'

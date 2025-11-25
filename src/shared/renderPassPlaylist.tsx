@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { Offer } from 'shared/offer/types'
