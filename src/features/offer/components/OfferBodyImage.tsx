@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useMemo } from 'react'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
-import FastImage, { OnLoadEvent } from 'react-native-fast-image'
+import FastImage, { OnLoadEvent } from '@d11/react-native-fast-image'
+import React, { FunctionComponent, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferImageContainerDimensions } from 'features/offer/types'

@@ -24,7 +24,7 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/__mocks__/fileMock.ts',
 
     // temporary mock things until implemented
-    'react-native-fast-image': '<rootDir>/__mocks__/fragmentMock.ts',
+    '@d11/react-native-fast-image': '<rootDir>/__mocks__/fragmentMock.ts',
   },
   collectCoverageFrom: ['src/**/*.web.{js,jsx,ts,tsx}', ...excludeCollectCoverageFrom],
   testPathIgnorePatterns: [

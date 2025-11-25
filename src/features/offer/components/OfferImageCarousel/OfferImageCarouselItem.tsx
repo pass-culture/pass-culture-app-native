@@ -1,5 +1,5 @@
+import { OnLoadEvent } from '@d11/react-native-fast-image'
 import React, { PropsWithChildren } from 'react'
-import { OnLoadEvent } from 'react-native-fast-image'
 
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'

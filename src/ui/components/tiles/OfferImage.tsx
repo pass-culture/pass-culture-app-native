@@ -1,7 +1,7 @@
-import React from 'react'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
-import FastImage from 'react-native-fast-image'
+import FastImage from '@d11/react-native-fast-image'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'

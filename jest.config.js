@@ -59,6 +59,7 @@ module.exports = {
         'instantsearch.js',
         '@pass-culture/design-system',
         'search-insights',
+        '@d11/react-native-fast-image',
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],
