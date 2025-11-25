@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchState } from 'features/search/types'
@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
@@ -77,12 +77,16 @@ export const NoSearchResult = ({
   )
 }
 
-const NoSearchResultsWrapper = styled.View({
-  flex: 1,
-  flexDirection: 'row',
-})
+const NoSearchResultsWrapper = styled(ScrollView).attrs({
+  contentContainerStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexGrow: 1,
+  },
+})``
 
 const ContainerNoOffer = styled.View(({ theme }) => ({
+  alignSelf: 'center',
   flexShrink: 0,
   ...(theme.isMobileViewport && {
     marginTop: -(theme.tabBar.height + theme.designSystem.size.spacing.xxxl),
@@ -97,9 +101,7 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
 }))``
 
 const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'center',
+  paddingVertical: getSpacing(30),
   ...(theme.isDesktopViewport ? {} : { marginHorizontal: theme.designSystem.size.spacing.xl }),
 }))
 
