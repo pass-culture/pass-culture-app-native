@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -75,7 +74,7 @@ const VenueRowBaseStyles = {
 
 const VenueRowLinkContainer = styled(InternalTouchableLink)(VenueRowBaseStyles)
 
-const VenueRowViewContainer = styled(View)(VenueRowBaseStyles)
+const VenueRowViewContainer = styled.View(VenueRowBaseStyles)
 
 const StyledTag = styled(Tag)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
