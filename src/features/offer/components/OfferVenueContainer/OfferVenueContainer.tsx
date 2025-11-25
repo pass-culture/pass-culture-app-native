@@ -23,6 +23,7 @@ type Props = {
   offer: OfferResponseV2
   subcategory: Subcategory
   handleOnSeeVenuePress?: VoidFunction
+  isOfferAtSameAddressAsVenue: boolean
   distance?: string | null
 }
 
@@ -31,6 +32,7 @@ export const OfferVenueContainer: FC<Props> = ({
   distance,
   subcategory,
   handleOnSeeVenuePress,
+  isOfferAtSameAddressAsVenue,
 }) => {
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -127,6 +129,7 @@ export const OfferVenueContainer: FC<Props> = ({
           shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
         }
         distance={distance}
+        isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
       />
       {shouldDisplayChangeVenueButton ? (
         <VenueSelectionModal

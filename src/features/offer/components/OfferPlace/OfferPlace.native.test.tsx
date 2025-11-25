@@ -72,6 +72,7 @@ jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => (
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   subcategory: mockSubcategory,
+  isOfferAtSameAddressAsVenue: true,
 }
 
 const DEFAULT_USER_LOCATION = { latitude: 5, longitude: -52 }
@@ -636,7 +637,12 @@ const renderOfferPlace = ({
   render(
     reactQueryProviderHOC(
       <OfferCTAProvider>
-        <OfferPlace offer={offer} subcategory={subcategory} distance={distance} />
+        <OfferPlace
+          offer={offer}
+          subcategory={subcategory}
+          distance={distance}
+          isOfferAtSameAddressAsVenue
+        />
       </OfferCTAProvider>
     ),
     {
