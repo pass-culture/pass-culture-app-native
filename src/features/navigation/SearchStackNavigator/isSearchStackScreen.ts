@@ -1,10 +1,15 @@
-import { rootStackNavigatorPathConfig } from 'features/navigation/RootNavigator/linking/rootStackNavigatorPathConfig'
+import type { ReadonlyDeep } from 'type-fest'
 
-import { SearchStackRouteName } from './SearchStackTypes'
+import { ScreensUsedByMarketing } from 'features/internal/config/deeplinksExportConfig'
+import { ScreenNames } from 'features/navigation/RootNavigator/types'
 
-export function isSearchStackScreen(screen): screen is SearchStackRouteName {
-  const searchStackRouteNames = Object.keys(
-    rootStackNavigatorPathConfig.TabNavigator.screens.SearchStackNavigator.screens
-  )
-  return searchStackRouteNames.includes(screen)
-}
+export const screensSearch = [
+  'SearchLanding',
+  'SearchResults',
+  'ThematicSearch',
+] as const satisfies ReadonlyDeep<ScreenNames>[]
+
+export type SearchScreens = (typeof screensSearch)[number]
+
+export const isSearchStackScreen = (screen: ScreensUsedByMarketing) =>
+  screensSearch.some((_screen) => _screen === screen)

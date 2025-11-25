@@ -12,7 +12,6 @@ import { Platform, StatusBar } from 'react-native'
 import { DefaultTheme as NativeDefaultThemeType, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
-import { linking } from 'features/navigation/RootNavigator/linking/linking'
 import { useSplashScreenContext } from 'libs/splashscreen/splashscreen'
 import { storage } from 'libs/storage'
 import { useColorScheme } from 'libs/styled/useColorScheme'
@@ -83,7 +82,7 @@ export const AppNavigationContainer = () => {
 
   return (
     <NavigationContainer
-      linking={linking}
+      // linking={linking}
       initialState={initialNavigationState}
       onStateChange={handleStateChange}
       fallback={<LoadingPage />}

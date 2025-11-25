@@ -1,4 +1,4 @@
-import { SearchStackRouteName, SearchStackParamList } from './SearchStackTypes'
+import { SearchStackRouteName, SearchStackParamList } from './types'
 
 export function getSearchPropConfig<Screen extends SearchStackRouteName>(
   screen: Screen,

@@ -28,7 +28,7 @@ const emptyAchievement = {
   description: '',
 }
 
-export const Achievements = () => {
+const Achievements = () => {
   const { params } = useRoute<UseRouteType<'Achievements'>>()
   const { user } = useAuthContext()
   const { categories, track } = getAchievements({
@@ -125,3 +125,5 @@ const ProgressBarContainer = styled.View({
   flex: 1,
   maxWidth: getSpacing(20),
 })
+
+export default Achievements

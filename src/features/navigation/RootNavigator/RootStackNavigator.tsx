@@ -1,6 +1,6 @@
 import { Route } from '@react-navigation/native'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense, lazy } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -37,20 +37,15 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
-import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
-import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
-import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { useShowMandatoryUpdatePersonalData } from 'features/navigation/RootNavigator/useShowMandatoryUpdatePersonalData'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
-import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
+import { BottomTabScreen } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
@@ -345,6 +340,21 @@ const rootScreens: RouteConfig[] = [
 const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
 const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
 
+// Lazy load screens and stacks
+const CheatcodesScreen = lazy(
+  () => import('features/navigation/CheatcodesStackNavigator/CheatcodesStackNavigator')
+)
+const OnboardingScreen = lazy(
+  () => import('features/navigation/OnboardingStackNavigator/OnboardingStackNavigator')
+)
+const ProfileScreen = lazy(
+  () => import('features/navigation/ProfileStackNavigator/ProfileStackNavigator.tsx')
+)
+const SubscriptionScreen = lazy(
+  () => import('features/navigation/SubscriptionStackNavigator/SubscriptionStackNavigator.tsx')
+)
+const AchievementsScreen = lazy(() => import('features/achievements/pages/Achievements.tsx'))
+
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     const { top } = useSafeAreaInsets()
@@ -352,20 +362,25 @@ const RootStackNavigator = withWebWrapper(
       <IconFactoryProvider>
         <RootStackNavigatorBase.Navigator
           initialRouteName={initialRouteName}
-          screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-          <RootStackNavigatorBase.Screen name="TabNavigator" component={TabNavigator} />
-          <RootStackNavigatorBase.Screen name="CheatcodesStackNavigator">
-            {() => <SuspenseCheatcodesStackNavigator />}
-          </RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen name="OnboardingStackNavigator">
-            {() => <SuspenseOnboardingStackNavigator />}
-          </RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen name="ProfileStackNavigator">
-            {() => <SuspenseProfileStackNavigator />}
-          </RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen name="SubscriptionStackNavigator">
-            {() => <SuspenseSubscriptionStackNavigator />}
-          </RootStackNavigatorBase.Screen>
+          screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}
+          screenLayout={({ children }) => (
+            <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+          )}>
+          <RootStackNavigatorBase.Screen name="TabNavigator" component={BottomTabScreen} />
+          <RootStackNavigatorBase.Screen
+            name="CheatcodesStackNavigator"
+            component={CheatcodesScreen}
+          />
+          <RootStackNavigatorBase.Screen
+            name="OnboardingStackNavigator"
+            component={OnboardingScreen}
+          />
+          <RootStackNavigatorBase.Screen name="ProfileStackNavigator" component={ProfileScreen} />
+          <RootStackNavigatorBase.Screen
+            name="SubscriptionStackNavigator"
+            component={SubscriptionScreen}
+          />
+          <RootStackNavigatorBase.Screen name="Achievements" component={AchievementsScreen} />
           {isWeb ? null : (
             <RootStackNavigatorBase.Screen
               name="VenueMapFiltersStackNavigator"
@@ -380,10 +395,6 @@ const RootStackNavigator = withWebWrapper(
               }
             />
           )}
-          <RootStackNavigatorBase.Screen name="Achievements">
-            {() => <SuspenseAchievements />}
-          </RootStackNavigatorBase.Screen>
-
           {rootScreens.map(({ name, component, options }) => (
             <RootStackNavigatorBase.Screen
               key={name}
@@ -395,19 +406,8 @@ const RootStackNavigator = withWebWrapper(
           <RootStackNavigatorBase.Screen
             name="Offer"
             component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer1"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer2"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer3"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+            options={{ title: 'Offre' }}
+          />
           <RootStackNavigatorBase.Screen
             name="OfferVideoPreview"
             component={OfferVideoPreviewWithAsyncErrorBoundry}
@@ -415,7 +415,8 @@ const RootStackNavigator = withWebWrapper(
               title: 'Vidéo de l’offre',
               presentation: isWeb ? 'modal' : 'containedModal',
               ...FILTERS_MODAL_NAV_OPTIONS,
-            }}></RootStackNavigatorBase.Screen>
+            }}
+          />
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )

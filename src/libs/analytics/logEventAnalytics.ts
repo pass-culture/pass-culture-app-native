@@ -20,7 +20,7 @@ import {
   StepperOrigin,
   ThematicHomeParams,
 } from 'features/navigation/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'

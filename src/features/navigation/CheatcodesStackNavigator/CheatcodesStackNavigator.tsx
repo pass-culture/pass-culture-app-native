@@ -1,4 +1,8 @@
-import React, { ComponentType } from 'react'
+import {
+  createComponentForStaticNavigation,
+  createPathConfigForStaticNavigation,
+} from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
@@ -43,201 +47,295 @@ import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/Cheatcod
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/others/CheatcodesScreenSecondaryPageWithBlurHeader'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
-import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
-import { CheatcodesStackNavigatorBase } from './CheatcodesStackNavigatorBase'
-
-type GenericRoute<ParamList extends Record<string, unknown>> = {
-  name: keyof ParamList
-  component: ComponentType
+const cheatcodesStackNavigatorPathDefinition = {
+  screenOptions: {
+    headerShown: false,
+  },
+  screens: {
+    /**** MENU ****/
+    CheatcodesMenu: {
+      screen: CheatcodesMenu,
+      linking: {
+        path: 'cheatcodes',
+      },
+    },
+    /**** FEATURES ****/
+    CheatcodesNavigationAchievements: {
+      screen: CheatcodesNavigationAchievements,
+      linking: {
+        path: 'cheatcodes/achievements',
+      },
+    },
+    CheatcodesNavigationBirthdayNotifications: {
+      screen: CheatcodesNavigationBirthdayNotifications,
+      linking: {
+        path: 'cheatcodes/birthday-notifications',
+      },
+    },
+    CheatcodesNavigationBookings: {
+      screen: CheatcodesNavigationBookings,
+      linking: {
+        path: 'cheatcodes/bookings',
+      },
+    },
+    CheatcodesNavigationBookOffer: {
+      screen: CheatcodesNavigationBookOffer,
+      linking: {
+        path: 'cheatcodes/book-offer',
+      },
+    },
+    CheatcodesNavigationBonification: {
+      screen: CheatcodesNavigationBonification,
+      linking: {
+        path: 'cheatcodes/bonification',
+      },
+    },
+    CheatcodesNavigationCulturalSurvey: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationCulturalSurvey),
+      linking: {
+        path: 'cheatcodes/cultural-survey',
+      },
+    },
+    CheatcodesNavigationHome: {
+      screen: CheatcodesNavigationHome,
+      linking: {
+        path: 'cheatcodes/home',
+      },
+    },
+    CheatcodesNavigationIdentityCheck: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationIdentityCheck),
+      linking: {
+        path: 'cheatcodes/identity-check',
+      },
+    },
+    CheatcodesNavigationInternal: {
+      screen: CheatcodesNavigationInternal,
+      linking: {
+        path: 'cheatcodes/internal',
+      },
+    },
+    CheatcodesNavigationNewIdentificationFlow: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationNewIdentificationFlow),
+      linking: {
+        path: 'cheatcodes/identity-check/new-identification-flow',
+      },
+    },
+    CheatcodesNavigationOnboarding: {
+      screen: CheatcodesNavigationOnboarding,
+      linking: {
+        path: 'cheatcodes/onboarding',
+      },
+    },
+    CheatcodesNavigationProfile: {
+      screen: CheatcodesNavigationProfile,
+      linking: {
+        path: 'cheatcodes/profile',
+      },
+    },
+    // CheatcodesNavigationProfileTutorial: {
+    //   linking: {
+    //     path: 'cheatcodes/tutorial/profile-tutorial',
+    //   },
+    //   // screen: CheatcodesNavigationProfileTutorial,
+    // },
+    CheatcodesNavigationShare: {
+      screen: CheatcodesNavigationShare,
+      linking: {
+        path: 'cheatcodes/share',
+      },
+    },
+    CheatcodesNavigationSubscription: {
+      screen: CheatcodesNavigationSubscription,
+      linking: {
+        path: 'cheatcodes/subscription',
+      },
+    },
+    CheatcodesNavigationTrustedDevice: {
+      screen: CheatcodesNavigationTrustedDevice,
+      linking: {
+        path: 'cheatcodes/trusted-device',
+      },
+    },
+    // CheatcodesNavigationTutorial: {
+    //   linking: {
+    //     path: 'cheatcodes/tutorial',
+    //   },
+    //   // screen: CheatcodesNavigationTutorial,
+    // },
+    CheatcodesScreenBookingNotFound: {
+      screen: CheatcodesScreenBookingNotFound,
+      linking: {
+        path: 'cheatcodes/bookings/booking-not-found',
+      },
+    },
+    CheatcodesScreenCategoryThematicHomeHeader: {
+      screen: CheatcodesScreenCategoryThematicHomeHeader,
+      linking: {
+        path: 'cheatcodes/home/category-thematic-home-header',
+      },
+    },
+    CheatcodesScreenDefaultThematicHomeHeader: {
+      screen: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
+      linking: {
+        path: 'cheatcodes/home/default-thematic-home-header',
+      },
+    },
+    CheatcodesScreenHighlightThematicHomeHeader: {
+      screen: CheatcodesScreenHighlightThematicHomeHeader,
+      linking: {
+        path: 'cheatcodes/home/highlight-thematic-home-header',
+      },
+    },
+    CheatcodesScreenMaintenance: {
+      screen: CheatcodesScreenMaintenance,
+      linking: {
+        path: 'cheatcodes/maintenance',
+      },
+    },
+    CheatcodesScreenNotEligibleEduConnect: {
+      screen: CheatcodesScreenNotEligibleEduConnect,
+      linking: {
+        path: 'cheatcodes/identity-check/not-eligible-educonnect',
+      },
+    },
+    CheatcodesScreenTrustedDeviceInfos: {
+      screen: CheatcodesScreenTrustedDeviceInfos,
+      linking: {
+        path: 'cheatcodes/trusted-device/trusted-device-infos',
+      },
+    },
+    CheatcodesScreenRemoteBanners: {
+      screen: CheatcodesScreenRemoteBanners,
+      linking: {
+        path: 'cheatcodes/remote-banners',
+      },
+    },
+    /**** OTHER ****/
+    CheatcodesNavigationErrors: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationErrors),
+      linking: {
+        path: 'cheatcodes/other/errors',
+      },
+    },
+    CheatcodesNavigationForceUpdate: {
+      screen: CheatcodesNavigationForceUpdate,
+      linking: {
+        path: 'cheatcodes/other/force-update',
+      },
+    },
+    CheatcodesNavigationGenericPages: {
+      screen: CheatcodesNavigationGenericPages,
+      linking: {
+        path: 'cheatcodes/other/generic-pages',
+      },
+    },
+    CheatcodesNavigationAccountManagement: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationAccountManagement),
+      linking: {
+        path: 'cheatcodes/other/account-management',
+      },
+    },
+    CheatcodesNavigationNotScreensPages: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationNotScreensPages),
+      linking: {
+        path: 'cheatcodes/other/not-screens-pages',
+      },
+    },
+    CheatcodeScreenLoadingPage: {
+      screen: LoadingPage,
+      linking: {
+        path: 'cheatcodes/other/loading-page',
+      },
+    },
+    CheatcodesNavigationSignUp: {
+      screen: withAsyncErrorBoundary(CheatcodesNavigationSignUp),
+      linking: {
+        path: 'cheatcodes/other/sign-up',
+      },
+    },
+    CheatcodesScreenAccesLibre: {
+      screen: CheatcodesScreenAccesLibre,
+      linking: {
+        path: 'cheatcodes/other/acces-libre',
+      },
+    },
+    CheatcodesScreenDebugInformations: {
+      screen: CheatcodesScreenDebugInformations,
+      linking: {
+        path: 'cheatcodes/other/debug-informations',
+      },
+    },
+    CheatcodesScreenFeatureFlags: {
+      screen: CheatcodesScreenFeatureFlags,
+      linking: {
+        path: 'cheatcodes/other/feature-flags',
+      },
+    },
+    CheatcodesScreenGenericErrorPage: {
+      screen: CheatcodesScreenGenericErrorPage,
+      linking: {
+        path: 'cheatcodes/other/generic-error-page',
+      },
+    },
+    CheatcodesScreenGenericInfoPage: {
+      screen: CheatcodesScreenGenericInfoPage,
+      linking: {
+        path: 'cheatcodes/other/generic-info-page',
+      },
+    },
+    CheatcodesScreenGenericOfficialPage: {
+      screen: CheatcodesScreenGenericOfficialPage,
+      linking: {
+        path: 'cheatcodes/other/generic-official-page',
+      },
+    },
+    CheatcodesScreenLayoutExpiredLink: {
+      screen: CheatcodesScreenLayoutExpiredLink,
+      linking: {
+        path: 'cheatcodes/other/layout-expired-link',
+      },
+    },
+    CheatcodesScreenMandatoryUpdate: {
+      screen: CheatcodesScreenMandatoryUpdate,
+      linking: {
+        path: 'cheatcodes/other/campagne-mise-a-jour-données',
+      },
+    },
+    CheatcodesScreenNewCaledonia: {
+      screen: CheatcodesScreenNewCaledonia,
+      linking: {
+        path: 'cheatcodes/other/new-caledonia',
+      },
+    },
+    CheatcodesScreenPageWithHeader: {
+      screen: CheatcodesScreenPageWithHeader,
+      linking: {
+        path: 'cheatcodes/other/page-with-header',
+      },
+    },
+    CheatcodesScreenRemoteConfig: {
+      screen: CheatcodesScreenRemoteConfig,
+      linking: {
+        path: 'cheatcodes/other/remote-config',
+      },
+    },
+    CheatcodesScreenSecondaryPageWithBlurHeader: {
+      screen: CheatcodesScreenSecondaryPageWithBlurHeader,
+      linking: {
+        path: 'cheatcodes/other/secondary-page-with-blur-header',
+      },
+    },
+  },
 }
 
-type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
-
-const routes: CheatcodesStackRoute[] = [
-  /**** MENU ****/
-  {
-    name: 'CheatcodesMenu',
-    component: CheatcodesMenu,
-  },
-  /**** FEATURES ****/
-  {
-    name: 'CheatcodesNavigationBirthdayNotifications',
-    component: CheatcodesNavigationBirthdayNotifications,
-  },
-  {
-    name: 'CheatcodesNavigationHome',
-    component: CheatcodesNavigationHome,
-  },
-  {
-    name: 'CheatcodesScreenCategoryThematicHomeHeader',
-    component: CheatcodesScreenCategoryThematicHomeHeader,
-  },
-  {
-    name: 'CheatcodesScreenDefaultThematicHomeHeader',
-    component: withAsyncErrorBoundary(CheatcodesScreenDefaultThematicHomeHeader),
-  },
-  {
-    name: 'CheatcodesScreenHighlightThematicHomeHeader',
-    component: CheatcodesScreenHighlightThematicHomeHeader,
-  },
-  {
-    name: 'CheatcodesNavigationProfile',
-    component: CheatcodesNavigationProfile,
-  },
-  {
-    name: 'CheatcodesNavigationAchievements',
-    component: CheatcodesNavigationAchievements,
-  },
-  {
-    name: 'CheatcodesNavigationBonification',
-    component: CheatcodesNavigationBonification,
-  },
-  {
-    name: 'CheatcodesNavigationShare',
-    component: CheatcodesNavigationShare,
-  },
-  {
-    name: 'CheatcodesNavigationSubscription',
-    component: CheatcodesNavigationSubscription,
-  },
-  {
-    name: 'CheatcodesNavigationCulturalSurvey',
-    component: withAsyncErrorBoundary(CheatcodesNavigationCulturalSurvey),
-  },
-  {
-    name: 'CheatcodesNavigationOnboarding',
-    component: CheatcodesNavigationOnboarding,
-  },
-  {
-    name: 'CheatcodesNavigationTrustedDevice',
-    component: CheatcodesNavigationTrustedDevice,
-  },
-  {
-    name: 'CheatcodesNavigationForceUpdate',
-    component: CheatcodesNavigationForceUpdate,
-  },
-  {
-    name: 'CheatcodesScreenTrustedDeviceInfos',
-    component: CheatcodesScreenTrustedDeviceInfos,
-  },
-  {
-    name: 'CheatcodesNavigationIdentityCheck',
-    component: withAsyncErrorBoundary(CheatcodesNavigationIdentityCheck),
-  },
-  {
-    name: 'CheatcodesNavigationNewIdentificationFlow',
-    component: withAsyncErrorBoundary(CheatcodesNavigationNewIdentificationFlow),
-  },
-  {
-    name: 'CheatcodesNavigationInternal',
-    component: CheatcodesNavigationInternal,
-  },
-  {
-    name: 'CheatcodesNavigationBookOffer',
-    component: CheatcodesNavigationBookOffer,
-  },
-  {
-    name: 'CheatcodesNavigationBookings',
-    component: CheatcodesNavigationBookings,
-  },
-  /**** OTHER ****/
-  {
-    name: 'CheatcodesScreenDebugInformations',
-    component: CheatcodesScreenDebugInformations,
-  },
-  {
-    name: 'CheatcodesScreenFeatureFlags',
-    component: CheatcodesScreenFeatureFlags,
-  },
-  {
-    name: 'CheatcodeScreenLoadingPage',
-    component: LoadingPage,
-  },
-  {
-    name: 'CheatcodesScreenNewCaledonia',
-    component: CheatcodesScreenNewCaledonia,
-  },
-  {
-    name: 'CheatcodesScreenRemoteBanners',
-    component: CheatcodesScreenRemoteBanners,
-  },
-  {
-    name: 'CheatcodesScreenMaintenance',
-    component: CheatcodesScreenMaintenance,
-  },
-  {
-    name: 'CheatcodesScreenRemoteConfig',
-    component: CheatcodesScreenRemoteConfig,
-  },
-  {
-    name: 'CheatcodesNavigationErrors',
-    component: withAsyncErrorBoundary(CheatcodesNavigationErrors),
-  },
-  {
-    name: 'CheatcodesNavigationNotScreensPages',
-    component: withAsyncErrorBoundary(CheatcodesNavigationNotScreensPages),
-  },
-  {
-    name: 'CheatcodesScreenLayoutExpiredLink',
-    component: CheatcodesScreenLayoutExpiredLink,
-  },
-  {
-    name: 'CheatcodesScreenAccesLibre',
-    component: CheatcodesScreenAccesLibre,
-  },
-  {
-    name: 'CheatcodesScreenMandatoryUpdate',
-    component: CheatcodesScreenMandatoryUpdate,
-  },
-  {
-    name: 'CheatcodesNavigationSignUp',
-    component: withAsyncErrorBoundary(CheatcodesNavigationSignUp),
-  },
-  {
-    name: 'CheatcodesNavigationAccountManagement',
-    component: withAsyncErrorBoundary(CheatcodesNavigationAccountManagement),
-  },
-  {
-    name: 'CheatcodesNavigationGenericPages',
-    component: CheatcodesNavigationGenericPages,
-  },
-  {
-    name: 'CheatcodesScreenGenericInfoPage',
-    component: CheatcodesScreenGenericInfoPage,
-  },
-  {
-    name: 'CheatcodesScreenSecondaryPageWithBlurHeader',
-    component: CheatcodesScreenSecondaryPageWithBlurHeader,
-  },
-  {
-    name: 'CheatcodesScreenPageWithHeader',
-    component: CheatcodesScreenPageWithHeader,
-  },
-  {
-    name: 'CheatcodesScreenGenericErrorPage',
-    component: CheatcodesScreenGenericErrorPage,
-  },
-  {
-    name: 'CheatcodesScreenGenericOfficialPage',
-    component: CheatcodesScreenGenericOfficialPage,
-  },
-  {
-    name: 'CheatcodesScreenBookingNotFound',
-    component: CheatcodesScreenBookingNotFound,
-  },
-  {
-    name: 'CheatcodesScreenNotEligibleEduConnect',
-    component: CheatcodesScreenNotEligibleEduConnect,
-  },
-]
-
-export const CheatcodesStackNavigator = () => (
-  <CheatcodesStackNavigatorBase.Navigator screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    {routes.map(({ name, component }) => (
-      <CheatcodesStackNavigatorBase.Screen name={name} key={name} component={component} />
-    ))}
-  </CheatcodesStackNavigatorBase.Navigator>
+export const CheatcodesStackNavigator = createNativeStackNavigator(
+  cheatcodesStackNavigatorPathDefinition
 )
+export const cheatcodesStackNavigatorPathConfig =
+  createPathConfigForStaticNavigation(CheatcodesStackNavigator)
+
+const CheatcodesScreen = createComponentForStaticNavigation(CheatcodesStackNavigator, 'Cheatcodes')
+
+export default CheatcodesScreen

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingTimeline } from 'features/onboarding/components/OnboardingTimeline'
 import { TutorialPage } from 'features/profile/pages/Tutorial/TutorialPage'

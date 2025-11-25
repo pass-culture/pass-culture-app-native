@@ -1,20 +1,21 @@
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import React from 'react'
+import {
+  createComponentForStaticNavigation,
+  createPathConfigForStaticNavigation,
+} from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
-import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
+import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { BonificationRefused } from 'features/bonification/pages/BonificationRefused'
-import { BonificationRequiredInformation } from 'features/bonification/pages/BonificationRequiredInformation'
 import { BonificationTitle } from 'features/bonification/pages/BonificationTitle'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
@@ -23,7 +24,6 @@ import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/dms/IdentityCheckDMS'
 import { EduConnectForm } from 'features/identityCheck/pages/identification/educonnect/EduConnectForm'
 import { EduConnectValidation } from 'features/identityCheck/pages/identification/educonnect/EduConnectValidation'
-import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
 import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
@@ -40,7 +40,6 @@ import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phon
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { SetPhoneNumberWithoutValidation } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumberWithoutValidation'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
-import { ActivationProfileRecap } from 'features/identityCheck/pages/profile/ActivationProfileRecap'
 import { ProfileInformationValidationCreate } from 'features/identityCheck/pages/profile/ProfileInformationValidationCreate'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
@@ -48,220 +47,288 @@ import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetProfileBookingError } from 'features/identityCheck/pages/profile/SetProfileBookingError'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
-import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
-import { SubscriptionStackNavigatorBase } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackNavigatorBase'
-import { SubscriptionStackRouteName } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 
-type SubscriptionRouteConfig = {
-  name: SubscriptionStackRouteName
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component: React.ComponentType<any>
-  options?: NativeStackNavigationOptions
+const subscriptionStackNavigatorDefinition = {
+  screenOptions: ROOT_NAVIGATOR_SCREEN_OPTIONS,
+  screens: {
+    CulturalSurveyIntro: {
+      screen: CulturalSurveyIntro,
+      linking: {
+        path: 'questionnaire-pratiques-initiales/introduction',
+      },
+    },
+    CulturalSurveyQuestions: {
+      screen: CulturalSurveyQuestions,
+      linking: {
+        path: 'questionnaire-pratiques-initiales/questions',
+      },
+    },
+    CulturalSurveyThanks: {
+      screen: CulturalSurveyThanks,
+      linking: {
+        path: 'questionnaire-pratiques-initiales/merci',
+      },
+    },
+    FAQWebview: {
+      screen: FAQWebview,
+      linking: {
+        path: 'questionnaire-pratiques-initiales/foire-aux-questions',
+      },
+    },
+    Stepper: {
+      screen: Stepper,
+      linking: {
+        path: 'verification-identite',
+      },
+    },
+    DisableActivation: {
+      screen: DisableActivation,
+      linking: {
+        path: 'creation-compte/desactivation',
+      },
+    },
+    SetPhoneNumberWithoutValidation: {
+      screen: SetPhoneNumberWithoutValidation,
+      linking: {
+        path: 'creation-compte/telephone-sans-validation',
+      },
+    },
+    SetPhoneNumber: {
+      screen: SetPhoneNumber,
+      linking: {
+        path: 'creation-compte/telephone',
+      },
+    },
+    SetPhoneValidationCode: {
+      screen: SetPhoneValidationCode,
+      linking: {
+        path: 'creation-compte/code-de-validation-telephone',
+      },
+    },
+    PhoneValidationTooManyAttempts: {
+      screen: PhoneValidationTooManyAttempts,
+      linking: {
+        path: 'creation-compte/code-de-validation-trop-d-essais',
+      },
+    },
+    PhoneValidationTooManySMSSent: {
+      screen: PhoneValidationTooManySMSSent,
+      linking: {
+        path: 'creation-compte/code-de-validation-trop-de-sms',
+      },
+    },
+    SetName: {
+      screen: SetName,
+      linking: {
+        path: 'creation-profil/nom-prenom',
+      },
+    },
+    SetCity: {
+      screen: SetCity,
+      linking: {
+        path: 'creation-profil/ville',
+      },
+    },
+    SetAddress: {
+      screen: SetAddress,
+      linking: {
+        path: 'creation-profil/adresse',
+      },
+    },
+    SetStatus: {
+      screen: SetStatus,
+      linking: {
+        path: 'verification-identite/profil/statut',
+      },
+    },
+    SetProfileBookingError: {
+      screen: SetProfileBookingError,
+      linking: {
+        path: 'verification-identite/profil/statut/erreur',
+      },
+    },
+    ProfileInformationValidationCreate: {
+      screen: ProfileInformationValidationCreate,
+      linking: {
+        path: 'verification-identite/profil/validation-informations',
+      },
+    },
+    UbbleWebview: {
+      screen: UbbleWebview,
+      linking: {
+        path: 'identification/verification-manuelle-piece-identite',
+      },
+    },
+    EduConnectForm: {
+      screen: EduConnectForm,
+      linking: {
+        path: 'educonnect-formulaire',
+      },
+    },
+    EduConnectValidation: {
+      screen: EduConnectValidation,
+      linking: {
+        path: 'educonnect/validation',
+      },
+    },
+    IdentityCheckEnd: {
+      screen: IdentityCheckEnd,
+      linking: {
+        path: 'verification-identite/fin',
+      },
+    },
+    IdentityCheckUnavailable: {
+      screen: IdentityCheckUnavailable,
+      linking: {
+        path: 'verification-identite/verification-indisponible',
+      },
+    },
+    IdentityCheckPending: {
+      screen: IdentityCheckPending,
+      linking: {
+        path: 'verification-identite/demande-en-attente',
+      },
+    },
+    IdentityCheckDMS: {
+      screen: IdentityCheckDMS,
+      linking: {
+        path: 'verification-identite/demarches-simplifiees',
+      },
+    },
+    IdentificationFork: {
+      screen: IdentificationFork,
+      linking: {
+        path: 'identification/fourche',
+      },
+    },
+    IdentityCheckHonor: {
+      screen: IdentityCheckHonor,
+      linking: {
+        path: 'confirmation',
+      },
+    },
+    BeneficiaryRequestSent: {
+      screen: BeneficiaryRequestSent,
+      linking: {
+        path: 'demande-beneficiaire-envoyee',
+      },
+    },
+    BeneficiaryAccountCreated: {
+      screen: BeneficiaryAccountCreated,
+      linking: {
+        path: 'creation-compte/confirmation-beneficiaire',
+      },
+    },
+    EduConnectErrors: {
+      screen: EduConnectErrors,
+      linking: {
+        path: 'educonnect/erreur',
+      },
+    },
+    DMSIntroduction: {
+      screen: DMSIntroduction,
+      linking: {
+        path: 'identification/redirection-demarches-simplifiees',
+      },
+    },
+    ExpiredOrLostID: {
+      screen: ExpiredOrLostID,
+      linking: {
+        path: 'identification/document-identite-perdu-ou-expire',
+      },
+    },
+    SelectIDOrigin: {
+      screen: SelectIDOrigin,
+      linking: {
+        path: 'identification/origine-document-identite',
+      },
+    },
+    SelectIDStatus: {
+      screen: SelectIDStatus,
+      linking: {
+        path: 'identification/statut-document-identite',
+      },
+    },
+    SelectPhoneStatus: {
+      screen: SelectPhoneStatus,
+      linking: {
+        path: 'identification/statut-telephone',
+      },
+    },
+    ComeBackLater: {
+      screen: ComeBackLater,
+      linking: {
+        path: 'identification/reviens-plus-tard',
+      },
+    },
+    // BonificationIntroduction: {
+    //   screen: BonificationIntroduction,
+    //   linking: {
+    //     path: 'bonification/introduction',
+    //   },
+    // },
+    BonificationNames: {
+      screen: BonificationNames,
+      linking: {
+        path: 'bonification/noms',
+      },
+    },
+    BonificationTitle: {
+      screen: BonificationTitle,
+      linking: {
+        path: 'bonification/civilite',
+      },
+    },
+    BonificationBirthDate: {
+      screen: BonificationBirthDate,
+      linking: {
+        path: 'bonification/date-de-naissance',
+      },
+    },
+    BonificationBirthPlace: {
+      screen: BonificationBirthPlace,
+      linking: {
+        path: 'bonification/lieu-de-naissance',
+      },
+    },
+    BonificationRecap: {
+      screen: BonificationRecap,
+      linking: {
+        path: 'bonification/resume',
+      },
+    },
+    BonificationError: {
+      screen: BonificationError,
+      linking: {
+        path: 'bonification/erreur',
+      },
+    },
+    BonificationGranted: {
+      screen: BonificationGranted,
+      linking: {
+        path: 'bonification/accordee',
+      },
+    },
+    BonificationRefused: {
+      screen: BonificationRefused,
+      linking: {
+        path: 'bonification/refuse',
+      },
+    },
+  },
 }
 
-const subscriptionScreens: SubscriptionRouteConfig[] = [
-  {
-    name: 'Stepper',
-    component: withAuthProtection(Stepper),
-    options: { title: 'Vérification d’identité' },
-  },
-  {
-    name: 'DisableActivation',
-    component: DisableActivation,
-    options: { title: 'Création de compte désactivé' },
-  },
-  {
-    name: 'SetPhoneNumberWithoutValidation',
-    component: withAuthProtection(SetPhoneNumberWithoutValidation),
-    options: { title: 'Ton numéro de téléphone' },
-  },
-  {
-    name: 'SetPhoneNumber',
-    component: withAuthProtection(SetPhoneNumber),
-    options: { title: 'Ton numéro de téléphone' },
-  },
-  {
-    name: 'SetPhoneValidationCode',
-    component: SetPhoneValidationCode,
-    options: { title: 'Validation du numéro de téléphone' },
-  },
-  {
-    name: 'PhoneValidationTooManyAttempts',
-    component: PhoneValidationTooManyAttempts,
-    options: { title: 'Validation téléphone - Trop d’essais' },
-  },
-  {
-    name: 'PhoneValidationTooManySMSSent',
-    component: PhoneValidationTooManySMSSent,
-    options: { title: 'Validation téléphone - Trop de SMS envoyés' },
-  },
-  {
-    name: 'SetName',
-    component: withAuthProtection(SetName),
-    options: { title: 'Ton nom/prénom | Profil' },
-  },
-  {
-    name: 'SetCity',
-    component: withAuthProtection(SetCity),
-    options: { title: 'Ton code postal | Profil' },
-  },
-  {
-    name: 'SetAddress',
-    component: withAuthProtection(SetAddress),
-    options: { title: 'Ton adresse | Profil' },
-  },
-  {
-    name: 'SetStatus',
-    component: withAuthProtection(SetStatus),
-    options: { title: 'Ton statut | Profil' },
-  },
-  {
-    name: 'ActivationProfileRecap',
-    component: withAuthProtection(ActivationProfileRecap),
-    options: { title: 'Recapitulatif | Profil' },
-  },
-  {
-    name: 'SetProfileBookingError',
-    component: withAuthProtection(SetProfileBookingError),
-    options: { title: 'Erreur | Profil' },
-  },
-  {
-    name: 'ProfileInformationValidationCreate',
-    component: withAuthProtection(ProfileInformationValidationCreate),
-    options: { title: 'Validation informations | Profil' },
-  },
-  {
-    name: 'UbbleWebview',
-    component: withAuthProtection(UbbleWebview),
-    options: { title: 'Identification' },
-  },
-  {
-    name: 'EduConnectForm',
-    component: EduConnectForm,
-    options: { title: 'Identification avec EduConnect' },
-  },
-  {
-    name: 'EduConnectValidation',
-    component: withEduConnectErrorBoundary(EduConnectValidation),
-    options: { title: 'Validation de l’identification' },
-  },
-  {
-    name: 'IdentityCheckEnd',
-    component: withAuthProtection(IdentityCheckEnd),
-    options: { title: 'Fin du parcours' },
-  },
-  {
-    name: 'IdentityCheckUnavailable',
-    component: withAuthProtection(IdentityCheckUnavailable),
-    options: { title: 'Victime de notre succès\u00a0!' },
-  },
-  {
-    name: 'IdentityCheckPending',
-    component: IdentityCheckPending,
-    options: { title: 'Demande en attente' },
-  },
-  {
-    name: 'IdentityCheckDMS',
-    component: IdentityCheckDMS,
-    options: { title: 'Démarche Numérique' },
-  },
-  {
-    name: 'IdentificationFork',
-    component: IdentificationFork,
-    options: { title: 'Identification' },
-  },
-  {
-    name: 'IdentityCheckHonor',
-    component: withAuthProtection(IdentityCheckHonor),
-    options: { title: 'Confirmation' },
-  },
-  {
-    name: 'BeneficiaryRequestSent',
-    component: withAuthProtection(BeneficiaryRequestSent),
-    options: { title: 'Demande bénéficiaire envoyée' },
-  },
-  {
-    name: 'BeneficiaryAccountCreated',
-    component: withAuthProtection(BeneficiaryAccountCreated),
-    options: { title: 'Compte bénéficiaire créé\u00a0!' },
-  },
-  {
-    name: 'EduConnectErrors',
-    component: EduConnectErrors,
-    options: { title: 'Erreur' },
-  },
-  { name: 'DMSIntroduction', component: DMSIntroduction },
-  { name: 'ExpiredOrLostID', component: ExpiredOrLostID },
-  { name: 'SelectIDOrigin', component: SelectIDOrigin },
-  { name: 'SelectIDStatus', component: SelectIDStatus },
-  { name: 'SelectPhoneStatus', component: SelectPhoneStatus },
-  { name: 'ComeBackLater', component: ComeBackLater },
-  // CulturalSurvey routes
-  {
-    name: 'CulturalSurveyIntro',
-    component: withAuthProtection(CulturalSurveyIntro),
-    options: { title: 'Prenons 1 minute' },
-  },
-  {
-    name: 'CulturalSurveyQuestions',
-    component: withAuthProtection(CulturalSurveyQuestions),
-  },
-  {
-    name: 'CulturalSurveyThanks',
-    component: withAuthProtection(CulturalSurveyThanks),
-  },
-  { name: 'FAQWebview', component: FAQWebview },
-  // Bonification
-  {
-    name: 'BonificationExplanations',
-    component: withAuthProtection(BonificationExplanations),
-  },
-  {
-    name: 'BonificationRequiredInformation',
-    component: withAuthProtection(BonificationRequiredInformation),
-  },
-  {
-    name: 'BonificationNames',
-    component: withAuthProtection(BonificationNames),
-  },
-  {
-    name: 'BonificationTitle',
-    component: withAuthProtection(BonificationTitle),
-  },
-  {
-    name: 'BonificationBirthDate',
-    component: withAuthProtection(BonificationBirthDate),
-  },
-  {
-    name: 'BonificationBirthPlace',
-    component: withAuthProtection(BonificationBirthPlace),
-  },
-  {
-    name: 'BonificationRecap',
-    component: withAuthProtection(BonificationRecap),
-  },
-  {
-    name: 'BonificationError',
-    component: withAuthProtection(BonificationError),
-  },
-  {
-    name: 'BonificationRefused',
-    component: withAuthProtection(BonificationRefused),
-  },
-]
-
-export const SubscriptionStackNavigator = () => (
-  <SubscriptionStackNavigatorBase.Navigator
-    initialRouteName="Stepper"
-    screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    {subscriptionScreens.map(({ name, component, options }) => (
-      <SubscriptionStackNavigatorBase.Screen
-        key={name}
-        name={name}
-        component={withAsyncErrorBoundary(component)}
-        options={options}
-      />
-    ))}
-  </SubscriptionStackNavigatorBase.Navigator>
+export const SubscriptionStackNavigator = createNativeStackNavigator(
+  subscriptionStackNavigatorDefinition
 )
+export const subscriptionStackNavigatorPathConfig = createPathConfigForStaticNavigation(
+  SubscriptionStackNavigator
+)
+
+const SubscriptionScreen = createComponentForStaticNavigation(
+  SubscriptionStackNavigator,
+  'Subscription'
+)
+
+export default SubscriptionScreen
