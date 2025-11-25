@@ -6,7 +6,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { useModal } from 'ui/components/modals/useModal'

@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
 import { useCheckHasCurrentEmailChangeQuery } from 'features/profile/queries/useCheckHasCurrentEmailChangeQuery'
 import { useModal } from 'ui/components/modals/useModal'

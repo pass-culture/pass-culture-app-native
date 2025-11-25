@@ -12,7 +12,7 @@ import { useGoogleSignupMutation } from 'features/auth/queries/signup/useGoogleS
 import { DEFAULT_STEP_CONFIG, SSO_STEP_CONFIG } from 'features/auth/stepConfig'
 import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'

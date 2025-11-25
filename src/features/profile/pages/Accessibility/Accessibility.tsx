@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import {
   AccessibilityRootStackParamList,
   UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { SectionRow } from 'ui/components/SectionRow'

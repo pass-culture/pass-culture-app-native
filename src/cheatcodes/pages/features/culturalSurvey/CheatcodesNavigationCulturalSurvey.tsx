@@ -5,7 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 const culturalSurveyCheatcodeCategory: CheatcodeCategory = {

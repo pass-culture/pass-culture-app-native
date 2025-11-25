@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { getOnboardingPropConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingPropConfig'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/onboarding/components/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'

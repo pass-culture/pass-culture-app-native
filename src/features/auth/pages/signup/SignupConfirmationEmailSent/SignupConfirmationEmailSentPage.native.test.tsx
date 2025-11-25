@@ -3,7 +3,7 @@ import React from 'react'
 
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'

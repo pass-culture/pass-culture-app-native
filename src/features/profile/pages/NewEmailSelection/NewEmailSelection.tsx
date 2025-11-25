@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelection/schema/newEmailSelectionSchema'
 import { useNewEmailSelectionMutation } from 'features/profile/queries/useNewEmailSelectionMutation'
 import { eventMonitoring } from 'libs/monitoring/services'

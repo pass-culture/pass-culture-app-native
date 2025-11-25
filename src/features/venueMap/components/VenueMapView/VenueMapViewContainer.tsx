@@ -14,7 +14,7 @@ import { LayoutChangeEvent, LayoutRectangle, PixelRatio, ViewToken } from 'react
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'

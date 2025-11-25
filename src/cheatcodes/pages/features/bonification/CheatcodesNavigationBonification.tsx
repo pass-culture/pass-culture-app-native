@@ -6,7 +6,7 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getSubscriptionPropConfig } from 'features/navigation/navigators/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 const bonificationCheatcodeCategory: CheatcodeCategory = {

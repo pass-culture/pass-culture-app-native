@@ -6,7 +6,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useChangeEmailSetPasswordMutation } from 'features/profile/queries/useChangeEmailSetPasswordMutation'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'

@@ -1,4 +1,4 @@
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { getTabPropConfig } from 'features/navigation/TabBar/getTabPropConfig'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'

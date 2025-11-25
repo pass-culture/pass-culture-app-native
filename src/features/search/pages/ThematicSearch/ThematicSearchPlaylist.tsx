@@ -3,7 +3,7 @@ import React, { Ref } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { Offer } from 'shared/offer/types'
 import { useRenderPassPlaylist } from 'shared/renderPassPlaylist'

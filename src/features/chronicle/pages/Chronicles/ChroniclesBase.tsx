@@ -11,7 +11,7 @@ import { ChroniclesHeader } from 'features/chronicle/components/ChroniclesHeader
 import { ChroniclesWebMetaHeader } from 'features/chronicle/components/ChroniclesWebMetaHeader/ChroniclesWebMetaHeader'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { analytics } from 'libs/analytics/provider'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'

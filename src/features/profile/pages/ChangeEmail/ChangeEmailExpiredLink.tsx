@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'

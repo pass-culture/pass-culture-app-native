@@ -1,7 +1,7 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 
 type OfferNavigation = NativeStackNavigationProp<RootStackParamList, 'Offer'>
 

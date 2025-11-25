@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import {
   SNACK_BAR_TIME_OUT,
   SNACK_BAR_TIME_OUT_LONG,

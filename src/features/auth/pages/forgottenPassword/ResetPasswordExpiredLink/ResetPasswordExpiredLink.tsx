@@ -3,7 +3,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
 
 import { useResetPasswordExpiredLinkQuery } from 'features/auth/queries/useResetPasswordExpiredLinkQuery'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'

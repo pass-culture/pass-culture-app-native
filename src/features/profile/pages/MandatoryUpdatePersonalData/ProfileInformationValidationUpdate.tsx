@@ -8,7 +8,7 @@ import { resetProfileStores } from 'features/identityCheck/pages/profile/store/r
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

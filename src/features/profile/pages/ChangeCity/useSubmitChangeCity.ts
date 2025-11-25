@@ -8,7 +8,7 @@ import { addressActions } from 'features/identityCheck/pages/profile/store/addre
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

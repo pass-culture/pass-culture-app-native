@@ -5,7 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
 import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 
 const accountManagementCheatcodeCategory: CheatcodeCategory = {

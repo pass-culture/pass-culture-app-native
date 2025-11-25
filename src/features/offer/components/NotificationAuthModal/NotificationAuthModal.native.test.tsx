@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { NotificationAuthModal } from 'features/offer/components/NotificationAuthModal/NotificationAuthModal'
 import { analytics } from 'libs/analytics/provider'
 import { userEvent, render, screen } from 'tests/utils'
