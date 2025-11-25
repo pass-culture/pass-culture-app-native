@@ -87,7 +87,6 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
       ListHeaderComponent={hasBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
       ListEmptyComponent={<NoBookingsView />}
       ItemSeparatorComponent={ItemSeparatorComponent}
-      scrollEnabled={hasBookings}
       onScroll={onScroll}
       scrollEventThrottle={16}
     />
