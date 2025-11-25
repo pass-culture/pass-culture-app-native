@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useItinerary } from 'libs/itinerary/useItinerary'
+import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
@@ -11,15 +11,14 @@ export function ExternalTouchableLink({
   openInNewWindow = true,
   ...rest
 }: ExternalTouchableLinkProps) {
-  const { navigateTo: navigateToItinerary } = useItinerary()
   const handleNavigation = useCallback(() => {
     const { url, params, address, onSuccess, onError } = externalNav
     if (address) {
-      navigateToItinerary(address)
+      openGoogleMapsItinerary(address)
     } else {
       openUrl(url, params, openInNewWindow).then(onSuccess).catch(onError)
     }
-  }, [externalNav, openInNewWindow, navigateToItinerary])
+  }, [externalNav, openInNewWindow])
   return (
     <TouchableLink
       accessibilityRole={AccessibilityRole.LINK}

@@ -5,22 +5,15 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
-import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { render, screen, waitFor, userEvent } from 'tests/utils'
+import * as OpenItinerary from 'libs/itinerary/openGoogleMapsItinerary'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SocialNetworkIconsMap } from 'ui/components/socials/types'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Typo } from 'ui/theme'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+const openGoogleMapsItinerarySpy = jest.spyOn(OpenItinerary, 'openGoogleMapsItinerary')
 jest.mock('features/navigation/navigationRef')
-
-const mockNavigateToItinerary = jest.fn()
-const mockUseItinerary = () => ({
-  navigateTo: mockNavigateToItinerary,
-})
-jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary: jest.fn(() => mockUseItinerary()),
-}))
 
 const linkText = 'linkText'
 
@@ -57,7 +50,7 @@ describe('<ExternalTouchableLink />', () => {
       render(
         <ExternalTouchableLink
           externalNav={{
-            url: getGoogleMapsItineraryUrl(mockedFullAddress),
+            url: `https://www.google.com/maps/dir/?api=1&destination=${mockedFullAddress}`,
             address: mockedFullAddress,
           }}>
           <ExternalTouchableLinkContent />
@@ -67,7 +60,7 @@ describe('<ExternalTouchableLink />', () => {
       await user.press(screen.getByText(linkText))
 
       await waitFor(() => {
-        expect(mockNavigateToItinerary).toHaveBeenCalledWith(mockedFullAddress)
+        expect(openGoogleMapsItinerarySpy).toHaveBeenCalledWith(mockedFullAddress)
       })
     })
 
