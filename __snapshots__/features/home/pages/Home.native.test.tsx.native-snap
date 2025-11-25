@@ -321,6 +321,7 @@ exports[`Home page should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="Débloque ton crédit Crée ton compte si tu as 17 ou 18 ans !"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
