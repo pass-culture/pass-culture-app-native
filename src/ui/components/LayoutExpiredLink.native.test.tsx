@@ -13,7 +13,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const onResendEmail = jest.fn()
 const isFetching = false
-const url = 'https://passculture.zendesk.com/hc/fr/'
+const url = 'https://aide.passculture.app/hc/fr'
 
 const renderResendEmailButton = {
   wording: 'Renvoyer l’email',
