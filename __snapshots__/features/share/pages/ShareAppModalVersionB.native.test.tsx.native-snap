@@ -7,7 +7,6 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
-  hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[MockFunction]}

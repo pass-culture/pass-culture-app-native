@@ -24,7 +24,11 @@ import { mockServer } from 'tests/mswServer'
 import { screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
-jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
 
 jest.mock('libs/jwt/jwt')
 

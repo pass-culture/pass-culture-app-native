@@ -48,6 +48,7 @@ module.exports = {
       '|instantsearch.js' +
       '|react-native-intersection-observer' +
       '|react-native-reanimated' +
+      '|react-native-worklets' +
       '|@pass-culture/design-system' +
       '|search-insights' +
       '|react-native-gesture-handler' +

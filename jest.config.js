@@ -60,6 +60,7 @@ module.exports = {
         '@pass-culture/design-system',
         'search-insights',
         '@d11/react-native-fast-image',
+        '@gorhom/bottom-sheet',
       ].join('|') +
       ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],

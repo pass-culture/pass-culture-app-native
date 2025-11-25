@@ -3,7 +3,6 @@
 exports[`GeolocationActivationModal should render properly 1`] = `
 <Modal
   animationType="fade"
-  hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
   testID="modal-geoloc-permission-modal"

@@ -3,7 +3,6 @@
 exports[`QuitSignupModal should render correctly 1`] = `
 <Modal
   animationType="fade"
-  hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
   transparent={true}

@@ -38,7 +38,12 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
-jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
+jest.mock('react-native-reanimated', () => {
+  const Reanimated = jest.requireActual('react-native-reanimated/mock')
+  Reanimated.createAnimatedComponent = (Component) => Component
+  return Reanimated
+})
 
 jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
