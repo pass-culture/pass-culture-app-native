@@ -17,6 +17,7 @@ jest.mock('@react-navigation/native', () => ({
   }),
   useFocusEffect: jest.fn(),
   useRoute: () => ({ params: {} }),
+  usePreventRemoveContext: () => ({ setPreventRemove: jest.fn() }),
 }))
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"

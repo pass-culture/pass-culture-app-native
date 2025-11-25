@@ -1,4 +1,9 @@
-import { NavigationAction, useNavigation, useRoute } from '@react-navigation/native'
+import {
+  NavigationAction,
+  useNavigation,
+  usePreventRemoveContext,
+  useRoute,
+} from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -38,7 +43,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const ConsentSettings = () => {
   const { navigate, addListener, dispatch } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
-  const { params } = useRoute<UseRouteType<'ConsentSettings'>>()
+  const { params, key } = useRoute<UseRouteType<'ConsentSettings'>>()
   const offerId = params?.offerId
 
   const scrollViewRef = useRef<ScrollView>(null)
@@ -65,10 +70,22 @@ export const ConsentSettings = () => {
     originalCookieChoicesRef.current = loadedCookieChoices
   }, [loadedCookieChoices])
 
+  const { setPreventRemove } = usePreventRemoveContext()
+
   const hasUnsavedCookieChanges = haveCookieChoicesChanged(
     currentCookieChoices,
     originalCookieChoicesRef.current
   )
+
+  useEffect(() => {
+    // Call setPreventRemove to indicate at React Navigation if navigation blocked or not.
+    setPreventRemove(key, key, hasUnsavedCookieChanges)
+
+    // Clean : remove prevention when component unmount
+    return () => {
+      setPreventRemove(key, key, false)
+    }
+  }, [setPreventRemove, hasUnsavedCookieChanges, key])
 
   useEffect(() => {
     const removeBeforeRemoveListener = addListener('beforeRemove', (event) => {
