@@ -1,6 +1,5 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { rootStackNavigatorPathConfig } from 'features/navigation/RootNavigator/linking/rootStackNavigatorPathConfig'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { RequireField } from 'libs/typesUtils/typeHelpers'

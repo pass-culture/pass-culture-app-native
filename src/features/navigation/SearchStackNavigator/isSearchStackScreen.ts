@@ -4,7 +4,7 @@ import { SearchStackRouteName } from './SearchStackTypes'
 
 export function isSearchStackScreen(screen): screen is SearchStackRouteName {
   const searchStackRouteNames = Object.keys(
-    rootStackNavigatorPathConfig.TabNavigator.screens.SearchStackNavigator.screens
+    rootStackNavigatorPathConfig.TabNavigator.screens.SearchStackNavigator.config.screens
   )
   return searchStackRouteNames.includes(screen)
 }

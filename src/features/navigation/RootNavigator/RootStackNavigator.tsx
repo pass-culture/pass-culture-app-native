@@ -36,7 +36,6 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
-import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -49,7 +48,7 @@ import { useShowMandatoryUpdatePersonalData } from 'features/navigation/RootNavi
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { SuspenseSubscriptionStackNavigator } from 'features/navigation/SubscriptionStackNavigator/SuspenseSubscriptionStackNavigator'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
+import { BottomTabScreen } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
@@ -347,10 +346,10 @@ const RootStackNavigator = withWebWrapper(
         <RootStackNavigatorBase.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-          <RootStackNavigatorBase.Screen name="TabNavigator" component={TabNavigator} />
-          <RootStackNavigatorBase.Screen name="CheatcodesStackNavigator">
+          <RootStackNavigatorBase.Screen name="TabNavigator" component={BottomTabScreen} />
+          {/* <RootStackNavigatorBase.Screen name="CheatcodesStackNavigator">
             {() => <SuspenseCheatcodesStackNavigator />}
-          </RootStackNavigatorBase.Screen>
+          </RootStackNavigatorBase.Screen> */}
           <RootStackNavigatorBase.Screen name="OnboardingStackNavigator">
             {() => <SuspenseOnboardingStackNavigator />}
           </RootStackNavigatorBase.Screen>
@@ -374,6 +373,10 @@ const RootStackNavigator = withWebWrapper(
               }
             />
           )}
+          {/* <RootStackNavigatorBase.Screen
+            name="Achievements"
+            getComponent={() => require('features/achievements/pages/Achievements').default}
+          /> */}
           <RootStackNavigatorBase.Screen name="Achievements">
             {() => <SuspenseAchievements />}
           </RootStackNavigatorBase.Screen>
@@ -389,19 +392,8 @@ const RootStackNavigator = withWebWrapper(
           <RootStackNavigatorBase.Screen
             name="Offer"
             component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer1"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer2"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
-          <RootStackNavigatorBase.Screen
-            name="_DeeplinkOnlyOffer3"
-            component={OfferWithAsyncErrorBoundry}
-            options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
+            options={{ title: 'Offre' }}
+          />
           <RootStackNavigatorBase.Screen
             name="OfferVideoPreview"
             component={OfferVideoPreviewWithAsyncErrorBoundry}
@@ -409,7 +401,8 @@ const RootStackNavigator = withWebWrapper(
               title: 'Vidéo de l’offre',
               presentation: isWeb ? 'modal' : 'containedModal',
               ...FILTERS_MODAL_NAV_OPTIONS,
-            }}></RootStackNavigatorBase.Screen>
+            }}
+          />
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )

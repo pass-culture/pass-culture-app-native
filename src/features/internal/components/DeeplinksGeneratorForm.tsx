@@ -283,14 +283,10 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     const appAndMarketingParams = { ...appParams, ...marketingParams }
 
-    let universalLink = getUniversalLink(
-      selectedScreen,
-      appAndMarketingParams,
-      env.WEBAPP_V2_DOMAIN
-    )
-    if (selectedScreen === 'SearchResults' && appParams.URL) {
-      universalLink = appParams.URL as string
-    }
+    const universalLink =
+      selectedScreen === 'SearchResults' && appParams.URL
+        ? (appParams.URL as string)
+        : getUniversalLink(selectedScreen, appAndMarketingParams, env.WEBAPP_V2_DOMAIN)
 
     onCreate(universalLink)
   }
