@@ -1,12 +1,12 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, ReactNode } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
@@ -21,6 +21,7 @@ import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOff
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -73,6 +74,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   onVideoConsentPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'Offer'>>()
+
+  useEffect(() => {
+    if (params.from === 'deeplink') {
+      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
+    }
+  }, [params])
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
