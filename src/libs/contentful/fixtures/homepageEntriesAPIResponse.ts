@@ -294,7 +294,7 @@ export const homepageEntriesAPIResponse = toMutable({
           firstLine: 'En savoir plus sur le pass Culture',
           secondLine: 'Consulte notre FAQ\u00a0!',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
-          url: 'https://passculture.zendesk.com/hc/fr/',
+          url: 'https://aide.passculture.app/hc/fr',
           targetNotConnectedUsersOnly: true,
         },
       },
@@ -318,7 +318,7 @@ export const homepageEntriesAPIResponse = toMutable({
           // eslint-disable-next-line local-rules/no-currency-symbols
           secondLine: `Si tu as 18 ans, bénéficie de 300\u00a0€.`,
           image: { sys: { type: 'Link', linkType: 'Asset', id: '6kgALLZ7PL6vYubjvE8s0c' } },
-          url: 'https://passculture.zendesk.com/hc/fr/',
+          url: 'https://aide.passculture.app/hc/fr',
           targetNotConnectedUsersOnly: false,
         },
       },
