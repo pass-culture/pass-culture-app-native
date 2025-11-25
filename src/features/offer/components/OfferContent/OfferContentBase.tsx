@@ -386,7 +386,7 @@ const FooterContainer = styled.View(({ theme }) => ({
   left: 0,
   right: 0,
   bottom: 0,
-  zIndex: 2,
+  zIndex: theme.zIndex.button,
 }))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
