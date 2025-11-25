@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'

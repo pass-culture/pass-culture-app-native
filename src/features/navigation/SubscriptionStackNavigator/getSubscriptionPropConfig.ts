@@ -1,7 +1,7 @@
 import {
   SubscriptionStackParamList,
   SubscriptionStackRouteName,
-} from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+} from 'features/navigation/SubscriptionStackNavigator/types'
 
 /**
  * The returned object can be passed to "navigateTo" props of in-house components

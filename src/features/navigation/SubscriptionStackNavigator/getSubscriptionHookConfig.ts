@@ -1,7 +1,7 @@
 import {
   SubscriptionStackParamList,
   SubscriptionStackRouteName,
-} from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+} from 'features/navigation/SubscriptionStackNavigator/types'
 
 /**
  * The returned object can be passed to "navigate" of "replace" of useNavigation (react-navigation/native) and must me spread

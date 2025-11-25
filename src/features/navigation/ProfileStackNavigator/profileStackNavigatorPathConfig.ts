@@ -1,126 +1,46 @@
-export const profileStackNavigatorPathConfig = {
-  ProfileStackNavigator: {
-    screens: {
-      Accessibility: {
-        path: 'accessibilite',
-      },
-      AccessibilityEngagement: {
-        path: 'accessibilite/engagements',
-      },
-      AccessibilityActionPlan: {
-        path: 'accessibilite/plan-d-actions',
-      },
-      AccessibilityDeclarationMobileAndroid: {
-        path: 'accessibilite/declaration-accessibilite-mobile-android',
-      },
-      AccessibilityDeclarationMobileIOS: {
-        path: 'accessibilite/declaration-accessibilite-mobile-ios',
-      },
-      AccessibilityDeclarationWeb: {
-        path: 'accessibilite/declaration-accessibilite-web',
-      },
-      RecommendedPaths: {
-        path: 'accessibilite/parcours-recommandes',
-      },
-      SiteMapScreen: {
-        path: 'accessibilite/plan-du-site',
-      },
-      NotificationsSettings: {
-        path: 'profil/notifications',
-      },
-      DeleteProfileReason: {
-        path: 'profil/suppression/raison',
-      },
-      DeleteProfileContactSupport: {
-        path: 'profil/suppression/support',
-      },
-      DeleteProfileEmailHacked: {
-        path: 'profil/suppression/email-pirate',
-      },
-      DeleteProfileAccountHacked: {
-        path: 'profil/suppression/compte-pirate',
-      },
-      DeleteProfileAccountNotDeletable: {
-        path: 'profil/suppression/information',
-      },
-      DebugScreen: {
-        path: 'profil/debuggage',
-      },
-      ConfirmDeleteProfile: {
-        path: 'profil/suppression',
-      },
-      DeleteProfileConfirmation: {
-        path: 'profile/suppression/confirmation',
-      },
-      DeleteProfileSuccess: {
-        path: 'profile/suppression/succes',
-      },
-      DeactivateProfileSuccess: {
-        path: 'profile/desactivation/succes',
-      },
-      SuspendAccountConfirmationWithoutAuthentication: {
-        path: 'profile/suppression/demande-confirmation',
-      },
-      SuspendAccountConfirmation: {
-        path: 'suspension-compte/confirmation',
-      },
-      ChangeStatus: {
-        path: 'profil/modification-statut',
-      },
-      ChangeCity: {
-        path: 'profil/modification-ville',
-      },
-      ChangeAddress: {
-        path: 'profil/modification-adresse',
-      },
-      ChangeEmail: {
-        path: 'profil/modification-email',
-      },
-      TrackEmailChange: {
-        path: 'profil/suivi-modification-email',
-      },
-      LegalNotices: {
-        path: 'notices-legales',
-      },
-      PersonalData: {
-        path: 'profil/donnees-personnelles',
-      },
-      ValidateEmailChange: {
-        path: 'changement-email/validation',
-      },
-      ChangePassword: {
-        path: 'profil/modification-mot-de-passe',
-      },
-      FeedbackInApp: {
-        path: 'profil/formulaire-suggestion',
-      },
-      DisplayPreference: {
-        path: 'profil/preference-affichage',
-      },
-      ConsentSettings: {
-        path: 'profil/confidentialite',
-      },
-      ConfirmChangeEmail: {
-        path: 'changement-email/confirmation',
-      },
-      ChangeEmailSetPassword: {
-        path: 'profil/creation-mot-de-passe',
-      },
-      NewEmailSelection: {
-        path: 'profil/nouvelle-adresse-email',
-      },
-      ProfileTutorialAgeInformationCredit: {
-        path: 'profil/tutoriel',
-      },
-      MandatoryUpdatePersonalData: {
-        path: 'profil/mise-a-jour-informations-personnelles',
-      },
-      UpdatePersonalDataConfirmation: {
-        path: 'profil/confirmation-mise-a-jour-informations-personnelles',
-      },
-      ProfileInformationValidationUpdate: {
-        path: 'profil/verification-informations-personnelles',
-      },
-    },
-  },
+import { PathConfigMap } from '@react-navigation/native/lib/typescript/src'
+
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/types'
+
+export const profileStackNavigatorPathConfig: PathConfigMap<ProfileStackParamList> = {
+  Accessibility: 'accessibilite',
+  AccessibilityEngagement: 'accessibilite/engagements',
+  AccessibilityActionPlan: 'accessibilite/plan-d-actions',
+  AccessibilityDeclarationMobileAndroid: 'accessibilite/declaration-accessibilite-mobile-android',
+  AccessibilityDeclarationMobileIOS: 'accessibilite/declaration-accessibilite-mobile-ios',
+  AccessibilityDeclarationWeb: 'accessibilite/declaration-accessibilite-web',
+  RecommendedPaths: 'accessibilite/parcours-recommandes',
+  SiteMapScreen: 'accessibilite/plan-du-site',
+  NotificationsSettings: 'profil/notifications',
+  DeleteProfileReason: 'profil/suppression/raison',
+  DeleteProfileContactSupport: 'profil/suppression/support',
+  DeleteProfileEmailHacked: 'profil/suppression/email-pirate',
+  DeleteProfileAccountHacked: 'profil/suppression/compte-pirate',
+  DeleteProfileAccountNotDeletable: 'profil/suppression/information',
+  DebugScreen: 'profil/debuggage',
+  ConfirmDeleteProfile: 'profil/suppression',
+  DeleteProfileConfirmation: 'profile/suppression/confirmation',
+  DeleteProfileSuccess: 'profile/suppression/succes',
+  DeactivateProfileSuccess: 'profile/desactivation/succes',
+  SuspendAccountConfirmationWithoutAuthentication: 'profile/suppression/demande-confirmation',
+  SuspendAccountConfirmation: 'suspension-compte/confirmation',
+  ChangeStatus: 'profil/modification-statut',
+  ChangeCity: 'profil/modification-ville',
+  ChangeAddress: 'profil/modification-adresse',
+  ChangeEmail: 'profil/modification-email',
+  TrackEmailChange: 'profil/suivi-modification-email',
+  LegalNotices: 'notices-legales',
+  PersonalData: 'profil/donnees-personnelles',
+  ValidateEmailChange: 'changement-email/validation',
+  ChangePassword: 'profil/modification-mot-de-passe',
+  FeedbackInApp: 'profil/formulaire-suggestion',
+  DisplayPreference: 'profil/preference-affichage',
+  ConsentSettings: 'profil/confidentialite',
+  ConfirmChangeEmail: 'changement-email/confirmation',
+  ChangeEmailSetPassword: 'profil/creation-mot-de-passe',
+  NewEmailSelection: 'profil/nouvelle-adresse-email',
+  ProfileTutorialAgeInformationCredit: 'profil/tutoriel',
+  MandatoryUpdatePersonalData: 'profil/mise-a-jour-informations-personnelles',
+  UpdatePersonalDataConfirmation: 'profil/confirmation-mise-a-jour-informations-personnelles',
+  ProfileInformationValidationUpdate: 'profil/verification-informations-personnelles',
 }

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { ProfileStackNavigatorBase } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigatorBase'
-import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
+import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/types'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'

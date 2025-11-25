@@ -43,7 +43,7 @@ import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/Cheatcod
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/others/CheatcodesScreenSecondaryPageWithBlurHeader'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 

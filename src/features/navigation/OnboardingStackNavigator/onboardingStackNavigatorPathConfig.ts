@@ -1,24 +1,12 @@
-export const onboardingStackNavigatorPathConfig = {
-  OnboardingStackNavigator: {
-    screens: {
-      OnboardingAgeSelectionFork: {
-        path: 'selection-age/generique',
-      },
-      OnboardingAgeInformation: {
-        path: 'selection-age/information',
-      },
-      OnboardingGeolocation: {
-        path: 'geolocalisation',
-      },
-      OnboardingGeneralPublicWelcome: {
-        path: 'bienvenue-grand-public',
-      },
-      OnboardingNotEligible: {
-        path: 'non-eligible',
-      },
-      OnboardingWelcome: {
-        path: 'bienvenue',
-      },
-    },
-  },
+import { PathConfigMap } from '@react-navigation/native/lib/typescript/src'
+
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/types'
+
+export const onboardingStackNavigatorPathConfig: PathConfigMap<OnboardingStackParamList> = {
+  OnboardingAgeSelectionFork: 'selection-age/generique',
+  OnboardingAgeInformation: 'selection-age/information',
+  OnboardingGeolocation: 'geolocalisation',
+  OnboardingGeneralPublicWelcome: 'bienvenue-grand-public',
+  OnboardingNotEligible: 'non-eligible',
+  OnboardingWelcome: 'bienvenue',
 }
