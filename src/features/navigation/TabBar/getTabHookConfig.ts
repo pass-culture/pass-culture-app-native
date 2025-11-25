@@ -1,8 +1,11 @@
-import { TabRouteName, TabParamList } from './TabStackNavigatorTypes'
+import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 
-export function getTabHookConfig<Screen extends TabRouteName>(
+import { TabParamList } from '../navigators/TabNavigator/types'
+
+export const getTabHookConfig = <Screen extends TabScreens>(
   screen: Screen,
   params?: TabParamList[Screen]
-): ['TabNavigator', { screen: Screen; params: TabParamList[Screen] }] {
-  return ['TabNavigator', { screen, params }]
-}
+): ['TabNavigator', { screen: Screen; params: TabParamList[Screen] }] => [
+  'TabNavigator',
+  { screen, params },
+]

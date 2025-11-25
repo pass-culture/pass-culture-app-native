@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'

@@ -1,7 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
+import {
+  RootNavigateParams,
+  RootStackParamList,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'

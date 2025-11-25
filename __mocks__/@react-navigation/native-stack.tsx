@@ -1,3 +1,6 @@
+export const { createComponentForStaticNavigation } = jest.requireActual(
+  '@react-navigation/native-stack'
+)
 import React, { PropsWithChildren } from 'react'
 import { View } from 'react-native'
 

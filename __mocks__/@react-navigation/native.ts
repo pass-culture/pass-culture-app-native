@@ -1,6 +1,10 @@
-export const { getStateFromPath, getPathFromState, CommonActions } = jest.requireActual(
-  '@react-navigation/native'
-)
+export const {
+  getStateFromPath,
+  getPathFromState,
+  CommonActions,
+  createComponentForStaticNavigation,
+  createPathConfigForStaticNavigation,
+} = jest.requireActual('@react-navigation/native')
 import { useEffect } from 'react'
 
 export const addListener = jest.fn()

@@ -1,10 +1,10 @@
-import { isRootStackScreen } from 'features/navigation/RootNavigator/isRootStackScreen'
-import { linking } from 'features/navigation/RootNavigator/linking/linking'
-import { NavigationResultState } from 'features/navigation/RootNavigator/types'
+import { isRootStackScreen } from 'features/navigation/navigators/RootNavigator/isRootStackScreen'
+import { linking } from 'features/navigation/navigators/RootNavigator/linking/linking'
+import { NavigationResultState } from 'features/navigation/navigators/RootNavigator/types'
 
 import { DeeplinkParts } from '../types'
 
-export function getScreenFromDeeplink(url: string): DeeplinkParts {
+export const getScreenFromDeeplink = (url: string): DeeplinkParts => {
   let pathWithQueryString = url
   for (const prefix of linking.prefixes) {
     pathWithQueryString = pathWithQueryString.replace(prefix, '')
@@ -26,7 +26,7 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
   return { screen, params }
 }
 
-function getLastRouteFromState(navigationState: NavigationResultState) {
+const getLastRouteFromState = (navigationState: NavigationResultState) => {
   const routes = navigationState?.routes
   if (!routes || routes.length === 0) {
     throw new Error('Unknown route')

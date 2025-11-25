@@ -6,7 +6,10 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptchaError } from 'libs/recaptcha/errors'

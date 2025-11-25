@@ -1,19 +1,26 @@
-import { api } from 'api/api'
-import { AllNavParamList, ScreenNames } from 'features/navigation/RootNavigator/types'
+import type { ReadonlyDeep } from 'type-fest'
 
-export type ScreensUsedByMarketing = Extract<
-  ScreenNames,
-  | 'Offer'
-  | 'Venue'
-  | 'VenueMap'
-  | 'Home'
-  | 'SearchResults'
-  | 'Profile'
-  | 'SignupForm'
-  | 'ThematicHome'
-  | 'Stepper'
-  | 'ThematicSearch'
->
+import { api } from 'api/api'
+import { AllNavParamList, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
+
+const screensUsedByMarketing = [
+  'Offer',
+  'Venue',
+  'VenueMap',
+  'Home',
+  'SearchResults',
+  'SearchLanding',
+  'Profile',
+  'SignupForm',
+  'ThematicHome',
+  'Stepper',
+  'ThematicSearch',
+  'Bookings',
+  'SearchStackNavigator',
+  'Favorites',
+] as const satisfies ReadonlyDeep<ScreenNames[]>
+
+export type ScreensUsedByMarketing = (typeof screensUsedByMarketing)[number]
 
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
 
@@ -140,6 +147,10 @@ export const SCREENS_CONFIG: {
   Profile: {},
   SignupForm: {},
   Stepper: {},
+  Bookings: {},
+  SearchStackNavigator: {},
+  Favorites: {},
+  SearchLanding: {},
 }
 
 type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content' | 'utm_gen'

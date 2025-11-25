@@ -12,7 +12,7 @@ import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteO
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics/provider'

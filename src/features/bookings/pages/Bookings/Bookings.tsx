@@ -12,7 +12,7 @@ import {
 import { convertBookingsResponseV2 } from 'features/bookings/helpers/v2/convertBookingsResponseV2'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { convertBookingsListResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -39,7 +39,7 @@ const checkBookingPage = async () => {
 
 export const Bookings = () => {
   useEffect(() => {
-    checkBookingPage()
+    void checkBookingPage()
   }, [])
 
   const { params } = useRoute<UseRouteType<'Bookings'>>()
@@ -99,7 +99,7 @@ export const Bookings = () => {
     useCallback(() => {
       return () => {
         if (previousTab === BookingsTab.COMPLETED) {
-          updateReactions()
+          void updateReactions()
         }
         if (previousTab !== activeTab) {
           setPreviousTab(activeTab)
@@ -131,7 +131,7 @@ export const Bookings = () => {
           },
         ]}
         onTabChange={(key) => {
-          if (activeTab === BookingsTab.COMPLETED) updateReactions()
+          if (activeTab === BookingsTab.COMPLETED) void updateReactions()
           setActiveTab(key)
         }}
       />

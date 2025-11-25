@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { FunctionComponent } from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { formatToReadableFrenchDate } from 'libs/dates'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'

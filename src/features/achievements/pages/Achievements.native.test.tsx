@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { mockCompletedAchievements } from 'features/achievements/data/AchievementData'
+import Achievements from 'features/achievements/pages/Achievements'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
-
-import { Achievements } from './Achievements'
 
 jest.mock('features/auth/context/AuthContext')
 

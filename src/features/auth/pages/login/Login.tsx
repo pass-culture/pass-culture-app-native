@@ -14,7 +14,7 @@ import {
   StepperOrigin,
   UseNavigationType,
   UseRouteType,
-} from 'features/navigation/RootNavigator/types'
+} from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

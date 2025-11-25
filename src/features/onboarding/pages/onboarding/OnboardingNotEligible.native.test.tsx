@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingNotEligible } from 'features/onboarding/pages/onboarding/OnboardingNotEligible'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
