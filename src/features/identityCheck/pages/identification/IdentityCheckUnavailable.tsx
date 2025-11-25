@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { DMSModal } from 'features/identityCheck/components/modals/DMSModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'

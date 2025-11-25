@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
+import { VenueMapFiltersModalStackParamList } from 'features/navigation/navigators/VenueMapFiltersStackNavigator/types'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { filterGroups } from 'features/venueMap/constant'
 import { getFilterDescription } from 'features/venueMap/helpers/getFilterDescription/getFilterDescription'

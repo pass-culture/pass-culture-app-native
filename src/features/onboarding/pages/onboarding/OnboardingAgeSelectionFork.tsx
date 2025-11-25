@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getOnboardingPropConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingPropConfig'
+import { getOnboardingPropConfig } from 'features/navigation/navigators/OnboardingStackNavigator/getOnboardingPropConfig'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { NonEligible } from 'features/onboarding/enums'
 import { EligibleAges } from 'features/onboarding/types'

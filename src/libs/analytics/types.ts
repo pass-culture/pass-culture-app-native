@@ -1,4 +1,4 @@
-import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'

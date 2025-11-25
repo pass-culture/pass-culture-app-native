@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
-import { getOnboardingHookConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingHookConfig'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getOnboardingHookConfig } from 'features/navigation/navigators/OnboardingStackNavigator/getOnboardingHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location/location'
 import Geolocation from 'ui/animations/geolocalisation.json'

@@ -4,7 +4,7 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'

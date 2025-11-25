@@ -7,7 +7,7 @@ import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
+import { PersonalDataTypes } from 'features/navigation/navigators/ProfileStackNavigator/enums'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'

@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
-import { RootStackNavigatorBase } from 'features/navigation/RootNavigator/Stack'
+import { RootStackNavigatorBase } from 'features/navigation/navigators/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

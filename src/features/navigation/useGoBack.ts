@@ -1,7 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 
 /**
  * Go back to the previous route in history,
@@ -9,15 +13,15 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
  *
  * @param ...navigateParams - Same parameters as navigate(...) function.
  */
-export function useGoBack<RouteName extends keyof RootStackParamList>(
+export const useGoBack = <RouteName extends keyof RootStackParamList>(
   ..._navigateParams: undefined extends RootStackParamList[RouteName]
     ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
     : [RouteName] | [RouteName, RootStackParamList[RouteName]]
-) {
+) => {
   const { canGoBack, goBack, popTo } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
 
-  function customGoBack() {
+  const customGoBack = () => {
     const can = canGoBack()
     if (typeof previousRoute?.name !== 'undefined' && can) {
       goBack()
@@ -27,11 +31,11 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
       // TypeScript cannot verify that our union type matches navigate's overloaded signature
       // but the types are structurally correct - we're using the same conditional type pattern
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      popTo(navigateParams[0] as any, navigateParams[1])
+      popTo(_navigateParams[0] as any, _navigateParams[1])
     }
   }
 
-  function customCanGoBack(): boolean {
+  const customCanGoBack = (): boolean => {
     if (Platform.OS !== 'web') {
       return canGoBack()
     }
@@ -42,5 +46,5 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
     return can
   }
 
-  return { goBack, canGoBack: customCanGoBack }
+  return { goBack: customGoBack, canGoBack: customCanGoBack }
 }

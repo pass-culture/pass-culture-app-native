@@ -1,7 +1,17 @@
-import { rootStackNavigatorPathConfig } from 'features/navigation/RootNavigator/linking/rootStackNavigatorPathConfig'
-import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
+import type { ReadonlyDeep } from 'type-fest'
 
-export function isTabNavigatorScreen(screen): screen is TabRouteName {
-  const tabRouteNames = Object.keys(rootStackNavigatorPathConfig.TabNavigator.screens)
-  return tabRouteNames.includes(screen)
-}
+import { ScreensUsedByMarketing } from 'features/internal/config/deeplinksExportConfig'
+import { ScreenNames } from 'features/navigation/navigators/RootNavigator/types'
+
+const screenTab = [
+  'Home',
+  'Profile',
+  'Favorites',
+  'Bookings',
+  'SearchStackNavigator',
+] as const satisfies ReadonlyDeep<ScreenNames[]>
+
+export type TabScreens = (typeof screenTab)[number]
+
+export const isTabNavigatorScreen = (screen: ScreensUsedByMarketing): screen is TabScreens =>
+  screenTab.some((_screen) => _screen === screen)

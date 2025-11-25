@@ -1,4 +1,4 @@
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 export function getOfferUrl(id: number, utmMedium: string): string {
