@@ -146,7 +146,6 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           refreshing={isRefreshing}
           onRefresh={refetch}
           onEndReachedThreshold={0.9}
-          scrollEnabled={sortedFavorites && sortedFavorites.length > 0}
           ListEmptyComponent={ListEmptyComponent}
           initialNumToRender={10}
         />
