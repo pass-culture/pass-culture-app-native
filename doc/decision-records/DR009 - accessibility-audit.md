@@ -831,20 +831,21 @@ Texte
 <summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
 
 **RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
-**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650) & [PC-38849](https://passculture.atlassian.net/browse/PC-38849) 
-**PR** : [#8919](https://github.com/pass-culture/pass-culture-app-native/pull/8919) & [#8948](https://github.com/pass-culture/pass-culture-app-native/pull/8948)
+**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650) & [PC-38849](https://passculture.atlassian.net/browse/PC-38849) & [PC-38560](https://passculture.atlassian.net/browse/PC-38560) 
+**PR** : [#8919](https://github.com/pass-culture/pass-culture-app-native/pull/8919) & [#8948](https://github.com/pass-culture/pass-culture-app-native/pull/8948) & [#8923](https://github.com/pass-culture/pass-culture-app-native/pull/8923)
 
 **Problème** 😱  
 - **(E01)(E02)(E09)(E14)(E16)** En format paysage, du contenu textuel ou interactif est coupé par le nootch.
 - **(E10)(E14)(E16)** En format paysage, le contenu n'est pas entièrement visible car pas ou pas assez défilable.
 - **(E14)** En format paysage, les boutons des recherches thématiques peuvent être coupées.
+- **(E14)** En format paysage, il n'y a pas assez d'espace pour faire défiler les offres dans la recherche
 
 **Correction** 💡  
 - Ajout de marges dynamiques (dépendant de la taille du nootch de chaque appareil) en format paysage pour voir l'ensemble du contenu: 
   - **(E01)** modal cookies
   - **(E02)** accueil (la visibilité partielles des prochaines cartes dans ces playlists est voulue pour inciter au scroll horizontal)
   - **(E09)** page lieu, onglets Offres disponibles et Infos pratiques
-  - **(E14)** modales filtres de recerches : accessibilité et lieu culturel
+  - **(E14)** modales filtres de recherches : accessibilité et lieu culturel
   - **(E16)** modales de réservation - options : prix et horaires
 
 - Page défilable pour accéder à l'ensemble du contenu en format paysage: 
@@ -854,7 +855,7 @@ Texte
 
 -  **(E14)** Les boutons des recherches sont défilables horizontalement en format paysage
 
-
+- **(E14)** Suppression des pilules de filtres qui permet plus de place pour le défilement des offres
 
 
 **Retours audit** 🔥  
