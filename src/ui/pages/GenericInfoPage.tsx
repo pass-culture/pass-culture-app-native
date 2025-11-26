@@ -3,6 +3,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -17,7 +18,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -79,6 +80,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   children,
 }) => {
   const { isDesktopViewport, designSystem } = useTheme()
+  const isLandscape = useIsLandscape()
 
   const headerHeight = useGetHeaderHeight()
   const { top } = useSafeAreaInsets()
@@ -93,7 +95,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
       />
 
       <Container>
-        <Placeholder height={placeholderHeight} />
+        {isLandscape ? null : <Placeholder height={placeholderHeight} />}
 
         <Spacer.Flex flex={1} />
 
@@ -269,17 +271,17 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation }) => ({
+const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation, theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
   ...(animation && { height: '30%' }),
 }))
 
-const TextContainer = styled(ViewGap)({
+const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',
@@ -289,9 +291,9 @@ const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const ChildrenContainer = styled.View({
-  marginBottom: getSpacing(6),
-})
+const ChildrenContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const ButtonContainer = styled(ViewGap)({
   alignItems: 'center',

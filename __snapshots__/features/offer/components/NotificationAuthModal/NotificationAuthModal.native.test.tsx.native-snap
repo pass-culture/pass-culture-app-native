@@ -146,18 +146,17 @@ exports[`NotificationAuthModal should match previous snapshot 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",

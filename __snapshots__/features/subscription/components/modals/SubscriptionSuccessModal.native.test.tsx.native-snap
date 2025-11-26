@@ -146,18 +146,17 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -736,18 +735,17 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -1326,18 +1324,17 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -1916,18 +1913,17 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -2506,18 +2502,17 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -3096,18 +3091,17 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",

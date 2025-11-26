@@ -152,18 +152,17 @@ exports[`<AppModal /> on big screen 1`] = `
         }
       }
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 16,
-          "borderBottomLeftRadius": 20,
-          "borderBottomRightRadius": 20,
-          "borderBottomStartRadius": 16,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderBottomLeftRadius": 16,
+          "borderBottomRightRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -437,18 +436,17 @@ exports[`<AppModal /> on small screen 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -677,18 +675,17 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -963,18 +960,17 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -1249,18 +1245,17 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -1535,18 +1530,17 @@ exports[`<AppModal /> with left icon render 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -1889,18 +1883,17 @@ exports[`<AppModal /> with minimal props 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -2175,18 +2168,17 @@ exports[`<AppModal /> with right icon render 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",
@@ -2521,18 +2513,17 @@ exports[`<AppModal /> without children 1`] = `
   >
     <View
       height={428}
+      isLandscape={false}
+      leftNootch={16}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "height": 428,
           "justifyContent": "center",

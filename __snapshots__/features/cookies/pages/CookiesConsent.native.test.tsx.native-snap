@@ -145,25 +145,26 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
+      isLandscape={false}
+      leftNootch={16}
       maxHeight={1318}
       noPadding={true}
+      rightNootch={16}
       style={
         {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderBottomEndRadius": 0,
           "borderBottomLeftRadius": 0,
           "borderBottomRightRadius": 0,
-          "borderBottomStartRadius": 0,
-          "borderTopEndRadius": 16,
-          "borderTopLeftRadius": 20,
-          "borderTopRightRadius": 20,
-          "borderTopStartRadius": 16,
+          "borderTopLeftRadius": 16,
+          "borderTopRightRadius": 16,
           "flexDirection": "column",
           "justifyContent": "center",
           "maxHeight": 1318,
           "maxWidth": 960,
           "paddingBottom": 32,
+          "paddingLeft": 0,
+          "paddingRight": 0,
           "width": "100%",
         }
       }

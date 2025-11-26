@@ -806,17 +806,18 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+<summary> 🟠 Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données [...] les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?</summary>
 
-**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
-**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650)  
-**PR** : [#8919](https://github.com/pass-culture/pass-culture-app-native/pull/8919)
+**RAAM** : [Critère 9.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-11)  
+**Tickets** : [PC-37495](https://passculture.atlassian.net/browse/PC-37495) 
+**PR** : [#8911](https://github.com/pass-culture/pass-culture-app-native/pull/8911)
+
 
 **Problème** 😱  
-- **(E02)** En format portrait, les playlists avec des cartes horizontales sont coupées par le nootch.
+- **(E12)** Le formulaire transmet des données sensibles sur l'utilisateur, mais elles ne peuvent pas être modifiées, mises à jour ou récupérées par l'utilisateur.
 
 **Correction** 💡  
-- En format paysage, les marges sont dynamiques, dépendant de la taille du nootch de chaque appareil. Cependant la visibilité partielles des prochaines cartes dans ces playlists est voulue pour inciter au scroll horizontal.
+- **(E12)** Ajout d'une étape de vérification des données ajouté par l'utilisateur juste avant d'enregistrer les données dans le backend. De plus, l'utilisateur à la possiblité de modifier ces données s'il s'est trompé.
 
 **Retours audit** 🔥  
 Texte
@@ -827,17 +828,34 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données [...] les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?</summary>
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
 
-**RAAM** : [Critère 9.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-11)  
-**Ticket** : [PC-37495](https://passculture.atlassian.net/browse/PC-37495)  
-**PR** : [#8911](https://github.com/pass-culture/pass-culture-app-native/pull/8911)
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650) & [PC-38849](https://passculture.atlassian.net/browse/PC-38849) 
+**PR** : [#8919](https://github.com/pass-culture/pass-culture-app-native/pull/8919) & [#8948](https://github.com/pass-culture/pass-culture-app-native/pull/8948)
 
 **Problème** 😱  
-- **(E12)** Le formulaire transmet des données sensibles sur l'utilisateur, mais elles ne peuvent pas être modifiées, mises à jour ou récupérées par l'utilisateur.
+- **(E01)(E02)(E09)(E14)(E16)** En format paysage, du contenu textuel ou interactif est coupé par le nootch.
+- **(E10)(E14)(E16)** En format paysage, le contenu n'est pas entièrement visible car pas ou pas assez défilable.
+- **(E14)** En format paysage, les boutons des recherches thématiques peuvent être coupées.
 
 **Correction** 💡  
-- **(E12)** Ajout d'une étape de vérification des données ajouté par l'utilisateur juste avant d'enregistrer les données dans le backend. De plus, l'utilisateur à la possiblité de modifier ces données s'il s'est trompé.
+- Ajout de marges dynamiques (dépendant de la taille du nootch de chaque appareil) en format paysage pour voir l'ensemble du contenu: 
+  - **(E01)** modal cookies
+  - **(E02)** accueil (la visibilité partielles des prochaines cartes dans ces playlists est voulue pour inciter au scroll horizontal)
+  - **(E09)** page lieu, onglets Offres disponibles et Infos pratiques
+  - **(E14)** modales filtres de recerches : accessibilité et lieu culturel
+  - **(E16)** modales de réservation - options : prix et horaires
+
+- Page défilable pour accéder à l'ensemble du contenu en format paysage: 
+  - **(E10)** page pass pour tous (19 ou +)
+  - **(E14)** résultats de recherche : pas de résultat
+  - **(E16)** mes réservations : pas de réservation
+
+-  **(E14)** Les boutons des recherches sont défilables horizontalement en format paysage
+
+
+
 
 **Retours audit** 🔥  
 Texte

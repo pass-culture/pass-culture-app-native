@@ -170,26 +170,27 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
     >
       <View
         height={1318}
+        isLandscape={false}
+        leftNootch={16}
         maxHeight={1334}
         noPadding={true}
+        rightNootch={16}
         style={
           {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
-            "borderBottomEndRadius": 0,
             "borderBottomLeftRadius": 0,
             "borderBottomRightRadius": 0,
-            "borderBottomStartRadius": 0,
-            "borderTopEndRadius": 16,
-            "borderTopLeftRadius": 20,
-            "borderTopRightRadius": 20,
-            "borderTopStartRadius": 16,
+            "borderTopLeftRadius": 16,
+            "borderTopRightRadius": 16,
             "flexDirection": "column",
             "height": 1318,
             "justifyContent": "center",
             "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,
+            "paddingLeft": 0,
+            "paddingRight": 0,
             "width": "100%",
           }
         }

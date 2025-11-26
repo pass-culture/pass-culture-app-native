@@ -1,19 +1,6 @@
 import { CSSObject } from 'styled-components'
-import { DefaultTheme } from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
-const BORDER_HORIZTONAL_RADIUS = getSpacing(5)
-const BORDER_VERTICAL_RADIUS = getSpacing(4)
-
-type Props = {
-  theme: DefaultTheme
-  height?: number
-  maxHeight: number
-  noPadding?: boolean
-  noPaddingBottom?: boolean
-  desktopConstraints?: Pick<CSSObject, 'maxWidth' | 'maxHeight'>
-}
+import { ModalContainerProps } from 'ui/components/modals/AppModal'
 
 export const appModalContainerStyle = ({
   theme,
@@ -22,34 +9,40 @@ export const appModalContainerStyle = ({
   noPadding,
   noPaddingBottom,
   desktopConstraints,
-}: Props): CSSObject => ({
-  alignItems: 'center',
-  backgroundColor: theme.designSystem.color.background.default,
-  borderTopStartRadius: BORDER_VERTICAL_RADIUS,
-  borderTopEndRadius: BORDER_VERTICAL_RADIUS,
-  borderTopRightRadius: BORDER_HORIZTONAL_RADIUS,
-  borderTopLeftRadius: BORDER_HORIZTONAL_RADIUS,
-  flexDirection: 'column',
-  justifyContent: 'center',
-  ...(noPadding ? {} : { padding: theme.modal.spacing.MD }),
-  ...(noPaddingBottom ? {} : { paddingBottom: theme.modal.spacing.LG }),
-  width: '100%',
-  height,
-  ...(theme.isDesktopViewport
-    ? {
-        borderBottomStartRadius: BORDER_VERTICAL_RADIUS,
-        borderBottomEndRadius: BORDER_VERTICAL_RADIUS,
-        borderBottomRightRadius: BORDER_HORIZTONAL_RADIUS,
-        borderBottomLeftRadius: BORDER_HORIZTONAL_RADIUS,
-        maxHeight: desktopConstraints?.maxHeight,
-        maxWidth: desktopConstraints?.maxWidth,
-      }
-    : {
-        borderBottomStartRadius: 0,
-        borderBottomEndRadius: 0,
-        borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0,
-        maxHeight,
-        maxWidth: theme.appContentWidth,
-      }),
-})
+  isLandscape,
+  rightNootch,
+  leftNootch,
+}: ModalContainerProps): CSSObject => {
+  return {
+    alignItems: 'center',
+    backgroundColor: theme.designSystem.color.background.default,
+    borderTopRightRadius: theme.designSystem.size.borderRadius.l,
+    borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '100%',
+    height,
+    ...(noPadding
+      ? {
+          paddingRight: isLandscape ? rightNootch : 0,
+          paddingLeft: isLandscape ? leftNootch : 0,
+        }
+      : {
+          padding: theme.modal.spacing.MD,
+        }),
+    ...(noPaddingBottom ? {} : { paddingBottom: theme.modal.spacing.LG }),
+    ...(theme.isDesktopViewport
+      ? {
+          borderBottomRightRadius: theme.designSystem.size.borderRadius.l,
+          borderBottomLeftRadius: theme.designSystem.size.borderRadius.l,
+          maxHeight: desktopConstraints?.maxHeight,
+          maxWidth: desktopConstraints?.maxWidth,
+        }
+      : {
+          borderBottomRightRadius: 0,
+          borderBottomLeftRadius: 0,
+          maxHeight,
+          maxWidth: theme.appContentWidth,
+        }),
+  }
+}

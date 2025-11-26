@@ -196,7 +196,6 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   textDecoration: 'none',
   borderRadius: theme.designSystem.size.borderRadius.m,
   height: FIXED_SIZE,
-  width: theme.appContentWidth - 2 * MAIN_MARGIN,
   flexWrap: 'wrap',
   overflow: 'hidden',
   marginHorizontal: MAIN_MARGIN,
