@@ -6,7 +6,7 @@ import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/
 import mockVenueResponse from 'fixtures/venueResponse'
 import { render, screen } from 'tests/utils'
 
-const mockUseVenue = jest.fn((): { data: VenueResponse } => ({
+const mockUseVenue = jest.fn((): { data: Omit<VenueResponse, 'isVirtual'> } => ({
   data: mockVenueResponse,
 }))
 

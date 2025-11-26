@@ -100,7 +100,7 @@ describe('<Venue />', () => {
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
-    mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
+    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
     })
@@ -175,7 +175,7 @@ describe('<Venue />', () => {
     it('should not display CTA if venueTypeCode is Movie', async () => {
       const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
 
-      mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)
+      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueId}`, mockedVenue)
 
       renderVenue(venueId)
 
@@ -262,7 +262,7 @@ describe('<Venue />', () => {
     beforeEach(() => {
       // Mock API Calls
       const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
-      mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)
+      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueId}`, mockedVenue)
       mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, {})
     })
 

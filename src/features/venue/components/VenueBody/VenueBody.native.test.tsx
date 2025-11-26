@@ -134,7 +134,7 @@ const renderVenueBody = ({
   playlists = gtlPlaylistAlgoliaSnapshot,
   arePlaylistsLoading = false,
 }: {
-  venue?: VenueResponse
+  venue?: Omit<VenueResponse, 'isVirtual'>
   headlineOfferData?: HeadlineOfferData
   playlists?: GtlPlaylistData[]
   arePlaylistsLoading?: boolean

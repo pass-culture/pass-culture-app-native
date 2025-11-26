@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
 type MessagingAppsProps = {
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
 }
 
 export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {

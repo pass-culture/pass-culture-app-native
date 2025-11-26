@@ -15,7 +15,7 @@ import { useModal } from 'ui/components/modals/useModal'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
 }
 
 /**

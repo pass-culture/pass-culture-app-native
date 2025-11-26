@@ -10,7 +10,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
-const mockVenue: VenueResponse = venueDataTest
+const mockVenue: Omit<VenueResponse, 'isVirtual'> = venueDataTest
 
 jest.mock('features/venue/queries/useVenueQuery', () => ({
   useVenueQuery: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),

@@ -21,7 +21,7 @@ type UseVenueOffersParams = {
   venueSearchParams: SearchState
   searchState: SearchState
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
-  venue?: VenueResponse
+  venue?: Omit<VenueResponse, 'isVirtual'>
   includeHitsWithoutImage?: boolean
   mapping?: SubcategoriesMapping
 }

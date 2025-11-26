@@ -1,6 +1,6 @@
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 
-export const venueDataTest: VenueResponse = {
+export const venueDataTest: Omit<VenueResponse, 'isVirtual'> = {
   accessibility: {
     audioDisability: false,
     mentalDisability: false,
@@ -46,7 +46,6 @@ export const venueDataTest: VenueResponse = {
   id: 5543,
   isPermanent: true,
   isOpenToPublic: true,
-  isVirtual: false,
   latitude: 48.87004,
   longitude: 2.3785,
   name: 'Le Petit Rintintin 1',

@@ -173,7 +173,6 @@ export const VENUE_WITH_BANNER_RESPONSE_SNAPSHOT = {
   city: 'Paris',
   publicName:
     '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />Le Petit Rintintin 1',
-  isVirtual: false,
   isPermanent: true,
   withdrawalDetails: 'How to withdraw, https://test.com',
   address: '1 boulevard Poissonnière',
@@ -201,7 +200,6 @@ export const VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT = {
   latitude: 48.77004,
   longitude: 2.2785,
   city: 'Paris',
-  isVirtual: false,
   isPermanent: true,
   withdrawalDetails: 'How to withdraw, https://test.com',
   address: '1 boulevard pasteur',

@@ -15,6 +15,5 @@ export default {
   publicName: 'Cinéma St André des Arts',
   timezone: 'Europe/Paris',
   accessibility: {},
-  isVirtual: false,
   venueTypeCode: VenueTypeCodeKey.MOVIE,
-} satisfies VenueResponse
+} satisfies Omit<VenueResponse, 'isVirtual'>

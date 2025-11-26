@@ -33,7 +33,7 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should display venue type', async () => {
-    const culturalCenterVenue: VenueResponse = {
+    const culturalCenterVenue: Omit<VenueResponse, 'isVirtual'> = {
       ...venueOpenToPublic,
       venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
     }
@@ -48,7 +48,11 @@ describe('<VenueTopComponent />', () => {
       userLocation,
       hasGeolocPosition: true,
     } as ILocationContext)
-    const locatedVenue: VenueResponse = { ...venueOpenToPublic, latitude: 30, longitude: 30 }
+    const locatedVenue: Omit<VenueResponse, 'isVirtual'> = {
+      ...venueOpenToPublic,
+      latitude: 30,
+      longitude: 30,
+    }
 
     renderVenueTopComponent(locatedVenue)
 
@@ -59,7 +63,11 @@ describe('<VenueTopComponent />', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
     } as ILocationContext)
-    const locatedVenue: VenueResponse = { ...venueOpenToPublic, latitude: 30, longitude: 30 }
+    const locatedVenue: Omit<VenueResponse, 'isVirtual'> = {
+      ...venueOpenToPublic,
+      latitude: 30,
+      longitude: 30,
+    }
     renderVenueTopComponent(locatedVenue)
 
     expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
@@ -144,5 +152,5 @@ describe('<VenueTopComponent />', () => {
   })
 })
 
-const renderVenueTopComponent = (venue: VenueResponse) =>
+const renderVenueTopComponent = (venue: Omit<VenueResponse, 'isVirtual'>) =>
   render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))

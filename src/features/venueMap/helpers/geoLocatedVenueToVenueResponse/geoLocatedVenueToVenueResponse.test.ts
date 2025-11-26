@@ -23,10 +23,9 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       latitude: geolocatedData._geoloc.lat,
       accessibility: {},
       timezone: '',
-      isVirtual: false,
       isOpenToPublic: true,
       venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
-    } satisfies VenueResponse
+    } satisfies Omit<VenueResponse, 'isVirtual'>
 
     expect(transformGeoLocatedVenueToVenueResponse(geolocatedData)).toMatchObject(
       expectedVenueResponse
