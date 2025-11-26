@@ -40,7 +40,6 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
-jest.mock('libs/itinerary/useItinerary')
 jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 

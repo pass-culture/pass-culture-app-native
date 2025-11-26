@@ -15,14 +15,6 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
   push: mockPush,
 })
 
-const navigateToItineraryMock = jest.fn()
-const useItinerary = () => ({
-  navigateTo: navigateToItineraryMock,
-})
-jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary,
-}))
-
 const linkText = 'linkText'
 const InternalTouchableLinkContent = () => <Typo.Body>{linkText}</Typo.Body>
 

@@ -22,7 +22,7 @@ export type ExternalNavigationProps = {
   externalNav: {
     url: string
     params?: UrlParamsProps
-    address?: string // If provided, navigates using useItinerary hook
+    address?: string
     onSuccess?: () => void | Promise<void>
     onError?: () => void
   }
