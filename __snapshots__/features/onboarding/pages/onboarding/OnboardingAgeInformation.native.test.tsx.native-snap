@@ -669,6 +669,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     style={
       [
         {
+          "alignItems": "center",
           "backgroundColor": "#ffffff",
           "marginHorizontal": 24,
           "paddingVertical": 24,
@@ -1559,6 +1560,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     style={
       [
         {
+          "alignItems": "center",
           "backgroundColor": "#ffffff",
           "marginHorizontal": 24,
           "paddingVertical": 24,

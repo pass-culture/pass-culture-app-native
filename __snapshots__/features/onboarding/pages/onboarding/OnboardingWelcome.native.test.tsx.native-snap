@@ -102,6 +102,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       <View
         style={
           {
+            "alignItems": "center",
             "alignSelf": "center",
             "backgroundColor": "#ffffff",
             "bottom": 0,

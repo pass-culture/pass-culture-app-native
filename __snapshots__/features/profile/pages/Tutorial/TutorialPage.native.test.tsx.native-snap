@@ -196,6 +196,7 @@ exports[`TutorialPage should render correctly 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "backgroundColor": "#ffffff",
           "marginHorizontal": 24,
           "paddingVertical": 24,
