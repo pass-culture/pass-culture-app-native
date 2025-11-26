@@ -32,19 +32,15 @@ export const convertBookingResponseDateToTimezone = <
 
 export const convertBookingsResponseV2DatesToTimezone = (
   bookings: BookingsResponseV2
-): BookingsResponseV2 => {
-  return {
-    hasBookingsAfter18: bookings.hasBookingsAfter18,
-    ongoingBookings: convertBookingsListDatesToTimezone(bookings.ongoingBookings),
-    endedBookings: convertBookingsListDatesToTimezone(bookings.endedBookings),
-  }
-}
+): BookingsResponseV2 => ({
+  hasBookingsAfter18: bookings.hasBookingsAfter18,
+  ongoingBookings: convertBookingsListDatesToTimezone(bookings.ongoingBookings),
+  endedBookings: convertBookingsListDatesToTimezone(bookings.endedBookings),
+})
 
 export const convertBookingsListResponseV2DatesToTimezone = (
   bookingsResponse: BookingsListResponseV2
-): BookingsListResponseV2 => {
-  return {
-    ...bookingsResponse,
-    bookings: bookingsResponse.bookings.map(convertBookingResponseDateToTimezone),
-  }
-}
+): BookingsListResponseV2 => ({
+  ...bookingsResponse,
+  bookings: bookingsResponse.bookings.map(convertBookingResponseDateToTimezone),
+})

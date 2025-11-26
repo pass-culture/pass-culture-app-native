@@ -39,7 +39,7 @@ const checkBookingPage = async () => {
 
 export const Bookings = () => {
   useEffect(() => {
-    void checkBookingPage()
+    checkBookingPage()
   }, [])
 
   const { params } = useRoute<UseRouteType<'Bookings'>>()
@@ -100,7 +100,7 @@ export const Bookings = () => {
     useCallback(() => {
       return () => {
         if (previousTab === BookingsTab.COMPLETED) {
-          void updateReactions()
+          updateReactions()
         }
         if (previousTab !== activeTab) {
           setPreviousTab(activeTab)
@@ -132,7 +132,7 @@ export const Bookings = () => {
           },
         ]}
         onTabChange={(key) => {
-          if (activeTab === BookingsTab.COMPLETED) void updateReactions()
+          if (activeTab === BookingsTab.COMPLETED) updateReactions()
           setActiveTab(key)
         }}
       />
