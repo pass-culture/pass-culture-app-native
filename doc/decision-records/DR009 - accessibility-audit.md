@@ -687,9 +687,9 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 6.2 - iOS - Dans chaque écran, les textes sont-ils restitués par les technologies d’assistance dans la langue principale de l’écran ?</summary>
+<summary> 🟠 Critère 6.1 - iOS - Dans chaque écran, les textes sont-ils restitués par les technologies d’assistance dans la langue principale de l’écran ?</summary>
 
-**RAAM** : [Critère 6.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-6-2)  
+**RAAM** : [Critère 6.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-6-1)  
 **Ticket** : [PC-37479](https://passculture.atlassian.net/browse/PC-37479)  
 **PR** : [#8883](https://github.com/pass-culture/pass-culture-app-native/pull/8883)
 
@@ -739,15 +739,15 @@ Texte
 
 **Problème** 😱
 
-- **(E14)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
+- **(E09)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
 
-- **(E15)** Dans la calendrier les dates sont illisible (Lun. > L…) car la largeur utilisé pour le composant des dates possède une largeur maximum. 
+- **(E14)** Dans la calendrier les dates sont illisible (Lun. > L…) car la largeur utilisé pour le composant des dates possède une largeur maximum. 
 
 **Correction** 💡
 
-- **(E14)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur.
+- **(E09)** Suppression de la taille fix pour les playlists de lieu dans la recherche thématique qui permet à la playlist de prendre toute la hauteur.
 
-- **(E15)** Suppression de la taille maximale dans le composant des dates du calendrier (Lun. > L…), ce qui permet au texte de prendre la place nécessaire.
+- **(E14)** Suppression de la taille maximale dans le composant des dates du calendrier (Lun. > L…), ce qui permet au texte de prendre la place nécessaire.
 
 **Retours audit** 🔥  
 Texte
@@ -845,11 +845,13 @@ Texte
   - **(E02)** accueil (la visibilité partielles des prochaines cartes dans ces playlists est voulue pour inciter au scroll horizontal)
   - **(E09)** page lieu, onglets Offres disponibles et Infos pratiques
   - **(E14)** modales filtres de recerches : accessibilité et lieu culturel
+  - **(E14)** liste des résultats : en mode paysage, la liste est très peu visible
   - **(E16)** modales de réservation - options : prix et horaires
 
 - Page défilable pour accéder à l'ensemble du contenu en format paysage: 
   - **(E10)** page pass pour tous (19 ou +)
   - **(E14)** résultats de recherche : pas de résultat
+  - **(E14)** liste des résultats : suppression des filtres pour laisser plus de place à la liste
   - **(E16)** mes réservations : pas de réservation
 
 -  **(E14)** Les boutons des recherches sont défilables horizontalement en format paysage
