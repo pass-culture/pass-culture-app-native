@@ -12,6 +12,7 @@ import {
   getDistinctPricesFromAllStock,
   getStockWithCategory,
   shouldDisplayPricesStep,
+  resetBookingState,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -447,5 +448,18 @@ describe('shouldDisplayPricesStep', () => {
     const hasPricesStep = shouldDisplayPricesStep(stocks, date, hour, isEvent)
 
     expect(hasPricesStep).toEqual(true)
+  })
+
+  describe('resetBookingState', () => {
+    it('should dispatch all reset actions', () => {
+      const mockDispatch = jest.fn()
+
+      resetBookingState(mockDispatch)
+
+      expect(mockDispatch).toHaveBeenCalledTimes(3)
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'RESET_HOUR' })
+      expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'RESET_STOCK' })
+      expect(mockDispatch).toHaveBeenNthCalledWith(3, { type: 'RESET_QUANTITY' })
+    })
   })
 })

@@ -54,7 +54,11 @@ describe('BookingOfferModalFooter', () => {
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
     })
 
-    it('should reset potential previous hour when date selected', async () => {
+    it.each([
+      { type: 'RESET_HOUR', description: 'hour' },
+      { type: 'RESET_STOCK', description: 'stockId' },
+      { type: 'RESET_QUANTITY', description: 'quantity' },
+    ])('should reset $description when validating date step', async ({ type }) => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -70,7 +74,7 @@ describe('BookingOfferModalFooter', () => {
       render(<BookingOfferModalFooter />)
       await user.press(screen.getByText('Valider la date'))
 
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_HOUR' })
+      expect(mockDispatch).toHaveBeenCalledWith({ type })
     })
   })
 
@@ -117,25 +121,6 @@ describe('BookingOfferModalFooter', () => {
       await user.press(screen.getByText('Valider lʼhoraire'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.PRICE })
-    })
-
-    it('should reset stock selection when hour selected and has several prices', async () => {
-      mockUseBookingContext.mockReturnValueOnce({
-        bookingState: {
-          offerId: 1,
-          stockId: undefined,
-          step: Step.HOUR,
-          quantity: undefined,
-          date: new Date('01/02/2021'),
-          hour: '2023-04-01T18:00:00Z',
-        },
-        dispatch: mockDispatch,
-        dismissModal: jest.fn(),
-      })
-      render(<BookingOfferModalFooter hasPricesStep />)
-      await user.press(screen.getByText('Valider lʼhoraire'))
-
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_STOCK' })
     })
 
     it('should change step to quantity selection when hour selected, has not several prices and offer is duo', async () => {
