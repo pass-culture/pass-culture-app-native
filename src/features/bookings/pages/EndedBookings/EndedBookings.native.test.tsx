@@ -1,8 +1,9 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { BookingsResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnapV2 } from 'features/bookings/fixtures'
+import { BookingsListResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
+import { endedBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -55,7 +56,6 @@ describe('EndedBookings', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
-    mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi('/v1/reaction/available', availableReactionsSnap)
   })
@@ -63,7 +63,7 @@ describe('EndedBookings', () => {
   it('should render correctly', async () => {
     renderEndedBookings()
 
-    await screen.findAllByText('Avez-vous déjà vu\u00a0?')
+    await screen.findByText(endedBookingsV2ListSnap.bookings[0].stock.offer.name)
 
     expect(screen).toMatchSnapshot()
   })
@@ -87,5 +87,17 @@ describe('EndedBookings', () => {
 })
 
 const renderEndedBookings = () => {
-  return render(reactQueryProviderHOC(<EndedBookings />))
+  const mockUseEndedBookingsQuery = () =>
+    ({
+      data: { bookings: endedBookingsV2ListSnap.bookings },
+      isLoading: false,
+      isError: false,
+      isFetching: false,
+      isRefetching: false,
+      refetch: jest.fn(),
+    }) as unknown as UseQueryResult<BookingsListResponseV2, Error>
+
+  return render(
+    reactQueryProviderHOC(<EndedBookings useEndedBookingsQuery={mockUseEndedBookingsQuery} />)
+  )
 }

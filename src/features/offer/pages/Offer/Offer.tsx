@@ -139,7 +139,10 @@ export function Offer() {
     <Page>
       <ReactionChoiceModal
         dateUsed={booking?.dateUsed ?? ''}
-        offer={offer}
+        offerId={offer.id}
+        offerName={offer.name}
+        imageUrl={offer.images?.url?.url}
+        subcategoryId={offer.subcategoryId}
         closeModal={hideReactionModal}
         visible={reactionModalVisible}
         defaultReaction={booking?.userReaction}

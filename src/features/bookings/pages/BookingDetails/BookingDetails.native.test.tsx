@@ -7,6 +7,7 @@ import {
   BookingResponse,
   BookingsResponse,
   BookingsResponseV2,
+  RefreshResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   TicketDisplayEnum,
@@ -23,6 +24,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import * as useBookingByIdQueryAPI from 'queries/bookings/useBookingByIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -110,7 +112,7 @@ describe('BookingDetails', () => {
     })
 
     it('should render correctly', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
+      const booking = structuredClone(ongoingBookings)
       booking.completedUrl = 'https://example.com'
       renderBookingDetails(booking)
 
@@ -129,8 +131,7 @@ describe('BookingDetails', () => {
       })
 
       it('should display offer link button if offer is digital and open url on press', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] =
-          structuredClone(ongoingBookings)
+        const booking = structuredClone(ongoingBookings)
         booking.stock.offer.isDigital = true
         booking.completedUrl = 'https://example.com'
 
@@ -159,8 +160,7 @@ describe('BookingDetails', () => {
       })
 
       it('should display booking qr code if offer is physical', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] =
-          structuredClone(ongoingBookings)
+        const booking = structuredClone(ongoingBookings)
         booking.stock.offer.isDigital = false
         renderBookingDetails(booking)
 
@@ -170,8 +170,7 @@ describe('BookingDetails', () => {
       })
 
       it('should display EAN code if offer is a book (digital or physical)', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] =
-          structuredClone(ongoingBookings)
+        const booking = structuredClone(ongoingBookings)
         booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
         renderBookingDetails(booking)
 
@@ -198,8 +197,7 @@ describe('BookingDetails', () => {
       })
 
       it('should display rules for a digital offer with activation code', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] =
-          structuredClone(ongoingBookings)
+        const booking = structuredClone(ongoingBookings)
         booking.stock.offer.isDigital = true
         booking.activationCode = {
           code: 'fdfdfsds',
@@ -222,8 +220,7 @@ describe('BookingDetails', () => {
       ])(
         'should display rules for a %s & non-digital offer',
         async (type, isEvent, withdrawalType) => {
-          let booking: BookingsResponse['ongoing_bookings'][number] =
-            structuredClone(ongoingBookings)
+          let booking = structuredClone(ongoingBookings)
 
           booking = {
             ...booking,
@@ -258,7 +255,7 @@ describe('BookingDetails', () => {
       })
 
       it('should not display withdrawal details', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
+        const booking = ongoingBookings
 
         booking.stock.offer.withdrawalDetails = undefined
         renderBookingDetails(booking)
@@ -274,7 +271,7 @@ describe('BookingDetails', () => {
 
     describe('booking email contact', () => {
       it('should display booking email contact when there is a booking contact email', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
+        const booking = ongoingBookings
         booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
         renderBookingDetails(booking)
         await screen.findByText('Ma réservation')
@@ -284,7 +281,7 @@ describe('BookingDetails', () => {
       })
 
       it('should not display booking email contact when there is no booking contact email', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
+        const booking = ongoingBookings
         booking.stock.offer.bookingContact = undefined
         renderBookingDetails(booking)
         await screen.findByText('Ma réservation')
@@ -293,7 +290,7 @@ describe('BookingDetails', () => {
       })
 
       it("should open mail app and log ClickEmailOrganizer when clicking on Venue's mail address", async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
+        const booking = ongoingBookings
         booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
         renderBookingDetails(booking)
         await screen.findByText('Ma réservation')
@@ -311,7 +308,7 @@ describe('BookingDetails', () => {
     })
 
     it('should redirect to the Offer page and log event', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
+      const booking = ongoingBookings
       renderBookingDetails(booking)
 
       const text = screen.getByText('Voir le détail de l’offre')
@@ -356,8 +353,7 @@ describe('BookingDetails', () => {
 
     describe('cancellation button', () => {
       it('should log event "CancelBooking" when cancelling booking', async () => {
-        const booking: BookingsResponse['ongoing_bookings'][number] =
-          structuredClone(ongoingBookings)
+        const booking = structuredClone(ongoingBookings)
         const date = new Date()
         date.setDate(date.getDate() + 1)
         booking.confirmationDate = date.toISOString()
@@ -392,7 +388,7 @@ describe('BookingDetails', () => {
         })
 
         it('when booking is digital with expiration date', async () => {
-          const booking: BookingsResponse['ongoing_bookings'][number] = {
+          const booking = {
             ...endedBookings,
             expirationDate: '2021-03-17T23:01:37.925926',
           }
@@ -415,7 +411,7 @@ describe('BookingDetails', () => {
         })
 
         it('when booking is not digital with expiration date', async () => {
-          const booking: BookingsResponse['ongoing_bookings'][number] = {
+          const booking = {
             ...endedBookings,
             expirationDate: '2021-03-17T23:01:37.925926',
             stock: {
@@ -989,6 +985,28 @@ describe('BookingDetails', () => {
       })
     })
   })
+
+  describe('BookingDetails: WIP_NEW_BOOKINGS_ONGOING_ENDED', () => {
+    beforeEach(() => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE,
+        RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING,
+      ])
+      mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {
+        responseOptions: {
+          statusCode: 200,
+        },
+      })
+    })
+
+    it('should render correctly', async () => {
+      renderBookingDetailsWithBookingById(ongoingBookingV2)
+
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
+
+      expect(await screen.findByTestId('ticket-punched')).toBeOnTheScreen()
+    })
+  })
 })
 
 const renderBookingDetails = (booking?: Booking, options = {}) => {
@@ -1024,5 +1042,19 @@ const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
     error: undefined,
     ...options,
   } as unknown as UseQueryResult<BookingReponse | null, Error>)
+  return render(reactQueryProviderHOC(<BookingDetails />))
+}
+
+const renderBookingDetailsWithBookingById = (booking?: BookingResponse, options = {}) => {
+  jest.spyOn(useBookingByIdQueryAPI, 'useBookingByIdQuery').mockReturnValue({
+    data: booking,
+    isLoading: false,
+    isFetching: false,
+    isSuccess: true,
+    isError: false,
+    error: undefined,
+    ...options,
+  } as unknown as UseQueryResult<BookingResponse | null, Error>)
+
   return render(reactQueryProviderHOC(<BookingDetails />))
 }

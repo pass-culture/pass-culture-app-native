@@ -22,6 +22,7 @@ export const useArchiveBookingMutation = ({
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] }),
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])
       onSuccess()
     },

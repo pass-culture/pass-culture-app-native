@@ -1,27 +1,18 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { BookingsResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
-import { bookingsSnapV2 as mockBookings } from 'features/bookings/fixtures'
+import { BookingsListResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { ongoingBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
-
-jest.mock('queries/bookings/useBookingsQuery')
-const mockUseBookings = jest.mocked(useBookingsV2WithConvertedTimezoneQuery)
-mockUseBookings.mockReturnValue({
-  data: mockBookings,
-  isLoading: false,
-  isFetching: false,
-  refetch: jest.fn(),
-} as unknown as UseQueryResult<BookingsResponseV2, Error>)
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 const mockUseSubcategories = jest.mocked(useSubcategoriesQuery)
@@ -102,13 +93,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
   describe('displays the placeholder', () => {
     it('when bookings are loading', () => {
-      const loadingBookings = {
-        data: undefined,
-        isLoading: true,
-        isFetching: false,
-      } as UseQueryResult<BookingsResponseV2, Error>
-      mockUseBookings.mockReturnValueOnce(loadingBookings)
-      renderOnGoingBookingsList()
+      renderOnGoingBookingsList({ isLoading: true })
 
       const placeholder = screen.queryByTestId('BookingsPlaceholder')
 
@@ -158,6 +143,21 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 })
 
-function renderOnGoingBookingsList() {
-  render(<OnGoingBookingsList />)
+const renderOnGoingBookingsList = ({ isLoading = false }: { isLoading?: boolean } = {}) => {
+  const mockUseOngoingBookingsQuery = () =>
+    ({
+      data: { bookings: ongoingBookingsV2ListSnap.bookings },
+      isLoading,
+      isError: false,
+      error: null,
+      isFetching: false,
+      isRefetching: false,
+      refetch: jest.fn(),
+    }) as unknown as UseQueryResult<BookingsListResponseV2, Error>
+
+  return render(
+    reactQueryProviderHOC(
+      <OnGoingBookingsList useOngoingBookingsQuery={mockUseOngoingBookingsQuery} />
+    )
+  )
 }

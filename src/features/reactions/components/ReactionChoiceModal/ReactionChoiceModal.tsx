@@ -3,12 +3,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  BookingOfferResponseV2,
-  OfferResponse,
-  PostOneReactionRequest,
-  ReactionTypeEnum,
-} from 'api/gen'
+import { PostOneReactionRequest, ReactionTypeEnum, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingsTab } from 'features/bookings/enum'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -26,7 +21,9 @@ import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  offer: OfferResponse | BookingOfferResponseV2
+  offerId: number
+  offerName: string
+  subcategoryId: SubcategoryIdEnum
   dateUsed: string
   visible: boolean
   defaultReaction?: ReactionTypeEnum | null
@@ -35,10 +32,13 @@ type Props = {
   onSave?: ({ offerId, reactionType }: PostOneReactionRequest) => void
   bodyType: ReactionChoiceModalBodyEnum
   offerImages?: OfferImageBasicProps[]
+  imageUrl?: string
 }
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({
-  offer,
+  offerId,
+  offerName,
+  subcategoryId,
   dateUsed,
   visible,
   defaultReaction,
@@ -47,6 +47,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   from,
   bodyType,
   offerImages,
+  imageUrl,
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
@@ -76,12 +77,12 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
 
   const handleOnSave = () => {
     onSave?.({
-      offerId: offer.id,
+      offerId,
       reactionType: reactionStatus,
     })
 
     analytics.logValidateReaction({
-      offerId: offer.id,
+      offerId,
       reactionType: reactionStatus,
       userId: profile?.id,
       from,
@@ -135,7 +136,9 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       }>
       {bodyType === ReactionChoiceModalBodyEnum.VALIDATION ? (
         <ReactionChoiceModalBodyWithValidation
-          offer={offer}
+          subcategoryId={subcategoryId}
+          imageUrl={imageUrl}
+          offerName={offerName}
           dateUsed={dateUsed}
           reactionStatus={reactionStatus}
           handleOnPressReactionButton={onPressReactionButton}

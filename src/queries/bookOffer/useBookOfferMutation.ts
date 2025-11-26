@@ -24,9 +24,12 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
   return useMutation({
     mutationFn: (body: BookOfferRequest) => api.postNativeV1Bookings(body),
     onSuccess: async (data: BookOfferResponse) => {
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER_PROFILE] })
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] })
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] })
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.USER_PROFILE] }),
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGS] }),
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSV2] }),
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
+      ])
       onSuccess(data)
     },
     onError: (error: Error | ApiError, { stockId, quantity }, context?: BookingMutationContext) => {

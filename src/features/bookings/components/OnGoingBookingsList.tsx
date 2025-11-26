@@ -1,16 +1,15 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BookingListItemResponse, BookingsListResponseV2 } from 'api/gen'
 import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import {
   BookingHitPlaceholder,
@@ -26,22 +25,26 @@ import { OnGoingBookingItem } from './OnGoingBookingItem'
 
 const ANIMATION_DURATION = 700
 
-export const OnGoingBookingsList: FunctionComponent = () => {
+type Props = {
+  useOngoingBookingsQuery: () => UseQueryResult<BookingsListResponseV2, Error>
+}
+
+export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookingsQuery }) => {
   const netInfo = useNetInfoContext()
-  const { isLoggedIn } = useAuthContext()
 
   const {
-    data: bookings,
+    data: bookings = { bookings: [] },
     isLoading,
     isFetching,
     refetch,
-  } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
+  } = useOngoingBookingsQuery()
+  const { bookings: ongoingBookings } = bookings
+
   const { isLoading: subcategoriesIsLoading } = useSubcategoriesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const { ongoingBookings = [] } = bookings ?? {}
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({
       message: 'Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.',
@@ -50,8 +53,7 @@ export const OnGoingBookingsList: FunctionComponent = () => {
   }, [showErrorSnackBar])
 
   const onRefetch = netInfo.isConnected && netInfo.isInternetReachable ? refetch : refetchOffline
-  const onGoingBookingsCount = ongoingBookings.length
-  const hasBookings = onGoingBookingsCount > 0
+  const hasBookings = ongoingBookings.length > 0
 
   const logBookingsScrolledToBottom = useFunctionOnce(analytics.logBookingsScrolledToBottom)
 
@@ -64,7 +66,7 @@ export const OnGoingBookingsList: FunctionComponent = () => {
   const eligibleBookingsForArchive =
     expirationDateUtilsV2.getEligibleBookingsForArchive(ongoingBookings)
 
-  const renderItem: ListRenderItem<BookingResponse> = useCallback(
+  const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
     ({ item }) => (
       <OnGoingBookingItem booking={item} eligibleBookingsForArchive={eligibleBookingsForArchive} />
     ),
@@ -82,7 +84,7 @@ export const OnGoingBookingsList: FunctionComponent = () => {
       refreshing={isRefreshing}
       onRefresh={onRefetch}
       contentContainerStyle={contentContainerStyle}
-      ListHeaderComponent={onGoingBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
+      ListHeaderComponent={hasBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
       ListEmptyComponent={<NoBookingsView />}
       ItemSeparatorComponent={ItemSeparatorComponent}
       scrollEnabled={hasBookings}
@@ -92,7 +94,7 @@ export const OnGoingBookingsList: FunctionComponent = () => {
   )
 }
 
-const keyExtractor = (item: BookingResponse) => item.id.toString()
+const keyExtractor = (item: BookingListItemResponse) => item.id.toString()
 
 const contentContainerStyle = {
   flexGrow: 1,

@@ -34,142 +34,39 @@ exports[`EndedBookings should render correctly 1`] = `
   data={
     [
       {
+        "activationCode": {
+          "code": "",
+          "expirationDate": null,
+        },
         "canReact": true,
         "cancellationDate": "2021-03-15T23:01:37.925926",
         "cancellationReason": "BENEFICIARY",
-        "confirmationDate": "2021-02-15T23:01:37.925926",
         "dateCreated": "2021-02-15T23:01:37.925926",
         "dateUsed": null,
-        "enablePopUpReaction": true,
         "expirationDate": null,
-        "id": 321,
+        "id": 987,
         "quantity": 10,
         "stock": {
-          "beginningDatetime": "2021-03-14T21:00:00.000Z",
-          "features": [
-            "VOSTFR",
-            "3D",
-            "IMAX",
-          ],
-          "id": 150230,
+          "beginningDatetime": "2021-03-14T20:00:00",
           "offer": {
             "address": {
               "city": "Drancy",
-              "coordinates": {
-                "latitude": 48.91683,
-                "longitude": 2.43884,
-              },
-              "id": 111,
               "label": null,
-              "postalCode": "93700",
-              "street": "1 boulevard de la brique",
               "timezone": "Europe/Paris",
             },
-            "bookingContact": null,
-            "extraData": null,
             "id": 147874,
+            "imageUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
             "isDigital": true,
             "isPermanent": false,
-            "name": "Avez-vous déjà vu ?",
-            "subcategoryId": "EVENEMENT_PATRIMOINE",
-            "venue": {
-              "address": {
-                "id": 112,
-              },
-              "id": 2185,
-              "isOpenToPublic": true,
-              "name": "Maison de la Brique",
-              "publicName": "Maison de la Brique en mousse",
-              "timezone": "Europe/Paris",
-            },
-          },
-          "price": 400,
-          "priceCategoryLabel": "Cat 4",
-        },
-        "ticket": {
-          "activationCode": null,
-          "display": "qr_code",
-          "externalBooking": null,
-          "token": {
-            "data": "352UW5",
-          },
-          "voucher": {
-            "data": "PASSCULTURE:v3;TOKEN:352UW5",
-          },
-          "withdrawal": {
-            "delay": null,
-            "details": null,
-            "type": "on_site",
-          },
-        },
-        "totalAmount": 1900,
-        "userReaction": null,
-      },
-      {
-        "canReact": false,
-        "confirmationDate": "2021-02-15T23:01:37.925926",
-        "dateCreated": "2021-02-15T23:01:37.925926",
-        "dateUsed": "2021-03-15T23:01:37.925926",
-        "enablePopUpReaction": false,
-        "expirationDate": null,
-        "id": 322,
-        "quantity": 10,
-        "stock": {
-          "beginningDatetime": "2021-03-14T21:00:00.000Z",
-          "features": [
-            "VOSTFR",
-            "3D",
-            "IMAX",
-          ],
-          "id": 150230,
-          "offer": {
-            "address": {
-              "city": "Drancy",
-              "coordinates": {
-                "latitude": 48.91683,
-                "longitude": 2.43884,
-              },
-              "id": 113,
-              "label": null,
-              "postalCode": "93700",
-              "street": "1 boulevard de la brique",
-              "timezone": "Europe/Paris",
-            },
-            "bookingContact": null,
-            "extraData": null,
-            "id": 147875,
-            "isDigital": true,
-            "isPermanent": false,
-            "name": "Avez-vous déjà vu ?",
+            "name": "Harry Potter",
             "subcategoryId": "SEANCE_CINE",
             "venue": {
-              "address": {
-                "id": 114,
-              },
               "id": 2185,
-              "isOpenToPublic": true,
               "name": "Maison de la Brique",
-              "publicName": "Maison de la Brique en mousse",
               "timezone": "Europe/Paris",
             },
-          },
-          "price": 400,
-          "priceCategoryLabel": "Cat 4",
-        },
-        "ticket": {
-          "activationCode": null,
-          "display": "qr_code",
-          "externalBooking": null,
-          "token": {
-            "data": "352UW5",
-          },
-          "voucher": {
-            "data": "PASSCULTURE:v3;TOKEN:352UW5",
-          },
-          "withdrawal": {
-            "delay": null,
-            "details": null,
-            "type": "on_site",
+            "withdrawalDelay": null,
+            "withdrawalType": "on_site",
           },
         },
         "totalAmount": 1900,
@@ -221,7 +118,7 @@ exports[`EndedBookings should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
+          accessibilityLabel="Réservation annulée de l’offre Harry Potter, le 15/03/2021"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -269,7 +166,7 @@ exports[`EndedBookings should render correctly 1`] = `
               },
             ]
           }
-          testID="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
+          testID="Réservation annulée de l’offre Harry Potter, le 15/03/2021"
         >
           <View
             gap={4}
@@ -299,34 +196,42 @@ exports[`EndedBookings should render correctly 1`] = `
               withShadow={true}
             >
               <View
-                borderRadius={4}
                 style={
                   [
                     {
-                      "alignItems": "center",
+                      "overflow": "hidden",
+                    },
+                    {
                       "backgroundColor": "#f1f1f4",
                       "borderBottomLeftRadius": 4,
                       "borderBottomRightRadius": 4,
                       "borderTopLeftRadius": 4,
                       "borderTopRightRadius": 4,
-                      "height": "100%",
-                      "justifyContent": "center",
-                      "width": "100%",
+                      "height": 96,
+                      "width": 64,
                     },
-                    {},
                   ]
                 }
-                testID="imagePlaceholder"
               >
-                <View
-                  height={32}
-                  testID="categoryIcon"
-                  width={32}
-                >
-                  <Text>
-                    categoryIcon-SVG-Mock
-                  </Text>
-                </View>
+                <FastImageView
+                  defaultSource={null}
+                  resizeMode="cover"
+                  size="small"
+                  source={
+                    {
+                      "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                    }
+                  }
+                  style={
+                    {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
               </View>
             </View>
             <View
@@ -358,7 +263,7 @@ exports[`EndedBookings should render correctly 1`] = `
                     }
                   }
                 >
-                  Avez-vous déjà vu ?
+                  Harry Potter
                 </Text>
               </View>
               <View
@@ -455,7 +360,7 @@ exports[`EndedBookings should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
+              accessibilityLabel="Partager l’offre Harry Potter"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -501,427 +406,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Partager l’offre Avez-vous déjà vu ?"
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 999,
-                      "borderBottomRightRadius": 999,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 999,
-                      "borderTopRightRadius": 999,
-                      "borderWidth": 1,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "width": 40,
-                    },
-                    {
-                      "transform": undefined,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={24}
-                  testID="icon-share"
-                  width={24}
-                >
-                  <Text>
-                    icon-share-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        highlighted={false}
-        leadingItem={
-          {
-            "canReact": true,
-            "cancellationDate": "2021-03-15T23:01:37.925926",
-            "cancellationReason": "BENEFICIARY",
-            "confirmationDate": "2021-02-15T23:01:37.925926",
-            "dateCreated": "2021-02-15T23:01:37.925926",
-            "dateUsed": null,
-            "enablePopUpReaction": true,
-            "expirationDate": null,
-            "id": 321,
-            "quantity": 10,
-            "stock": {
-              "beginningDatetime": "2021-03-14T21:00:00.000Z",
-              "features": [
-                "VOSTFR",
-                "3D",
-                "IMAX",
-              ],
-              "id": 150230,
-              "offer": {
-                "address": {
-                  "city": "Drancy",
-                  "coordinates": {
-                    "latitude": 48.91683,
-                    "longitude": 2.43884,
-                  },
-                  "id": 111,
-                  "label": null,
-                  "postalCode": "93700",
-                  "street": "1 boulevard de la brique",
-                  "timezone": "Europe/Paris",
-                },
-                "bookingContact": null,
-                "extraData": null,
-                "id": 147874,
-                "isDigital": true,
-                "isPermanent": false,
-                "name": "Avez-vous déjà vu ?",
-                "subcategoryId": "EVENEMENT_PATRIMOINE",
-                "venue": {
-                  "address": {
-                    "id": 112,
-                  },
-                  "id": 2185,
-                  "isOpenToPublic": true,
-                  "name": "Maison de la Brique",
-                  "publicName": "Maison de la Brique en mousse",
-                  "timezone": "Europe/Paris",
-                },
-              },
-              "price": 400,
-              "priceCategoryLabel": "Cat 4",
-            },
-            "ticket": {
-              "activationCode": null,
-              "display": "qr_code",
-              "externalBooking": null,
-              "token": {
-                "data": "352UW5",
-              },
-              "voucher": {
-                "data": "PASSCULTURE:v3;TOKEN:352UW5",
-              },
-              "withdrawal": {
-                "delay": null,
-                "details": null,
-                "type": "on_site",
-              },
-            },
-            "totalAmount": 1900,
-            "userReaction": null,
-          }
-        }
-        style={
-          {
-            "backgroundColor": "#f1f1f4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          }
-        }
-      />
-    </View>
-    <View
-      onFocusCapture={[Function]}
-      onLayout={[Function]}
-      style={null}
-    >
-      <View
-        style={
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <View
-          accessibilityLabel="Réservation utilisée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {},
-                {
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "paddingRight": 40,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Réservation utilisée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-        >
-          <View
-            gap={4}
-            style={
-              {
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "gap": 16,
-              }
-            }
-          >
-            <View
-              size="small"
-              style={
-                {
-                  "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 4,
-                  "borderBottomRightRadius": 4,
-                  "borderTopLeftRadius": 4,
-                  "borderTopRightRadius": 4,
-                  "height": 96,
-                  "width": 64,
-                }
-              }
-              withShadow={true}
-            >
-              <View
-                borderRadius={4}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#f1f1f4",
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": "100%",
-                      "justifyContent": "center",
-                      "width": "100%",
-                    },
-                    {},
-                  ]
-                }
-                testID="imagePlaceholder"
-              >
-                <View
-                  height={32}
-                  testID="categoryIcon"
-                  width={32}
-                >
-                  <Text>
-                    categoryIcon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "paddingRight": 4,
-                }
-              }
-            >
-              <View
-                style={
-                  {
-                    "paddingBottom": 4,
-                  }
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  shrink={true}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Avez-vous déjà vu ?
-                </Text>
-              </View>
-              <View
-                gap={1}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "flexWrap": "wrap",
-                    "gap": 4,
-                  }
-                }
-              >
-                <View
-                  gap={1}
-                  noFullWidth={true}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row-reverse",
-                      "gap": 4,
-                      "justifyContent": "flex-end",
-                      "maxWidth": 500,
-                    }
-                  }
-                >
-                  <Text
-                    color="success"
-                    noFullWidth={true}
-                    style={
-                      {
-                        "color": "#15884f",
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                        "paddingLeft": 4,
-                        "textAlign": "center",
-                      }
-                    }
-                  >
-                    Réservation utilisée
-                  </Text>
-                  <View
-                    style={
-                      {
-                        "flexShrink": 0,
-                      }
-                    }
-                  >
-                    <View
-                      height={20}
-                      testID="rule-icon-"
-                      width={20}
-                    >
-                      <Text>
-                        rule-icon--SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    }
-                  }
-                >
-                  le 15/03/2021
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          gap={4}
-          style={
-            {
-              "gap": 16,
-            }
-          }
-        >
-          <View
-            style={
-              {
-                "borderBottomLeftRadius": 999,
-                "borderBottomRightRadius": 999,
-                "borderTopLeftRadius": 999,
-                "borderTopRightRadius": 999,
-              }
-            }
-          >
-            <View
-              accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "borderBottomLeftRadius": 999,
-                      "borderBottomRightRadius": 999,
-                      "borderTopLeftRadius": 999,
-                      "borderTopRightRadius": 999,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Partager l’offre Avez-vous déjà vu ?"
+              testID="Partager l’offre Harry Potter"
             >
               <View
                 style={

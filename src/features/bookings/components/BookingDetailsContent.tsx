@@ -73,11 +73,11 @@ export const BookingDetailsContent = ({
 
   const cancelBooking = () => {
     showCancelModal()
-    analytics.logCancelBooking(offer.id)
+    void analytics.logCancelBooking(offer.id)
   }
 
   const onEmailPress = () => {
-    analytics.logClickEmailOrganizer()
+    void analytics.logClickEmailOrganizer()
   }
   const isNoTicket = booking.ticket.display === TicketDisplayEnum.no_ticket
   const hasTicket = !isNoTicket

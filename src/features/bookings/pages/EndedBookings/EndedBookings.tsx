@@ -1,15 +1,16 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
-  BookingOfferResponseV2,
-  BookingResponse,
+  BookingListItemResponse,
   PostOneReactionRequest,
   PostReactionRequest,
   ReactionTypeEnum,
+  BookingListItemOfferResponse,
+  BookingsListResponseV2,
 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
@@ -20,23 +21,27 @@ import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
-import { useBookingsV2WithConvertedTimezoneQuery } from 'queries/bookings/useBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
-const keyExtractor: (item: BookingResponse) => string = (item) => item.id.toString()
+const keyExtractor: (item: BookingListItemResponse) => string = (item) => item.id.toString()
 
-export const EndedBookings: FunctionComponent = () => {
-  const { isLoggedIn } = useAuthContext()
+type Props = {
+  useEndedBookingsQuery: () => UseQueryResult<BookingsListResponseV2, Error>
+}
 
+export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { data: bookings } = useBookingsV2WithConvertedTimezoneQuery(isLoggedIn)
+
+  const { data: bookings = { bookings: [] } } = useEndedBookingsQuery()
+
+  const { bookings: endedBookings } = bookings
 
   const { mutateAsync: addReaction } = useReactionMutation()
 
-  const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingOfferResponseV2>()
+  const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingListItemOfferResponse>()
   const [selectedBookingOfferEndedDateLabel, setSelectedBookingOfferEndedDateLabel] =
     useState<string>('')
   const [shareContent, setShareContent] = useState<ShareContent | null>()
@@ -54,10 +59,10 @@ export const EndedBookings: FunctionComponent = () => {
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const endedBookingsCount = bookings?.endedBookings?.length ?? 0
+  const hasEndedBookings = endedBookings.length > 0
 
   const openReactionModal = useCallback(
-    (booking: BookingResponse) => {
+    (booking: BookingListItemResponse) => {
       setSelectedBookingOffer(booking.stock.offer)
       setUserReaction(booking.userReaction)
 
@@ -108,7 +113,7 @@ export const EndedBookings: FunctionComponent = () => {
     [hideReactionModal, onSaveReaction]
   )
 
-  const renderItem: ListRenderItem<BookingResponse> = useCallback(
+  const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
     ({ item }) => {
       return (
         <EndedBookingItem
@@ -125,11 +130,11 @@ export const EndedBookings: FunctionComponent = () => {
     <React.Fragment>
       <FlatList
         contentContainerStyle={contentContainerStyle}
-        data={bookings?.endedBookings ?? []}
+        data={endedBookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={StyledSeparator}
-        ListHeaderComponent={endedBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
+        ListHeaderComponent={hasEndedBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
         ListEmptyComponent={<NoBookingsView />}
       />
 
@@ -143,7 +148,10 @@ export const EndedBookings: FunctionComponent = () => {
       ) : null}
       {shouldDisplayReactionFeature && selectedBookingOffer ? (
         <ReactionChoiceModal
-          offer={selectedBookingOffer}
+          offerId={selectedBookingOffer?.id}
+          offerName={selectedBookingOffer?.name}
+          imageUrl={selectedBookingOffer?.imageUrl ?? ''}
+          subcategoryId={selectedBookingOffer?.subcategoryId}
           dateUsed={selectedBookingOfferEndedDateLabel}
           closeModal={closeReactionModal}
           visible={reactionModalVisible}

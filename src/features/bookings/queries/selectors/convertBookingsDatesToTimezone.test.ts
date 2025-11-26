@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { BookingsResponseV2 } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { convertOffererDatesToTimezone } from 'features/bookings/queries/selectors/convertOffererDatesToTimezone'
+import { convertBookingsResponseV2DatesToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { mockBuilder } from 'tests/mockBuilder'
 
 const offerWithoutAddress = mockBuilder.bookingOfferResponseV2({
@@ -32,11 +32,11 @@ const bookingsResponseV2Mock: BookingsResponseV2 = {
   hasBookingsAfter18: false,
 }
 
-describe('convertOffererDatesToTimezone', () => {
+describe('convertBookingsDatesToTimezone', () => {
   beforeEach(() => mockdate.set(CURRENT_DATE))
 
   it('should return the converted offerer dates in local timezone of offer address when present', () => {
-    const result = convertOffererDatesToTimezone(bookingsResponseV2Mock)
+    const result = convertBookingsResponseV2DatesToTimezone(bookingsResponseV2Mock)
 
     expect(result).toBeDefined()
     expect(result?.ongoingBookings[0]?.stock.beginningDatetime).toEqual('2024-05-08T08:50:00.000Z')
@@ -50,7 +50,7 @@ describe('convertOffererDatesToTimezone', () => {
       hasBookingsAfter18: false,
     }
 
-    const result = convertOffererDatesToTimezone(bookingsResponseV2WithoutAddress)
+    const result = convertBookingsResponseV2DatesToTimezone(bookingsResponseV2WithoutAddress)
 
     expect(result).toBeDefined()
     expect(result?.ongoingBookings[0]?.stock.beginningDatetime).toEqual('2024-05-08T14:50:00.000Z')
@@ -63,7 +63,7 @@ describe('convertOffererDatesToTimezone', () => {
       endedBookings: [],
       hasBookingsAfter18: false,
     }
-    const result = convertOffererDatesToTimezone(emptyBookingsResponseV2)
+    const result = convertBookingsResponseV2DatesToTimezone(emptyBookingsResponseV2)
 
     expect(result).toStrictEqual(emptyBookingsResponseV2)
   })

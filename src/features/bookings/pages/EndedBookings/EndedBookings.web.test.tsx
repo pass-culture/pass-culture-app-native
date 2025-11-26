@@ -1,12 +1,15 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
 import {
+  BookingsListResponseV2,
   BookingsResponseV2,
   CategoryIdEnum,
   NativeCategoryIdEnumv2,
   SubcategoryIdEnum,
 } from 'api/gen'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
+import { endedBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -49,7 +52,7 @@ describe('EndedBookings', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<EndedBookings />))
+      const { container } = renderEndedBookings()
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -59,3 +62,19 @@ describe('EndedBookings', () => {
     })
   })
 })
+
+const renderEndedBookings = () => {
+  const mockUseEndedBookingsQuery = () =>
+    ({
+      data: { bookings: endedBookingsV2ListSnap.bookings },
+      isLoading: false,
+      isError: false,
+      isFetching: false,
+      isRefetching: false,
+      refetch: jest.fn(),
+    }) as unknown as UseQueryResult<BookingsListResponseV2, Error>
+
+  return render(
+    reactQueryProviderHOC(<EndedBookings useEndedBookingsQuery={mockUseEndedBookingsQuery} />)
+  )
+}

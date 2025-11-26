@@ -1,4 +1,4 @@
-import { BookingResponse, BookingStockResponseV2, WithdrawalTypeEnum } from 'api/gen'
+import { BookingListItemResponse, BookingListItemStockResponse, WithdrawalTypeEnum } from 'api/gen'
 import {
   getLocationLabelV2,
   getEventOnSiteWithdrawLabelV2,
@@ -22,12 +22,12 @@ const formatEventDateLabel = (
   return `${prefix ?? ''}${format == 'date' ? formatToCompleteFrenchDateTime({ date: new Date(date), shouldDisplayWeekDay }) : formatToCompleteFrenchDate({ date: new Date(date), shouldDisplayWeekDay })}`
 }
 
-const getDateLabel = (booking: BookingResponse, properties: BookingProperties): string => {
+const getDateLabel = (booking: BookingListItemResponse, properties: BookingProperties): string => {
   if (properties.isPermanent) return 'Permanent'
 
   if (properties.hasActivationCode) {
     return getBookingLabelForActivationCodeV2.getBookingLabelForActivationCode(
-      booking.ticket?.activationCode?.expirationDate ?? null
+      booking.activationCode?.expirationDate ?? null
     )
   }
 
@@ -48,22 +48,25 @@ const getDateLabel = (booking: BookingResponse, properties: BookingProperties): 
   return ''
 }
 
-const getDayLabel = (booking: BookingResponse, properties: BookingProperties): string => {
+const getDayLabel = (booking: BookingListItemResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
   return formatEventDateLabel(new Date(booking.stock.beginningDatetime), false, 'day')
 }
 
-const getHourLabel = (booking: BookingResponse, properties: BookingProperties): string => {
+const getHourLabel = (booking: BookingListItemResponse, properties: BookingProperties): string => {
   if (!properties.isEvent || !booking.stock.beginningDatetime) return ''
   return formatToHour(new Date(booking.stock.beginningDatetime))
 }
 
-const getWithdrawLabel = (booking: BookingResponse, properties: BookingProperties): string => {
+const getWithdrawLabel = (
+  booking: BookingListItemResponse,
+  properties: BookingProperties
+): string => {
   if (properties.isEvent)
-    return booking.ticket?.withdrawal.type === WithdrawalTypeEnum.on_site
+    return booking.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site
       ? getEventOnSiteWithdrawLabelV2.getEventOnSiteWithdrawLabel(
           booking.stock.beginningDatetime,
-          booking.ticket?.withdrawal.delay
+          booking.stock.offer.withdrawalDelay
         )
       : getEventWithdrawLabel(booking.stock)
 
@@ -79,14 +82,17 @@ const getPhysicalWithdrawLabel = (expiration: string | null | undefined): string
   return ''
 }
 
-const getEventWithdrawLabel = (stock: BookingStockResponseV2): string => {
+const getEventWithdrawLabel = (stock: BookingListItemStockResponse): string => {
   if (!stock.beginningDatetime) return ''
   if (isToday(new Date(stock.beginningDatetime))) return 'Aujourd’hui'
   if (isTomorrow(new Date(stock.beginningDatetime))) return 'Demain'
   return ''
 }
 
-export const getBookingLabels = (booking: BookingResponse, properties: BookingProperties) => {
+export const getBookingLabels = (
+  booking: BookingListItemResponse,
+  properties: BookingProperties
+) => {
   return {
     dateLabel: getDateLabel(booking, properties),
     dayLabel: getDayLabel(booking, properties),
