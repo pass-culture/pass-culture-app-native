@@ -93,4 +93,5 @@ const ButtonsContainer = styled(AnimatedView)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: getSpacing(6),
   backgroundColor: theme.designSystem.color.background.default,
+  alignItems: 'center',
 }))
