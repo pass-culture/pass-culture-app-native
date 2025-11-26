@@ -63,7 +63,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
             error={error}
             value={value}
             setValue={
-              disabled
+              disabled || value === option.label
                 ? () => {
                     return
                   }
@@ -101,7 +101,7 @@ const RadioButtonListContainer = styled.View<{
   flexDirection: display === 'vertical' ? 'column' : 'row',
   gap:
     variant == 'default' || display === 'horizontal'
-      ? theme.designSystem.size.spacing.l
+      ? theme.designSystem.size.spacing.xl
       : theme.designSystem.size.spacing.s,
 }))
 
