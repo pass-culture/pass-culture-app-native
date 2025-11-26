@@ -11208,7 +11208,6 @@ __metadata:
     react-native-in-app-review: ^4.3.1
     react-native-intersection-observer: ^0.2.1
     react-native-keychain: ^10.0.0
-    react-native-launch-navigator: 1.0.9
     react-native-linear-gradient: ^2.8.3
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^4.0.0
@@ -23763,15 +23762,6 @@ __metadata:
   version: 10.0.0
   resolution: "react-native-keychain@npm:10.0.0"
   checksum: 1055cc192df58cb110bd49df1264a401007a354ad28b93adefd740aeac0f746cdab86d7428887694a1b0949ef8d0dc85db8984e77db684d7b967180167b64d42
-  languageName: node
-  linkType: hard
-
-"react-native-launch-navigator@npm:1.0.9":
-  version: 1.0.9
-  resolution: "react-native-launch-navigator@npm:1.0.9"
-  peerDependencies:
-    react-native: ">=0.60.0"
-  checksum: 2592afc421a5aa9f11c24ced4cf6fb9d95759ec3e5537427705ff8c959a40e2319e506b5e14572712229a2b14697fae386ec47dbe4b5bb61f2ca25b2a3aea65e
   languageName: node
   linkType: hard
 
