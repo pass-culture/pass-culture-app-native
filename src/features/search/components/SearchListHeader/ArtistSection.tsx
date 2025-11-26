@@ -23,11 +23,7 @@ export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProp
         <Typo.Title3>{TITLE}</Typo.Title3>
         <NumberOfResults nbHits={artists.length} />
       </Container>
-      <AvatarList
-        data={artists}
-        avatarConfig={{ size: AVATAR_MEDIUM, borderWidth: 4 }}
-        onItemPress={onItemPress}
-      />
+      <AvatarList data={artists} avatarConfig={{ size: AVATAR_MEDIUM }} onItemPress={onItemPress} />
     </View>
   )
 }

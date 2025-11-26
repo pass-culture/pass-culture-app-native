@@ -55,7 +55,6 @@ const variantConfig: Variants<typeof Avatar> = [
     label: 'Avatar with borders',
     props: {
       size: AVATAR_LARGE,
-      borderWidth: 6,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
       children: <ProfileFilled size={48} color={theme.designSystem.color.icon.lockedInverted} />,
     },
@@ -64,7 +63,6 @@ const variantConfig: Variants<typeof Avatar> = [
     label: 'Avatar with custom images',
     props: {
       size: AVATAR_LARGE,
-      borderWidth: 6,
       children: (
         <DefaultAvatar>
           <Profile size={35} color={theme.designSystem.color.icon.lockedInverted} />
@@ -77,7 +75,6 @@ const variantConfig: Variants<typeof Avatar> = [
     props: {
       size: AVATAR_LARGE,
       rounded: false,
-      borderWidth: 6,
       backgroundColor: theme.designSystem.color.background.brandPrimary,
       children: <StyledTitle1>M.M</StyledTitle1>,
     },

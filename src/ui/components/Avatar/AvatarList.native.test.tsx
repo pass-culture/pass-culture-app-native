@@ -2,7 +2,6 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { render, screen, userEvent } from 'tests/utils'
-import { theme } from 'theme'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { AVATAR_LARGE, AVATAR_SMALL } from 'ui/theme/constants'
 
@@ -25,10 +24,6 @@ describe('<AvatarsList />', () => {
     expect(screen.getByText('Lolo')).toBeOnTheScreen()
 
     expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp('size', AVATAR_LARGE)
-    expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp(
-      'borderColor',
-      theme.designSystem.color.border.inverted
-    )
   })
 
   it('should display items with custom avatar config', () => {
@@ -36,7 +31,7 @@ describe('<AvatarsList />', () => {
       <AvatarList
         data={avatarsData}
         onItemPress={jest.fn()}
-        avatarConfig={{ size: AVATAR_SMALL, borderColor: 'pink' }}
+        avatarConfig={{ size: AVATAR_SMALL }}
       />
     )
 
@@ -45,7 +40,6 @@ describe('<AvatarsList />', () => {
     expect(screen.getByText('Lolo')).toBeOnTheScreen()
 
     expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp('size', AVATAR_SMALL)
-    expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp('borderColor', 'pink')
   })
 
   it('should force default avatar size to AVATAR_LARGE', () => {

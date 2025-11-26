@@ -17,7 +17,7 @@ type ArtistHeaderProps = {
 export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
   return (
     <ArtistHeaderWrapper gap={4}>
-      <Avatar borderWidth={6} size={AVATAR_LARGE}>
+      <Avatar size={AVATAR_LARGE}>
         {avatarImage ? (
           <StyledImage
             url={avatarImage}
