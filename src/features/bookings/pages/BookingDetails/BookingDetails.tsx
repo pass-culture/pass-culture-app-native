@@ -20,7 +20,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { ScreenError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useBookingsByIdQuery } from 'queries/bookings/useBookingsByIdQuery'
+import { useBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const BookingDetails = () => {
@@ -97,12 +97,12 @@ const BookingDetailsContainer = ({
 }) => {
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
-  const useBookingById = () =>
-    useBookingsByIdQuery(bookingId, { select: convertBookingResponseDateToTimezone })
+  const useBooking = () =>
+    useBookingByIdQuery(bookingId, { select: convertBookingResponseDateToTimezone })
 
   const useOngoingOrEndedBookings = () => useOngoingOrEndedBookingQueryV2(bookingId)
 
-  const useActiveQuery = enableNewBookings ? useBookingById : useOngoingOrEndedBookings
+  const useActiveBookingsQuery = enableNewBookings ? useBooking : useOngoingOrEndedBookings
 
   const {
     data: booking,
@@ -112,7 +112,7 @@ const BookingDetailsContainer = ({
     isError,
     error,
     dataUpdatedAt,
-  } = useActiveQuery()
+  } = useActiveBookingsQuery()
 
   const mapping = useSubcategoriesMapping()
   const { logType } = useLogTypeFromRemoteConfig()

@@ -60,7 +60,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
   describe('offline', () => {
     it('should allow pull to refetch when netInfo.isConnected && netInfo.isInternetReachable', () => {
-      renderOnGoingBookingsList({})
+      renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
 
@@ -74,7 +74,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isInternetReachable: false,
       })
 
-      renderOnGoingBookingsList({})
+      renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
 
@@ -105,7 +105,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isLoading: true,
       } as UseQueryResult<SubcategoriesResponseModelv2, Error>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
-      renderOnGoingBookingsList({})
+      renderOnGoingBookingsList()
 
       const placeholder = screen.queryByTestId('BookingsPlaceholder')
 
@@ -114,7 +114,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 
   it('should trigger logEvent "BookingsScrolledToBottom" when reaching the end', () => {
-    renderOnGoingBookingsList({})
+    renderOnGoingBookingsList()
     const flatList = screen.getByTestId('OnGoingBookingsList')
 
     flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
@@ -127,7 +127,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 
   it('should trigger logEvent "BookingsScrolledToBottom" only once', () => {
-    renderOnGoingBookingsList({})
+    renderOnGoingBookingsList()
     const flatList = screen.getByTestId('OnGoingBookingsList')
 
     // 1st scroll to bottom => trigger
@@ -143,7 +143,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 })
 
-const renderOnGoingBookingsList = ({ isLoading = false }: { isLoading?: boolean }) => {
+const renderOnGoingBookingsList = ({ isLoading = false }: { isLoading?: boolean } = {}) => {
   const mockUseOngoingBookingsQuery = () =>
     ({
       data: { bookings: ongoingBookingsV2ListSnap.bookings },

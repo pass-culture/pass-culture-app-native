@@ -32,8 +32,13 @@ type Props = {
 export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookingsQuery }) => {
   const netInfo = useNetInfoContext()
 
-  const { data: bookings, isLoading, isFetching, refetch } = useOngoingBookingsQuery()
-  const { bookings: ongoingBookings = [] } = bookings ?? {}
+  const {
+    data: bookings = { bookings: [] },
+    isLoading,
+    isFetching,
+    refetch,
+  } = useOngoingBookingsQuery()
+  const { bookings: ongoingBookings } = bookings
 
   const { isLoading: subcategoriesIsLoading } = useSubcategoriesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)

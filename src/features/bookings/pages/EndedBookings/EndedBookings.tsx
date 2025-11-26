@@ -35,9 +35,9 @@ type Props = {
 export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
-  const { data: bookings } = useEndedBookingsQuery()
+  const { data: bookings = { bookings: [] } } = useEndedBookingsQuery()
 
-  const { bookings: endedBookings = [] } = bookings ?? {}
+  const { bookings: endedBookings } = bookings
 
   const { mutateAsync: addReaction } = useReactionMutation()
 

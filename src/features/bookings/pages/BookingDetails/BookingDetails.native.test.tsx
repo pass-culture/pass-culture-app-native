@@ -24,7 +24,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import * as useBookingsByIdQueryAPI from 'queries/bookings/useBookingsByIdQuery'
+import * as useBookingByIdQueryAPI from 'queries/bookings/useBookingByIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -1046,7 +1046,7 @@ const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
 }
 
 const renderBookingDetailsWithBookingById = (booking?: BookingResponse, options = {}) => {
-  jest.spyOn(useBookingsByIdQueryAPI, 'useBookingsByIdQuery').mockReturnValue({
+  jest.spyOn(useBookingByIdQueryAPI, 'useBookingByIdQuery').mockReturnValue({
     data: booking,
     isLoading: false,
     isFetching: false,

@@ -39,7 +39,7 @@ const checkBookingPage = async () => {
 
 export const Bookings = () => {
   useEffect(() => {
-    checkBookingPage()
+    void checkBookingPage()
   }, [])
 
   const { params } = useRoute<UseRouteType<'Bookings'>>()
@@ -50,7 +50,7 @@ export const Bookings = () => {
 
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
-  const useBookingByStatus = () =>
+  const useBookingsByStatus = () =>
     useBookingsByStatusQuery(mapBookingsStatusToActiveTab[activeTab], {
       select: convertBookingsListResponseV2DatesToTimezone,
     })
@@ -62,7 +62,7 @@ export const Bookings = () => {
       true
     )
 
-  const useActiveBookingsQuery = enableNewBookings ? useBookingByStatus : useBookingsV2
+  const useActiveBookingsQuery = enableNewBookings ? useBookingsByStatus : useBookingsV2
 
   const { data: bookings } = useActiveBookingsQuery()
 
@@ -100,7 +100,7 @@ export const Bookings = () => {
     useCallback(() => {
       return () => {
         if (previousTab === BookingsTab.COMPLETED) {
-          updateReactions()
+          void updateReactions()
         }
         if (previousTab !== activeTab) {
           setPreviousTab(activeTab)
@@ -132,7 +132,7 @@ export const Bookings = () => {
           },
         ]}
         onTabChange={(key) => {
-          if (activeTab === BookingsTab.COMPLETED) updateReactions()
+          if (activeTab === BookingsTab.COMPLETED) void updateReactions()
           setActiveTab(key)
         }}
       />

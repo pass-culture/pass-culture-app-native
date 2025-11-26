@@ -24,7 +24,7 @@ jest.useFakeTimers()
 describe('OnGoingBookingItem', () => {
   const bookings = ongoingBookingsV2ListSnap.bookings
 
-  const initialBooking: BookingListItemResponse = ongoingBookingsV2ListSnap.bookings[0]
+  const initialBooking = ongoingBookingsV2ListSnap.bookings[0]
 
   it('should navigate to the booking details page', async () => {
     renderOnGoingBookingItem(initialBooking)

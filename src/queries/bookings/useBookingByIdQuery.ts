@@ -5,7 +5,7 @@ import { BookingResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 import { CustomQueryOptions } from 'libs/react-query/types'
 
-export const useBookingsByIdQuery = <TSelect = BookingResponse>(
+export const useBookingByIdQuery = <TSelect = BookingResponse>(
   id: number,
   options?: CustomQueryOptions<BookingResponse, TSelect>
 ) =>
