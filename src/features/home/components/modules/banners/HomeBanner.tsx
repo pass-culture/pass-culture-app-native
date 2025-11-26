@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
+import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -52,7 +53,12 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
+  const { user } = useAuthContext()
+
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
+  const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
+  const showBonificationBanner =
+    enableBonification && user?.isEligibleForBonification && !hasClosedBonificationBanner
 
   const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
@@ -67,7 +73,6 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { user } = useAuthContext()
 
   const shouldRenderSystemBanner = banner.name ? bannersToRender.includes(banner.name) : false
 
@@ -126,10 +131,13 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       return renderSystemBanner(systemBannerIcons[banner.name], banner.title, banner.text)
     }
 
-    if (enableBonification && user?.isEligibleForBonification) {
+    if (showBonificationBanner) {
       return (
         <BannerContainer>
-          <BonificationBanner bonificationStatus={user?.bonificationStatus} />
+          <BonificationBanner
+            bonificationStatus={user?.bonificationStatus}
+            onCloseCallback={onCloseBanner}
+          />
         </BannerContainer>
       )
     }
@@ -143,10 +151,10 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     banner.name,
     banner.title,
     banner.text,
-    enableBonification,
-    user?.isEligibleForBonification,
-    user?.bonificationStatus,
+    showBonificationBanner,
     renderSystemBanner,
+    user?.bonificationStatus,
+    onCloseBanner,
   ])
 
   return (
