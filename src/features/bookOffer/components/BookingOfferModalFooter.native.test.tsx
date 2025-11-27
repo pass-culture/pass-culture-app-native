@@ -54,11 +54,12 @@ describe('BookingOfferModalFooter', () => {
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
     })
 
-    it.each([
-      { type: 'RESET_HOUR', description: 'hour' },
-      { type: 'RESET_STOCK', description: 'stockId' },
-      { type: 'RESET_QUANTITY', description: 'quantity' },
-    ])('should reset $description when validating date step', async ({ type }) => {
+    it.each`
+      type                | description
+      ${'RESET_HOUR'}     | ${'hour'}
+      ${'RESET_STOCK'}    | ${'stockId'}
+      ${'RESET_QUANTITY'} | ${'quantity'}
+    `('should reset $description when validating date step', async ({ type }) => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
