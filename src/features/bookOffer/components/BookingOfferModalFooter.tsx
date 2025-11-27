@@ -6,6 +6,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getButtonState,
   getButtonWording,
+  resetBookingState,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -52,12 +53,11 @@ const handleBookingSteps = (
 ) => {
   switch (step) {
     case Step.DATE:
-      dispatch({ type: 'RESET_HOUR' })
+      resetBookingState(dispatch)
       return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
 
     case Step.HOUR:
       if (hasPricesStep) {
-        dispatch({ type: 'RESET_STOCK' })
         return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
       }
       if (isDuo) {

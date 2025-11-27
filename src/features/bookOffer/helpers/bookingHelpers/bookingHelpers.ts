@@ -1,5 +1,5 @@
 import { OfferStockResponse } from 'api/gen'
-import { BookingState, Step } from 'features/bookOffer/context/reducer'
+import { Action, BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -178,4 +178,10 @@ export const shouldDisplayPricesStep = (
 ) => {
   const stocksWithCategory = getStockWithCategory(stocks, date, hour)
   return stocksWithCategory.length > 1 || isEvent === true
+}
+
+export const resetBookingState = (dispatch: (value: Action) => void) => {
+  dispatch({ type: 'RESET_HOUR' })
+  dispatch({ type: 'RESET_STOCK' })
+  dispatch({ type: 'RESET_QUANTITY' })
 }
