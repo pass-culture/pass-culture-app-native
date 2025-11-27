@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { memo } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -25,7 +25,7 @@ type Props = {
   withFilterButton?: boolean
 }
 
-export const SearchHeader = memo(function SearchHeader({
+export const SearchHeader: FC<Props> = ({
   searchInputID,
   addSearchHistory,
   searchInHistory,
@@ -35,7 +35,7 @@ export const SearchHeader = memo(function SearchHeader({
   offerCategories,
   placeholder,
   withFilterButton = false,
-}: Props) {
+}: Props) => {
   const { goBack } = useNavigation()
   const { dispatch, searchState } = useSearch()
 
@@ -84,7 +84,7 @@ export const SearchHeader = memo(function SearchHeader({
       </HeaderContainer>
     </React.Fragment>
   )
-})
+}
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xl,

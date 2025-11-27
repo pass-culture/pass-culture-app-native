@@ -44,17 +44,20 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
       <View
         style={
           {
+            "flexBasis": 0,
             "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
             "justifyContent": "space-between",
-            "width": "100%",
           }
         }
       >
         <View
           style={
             {
+              "flexBasis": 0,
+              "flexGrow": 1,
               "flexShrink": 1,
-              "width": "100%",
             }
           }
           testID="SearchHeaderTitleContainer"
@@ -64,18 +67,19 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
+                "flexShrink": 1,
                 "justifyContent": "flex-start",
               }
             }
           >
             <View
-              shouldDisplayMobileLocationSmallWidget={false}
               style={
                 {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
+                  "alignItems": "flex-start",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                   "justifyContent": "flex-start",
-                  "maxWidth": "75%",
                 }
               }
             >
