@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { Configure, Index } from 'react-instantsearch-core'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
@@ -39,7 +39,7 @@ export const SearchSuggestions = ({
   shouldNavigateToSearchResults,
   offerCategories,
 }: SearchSuggestionsParams) => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, setOptions } = useNavigation<UseNavigationType>()
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius, geolocPosition } =
     useLocation()
@@ -48,6 +48,12 @@ export const SearchSuggestions = ({
   const shouldDisplayArtistsSuggestions = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ARTISTS_SUGGESTIONS_IN_SEARCH
   )
+
+  useEffect(() => {
+    setOptions({
+      gestureEnabled: false,
+    })
+  }, [setOptions])
 
   const searchVenuePosition = buildSearchVenuePosition(
     { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius },
