@@ -23,7 +23,7 @@ const baseProps = {
   title: 'Olivier, 15 ans',
   subtitle: 'Membre du book club',
   description:
-    'Pour moi, cette biographie n’est pas comme une autre. Cela concerne le créateur de Star Wars, le premier film...',
+    'Pour moi, cette biographie n’est pas comme une autre. Cela concerne le créateur de Star Wars, le premier film de la saga qui a marqué des générations entières.',
   date: 'Juin 2024',
   icon: <BookClubIcon />,
 }
@@ -37,6 +37,9 @@ const variantConfig: Variants<typeof ChronicleCard> = [
     label: 'ChronicleCard with see more button',
     props: {
       ...baseProps,
+      description:
+        'Pour moi, cette biographie n’est pas comme une autre. Cela concerne le créateur de Star Wars, le premier film de la saga qui a marqué des générations entières. J’ai appris tellement de choses sur sa vie, ses inspirations, et les défis qu’il a dû surmonter pour réaliser son rêve. C’est une lecture captivante qui m’a vraiment inspiré à poursuivre mes propres passions, peu importe les obstacles que je pourrais rencontrer en cours de route. Je recommande vivement ce livre à tous ceux qui aiment le cinéma et les histoires de réussite personnelle.',
+      shouldTruncate: true,
       children: (
         <View>
           <ButtonTertiaryBlack wording="Voir plus" />
