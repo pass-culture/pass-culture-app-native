@@ -34,7 +34,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
       }}
       onBeforeNavigate={() => onItemPress(id.toString(), name)}>
       <StyledView gap={2}>
-        <Avatar borderWidth={6} size={size} {...props}>
+        <Avatar size={size} {...props}>
           {image ? (
             <StyledImage
               url={image}
