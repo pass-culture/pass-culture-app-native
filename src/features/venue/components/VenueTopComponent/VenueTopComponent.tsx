@@ -6,7 +6,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueTopComponentBase } from 'features/venue/components/VenueTopComponent/VenueTopComponentBase'
 
 type Props = {
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
 }
 
 export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => {

@@ -21,7 +21,7 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
   isCTADisplayed?: boolean
   children: React.ReactNode
   showSearchInVenueModal: () => void

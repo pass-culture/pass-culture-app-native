@@ -15,7 +15,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 interface Props {
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
 }
 
 export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props) => {

@@ -14,7 +14,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
 type Props = {
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
   enableAccesLibre?: boolean
 }
 

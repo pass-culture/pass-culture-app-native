@@ -25,12 +25,11 @@ type PartialVenue = Pick<VenueResponse, 'id' | 'name' | 'description' | 'isOpenT
 
 const mergeVenueData =
   (venue: PartialVenue) =>
-  (prevData: VenueResponse | undefined): VenueResponse => ({
+  (prevData: VenueResponse | undefined): Omit<VenueResponse, 'isVirtual'> => ({
     id: venue.id,
     name: venue.name,
     // Info not available in OfferVenueResponse so we fallback to OTHER
     venueTypeCode: VenueTypeCodeKey.OTHER,
-    isVirtual: false,
     description: venue.description,
     accessibility: {},
     contact: {},

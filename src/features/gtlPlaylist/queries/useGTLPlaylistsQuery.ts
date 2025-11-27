@@ -9,7 +9,7 @@ import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseGTLPlaylistsProps = {
-  venue?: VenueResponse
+  venue?: Omit<VenueResponse, 'isVirtual'>
   searchIndex?: string
   searchGroupLabel?: ContentfulLabelCategories
   userLocation: Position

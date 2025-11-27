@@ -1,7 +1,7 @@
 import { VenueResponse } from 'api/gen'
 import { OffersModuleParameters } from 'features/home/types'
 import { AlgoliaOffer, LocationMode, PlaylistOffersParams } from 'libs/algolia/types'
-import { Layout, DisplayParametersFields } from 'libs/contentful/types'
+import { DisplayParametersFields, Layout } from 'libs/contentful/types'
 import { Position } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -21,7 +21,7 @@ export type GtlPlaylistData = {
 
 export type UseGetOffersByGtlQueryArgs = {
   filteredGtlPlaylistsConfig: GtlPlaylistRequest[]
-  venue?: VenueResponse
+  venue?: Omit<VenueResponse, 'isVirtual'>
   searchIndex?: string
   userLocation: Position
   selectedLocationMode: LocationMode

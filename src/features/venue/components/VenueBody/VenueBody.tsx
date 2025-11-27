@@ -9,7 +9,7 @@ import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
-import { VenueOffersArtists, VenueOffers as VenueOffersType, Tab } from 'features/venue/types'
+import { Tab, VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -21,7 +21,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  venue: VenueResponse
+  venue: Omit<VenueResponse, 'isVirtual'>
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
   playlists: GtlPlaylistData[]
