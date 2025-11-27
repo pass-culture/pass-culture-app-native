@@ -16,10 +16,6 @@ jest.unmock('@react-navigation/native-stack')
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
-}))
-
 let mockedOffer: Partial<OfferResponseV2> | undefined | null = undefined
 let mockedIsLoading = false
 jest.mock('queries/offer/useOfferQuery', () => ({

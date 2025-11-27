@@ -3,6 +3,7 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as OpenItinerary from 'libs/itinerary/openGoogleMapsItinerary'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
@@ -11,17 +12,11 @@ jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock')
 const mockOnCopyAddressPress = jest.fn()
 const mockUseVenueBlock = jest.mocked(useVenueBlock)
 
-const mockNavigateToItinerary = jest.fn()
-const mockUseItinerary = () => ({
-  navigateTo: mockNavigateToItinerary,
-})
-jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary: jest.fn(() => mockUseItinerary()),
-}))
-
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const openGoogleMapsItinerarySpy = jest.spyOn(OpenItinerary, 'openGoogleMapsItinerary')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -362,7 +357,7 @@ describe('<OfferVenueBlock />', () => {
 
     await user.press(screen.getByText('Voir l’itinéraire'))
 
-    expect(mockNavigateToItinerary).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
+    expect(openGoogleMapsItinerarySpy).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
   })
 
   it('should display offer address label when offer address is different of venue offer address', async () => {

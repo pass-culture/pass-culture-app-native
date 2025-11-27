@@ -21,7 +21,6 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 jest.mock('libs/subcategories/useSubcategory')
 jest.mock('features/venue/queries/useVenueQuery')
 jest.mock('queries/venue/useVenueOffersQuery')
-jest.mock('libs/itinerary/useItinerary')
 
 jest.mock('features/auth/context/AuthContext')
 

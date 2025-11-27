@@ -29,7 +29,6 @@ const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
-jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('libs/network/NetInfoWrapper')
