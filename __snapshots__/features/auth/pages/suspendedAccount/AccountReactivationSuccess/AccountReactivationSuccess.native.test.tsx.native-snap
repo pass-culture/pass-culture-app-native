@@ -187,10 +187,12 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
