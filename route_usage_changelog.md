@@ -1,4 +1,4 @@
-# v1.368.0
+# v1.369.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/favorites/{favorite_id}
@@ -27,6 +27,8 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/subscription/profile
 - /native/v1/venue/{venue_id}
 - /native/v2/bookings
+- /native/v2/bookings/{booking_id}
+- /native/v2/bookings/{status}
 - /native/v2/offer/{offer_id}
 - /native/v2/profile/email_update/status
 - /native/v2/subscription/stepper
