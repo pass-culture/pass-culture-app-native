@@ -466,1008 +466,1029 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
   >
     <View>
       <RCTScrollView
-        contentContainerStyle={
-          {
-            "alignContent": "flex-start",
-            "alignItems": "flex-start",
-            "flexDirection": "row",
-            "flexWrap": "wrap",
-            "gap": 16,
-            "padding": 24,
-          }
-        }
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={{}}
       >
         <View>
           <View
-            accessibilityLabel="Romans et littérature"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "flexDirection": "column",
+                "gap": 16,
+                "paddingBottom": 24,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 24,
+              }
             }
-            testID="Romans et littérature"
           >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
+            <View
               style={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                  "flexDirection": "row",
+                  "gap": 16,
                 }
               }
             >
-              Romans et littérature
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Mangas"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+              <View
+                accessibilityLabel="Romans et littérature"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
                   {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Mangas"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Romans et littérature"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Romans et littérature
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="BD & Comics"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="BD & Comics"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  BD & Comics
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Société & Politique"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Société & Politique"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Société & Politique
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Compétences générales"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Compétences générales"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Compétences générales
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Tourisme & Voyages"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Tourisme & Voyages"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Tourisme & Voyages
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="E-books"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="E-books"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  E-books
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Livres audio"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Livres audio"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Livres audio
+                </Text>
+              </View>
+            </View>
+            <View
               style={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                  "flexDirection": "row",
+                  "gap": 16,
                 }
               }
             >
-              Mangas
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="BD & Comics"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+              <View
+                accessibilityLabel="Mangas"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="BD & Comics"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              BD & Comics
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Loisirs & Bien-être"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                accessibilityValue={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Loisirs & Bien-être"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
                 }
-              }
-            >
-              Loisirs & Bien-être
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Société & Politique"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Société & Politique"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
-              }
-            >
-              Société & Politique
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Théâtre, Poésie & Essais"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                testID="Mangas"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Mangas
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Loisirs & Bien-être"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Théâtre, Poésie & Essais"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Théâtre, Poésie & Essais
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Compétences générales"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                accessibilityValue={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Compétences générales"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
                 }
-              }
-            >
-              Compétences générales
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Mode et Art"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Mode et Art"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
-              }
-            >
-              Mode et Art
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Tourisme & Voyages"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                testID="Loisirs & Bien-être"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Loisirs & Bien-être
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Théâtre, Poésie & Essais"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Tourisme & Voyages"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Tourisme & Voyages
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                accessibilityValue={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Abonnements aux médiathèques et bibliothèques"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
                 }
-              }
-            >
-              Abonnements aux médiathèques et bibliothèques
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="E-books"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="E-books"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
-              }
-            >
-              E-books
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Évènements autour du livre"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                testID="Théâtre, Poésie & Essais"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Théâtre, Poésie & Essais
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Mode et Art"
+                accessibilityRole="button"
+                accessibilityState={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Évènements autour du livre"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
-              }
-            >
-              Évènements autour du livre
-            </Text>
-          </View>
-          <View
-            accessibilityLabel="Livres audio"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
+                accessibilityValue={
                   {
-                    "userSelect": "auto",
-                  },
-                  {},
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffa5c0",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#eb0055",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1.6,
-                    "flexDirection": "row",
-                    "height": "100%",
-                    "minHeight": 56,
-                    "textAlign": "left",
-                    "width": 343,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Livres audio"
-          >
-            <Text
-              ellipsizeMode="tail"
-              numberOfLines={3}
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 8,
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
                 }
-              }
-            >
-              Livres audio
-            </Text>
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Mode et Art"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Mode et Art
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Abonnements aux médiathèques et bibliothèques"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Abonnements aux médiathèques et bibliothèques
+                </Text>
+              </View>
+              <View
+                accessibilityLabel="Évènements autour du livre"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffa5c0",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#eb0055",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1.6,
+                        "flexDirection": "row",
+                        "minHeight": 56,
+                        "textAlign": "left",
+                        "width": 156,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Évènements autour du livre"
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={3}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "marginHorizontal": 8,
+                    }
+                  }
+                >
+                  Évènements autour du livre
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </RCTScrollView>

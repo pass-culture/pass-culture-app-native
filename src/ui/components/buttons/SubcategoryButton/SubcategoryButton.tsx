@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import { LayoutChangeEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
@@ -12,10 +12,9 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
-import { getSpacing } from 'ui/theme/spacing'
 
-export const SUBCATEGORY_BUTTON_HEIGHT = getSpacing(14)
-export const SUBCATEGORY_BUTTON_WIDTH = getSpacing(45.6)
+export const SUBCATEGORY_BUTTON_HEIGHT = 56
+export const SUBCATEGORY_BUTTON_WIDTH = 156
 
 export type SubcategoryButtonItem = SubcategoryButtonProps & {
   nativeCategory: NativeCategoryEnum
@@ -28,6 +27,8 @@ type SubcategoryButtonProps = {
   position?: number
   searchParams: SearchState
   onBeforeNavigate: VoidFunction
+  onLayout?: (event: LayoutChangeEvent) => void
+  uniformHeight?: number
 }
 
 export const SubcategoryButton = ({
@@ -36,8 +37,9 @@ export const SubcategoryButton = ({
   borderColor,
   searchParams,
   onBeforeNavigate,
+  onLayout,
+  uniformHeight,
 }: SubcategoryButtonProps) => {
-  const windowWidth = useWindowDimensions().width
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
 
@@ -50,9 +52,10 @@ export const SubcategoryButton = ({
       navigateTo={getSearchPropConfig('SearchResults', searchParams)}
       testID={`SubcategoryButton ${label}`}
       accessibilityLabel={label}
-      windowWidth={windowWidth}
       backgroundColor={backgroundColor}
-      borderColor={borderColor}>
+      borderColor={borderColor}
+      onLayout={onLayout}
+      uniformHeight={uniformHeight}>
       <StyledText>{label}</StyledText>
     </StyledInternalTouchable>
   )
@@ -60,17 +63,14 @@ export const SubcategoryButton = ({
 
 const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
   isFocus?: boolean
-  windowWidth: number
   backgroundColor: ColorsType
   borderColor: ColorsType
-}>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
-  ...(theme.isMobileViewport
-    ? { width: windowWidth / 2 - theme.designSystem.size.spacing.xxl }
-    : {}),
+  uniformHeight?: number
+}>(({ theme, isFocus, backgroundColor, borderColor, uniformHeight }) => ({
   flexDirection: 'row',
   backgroundColor,
-  minHeight: SUBCATEGORY_BUTTON_HEIGHT,
-  height: '100%',
+  width: theme.isMobileViewport ? SUBCATEGORY_BUTTON_WIDTH : '100%',
+  minHeight: uniformHeight ?? SUBCATEGORY_BUTTON_HEIGHT,
   borderColor,
   borderWidth: 1.6,
   borderStyle: 'solid',
