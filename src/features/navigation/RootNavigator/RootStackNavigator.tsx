@@ -35,6 +35,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
+import { LocationModal } from 'features/location/components/LocationModal'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
@@ -338,6 +339,7 @@ const rootScreens: RouteConfig[] = [
 // Youtube player in fullscreen opens and closes 1 second later automatically
 const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
 const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
+const LocationWithAsyncErrorBoundry = withAsyncErrorBoundary(LocationModal)
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
@@ -410,6 +412,18 @@ const RootStackNavigator = withWebWrapper(
               presentation: isWeb ? 'modal' : 'containedModal',
               ...FILTERS_MODAL_NAV_OPTIONS,
             }}></RootStackNavigatorBase.Screen>
+          <RootStackNavigatorBase.Screen
+            name="LocationModal"
+            component={LocationWithAsyncErrorBoundry}
+            options={Platform.select({
+              ios: {
+                presentation: 'modal',
+              },
+              android: {
+                presentation: 'formSheet',
+                headerShown: false,
+              },
+            })}></RootStackNavigatorBase.Screen>
         </RootStackNavigatorBase.Navigator>
       </IconFactoryProvider>
     )
