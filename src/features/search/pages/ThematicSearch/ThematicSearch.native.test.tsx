@@ -19,6 +19,13 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const mockUseRemoteConfigQuery = jest.fn(() => ({
+  data: { displayNewSearchHeader: false },
+}))
+jest.mock('libs/firebase/remoteConfig/queries/useRemoteConfigQuery', () => ({
+  useRemoteConfigQuery: () => mockUseRemoteConfigQuery(),
+}))
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -119,7 +126,7 @@ describe('<ThematicSearch/>', () => {
 
   describe('book offerCategory', () => {
     beforeEach(() => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
       mockUseLocation.mockReturnValue(defaultUseLocation)
       mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
       mockedUseSearch.mockReturnValue({
@@ -220,7 +227,7 @@ describe('<ThematicSearch/>', () => {
 
   describe('gtl playlists', () => {
     it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Festivals')
 
@@ -230,7 +237,7 @@ describe('<ThematicSearch/>', () => {
 
   describe('cinema playlists', () => {
     it('should render cinema playlists when offerCategory is `CINEMA`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CINEMA] })
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Cinéma')
 
@@ -238,7 +245,7 @@ describe('<ThematicSearch/>', () => {
     })
 
     it('should not render cinema playlists when offerCategory is not `CINEMA`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Festivals')
 
@@ -248,7 +255,7 @@ describe('<ThematicSearch/>', () => {
 
   describe('films playlists', () => {
     it('should render films playlists when offerCategory is `FILMS_DOCUMENTAIRES_SERIES`', async () => {
-      MockOfferCategoriesParams({
+      mockOfferCategoriesParams({
         offerCategories: [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES],
       })
       render(reactQueryProviderHOC(<ThematicSearch />))
@@ -258,7 +265,7 @@ describe('<ThematicSearch/>', () => {
     })
 
     it('should not render films playlists when offerCategory is not `FILMS_DOCUMENTAIRES_SERIES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Festivals')
 
@@ -268,7 +275,7 @@ describe('<ThematicSearch/>', () => {
 
   describe('music playlists', () => {
     it('should render music playlists when offerCategory is `MUSIQUE`', async () => {
-      MockOfferCategoriesParams({
+      mockOfferCategoriesParams({
         offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
       })
       render(reactQueryProviderHOC(<ThematicSearch />))
@@ -278,7 +285,7 @@ describe('<ThematicSearch/>', () => {
     })
 
     it('should not render music playlists when offerCategory is not `MUSIQUE`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
       render(reactQueryProviderHOC(<ThematicSearch />))
       await screen.findByText('Livres')
 
@@ -287,7 +294,7 @@ describe('<ThematicSearch/>', () => {
   })
 })
 
-function MockOfferCategoriesParams(offerCategoriesParams: {
+function mockOfferCategoriesParams(offerCategoriesParams: {
   offerCategories: SearchGroupNameEnumv2[]
 }) {
   useRoute.mockImplementation(() => ({

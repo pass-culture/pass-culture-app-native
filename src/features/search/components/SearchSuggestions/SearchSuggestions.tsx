@@ -111,15 +111,15 @@ export const SearchSuggestions = ({
     ]
   )
 
-  const onVenuePress = (venueId: number) => {
+  const onVenuePress = async (venueId: number) => {
     hideSuggestions()
-    analytics.logConsultVenue({ venueId: venueId.toString(), from: 'searchAutoComplete' })
+    await analytics.logConsultVenue({ venueId: venueId.toString(), from: 'searchAutoComplete' })
     navigate('Venue', { id: venueId })
   }
 
-  const onArtistPress = (artistId: string, artistName: string) => {
+  const onArtistPress = async (artistId: string, artistName: string) => {
     hideSuggestions()
-    analytics.logConsultArtist({ artistId, artistName, from: 'searchAutoComplete' })
+    await analytics.logConsultArtist({ artistId, artistName, from: 'searchAutoComplete' })
     navigate('Artist', { id: artistId })
   }
 

@@ -232,6 +232,13 @@ const mockedEmptyHistory = {
   search: jest.fn(),
 }
 
+const mockUseRemoteConfigQuery = jest.fn(() => ({
+  data: { displayNewSearchHeader: false },
+}))
+jest.mock('libs/firebase/remoteConfig/queries/useRemoteConfigQuery', () => ({
+  useRemoteConfigQuery: () => mockUseRemoteConfigQuery(),
+}))
+
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -487,6 +494,28 @@ describe('<SearchResults/>', () => {
         type: 'SET_STATE',
         payload: { ...mockSearchState, searchId: 'testUuidV4' },
       })
+    })
+  })
+
+  describe('When displayNewSearchHeader is enabled', () => {
+    beforeEach(() => {
+      mockUseRemoteConfigQuery.mockReturnValue({
+        data: { displayNewSearchHeader: true },
+      })
+    })
+
+    afterEach(() => {
+      mockUseRemoteConfigQuery.mockReturnValue({
+        data: { displayNewSearchHeader: false },
+      })
+    })
+
+    it('should display back arrow when displayNewSearchHeader is true', async () => {
+      render(reactQueryProviderHOC(<SearchResults />))
+
+      await screen.findByText('Rechercher')
+
+      expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
     })
   })
 })

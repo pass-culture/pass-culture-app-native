@@ -145,6 +145,7 @@ export const SearchResults = () => {
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
               withFilterButton={displayNewSearchHeader}
+              withArrow={displayNewSearchHeader}
             />
           </Container>
           {isFocusOnSuggestions ? (
