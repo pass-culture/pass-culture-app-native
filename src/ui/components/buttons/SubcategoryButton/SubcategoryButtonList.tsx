@@ -1,6 +1,6 @@
 import React from 'react'
-import { FlexStyle } from 'react-native'
-import styled from 'styled-components/native'
+import { FlexStyle, View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import {
@@ -16,9 +16,35 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   subcategoryButtonContent,
 }) => {
   const isLandscape = useIsLandscape()
+  const theme = useTheme()
+  const hasMultipleItems = subcategoryButtonContent.length > 2
+
+  // En mobile avec plusieurs éléments, on affiche sur 2 rangées avec scroll horizontal
+  if (theme.isMobileViewport) {
+    const firstRow = subcategoryButtonContent.filter((_, index) => index % 2 === 0)
+    const secondRow = subcategoryButtonContent.filter((_, index) => index % 2 === 1)
+
+    return (
+      <StyledScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <RowsContainer>
+          <Row>
+            {firstRow.map((item) => (
+              <SubcategoryButton key={item.label} {...item} />
+            ))}
+          </Row>
+          <Row>
+            {secondRow.map((item) => (
+              <SubcategoryButton key={item.label} {...item} />
+            ))}
+          </Row>
+        </RowsContainer>
+      </StyledScrollView>
+    )
+  }
+
   return (
     <StyledScrollView
-      horizontal={subcategoryButtonContent.length > 2 || isLandscape}
+      horizontal={hasMultipleItems || isLandscape}
       showsHorizontalScrollIndicator={false}>
       {subcategoryButtonContent.map((item) => (
         <SubcategoryButton key={item.label} {...item} />
@@ -27,16 +53,20 @@ export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   )
 }
 
+const RowsContainer = styled(View)(({ theme }) => ({
+  flexDirection: 'column',
+  gap: theme.designSystem.size.spacing.l,
+  padding: theme.designSystem.size.spacing.xl,
+}))
+
+const Row = styled(View)(({ theme }) => ({
+  flexDirection: 'row',
+  gap: theme.designSystem.size.spacing.l,
+}))
+
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: theme.isMobileViewport
-    ? {
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        alignContent: 'flex-start',
-        padding: theme.designSystem.size.spacing.xl,
-        gap: theme.designSystem.size.spacing.l,
-      }
+    ? undefined
     : {
         width: '100%',
         display: 'grid' as FlexStyle['display'],
