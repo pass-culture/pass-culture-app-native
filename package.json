@@ -214,6 +214,7 @@
     "@hot-updater/bare": "^0.20.11",
     "@hot-updater/firebase": "^0.20.11",
     "@lhci/cli": "^0.14.0",
+    "@playwright/test": "^1.57.0",
     "@react-native-community/cli": "15.0.1",
     "@react-native-community/cli-platform-android": "15.0.1",
     "@react-native-community/cli-platform-ios": "15.0.1",

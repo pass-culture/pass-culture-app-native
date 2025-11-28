@@ -149,3 +149,10 @@ storybook-static
 
 # hot-updater
 .hot-updater/output
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
