@@ -491,10 +491,12 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >

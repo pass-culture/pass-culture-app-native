@@ -192,10 +192,12 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
@@ -596,10 +598,12 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >

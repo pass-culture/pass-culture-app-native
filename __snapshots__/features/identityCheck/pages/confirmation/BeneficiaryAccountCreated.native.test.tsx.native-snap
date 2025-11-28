@@ -314,10 +314,12 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
@@ -735,10 +737,12 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >

@@ -18,7 +18,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -120,7 +120,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
 
         {isDesktopViewport ? null : <Spacer.Flex flex={1} />}
 
-        <ButtonContainer gap={4}>
+        <ButtonContainer gap={4} isLandscape={isLandscape}>
           {buttonPrimary.onPress ? (
             <ButtonPrimary
               key={1}
@@ -295,9 +295,10 @@ const ChildrenContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const ButtonContainer = styled(ViewGap)({
+const ButtonContainer = styled(ViewGap)<{ isLandscape: boolean }>(({ isLandscape }) => ({
   alignItems: 'center',
-})
+  marginBottom: isLandscape ? getSpacing(40) : 0,
+}))
 
 const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
   if (withSkipAction) {

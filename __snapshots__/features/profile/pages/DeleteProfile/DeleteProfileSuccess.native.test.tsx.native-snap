@@ -226,10 +226,12 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >

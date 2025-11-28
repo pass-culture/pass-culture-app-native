@@ -306,10 +306,12 @@ C’est rapide, promis.
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >

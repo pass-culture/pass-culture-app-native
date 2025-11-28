@@ -306,10 +306,12 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
@@ -730,10 +732,12 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >

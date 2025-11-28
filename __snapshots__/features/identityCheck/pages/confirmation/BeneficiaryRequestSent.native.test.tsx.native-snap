@@ -191,10 +191,12 @@ Tu recevras un e-mail lorsque ta demande sera validée.
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
