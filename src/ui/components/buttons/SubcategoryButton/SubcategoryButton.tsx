@@ -65,13 +65,16 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderColor: ColorsType
 }>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
   ...(theme.isMobileViewport
-    ? { width: windowWidth / 2 - theme.designSystem.size.spacing.xxl }
+    ? {
+        width: windowWidth / 2 - theme.designSystem.size.spacing.xxl,
+        maxWidth: SUBCATEGORY_BUTTON_WIDTH,
+      }
     : {}),
   flexDirection: 'row',
   backgroundColor,
   minHeight: SUBCATEGORY_BUTTON_HEIGHT,
-  height: '100%',
   borderColor,
+  maxHeight: '100%',
   borderWidth: 1.6,
   borderStyle: 'solid',
   borderRadius: theme.designSystem.size.borderRadius.m,
