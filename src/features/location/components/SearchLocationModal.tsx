@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { LocationModalOLD } from 'features/location/components/LocationModalOld'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
 import { getPlaceSelection } from 'features/location/helpers/getPlaceSelection'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
@@ -55,7 +55,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     onClose,
   })
   return (
-    <LocationModal
+    <LocationModalOLD
       visible={visible}
       onSubmit={onSubmit}
       hasGeolocPosition={hasGeolocPosition}

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { LocationModalOLD } from 'features/location/components/LocationModalOld'
 import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
 import { getPlaceSelection } from 'features/location/helpers/getPlaceSelection'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
@@ -79,7 +79,7 @@ export const VenueMapLocationModal = ({
   }
 
   return (
-    <LocationModal
+    <LocationModalOLD
       visible={visible}
       onSubmit={handleSubmit}
       hasGeolocPosition={hasGeolocPosition}
