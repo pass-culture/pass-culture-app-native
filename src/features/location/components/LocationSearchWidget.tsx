@@ -1,12 +1,13 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -14,15 +15,11 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
+  const navigation = useNavigation<UseNavigationType>()
+
   const { place, selectedLocationMode } = useLocation()
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
-
-  const {
-    visible: locationModalVisible,
-    showModal: showLocationModal,
-    hideModal: hideLocationModal,
-  } = useModal()
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
@@ -31,7 +28,7 @@ export const LocationSearchWidget = () => {
       <Separator.Vertical />
 
       <LocationButton
-        onPress={showLocationModal}
+        onPress={() => navigation.navigate('LocationModal', { screenOrigin: ScreenOrigin.SEARCH })}
         testID="Ouvrir la modale de localisation depuis la recherche">
         {isWidgetHighlighted ? (
           <LocationPointerFilled testID="location pointer filled" />
@@ -40,7 +37,6 @@ export const LocationSearchWidget = () => {
         )}
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
-      <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
     </Container>
   )
 }

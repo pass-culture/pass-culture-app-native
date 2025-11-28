@@ -411,9 +411,6 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Localisation – Liste - Élément 1 sur 3 - Utiliser ma position actuelle, non sélectionné"
-                  accessibilityRole="button"
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -498,16 +495,13 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                       {
                         "backgroundColor": "#f1f1f4",
                         "height": 1,
-                        "marginVertical": 16,
+                        "marginVertical": 24,
                         "width": "100%",
                       }
                     }
                   />
                 </View>
                 <View
-                  accessibilityLabel="Localisation – Liste - Élément 2 sur 3 - Choisir une localisation, Ville, code postal, adresse, non sélectionné"
-                  accessibilityRole="button"
-                  accessible={true}
                   style={
                     {
                       "display": "flex",
@@ -586,17 +580,20 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                         Choisir une localisation
                       </Text>
                     </View>
-                  </View>
-                  <View
-                    style={
-                      {
-                        "backgroundColor": "#f1f1f4",
-                        "height": 1,
-                        "marginVertical": 16,
-                        "width": "100%",
+                    <Text
+                      style={
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "marginTop": 4,
+                        }
                       }
-                    }
-                  />
+                    >
+                      Ville, code postal, adresse
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>

@@ -1,32 +1,30 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
-import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
 
 export const LocationWidgetBadge = () => {
   const { place, selectedLocationMode } = useLocation()
+  const navigation = useNavigation<UseNavigationType>()
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
-
-  const {
-    visible: locationModalVisible,
-    showModal: showLocationModal,
-    hideModal: hideLocationModal,
-  } = useModal()
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   return (
     <Container highlighted={isWidgetHighlighted}>
-      <LocationButton onPress={showLocationModal} testID="LocationWidgetBadgeButton">
+      <LocationButton
+        onPress={() => navigation.navigate('LocationModal', { screenOrigin: ScreenOrigin.SEARCH })}
+        testID="LocationWidgetBadgeButton">
         {isWidgetHighlighted ? (
           <LocationPointerHighlighted testID="location pointer highlighted" />
         ) : (
@@ -34,7 +32,6 @@ export const LocationWidgetBadge = () => {
         )}
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
-      <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
     </Container>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { LocationModalOLD } from 'features/location/components/LocationModalOld'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
 import { analytics } from 'libs/analytics/provider'
@@ -49,7 +49,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: HomeLocationModalPr
   })
 
   return (
-    <LocationModal
+    <LocationModalOLD
       visible={visible}
       onSubmit={onSubmit}
       hasGeolocPosition={hasGeolocPosition}

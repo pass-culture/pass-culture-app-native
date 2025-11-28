@@ -5,16 +5,12 @@ import { LocationWidget } from 'features/location/components/LocationWidget'
 import { ScreenOrigin } from 'features/location/enums'
 import { act, render, screen, userEvent } from 'tests/utils'
 
-jest.unmock('@react-navigation/native')
-
 jest.mock('libs/splashscreen/splashscreen')
-const mockShowModal = jest.fn()
-jest.mock('ui/components/modals/useModal', () => ({
-  useModal: () => ({
-    visible: false,
-    showModal: mockShowModal,
-    hideModal: jest.fn(),
-  }),
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate }),
 }))
 
 const user = userEvent.setup()
@@ -22,14 +18,14 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('LocationWidget', () => {
-  it('should show modal when pressing widget', async () => {
+  it('should navigate to location modal when pressing widget', async () => {
     renderLocationWidget()
 
     const button = screen.getByTestId('France entière - Ouvrir la modale de localisation')
 
     await user.press(button)
 
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
+    expect(mockNavigate).toHaveBeenNthCalledWith(1, 'LocationModal', { screenOrigin: 'home' })
   })
 
   it('should show tooltip after 1 second and hide 8 seconds after it appeared', async () => {
