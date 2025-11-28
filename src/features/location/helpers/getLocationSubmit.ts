@@ -6,7 +6,7 @@ import { LocationMode } from 'libs/location/types'
 
 type Props = {
   dismissModal: () => void
-  from: 'search' | 'venueMap'
+  from?: 'search' | 'venueMap' | 'home'
   dispatch?: React.Dispatch<Action>
 } & LocationState
 
@@ -35,6 +35,7 @@ export const getLocationSubmit = ({
         if (selectedPlace) {
           setPlaceGlobally(selectedPlace)
           setAroundPlaceRadius(tempAroundPlaceRadius)
+          setAroundMeRadius(DEFAULT_RADIUS)
           setTempAroundMeRadius(DEFAULT_RADIUS)
           if (dispatch) {
             dispatch({
@@ -45,13 +46,14 @@ export const getLocationSubmit = ({
               },
             })
           }
-          analytics.logUserSetLocation(from)
+          from && analytics.logUserSetLocation(from)
         }
         break
 
       case LocationMode.AROUND_ME:
         setPlaceGlobally(null)
         setAroundMeRadius(tempAroundMeRadius)
+        setAroundPlaceRadius(DEFAULT_RADIUS)
         setTempAroundPlaceRadius(DEFAULT_RADIUS)
         if (dispatch) {
           dispatch({
@@ -63,6 +65,10 @@ export const getLocationSubmit = ({
 
       case LocationMode.EVERYWHERE:
         setPlaceGlobally(null)
+        setAroundMeRadius(DEFAULT_RADIUS)
+        setTempAroundMeRadius(DEFAULT_RADIUS)
+        setAroundPlaceRadius(DEFAULT_RADIUS)
+        setTempAroundPlaceRadius(DEFAULT_RADIUS)
         if (dispatch) {
           dispatch({
             type: 'SET_LOCATION_EVERYWHERE',
