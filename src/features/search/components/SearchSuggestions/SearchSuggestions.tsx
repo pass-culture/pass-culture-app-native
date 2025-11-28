@@ -53,6 +53,12 @@ export const SearchSuggestions = ({
     setOptions({
       gestureEnabled: false,
     })
+
+    return () => {
+      setOptions({
+        gestureEnabled: true,
+      })
+    }
   }, [setOptions])
 
   const searchVenuePosition = buildSearchVenuePosition(
