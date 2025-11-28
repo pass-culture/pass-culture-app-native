@@ -47,6 +47,9 @@ export const rootStackNavigatorPathConfig = {
             parse: screenParamsParser[SearchView.Thematic],
             stringify: screenParamsStringifier[SearchView.Thematic],
           },
+          LocationModal: {
+            path: 'location-modal',
+          },
         },
       },
     },
@@ -405,5 +408,8 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyChronicles1: {
     path: 'chronicles/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],
+  },
+  LocationModal: {
+    path: 'location-modal',
   },
 }

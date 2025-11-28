@@ -9,6 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import { ScreenOrigin } from 'features/location/enums'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -199,6 +200,10 @@ type ChroniclesParams = {
   from?: Referrals
 }
 
+type LocationModalParams = {
+  screenOrigin: ScreenOrigin
+}
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -290,6 +295,7 @@ export type RootStackParamList = {
   _DeeplinkOnlyVenuePreviewCarousel2: VenuePreviewCarouselParams
   _DeeplinkOnlyVenuePreviewCarousel3: VenuePreviewCarouselParams
   VerifyEligibility: undefined
+  LocationModal: LocationModalParams
 } & TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
