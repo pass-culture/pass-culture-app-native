@@ -32,8 +32,12 @@ export const useLocationState = ({ visible }: Props): LocationState => {
     showGeolocPermissionModal,
   } = useLocation()
 
-  const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(DEFAULT_RADIUS)
-  const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(DEFAULT_RADIUS)
+  const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(
+    aroundMeRadius ?? DEFAULT_RADIUS
+  )
+  const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(
+    aroundPlaceRadius ?? DEFAULT_RADIUS
+  )
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
 
   useEffect(() => {
