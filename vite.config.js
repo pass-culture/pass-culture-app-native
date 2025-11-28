@@ -129,7 +129,7 @@ export default ({ mode }) => {
         },
         { find: 'react-native-linear-gradient', replacement: 'react-native-web-linear-gradient' },
         {
-          find: 'react-native-fast-image',
+          find: '@d11/react-native-fast-image',
           replacement: '/src/libs/react-native-web-fast-image',
         },
         {

@@ -10,14 +10,21 @@ import Lottie
 
 
 @main
-class AppDelegate: RCTAppDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+ 
+  var reactNativeDelegate: ReactNativeDelegate?
+  var reactNativeFactory: RCTReactNativeFactory?
+
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    self.moduleName = "PassCulture"
-    self.dependencyProvider = RCTAppDependencyProvider()
-    
-    // You can add your custom initial props in the dictionary below.
-    // They will be passed down to the ViewController used by React Native.
-    self.initialProps = [:]
+    let delegate = ReactNativeDelegate()
+    let factory = RCTReactNativeFactory(delegate: delegate)
+    delegate.dependencyProvider = RCTAppDependencyProvider()
+ 
+    reactNativeDelegate = delegate
+    reactNativeFactory = factory
+
+    window = UIWindow(frame: UIScreen.main.bounds)
     
     // Get environment
     guard let plistPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
@@ -44,14 +51,17 @@ class AppDelegate: RCTAppDelegate {
     RNBatch.start()
     BatchUNUserNotificationCenterDelegate.registerAsDelegate()
     BatchUNUserNotificationCenterDelegate.sharedInstance.showForegroundNotifications = true
+
+    factory.startReactNative(
+      withModuleName: "PassCulture",
+      in: window,
+      launchOptions: launchOptions
+    )
     
-    // react-native-lottie-splash-screen
-    let success = super.application(application, didFinishLaunchingWithOptions: launchOptions)
-    
-    if success {
+    if window {
       // We add this logic to get access to rootview
-      guard let rootView = self.window.rootViewController?.view else {
-        return success
+      guard let rootView = window.rootViewController?.view else {
+        return true
       }
       
       let t = Dynamic()
@@ -65,7 +75,7 @@ class AppDelegate: RCTAppDelegate {
       RNSplashScreen.setAnimationFinished(true)
     }
     
-    return success
+    return true
   }
   
   // Deeplink configuration
@@ -77,7 +87,13 @@ class AppDelegate: RCTAppDelegate {
   override func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     return RCTLinkingManager.application(application, continue: userActivity, restorationHandler: restorationHandler)
   }
-  
+
+  override func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    return Orientation.getOrientation()
+  }
+}  
+
+class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
   override func sourceURL(for bridge: RCTBridge) -> URL? {
     return self.bundleURL()
   }
@@ -88,9 +104,5 @@ class AppDelegate: RCTAppDelegate {
 #else
     return HotUpdater.bundleURL()
 #endif
-  }
-  
-  override func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-    return Orientation.getOrientation()
-  }
+  } 
 } 

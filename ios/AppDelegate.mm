@@ -4,7 +4,8 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <ReactAppDependencyProvider/RCTAppDependencyProvider.h>
-
+#import <React_RCTAppDelegate/RCTDefaultReactNativeFactoryDelegate.h>
+#import <React_RCTAppDelegate/RCTReactNativeFactory.h>
 
 #import "RNSplashScreen.h" // react-native-lottie-splash-screen
 #import <HotUpdater/HotUpdater.h> // @hot-updater
@@ -16,16 +17,27 @@
 
 #import <PassCulture-Swift.h>
 
+@interface ReactNativeDelegate : RCTDefaultReactNativeFactoryDelegate
+@end
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  self.moduleName = @"PassCulture";
+  ReactNativeDelegate *delegate = [[ReactNativeDelegate alloc] init];
+  RCTReactNativeFactory *factory = [[RCTReactNativeFactory alloc] initWithDelegate:delegate];
+  delegate.dependencyProvider = [[RCTAppDependencyProvider alloc] init];
+
+  self.reactNativeDelegate = delegate;
+  self.reactNativeFactory = factory;
+
+  self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+  
+  
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
-  self.dependencyProvider = [RCTAppDependencyProvider new];
-  self.initialProps = @{};
+  NSDictionary *initialProps = @{};
 
   // Get environment
   NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
@@ -51,10 +63,13 @@
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
 
-  // react-native-lottie-splash-screen
-  BOOL success = [super application:application didFinishLaunchingWithOptions:launchOptions];
+  // Start React Native
+  [factory startReactNativeWithModuleName:@"PassCulture"
+                                 inWindow:self.window
+                        initialProperties:initialProps
+                            launchOptions:launchOptions];
 
-  if (success) {
+  if (self.window) {
     //We add this logic to get access to rootview
     UIView *rootView = self.window.rootViewController.view;
 
@@ -69,7 +84,7 @@
     [RNSplashScreen setAnimationFinished:true];
   }
 
-  return success;
+  return YES;
 }
 
 
@@ -91,6 +106,15 @@
                      restorationHandler:restorationHandler];
 }
 
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+  return [Orientation getOrientation];
+}
+
+@end
+
+@implementation ReactNativeDelegate
+
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
   return [self bundleURL];
@@ -103,10 +127,6 @@
 #else
   return [HotUpdater bundleURL]; // @hot-updater
 #endif
-}
-
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-  return [Orientation getOrientation];
 }
 
 @end

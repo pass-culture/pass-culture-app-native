@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import FImage, { FastImageProps, OnLoadEvent } from 'react-native-fast-image'
+import FImage, { FastImageProps, OnLoadEvent } from '@d11/react-native-fast-image'
+import React, { useEffect } from 'react'
 
 function FastImage(props: FastImageProps) {
   useEffect(() => {

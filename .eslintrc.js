@@ -190,7 +190,7 @@ module.exports = {
             message: 'use modal.spacing from theme/index.ts',
           },
           {
-            name: 'react-native-fast-image',
+            name: '@d11/react-native-fast-image',
             importNames: ['default'],
             message:
               'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',

@@ -3,7 +3,6 @@
 exports[`<ExpiredCreditModal/> should render correctly 1`] = `
 <Modal
   animationType="fade"
-  hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
   testID="modal-expired-credit"

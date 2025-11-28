@@ -461,25 +461,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          layout={
-            LinearTransition {
-              "build": [Function],
-              "durationV": 200,
-              "randomizeDelay": false,
-              "reduceMotionV": "system",
-            }
-          }
+          layout={BaseAnimationMock {}}
         >
           <View
             gap={6}
@@ -3555,25 +3537,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          layout={
-            LinearTransition {
-              "build": [Function],
-              "durationV": 200,
-              "randomizeDelay": false,
-              "reduceMotionV": "system",
-            }
-          }
+          layout={BaseAnimationMock {}}
         >
           <View
             gap={6}
@@ -6962,25 +6926,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
         }
       >
         <View
-          collapsable={false}
-          jestAnimatedProps={
-            {
-              "value": {},
-            }
-          }
-          jestAnimatedStyle={
-            {
-              "value": {},
-            }
-          }
-          layout={
-            LinearTransition {
-              "build": [Function],
-              "durationV": 200,
-              "randomizeDelay": false,
-              "reduceMotionV": "system",
-            }
-          }
+          layout={BaseAnimationMock {}}
         >
           <View
             gap={6}
