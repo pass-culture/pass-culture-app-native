@@ -29,6 +29,7 @@ import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { useBookingsQuery } from 'queries/bookings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -62,6 +63,7 @@ export const BookingDetailsContent = ({
 }) => {
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const netInfo = useNetInfoContext()
+  const segment = useABSegment()
 
   const prePopulateOffer = usePrePopulateOffer()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -132,7 +134,7 @@ export const BookingDetailsContent = ({
         offerId: offer.id,
       })
 
-      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
+      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' }, segment)
     } else {
       showErrorSnackBar({
         message:

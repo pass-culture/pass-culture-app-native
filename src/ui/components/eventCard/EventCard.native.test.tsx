@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { userEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
 
 const user = userEvent.setup()
@@ -14,6 +14,7 @@ describe('EventCard', () => {
     title: 'Film 1',
     subtitleLeft: '19h00',
     subtitleRight: 'VO',
+    segment: 'A',
   }
 
   describe('analytics', () => {
@@ -26,6 +27,7 @@ describe('EventCard', () => {
         offerId: '1',
         from: 'venue',
         isHeadline: false,
+        displayVideo: true,
       })
     })
 

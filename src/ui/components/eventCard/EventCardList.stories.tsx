@@ -24,6 +24,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '11h35',
@@ -31,6 +32,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '12h35',
@@ -38,6 +40,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '13h35',
@@ -45,6 +48,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '14h35',
@@ -52,6 +56,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '15h35',
@@ -59,6 +64,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '16h35',
@@ -66,6 +72,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '17h35',
@@ -73,6 +80,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '19h35',
@@ -80,6 +88,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
       {
         title: '21h35',
@@ -87,6 +96,7 @@ export const Default: Story = {
         subtitleRight: '7,99€',
         isDisabled: false,
         onPress: action('pressed'),
+        segment: 'A',
       },
     ],
   },

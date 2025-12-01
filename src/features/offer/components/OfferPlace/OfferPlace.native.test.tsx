@@ -73,6 +73,7 @@ const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   subcategory: mockSubcategory,
   isOfferAtSameAddressAsVenue: true,
+  segment: 'A',
 }
 
 const DEFAULT_USER_LOCATION = { latitude: 5, longitude: -52 }
@@ -309,12 +310,12 @@ describe('<OfferPlace />', () => {
     await user.press(screen.getByText('Le Livre Éclaire'))
     await user.press(screen.getByText('Choisir ce lieu'))
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       from: 'offer',
       fromMultivenueOfferId: '146112',
       offerId: '2',
       isHeadline: false,
+      displayVideo: true,
     })
   })
 
@@ -642,6 +643,7 @@ const renderOfferPlace = ({
           subcategory={subcategory}
           distance={distance}
           isOfferAtSameAddressAsVenue
+          segment="A"
         />
       </OfferCTAProvider>
     ),

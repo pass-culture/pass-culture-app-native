@@ -1,8 +1,9 @@
 import { analytics } from 'libs/analytics/provider'
 import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { SegmentResult } from 'shared/useABSegment/useABSegment'
 
-export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
+export function triggerConsultOfferLog(params: ConsultOfferLogParams, segment: SegmentResult) {
   if (!params.offerId) {
     eventMonitoring.captureException(new Error(`Trigger ConsultOffer log without offer id`), {
       extra: params,
@@ -16,7 +17,8 @@ export function triggerConsultOfferLog(params: ConsultOfferLogParams) {
     fromOfferId: params.fromOfferId?.toString(),
     fromMultivenueOfferId: params.fromMultivenueOfferId?.toString(),
     isHeadline: params.isHeadline === true,
+    displayVideo: segment === 'A',
   }
 
-  analytics.logConsultOffer(paramsWithStringId)
+  void analytics.logConsultOffer(paramsWithStringId)
 }

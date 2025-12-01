@@ -36,6 +36,7 @@ import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GroupTags } from 'ui/GroupTags/GroupTags'
@@ -75,12 +76,13 @@ export const OfferBody: FunctionComponent<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
+  const segment = useABSegment()
 
   useEffect(() => {
     if (params.from === 'deeplink') {
-      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
+      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' }, segment)
     }
-  }, [params])
+  }, [params, segment])
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
@@ -241,6 +243,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         subcategory={subcategory}
         distance={distance}
         isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
+        segment={segment}
       />
     </Container>
   )

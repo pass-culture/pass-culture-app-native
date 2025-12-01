@@ -325,10 +325,12 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
+        displayVideo: true,
       })
     })
 
     it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
@@ -731,10 +733,12 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
+        displayVideo: true,
       })
     })
 
     it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 

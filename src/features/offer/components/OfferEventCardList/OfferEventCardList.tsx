@@ -6,6 +6,7 @@ import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreen
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 
 type Props = {
@@ -20,9 +21,11 @@ export const OfferEventCardList: FC<Props> = ({ offer, selectedDate = new Date()
   const subcategory = subcategoriesMapping[offer.subcategoryId]
 
   const { selectedScreeningStock } = useMovieScreeningCalendar(stocks, selectedDate)
+  const segment = useABSegment()
 
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
+    segment,
     isExternalBookingsDisabled
   )
 

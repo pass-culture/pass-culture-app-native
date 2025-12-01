@@ -16,6 +16,7 @@ import { ShareContent } from 'libs/share/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -39,6 +40,7 @@ export const EndedBookingItem = ({
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
+  const segment = useABSegment()
 
   const isEligibleBookingsForArchiveValue =
     expirationDateUtilsV2.isEligibleBookingsForArchive(booking)
@@ -72,7 +74,13 @@ export const EndedBookingItem = ({
         offerId: offer.id,
       })
 
-      triggerConsultOfferLog({ offerId: offer.id, from: 'endedbookings' })
+      triggerConsultOfferLog(
+        {
+          offerId: offer.id,
+          from: 'endedbookings',
+        },
+        segment
+      )
     } else {
       showErrorSnackBar({
         message:
