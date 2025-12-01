@@ -329,10 +329,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
@@ -959,10 +961,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
@@ -1500,10 +1504,12 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       />
       <View
         gap={4}
+        isLandscape={false}
         style={
           {
             "alignItems": "center",
             "gap": 16,
+            "marginBottom": 0,
           }
         }
       >
