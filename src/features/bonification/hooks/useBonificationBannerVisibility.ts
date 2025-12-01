@@ -1,27 +1,15 @@
-import { useEffect, useState } from 'react'
-
-import { storage } from 'libs/storage'
+import {
+  hasClosedBonificationBannerActions,
+  useHasClosedBonificationBanner,
+} from 'features/bonification/store/hasClosedBonificationBannerStore'
 
 export const useBonificationBannerVisibility = () => {
-  const [hasClosedBonificationBanner, setHasClosedBonificationBanner] = useState(false)
-
-  const getStorage = () => {
-    return storage.readObject('has_closed_bonification_banner')
-  }
+  const { setHasClosedBonificationBanner } = hasClosedBonificationBannerActions
+  const { hasClosedBonificationBanner } = useHasClosedBonificationBanner()
 
   const onCloseBanner = () => {
     setHasClosedBonificationBanner(true)
-    void storage.saveObject('has_closed_bonification_banner', true)
   }
-
-  useEffect(() => {
-    const checkBannerStatus = async () => {
-      const result = await getStorage()
-      setHasClosedBonificationBanner(!!result)
-    }
-
-    void checkBannerStatus()
-  }, [])
 
   return { hasClosedBonificationBanner, onCloseBanner }
 }
