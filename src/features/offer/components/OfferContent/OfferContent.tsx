@@ -27,10 +27,12 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
+  segment,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const isVideoSectionEnabled =
+    useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION) && segment === 'A'
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
@@ -58,7 +60,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         userId={userId}
         onShowChroniclesWritersModal={onShowChroniclesWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
-        onVideoConsentPress={onVideoConsentPress}>
+        onVideoConsentPress={onVideoConsentPress}
+        segment={segment}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"

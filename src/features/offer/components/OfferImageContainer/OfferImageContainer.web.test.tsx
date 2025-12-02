@@ -46,6 +46,7 @@ describe('<OfferImageContainer />', () => {
           onPress={mockOnPress}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       ),
       { theme: { isDesktopViewport: true } }
@@ -65,6 +66,7 @@ describe('<OfferImageContainer />', () => {
           onPress={mockOnPress}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       ),
       { theme: { isDesktopViewport: true } }
@@ -82,6 +84,7 @@ describe('<OfferImageContainer />', () => {
           onPress={mockOnPress}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       ),
       { theme: { isDesktopViewport: true } }
@@ -103,6 +106,7 @@ describe('<OfferImageContainer />', () => {
           onPress={mockOnPress}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       ),
       { theme: { isDesktopViewport: false } }

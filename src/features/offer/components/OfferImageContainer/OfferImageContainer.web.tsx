@@ -14,6 +14,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { ImageWithCredit } from 'shared/types'
+import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -25,6 +26,7 @@ type Props = {
   categoryId: CategoryIdEnum | null
   imageDimensions: OfferImageContainerDimensions
   offer: OfferResponseV2
+  segment: SegmentResult
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
@@ -37,6 +39,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   placeholderImage,
   imageDimensions,
   offer,
+  segment,
 }) => {
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
@@ -52,7 +55,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
     cookiesConsent.state === ConsentState.HAS_CONSENT &&
     cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
 
-  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled
+  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled && segment === 'A'
 
   const handleVideoPress = () => {
     if (!hasConsent) {

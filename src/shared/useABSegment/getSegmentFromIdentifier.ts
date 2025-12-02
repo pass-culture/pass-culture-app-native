@@ -7,7 +7,7 @@ export function getSegmentFromIdentifier(id?: number | string): SegmentResult {
   if (typeof id === 'number') {
     segmentKey = id
   } else {
-    segmentKey = id.charCodeAt(id.length - 1)
+    segmentKey = id.codePointAt(id.length - 1) ?? 0
   }
 
   return segmentKey % 2 === 0 ? 'A' : 'B'

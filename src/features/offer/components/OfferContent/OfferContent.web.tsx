@@ -26,12 +26,14 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
+  segment,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
-  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const isVideoSectionEnabled =
+    useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION) && segment === 'A'
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -81,7 +83,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onLayout={onLayout}
           onShowChroniclesWritersModal={onShowChroniclesWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
-          onVideoConsentPress={onVideoConsentPress}>
+          onVideoConsentPress={onVideoConsentPress}
+          segment={segment}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

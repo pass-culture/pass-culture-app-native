@@ -97,6 +97,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
+  segment,
   children,
 }) => {
   const theme = useTheme()
@@ -313,6 +314,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               placeholderImage={placeholderImage}
               imageDimensions={imageDimensions}
               offer={offer}
+              segment={segment}
             />
             <OfferBody
               offer={offer}
