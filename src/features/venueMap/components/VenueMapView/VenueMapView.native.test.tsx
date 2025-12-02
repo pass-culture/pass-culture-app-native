@@ -69,6 +69,10 @@ describe('VenueMapView', () => {
     await renderAsync(<VenueMapView venues={venuesFixture} onSearch={undefined} />)
     await screen.findByTestId('venue-map-view')
 
+    await act(async () => {
+      jest.runAllTimers()
+    })
+
     expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
   })
 
