@@ -9,6 +9,7 @@ describe('emailSchema', () => {
     'pren-om@exam.ple.com',
     'prenomnom@exam-ple.com',
     'prenom.nom+qqchose@example.com',
+    'prenom.nom+qq_chose@example.com',
   ])('should accept a well formated email: %s', async (email) => {
     const result = await emailSchema.validate(email)
 
