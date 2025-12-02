@@ -145,7 +145,10 @@ scripts/dead_code_current.txt
 # Storybook
 storybook-static
 
+#environnment managers
 .direnv/
+.devbox/
 
 # hot-updater
 .hot-updater/output
+
