@@ -273,6 +273,7 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Annuler"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

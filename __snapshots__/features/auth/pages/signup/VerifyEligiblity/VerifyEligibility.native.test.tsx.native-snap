@@ -225,6 +225,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       >
         <View
           accessibilityLabel="Commencer la vérification"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -318,6 +319,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         />
         <View
           accessibilityLabel="Vérifier mon identité plus tard"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

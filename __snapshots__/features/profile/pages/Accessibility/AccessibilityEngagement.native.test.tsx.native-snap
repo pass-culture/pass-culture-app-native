@@ -299,6 +299,7 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
       </Text>
       <View
         accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityRole="link"
         accessibilityState={
           {
             "busy": undefined,

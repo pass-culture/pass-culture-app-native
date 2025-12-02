@@ -880,6 +880,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
           >
             <View
               accessibilityLabel="Voir l’itinéraire"
+              accessibilityRole="link"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -991,6 +992,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
         >
           <View
             accessibilityLabel="Voir le détail de l’offre"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

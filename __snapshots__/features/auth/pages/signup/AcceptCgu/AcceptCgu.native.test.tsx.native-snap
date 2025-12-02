@@ -325,6 +325,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     </Text>
     <View
       accessibilityLabel="Nos conditions générales d’utilisation"
+      accessibilityRole="link"
       accessibilityState={
         {
           "busy": undefined,
@@ -432,6 +433,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     </View>
     <View
       accessibilityLabel="La charte des données personnelles"
+      accessibilityRole="link"
       accessibilityState={
         {
           "busy": undefined,
@@ -1095,6 +1097,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     </Text>
     <View
       accessibilityLabel="Nos conditions générales d’utilisation"
+      accessibilityRole="link"
       accessibilityState={
         {
           "busy": undefined,
@@ -1202,6 +1205,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     </View>
     <View
       accessibilityLabel="La charte des données personnelles"
+      accessibilityRole="link"
       accessibilityState={
         {
           "busy": undefined,

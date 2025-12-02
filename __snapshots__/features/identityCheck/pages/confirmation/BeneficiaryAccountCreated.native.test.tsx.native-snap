@@ -325,6 +325,7 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
       >
         <View
           accessibilityLabel="C’est parti !"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -748,6 +749,7 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
       >
         <View
           accessibilityLabel="C’est parti !"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

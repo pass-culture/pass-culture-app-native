@@ -202,6 +202,7 @@ Tu recevras un e-mail lorsque ta demande sera validée.
       >
         <View
           accessibilityLabel="On y va !"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

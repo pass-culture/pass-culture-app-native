@@ -698,6 +698,7 @@ exports[`DebugScreen should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Envoyer au support"
+              accessibilityRole="link"
               accessibilityState={
                 {
                   "busy": undefined,

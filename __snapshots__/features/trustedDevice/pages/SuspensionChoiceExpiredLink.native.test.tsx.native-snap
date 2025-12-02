@@ -203,6 +203,7 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
       >
         <View
           accessibilityLabel="Contacter le service fraude"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -308,6 +309,7 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

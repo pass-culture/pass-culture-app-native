@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import { StyleProp, View, ViewStyle } from 'react-native'
+import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -52,6 +52,8 @@ type Props = {
   withBackground?: boolean
   style?: StyleProp<ViewStyle>
 } & TouchableProps
+
+const isWeb = Platform.OS === 'web'
 
 export const SystemBanner: FunctionComponent<Props> = ({
   leftIcon: LeftIcon,
@@ -109,12 +111,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
   }
 
   const subtitleText = typeof subtitle === 'string' ? subtitle : ''
+  const defaultAccessibilityRole = isWeb ? AccessibilityRole.LINK : AccessibilityRole.BUTTON
 
   return (
     <TouchableComponent
       {...touchableProps}
       {...focusProps}
-      accessibilityRole={accessibilityRole}
+      accessibilityRole={accessibilityRole ?? defaultAccessibilityRole}
       accessibilityLabel={accessibilityLabel ?? `${title} ${subtitleText}`}
       color={
         withBackground ? designSystem.color.text.lockedInverted : designSystem.color.text.default

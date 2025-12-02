@@ -252,6 +252,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
       >
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -337,6 +338,7 @@ exports[`DeactivateProfileSuccess component should render delete profile success
         </View>
         <View
           accessibilityLabel="Réactiver mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

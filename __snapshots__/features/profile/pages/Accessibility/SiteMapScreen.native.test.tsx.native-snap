@@ -247,6 +247,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Accueil"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -373,6 +374,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Recherche"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -499,6 +501,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Explore la carte"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -625,6 +628,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Concerts & festivals"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -751,6 +755,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Cinéma"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -877,6 +882,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Films, séries et documentaires"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1003,6 +1009,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Livres"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1129,6 +1136,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Musique"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1255,6 +1263,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Arts & loisirs créatifs"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1381,6 +1390,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Spectacles"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1507,6 +1517,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Musées & visites culturelles"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1633,6 +1644,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Jeux & jeux vidéos"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1759,6 +1771,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Médias & presse"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1885,6 +1898,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Cartes jeunes"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2011,6 +2025,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Conférences & rencontres"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2137,6 +2152,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Évènements en ligne"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2263,6 +2279,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Réservations"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2389,6 +2406,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Favoris"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2515,6 +2533,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Profil"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2641,6 +2660,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Créer un compte"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2767,6 +2787,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Se connecter"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2893,6 +2914,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Mes succès"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3019,6 +3041,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Notifications"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3145,6 +3168,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Comment ça marche ?"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3271,6 +3295,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Informations personnelles"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3397,6 +3422,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Préférence d’affichage"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3523,6 +3549,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Accessibilité"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3649,6 +3676,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Faire une suggestion"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3775,6 +3803,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Informations légales"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3901,6 +3930,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Confidentialité"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4027,6 +4057,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Débuggage"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

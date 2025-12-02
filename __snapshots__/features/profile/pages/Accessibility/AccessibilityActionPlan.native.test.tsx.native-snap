@@ -1539,6 +1539,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </Text>
       <View
         accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityRole="link"
         accessibilityState={
           {
             "busy": undefined,
@@ -2157,6 +2158,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </Text>
       <View
         accessibilityLabel="https://pass.culture.fr/"
+        accessibilityRole="link"
         accessibilityState={
           {
             "busy": undefined,
@@ -2275,6 +2277,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </Text>
       <View
         accessibilityLabel="https://passculture.app/"
+        accessibilityRole="link"
         accessibilityState={
           {
             "busy": undefined,
@@ -2393,6 +2396,7 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
       </Text>
       <View
         accessibilityLabel="https://passculture.pro/"
+        accessibilityRole="link"
         accessibilityState={
           {
             "busy": undefined,

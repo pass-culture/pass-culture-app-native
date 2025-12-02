@@ -365,6 +365,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                 </Text>
                 <View
                   accessibilityLabel="Choisir des thèmes à suivre"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

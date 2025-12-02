@@ -222,6 +222,7 @@ Un problème est survenu !
       >
         <View
           accessibilityLabel="Revenir vers l’offre"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

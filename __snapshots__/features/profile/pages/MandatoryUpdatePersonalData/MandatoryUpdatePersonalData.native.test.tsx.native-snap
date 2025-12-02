@@ -188,6 +188,7 @@ C’est rapide, promis.
       >
         <View
           accessibilityLabel="Charte des données personnelles"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -317,6 +318,7 @@ C’est rapide, promis.
       >
         <View
           accessibilityLabel="Commencer"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

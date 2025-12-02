@@ -3362,6 +3362,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           </Text>
           <View
             accessibilityLabel="Nos conditions générales d’utilisation"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -3469,6 +3470,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           </View>
           <View
             accessibilityLabel="La charte des données personnelles"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,

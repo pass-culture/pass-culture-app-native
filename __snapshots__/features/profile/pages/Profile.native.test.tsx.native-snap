@@ -55,6 +55,7 @@ exports[`Profile component should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Cheatcodes"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -2442,6 +2443,7 @@ exports[`Profile component should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="Débuggage"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

@@ -188,6 +188,7 @@ Reviens lundi pour débloquer ton crédit !
       >
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -265,6 +266,7 @@ Reviens lundi pour débloquer ton crédit !
         </View>
         <View
           accessibilityLabel="Plus d’infos dans notre FAQ"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -562,6 +564,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
       >
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -639,6 +642,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         </View>
         <View
           accessibilityLabel="subtitleMobile"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,

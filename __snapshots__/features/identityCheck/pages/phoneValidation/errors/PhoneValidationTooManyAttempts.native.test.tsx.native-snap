@@ -201,6 +201,7 @@ exports[`PhoneValidationTooManyAttempts should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Contacter le support"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -298,6 +299,7 @@ exports[`PhoneValidationTooManyAttempts should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

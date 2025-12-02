@@ -291,6 +291,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         </Text>
         <View
           accessibilityLabel="Consulter notre centre d’aide"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,

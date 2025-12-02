@@ -374,6 +374,7 @@ retrouver tes favoris
                 >
                   <View
                     accessibilityLabel="Créer un compte"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,

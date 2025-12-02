@@ -222,6 +222,7 @@ exports[`PhoneValidationTooManySMSSent should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -299,6 +300,7 @@ exports[`PhoneValidationTooManySMSSent should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="J’ai reçu mon code"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

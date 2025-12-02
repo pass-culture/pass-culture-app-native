@@ -376,6 +376,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

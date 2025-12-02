@@ -314,6 +314,7 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,

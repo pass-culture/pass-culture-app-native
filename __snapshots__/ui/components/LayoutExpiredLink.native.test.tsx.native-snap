@@ -209,6 +209,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           </Text>
           <View
             accessibilityLabel="Consulter l’article d’aide"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -423,6 +424,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

@@ -349,6 +349,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 >
                   <View
                     accessibilityLabel="Voir l’itinéraire"
+                    accessibilityRole="link"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -2986,6 +2987,7 @@ d’options
     >
       <View
         accessibilityLabel="Rechercher une offre"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -3443,6 +3445,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 >
                   <View
                     accessibilityLabel="Voir l’itinéraire"
+                    accessibilityRole="link"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -6393,6 +6396,7 @@ d’options
     >
       <View
         accessibilityLabel="Rechercher une offre"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -6850,6 +6854,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 >
                   <View
                     accessibilityLabel="Voir l’itinéraire"
+                    accessibilityRole="link"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -7334,6 +7339,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     </Text>
                     <View
                       accessibilityLabel="contact@venue.com"
+                      accessibilityRole="link"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -7430,6 +7436,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     </View>
                     <View
                       accessibilityLabel="+33102030405"
+                      accessibilityRole="link"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -7526,6 +7533,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     </View>
                     <View
                       accessibilityLabel="https://my@website.com"
+                      accessibilityRole="link"
                       accessibilityState={
                         {
                           "busy": undefined,
@@ -9507,6 +9515,7 @@ d’options
     >
       <View
         accessibilityLabel="Rechercher une offre"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

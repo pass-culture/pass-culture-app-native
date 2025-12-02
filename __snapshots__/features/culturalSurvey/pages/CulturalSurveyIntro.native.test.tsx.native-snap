@@ -188,6 +188,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         <View>
           <View
             accessibilityLabel="En savoir plus sur ce qu’on fait de tes données"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -317,6 +318,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
       >
         <View
           accessibilityLabel="Commencer le questionnaire"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -743,6 +745,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
       >
         <View
           accessibilityLabel="Commencer le questionnaire"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

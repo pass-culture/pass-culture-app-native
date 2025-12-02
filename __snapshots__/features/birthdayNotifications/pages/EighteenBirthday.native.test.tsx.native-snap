@@ -197,6 +197,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
       >
         <View
           accessibilityLabel="Confirmer mes informations"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -282,6 +283,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
         </View>
         <View
           accessibilityLabel="Plus tard"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
