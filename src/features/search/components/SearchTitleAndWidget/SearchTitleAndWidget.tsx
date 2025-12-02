@@ -42,8 +42,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
-          <StyledTitleMainView
-            shouldDisplayMobileLocationSmallWidget={shouldDisplayMobileLocationSmallWidget}>
+          <StyledTitleMainView>
             <StyledTitleMainText
               htmlFor={searchInputID}
               {...getHeadingAttrs(1)}
@@ -78,28 +77,26 @@ const StyledTitleMainText = styledInputLabel(InputLabel)<{ small?: boolean }>(
 const TitleAndWidgetContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  width: '100%',
+  flex: 1,
 })
 
 const TitleContainer = styled.View({
   flexShrink: 1,
-  width: '100%',
+  flex: 1,
 })
 
 const TitleMainWrapper = styled.View({
   flexDirection: 'row',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
+  flexShrink: 1,
 })
 
-const StyledTitleMainView = styled.View<{ shouldDisplayMobileLocationSmallWidget?: boolean }>(
-  ({ shouldDisplayMobileLocationSmallWidget }) => ({
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    maxWidth: shouldDisplayMobileLocationSmallWidget ? 'inherit' : '75%',
-  })
-)
+const StyledTitleMainView = styled.View({
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
+  flex: 1,
+})
 
 const LocationWidgetBadgeContainer = styled.View({
   display: 'flex',

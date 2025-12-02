@@ -10,6 +10,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { env } from 'libs/environment/env'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { Spacer } from 'ui/theme'
 
 const searchInputID = uuidv4()
@@ -28,6 +29,9 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   placeholder,
 }) => {
   const { isFocusOnSuggestions } = useSearch()
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
 
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
@@ -54,6 +58,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       <Configure facetFilters={[facetFilters]} clickAnalytics hitsPerPage={5} />
       <SearchHeader
         title={title}
+        withArrow={displayNewSearchHeader}
         searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
