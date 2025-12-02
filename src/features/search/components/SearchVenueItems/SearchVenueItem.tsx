@@ -6,6 +6,8 @@ import styled from 'styled-components/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
+import { logClickOnVenue } from 'libs/algolia/analytics/logClickOnVenue'
+import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
@@ -26,6 +28,7 @@ interface SearchVenueItemProps {
   venue: AlgoliaVenue
   width: number
   height: number
+  index: number
   searchId?: string
   searchGroupLabel?: ContentfulLabelCategories
 }
@@ -40,6 +43,7 @@ const UnmemoizedSearchVenueItem = ({
   venue,
   height,
   width,
+  index,
   searchId,
   searchGroupLabel,
 }: SearchVenueItemProps) => {
@@ -57,12 +61,16 @@ const UnmemoizedSearchVenueItem = ({
   const hasVenueImage = !!venue.banner_url
   const imageUri = venue.banner_url ?? ''
 
-  const handlePressVenue = () => {
+  const handlePressVenue = async () => {
     void analytics.logConsultVenue({
       venueId: venue.objectID,
       searchId,
       from: 'searchVenuePlaylist',
     })
+
+    const currentQueryID = algoliaAnalyticsSelectors.selectCurrentQueryID()
+    await logClickOnVenue({ objectID: venue.objectID, position: index, queryID: currentQueryID })
+
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.objectID], mergeVenueData(venue))
   }

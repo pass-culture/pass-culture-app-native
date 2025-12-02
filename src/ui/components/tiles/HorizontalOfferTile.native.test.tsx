@@ -31,13 +31,7 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   searchId: '539b285e',
 }
 
-const spyLogClickOnOffer = jest.fn()
-const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')
-mockUseLogClickOnOffer.mockReturnValue({ logClickOnOffer: spyLogClickOnOffer })
-
-jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
-  useSearchAnalyticsState: () => ({ currentQueryID: 'abc123' }),
-}))
+const spyLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'logClickOnOffer')
 
 jest.mock('libs/firebase/analytics/analytics')
 
