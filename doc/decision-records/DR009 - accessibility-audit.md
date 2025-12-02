@@ -870,6 +870,27 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 5.1 - a) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
+
+**RAAM** : [Critère 5.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-1)  
+**Ticket** : [PC-37473](https://passculture.atlassian.net/browse/PC-37473)  
+**PR** : [#8945](https://github.com/pass-culture/pass-culture-app-native/pull/8945)
+
+**Problème** 😱  
+De très nombreux composants répartis sur l’ensemble des écrans de l’application sont exposés avec le rôle de lien, alors qu’ils permettent de naviguer dans l’application (vers d’autres vues internes). Et inversement. Il y a également des boutons ou liens qui ne possèdent même pas de rôle. 
+
+**Correction** 💡  
+Nous avons ajouter la gestion des rôles bouton et lien de manière automatique sur nos composants, par exemple en mobile, `InternalTouchableLink` retourne un bouton et `ExternalTouchableLink` un lien.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
 ## 💡 Questions
 
 </details>
