@@ -503,6 +503,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityLabel="Aller sur demarches-simplifiees.fr"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -1074,6 +1076,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityLabel="Aller sur demarches-simplifiees.fr"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,

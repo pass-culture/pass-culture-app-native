@@ -369,6 +369,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                 </Text>
                 <View
                   accessibilityLabel="Aller sur mon profil"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

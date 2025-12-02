@@ -198,6 +198,7 @@ Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
       >
         <View
           accessibilityLabel="Découvrir le catalogue"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

@@ -214,6 +214,7 @@ exports[`<PageNotFound/> should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Retourner à l’accueil"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

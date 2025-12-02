@@ -29,6 +29,7 @@ export const AppButton = <T extends AppButtonProps>({
   inlineHeight,
   accessibilityLabel,
   accessibilityHint,
+  accessibilityRole,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
@@ -52,6 +53,7 @@ export const AppButton = <T extends AppButtonProps>({
     <TouchableOpacityButton
       accessibilityLabel={accessibilityLabel || wording}
       accessibilityHint={accessibilityHint}
+      accessibilityRole={accessibilityRole}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}
       onPress={pressHandler}

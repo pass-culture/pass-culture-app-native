@@ -586,6 +586,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         </View>
         <View
           accessibilityLabel="Consulter l’article d’aide"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,

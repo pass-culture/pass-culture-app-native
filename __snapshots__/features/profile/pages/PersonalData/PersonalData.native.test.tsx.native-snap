@@ -279,6 +279,7 @@ exports[`PersonalData should render personal data success 1`] = `
         </Text>
         <View
           accessibilityLabel="Modifier e-mail"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -481,6 +482,7 @@ exports[`PersonalData should render personal data success 1`] = `
         </Text>
         <View
           accessibilityLabel="Modifier mot de passe"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -636,6 +638,7 @@ exports[`PersonalData should render personal data success 1`] = `
         </Text>
         <View
           accessibilityLabel="Modifier le statut"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -791,6 +794,7 @@ exports[`PersonalData should render personal data success 1`] = `
         </Text>
         <View
           accessibilityLabel="Modifier mon adresse de résidence"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

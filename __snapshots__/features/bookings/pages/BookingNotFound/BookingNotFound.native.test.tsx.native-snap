@@ -201,6 +201,7 @@ exports[`<BookingNotFound/> should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Mes réservations terminées"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -286,6 +287,7 @@ exports[`<BookingNotFound/> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

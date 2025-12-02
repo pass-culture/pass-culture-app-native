@@ -317,6 +317,7 @@ exports[`ComeBackLater should render correctly 1`] = `
       >
         <View
           accessibilityLabel="M’identifier plus tard"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

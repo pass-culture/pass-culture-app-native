@@ -229,6 +229,7 @@ exports[`<FraudulentSuspendedAccount /> should match snapshot 1`] = `
       >
         <View
           accessibilityLabel="Contacter le service fraude"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -334,6 +335,7 @@ exports[`<FraudulentSuspendedAccount /> should match snapshot 1`] = `
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

@@ -688,6 +688,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
   >
     <View
       accessibilityLabel="Créer un compte"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -781,6 +782,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     />
     <View
       accessibilityLabel="Plus tard"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -1579,6 +1581,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
   >
     <View
       accessibilityLabel="Créer un compte"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -1672,6 +1675,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     />
     <View
       accessibilityLabel="Plus tard"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

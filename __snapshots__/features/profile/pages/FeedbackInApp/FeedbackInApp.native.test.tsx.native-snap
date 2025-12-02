@@ -575,6 +575,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
               </Text>
               <View
                 accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+                accessibilityRole="link"
                 accessibilityState={
                   {
                     "busy": undefined,

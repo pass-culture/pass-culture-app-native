@@ -200,6 +200,7 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Try Again"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -277,6 +278,7 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Retourner à l’accueil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

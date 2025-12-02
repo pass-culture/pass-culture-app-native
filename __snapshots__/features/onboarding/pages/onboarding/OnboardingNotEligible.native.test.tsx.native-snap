@@ -277,6 +277,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Créer un compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -354,6 +355,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Accéder au catalogue"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

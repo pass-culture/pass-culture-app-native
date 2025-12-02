@@ -419,6 +419,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="C’est quoi ÉduConnect ?"
+                  accessibilityRole="link"
                   accessibilityState={
                     {
                       "busy": undefined,

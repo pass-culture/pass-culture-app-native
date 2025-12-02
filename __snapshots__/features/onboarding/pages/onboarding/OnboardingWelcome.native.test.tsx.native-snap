@@ -158,6 +158,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         />
         <View
           accessibilityLabel="C’est parti !"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
