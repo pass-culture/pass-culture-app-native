@@ -1,6 +1,6 @@
 import { string } from 'yup'
 
-const EMAIL_REGEX = /^[a-zA-Z0-9_.-]+(\+[a-zA-Z0-9]+)?@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,63}$/
+const EMAIL_REGEX = /^[a-zA-Z0-9_.-]+(\+\w+)?@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,63}$/
 export const emailSchema = string()
   .trim()
   .lowercase()
