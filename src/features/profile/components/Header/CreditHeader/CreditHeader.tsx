@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
+import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
@@ -42,8 +43,11 @@ export function CreditHeader({
   eligibility,
 }: CreditHeaderProps) {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
+  const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
+
   const { user } = useAuthContext()
-  const showBonificationBanner = enableBonification && user?.isEligibleForBonification
+  const showBonificationBanner =
+    enableBonification && user?.isEligibleForBonification && !hasClosedBonificationBanner
 
   const { designSystem } = useTheme()
   const {
@@ -143,7 +147,10 @@ export function CreditHeader({
       </HeaderWithGreyContainer>
       {showBonificationBanner ? (
         <BannerContainer>
-          <BonificationBanner bonificationStatus={user?.bonificationStatus} />
+          <BonificationBanner
+            bonificationStatus={user?.bonificationStatus}
+            onCloseCallback={onCloseBanner}
+          />
         </BannerContainer>
       ) : null}
     </React.Fragment>
