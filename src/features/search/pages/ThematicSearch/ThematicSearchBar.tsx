@@ -48,6 +48,8 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
         ]
       : []
 
+  const shouldDisplayHeader = !displayNewSearchHeader || !isFocusOnSuggestions
+
   return (
     // @ts-expect-error - type incompatibility with React 19
     <InstantSearch
@@ -59,6 +61,7 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       <SearchHeader
         title={title}
         withArrow={displayNewSearchHeader}
+        shouldDisplayHeader={shouldDisplayHeader}
         searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
