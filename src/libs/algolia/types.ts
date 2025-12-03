@@ -297,13 +297,13 @@ export type FacetData = NativeCategoryFacetData | GenreTypeFacetData
 
 export type MultipleOffersResult = {
   hits: AlgoliaOffer[]
-  nbHits: number
+  nbHits?: number
 }[]
 
 export type MultipleVenueOffersResult = (
   | {
       hits: AlgoliaOffer[]
-      nbHits: number
+      nbHits?: number
     }
   | undefined
 )[]

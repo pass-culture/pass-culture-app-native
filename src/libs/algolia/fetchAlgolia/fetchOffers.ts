@@ -62,7 +62,13 @@ export const fetchOffers = async ({
     const result = response.results[0]
     if (storeQueryID) storeQueryID(result?.queryID)
 
-    return result ?? { hits: [] as Array<Hit<Offer>>, nbHits: 0, page: 0, nbPages: 0 }
+    return {
+      hits: result?.hits ?? [],
+      nbHits: result?.nbHits ?? 0,
+      page: result?.page ?? 0,
+      nbPages: result?.nbPages ?? 0,
+      userData: result?.userData,
+    }
   } catch (error) {
     captureAlgoliaError(error)
     return { hits: [] as Array<Hit<Offer>>, nbHits: 0, page: 0, nbPages: 0 }
