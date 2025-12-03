@@ -67,6 +67,18 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockUseDeviceInfo = jest.fn().mockReturnValue({
+  deviceId: 'device-id',
+  os: 'iOS',
+  resolution: '1080x1920',
+  source: 'iPhone 13',
+  screenZoomLevel: undefined,
+  fontScale: 1.5,
+})
+jest.mock('features/trustedDevice/helpers/useDeviceInfo', () => ({
+  useDeviceInfo: () => mockUseDeviceInfo(),
+}))
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()

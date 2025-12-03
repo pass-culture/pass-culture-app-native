@@ -124,6 +124,7 @@ describe('<VenueBody />', () => {
       from: 'venue',
       venueId: venueDataTest.id,
       isHeadline: true,
+      displayVideo: true,
     })
   })
 })

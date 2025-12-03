@@ -5,6 +5,7 @@ import { MarketingBlock } from 'features/home/components/modules/marketing/Marke
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { formatBookingAllowedDatetime } from 'libs/parsers/formatDates'
 import { Offer } from 'shared/offer/types'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
 type AttachedOfferCardProps = {
@@ -22,14 +23,19 @@ const UnmemoizedMarketingBlockExclusivity = ({
   backgroundImageUrl,
   shouldDisplayBookingAllowedDatetime,
 }: AttachedOfferCardProps) => {
+  const segment = useABSegment()
+
   const logConsultOffer = () => {
-    triggerConsultOfferLog({
-      offerId: parseInt(offer.objectID),
-      from: 'home',
-      homeEntryId,
-      moduleName: offer.offer.name,
-      moduleId,
-    })
+    triggerConsultOfferLog(
+      {
+        offerId: parseInt(offer.objectID),
+        from: 'home',
+        homeEntryId,
+        moduleName: offer.offer.name,
+        moduleId,
+      },
+      segment
+    )
   }
   const bookingAllowedDatetime = offer.offer.bookingAllowedDatetime
   const comingSoon = bookingAllowedDatetime

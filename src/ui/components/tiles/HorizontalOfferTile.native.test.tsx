@@ -124,14 +124,14 @@ describe('HorizontalOfferTile component', () => {
 
     await screen.findByText(mockOffer.offer.name)
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: String(offerId),
       from: 'searchresults',
       query: '',
       index: 0,
       searchId: '539b285e',
       isHeadline: false,
+      displayVideo: true,
     })
   })
 

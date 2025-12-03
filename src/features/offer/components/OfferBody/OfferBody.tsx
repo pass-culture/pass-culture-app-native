@@ -56,6 +56,7 @@ type Props = {
   userId?: number
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
+  enableVideoABTesting?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -75,12 +76,13 @@ export const OfferBody: FunctionComponent<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
+  const segment = isVideoSectionEnabled ? 'A' : 'B'
 
   useEffect(() => {
     if (params.from === 'deeplink') {
-      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' })
+      triggerConsultOfferLog({ offerId: params.id, from: 'deeplink' }, segment)
     }
-  }, [params])
+  }, [isVideoSectionEnabled, params, segment])
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
 
@@ -241,6 +243,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         subcategory={subcategory}
         distance={distance}
         isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
+        segment={segment}
       />
     </Container>
   )

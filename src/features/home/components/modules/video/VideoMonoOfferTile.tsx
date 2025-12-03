@@ -10,6 +10,7 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 
@@ -30,6 +31,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const mapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
+  const segment = useABSegment()
 
   const offerHeight = isDesktopViewport ? getSpacing(45) : getSpacing(35)
 
@@ -49,10 +51,14 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
         offerId: +offer.objectID,
         categoryId,
       })
-      triggerConsultOfferLog({
-        offerId: +offer.objectID,
-        ...analyticsParams,
-      })
+      triggerConsultOfferLog(
+        {
+          offerId: +offer.objectID,
+
+          ...analyticsParams,
+        },
+        segment
+      )
     },
   }
 

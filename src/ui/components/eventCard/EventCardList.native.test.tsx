@@ -14,6 +14,7 @@ describe('EventCardList', () => {
             subtitleRight: '7,99€',
             isDisabled: false,
             onPress: jest.fn(),
+            segment: 'A',
           },
         ]}
       />,
@@ -34,6 +35,7 @@ describe('EventCardList', () => {
             subtitleRight: '7,99€',
             isDisabled: false,
             onPress: jest.fn(),
+            segment: 'A',
           },
         ]}
       />,
@@ -54,6 +56,7 @@ describe('EventCardList', () => {
             subtitleRight: '7,99€',
             isDisabled: false,
             onPress: jest.fn(),
+            segment: 'A',
           },
         ]}
       />,
