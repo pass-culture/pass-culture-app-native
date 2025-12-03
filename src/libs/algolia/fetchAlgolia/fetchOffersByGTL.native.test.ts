@@ -80,7 +80,7 @@ describe('fetchOffersByGTL', () => {
           ['venue.id:123'],
         ],
         hitsPerPage: 35,
-        numericFilters: [['offer.prices:0 TO 300'], ['offer.last30DaysBookings >= 5']],
+        numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 5']],
       },
     ])
   })
@@ -110,7 +110,7 @@ describe('fetchOffersByGTL', () => {
           ['venue.id:123'],
         ],
         hitsPerPage: 35,
-        numericFilters: [['offer.prices:0 TO 300'], ['offer.last30DaysBookings >= 5']],
+        numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 5']],
       },
     ])
   })

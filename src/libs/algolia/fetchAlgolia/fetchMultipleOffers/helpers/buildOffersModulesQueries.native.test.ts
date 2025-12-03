@@ -24,7 +24,7 @@ describe('buildOffersModulesQueries', () => {
     aroundLatLng: '48.8566, 2.3522',
     aroundRadius: 'all',
     facetFilters: [['offer.isEducational:false']],
-    numericFilters: [['offer.prices:0 TO 300']],
+    numericFilters: [['offer.prices: 0 TO 300']],
     hitsPerPage: 20,
     attributesToHighlight: [],
     attributesToRetrieve: offerAttributesToRetrieve,
