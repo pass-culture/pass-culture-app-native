@@ -27,13 +27,16 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   segment,
+  enableVideoABTesting,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
-  const isVideoSectionEnabled =
-    useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION) && segment === 'A'
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const shouldShowVideoSection = enableVideoABTesting
+    ? isVideoSectionEnabled && segment === 'A'
+    : isVideoSectionEnabled
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -75,7 +78,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          isVideoSectionEnabled={isVideoSectionEnabled}
+          isVideoSectionEnabled={shouldShowVideoSection}
           BodyWrapper={BodyWrapper}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}

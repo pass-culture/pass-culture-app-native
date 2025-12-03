@@ -56,6 +56,7 @@ type Props = {
   userId?: number
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
+  enableVideoABTesting?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({

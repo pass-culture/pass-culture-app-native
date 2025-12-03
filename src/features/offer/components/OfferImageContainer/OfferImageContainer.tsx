@@ -28,6 +28,7 @@ type Props = {
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
+  enableVideoABTesting?: boolean
 }
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
@@ -38,6 +39,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   imageDimensions,
   offer,
   segment,
+  enableVideoABTesting,
 }) => {
   const progressValue = useSharedValue<number>(0)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -49,7 +51,8 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
     cookiesConsent.state === ConsentState.HAS_CONSENT &&
     cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
 
-  const shouldShowVideoSection = offer.video?.id && isVideoSectionEnabled && segment === 'A'
+  const hasVideo = offer.video?.id && isVideoSectionEnabled
+  const shouldShowVideoSection = enableVideoABTesting ? hasVideo && segment === 'A' : hasVideo
 
   const handleVideoPress = () => {
     if (!hasConsent) {

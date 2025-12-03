@@ -84,6 +84,7 @@ export type OfferContentProps = {
   userId?: number
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
+  enableVideoABTesting?: boolean
 }
 
 export type OfferImageContainerDimensions = {

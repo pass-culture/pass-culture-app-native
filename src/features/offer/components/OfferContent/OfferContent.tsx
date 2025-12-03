@@ -28,11 +28,14 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   hasVideoCookiesConsent,
   onVideoConsentPress,
   segment,
+  enableVideoABTesting,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const isVideoSectionEnabled =
-    useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION) && segment === 'A'
+  const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
+  const shouldShowVideoSection = enableVideoABTesting
+    ? isVideoSectionEnabled && segment === 'A'
+    : isVideoSectionEnabled
 
   const handlePreviewPress = (defaultIndex = 0) => {
     if (!offer.images) return
@@ -48,7 +51,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         searchGroupList={searchGroupList}
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePreviewPress}
-        isVideoSectionEnabled={isVideoSectionEnabled}
+        isVideoSectionEnabled={shouldShowVideoSection}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         chronicleVariantInfo={chronicleVariantInfo}
@@ -61,7 +64,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onShowChroniclesWritersModal={onShowChroniclesWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
-        segment={segment}>
+        segment={segment}
+        enableVideoABTesting={enableVideoABTesting}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"
