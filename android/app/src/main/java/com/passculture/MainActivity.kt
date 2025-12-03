@@ -28,6 +28,8 @@ class MainActivity : ReactActivity() {
 
     // @batch.com/react-native-plugin (https://doc.batch.com/react-native/sdk-integration#configure-onnewintent)
     override fun onNewIntent(intent: Intent?) {
+        // Propagate the intent to React Native
+        super.onNewIntent(intent)
         intent?.let { 
             Batch.onNewIntent(this, it) 
         }
