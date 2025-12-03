@@ -27,8 +27,8 @@ describe('buildQueryHelper', () => {
       userLocation,
     })
 
-    expect(result.params).toHaveProperty('aroundLatLng', '48.8566, 2.3522')
-    expect(result.params).toHaveProperty('aroundRadius', DEFAULT_RADIUS * 1000)
+    expect(result).toHaveProperty('aroundLatLng', '48.8566, 2.3522')
+    expect(result).toHaveProperty('aroundRadius', DEFAULT_RADIUS * 1000)
   })
 
   it('should set aroundRadius to "all" when withRadius is false', () => {
@@ -39,7 +39,7 @@ describe('buildQueryHelper', () => {
       withRadius: false,
     })
 
-    expect(result.params).toHaveProperty('aroundRadius', 'all')
+    expect(result).toHaveProperty('aroundRadius', 'all')
   })
 
   it('should include numericFilters when provided', () => {
@@ -49,7 +49,7 @@ describe('buildQueryHelper', () => {
       numericFilters,
     })
 
-    expect(result.params).toHaveProperty('numericFilters', numericFilters)
+    expect(result).toHaveProperty('numericFilters', numericFilters)
   })
 
   it('should set distinct flag when true', () => {
@@ -58,7 +58,7 @@ describe('buildQueryHelper', () => {
       distinct: true,
     })
 
-    expect(result.params).toHaveProperty('distinct', true)
+    expect(result).toHaveProperty('distinct', true)
   })
 
   it('should use provided hitsPerPage value', () => {
@@ -67,7 +67,7 @@ describe('buildQueryHelper', () => {
       hitsPerPage: 25,
     })
 
-    expect(result.params).toHaveProperty('hitsPerPage', 25)
+    expect(result).toHaveProperty('hitsPerPage', 25)
   })
 
   it('should combine all parameters when provided', () => {

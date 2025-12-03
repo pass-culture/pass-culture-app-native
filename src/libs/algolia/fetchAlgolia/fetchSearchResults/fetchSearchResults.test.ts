@@ -1,18 +1,16 @@
-import algoliasearch from 'algoliasearch'
-
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
-jest.mock('algoliasearch')
-
-const mockMultipleQueries = algoliasearch('', '').multipleQueries
+jest.mock('libs/algolia/fetchAlgolia/clients')
+const mockSearch = client.search as jest.Mock
 
 const userPosition = { latitude: 42, longitude: 43 }
 
@@ -67,6 +65,10 @@ const aroundPlaceGeolocatedParams = {
 }
 
 describe('fetchSearchResults', () => {
+  beforeEach(() => {
+    mockSearch.mockResolvedValue({ results: [] })
+  })
+
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
@@ -136,7 +138,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user is not sharing its position', () => {
@@ -208,7 +210,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
@@ -293,7 +295,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', () => {
@@ -379,7 +381,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', () => {
@@ -465,7 +467,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', () => {
@@ -551,7 +553,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', () => {
@@ -636,7 +638,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', () => {
@@ -721,7 +723,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with accessibilities filters when user has selected accessibility filters', () => {
@@ -821,7 +823,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with aroundPrecision param if provided', () => {
@@ -903,7 +905,7 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', () => {
@@ -976,6 +978,6 @@ describe('fetchSearchResults', () => {
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 })
