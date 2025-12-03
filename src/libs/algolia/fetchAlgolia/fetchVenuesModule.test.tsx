@@ -48,12 +48,10 @@ describe('fetchVenuesModule', () => {
     expect(multipleQueries).toHaveBeenCalledWith([
       {
         indexName: 'algoliaVenuesIndexName',
-        params: {
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
-          hitsPerPage: 15,
-        },
         query: '',
+        attributesToHighlight: [],
+        facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 15,
       },
     ])
   })
@@ -64,12 +62,10 @@ describe('fetchVenuesModule', () => {
     expect(multipleQueries).toHaveBeenCalledWith([
       {
         indexName: 'algoliaVenuesIndexName',
-        params: {
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
-          hitsPerPage: 15,
-        },
         query: '',
+        attributesToHighlight: [],
+        facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 15,
       },
     ])
   })
@@ -80,14 +76,12 @@ describe('fetchVenuesModule', () => {
     expect(multipleQueries).toHaveBeenCalledWith([
       {
         indexName: 'algoliaVenuesIndexName',
-        params: {
-          aroundLatLng: '2, 2',
-          aroundRadius: 50000,
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
-          hitsPerPage: 15,
-        },
         query: '',
+        aroundLatLng: '2, 2',
+        aroundRadius: 50000,
+        attributesToHighlight: [],
+        facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 15,
       },
     ])
   })

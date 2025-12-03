@@ -22,27 +22,23 @@ describe('buildVideoCarouselOffersQueries', () => {
 
   const expectedResultWithOfferId = {
     indexName: 'algoliaOffersIndexName',
-    params: {
-      aroundLatLng: '48.8566, 2.3522',
-      aroundRadius: 'all',
-      facetFilters: [['offer.isEducational:false'], ['objectID:1234']],
-      numericFilters: [['offer.prices: 0 TO 300']],
-      attributesToHighlight: [],
-      attributesToRetrieve: offerAttributesToRetrieve,
-    },
+    aroundLatLng: '48.8566, 2.3522',
+    aroundRadius: 'all',
+    facetFilters: [['offer.isEducational:false'], ['objectID:1234']],
+    numericFilters: [['offer.prices:0 TO 300']],
+    attributesToHighlight: [],
+    attributesToRetrieve: offerAttributesToRetrieve,
     query: '',
   }
 
   const expectedResultWithTag = {
     indexName: 'algoliaOffersIndexName',
-    params: {
-      aroundLatLng: '48.8566, 2.3522',
-      aroundRadius: 'all',
-      facetFilters: [['offer.isEducational:false'], ['offer.tags:furiosa']],
-      numericFilters: [['offer.prices: 0 TO 300']],
-      attributesToHighlight: [],
-      attributesToRetrieve: offerAttributesToRetrieve,
-    },
+    aroundLatLng: '48.8566, 2.3522',
+    aroundRadius: 'all',
+    facetFilters: [['offer.isEducational:false'], ['offer.tags:furiosa']],
+    numericFilters: [['offer.prices:0 TO 300']],
+    attributesToHighlight: [],
+    attributesToRetrieve: offerAttributesToRetrieve,
     query: '',
   }
 

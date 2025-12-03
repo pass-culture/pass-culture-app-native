@@ -1,4 +1,4 @@
-import { SearchOptions } from '@algolia/client-search'
+import { SearchParamsObject } from 'algoliasearch/lite'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
@@ -22,7 +22,7 @@ const buildParams = (
   query: string,
   attributesToHighlight: string[] = [],
   locationParams: LocationParams = defaultLocationParams,
-  options?: SearchOptions
+  options?: SearchParamsObject
 ): FetchVenuesParameters => ({
   query,
   buildLocationParameterParams: locationParams as BuildLocationParameterParams,

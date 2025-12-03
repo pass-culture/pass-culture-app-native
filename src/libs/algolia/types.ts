@@ -1,4 +1,4 @@
-import { SearchOptions } from '@algolia/client-search'
+import { SearchParamsObject } from 'algoliasearch/lite'
 import { Hit } from 'instantsearch.js'
 
 import {
@@ -213,28 +213,26 @@ export type VenueHit = Pick<
 
 export interface AlgoliaQueryParameters {
   query: string
-  requestOptions?: SearchOptions
+  requestOptions?: SearchParamsObject
 }
 
 export interface FetchVenuesParameters {
   query: string
   attributesToHighlight?: string[]
   buildLocationParameterParams: BuildLocationParameterParams
-  options?: SearchOptions
+  options?: SearchParamsObject
 }
 export interface OfferModuleQuery {
   indexName: string
   query: string
-  params: {
-    attributesToHighlight: never[]
-    attributesToRetrieve: string[]
-    filters?: string
-    aroundLatLng?: string
-    aroundRadius?: number | 'all'
-    numericFilters?: FiltersArray
-    facetFilters?: FiltersArray
-    hitsPerPage?: number
-  }
+  attributesToHighlight: never[]
+  attributesToRetrieve: string[]
+  filters?: string
+  aroundLatLng?: string
+  aroundRadius?: number | 'all'
+  numericFilters?: FiltersArray
+  facetFilters?: FiltersArray
+  hitsPerPage?: number
 }
 
 interface HighlightResult {

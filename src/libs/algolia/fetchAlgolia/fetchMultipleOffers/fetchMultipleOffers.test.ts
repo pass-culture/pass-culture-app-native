@@ -62,22 +62,18 @@ describe('fetchMultipleOffers', () => {
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME, // default indexName,
         query: 'test',
-        params: {
-          ...buildHitsPerPage(10),
-          ...buildOfferSearchParameters(mockParams1.offerParams, mockParams1.locationParams, false),
-          attributesToHighlight: [],
-          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
-        },
+        ...buildHitsPerPage(10),
+        ...buildOfferSearchParameters(mockParams1.offerParams, mockParams1.locationParams, false),
+        attributesToHighlight: [],
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
       },
       {
         indexName: 'customIndex',
         query: 'test',
-        params: {
-          ...buildHitsPerPage(10),
-          ...buildOfferSearchParameters(mockParams2.offerParams, mockParams2.locationParams, false),
-          attributesToHighlight: [],
-          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
-        },
+        ...buildHitsPerPage(10),
+        ...buildOfferSearchParameters(mockParams2.offerParams, mockParams2.locationParams, false),
+        attributesToHighlight: [],
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
       },
     ])
   })

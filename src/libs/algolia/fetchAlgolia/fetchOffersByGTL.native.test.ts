@@ -71,18 +71,16 @@ describe('fetchOffersByGTL', () => {
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
         indexName: 'algoliaTopOffersIndexName',
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['offer.gtl_level3:Romance'],
-            ['venue.id:123'],
-          ],
-          hitsPerPage: 35,
-          numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 5']],
-        },
-        query: undefined,
+        query: '',
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.gtl_level3:Romance'],
+          ['venue.id:123'],
+        ],
+        hitsPerPage: 35,
+        numericFilters: [['offer.prices:0 TO 300'], ['offer.last30DaysBookings >= 5']],
       },
     ])
   })
@@ -103,18 +101,16 @@ describe('fetchOffersByGTL', () => {
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
         indexName: 'algoliaTopOffersIndexNameB',
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['offer.gtl_level3:Romance'],
-            ['venue.id:123'],
-          ],
-          hitsPerPage: 35,
-          numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 5']],
-        },
-        query: undefined,
+        query: '',
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.gtl_level3:Romance'],
+          ['venue.id:123'],
+        ],
+        hitsPerPage: 35,
+        numericFilters: [['offer.prices:0 TO 300'], ['offer.last30DaysBookings >= 5']],
       },
     ])
   })
