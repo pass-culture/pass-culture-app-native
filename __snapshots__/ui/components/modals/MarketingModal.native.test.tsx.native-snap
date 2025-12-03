@@ -4,7 +4,6 @@ exports[`MarketingModal should render correctly 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   animationType="fade"
-  hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
   transparent={true}

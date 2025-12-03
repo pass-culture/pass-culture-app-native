@@ -157,7 +157,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
-  const modulesIntervalId = useRef<NodeJS.Timeout>(null)
+  const modulesIntervalId = useRef<number>(null)
   const { zIndex } = useTheme()
 
   const flatListHeaderStyle = { zIndex: zIndex.header }

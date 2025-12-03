@@ -79,6 +79,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 jest.mock('react-native/Libraries/Interaction/InteractionManager', () => ({
   ...jest.requireActual('react-native/Libraries/Interaction/InteractionManager'),
   runAfterInteractions: jest.fn((callback) => callback()), // Exécute le callback immédiatement
+  createInteractionHandle: jest.fn(() => 1),
+  clearInteractionHandle: jest.fn(),
+  setDeadline: jest.fn(),
 }))
 
 const refusedDefault = [

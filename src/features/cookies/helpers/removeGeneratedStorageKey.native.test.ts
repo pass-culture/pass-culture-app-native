@@ -3,7 +3,6 @@ import { storage, StorageKey } from 'libs/storage'
 import { act } from 'tests/utils'
 
 const someValue = 'some value'
-const keyColorScheme = 'colorScheme'
 
 describe('removeGeneratedStorageKey', () => {
   it('should clear optional key', async () => {
@@ -14,7 +13,7 @@ describe('removeGeneratedStorageKey', () => {
       removeGeneratedStorageKey(key)
     })
 
-    expect(await storage.getAllKeys()).toEqual([keyColorScheme])
+    expect(await storage.readObject('traffic_medium')).toBeNull()
   })
 
   it('should clear optional key with prefix', async () => {
@@ -26,7 +25,7 @@ describe('removeGeneratedStorageKey', () => {
       removeGeneratedStorageKey(prefix)
     })
 
-    expect(await storage.getAllKeys()).toEqual([keyColorScheme])
+    expect(await storage.readObject(keyWithPrefix)).toBeNull()
   })
 
   it('should not clear optional key with partial prefix', async () => {
@@ -39,6 +38,6 @@ describe('removeGeneratedStorageKey', () => {
       removeGeneratedStorageKey(prefix)
     })
 
-    expect(await storage.getAllKeys()).toEqual([keyColorScheme, keyWithPartialPrefix])
+    expect(await storage.readObject(keyWithPartialPrefix)).toEqual(someValue)
   })
 })

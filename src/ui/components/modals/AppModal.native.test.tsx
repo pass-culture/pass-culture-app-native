@@ -1,8 +1,8 @@
 import React from 'react'
-import { DeviceEventEmitter } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 
 import { act, render, screen, userEvent } from 'tests/utils'
+import * as useKeyboardEventsModule from 'ui/components/keyboard/useKeyboardEvents'
 
 import { AppModal } from './AppModal'
 import {
@@ -19,6 +19,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const spyUseKeyboardEvents = jest.spyOn(useKeyboardEventsModule, 'useKeyboardEvents')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -287,20 +289,30 @@ describe('<AppModal />', () => {
     })
 
     describe('should adapt when virtual keyboard is', () => {
-      const keyboardEvent = {
-        startCoordinates: { height: 0, screenX: 0, screenY: 800, width: 450 },
-        endCoordinates: { height: 300, screenX: 0, screenY: 500, width: 450 },
-        duration: 0,
-        easing: 'keyboard',
+      const keyboardShowCoordinates = {
+        start: { height: 0, screenX: 0, screenY: 800, width: 450 },
+        end: { height: 300, screenX: 0, screenY: 500, width: 450 },
+      }
+      const keyboardHideCoordinates = {
+        start: { height: 300, screenX: 0, screenY: 500, width: 450 },
+        end: { height: 0, screenX: 0, screenY: 800, width: 450 },
       }
 
       it('displayed', () => {
         render(<AppModal {...defaultProps} />)
         const modalContainer = screen.getByTestId('modalContainer')
 
+        const lastCall = spyUseKeyboardEvents.mock.calls[spyUseKeyboardEvents.mock.calls.length - 1]
+
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const { onBeforeShow } = lastCall![0]
+
         act(() => {
-          DeviceEventEmitter.emit('keyboardWillShow', keyboardEvent)
-          DeviceEventEmitter.emit('keyboardDidShow', keyboardEvent)
+          onBeforeShow({
+            keyboardShown: true,
+            keyboardHeight: keyboardShowCoordinates.end.height,
+            coordinates: keyboardShowCoordinates,
+          })
         })
 
         expect(modalContainer.props.height).toEqual(720)
@@ -310,11 +322,21 @@ describe('<AppModal />', () => {
         render(<AppModal {...defaultProps} />)
         const modalContainer = screen.getByTestId('modalContainer')
 
+        const lastCall = spyUseKeyboardEvents.mock.calls[spyUseKeyboardEvents.mock.calls.length - 1]
+
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const { onBeforeShow, onBeforeHide } = lastCall![0]
         act(() => {
-          DeviceEventEmitter.emit('keyboardWillShow', keyboardEvent)
-          DeviceEventEmitter.emit('keyboardDidShow', keyboardEvent)
-          DeviceEventEmitter.emit('keyboardWillHide', keyboardEvent)
-          DeviceEventEmitter.emit('keyboardDidHide', keyboardEvent)
+          onBeforeShow({
+            keyboardShown: true,
+            keyboardHeight: keyboardShowCoordinates.end.height,
+            coordinates: keyboardShowCoordinates,
+          })
+          onBeforeHide({
+            keyboardShown: false,
+            keyboardHeight: keyboardHideCoordinates.end.height,
+            coordinates: keyboardHideCoordinates,
+          })
         })
 
         expect(modalContainer.props.height).toEqual(428)

@@ -7,7 +7,6 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
-  hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
@@ -495,7 +494,6 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
   animationType="none"
   deviceHeight={1334}
   deviceWidth={750}
-  hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
   onBackdropPress={[MockFunction]}
   onModalHide={[Function]}
