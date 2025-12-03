@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { InteractionManager } from 'react-native'
+import { InteractionManager, View } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -137,28 +137,30 @@ export function Offer() {
 
   return (
     <Page>
-      <ReactionChoiceModal
-        dateUsed={booking?.dateUsed ?? ''}
-        offerId={offer.id}
-        offerName={offer.name}
-        imageUrl={offer.images?.url?.url}
-        subcategoryId={offer.subcategoryId}
-        closeModal={hideReactionModal}
-        visible={reactionModalVisible}
-        defaultReaction={booking?.userReaction}
-        onSave={handleSaveReaction}
-        from={ReactionFromEnum.ENDED_BOOKING}
-        bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
-      />
-
-      {chronicleVariantInfo ? (
-        <ChroniclesWritersModal
-          closeModal={hideChroniclesWritersModal}
-          isVisible={chroniclesWritersModalVisible}
-          onShowRecoButtonPress={handleOnShowRecoButtonPress}
-          variantInfo={chronicleVariantInfo}
+      <View>
+        <ReactionChoiceModal
+          dateUsed={booking?.dateUsed ?? ''}
+          offerId={offer.id}
+          offerName={offer.name}
+          imageUrl={offer.images?.url?.url}
+          subcategoryId={offer.subcategoryId}
+          closeModal={hideReactionModal}
+          visible={reactionModalVisible}
+          defaultReaction={booking?.userReaction}
+          onSave={handleSaveReaction}
+          from={ReactionFromEnum.ENDED_BOOKING}
+          bodyType={ReactionChoiceModalBodyEnum.VALIDATION}
         />
-      ) : null}
+
+        {chronicleVariantInfo ? (
+          <ChroniclesWritersModal
+            closeModal={hideChroniclesWritersModal}
+            isVisible={chroniclesWritersModalVisible}
+            onShowRecoButtonPress={handleOnShowRecoButtonPress}
+            variantInfo={chronicleVariantInfo}
+          />
+        ) : null}
+      </View>
 
       <OfferContent
         offer={offer}
