@@ -1,4 +1,4 @@
-import { Hit } from '@algolia/client-search'
+import { Hit } from 'algoliasearch/lite'
 
 import algoliasearch from '__mocks__/algoliasearch'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
@@ -80,7 +80,7 @@ describe('useSearchResults', () => {
               clickAnalytics: true,
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 20,
-              numericFilters: [['offer.prices: 0 TO 300']],
+              numericFilters: [['offer.prices:0 TO 300']],
               page: 0,
             },
             query: '',
@@ -102,7 +102,7 @@ describe('useSearchResults', () => {
             params: {
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 20,
-              numericFilters: [['offer.prices: 0 TO 300']],
+              numericFilters: [['offer.prices:0 TO 300']],
               page: 0,
             },
             query: '',
@@ -116,7 +116,7 @@ describe('useSearchResults', () => {
               distinct: false,
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 100,
-              numericFilters: [['offer.prices: 0 TO 300']],
+              numericFilters: [['offer.prices:0 TO 300']],
               page: 0,
               typoTolerance: false,
             },
@@ -128,7 +128,7 @@ describe('useSearchResults', () => {
               attributesToRetrieve: ['artists'],
               facetFilters: [['offer.isEducational:false']],
               hitsPerPage: 100,
-              numericFilters: [['offer.prices: 0 TO 300']],
+              numericFilters: [['offer.prices:0 TO 300']],
             },
             query: '',
           },

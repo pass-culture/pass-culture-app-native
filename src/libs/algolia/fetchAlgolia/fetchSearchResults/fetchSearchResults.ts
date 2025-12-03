@@ -1,4 +1,4 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { Hit, SearchResponse } from 'algoliasearch/lite'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
