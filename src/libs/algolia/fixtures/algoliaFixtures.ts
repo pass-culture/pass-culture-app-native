@@ -1,7 +1,7 @@
 import { SearchResponse } from 'algoliasearch/lite'
 import type { ReadonlyDeep } from 'type-fest'
 
-import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SubcategoryIdEnum } from 'api/gen'
 import { AlgoliaOffer, AlgoliaOfferWithArtistAndEan, AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { toMutable } from 'shared/types/toMutable'
@@ -28,7 +28,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '1 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
-        venue_type: VenueTypeCodeKey.BOOKSTORE,
+        activity: Activity.BOOKSTORE,
       },
       artists: [{ id: '1', name: 'Artist 1' }],
     },
@@ -52,7 +52,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '2 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
-        venue_type: VenueTypeCodeKey.CONCERT_HALL,
+        activity: Activity.PERFORMANCE_HALL,
       },
       artists: [
         { id: '2', name: 'Artist 2' },
@@ -79,7 +79,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '3 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
-        venue_type: VenueTypeCodeKey.CONCERT_HALL,
+        activity: Activity.PERFORMANCE_HALL,
       },
     },
     {
@@ -190,7 +190,7 @@ export const mockedAlgoliaVenueResponse = toMutable({
       postalCode: '53200',
       name: 'ESPACE CULTUREL LECLERC CHATEAU GONTIER',
       offerer_name: 'SAS AZE DIS',
-      venue_type: VenueTypeCodeKey.CULTURAL_CENTRE,
+      activity: Activity.CULTURAL_CENTRE,
       description: '',
       audio_disability: false,
       mental_disability: true,
@@ -226,7 +226,7 @@ export const mockedAlgoliaVenueResponse = toMutable({
       postalCode: '29900',
       name: 'CAC - Concarneau Scènes',
       offerer_name: 'COMMUNE DE CONCARNEAU',
-      venue_type: VenueTypeCodeKey.CULTURAL_CENTRE,
+      activity: Activity.CULTURAL_CENTRE,
       description: '',
       audio_disability: false,
       mental_disability: true,
@@ -1174,7 +1174,7 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
       name: 'Théâtre d’Arras',
       postalCode: '62000',
       publicName: 'Théâtre d’Arras',
-      venue_type: 'PERFORMING_ARTS',
+      activity: 'ARTS_CENTRE',
     },
     _geoloc: {
       lat: 50.29039,
@@ -1207,7 +1207,7 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
       name: 'Théâtre d’Arras',
       postalCode: '62000',
       publicName: 'Théâtre d’Arras',
-      venue_type: 'PERFORMING_ARTS',
+      activity: 'ARTS_CENTRE',
     },
     _geoloc: {
       lat: 50.29039,
@@ -1241,7 +1241,7 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
       name: 'Théâtre d’Arras',
       postalCode: '62000',
       publicName: 'Théâtre d’Arras',
-      venue_type: 'PERFORMING_ARTS',
+      activity: 'ARTS_CENTRE',
     },
     _geoloc: {
       lat: 50.29039,
@@ -1274,7 +1274,7 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
       name: 'Théâtre d’Arras',
       postalCode: '62000',
       publicName: 'Théâtre d’Arras',
-      venue_type: 'PERFORMING_ARTS',
+      activity: 'ARTS_CENTRE',
     },
     _geoloc: {
       lat: 50.29039,
@@ -1307,7 +1307,7 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
       name: 'Théâtre d’Arras',
       postalCode: '62000',
       publicName: 'Théâtre d’Arras',
-      venue_type: 'PERFORMING_ARTS',
+      activity: 'ARTS_CENTRE',
     },
     _geoloc: {
       lat: 50.29039,
@@ -1341,7 +1341,7 @@ export const mockedAlgoliaVenueOffersResponse = toMutable([
       name: 'Théâtre d’Arras',
       postalCode: '62000',
       publicName: 'Théâtre d’Arras',
-      venue_type: 'PERFORMING_ARTS',
+      activity: 'ARTS_CENTRE',
     },
     _geoloc: {
       lat: 50.29039,
