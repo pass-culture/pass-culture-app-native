@@ -11,14 +11,14 @@ import { MapClusteringProps } from 'react-native-map-clustering'
 import styled from 'styled-components/native'
 import Supercluster from 'supercluster'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import {
   VenueMapCluster,
   VenueMapClusterProps,
 } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { MARKER_LABEL_VISIBILITY_LIMIT } from 'features/venueMap/constant'
-import { getClusterColorByDominantVenueType } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantVenueType'
+import { getClusterColorByDominantActivity } from 'features/venueMap/helpers/venueMapCluster/getClusterColorByDominantActivity'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import MapView, { Map, MapViewProps } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -77,20 +77,20 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
 
   const ColoredCluster = useCallback(
     (clusterProps: VenueMapClusterProps) => {
-      const clusterVenueTypes =
+      const clusterActivities =
         superClusterRef.current
           ?.getLeaves(clusterProps.properties.cluster_id, Infinity)
           .map(
             (leaf) =>
               venues.find((venue) => venue.venueId.toString() === leaf.properties.identifier)
-                ?.venue_type
+                ?.activity
           )
-          .filter((venueType): venueType is VenueTypeCodeKey => !!venueType) ?? []
+          .filter((activity): activity is Activity => !!activity) ?? []
       return (
         <VenueMapCluster
           key={clusterProps.properties.cluster_id}
           {...clusterProps}
-          color={getClusterColorByDominantVenueType(clusterVenueTypes)}
+          color={getClusterColorByDominantActivity(clusterActivities)}
         />
       )
     },

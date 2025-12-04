@@ -1,18 +1,18 @@
-import { VenueTypeCodeKey } from 'api/gen'
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
-import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
+import { Activity } from 'api/gen'
+import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
+import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 
 export function getFilterDescription(
   filterGroup: 'OUTINGS' | 'SHOPS' | 'OTHERS',
-  venueFilters: VenueTypeCodeKey[]
+  venueFilters: Activity[]
 ) {
-  const venueTypesGroup: VenueTypeCodeKey[] = FILTERS_VENUE_TYPE_MAPPING[filterGroup].filter(
-    (item): item is VenueTypeCodeKey => item in MAP_VENUE_TYPE_TO_LABEL
+  const activitiesGroup: Activity[] = FILTERS_ACTIVITY_MAPPING[filterGroup].filter(
+    (item): item is Activity => item in MAP_ACTIVITY_TO_LABEL
   )
 
-  const selectedVenueTypesGroup = venueTypesGroup.filter((type) => venueFilters.includes(type))
+  const selectedActivitiesGroup = activitiesGroup.filter((type) => venueFilters.includes(type))
 
-  return selectedVenueTypesGroup.length === venueTypesGroup.length
+  return selectedActivitiesGroup.length === activitiesGroup.length
     ? 'Tout'
-    : selectedVenueTypesGroup.map((type) => MAP_VENUE_TYPE_TO_LABEL[type]).join(', ')
+    : selectedActivitiesGroup.map((type) => MAP_ACTIVITY_TO_LABEL[type]).join(', ')
 }
