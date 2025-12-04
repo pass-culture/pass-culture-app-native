@@ -5,14 +5,14 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { ActivityLocationIcon } from 'features/home/components/modules/venues/ActivityLocationIcon'
 import { VenueDetails } from 'features/home/components/modules/venues/VenueDetails'
-import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
-import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
+import { mapActivityToIcon } from 'libs/parsers/activity'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
@@ -82,8 +82,8 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
             <ImageTile width={width} height={height} uri={venue.bannerUrl} />
           ) : (
             <VenueTypeTile width={width} height={height} testID="venue-type-tile">
-              <VenueTypeLocationIcon
-                VenueTypeIcon={mapVenueTypeToIcon(venue.venueTypeCode)}
+              <ActivityLocationIcon
+                ActivityIcon={mapActivityToIcon(venue.activity)}
                 iconColor={designSystem.color.icon.subtle}
                 backgroundColor={designSystem.color.background.subtle}
               />

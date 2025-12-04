@@ -5,37 +5,37 @@ import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Bag } from 'ui/svg/icons/venueAndCategories/Bag'
 
-import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
+import { ActivityLocationIcon } from './ActivityLocationIcon'
 
-const meta: Meta<typeof VenueTypeLocationIcon> = {
-  title: 'Features/home/VenueTypeLocationIcon',
-  component: VenueTypeLocationIcon,
+const meta: Meta<typeof ActivityLocationIcon> = {
+  title: 'Features/home/ActivityLocationIcon',
+  component: ActivityLocationIcon,
 }
 export default meta
 
-const variantConfig: Variants<typeof VenueTypeLocationIcon> = [
+const variantConfig: Variants<typeof ActivityLocationIcon> = [
   {
-    label: 'VenueTypeLocationIcon with color',
+    label: 'ActivityLocationIcon with color',
     props: {
-      VenueTypeIcon: Bag,
+      ActivityIcon: Bag,
       iconColor: theme.designSystem.color.icon.subtle,
       backgroundColor: theme.designSystem.color.background.subtle,
     },
   },
   {
-    label: 'VenueTypeLocationIcon without color',
+    label: 'ActivityLocationIcon without color',
     props: {
-      VenueTypeIcon: Bag,
+      ActivityIcon: Bag,
     },
   },
 ]
 
-export const Template: VariantsStory<typeof VenueTypeLocationIcon> = {
-  name: 'VenueTypeLocationIcon',
+export const Template: VariantsStory<typeof ActivityLocationIcon> = {
+  name: 'ActivityLocationIcon',
   render: (props) => (
     <VariantsTemplate
       variants={variantConfig}
-      Component={VenueTypeLocationIcon}
+      Component={ActivityLocationIcon}
       defaultProps={props}
     />
   ),
