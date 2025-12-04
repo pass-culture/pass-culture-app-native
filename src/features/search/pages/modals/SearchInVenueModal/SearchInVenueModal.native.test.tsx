@@ -2,7 +2,7 @@ import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { Venue } from 'features/venue/types'
 import { render, screen, userEvent } from 'tests/utils'
@@ -20,7 +20,7 @@ const venueSelected: Venue = {
   postalCode: '75000',
   isPermanent: true,
   isOpenToPublic: true,
-  venue_type: VenueTypeCodeKey.BOOKSTORE,
+  activity: Activity.BOOKSTORE,
   info: '',
 }
 const mockNavigate = jest.fn()
