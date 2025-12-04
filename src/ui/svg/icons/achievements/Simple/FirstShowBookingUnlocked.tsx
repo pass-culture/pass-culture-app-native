@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-hardcoded-id-in-svg */
 import React from 'react'
-import { G, Path, Defs, LinearGradient, Stop, ClipPath } from 'react-native-svg'
+import { G, Path, Defs, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -329,7 +329,6 @@ function FirstShowBookingUnlockedSvg({ size, accessibilityLabel, testID }: Acces
             <Stop stopColor="#B283DF" />
             <Stop offset="1" stopColor="#A778D4" />
           </LinearGradient>
-          <ClipPath id="clip0_8631_20849"></ClipPath>
         </Defs>
       </G>
     </AccessibleSvg>

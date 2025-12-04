@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-hardcoded-id-in-svg */
 import React from 'react'
-import { G, Path, ClipPath, Defs } from 'react-native-svg'
+import { G, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -42,9 +42,6 @@ function FirstLiveMusicBookingLockedSvg({ size, accessibilityLabel, testID }: Ac
             fill="#6C6C6C"
           />
         </G>
-        <Defs>
-          <ClipPath id="clip0_8631_22221"></ClipPath>
-        </Defs>
       </G>
     </AccessibleSvg>
   )
