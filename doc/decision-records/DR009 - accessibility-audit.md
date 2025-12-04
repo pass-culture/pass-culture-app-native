@@ -1,11 +1,11 @@
 # 🌈 Suivi des corrections d’accessibilité
 
 | Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | Début 2026 |
-| ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ----------- |
-| Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | ⏳          | ⏳          |
-|            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | ⏳          | ⏳          |
-| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | 58.14%     | ⏳          | ⏳          |
-|            | EN 301-549 | 20.83%     | 25.00%       | 29.17%     | ⏳          | ⏳          |
+| ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ---------- |
+| Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | 72.09%      | ⏳         |
+|            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | 54.17%      | ⏳         |
+| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | 58.14%     | 72.09%      | ⏳         |
+|            | EN 301-549 | 20.83%     | 25.00%       | 29.17%     | 54.17%      | ⏳         |
 
 <br>
 
@@ -606,12 +606,14 @@ Texte
 **Ticket** : [PC-37472](https://passculture.atlassian.net/browse/PC-37472)  
 **PR** : [#8863](https://github.com/pass-culture/pass-culture-app-native/pull/8863)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(E02)** Les vidéos ne sont pas clairement identifiables.
 
-**Correction** 💡  
-- **(E02)** Une description de la vidéo a été ajoutée entre le titre et la vidéo. 
-- **(E02)** Le label d'accessibilité du titre de la vidéo précise qu'il s'agit d'un média vidéo. 
+**Correction** 💡
+
+- **(E02)** Une description de la vidéo a été ajoutée entre le titre et la vidéo.
+- **(E02)** Le label d'accessibilité du titre de la vidéo précise qu'il s'agit d'un média vidéo.
 
 **Retours audit** 🔥  
 Texte
@@ -628,18 +630,20 @@ Texte
 **Ticket** : [PC-37475](https://passculture.atlassian.net/browse/PC-37475)  
 **PR** : [#8889](https://github.com/pass-culture/pass-culture-app-native/pull/8889)
 
-**Problème** 😱  
-- **(E02)** Le bouton qui permet d'ouvrir la modale de localisation ne reprend pas dans le nom accessible le nom de la localisation (quand cette dernière est renseignée). 
-- **(E03)** Le lien "support@passculture.app" a pour nom accessible "ouvrir le gestionnaire mail pour contacter le support". 
-- **(E04)** Non-conformité de typologie similaire à celle décrite sur l'écran "E03". Présente également ici, mais non redétaillée.. 
+**Problème** 😱
+
+- **(E02)** Le bouton qui permet d'ouvrir la modale de localisation ne reprend pas dans le nom accessible le nom de la localisation (quand cette dernière est renseignée).
+- **(E03)** Le lien "support@passculture.app" a pour nom accessible "ouvrir le gestionnaire mail pour contacter le support".
+- **(E04)** Non-conformité de typologie similaire à celle décrite sur l'écran "E03". Présente également ici, mais non redétaillée..
 - **(E11)** Le composant de sélection de la date (vocalise des données incohérentes "1900" etc.).
 - **(E14)** Les offres de chaque section ont un nom accessible qui ne reprend pas l'intégralité du contenu visible (il manque parfois l'information sur le nombre de "J'aime", et également parfois le lieu comme par exemple dans la section "Les librairies et bibliothèques").
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E02)** Reprise du nom visible au début de l'accessibilityLabel du bouton qui permet d'ouvrir la modale de localisation.
 - **(E03 | E04 )** Reprise du nom visible au début de l'accessibilityLabel des boutons "support@passculture.app".
-- **(E11)** Le composant de sélection de la date vocalise les données qui sont séléctionnée depuis une mise à jour de la librairie utilisé pour créer le date picker. 
-- **(E14)** Ajoute de tous les éléments présents visuellement directement dans l'accessibilityLabel des offres. 
+- **(E11)** Le composant de sélection de la date vocalise les données qui sont séléctionnée depuis une mise à jour de la librairie utilisé pour créer le date picker.
+- **(E14)** Ajoute de tous les éléments présents visuellement directement dans l'accessibilityLabel des offres.
 
 **Retours audit** 🔥  
 Texte
@@ -656,27 +660,28 @@ Texte
 **Ticket** : [PC-38647](https://passculture.atlassian.net/browse/PC-38647)  
 **PR** : [#8878](https://github.com/pass-culture/pass-culture-app-native/pull/8878)
 
-**Problème** 😱  
-- **(E01)** Les liens sont bien contrôlable par le calvier ou tout dispositif de pointage, mais l'intitulé ne semble pas bon, à la suite du lien dit : "Link one of one" ou "One link found, swipe to move to the link". 
+**Problème** 😱
 
-**Correction** 💡  
-- **(E01)** Le problème de “One … found, swipe to move to the …” est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint 
+- **(E01)** Les liens sont bien contrôlable par le calvier ou tout dispositif de pointage, mais l'intitulé ne semble pas bon, à la suite du lien dit : "Link one of one" ou "One link found, swipe to move to the link".
+
+**Correction** 💡
+
+- **(E01)** Le problème de “One … found, swipe to move to the …” est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint
 
   1. **La lecture “One link found…” vient du moteur VoiceOver d’iOS, pas du code JavaScript ni de React Native (dans notre cas au pass Culture).**  
-  Quand VoiceOver détecte un élément accessible (accessibilityRole="link", button, etc.), il envoie directement les messages système depuis UIKit (le moteur natif d’Apple). 
-  React Native ne fait ici que déclarer des attributs d’accessibilité via ses props (accessibilityRole, accessibilityLabel, etc.).
-  Ensuite, c’est iOS qui décide quoi lire et dans quelle langue. Donc ce message ne passe même pas par la couche JavaScript.
+     Quand VoiceOver détecte un élément accessible (accessibilityRole="link", button, etc.), il envoie directement les messages système depuis UIKit (le moteur natif d’Apple).
+     React Native ne fait ici que déclarer des attributs d’accessibilité via ses props (accessibilityRole, accessibilityLabel, etc.).
+     Ensuite, c’est iOS qui décide quoi lire et dans quelle langue. Donc ce message ne passe même pas par la couche JavaScript.
 
   2. **React Native transmet simplement les propriétés d’accessibilité natives**  
-  Quand on écris : <Text accessibilityRole="link" accessibilityLabel="Politique de cookies" />
-  React Native fait juste une passerelle vers : "UIAccessibilityTraitsLink accessibilityLabel = @"Politique de cookies"", dans le moteur natif d’iOS.
-  Aucune traduction, aucun hint automatique ne vient de React Native, tout est géré par Apple via UIAccessibility.
+     Quand on écris : <Text accessibilityRole="link" accessibilityLabel="Politique de cookies" />
+     React Native fait juste une passerelle vers : "UIAccessibilityTraitsLink accessibilityLabel = @"Politique de cookies"", dans le moteur natif d’iOS.
+     Aucune traduction, aucun hint automatique ne vient de React Native, tout est géré par Apple via UIAccessibility.
 
   3. **Pourquoi on entend encore l’anglais ?**  
-  Ce n’est donc pas une erreur de React Native, mais une incohérence interne à iOS car les voix françaises utilisent encore des hints anglais, par manque de traduction. 
-  J'ai essayé les différentes voix françaises en normal et premium et j'ai toujours le même résultat.
-  C’est le même comportement qu’on retrouve dans Swift, SwiftUI ou UIKit si on fait une application iOS pure, on aura exactement la même phrase en anglais dans ces conditions.
-
+     Ce n’est donc pas une erreur de React Native, mais une incohérence interne à iOS car les voix françaises utilisent encore des hints anglais, par manque de traduction.
+     J'ai essayé les différentes voix françaises en normal et premium et j'ai toujours le même résultat.
+     C’est le même comportement qu’on retrouve dans Swift, SwiftUI ou UIKit si on fait une application iOS pure, on aura exactement la même phrase en anglais dans ces conditions.
 
 **Retours audit** 🔥  
 Texte
@@ -693,12 +698,14 @@ Texte
 **Ticket** : [PC-37479](https://passculture.atlassian.net/browse/PC-37479)  
 **PR** : [#8883](https://github.com/pass-culture/pass-culture-app-native/pull/8883)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(E05 | E14 | E16)** L'état des boutons radio (checked/unchecked) ne sont pas restitués par le lecteur d'écran dans la langue de traitement principale.
 
 - **(E09 | E11 | E13)** Non-conformité de typologie similaire à celle décrite sur l'écran "E05". Présente également ici, mais non redétaillée. (concerne les composants qui ouvrent et ferment du contenu (bloc "Accessibilité" de l'onglet "Infos pratiques" ) -> vocalise collapsed/extended)
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E05 | E09 | E11 | E13 | E14 | E16)** Comme pour le critère 5.2, le problème de la lecteur des aides à la compréhension de l'interface en anglais est impossible résoudre de notre côté car c’est un comportement natif d’iOS / VoiceOver qui ne prend pas en compte le français pour les hint.
 
 **Retours audit** 🔥  
@@ -741,7 +748,7 @@ Texte
 
 - **(E09)** Les playlists de lieu dans la recherche thématique sont tronqué lors d'un zoom 200% car la hauteur est limité.
 
-- **(E14)** Dans la calendrier les dates sont illisible (Lun. > L…) car la largeur utilisé pour le composant des dates possède une largeur maximum. 
+- **(E14)** Dans la calendrier les dates sont illisible (Lun. > L…) car la largeur utilisé pour le composant des dates possède une largeur maximum.
 
 **Correction** 💡
 
@@ -764,10 +771,12 @@ Texte
 **Ticket** : [PC-38816](https://passculture.atlassian.net/browse/PC-38816)  
 **PR** : [#8903](https://github.com/pass-culture/pass-culture-app-native/pull/8903)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(E14)** Le champ "Offre, artiste, lieu culturel..." est un placeholder et disparait donc au premier caractère saisit.
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E14)** Implémentation d'un nouveau SearchInput en lien avec le design-system qui intègre directement un label au-dessus qui ne disparaît pas lors de la saisie.
 
 **Retours audit** 🔥  
@@ -785,8 +794,10 @@ Texte
 **Ticket** : [PC-37494](https://passculture.atlassian.net/browse/PC-37494)  
 **PR** : [#8882](https://github.com/pass-culture/pass-culture-app-native/pull/8882)
 
-**Problème** 😱  
-- **(E07)** Les messages d'erreurs suivant ne sont pas restitués par le lecteur d'écran à la prise de focus sur le champ : 
+**Problème** 😱
+
+- **(E07)** Les messages d'erreurs suivant ne sont pas restitués par le lecteur d'écran à la prise de focus sur le champ :
+
   - Le message d'erreur du champ "Adresse e-mail".
   - Le message d'erreur "E-mail ou mot de passe incorrect".
 
@@ -794,7 +805,8 @@ Texte
 
 - **(E12)** Le message d'erreur de l'ensemble des champs du parcours (ex. lorsque l'utilisateur saisit un chiffre dans le champ "Prénom", le message "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.")
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E07 | E11 | E12)** Pour l'ensemble des champs de texte ou de recherche, nous avons ajouté le message d'erreur directement dans l'`accessibilityLabel`, ce qui à la prise de focus, permet d'avoir le message d'erreur (en plus de toutes les autres informations nécessaires à la compréhension du champ).
 
 **Retours audit** 🔥  
@@ -809,14 +821,15 @@ Texte
 <summary> 🔴🔴 Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données [...] les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?</summary>
 
 **RAAM** : [Critère 9.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-11)  
-**Tickets** : [PC-37495](https://passculture.atlassian.net/browse/PC-37495) 
+**Tickets** : [PC-37495](https://passculture.atlassian.net/browse/PC-37495)
 **PR** : [#8911](https://github.com/pass-culture/pass-culture-app-native/pull/8911)
 
+**Problème** 😱
 
-**Problème** 😱  
 - **(E12)** Le formulaire transmet des données sensibles sur l'utilisateur, mais elles ne peuvent pas être modifiées, mises à jour ou récupérées par l'utilisateur.
 
-**Correction** 💡  
+**Correction** 💡
+
 - **(E12)** Ajout d'une étape de vérification des données ajouté par l'utilisateur juste avant d'enregistrer les données dans le backend. De plus, l'utilisateur à la possiblité de modifier ces données s'il s'est trompé.
 
 **Retours audit** 🔥  
@@ -831,16 +844,19 @@ Texte
 <summary> 🔴🔴 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
 
 **RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
-**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650) & [PC-38849](https://passculture.atlassian.net/browse/PC-38849) 
+**Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650) & [PC-38849](https://passculture.atlassian.net/browse/PC-38849)
 **PR** : [#8919](https://github.com/pass-culture/pass-culture-app-native/pull/8919) & [#8948](https://github.com/pass-culture/pass-culture-app-native/pull/8948)
 
-**Problème** 😱  
+**Problème** 😱
+
 - **(E01)(E02)(E09)(E14)(E16)** En format paysage, du contenu textuel ou interactif est coupé par le nootch.
 - **(E10)(E14)(E16)** En format paysage, le contenu n'est pas entièrement visible car pas ou pas assez défilable.
 - **(E14)** En format paysage, les boutons des recherches thématiques peuvent être coupées.
 
-**Correction** 💡  
-- Ajout de marges dynamiques (dépendant de la taille du nootch de chaque appareil) en format paysage pour voir l'ensemble du contenu: 
+**Correction** 💡
+
+- Ajout de marges dynamiques (dépendant de la taille du nootch de chaque appareil) en format paysage pour voir l'ensemble du contenu:
+
   - **(E01)** modal cookies
   - **(E02)** accueil (la visibilité partielles des prochaines cartes dans ces playlists est voulue pour inciter au scroll horizontal)
   - **(E09)** page lieu, onglets Offres disponibles et Infos pratiques
@@ -848,16 +864,14 @@ Texte
   - **(E14)** liste des résultats : en mode paysage, la liste est très peu visible
   - **(E16)** modales de réservation - options : prix et horaires
 
-- Page défilable pour accéder à l'ensemble du contenu en format paysage: 
+- Page défilable pour accéder à l'ensemble du contenu en format paysage:
+
   - **(E10)** page pass pour tous (19 ou +)
   - **(E14)** résultats de recherche : pas de résultat
   - **(E14)** liste des résultats : suppression des filtres pour laisser plus de place à la liste
   - **(E16)** mes réservations : pas de réservation
 
--  **(E14)** Les boutons des recherches sont défilables horizontalement en format paysage
-
-
-
+- **(E14)** Les boutons des recherches sont défilables horizontalement en format paysage
 
 **Retours audit** 🔥  
 Texte
@@ -879,7 +893,7 @@ Texte
 **PR** : [#8945](https://github.com/pass-culture/pass-culture-app-native/pull/8945)
 
 **Problème** 😱  
-De très nombreux composants répartis sur l’ensemble des écrans de l’application sont exposés avec le rôle de lien, alors qu’ils permettent de naviguer dans l’application (vers d’autres vues internes). Et inversement. Il y a également des boutons ou liens qui ne possèdent même pas de rôle. 
+De très nombreux composants répartis sur l’ensemble des écrans de l’application sont exposés avec le rôle de lien, alors qu’ils permettent de naviguer dans l’application (vers d’autres vues internes). Et inversement. Il y a également des boutons ou liens qui ne possèdent même pas de rôle.
 
 **Correction** 💡  
 Nous avons ajouter la gestion des rôles bouton et lien de manière automatique sur nos composants, par exemple en mobile, `InternalTouchableLink` retourne un bouton et `ExternalTouchableLink` un lien.
