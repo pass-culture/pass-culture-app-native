@@ -15,7 +15,7 @@ import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const DMSIntroduction = (): React.JSX.Element => {
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
@@ -60,25 +60,33 @@ export const DMSIntroduction = (): React.JSX.Element => {
         wording: 'Aller sur demarche.numerique.gouv.fr',
         ...toDMSWebsiteButtonProps,
       }}>
-      <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
-      <VerticalUl>
-        {informationListItem.map((informationItem) => (
-          <Li key={informationItem.label}>
-            <InformationWithIcon Icon={informationItem.icon} text={informationItem.label} />
-            <Spacer.Column numberOfSpaces={4.5} />
-          </Li>
-        ))}
-      </VerticalUl>
-      <Typo.BodyAccentXs>
-        Le traitement de ton dossier peut prendre jusqu’à 5 jours.
-      </Typo.BodyAccentXs>
+      <Container>
+        <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
+        <VerticalUl>
+          {informationListItem.map((informationItem) => (
+            <StyledLi key={informationItem.label}>
+              <InformationWithIcon Icon={informationItem.icon} text={informationItem.label} />
+            </StyledLi>
+          ))}
+        </VerticalUl>
+        <Typo.BodyAccentXs>
+          Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+        </Typo.BodyAccentXs>
+      </Container>
     </GenericInfoPage>
   )
 }
-
-const StyledBody = styled(Typo.Body)({
-  marginBottom: getSpacing(5),
+const Container = styled.View({
+  alignItems: 'start',
+  alignSelf: 'center',
 })
+
+const StyledLi = styled(Li)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const StyledLogoDMS = () => {
   return <LogoDMS width={getSpacing(60)} />
