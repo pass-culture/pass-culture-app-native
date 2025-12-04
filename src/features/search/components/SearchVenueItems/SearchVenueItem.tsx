@@ -3,8 +3,7 @@ import { View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen'
-import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
+import { ActivityLocationIcon } from 'features/home/components/modules/venues/ActivityLocationIcon'
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { logClickOnVenue } from 'libs/algolia/analytics/logClickOnVenue'
 import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
@@ -14,7 +13,7 @@ import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
-import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
+import { mapActivityToIcon } from 'libs/parsers/activity'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -101,8 +100,8 @@ const UnmemoizedSearchVenueItem = ({
             <ImageTile width={width} height={height} uri={imageUri} />
           ) : (
             <SearchVenueTypeTile width={width} height={height} testID="venue-type-tile">
-              <VenueTypeLocationIcon
-                VenueTypeIcon={mapVenueTypeToIcon(venue.venue_type as VenueTypeCodeKey)}
+              <ActivityLocationIcon
+                ActivityIcon={mapActivityToIcon(venue.activity)}
                 iconColor={designSystem.color.icon.subtle}
                 backgroundColor={designSystem.color.background.subtle}
               />

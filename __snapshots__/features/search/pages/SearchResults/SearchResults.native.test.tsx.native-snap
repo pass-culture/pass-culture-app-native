@@ -1357,13 +1357,13 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
                       },
                       "venue": {
+                        "activity": "BOOKSTORE",
                         "address": "1 rue de la paix",
                         "city": "Paris",
                         "id": 1,
                         "name": "Lieu 1",
                         "postalCode": "75000",
                         "publicName": "Lieu 1",
-                        "venue_type": "BOOKSTORE",
                       },
                     }
                   }
@@ -1404,13 +1404,13 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
                       },
                       "venue": {
+                        "activity": "PERFORMANCE_HALL",
                         "address": "2 rue de la paix",
                         "city": "Paris",
                         "id": 2,
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
-                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1691,13 +1691,13 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
                       },
                       "venue": {
+                        "activity": "PERFORMANCE_HALL",
                         "address": "2 rue de la paix",
                         "city": "Paris",
                         "id": 2,
                         "name": "Lieu 2",
                         "postalCode": "75000",
                         "publicName": "Lieu 2",
-                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -1730,13 +1730,13 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
                       },
                       "venue": {
+                        "activity": "PERFORMANCE_HALL",
                         "address": "3 rue de la paix",
                         "city": "Paris",
                         "id": 3,
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
-                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }
@@ -2009,13 +2009,13 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
                       },
                       "venue": {
+                        "activity": "PERFORMANCE_HALL",
                         "address": "3 rue de la paix",
                         "city": "Paris",
                         "id": 3,
                         "name": "Lieu 3",
                         "postalCode": "75000",
                         "publicName": "Lieu 3",
-                        "venue_type": "CONCERT_HALL",
                       },
                     }
                   }

@@ -1701,6 +1701,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "motorDisability": false,
                             "visualDisability": true,
                           },
+                          "activity": "BOOKSTORE",
                           "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
@@ -1793,7 +1794,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "postalCode": "75000",
                           "publicName": "Le Petit Rintintin 1",
                           "timezone": "UTC",
-                          "venueTypeCode": "BOOKSTORE",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
                       },
@@ -1814,6 +1814,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "motorDisability": false,
                             "visualDisability": true,
                           },
+                          "activity": "BOOKSTORE",
                           "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
@@ -1906,7 +1907,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "postalCode": "75000",
                           "publicName": "Le Petit Rintintin 1",
                           "timezone": "UTC",
-                          "venueTypeCode": "BOOKSTORE",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
                       },
@@ -1927,6 +1927,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "motorDisability": false,
                             "visualDisability": true,
                           },
+                          "activity": "BOOKSTORE",
                           "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
@@ -2019,7 +2020,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "postalCode": "75000",
                           "publicName": "Le Petit Rintintin 1",
                           "timezone": "UTC",
-                          "venueTypeCode": "BOOKSTORE",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
                       },
@@ -2040,6 +2040,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "motorDisability": false,
                             "visualDisability": true,
                           },
+                          "activity": "BOOKSTORE",
                           "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
@@ -2132,7 +2133,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "postalCode": "75000",
                           "publicName": "Le Petit Rintintin 1",
                           "timezone": "UTC",
-                          "venueTypeCode": "BOOKSTORE",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
                       },
@@ -2153,6 +2153,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "motorDisability": false,
                             "visualDisability": true,
                           },
+                          "activity": "BOOKSTORE",
                           "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
@@ -2245,7 +2246,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "postalCode": "75000",
                           "publicName": "Le Petit Rintintin 1",
                           "timezone": "UTC",
-                          "venueTypeCode": "BOOKSTORE",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
                       },
@@ -2266,6 +2266,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             "motorDisability": false,
                             "visualDisability": true,
                           },
+                          "activity": "BOOKSTORE",
                           "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
@@ -2358,7 +2359,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "postalCode": "75000",
                           "publicName": "Le Petit Rintintin 1",
                           "timezone": "UTC",
-                          "venueTypeCode": "BOOKSTORE",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
                       },
@@ -2608,6 +2608,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 "motorDisability": false,
                                 "visualDisability": true,
                               },
+                              "activity": "BOOKSTORE",
                               "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
@@ -2700,7 +2701,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "postalCode": "75000",
                               "publicName": "Le Petit Rintintin 1",
                               "timezone": "UTC",
-                              "venueTypeCode": "BOOKSTORE",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
                           }
@@ -2891,6 +2891,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 "motorDisability": false,
                                 "visualDisability": true,
                               },
+                              "activity": "BOOKSTORE",
                               "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
@@ -2983,7 +2984,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "postalCode": "75000",
                               "publicName": "Le Petit Rintintin 1",
                               "timezone": "UTC",
-                              "venueTypeCode": "BOOKSTORE",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
                           }
@@ -3174,6 +3174,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 "motorDisability": false,
                                 "visualDisability": true,
                               },
+                              "activity": "BOOKSTORE",
                               "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
@@ -3266,7 +3267,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "postalCode": "75000",
                               "publicName": "Le Petit Rintintin 1",
                               "timezone": "UTC",
-                              "venueTypeCode": "BOOKSTORE",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
                           }
@@ -3457,6 +3457,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 "motorDisability": false,
                                 "visualDisability": true,
                               },
+                              "activity": "BOOKSTORE",
                               "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
@@ -3549,7 +3550,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "postalCode": "75000",
                               "publicName": "Le Petit Rintintin 1",
                               "timezone": "UTC",
-                              "venueTypeCode": "BOOKSTORE",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
                           }
