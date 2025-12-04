@@ -499,7 +499,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityLabel="Aller sur le site de demarche.numerique.gouv.fr"
           accessibilityRole="link"
           accessibilityState={
             {
@@ -557,7 +557,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               },
             ]
           }
-          testID="Aller sur demarche.numerique.gouv.fr"
+          testID="Aller sur le site de demarche.numerique.gouv.fr"
         >
           <View
             style={
@@ -600,7 +600,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 }
               }
             >
-              Aller sur demarche.numerique.gouv.fr
+              Aller sur le site
             </Text>
           </View>
         </View>
@@ -1071,7 +1071,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityLabel="Aller sur le site de demarche.numerique.gouv.fr"
           accessibilityRole="link"
           accessibilityState={
             {
@@ -1129,7 +1129,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               },
             ]
           }
-          testID="Aller sur demarche.numerique.gouv.fr"
+          testID="Aller sur le site de demarche.numerique.gouv.fr"
         >
           <View
             style={
@@ -1172,7 +1172,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 }
               }
             >
-              Aller sur demarche.numerique.gouv.fr
+              Aller sur le site
             </Text>
           </View>
         </View>

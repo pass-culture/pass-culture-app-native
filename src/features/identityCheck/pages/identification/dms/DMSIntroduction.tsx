@@ -57,7 +57,8 @@ export const DMSIntroduction = (): React.JSX.Element => {
       illustration={StyledLogoDMS}
       title="Identifie-toi sur le site demarche.numerique.gouv.fr"
       buttonPrimary={{
-        wording: 'Aller sur demarche.numerique.gouv.fr',
+        wording: 'Aller sur le site',
+        accessibilityLabel: 'Aller sur le site de demarche.numerique.gouv.fr',
         ...toDMSWebsiteButtonProps,
       }}>
       <Container>
