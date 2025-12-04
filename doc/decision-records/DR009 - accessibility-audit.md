@@ -600,7 +600,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 3.11 - Pour chaque média temporel pré-enregistré, le contenu textuel adjacent permet-il d’identifier clairement le média temporel ?</summary>
+<summary> 🟢🟢 Critère 3.11 - Pour chaque média temporel pré-enregistré, le contenu textuel adjacent permet-il d’identifier clairement le média temporel ?</summary>
 
 **RAAM** : [Critère 3.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-11)  
 **Ticket** : [PC-37472](https://passculture.atlassian.net/browse/PC-37472)  
@@ -622,7 +622,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 5.1 - c) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
+<summary> 🟢🟢 Critère 5.1 - c) Chaque composant d’interface est-il, si nécessaire, compatible avec les technologies d’assistance ?</summary>
 
 **RAAM** : [Critère 5.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-1)  
 **Ticket** : [PC-37475](https://passculture.atlassian.net/browse/PC-37475)  
@@ -650,7 +650,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 5.2 - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
+<summary> 🟢🟢 Critère 5.2 - Chaque composant d’interface est-il contrôlable par le clavier et tout dispositif de pointage ?</summary>
 
 **RAAM** : [Critère 5.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-5-2)  
 **Ticket** : [PC-38647](https://passculture.atlassian.net/browse/PC-38647)  
@@ -687,7 +687,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 6.1 - iOS - Dans chaque écran, les textes sont-ils restitués par les technologies d’assistance dans la langue principale de l’écran ?</summary>
+<summary> 🟢🟢 Critère 6.1 - iOS - Dans chaque écran, les textes sont-ils restitués par les technologies d’assistance dans la langue principale de l’écran ?</summary>
 
 **RAAM** : [Critère 6.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-6-1)  
 **Ticket** : [PC-37479](https://passculture.atlassian.net/browse/PC-37479)  
@@ -710,7 +710,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
+<summary> 🟢🟢 Critère 7.2 - Dans chaque écran, chaque liste est-elle correctement structurée ?</summary>
 
 **RAAM** : [Critère 7.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-7-2)  
 **Ticket** : [PC-38648](https://passculture.atlassian.net/browse/PC-38648)  
@@ -731,7 +731,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
+<summary> 🔴🔴 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ? - Part 2</summary>
 
 **RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
 **Ticket** : [PC-38162](https://passculture.atlassian.net/browse/PC-38162), [PC-38367](https://passculture.atlassian.net/browse/PC-38367)  
@@ -758,7 +758,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.1 - Chaque champ de formulaire a-t-il une étiquette visible ?</summary>
+<summary> 🟢🟢 Critère 9.1 - Chaque champ de formulaire a-t-il une étiquette visible ?</summary>
 
 **RAAM** : [Critère 9.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-1)  
 **Ticket** : [PC-38816](https://passculture.atlassian.net/browse/PC-38816)  
@@ -779,7 +779,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.9 - Dans chaque formulaire, les erreurs de saisie sont-elles accessibles ?</summary>
+<summary> 🟢🟢 Critère 9.9 - Dans chaque formulaire, les erreurs de saisie sont-elles accessibles ?</summary>
 
 **RAAM** : [Critère 9.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-9)  
 **Ticket** : [PC-37494](https://passculture.atlassian.net/browse/PC-37494)  
@@ -806,7 +806,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données [...] les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?</summary>
+<summary> 🔴🔴 Critère 9.11 - Pour chaque formulaire qui modifie ou supprime des données [...] les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?</summary>
 
 **RAAM** : [Critère 9.11](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-9-11)  
 **Tickets** : [PC-37495](https://passculture.atlassian.net/browse/PC-37495) 
@@ -828,7 +828,7 @@ Texte
 
 <details>
 
-<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+<summary> 🔴🔴 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
 
 **RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
 **Ticket** : [PC-38650](https://passculture.atlassian.net/browse/PC-38650) & [PC-38849](https://passculture.atlassian.net/browse/PC-38849) 
