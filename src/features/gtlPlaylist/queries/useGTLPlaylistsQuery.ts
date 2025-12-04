@@ -33,7 +33,7 @@ export const useGTLPlaylistsQuery = ({
 }: UseGTLPlaylistsProps) => {
   const { data: filteredGtlPlaylistsConfig = [] } = useGetGTLPlaylistsConfigByLabelQuery(
     searchGroupLabel,
-    venue?.venueTypeCode
+    venue?.activity
   )
 
   return useGetFormattedAndFilteredOffersByGtl(

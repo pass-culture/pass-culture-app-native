@@ -1,4 +1,4 @@
-import { SubcategoriesResponseModelv2, VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SubcategoriesResponseModelv2, VenueResponse } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { OffersModuleParameters } from 'features/home/types'
@@ -20,7 +20,7 @@ const defaultVenue: Omit<VenueResponse, 'isVirtual'> = {
   id: 123,
   accessibility: {},
   timezone: 'Europe/Paris',
-  venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
+  activity: Activity.BOOKSTORE,
   isOpenToPublic: true,
 }
 
@@ -77,7 +77,7 @@ describe('useGTLPlaylistsQuery', () => {
                   isOpenToPublic: true,
                   label: 'Une librairie',
                   venueId: 123,
-                  venue_type: VenueTypeCodeKey.BOOKSTORE,
+                  activity: Activity.BOOKSTORE,
                 },
               }),
             }),
