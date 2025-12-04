@@ -49,12 +49,12 @@ describe('buildVenuesQueryOptions', () => {
   })
 
   it('should filter venue types if provided', () => {
-    const params = { ...defaultParams, venueTypes: ['Librairie', 'Musique - Disquaire'] }
+    const params = { ...defaultParams, activities: ['Librairie', 'Musique - Disquaire'] }
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
       facetFilters: [
-        ['venue_type:BOOKSTORE', 'venue_type:RECORD_STORE'],
+        ['activity:BOOKSTORE', 'activity:RECORD_STORE'],
         ['has_at_least_one_bookable_offer:true'],
       ],
     })
