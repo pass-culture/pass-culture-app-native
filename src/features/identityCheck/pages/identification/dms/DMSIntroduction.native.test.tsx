@@ -41,18 +41,18 @@ describe('DMSIntroduction', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should open french dms link when pressing "Aller sur demarche.numerique.gouv.fr" button', async () => {
+    it('should open french dms link when pressing "Aller sur le site" button', async () => {
       render(<DMSIntroduction />)
 
-      await user.press(screen.getByText('Aller sur demarche.numerique.gouv.fr'))
+      await user.press(screen.getByText('Aller sur le site'))
 
       expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
     })
 
-    it('should log french DMS event when pressing "Aller sur demarche.numerique.gouv.fr" button', async () => {
+    it('should log french DMS event when pressing "Aller sur le site" button', async () => {
       render(<DMSIntroduction />)
 
-      await user.press(screen.getByText('Aller sur demarche.numerique.gouv.fr'))
+      await user.press(screen.getByText('Aller sur le site'))
 
       expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
     })
@@ -73,18 +73,18 @@ describe('DMSIntroduction', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should open foreign dms link when pressing "Aller sur demarche.numerique.gouv.fr" button', async () => {
+    it('should open foreign dms link when pressing "Aller sur le site" button', async () => {
       render(<DMSIntroduction />)
 
-      await user.press(screen.getByText('Aller sur demarche.numerique.gouv.fr'))
+      await user.press(screen.getByText('Aller sur le site'))
 
       expect(openUrl).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
     })
 
-    it('should log foreign DMS event when pressing "Aller sur demarche.numerique.gouv.fr" button', async () => {
+    it('should log foreign DMS event when pressing "Aller sur le site" button', async () => {
       render(<DMSIntroduction />)
 
-      await user.press(screen.getByText('Aller sur demarche.numerique.gouv.fr'))
+      await user.press(screen.getByText('Aller sur le site'))
 
       expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
     })
