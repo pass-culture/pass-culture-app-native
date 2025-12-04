@@ -1,5 +1,5 @@
-import { SearchResponse } from '@algolia/client-search'
 import { useIsFocused } from '@react-navigation/native'
+import { SearchResponse } from 'algoliasearch/lite'
 import React, { useMemo } from 'react'
 import { ScrollViewProps, View, ViewToken } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'

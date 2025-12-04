@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 
 export const adaptGenericAlgoliaTypes = <T>(rawAlgoliaResponse: SearchResponse<T>): T[] =>
   rawAlgoliaResponse.hits
