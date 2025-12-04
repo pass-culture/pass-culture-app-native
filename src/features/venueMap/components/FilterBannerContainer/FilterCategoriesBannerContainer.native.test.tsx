@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
+import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -15,7 +15,7 @@ describe('FilterCategoriesBannerContainer', () => {
 
     await screen.findAllByTestId(/[A-Z]+Label/)
 
-    Object.keys(FILTERS_VENUE_TYPE_MAPPING).forEach((id) => {
+    Object.keys(FILTERS_ACTIVITY_MAPPING).forEach((id) => {
       expect(screen.getByTestId(`${id}Label`)).toBeOnTheScreen()
     })
   })
