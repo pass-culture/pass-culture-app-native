@@ -244,7 +244,9 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             l’application Android
           </Text>
            
-          version 1.358.2 du pass Culture.
+          version 
+          1.368.1
+           du pass Culture.
         </Text>
       </View>
       <View
@@ -350,7 +352,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
           }
         >
           L’audit de conformité réalisé le 
-          31/10/2025
+          28/11/2025
            par la société Access42 révèle que l’application est conforme à 
           <Text
             style={
@@ -362,9 +364,22 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            41.67%
+            72,09%
           </Text>
-           à la norme européenne EN 301 549 v.3.2.1.
+           au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            91.75%
+          </Text>
+          .
         </Text>
         <Text
           style={
@@ -387,9 +402,9 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            62.79%
+            54,17%
           </Text>
-           au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
+           à la norme européenne EN 301 549 v.3.2.1.
         </Text>
       </View>
       <View
