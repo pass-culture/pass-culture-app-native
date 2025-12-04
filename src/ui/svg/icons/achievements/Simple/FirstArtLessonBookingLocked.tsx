@@ -1,5 +1,5 @@
 import React from 'react'
-import { G, Path, Rect } from 'react-native-svg'
+import { G, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -15,7 +15,6 @@ function FirstArtLessonBookingLockedSvg({ size, accessibilityLabel, testID }: Ac
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <G fill="none" fillRule="evenodd">
-        <Rect width="100" height="100" fill="none" />
         <Path
           d="M84.0933 24.7789C84.0933 24.7789 51.8846 11 49.9564 11C48.0283 11 15.6011 24.9055 15.6011 24.9055C14.227 24.9055 14.2998 77.792 15.6739 77.792C15.6739 77.792 47.1418 90.0892 49.9564 90.0892C52.7711 90.0892 84.1661 77.6686 84.1661 77.6686C84.4606 77.6686 84.603 66.049 84.6062 53.7012C84.6062 39.707 84.4289 24.782 84.0965 24.782L84.0933 24.7789Z"
           fill="#92949C"
