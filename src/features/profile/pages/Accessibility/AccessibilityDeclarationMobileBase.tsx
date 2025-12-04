@@ -17,11 +17,13 @@ import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
+  appVersion: string
   platformName: string
   storeLink: { url: string }
   auditDate: string
   conformityEN: string
   conformityRAAM: string
+  averageConformityRAAM: string
   nonAccessibleContent: string[]
   osVersion: string
   toolsUsed: string[]
@@ -31,11 +33,13 @@ const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
 export function AccessibilityDeclarationMobileBase({
+  appVersion,
   platformName,
   storeLink,
   auditDate,
   conformityEN,
   conformityRAAM,
+  averageConformityRAAM,
   nonAccessibleContent,
   osVersion,
   toolsUsed,
@@ -60,7 +64,7 @@ export function AccessibilityDeclarationMobileBase({
             externalNav={storeLink}
             accessibilityRole={AccessibilityRole.LINK}
           />
-          {SPACE}version 1.358.2 du pass Culture.
+          {SPACE}version {appVersion} du pass Culture.
         </Typo.Body>
       </ViewGap>
 
@@ -84,12 +88,13 @@ export function AccessibilityDeclarationMobileBase({
         <TitleText>Résultats des tests</TitleText>
         <Typo.Body>
           L’audit de conformité réalisé le {auditDate} par la société Access42 révèle que
-          l’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la norme
-          européenne EN 301 549 v.3.2.1.
+          l’application est conforme à <Typo.BodyAccent>{conformityRAAM}</Typo.BodyAccent> au
+          Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité
+          moyen des pages est de <Typo.BodyAccent>{averageConformityRAAM}</Typo.BodyAccent>.
         </Typo.Body>
         <Typo.Body>
-          L’application est conforme à <Typo.BodyAccent>{conformityRAAM}</Typo.BodyAccent> au
-          Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
+          L’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la norme
+          européenne EN 301 549 v.3.2.1.
         </Typo.Body>
       </ViewGap>
 

@@ -6,12 +6,14 @@ import { env } from 'libs/environment/env'
 export function AccessibilityDeclarationMobileIOS() {
   return (
     <AccessibilityDeclarationMobileBase
+      appVersion="1.368.1"
       platformName="iOS"
       osVersion="18.5"
       storeLink={{ url: `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}` }}
-      auditDate="31/10/2025"
-      conformityEN="29.17%"
-      conformityRAAM="58.14%"
+      auditDate="28/11/2025"
+      conformityEN="54,17%"
+      conformityRAAM="72,09%"
+      averageConformityRAAM="91.21%"
       nonAccessibleContent={[
         'Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.',
         'Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants.',
