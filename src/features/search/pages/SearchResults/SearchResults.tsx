@@ -126,6 +126,8 @@ export const SearchResults = () => {
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
+  const shouldDisplayHeader = !displayNewSearchHeader || !isFocusOnSuggestions
+
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -146,6 +148,7 @@ export const SearchResults = () => {
               searchInHistory={setQueryHistoryMemoized}
               withFilterButton={displayNewSearchHeader}
               withArrow={displayNewSearchHeader}
+              shouldDisplayHeader={shouldDisplayHeader}
             />
           </Container>
           {isFocusOnSuggestions ? (

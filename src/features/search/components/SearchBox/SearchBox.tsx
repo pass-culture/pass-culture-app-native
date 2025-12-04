@@ -24,6 +24,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -63,6 +64,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const currentView = route.name
+
+  const {
+    data: { displayNewSearchHeader },
+  } = useRemoteConfigQuery()
 
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
@@ -112,10 +117,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
   )
 
-  const hasEditableSearchInput =
-    isFocusOnSuggestions ||
-    currentView === SearchView.Results ||
-    currentView === SearchView.Thematic
+  const hasEditableSearchInput = displayNewSearchHeader
+    ? isFocusOnSuggestions
+    : isFocusOnSuggestions ||
+      currentView === SearchView.Results ||
+      currentView === SearchView.Thematic
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -158,15 +164,18 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     pushWithSearch,
   ])
 
-  const onPressArrowBack = useCallback(() => {
-    // To force remove focus on search input
+  const unfocus = useCallback(() => {
     Keyboard.dismiss()
+    setQuery(searchState.query)
+    hideSuggestions()
+  }, [hideSuggestions, searchState.query, setQuery])
 
+  const onPressArrowBack = useCallback(() => {
     if (isFocusOnSuggestions) {
-      setQuery(searchState.query)
-      hideSuggestions()
+      unfocus()
       return
     }
+    Keyboard.dismiss()
     setQuery('')
     dispatch({
       type: 'SET_STATE',
@@ -180,11 +189,12 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   }, [
     dispatch,
     goBack,
-    hideSuggestions,
     isFocusOnSuggestions,
-    setQuery,
     offerCategories,
-    searchState,
+    searchState.locationFilter,
+    searchState.offerCategories,
+    setQuery,
+    unfocus,
   ])
 
   const onSubmitQuery = useCallback(
@@ -309,7 +319,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         <SearchInputA11yContainer>
           {hasEditableSearchInput ? (
             <StyledView>
-              <BackButton onGoBack={onPressArrowBack} />
+              <BackButton onGoBack={displayNewSearchHeader ? unfocus : onPressArrowBack} />
             </StyledView>
           ) : null}
           <FlexView>

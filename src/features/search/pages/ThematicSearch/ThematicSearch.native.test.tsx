@@ -292,6 +292,43 @@ describe('<ThematicSearch/>', () => {
       expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()
     })
   })
+
+  describe('When displayNewSearchHeader is enabled', () => {
+    beforeAll(() => {
+      mockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      mockUseRemoteConfigQuery.mockReturnValue({
+        data: { displayNewSearchHeader: true },
+      })
+    })
+
+    afterAll(() => {
+      mockUseRemoteConfigQuery.mockReturnValue({
+        data: { displayNewSearchHeader: false },
+      })
+    })
+
+    it('should display back arrow when displayNewSearchHeader is true', async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+
+      await screen.findByText('Livres')
+
+      expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
+    })
+
+    describe('When input is focused', () => {
+      beforeEach(() => {
+        mockedUseSearch.mockReturnValue({ ...defaultUseSearch, isFocusOnSuggestions: true })
+      })
+
+      it('should hide header', async () => {
+        render(reactQueryProviderHOC(<ThematicSearch />))
+
+        await screen.findByTestId('searchInput')
+
+        expect(screen.queryByText('Livres')).not.toBeOnTheScreen()
+      })
+    })
+  })
 })
 
 function mockOfferCategoriesParams(offerCategoriesParams: {

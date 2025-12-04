@@ -498,13 +498,13 @@ describe('<SearchResults/>', () => {
   })
 
   describe('When displayNewSearchHeader is enabled', () => {
-    beforeEach(() => {
+    beforeAll(() => {
       mockUseRemoteConfigQuery.mockReturnValue({
         data: { displayNewSearchHeader: true },
       })
     })
 
-    afterEach(() => {
+    afterAll(() => {
       mockUseRemoteConfigQuery.mockReturnValue({
         data: { displayNewSearchHeader: false },
       })
@@ -516,6 +516,20 @@ describe('<SearchResults/>', () => {
       await screen.findByText('Rechercher')
 
       expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
+    })
+
+    describe('When input is focused', () => {
+      beforeEach(() => {
+        mockUseSearch.mockReturnValue({ ...DEFAULT_MOCK_USE_SEARCH, isFocusOnSuggestions: true })
+      })
+
+      it('should hide header', async () => {
+        render(reactQueryProviderHOC(<SearchResults />))
+
+        await screen.findByTestId('searchInput')
+
+        expect(screen.queryByText('Rechercher')).not.toBeOnTheScreen()
+      })
     })
   })
 })
