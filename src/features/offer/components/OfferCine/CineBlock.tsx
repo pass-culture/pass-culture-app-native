@@ -67,22 +67,19 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
           hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
           isOfferAtSameAddressAsVenue
         />
-
-        <React.Fragment>
-          {nextDate ? (
-            <NextScreeningButton
-              date={nextDate}
-              onPress={
-                isDateNotWithinNextNbDays(new Date(), nextDate, 15)
-                  ? () => onPressOfferCTA()
-                  : () => goToDate(nextDate)
-              }
-            />
-          ) : (
-            <OfferEventCardList offer={offer} selectedDate={selectedDate} />
-          )}
-          {CTAOfferModal}
-        </React.Fragment>
+        {nextDate ? (
+          <NextScreeningButton
+            date={nextDate}
+            onPress={
+              isDateNotWithinNextNbDays(new Date(), nextDate, 15)
+                ? () => onPressOfferCTA()
+                : () => goToDate(nextDate)
+            }
+          />
+        ) : (
+          <OfferEventCardList offer={offer} selectedDate={selectedDate} />
+        )}
+        {CTAOfferModal}
       </CineBlockContainer>
       {withDivider ? <Divider testID="divider" /> : null}
     </React.Fragment>

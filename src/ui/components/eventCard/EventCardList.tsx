@@ -30,20 +30,22 @@ export const EventCardList: React.FC<Props> = ({ data, analyticsFrom, offerId })
           const { width } = event.nativeEvent.layout
           setWebViewWidth(width)
         }}>
-        <FlatList
-          listAs="ul"
-          itemAs="li"
-          key={numColumns}
-          data={data}
-          renderItem={({ item }: { item: EventCardProps }) => (
-            <Container>
-              <EventCard {...item} {...analyticsParams} />
-            </Container>
-          )}
-          keyExtractor={(item) => JSON.stringify(item)}
-          ItemSeparatorComponent={FlatListLineSpacer}
-          numColumns={numColumns}
-        />
+        {webViewWidth > 0 ? (
+          <FlatList
+            listAs="ul"
+            itemAs="li"
+            key={numColumns}
+            data={data}
+            renderItem={({ item }: { item: EventCardProps }) => (
+              <Container>
+                <EventCard {...item} {...analyticsParams} />
+              </Container>
+            )}
+            keyExtractor={(item) => JSON.stringify(item)}
+            ItemSeparatorComponent={FlatListLineSpacer}
+            numColumns={numColumns}
+          />
+        ) : null}
       </View>
     )
   }

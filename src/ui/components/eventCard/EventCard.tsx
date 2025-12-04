@@ -7,11 +7,11 @@ import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedA
 import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
-const BORDER_WIDTH = getSpacing(0.25)
-export const EVENT_CARD_HEIGHT = getSpacing(19)
-export const EVENT_CARD_WIDTH = getSpacing(30)
+const BORDER_WIDTH = 1
+export const EVENT_CARD_HEIGHT = 76
+export const EVENT_CARD_WIDTH = 120
 
 export type EventCardProps = {
   onPress: VoidFunction
