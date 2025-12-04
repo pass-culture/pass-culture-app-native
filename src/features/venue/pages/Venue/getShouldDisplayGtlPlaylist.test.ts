@@ -1,19 +1,19 @@
-import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 
 describe('getShouldDisplayGtlPlaylist', () => {
   it.each`
-    venueType                              | expectedResult
-    ${VenueTypeCodeKey.BOOKSTORE}          | ${true}
-    ${VenueTypeCodeKey.DISTRIBUTION_STORE} | ${true}
-    ${VenueTypeCodeKey.RECORD_STORE}       | ${true}
-    ${VenueTypeCodeKey.CULTURAL_CENTRE}    | ${false}
-    ${null}                                | ${false}
-    ${undefined}                           | ${false}
+    activity                       | expectedResult
+    ${Activity.BOOKSTORE}          | ${true}
+    ${Activity.DISTRIBUTION_STORE} | ${true}
+    ${Activity.RECORD_STORE}       | ${true}
+    ${Activity.CULTURAL_CENTRE}    | ${false}
+    ${null}                        | ${false}
+    ${undefined}                   | ${false}
   `(
-    'should return $expectedResult when venueType is $venueType',
-    async ({ venueType, expectedResult }) => {
-      const result = getShouldDisplayGtlPlaylist({ venueType })
+    'should return $expectedResult when activity is $activity',
+    async ({ activity, expectedResult }) => {
+      const result = getShouldDisplayGtlPlaylist({ activity })
 
       expect(result).toBe(expectedResult)
     }
