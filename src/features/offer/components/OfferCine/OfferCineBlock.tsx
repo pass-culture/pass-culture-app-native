@@ -7,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponseV2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieCalendarProvider } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { NewOfferCineContent } from 'features/offer/components/OfferCine/NewOfferCineContent'
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { getDates } from 'shared/date/getDates'
@@ -28,7 +29,7 @@ const cinemaCTAButtonName = 'Accéder aux séances'
 
 export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
   const theme = useTheme()
-  const route = useRoute<UseRouteType<'Chronicles'>>()
+  const route = useRoute<UseRouteType<'Offer'>>()
   const from = route.params?.from
   const { setButton, showButton } = useOfferCTA()
   const scrollToAnchor = useScrollToAnchor()
@@ -64,6 +65,9 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
       </Anchor>
       <MovieCalendarProvider initialDates={next15Dates} containerStyle={getCalendarStyle(theme)}>
         <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
+      </MovieCalendarProvider>
+      <MovieCalendarProvider containerStyle={getCalendarStyle(theme)}>
+        <NewOfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
       </MovieCalendarProvider>
     </Container>
   )
