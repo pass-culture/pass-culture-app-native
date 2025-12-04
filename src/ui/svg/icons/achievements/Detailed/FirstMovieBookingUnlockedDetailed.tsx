@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-hardcoded-id-in-svg */
 import React from 'react'
-import { G, Path, Defs, LinearGradient, Stop, Rect } from 'react-native-svg'
+import { G, Path, Defs, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -20,7 +20,6 @@ function FirstMovieBookingUnlockedDetailedSvg({
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <G fill="none" fillRule="evenodd">
-        <Rect width="260" height="260" fill="white" />
         <Path
           d="M238.706 215.558C238.706 215.558 139.545 254.796 130.655 254.796C121.764 254.796 22.3743 215.956 22.3743 215.956C18.0326 215.962 17.8004 48.9266 22.1453 48.9203C22.1453 48.9203 124.573 5 130.658 5C136.743 5 238.48 48.5227 238.48 48.5227C240.474 48.5227 240.703 215.555 238.709 215.558H238.706Z"
           fill="url(#paint0_linear_8631_22353)"
