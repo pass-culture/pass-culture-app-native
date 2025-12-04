@@ -54,7 +54,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: 'Identifiant unique de lieu.',
-      serverValidator: (value: unknown) => api.getNativeV1VenuevenueId(Number(value)),
+      serverValidator: (value: unknown) => api.getNativeV2VenuevenueId(Number(value)),
     },
   },
   Home: {
