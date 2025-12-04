@@ -1,4 +1,4 @@
-import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SubcategoryIdEnum } from 'api/gen'
 import { AlgoliaOffer, MultipleVenueOffersResult } from 'libs/algolia/types'
 
 export const mockedAlgoliaOffer: AlgoliaOffer = {
@@ -30,7 +30,7 @@ export const mockedAlgoliaOffer: AlgoliaOffer = {
     name: 'UGC CINE CITE LES HALLES',
     postalCode: '98800',
     publicName: 'UGC CINE CITE LES HALLES',
-    venue_type: VenueTypeCodeKey.MOVIE,
+    activity: Activity.CINEMA,
   },
   _geoloc: {
     lat: -22.27368,
