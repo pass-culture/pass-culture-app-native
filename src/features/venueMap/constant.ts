@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
 import { FilterGroupData } from 'features/venueMap/types'
 // eslint-disable-next-line local-rules/no-theme-from-theme
@@ -23,32 +23,32 @@ export const CLUSTER_IMAGE_COLOR_NAME = {
   PINK: 'pink',
 } satisfies Record<string, ClusterImageColorName>
 
-export const FILTERS_VENUE_TYPE_MAPPING = {
+export const FILTERS_ACTIVITY_MAPPING = {
   OUTINGS: [
-    VenueTypeCodeKey.CONCERT_HALL,
-    VenueTypeCodeKey.FESTIVAL,
-    VenueTypeCodeKey.GAMES,
-    VenueTypeCodeKey.LIBRARY,
-    VenueTypeCodeKey.MOVIE,
-    VenueTypeCodeKey.MUSEUM,
-    VenueTypeCodeKey.PERFORMING_ARTS,
-    VenueTypeCodeKey.TRAVELING_CINEMA,
-    VenueTypeCodeKey.VISUAL_ARTS,
+    Activity.ART_GALLERY,
+    Activity.CINEMA,
+    Activity.FESTIVAL,
+    Activity.GAMES_CENTRE,
+    Activity.LIBRARY,
+    Activity.MUSEUM,
+    Activity.PERFORMANCE_HALL,
   ],
   SHOPS: [
-    VenueTypeCodeKey.BOOKSTORE,
-    VenueTypeCodeKey.CREATIVE_ARTS_STORE,
-    VenueTypeCodeKey.DISTRIBUTION_STORE,
-    VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE,
-    VenueTypeCodeKey.RECORD_STORE,
+    Activity.BOOKSTORE,
+    Activity.CREATIVE_ARTS_STORE,
+    Activity.DISTRIBUTION_STORE,
+    Activity.MUSIC_INSTRUMENT_STORE,
+    Activity.RECORD_STORE,
   ],
   OTHERS: [
-    VenueTypeCodeKey.ARTISTIC_COURSE,
-    VenueTypeCodeKey.CULTURAL_CENTRE,
-    VenueTypeCodeKey.DIGITAL,
-    VenueTypeCodeKey.OTHER,
-    VenueTypeCodeKey.PATRIMONY_TOURISM,
-    VenueTypeCodeKey.SCIENTIFIC_CULTURE,
+    Activity.ART_SCHOOL,
+    Activity.ARTS_CENTRE,
+    Activity.COMMUNITY_CENTRE,
+    Activity.CULTURAL_CENTRE,
+    Activity.HERITAGE_SITE,
+    Activity.OTHER,
+    Activity.SCIENCE_CENTRE,
+    Activity.TOURIST_INFORMATION_CENTRE,
   ],
 }
 
