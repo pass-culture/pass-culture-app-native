@@ -1,3 +1,4 @@
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
@@ -29,6 +30,8 @@ export const initialSearchState: SearchState = {
 
 export type Action =
   | { type: 'SET_STATE'; payload: SearchState }
+  | { type: 'SET_SEARCH_ID'; payload: string }
+  | { type: 'SET_OFFER_CATEGORIES'; payload: SearchGroupNameEnumv2[] }
   | { type: 'SET_LOCATION_EVERYWHERE' }
   | { type: 'SET_LOCATION_AROUND_ME'; payload?: number }
   | { type: 'SET_LOCATION_PLACE'; payload: { aroundRadius?: number; place: SuggestedPlace } }
@@ -37,6 +40,10 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
   switch (action.type) {
     case 'SET_STATE':
       return action.payload
+    case 'SET_SEARCH_ID':
+      return { ...state, searchId: action.payload }
+    case 'SET_OFFER_CATEGORIES':
+      return { ...state, offerCategories: action.payload }
     case 'SET_LOCATION_AROUND_ME':
       return {
         ...state,
