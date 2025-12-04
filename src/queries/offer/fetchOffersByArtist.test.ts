@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -30,28 +30,24 @@ describe('fetchOffersByArtist', () => {
       {
         indexName: 'algoliaOffersIndexName',
         query: '',
-        params: {
-          page: 0,
-          filters: 'artists.id:1',
-          hitsPerPage: 100,
-          aroundLatLng: '2, 2',
-          aroundRadius: 'all',
-          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
-          attributesToHighlight: [],
-        },
+        page: 0,
+        filters: 'artists.id:1',
+        hitsPerPage: 100,
+        aroundLatLng: '2, 2',
+        aroundRadius: 'all',
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
+        attributesToHighlight: [],
       },
       {
         indexName: 'algoliaTopOffersIndexName',
         query: '',
-        params: {
-          page: 0,
-          filters: 'artists.id:1',
-          hitsPerPage: 4,
-          aroundLatLng: '2, 2',
-          aroundRadius: 'all',
-          attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
-          attributesToHighlight: [],
-        },
+        page: 0,
+        filters: 'artists.id:1',
+        hitsPerPage: 4,
+        aroundLatLng: '2, 2',
+        aroundRadius: 'all',
+        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
+        attributesToHighlight: [],
       },
     ])
   })

@@ -12,11 +12,9 @@ describe('buildQueryHelper', () => {
     expect(result).toEqual({
       indexName: mockIndexName,
       query: '',
-      params: {
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        hitsPerPage: 50,
-      },
+      attributesToHighlight: [],
+      attributesToRetrieve: offerAttributesToRetrieve,
+      hitsPerPage: 50,
     })
   })
 
@@ -87,16 +85,14 @@ describe('buildQueryHelper', () => {
     expect(result).toEqual({
       indexName: mockIndexName,
       query: '',
-      params: {
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        aroundLatLng: '48.8566, 2.3522',
-        aroundRadius: DEFAULT_RADIUS * 1000,
-        filters: 'offer.subcategoryId:"CONCERT"',
-        numericFilters: 'offer.prices < 50',
-        distinct: true,
-        hitsPerPage: 30,
-      },
+      attributesToHighlight: [],
+      attributesToRetrieve: offerAttributesToRetrieve,
+      aroundLatLng: '48.8566, 2.3522',
+      aroundRadius: DEFAULT_RADIUS * 1000,
+      filters: 'offer.subcategoryId:"CONCERT"',
+      numericFilters: 'offer.prices < 50',
+      distinct: true,
+      hitsPerPage: 30,
     })
   })
 })
