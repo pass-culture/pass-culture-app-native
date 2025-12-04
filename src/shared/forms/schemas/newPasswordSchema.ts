@@ -6,5 +6,5 @@ export const newPasswordSchema = object().shape({
   newPassword: passwordSchema,
   confirmedPassword: string()
     .oneOf([ref('newPassword'), null], 'Les mots de passe ne concordent pas')
-    .required(),
+    .required('La confirmation de mot de passe est obligatoire'),
 })
