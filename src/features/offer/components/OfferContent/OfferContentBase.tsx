@@ -97,6 +97,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
+  segment,
+  enableVideoABTesting,
   children,
 }) => {
   const theme = useTheme()
@@ -155,7 +157,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   const placeholderImage = useRef(cachedOffer?.images?.recto?.url).current
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
+    let timeoutId: number
     if (shouldTriggerBatchSurveyEvent) {
       timeoutId = setTimeout(() => {
         trackBatchEvent()
@@ -313,6 +315,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               placeholderImage={placeholderImage}
               imageDimensions={imageDimensions}
               offer={offer}
+              segment={segment}
+              enableVideoABTesting={enableVideoABTesting}
             />
             <OfferBody
               offer={offer}
@@ -326,7 +330,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               userId={userId}
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
-              onVideoConsentPress={onVideoConsentPress}>
+              onVideoConsentPress={onVideoConsentPress}
+              enableVideoABTesting={enableVideoABTesting}>
               {theme.isDesktopViewport ? (
                 <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
                   {offerCtaButton}

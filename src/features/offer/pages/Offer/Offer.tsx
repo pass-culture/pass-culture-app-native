@@ -25,6 +25,7 @@ import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
 
@@ -40,6 +41,7 @@ export function Offer() {
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const shouldUseVideoCookies = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT)
+  const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
 
   const { isLoggedIn, user } = useAuthContext()
   const { data: offer, isLoading } = useOfferQuery({
@@ -54,6 +56,7 @@ export function Offer() {
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { cookiesConsent, setCookiesConsent } = useCookies()
+  const segment = useABSegment()
 
   const hasVideoCookiesConsent = shouldUseVideoCookies
     ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
@@ -175,6 +178,8 @@ export function Offer() {
         onShowChroniclesWritersModal={handleOnShowChroniclesWritersModal}
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={handleOnVideoConsentPress}
+        segment={segment}
+        enableVideoABTesting={enableVideoABTesting}
       />
     </Page>
   )

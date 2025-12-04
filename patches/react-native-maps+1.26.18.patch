@@ -1,3 +1,4 @@
+
 diff --git a/node_modules/react-native-maps/src/AnimatedRegion.ts b/node_modules/react-native-maps/src/AnimatedRegion.ts
 index 03b995c..a7af504 100644
 --- a/node_modules/react-native-maps/src/AnimatedRegion.ts
@@ -43,7 +44,7 @@ index 549c0d6..9e1b7bb 100644
  
  const makeLine = (l: Position[]) => l.map(makePoint);
 diff --git a/node_modules/react-native-maps/src/MapOverlay.tsx b/node_modules/react-native-maps/src/MapOverlay.tsx
-index 9c2cd2a..26f8a06 100644
+index 1db5d07..9d7f64e 100644
 --- a/node_modules/react-native-maps/src/MapOverlay.tsx
 +++ b/node_modules/react-native-maps/src/MapOverlay.tsx
 @@ -79,8 +79,8 @@ type NativeProps = Modify<MapOverlayProps, {image?: string}>;

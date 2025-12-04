@@ -11,6 +11,7 @@ import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitl
 import { analytics } from 'libs/analytics/provider'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
+import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -18,6 +19,7 @@ export type OfferPlaceProps = {
   offer: OfferResponseV2
   subcategory: Subcategory
   isOfferAtSameAddressAsVenue: boolean
+  segment: SegmentResult
   distance?: string | null
 }
 
@@ -42,6 +44,7 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
   offer,
   subcategory,
   distance,
+  segment,
   isOfferAtSameAddressAsVenue,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -76,6 +79,7 @@ export const OfferPlace: FC<OfferPlaceProps> = ({
           subcategory={subcategory}
           handleOnSeeVenuePress={handleOnSeeVenuePress}
           isOfferAtSameAddressAsVenue={isOfferAtSameAddressAsVenue}
+          segment={segment}
         />
       )}
     </OfferPlaceWrapper>

@@ -171,6 +171,7 @@ const renderOfferContent = ({
   subcategory = mockSubcategory,
   isDesktopViewport = false,
   isMobileViewport = false,
+  segment = 'A',
 }: RenderOfferContentType) => {
   useRoute.mockReturnValue({ params: { id: offer.id } })
   return render(
@@ -182,6 +183,7 @@ const renderOfferContent = ({
         chronicleVariantInfo={chronicleVariantInfoFixture}
         onShowChroniclesWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
+        segment={segment}
       />,
       setupQueryClient
     ),

@@ -8,15 +8,23 @@ Ce document décrit le processus de mise à jour de React Native dans le projet 
 ## 🔄 Mise à jour `react-native@<version>`
 
 Link to JIRA ticket: https://passculture.atlassian.net/browse/PC-XXXXX
-Les changelogs sont consultables [ici](https://reactnative.dev/versions)
+
+### Lien utiles
+
+[Releases overview](https://reactnative.dev/versions)
+[Release note](https://reactnative.dev/blog/2025/10/08/react-native-0.82)
+[Changelog](https://github.com/facebook/react-native/blob/main/CHANGELOG.md)
+[Upgrade helper](https://react-native-community.github.io/upgrade-helper/)
 
 ### 📊 État d'avancement (après que la CI soit verte)
 
 - [ ] 🌐 build web `yarn build:testing && yarn vite preview --mode=testing`
 - [ ] 🚀 dev web `yarn start:web:testing`
-- [ ] 🤖 build android `./gradlew assembleDebug`
+- [ ] 🤖 build android debug`./gradlew assembleAppTestingDebug`
+- [ ] 🤖 build android release`./gradlew assembleAppTestingRelease`
 - [ ] ⚡ dev android `yarn android:testing`
 - [ ] 🍎 dev ios `yarn ios:testing`
+- [ ] 🍎 release ios (procédure plus complexe à détailler)
 - [ ] 📚 build storybook `yarn build-storybook`
 - [ ] 🎨 dev storybook `yarn storybook`
 - [ ] 🧪 tests e2e
@@ -27,9 +35,11 @@ Les changelogs sont consultables [ici](https://reactnative.dev/versions)
 | -------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------- |
 | 🌐 build web                                 | `yarn build:testing`                                    | ✅ succès de la commande                                              |
 | 🚀 dev web                                   | `yarn start:web:testing`                                | ✅ succès de la commande + pas d'écran blanc                          |
-| 🤖 build android                             | `./gradlew assembleDebug`                               | ✅ succès de la commande                                              |
+| 🤖 build android debug                       | `./gradlew assembleAppTestingDebug`                     | ✅ succès de la commande                                              |
+| 🤖 build android release                     | `./gradlew assembleAppTestingRelease`                   | ✅ succès de la commande                                              |
 | ⚡ dev android                               | `yarn android:testing`                                  | ✅ succès de la commande + pas d'écran rouge                          |
-| 🍎 dev ios                                   | `yarn ios:testing`                                      | ✅ succès de la commande + pas d'écran rouge                          |
+| 🍎 dev/debug ios                             | `yarn ios:testing`                                      | ✅ succès de la commande + pas d'écran rouge                          |
+| 🍎 release ios                               | (procédure plus complexe à détailler)                   | ✅ succès de la commande + pas d'écran rouge                          |
 | 📚 build storybook                           | `yarn build-storybook`                                  | ✅ succès de la commande + pas de message d'erreur sur les composants |
 | 🎨 dev storybook                             | `yarn storybook`                                        | ✅ succès de la commande + pas d'erreur en serveur local              |
 | 🧪 tests e2e                                 | ajouter un tag `e2e` dans Github après chaque tentative | 👨‍💻 Le QA doit valider que c'est bon de son côté                       |
@@ -113,8 +123,15 @@ yarn vite preview --mode=testing
 À cette étape, on croise les doigts mais ne pas s'attendre à ce que ça build du premier coup. Pas de soucis, ça fait partie du process !
 
 ```bash
+# Si besoin de clean
+cd android && rm -rf android/.gradle && rm -rf android/build && ./gradlew clean && cd ..
+
 cd android
-./gradlew assembleDebug
+./gradlew assembleApptestingDebug
+./gradlew clean # bien faire le clean pour tester release
+./gradlew assembleApptestingRelease
+./gradlew clean
+yarn android:testing
 ```
 
 Si une erreur s'affiche, il faudra débugger et investiguer. On peut s'aider de :
@@ -154,22 +171,27 @@ Si tu vois la première page s'afficher, bingo ! 🎉
 ##### 📱 Les pods
 
 ```bash
+# si besoin de clean
+cd ios && rm -rf Pods && bundle exec pod cache clean --all && cd ..
+
 cd ios
-rm Podfile.lock
 bundle install
 bundle exec pod install
 ```
 
-Le `Podfile.lock` va poser plus de problème qu'autre chose. Il peut être supprimé et regénéré pour que tous les devs partent sur une nouvelle base.
-Il faut bien sûr, comme à chaque étape, s'attendre à des problèmes et les résoudre.
+Vous pouvez avoir des petits conflits sur les pods et devoir taper des commandes qui vont être suggérées dans les messages d’erreur comme : `pod update fast_float --no-repo-update`.  
+Le `Podfile.lock` peut éventuellement être regénéré si cela est nécessaire, mais attention aux maj de lib que cela peut entrainer.
 
 ##### 🔨 L'installation
 
 ```bash
 yarn ios:testing
+
 ```
 
 Si un message d'erreur n'est pas assez clair, build depuis Xcode, puis `View > Navigators > Report` et cliquer où il y a une croix rouge (souvent à côté de `build`).
+
+Essayez également de lancer un build release si vous le pouvez.
 
 ##### ⚡ Le runtime
 
@@ -186,11 +208,13 @@ yarn build-storybook
 
 Les tests e2e doivent être lancés depuis la CI et la PR doit être approuvée par un membre de la QA.
 
-### 🫃 La PR devient énorme
+### 📚 Librairies
 
 Il est commun qu'un bump de react native demande des bumps d'autres libs.
 Si ces libs sont compatibles avec la version actuelle de l'app, préférer faire ce changement dans une PR différente.
 Ainsi le travail sera mieux suivi par les PM, mieux découpé et plus facile à relire par les pairs
+
+⚠️ Pour chaque lib upgradé il est recommandé d’aller consulter les changelog de la lib
 
 ### 🔀 Merge
 
@@ -204,10 +228,14 @@ Mettre un message dans dev-mobile pour informer la communauté avec :
 ```txt
 :git-merge: React Native version <version> vient d'être merge
 Vous pouvez dès à présent :
-- supprimer vos node_modules
-- réinstaller vos modules yarn
-- réinstaller vos pods
+- supprimer vos node_modules : `rm -rf node_modules`
+- réinstaller vos modules yarn : `yarn install`
+- installer les gems : `bundle install`
+- supprimer vos pods : `cd ios && rm -rf Pods && pod cache clean --all && cd ..`
+- réinstaller vos pods : `cd ios && bundle exec pod install && cd ..`
+- cleaner le build android : `cd android && rm -rf android/.gradle && rm -rf android/build && ./gradlew clean && cd ..`
 - rebuild le projet sur vos simulateurs
+- réinitialiser les watchers : `watchman watch-del-all`
 - redémarrer metro avec `--reset-cache`
 
 N'hésitez pas à laisser un petit message si quelque chose ne fonctionne pas chez vous 🚀

@@ -23,7 +23,7 @@
 # react-native-svg
 -keep public class com.horcrux.svg.** {*;}
 
-# @react-native-fast-image
+# @d11/react-native-fast-image https://github.com/ds-horizon/react-native-fast-image
 -keep public class com.dylanvann.fastimage.* {*;}
 -keep public class com.dylanvann.fastimage.** {*;}
 -keep public class * implements com.bumptech.glide.module.GlideModule

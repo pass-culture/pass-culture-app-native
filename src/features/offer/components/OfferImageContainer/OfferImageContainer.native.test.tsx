@@ -10,7 +10,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, waitFor, render } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/firebase/analytics/analytics')
@@ -45,6 +45,7 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       )
     )
@@ -61,6 +62,7 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       )
     )
@@ -78,6 +80,7 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       )
     )
@@ -94,6 +97,7 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       )
     )
@@ -117,6 +121,7 @@ describe('<OfferImageContainer />', () => {
           placeholderImage="placeholder_image"
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       )
     )
@@ -133,6 +138,7 @@ describe('<OfferImageContainer />', () => {
           placeholderImage="placeholder_image"
           imageDimensions={mockOfferImageDimensions}
           offer={offerResponseSnap}
+          segment="A"
         />
       ),
       { theme: { isNative: true, isDesktopViewport: true } }
@@ -141,5 +147,65 @@ describe('<OfferImageContainer />', () => {
     const container = await screen.findByTestId('imageRenderer')
 
     expect(container).not.toHaveStyle({ position: 'sticky' })
+  })
+
+  it('should not display see video button when AB testing segment is not A and AB Testing FF activated', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+          segment="B"
+          enableVideoABTesting
+        />
+      )
+    )
+
+    await screen.findByTestId('offerImageContainerCarousel')
+
+    expect(screen.queryByText('Voir la vidéo')).not.toBeOnTheScreen()
+  })
+
+  it('should display see video button when AB testing segment is A and AB Testing FF activated', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+          segment="A"
+          enableVideoABTesting
+        />
+      )
+    )
+
+    await screen.findByTestId('offerImageContainerCarousel')
+
+    expect(screen.getByText('Voir la vidéo')).toBeOnTheScreen()
+  })
+
+  it('should display see video button when AB testing segment is not A and AB Testing FF deactivated', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferImageContainer
+          images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
+          categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
+          imageDimensions={mockOfferImageDimensions}
+          offer={offerResponseSnap}
+          segment="B"
+          enableVideoABTesting={false}
+        />
+      )
+    )
+
+    await screen.findByTestId('offerImageContainerCarousel')
+
+    expect(screen.getByText('Voir la vidéo')).toBeOnTheScreen()
   })
 })

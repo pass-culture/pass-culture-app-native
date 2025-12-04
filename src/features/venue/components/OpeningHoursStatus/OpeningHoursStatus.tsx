@@ -33,7 +33,7 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate, timez
   useEffect(() => {
     if (!nextChange) return
 
-    let timeoutId: NodeJS.Timeout
+    let timeoutId: number
     let timeUntilNextStateChange = nextChange.getTime() - date.getTime()
     if (timeUntilNextStateChange > ONE_HOUR_IN_MILLISECONDS) {
       timeUntilNextStateChange -= ONE_HOUR_IN_MILLISECONDS

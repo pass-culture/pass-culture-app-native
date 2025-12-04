@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { View, FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { EventCard, EventCardProps, EVENT_CARD_WIDTH } from 'ui/components/eventCard/EventCard'
+import { EVENT_CARD_WIDTH, EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
 
 type Props = {
   data: EventCardProps[]

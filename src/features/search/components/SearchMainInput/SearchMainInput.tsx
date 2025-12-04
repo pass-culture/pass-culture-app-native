@@ -64,7 +64,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   }
   return displayNewSearchHeader ? (
     <SearchInput
-      label="Recherche par offre, lieu, artiste"
+      label="Rechercher dans le catalogue"
       ref={ref}
       value={query}
       onChangeText={setQuery}

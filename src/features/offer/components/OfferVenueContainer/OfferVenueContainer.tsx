@@ -14,6 +14,7 @@ import { useLocation } from 'libs/location/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
+import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -24,6 +25,7 @@ type Props = {
   subcategory: Subcategory
   handleOnSeeVenuePress?: VoidFunction
   isOfferAtSameAddressAsVenue: boolean
+  segment: SegmentResult
   distance?: string | null
 }
 
@@ -33,6 +35,7 @@ export const OfferVenueContainer: FC<Props> = ({
   subcategory,
   handleOnSeeVenuePress,
   isOfferAtSameAddressAsVenue,
+  segment,
 }) => {
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -100,11 +103,14 @@ export const OfferVenueContainer: FC<Props> = ({
 
   const onNewOfferVenueSelected = (nextOfferId: number) => {
     hideChangeVenueModal()
-    triggerConsultOfferLog({
-      offerId: nextOfferId,
-      from: 'offer',
-      fromMultivenueOfferId: offer.id,
-    })
+    triggerConsultOfferLog(
+      {
+        offerId: nextOfferId,
+        from: 'offer',
+        fromMultivenueOfferId: offer.id,
+      },
+      segment
+    )
     navigate('Offer', {
       fromOfferId: offer.id,
       id: nextOfferId,
