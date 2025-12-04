@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
@@ -37,7 +37,7 @@ describe('<VenueTopComponent />', () => {
   it('should display venue type', async () => {
     const culturalCenterVenue: Omit<VenueResponse, 'isVirtual'> = {
       ...venueOpenToPublic,
-      venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
+      activity: Activity.CULTURAL_CENTRE,
     }
     renderVenueTopComponent(culturalCenterVenue)
 
