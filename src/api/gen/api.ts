@@ -197,6 +197,34 @@ export interface ActivationCodeResponse {
   expirationDate?: string | null
 }
 /**
+ * Venue's Activity is the main business activity of an ERP (open to public) structure For a non-ERP structure, the business is described through the Venue's list of EducationalDomain (venue.collectiveDomains)
+ * @export
+ * @enum {string}
+ */
+export enum Activity {
+  'ART_GALLERY' = 'ART_GALLERY',
+  'ART_SCHOOL' = 'ART_SCHOOL',
+  'ARTS_CENTRE' = 'ARTS_CENTRE',
+  'BOOKSTORE' = 'BOOKSTORE',
+  'CINEMA' = 'CINEMA',
+  'COMMUNITY_CENTRE' = 'COMMUNITY_CENTRE',
+  'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
+  'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
+  'DISTRIBUTION_STORE' = 'DISTRIBUTION_STORE',
+  'FESTIVAL' = 'FESTIVAL',
+  'GAMES_CENTRE' = 'GAMES_CENTRE',
+  'HERITAGE_SITE' = 'HERITAGE_SITE',
+  'LIBRARY' = 'LIBRARY',
+  'MUSEUM' = 'MUSEUM',
+  'MUSIC_INSTRUMENT_STORE' = 'MUSIC_INSTRUMENT_STORE',
+  'NOT_ASSIGNED' = 'NOT_ASSIGNED',
+  'OTHER' = 'OTHER',
+  'PERFORMANCE_HALL' = 'PERFORMANCE_HALL',
+  'RECORD_STORE' = 'RECORD_STORE',
+  'SCIENCE_CENTRE' = 'SCIENCE_CENTRE',
+  'TOURIST_INFORMATION_CENTRE' = 'TOURIST_INFORMATION_CENTRE',
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -5244,6 +5272,11 @@ export interface VenueResponse {
    * @type {string}
    * @memberof VenueResponse
    */
+  activity: Activity | null
+  /**
+   * @type {string | ModelNull}
+   * @memberof VenueResponse
+   */
   address?: string | null
   /**
    * @type {BannerMetaModel}
@@ -5330,10 +5363,10 @@ export interface VenueResponse {
    * @memberof VenueResponse
    */
   postalCode?: string | null
-  /**
+/**
    * @type {string}
    * @memberof VenueResponse
-   */
+ */
   publicName?: string | null
   /**
    * @type {string}
@@ -5346,43 +5379,12 @@ export interface VenueResponse {
    */
   timezone: string
   /**
-   * @type {VenueTypeCodeKey}
-   * @memberof VenueResponse
-   */
-  venueTypeCode: VenueTypeCodeKey
-  /**
    * @type {string}
    * @memberof VenueResponse
    */
   withdrawalDetails?: string | null
 }
-  /**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum VenueTypeCodeKey {
-  'ARTISTIC_COURSE' = 'ARTISTIC_COURSE',
-  'BOOKSTORE' = 'BOOKSTORE',
-  'CONCERT_HALL' = 'CONCERT_HALL',
-  'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
-  'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
-  'DIGITAL' = 'DIGITAL',
-  'DISTRIBUTION_STORE' = 'DISTRIBUTION_STORE',
-  'FESTIVAL' = 'FESTIVAL',
-  'GAMES' = 'GAMES',
-  'LIBRARY' = 'LIBRARY',
-  'MOVIE' = 'MOVIE',
-  'MUSEUM' = 'MUSEUM',
-  'MUSICAL_INSTRUMENT_STORE' = 'MUSICAL_INSTRUMENT_STORE',
-  'OTHER' = 'OTHER',
-  'PATRIMONY_TOURISM' = 'PATRIMONY_TOURISM',
-  'PERFORMING_ARTS' = 'PERFORMING_ARTS',
-  'RECORD_STORE' = 'RECORD_STORE',
-  'SCIENTIFIC_CULTURE' = 'SCIENTIFIC_CULTURE',
-  'TRAVELING_CINEMA' = 'TRAVELING_CINEMA',
-  'VISUAL_ARTS' = 'VISUAL_ARTS',
-}
+/**
 /**
  * @export
  * @interface VisualDisabilityModel
@@ -6240,6 +6242,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_venue_v2 <GET>
+     * @param {number} venue_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2VenuevenueId(venue_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'venue_id' is not null or undefined
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError(
+          'venue_id',
+          'Required parameter venue_id was null or undefined when calling getNativeV2VenuevenueId.'
+        )
+      }
+      let pathname = `/native/v2/venue/{venue_id}`.replace(
+        `{${'venue_id'}}`,
+        encodeURIComponent(String(venue_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -7840,6 +7869,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_venue_v2 <GET>
+     * @param {number} venue_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2VenuevenueId(venue_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary patch_user_profile <PATCH>
      * @param {UserProfilePatchRequest} body 
      * @param {*} [options] Override http request option.
@@ -8765,6 +8806,18 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2SubscriptionStepper(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2SubscriptionStepper(options)
+  }
+  /**
+    * 
+    * @summary get_venue_v2 <GET>
+    * @param {number} venue_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2VenuevenueId(venue_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2VenuevenueId(venue_id, options)
   }
   /**
     * 
