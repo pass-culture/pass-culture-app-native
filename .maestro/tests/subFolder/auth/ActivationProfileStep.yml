@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "C'est très rapide !"
-- tapOn: 'Profil non complété'
+- tapOn: 'Profil - non complété'
 # TODO: Compléter le parcours
 

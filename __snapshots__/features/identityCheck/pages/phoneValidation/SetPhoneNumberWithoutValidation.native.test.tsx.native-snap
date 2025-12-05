@@ -418,7 +418,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         }
                       >
                         <View
-                          accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
+                          accessibilityLabel="+33 - Ouvrir la modale de choix de l’indicatif téléphonique"
                           accessibilityRole="button"
                           accessibilityState={
                             {
@@ -456,7 +456,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                               "userSelect": "auto",
                             }
                           }
-                          testID="Ouvrir la modale de choix de l’indicatif téléphonique"
+                          testID="+33 - Ouvrir la modale de choix de l’indicatif téléphonique"
                         >
                           <Text
                             style={
@@ -560,6 +560,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
         >
           <View
             accessibilityLabel="Continuer vers l’étape suivante"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

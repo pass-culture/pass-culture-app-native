@@ -447,6 +447,7 @@ exports[`<SetCity/> should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Continuer vers l’adresse"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

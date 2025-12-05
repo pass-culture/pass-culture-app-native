@@ -11,6 +11,7 @@ import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnVi
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
 // eslint-disable-next-line local-rules/no-theme-from-theme
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
@@ -117,6 +118,7 @@ export function StatusFlatList({
           type="submit"
           onPress={handleSubmit(submitStatus)}
           wording={isChangeStatus ? 'Valider mes informations' : 'Continuer'}
+          accessibilityRole={accessibilityRoleInternalNavigation()}
           accessibilityLabel={
             isChangeStatus
               ? 'Valider mes informations et continuer'

@@ -7,6 +7,7 @@ import { CountryButton } from 'features/identityCheck/components/countryPicker/C
 import { formatCallingCode } from 'features/identityCheck/components/countryPicker/formatCallingCode'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -30,12 +31,17 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     hideModal()
   }
 
+  const accessibilityLabel = getComputedAccessibilityLabel(
+    callingCode,
+    'Ouvrir la modale de choix de l’indicatif téléphonique'
+  )
+
   return (
     <React.Fragment>
       <StyledTouchable
         onPress={showModal}
         hoverUnderlineColor={null}
-        accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique">
+        accessibilityLabel={accessibilityLabel}>
         <CallingCodeText>{callingCode}</CallingCodeText>
         <ArrowDown />
         <Spacer.Row numberOfSpaces={2} />

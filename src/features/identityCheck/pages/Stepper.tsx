@@ -13,6 +13,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -135,6 +136,7 @@ export const Stepper = () => {
             icon={Invalidate}
             wording="Abandonner"
             onPress={showQuitIdentityCheckModal}
+            accessibilityRole={AccessibilityRole.BUTTON}
           />
         </QuitButtonContainer>
       </Container>

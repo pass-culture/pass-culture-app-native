@@ -463,6 +463,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Continuer"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -540,6 +541,7 @@ exports[`ProfileInformationValidationCreate should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Modifier mes informations"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

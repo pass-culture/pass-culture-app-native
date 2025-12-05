@@ -15,6 +15,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -163,6 +164,7 @@ export const SetAddress = () => {
           onPress={submitAddress}
           wording="Continuer"
           accessibilityLabel="Continuer vers le statut"
+          accessibilityRole={accessibilityRoleInternalNavigation()}
           disabled={!enabled}
         />
       }

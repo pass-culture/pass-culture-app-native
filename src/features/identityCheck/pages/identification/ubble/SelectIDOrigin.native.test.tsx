@@ -34,7 +34,7 @@ describe('SelectIDOrigin', () => {
   it('should navigate to SelectIDStatus on press french HeroButtonList', async () => {
     render(<SelectIDOrigin />)
 
-    const HeroButtonListFrench = screen.getByTestId(
+    const HeroButtonListFrench = screen.getByLabelText(
       'J’ai une carte d’identité ou un passeport français'
     )
     await user.press(HeroButtonListFrench)

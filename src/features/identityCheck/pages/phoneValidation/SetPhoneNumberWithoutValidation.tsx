@@ -17,6 +17,7 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -131,6 +132,7 @@ export const SetPhoneNumberWithoutValidation = () => {
           disabled={!formState.isValid}
           type="submit"
           wording="Continuer"
+          accessibilityRole={accessibilityRoleInternalNavigation()}
           accessibilityLabel="Continuer vers l’étape suivante"
           onPress={submit}
         />

@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
@@ -21,10 +22,15 @@ const IdCard = styled(InitialIdCard).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
+const title = 'J’ai ma pièce d’identité en cours de validité'
+const subtitle = 'Les copies ne sont pas acceptées'
+const accessibilityLabel = getComputedAccessibilityLabel(title, subtitle)
+
 const MainOptionButton = (
   <HeroButtonList
-    Title={<Typo.BodyAccent>J’ai ma pièce d’identité en cours de validité</Typo.BodyAccent>}
-    Subtitle={<Typo.BodyAccentXs>Les copies ne sont pas acceptées</Typo.BodyAccentXs>}
+    accessibilityLabel={accessibilityLabel}
+    Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
+    Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
     Icon={<IdCard />}
     navigateTo={getSubscriptionPropConfig('UbbleWebview')}
   />
