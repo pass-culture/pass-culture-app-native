@@ -1,13 +1,17 @@
 import React from 'react'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { TouchableProps } from './types'
 
-export const Touchable: React.FC<TouchableProps> = ({ accessibilityLabel, ...props }) => (
+export const Touchable: React.FC<TouchableProps> = ({
+  accessibilityLabel,
+  accessibilityRole,
+  ...props
+}) => (
   <TouchableOpacity
-    accessibilityRole={AccessibilityRole.BUTTON}
+    accessibilityRole={accessibilityRole ?? accessibilityRoleInternalNavigation()}
     accessibilityLabel={accessibilityLabel}
     {...props}
   />

@@ -549,6 +549,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
   >
     <View
       accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -1321,6 +1322,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
   >
     <View
       accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

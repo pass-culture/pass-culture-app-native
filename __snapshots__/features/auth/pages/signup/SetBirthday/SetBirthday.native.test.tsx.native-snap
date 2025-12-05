@@ -730,6 +730,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Continuer"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -1577,6 +1578,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     />
     <View
       accessibilityLabel="Continuer"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

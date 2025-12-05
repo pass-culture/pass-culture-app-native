@@ -388,6 +388,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
               />
               <View
                 accessibilityLabel="Demander un nouveau lien"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
