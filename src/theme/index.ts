@@ -181,6 +181,7 @@ export const theme = {
     headerNav: zIndex.headerNav,
     snackbar: zIndex.snackbar,
     bottomSheet: zIndex.bottomSheet,
+    button: zIndex.button,
   },
   contentPage: {
     marginHorizontal: MARGIN_HORIZONTAL,
