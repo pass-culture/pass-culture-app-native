@@ -80,15 +80,6 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
-  useSearchHistory: () => ({
-    filteredHistory: [],
-    addToHistory: jest.fn(),
-    removeFromHistory: jest.fn(),
-    search: jest.fn(),
-  }),
-}))
-
 const mockHits = [
   {
     objectID: '1',
@@ -252,7 +243,16 @@ jest.useFakeTimers()
 describe('<SearchResults/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockUseNetInfoContext.mockReset()
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    mockUseSearchHistory.mockReset()
+    mockUseSearchHistory.mockReturnValue({
+      filteredHistory: mockedSearchHistory,
+      queryHistory: '',
+      addToHistory: jest.fn(),
+      removeFromHistory: jest.fn(),
+      search: jest.fn(),
+    })
     mockUseLocation.mockReturnValue(
       getAroundPlaceUserPosition({ geolocPosition: { latitude: 123.34, longitude: 0.12238 } })
     )

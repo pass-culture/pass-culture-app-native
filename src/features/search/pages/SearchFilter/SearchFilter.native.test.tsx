@@ -38,6 +38,10 @@ const initialMockUseLocation = {
   aroundMeRadius: DEFAULT_RADIUS,
   setSelectedLocationMode: mockSetSelectedLocationMode,
   hasGeolocPosition: false,
+  setSelectedPlace: jest.fn(),
+  setAroundMeRadius: jest.fn(),
+  aroundPlaceRadius: DEFAULT_RADIUS,
+  setPlace: jest.fn(),
 }
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => initialMockUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -190,25 +194,38 @@ describe('<SearchFilter/>', () => {
       })
     })
 
-    it('is null', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...initialMockUseLocation,
-        geolocPosition: undefined,
-        userLocation: undefined,
-        selectedLocationMode: LocationMode.EVERYWHERE,
+    describe('is null', () => {
+      beforeEach(() => {
+        mockUseSearch.mockReturnValue({
+          ...initialMockUseSearch,
+          searchState: { ...initialSearchState, minPrice: '10' },
+        })
+        mockUseLocation.mockReturnValue({
+          ...initialMockUseLocation,
+          geolocPosition: undefined,
+          userLocation: undefined,
+          selectedLocationMode: LocationMode.EVERYWHERE,
+        })
       })
 
-      renderSearchFilter()
+      afterEach(() => {
+        mockUseLocation.mockReturnValue(initialMockUseLocation)
+        mockUseSearch.mockReturnValue(initialMockUseSearch)
+      })
 
-      await screen.findByText('Filtres')
-      await user.press(screen.getByText('Réinitialiser'))
+      it('should dispatch correctly', async () => {
+        renderSearchFilter()
 
-      expect(mockStateDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: {
-          ...initialSearchState,
-          locationFilter: { locationType: LocationMode.EVERYWHERE },
-        },
+        await screen.findByText('Filtres')
+        await user.press(screen.getByText('Réinitialiser'))
+
+        expect(mockStateDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
+            ...initialSearchState,
+            locationFilter: { locationType: LocationMode.EVERYWHERE },
+          },
+        })
       })
     })
   })

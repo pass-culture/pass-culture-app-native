@@ -85,15 +85,10 @@ export const ThematicSearch: React.FC = () => {
   useEffect(() => {
     if (params?.offerCategories && isWeb) {
       dispatch({
-        type: 'SET_STATE',
-        payload: {
-          ...searchState,
-          offerCategories: params.offerCategories,
-        },
+        type: 'SET_OFFER_CATEGORIES',
+        payload: params.offerCategories,
       })
     }
-    // adding searchstate in deps would result in an infinite loop
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isWeb, params?.offerCategories])
 
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]

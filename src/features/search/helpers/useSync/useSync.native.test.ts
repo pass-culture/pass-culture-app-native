@@ -71,9 +71,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 mockUseLocation.mockReturnValue(everywhereUseLocation)
 
-// TODO(PC-33123): fix test
-// eslint-disable-next-line jest/no-disabled-tests
-describe.skip('useSync', () => {
+describe('useSync', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
   })
