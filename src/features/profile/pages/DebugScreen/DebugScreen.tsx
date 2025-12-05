@@ -96,6 +96,7 @@ export const DebugScreen = () => {
               </Typo.Button>
             ))}
             <ClipboardButton
+              testID="Copier dans le presse-papier"
               accessibilityLabel="Copier dans le presse-papier"
               onPress={copyToClipboard}>
               <StyledDuplicate />
