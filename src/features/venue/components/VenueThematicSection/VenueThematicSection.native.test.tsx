@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
@@ -15,7 +15,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-const venueFixture = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
+const venueFixture = { ...venueDataTest, activity: Activity.CINEMA }
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -50,7 +50,7 @@ describe('<VenueThematicSection/>', () => {
   })
 
   it('should render null if venue has no thematic', async () => {
-    const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE }
+    const venue = { ...venueFixture, activity: Activity.CULTURAL_CENTRE }
     render(reactQueryProviderHOC(<VenueThematicSection venue={venue} />))
 
     await waitFor(() => {

@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 
 export const geolocatedVenuesFixture: GeolocatedVenue[] = [
@@ -10,7 +10,7 @@ export const geolocatedVenuesFixture: GeolocatedVenue[] = [
     label: 'Palais de Tokyo',
     postalCode: '75116',
     venueId: 2628,
-    venue_type: VenueTypeCodeKey.MUSEUM,
+    activity: Activity.MUSEUM,
     isOpenToPublic: true,
   },
   {
@@ -21,7 +21,7 @@ export const geolocatedVenuesFixture: GeolocatedVenue[] = [
     label: 'Musée Jean-Jacques Henner',
     postalCode: '75017',
     venueId: 5391,
-    venue_type: VenueTypeCodeKey.MUSEUM,
+    activity: Activity.MUSEUM,
     isOpenToPublic: true,
   },
 ]

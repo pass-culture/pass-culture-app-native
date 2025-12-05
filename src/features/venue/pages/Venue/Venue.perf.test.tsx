@@ -62,7 +62,7 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueDataTest.id}`, {
+    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueDataTest.id}`, {
       responseOptions: { data: venueDataTest },
       requestOptions: { persist: true },
     })

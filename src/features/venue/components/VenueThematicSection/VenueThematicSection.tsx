@@ -9,7 +9,7 @@ import { useThematicSubscription } from 'features/subscription/helpers/useThemat
 import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { mapVenueTypeToCategory } from 'features/venue/helpers/mapVenueTypeToCategory'
+import { mapActivityToCategory } from 'features/venue/helpers/mapActivityToCategory'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props) => {
-  const thematic = venue.venueTypeCode ? mapVenueTypeToCategory[venue.venueTypeCode] : null
+  const thematic = venue.activity ? mapActivityToCategory[venue.activity] : null
   const [hasUserSubscribed, setHasUserSubscribed] = React.useState(false)
   const { user, isLoggedIn } = useAuthContext()
 

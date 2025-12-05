@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
 
 export const mockAlgoliaVenues: AlgoliaVenue[] = [
@@ -20,7 +20,7 @@ export const mockAlgoliaVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: VenueTypeCodeKey.MOVIE,
+    activity: Activity.CINEMA,
     visual_disability: false,
     isPermanent: true,
     isOpenToPublic: true,
@@ -46,7 +46,7 @@ export const mockAlgoliaVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    activity: Activity.ART_GALLERY,
     visual_disability: false,
     website: null,
     isPermanent: true,
@@ -74,7 +74,7 @@ export const mockAlgoliaVenues: AlgoliaVenue[] = [
     twitter: null,
     isPermanent: true,
     isOpenToPublic: true,
-    venue_type: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
+    activity: Activity.SCIENCE_CENTRE,
     visual_disability: false,
     website: null,
     _geoloc: { lat: 44.85597, lng: -0.63444 },
@@ -100,7 +100,7 @@ export const mockAlgoliaVenues: AlgoliaVenue[] = [
     isOpenToPublic: true,
     snapchat: null,
     twitter: null,
-    venue_type: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
+    activity: Activity.SCIENCE_CENTRE,
     visual_disability: false,
     website: null,
     _geoloc: { lat: 43.3112, lng: 5.3832 },
@@ -126,7 +126,7 @@ export const mockAlgoliaVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: VenueTypeCodeKey.MUSEUM,
+    activity: Activity.MUSEUM,
     visual_disability: true,
     website: null,
     _geoloc: { lat: 48.84303, lng: 2.30445 },
@@ -152,7 +152,7 @@ export const mockAlgoliaVenues: AlgoliaVenue[] = [
     phone_number: '+33102030405',
     snapchat: null,
     twitter: null,
-    venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+    activity: Activity.ARTS_CENTRE,
     visual_disability: false,
     website: 'https://my.website.com',
     _geoloc: { lat: 50.63111, lng: 3.0716 },

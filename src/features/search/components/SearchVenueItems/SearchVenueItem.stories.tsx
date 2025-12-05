@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
@@ -20,7 +20,7 @@ const venue: AlgoliaVenue = {
   city: 'Paris',
   postalCode: '75000',
   offerer_name: 'séance de cinéma chandra',
-  venue_type: VenueTypeCodeKey.MOVIE,
+  activity: Activity.CINEMA,
   description: 'film',
   audio_disability: null,
   mental_disability: null,

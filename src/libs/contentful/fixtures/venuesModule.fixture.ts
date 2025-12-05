@@ -38,7 +38,7 @@ export const venuesNatifModuleFixture: VenuesContentModel = {
         },
         fields: {
           title: 'Exemple de playlist de lieux',
-          venueTypes: [
+          activities: [
             'Bibliothèque ou médiathèque',
             'Arts visuels, arts plastiques et galeries',
             'Centre culturel',

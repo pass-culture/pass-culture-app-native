@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { AlgoliaVenue } from 'libs/algolia/types'
 
 export const algoliaVenuesFixture: AlgoliaVenue[] = [
@@ -24,7 +24,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     snapchat: null,
 
     twitter: null,
-    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    activity: Activity.ART_GALLERY,
     visual_disability: false,
     website: 'https://my.website.com',
     _geoloc: { lat: 48.871728, lng: 2.308157 },
@@ -49,7 +49,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     phone_number: '+33102030405',
     snapchat: null,
     twitter: null,
-    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    activity: Activity.ART_GALLERY,
     visual_disability: false,
     website: 'https://my.website.com',
     isOpenToPublic: false,

@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { toMutable } from 'shared/types/toMutable'
 
@@ -13,7 +13,7 @@ export const venuesFixture = toMutable([
     banner_url: null,
     postalCode: '75000',
     isPermanent: true,
-    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    activity: Activity.ART_GALLERY,
     isOpenToPublic: true,
   },
   {
@@ -25,7 +25,7 @@ export const venuesFixture = toMutable([
       'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/venues/CBQA_1678748459',
     postalCode: '',
     isPermanent: false,
-    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    activity: Activity.ART_GALLERY,
     isOpenToPublic: false,
   },
 ] as const satisfies ReadonlyDeep<GeolocatedVenue[]>)

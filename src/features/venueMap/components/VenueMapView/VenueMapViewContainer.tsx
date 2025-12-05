@@ -172,7 +172,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
     }
 
     setShowSearchButton(false)
-    analytics.logPinMapPressed({ venueType: foundVenue.venue_type, venueId: foundVenue.venueId })
+    analytics.logPinMapPressed({ venueType: foundVenue.activity, venueId: foundVenue.venueId })
     if (isPreviewEnabled) {
       setSelectedVenue(foundVenue)
       centerOnLocation(
@@ -244,7 +244,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 
   const filteredVenues = useMemo(() => {
     if (activeFilters.length === 0) return venues
-    return venues?.filter((venue) => venue.venue_type && activeFilters.includes(venue.venue_type))
+    return venues?.filter((venue) => venue.activity && activeFilters.includes(venue.activity))
   }, [venues, activeFilters])
 
   const handleViewableItemsChanged = useCallback(

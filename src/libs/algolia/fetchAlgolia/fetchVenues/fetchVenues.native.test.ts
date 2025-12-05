@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
@@ -39,7 +39,7 @@ describe('fetchVenues', () => {
     twitter: null,
     isPermanent: true,
     isOpenToPublic: true,
-    venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+    activity: Activity.ARTS_CENTRE,
     visual_disability: false,
     website: 'https://my.website.com',
   }
@@ -86,7 +86,7 @@ describe('fetchVenues', () => {
   banner_url: null,
   isPermanent: true,
   postalCode: '86280',
-  venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+  activity: Activity.ARTS_CENTRE,
   isOpenToPublic: true,
 }}
     ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{
@@ -97,7 +97,7 @@ describe('fetchVenues', () => {
   banner_url: null,
   postalCode: '86280',
   isPermanent: true,
-  venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+  activity: Activity.ARTS_CENTRE,
   isOpenToPublic: true,
 }}
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {

@@ -8,9 +8,9 @@ import {
   UnconventionalIcons,
 } from 'ui/storybook/iconsExports'
 import { SVGTemplate as Icons } from 'ui/storybook/SVGTemplate'
+import { activityIcons } from 'ui/svg/icons/exports/activityIcons'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { culturalSurveyIcons } from 'ui/svg/icons/exports/culturalSurveyIcons'
-import { venueTypesIcons } from 'ui/svg/icons/exports/venueTypesIcons'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {
@@ -28,8 +28,8 @@ const iconSets = [
     isBicolor: true,
   },
   {
-    title: 'venueTypesIcons',
-    icons: venueTypesIcons,
+    title: 'activityIcons',
+    icons: activityIcons,
     isBicolor: true,
   },
   {

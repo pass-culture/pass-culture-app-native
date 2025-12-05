@@ -49,7 +49,7 @@ const useVenueOffersSpy = jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuer
 
 const useVenueMapFiltersSpy = jest.spyOn(useVenueMapFilters, 'useVenueMapFilters')
 useVenueMapFiltersSpy.mockReturnValue({
-  activeFilters: constants.FILTERS_VENUE_TYPE_MAPPING.OUTINGS,
+  activeFilters: constants.FILTERS_ACTIVITY_MAPPING.OUTINGS,
   addMacroFilter: jest.fn(),
   getSelectedMacroFilters: jest.fn(),
   removeMacroFilter: jest.fn(),
@@ -468,7 +468,7 @@ describe('VenueMapViewContainer', () => {
     await waitFor(() =>
       expect(screen.getAllByTestId(/marker-/)).toHaveLength(
         venuesFixture.filter((venue) =>
-          constants.FILTERS_VENUE_TYPE_MAPPING.OUTINGS.includes(venue.venue_type)
+          constants.FILTERS_ACTIVITY_MAPPING.OUTINGS.includes(venue.activity)
         ).length
       )
     )

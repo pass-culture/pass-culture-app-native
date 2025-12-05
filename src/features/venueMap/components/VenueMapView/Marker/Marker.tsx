@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
-import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
+import { getActivityIconName } from 'features/venueMap/helpers/getActivityIconName/getActivityIconName'
 import { Marker as MapMarker, MapMarkerProps } from 'libs/maps/maps'
 
 import { LABEL_HEIGHT, MARKER_SIZE } from '../../../constant'
@@ -19,7 +19,7 @@ export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerPr
   return (
     <CustomMarker
       image={{
-        uri: getVenueTypeIconName(isSelected, venue.venue_type),
+        uri: getActivityIconName(isSelected, venue.activity),
       }}
       anchor={{ x: 0.5, y: showLabel ? 0.6 : 1 }}
       testID={`marker-${venue.venueId}${isSelected ? '-selected' : ''}`}

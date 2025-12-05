@@ -1,36 +1,34 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { ClusterImageColorName } from 'features/venueMap/components/VenueMapView/types'
 import { CLUSTER_IMAGE_COLOR_NAME } from 'features/venueMap/constant'
 
-const getClusterColorFromVenueType = (venueType?: VenueTypeCodeKey): ClusterImageColorName => {
-  switch (venueType) {
-    case VenueTypeCodeKey.MOVIE:
-    case VenueTypeCodeKey.TRAVELING_CINEMA:
-    case VenueTypeCodeKey.FESTIVAL:
-    case VenueTypeCodeKey.CONCERT_HALL:
-    case VenueTypeCodeKey.PERFORMING_ARTS:
-    case VenueTypeCodeKey.MUSEUM:
-    case VenueTypeCodeKey.LIBRARY:
-    case VenueTypeCodeKey.VISUAL_ARTS:
-    case VenueTypeCodeKey.GAMES:
+const getClusterColorFromActivity = (activity?: Activity): ClusterImageColorName => {
+  switch (activity) {
+    case Activity.ART_GALLERY:
+    case Activity.CINEMA:
+    case Activity.FESTIVAL:
+    case Activity.GAMES_CENTRE:
+    case Activity.LIBRARY:
+    case Activity.MUSEUM:
+    case Activity.PERFORMANCE_HALL:
       return CLUSTER_IMAGE_COLOR_NAME.ORANGE
-    case VenueTypeCodeKey.BOOKSTORE:
-    case VenueTypeCodeKey.CREATIVE_ARTS_STORE:
-    case VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE:
-    case VenueTypeCodeKey.RECORD_STORE:
-    case VenueTypeCodeKey.DISTRIBUTION_STORE:
+    case Activity.BOOKSTORE:
+    case Activity.CREATIVE_ARTS_STORE:
+    case Activity.DISTRIBUTION_STORE:
+    case Activity.MUSIC_INSTRUMENT_STORE:
+    case Activity.RECORD_STORE:
       return CLUSTER_IMAGE_COLOR_NAME.PINK
     default:
       return CLUSTER_IMAGE_COLOR_NAME.BLUE
   }
 }
 
-export const getClusterColorByDominantVenueType = (
-  types: VenueTypeCodeKey[]
+export const getClusterColorByDominantActivity = (
+  activities: Activity[]
 ): ClusterImageColorName | undefined => {
-  const occurenceMap = types.reduce(
+  const occurenceMap = activities.reduce(
     (previous, current) => {
-      const color = getClusterColorFromVenueType(current)
+      const color = getClusterColorFromActivity(current)
       if (previous[color]) {
         previous[color] += 1
       } else {
