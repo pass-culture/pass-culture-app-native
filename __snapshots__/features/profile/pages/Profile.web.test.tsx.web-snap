@@ -7,10 +7,11 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-left: 16px;
+  padding-right: 16px;
   min-height: 32px;
   width: 100%;
+  background-color: transparent;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -28,7 +29,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 
 .c0:hover {
   text-decoration: underline;
-  text-decoration-color: #696a6f;
+  text-decoration-color: #6123df;
 }
 
 .c0:hover:disabled {
@@ -108,7 +109,13 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c1 {
-  background-color: transparent;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 2px;
+}
+
+.c1:disabled {
+  border-color: #cbcdd2;
 }
 
 .c3:disabled {
@@ -161,7 +168,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -174,7 +181,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Cheatcodes
@@ -767,7 +774,9 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                           href="https://www.instagram.com/passcultureofficiel/?hl=fr"
                           role="link"
                           style="transition-duration: 0s;"
@@ -803,7 +812,9 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
                           href="https://twitter.com/pass_Culture"
                           role="link"
                           style="transition-duration: 0s;"
@@ -839,7 +850,9 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                           href="https://www.tiktok.com/@passcultureofficiel"
                           role="link"
                           style="transition-duration: 0s;"
@@ -875,7 +888,9 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                           href="https://www.facebook.com/passCultureofficiel/"
                           role="link"
                           style="transition-duration: 0s;"
@@ -1105,10 +1120,11 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   justify-content: center;
   border-radius: 24px;
   padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-left: 16px;
+  padding-right: 16px;
   min-height: 32px;
   width: 100%;
+  background-color: transparent;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -1126,7 +1142,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 
 .c0:hover {
   text-decoration: underline;
-  text-decoration-color: #696a6f;
+  text-decoration-color: #6123df;
 }
 
 .c0:hover:disabled {
@@ -1206,7 +1222,13 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c1 {
-  background-color: transparent;
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 2px;
+}
+
+.c1:disabled {
+  border-color: #cbcdd2;
 }
 
 .c3:disabled {
@@ -1259,7 +1281,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
             role="main"
           >
             <div
-              class="css-view-175oi2r r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderStyle-1phboty r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-d045u9 r-paddingInline-n7gxbd r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+              class="css-view-175oi2r r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
             >
               <button
                 aria-label="Cheatcodes"
@@ -1272,7 +1294,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Cheatcodes
@@ -1865,7 +1887,9 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                           href="https://www.instagram.com/passcultureofficiel/?hl=fr"
                           role="link"
                           style="transition-duration: 0s;"
@@ -1901,7 +1925,9 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
                           href="https://twitter.com/pass_Culture"
                           role="link"
                           style="transition-duration: 0s;"
@@ -1937,7 +1963,9 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                           href="https://www.tiktok.com/@passcultureofficiel"
                           role="link"
                           style="transition-duration: 0s;"
@@ -1973,7 +2001,9 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                         role="listitem"
                       >
                         <a
+                          aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                           class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                           href="https://www.facebook.com/passCultureofficiel/"
                           role="link"
                           style="transition-duration: 0s;"
