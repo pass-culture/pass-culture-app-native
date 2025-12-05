@@ -279,7 +279,7 @@ exports[`Home page should render correctly 1`] = `
                     </View>
                   </View>
                   <Text
-                    numberOfLines={3}
+                    numberOfLines={1}
                     style={
                       {
                         "color": "#161617",

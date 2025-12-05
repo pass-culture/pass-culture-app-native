@@ -406,4 +406,7 @@ export const rootStackNavigatorPathConfig = {
     path: 'chronicles/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],
   },
+  LocationModal: {
+    path: 'location-modal',
+  },
 }

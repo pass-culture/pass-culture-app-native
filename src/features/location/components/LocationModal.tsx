@@ -1,17 +1,23 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { LocationState } from 'features/location/types'
+import { ScreenOrigin } from 'features/location/enums'
+import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
+import { getScreenOrigin } from 'features/location/helpers/getScreenOrigin'
+import { useLocationMode } from 'features/location/helpers/useLocationMode'
+import { useLocationState } from 'features/location/helpers/useLocationState'
+import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { LocationLabel, LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { Li } from 'ui/components/Li'
-import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
@@ -19,54 +25,67 @@ import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type LocationModalProps = {
-  visible: boolean
-  onSubmit: () => void
-  onClose: () => void
-  onModalHideRef: LocationState['onModalHideRef']
-  selectLocationMode: (mode: LocationMode) => () => void
-  tempLocationMode: LocationState['tempLocationMode']
-  hasGeolocPosition: LocationState['hasGeolocPosition']
-  selectedPlace: LocationState['selectedPlace']
-  setSelectedPlace: LocationState['setSelectedPlace']
-  placeQuery: LocationState['placeQuery']
-  setPlaceQuery: LocationState['setPlaceQuery']
-  onSetSelectedPlace: (place: SuggestedPlace) => void
-  onResetPlace: LocationState['onResetPlace']
-  shouldDisplayEverywhereSection: boolean
-  isSubmitDisabled: boolean
-  shouldShowRadiusSlider: boolean
-  buttonWording?: string
-  tempAroundMeRadius?: LocationState['tempAroundMeRadius']
-  onTempAroundMeRadiusValueChange?: (newValues: number[]) => void
-  tempAroundPlaceRadius?: LocationState['tempAroundPlaceRadius']
-  onTempAroundPlaceRadiusValueChange?: (newValues: number[]) => void
-}
+export const LocationModal = () => {
+  const navigation = useNavigation<UseNavigationType>()
+  const { dispatch } = useSearch()
+  const { bottom } = useCustomSafeInsets()
 
-export const LocationModal = ({
-  visible,
-  onSubmit,
-  hasGeolocPosition,
-  tempLocationMode,
-  onClose,
-  selectLocationMode,
-  onModalHideRef,
-  selectedPlace,
-  tempAroundMeRadius,
-  onTempAroundMeRadiusValueChange,
-  setSelectedPlace,
-  placeQuery,
-  setPlaceQuery,
-  onSetSelectedPlace,
-  onResetPlace,
-  tempAroundPlaceRadius,
-  onTempAroundPlaceRadiusValueChange,
-  shouldShowRadiusSlider,
-  buttonWording,
-  isSubmitDisabled,
-  shouldDisplayEverywhereSection,
-}: LocationModalProps) => {
+  const screenOrigin = getScreenOrigin(navigation)
+
+  const locationStateProps = useLocationState({
+    visible: true,
+  })
+
+  const {
+    hasGeolocPosition,
+    placeQuery,
+    setPlaceQuery,
+    selectedPlace,
+    setSelectedPlace,
+    onResetPlace,
+    tempLocationMode,
+    onSetSelectedPlace,
+    tempAroundPlaceRadius,
+    tempAroundMeRadius,
+  } = locationStateProps
+
+  const {
+    onTempAroundRadiusPlaceValueChange: onTempAroundPlaceRadiusValueChange,
+    onTempAroundMeRadiusValueChange,
+  } = useRadiusChange({
+    visible: true,
+    ...locationStateProps,
+  })
+
+  const { onSubmit, onClose } = getLocationSubmit({
+    dismissModal: () => {
+      navigation.goBack()
+    },
+    from: screenOrigin,
+    dispatch,
+    ...locationStateProps,
+  })
+
+  const { selectLocationMode } = useLocationMode({
+    dismissModal: () => {
+      navigation.goBack()
+    },
+    onSubmit,
+    onClose:
+      screenOrigin === ScreenOrigin.SEARCH
+        ? onClose
+        : () => {
+            navigation.goBack()
+          },
+    shouldDirectlyValidate: screenOrigin === ScreenOrigin.HOME,
+    ...locationStateProps,
+  })
+
+  const shouldDisplayEverywhereSection = true
+  const shouldShowRadiusSlider = screenOrigin !== ScreenOrigin.HOME
+
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
   const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
@@ -82,16 +101,15 @@ export const LocationModal = ({
     : 'default'
 
   const shouldShowAroundPlaceRadiusSlider =
-    shouldShowRadiusSlider &&
-    tempAroundPlaceRadius &&
-    onTempAroundPlaceRadiusValueChange &&
-    selectedPlace
+    shouldShowRadiusSlider && tempAroundPlaceRadius && selectedPlace
 
   const shouldShowAroundMeRadiusSlider =
-    shouldShowRadiusSlider &&
-    tempAroundMeRadius &&
-    onTempAroundMeRadiusValueChange &&
-    isCurrentLocationMode(LocationMode.AROUND_ME)
+    shouldShowRadiusSlider && tempAroundMeRadius && isCurrentLocationMode(LocationMode.AROUND_ME)
+
+  const isSubmitDisabled =
+    screenOrigin === ScreenOrigin.HOME
+      ? !selectedPlace
+      : !selectedPlace && tempLocationMode !== LocationMode.AROUND_ME
 
   const buildAccessibilityLabel = (
     title: string,
@@ -125,31 +143,15 @@ export const LocationModal = ({
   const groupLabel = 'Localisation'
 
   return (
-    <AppModal
-      visible={visible}
-      title=""
-      noPadding
-      isUpToStatusBar
-      scrollEnabled={false}
-      onModalHide={onModalHideRef.current}
-      keyboardShouldPersistTaps="handled"
-      customModalHeader={
-        <HeaderContainer>
-          <ModalHeader
-            title={groupLabel}
-            rightIconAccessibilityLabel="Fermer la modale"
-            rightIcon={Close}
-            onRightIconPress={onClose}
-          />
-        </HeaderContainer>
-      }
-      fixedModalBottom={
-        <LocationModalFooter
-          onSubmit={() => onSubmit()}
-          isSubmitDisabled={isSubmitDisabled}
-          buttonWording={buttonWording}
+    <StyledModalContainer>
+      <HeaderContainer>
+        <ModalHeader
+          title={groupLabel}
+          rightIconAccessibilityLabel="Fermer la modale"
+          rightIcon={Close}
+          onRightIconPress={onClose}
         />
-      }>
+      </HeaderContainer>
       <StyledScrollView>
         <VerticalUl>
           <Li
@@ -226,9 +228,25 @@ export const LocationModal = ({
           ) : null}
         </VerticalUl>
       </StyledScrollView>
-    </AppModal>
+      <StyledCTAContainer bottomInset={bottom}>
+        <LocationModalFooter
+          onSubmit={() => onSubmit()}
+          isSubmitDisabled={isSubmitDisabled}
+          buttonWording="Valider la localisation"
+        />
+      </StyledCTAContainer>
+    </StyledModalContainer>
   )
 }
+
+const StyledModalContainer = styled.View({ flex: 1 })
+
+const StyledCTAContainer = styled.View<{ bottomInset: number }>(({ theme, bottomInset }) => ({
+  position: 'absolute',
+  bottom: bottomInset + theme.designSystem.size.spacing.l,
+  left: 0,
+  right: 0,
+}))
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,
@@ -239,7 +257,6 @@ const HeaderContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.l,
   width: '100%',
 }))
-
 const SliderContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))

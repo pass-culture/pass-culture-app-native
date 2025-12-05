@@ -1,16 +1,17 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
+import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
@@ -26,7 +27,7 @@ type Props = {
 }
 
 export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
-  const navigation = useNavigation<UseNavigationType>()
+  const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
   const { place, selectedLocationMode } = useLocation()
   const {
@@ -39,6 +40,12 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   } = useLocationWidgetTooltip(screenOrigin)
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
+
+  const {
+    visible: locationModalVisible,
+    showModal: showLocationModal,
+    hideModal: hideLocationModal,
+  } = useModal()
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
@@ -56,13 +63,18 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   return (
     <React.Fragment>
       <StyledTouchable
-        testID="Ouvrir la modale de localisation depuis le widget"
-        onPress={() => navigation.navigate('LocationModal', { screenOrigin })}
+        testID={computedAccessibilityLabel}
+        onPress={showLocationModal}
         accessibilityLabel={computedAccessibilityLabel}
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
         <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
-        <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
+        <StyledCaption numberOfLines={3}>{locationTitle}</StyledCaption>
       </StyledTouchable>
+      {shouldShowHomeLocationModal ? (
+        <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      ) : (
+        <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      )}
       {enableTooltip ? (
         <StyledTooltip
           label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
