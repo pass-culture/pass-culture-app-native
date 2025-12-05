@@ -279,7 +279,13 @@ export type RootStackParamList = {
   ThematicHome: ThematicHomeParams
   _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
-  UTMParameters: undefined
+  UTMParameters:
+    | {
+        utm_campaign: string
+        utm_medium: string
+        utm_source: string
+      }
+    | undefined
   ValidateEmailChange: { token: string }
   Venue: VenueParams
   _DeeplinkOnlyVenue1: VenueParams
