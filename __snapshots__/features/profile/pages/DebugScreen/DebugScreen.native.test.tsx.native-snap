@@ -231,213 +231,430 @@ exports[`DebugScreen should render correctly 1`] = `
               }
             />
             <View
-              gap={2}
+              gap={4}
               style={
                 {
-                  "gap": 8,
+                  "gap": 16,
                 }
               }
             >
               <Text
+                accessibilityRole="header"
                 style={
                   {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "fontSize": 21,
+                    "lineHeight": 33.6,
                   }
                 }
               >
-                App version
-                 : 
+                Tu rencontres un souci avec l’application ?
+              </Text>
+              <View>
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  1.2.3
+                  App version
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    1.2.3
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Device font scale
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  1.5
+                  Device font scale
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    1.5
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Device ID
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  device-id
+                  Device ID
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    device-id
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Device model
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  iPhone 13
+                  Device model
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    iPhone 13
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Device OS
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  iOS
+                  Device OS
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    iOS
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Device resolution
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  1080x1920
+                  Device resolution
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    1080x1920
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Device zoom
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  Non renseigné
+                  Device zoom
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    Non renseigné
+                  </Text>
                 </Text>
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                User ID
-                 : 
                 <Text
                   style={
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     }
                   }
                 >
-                  1234
+                  User ID
+                   : 
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                    1234
+                  </Text>
                 </Text>
-              </Text>
+                <View
+                  accessibilityLabel="Copier dans le presse-papier"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderColor": "#6123df",
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "paddingBottom": 12,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 12,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    width={20}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                background="#f3edff"
+                style={
+                  {
+                    "alignItems": "flex-start",
+                    "backgroundColor": "#f3edff",
+                    "borderBottomLeftRadius": 8,
+                    "borderBottomRightRadius": 8,
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                    "flexDirection": "row",
+                    "gap": 12,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
+                }
+              >
+                <View
+                  fill="#320096"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Lien externe - Pour tous les problèmes liés à ton crédit ou ton compte, contacte-nous via le formulaire"
+                  accessibilityRole="none"
+                  externalNav={
+                    {
+                      "url": undefined,
+                    }
+                  }
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "gap": 4,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 22.4,
+                      }
+                    }
+                  >
+                    Pour tous les problèmes liés à ton crédit ou ton compte, contacte-nous via le formulaire
+                  </Text>
+                  <View
+                    gap={3}
+                    style={
+                      {
+                        "alignItems": "flex-start",
+                        "gap": 12,
+                        "marginRight": 16,
+                        "marginTop": 8,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Lien externe - Aller au formulaire du support"
+                      accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "cursor": "pointer",
+                          "flexDirection": "row",
+                          "opacity": 1,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "marginRight": 8,
+                            "marginTop": 2,
+                          }
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Aller au formulaire du support
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -620,84 +837,7 @@ exports[`DebugScreen should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Copier dans le presse-papier"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#6123df",
-                  "borderBottomLeftRadius": 24,
-                  "borderBottomRightRadius": 24,
-                  "borderTopLeftRadius": 24,
-                  "borderTopRightRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
-              }
-              testID="Copier dans le presse-papier"
-            >
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  }
-                }
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    }
-                  }
-                >
-                  Copier dans le presse-papier
-                </Text>
-              </View>
-            </View>
-            <View
-              accessibilityLabel="Envoyer au support"
+              accessibilityLabel="Envoyer mon bug au support"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -750,7 +890,7 @@ exports[`DebugScreen should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Envoyer au support"
+              testID="Envoyer mon bug au support"
             >
               <View
                 style={
@@ -792,7 +932,7 @@ exports[`DebugScreen should render correctly 1`] = `
                     }
                   }
                 >
-                  Envoyer au support
+                  Envoyer mon bug au support
                 </Text>
               </View>
             </View>
