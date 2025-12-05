@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useHomepageData } from 'features/home/api/useHomepageData'
+import { useGetHomepageById } from 'features/home/api/useHomepageData'
 import {
   MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
   AnimatedCategoryThematicHomeHeader,
@@ -30,7 +30,7 @@ import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureSc
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
 
@@ -108,7 +108,7 @@ export const ThematicHome: FunctionComponent = () => {
       latitude,
       longitude,
       videoModuleId,
-      homeId,
+      homeId: requestHomeId,
       moduleId,
       moduleListId,
       moduleItemId,
@@ -117,7 +117,8 @@ export const ThematicHome: FunctionComponent = () => {
   const { goBack } = useGoBack('Chronicles')
   const { navigate } = useNavigation<UseNavigationType>()
   const isFromDeeplink = from === 'deeplink'
-  const { modules, id, thematicHeader } = useHomepageData(homeId) || {}
+  // if homepage fails to be fetched, `homeId` should not be `requestHomeId`, it would mislead tracker's data
+  const { id: homeId, modules, thematicHeader } = useGetHomepageById(requestHomeId)
   const {
     userLocation,
     hasGeolocPosition,
@@ -137,17 +138,17 @@ export const ThematicHome: FunctionComponent = () => {
     })
 
   useEffect(() => {
-    if (!id) {
+    if (!homeId) {
       return
     }
     void analytics.logConsultThematicHome({
-      homeEntryId: id,
+      homeEntryId: homeId,
       from,
       moduleId,
       moduleListId,
       moduleItemId,
     })
-  }, [id, from, homeId, moduleId, moduleItemId, moduleListId])
+  }, [from, homeId, moduleId, moduleItemId, moduleListId])
 
   const hasLocationUrlParams = !!(latitude && longitude)
 
@@ -191,7 +192,7 @@ export const ThematicHome: FunctionComponent = () => {
     <Page>
       <GenericHome
         modules={modules}
-        homeId={id}
+        homeId={homeId}
         thematicHeader={thematicHeader}
         Header={
           <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
