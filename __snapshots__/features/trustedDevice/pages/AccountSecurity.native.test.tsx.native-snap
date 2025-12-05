@@ -516,6 +516,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         </View>
         <View
           accessibilityLabel="Ne pas sécuriser mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -1060,6 +1061,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         </View>
         <View
           accessibilityLabel="Ne pas sécuriser mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -1694,6 +1696,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         </View>
         <View
           accessibilityLabel="Ne pas sécuriser mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

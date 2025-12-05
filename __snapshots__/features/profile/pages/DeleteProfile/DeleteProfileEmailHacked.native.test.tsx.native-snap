@@ -324,6 +324,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Modifier mon adresse e-mail"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -409,6 +410,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Suspendre mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -498,6 +500,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Ne pas sécuriser mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

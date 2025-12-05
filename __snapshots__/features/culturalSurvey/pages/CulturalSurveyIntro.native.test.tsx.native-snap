@@ -404,6 +404,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         </View>
         <View
           accessibilityLabel="Plus tard"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -831,6 +832,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         </View>
         <View
           accessibilityLabel="Retour"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

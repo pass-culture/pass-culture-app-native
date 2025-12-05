@@ -227,6 +227,7 @@ exports[`QuitSignupModal should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Continuer l’inscription"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -312,6 +313,7 @@ exports[`QuitSignupModal should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Abandonner l’inscription"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

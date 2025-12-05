@@ -1,7 +1,9 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
+import { AccessibilityRole } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
@@ -35,6 +37,7 @@ export type ButtonProps = {
       onAfterNavigate?: never
       navigateTo?: never
       externalNav?: never
+      accessibilityRole?: AccessibilityRole
     }
   | {
       navigateTo: InternalNavigationProps['navigateTo']
@@ -42,6 +45,7 @@ export type ButtonProps = {
       onAfterNavigate?: () => void
       onPress?: never
       externalNav?: never
+      accessibilityRole?: never
     }
   | {
       externalNav: ExternalNavigationProps['externalNav']
@@ -49,6 +53,7 @@ export type ButtonProps = {
       onAfterNavigate?: () => void
       onPress?: never
       navigateTo?: never
+      accessibilityRole?: never
     }
 )
 
@@ -86,6 +91,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   const { top } = useSafeAreaInsets()
   const shouldDisplayHeader = withGoBack || withSkipAction
   const placeholderHeight = shouldDisplayHeader ? headerHeight : top
+  const onPressAccessibilityRole = accessibilityRoleInternalNavigation()
 
   return (
     <Page>
@@ -130,6 +136,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               disabled={buttonPrimary.disabled}
               icon={buttonPrimary.icon}
               accessibilityLabel={buttonPrimary.accessibilityLabel}
+              accessibilityRole={buttonPrimary.accessibilityRole ?? onPressAccessibilityRole}
             />
           ) : null}
 
@@ -172,6 +179,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               disabled={buttonSecondary.disabled}
               icon={buttonSecondary.icon}
               accessibilityLabel={buttonSecondary.accessibilityLabel}
+              accessibilityRole={buttonSecondary.accessibilityRole ?? onPressAccessibilityRole}
             />
           ) : null}
 
@@ -214,6 +222,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               disabled={buttonTertiary.disabled}
               icon={buttonTertiary.icon}
               accessibilityLabel={buttonTertiary.accessibilityLabel}
+              accessibilityRole={buttonTertiary.accessibilityRole ?? onPressAccessibilityRole}
             />
           ) : null}
 

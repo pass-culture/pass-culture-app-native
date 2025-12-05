@@ -444,6 +444,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
       >
         <View
           accessibilityLabel="Supprimer mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -529,6 +530,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         </View>
         <View
           accessibilityLabel="Annuler"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

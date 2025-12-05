@@ -228,6 +228,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Continuer la vérification"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -313,6 +314,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Abandonner la vérification"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

@@ -188,6 +188,7 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Confirmer la demande"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

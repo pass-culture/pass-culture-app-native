@@ -442,6 +442,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="ButtonSecondary"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

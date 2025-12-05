@@ -329,6 +329,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Retourner sur mon profil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -414,6 +415,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Désactiver mes notifications"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
