@@ -260,7 +260,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               }
             >
               <View
-                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityLabel="Confirmation de ta demande - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -309,7 +309,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Confirmation de ta demande complété"
+                testID="Confirmation de ta demande - complété"
               >
                 <View
                   style={
@@ -502,7 +502,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 }
               />
               <View
-                accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Choisis ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -552,7 +552,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Choisis ta nouvelle adresse e-mail non complété"
+                testID="Choisis ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -750,7 +750,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               }
             >
               <View
-                accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -799,7 +799,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Validation de ta nouvelle adresse e-mail non complété"
+                testID="Validation de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -1158,7 +1158,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 }
               />
               <View
-                accessibilityLabel="Confirme ta demande non complété"
+                accessibilityLabel="Confirme ta demande - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1207,7 +1207,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Confirme ta demande non complété"
+                testID="Confirme ta demande - non complété"
               >
                 <View
                   style={
@@ -1410,7 +1410,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               }
             >
               <View
-                accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Choix de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1460,7 +1460,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Choix de ta nouvelle adresse e-mail non complété"
+                testID="Choix de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -1642,7 +1642,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               }
             >
               <View
-                accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1691,7 +1691,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Validation de ta nouvelle adresse e-mail non complété"
+                testID="Validation de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -2033,7 +2033,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               }
             >
               <View
-                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityLabel="Confirmation de ta demande - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -2082,7 +2082,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Confirmation de ta demande complété"
+                testID="Confirmation de ta demande - complété"
               >
                 <View
                   style={
@@ -2258,7 +2258,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               }
             >
               <View
-                accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
+                accessibilityLabel="Choix de ta nouvelle adresse e-mail - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -2308,7 +2308,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Choix de ta nouvelle adresse e-mail complété"
+                testID="Choix de ta nouvelle adresse e-mail - complété"
               >
                 <View
                   style={
@@ -2496,7 +2496,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 }
               />
               <View
-                accessibilityLabel="Valide ta nouvelle adresse non complété"
+                accessibilityLabel="Valide ta nouvelle adresse - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -2545,7 +2545,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     },
                   ]
                 }
-                testID="Valide ta nouvelle adresse non complété"
+                testID="Valide ta nouvelle adresse - non complété"
               >
                 <View
                   style={
@@ -2903,7 +2903,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityLabel="Confirmation de ta demande - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -2952,7 +2952,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Confirmation de ta demande complété"
+                testID="Confirmation de ta demande - complété"
               >
                 <View
                   style={
@@ -3128,7 +3128,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Création de ton mot de passe complété"
+                accessibilityLabel="Création de ton mot de passe - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -3178,7 +3178,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Création de ton mot de passe complété"
+                testID="Création de ton mot de passe - complété"
               >
                 <View
                   style={
@@ -3370,7 +3370,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 }
               />
               <View
-                accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Choisis ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -3420,7 +3420,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Choisis ta nouvelle adresse e-mail non complété"
+                testID="Choisis ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -3618,7 +3618,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -3667,7 +3667,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Validation de ta nouvelle adresse e-mail non complété"
+                testID="Validation de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -4026,7 +4026,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 }
               />
               <View
-                accessibilityLabel="Confirme ta demande non complété"
+                accessibilityLabel="Confirme ta demande - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4075,7 +4075,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Confirme ta demande non complété"
+                testID="Confirme ta demande - non complété"
               >
                 <View
                   style={
@@ -4278,7 +4278,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Création de ton mot de passe non complété"
+                accessibilityLabel="Création de ton mot de passe - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4328,7 +4328,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Création de ton mot de passe non complété"
+                testID="Création de ton mot de passe - non complété"
               >
                 <View
                   style={
@@ -4514,7 +4514,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Choix de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4564,7 +4564,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Choix de ta nouvelle adresse e-mail non complété"
+                testID="Choix de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -4746,7 +4746,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -4795,7 +4795,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Validation de ta nouvelle adresse e-mail non complété"
+                testID="Validation de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -5137,7 +5137,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityLabel="Confirmation de ta demande - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5186,7 +5186,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Confirmation de ta demande complété"
+                testID="Confirmation de ta demande - complété"
               >
                 <View
                   style={
@@ -5379,7 +5379,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 }
               />
               <View
-                accessibilityLabel="Crée ton mot de passe non complété"
+                accessibilityLabel="Crée ton mot de passe - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5429,7 +5429,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Crée ton mot de passe non complété"
+                testID="Crée ton mot de passe - non complété"
               >
                 <View
                   style={
@@ -5631,7 +5631,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Choix de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Choix de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5681,7 +5681,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Choix de ta nouvelle adresse e-mail non complété"
+                testID="Choix de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -5863,7 +5863,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityLabel="Validation de ta nouvelle adresse e-mail - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -5912,7 +5912,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Validation de ta nouvelle adresse e-mail non complété"
+                testID="Validation de ta nouvelle adresse e-mail - non complété"
               >
                 <View
                   style={
@@ -6254,7 +6254,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityLabel="Confirmation de ta demande - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -6303,7 +6303,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Confirmation de ta demande complété"
+                testID="Confirmation de ta demande - complété"
               >
                 <View
                   style={
@@ -6479,7 +6479,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Création de ton mot de passe complété"
+                accessibilityLabel="Création de ton mot de passe - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -6529,7 +6529,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Création de ton mot de passe complété"
+                testID="Création de ton mot de passe - complété"
               >
                 <View
                   style={
@@ -6704,7 +6704,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               }
             >
               <View
-                accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
+                accessibilityLabel="Choix de ta nouvelle adresse e-mail - complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -6754,7 +6754,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Choix de ta nouvelle adresse e-mail complété"
+                testID="Choix de ta nouvelle adresse e-mail - complété"
               >
                 <View
                   style={
@@ -6942,7 +6942,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 }
               />
               <View
-                accessibilityLabel="Valide ta nouvelle adresse non complété"
+                accessibilityLabel="Valide ta nouvelle adresse - non complété"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -6991,7 +6991,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     },
                   ]
                 }
-                testID="Valide ta nouvelle adresse non complété"
+                testID="Valide ta nouvelle adresse - non complété"
               >
                 <View
                   style={

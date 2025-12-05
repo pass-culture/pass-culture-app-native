@@ -339,6 +339,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Renvoyer l’email"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

@@ -460,6 +460,7 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Confirmer et envoyer les informations"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -537,6 +538,7 @@ exports[`<ActivationProfileRecap /> should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Modifier mes informations"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

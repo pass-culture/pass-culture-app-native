@@ -114,6 +114,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
     >
       <View
         accessibilityLabel="Télécharger la dernière version"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

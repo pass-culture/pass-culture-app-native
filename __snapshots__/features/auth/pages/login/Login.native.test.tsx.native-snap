@@ -546,6 +546,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         >
           <View
             accessibilityLabel="Mot de passe oublié ?"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -654,6 +655,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         </View>
         <View
           accessibilityLabel="Se connecter"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -796,6 +798,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           </View>
           <View
             accessibilityLabel="Se connecter avec Google"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

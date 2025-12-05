@@ -22,6 +22,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -144,9 +145,14 @@ export const ActivationProfileRecap = () => {
               isLoading={isPending}
               wording="Confirmer"
               accessibilityLabel="Confirmer et envoyer les informations"
+              accessibilityRole={accessibilityRoleInternalNavigation()}
               onPress={submit}
             />
-            <ButtonSecondary wording="Modifier mes informations" onPress={updateInformation} />
+            <ButtonSecondary
+              wording="Modifier mes informations"
+              onPress={updateInformation}
+              accessibilityRole={accessibilityRoleInternalNavigation()}
+            />
           </ViewGap>
         )
       }

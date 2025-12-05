@@ -25,4 +25,4 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Continuer'
 
 - assertVisible: "C'est très rapide\_!"
-- tapOn: 'Profil non complété'
+- tapOn: 'Profil - non complété'

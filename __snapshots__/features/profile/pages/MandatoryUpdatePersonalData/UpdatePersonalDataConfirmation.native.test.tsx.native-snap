@@ -201,6 +201,7 @@ exports[`<UpdatePersonalDataConfirmation /> should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Terminer"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

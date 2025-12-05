@@ -12,6 +12,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
@@ -123,6 +124,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
+          accessibilityRole={accessibilityRoleInternalNavigation()}
           accessibilityLabel={accessibilityLabelForNextStep}
           disabled={!isValid}
           onPress={handleSubmit(onGoToNextStep)}

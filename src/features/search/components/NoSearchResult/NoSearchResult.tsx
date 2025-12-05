@@ -70,7 +70,11 @@ export const NoSearchResult = ({
           </ErrorDescriptionContainer>
         </ContainerText>
         <View>
-          <ButtonPrimary wording={props.ctaWording} onPress={props.onPress} />
+          <ButtonPrimary
+            wording={props.ctaWording}
+            onPress={props.onPress}
+            accessibilityRole={AccessibilityRole.BUTTON}
+          />
         </View>
       </Container>
     </NoSearchResultsWrapper>

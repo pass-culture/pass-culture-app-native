@@ -10,6 +10,7 @@ import {
 import { Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -93,10 +94,12 @@ export const BonificationRecap = () => {
             type="submit"
             wording="Envoyer"
             accessibilityLabel="Envoyer les informations"
+            accessibilityRole={accessibilityRoleInternalNavigation()}
             onPress={submit}
             disabled={!accepted}
           />
           <ButtonSecondary
+            accessibilityRole={accessibilityRoleInternalNavigation()}
             type="button"
             wording="Modifier mes informations"
             onPress={() => {

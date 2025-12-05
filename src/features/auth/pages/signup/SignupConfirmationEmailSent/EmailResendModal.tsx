@@ -5,6 +5,7 @@ import { ApiError } from 'api/ApiError'
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
 import { useEmailValidationRemainingResendsQuery } from 'features/auth/queries/useEmailValidationRemainingResendQuery'
 import { useResendEmailValidationMutation } from 'features/auth/queries/useResendEmailValidationMutation'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -115,6 +116,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
           </React.Fragment>
         )}
         <ButtonPrimary
+          accessibilityRole={AccessibilityRole.BUTTON}
           wording="Demander un nouveau lien"
           onPress={onResendPress}
           disabled={isPending || !hasAttemptsLeft || isResendCooldownActive}

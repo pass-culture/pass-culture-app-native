@@ -202,6 +202,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
       >
         <View
           accessibilityLabel="Voir ma réservation"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -287,6 +288,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
         </View>
         <View
           accessibilityLabel="Partager l’offre"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

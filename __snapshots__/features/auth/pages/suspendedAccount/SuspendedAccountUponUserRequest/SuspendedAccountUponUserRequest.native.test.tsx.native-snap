@@ -222,6 +222,7 @@ exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
       >
         <View
           accessibilityLabel="Réactiver mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

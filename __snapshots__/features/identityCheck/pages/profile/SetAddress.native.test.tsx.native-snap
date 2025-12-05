@@ -428,6 +428,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Continuer vers le statut"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

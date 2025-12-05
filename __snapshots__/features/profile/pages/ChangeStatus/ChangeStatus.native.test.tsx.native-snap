@@ -1929,6 +1929,7 @@ exports[`<ChangeStatus/> from mandatory udpate personal data screen should rende
     >
       <View
         accessibilityLabel="Valider mes informations et continuer"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -3986,6 +3987,7 @@ exports[`<ChangeStatus/> without previous screen should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Valider mes informations et continuer"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -6043,6 +6045,7 @@ exports[`<ChangeStatus/> without previous screen should show loading component 1
     >
       <View
         accessibilityLabel="Valider mes informations et continuer"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

@@ -15,55 +15,55 @@ describe('StepButton', () => {
   it('should disable the StepButton for COMPLETED state', () => {
     renderStepButton(StepButtonState.COMPLETED)
 
-    expect(screen.getByTestId('Identification complété')).toBeDisabled()
+    expect(screen.getByTestId('Identification - complété')).toBeDisabled()
   })
 
   it('should enable the StepButton for CURRENT state', () => {
     renderStepButton(StepButtonState.CURRENT)
 
-    expect(screen.getByTestId('Identification non complété')).toBeEnabled()
+    expect(screen.getByTestId('Identification - non complété')).toBeEnabled()
   })
 
   it('should disable StepButton for DISABLED state', () => {
     renderStepButton(StepButtonState.DISABLED)
 
-    expect(screen.getByTestId('Identification non complété')).toBeDisabled()
+    expect(screen.getByTestId('Identification - non complété')).toBeDisabled()
   })
 
   it('should disable the StepButton for CURRENT state when it has no behavior on press', () => {
     renderStepButton(StepButtonState.CURRENT, {})
 
-    expect(screen.getByTestId('Identification non complété')).toBeDisabled()
+    expect(screen.getByTestId('Identification - non complété')).toBeDisabled()
   })
 
   it('should enable StepButton for RETRY state', () => {
     renderStepButton(StepButtonState.RETRY)
 
-    expect(screen.getByTestId('Identification à essayer de nouveau')).toBeEnabled()
+    expect(screen.getByTestId('Identification - à essayer de nouveau')).toBeEnabled()
   })
 
   it('should show the right StepButton for COMPLETED state', () => {
     renderStepButton(StepButtonState.COMPLETED)
 
-    expect(screen.getByTestId('Identification complété')).toBeOnTheScreen()
+    expect(screen.getByTestId('Identification - complété')).toBeOnTheScreen()
   })
 
   it('should show the right StepButton for CURRENT state', () => {
     renderStepButton(StepButtonState.CURRENT)
 
-    expect(screen.getByTestId('Identification non complété')).toBeOnTheScreen()
+    expect(screen.getByTestId('Identification - non complété')).toBeOnTheScreen()
   })
 
   it('should show the right StepButton for DISABLED state', () => {
     renderStepButton(StepButtonState.DISABLED)
 
-    expect(screen.getByTestId('Identification non complété')).toBeOnTheScreen()
+    expect(screen.getByTestId('Identification - non complété')).toBeOnTheScreen()
   })
 
   it('should show the right StepButton for RETRY state', () => {
     renderStepButton(StepButtonState.RETRY)
 
-    expect(screen.getByTestId('Identification à essayer de nouveau')).toBeOnTheScreen()
+    expect(screen.getByTestId('Identification - à essayer de nouveau')).toBeOnTheScreen()
   })
 })
 

@@ -1,14 +1,11 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
-import { Platform } from 'react-native'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
-
-const isWeb = Platform.OS === 'web'
 
 export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps> = ({
   navigateTo,
@@ -48,11 +45,9 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
     }
   }, [navigate, push, reset, fromRef, withPush, withReset, params, screen])
 
-  const accessibilityRole = isWeb ? AccessibilityRole.LINK : AccessibilityRole.BUTTON
-
   return (
     <TouchableLink
-      accessibilityRole={accessibilityRole}
+      accessibilityRole={accessibilityRoleInternalNavigation()}
       handleNavigation={enableNavigate ? handleNavigation : undefined}
       onBeforeNavigate={onBeforeNavigate}
       onAfterNavigate={onAfterNavigate}

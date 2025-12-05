@@ -11,6 +11,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { SuggestedCity } from 'libs/place/types'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -94,12 +95,17 @@ export const ProfileInformationValidationUpdate = () => {
     />
   ) : (
     <ViewGap gap={4}>
-      <ButtonPrimary wording="Modifier mes informations" onPress={onChangeInformation} />
+      <ButtonPrimary
+        wording="Modifier mes informations"
+        onPress={onChangeInformation}
+        accessibilityRole={accessibilityRoleInternalNavigation()}
+      />
       <ButtonSecondary
         type="submit"
         wording="Confirmer"
         onPress={onSubmitProfile}
         isLoading={isLoading}
+        accessibilityRole={accessibilityRoleInternalNavigation()}
       />
     </ViewGap>
   )

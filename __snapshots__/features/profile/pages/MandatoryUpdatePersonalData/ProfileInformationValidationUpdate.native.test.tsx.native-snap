@@ -332,6 +332,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Modifier mes informations"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -409,6 +410,7 @@ exports[`ProfileInformationValidationUpdate should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Confirmer"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

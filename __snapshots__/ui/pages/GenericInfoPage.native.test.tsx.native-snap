@@ -146,6 +146,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Passer à la page suivante"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -442,6 +443,7 @@ exports[`<GenericInfoPage /> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="ButtonSecondary"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

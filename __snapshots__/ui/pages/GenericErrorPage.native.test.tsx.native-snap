@@ -134,6 +134,7 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Primary button"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -211,6 +212,7 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
       </View>
       <View
         accessibilityLabel="Tertiary button"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

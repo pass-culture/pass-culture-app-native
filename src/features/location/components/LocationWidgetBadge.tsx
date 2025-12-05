@@ -4,8 +4,10 @@ import styled from 'styled-components/native'
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -24,9 +26,17 @@ export const LocationWidgetBadge = () => {
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    locationTitle,
+    'Ouvrir la modale de localisation'
+  )
+
   return (
     <Container highlighted={isWidgetHighlighted}>
-      <LocationButton onPress={showLocationModal} testID="LocationWidgetBadgeButton">
+      <LocationButton
+        onPress={showLocationModal}
+        accessibilityRole={AccessibilityRole.BUTTON}
+        accessibilityLabel={computedAccessibilityLabel}>
         {isWidgetHighlighted ? (
           <LocationPointerHighlighted testID="location pointer highlighted" />
         ) : (

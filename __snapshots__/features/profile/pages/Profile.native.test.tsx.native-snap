@@ -37,14 +37,6 @@ exports[`Profile component should render correctly 1`] = `
           <View
             style={
               {
-                "borderBottomLeftRadius": 8,
-                "borderBottomRightRadius": 8,
-                "borderColor": "#90949d",
-                "borderStyle": "solid",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "borderWidth": 2,
-                "paddingHorizontal": 4,
                 "position": "absolute",
                 "right": 24,
                 "top": 40,
@@ -90,6 +82,7 @@ exports[`Profile component should render correctly 1`] = `
                     },
                     {
                       "alignItems": "center",
+                      "backgroundColor": "transparent",
                       "borderBottomLeftRadius": 24,
                       "borderBottomRightRadius": 24,
                       "borderTopLeftRadius": 24,
@@ -99,13 +92,15 @@ exports[`Profile component should render correctly 1`] = `
                       "maxWidth": 500,
                       "minHeight": 32,
                       "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
                       "paddingTop": 2,
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "transparent",
+                      "borderColor": "#6123df",
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
                     },
                   ],
                   {
@@ -128,7 +123,7 @@ exports[`Profile component should render correctly 1`] = `
                   numberOfLines={1}
                   style={
                     {
-                      "color": "#696a6f",
+                      "color": "#6123df",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -1662,6 +1657,8 @@ exports[`Profile component should render correctly 1`] = `
                 }
               />
               <View
+                accessibilityLabel="Partage le pass Culture - Recommande le bon plan à tes amis !"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1679,7 +1676,7 @@ exports[`Profile component should render correctly 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1698,6 +1695,7 @@ exports[`Profile component should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="Partage le pass Culture - Recommande le bon plan à tes amis !"
               >
                 <View
                   style={
@@ -1804,7 +1802,7 @@ exports[`Profile component should render correctly 1`] = `
                               }
                             }
                           >
-                            Recommande le bon plan à tes amis !
+                            Recommande le bon plan à tes amis !
                           </Text>
                         </View>
                       </View>
@@ -1903,6 +1901,7 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     >
                       <View
+                        accessibilityLabel="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -1921,7 +1920,7 @@ exports[`Profile component should render correctly 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         focusable={true}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -1943,6 +1942,7 @@ exports[`Profile component should render correctly 1`] = `
                             },
                           ]
                         }
+                        testID="Partager Instagram - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
                           gap={1}
@@ -1999,6 +1999,7 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     >
                       <View
+                        accessibilityLabel="Partager X - Ouvre dans une nouvelle fenêtre"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -2017,7 +2018,7 @@ exports[`Profile component should render correctly 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         focusable={true}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -2039,6 +2040,7 @@ exports[`Profile component should render correctly 1`] = `
                             },
                           ]
                         }
+                        testID="Partager X - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
                           gap={1}
@@ -2095,6 +2097,7 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     >
                       <View
+                        accessibilityLabel="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -2113,7 +2116,7 @@ exports[`Profile component should render correctly 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         focusable={true}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -2135,6 +2138,7 @@ exports[`Profile component should render correctly 1`] = `
                             },
                           ]
                         }
+                        testID="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
                           gap={1}
@@ -2191,6 +2195,7 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     >
                       <View
+                        accessibilityLabel="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                         accessibilityRole="link"
                         accessibilityState={
                           {
@@ -2209,7 +2214,7 @@ exports[`Profile component should render correctly 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         focusable={true}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -2231,6 +2236,7 @@ exports[`Profile component should render correctly 1`] = `
                             },
                           ]
                         }
+                        testID="Partager Facebook - Ouvre dans une nouvelle fenêtre"
                       >
                         <View
                           gap={1}

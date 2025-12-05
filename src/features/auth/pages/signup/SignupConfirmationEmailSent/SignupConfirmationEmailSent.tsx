@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { EmailResendModal } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailResendModal'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
@@ -17,6 +18,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
 
   const additionalCTA = (
     <ButtonTertiaryBlack
+      accessibilityRole={AccessibilityRole.BUTTON}
       wording="Recevoir un nouveau lien"
       justifyContent="flex-start"
       onPress={showModal}
