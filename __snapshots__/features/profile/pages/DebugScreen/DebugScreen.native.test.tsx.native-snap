@@ -454,6 +454,7 @@ exports[`DebugScreen should render correctly 1`] = `
                 </Text>
                 <View
                   accessibilityLabel="Copier dans le presse-papier"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -502,7 +503,6 @@ exports[`DebugScreen should render correctly 1`] = `
                       "top": 0,
                     }
                   }
-                  testID="Copier dans le presse-papier"
                 >
                   <View
                     height={20}

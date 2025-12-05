@@ -7,6 +7,7 @@ import { styled } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
@@ -96,7 +97,7 @@ export const DebugScreen = () => {
               </Typo.Button>
             ))}
             <ClipboardButton
-              testID="Copier dans le presse-papier"
+              accessibilityRole={AccessibilityRole.BUTTON}
               accessibilityLabel="Copier dans le presse-papier"
               onPress={copyToClipboard}>
               <StyledDuplicate />

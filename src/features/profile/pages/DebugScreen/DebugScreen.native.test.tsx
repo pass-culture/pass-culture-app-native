@@ -53,7 +53,7 @@ describe('DebugScreen', () => {
   it('should call copyToClipboard when press "Copier dans le presse-papier" button', async () => {
     render(<DebugScreen />)
     await enterDescription()
-    const copyButton = screen.getByTestId('Copier dans le presse-papier')
+    const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)
@@ -85,7 +85,7 @@ describe('DebugScreen', () => {
     render(<DebugScreen />)
     await enterDescription()
 
-    const copyButton = screen.getByTestId('Copier dans le presse-papier')
+    const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
     expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
