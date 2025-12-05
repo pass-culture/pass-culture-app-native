@@ -18,7 +18,6 @@ import { SubscriptionContextProvider } from 'features/identityCheck/context/Subs
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
-import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
 import { LocationWrapper } from 'libs/location/location'
@@ -67,22 +66,20 @@ export function App() {
                       <LocationWrapper>
                         <AccessibilityFiltersWrapper>
                           <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <AppWebHead />
-                                      <ScreenErrorProvider>
-                                        <Suspense fallback={<LoadingPage />}>
-                                          <AppNavigationContainer />
-                                        </Suspense>
-                                      </ScreenErrorProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <AppWebHead />
+                                    <ScreenErrorProvider>
+                                      <Suspense fallback={<LoadingPage />}>
+                                        <AppNavigationContainer />
+                                      </Suspense>
+                                    </ScreenErrorProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
                           </FavoritesWrapper>
                         </AccessibilityFiltersWrapper>
                       </LocationWrapper>

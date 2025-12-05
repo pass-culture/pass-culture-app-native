@@ -17,7 +17,8 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
+import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
+import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign/campaign'
 import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
@@ -56,7 +57,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const { dismissModal, dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
   const { navigate } = useNavigation<UseNavigationType>()
-  const { logOfferConversion } = useLogOfferConversion()
   const route = useRoute<UseRouteType<'Offer'>>()
   const selectedStock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -69,55 +69,40 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     : undefined
   const playlistType = route.params?.playlistType
 
-  const onBookOfferSuccess = useCallback(
-    ({ bookingId }: { bookingId: number }) => {
-      dismissModal()
+  const onBookOfferSuccess = ({ bookingId }: { bookingId: number }) => {
+    dismissModal()
 
-      if (offerId) {
-        void analytics.logBookingConfirmation({
-          ...apiRecoParams,
-          offerId: offerId.toString(),
-          bookingId: bookingId.toString(),
-          fromOfferId: fromMultivenueOfferId ? undefined : fromOfferId?.toString(),
-          fromMultivenueOfferId: fromMultivenueOfferId?.toString(),
-          playlistType,
-        })
-        if (isFromSearch && algoliaOfferId) {
-          logOfferConversion(algoliaOfferId)
-        }
-        if (offer?.subcategoryId === SubcategoryIdEnum.SEANCE_CINE) {
-          void analytics.logHasBookedCineScreeningOffer({
-            offerId,
-          })
-        }
-        if (!!selectedStock && !!offer?.subcategoryId) {
-          void campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
-            af_offer_id: offerId,
-            af_booking_id: selectedStock.id,
-            af_price: selectedStock.price,
-            af_category: offer.subcategoryId,
-          })
-        }
-        runAfterInteractionsMobile(() => {
-          navigate('BookingConfirmation', { offerId, bookingId })
+    if (offerId) {
+      void analytics.logBookingConfirmation({
+        ...apiRecoParams,
+        offerId: offerId.toString(),
+        bookingId: bookingId.toString(),
+        fromOfferId: fromMultivenueOfferId ? undefined : fromOfferId?.toString(),
+        fromMultivenueOfferId: fromMultivenueOfferId?.toString(),
+        playlistType,
+      })
+      if (isFromSearch && algoliaOfferId) {
+        const currentQueryID = algoliaAnalyticsSelectors.selectCurrentQueryID()
+        void logOfferConversion({ objectID: algoliaOfferId, queryID: currentQueryID })
+      }
+      if (offer?.subcategoryId === SubcategoryIdEnum.SEANCE_CINE) {
+        void analytics.logHasBookedCineScreeningOffer({
+          offerId,
         })
       }
-    },
-    [
-      dismissModal,
-      offerId,
-      apiRecoParams,
-      fromOfferId,
-      fromMultivenueOfferId,
-      playlistType,
-      isFromSearch,
-      algoliaOfferId,
-      selectedStock,
-      offer?.subcategoryId,
-      navigate,
-      logOfferConversion,
-    ]
-  )
+      if (!!selectedStock && !!offer?.subcategoryId) {
+        void campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
+          af_offer_id: offerId,
+          af_booking_id: selectedStock.id,
+          af_price: selectedStock.price,
+          af_category: offer.subcategoryId,
+        })
+      }
+      runAfterInteractionsMobile(() => {
+        navigate('BookingConfirmation', { offerId, bookingId })
+      })
+    }
+  }
 
   const onBookOfferError = useCallback(
     (error?: ApiError | Error) => {
@@ -130,7 +115,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         if (errorMessage) {
           message = errorMessage
           if (typeof offerId === 'number') {
-            analytics.logBookingError(offerId, content.code)
+            void analytics.logBookingError(offerId, content.code)
           }
         }
       }
@@ -185,7 +170,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   useEffect(() => {
     if (visible) {
-      analytics.logClickBookOffer({ offerId })
+      void analytics.logClickBookOffer({ offerId })
     }
   }, [visible, offerId])
 
@@ -205,7 +190,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     if (isPending && title.includes('Détails de la réservation')) {
       showBookingCloseInformationModal()
     }
-    analytics.logCancelBookingFunnel(step, offerId)
+    void analytics.logCancelBookingFunnel(step, offerId)
   }, [
     dismissModal,
     bookingState.offerId,

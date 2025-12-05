@@ -12,10 +12,10 @@ import { Artist, Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
-import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { algoliaAnalyticsActions } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
@@ -43,7 +43,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
-  const { setCurrentQueryID } = useSearchAnalyticsState()
+  const { setCurrentQueryID } = algoliaAnalyticsActions
+
   const {
     data: { aroundPrecision },
   } = useRemoteConfigQuery()

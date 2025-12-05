@@ -15,6 +15,8 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const searchId = uuidv4()
 const mockUseSearch = jest.fn(() => ({
   searchState: { ...initialSearchState, searchId },

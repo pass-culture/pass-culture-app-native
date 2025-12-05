@@ -11,6 +11,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const mockAlgoliaVenue: AlgoliaVenue = {
   objectID: '5543',
   name: 'UGC cinéma',
@@ -167,6 +169,12 @@ describe('<SearchVenueItem />', () => {
 
 const renderSearchVenueItem = (venue: AlgoliaVenue, searchId?: string) => {
   render(
-    <SearchVenueItem width={ITEM_WIDTH} height={ITEM_HEIGHT} venue={venue} searchId={searchId} />
+    <SearchVenueItem
+      width={ITEM_WIDTH}
+      height={ITEM_HEIGHT}
+      venue={venue}
+      index={0}
+      searchId={searchId}
+    />
   )
 }
