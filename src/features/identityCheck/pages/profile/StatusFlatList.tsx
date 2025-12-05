@@ -10,8 +10,8 @@ import { useActivityTypes } from 'features/identityCheck/queries/useActivityType
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
-// eslint-disable-next-line local-rules/no-theme-from-theme
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+// eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
