@@ -1,4 +1,4 @@
-import { Hit } from '@algolia/client-search'
+import { Hit } from 'algoliasearch/lite'
 import React, { Ref } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'

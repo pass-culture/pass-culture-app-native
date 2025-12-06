@@ -1,5 +1,5 @@
-import { Hit } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
+import { Hit } from 'algoliasearch/lite'
 import { uniqBy } from 'lodash'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'

@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
 

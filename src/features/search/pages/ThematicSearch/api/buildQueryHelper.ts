@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery } from '@algolia/client-search'
+import { SearchForHits } from 'algoliasearch/lite'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -23,21 +23,19 @@ export const buildQueryHelper = ({
   hitsPerPage,
   distinct,
   withRadius = true,
-}: ThematicSearchQueryParams): MultipleQueriesQuery => ({
+}: ThematicSearchQueryParams): SearchForHits => ({
   indexName,
   query: '',
-  params: {
-    attributesToHighlight: [],
-    attributesToRetrieve: offerAttributesToRetrieve,
-    ...(userLocation
-      ? {
-          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-          aroundRadius: withRadius ? DEFAULT_RADIUS * 1000 : 'all',
-        }
-      : {}),
-    ...(filters && { filters }),
-    ...(numericFilters && { numericFilters }),
-    ...(distinct && { distinct }),
-    hitsPerPage: hitsPerPage ?? 50,
-  },
+  attributesToHighlight: [],
+  attributesToRetrieve: offerAttributesToRetrieve,
+  ...(userLocation
+    ? {
+        aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+        aroundRadius: withRadius ? DEFAULT_RADIUS * 1000 : 'all',
+      }
+    : {}),
+  ...(filters && { filters }),
+  ...(numericFilters && { numericFilters }),
+  ...(distinct && { distinct }),
+  hitsPerPage: hitsPerPage ?? 50,
 })

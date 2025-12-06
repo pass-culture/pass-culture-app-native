@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery } from '@algolia/client-search'
+import { SearchForHits } from 'algoliasearch/lite'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
@@ -20,7 +20,7 @@ export const fetchConcertsAndFestivalsOffers = async ({
     userLocation,
   }
 
-  const queries: MultipleQueriesQuery[] = [
+  const queries: SearchForHits[] = [
     buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.CONCERT}" AND NOT offer.last30DaysBookingsRange:"very-low"`,

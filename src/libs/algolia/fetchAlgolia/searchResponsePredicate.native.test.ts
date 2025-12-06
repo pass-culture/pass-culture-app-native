@@ -1,4 +1,4 @@
-import { SearchForFacetValuesResponse, SearchResponse } from '@algolia/client-search'
+import { SearchForFacetValuesResponse, SearchResponse } from 'algoliasearch/lite'
 
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 

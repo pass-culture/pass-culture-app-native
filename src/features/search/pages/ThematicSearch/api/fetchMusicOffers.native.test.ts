@@ -1,17 +1,17 @@
-import algoliasearch from '__mocks__/algoliasearch'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchMusicOffers } from 'features/search/pages/ThematicSearch/api/fetchMusicOffers'
+import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Position } from 'libs/location/location'
 
-describe('fetchMusicOffers', () => {
-  const { multipleQueries } = algoliasearch()
+const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries').mockResolvedValue([])
 
+describe('fetchMusicOffers', () => {
   it('should execute `multipleQueries` to fetch music offers with productionB index when FF EnableReplicaAlgolia is on', async () => {
     const userLocation = { latitude: 1, longitude: 2 }
     const queries = buildQueries({ userLocation, isReplicaAlgoliaIndexActive: true })
     await fetchMusicOffers({ userLocation, isReplicaAlgoliaIndexActive: true })
 
-    expect(multipleQueries).toHaveBeenNthCalledWith(1, queries)
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, queries)
   })
 
   it('should execute `multipleQueries` to fetch music offers', async () => {
@@ -19,7 +19,7 @@ describe('fetchMusicOffers', () => {
     const queries = buildQueries({ userLocation, isReplicaAlgoliaIndexActive: false })
     await fetchMusicOffers({ userLocation, isReplicaAlgoliaIndexActive: false })
 
-    expect(multipleQueries).toHaveBeenNthCalledWith(1, queries)
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, queries)
   })
 })
 

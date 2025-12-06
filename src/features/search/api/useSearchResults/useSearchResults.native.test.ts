@@ -1,6 +1,5 @@
-import { Hit } from '@algolia/client-search'
+import { Hit } from 'algoliasearch/lite'
 
-import algoliasearch from '__mocks__/algoliasearch'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
@@ -8,6 +7,7 @@ import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
+import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import {
   mockedAlgoliaResponse,
@@ -18,7 +18,7 @@ import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/lo
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-const { multipleQueries } = algoliasearch()
+const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries').mockResolvedValue([])
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -71,23 +71,24 @@ describe('useSearchResults', () => {
       renderUseSearchResults()
 
       await waitFor(() => {
-        expect(multipleQueries).toHaveBeenNthCalledWith(1, [
+        expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
           {
             indexName: 'algoliaOffersIndexName',
-            params: {
-              attributesToHighlight: [],
-              attributesToRetrieve: offerAttributesToRetrieve,
-              clickAnalytics: true,
-              facetFilters: [['offer.isEducational:false']],
-              hitsPerPage: 20,
-              numericFilters: [['offer.prices: 0 TO 300']],
-              page: 0,
-            },
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+            facetFilters: [['offer.isEducational:false']],
+            hitsPerPage: 20,
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
             query: '',
           },
           {
             indexName: 'algoliaVenuesIndexPlaylistSearch',
-            params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+            aroundRadius: 'all',
+            clickAnalytics: true,
+            hitsPerPage: 35,
+            page: 0,
             query: '',
           },
           {
@@ -99,37 +100,31 @@ describe('useSearchResults', () => {
               'offer.showType',
             ],
             indexName: 'algoliaOffersIndexName',
-            params: {
-              facetFilters: [['offer.isEducational:false']],
-              hitsPerPage: 20,
-              numericFilters: [['offer.prices: 0 TO 300']],
-              page: 0,
-            },
+            facetFilters: [['offer.isEducational:false']],
+            hitsPerPage: 20,
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
             query: '',
           },
           {
             indexName: 'algoliaOffersIndexName',
-            params: {
-              attributesToHighlight: [],
-              attributesToRetrieve: offerAttributesToRetrieve,
-              clickAnalytics: true,
-              distinct: false,
-              facetFilters: [['offer.isEducational:false']],
-              hitsPerPage: 100,
-              numericFilters: [['offer.prices: 0 TO 300']],
-              page: 0,
-              typoTolerance: false,
-            },
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+            distinct: false,
+            facetFilters: [['offer.isEducational:false']],
+            hitsPerPage: 100,
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            typoTolerance: false,
             query: '',
           },
           {
             indexName: 'algoliaOffersIndexName',
-            params: {
-              attributesToRetrieve: ['artists'],
-              facetFilters: [['offer.isEducational:false']],
-              hitsPerPage: 100,
-              numericFilters: [['offer.prices: 0 TO 300']],
-            },
+            attributesToRetrieve: ['artists'],
+            facetFilters: [['offer.isEducational:false']],
+            hitsPerPage: 100,
+            numericFilters: [['offer.prices: 0 TO 300']],
             query: '',
           },
         ])
@@ -141,7 +136,7 @@ describe('useSearchResults', () => {
 
       rerender({ searchState: initialSearchState, dispatch: mockDispatch })
       await waitFor(() => {
-        expect(multipleQueries).toHaveBeenCalledTimes(1)
+        expect(mockMultipleQueries).toHaveBeenCalledTimes(1)
       })
     })
 

@@ -32,6 +32,7 @@ module.exports = {
     '^theme(.*)$': '<rootDir>/src/theme$1',
     '^types(.*)$': '<rootDir>/src/types$1',
     '^ui(.*)$': '<rootDir>/src/ui$1',
+    '^algoliasearch/lite$': '<rootDir>/__mocks__/algoliasearch.ts',
   },
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
   setupFiles: [

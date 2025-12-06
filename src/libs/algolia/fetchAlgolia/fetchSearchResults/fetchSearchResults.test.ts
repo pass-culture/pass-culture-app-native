@@ -1,18 +1,16 @@
-import algoliasearch from 'algoliasearch'
-
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
-jest.mock('algoliasearch')
-
-const mockMultipleQueries = algoliasearch('', '').multipleQueries
+jest.mock('libs/algolia/fetchAlgolia/clients')
+const mockSearch = client.search as jest.Mock
 
 const userPosition = { latitude: 42, longitude: 43 }
 
@@ -67,6 +65,10 @@ const aroundPlaceGeolocatedParams = {
 }
 
 describe('fetchSearchResults', () => {
+  beforeEach(() => {
+    mockSearch.mockResolvedValue({ results: [] })
+  })
+
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
@@ -78,27 +80,26 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        aroundRadius: 'all',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -111,32 +112,28 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user is not sharing its position', () => {
@@ -150,27 +147,26 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        aroundRadius: 'all',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -178,37 +174,33 @@ describe('fetchSearchResults', () => {
           'offer.nativeCategoryId',
           'offer.showType',
         ],
-        indexName: 'algoliaOffersIndexName',
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
@@ -222,36 +214,30 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '42, 43',
-          aroundRadius: 'all',
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        aroundLatLng: '42, 43',
+        aroundRadius: 'all',
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        params: {
-          aroundRadius: 'all',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        aroundRadius: 'all',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          aroundRadius: 'all',
-          aroundLatLng: '42, 43',
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        aroundRadius: 'all',
+        aroundLatLng: '42, 43',
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -264,36 +250,32 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '42, 43',
-          aroundRadius: 'all',
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        aroundLatLng: '42, 43',
+        aroundRadius: 'all',
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-          aroundLatLng: '42, 43',
-          aroundRadius: 'all',
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
+        aroundLatLng: '42, 43',
+        aroundRadius: 'all',
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', () => {
@@ -307,37 +289,31 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '42, 43',
-          aroundRadius: 100000,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        aroundLatLng: '42, 43',
+        aroundRadius: 100000,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        params: {
-          aroundRadius: 100000,
-          aroundLatLng: '42, 43',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        aroundRadius: 100000,
+        aroundLatLng: '42, 43',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          aroundRadius: 100000,
-          aroundLatLng: '42, 43',
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        aroundRadius: 100000,
+        aroundLatLng: '42, 43',
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -350,36 +326,32 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '42, 43',
-          aroundRadius: 100000,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        aroundLatLng: '42, 43',
+        aroundRadius: 100000,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-          aroundLatLng: '42, 43',
-          aroundRadius: 100000,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
+        aroundLatLng: '42, 43',
+        aroundRadius: 100000,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', () => {
@@ -393,37 +365,31 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '5.16176, -52.669726',
-          aroundRadius: 100000,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        aroundLatLng: '5.16176, -52.669726',
+        aroundRadius: 100000,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        params: {
-          aroundRadius: 100000,
-          aroundLatLng: '5.16176, -52.669726',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        aroundRadius: 100000,
+        aroundLatLng: '5.16176, -52.669726',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          aroundRadius: 100000,
-          aroundLatLng: '5.16176, -52.669726',
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        aroundRadius: 100000,
+        aroundLatLng: '5.16176, -52.669726',
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -436,36 +402,32 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '5.16176, -52.669726',
-          aroundRadius: 100000,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        aroundLatLng: '5.16176, -52.669726',
+        aroundRadius: 100000,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-          aroundLatLng: '5.16176, -52.669726',
-          aroundRadius: 100000,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
+        aroundLatLng: '5.16176, -52.669726',
+        aroundRadius: 100000,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', () => {
@@ -479,37 +441,31 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '5.16176, -52.669726',
-          aroundRadius: 100000,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        aroundLatLng: '5.16176, -52.669726',
+        aroundRadius: 100000,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        params: {
-          aroundRadius: 100000,
-          aroundLatLng: '5.16176, -52.669726',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        aroundRadius: 100000,
+        aroundLatLng: '5.16176, -52.669726',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          aroundRadius: 100000,
-          aroundLatLng: '5.16176, -52.669726',
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        aroundRadius: 100000,
+        aroundLatLng: '5.16176, -52.669726',
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -522,36 +478,32 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          aroundLatLng: '5.16176, -52.669726',
-          aroundRadius: 100000,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        aroundLatLng: '5.16176, -52.669726',
+        aroundRadius: 100000,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-          aroundLatLng: '5.16176, -52.669726',
-          aroundRadius: 100000,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
+        aroundLatLng: '5.16176, -52.669726',
+        aroundRadius: 100000,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', () => {
@@ -568,33 +520,27 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
-        params: {
-          aroundRadius: 100000,
-          aroundLatLng: '5.16186, -52.669736',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        aroundRadius: 100000,
+        aroundLatLng: '5.16186, -52.669736',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -602,41 +548,37 @@ describe('fetchSearchResults', () => {
           'offer.nativeCategoryId',
           'offer.showType',
         ],
-        indexName: 'algoliaOffersIndexName',
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['artists.name:searched query'],
-            ['venue.id:5543'],
-          ],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['artists.name:searched query'],
+          ['venue.id:5543'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', () => {
@@ -653,33 +595,27 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: {
-          aroundRadius: 100000,
-          aroundLatLng: '5.16186, -52.669736',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        aroundRadius: 100000,
+        aroundLatLng: '5.16186, -52.669736',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -687,41 +623,37 @@ describe('fetchSearchResults', () => {
           'offer.nativeCategoryId',
           'offer.showType',
         ],
-        indexName: 'algoliaOffersIndexName',
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['artists.name:searched query'],
-            ['venue.id:5543'],
-          ],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['artists.name:searched query'],
+          ['venue.id:5543'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with accessibilities filters when user has selected accessibility filters', () => {
@@ -740,41 +672,35 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['venue.isAudioDisabilityCompliant:true'],
-            ['venue.isMentalDisabilityCompliant:true'],
-          ],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['venue.isAudioDisabilityCompliant:true'],
+          ['venue.isMentalDisabilityCompliant:true'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: {
-          facetFilters: [['audio_disability:true'], ['mental_disability:true']],
-          aroundRadius: 'all',
-          clickAnalytics: true,
-          hitsPerPage: 35,
-          page: 0,
-        },
+        facetFilters: [['audio_disability:true'], ['mental_disability:true']],
+        aroundRadius: 'all',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['venue.isAudioDisabilityCompliant:true'],
-            ['venue.isMentalDisabilityCompliant:true'],
-          ],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['venue.isAudioDisabilityCompliant:true'],
+          ['venue.isMentalDisabilityCompliant:true'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -782,46 +708,42 @@ describe('fetchSearchResults', () => {
           'offer.nativeCategoryId',
           'offer.showType',
         ],
-        indexName: 'algoliaOffersIndexName',
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['venue.isAudioDisabilityCompliant:true'],
-            ['venue.isMentalDisabilityCompliant:true'],
-          ],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['venue.isAudioDisabilityCompliant:true'],
+          ['venue.isMentalDisabilityCompliant:true'],
+        ],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [
-            ['offer.isEducational:false'],
-            ['artists.name:searched query'],
-            ['venue.isAudioDisabilityCompliant:true'],
-            ['venue.isMentalDisabilityCompliant:true'],
-          ],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['artists.name:searched query'],
+          ['venue.isAudioDisabilityCompliant:true'],
+          ['venue.isMentalDisabilityCompliant:true'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query with aroundPrecision param if provided', () => {
@@ -840,32 +762,31 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          aroundPrecision: [
-            { from: 0, value: 1000 },
-            { from: 1000, value: 4000 },
-            { from: 5000, value: 10000 },
-          ],
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        aroundPrecision: [
+          { from: 0, value: 1000 },
+          { from: 1000, value: 4000 },
+          { from: 5000, value: 10000 },
+        ],
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        aroundRadius: 'all',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -878,32 +799,28 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 
   it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', () => {
@@ -918,27 +835,26 @@ describe('fetchSearchResults', () => {
     const expectedResult = [
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        aroundRadius: 'all',
+        clickAnalytics: true,
+        hitsPerPage: 35,
+        page: 0,
         query: 'searched query',
       },
       {
-        params: {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-        },
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -951,31 +867,27 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
-          distinct: false,
-          facetFilters: [['offer.isEducational:false']],
-          hitsPerPage: 100,
-          numericFilters: [['offer.prices: 0 TO 300']],
-          page: 0,
-          typoTolerance: false,
-        },
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+        distinct: false,
+        facetFilters: [['offer.isEducational:false']],
+        hitsPerPage: 100,
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        typoTolerance: false,
         query: 'searched query',
       },
       {
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        params: {
-          attributesToRetrieve: ['artists'],
-          facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
-          numericFilters: [['offer.prices: 0 TO 300']],
-          hitsPerPage: 100,
-        },
+        attributesToRetrieve: ['artists'],
+        facetFilters: [['offer.isEducational:false'], ['artists.name:searched query']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        hitsPerPage: 100,
         query: '',
       },
     ]
 
-    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+    expect(mockSearch).toHaveBeenCalledWith({ requests: expectedResult })
   })
 })

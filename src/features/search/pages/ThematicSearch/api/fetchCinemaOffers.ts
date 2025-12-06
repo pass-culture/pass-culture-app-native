@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery } from '@algolia/client-search'
+import { SearchForHits } from 'algoliasearch/lite'
 import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
@@ -26,7 +26,7 @@ export const fetchCinemaOffers = async ({
   const today = Math.floor(new Date().getTime() / 1000)
   const sevenDaysAgo = Math.floor(subDays(new Date(), 7).getTime() / 1000)
 
-  const queries: MultipleQueriesQuery[] = [
+  const queries: SearchForHits[] = [
     buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,

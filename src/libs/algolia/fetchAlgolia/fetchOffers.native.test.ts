@@ -1,10 +1,9 @@
-import algoliasearch from 'algoliasearch'
-
 import { GenreType } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
@@ -56,35 +55,44 @@ const buildLocationParameterParams: BuildLocationParameterParams = {
   aroundPlaceRadius: 'all',
 }
 
-jest.mock('algoliasearch')
-
-const mockInitIndex = algoliasearch('', '').initIndex
-const search = mockInitIndex('').search as jest.Mock
+jest.mock('libs/algolia/fetchAlgolia/clients')
+const mockSearchForHits = client.searchForHits as jest.Mock
 
 describe('fetchOffer', () => {
-  it('should fetch with provided query and default page number', () => {
+  beforeEach(() => {
+    mockSearchForHits.mockResolvedValue({ results: [{ hits: [], nbHits: 0, page: 0, nbPages: 0 }] })
+  })
+
+  it('should fetch with provided query and default page number', async () => {
     const query = 'searched query'
 
-    fetchOffers({
+    await fetchOffers({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams,
       isUserUnderage: false,
     })
 
-    expect(search).toHaveBeenCalledWith(query, {
-      page: 0,
-      attributesToHighlight: [],
-      attributesToRetrieve: offerAttributesToRetrieve,
-      facetFilters: [['offer.isEducational:false']],
-      numericFilters: [['offer.prices: 0 TO 300']],
-      clickAnalytics: true,
+    expect(mockSearchForHits).toHaveBeenCalledWith({
+      requests: [
+        expect.objectContaining({
+          query,
+          page: 0,
+          attributesToHighlight: [],
+          attributesToRetrieve: offerAttributesToRetrieve,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          clickAnalytics: true,
+        }),
+      ],
     })
   })
 
   it('should store Algolia query ID after fetching an offer', async () => {
     const spyStoreQueryID = jest.fn()
     const query = 'searched query'
-    search.mockResolvedValueOnce({ queryID: 'queryID' })
+    mockSearchForHits.mockResolvedValueOnce({
+      results: [{ queryID: 'queryID', hits: [], nbHits: 0, page: 0, nbPages: 0 }],
+    })
 
     await fetchOffers({
       parameters: { query } as SearchQueryParameters,
@@ -97,85 +105,105 @@ describe('fetchOffer', () => {
   })
 
   describe('underage', () => {
-    it('should fetch with provided query and default underage filter', () => {
+    it('should fetch with provided query and default underage filter', async () => {
       const query = 'searched query'
 
-      fetchOffers({
+      await fetchOffers({
         parameters: { query } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: true,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.isForbiddenToUnderage:false']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.isForbiddenToUnderage:false']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
-    it('should fetch with facetFilters parameter when one category is provided and when underage', () => {
+    it('should fetch with facetFilters parameter when one category is provided and when underage', async () => {
       const query = 'searched query'
       const offerCategories = ['LECON']
 
-      fetchOffers({
+      await fetchOffers({
         parameters: { query, offerCategories } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: true,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.isForbiddenToUnderage:false'],
-          ['offer.searchGroupNamev2:LECON'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              ['offer.isForbiddenToUnderage:false'],
+              ['offer.searchGroupNamev2:LECON'],
+            ],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
     })
   })
 
   describe('query', () => {
-    it('should fetch with provided query', () => {
+    it('should fetch with provided query', async () => {
       const query = 'searched query'
 
-      fetchOffers({
+      await fetchOffers({
         parameters: { query } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
       })
 
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
-    it('should fetch without query parameter when no keyword is provided', () => {
-      fetchOffers({
+    it('should fetch without query parameter when no keyword is provided', async () => {
+      await fetchOffers({
         parameters: { query: '', page: 0 } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith('', {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query: '',
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -197,15 +225,20 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            aroundLatLng: '42, 43',
+            aroundRadius: 'all',
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -223,13 +256,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -247,15 +285,20 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 15000,
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            aroundLatLng: '42, 43',
+            aroundRadius: 15000,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -268,15 +311,20 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            aroundLatLng: '42, 43',
+            aroundRadius: 'all',
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -294,15 +342,20 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            aroundLatLng: '42, 43',
+            aroundRadius: 'all',
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -320,15 +373,20 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 1,
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            aroundLatLng: '42, 43',
+            aroundRadius: 1,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -346,15 +404,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -370,13 +431,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -390,13 +456,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:LECON']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:LECON']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -410,16 +481,21 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.searchGroupNamev2:SPECTACLES', 'offer.searchGroupNamev2:LIVRES'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              ['offer.searchGroupNamev2:SPECTACLES', 'offer.searchGroupNamev2:LIVRES'],
+            ],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
     })
 
@@ -433,13 +509,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.subcategoryId:CINE_PLEIN_AIR']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.subcategoryId:CINE_PLEIN_AIR']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -453,16 +534,21 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.subcategoryId:CINE_PLEIN_AIR', 'offer.subcategoryId:ESCAPE_GAME'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              ['offer.subcategoryId:CINE_PLEIN_AIR', 'offer.subcategoryId:ESCAPE_GAME'],
+            ],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
     })
 
@@ -476,13 +562,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.nativeCategoryId:LIVRES_PAPIER']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false'], ['offer.nativeCategoryId:LIVRES_PAPIER']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -496,19 +587,24 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.isEducational:false'],
-          [
-            'offer.nativeCategoryId:LIVRES_PAPIER',
-            'offer.nativeCategoryId:LIVRES_NUMERIQUE_ET_AUDIO',
-          ],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              [
+                'offer.nativeCategoryId:LIVRES_PAPIER',
+                'offer.nativeCategoryId:LIVRES_NUMERIQUE_ET_AUDIO',
+              ],
+            ],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
     })
 
@@ -522,13 +618,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.movieGenres:DRAMA']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.movieGenres:DRAMA']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -542,13 +643,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.bookMacroSection:Droit']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.bookMacroSection:Droit']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -564,13 +670,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.showType:Arts de la rue']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.showType:Arts de la rue']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -584,13 +695,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.musicType:Pop']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.musicType:Pop']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -604,13 +720,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -625,13 +746,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -644,13 +770,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.isDigital:true']],
-        page: 0,
-        attributesToHighlight: [],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.isDigital:true']],
+            page: 0,
+            attributesToHighlight: [],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -662,13 +793,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -684,13 +820,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -704,13 +845,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.isDuo:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.isDuo:true']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -726,13 +872,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -747,13 +898,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices = 0']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices = 0']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -768,13 +924,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 50']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 50']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -788,13 +949,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 5 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 5 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -807,13 +973,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -827,13 +998,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 25']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 25']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -848,13 +1024,18 @@ describe('fetchOffer', () => {
           isUserUnderage: false,
         })
 
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [[`offer.prices: 0 TO ${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [[`offer.prices: 0 TO ${convertCentsToEuros(MAX_PRICE_IN_CENTS)}`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       }
     )
@@ -881,13 +1062,19 @@ describe('fetchOffer', () => {
 
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
 
@@ -913,13 +1100,19 @@ describe('fetchOffer', () => {
 
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
 
@@ -945,13 +1138,19 @@ describe('fetchOffer', () => {
 
         expect(mock_WEEKEND_getFirstFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
 
@@ -977,13 +1176,19 @@ describe('fetchOffer', () => {
 
         expect(mockGetFirstOfDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
     })
@@ -1001,13 +1206,19 @@ describe('fetchOffer', () => {
         })
 
         expect(mockComputeTimeRangeFromHoursToSeconds).toHaveBeenCalledWith(timeRange)
-        expect(search).toHaveBeenCalledWith('', {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.times: 64800 TO 79200`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query: '',
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.times: 64800 TO 79200`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
     })
@@ -1031,13 +1242,19 @@ describe('fetchOffer', () => {
         })
 
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
 
@@ -1066,16 +1283,22 @@ describe('fetchOffer', () => {
         })
 
         expect(mock_WEEK_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [
-            ['offer.prices: 0 TO 300'],
-            [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`, `offer.dates: 327 TO 328`],
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [
+                ['offer.prices: 0 TO 300'],
+                [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`, `offer.dates: 327 TO 328`],
+              ],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
           ],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
         })
       })
 
@@ -1106,16 +1329,22 @@ describe('fetchOffer', () => {
           selectedDate,
           timeRange
         )
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [
-            ['offer.prices: 0 TO 300'],
-            [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`],
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [
+                ['offer.prices: 0 TO 300'],
+                [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`],
+              ],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
           ],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
         })
       })
 
@@ -1140,13 +1369,19 @@ describe('fetchOffer', () => {
         })
 
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
-        expect(search).toHaveBeenCalledWith(query, {
-          facetFilters: [['offer.isEducational:false']],
-          numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
-          page: 0,
-          attributesToHighlight: [],
-          attributesToRetrieve: offerAttributesToRetrieve,
-          clickAnalytics: true,
+
+        expect(mockSearchForHits).toHaveBeenCalledWith({
+          requests: [
+            expect.objectContaining({
+              query,
+              facetFilters: [['offer.isEducational:false']],
+              numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
+              page: 0,
+              attributesToHighlight: [],
+              attributesToRetrieve: offerAttributesToRetrieve,
+              clickAnalytics: true,
+            }),
+          ],
         })
       })
     })
@@ -1171,13 +1406,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices = 0'], ['offer.dates: 123456789 TO 987654321']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices = 0'], ['offer.dates: 123456789 TO 987654321']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -1197,13 +1437,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices = 0'], ['offer.times: 123456789 TO 987654321']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices = 0'], ['offer.times: 123456789 TO 987654321']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -1230,16 +1475,21 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [
-          ['offer.prices = 0'],
-          ['offer.dates: 123456789 TO 987654321', 'offer.dates: 123 TO 1234'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [
+              ['offer.prices = 0'],
+              ['offer.dates: 123456789 TO 987654321', 'offer.dates: 123 TO 1234'],
+            ],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
     })
 
@@ -1264,21 +1514,31 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: page,
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.searchGroupNamev2:LECON', 'offer.searchGroupNamev2:MUSEES_VISITES_CULTURELLES'],
-          ['offer.isDigital:true'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: page,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              [
+                'offer.searchGroupNamev2:LECON',
+                'offer.searchGroupNamev2:MUSEES_VISITES_CULTURELLES',
+              ],
+              ['offer.isDigital:true'],
+            ],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            aroundLatLng: '42, 43',
+            aroundRadius: 'all',
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [expect.objectContaining({ indexName: env.ALGOLIA_OFFERS_INDEX_NAME })],
+      })
     })
 
     it('should fetch duo offers for categories pratique & spectacle around me', () => {
@@ -1304,21 +1564,31 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS', 'offer.searchGroupNamev2:SPECTACLES'],
-          ['offer.isDuo:true'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              [
+                'offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS',
+                'offer.searchGroupNamev2:SPECTACLES',
+              ],
+              ['offer.isDuo:true'],
+            ],
+            numericFilters: [['offer.prices: 5 TO 40']],
+            aroundLatLng: '42, 43',
+            aroundRadius: 'all',
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 5 TO 40']],
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [expect.objectContaining({ indexName: env.ALGOLIA_OFFERS_INDEX_NAME })],
+      })
     })
   })
 
@@ -1332,13 +1602,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith('', {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query: '',
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -1351,16 +1626,21 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith('', {
-        page: 0,
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.tags:Semaine du 14 juillet', 'offer.tags:Offre cinema spéciale pass culture'],
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query: '',
+            page: 0,
+            facetFilters: [
+              ['offer.isEducational:false'],
+              ['offer.tags:Semaine du 14 juillet', 'offer.tags:Offre cinema spéciale pass culture'],
+            ],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
         ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
       })
     })
   })
@@ -1375,13 +1655,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith('', {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query: '',
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -1394,14 +1679,19 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith('', {
-        hitsPerPage,
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query: '',
+            hitsPerPage,
+            page: 0,
+            attributesToHighlight: [],
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -1418,13 +1708,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates >= 1596240000`]],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates >= 1596240000`]],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -1439,13 +1734,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates <= 1596240000`]],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates <= 1596240000`]],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
 
@@ -1466,13 +1766,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 1596240000 TO 1596326400`]],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 1596240000 TO 1596326400`]],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -1487,7 +1792,9 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [expect.objectContaining({ indexName: env.ALGOLIA_OFFERS_INDEX_NAME })],
+      })
     })
 
     it('should fetch a specific Algolia index when param provided', () => {
@@ -1500,7 +1807,9 @@ describe('fetchOffer', () => {
         indexSearch: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       })
 
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaTopOffersIndexName')
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [expect.objectContaining({ indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME })],
+      })
     })
   })
 
@@ -1515,15 +1824,20 @@ describe('fetchOffer', () => {
         isFromOffer: true,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-        typoTolerance: false,
-        distinct: false,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+            typoTolerance: false,
+            distinct: false,
+          }),
+        ],
       })
     })
 
@@ -1537,13 +1851,18 @@ describe('fetchOffer', () => {
         isFromOffer: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            facetFilters: [['offer.isEducational:false']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })
@@ -1559,13 +1878,18 @@ describe('fetchOffer', () => {
         isUserUnderage: false,
       })
 
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.allocineId:12345']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
+      expect(mockSearchForHits).toHaveBeenCalledWith({
+        requests: [
+          expect.objectContaining({
+            query,
+            facetFilters: [['offer.isEducational:false'], ['offer.allocineId:12345']],
+            numericFilters: [['offer.prices: 0 TO 300']],
+            page: 0,
+            attributesToHighlight: [],
+            attributesToRetrieve: offerAttributesToRetrieve,
+            clickAnalytics: true,
+          }),
+        ],
       })
     })
   })

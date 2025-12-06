@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery } from '@algolia/client-search'
+import { SearchForHits } from 'algoliasearch/lite'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
@@ -20,7 +20,7 @@ export const fetchMusicOffers = async ({
     userLocation,
   }
 
-  const queries: MultipleQueriesQuery[] = [
+  const queries: SearchForHits[] = [
     buildQueryHelper({
       ...commonQueryParams,
       userLocation: undefined,

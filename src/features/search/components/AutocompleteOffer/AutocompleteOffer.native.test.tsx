@@ -1,4 +1,4 @@
-import { Hit } from '@algolia/client-search'
+import { Hit } from 'algoliasearch/lite'
 import { BaseHit } from 'instantsearch.js'
 import React from 'react'
 

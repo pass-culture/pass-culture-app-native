@@ -1,41 +1,47 @@
-import algoliasearch from 'algoliasearch'
-
 import { fetchHeadlineOffersCount } from 'features/offer/api/headlineOffers/fetchHeadlineOffersCount'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { waitFor } from 'tests/utils'
 
-const mockInitIndex = algoliasearch('', '').initIndex
-const search = mockInitIndex('').search as jest.Mock
+jest.mock('libs/algolia/fetchAlgolia/clients')
+const mockSearchForHits = client.searchForHits as jest.Mock
 jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 
 describe('fetchHeadlineOffers', () => {
-  it('should fetch headline offer when there an offer', () => {
-    fetchHeadlineOffersCount(offerResponseSnap)
+  beforeEach(() => {
+    mockSearchForHits.mockResolvedValue({ results: [{ nbHits: 0 }] })
+  })
 
-    expect(search).toHaveBeenCalledWith('', {
-      attributesToHighlight: [],
-      attributesToRetrieve: [],
-      distinct: false,
-      facetFilters: [['offer.isEducational:false'], ['offer.isHeadline:true']],
-      hitsPerPage: 100,
-      numericFilters: [['offer.prices: 0 TO 300']],
-      page: 0,
+  it('should fetch headline offer when there an offer', async () => {
+    await fetchHeadlineOffersCount(offerResponseSnap)
+
+    expect(mockSearchForHits).toHaveBeenCalledWith({
+      requests: [
+        expect.objectContaining({
+          query: '',
+          attributesToHighlight: [],
+          attributesToRetrieve: [],
+          distinct: false,
+          hitsPerPage: 100,
+          page: 0,
+        }),
+      ],
     })
   })
 
-  it('should not fetch headline offer when there is not an offer', () => {
-    fetchHeadlineOffersCount(undefined)
+  it('should not fetch headline offer when there is not an offer', async () => {
+    await fetchHeadlineOffersCount(undefined)
 
-    expect(search).not.toHaveBeenCalled()
+    expect(mockSearchForHits).not.toHaveBeenCalled()
   })
 
   it('should catch an error', async () => {
     const error = new Error('Async error')
-    search.mockRejectedValueOnce(error)
-    fetchHeadlineOffersCount(offerResponseSnap)
+    mockSearchForHits.mockRejectedValueOnce(error)
+    await fetchHeadlineOffersCount(offerResponseSnap)
 
     await waitFor(async () => {
       expect(captureAlgoliaError).toHaveBeenCalledWith(error)

@@ -1,4 +1,4 @@
-import { Hit } from '@algolia/client-search'
+import { Hit } from 'algoliasearch/lite'
 import { uniqBy } from 'lodash'
 import mockdate from 'mockdate'
 import React from 'react'

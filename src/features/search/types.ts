@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 import React, { ReactNode } from 'react'
 import { ViewToken } from 'react-native'
 

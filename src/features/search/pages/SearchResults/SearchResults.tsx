@@ -115,10 +115,11 @@ export const SearchResults = () => {
   const handleEndReached = useCallback(() => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
+      const page = lastPage?.offers.page ?? 0
 
-      if (lastPage && lastPage.offers.page > 0) {
+      if (page > 0) {
         const currentSearchId = searchState.searchId ?? searchIdGenerated
-        void analytics.logSearchScrollToPage(lastPage.offers.page, currentSearchId)
+        void analytics.logSearchScrollToPage(page, currentSearchId)
       }
       void fetchNextPage()
     }
@@ -135,7 +136,6 @@ export const SearchResults = () => {
   return (
     <Page>
       <Form.Flex>
-        {/* @ts-expect-error - type incompatibility with React 19 */}
         <InstantSearch
           searchClient={getSearchClient}
           indexName={suggestionsIndex}

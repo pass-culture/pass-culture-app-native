@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'

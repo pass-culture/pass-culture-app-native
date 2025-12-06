@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'

@@ -1,5 +1,5 @@
-import { Hit } from '@algolia/client-search'
 import { useQueryClient } from '@tanstack/react-query'
+import { Hit } from 'algoliasearch/lite'
 
 import { OfferResponseV2 } from 'api/gen'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'

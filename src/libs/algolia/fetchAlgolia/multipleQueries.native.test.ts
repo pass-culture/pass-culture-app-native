@@ -2,14 +2,14 @@
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 
-jest.spyOn(client, 'multipleQueries')
+jest.spyOn(client, 'search')
 
 describe('multipleQueries', () => {
-  it('should call client.multipleQueries several times if too many queries are provided', () => {
-    const queries = Array(51).fill({ indexName: 'indexName', query: 'query', params: {} })
+  it('should call client.search several times if too many queries are provided', () => {
+    const queries = Array(51).fill({ indexName: 'indexName', query: 'query' })
 
     multipleQueries(queries)
 
-    expect(client.multipleQueries).toHaveBeenCalledTimes(2)
+    expect(client.search).toHaveBeenCalledTimes(2)
   })
 })

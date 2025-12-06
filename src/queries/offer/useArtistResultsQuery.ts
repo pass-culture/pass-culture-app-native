@@ -1,5 +1,5 @@
-import { Hit } from '@algolia/client-search'
 import { useQuery } from '@tanstack/react-query'
+import { Hit } from 'algoliasearch/lite'
 import { useCallback, useMemo } from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'

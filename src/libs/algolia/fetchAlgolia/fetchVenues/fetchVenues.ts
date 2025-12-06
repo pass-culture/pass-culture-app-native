@@ -13,7 +13,6 @@ export const fetchVenues = async ({
   buildLocationParameterParams,
   options,
 }: FetchVenuesParameters): Promise<Venue[]> => {
-  const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
   const algoliaSearchParams = buildFetchVenuesQueryParameters({
     query,
     attributesToHighlight,
@@ -22,10 +21,18 @@ export const fetchVenues = async ({
   })
 
   try {
-    const rawAlgoliaVenuesResponse = await venuesIndex.search<AlgoliaVenue>(
-      algoliaSearchParams.query,
-      algoliaSearchParams.requestOptions
-    )
+    const response = await client.searchForHits<AlgoliaVenue>({
+      requests: [
+        {
+          indexName: env.ALGOLIA_VENUES_INDEX_NAME,
+          query: algoliaSearchParams.query,
+          ...algoliaSearchParams.requestOptions,
+        },
+      ],
+    })
+
+    const rawAlgoliaVenuesResponse = response.results[0]
+    if (!rawAlgoliaVenuesResponse) return []
 
     const rawVenues = adaptGenericAlgoliaTypes(rawAlgoliaVenuesResponse)
 
