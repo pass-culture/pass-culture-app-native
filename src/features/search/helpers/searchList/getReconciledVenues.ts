@@ -1,6 +1,6 @@
 import { uniqBy } from 'lodash'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import {
   AlgoliaOffer,
   AlgoliaVenue,
@@ -45,7 +45,7 @@ export const convertAlgoliaVenue2AlgoliaVenueOfferListItem = (
 ): AlgoliaVenueOfferListItem => ({
   objectID: venue.objectID,
   banner_url: venue.banner_url ?? '',
-  venue_type: venue.venue_type,
+  activity: venue.activity,
   name: venue.name,
   city: venue.city,
   postalCode: venue.postalCode ?? '',
@@ -57,7 +57,7 @@ export const convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem = (
 ): AlgoliaVenueOfferListItem => ({
   objectID: venue.id?.toString() ?? '',
   banner_url: venue.banner_url ?? '',
-  venue_type: venue.venue_type ?? VenueTypeCodeKey.OTHER,
+  activity: venue.activity ?? Activity.OTHER,
   name: venue.name ?? '',
   city: venue.city ?? '',
   postalCode: venue.postalCode ?? '',

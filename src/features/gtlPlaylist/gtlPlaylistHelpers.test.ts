@@ -1,4 +1,4 @@
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { OffersModuleParameters } from 'features/home/types'
 import { PlaylistOffersParams } from 'libs/algolia/types'
@@ -8,7 +8,7 @@ import { LocationMode } from 'libs/location/types'
 import {
   filterByContentfulLabel,
   filterGtlPlaylistConfigByLabel,
-  getContentfulLabelByVenueType,
+  getContentfulLabelByActivity,
   getGtlPlaylistsParams,
   getLabelFilter,
 } from './gtlPlaylistHelpers'
@@ -19,7 +19,7 @@ const mockVenue: Omit<VenueResponse, 'isVirtual'> = {
   id: 123,
   accessibility: {},
   timezone: 'Europe/Paris',
-  venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE,
+  activity: Activity.DISTRIBUTION_STORE,
   isOpenToPublic: true,
 }
 
@@ -86,15 +86,15 @@ const mockAdaptPlaylistParameters = (parameters: OffersModuleParameters): Playli
 })
 
 describe('gtlPlaylist helpers functions', () => {
-  describe('getContentfulLabelByVenueType', () => {
+  describe('getContentfulLabelByActivity', () => {
     it('should return the correct contentful label for a venue type', () => {
-      expect(getContentfulLabelByVenueType(VenueTypeCodeKey.BOOKSTORE)).toBe('Livres')
-      expect(getContentfulLabelByVenueType(VenueTypeCodeKey.RECORD_STORE)).toBe('Musique')
+      expect(getContentfulLabelByActivity(Activity.BOOKSTORE)).toBe('Livres')
+      expect(getContentfulLabelByActivity(Activity.RECORD_STORE)).toBe('Musique')
     })
 
     it('should return undefined when venue type is null or undefined', () => {
-      expect(getContentfulLabelByVenueType(null)).toBeUndefined()
-      expect(getContentfulLabelByVenueType(undefined)).toBeUndefined()
+      expect(getContentfulLabelByActivity(null)).toBeUndefined()
+      expect(getContentfulLabelByActivity(undefined)).toBeUndefined()
     })
   })
 
@@ -115,13 +115,13 @@ describe('gtlPlaylist helpers functions', () => {
 
   describe('getLabelFilter', () => {
     it('should return searchGroupLabel when provided', () => {
-      const result = getLabelFilter(VenueTypeCodeKey.BOOKSTORE, 'Musique')
+      const result = getLabelFilter(Activity.BOOKSTORE, 'Musique')
 
       expect(result).toBe('Musique')
     })
 
     it('should return venue type label when searchGroupLabel not provided', () => {
-      const result = getLabelFilter(VenueTypeCodeKey.BOOKSTORE, undefined)
+      const result = getLabelFilter(Activity.BOOKSTORE, undefined)
 
       expect(result).toBe('Livres')
     })
@@ -134,10 +134,10 @@ describe('gtlPlaylist helpers functions', () => {
   })
 
   describe('filterGtlPlaylistConfigByLabel', () => {
-    it('should filter config by venueType when searchGroupLabel is not provided', () => {
+    it('should filter config by activity when searchGroupLabel is not provided', () => {
       const result = filterGtlPlaylistConfigByLabel(
         mockPlaylistConfig,
-        VenueTypeCodeKey.BOOKSTORE,
+        Activity.BOOKSTORE,
         undefined
       )
 
@@ -148,7 +148,7 @@ describe('gtlPlaylist helpers functions', () => {
     it('should filter config by searchGroupLabel when provided', () => {
       const result = filterGtlPlaylistConfigByLabel(
         mockPlaylistConfig,
-        VenueTypeCodeKey.BOOKSTORE,
+        Activity.BOOKSTORE,
         'Musique'
       )
 
@@ -177,7 +177,7 @@ describe('gtlPlaylist helpers functions', () => {
         info: mockVenue.city,
         label: mockVenue.name,
         isOpenToPublic: mockVenue.isOpenToPublic,
-        venue_type: mockVenue.venueTypeCode,
+        activity: mockVenue.activity,
       })
     })
 

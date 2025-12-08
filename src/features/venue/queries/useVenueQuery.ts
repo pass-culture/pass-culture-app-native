@@ -9,7 +9,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const getVenueById = async (venueId: number, logType: LogTypeEnum) => {
   try {
-    return await api.getNativeV1VenuevenueId(venueId)
+    return await api.getNativeV2VenuevenueId(venueId)
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
       throw new VenueNotFoundError(venueId, {

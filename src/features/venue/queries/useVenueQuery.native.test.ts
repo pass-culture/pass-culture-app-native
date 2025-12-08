@@ -13,12 +13,12 @@ import { useVenueQuery } from './useVenueQuery'
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
 
-const spyApiGetVenue = jest.spyOn(api, 'getNativeV1VenuevenueId')
+const spyApiGetVenue = jest.spyOn(api, 'getNativeV2VenuevenueId')
 
 describe('useVenueQuery', () => {
   it('should call API otherwise', async () => {
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
-      `/v1/venue/${venueDataTest.id}`,
+      `/v2/venue/${venueDataTest.id}`,
       venueDataTest
     )
     const { result } = renderHook(() => useVenueQuery(venueDataTest.id), {

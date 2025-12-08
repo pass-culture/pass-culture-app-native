@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { VenueHit } from 'libs/algolia/types'
 import { toMutable } from 'shared/types/toMutable'
 
@@ -14,7 +14,7 @@ export const venuesSearchFixture = toMutable({
     {
       id: 5543,
       name: 'Le Petit Rintintin 1',
-      venueTypeCode: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -45,7 +45,7 @@ export const venuesSearchFixture = toMutable({
     {
       id: 5544,
       name: 'Le Petit Rintintin 2',
-      venueTypeCode: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -76,7 +76,7 @@ export const venuesSearchFixture = toMutable({
     {
       id: 5545,
       name: 'Le Petit Rintintin 3',
-      venueTypeCode: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -107,7 +107,7 @@ export const venuesSearchFixture = toMutable({
     {
       id: 5546,
       name: 'Le Petit Rintintin 4',
-      venueTypeCode: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,
@@ -138,7 +138,7 @@ export const venuesSearchFixture = toMutable({
     {
       id: 5547,
       name: 'Le Petit Rintintin 5',
-      venueTypeCode: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       publicName: 'Librairie Quantique',
       latitude: 48.87004,
       longitude: 2.3785,

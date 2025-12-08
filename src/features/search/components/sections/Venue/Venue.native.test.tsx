@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { Venue } from 'features/search/components/sections/Venue/Venue'
 import { initialSearchState } from 'features/search/context/reducer'
 import { render, screen, userEvent } from 'tests/utils'
@@ -32,7 +32,7 @@ describe('Venue component', () => {
         info: 'info',
         venueId: 123,
         isOpenToPublic: true,
-        venue_type: VenueTypeCodeKey.BOOKSTORE,
+        activity: Activity.BOOKSTORE,
       },
     }
     render(<Venue />)

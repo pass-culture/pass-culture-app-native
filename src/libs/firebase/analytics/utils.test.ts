@@ -1,7 +1,7 @@
 import { endOfMonth } from 'date-fns'
 import { NativeScrollEvent } from 'react-native'
 
-import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { Activity, GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
@@ -504,17 +504,17 @@ describe('[Analytics utils]', () => {
     })
 
     it('should return location type and the name of the venue in a string when type is VENUE', () => {
-      const venueTypeSearchState: SearchState = {
+      const activitySearchState: SearchState = {
         ...initialSearchState,
         venue: {
           label: 'Accor Arena',
           info: 'Salle de spectacle, Paris',
           venueId: 1,
           isOpenToPublic: true,
-          venue_type: VenueTypeCodeKey.CONCERT_HALL,
+          activity: Activity.PERFORMANCE_HALL,
         },
       }
-      const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)
+      const locationFilterParam = buildLocationFilterParam(activitySearchState)
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({ locationType: 'VENUE', label: 'Accor Arena' })
@@ -522,17 +522,17 @@ describe('[Analytics utils]', () => {
     })
 
     it('should return location type and the truncated name of the venue in a string when type is VENUE', () => {
-      const venueTypeSearchState: SearchState = {
+      const activitySearchState: SearchState = {
         ...initialSearchState,
         venue: {
           label: 'Accor Arena, la MEILLEURE salle de France avec une acoustique incroyable',
           info: 'Salle de spectacle, Paris',
           venueId: 1,
           isOpenToPublic: true,
-          venue_type: VenueTypeCodeKey.CONCERT_HALL,
+          activity: Activity.PERFORMANCE_HALL,
         },
       }
-      const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)
+      const locationFilterParam = buildLocationFilterParam(activitySearchState)
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({

@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import React, { FC, ReactNode } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
 import { OfferVenueContainer } from 'features/offer/components/OfferVenueContainer/OfferVenueContainer'
@@ -31,7 +31,7 @@ const mergeVenueData =
     id: venue.id,
     name: venue.name,
     // Info not available in OfferVenueResponse so we fallback to OTHER
-    venueTypeCode: VenueTypeCodeKey.OTHER,
+    activity: Activity.OTHER,
     description: venue.description,
     accessibility: {},
     contact: {},

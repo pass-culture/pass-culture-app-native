@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
 import { VenueMapFiltersList } from 'features/venueMap/components/VenueMapFiltersList/VenueMapFiltersList'
 import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
@@ -55,7 +55,7 @@ describe('VenueMapFiltersList', () => {
     expect(screen.getByText('Autres')).toBeTruthy()
   })
 
-  it('should navigate to venue map type filter when pressing a row with filter group information', async () => {
+  it('should navigate to venue map activity filter when pressing a row with filter group information', async () => {
     render(
       <VenueMapFiltersList
         navigation={mockNavigation}
@@ -65,7 +65,7 @@ describe('VenueMapFiltersList', () => {
 
     await user.press(screen.getByText('Sorties'))
 
-    expect(mockNavigate).toHaveBeenCalledWith('VenueMapTypeFilter', {
+    expect(mockNavigate).toHaveBeenCalledWith('VenueMapActivityFilter', {
       filterGroup: 'OUTINGS',
       title: 'Sorties',
     })
@@ -100,9 +100,9 @@ describe('VenueMapFiltersList', () => {
 
   it('should return venue types in filter descriptions', () => {
     mockUseVenuesFilter.mockReturnValueOnce([
-      VenueTypeCodeKey.FESTIVAL,
-      VenueTypeCodeKey.BOOKSTORE,
-      VenueTypeCodeKey.CULTURAL_CENTRE,
+      Activity.FESTIVAL,
+      Activity.BOOKSTORE,
+      Activity.CULTURAL_CENTRE,
     ])
 
     render(
