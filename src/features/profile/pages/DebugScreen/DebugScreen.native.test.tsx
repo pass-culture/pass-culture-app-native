@@ -53,17 +53,17 @@ describe('DebugScreen', () => {
   it('should call copyToClipboard when press "Copier dans le presse-papier" button', async () => {
     render(<DebugScreen />)
     await enterDescription()
-    const copyButton = screen.getByText('Copier dans le presse-papier')
+    const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)
   })
 
-  it('should contain the correct informations when press "Envoyer au support" button', async () => {
+  it('should contain the correct informations when press "Envoyer mon bug au support" button', async () => {
     render(<DebugScreen />)
     await enterDescription()
 
-    const supportButton = screen.getByText('Envoyer au support')
+    const supportButton = screen.getByText('Envoyer mon bug au support')
     await userEvent.press(supportButton)
 
     const decodedUrl = decodeURI(openUrl.mock.calls[0]?.[0] as string)
@@ -85,17 +85,17 @@ describe('DebugScreen', () => {
     render(<DebugScreen />)
     await enterDescription()
 
-    const copyButton = screen.getByText('Copier dans le presse-papier')
+    const copyButton = screen.getByLabelText('Copier dans le presse-papier')
     await userEvent.press(copyButton)
 
     expect(analytics.logClickCopyDebugInfo).toHaveBeenNthCalledWith(1, '1234')
   })
 
-  it('should log ClickMailDebugInfo event when press "Envoyer au support" button', async () => {
+  it('should log ClickMailDebugInfo event when press "Envoyer mon bug au support" button', async () => {
     render(<DebugScreen />)
     await enterDescription()
 
-    const copyButton = screen.getByText('Envoyer au support')
+    const copyButton = screen.getByText('Envoyer mon bug au support')
     await userEvent.press(copyButton)
 
     expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, '1234')

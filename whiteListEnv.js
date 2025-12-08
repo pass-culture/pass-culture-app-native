@@ -78,6 +78,7 @@ export const whiteListEnv = (env, commitHash) => {
     'SENTRY_SAMPLE_RATE',
     'SENTRY_TRACES_SAMPLE_RATE',
     'SITE_PUBLIC_KEY',
+    'SUPPORT_ACCOUNT_ISSUES_FORM',
     'SUPPORT_EMAIL_ADDRESS',
     'URL_PREFIX',
     'WEBAPP_V2_DOMAIN',
