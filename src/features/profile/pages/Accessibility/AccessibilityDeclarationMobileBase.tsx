@@ -74,7 +74,7 @@ export function AccessibilityDeclarationMobileBase({
         <TitleText>État de conformité</TitleText>
         <Typo.Body>
           L’application pass Culture sur {platformName} est{SPACE}
-          <Typo.BodyAccent>non conforme</Typo.BodyAccent>
+          <Typo.BodyAccent>partiellement conforme</Typo.BodyAccent>
           {SPACE}
           avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et
           en Europe, en raison des non-conformités énumérées dans la section «&nbsp;Résultats des
@@ -146,7 +146,7 @@ export function AccessibilityDeclarationMobileBase({
 
       <ViewGap gap={6}>
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
-        <Typo.BodyItalic>Cette déclaration a été établie le jeudi 31 juillet 2025.</Typo.BodyItalic>
+        <Typo.BodyItalic>Cette déclaration a été établie le lundi 8 décembre 2025.</Typo.BodyItalic>
         <SubtitleText>Technologies utilisées pour la réalisation de l’application</SubtitleText>
         <VerticalUl>
           <BulletListItem

@@ -304,7 +304,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
               }
             }
           >
-            non conforme
+            partiellement conforme
           </Text>
            
           avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
@@ -1675,7 +1675,7 @@ exports[`AccessibilityDeclarationMobileAndroid should render correctly 1`] = `
             }
           }
         >
-          Cette déclaration a été établie le jeudi 31 juillet 2025.
+          Cette déclaration a été établie le lundi 8 décembre 2025.
         </Text>
         <Text
           accessibilityRole="header"
