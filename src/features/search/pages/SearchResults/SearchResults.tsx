@@ -79,9 +79,9 @@ export const SearchResults = () => {
   useEffect(() => {
     // searchId generation when search results is the app entry point (deeplinks generator)
     if (!searchState.searchId) {
-      dispatch({ type: 'SET_STATE', payload: { ...searchState, searchId: searchIdGenerated } })
+      dispatch({ type: 'SET_SEARCH_ID', payload: searchIdGenerated })
     }
-  }, [searchState.searchId, searchIdGenerated, dispatch, searchState])
+  }, [searchState.searchId, searchIdGenerated, dispatch])
 
   // Handler for modules with the new system
   const handleViewableItemsChanged = React.useCallback(

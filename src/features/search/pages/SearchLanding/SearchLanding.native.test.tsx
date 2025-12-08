@@ -67,15 +67,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
-jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
-  useSearchHistory: () => ({
-    filteredHistory: [],
-    addToHistory: jest.fn(),
-    removeFromHistory: jest.fn(),
-    search: jest.fn(),
-  }),
-}))
-
 const mockHits = [
   {
     objectID: '1',
@@ -203,6 +194,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
     setSelectedLocationMode: mockSetSelectedLocationMode,
     hasGeolocPosition: mockHasGeolocPosition,
     selectedLocationMode: mockSelectedLocationMode, // to have the venue map block display
+    setSelectedPlace: jest.fn(),
+    setAroundMeRadius: jest.fn(),
+    aroundMeRadius: 50,
+    aroundPlaceRadius: 50,
+    userLocation: { latitude: 48.8566, longitude: 2.3522 },
+    geolocPosition: { latitude: 48.8566, longitude: 2.3522 },
   }),
 }))
 
@@ -229,6 +226,14 @@ jest.useFakeTimers()
 describe('<SearchLanding />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockUseSearchHistory.mockReset()
+    mockUseSearchHistory.mockReturnValue({
+      filteredHistory: mockedSearchHistory,
+      queryHistory: '',
+      addToHistory: jest.fn(),
+      removeFromHistory: jest.fn(),
+      search: jest.fn(),
+    })
   })
 
   beforeEach(() => {

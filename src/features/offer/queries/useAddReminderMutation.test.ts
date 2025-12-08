@@ -92,8 +92,6 @@ describe('useAddReminderMutation', () => {
       result.current.mutate(offerId)
     })
 
-    await act(async () => expect(result.current.isSuccess).toBe(true))
-
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
     expect(invalidateQueriesMock).toHaveBeenCalledWith({ queryKey: [QueryKeys.REMINDERS] })
