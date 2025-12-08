@@ -16,7 +16,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValue = {
@@ -65,7 +65,7 @@ export const FeedbackInApp = () => {
       title="Faire une suggestion"
       onGoBack={goBack}
       scrollChildren={
-        <ViewGap gap={6}>
+        <StyledViewGap gap={6}>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(1)}>
               Comment pourrions-nous améliorer l’application&nbsp;?
@@ -109,12 +109,15 @@ export const FeedbackInApp = () => {
             disabled={!isValid}
           />
           <Spacer.BottomScreen />
-        </ViewGap>
+        </StyledViewGap>
       }
     />
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
+}))
 
-const InputContainer = styled.View({
-  marginVertical: getSpacing(1),
-})
+const InputContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xs,
+}))

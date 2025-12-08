@@ -242,6 +242,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
               style={
                 {
                   "gap": 24,
+                  "paddingHorizontal": 4,
                 }
               }
             >
