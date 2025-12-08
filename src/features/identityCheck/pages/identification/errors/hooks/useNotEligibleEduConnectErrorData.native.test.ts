@@ -6,8 +6,6 @@ import { env } from 'libs/environment/env'
 import { renderHook } from 'tests/utils'
 import { UserError } from 'ui/svg/UserError'
 
-jest.mock('features/auth/helpers/contactSupport')
-
 describe('useNotEligibleEduConnectErrorData', () => {
   const expectedDuplicatedUserData = {
     Illustration: UserError,

@@ -2,7 +2,6 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { analytics } from 'libs/analytics/provider'
@@ -10,7 +9,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
+import { SignupConfirmationEmailSent, faqConfig } from './SignupConfirmationEmailSent'
 
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 jest.mock('features/navigation/helpers/usePreviousRoute')
@@ -51,11 +50,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     await user.press(consultHelpSupportButton)
 
     expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toHaveBeenCalledTimes(1)
-    expect(mockedOpenUrl).toHaveBeenCalledWith(
-      contactSupport.forSignupConfirmationEmailNotReceived.url,
-      contactSupport.forSignupConfirmationEmailNotReceived.params,
-      true
-    )
+    expect(mockedOpenUrl).toHaveBeenCalledWith(faqConfig.url, faqConfig.params, true)
   })
 
   it('should open mail app when clicking on check email button', async () => {

@@ -126,7 +126,6 @@ export enum AnalyticsEvent {
   LOGIN = 'login',
   LOGIN_CLICKED = 'LoginClicked',
   LOGOUT = 'Logout',
-  MAIL_TO = 'MailTo',
   MODIFY_MAIL = 'ModifyMail',
   MODULE_DISPLAYED = 'ModuleDisplayed',
   MODULE_DISPLAYED_ON_HOMEPAGE = 'ModuleDisplayedOnHomePage',

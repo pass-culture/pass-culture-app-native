@@ -1,5 +1,4 @@
 import { GoogleSigninRequest, SigninRequest } from 'api/gen'
-import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 export type SignInResponseFailure = {
   isSuccess: false
@@ -50,5 +49,3 @@ export type PreValidationSignupLastStepProps = {
 }
 
 export type LoginRequest = SigninRequest | GoogleSigninRequest
-
-export type ContactSupport = Record<string, ExternalNavigationProps['externalNav']>
