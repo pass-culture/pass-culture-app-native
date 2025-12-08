@@ -29,6 +29,8 @@ jobs:
           node-version: 20
           cache: 'yarn'
 
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-action
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
