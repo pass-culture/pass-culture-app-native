@@ -491,8 +491,8 @@ describe('<SearchResults/>', () => {
       await screen.findByText('Rechercher')
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_STATE',
-        payload: { ...mockSearchState, searchId: 'testUuidV4' },
+        type: 'SET_SEARCH_ID',
+        payload: 'testUuidV4',
       })
     })
   })
