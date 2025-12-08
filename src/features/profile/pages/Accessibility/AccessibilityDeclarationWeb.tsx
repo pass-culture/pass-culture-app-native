@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { env } from 'libs/environment/env'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
@@ -468,14 +468,12 @@ export function AccessibilityDeclarationWeb() {
       </TitleText>
 
       <Typo.Body>
-        Contacter l’équipe support à l’adresse{SPACE}
         <ExternalTouchableLink
           as={LinkInsideText}
-          wording="support@passculture.app"
-          accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
-          justifyContent="flex-start"
-          externalNav={contactSupport.forGenericQuestion}
+          wording="Contacter le support"
+          externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
           accessibilityRole={AccessibilityRole.LINK}
+          justifyContent="flex-start"
         />
       </Typo.Body>
 

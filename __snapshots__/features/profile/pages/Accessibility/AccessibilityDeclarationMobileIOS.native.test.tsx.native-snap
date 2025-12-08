@@ -2205,7 +2205,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
            
           <Text
-            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityLabel="contacter le support, lien externe"
             accessibilityRole="link"
             onPress={[Function]}
             style={
@@ -2219,7 +2219,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               }
             }
           >
-            support@passculture.app
+            contacter le support
           </Text>
         </Text>
       </View>
