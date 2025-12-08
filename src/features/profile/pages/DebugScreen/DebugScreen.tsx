@@ -110,7 +110,7 @@ export const DebugScreen = () => {
             links={[
               {
                 externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
-                wording: 'Aller au formulaire du support',
+                wording: 'Contacter le support',
               },
             ]}
           />

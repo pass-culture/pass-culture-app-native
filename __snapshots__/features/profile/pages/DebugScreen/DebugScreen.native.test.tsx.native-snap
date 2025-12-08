@@ -583,7 +583,7 @@ exports[`DebugScreen should render correctly 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Lien externe - Aller au formulaire du support"
+                      accessibilityLabel="Lien externe - Contacter le support"
                       accessibilityRole="link"
                       accessibilityState={
                         {
@@ -649,7 +649,7 @@ exports[`DebugScreen should render correctly 1`] = `
                           }
                         }
                       >
-                        Aller au formulaire du support
+                        Contacter le support
                       </Text>
                     </View>
                   </View>
