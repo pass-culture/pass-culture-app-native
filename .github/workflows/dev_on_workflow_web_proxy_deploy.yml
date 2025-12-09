@@ -32,7 +32,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: 'server/.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-action
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
       - id: gcloud-auth
         name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
