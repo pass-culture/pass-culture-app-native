@@ -3,14 +3,13 @@ import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
+import { DOUBLE_LINE_BREAK, LINE_BREAK, SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityEngagement() {
@@ -80,9 +79,15 @@ export function AccessibilityEngagement() {
         une histoire en mouvement. Vous trouverez d’ailleurs dans le schéma pluriannuel les
         chantiers sur lesquels nous travaillons à ce niveau.
         {DOUBLE_LINE_BREAK}
-        Si vous avez des retours au sujet de notre traitement, n’hésitez pas à écrire à
+        Si vous avez des retours au sujet de notre traitement, n’hésitez pas à{SPACE}
+        <ExternalTouchableLink
+          as={LinkInsideText}
+          wording="contacter le support"
+          externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+          accessibilityRole={AccessibilityRole.LINK}
+          justifyContent="flex-start"
+        />
       </StyledBodyBeforeButtonText>
-      <ContactSupportButton />
       <StyledBodyAccentXs>
         Vous pouvez retrouver également toutes nos fiches d’aide pour vous inscrire sur le pass
         Culture directement dans{' '}

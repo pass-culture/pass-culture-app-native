@@ -452,12 +452,6 @@ export const logEventAnalytics = {
   logLoginClicked: (params: { from: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
-  logMailTo: (
-    reason:
-      | 'forGenericQuestion'
-      | 'forSignupConfirmationEmailNotReceived'
-      | 'forPhoneNumberConfirmation'
-  ) => analytics.logEvent({ firebase: AnalyticsEvent.MAIL_TO }, { reason }),
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
   logModuleDisplayed: (params: { moduleId: string; displayedOn: Referrals; venueId?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),

@@ -62,6 +62,11 @@ const profileCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'DeleteProfileContactSupport',
+      navigationTarget: getProfilePropConfig('DeleteProfileContactSupport'),
+    },
+    {
+      id: uuidv4(),
       title: 'FeedbackInApp',
       navigationTarget: getProfilePropConfig('FeedbackInApp'),
     },

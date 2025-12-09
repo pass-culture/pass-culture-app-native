@@ -123,7 +123,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logLogin: jest.fn(),
   logLoginClicked: jest.fn(),
   logLogout: jest.fn(),
-  logMailTo: jest.fn(),
   logModifyMail: jest.fn(),
   logModuleDisplayed: jest.fn(),
   logModuleDisplayedOnHomepage: jest.fn(),

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { env } from 'libs/environment/env'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 
@@ -13,7 +13,7 @@ export function PhoneValidationTooManyAttempts() {
       subtitle="Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
       buttonPrimary={{
         wording: 'Contacter le support',
-        externalNav: contactSupport.forPhoneNumberConfirmation,
+        externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
       }}
       buttonTertiary={{
         wording: 'Retourner à l’accueil',
