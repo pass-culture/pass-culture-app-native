@@ -24,9 +24,12 @@ const isIgnoredAlgoliaError = (error: unknown): boolean => {
   }
 
   return IGNORED_ALGOLIA_ERRORS.some((ignoredError) => {
-    const nameMatches = ignoredError.name === undefined || error.name === ignoredError.name
+    const nameMatches =
+      ignoredError.name === undefined ||
+      error.name.toLowerCase() === ignoredError.name.toLowerCase()
     const messageMatches =
-      ignoredError.messagePattern === undefined || ignoredError.messagePattern.test(error.message)
+      ignoredError.messagePattern === undefined ||
+      ignoredError.messagePattern.test(error.message.toLowerCase())
 
     return nameMatches && messageMatches
   })
