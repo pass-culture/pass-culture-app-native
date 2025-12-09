@@ -390,9 +390,9 @@ const ScrollViewContainer = React.memo(
     overflow: 'visible',
   })
 )
-const FooterContainer = styled.View(({ theme }) => ({
-  marginTop: theme.isDesktopViewport ? 0 : getSpacing(18),
-}))
+const FooterContainer = styled.View({
+  marginTop: getSpacing(18),
+})
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
   paddingBottom: theme.designSystem.size.spacing.xxl,
