@@ -44,4 +44,5 @@ export enum VENUES_FACETS_ENUM {
   VENUE_MENTAL_DISABILITY_COMPLIANT = 'mental_disability',
   VENUE_MOTOR_DISABILITY_COMPLIANT = 'motor_disability',
   VENUE_VISUAL_DISABILITY_COMPLIANT = 'visual_disability',
+  VENUE_OPEN_TO_PUBLIC = 'open_to_public',
 }

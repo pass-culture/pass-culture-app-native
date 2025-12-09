@@ -8,7 +8,10 @@ export const buildFetchVenuesQueryParameters = ({
   buildLocationParameterParams,
   options,
 }: FetchVenuesParameters): AlgoliaQueryParameters => {
-  const defaultFilters = [[`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`]]
+  const defaultFilters = [
+    [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
+    [`${VENUES_FACETS_ENUM.VENUE_OPEN_TO_PUBLIC}:false`],
+  ]
 
   const facetFilters = options?.facetFilters
     ? [...defaultFilters, ...options.facetFilters]
