@@ -52,10 +52,12 @@ const renderVenueItem = (
     item,
     height,
     width,
+    index,
   }: {
     item: AlgoliaVenue
     height: number
     width: number
+    index: number
   },
   searchId?: string,
   searchGroupLabel?: ContentfulLabelCategories
@@ -64,6 +66,7 @@ const renderVenueItem = (
     venue={item}
     height={height}
     width={width}
+    index={index}
     searchId={searchId}
     searchGroupLabel={searchGroupLabel}
   />
@@ -73,7 +76,7 @@ const isWeb = Platform.OS === 'web'
 
 export const VenuePlaylist: React.FC<Props> = ({
   venuePlaylistTitle,
-  venues,
+  venues = [],
   isLocated = false,
   currentView = 'SearchResults',
   offerCategory,
@@ -149,12 +152,12 @@ export const VenuePlaylist: React.FC<Props> = ({
           )}
         </HeaderPlaylistContainer>
         <Playlist
-          data={venues ?? []}
+          data={venues}
           scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
           itemHeight={VENUE_ITEM_HEIGHT}
           itemWidth={VENUE_ITEM_WIDTH}
-          renderItem={({ item, height, width }) =>
-            renderVenueItem({ item, height, width }, searchId, searchGroupLabel)
+          renderItem={({ item, height, width, index }) =>
+            renderVenueItem({ item, height, width, index }, searchId, searchGroupLabel)
           }
           renderHeader={undefined}
           renderFooter={undefined}
