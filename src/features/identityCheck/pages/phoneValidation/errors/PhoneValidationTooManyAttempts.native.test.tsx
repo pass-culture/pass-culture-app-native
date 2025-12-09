@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { env } from 'libs/environment/env'
 import { userEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -25,11 +26,7 @@ describe('PhoneValidationTooManyAttempts', () => {
     await userEvent.press(contactSupportButton)
 
     await waitFor(() => {
-      expect(openUrl).toHaveBeenCalledWith(
-        'https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500',
-        undefined,
-        true
-      )
+      expect(openUrl).toHaveBeenCalledWith(env.SUPPORT_ACCOUNT_ISSUES_FORM, undefined, true)
     })
   })
 
