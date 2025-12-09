@@ -5,10 +5,8 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 type SearchRequest = { query?: string; params?: { query?: string } | string }
 
 const hasNoQuery = (request: SearchRequest): boolean => {
-  // Handle both v5 format (query at root) and legacy format (query in params)
-  if (request.query) return false
-  if (typeof request.params === 'object' && request.params?.query) return false
-  return true
+  const hasQuery = request.query || (typeof request.params === 'object' && request.params?.query)
+  return !hasQuery
 }
 
 export const getSearchClient: LiteClient = {
