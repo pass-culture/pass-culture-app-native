@@ -3,14 +3,13 @@ import { eventMonitoring } from 'libs/monitoring/services'
 /**
  * Avoid sending all algolia erros to Sentry to avoid flooding
  * https://github.com/pass-culture/pass-culture-app-native/pull/2193
+ * We're using algolia/lite so we don't have access to all the error types
  */
 const IGNORED_ALGOLIA_ERRORS: Array<{ name?: string; messagePattern?: RegExp }> = [
   {
     name: 'RetryError',
-    messagePattern: /unreachable hosts/i,
   },
   {
-    name: 'TypeError',
     messagePattern: /network request failed/i,
   },
   {
