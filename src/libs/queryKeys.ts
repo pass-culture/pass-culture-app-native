@@ -33,7 +33,7 @@ export enum QueryKeys {
   HOME_BANNER = 'homeBanner',
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
-  HOMEPAGE_MODULES = 'homepageModules',
+  HOMEPAGE_MODULE = 'homepageModule',
   MAINTENANCE = 'maintenance',
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
   MUSIC_OFFERS = 'musicOffers',

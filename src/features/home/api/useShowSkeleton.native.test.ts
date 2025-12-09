@@ -10,20 +10,8 @@ jest.mock('@tanstack/react-query', () => ({
 const mockedUseIsFetching = useIsFetching as jest.Mock
 
 describe('useShowSkeleton', () => {
-  it('should return true when one of the queries is fetching', () => {
-    mockedUseIsFetching
-      .mockReturnValueOnce(1) // First call (HOMEPAGE_MODULES)
-      .mockReturnValueOnce(0) // Second call (HOME_MODULE)
-
-    const { result } = renderHook(() => useShowSkeleton())
-
-    expect(result.current).toEqual(true)
-  })
-
-  it('should return true when both queries are fetching', () => {
-    mockedUseIsFetching
-      .mockReturnValueOnce(1) // First call (HOMEPAGE_MODULES)
-      .mockReturnValueOnce(1) // Second call (HOME_MODULE)
+  it('should return true when is fetching home module', () => {
+    mockedUseIsFetching.mockReturnValueOnce(1) // HOME_MODULE
 
     const { result } = renderHook(() => useShowSkeleton())
 
@@ -31,9 +19,7 @@ describe('useShowSkeleton', () => {
   })
 
   it('should return false once all queries have finished fetching', async () => {
-    mockedUseIsFetching
-      .mockReturnValueOnce(0) // First call (HOMEPAGE_MODULES)
-      .mockReturnValueOnce(0) // Second call (HOME_MODULE)
+    mockedUseIsFetching.mockReturnValueOnce(0) // HOME_MODULE
 
     const { result } = renderHook(() => useShowSkeleton())
 
