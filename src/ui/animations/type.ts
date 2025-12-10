@@ -23,4 +23,12 @@ export type LottieGradient = {
 
 export type LottieColor = [number, number, number, number]
 
+export type LottieColoringMode = 'global' | 'targeted'
+
+export type LottieColoringOptions = {
+  coloringMode?: LottieColoringMode
+  targetShapeNames?: string[]
+  targetLayerNames?: string[]
+}
+
 // This type was copied from lottie-react-native to make it available to the web app, as it isn't available in web implementation of lottie

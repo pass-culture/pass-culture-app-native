@@ -6,7 +6,7 @@ import LottieView from 'libs/lottie'
 import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
 import { patchLottieForTheme } from 'ui/animations/helpers/patchLottieForTheme'
 import { patchNamedShapes } from 'ui/animations/helpers/patchNamedShapes'
-import { AnimationObject } from 'ui/animations/type'
+import { AnimationObject, LottieColoringOptions } from 'ui/animations/type'
 
 export type AnimationSource =
   | string
@@ -15,7 +15,7 @@ export type AnimationSource =
       uri: string
     }
 
-export type ThemedStyledLottieViewProps = {
+type ThemedStyledLottieViewProps = {
   width?: number | string
   height: number | string
   source: AnimationSource
@@ -23,10 +23,7 @@ export type ThemedStyledLottieViewProps = {
   loop?: boolean
   resizeMode?: 'center' | 'contain' | 'cover' | undefined
   selectThemeColor?: (theme: DefaultTheme) => string
-  coloringMode?: 'global' | 'targeted'
-  targetShapeNames?: string[]
-  targetLayerNames?: string[]
-}
+} & LottieColoringOptions
 
 export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyledLottieViewProps>(
   (

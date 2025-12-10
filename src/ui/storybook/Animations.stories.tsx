@@ -13,7 +13,7 @@ import onboarding_birthday_cake from 'ui/animations/onboarding_birthday_cake.jso
 import onboarding_unlock from 'ui/animations/onboarding_unlock.json'
 import qpi_thanks from 'ui/animations/qpi_thanks.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
-import { AnimationObject } from 'ui/animations/type'
+import { AnimationObject, LottieColoringOptions } from 'ui/animations/type'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export default {
@@ -28,10 +28,7 @@ type LottieStoryConfig = {
   source: AnimationObject
   hasBackground: boolean
   isSmallAnimation: boolean
-  coloringMode?: 'global' | 'targeted'
-  targetShapeNames?: string[]
-  targetLayerNames?: string[]
-}
+} & LottieColoringOptions
 
 const LottieAnimations: Record<string, LottieStoryConfig> = {
   achievements_success: {

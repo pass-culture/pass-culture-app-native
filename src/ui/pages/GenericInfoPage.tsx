@@ -7,7 +7,7 @@ import { accessibilityRoleInternalNavigation } from 'shared/accessibility/access
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
-import { AnimationObject } from 'ui/animations/type'
+import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -57,6 +57,12 @@ export type ButtonProps = {
     }
 )
 
+type AnimationColoringProps = {
+  animationColoringMode?: LottieColoringMode
+  animationTargetShapeNames?: string[]
+  animationTargetLayerNames?: string[]
+}
+
 type AnimationProps =
   | {
       illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
@@ -65,13 +71,10 @@ type AnimationProps =
       animationTargetShapeNames?: never
       animationTargetLayerNames?: never
     }
-  | {
+  | ({
       animation: AnimationObject
       illustration?: never
-      animationColoringMode?: 'global' | 'targeted'
-      animationTargetShapeNames?: string[]
-      animationTargetLayerNames?: string[]
-    }
+    } & AnimationColoringProps)
 
 type Props = PropsWithChildren<{
   withGoBack?: boolean
