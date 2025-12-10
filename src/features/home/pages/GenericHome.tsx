@@ -45,6 +45,7 @@ import { useMarkScreenInteractive } from 'performance/useMarkScreenInteractive'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { usePageTracking, createViewableItemsHandler } from 'shared/tracking/usePageTracking'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { Page } from 'ui/pages/Page'
@@ -85,7 +86,13 @@ const renderModule = (
   )
 }
 
-const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
+const FooterComponent = ({
+  hasShownAll,
+  isLandscape,
+}: {
+  hasShownAll: boolean
+  isLandscape: boolean
+}) => {
   if (hasShownAll && Platform.OS === 'web') {
     return (
       <React.Fragment>
@@ -106,8 +113,18 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
       </React.Fragment>
     )
   }
-  return <Spacer.TabBar />
+  return (
+    <SpacerTabBarContainer isLandscape={isLandscape}>
+      <Spacer.TabBar />
+    </SpacerTabBarContainer>
+  )
 }
+
+const SpacerTabBarContainer = styled.View<{ isLandscape: boolean }>(({ isLandscape, theme }) => ({
+  marginBottom: isLandscape
+    ? theme.designSystem.size.spacing.xxxl
+    : theme.designSystem.size.spacing.xl,
+}))
 
 const buildModulesHandlingVideoCarouselPosition = (
   modules: HomepageModule[],
@@ -159,7 +176,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const { height: screenHeight } = useWindowDimensions()
   const modulesIntervalId = useRef<number>(null)
   const { zIndex } = useTheme()
-
+  const isLandscape = useIsLandscape()
   const flatListHeaderStyle = { zIndex: zIndex.header }
 
   const enrichedModules = useMemo(
@@ -305,7 +322,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
           windowSize={5}
           maxToRenderPerBatch={maxToRenderPerBatch}
           ListFooterComponent={
-            <FooterComponent hasShownAll={enrichedModules.length >= modules.length} />
+            <FooterComponent
+              hasShownAll={enrichedModules.length >= modules.length}
+              isLandscape={isLandscape}
+            />
           }
           ListHeaderComponent={ListHeader}
           ListHeaderComponentStyle={flatListHeaderStyle}
