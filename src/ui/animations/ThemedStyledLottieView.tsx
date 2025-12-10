@@ -4,7 +4,8 @@ import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
-import { patchLottieForTheme } from 'ui/animations/patchLottieForTheme'
+import { patchLottieForTheme } from 'ui/animations/helpers/patchLottieForTheme'
+import { patchNamedShapes } from 'ui/animations/helpers/patchNamedShapes'
 import { AnimationObject } from 'ui/animations/type'
 
 export type AnimationSource =
@@ -14,7 +15,7 @@ export type AnimationSource =
       uri: string
     }
 
-type ThemedStyledLottieViewProps = {
+export type ThemedStyledLottieViewProps = {
   width?: number | string
   height: number | string
   source: AnimationSource
@@ -22,10 +23,27 @@ type ThemedStyledLottieViewProps = {
   loop?: boolean
   resizeMode?: 'center' | 'contain' | 'cover' | undefined
   selectThemeColor?: (theme: DefaultTheme) => string
+  coloringMode?: 'global' | 'targeted'
+  targetShapeNames?: string[]
+  targetLayerNames?: string[]
 }
 
 export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyledLottieViewProps>(
-  ({ width, height, source, autoPlay = false, loop = true, resizeMode, selectThemeColor }, ref) => {
+  (
+    {
+      width,
+      height,
+      source,
+      autoPlay = false,
+      loop = true,
+      resizeMode,
+      selectThemeColor,
+      coloringMode = 'global',
+      targetShapeNames,
+      targetLayerNames,
+    },
+    ref
+  ) => {
     const theme = useTheme()
 
     const animationData = useMemo(() => {
@@ -33,14 +51,17 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
         return source
       }
 
-      const fillColorFromTheme = selectThemeColor
-        ? selectThemeColor(theme)
-        : theme.designSystem.color.background.brandPrimary
+      const fillColorFromTheme =
+        selectThemeColor?.(theme) ?? theme.designSystem.color.background.brandPrimary
 
-      return patchLottieForTheme(source, {
-        fill: fillColorFromTheme,
-      })
-    }, [theme, selectThemeColor, source])
+      if (coloringMode === 'targeted') {
+        return patchNamedShapes(source, targetShapeNames ?? ['Fond 1'], fillColorFromTheme, {
+          targetLayerNames,
+        })
+      }
+
+      return patchLottieForTheme(source, { fill: fillColorFromTheme })
+    }, [theme, selectThemeColor, source, coloringMode, targetShapeNames, targetLayerNames])
 
     const animationRef = usePartialLottieAnimation(animationData)
 
@@ -55,6 +76,7 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
         autoPlay={autoPlay}
         loop={loop}
         resizeMode={resizeMode}
+        renderMode="SOFTWARE" // without this, animation breaks on iOS
       />
     )
   }

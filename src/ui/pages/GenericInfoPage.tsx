@@ -57,20 +57,32 @@ export type ButtonProps = {
     }
 )
 
-type Props = PropsWithChildren<
-  {
-    withGoBack?: boolean
-    withSkipAction?: () => void
-    title: string
-    subtitle?: string
-    buttonPrimary: ButtonProps
-    buttonSecondary?: ButtonProps
-    buttonTertiary?: ButtonProps
-  } & (
-    | { illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>; animation?: never }
-    | { animation: AnimationObject; illustration?: never }
-  )
->
+type AnimationProps =
+  | {
+      illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+      animation?: never
+      animationColoringMode?: never
+      animationTargetShapeNames?: never
+      animationTargetLayerNames?: never
+    }
+  | {
+      animation: AnimationObject
+      illustration?: never
+      animationColoringMode?: 'global' | 'targeted'
+      animationTargetShapeNames?: string[]
+      animationTargetLayerNames?: string[]
+    }
+
+type Props = PropsWithChildren<{
+  withGoBack?: boolean
+  withSkipAction?: () => void
+  title: string
+  subtitle?: string
+  buttonPrimary: ButtonProps
+  buttonSecondary?: ButtonProps
+  buttonTertiary?: ButtonProps
+}> &
+  AnimationProps
 
 export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
@@ -83,6 +95,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   buttonSecondary,
   buttonTertiary,
   children,
+  animationColoringMode,
+  animationTargetLayerNames,
+  animationTargetShapeNames,
 }) => {
   const { isDesktopViewport, designSystem } = useTheme()
   const isLandscape = useIsLandscape()
@@ -113,7 +128,14 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
             />
           ) : null}
           {animation ? (
-            <ThemedStyledLottieView source={animation} width="100%" height="100%" />
+            <ThemedStyledLottieView
+              source={animation}
+              width="100%"
+              height="100%"
+              coloringMode={animationColoringMode}
+              targetShapeNames={animationTargetShapeNames}
+              targetLayerNames={animationTargetLayerNames}
+            />
           ) : null}
         </IllustrationContainer>
 

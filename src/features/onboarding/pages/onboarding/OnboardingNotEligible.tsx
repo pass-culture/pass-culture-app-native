@@ -13,6 +13,8 @@ export const OnboardingNotEligible = () => {
     <GenericInfoPage
       withSkipAction={navigateToHomeWithReset}
       animation={BirthdayCake}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       title="Encore un peu de patience&nbsp;!"
       subtitle="Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir les bons plans autour de toi."
       buttonPrimary={{
