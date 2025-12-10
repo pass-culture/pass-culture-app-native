@@ -58,7 +58,6 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing } from 'ui/theme'
 
 type OfferContentBaseProps = OfferContentProps &
   PropsWithChildren<{
@@ -390,9 +389,9 @@ const ScrollViewContainer = React.memo(
     overflow: 'visible',
   })
 )
-const FooterContainer = styled.View({
-  marginTop: getSpacing(18),
-})
+const FooterContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxs,
+}))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
   paddingBottom: theme.designSystem.size.spacing.xxl,
