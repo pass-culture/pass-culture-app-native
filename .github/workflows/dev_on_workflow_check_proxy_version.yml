@@ -30,7 +30,7 @@ jobs:
         with:
           node-version-file: 'server/.nvmrc'
 
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main/v1.0.0
         if: inputs.WEBAPP_URL
 
       - id: proxy-version
