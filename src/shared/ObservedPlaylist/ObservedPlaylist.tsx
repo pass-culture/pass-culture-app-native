@@ -11,9 +11,14 @@ type ObservedPlaylistProps = {
     handleViewableItemsChanged: ({ viewableItems }: { viewableItems: ViewToken[] }) => void
   }) => React.ReactNode
   onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
+  onIntersectionChange?: (inView: boolean) => void
 }
 
-export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedPlaylistProps) => {
+export const ObservedPlaylist = ({
+  children,
+  onViewableItemsChanged,
+  onIntersectionChange,
+}: ObservedPlaylistProps) => {
   const listRef = useRef<FlatList>(null)
   const lastViewableItems = useRef<ViewToken[]>([])
   const isInView = useRef(false)
@@ -47,6 +52,7 @@ export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedP
   const handleIntersectionObserverChange = useCallback(
     (value: boolean) => {
       isInView.current = value
+      onIntersectionChange?.(value)
       if (!value) return
 
       if (lastViewableItems.current?.length) {
@@ -55,7 +61,7 @@ export const ObservedPlaylist = ({ children, onViewableItemsChanged }: ObservedP
         listRef.current?.recordInteraction()
       }
     },
-    [handleViewableItemsChanged]
+    [handleViewableItemsChanged, onIntersectionChange]
   )
 
   return (

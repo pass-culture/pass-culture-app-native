@@ -131,7 +131,8 @@ export function OfferPlaylistList({
         return (
           <ObservedPlaylist
             key={playlist.type}
-            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}>
+            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}
+            onIntersectionChange={playlist.handleChangePlaylistDisplay}>
             {({ listRef, handleViewableItemsChanged }) => (
               <StyledPassPlaylist
                 data={playlist.offers ?? []}
