@@ -48,7 +48,7 @@ import { usePageTracking, createViewableItemsHandler } from 'shared/tracking/use
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
 import { getScreenSeenCount, ScreenSeenCount } from '../helpers/getScreenSeenCount'
@@ -270,7 +270,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
     () => (
       <View testID="listHeader">
         {Header}
-        <Spacer.Column numberOfSpaces={6} />
         {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
@@ -362,8 +361,8 @@ const FooterContainer = styled.View(({ theme }) => ({
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  right: getSpacing(7),
-  bottom: theme.tabBar.height + getSpacing(6),
+  right: theme.designSystem.size.spacing.xl,
+  bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))
 
