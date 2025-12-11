@@ -33,6 +33,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.0.0
       - name: Setup yarn
         run: npm install -g yarn
       - name: Enable Corepack
