@@ -14,7 +14,6 @@ type MessagingAppsProps = {
 
 export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
   const { share, shareContent } = getShareVenue({ venue, utmMedium: 'social_media' })
-
   const messagingAppAnalytics = useCallback(
     (social: Social | 'Other') => {
       analytics.logShare({ type: 'Venue', venueId: venue.id, from: 'venue', social })
@@ -25,16 +24,19 @@ export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
   if (!shareContent?.url) return null
 
   return (
-    <SectionWithDivider visible margin gap={6}>
-      <Container>
-        <MessagingApps
-          shareContent={shareContent}
-          share={share}
-          messagingAppAnalytics={messagingAppAnalytics}
-        />
-      </Container>
-    </SectionWithDivider>
+    <StyledSectionWithDivider visible margin gap={6}>
+      <MessagingApps
+        shareContent={shareContent}
+        share={share}
+        messagingAppAnalytics={messagingAppAnalytics}
+      />
+    </StyledSectionWithDivider>
   )
 }
 
-const Container = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.l }))
+const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => {
+  return {
+    paddingBottom: theme.designSystem.size.spacing.xxl,
+    marginBottom: theme.designSystem.size.spacing.xxxxl,
+  }
+})

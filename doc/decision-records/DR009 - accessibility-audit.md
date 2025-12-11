@@ -905,6 +905,28 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-38765](https://passculture.atlassian.net/browse/PC-38765)
+**PR** : [#8994](https://github.com/pass-culture/pass-culture-app-native/pull/8994)
+
+**Problème** 😱
+
+- **(E02)** En format paysage, le dernier bloc est bien atteint et visible, mais il faut maintenir le défilement pour en consulter le contenu. Dès que l’on relâche, une partie des contenus se retrouve à nouveau masquée.
+- **(E09)** Aussi bien en mode portrait qu’en mode paysage, le bouton “Accéder aux séances” est positionné au-dessus des composants du bloc “Passe le bon plan”.
+- **(E14)** En format paysage, le bouton “Accéder aux séances” est positionné au-dessus des composants du bloc "ça peut aussi te plaire".
+
+**Correction** 💡
+
+Ajout des marges nécessaires pour que tout le contenu soit visible.
+
+</details>
+
+<br>
+
 ## 💡 Questions
 
 </details>

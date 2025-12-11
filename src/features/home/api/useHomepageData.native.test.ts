@@ -1,13 +1,15 @@
 import { BookingsResponseV2 } from 'api/gen'
 import { bookingsSnapV2 } from 'features/bookings/fixtures'
+import { getHomepageId, useHomepageData } from 'features/home/api/useHomepageData'
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
+import { UserOnboardingRole } from 'features/onboarding/enums'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
-
-import { useHomepageData } from './useHomepageData'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -16,10 +18,64 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-const homepageEntryIds = [
-  homepageEntriesAPIResponse.items[0].sys.id,
-  homepageEntriesAPIResponse.items[1].sys.id,
-]
+describe('getHomepageId', () => {
+  const mockConfig: CustomRemoteConfig = {
+    ...DEFAULT_REMOTE_CONFIG,
+    homeEntryIdGeneral: 'general-id',
+    homeEntryIdBeneficiary: 'beneficiary-id',
+    homeEntryIdFreeBeneficiary: 'free-beneficiary-id',
+    homeEntryIdWithoutBooking: 'without-booking-id',
+  }
+
+  beforeAll(() => {
+    jest.spyOn(console, 'log').mockImplementation(jest.fn())
+  })
+
+  afterAll(() => {
+    jest.restoreAllMocks()
+  })
+
+  it.each`
+    isLoggedIn | isFreeBeneficiary | isBeneficiary | hasBookings | onboardingRole                 | expectedHomeEntry
+    ${true}    | ${false}          | ${true}       | ${true}     | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdBeneficiary}
+    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.EIGHTEEN} | ${mockConfig.homeEntryIdBeneficiary}
+    ${true}    | ${false}          | ${true}       | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdWithoutBooking}
+    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNDERAGE} | ${mockConfig.homeEntryIdFreeBeneficiary}
+    ${true}    | ${true}           | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdFreeBeneficiary}
+    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+    ${true}    | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+  `(
+    `should return remote config $expectedHomeEntry when isLoggedIn=$isLoggedIn, isFreeBeneficiary=$isFreeBeneficiary, isBeneficiary, hasBookings=$hasBookings, onboardingRole=$onboardingRole`,
+    ({
+      isLoggedIn,
+      isFreeBeneficiary,
+      isBeneficiary,
+      hasBookings,
+      onboardingRole,
+      expectedHomeEntry,
+    }: {
+      isLoggedIn: boolean
+      isFreeBeneficiary: boolean
+      isBeneficiary: boolean
+      hasBookings: boolean
+      onboardingRole: UserOnboardingRole
+      expectedHomeEntry: string
+    }) => {
+      const homeId = getHomepageId(
+        {
+          isLoggedIn,
+          isFreeBeneficiary,
+          isBeneficiary,
+          hasBookings,
+          onboardingRole,
+        },
+        mockConfig
+      )
+
+      expect(homeId).toBe(expectedHomeEntry)
+    }
+  )
+})
 
 describe('useHomepageModules', () => {
   beforeEach(() => {
@@ -33,19 +89,6 @@ describe('useHomepageModules', () => {
     })
 
     const expectedResult = homepageList[0]
-
-    await waitFor(() => {
-      expect(result.current).toEqual(expectedResult)
-    })
-  })
-
-  it('calls the API and returns the data of a thematic home page', async () => {
-    const entryId = homepageEntryIds[1]
-    const { result } = renderHook(() => useHomepageData(entryId), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    const expectedResult = homepageList[1]
 
     await waitFor(() => {
       expect(result.current).toEqual(expectedResult)
