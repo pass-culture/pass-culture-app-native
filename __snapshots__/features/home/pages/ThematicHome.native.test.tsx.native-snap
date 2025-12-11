@@ -48,6 +48,7 @@ exports[`ThematicHome should render correctly 1`] = `
         ListFooterComponent={
           <FooterComponent
             hasShownAll={true}
+            isLandscape={false}
           />
         }
         ListHeaderComponent={
@@ -65,9 +66,6 @@ exports[`ThematicHome should render correctly 1`] = `
                   "type": "Category",
                 }
               }
-            />
-            <Styled(View)
-              numberOfSpaces={6}
             />
             <Styled(View) />
           </View>
@@ -167,14 +165,6 @@ exports[`ThematicHome should render correctly 1`] = `
                 }
               />
               <View
-                numberOfSpaces={6}
-                style={
-                  {
-                    "height": 24,
-                  }
-                }
-              />
-              <View
                 style={
                   {
                     "marginHorizontal": 24,
@@ -192,14 +182,23 @@ exports[`ThematicHome should render correctly 1`] = `
             onLayout={[Function]}
           >
             <View
-              customHeight={72}
-              enable={true}
+              isLandscape={false}
               style={
                 {
-                  "height": 72,
+                  "marginBottom": 24,
                 }
               }
-            />
+            >
+              <View
+                customHeight={72}
+                enable={true}
+                style={
+                  {
+                    "height": 72,
+                  }
+                }
+              />
+            </View>
           </View>
         </View>
       </RCTScrollView>
@@ -208,7 +207,7 @@ exports[`ThematicHome should render correctly 1`] = `
           {
             "bottom": 88,
             "position": "absolute",
-            "right": 28,
+            "right": 24,
             "zIndex": 1,
           }
         }

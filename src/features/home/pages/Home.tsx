@@ -130,4 +130,5 @@ const ListHeaderContainer = styled.View(({ theme }) => ({
   flexGrow: 1,
   flexShrink: 0,
   zIndex: theme.zIndex.header,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
