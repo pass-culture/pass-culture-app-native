@@ -38,8 +38,28 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const { setParams } = useNavigation<UseNavigationType>()
   const accountCreationToken = params?.accountCreationToken
+  const [stepIndex, setStepIndex] = React.useState(params?.stepIndex ?? currentStep)
 
-  const [stepIndex, setStepIndex] = React.useState(currentStep)
+  useEffect(() => {
+    const navigationStepIndex = params?.stepIndex
+    if (navigationStepIndex !== undefined && navigationStepIndex !== stepIndex) {
+      setStepIndex(navigationStepIndex)
+    }
+    // stepIndex is not in the useEffect dependencies to avoid multiple re-render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params?.stepIndex])
+
+  const syncStepIndexWithNavigation = useCallback(
+    (newStepIndex: number | ((prev: number) => number)) => {
+      setStepIndex((prev) => {
+        const value = typeof newStepIndex === 'function' ? newStepIndex(prev) : newStepIndex
+        setParams({ ...params, stepIndex: value })
+        return value
+      })
+    },
+    [params, setParams]
+  )
+
   const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)
   const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
   const stepConfig = signupStepConfig[stepIndex]
@@ -62,16 +82,16 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
       goBackAndLeaveSignup()
     } else {
       if (isSecondStep) setParams({ accountCreationToken: undefined, email: undefined })
-      setStepIndex((prevStepIndex) => Math.max(0, prevStepIndex - 1))
+      syncStepIndexWithNavigation((prevStepIndex) => Math.max(0, prevStepIndex - 1))
     }
   }
 
   const goToNextStep = useCallback(
     (_signupData: Partial<SignupData>) => {
       setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-      setStepIndex((prevStepIndex) => Math.min(numberOfSteps, prevStepIndex + 1))
+      syncStepIndexWithNavigation((prevStepIndex) => Math.min(numberOfSteps, prevStepIndex + 1))
     },
-    [numberOfSteps]
+    [numberOfSteps, syncStepIndexWithNavigation]
   )
 
   const ssoType = accountCreationToken ? 'SSO_login' : 'SSO_signup'
@@ -141,7 +161,7 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
         await loginAndRedirect({ accessToken, refreshToken }, stepperAnalyticsType)
       } else {
         await appSignup(commonParams)
-        setStepIndex(numberOfSteps - 1)
+        syncStepIndexWithNavigation(numberOfSteps - 1)
       }
     } catch (error) {
       eventMonitoring.captureException(error)
