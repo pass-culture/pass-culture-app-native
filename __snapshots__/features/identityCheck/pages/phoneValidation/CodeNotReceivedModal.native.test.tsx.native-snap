@@ -395,6 +395,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
               />
               <View
                 accessibilityLabel="Demander un autre code"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -882,6 +883,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
               />
               <View
                 accessibilityLabel="Demander un autre code"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

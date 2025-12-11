@@ -450,6 +450,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                 </View>
                 <View
                   accessibilityLabel="Fermer la modale"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

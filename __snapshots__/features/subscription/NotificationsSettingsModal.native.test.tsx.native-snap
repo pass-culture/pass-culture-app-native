@@ -687,6 +687,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               </Text>
               <View
                 accessibilityLabel="Valider"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -772,6 +773,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               </View>
               <View
                 accessibilityLabel="Tout refuser et ne pas recevoir d’actus"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

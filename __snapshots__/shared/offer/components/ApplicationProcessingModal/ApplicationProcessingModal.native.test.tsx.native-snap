@@ -462,6 +462,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                 />
                 <View
                   accessibilityLabel="Mettre en favori"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

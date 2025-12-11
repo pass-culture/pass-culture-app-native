@@ -353,6 +353,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Tout refuser"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -456,6 +457,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Tout accepter"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -551,6 +553,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           />
           <View
             accessibilityLabel="Choisir les cookies"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

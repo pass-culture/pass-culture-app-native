@@ -1930,6 +1930,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           />
           <View
             accessibilityLabel="Enregistrer les modifications"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -3987,6 +3988,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           />
           <View
             accessibilityLabel="Enregistrer les modifications"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

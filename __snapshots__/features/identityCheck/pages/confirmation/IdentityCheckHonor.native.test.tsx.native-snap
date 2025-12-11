@@ -99,6 +99,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       />
       <View
         accessibilityLabel="Valider et continuer"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

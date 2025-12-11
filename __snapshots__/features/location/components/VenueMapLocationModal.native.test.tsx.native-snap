@@ -620,6 +620,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
           >
             <View
               accessibilityLabel="Valider et voir sur la carte"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

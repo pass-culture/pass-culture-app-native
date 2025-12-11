@@ -566,7 +566,8 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                 </View>
               </View>
               <View
-                accessibilityLabel="Envoyer"
+                accessibilityLabel="Envoyer ma suggestion"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -623,7 +624,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     },
                   ]
                 }
-                testID="Envoyer"
+                testID="Envoyer ma suggestion"
               >
                 <View
                   style={

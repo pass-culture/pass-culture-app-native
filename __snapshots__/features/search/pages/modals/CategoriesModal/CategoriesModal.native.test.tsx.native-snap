@@ -2197,6 +2197,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -2303,6 +2304,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Rechercher"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

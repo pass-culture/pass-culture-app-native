@@ -262,6 +262,7 @@ exports[`GeolocationActivationModal should render properly 1`] = `
       </Text>
       <View
         accessibilityLabel="Activer la géolocalisation"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

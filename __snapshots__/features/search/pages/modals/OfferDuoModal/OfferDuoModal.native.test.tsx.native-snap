@@ -540,6 +540,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -646,6 +647,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
             </View>
             <View
               accessibilityLabel="Rechercher"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
