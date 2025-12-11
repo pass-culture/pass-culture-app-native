@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import { patchLottieForTheme } from 'ui/animations/helpers/patchLottieForTheme'
 import NotificationAnimation from 'ui/animations/notif_basic_medium.json'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { ToggleButton, ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
@@ -53,11 +54,19 @@ export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
     [theme.icons.sizes.small]
   )
 
+  const themedAnimation = useMemo(
+    () =>
+      patchLottieForTheme(NotificationAnimation, {
+        fill: theme.designSystem.color.background.brandPrimary,
+      }),
+    [theme.designSystem.color.background.brandPrimary]
+  )
+
   const ActiveIcon = useCallback(() => {
     if (isAnimatingActivation) {
       return (
         <StyledLottieView
-          source={NotificationAnimation}
+          source={themedAnimation}
           progress={animationProgress.current}
           loop={false}
           renderMode="SOFTWARE" // without this, animation breaks on iOS
@@ -73,6 +82,7 @@ export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
     )
   }, [
     isAnimatingActivation,
+    themedAnimation,
     theme.designSystem.color.background.brandPrimary,
     theme.icons.sizes.small,
   ])
