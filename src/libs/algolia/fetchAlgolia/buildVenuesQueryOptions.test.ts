@@ -15,12 +15,14 @@ const defaultBuildLocationParameterParams = {
   aroundPlaceRadius: 50,
 }
 
+const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:false']]
+
 describe('buildVenuesQueryOptions', () => {
   it('should fetch with default search params', () => {
     const options = buildVenuesQueryOptions(defaultParams, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
-      facetFilters: [['has_at_least_one_bookable_offer:true']],
+      facetFilters: defaultFacetFilters,
     })
   })
 
@@ -35,7 +37,7 @@ describe('buildVenuesQueryOptions', () => {
     expect(options).toEqual({
       aroundLatLng: '42, 43',
       aroundRadius: 23000,
-      facetFilters: [['has_at_least_one_bookable_offer:true']],
+      facetFilters: defaultFacetFilters,
     })
   })
 
@@ -44,7 +46,7 @@ describe('buildVenuesQueryOptions', () => {
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
-      facetFilters: [['tags:cinema', 'tags:canape'], ['has_at_least_one_bookable_offer:true']],
+      facetFilters: [['tags:cinema', 'tags:canape'], ...defaultFacetFilters],
     })
   })
 
@@ -53,10 +55,7 @@ describe('buildVenuesQueryOptions', () => {
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
-      facetFilters: [
-        ['venue_type:BOOKSTORE', 'venue_type:RECORD_STORE'],
-        ['has_at_least_one_bookable_offer:true'],
-      ],
+      facetFilters: [['venue_type:BOOKSTORE', 'venue_type:RECORD_STORE'], ...defaultFacetFilters],
     })
   })
 })
