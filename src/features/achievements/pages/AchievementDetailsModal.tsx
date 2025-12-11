@@ -4,6 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { AchievementEnum } from 'api/gen'
 import { useAchievementDetails } from 'features/achievements/hooks/useAchievementDetails'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 interface Props {
@@ -25,6 +27,10 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
 
   const Illustration = achievement.illustration
 
+  const completedAtLabel = achievement.completedAt
+    ? `Fait le ${achievement.completedAt}`
+    : 'Débloqué'
+
   return (
     <AppInformationModal
       title=""
@@ -36,11 +42,11 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
           <Illustration size={illustrations.sizes.fullPage} />
         </IconsWrapper>
         <Spacer.Column numberOfSpaces={6} />
-        <BodyWrapper isCompleted={achievement.completed}>
+        <BodyWrapper>
           {achievement.completed ? (
-            <StyledBody>Fait le {achievement.completedAt}</StyledBody>
+            <Tag label={completedAtLabel} variant={TagVariant.NEW} />
           ) : (
-            <StyledBody>Non débloqué</StyledBody>
+            <Tag label="Non débloqué" />
           )}
         </BodyWrapper>
         <Spacer.Column numberOfSpaces={4} />
@@ -66,17 +72,10 @@ const IconsWrapper = styled.View({
   justifyContent: 'center',
 })
 
-const BodyWrapper = styled.View<{ isCompleted: boolean }>(({ isCompleted, theme }) => ({
-  backgroundColor: isCompleted
-    ? theme.designSystem.color.background.brandPrimary
-    : theme.designSystem.color.background.disabled,
+const BodyWrapper = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(2),
   paddingVertical: getSpacing(1),
   borderRadius: theme.designSystem.size.borderRadius.s,
-}))
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.designSystem.color.text.inverted,
 }))
 
 const StyledDescrption = styled(Typo.Body)({
