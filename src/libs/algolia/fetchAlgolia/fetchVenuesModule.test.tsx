@@ -41,6 +41,8 @@ const mockedParamListGeolocated: (VenuesModuleParameters & BuildLocationParamete
   },
 ]
 
+const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:false']]
+
 describe('fetchVenuesModule', () => {
   it('should fetch with default venue module params', () => {
     fetchVenuesModules(mockedDefaultParamList)
@@ -50,7 +52,7 @@ describe('fetchVenuesModule', () => {
         indexName: 'algoliaVenuesIndexName',
         params: {
           attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
+          facetFilters: defaultFacetFilters,
           hitsPerPage: 15,
         },
         query: '',
@@ -66,7 +68,7 @@ describe('fetchVenuesModule', () => {
         indexName: 'algoliaVenuesIndexName',
         params: {
           attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
+          facetFilters: defaultFacetFilters,
           hitsPerPage: 15,
         },
         query: '',
@@ -84,7 +86,7 @@ describe('fetchVenuesModule', () => {
           aroundLatLng: '2, 2',
           aroundRadius: 50000,
           attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
+          facetFilters: defaultFacetFilters,
           hitsPerPage: 15,
         },
         query: '',
