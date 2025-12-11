@@ -342,6 +342,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
               >
                 <View
                   accessibilityLabel="Partager l’app"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -438,6 +439,7 @@ exports[`ShareAppModalVersionA should match snapshot 1`] = `
                 </View>
                 <View
                   accessibilityLabel="Non merci"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

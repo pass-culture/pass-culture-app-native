@@ -246,6 +246,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 />
                 <View
                   accessibilityLabel="Copier l’adresse"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -3341,6 +3342,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 />
                 <View
                   accessibilityLabel="Copier l’adresse"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -6749,6 +6751,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 />
                 <View
                   accessibilityLabel="Copier l’adresse"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

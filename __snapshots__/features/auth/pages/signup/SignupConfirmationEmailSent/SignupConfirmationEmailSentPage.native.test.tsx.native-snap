@@ -513,6 +513,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Consulter mes e-mails"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

@@ -106,6 +106,7 @@ export const FeedbackInApp = () => {
           <ButtonPrimary
             type="submit"
             wording="Envoyer"
+            accessibilityLabel="Envoyer ma suggestion"
             onPress={handleSubmit(onSubmit)}
             disabled={!isValid}
           />

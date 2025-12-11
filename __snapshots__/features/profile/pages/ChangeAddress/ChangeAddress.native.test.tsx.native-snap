@@ -482,6 +482,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
         >
           <View
             accessibilityLabel="Continuer"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1094,6 +1095,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Valider mon adresse"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

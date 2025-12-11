@@ -353,6 +353,7 @@ exports[`ShareAppModal should match snapshot 1`] = `
               </View>
               <View
                 accessibilityLabel="Fermer la modale"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
