@@ -26,7 +26,6 @@ import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWi
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ currentStep = 0 }) => {
@@ -195,14 +194,14 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingHorizontal: getSpacing(6),
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',
   },
 }))``
 
-const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+const Placeholder = styled.View<{ height: number }>(({ height, theme }) => ({
   height,
-  marginBottom: getSpacing(8),
+  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
