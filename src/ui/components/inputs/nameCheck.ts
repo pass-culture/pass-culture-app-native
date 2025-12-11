@@ -11,15 +11,15 @@ export function isNameValid(name: string) {
   )
 }
 
-function containsOnlyLatinCharacters(name: string) {
+export function containsOnlyLatinCharacters(name: string) {
   return name.match(LATIN_REGEX)?.length === name.length
 }
 
-function containsNumber(name: string): boolean {
+export function containsNumber(name: string): boolean {
   return NUMBER_REGEX.test(name)
 }
 
 const specialCharacters = ["'", '-']
-function containsSpecialCharacterAtTheBeginningOrEnd(name: string): boolean {
+export function containsSpecialCharacterAtTheBeginningOrEnd(name: string): boolean {
   return specialCharacters.some((c) => name.startsWith(c) || name.endsWith(c))
 }

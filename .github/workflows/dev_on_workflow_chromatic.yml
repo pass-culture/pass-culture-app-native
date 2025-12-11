@@ -23,7 +23,7 @@ jobs:
           # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code-and-above
           # we don't need to have the full history
           # set fetch-depth to an arbitrary number large enough to contain all commits from the main branch
-          fetch-depth: 100
+          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v4
         with:
