@@ -36,6 +36,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.0.0
+        if: ${{ inputs.ENV == "testing "}}
       - name: Setup java
         uses: actions/setup-java@v4
         with:
