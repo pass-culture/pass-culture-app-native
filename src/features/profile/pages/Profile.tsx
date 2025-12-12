@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
@@ -38,6 +39,8 @@ import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlu
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Tag } from 'ui/designSystem/Tag/Tag'
+import { TagVariant } from 'ui/designSystem/Tag/types'
 import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
@@ -60,10 +63,12 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 const isWeb = Platform.OS === 'web'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
+const DARK_MODE_GTM_APPEARANCE_TAG_KEY = 'darkModeGtmAppearanceTagSeen'
 
 const OnlineProfile: React.FC = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.PROFILE)
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
+  const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
@@ -96,6 +101,31 @@ const OnlineProfile: React.FC = () => {
     userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty)
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
+  const [hasSeenAppearanceTag, setHasSeenAppearanceTag] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    let mounted = true
+
+    const fetchAppearanceTagState = async () => {
+      if (!enableDarkModeGtm) {
+        setHasSeenAppearanceTag(null)
+        return
+      }
+      const stored = await AsyncStorage.getItem(DARK_MODE_GTM_APPEARANCE_TAG_KEY)
+      if (!mounted) return
+      setHasSeenAppearanceTag(stored === 'true')
+    }
+
+    fetchAppearanceTagState()
+    return () => {
+      mounted = false
+    }
+  }, [enableDarkModeGtm])
+
+  const markAppearanceTagSeen = useCallback(() => {
+    setHasSeenAppearanceTag(true)
+    AsyncStorage.setItem(DARK_MODE_GTM_APPEARANCE_TAG_KEY, 'true').catch(() => null)
+  }, [])
 
   useFocusEffect(
     useCallback(() => {
@@ -253,9 +283,18 @@ const OnlineProfile: React.FC = () => {
                   {hidePreferenceSection ? null : (
                     <Li>
                       <Row
-                        title="Préférences d’affichage"
+                        title="Apparence"
                         type="navigable"
                         navigateTo={getProfilePropConfig('DisplayPreference')}
+                        renderTitle={(title) => (
+                          <TitleWithTag>
+                            <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
+                            {enableDarkModeGtm && hasSeenAppearanceTag === false ? (
+                              <Tag label="Nouveau" variant={TagVariant.NEW} />
+                            ) : null}
+                          </TitleWithTag>
+                        )}
+                        onPress={markAppearanceTagSeen}
                         icon={ArtMaterial}
                       />
                     </Li>
@@ -389,6 +428,13 @@ const ScrollViewContentContainer = styled.View({
 const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   paddingVertical: getSpacing(4),
 })
+
+const TitleWithTag = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  marginRight: theme.designSystem.size.spacing.s,
+}))
 
 const ShareAppContainer = styled(ViewGap)(({ theme }) => ({
   paddingRight: theme.isSmallScreen ? 0 : getSpacing(8),

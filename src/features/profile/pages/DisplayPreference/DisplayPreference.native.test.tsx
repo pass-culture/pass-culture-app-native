@@ -22,7 +22,7 @@ describe('DisplayPreference', () => {
   it.skip('should display dark mode section when feature flag is enable', async () => {
     render(<DisplayPreference />)
 
-    await screen.findByText('Préférences d’affichage')
+    await screen.findByText('Apparence')
 
     const subtitle = screen.getByText('Thème')
     await waitFor(() => {
@@ -36,7 +36,7 @@ describe('DisplayPreference', () => {
     setFeatureFlags()
     render(<DisplayPreference />)
 
-    await screen.findByText('Préférences d’affichage')
+    await screen.findByText('Apparence')
 
     const subtitle = screen.queryByText('Thème')
     await waitFor(() => {
