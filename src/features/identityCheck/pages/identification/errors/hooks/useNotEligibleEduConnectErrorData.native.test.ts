@@ -16,6 +16,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     primaryButton: {
       wording: 'Contacter le support',
       externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
+      onPress: expect.any(Function),
     },
     isGoHomeTertiaryButtonVisible: true,
   }

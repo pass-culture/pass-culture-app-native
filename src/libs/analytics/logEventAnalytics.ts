@@ -371,6 +371,7 @@ export const logEventAnalytics = {
       | 'AccessibilityDeclaration'
       | 'AccessibilityEngagement'
       | 'DeleteProfileContactSupport'
+      | 'DebugScreen'
       | 'FeedbackInApp'
       | 'LegalNotices'
       | 'NotEligibleEduConnect'

@@ -4,13 +4,16 @@ import styled, { useTheme } from 'styled-components/native'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityActionPlanSection } from 'features/profile/components/AccessibilityActionPlanSection/AccessibilityActionPlanSection'
-import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
 import { accessibility2022 } from 'features/profile/pages/Accessibility/accessibility2022'
 import { accessibility2023 } from 'features/profile/pages/Accessibility/accessibility2023'
 import { accessibility2024 } from 'features/profile/pages/Accessibility/accessibility2024'
 import { accessibility2025 } from 'features/profile/pages/Accessibility/accessibility2025'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -283,7 +286,14 @@ export function AccessibilityActionPlan() {
           ce schéma pluriannuel.
         </Typo.Body>
       </StyledBodyAccent>
-      <ContactSupportButton />
+      <ExternalTouchableLink
+        as={LinkInsideText}
+        wording="Contacter le support"
+        externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+        accessibilityRole={AccessibilityRole.LINK}
+        justifyContent="flex-start"
+        onBeforeNavigate={() => analytics.logHasClickedContactForm('AccessibilityActionPlan')}
+      />
       <StyledBodyAccent>
         Processus de contrôle et de validation
         {DOUBLE_LINE_BREAK}

@@ -5,6 +5,7 @@ import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
@@ -474,6 +475,7 @@ export function AccessibilityDeclarationWeb() {
           externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
           accessibilityRole={AccessibilityRole.LINK}
           justifyContent="flex-start"
+          onBeforeNavigate={() => analytics.logHasClickedContactForm('AccessibilityDeclaration')}
         />
       </Typo.Body>
 
