@@ -16,6 +16,7 @@ export default meta
 
 const baseProps: ComponentProps<typeof AttachedCardDisplay> = {
   title: 'La Joconde',
+  accessibilityLabel: 'La Joconde - Arts visuels, Du 12/06 au 24/06',
   subtitle: 'Arts visuels',
   details: ['Du 12/06 au 24/06'],
   rightTagLabel: 'Gratuit',

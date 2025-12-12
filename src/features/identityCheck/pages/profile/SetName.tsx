@@ -9,7 +9,6 @@ import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setN
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -123,7 +122,6 @@ export const SetName = () => {
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers la ville de résidence"
-          accessibilityRole={accessibilityRoleInternalNavigation()}
           onPress={handleSubmit(submitName)}
           disabled={disabled}
         />

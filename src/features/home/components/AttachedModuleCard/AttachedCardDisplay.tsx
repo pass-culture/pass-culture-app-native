@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
@@ -14,13 +15,13 @@ export type LeftImageComponentProps = {
 }
 interface AttachedCardDisplayProps {
   title: string
+  accessibilityLabel: string
   subtitle?: string
   details?: string[]
   LeftImageComponent?: React.ComponentType<LeftImageComponentProps>
   leftImageProps?: LeftImageComponentProps
   rightTagLabel?: string
   bottomRightElement?: React.ReactNode
-  accessibilityLabel?: string
   shouldFixHeight?: boolean
   bottomBannerText?: string
 }
@@ -45,6 +46,8 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   return (
     <React.Fragment>
       <Container
+        accessible
+        accessibilityRole={accessibilityRoleInternalNavigation()}
         accessibilityLabel={accessibilityLabel}
         shouldFixHeight={shouldFixHeight}
         bottomBannerText={bottomBannerText}>

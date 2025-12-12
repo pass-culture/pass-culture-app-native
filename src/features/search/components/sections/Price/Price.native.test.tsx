@@ -80,7 +80,7 @@ describe('Price component', () => {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
 
-    const searchPriceButton = await screen.findByTestId('FilterRow')
+    const searchPriceButton = await screen.findByTestId('Filtre - Prix - Gratuit')
     await user.press(searchPriceButton)
 
     const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')

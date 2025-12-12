@@ -44,7 +44,7 @@ describe('Venue component', () => {
     render(<Venue />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
-    const searchVenueButton = screen.getByTestId('FilterRow')
+    const searchVenueButton = screen.getByTestId('Filtre - Lieu culturel - Venue label')
 
     await user.press(searchVenueButton)
 

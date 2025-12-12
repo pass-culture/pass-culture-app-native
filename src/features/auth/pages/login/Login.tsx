@@ -25,7 +25,6 @@ import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -238,7 +237,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           />
           <ButtonContainer>
             <ButtonTertiaryBlack
-              accessibilityRole={accessibilityRoleInternalNavigation()}
               wording="Mot de passe oublié&nbsp;?"
               onPress={onForgottenPasswordClick}
               icon={Key}
@@ -246,7 +244,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             />
           </ButtonContainer>
           <ButtonPrimary
-            accessibilityRole={accessibilityRoleInternalNavigation()}
             wording="Se connecter"
             onPress={handleSubmit(onSubmit)}
             disabled={shouldDisableLoginButton}

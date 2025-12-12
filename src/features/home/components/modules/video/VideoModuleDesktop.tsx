@@ -172,6 +172,7 @@ const ColorCategoryBackground = styled.View<{
 
 const Player = styled(Play).attrs({
   size: PLAYER_SIZE,
+  accessibilityLabel: 'Lire la vidéo',
 })``
 
 const TextContainer = styled.View({

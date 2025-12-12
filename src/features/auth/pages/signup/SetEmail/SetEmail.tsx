@@ -12,7 +12,6 @@ import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/t
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -101,7 +100,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
       </ControllersContainer>
       <ButtonPrimary
         wording="Continuer"
-        accessibilityRole={accessibilityRoleInternalNavigation()}
         accessibilityLabel={accessibilityLabelForNextStep}
         onPress={handleSubmit(goToNextStepCallback)}
         isLoading={false}
