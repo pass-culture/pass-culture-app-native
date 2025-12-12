@@ -365,6 +365,18 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
+  logHasClickedContactForm: (
+    from:
+      | 'AccessibilityActionPlan'
+      | 'AccessibilityDeclaration'
+      | 'AccessibilityEngagement'
+      | 'DeleteProfileContactSupport'
+      | 'FeedbackInApp'
+      | 'LegalNotices'
+      | 'NotEligibleEduConnect'
+      | 'PhoneValidationTooManyAttempts'
+      | 'SignupConfirmationEmailSent'
+  ) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_CONTACT_FORM }, { from }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
   logHasClickedFakeDoorCTA: (params: { offerId: number; userId?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA }, params),
