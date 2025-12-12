@@ -19,6 +19,8 @@ export function EighteenBirthday() {
   return (
     <GenericInfoPage
       animation={BirthdayCake}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       title="Tu as 18 ans&nbsp;!"
       subtitle={pageWording.text}
       buttonPrimary={{

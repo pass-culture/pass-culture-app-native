@@ -56,6 +56,8 @@ export const RecreditBirthdayNotification = () => {
   return (
     <GenericInfoPage
       animation={BirthdayCake}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       title="Bonne nouvelle&nbsp;!"
       subtitle={recreditMessage}
       buttonPrimary={{

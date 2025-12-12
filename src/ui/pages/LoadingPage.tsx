@@ -1,21 +1,16 @@
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
-import { ColorScheme, useColorScheme } from 'libs/styled/useColorScheme'
-import LoaderDarkMode from 'ui/animations/Loader_Darkmode.json'
-import LoaderLightmode from 'ui/animations/Loader_Lightmode.json'
+import LoaderAnimation from 'ui/animations/Loader_Lightmode.json'
 import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
 
 import { ThemedStyledLottieView } from '../animations/ThemedStyledLottieView'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
-  const colorScheme = useColorScheme()
-
-  const source = colorScheme === ColorScheme.DARK ? LoaderDarkMode : LoaderLightmode
   return (
     <Container>
-      <ThemedStyledLottieView width={150} height={150} source={source} />
+      <ThemedStyledLottieView width={150} height={150} source={LoaderAnimation} />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )

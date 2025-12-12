@@ -13,6 +13,9 @@ export const OnboardingGeneralPublicWelcome = () => {
     <GenericInfoPage
       withSkipAction={navigateToHomeWithReset}
       animation={QpiThanks}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+      animationTargetLayerNames={['étoile', 'cadre']}
       title="Explore, découvre, profite"
       subtitle="Et si tu créais un compte pour suivre l’actualité culturelle autour de toi&nbsp;?"
       buttonPrimary={{

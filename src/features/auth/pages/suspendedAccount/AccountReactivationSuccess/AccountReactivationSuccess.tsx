@@ -8,6 +8,9 @@ import { LINE_BREAK } from 'ui/theme/constants'
 export const AccountReactivationSuccess = () => (
   <GenericInfoPage
     animation={QpiThanks}
+    animationColoringMode="targeted"
+    animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+    animationTargetLayerNames={['étoile', 'cadre']}
     title="Ton compte a été réactivé"
     subtitle={`On est ravi de te revoir\u00a0!${LINE_BREAK}Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.`}
     buttonPrimary={{

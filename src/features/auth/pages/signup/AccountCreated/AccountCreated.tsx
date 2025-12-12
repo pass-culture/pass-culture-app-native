@@ -9,19 +9,22 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export function AccountCreated() {
   useEffect(() => {
-    BatchProfile.trackEvent(BatchEvent.screenViewAccountCreated)
+    void BatchProfile.trackEvent(BatchEvent.screenViewAccountCreated)
   }, [])
 
   const { showShareAppModal } = useShareAppContext()
 
   const onBeforeNavigate = useCallback(() => {
-    BatchProfile.trackEvent(BatchEvent.hasValidatedAccount)
+    void BatchProfile.trackEvent(BatchEvent.hasValidatedAccount)
     showShareAppModal(ShareAppModalType.NOT_ELIGIBLE)
   }, [showShareAppModal])
 
   return (
     <GenericInfoPage
       animation={QpiThanks}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+      animationTargetLayerNames={['étoile', 'cadre']}
       title="Ton compte a été activé&nbsp;!"
       subtitle=""
       buttonPrimary={{

@@ -56,6 +56,9 @@ export function BeneficiaryAccountCreated() {
   return (
     <GenericInfoPage
       animation={FrenchRepublicAnimation}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+      animationTargetLayerNames={['étoile', 'cadre']}
       title="Bonne nouvelle&nbsp;!"
       subtitle={subtitle}
       buttonPrimary={{
