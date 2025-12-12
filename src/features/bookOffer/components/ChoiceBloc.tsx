@@ -64,6 +64,7 @@ const IconContainer = styled.View(({ theme }) => ({
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,
+  color2: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.extraSmall,
 }))``
 

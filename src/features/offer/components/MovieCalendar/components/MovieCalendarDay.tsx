@@ -82,6 +82,7 @@ const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
 }))
 
+// UX decision: align with disabled background token for the muted state
 const DisabledCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
-  color: theme.designSystem.color.text.disabled,
+  color: theme.designSystem.color.background.disabled,
 }))
