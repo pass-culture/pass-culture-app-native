@@ -10,7 +10,6 @@ import { useActivityTypes } from 'features/identityCheck/queries/useActivityType
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -118,7 +117,6 @@ export function StatusFlatList({
           type="submit"
           onPress={handleSubmit(submitStatus)}
           wording={isChangeStatus ? 'Valider mes informations' : 'Continuer'}
-          accessibilityRole={accessibilityRoleInternalNavigation()}
           accessibilityLabel={
             isChangeStatus
               ? 'Valider mes informations et continuer'

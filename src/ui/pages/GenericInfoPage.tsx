@@ -314,7 +314,6 @@ const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
     return (
       <ButtonTertiaryNeutralInfo
         wording="Passer"
-        accessibilityRole={accessibilityRoleInternalNavigation()}
         accessibilityLabel="Passer à la page suivante"
         onPress={withSkipAction}
         inline

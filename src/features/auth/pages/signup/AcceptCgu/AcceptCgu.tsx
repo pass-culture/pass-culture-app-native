@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
@@ -158,7 +157,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       <ButtonContainer>
         <ButtonPrimary
           wording="S’inscrire"
-          accessibilityRole={accessibilityRoleInternalNavigation()}
           accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
           // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
           // Cf. backend logic for token validation

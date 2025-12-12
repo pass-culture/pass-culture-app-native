@@ -22,7 +22,6 @@ import { haveCookieChoicesChanged } from 'features/profile/helpers/haveCookieCho
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -241,7 +240,6 @@ export const ConsentSettings = () => {
           />
           <ButtonTertiaryBlack
             icon={Invalidate}
-            accessibilityRole={accessibilityRoleInternalNavigation()}
             wording="Quitter sans enregistrer"
             onPress={handleDiscardAndGoBack}
           />

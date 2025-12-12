@@ -24,7 +24,6 @@ import { useSafeState } from 'libs/hooks'
 import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
@@ -158,7 +157,6 @@ export const SetPhoneNumber = () => {
             type="submit"
             onPress={requestSendPhoneValidationCode}
             wording="Continuer"
-            accessibilityRole={accessibilityRoleInternalNavigation()}
             accessibilityLabel="Continuer vers l’étape suivante"
             disabled={!isContinueButtonEnabled}
             isLoading={isPending}
