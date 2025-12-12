@@ -49,7 +49,7 @@ describe('YoutubePlayer', () => {
     )
 
     await act(async () => {
-      await user.click(screen.getByLabelText('Jouer'))
+      await user.click(screen.getByLabelText('Lire la vidéo'))
     })
 
     await waitFor(() => expect(handleOnReady).toHaveBeenCalledWith())

@@ -39,7 +39,11 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           accessibilityLabel={`Média vidéo\u00a0: ${props.title}`}
         />
       </StyledTitleContainer>
-      <Description>{props.videoDescription}</Description>
+      {props.videoDescription ? (
+        <Description>{props.videoDescription}</Description>
+      ) : (
+        <ViewWithPaddingTop />
+      )}
       <View testID="mobile-video-module">
         <StyledTouchableHighlight
           onPress={props.showVideoModal}
@@ -57,7 +61,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </PlayerContainer>
           </Thumbnail>
         </StyledTouchableHighlight>
-        <StyledView>
+        <ViewWithPaddingTop>
           {!props.isMultiOffer && props.offers[0] ? (
             <VideoOfferContainer
               onLayout={(event: LayoutChangeEvent) => {
@@ -87,13 +91,13 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             backgroundColor={fillFromDesignSystem || videoModuleColorsMapping[props.color]}
             isMultiOffer={props.isMultiOffer}
           />
-        </StyledView>
+        </ViewWithPaddingTop>
       </View>
     </Container>
   )
 }
 
-const StyledView = styled.View(({ theme }) => ({
+const ViewWithPaddingTop = styled.View(({ theme }) => ({
   paddingTop: theme.designSystem.size.spacing.l,
 }))
 
@@ -149,6 +153,7 @@ const PlayerContainer = styled.View({
 
 const Player = styled(Play).attrs({
   size: PLAYER_SIZE,
+  accessibilityLabel: 'Lire la vidéo',
 })``
 
 const ColorCategoryBackground = styled.View<{
