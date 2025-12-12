@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 import { flatten, uniqBy } from 'lodash'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
@@ -37,7 +37,7 @@ export const mapOffersDataAndModules = ({
 
       const value: ModuleData = {
         playlistItems: uniqBy(hits, 'objectID') as Offer[],
-        nbPlaylistResults: moduleOffers.reduce((prev, curr) => prev + curr.nbHits, 0),
+        nbPlaylistResults: moduleOffers.reduce((prev, curr) => prev + (curr.nbHits ?? 0), 0),
         moduleId: module.moduleId,
       }
 

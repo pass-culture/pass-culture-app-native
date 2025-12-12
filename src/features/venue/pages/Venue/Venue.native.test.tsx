@@ -1,5 +1,5 @@
-import { SearchResponse } from '@algolia/client-search'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { SearchResponse } from 'algoliasearch/lite'
 import mockdate from 'mockdate'
 import React from 'react'
 

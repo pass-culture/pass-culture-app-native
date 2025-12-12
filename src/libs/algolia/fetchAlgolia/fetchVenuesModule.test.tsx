@@ -1,12 +1,12 @@
-import algoliasearch from '__mocks__/algoliasearch'
 import { VenuesModuleParameters } from 'features/home/types'
 import { RADIUS_FILTERS } from 'libs/algolia/enums/radiusFiltersEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
+import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { LocationMode } from 'libs/algolia/types'
 import { Position } from 'libs/location/location'
 
-const { multipleQueries } = algoliasearch()
+const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries').mockResolvedValue([])
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 
 const defaultPlaylistParams = {
@@ -45,15 +45,13 @@ describe('fetchVenuesModule', () => {
   it('should fetch with default venue module params', () => {
     fetchVenuesModules(mockedDefaultParamList)
 
-    expect(multipleQueries).toHaveBeenCalledWith([
+    expect(mockMultipleQueries).toHaveBeenCalledWith([
       {
         indexName: 'algoliaVenuesIndexName',
-        params: {
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
-          hitsPerPage: 15,
-        },
         query: '',
+        attributesToHighlight: [],
+        facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 15,
       },
     ])
   })
@@ -61,15 +59,13 @@ describe('fetchVenuesModule', () => {
   it('should fetch without location params when partial geolocated venue module params provided', () => {
     fetchVenuesModules(mockedParamListPartiallyGeolocated)
 
-    expect(multipleQueries).toHaveBeenCalledWith([
+    expect(mockMultipleQueries).toHaveBeenCalledWith([
       {
         indexName: 'algoliaVenuesIndexName',
-        params: {
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
-          hitsPerPage: 15,
-        },
         query: '',
+        attributesToHighlight: [],
+        facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 15,
       },
     ])
   })
@@ -77,17 +73,15 @@ describe('fetchVenuesModule', () => {
   it('should fetch with location params when geolocated venue module params provided', () => {
     fetchVenuesModules(mockedParamListGeolocated)
 
-    expect(multipleQueries).toHaveBeenCalledWith([
+    expect(mockMultipleQueries).toHaveBeenCalledWith([
       {
         indexName: 'algoliaVenuesIndexName',
-        params: {
-          aroundLatLng: '2, 2',
-          aroundRadius: 50000,
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true']],
-          hitsPerPage: 15,
-        },
         query: '',
+        aroundLatLng: '2, 2',
+        aroundRadius: 50000,
+        attributesToHighlight: [],
+        facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 15,
       },
     ])
   })
