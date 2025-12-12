@@ -4,6 +4,7 @@ import React from 'react'
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
+import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
@@ -213,6 +214,10 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
   },
   { name: 'FAQWebview', component: FAQWebview },
   // Bonification
+  {
+    name: 'BonificationExplanations',
+    component: withAuthProtection(BonificationExplanations),
+  },
   {
     name: 'BonificationRequiredInformation',
     component: withAuthProtection(BonificationRequiredInformation),
