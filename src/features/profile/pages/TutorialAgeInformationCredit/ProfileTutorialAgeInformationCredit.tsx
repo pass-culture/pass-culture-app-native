@@ -111,7 +111,9 @@ export const ProfileTutorialAgeInformationCredit = () => {
             icon={bonificationStatus === FraudCheckStatus.pending ? ClockFilled : PlainArrowNext}
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
-            onPress={() => navigate(...getSubscriptionHookConfig('BonificationIntroduction'))}
+            onPress={() =>
+              navigate(...getSubscriptionHookConfig('BonificationRequiredInformation'))
+            }
             justifyContent="flex-start"
           />
         )}

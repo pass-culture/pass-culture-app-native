@@ -19,8 +19,8 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'BonificationIntroduction',
-      navigationTarget: getSubscriptionPropConfig('BonificationIntroduction'),
+      title: 'BonificationRequiredInformation',
+      navigationTarget: getSubscriptionPropConfig('BonificationRequiredInformation'),
     },
     {
       id: uuidv4(),
