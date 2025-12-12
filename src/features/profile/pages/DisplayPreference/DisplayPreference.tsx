@@ -44,7 +44,7 @@ export const DisplayPreference = () => {
 
   return (
     <PageWithHeader
-      title="Préférences d’affichage"
+      title="Apparence"
       onGoBack={goBack}
       scrollChildren={
         <React.Fragment>

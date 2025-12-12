@@ -7,13 +7,14 @@ import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   tabName,
   isSelected,
   BicolorIcon,
   badgeValue,
+  showBadge,
 }) => {
   const accessibilityLabel = menu[tabName].accessibilityLabel
   return (
@@ -22,7 +23,20 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
         <Gradient testID={accessibilityLabel ? `${accessibilityLabel} sélectionné` : undefined} />
       ) : null}
       <Spacer.Flex />
-      <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
+      <IconWrapper>
+        <StyledIcon
+          as={BicolorIcon}
+          selected={isSelected}
+          badgeValue={showBadge ? undefined : badgeValue}
+        />
+        {showBadge ? (
+          <BadgeDot testID={`${tabName}-new-feature-badge`}>
+            <BadgeText accessibilityElementsHidden importantForAccessibility="no">
+              1
+            </BadgeText>
+          </BadgeDot>
+        ) : null}
+      </IconWrapper>
       <Spacer.Column numberOfSpaces={2.5} />
       <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
       <Spacer.Flex />
@@ -53,3 +67,24 @@ const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, 
 }))<{ selected?: boolean }>``
 
 const BicolorSelectorPlaceholder = styled.View({ height: GRADIENT_HEIGHT })
+
+const IconWrapper = styled.View({
+  position: 'relative',
+})
+
+const BadgeDot = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: -getSpacing(0.5),
+  right: -getSpacing(0.5),
+  height: 12,
+  minWidth: 12,
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.l,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
+  alignItems: 'center',
+  justifyContent: 'center',
+}))
+
+const BadgeText = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.inverted,
+}))

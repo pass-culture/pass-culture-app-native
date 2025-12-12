@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
 import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native'
 import React from 'react'
@@ -17,7 +18,7 @@ import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen, waitFor } from 'tests/utils'
 
 import { getTabHookConfig } from './getTabHookConfig'
 import { TabBar } from './TabBar'
@@ -38,6 +39,8 @@ jest.mock('react-native-safe-area-context', () => ({
 
 jest.mock('features/navigation/helpers/useTabBarItemBadges')
 const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
+const asyncStorageGetItemSpy = jest.spyOn(AsyncStorage, 'getItem')
+const asyncStorageSetItemSpy = jest.spyOn(AsyncStorage, 'setItem')
 
 const mockTabNavigationState: TabNavigationState<ParamListBase> = {
   history: [{ key: 'Home-LzN9F8ePccY3NzxcsunpQ', type: 'route' }],
@@ -124,6 +127,8 @@ describe('TabBar', () => {
       locationFilter: mockDefaultLocationFilter,
     }
     setFeatureFlags()
+    asyncStorageGetItemSpy.mockReset()
+    asyncStorageSetItemSpy.mockReset()
   })
 
   beforeAll(() => {
@@ -146,6 +151,31 @@ describe('TabBar', () => {
 
     expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByText(tab)).toBeOnTheScreen()
+    })
+  })
+
+  it('should show and clear the profile dark mode badge when FF enabled and unseen', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.DARK_MODE_GTM])
+    asyncStorageGetItemSpy.mockResolvedValueOnce(null)
+    asyncStorageSetItemSpy.mockResolvedValueOnce()
+
+    renderTabBar(mockTabNavigationState)
+
+    expect(
+      await screen.findByLabelText('Mon profil - inactif - nouvelle fonctionnalité disponible')
+    ).toBeOnTheScreen()
+    expect(screen.getByTestId('Profile-new-feature-badge')).toBeOnTheScreen()
+
+    const profileTab = screen.getByText('Profil')
+    await user.press(profileTab)
+
+    expect(asyncStorageSetItemSpy).toHaveBeenCalledWith('darkModeGtmProfileBadgeSeen', 'true')
+
+    await waitFor(() => {
+      expect(
+        screen.queryByLabelText('Mon profil - inactif - nouvelle fonctionnalité disponible')
+      ).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('Profile-new-feature-badge')).not.toBeOnTheScreen()
     })
   })
 

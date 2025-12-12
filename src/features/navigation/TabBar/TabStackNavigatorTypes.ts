@@ -42,4 +42,5 @@ export type TabInnerComponentProps = {
   BicolorIcon: React.FC<AccessibleIcon>
   tabName: TabRouteName
   badgeValue?: number
+  showBadge?: boolean
 }

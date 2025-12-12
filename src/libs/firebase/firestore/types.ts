@@ -71,6 +71,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_IS_OPEN_TO_PUBLIC = 'wipIsOpenToPublic',
+  DARK_MODE_GTM = 'darkModeGTM',
   WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',

@@ -146,7 +146,7 @@ exports[`DisplayPreference should render correctly 1`] = `
             }
           }
         >
-          Préférences d’affichage
+          Apparence
         </Text>
       </View>
       <View
