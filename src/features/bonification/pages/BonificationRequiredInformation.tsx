@@ -21,7 +21,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const BonificationIntroduction = () => {
+export const BonificationRequiredInformation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (

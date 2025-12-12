@@ -66,7 +66,8 @@ export type SubscriptionStackParamList = {
   BonificationBirthPlace: undefined
   BonificationError: undefined
   BonificationGranted: undefined
-  BonificationIntroduction: undefined
+  BonificationRequiredInformation: undefined
+  BonificationExplanations: undefined
   BonificationNames: undefined
   BonificationRecap: undefined
   BonificationRefused?: { bonificationRefusedType: BonificationRefusedType }
