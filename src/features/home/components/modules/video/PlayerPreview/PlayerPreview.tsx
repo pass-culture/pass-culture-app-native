@@ -152,6 +152,7 @@ const StyledPlayIcon = styled(Play).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,
   color2: theme.designSystem.color.icon.default,
   size: getSpacing(14),
+  accessibilityLabel: 'Lire la vidéo',
 }))``
 
 const TagContainer = styled.View(({ theme }) => ({
