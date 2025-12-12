@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
@@ -216,6 +217,7 @@ export function AccessibilityDeclarationMobileBase({
             externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
             accessibilityRole={AccessibilityRole.LINK}
             justifyContent="flex-start"
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('AccessibilityDeclaration')}
           />
         </Typo.Body>
       </ViewGap>

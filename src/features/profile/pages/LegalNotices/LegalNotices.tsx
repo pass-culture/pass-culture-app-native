@@ -3,6 +3,7 @@ import React from 'react'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -53,6 +54,7 @@ export function LegalNotices() {
             wording="Contacter le support"
             externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
             accessibilityRole={AccessibilityRole.LINK}
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
           />
         </Typo.Body>
 
