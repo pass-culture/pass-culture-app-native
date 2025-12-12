@@ -873,6 +873,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         testID="close-button-container"
       >
         <View
+          accessibilityLabel="Quitter"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -891,7 +892,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -917,6 +918,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               },
             ]
           }
+          testID="Quitter"
         >
           <Text
             style={
@@ -1767,6 +1769,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         testID="close-button-container"
       >
         <View
+          accessibilityLabel="Quitter"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -1785,7 +1788,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1811,6 +1814,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               },
             ]
           }
+          testID="Quitter"
         >
           <Text
             style={
@@ -2920,6 +2924,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         testID="close-button-container"
       >
         <View
+          accessibilityLabel="Quitter"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -2938,7 +2943,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2964,6 +2969,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               },
             ]
           }
+          testID="Quitter"
         >
           <Text
             style={

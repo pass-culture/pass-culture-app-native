@@ -2159,7 +2159,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur Instagram"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -2177,7 +2178,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -2196,6 +2197,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur Instagram"
                       >
                         <View
                           gap={2}
@@ -2263,7 +2265,8 @@ Instagram
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur WhatsApp"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -2281,7 +2284,7 @@ Instagram
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -2300,6 +2303,7 @@ Instagram
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur WhatsApp"
                       >
                         <View
                           gap={2}
@@ -2367,7 +2371,8 @@ WhatsApp
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur iMessage"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -2385,7 +2390,7 @@ WhatsApp
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -2404,6 +2409,7 @@ WhatsApp
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur iMessage"
                       >
                         <View
                           gap={2}
@@ -2471,6 +2477,7 @@ iMessage
                       }
                     >
                       <View
+                        accessibilityLabel="Plus d’options de partage"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -2489,7 +2496,7 @@ iMessage
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -2508,6 +2515,7 @@ iMessage
                             "width": 76,
                           }
                         }
+                        testID="Plus d’options de partage"
                       >
                         <View
                           gap={2}
@@ -5568,7 +5576,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur Instagram"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -5586,7 +5595,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -5605,6 +5614,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur Instagram"
                       >
                         <View
                           gap={2}
@@ -5672,7 +5682,8 @@ Instagram
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur WhatsApp"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -5690,7 +5701,7 @@ Instagram
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -5709,6 +5720,7 @@ Instagram
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur WhatsApp"
                       >
                         <View
                           gap={2}
@@ -5776,7 +5788,8 @@ WhatsApp
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur iMessage"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -5794,7 +5807,7 @@ WhatsApp
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -5813,6 +5826,7 @@ WhatsApp
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur iMessage"
                       >
                         <View
                           gap={2}
@@ -5880,6 +5894,7 @@ iMessage
                       }
                     >
                       <View
+                        accessibilityLabel="Plus d’options de partage"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -5898,7 +5913,7 @@ iMessage
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -5917,6 +5932,7 @@ iMessage
                             "width": 76,
                           }
                         }
+                        testID="Plus d’options de partage"
                       >
                         <View
                           gap={2}
@@ -8687,7 +8703,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur Instagram"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -8705,7 +8722,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -8724,6 +8741,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur Instagram"
                       >
                         <View
                           gap={2}
@@ -8791,7 +8809,8 @@ Instagram
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur WhatsApp"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -8809,7 +8828,7 @@ Instagram
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -8828,6 +8847,7 @@ Instagram
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur WhatsApp"
                       >
                         <View
                           gap={2}
@@ -8895,7 +8915,8 @@ WhatsApp
                       }
                     >
                       <View
-                        accessibilityRole="button"
+                        accessibilityLabel="Envoyer sur iMessage"
+                        accessibilityRole="link"
                         accessibilityState={
                           {
                             "busy": undefined,
@@ -8913,7 +8934,7 @@ WhatsApp
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -8932,6 +8953,7 @@ WhatsApp
                             "width": 76,
                           }
                         }
+                        testID="Envoyer sur iMessage"
                       >
                         <View
                           gap={2}
@@ -8999,6 +9021,7 @@ iMessage
                       }
                     >
                       <View
+                        accessibilityLabel="Plus d’options de partage"
                         accessibilityRole="button"
                         accessibilityState={
                           {
@@ -9017,7 +9040,7 @@ iMessage
                             "text": undefined,
                           }
                         }
-                        accessible={false}
+                        accessible={true}
                         collapsable={false}
                         focusable={true}
                         onClick={[Function]}
@@ -9036,6 +9059,7 @@ iMessage
                             "width": 76,
                           }
                         }
+                        testID="Plus d’options de partage"
                       >
                         <View
                           gap={2}

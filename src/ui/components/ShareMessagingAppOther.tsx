@@ -13,12 +13,8 @@ interface ShareMessagingAppOtherProps {
 
 export const ShareMessagingAppOther: React.FC<ShareMessagingAppOtherProps> = ({ onPress }) => {
   return (
-    <MessagingAppButtonContainer onPress={onPress}>
-      <IconWithCaption
-        Icon={Icon}
-        caption={'Plus' + LINE_BREAK + 'd’options'}
-        accessibilityLabel="Plus d’options de partage"
-      />
+    <MessagingAppButtonContainer onPress={onPress} accessibilityLabel="Plus d’options de partage">
+      <IconWithCaption Icon={Icon} caption={'Plus' + LINE_BREAK + 'd’options'} />
     </MessagingAppButtonContainer>
   )
 }
