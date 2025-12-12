@@ -91,8 +91,8 @@ exports[`Bookings should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="En cours"
-        accessibilityRole="tab"
+        accessibilityLabel="Onglet 1/2 - En cours - sélectionné"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -138,7 +138,7 @@ exports[`Bookings should render correctly 1`] = `
             },
           ]
         }
-        testID="En cours"
+        testID="Onglet 1/2 - En cours - sélectionné"
       >
         <View
           gap={2}
@@ -186,8 +186,8 @@ exports[`Bookings should render correctly 1`] = `
         />
       </View>
       <View
-        accessibilityLabel="Terminées"
-        accessibilityRole="tab"
+        accessibilityLabel="Onglet 2/2 - Terminées - non sélectionné"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,
@@ -233,7 +233,7 @@ exports[`Bookings should render correctly 1`] = `
             },
           ]
         }
-        testID="Terminées"
+        testID="Onglet 2/2 - Terminées - non sélectionné"
       >
         <View
           gap={2}

@@ -1,7 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Category component should render correctly 1`] = `
 <View
+  accessibilityLabel="Filtre - Accessibilité"
   accessibilityRole="button"
   accessibilityState={
     {
@@ -20,7 +21,7 @@ exports[`Category component should render correctly 1`] = `
       "text": undefined,
     }
   }
-  accessible={false}
+  accessible={true}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -45,7 +46,7 @@ exports[`Category component should render correctly 1`] = `
       },
     ]
   }
-  testID="FilterRow"
+  testID="Filtre - Accessibilité"
 >
   <View
     style={
