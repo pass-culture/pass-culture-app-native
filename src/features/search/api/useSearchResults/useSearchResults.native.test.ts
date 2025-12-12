@@ -87,7 +87,13 @@ describe('useSearchResults', () => {
           },
           {
             indexName: 'algoliaVenuesIndexPlaylistSearch',
-            params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+            params: {
+              aroundRadius: 'all',
+              clickAnalytics: true,
+              hitsPerPage: 35,
+              page: 0,
+              facetFilters: [['is_open_to_public:false']],
+            },
             query: '',
           },
           {
