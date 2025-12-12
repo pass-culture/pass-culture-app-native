@@ -4,22 +4,20 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
+import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
-import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValue = {
@@ -68,25 +66,38 @@ export const FeedbackInApp = () => {
       title="Faire une suggestion"
       onGoBack={goBack}
       scrollChildren={
-        <ViewGap gap={5}>
-          <Typo.Title3 {...getHeadingAttrs(1)}>
-            Comment pourrions-nous améliorer l’application&nbsp;?
-          </Typo.Title3>
-          <Typo.Body>
-            Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos
-            équipes.
-          </Typo.Body>
+        <StyledViewGap gap={6}>
+          <ViewGap gap={4}>
+            <Typo.Title3 {...getHeadingAttrs(1)}>
+              Comment pourrions-nous améliorer l’application&nbsp;?
+            </Typo.Title3>
+            <Typo.Body>
+              Aide-nous à améliorer ton expérience en partageant tes idées&nbsp;! Nous ne pourrons
+              pas répondre à chacun, mais ta suggestion sera bien transmise à nos équipes.
+            </Typo.Body>
+            <Banner
+              label="Pour signaler un bug, un souci avec ton crédit ou ton compte, contacte-nous via notre formulaire."
+              links={[
+                {
+                  icon: ExternalSiteFilled,
+                  wording: 'Contacter le support',
+                  externalNav: {
+                    url: env.SUPPORT_ACCOUNT_ISSUES_FORM,
+                  },
+                },
+              ]}
+            />
+          </ViewGap>
           <InputContainer>
             <Controller
               control={control}
               name="feedback"
               render={({ field: { onChange, onBlur, value } }) => (
                 <LargeTextInput
-                  label="Ma suggestion"
+                  label="Suggérer une amélioration"
                   value={value}
                   onBlur={onBlur}
                   onChangeText={onChange}
-                  requiredIndicator="explicit"
                   testID="feedback-input"
                 />
               )}
@@ -94,29 +105,21 @@ export const FeedbackInApp = () => {
           </InputContainer>
           <ButtonPrimary
             type="submit"
-            wording="Envoyer ma suggestion"
+            wording="Envoyer"
+            accessibilityLabel="Envoyer ma suggestion"
             onPress={handleSubmit(onSubmit)}
             disabled={!isValid}
           />
-          <SeparatorWithText label="ou" />
-          <StyledBody>Si tu as besoin d’aide, notre support est toujours accessible.</StyledBody>
-          <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
-            wording="contacter le support"
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-            icon={EmailFilled}
-            externalNav={contactSupport.forGenericQuestion}
-          />
           <Spacer.BottomScreen />
-        </ViewGap>
+        </StyledViewGap>
       }
     />
   )
 }
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
+}))
 
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
-const InputContainer = styled.View({
-  marginVertical: getSpacing(1),
-})
+const InputContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xs,
+}))

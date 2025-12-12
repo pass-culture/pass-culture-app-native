@@ -73,6 +73,8 @@ export const env: Environment = {
   SENTRY_SAMPLE_RATE: '1.0',
   SENTRY_TRACES_SAMPLE_RATE: '1.0',
   SITE_PUBLIC_KEY: 'SITE_PUBLIC_KEY',
+  SUPPORT_ACCOUNT_ISSUES_FORM:
+    'https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   URL_PREFIX: 'passculture',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',

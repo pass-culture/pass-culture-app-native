@@ -203,6 +203,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       >
         <View
           accessibilityLabel="Faire une nouvelle demande"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -610,6 +611,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       >
         <View
           accessibilityLabel="Se connecter"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

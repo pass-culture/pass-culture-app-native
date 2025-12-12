@@ -6,12 +6,14 @@ import { env } from 'libs/environment/env'
 export function AccessibilityDeclarationMobileAndroid() {
   return (
     <AccessibilityDeclarationMobileBase
+      appVersion="1.368.1"
       platformName="Android"
       osVersion="15"
       storeLink={{ url: `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}` }}
-      auditDate="31/10/2025"
-      conformityEN="41.67%"
-      conformityRAAM="62.79%"
+      auditDate="28/11/2025"
+      conformityEN="54,17%"
+      conformityRAAM="72,09%"
+      averageConformityRAAM="91.75%"
       nonAccessibleContent={[
         'Des images porteuses d’information ne disposent pas d’alternative pertinente accessible aux technologies d’assistance.',
         'Des éléments graphiques ou composants d’interface présentent des contrastes insuffisants.',

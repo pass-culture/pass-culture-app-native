@@ -505,6 +505,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         </View>
         <View
           accessibilityLabel="Continuer vers l’étape Mot de passe"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -1467,6 +1468,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         />
         <View
           accessibilityLabel="Continuer vers l’étape Date de naissance"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -2246,6 +2248,9 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                       "default": "#ffffff",
                       "disabled": "#f1f1f4",
                       "error": "#fce1e6",
+                      "gradientMaximum": "#ffffff",
+                      "gradientMiddle": "#ffffff7a",
+                      "gradientMinimum": "#ffffff00",
                       "headline": "#f3edff",
                       "hover": "#f1f1f4",
                       "info": "#f3edff",
@@ -2615,6 +2620,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           />
           <View
             accessibilityLabel="Continuer vers l’étape CGU & Données"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -3586,6 +3592,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         >
           <View
             accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

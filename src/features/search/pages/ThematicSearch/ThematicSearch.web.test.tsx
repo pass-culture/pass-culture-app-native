@@ -88,10 +88,8 @@ describe('<ThematicSearch/>', () => {
     await act(async () => {})
 
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: expect.objectContaining({
-        offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
-      }),
+      type: 'SET_OFFER_CATEGORIES',
+      payload: [SearchGroupNameEnumv2.MUSIQUE],
     })
   })
 

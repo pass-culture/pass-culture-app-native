@@ -295,114 +295,26 @@ exports[`AccessibilityEngagement should render correctly 1`] = `
         
 
 
-        Si vous avez des retours au sujet de notre traitement, n’hésitez pas à écrire à
-      </Text>
-      <View
-        accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
-        accessibilityRole="link"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "borderBottomLeftRadius": 24,
-                "borderBottomRightRadius": 24,
-                "borderTopLeftRadius": 24,
-                "borderTopRightRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "backgroundColor": "transparent",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
-      >
-        <View
+        Si vous avez des retours au sujet de notre traitement, n’hésitez pas à
+         
+        <Text
+          accessibilityLabel="contacter le support, lien externe"
+          accessibilityRole="link"
+          onPress={[Function]}
           style={
             {
-              "alignItems": "center",
-              "flexDirection": "row",
+              "color": "#6123df",
+              "cursor": "pointer",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textDecorationLine": "underline",
             }
           }
         >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-                "marginRight": 8,
-              }
-            }
-          >
-            <View
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              }
-            }
-          >
-            support@passculture.app
-          </Text>
-        </View>
-      </View>
+          contacter le support
+        </Text>
+      </Text>
       <Text
         style={
           {

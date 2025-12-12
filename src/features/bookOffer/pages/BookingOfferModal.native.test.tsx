@@ -80,10 +80,7 @@ const mockUseMutationError = (error?: ApiError) => {
   }))
 }
 
-const logOfferConversionSpy = jest.fn()
-jest
-  .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
-  .mockReturnValue({ logOfferConversion: logOfferConversionSpy })
+const logOfferConversionSpy = jest.spyOn(logOfferConversionAPI, 'logOfferConversion')
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -324,7 +321,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         await user.press(screen.getByText('Confirmer la réservation'))
 
-        expect(logOfferConversionSpy).toHaveBeenCalledWith('20')
+        expect(logOfferConversionSpy).toHaveBeenCalledWith({ objectID: '20', queryID: undefined })
       })
 
       it('should not log conversion booking when is not from search', async () => {

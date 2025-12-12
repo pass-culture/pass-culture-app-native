@@ -238,38 +238,187 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
               }
             />
             <View
-              gap={5}
+              gap={6}
               style={
                 {
-                  "gap": 20,
+                  "gap": 24,
+                  "paddingHorizontal": 4,
                 }
               }
             >
-              <Text
-                accessibilityRole="header"
+              <View
+                gap={4}
                 style={
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
+                    "gap": 16,
                   }
                 }
               >
-                Comment pourrions-nous améliorer l’application ?
-              </Text>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                    }
                   }
-                }
-              >
-                Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos équipes.
-              </Text>
+                >
+                  Comment pourrions-nous améliorer l’application ?
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Aide-nous à améliorer ton expérience en partageant tes idées ! Nous ne pourrons pas répondre à chacun, mais ta suggestion sera bien transmise à nos équipes.
+                </Text>
+                <View
+                  background="#f3edff"
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "backgroundColor": "#f3edff",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "flexDirection": "row",
+                      "gap": 12,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    }
+                  }
+                >
+                  <View
+                    fill="#320096"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    accessibilityLabel="Pour signaler un bug, un souci avec ton crédit ou ton compte, contacte-nous via notre formulaire."
+                    accessibilityRole="none"
+                    style={
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "gap": 4,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
+                        }
+                      }
+                    >
+                      Pour signaler un bug, un souci avec ton crédit ou ton compte, contacte-nous via notre formulaire.
+                    </Text>
+                    <View
+                      gap={3}
+                      style={
+                        {
+                          "alignItems": "flex-start",
+                          "gap": 12,
+                          "marginRight": 16,
+                          "marginTop": 8,
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Lien externe - Contacter le support"
+                        accessibilityRole="link"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            {
+                              "alignItems": "flex-start",
+                              "cursor": "pointer",
+                              "flexDirection": "row",
+                            },
+                            {
+                              "opacity": 1,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            {
+                              "marginRight": 8,
+                              "marginTop": 2,
+                            }
+                          }
+                        >
+                          <View
+                            accessibilityLabel="Nouvelle fenêtre"
+                            height={16}
+                            width={16}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            }
+                          }
+                        >
+                          Contacter le support
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
               <View
                 style={
                   {
@@ -309,21 +458,9 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                             }
                           }
                         >
-                          Ma suggestion
+                          Suggérer une amélioration
                         </Text>
                       </View>
-                      <Text
-                        style={
-                          {
-                            "color": "#696a6f",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          }
-                        }
-                      >
-                        Obligatoire
-                      </Text>
                     </View>
                   </View>
                   <View
@@ -361,8 +498,8 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                     testID="styled-input-container"
                   >
                     <TextInput
-                      accessibilityLabel="Champs de texte - Ma suggestion - Obligatoire"
-                      accessibilityRequired={true}
+                      accessibilityLabel="Champs de texte - Suggérer une amélioration"
+                      accessibilityRequired={false}
                       editable={true}
                       isEmpty={true}
                       maxLength={800}
@@ -430,6 +567,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
               </View>
               <View
                 accessibilityLabel="Envoyer ma suggestion"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -509,173 +647,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       }
                     }
                   >
-                    Envoyer ma suggestion
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "paddingHorizontal": 4,
-                  }
-                }
-              >
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#cbcdd2",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-                <Text
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                      "marginHorizontal": 10,
-                    }
-                  }
-                >
-                  ou
-                </Text>
-                <View
-                  style={
-                    {
-                      "backgroundColor": "#cbcdd2",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "height": 1,
-                      "width": "100%",
-                    }
-                  }
-                />
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Si tu as besoin d’aide, notre support est toujours accessible.
-              </Text>
-              <View
-                accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "borderBottomLeftRadius": 24,
-                        "borderBottomRightRadius": 24,
-                        "borderTopLeftRadius": 24,
-                        "borderTopRightRadius": 24,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 40,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      },
-                      {
-                        "backgroundColor": "transparent",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Ouvrir le gestionnaire mail pour contacter le support"
-              >
-                <View
-                  style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                        "marginRight": 8,
-                      }
-                    }
-                  >
-                    <View
-                      height={20}
-                      testID="button-icon-left"
-                      width={20}
-                    >
-                      <Text>
-                        button-icon-left-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      }
-                    }
-                  >
-                    contacter le support
+                    Envoyer
                   </Text>
                 </View>
               </View>

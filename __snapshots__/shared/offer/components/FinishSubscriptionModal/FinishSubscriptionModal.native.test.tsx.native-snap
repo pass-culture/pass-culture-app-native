@@ -395,6 +395,7 @@ pour réserver cette offre
                 </Text>
                 <View
                   accessibilityLabel="Aller vers la section profil"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -883,6 +884,7 @@ pour réserver cette offre
                 </Text>
                 <View
                   accessibilityLabel="Aller vers la section profil"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -1344,6 +1346,7 @@ pour réserver cette offre
                 </Text>
                 <View
                   accessibilityLabel="Aller vers la section profil"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

@@ -87,7 +87,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onShowChroniclesWritersModal={onShowChroniclesWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
-          segment={segment}>
+          segment={segment}
+          enableVideoABTesting={enableVideoABTesting}>
           {comingSoonFooterHeight ? (
             <ComingSoonFooterOffset height={comingSoonFooterHeight} />
           ) : null}

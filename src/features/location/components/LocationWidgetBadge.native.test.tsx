@@ -36,7 +36,7 @@ describe('LocationWidgetBadge', () => {
     })
     render(<LocationWidgetBadge />)
 
-    const button = screen.getByTestId('LocationWidgetBadgeButton')
+    const button = screen.getByLabelText('France entière - Ouvrir la modale de localisation')
 
     await user.press(button)
 

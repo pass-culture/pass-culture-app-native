@@ -358,6 +358,9 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                 "default": "#ffffff",
                 "disabled": "#f1f1f4",
                 "error": "#fce1e6",
+                "gradientMaximum": "#ffffff",
+                "gradientMiddle": "#ffffff7a",
+                "gradientMinimum": "#ffffff00",
                 "headline": "#f3edff",
                 "hover": "#f1f1f4",
                 "info": "#f3edff",
@@ -727,6 +730,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Continuer"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -1202,6 +1206,9 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                 "default": "#ffffff",
                 "disabled": "#f1f1f4",
                 "error": "#fce1e6",
+                "gradientMaximum": "#ffffff",
+                "gradientMiddle": "#ffffff7a",
+                "gradientMinimum": "#ffffff00",
                 "headline": "#f3edff",
                 "hover": "#f1f1f4",
                 "info": "#f3edff",
@@ -1571,6 +1578,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     />
     <View
       accessibilityLabel="Continuer"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

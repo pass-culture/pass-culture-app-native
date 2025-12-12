@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { AccessibilityRole, ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -28,6 +29,7 @@ type BannerWithBackgroundProps = TouchableProps & {
   testID?: string
   disabled?: boolean
   accessibilityRole?: AccessibilityRole
+  accessibilityLabel?: string
   children: React.ReactNode
 }
 
@@ -39,6 +41,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   testID,
   disabled = false,
   accessibilityRole,
+  accessibilityLabel,
   ...touchableProps
 }) => {
   const StyledLeftIcon =
@@ -70,7 +73,8 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
       {...touchableProps}
       testID={testID}
       disabled={disabled}
-      accessibilityRole={accessibilityRole}>
+      accessibilityRole={accessibilityRole ?? accessibilityRoleInternalNavigation()}
+      accessibilityLabel={accessibilityLabel}>
       <ImageContainer>
         <ImageBackground
           source={backgroundSource || BACKGROUND_IMAGE_SOURCE}

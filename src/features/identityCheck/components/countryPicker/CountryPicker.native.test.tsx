@@ -20,7 +20,7 @@ describe('<CountryPicker />', () => {
     render(<CountryPicker selectedCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
 
     expect(
-      screen.getByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
+      screen.getByTestId('+33 - Ouvrir la modale de choix de l’indicatif téléphonique')
     ).toBeOnTheScreen()
   })
 
@@ -28,7 +28,7 @@ describe('<CountryPicker />', () => {
     render(<CountryPicker selectedCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
 
     await user.press(
-      await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
+      await screen.findByTestId('+33 - Ouvrir la modale de choix de l’indicatif téléphonique')
     )
     await user.press(screen.getByLabelText('Guadeloupe +590'))
 

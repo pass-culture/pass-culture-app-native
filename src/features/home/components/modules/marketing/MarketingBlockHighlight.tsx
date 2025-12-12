@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 
 import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
 export type MarketingBlockHighlightProps = {
@@ -25,6 +26,7 @@ const UnmemoizedMarketingBlockHighlight = ({
 }: MarketingBlockHighlightProps) => {
   return (
     <MarketingBlock
+      accessibilityLabel={getComputedAccessibilityLabel(title, subtitle)}
       navigateTo={{
         screen: 'ThematicHome',
         params: { homeId, from: 'highlight_thematic_block', moduleId },

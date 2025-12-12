@@ -22,7 +22,6 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
-import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
@@ -86,25 +85,23 @@ const App: FunctionComponent = function () {
                       <LocationWrapper>
                         <AccessibilityFiltersWrapper>
                           <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <SplashScreenProvider>
-                                        <ShareAppWrapper>
-                                          <OfflineModeContainer>
-                                            <ScreenErrorProvider>
-                                              <AppNavigationContainer />
-                                            </ScreenErrorProvider>
-                                          </OfflineModeContainer>
-                                        </ShareAppWrapper>
-                                      </SplashScreenProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <ShareAppWrapper>
+                                        <OfflineModeContainer>
+                                          <ScreenErrorProvider>
+                                            <AppNavigationContainer />
+                                          </ScreenErrorProvider>
+                                        </OfflineModeContainer>
+                                      </ShareAppWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
                           </FavoritesWrapper>
                         </AccessibilityFiltersWrapper>
                       </LocationWrapper>

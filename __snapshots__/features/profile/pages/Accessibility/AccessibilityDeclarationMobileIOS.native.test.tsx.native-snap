@@ -244,7 +244,9 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             l’application iOS
           </Text>
            
-          version 1.358.2 du pass Culture.
+          version 
+          1.368.1
+           du pass Culture.
         </Text>
       </View>
       <View
@@ -302,7 +304,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               }
             }
           >
-            non conforme
+            partiellement conforme
           </Text>
            
           avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et en Europe, en raison des non-conformités énumérées dans la section « Résultats des tests ».
@@ -350,7 +352,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           }
         >
           L’audit de conformité réalisé le 
-          31/10/2025
+          28/11/2025
            par la société Access42 révèle que l’application est conforme à 
           <Text
             style={
@@ -362,9 +364,22 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               }
             }
           >
-            29.17%
+            72,09%
           </Text>
-           à la norme européenne EN 301 549 v.3.2.1.
+           au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité moyen des pages est de 
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            91.21%
+          </Text>
+          .
         </Text>
         <Text
           style={
@@ -387,9 +402,9 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               }
             }
           >
-            58.14%
+            54,17%
           </Text>
-           au Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
+           à la norme européenne EN 301 549 v.3.2.1.
         </Text>
       </View>
       <View
@@ -1660,7 +1675,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
             }
           }
         >
-          Cette déclaration a été établie le jeudi 31 juillet 2025.
+          Cette déclaration a été établie le lundi 8 décembre 2025.
         </Text>
         <Text
           accessibilityRole="header"
@@ -2190,7 +2205,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
           Le pass Culture invite les personnes qui rencontreraient des difficultés à la contacter afin qu’une assistance puisse être apportée :
            
           <Text
-            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityLabel="contacter le support, lien externe"
             accessibilityRole="link"
             onPress={[Function]}
             style={
@@ -2204,7 +2219,7 @@ exports[`AccessibilityDeclarationMobileIOS should render correctly 1`] = `
               }
             }
           >
-            support@passculture.app
+            contacter le support
           </Text>
         </Text>
       </View>

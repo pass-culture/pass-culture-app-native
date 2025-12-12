@@ -43,6 +43,7 @@ export const SubscribeButton = ({ active, onPress, label, size }: Props) => {
         progress={animationProgress.current}
         source={NotificationAnimation}
         loop={false}
+        renderMode="SOFTWARE" // without this, animation breaks on iOS
       />
     ),
     []

@@ -79,6 +79,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 
 const BodyWrapper = styled(ViewGap).attrs(() => ({ gap: 8, testID: 'offer-body-mobile' }))``
 
-const ComingSoonFooterOffset = styled.View<{ height: number }>(({ height }) => ({
-  height: height + getSpacing(8) - CONTENT_CONTAINER_STYLE.paddingBottom,
+const ComingSoonFooterOffset = styled.View<{ height: number }>(({ height, theme }) => ({
+  height: height + theme.designSystem.size.spacing.xxl - CONTENT_CONTAINER_STYLE.paddingBottom,
 }))

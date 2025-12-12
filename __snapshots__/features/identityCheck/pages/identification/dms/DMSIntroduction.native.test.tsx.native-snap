@@ -243,242 +243,239 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           }
         }
       >
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 20,
-            }
-          }
-        >
-          Pour t’identifier tu vas avoir besoin de : 
-        </Text>
         <View
-          accessibilityRole="list"
           style={
             {
-              "flexDirection": "column",
-              "paddingLeft": 0,
+              "alignItems": "start",
+              "alignSelf": "center",
             }
           }
         >
-          <View
+          <Text
             style={
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "marginBottom": 16,
+              }
+            }
+          >
+            Pour t’identifier tu vas avoir besoin de : 
+          </Text>
+          <View
+            accessibilityRole="list"
+            style={
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
               }
             }
           >
             <View
-              gap={3.75}
               style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <Text
+                gap={3.75}
                 style={
                   {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
                   }
                 }
               >
-                10 minutes de ton temps
-              </Text>
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  10 minutes de ton temps
+                </Text>
+              </View>
             </View>
             <View
-              numberOfSpaces={4.5}
               style={
-                {
-                  "height": 18,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
               }
-            />
+            >
+              <View
+                gap={3.75}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                gap={3.75}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Un justificatif de domicile
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                gap={3.75}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  testID="BicolorProfile"
+                  width={24}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Un selfie avec ta pièce d’identité
+                </Text>
+              </View>
+            </View>
           </View>
-          <View
+          <Text
             style={
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
               }
             }
           >
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
-              <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4.5}
-              style={
-                {
-                  "height": 18,
-                }
-              }
-            />
-          </View>
-          <View
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
-              <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Un justificatif de domicile
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4.5}
-              style={
-                {
-                  "height": 18,
-                }
-              }
-            />
-          </View>
-          <View
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
-              <View
-                height={24}
-                testID="BicolorProfile"
-                width={24}
-              >
-                <Text>
-                  BicolorProfile-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Un selfie avec ta pièce d’identité
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4.5}
-              style={
-                {
-                  "height": 18,
-                }
-              }
-            />
-          </View>
+            Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+          </Text>
         </View>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            }
-          }
-        >
-          Le traitement de ton dossier peut prendre jusqu’à 5 jours.
-        </Text>
       </View>
       <View
         flex={1}
@@ -502,7 +499,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityLabel="Aller sur le site de demarche.numerique.gouv.fr"
           accessibilityRole="link"
           accessibilityState={
             {
@@ -560,7 +557,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               },
             ]
           }
-          testID="Aller sur demarche.numerique.gouv.fr"
+          testID="Aller sur le site de demarche.numerique.gouv.fr"
         >
           <View
             style={
@@ -603,7 +600,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 }
               }
             >
-              Aller sur demarche.numerique.gouv.fr
+              Aller sur le site
             </Text>
           </View>
         </View>
@@ -865,192 +862,192 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           }
         }
       >
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 20,
-            }
-          }
-        >
-          Pour t’identifier tu vas avoir besoin de : 
-        </Text>
         <View
-          accessibilityRole="list"
           style={
             {
-              "flexDirection": "column",
-              "paddingLeft": 0,
+              "alignItems": "start",
+              "alignSelf": "center",
             }
           }
         >
-          <View
+          <Text
             style={
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "marginBottom": 16,
+              }
+            }
+          >
+            Pour t’identifier tu vas avoir besoin de : 
+          </Text>
+          <View
+            accessibilityRole="list"
+            style={
+              {
+                "flexDirection": "column",
+                "paddingLeft": 0,
               }
             }
           >
             <View
-              gap={3.75}
               style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
               }
             >
               <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <Text
+                gap={3.75}
                 style={
                   {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
                   }
                 }
               >
-                10 minutes de ton temps
-              </Text>
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  10 minutes de ton temps
+                </Text>
+              </View>
             </View>
             <View
-              numberOfSpaces={4.5}
               style={
-                {
-                  "height": 18,
-                }
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
               }
-            />
+            >
+              <View
+                gap={3.75}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Ta pièce d’identité française en cours de validité
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                  {
+                    "marginBottom": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                gap={3.75}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 15,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  testID="BicolorProfile"
+                  width={24}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    }
+                  }
+                >
+                  Un selfie avec ta pièce d’identité
+                </Text>
+              </View>
+            </View>
           </View>
-          <View
+          <Text
             style={
               {
-                "display": "flex",
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 19.2,
               }
             }
           >
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
-              <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Ta pièce d’identité française en cours de validité
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4.5}
-              style={
-                {
-                  "height": 18,
-                }
-              }
-            />
-          </View>
-          <View
-            style={
-              {
-                "display": "flex",
-              }
-            }
-          >
-            <View
-              gap={3.75}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 15,
-                }
-              }
-            >
-              <View
-                height={24}
-                testID="BicolorProfile"
-                width={24}
-              >
-                <Text>
-                  BicolorProfile-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  }
-                }
-              >
-                Un selfie avec ta pièce d’identité
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4.5}
-              style={
-                {
-                  "height": 18,
-                }
-              }
-            />
-          </View>
+            Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+          </Text>
         </View>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            }
-          }
-        >
-          Le traitement de ton dossier peut prendre jusqu’à 5 jours.
-        </Text>
       </View>
       <View
         flex={1}
@@ -1074,7 +1071,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Aller sur demarche.numerique.gouv.fr"
+          accessibilityLabel="Aller sur le site de demarche.numerique.gouv.fr"
           accessibilityRole="link"
           accessibilityState={
             {
@@ -1132,7 +1129,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               },
             ]
           }
-          testID="Aller sur demarche.numerique.gouv.fr"
+          testID="Aller sur le site de demarche.numerique.gouv.fr"
         >
           <View
             style={
@@ -1175,7 +1172,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 }
               }
             >
-              Aller sur demarche.numerique.gouv.fr
+              Aller sur le site
             </Text>
           </View>
         </View>

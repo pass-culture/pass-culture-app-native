@@ -23,6 +23,7 @@ type Props = {
   withArrow?: boolean
   placeholder?: string
   withFilterButton?: boolean
+  shouldDisplayHeader?: boolean
 }
 
 export const SearchHeader: FC<Props> = ({
@@ -35,6 +36,7 @@ export const SearchHeader: FC<Props> = ({
   offerCategories,
   placeholder,
   withFilterButton = false,
+  shouldDisplayHeader = true,
 }: Props) => {
   const { goBack } = useNavigation()
   const { dispatch, searchState } = useSearch()
@@ -53,18 +55,20 @@ export const SearchHeader: FC<Props> = ({
     <React.Fragment>
       <Spacer.TopScreen />
       <HeaderContainer>
-        <RowContainer>
-          {withArrow ? (
-            <StyledView>
-              <BackButton onGoBack={onGoBack} />
-            </StyledView>
-          ) : null}
-          <SearchTitleAndWidget
-            searchInputID={searchInputID}
-            shouldDisplaySubtitle={shouldDisplaySubtitle}
-            title={title}
-          />
-        </RowContainer>
+        {shouldDisplayHeader ? (
+          <RowContainer>
+            {withArrow ? (
+              <StyledView>
+                <BackButton onGoBack={onGoBack} />
+              </StyledView>
+            ) : null}
+            <SearchTitleAndWidget
+              searchInputID={searchInputID}
+              shouldDisplaySubtitle={shouldDisplaySubtitle}
+              title={title}
+            />
+          </RowContainer>
+        ) : null}
         <Container>
           <SearchBoxContainer>
             <SearchBox

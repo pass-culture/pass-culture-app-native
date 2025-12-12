@@ -80,15 +80,6 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
-  useSearchHistory: () => ({
-    filteredHistory: [],
-    addToHistory: jest.fn(),
-    removeFromHistory: jest.fn(),
-    search: jest.fn(),
-  }),
-}))
-
 const mockHits = [
   {
     objectID: '1',
@@ -252,7 +243,16 @@ jest.useFakeTimers()
 describe('<SearchResults/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockUseNetInfoContext.mockReset()
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    mockUseSearchHistory.mockReset()
+    mockUseSearchHistory.mockReturnValue({
+      filteredHistory: mockedSearchHistory,
+      queryHistory: '',
+      addToHistory: jest.fn(),
+      removeFromHistory: jest.fn(),
+      search: jest.fn(),
+    })
     mockUseLocation.mockReturnValue(
       getAroundPlaceUserPosition({ geolocPosition: { latitude: 123.34, longitude: 0.12238 } })
     )
@@ -491,20 +491,20 @@ describe('<SearchResults/>', () => {
       await screen.findByText('Rechercher')
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_STATE',
-        payload: { ...mockSearchState, searchId: 'testUuidV4' },
+        type: 'SET_SEARCH_ID',
+        payload: 'testUuidV4',
       })
     })
   })
 
   describe('When displayNewSearchHeader is enabled', () => {
-    beforeEach(() => {
+    beforeAll(() => {
       mockUseRemoteConfigQuery.mockReturnValue({
         data: { displayNewSearchHeader: true },
       })
     })
 
-    afterEach(() => {
+    afterAll(() => {
       mockUseRemoteConfigQuery.mockReturnValue({
         data: { displayNewSearchHeader: false },
       })
@@ -516,6 +516,20 @@ describe('<SearchResults/>', () => {
       await screen.findByText('Rechercher')
 
       expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
+    })
+
+    describe('When input is focused', () => {
+      beforeEach(() => {
+        mockUseSearch.mockReturnValue({ ...DEFAULT_MOCK_USE_SEARCH, isFocusOnSuggestions: true })
+      })
+
+      it('should hide header', async () => {
+        render(reactQueryProviderHOC(<SearchResults />))
+
+        await screen.findByTestId('searchInput')
+
+        expect(screen.queryByText('Rechercher')).not.toBeOnTheScreen()
+      })
     })
   })
 })

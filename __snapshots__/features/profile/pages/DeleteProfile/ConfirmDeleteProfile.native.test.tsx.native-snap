@@ -501,6 +501,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       >
         <View
           accessibilityLabel="Supprimer mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

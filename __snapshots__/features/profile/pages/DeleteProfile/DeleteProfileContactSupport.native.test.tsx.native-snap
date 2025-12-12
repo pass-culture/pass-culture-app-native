@@ -300,6 +300,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Contacter le support"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -376,6 +377,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
               }
             >
               <View
+                accessibilityLabel="Nouvelle fenêtre"
                 height={24}
                 testID="button-icon-left"
                 width={24}
@@ -404,6 +406,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Retourner au profil"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

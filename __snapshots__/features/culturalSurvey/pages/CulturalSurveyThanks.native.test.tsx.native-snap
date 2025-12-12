@@ -197,6 +197,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
       >
         <View
           accessibilityLabel="Découvrir le catalogue"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
@@ -492,6 +493,7 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
       >
         <View
           accessibilityLabel="Continuer"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

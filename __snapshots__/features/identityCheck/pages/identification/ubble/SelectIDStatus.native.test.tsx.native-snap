@@ -356,6 +356,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               />
               <View
+                accessibilityLabel="J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -374,7 +375,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -402,7 +403,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     },
                   ]
                 }
-                testID="HeroButtonList"
+                testID="J’ai ma pièce d’identité en cours de validité - Les copies ne sont pas acceptées"
               >
                 <View
                   style={

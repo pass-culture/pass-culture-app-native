@@ -1,4 +1,3 @@
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { Image } from 'react-native'
@@ -71,12 +70,12 @@ const ImagesContainer = styled(ViewGap)({
 const ImagesContainerGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(
   ({ theme }) => ({
     colors: [
-      theme.designSystem.color.background.locked,
-      colorAlpha(theme.designSystem.color.background.locked, 0.75),
-      colorAlpha(theme.designSystem.color.background.locked, 0.0),
-      colorAlpha(theme.designSystem.color.background.locked, 0.0),
-      colorAlpha(theme.designSystem.color.background.locked, 0.75),
-      theme.designSystem.color.background.locked,
+      theme.designSystem.color.background.gradientMaximum,
+      theme.designSystem.color.background.gradientMiddle,
+      theme.designSystem.color.background.gradientMinimum,
+      theme.designSystem.color.background.gradientMinimum,
+      theme.designSystem.color.background.gradientMiddle,
+      theme.designSystem.color.background.gradientMaximum,
     ],
     locations: [0, 0.12, 0.25, 0.75, 0.87, 1],
     start: { x: 0, y: 0 },

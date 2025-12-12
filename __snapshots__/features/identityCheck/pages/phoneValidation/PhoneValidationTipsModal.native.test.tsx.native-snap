@@ -488,6 +488,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             />
             <View
               accessibilityLabel="J’ai compris"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

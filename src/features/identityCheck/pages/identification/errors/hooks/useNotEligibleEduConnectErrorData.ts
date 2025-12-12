@@ -2,11 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { env } from 'libs/environment/env'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { UserError } from 'ui/svg/UserError'
@@ -106,8 +105,7 @@ const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
   primaryButton: {
     wording: 'Contacter le support',
-    icon: Email,
-    externalNav: contactSupport.forGenericQuestion,
+    externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
   },
   isGoHomeTertiaryButtonVisible: true,
 }

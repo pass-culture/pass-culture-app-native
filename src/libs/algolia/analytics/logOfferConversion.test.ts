@@ -23,7 +23,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('logOfferConversion', () => {
   it('should send the corresponding Algolia conversion event when called', async () => {
-    await logOfferConversion('abc123')('object123')
+    await logOfferConversion({ objectID: 'object123', queryID: 'abc123' })
 
     expect(mockAlgoliaSearchInsights).toHaveBeenCalledWith('convertedObjectIDsAfterSearch', {
       eventName: 'Offer reserved',
@@ -34,18 +34,18 @@ describe('logOfferConversion', () => {
   })
 
   it('should raise a warning instead of sending an event when called without a queryID set', async () => {
-    await logOfferConversion()('object123')
+    await logOfferConversion({ objectID: 'object123', queryID: undefined })
 
     expect(mockAlgoliaSearchInsights).not.toHaveBeenCalled()
     expect(mockCaptureMonitoringError).toHaveBeenCalledWith(
-      'Algolia Analytics: useLogOfferConversion called without any QueryID set'
+      'Algolia Analytics: logOfferConversion called without any QueryID set'
     )
   })
 
   it("should not send an Algolia conversion event when user didn't accept cookies", async () => {
     mockGetAcceptedCookieConsent.mockResolvedValueOnce(false)
 
-    await logOfferConversion('abc123')('object123')
+    await logOfferConversion({ objectID: 'object123', queryID: 'abc123' })
 
     expect(mockAlgoliaSearchInsights).not.toHaveBeenCalled()
   })

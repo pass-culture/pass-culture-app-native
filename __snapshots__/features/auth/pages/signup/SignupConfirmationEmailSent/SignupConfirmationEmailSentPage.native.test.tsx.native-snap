@@ -406,6 +406,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Recevoir un nouveau lien"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -512,6 +513,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         </View>
         <View
           accessibilityLabel="Consulter mes e-mails"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

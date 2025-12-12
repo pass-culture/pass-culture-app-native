@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
@@ -17,11 +17,13 @@ import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
+  appVersion: string
   platformName: string
   storeLink: { url: string }
   auditDate: string
   conformityEN: string
   conformityRAAM: string
+  averageConformityRAAM: string
   nonAccessibleContent: string[]
   osVersion: string
   toolsUsed: string[]
@@ -31,11 +33,13 @@ const rightsDefenderUrl = { url: 'https://formulaire.defenseurdesdroits.fr/' }
 const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/delegues' }
 
 export function AccessibilityDeclarationMobileBase({
+  appVersion,
   platformName,
   storeLink,
   auditDate,
   conformityEN,
   conformityRAAM,
+  averageConformityRAAM,
   nonAccessibleContent,
   osVersion,
   toolsUsed,
@@ -60,7 +64,7 @@ export function AccessibilityDeclarationMobileBase({
             externalNav={storeLink}
             accessibilityRole={AccessibilityRole.LINK}
           />
-          {SPACE}version 1.358.2 du pass Culture.
+          {SPACE}version {appVersion} du pass Culture.
         </Typo.Body>
       </ViewGap>
 
@@ -70,7 +74,7 @@ export function AccessibilityDeclarationMobileBase({
         <TitleText>État de conformité</TitleText>
         <Typo.Body>
           L’application pass Culture sur {platformName} est{SPACE}
-          <Typo.BodyAccent>non conforme</Typo.BodyAccent>
+          <Typo.BodyAccent>partiellement conforme</Typo.BodyAccent>
           {SPACE}
           avec la norme européenne EN 301 549 v.3.2.1, la norme de référence en vigueur en France et
           en Europe, en raison des non-conformités énumérées dans la section «&nbsp;Résultats des
@@ -84,12 +88,13 @@ export function AccessibilityDeclarationMobileBase({
         <TitleText>Résultats des tests</TitleText>
         <Typo.Body>
           L’audit de conformité réalisé le {auditDate} par la société Access42 révèle que
-          l’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la norme
-          européenne EN 301 549 v.3.2.1.
+          l’application est conforme à <Typo.BodyAccent>{conformityRAAM}</Typo.BodyAccent> au
+          Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1). Le taux de conformité
+          moyen des pages est de <Typo.BodyAccent>{averageConformityRAAM}</Typo.BodyAccent>.
         </Typo.Body>
         <Typo.Body>
-          L’application est conforme à <Typo.BodyAccent>{conformityRAAM}</Typo.BodyAccent> au
-          Référentiel d’Accessibilité des Applications Mobiles (RAAM 1.1).
+          L’application est conforme à <Typo.BodyAccent>{conformityEN}</Typo.BodyAccent> à la norme
+          européenne EN 301 549 v.3.2.1.
         </Typo.Body>
       </ViewGap>
 
@@ -141,7 +146,7 @@ export function AccessibilityDeclarationMobileBase({
 
       <ViewGap gap={6}>
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
-        <Typo.BodyItalic>Cette déclaration a été établie le jeudi 31 juillet 2025.</Typo.BodyItalic>
+        <Typo.BodyItalic>Cette déclaration a été établie le lundi 8 décembre 2025.</Typo.BodyItalic>
         <SubtitleText>Technologies utilisées pour la réalisation de l’application</SubtitleText>
         <VerticalUl>
           <BulletListItem
@@ -207,11 +212,10 @@ export function AccessibilityDeclarationMobileBase({
           afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
           <ExternalTouchableLink
             as={LinkInsideText}
-            wording="support@passculture.app"
-            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
-            justifyContent="flex-start"
-            externalNav={contactSupport.forGenericQuestion}
+            wording="contacter le support"
+            externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
             accessibilityRole={AccessibilityRole.LINK}
+            justifyContent="flex-start"
           />
         </Typo.Body>
       </ViewGap>

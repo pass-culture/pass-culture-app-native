@@ -1849,6 +1849,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       </Text>
       <View
         accessibilityLabel="Enregistrer mes choix"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

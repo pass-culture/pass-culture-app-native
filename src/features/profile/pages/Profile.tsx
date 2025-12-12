@@ -25,6 +25,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -154,6 +155,9 @@ const OnlineProfile: React.FC = () => {
   // If no dark mode and no rotation mode in web this section is empty
   const hidePreferenceSection = !enableDarkMode && isWeb
   const shouldShowAchievementsSection = user?.isBeneficiary
+
+  const shareBannerTitle = 'Partage le pass Culture'
+  const shareBannerDescription = 'Recommande le bon plan à tes amis\u00a0!'
 
   return (
     <Page>
@@ -297,10 +301,15 @@ const OnlineProfile: React.FC = () => {
                   <Spacer.Column numberOfSpaces={4} />
                   <BannerWithBackground
                     backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-                    onPress={onShareBannerPress}>
+                    onPress={onShareBannerPress}
+                    accessibilityRole={AccessibilityRole.BUTTON}
+                    accessibilityLabel={getComputedAccessibilityLabel(
+                      shareBannerTitle,
+                      shareBannerDescription
+                    )}>
                     <ShareAppContainer gap={1}>
-                      <StyledButtonText>Partage le pass Culture</StyledButtonText>
-                      <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
+                      <StyledButtonText>{shareBannerTitle}</StyledButtonText>
+                      <StyledBody>{shareBannerDescription}</StyledBody>
                     </ShareAppContainer>
                   </BannerWithBackground>
                   <Spacer.Column numberOfSpaces={4} />

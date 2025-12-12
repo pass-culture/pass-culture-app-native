@@ -1,17 +1,16 @@
 import React from 'react'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { env } from 'libs/environment/env'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 export const ContactSupportButton = () => (
   <ExternalTouchableLink
-    as={ButtonTertiaryBlack}
-    wording="support@passculture.app"
-    accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
+    as={LinkInsideText}
+    wording="Contacter le support"
+    externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
+    accessibilityRole={AccessibilityRole.LINK}
     justifyContent="flex-start"
-    externalNav={contactSupport.forGenericQuestion}
-    icon={EmailFilled}
   />
 )

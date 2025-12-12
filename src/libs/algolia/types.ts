@@ -320,3 +320,9 @@ export type fetchOffersByGTLArgs = {
   isUserUnderage: boolean
   searchIndex?: string
 }
+
+export type AlgoliaAnalyticsEvents = {
+  objectID: string
+  position: number
+  queryID?: string
+}

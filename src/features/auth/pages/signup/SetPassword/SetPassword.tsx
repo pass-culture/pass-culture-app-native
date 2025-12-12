@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 
 import { setPasswordSchema } from 'features/auth/pages/signup/SetPassword/schema/setPasswordSchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -50,6 +51,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
+        accessibilityRole={accessibilityRoleInternalNavigation()}
         wording="Continuer"
         accessibilityLabel={accessibilityLabelForNextStep}
         onPress={handleSubmit(onGoToNextStep)}

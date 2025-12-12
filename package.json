@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.369.2",
-  "build": 10369002,
+  "version": "1.371.0",
+  "build": 10371000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -96,7 +96,7 @@
     "@hookform/resolvers": "^2.9.11",
     "@hot-updater/react-native": "^0.20.11",
     "@openspacelabs/react-native-zoomable-view": "^2.1.5",
-    "@pass-culture/design-system": "0.5.1",
+    "@pass-culture/design-system": "0.5.2",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-clipboard/clipboard": "^1.16.2",
@@ -213,9 +213,9 @@
     "@hot-updater/bare": "^0.20.11",
     "@hot-updater/firebase": "^0.20.11",
     "@lhci/cli": "^0.14.0",
-    "@react-native-community/cli": "19.1.1",
-    "@react-native-community/cli-platform-android": "19.1.1",
-    "@react-native-community/cli-platform-ios": "19.1.1",
+    "@react-native-community/cli": "19.1.2",
+    "@react-native-community/cli-platform-android": "19.1.2",
+    "@react-native-community/cli-platform-ios": "19.1.2",
     "@react-native/babel-preset": "0.80.2",
     "@react-native/eslint-config": "0.80.2",
     "@react-native/metro-config": "0.80.2",

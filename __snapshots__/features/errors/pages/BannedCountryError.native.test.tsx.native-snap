@@ -113,6 +113,7 @@ exports[`BannedCountryError should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Réessayer"
+        accessibilityRole="button"
         accessibilityState={
           {
             "busy": undefined,

@@ -7,5 +7,6 @@ export type TouchableProps = {
   onPress?: () => void
   testID?: string
   accessibilityLabel?: string
+  accessibilityRole?: string
   hoverUnderlineColor?: ColorsType | null
 } & TouchableOpacityProps

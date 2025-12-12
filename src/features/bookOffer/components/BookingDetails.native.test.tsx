@@ -10,7 +10,6 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { beneficiaryUser } from 'fixtures/user'
-import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -75,11 +74,6 @@ mockUseSubcategoriesMapping.mockReturnValue({
   EVENEMENT_PATRIMOINE: { isEvent: true },
   LIVRE_PAPIER: { isEvent: false },
 })
-
-const spyLogOfferConversion = jest.fn()
-jest
-  .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
-  .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
 const mockOnPressBookOffer = jest.fn()
 

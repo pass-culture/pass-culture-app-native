@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -30,7 +31,9 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   return (
     <ExternalTouchableLink
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
-      onBeforeNavigate={onBeforeNavigate}>
+      onBeforeNavigate={onBeforeNavigate}
+      accessibilityRole={AccessibilityRole.LINK}
+      accessibilityLabel={`Partager ${name} - Ouvre dans une nouvelle fenêtre`}>
       <Container gap={1}>
         <NetworkIconBox>
           <StyledIcon />

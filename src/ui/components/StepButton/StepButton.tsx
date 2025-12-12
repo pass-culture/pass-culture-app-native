@@ -3,6 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
@@ -45,7 +46,7 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
       break
   }
 
-  const accessibilityLabel = `${label} ${iconLabel}`
+  const accessibilityLabel = getComputedAccessibilityLabel(label, iconLabel)
 
   const isDisabled =
     stepState === StepButtonState.DISABLED ||

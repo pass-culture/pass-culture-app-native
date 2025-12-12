@@ -651,6 +651,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
           >
             <View
               accessibilityLabel="Valider la localisation"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

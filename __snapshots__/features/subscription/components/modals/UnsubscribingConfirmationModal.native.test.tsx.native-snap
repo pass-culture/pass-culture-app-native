@@ -375,6 +375,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Ne plus suivre ce thème"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -460,6 +461,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   </View>
                   <View
                     accessibilityLabel="Annuler"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,

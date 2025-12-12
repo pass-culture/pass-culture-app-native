@@ -197,6 +197,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Continuer vers l’étape suivante"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

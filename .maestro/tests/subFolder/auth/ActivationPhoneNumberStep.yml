@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "C'est très rapide !"
-- tapOn: 'Numéro de téléphone non complété'
+- tapOn: 'Numéro de téléphone - non complété'
 
 - assertVisible: 'Quelques conseils'
 - tapOn: 'J’ai compris'

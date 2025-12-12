@@ -122,7 +122,7 @@ describe('<FeedbackInApp/>', () => {
     await act(async () => {
       fireEvent.changeText(textBox, feedback)
     })
-    const submitButton = screen.getByText('Envoyer ma suggestion')
+    const submitButton = screen.getByText('Envoyer')
     await user.press(submitButton)
   }
 })

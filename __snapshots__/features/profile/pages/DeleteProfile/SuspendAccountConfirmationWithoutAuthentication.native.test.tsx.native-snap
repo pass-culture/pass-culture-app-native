@@ -502,6 +502,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       >
         <View
           accessibilityLabel="Oui, suspendre mon compte"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,
