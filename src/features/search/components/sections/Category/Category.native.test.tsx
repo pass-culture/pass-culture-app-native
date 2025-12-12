@@ -95,7 +95,9 @@ describe('Category component', () => {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
 
-    const categoryButton = screen.getByTestId('FilterRow')
+    const categoryButton = screen.getByTestId(
+      'Filtre - Catégorie - Livres papier - Bandes dessinées'
+    )
 
     await user.press(categoryButton)
 

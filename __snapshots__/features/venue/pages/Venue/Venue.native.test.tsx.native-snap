@@ -534,8 +534,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Offres disponibles"
-                  accessibilityRole="tab"
+                  accessibilityLabel="Onglet 1/2 - Offres disponibles - sélectionné"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -574,7 +574,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Offres disponibles"
+                  testID="Onglet 1/2 - Offres disponibles - sélectionné"
                 >
                   <View
                     gap={2}
@@ -622,8 +622,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   />
                 </View>
                 <View
-                  accessibilityLabel="Infos pratiques"
-                  accessibilityRole="tab"
+                  accessibilityLabel="Onglet 2/2 - Infos pratiques - non sélectionné"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -662,7 +662,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Infos pratiques"
+                  testID="Onglet 2/2 - Infos pratiques - non sélectionné"
                 >
                   <View
                     gap={2}
@@ -3630,8 +3630,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Offres disponibles"
-                  accessibilityRole="tab"
+                  accessibilityLabel="Onglet 1/2 - Offres disponibles - sélectionné"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -3670,7 +3670,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Offres disponibles"
+                  testID="Onglet 1/2 - Offres disponibles - sélectionné"
                 >
                   <View
                     gap={2}
@@ -3718,8 +3718,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   />
                 </View>
                 <View
-                  accessibilityLabel="Infos pratiques"
-                  accessibilityRole="tab"
+                  accessibilityLabel="Onglet 2/2 - Infos pratiques - non sélectionné"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -3758,7 +3758,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Infos pratiques"
+                  testID="Onglet 2/2 - Infos pratiques - non sélectionné"
                 >
                   <View
                     gap={2}
@@ -7039,8 +7039,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Offres disponibles"
-                  accessibilityRole="tab"
+                  accessibilityLabel="Onglet 1/2 - Offres disponibles - non sélectionné"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -7079,7 +7079,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Offres disponibles"
+                  testID="Onglet 1/2 - Offres disponibles - non sélectionné"
                 >
                   <View
                     gap={2}
@@ -7127,8 +7127,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   />
                 </View>
                 <View
-                  accessibilityLabel="Infos pratiques"
-                  accessibilityRole="tab"
+                  accessibilityLabel="Onglet 2/2 - Infos pratiques - sélectionné"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -7167,7 +7167,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Infos pratiques"
+                  testID="Onglet 2/2 - Infos pratiques - sélectionné"
                 >
                   <View
                     gap={2}

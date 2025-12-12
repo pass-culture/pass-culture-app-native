@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { PastilleType } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -13,14 +14,20 @@ import { TouchableTab } from './TouchableTab'
 
 type InfoTabProps<TabKeyType extends string> = {
   tab: TabKeyType
+  tabIndex: number
+  totalTabs: number
   selectedTab: TabKeyType
   onPress: () => void
   Icon?: React.FC<AccessibleIcon>
   pastille?: PastilleType
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const InfoTab = <TabKeyType extends string>({
   tab,
+  tabIndex,
+  totalTabs,
   selectedTab,
   onPress,
   Icon,
@@ -41,10 +48,20 @@ export const InfoTab = <TabKeyType extends string>({
       : null
   }, [Icon, isSelected])
 
+  // In web AccessibilityRole.TAB return none for screen readers, so we use BUTTON instead
+  const accessibilityRole = isWeb ? AccessibilityRole.TAB : AccessibilityRole.BUTTON
+
+  const selectedLabel = isSelected ? 'sélectionné' : 'non sélectionné'
+
+  // We recompute the accessibility label here to include the role in mobile
+  const accessibilityLabel = isWeb
+    ? tab
+    : getComputedAccessibilityLabel(`Onglet ${tabIndex}/${totalTabs}`, tab, selectedLabel)
+
   return (
     <StyledTouchableTab
-      accessibilityLabel={tab}
-      accessibilityRole={AccessibilityRole.TAB}
+      accessibilityRole={accessibilityRole}
+      accessibilityLabel={accessibilityLabel}
       id={tab}
       onPress={onPress}
       selected={isSelected}
