@@ -10,7 +10,6 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { SuggestedCity } from 'libs/place/types'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -79,7 +78,6 @@ export const SetCity = () => {
           onPress={handleSubmit(onSubmit)}
           wording="Continuer"
           accessibilityLabel="Continuer vers l’adresse"
-          accessibilityRole={accessibilityRoleInternalNavigation()}
           disabled={!isValid}
         />
       }

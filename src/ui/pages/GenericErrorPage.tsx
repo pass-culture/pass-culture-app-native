@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -104,7 +103,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   disabled={buttonPrimary.disabled}
                   icon={buttonPrimary.icon}
                   buttonHeight="tall"
-                  accessibilityRole={accessibilityRoleInternalNavigation()}
                 />
               ) : null}
 
@@ -116,7 +114,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   isLoading={buttonTertiary.isLoading}
                   disabled={buttonTertiary.disabled}
                   icon={buttonTertiary.icon}
-                  accessibilityRole={accessibilityRoleInternalNavigation()}
                 />
               ) : null}
 
