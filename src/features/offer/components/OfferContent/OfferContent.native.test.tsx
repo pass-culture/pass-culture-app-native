@@ -259,7 +259,7 @@ describe('<OfferContent />', () => {
     it('should remove favorite when press on favorite', async () => {
       mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
       renderOfferContent({})
-      const button = await screen.findByLabelText('Mettre en favori')
+      const button = await screen.findByLabelText('Retirer des favoris')
       await user.press(button)
 
       expect(spyApiDeleteFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)
@@ -269,7 +269,7 @@ describe('<OfferContent />', () => {
       spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
       mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponseWithoutSurvey)
       renderOfferContent({})
-      const button = await screen.findByLabelText('Mettre en favori')
+      const button = await screen.findByLabelText('Retirer des favoris')
       await user.press(button)
 
       expect(spyApiDeleteFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)

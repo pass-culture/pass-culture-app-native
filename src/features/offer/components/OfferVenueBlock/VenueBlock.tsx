@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { Tag } from 'ui/designSystem/Tag/Tag'
@@ -46,6 +48,8 @@ export const VenueBlock: FunctionComponent<Props> = ({
     />
   )
 
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(title, subtitle)
+
   return (
     <React.Fragment>
       {shouldDisplayDistanceTag ? <StyledTag label={`à ${distance}`} /> : null}
@@ -53,7 +57,9 @@ export const VenueBlock: FunctionComponent<Props> = ({
       {isClickableVenueLink ? (
         <VenueRowLinkContainer
           navigateTo={{ screen: 'Venue', params: { id: venueId } }}
-          onBeforeNavigate={onSeeVenuePress}>
+          onBeforeNavigate={onSeeVenuePress}
+          accessibilityLabel={computedAccessibilityLabel}
+          accessibilityRole={accessibilityRoleInternalNavigation()}>
           {renderVenueHeader(true)}
         </VenueRowLinkContainer>
       ) : null}

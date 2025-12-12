@@ -51,6 +51,8 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
       addFavorite({ offerId })
     }
   }, [addFavorite, favorite, isLoggedIn, offerId, removeFavorite, showSignInModal])
+
+  const accessibilityLabel = favorite ? 'Retirer des favoris' : 'Mettre en favori'
   return (
     <React.Fragment>
       <RoundedButton
@@ -65,7 +67,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
         iconName={favorite ? 'favorite-filled' : 'favorite'}
         onPress={pressFavorite}
         disabled={isRemoveFavoriteLoading || isAddFavoriteLoading}
-        {...accessibleCheckboxProps({ checked: !!favorite, label: 'Mettre en favori' })}
+        {...accessibleCheckboxProps({ checked: !!favorite, label: accessibilityLabel })}
       />
       {/*  TODO(PC-35063): Fix this dirty style hack by removing this modal outside the button ! */}
       <ModalWrapper>
