@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -23,6 +24,7 @@ export const DeleteProfileContactSupport: FC = () => {
       buttonPrimary={{
         wording: 'Contacter le support',
         externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
+        onBeforeNavigate: () => analytics.logHasClickedContactForm('DeleteProfileContactSupport'),
       }}
       buttonTertiary={{
         wording: 'Retourner au profil',

@@ -113,6 +113,7 @@ export const DebugScreen = () => {
                 wording: 'Contacter le support',
               },
             ]}
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('DebugScreen')}
           />
           <Controller
             control={control}
