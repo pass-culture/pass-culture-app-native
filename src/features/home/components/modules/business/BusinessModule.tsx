@@ -98,7 +98,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
       onPress={onPress}
       accessibilityRole={url ? AccessibilityRole.LINK : undefined}
       accessibilityLabel={accessibilityLabel}
-      onMouseDown={(e) => e.preventDefault()}>
+      onMouseDown={(e) => e.preventDefault()}
+      disabled={isDisabled}>
       {isLargeScreen ? (
         <FlexRow>
           <ColumnLargeScreen>
