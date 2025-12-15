@@ -290,15 +290,26 @@ sleep 15
 
 log_and_run "Installing the APK onto the emulator" adb install "$APK_PATH"
 
-log_info "Running Flashlight test with Maestro..."
-flashlight test \
-    --bundleId "$BUNDLE_ID" \
-    --testCommand "MAESTRO_APP_ID=$BUNDLE_ID maestro test $REPO_ROOT/.maestro/tests/HomePerformance.yml" \
-    --duration 10000 \
-    --resultsFilePath "$REPO_ROOT/resultsHomePerformance.json" \
-    || log_error "[WARNING] Flashlight command exited with a non-zero status. Results may be incomplete."
+# ==============================================================================
+# DEBUT DE LA MODIFICATION : LANCEMENT DE L'ORCHESTRATEUR
+# ==============================================================================
 
-log_and_run "Parsing and evaluating performance results" \
-    bash -c "cd '$REPO_ROOT' && node 'scripts/parse-perf-results.js' 'resultsHomePerformance.json'"
+log_info "Starting Performance Test Suite Orchestrator..."
 
-log_success "Script finished successfully!"
+# On exporte le Bundle ID pour que le script Node puisse s'en servir
+export BUNDLE_ID="$BUNDLE_ID"
+
+# On définit le chemin de ton orchestrateur (tu adapteras ce chemin si besoin)
+ORCHESTRATOR_SCRIPT="$REPO_ROOT/.maestro/tests/performances/run_perfs_tests_suite.js"
+
+log_info "Executing orchestrator script at: $ORCHESTRATOR_SCRIPT"
+
+# Lancement du script Node qui va itérer sur tes scénarios
+if node "$ORCHESTRATOR_SCRIPT"; then
+    log_success "Orchestrator finished successfully. All scenarios executed."
+else
+    log_error "Orchestrator failed (exit code $?)."
+    exit 1
+fi
+
+log_success "Full pipeline finished successfully!"
