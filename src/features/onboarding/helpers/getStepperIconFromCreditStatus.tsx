@@ -26,6 +26,7 @@ const AnimatedOngoingLock = () => {
       loop={false}
       width={theme.icons.sizes.standard}
       height={theme.icons.sizes.standard}
+      usePartialPlayback={false}
     />
   )
 }

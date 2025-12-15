@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useMemo, forwardRef, useImperativeHandle } from 'react'
+import React, { useMemo, forwardRef, useImperativeHandle, useRef } from 'react'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
@@ -23,6 +23,11 @@ type ThemedStyledLottieViewProps = {
   loop?: boolean
   resizeMode?: 'center' | 'contain' | 'cover' | undefined
   selectThemeColor?: (theme: DefaultTheme) => string
+  /**
+   * When true (default), auto-plays frames 0→62 and restarts the animation on app foreground.
+   * Set to false to let Lottie handle full playback without forced restarts.
+   */
+  usePartialPlayback?: boolean
 } & LottieColoringOptions
 
 export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyledLottieViewProps>(
@@ -32,12 +37,13 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
       height,
       source,
       autoPlay = false,
-      loop = true,
+      loop = false,
       resizeMode,
       selectThemeColor,
       coloringMode = 'global',
       targetShapeNames,
       targetLayerNames,
+      usePartialPlayback = true,
     },
     ref
   ) => {
@@ -60,7 +66,9 @@ export const ThemedStyledLottieView = forwardRef<LottieView | null, ThemedStyled
       return patchLottieForTheme(source, { fill: fillColorFromTheme })
     }, [theme, selectThemeColor, source, coloringMode, targetShapeNames, targetLayerNames])
 
-    const animationRef = usePartialLottieAnimation(animationData)
+    const partialRef = usePartialLottieAnimation(usePartialPlayback ? animationData : undefined)
+    const rawRef = useRef<LottieView>(null)
+    const animationRef = usePartialPlayback ? partialRef : rawRef
 
     useImperativeHandle(ref, () => animationRef.current as LottieView)
 
