@@ -38,7 +38,7 @@ export const buildVenuesQueryOptions = (
   }
 }
 
-const buildActivitiesPredicate = (activities: string[]): string[] =>
+export const buildActivitiesPredicate = (activities: string[]): string[] =>
   activities.map((activity) => `${VENUES_FACETS_ENUM.ACTIVITY}:${activity}`)
 
 const buildTagsPredicate = (tags: string[]): string[] =>

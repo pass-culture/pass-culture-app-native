@@ -1,5 +1,7 @@
+import { Activity } from 'api/gen'
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { buildActivitiesPredicate } from 'libs/algolia/fetchAlgolia/buildVenuesQueryOptions'
 import { venuesFixture as mockVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -21,6 +23,8 @@ const region: Region = {
   longitude: 2.333333,
   longitudeDelta: 0.04760990854064799,
 }
+const allActivities = Object.values(Activity)
+const activityFilters = buildActivitiesPredicate(allActivities)
 
 describe('useVenuesInRegionQuery', () => {
   const spySetVenues = jest.spyOn(venueMapStore, 'setVenues')
@@ -50,6 +54,7 @@ describe('useVenuesInRegionQuery', () => {
       },
       options: {
         hitsPerPage: 1000,
+        facetFilters: [activityFilters],
       },
       query: '',
     })
