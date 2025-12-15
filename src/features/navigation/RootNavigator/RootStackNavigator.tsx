@@ -25,6 +25,7 @@ import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
+import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
@@ -331,6 +332,11 @@ const rootScreens: RouteConfig[] = [
     name: 'MandatoryUpdatePersonalData',
     component: MandatoryUpdatePersonalData,
     options: { title: 'Confirmation de la validité de tes données personnelles' },
+  },
+  {
+    // This screen is the RootNavigator (and not SubscriptionStackNavigator with the other Bonification screens) so we can return it from useInitialScreen (the hook doesn't handle setting nested screens as initial screens)
+    name: 'BonificationGranted',
+    component: withAuthProtection(BonificationGranted),
   },
 ]
 

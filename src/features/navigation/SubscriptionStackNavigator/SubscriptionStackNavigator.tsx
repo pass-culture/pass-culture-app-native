@@ -5,7 +5,6 @@ import { BonificationBirthDate } from 'features/bonification/pages/BonificationB
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
 import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
-import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { BonificationRefused } from 'features/bonification/pages/BonificationRefused'
@@ -245,10 +244,6 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
   {
     name: 'BonificationError',
     component: withAuthProtection(BonificationError),
-  },
-  {
-    name: 'BonificationGranted',
-    component: withAuthProtection(BonificationGranted),
   },
   {
     name: 'BonificationRefused',
