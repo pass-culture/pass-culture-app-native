@@ -111,9 +111,9 @@ export const DebugScreen = () => {
               {
                 externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
                 wording: 'Contacter le support',
+                onBeforeNavigate: () => analytics.logHasClickedContactForm('DebugScreen'),
               },
             ]}
-            onBeforeNavigate={() => analytics.logHasClickedContactForm('DebugScreen')}
           />
           <Controller
             control={control}

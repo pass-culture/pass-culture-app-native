@@ -550,7 +550,6 @@ exports[`DebugScreen should render correctly 1`] = `
                       "url": undefined,
                     }
                   }
-                  onBeforeNavigate={[Function]}
                   style={
                     {
                       "flexBasis": 0,

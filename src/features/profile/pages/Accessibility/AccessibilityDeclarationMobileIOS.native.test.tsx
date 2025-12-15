@@ -2,6 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityDeclarationMobileIOS } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileIOS'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { render, userEvent, screen } from 'tests/utils'
 
@@ -38,5 +39,18 @@ describe('AccessibilityDeclarationMobileIOS', () => {
     await user.press(link)
 
     expect(openURLSpy).toHaveBeenCalledWith(url, undefined, true)
+  })
+
+  it('should log HasClickedContactForm event when press "contacter le support" button', async () => {
+    render(<AccessibilityDeclarationMobileIOS />)
+
+    const contactSupportButton = screen.getByText('contacter le support')
+
+    await userEvent.press(contactSupportButton)
+
+    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(
+      1,
+      'AccessibilityDeclaration'
+    )
   })
 })
