@@ -52,7 +52,11 @@ export const MovieCalendarDay: React.FC<Props> = ({
       testID="movie-calendar-day"
       onPress={() => onTabChange(date)}
       accessibilityLabel={computedaccassibilityLabel}
-      accessibilityRole={AccessibilityRole.BUTTON}>
+      accessibilityRole={AccessibilityRole.BUTTON}
+      accessible={!disabled}
+      accessibilityElementsHidden={disabled} // Hide element in iOS
+      importantForAccessibility={disabled ? 'no-hide-descendants' : 'auto'} // Hide element in Android
+    >
       <CalendarTextView>
         <CalendarText numberOfLines={1}>{weekDay}</CalendarText>
         <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
