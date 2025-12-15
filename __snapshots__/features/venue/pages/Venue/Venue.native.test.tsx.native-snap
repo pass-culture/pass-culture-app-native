@@ -2046,8 +2046,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                   testID="Suivre le thème"
                 >
-                  <View>
-                    undefined-Lottie-Mock
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
                   </View>
                   <Text
                     style={
@@ -5463,8 +5468,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   }
                   testID="Suivre le thème"
                 >
-                  <View>
-                    undefined-Lottie-Mock
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
                   </View>
                   <Text
                     style={
@@ -8590,8 +8600,13 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   }
                   testID="Suivre le thème"
                 >
-                  <View>
-                    undefined-Lottie-Mock
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
                   </View>
                   <Text
                     style={

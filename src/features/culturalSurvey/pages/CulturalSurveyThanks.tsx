@@ -16,6 +16,9 @@ export const CulturalSurveyThanks: React.FC = () => {
   return (
     <GenericInfoPage
       animation={QpiThanks}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+      animationTargetLayerNames={['étoile', 'cadre']}
       title="Un grand merci pour tes réponses&nbsp;!"
       subtitle={thanks.subtitle}
       buttonPrimary={{
