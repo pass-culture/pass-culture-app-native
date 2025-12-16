@@ -1,5 +1,5 @@
-import { Hit } from '@algolia/client-search'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { Hit } from 'algoliasearch/lite'
 import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
 
@@ -161,7 +161,7 @@ export const useSearchVenueOffersInfiniteQuery = ({
       return acc
     }, 0) ?? 0
 
-  const { nbHits } = data?.pages[0] ?? { nbHits: 0 }
+  const nbHits = data?.pages[0]?.nbHits ?? 0
 
   return { data, venueList, nbVenueItems, nbLoadedHits, nbHits, ...infiniteQuery }
 }

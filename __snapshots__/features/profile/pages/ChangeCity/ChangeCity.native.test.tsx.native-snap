@@ -538,6 +538,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
         >
           <View
             accessibilityLabel="Continuer"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1206,6 +1207,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
         >
           <View
             accessibilityLabel="Continuer"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1874,6 +1876,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Valider ma ville de résidence"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

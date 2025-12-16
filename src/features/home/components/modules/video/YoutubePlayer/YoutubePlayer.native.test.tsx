@@ -64,7 +64,7 @@ describe('YoutubePlayer', () => {
       />
     )
 
-    await user.press(screen.getByLabelText('Jouer'))
+    await user.press(screen.getByLabelText('Lire la vidéo'))
 
     await waitFor(() => expect(handleOnReady).toHaveBeenCalledWith())
   })

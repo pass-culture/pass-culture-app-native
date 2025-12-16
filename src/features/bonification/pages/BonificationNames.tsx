@@ -42,6 +42,7 @@ export const BonificationNames = () => {
     },
     resolver: yupResolver(BonificationNamesSchema),
     mode: 'all',
+    delayError: 1000,
   })
 
   const firstNameErrors = formState.errors.firstNames?.map?.((e) => e?.message)

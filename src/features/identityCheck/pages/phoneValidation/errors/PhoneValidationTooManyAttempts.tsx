@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -14,6 +15,8 @@ export function PhoneValidationTooManyAttempts() {
       buttonPrimary={{
         wording: 'Contacter le support',
         externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
+        onBeforeNavigate: () =>
+          analytics.logHasClickedContactForm('PhoneValidationTooManyAttempts'),
       }}
       buttonTertiary={{
         wording: 'Retourner à l’accueil',

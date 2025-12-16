@@ -991,6 +991,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1097,6 +1098,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             </View>
             <View
               accessibilityLabel="Rechercher"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

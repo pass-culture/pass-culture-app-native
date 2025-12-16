@@ -17,19 +17,18 @@ export const fetchOffersByGTL = async ({
   // Build a query list to send to Algolia
   const queries = parameters.map(({ offerParams }) => ({
     indexName: searchIndex || env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
-    params: {
-      ...buildHitsPerPage(offerParams.hitsPerPage),
-      ...buildOfferSearchParameters(
-        {
-          ...initialSearchState,
-          ...offerParams,
-        },
-        buildLocationParameterParams,
-        isUserUnderage
-      ),
-      attributesToHighlight: [], // We disable highlighting because we don't need it
-      attributesToRetrieve: offerAttributesToRetrieve,
-    },
+    query: '',
+    ...buildHitsPerPage(offerParams.hitsPerPage),
+    ...buildOfferSearchParameters(
+      {
+        ...initialSearchState,
+        ...offerParams,
+      },
+      buildLocationParameterParams,
+      isUserUnderage
+    ),
+    attributesToHighlight: [], // We disable highlighting because we don't need it
+    attributesToRetrieve: offerAttributesToRetrieve,
   }))
 
   // Fetch all offers

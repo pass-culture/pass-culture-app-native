@@ -607,6 +607,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Valider"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

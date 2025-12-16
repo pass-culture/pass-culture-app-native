@@ -1,4 +1,4 @@
-import { SearchForFacetValuesResponse, SearchResponse } from '@algolia/client-search'
+import { SearchForFacetValuesResponse, SearchResponse } from 'algoliasearch/lite'
 
 export function searchResponsePredicate<T>(
   response: SearchForFacetValuesResponse | SearchResponse<T>

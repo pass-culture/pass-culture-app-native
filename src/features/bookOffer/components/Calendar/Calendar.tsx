@@ -17,8 +17,10 @@ import {
 } from 'features/bookOffer/components/Calendar/useMarkedDates'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'
@@ -51,7 +53,8 @@ type CustomTheme = Theme & {
 }
 
 const calendarHeaderStyle = (theme: DefaultTheme): CustomTheme => ({
-  textDisabledColor: theme.designSystem.color.text.disabled,
+  // UX decision: align with disabled background token for the muted state
+  textDisabledColor: theme.designSystem.color.background.disabled,
   calendarBackground: theme.designSystem.color.background.default,
   dayTextColor: theme.designSystem.color.text.default,
   todayTextColor: theme.designSystem.color.text.default,
@@ -162,8 +165,25 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
 
   const onPress = selectDay({ date, selected, status })
 
+  const isAccessible = typeof price === 'number'
+
+  const computedAccessibilityLabel = getComputedAccessibilityLabel(
+    date.dateString,
+    isAccessible
+      ? getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)
+      : 'Indisponible',
+    selected ? 'Sélectionné' : undefined
+  )
+
   return (
-    <Container onPress={onPress} disabled={!onPress}>
+    <Container
+      onPress={onPress}
+      disabled={!onPress}
+      accessibilityRole={AccessibilityRole.BUTTON}
+      accessibilityLabel={computedAccessibilityLabel}
+      accessible={isAccessible}
+      importantForAccessibility={isAccessible ? 'auto' : 'no-hide-descendants'}
+      accessibilityElementsHidden={!isAccessible}>
       <DayComponent status={status} selected={selected} date={date} />
       {typeof price === 'number' ? (
         <Caption status={status}>

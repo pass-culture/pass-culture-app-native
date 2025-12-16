@@ -174,6 +174,7 @@ type SignupFormParams =
       email?: string
       offerId?: number
       from: StepperOrigin
+      stepIndex?: number
     }
   | undefined
 

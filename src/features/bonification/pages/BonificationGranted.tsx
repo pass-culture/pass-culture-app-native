@@ -22,6 +22,9 @@ export function BonificationGranted() {
   return (
     <GenericInfoPage
       animation={FrenchRepublicAnimation}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
+      animationTargetLayerNames={['étoile', 'cadre']}
       title="Bonne nouvelle&nbsp;!"
       buttonPrimary={{ wording: 'J’en profite', navigateTo: navigateToHomeConfig }}>
       <React.Fragment>

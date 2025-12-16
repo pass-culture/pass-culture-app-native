@@ -3,6 +3,8 @@ import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo } from 'ui/theme'
 
@@ -38,13 +40,24 @@ export const MovieCalendarDay: React.FC<Props> = ({
     return DefaultCalendarText
   }, [disabled, isSelected])
 
+  const computedaccassibilityLabel = getComputedAccessibilityLabel(
+    accessibilityLabel,
+    isSelected ? 'sélectionné' : undefined
+  )
+
   return (
     <CalendarCell
       disabled={disabled}
       onLayout={onLayout}
       testID="movie-calendar-day"
-      onPress={() => onTabChange(date)}>
-      <CalendarTextView accessibilityLabel={accessibilityLabel}>
+      onPress={() => onTabChange(date)}
+      accessibilityLabel={computedaccassibilityLabel}
+      accessibilityRole={AccessibilityRole.BUTTON}
+      accessible={!disabled}
+      accessibilityElementsHidden={disabled} // Hide element in iOS
+      importantForAccessibility={disabled ? 'no-hide-descendants' : 'auto'} // Hide element in Android
+    >
+      <CalendarTextView>
         <CalendarText numberOfLines={1}>{weekDay}</CalendarText>
         <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
         <CalendarText numberOfLines={1}>{month}</CalendarText>
@@ -82,6 +95,7 @@ const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
 }))
 
+// UX decision: align with disabled background token for the muted state
 const DisabledCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
-  color: theme.designSystem.color.text.disabled,
+  color: theme.designSystem.color.background.disabled,
 }))

@@ -26,6 +26,8 @@ export const OnboardingGeolocation = () => {
   return (
     <GenericInfoPage
       animation={Geolocation}
+      animationColoringMode="targeted"
+      animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       title="Découvre les offres près de chez toi"
       subtitle="Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
       buttonPrimary={{

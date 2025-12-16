@@ -34,10 +34,8 @@ export const buildVideoCarouselOffersQueries = ({
   return {
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: '',
-    params: {
-      ...buildOfferSearchParameters(payload, locationParams, isUserUnderage),
-      attributesToHighlight: [], // We disable highlighting because we don't need it
-      attributesToRetrieve: offerAttributesToRetrieve,
-    },
+    ...buildOfferSearchParameters(payload, locationParams, isUserUnderage),
+    attributesToHighlight: [], // We disable highlighting because we don't need it
+    attributesToRetrieve: offerAttributesToRetrieve,
   }
 }

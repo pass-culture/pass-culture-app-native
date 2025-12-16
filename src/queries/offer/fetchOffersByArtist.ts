@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery, SearchResponse } from '@algolia/client-search'
+import { SearchForHits, SearchParamsObject, SearchResponse } from 'algoliasearch/lite'
 
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -16,7 +16,8 @@ export type FetchOfferByArtist = BuildAlgoliaFilterType & {
 }
 
 export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOfferByArtist) => {
-  const defaultQueryParams: MultipleQueriesQuery['params'] = {
+  const defaultQueryParams: SearchParamsObject = {
+    query: '',
     page: 0,
     filters: buildAlgoliaFilter({ artistId }),
     attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
@@ -27,24 +28,18 @@ export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOffer
       : {}),
   }
 
-  const queries: MultipleQueriesQuery[] = [
+  const queries: SearchForHits[] = [
     // Playlist
     {
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-      query: '',
-      params: {
-        ...defaultQueryParams,
-        hitsPerPage: 100,
-      },
+      ...defaultQueryParams,
+      hitsPerPage: 100,
     },
     // Offers top 4
     {
       indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
-      query: '',
-      params: {
-        ...defaultQueryParams,
-        hitsPerPage: 4,
-      },
+      ...defaultQueryParams,
+      hitsPerPage: 4,
     },
   ]
 

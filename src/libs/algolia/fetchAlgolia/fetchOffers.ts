@@ -1,4 +1,4 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { Hit, SearchResponse } from 'algoliasearch/lite'
 
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
@@ -37,26 +37,38 @@ export const fetchOffers = async ({
     buildLocationParameterParams,
     isUserUnderage
   )
-  const index = client.initIndex(indexSearch)
 
   try {
-    const response = await index.search<Offer>(parameters.query || '', {
-      page: parameters.page ?? 0,
-      ...buildHitsPerPage(parameters.hitsPerPage),
-      ...searchParameters,
-      attributesToRetrieve: offerAttributesToRetrieve,
-      attributesToHighlight: [], // We disable highlighting because we don't need it
-      /* Is needed to get a queryID, in order to send analytics events
-         https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
-      clickAnalytics: true,
-      distinct: parameters.distinct,
-      // To use exactly the query and not limit the duplicate offers
-      ...(isFromOffer ? { typoTolerance: false, distinct: false } : {}),
+    const response = await client.searchForHits<Offer>({
+      requests: [
+        {
+          indexName: indexSearch,
+          query: parameters.query || '',
+          page: parameters.page ?? 0,
+          ...buildHitsPerPage(parameters.hitsPerPage),
+          ...searchParameters,
+          attributesToRetrieve: offerAttributesToRetrieve,
+          attributesToHighlight: [], // We disable highlighting because we don't need it
+          /* Is needed to get a queryID, in order to send analytics events
+             https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
+          clickAnalytics: true,
+          distinct: parameters.distinct,
+          // To use exactly the query and not limit the duplicate offers
+          ...(isFromOffer ? { typoTolerance: false, distinct: false } : {}),
+        },
+      ],
     })
 
-    if (storeQueryID) storeQueryID(response.queryID)
+    const result = response.results[0]
+    if (storeQueryID) storeQueryID(result?.queryID)
 
-    return response
+    return {
+      hits: result?.hits ?? [],
+      nbHits: result?.nbHits ?? 0,
+      page: result?.page ?? 0,
+      nbPages: result?.nbPages ?? 0,
+      userData: result?.userData,
+    }
   } catch (error) {
     captureAlgoliaError(error)
     return { hits: [] as Array<Hit<Offer>>, nbHits: 0, page: 0, nbPages: 0 }

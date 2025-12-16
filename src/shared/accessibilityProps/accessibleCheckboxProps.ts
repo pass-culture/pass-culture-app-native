@@ -15,12 +15,12 @@ export const accessibleCheckboxProps = ({
   const commonProps = {
     accessibilityRole: AccessibilityRole.CHECKBOX,
     accessibilityLabel: computedLabel,
+    accessibilityChecked: checked,
   }
 
   return Platform.select({
     web: {
       ...commonProps,
-      accessibilityChecked: checked,
       accessibilityRequired: required,
     },
     default: {

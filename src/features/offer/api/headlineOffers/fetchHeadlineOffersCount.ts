@@ -9,8 +9,6 @@ import { LocationMode } from 'libs/location/types'
 export const fetchHeadlineOffersCount = async (offer?: OfferResponseV2) => {
   if (!offer) return
 
-  const offersIndex = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
-
   const searchParameters = buildOfferSearchParameters(
     {
       ...initialSearchState,
@@ -27,19 +25,23 @@ export const fetchHeadlineOffersCount = async (offer?: OfferResponseV2) => {
     false
   )
 
-  const parameters = {
-    page: 0,
-    ...searchParameters,
-    hitsPerPage: 100,
-    attributesToRetrieve: [],
-    attributesToHighlight: [],
-    distinct: false,
-  }
-
   try {
-    const response = await offersIndex.search('', parameters)
+    const response = await client.searchForHits({
+      requests: [
+        {
+          indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+          query: '',
+          page: 0,
+          ...searchParameters,
+          hitsPerPage: 100,
+          attributesToRetrieve: [],
+          attributesToHighlight: [],
+          distinct: false,
+        },
+      ],
+    })
 
-    return { headlineOffersCount: response.nbHits }
+    return { headlineOffersCount: response.results[0]?.nbHits ?? 0 }
   } catch (error) {
     captureAlgoliaError(error)
     return { headlineOffersCount: 0 }

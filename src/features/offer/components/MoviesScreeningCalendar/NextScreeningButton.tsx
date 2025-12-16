@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractDate } from 'features/offer/components/MovieCalendar/hooks/useMovieCalendarDay'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
@@ -13,8 +14,14 @@ export const NEXT_SCREENING_WORDING = 'Prochaine séance\u00a0:'
 export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
   const { dayDate, fullWeekDay, fullMonth } = extractDate(date)
   const { designSystem, icons } = useTheme()
+  const NEXT_SCREENING_DATE = `${fullWeekDay} ${dayDate} ${fullMonth.toLocaleLowerCase()}`
+  const accessibilityLabel = `${NEXT_SCREENING_WORDING} ${NEXT_SCREENING_DATE}`
+
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity
+      onPress={onPress}
+      accessibilityRole={accessibilityRoleInternalNavigation()}
+      accessibilityLabel={accessibilityLabel}>
       <Container>
         <Typo.BodyXs>{NEXT_SCREENING_WORDING}</Typo.BodyXs>
         <DateContainer>
@@ -22,7 +29,7 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
             color={designSystem.color.icon.brandSecondary}
             size={icons.sizes.extraSmall}
           />
-          <StyledBodyAccentXs>{`${fullWeekDay} ${dayDate} ${fullMonth.toLocaleLowerCase()}`}</StyledBodyAccentXs>
+          <StyledBodyAccentXs>{NEXT_SCREENING_DATE}</StyledBodyAccentXs>
         </DateContainer>
       </Container>
     </TouchableOpacity>
