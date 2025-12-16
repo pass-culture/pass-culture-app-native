@@ -2,6 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { render, userEvent, screen } from 'tests/utils'
 
@@ -32,5 +33,15 @@ describe('AccessibilityEngagement', () => {
     await user.press(button)
 
     expect(openURLSpy).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
+  })
+
+  it('should log HasClickedContactForm event when press "contacter le support" button', async () => {
+    render(<AccessibilityEngagement />)
+
+    const contactSupportButton = screen.getByText('contacter le support')
+
+    await userEvent.press(contactSupportButton)
+
+    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(1, 'AccessibilityEngagement')
   })
 })
