@@ -286,6 +286,11 @@ const OnlineProfile: React.FC = () => {
                         title="Apparence"
                         type="navigable"
                         navigateTo={getProfilePropConfig('DisplayPreference')}
+                        accessibilityLabel={
+                          enableDarkModeGtm && hasSeenAppearanceTag === false
+                            ? 'Apparence, nouveau'
+                            : undefined
+                        }
                         renderTitle={(title) => (
                           <TitleWithTag>
                             <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>

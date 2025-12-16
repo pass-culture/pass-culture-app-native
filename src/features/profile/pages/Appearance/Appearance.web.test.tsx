@@ -5,22 +5,22 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
-import { DisplayPreference } from './DisplayPreference'
+import { Appearance } from './Appearance'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-describe('DisplayPreference', () => {
+describe('Appearance', () => {
   beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE]))
 
   it('should not have basic accessibility issues', async () => {
-    const { container } = renderDisplayPreference()
+    const { container } = renderAppearance()
     const results = await checkAccessibilityFor(container)
 
     expect(results).toHaveNoViolations()
   })
 
   it('should not display orientation toggle', () => {
-    renderDisplayPreference()
+    renderAppearance()
 
     const rotationTitle = screen.queryByText('Permettre l’orientation')
 
@@ -28,4 +28,4 @@ describe('DisplayPreference', () => {
   })
 })
 
-const renderDisplayPreference = () => render(reactQueryProviderHOC(<DisplayPreference />))
+const renderAppearance = () => render(reactQueryProviderHOC(<Appearance />))

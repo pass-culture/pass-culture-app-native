@@ -4,15 +4,15 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, waitFor } from 'tests/utils'
 
-import { DisplayPreference } from './DisplayPreference'
+import { Appearance } from './Appearance'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('DisplayPreference', () => {
+describe('Appearance', () => {
   beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE]))
 
   it('should render correctly', () => {
-    render(<DisplayPreference />)
+    render(<Appearance />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -20,7 +20,7 @@ describe('DisplayPreference', () => {
   // TODO(PC-35459): Fix this flaky test
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should display dark mode section when feature flag is enable', async () => {
-    render(<DisplayPreference />)
+    render(<Appearance />)
 
     await screen.findByText('Apparence')
 
@@ -34,7 +34,7 @@ describe('DisplayPreference', () => {
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should not display dark mode section when feature flag is disable', async () => {
     setFeatureFlags()
-    render(<DisplayPreference />)
+    render(<Appearance />)
 
     await screen.findByText('Apparence')
 

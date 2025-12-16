@@ -4,10 +4,11 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
+import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   tabName,
@@ -29,13 +30,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
           selected={isSelected}
           badgeValue={showBadge ? undefined : badgeValue}
         />
-        {showBadge ? (
-          <BadgeDot testID={`${tabName}-new-feature-badge`}>
-            <BadgeText accessibilityElementsHidden importantForAccessibility="no">
-              1
-            </BadgeText>
-          </BadgeDot>
-        ) : null}
+        {showBadge ? <TabBarBadge testID={`${tabName}-new-feature-badge`} /> : null}
       </IconWrapper>
       <Spacer.Column numberOfSpaces={2.5} />
       <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
@@ -71,20 +66,3 @@ const BicolorSelectorPlaceholder = styled.View({ height: GRADIENT_HEIGHT })
 const IconWrapper = styled.View({
   position: 'relative',
 })
-
-const BadgeDot = styled.View(({ theme }) => ({
-  position: 'absolute',
-  top: -getSpacing(0.5),
-  right: -getSpacing(0.5),
-  height: 12,
-  minWidth: 12,
-  paddingHorizontal: theme.designSystem.size.spacing.xs,
-  borderRadius: theme.designSystem.size.borderRadius.l,
-  backgroundColor: theme.designSystem.color.background.brandPrimary,
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
-
-const BadgeText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.inverted,
-}))
