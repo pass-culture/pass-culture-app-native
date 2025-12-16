@@ -1,4 +1,3 @@
-import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
@@ -11,7 +10,6 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
-import { useSync } from 'features/search/helpers/useSync/useSync'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -25,9 +23,6 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchLanding = () => {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.SEARCH)
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.[routes?.length - 1]?.name
-  useSync(currentRoute === 'SearchLanding')
 
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions } = useSearch()
