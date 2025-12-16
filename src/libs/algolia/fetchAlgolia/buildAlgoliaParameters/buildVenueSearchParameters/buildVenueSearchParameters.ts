@@ -10,7 +10,7 @@ export const buildVenueSearchParameters = (
   disabilitiesProperties?: DisabilitiesProperties,
   venue?: Venue
 ) => {
-  const facetFilters: FiltersArray = [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:false`]]
+  const facetFilters: FiltersArray = [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]]
   if (disabilitiesProperties) {
     if (disabilitiesProperties.isAudioDisabilityCompliant) {
       facetFilters.push([`${VENUES_FACETS_ENUM.VENUE_AUDIO_DISABILITY_COMPLIANT}:true`])

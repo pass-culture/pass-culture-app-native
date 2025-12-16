@@ -15,7 +15,7 @@ const defaultBuildLocationParameterParams = {
   aroundPlaceRadius: 50,
 }
 
-const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:false']]
+const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:true']]
 
 describe('buildVenuesQueryOptions', () => {
   it('should fetch with default search params', () => {

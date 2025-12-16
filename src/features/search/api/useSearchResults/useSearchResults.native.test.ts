@@ -92,7 +92,7 @@ describe('useSearchResults', () => {
               clickAnalytics: true,
               hitsPerPage: 35,
               page: 0,
-              facetFilters: [['is_open_to_public:false']],
+              facetFilters: [['is_open_to_public:true']],
             },
             query: '',
           },

@@ -8,7 +8,7 @@ import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'lib
 
 const defaultFacetFilters = [
   [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
-  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:false`],
+  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
 ]
 
 interface LocationParams extends Omit<BuildLocationParameterParams, 'userLocation'> {

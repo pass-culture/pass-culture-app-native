@@ -19,7 +19,7 @@ const disabilitiesProperties = {
   isVisualDisabilityCompliant: false,
 }
 
-const defaultFacetFilters = [['is_open_to_public:false']]
+const defaultFacetFilters = [['is_open_to_public:true']]
 
 describe('buildVenueSearchParameters', () => {
   it("shouldn't return a facetFilter if no disabilitiesProperties is given", () => {

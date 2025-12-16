@@ -41,7 +41,7 @@ const mockedParamListGeolocated: (VenuesModuleParameters & BuildLocationParamete
   },
 ]
 
-const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:false']]
+const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:true']]
 
 describe('fetchVenuesModule', () => {
   it('should fetch with default venue module params', () => {
