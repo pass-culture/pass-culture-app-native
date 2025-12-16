@@ -60,7 +60,7 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'BonificationGranted',
-      navigationTarget: getSubscriptionPropConfig('BonificationGranted'),
+      navigationTarget: { screen: 'BonificationGranted' },
     },
     {
       id: uuidv4(),

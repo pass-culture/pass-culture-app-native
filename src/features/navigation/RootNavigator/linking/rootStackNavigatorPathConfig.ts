@@ -185,9 +185,6 @@ export const rootStackNavigatorPathConfig = {
       BonificationError: {
         path: 'bonification/erreur',
       },
-      BonificationGranted: {
-        path: 'bonification/accordee',
-      },
       BonificationRefused: {
         path: 'bonification/refuse',
       },
@@ -408,5 +405,8 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyChronicles1: {
     path: 'chronicles/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],
+  },
+  BonificationGranted: {
+    path: 'bonification/accordee',
   },
 }

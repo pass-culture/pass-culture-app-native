@@ -1,12 +1,14 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
+import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import FrenchRepublicAnimation from 'ui/animations/french_republic_animation.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/exports/categoriesIcons'
 import { Typo } from 'ui/theme'
@@ -14,6 +16,15 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BonificationGranted() {
   const { designSystem } = useTheme()
+  const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
+
+  const { showErrorSnackBar } = useSnackBarContext()
+
+  const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
+    useResetRecreditAmountToShowMutation({
+      onSuccess: () => navigateToHomeWithReset(),
+      onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
+    })
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -26,7 +37,11 @@ export function BonificationGranted() {
       animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       animationTargetLayerNames={['étoile', 'cadre']}
       title="Bonne nouvelle&nbsp;!"
-      buttonPrimary={{ wording: 'J’en profite', navigateTo: navigateToHomeConfig }}>
+      buttonPrimary={{
+        wording: 'J’en profite',
+        onPress: resetRecreditAmountToShow,
+        isLoading: isResetRecreditAmountToShowLoading,
+      }}>
       <React.Fragment>
         <StyledBody>
           {bonificationAmount} ont été ajoutés à ton crédit pour explorer la culture.

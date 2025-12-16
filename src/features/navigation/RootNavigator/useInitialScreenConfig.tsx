@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
+import { RecreditType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { performanceMonitoringStoreActions } from 'features/home/pages/helpers/usePerformanceMonitoringStore'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
@@ -42,6 +43,9 @@ async function getInitialScreen({
   if (isLoggedIn && user) {
     try {
       if (user.recreditAmountToShow) {
+        if (user.recreditTypeToShow === RecreditType.BonusCredit) {
+          return 'BonificationGranted'
+        }
         return 'RecreditBirthdayNotification'
       }
 
