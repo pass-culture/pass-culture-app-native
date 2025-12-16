@@ -11,7 +11,7 @@ export const buildVenuesQueryOptions = (
   params: VenuesModuleParameters,
   buildLocationParameterParams: BuildLocationParameterParams
 ) => {
-  const { tags = [], activities = [] } = params
+  const { tags = [], venueTypes = [] } = params
 
   const facetFilters: FiltersArray = []
 
@@ -20,8 +20,8 @@ export const buildVenuesQueryOptions = (
     facetFilters.push(tagsPredicate)
   }
 
-  if (activities.length) {
-    const activitiesPredicate = buildActivitiesPredicate(activities.map(getActivityFacetFilters))
+  if (venueTypes.length) {
+    const activitiesPredicate = buildActivitiesPredicate(venueTypes.map(getActivityFacetFilters))
     facetFilters.push(activitiesPredicate)
   }
 

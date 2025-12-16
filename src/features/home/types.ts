@@ -222,6 +222,7 @@ export type VenuesModule = {
 
 export type VenuesModuleParameters = {
   title: string
+  venueTypes?: string[]
   activities?: string[]
   tags?: string[]
   hitsPerPage: number
