@@ -93,7 +93,7 @@ end
 platform :android do
 
   lane :build do |options|
-    sh "cd ../#{ENV['ANDROID_PROJECT_DIR']} && ./gradlew #{ENV['ANDROID_GRADLE_TASK']}"
+    sh "cd ../#{ENV['ANDROID_PROJECT_DIR']} && ./gradlew clean && ./gradlew #{ENV['ANDROID_GRADLE_TASK']}"
   end
 
   private_lane :deploy_playStore do |options|
