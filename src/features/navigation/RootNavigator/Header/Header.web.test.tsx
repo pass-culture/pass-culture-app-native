@@ -91,13 +91,19 @@ describe('Header', () => {
   it('should identify one tab as current page', () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
-    const tabs = ['SearchStackNavigator tab', 'Bookings tab', 'Favorites tab', 'Profile tab'].map(
-      (tabId) => screen.getByTestId(tabId)
-    )
+    const tabs = [
+      'Accueil',
+      'Rechercher des offres',
+      'Mes réservations',
+      'Mes favoris',
+      'Mon profil',
+    ].map((tabId) => screen.getByTestId(tabId))
 
-    expect(screen.getByTestId('Home tab').getAttribute('aria-current')).toEqual('page')
+    expect(screen.getByTestId('Accueil').getAttribute('aria-current')).toEqual('page')
 
-    tabs.forEach((tab) => expect(tab.getAttribute('aria-current')).toBeNull())
+    tabs
+      .filter((tab) => tab.getAttribute('aria-current') !== 'page')
+      .forEach((tab) => expect(tab.getAttribute('aria-current')).toBeNull())
   })
 })
 

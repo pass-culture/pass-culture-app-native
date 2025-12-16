@@ -189,6 +189,9 @@ const OnlineProfile: React.FC = () => {
   const shareBannerTitle = 'Partage le pass Culture'
   const shareBannerDescription = 'Recommande le bon plan à tes amis\u00a0!'
 
+  const tabLabel = 'Nouveau'
+  const accessibilityLabel = `Apparence - ${tabLabel}`
+
   return (
     <Page>
       <ScrollView
@@ -287,15 +290,15 @@ const OnlineProfile: React.FC = () => {
                         type="navigable"
                         navigateTo={getProfilePropConfig('DisplayPreference')}
                         accessibilityLabel={
-                          enableDarkModeGtm && hasSeenAppearanceTag === false
-                            ? 'Apparence, nouveau'
+                          enableDarkModeGtm && !hasSeenAppearanceTag
+                            ? accessibilityLabel
                             : undefined
                         }
                         renderTitle={(title) => (
                           <TitleWithTag>
                             <Typo.BodyAccent numberOfLines={2}>{title}</Typo.BodyAccent>
-                            {enableDarkModeGtm && hasSeenAppearanceTag === false ? (
-                              <Tag label="Nouveau" variant={TagVariant.NEW} />
+                            {enableDarkModeGtm && !hasSeenAppearanceTag ? (
+                              <Tag label={tabLabel} variant={TagVariant.NEW} />
                             ) : null}
                           </TitleWithTag>
                         )}

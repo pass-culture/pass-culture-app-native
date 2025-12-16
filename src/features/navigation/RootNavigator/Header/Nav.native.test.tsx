@@ -94,11 +94,11 @@ describe('Nav', () => {
   it('should display the 5 following tabs', () => {
     renderNav()
     const expectedTabsTestIds = [
-      'Home tab',
-      'SearchStackNavigator tab',
-      'Bookings tab',
-      'Favorites tab',
-      'Profile tab',
+      'Accueil',
+      'Rechercher des offres',
+      'Mes réservations',
+      'Mes favoris',
+      'Mon profil',
     ]
 
     expectedTabsTestIds.forEach((tab) => {
