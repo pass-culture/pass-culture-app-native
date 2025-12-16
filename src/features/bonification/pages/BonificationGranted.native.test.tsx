@@ -22,7 +22,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 describe('BonificationGranted', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should go reset to home when pressing "J’en profite"', async () => {
+  it('should reset to home when pressing "J’en profite"', async () => {
     mockServer.postApi('/v1/reset_recredit_amount_to_show', {
       responseOptions: { statusCode: 200, data: {} },
     })

@@ -42,10 +42,10 @@ async function getInitialScreen({
 }): Promise<RootScreenNames> {
   if (isLoggedIn && user) {
     try {
-      if (user.recreditAmountToShow && user.recreditTypeToShow === RecreditType.BonusCredit) {
-        return 'BonificationGranted'
-      }
       if (user.recreditAmountToShow) {
+        if (user.recreditTypeToShow === RecreditType.BonusCredit) {
+          return 'BonificationGranted'
+        }
         return 'RecreditBirthdayNotification'
       }
 
