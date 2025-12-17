@@ -417,6 +417,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                 >
                   <View
                     accessibilityLabel="Code non reçu ?"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -544,6 +545,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
         >
           <View
             accessibilityLabel="Continuer"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

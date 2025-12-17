@@ -18,12 +18,7 @@ jobs:
         run: corepack enable
       - uses: actions/checkout@v4
         with:
-          # by default, it only retrieves the last commit
-          # Chromatic must have the history to work only on modified files
-          # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code-and-above
-          # we don't need to have the full history
-          # set fetch-depth to an arbitrary number large enough to contain all commits from the main branch
-          fetch-depth: 100
+          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v4
         with:
@@ -33,7 +28,7 @@ jobs:
       - name: Build Storybook 🔧
         run: yarn build-storybook --stats-json --output-dir $BUILD_DIR
       - name: Publish to Chromatic 🚀
-        uses: chromaui/action@v13.1.4
+        uses: chromaui/action@latest
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

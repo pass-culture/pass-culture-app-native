@@ -1,17 +1,17 @@
-import algoliasearch from '__mocks__/algoliasearch'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
+import * as multipleQueriesAPI from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Position } from 'libs/location/location'
 
-describe('fetchThematicSearchPlaylists', () => {
-  const { multipleQueries } = algoliasearch()
+const mockMultipleQueries = jest.spyOn(multipleQueriesAPI, 'multipleQueries').mockResolvedValue([])
 
+describe('fetchThematicSearchPlaylists', () => {
   it('should execute `multipleQueries` to fetch offers', async () => {
     const userLocation = { latitude: 1, longitude: 2 }
     const queriesWithUserLocation = buildQueries(userLocation)
     await fetchThematicSearchPlaylists(queriesWithUserLocation)
 
-    expect(multipleQueries).toHaveBeenNthCalledWith(1, queriesWithUserLocation)
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, queriesWithUserLocation)
   })
 
   it('should execute `multipleQueries` to fetch offers even without UserLocation', async () => {
@@ -20,11 +20,11 @@ describe('fetchThematicSearchPlaylists', () => {
 
     await fetchThematicSearchPlaylists(queriesWithoutUserLocation)
 
-    expect(multipleQueries).toHaveBeenNthCalledWith(1, queriesWithoutUserLocation)
+    expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, queriesWithoutUserLocation)
   })
 
   it('should return empty array if there is an error with multiplqueries', async () => {
-    multipleQueries.mockRejectedValueOnce(new Error('Async error'))
+    mockMultipleQueries.mockRejectedValueOnce(new Error('Async error'))
 
     const userLocation = { latitude: 1, longitude: 2 }
     const queriesWithUserLocation = buildQueries(userLocation)

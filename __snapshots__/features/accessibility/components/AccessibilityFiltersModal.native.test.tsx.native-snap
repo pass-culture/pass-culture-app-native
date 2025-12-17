@@ -1061,6 +1061,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
             >
               <View
                 accessibilityLabel="Réinitialiser"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1167,6 +1168,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               </View>
               <View
                 accessibilityLabel="Rechercher"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

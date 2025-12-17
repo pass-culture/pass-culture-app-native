@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from 'algoliasearch/lite'
 import type { ReadonlyDeep } from 'type-fest'
 
 import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'

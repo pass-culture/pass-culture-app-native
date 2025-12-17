@@ -1,6 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -41,5 +42,15 @@ describe('LegalNotices', () => {
     await user.press(row)
 
     expect(openUrl).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK, undefined, true)
+  })
+
+  it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {
+    render(<LegalNotices />)
+
+    const contactSupportButton = screen.getByText('Contacter le support')
+
+    await userEvent.press(contactSupportButton)
+
+    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(1, 'LegalNotices')
   })
 })

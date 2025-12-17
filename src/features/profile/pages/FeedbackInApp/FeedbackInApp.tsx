@@ -9,6 +9,7 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
@@ -84,6 +85,7 @@ export const FeedbackInApp = () => {
                   externalNav: {
                     url: env.SUPPORT_ACCOUNT_ISSUES_FORM,
                   },
+                  onBeforeNavigate: () => analytics.logHasClickedContactForm('FeedbackInApp'),
                 },
               ]}
             />
@@ -106,6 +108,7 @@ export const FeedbackInApp = () => {
           <ButtonPrimary
             type="submit"
             wording="Envoyer"
+            accessibilityLabel="Envoyer ma suggestion"
             onPress={handleSubmit(onSubmit)}
             disabled={!isValid}
           />

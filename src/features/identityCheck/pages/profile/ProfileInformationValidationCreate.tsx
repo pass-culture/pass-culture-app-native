@@ -21,7 +21,6 @@ import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SuggestedCity } from 'libs/place/types'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -181,14 +180,12 @@ export const ProfileInformationValidationCreate = () => {
       fixedBottomChildren={
         <ViewGap gap={4}>
           <ButtonPrimary
-            accessibilityRole={accessibilityRoleInternalNavigation()}
             type="submit"
             wording="Continuer"
             onPress={onSubmitProfile}
             isLoading={isLoading}
           />
           <ButtonTertiaryBlack
-            accessibilityRole={accessibilityRoleInternalNavigation()}
             wording="Modifier mes informations"
             onPress={onChangeInformation}
             icon={Again}

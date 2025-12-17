@@ -1,22 +1,23 @@
-import algoliasearch from 'algoliasearch'
-
 import { VenueTypeCodeKey } from 'api/gen'
 import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { waitFor } from 'tests/utils'
 
-jest.mock('algoliasearch')
+jest.mock('libs/algolia/fetchAlgolia/clients')
+const mockSearchForHits = client.searchForHits as jest.Mock
 
-const mockInitIndex = algoliasearch('', '').initIndex
-const search = mockInitIndex('').search as jest.Mock
 jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 
-const facetFilters = [[`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`]]
+const facetFilters = [
+  [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
+  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
+]
 
 describe('fetchVenues', () => {
   const venueFixture: AlgoliaVenue = {
@@ -50,70 +51,75 @@ describe('fetchVenues', () => {
     aroundPlaceRadius: 50,
   }
 
-  it('should fetch venues', () => {
-    fetchVenues({
+  beforeEach(() => {
+    mockSearchForHits.mockResolvedValue({ results: [{ hits: [] }] })
+  })
+
+  it('should fetch venues', async () => {
+    await fetchVenues({
       query: 'queryString',
       buildLocationParameterParams,
     })
 
-    expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
-    expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [], facetFilters })
+    expect(mockSearchForHits).toHaveBeenCalledWith({
+      requests: [
+        expect.objectContaining({
+          indexName: env.ALGOLIA_VENUES_INDEX_NAME,
+          query: 'queryString',
+          attributesToHighlight: [],
+          facetFilters,
+        }),
+      ],
+    })
   })
 
-  it('should fetch venues with a specified position', () => {
+  it('should fetch venues with a specified position', async () => {
     const userLocation = { latitude: 48.90374, longitude: 2.48171 }
-    fetchVenues({
+    await fetchVenues({
       query: 'queryString',
       buildLocationParameterParams: { ...buildLocationParameterParams, userLocation },
     })
 
-    expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
-    expect(search).toHaveBeenCalledWith('queryString', {
-      attributesToHighlight: [],
-      facetFilters,
-      aroundLatLng: '48.90374, 2.48171',
-      aroundRadius: 'all',
+    expect(mockSearchForHits).toHaveBeenCalledWith({
+      requests: [
+        expect.objectContaining({
+          indexName: env.ALGOLIA_VENUES_INDEX_NAME,
+          query: 'queryString',
+          attributesToHighlight: [],
+          facetFilters,
+          aroundLatLng: '48.90374, 2.48171',
+          aroundRadius: 'all',
+        }),
+      ],
     })
   })
 
   it.each`
-    fixture | expectedResult
-    ${{ hits: [venueFixture] }} | ${{
-  label: '[EAC] Le lieu de Moz’Art 50',
-  info: 'Saint-Benoît',
-  venueId: 4150,
-  _geoloc: { lat: 48.87004, lng: 2.3785 },
-  banner_url: null,
-  isPermanent: true,
-  postalCode: '86280',
-  venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
-  isOpenToPublic: true,
-}}
-    ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{
-  label: '[EAC] Le lieu de Moz’Art 50',
-  info: '[EAC] La structure de Moz’Art 32',
-  venueId: 4150,
-  _geoloc: { lat: 48.87004, lng: 2.3785 },
-  banner_url: null,
-  postalCode: '86280',
-  isPermanent: true,
-  venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
-  isOpenToPublic: true,
-}}
+    fixture                                             | expectedResult
+    ${{ hits: [venueFixture] }}                         | ${{ label: '[EAC] Le lieu de Moz’Art 50', info: 'Saint-Benoît', venueId: 4150, _geoloc: { lat: 48.87004, lng: 2.3785 }, banner_url: null, isPermanent: true, postalCode: '86280', venue_type: VenueTypeCodeKey.PERFORMING_ARTS, isOpenToPublic: true }}
+    ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{ label: '[EAC] Le lieu de Moz’Art 50', info: '[EAC] La structure de Moz’Art 32', venueId: 4150, _geoloc: { lat: 48.87004, lng: 2.3785 }, banner_url: null, postalCode: '86280', isPermanent: true, venue_type: VenueTypeCodeKey.PERFORMING_ARTS, isOpenToPublic: true }}
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
-    search.mockResolvedValueOnce(fixture)
+    mockSearchForHits.mockResolvedValueOnce({ results: [fixture] })
 
     const venues = await fetchVenues({ query: 'queryString', buildLocationParameterParams })
 
-    expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
-    expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [], facetFilters })
+    expect(mockSearchForHits).toHaveBeenCalledWith({
+      requests: [
+        expect.objectContaining({
+          indexName: env.ALGOLIA_VENUES_INDEX_NAME,
+          query: 'queryString',
+          attributesToHighlight: [],
+          facetFilters,
+        }),
+      ],
+    })
     expect(venues).toEqual([expectedResult])
   })
 
   it('should catch an error', async () => {
     const error = new Error('Async error')
-    search.mockRejectedValueOnce(error)
-    fetchVenues({ query: 'queryString', buildLocationParameterParams })
+    mockSearchForHits.mockRejectedValueOnce(error)
+    await fetchVenues({ query: 'queryString', buildLocationParameterParams })
 
     await waitFor(async () => {
       expect(captureAlgoliaError).toHaveBeenCalledWith(error)

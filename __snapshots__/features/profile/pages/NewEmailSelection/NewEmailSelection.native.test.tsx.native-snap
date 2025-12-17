@@ -388,6 +388,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
         </View>
         <View
           accessibilityLabel="Modifier mon adresse e-mail"
+          accessibilityRole="button"
           accessibilityState={
             {
               "busy": undefined,

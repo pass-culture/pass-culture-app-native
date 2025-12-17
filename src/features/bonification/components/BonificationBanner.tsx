@@ -23,7 +23,7 @@ const BANNER_CONFIG = {
       `Un bonus de ${amount} pourrait t’être attribué, voyons si tu peux y être éligible.`,
     links: [
       {
-        navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
+        navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
         wording: 'Je veux vérifier',
       },
     ],
@@ -40,7 +40,7 @@ const BANNER_CONFIG = {
     label: 'Nous n’avons pas trouvé de correspondance pour ce dossier.',
     links: [
       {
-        navigateTo: getSubscriptionPropConfig('BonificationIntroduction'),
+        navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
         wording: 'Je veux vérifier',
       },
     ],

@@ -905,6 +905,30 @@ Texte
 
 <br>
 
+<details>
+
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-38765](https://passculture.atlassian.net/browse/PC-38765) & [PC-39267](https://passculture.atlassian.net/browse/PC-39267)
+**PR** : [#8994](https://github.com/pass-culture/pass-culture-app-native/pull/8994) & [#8999](https://github.com/pass-culture/pass-culture-app-native/pull/8999)
+
+**Problème** 😱
+
+- **(E02)** En format paysage, le dernier bloc est bien atteint et visible, mais il faut maintenir le défilement pour en consulter le contenu. Dès que l’on relâche, une partie des contenus se retrouve à nouveau masquée.
+- **(E09)** Aussi bien en mode portrait qu’en mode paysage, le bouton “Accéder aux séances” est positionné au-dessus des composants du bloc “Passe le bon plan”.
+- **(E11)** Passer du mode portrait au mode paysage (ou inversement) pendant l’inscription provoque un retour à la première étape du processus.
+- **(E14)** En format paysage, le bouton “Accéder aux séances” est positionné au-dessus des composants du bloc "ça peut aussi te plaire".
+
+**Correction** 💡
+
+- **(E02)(E09)(E14)** Ajout des marges nécessaires pour que tout le contenu soit visible.
+- **(E11)** L'étape de l'inscription est correctement stocké et tourner l'appareil ne cause plus de retour à la première étape.
+
+</details>
+
+<br>
+
 ## 💡 Questions
 
 </details>

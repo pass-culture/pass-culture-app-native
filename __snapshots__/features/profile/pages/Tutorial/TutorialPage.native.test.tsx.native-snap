@@ -215,6 +215,7 @@ exports[`TutorialPage should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Continuer"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

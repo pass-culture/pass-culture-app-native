@@ -14,14 +14,12 @@ export const buildVenuesModulesQueries = ({ paramsList }: Params) =>
   paramsList.map((params) => ({
     indexName: env.ALGOLIA_VENUES_INDEX_NAME,
     query: '',
-    params: {
-      ...buildVenuesQueryOptions(params, {
-        userLocation: params.userLocation,
-        selectedLocationMode: params.selectedLocationMode,
-        aroundMeRadius: params.aroundMeRadius,
-        aroundPlaceRadius: params.aroundPlaceRadius,
-      }),
-      ...buildHitsPerPage(params.hitsPerPage),
-      attributesToHighlight,
-    },
+    ...buildVenuesQueryOptions(params, {
+      userLocation: params.userLocation,
+      selectedLocationMode: params.selectedLocationMode,
+      aroundMeRadius: params.aroundMeRadius,
+      aroundPlaceRadius: params.aroundPlaceRadius,
+    }),
+    ...buildHitsPerPage(params.hitsPerPage),
+    attributesToHighlight,
   }))

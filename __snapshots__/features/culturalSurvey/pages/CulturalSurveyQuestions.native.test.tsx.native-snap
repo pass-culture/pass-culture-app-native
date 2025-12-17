@@ -1973,6 +1973,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
   >
     <View
       accessibilityLabel="Continuer vers l’étape suivante"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

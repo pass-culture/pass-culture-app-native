@@ -100,6 +100,16 @@ describe('DebugScreen', () => {
 
     expect(analytics.logClickMailDebugInfo).toHaveBeenNthCalledWith(1, '1234')
   })
+
+  it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {
+    render(<DebugScreen />)
+
+    const contactSupportButton = screen.getByText('Contacter le support')
+
+    await userEvent.press(contactSupportButton)
+
+    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(1, 'DebugScreen')
+  })
 })
 
 const enterDescription = async () => {

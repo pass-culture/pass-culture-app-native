@@ -4,11 +4,11 @@ import React from 'react'
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { BonificationError } from 'features/bonification/pages/BonificationError'
-import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
-import { BonificationIntroduction } from 'features/bonification/pages/BonificationIntroduction'
+import { BonificationExplanations } from 'features/bonification/pages/BonificationExplanations'
 import { BonificationNames } from 'features/bonification/pages/BonificationNames'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { BonificationRefused } from 'features/bonification/pages/BonificationRefused'
+import { BonificationRequiredInformation } from 'features/bonification/pages/BonificationRequiredInformation'
 import { BonificationTitle } from 'features/bonification/pages/BonificationTitle'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
@@ -214,8 +214,12 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
   { name: 'FAQWebview', component: FAQWebview },
   // Bonification
   {
-    name: 'BonificationIntroduction',
-    component: withAuthProtection(BonificationIntroduction),
+    name: 'BonificationExplanations',
+    component: withAuthProtection(BonificationExplanations),
+  },
+  {
+    name: 'BonificationRequiredInformation',
+    component: withAuthProtection(BonificationRequiredInformation),
   },
   {
     name: 'BonificationNames',
@@ -240,10 +244,6 @@ const subscriptionScreens: SubscriptionRouteConfig[] = [
   {
     name: 'BonificationError',
     component: withAuthProtection(BonificationError),
-  },
-  {
-    name: 'BonificationGranted',
-    component: withAuthProtection(BonificationGranted),
   },
   {
     name: 'BonificationRefused',

@@ -1,5 +1,5 @@
-import { SearchResponse } from '@algolia/client-search'
 import { UseQueryResult } from '@tanstack/react-query'
+import { SearchResponse } from 'algoliasearch/lite'
 import { useEffect } from 'react'
 
 import { VideoCarouselItem } from 'features/home/types'

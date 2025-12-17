@@ -16,7 +16,6 @@ export const fetchOffersByIds = async ({
   objectIds,
   isUserUnderage,
 }: fetchOffersByIdsArgs): Promise<Offer[]> => {
-  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
     {
       ...initialSearchState,
@@ -34,14 +33,20 @@ export const fetchOffersByIds = async ({
   )
 
   try {
-    const response = await index.search<Offer>('', {
-      page: 0,
-      hitsPerPage: objectIds.length,
-      ...searchParameters,
-      attributesToRetrieve: offerAttributesToRetrieve,
-      attributesToHighlight: [], // We disable highlighting because we don't need it
+    const response = await client.searchForHits<Offer>({
+      requests: [
+        {
+          indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+          query: '',
+          page: 0,
+          hitsPerPage: objectIds.length,
+          ...searchParameters,
+          attributesToRetrieve: offerAttributesToRetrieve,
+          attributesToHighlight: [], // We disable highlighting because we don't need it
+        },
+      ],
     })
-    const hits = response.hits.filter(Boolean) as Offer[]
+    const hits = (response.results[0]?.hits ?? []).filter(Boolean) as Offer[]
     return hits.filter(({ offer }) => !offer.isEducational)
   } catch (error) {
     captureAlgoliaError(error)

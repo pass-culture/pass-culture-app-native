@@ -23,6 +23,6 @@ appId: ${MAESTRO_APP_ID}
     
 - runFlow:
     when:
-      platform: iOS
+      visible: "Tu y es presque"
     commands:
     - assertVisible: "Tu y es presque"

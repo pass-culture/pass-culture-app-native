@@ -35,6 +35,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
       ListFooterComponent={
         <FooterComponent
           hasShownAll={true}
+          isLandscape={false}
         />
       }
       ListHeaderComponent={
@@ -44,9 +45,6 @@ exports[`GenericHome With not displayed skeleton by default should display real 
           <Styled(Text)>
             Header
           </Styled(Text)>
-          <Styled(View)
-            numberOfSpaces={6}
-          />
           <Styled(View) />
         </View>
       }
@@ -150,14 +148,6 @@ exports[`GenericHome With not displayed skeleton by default should display real 
               Header
             </Text>
             <View
-              numberOfSpaces={6}
-              style={
-                {
-                  "height": 24,
-                }
-              }
-            />
-            <View
               style={
                 {
                   "marginHorizontal": 24,
@@ -175,14 +165,23 @@ exports[`GenericHome With not displayed skeleton by default should display real 
           onLayout={[Function]}
         >
           <View
-            customHeight={72}
-            enable={true}
+            isLandscape={false}
             style={
               {
-                "height": 72,
+                "marginBottom": 24,
               }
             }
-          />
+          >
+            <View
+              customHeight={72}
+              enable={true}
+              style={
+                {
+                  "height": 72,
+                }
+              }
+            />
+          </View>
         </View>
       </View>
     </RCTScrollView>
@@ -4319,6 +4318,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       ListFooterComponent={
         <FooterComponent
           hasShownAll={true}
+          isLandscape={false}
         />
       }
       ListHeaderComponent={
@@ -4328,9 +4328,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           <Styled(Text)>
             Header
           </Styled(Text)>
-          <Styled(View)
-            numberOfSpaces={6}
-          />
           <Styled(View) />
         </View>
       }
@@ -4434,14 +4431,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               Header
             </Text>
             <View
-              numberOfSpaces={6}
-              style={
-                {
-                  "height": 24,
-                }
-              }
-            />
-            <View
               style={
                 {
                   "marginHorizontal": 24,
@@ -4459,14 +4448,23 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           onLayout={[Function]}
         >
           <View
-            customHeight={72}
-            enable={true}
+            isLandscape={false}
             style={
               {
-                "height": 72,
+                "marginBottom": 24,
               }
             }
-          />
+          >
+            <View
+              customHeight={72}
+              enable={true}
+              style={
+                {
+                  "height": 72,
+                }
+              }
+            />
+          </View>
         </View>
       </View>
     </RCTScrollView>

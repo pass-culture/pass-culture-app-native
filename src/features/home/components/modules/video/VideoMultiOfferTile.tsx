@@ -14,6 +14,8 @@ import {
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -54,47 +56,34 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     })
   )
 
-  const displayDate = getOfferDates({
-    subcategoryId,
-    dates,
-    releaseDate,
-  })
+  const displayDate = getOfferDates({ subcategoryId, dates, releaseDate })
   const displayDistance = getDistance(
     offer._geoloc,
-    {
-      userLocation,
-      selectedPlace,
-      selectedLocationMode,
-    },
+    { userLocation, selectedPlace, selectedLocationMode },
     subcategoryId
   )
 
   const categoryId = mapping[subcategoryId]
-
   const categoryLabel = labelMapping[subcategoryId]
+
+  const accessibilityLabel = getComputedAccessibilityLabel(
+    name,
+    categoryLabel,
+    displayDate,
+    displayPrice,
+    displayDistance
+  )
 
   return (
     <Container>
       <StyledTouchableLink
-        navigateTo={{
-          screen: 'Offer',
-          params: { id: +offer.objectID },
-        }}
+        navigateTo={{ screen: 'Offer', params: { id: +offer.objectID } }}
+        accessibilityRole={accessibilityRoleInternalNavigation()}
+        accessibilityLabel={accessibilityLabel}
         onBeforeNavigate={() => {
           hideModal()
-          prePopulateOffer({
-            ...offer.offer,
-            offerId: +offer.objectID,
-            categoryId,
-          })
-          triggerConsultOfferLog(
-            {
-              offerId: +offer.objectID,
-
-              ...analyticsParams,
-            },
-            segment
-          )
+          prePopulateOffer({ ...offer.offer, offerId: +offer.objectID, categoryId })
+          triggerConsultOfferLog({ offerId: +offer.objectID, ...analyticsParams }, segment)
         }}
         testId="multi-offer-tile">
         <PlaylistCardOffer

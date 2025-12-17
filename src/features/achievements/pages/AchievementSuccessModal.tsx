@@ -63,6 +63,8 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
           autoPlay={false}
           loop={false}
           resizeMode="cover"
+          coloringMode="targeted"
+          targetShapeNames={['Fond 1']}
         />
         <StyledTitle>
           {severalAchievementsUnlocked
