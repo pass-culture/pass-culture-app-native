@@ -1,2 +1,11 @@
 // eslint-disable-next-line no-restricted-imports
-export { default } from '@react-native-firebase/remote-config'
+import {
+  getRemoteConfig,
+  setDefaults,
+  fetchAndActivate,
+  getAll,
+} from '@react-native-firebase/remote-config'
+
+const remoteConfigInstance = getRemoteConfig()
+
+export { remoteConfigInstance, setDefaults, fetchAndActivate, getAll }

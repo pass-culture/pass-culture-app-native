@@ -1,4 +1,4 @@
-import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { firestoreRemoteStore, doc, getDoc } from 'libs/firebase/firestore/client'
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring/errors'
@@ -8,10 +8,15 @@ export const getMaintenance = async (): Promise<
   FirebaseFirestoreTypes.DocumentData | undefined | null
 > => {
   try {
-    const docSnapshot = await firestoreRemoteStore
-      .collection(FIRESTORE_ROOT_COLLECTION)
-      .doc(RemoteStoreDocuments.MAINTENANCE)
-      .get()
+    // 1. Create reference
+    const docRef = doc(
+      firestoreRemoteStore,
+      FIRESTORE_ROOT_COLLECTION,
+      RemoteStoreDocuments.MAINTENANCE
+    )
+
+    // 2. Fetch snapshot
+    const docSnapshot = await getDoc(docRef)
 
     return docSnapshot.data() ?? {}
   } catch (error) {
