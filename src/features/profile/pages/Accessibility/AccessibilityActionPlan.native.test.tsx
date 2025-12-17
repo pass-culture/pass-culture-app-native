@@ -3,6 +3,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
+import { analytics } from 'libs/analytics/provider'
 import { render, userEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -53,5 +54,15 @@ describe('AccessibilityActionPlan', () => {
     await user.press(links[0] as ReactTestInstance)
 
     expect(openURLSpy).toHaveBeenCalledWith('https://passculture.pro/', undefined, true)
+  })
+
+  it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {
+    render(<AccessibilityActionPlan />)
+
+    const contactSupportButton = screen.getByText('Contacter le support')
+
+    await userEvent.press(contactSupportButton)
+
+    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(1, 'AccessibilityActionPlan')
   })
 })

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
+import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -71,6 +72,17 @@ describe('<FeedbackInApp/>', () => {
           screen: 'Profile',
         })
       })
+    })
+
+    it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {
+      serverRespondWithError()
+      renderFeedBackInApp()
+
+      const contactSupportButton = screen.getByText('Contacter le support')
+
+      await userEvent.press(contactSupportButton)
+
+      expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(1, 'FeedbackInApp')
     })
 
     it('should show success snackbar', async () => {

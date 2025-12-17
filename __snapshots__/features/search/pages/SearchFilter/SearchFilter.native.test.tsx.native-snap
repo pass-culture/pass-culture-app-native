@@ -233,6 +233,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             }
           >
             <View
+              accessibilityLabel="Filtre - Dates & heures"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -251,7 +252,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -276,7 +277,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="FilterRow"
+              testID="Filtre - Dates & heures"
             >
               <View
                 style={
@@ -365,6 +366,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Filtre - Catégorie - Toutes les catégories"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -383,7 +385,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -408,7 +410,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="FilterRow"
+              testID="Filtre - Catégorie - Toutes les catégories"
             >
               <View
                 style={
@@ -511,6 +513,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Filtre - Lieu culturel"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -529,7 +532,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -554,7 +557,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="FilterRow"
+              testID="Filtre - Lieu culturel"
             >
               <View
                 style={
@@ -643,6 +646,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Filtre - Prix"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -661,7 +665,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -686,7 +690,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="FilterRow"
+              testID="Filtre - Prix"
             >
               <View
                 style={
@@ -775,6 +779,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Filtre - Accessibilité"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -793,7 +798,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={false}
+              accessible={true}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -818,7 +823,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="FilterRow"
+              testID="Filtre - Accessibilité"
             >
               <View
                 style={

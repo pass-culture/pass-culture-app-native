@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Network } from 'libs/share/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { IconWithCaption } from 'ui/components/IconWithCaption'
@@ -21,21 +22,28 @@ import { LINE_BREAK } from 'ui/theme/constants'
 interface ShareMessagingAppProps {
   network: Network
   onPress: () => Promise<void>
+  accessibilityLabel?: string
 }
 
 export const ShareMessagingApp: React.FC<ShareMessagingAppProps> = ({
   network,
   onPress,
+  accessibilityLabel,
 }: ShareMessagingAppProps) => {
   const StyledIcon = styled(mapNetworkToRoundIcon[network]).attrs(({ theme }) => ({
     size: theme.buttons.buttonHeights.tall,
   }))``
 
-  const caption = network === Network.googleMessages ? 'Envoyer par' : 'Envoyer sur'
+  const captionStarting = network === Network.googleMessages ? 'Envoyer par' : 'Envoyer sur'
+  const caption = captionStarting + LINE_BREAK + network
+  const computedAccessibilityLabel = accessibilityLabel ?? `${captionStarting} ${network}`
 
   return (
-    <MessagingAppButtonContainer onPress={onPress}>
-      <IconWithCaption Icon={StyledIcon} caption={caption + LINE_BREAK + network} />
+    <MessagingAppButtonContainer
+      onPress={onPress}
+      accessibilityRole={AccessibilityRole.LINK}
+      accessibilityLabel={computedAccessibilityLabel}>
+      <IconWithCaption Icon={StyledIcon} caption={caption} />
     </MessagingAppButtonContainer>
   )
 }

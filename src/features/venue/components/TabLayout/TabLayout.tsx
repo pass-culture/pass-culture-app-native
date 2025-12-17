@@ -48,8 +48,10 @@ export const TabLayout = <TabKeyType extends string>({
     <Container>
       <TabContainer accessibilityRole={AccessibilityRole.TABLIST} ref={tabListRef} gap={6}>
         <GreyBar />
-        {tabs.map((tab) => (
+        {tabs.map((tab, index) => (
           <InfoTab
+            tabIndex={index + 1}
+            totalTabs={tabs.length}
             key={tab.key}
             tab={tab.key}
             selectedTab={selectedTab}

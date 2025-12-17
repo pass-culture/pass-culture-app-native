@@ -15,7 +15,7 @@ const MOBILE_BUTTON_SIZE = getSpacing(14)
 
 export const Trend = ({ image, title, ...rest }: TrendProps) => {
   return (
-    <Item key={title} {...rest}>
+    <Item key={title} accessibilityLabel={title} {...rest}>
       <ItemIcon source={image} />
       <StyledText>{title}</StyledText>
     </Item>

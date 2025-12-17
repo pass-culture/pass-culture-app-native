@@ -58,6 +58,7 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ShareChat } from 'ui/svg/icons/ShareChat'
 import { SharePhones } from 'ui/svg/icons/SharePhones'
+import { Speaker } from 'ui/svg/icons/Speaker'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { Trophy } from 'ui/svg/icons/Trophy'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -96,6 +97,7 @@ export const BasicsIllustrations = {
   SadFace,
   ShareChat,
   SharePhones,
+  Speaker,
   TicketBooked,
   Trophy,
   UserBlocked,

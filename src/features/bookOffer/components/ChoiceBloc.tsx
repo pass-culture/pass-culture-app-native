@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing } from 'ui/theme'
@@ -43,7 +44,11 @@ export const ChoiceBloc: React.FC<Props> = ({
 
   const label = selected ? `${accessibilityLabel} sélectionné` : accessibilityLabel
   return (
-    <ChoiceContainer onPress={onPress} disabled={disabled} accessibilityLabel={label}>
+    <ChoiceContainer
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityLabel={label}
+      accessibilityRole={AccessibilityRole.BUTTON}>
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
@@ -64,6 +69,7 @@ const IconContainer = styled.View(({ theme }) => ({
 
 const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,
+  color2: theme.designSystem.color.icon.brandPrimary,
   size: theme.icons.sizes.extraSmall,
 }))``
 

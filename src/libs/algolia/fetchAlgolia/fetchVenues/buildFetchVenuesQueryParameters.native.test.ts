@@ -6,7 +6,10 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia/types'
 
-const defaultFacetFilters = `${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`
+const defaultFacetFilters = [
+  [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
+  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
+]
 
 interface LocationParams extends Omit<BuildLocationParameterParams, 'userLocation'> {
   userLocation?: BuildLocationParameterParams['userLocation']
@@ -40,9 +43,7 @@ const buildExpected = (
   query,
   requestOptions: {
     attributesToHighlight,
-    facetFilters: facetFilters
-      ? [...[[defaultFacetFilters]], ...facetFilters]
-      : [[defaultFacetFilters]],
+    facetFilters: facetFilters ? [...defaultFacetFilters, ...facetFilters] : defaultFacetFilters,
     ...(aroundLatLng ? { aroundLatLng, aroundRadius: aroundRadius ?? 'all' } : {}),
   },
 })

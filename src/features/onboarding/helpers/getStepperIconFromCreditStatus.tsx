@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CreditStatus } from 'features/onboarding/enums'
-import LottieView from 'libs/lottie'
 import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
+import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { getSpacing } from 'ui/theme'
 
@@ -17,9 +17,19 @@ export const getStepperIconFromCreditStatus = (creditStatus: CreditStatus): Reac
       return <ComingLock />
   }
 }
-const AnimatedOngoingLock = () => (
-  <StyledLottieView source={OnboardingUnlock} autoPlay loop={false} />
-)
+const AnimatedOngoingLock = () => {
+  const theme = useTheme()
+  return (
+    <ThemedStyledLottieView
+      source={OnboardingUnlock}
+      autoPlay
+      loop={false}
+      width={theme.icons.sizes.standard}
+      height={theme.icons.sizes.standard}
+      usePartialPlayback={false}
+    />
+  )
+}
 
 const ComingLock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
@@ -32,8 +42,3 @@ const GoneLock = styled(LockFilled).attrs(({ theme }) => ({
 }))({
   marginHorizontal: getSpacing(1.5),
 })
-
-const StyledLottieView = styled(LottieView)(({ theme }) => ({
-  width: theme.icons.sizes.standard,
-  height: theme.icons.sizes.standard,
-}))

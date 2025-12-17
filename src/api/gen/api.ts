@@ -3911,6 +3911,21 @@ export interface RecommendationApiParams {
   reco_origin?: string | null
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum RecreditType {
+  'Recredit15' = 'Recredit15',
+  'Recredit16' = 'Recredit16',
+  'Recredit17' = 'Recredit17',
+  'Recredit18' = 'Recredit18',
+  'BonusCredit' = 'BonusCredit',
+  'ManualModification' = 'ManualModification',
+  'PreviousDeposit' = 'PreviousDeposit',
+  'FinanceIncidentRecredit' = 'FinanceIncidentRecredit',
+}
+/**
  * @export
  * @interface RefreshResponse
  */
@@ -4990,6 +5005,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   recreditAmountToShow?: number | null
+  /**
+   * @type {RecreditType}
+   * @memberof UserProfileResponse
+   */
+  recreditTypeToShow?: RecreditType | null
   /**
    * @type {boolean}
    * @memberof UserProfileResponse

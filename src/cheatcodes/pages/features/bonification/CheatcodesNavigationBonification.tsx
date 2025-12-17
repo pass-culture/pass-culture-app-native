@@ -19,8 +19,13 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
   subscreens: [
     {
       id: uuidv4(),
-      title: 'BonificationIntroduction',
-      navigationTarget: getSubscriptionPropConfig('BonificationIntroduction'),
+      title: 'BonificationExplanations',
+      navigationTarget: getSubscriptionPropConfig('BonificationExplanations'),
+    },
+    {
+      id: uuidv4(),
+      title: 'BonificationRequiredInformation',
+      navigationTarget: getSubscriptionPropConfig('BonificationRequiredInformation'),
     },
     {
       id: uuidv4(),
@@ -55,7 +60,7 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     {
       id: uuidv4(),
       title: 'BonificationGranted',
-      navigationTarget: getSubscriptionPropConfig('BonificationGranted'),
+      navigationTarget: { screen: 'BonificationGranted' },
     },
     {
       id: uuidv4(),
