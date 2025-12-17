@@ -367,9 +367,7 @@ export const logEventAnalytics = {
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedContactForm: (
     from:
-      | 'AccessibilityActionPlan'
       | 'AccessibilityDeclaration'
-      | 'AccessibilityEngagement'
       | 'DeleteProfileContactSupport'
       | 'DebugScreen'
       | 'FeedbackInApp'

@@ -7,11 +7,9 @@ import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
-import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
 import { AccessibilityDeclarationMobileAndroid } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileAndroid'
 import { AccessibilityDeclarationMobileIOS } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileIOS'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
-import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
@@ -55,16 +53,6 @@ type ProfileRouteConfig = {
 
 const profileScreens: ProfileRouteConfig[] = [
   { name: 'Accessibility', component: Accessibility, options: { title: 'Accessibilité' } },
-  {
-    name: 'AccessibilityEngagement',
-    component: AccessibilityEngagement,
-    options: { title: 'Engagement' },
-  },
-  {
-    name: 'AccessibilityActionPlan',
-    component: AccessibilityActionPlan,
-    options: { title: 'Plan d’actions' },
-  },
   {
     name: 'AccessibilityDeclarationMobileAndroid',
     component: AccessibilityDeclarationMobileAndroid,
