@@ -23,8 +23,8 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - scrollUntilVisible:
-          element: "Envoyer sur\niMessage"
-      - assertVisible: "Envoyer sur\niMessage"
+          element: "Envoyer sur iMessage"
+      - assertVisible: "Envoyer sur iMessage"
 
 - assertVisible:
     text: 'Voir l’itinéraire'
