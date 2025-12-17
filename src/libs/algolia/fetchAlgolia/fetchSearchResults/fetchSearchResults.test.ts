@@ -90,6 +90,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 'all',
         clickAnalytics: true,
         hitsPerPage: 35,
@@ -157,6 +158,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 'all',
         clickAnalytics: true,
         hitsPerPage: 35,
@@ -226,6 +228,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 'all',
         clickAnalytics: true,
         hitsPerPage: 35,
@@ -301,6 +304,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '42, 43',
         clickAnalytics: true,
@@ -377,6 +381,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16176, -52.669726',
         clickAnalytics: true,
@@ -453,6 +458,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16176, -52.669726',
         clickAnalytics: true,
@@ -530,6 +536,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16186, -52.669736',
         clickAnalytics: true,
@@ -605,6 +612,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 100000,
         aroundLatLng: '5.16186, -52.669736',
         clickAnalytics: true,
@@ -686,7 +694,11 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        facetFilters: [['audio_disability:true'], ['mental_disability:true']],
+        facetFilters: [
+          ['is_open_to_public:true'],
+          ['audio_disability:true'],
+          ['mental_disability:true'],
+        ],
         aroundRadius: 'all',
         clickAnalytics: true,
         hitsPerPage: 35,
@@ -777,6 +789,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 'all',
         clickAnalytics: true,
         hitsPerPage: 35,
@@ -845,6 +858,7 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        facetFilters: [['is_open_to_public:true']],
         aroundRadius: 'all',
         clickAnalytics: true,
         hitsPerPage: 35,

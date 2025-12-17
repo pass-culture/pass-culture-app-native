@@ -47,5 +47,5 @@ const PastilleContainer = styled.View(({ theme }) => ({
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.designSystem.color.text.lockedInverted,
+  color: theme.designSystem.color.text.inverted,
 }))
