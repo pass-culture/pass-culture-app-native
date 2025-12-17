@@ -5,16 +5,11 @@ import { eventMonitoring } from 'libs/monitoring/services'
  * https://github.com/pass-culture/pass-culture-app-native/pull/2193
  * We're using algolia/lite so we don't have access to all the error types
  */
-const IGNORED_ALGOLIA_ERRORS: Array<{ name?: string; messagePattern?: RegExp }> = [
-  {
-    name: 'RetryError',
-  },
-  {
-    messagePattern: /network request failed/i,
-  },
-  {
-    messagePattern: /erreur lors de la récupération du token/i,
-  },
+const IGNORED_ALGOLIA_ERRORS: Array<string> = ['RetryError']
+
+const IGNORED_ALGOLIA_MESSAGES: Array<RegExp> = [
+  /network request failed/i,
+  /erreur lors de la récupération du token/i,
 ]
 
 const isIgnoredAlgoliaError = (error: unknown): boolean => {
@@ -22,16 +17,14 @@ const isIgnoredAlgoliaError = (error: unknown): boolean => {
     return false
   }
 
-  return IGNORED_ALGOLIA_ERRORS.some((ignoredError) => {
-    const nameMatches =
-      ignoredError.name === undefined ||
-      error.name.toLowerCase() === ignoredError.name.toLowerCase()
-    const messageMatches =
-      ignoredError.messagePattern === undefined ||
-      ignoredError.messagePattern.test(error.message.toLowerCase())
+  const isIgnoredError = IGNORED_ALGOLIA_ERRORS.some(
+    (ignoredError) => error.name.toLowerCase() === ignoredError.toLowerCase()
+  )
+  const isIgnoredMessage = IGNORED_ALGOLIA_MESSAGES.some((messagePattern) =>
+    messagePattern.test(error.message)
+  )
 
-    return nameMatches && messageMatches
-  })
+  return isIgnoredMessage || isIgnoredError
 }
 
 export const captureAlgoliaError = (error: unknown): void => {
