@@ -22,13 +22,13 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
   signupStep,
 }) => {
   const quitSignup = useCallback(() => {
-    analytics.logCancelSignup(signupStep)
+    void analytics.logCancelSignup(signupStep)
     resume()
     navigateToHome()
   }, [resume, signupStep])
 
   const continueSignup = useCallback(() => {
-    analytics.logContinueSignup()
+    void analytics.logContinueSignup()
     resume()
   }, [resume])
 
