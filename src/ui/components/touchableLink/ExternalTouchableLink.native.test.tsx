@@ -5,14 +5,13 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
-import * as OpenItinerary from 'libs/itinerary/openGoogleMapsItinerary'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SocialNetworkIconsMap } from 'ui/components/socials/types'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Typo } from 'ui/theme'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-const openGoogleMapsItinerarySpy = jest.spyOn(OpenItinerary, 'openGoogleMapsItinerary')
+
 jest.mock('features/navigation/navigationRef')
 
 const linkText = 'linkText'
@@ -26,6 +25,11 @@ const externalNav = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const mockShowLocation = jest.fn()
+jest.mock('react-native-map-link', () => ({
+  showLocation: (...args) => mockShowLocation(...args),
+}))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -60,7 +64,13 @@ describe('<ExternalTouchableLink />', () => {
       await user.press(screen.getByText(linkText))
 
       await waitFor(() => {
-        expect(openGoogleMapsItinerarySpy).toHaveBeenCalledWith(mockedFullAddress)
+        expect(mockShowLocation).toHaveBeenCalledWith({
+          address: 'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS',
+          appsWhiteList: ['apple-maps', 'google-maps', 'waze'],
+          cancelText: 'Annuler',
+          dialogTitle: 'Obtenir l’itinéraire',
+          dialogMessage: 'Choisissez votre application de navigation',
+        })
       })
     })
 
