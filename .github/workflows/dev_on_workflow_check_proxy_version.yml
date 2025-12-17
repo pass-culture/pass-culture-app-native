@@ -30,6 +30,9 @@ jobs:
         with:
           node-version-file: 'server/.nvmrc'
 
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.1.0
+        if: inputs.WEBAPP_URL
+
       - id: proxy-version
         if: inputs.WEBAPP_URL
         name: Get deployed proxy version

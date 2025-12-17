@@ -46,6 +46,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.1.0
+        if: ${{ inputs.ENV == 'testing' }}
       - name: 'OpenID Connect Authentication'
         id: 'openid-auth'
         uses: 'google-github-actions/auth@v2'

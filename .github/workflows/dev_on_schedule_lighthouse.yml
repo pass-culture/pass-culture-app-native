@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.1.0
       - name: Run Lighthouse CI 🚀
         run: |
           yarn dlx @lhci/cli@0.14.0 autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
