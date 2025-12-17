@@ -1,14 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
+import { extractApiErrorMessage } from 'api/apiHelpers'
 import { BookingOfferResponseAddress, BookingResponse, TicketResponse } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
 import { getBookingLabelsV2 } from 'features/bookings/helpers'
 import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels'
+import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
@@ -16,11 +20,11 @@ import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { IdCard } from 'ui/svg/icons/IdCard'
-import { getSpacing } from 'ui/theme'
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(15)
+const VENUE_THUMBNAIL_SIZE = 60
 
 type TicketProps = {
   properties: BookingProperties
@@ -42,6 +46,27 @@ export const Ticket = ({
   ticket,
 }: TicketProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...getTabHookConfig('Bookings'))
+
+  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
+  const { mutate: archiveBooking } = useArchiveBookingMutation({
+    bookingId: booking.id,
+    onSuccess: () => {
+      showSuccessSnackBar({
+        message:
+          'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      goBack()
+    },
+    onError: (error) => {
+      showErrorSnackBar({
+        message: extractApiErrorMessage(error),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
+
   const { address } = booking?.stock.offer ?? {}
 
   const offerFullAddress = address
@@ -54,8 +79,8 @@ export const Ticket = ({
 
   const venueBlockAddress = getAddress(offer.address)
 
-  const handleOnSeeVenuePress = () => {
-    analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'bookings' })
+  const handleOnSeeVenuePress = async () => {
+    await analytics.logConsultVenue({ venueId: offer.venue.id.toString(), from: 'bookings' })
     navigate('Venue', { id: offer.venue.id })
   }
   const expirationDateFormated = ({ prefix }: { prefix: string }) => {
@@ -117,6 +142,7 @@ export const Ticket = ({
           completedUrl={booking.completedUrl ?? undefined}
           offerId={offer.id}
           subcategoryId={offer.subcategoryId}
+          onBeforeNavigate={archiveBooking}
         />
       }
       infoBanner={properties.isDigital ? undefined : infoBanner}

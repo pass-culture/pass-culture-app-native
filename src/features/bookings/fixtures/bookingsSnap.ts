@@ -330,6 +330,7 @@ export const bookingsSnap = toMutable({
       confirmationDate: '2021-02-15T23:01:37.925926',
       dateCreated: '2021-02-15T23:01:37.925926',
       dateUsed: null,
+      displayAsEnded: false,
       expirationDate: null,
       totalAmount: 1900,
       quantity: 10,
@@ -338,6 +339,7 @@ export const bookingsSnap = toMutable({
       enablePopUpReaction: true,
       stock: {
         id: 150230,
+        isAutomaticallyUsed: false,
         price: 400,
         priceCategoryLabel: 'Cat 4',
         beginningDatetime: '2021-03-14T20:00:00',
@@ -397,6 +399,7 @@ export const bookingsSnap = toMutable({
       confirmationDate: '2021-02-15T23:01:37.925926',
       dateCreated: '2021-02-15T23:01:37.925926',
       dateUsed: '2021-03-15T23:01:37.925926',
+      displayAsEnded: false,
       expirationDate: null,
       totalAmount: 1900,
       quantity: 10,
@@ -405,6 +408,7 @@ export const bookingsSnap = toMutable({
       enablePopUpReaction: false,
       stock: {
         id: 150230,
+        isAutomaticallyUsed: false,
         price: 400,
         priceCategoryLabel: 'Cat 4',
         beginningDatetime: '2021-03-14T20:00:00',
@@ -467,6 +471,7 @@ export const bookingsSnap = toMutable({
       confirmationDate: '2021-03-15T23:01:37.925926',
       dateCreated: '2021-02-15T23:01:37.925926',
       dateUsed: null,
+      displayAsEnded: false,
       expirationDate: null,
       totalAmount: 1900,
       quantity: 10,
@@ -474,6 +479,7 @@ export const bookingsSnap = toMutable({
       enablePopUpReaction: false,
       stock: {
         id: 150230,
+        isAutomaticallyUsed: false,
         beginningDatetime: '2021-03-15T20:00:00',
         price: 400,
         priceCategoryLabel: 'Cat 4',
@@ -535,6 +541,7 @@ export const bookingsSnap = toMutable({
       confirmationDate: '2021-03-15T23:01:37.925926',
       dateCreated: '2021-02-15T23:01:37.925926',
       dateUsed: null,
+      displayAsEnded: false,
       expirationDate: null,
       totalAmount: 1900,
       quantity: 10,
@@ -542,6 +549,7 @@ export const bookingsSnap = toMutable({
       enablePopUpReaction: false,
       stock: {
         id: 150230,
+        isAutomaticallyUsed: false,
         beginningDatetime: '2021-03-15T20:00:00',
         price: 400,
         priceCategoryLabel: 'Cat 4',
@@ -604,6 +612,7 @@ export const bookingsSnap = toMutable({
       confirmationDate: '2024-03-15T23:01:37.925926',
       dateCreated: '2024-02-15T23:01:37.925926',
       dateUsed: null,
+      displayAsEnded: false,
       expirationDate: null,
       totalAmount: 1900,
       quantity: 100,
@@ -611,6 +620,7 @@ export const bookingsSnap = toMutable({
       enablePopUpReaction: false,
       stock: {
         id: 150230,
+        isAutomaticallyUsed: false,
         beginningDatetime: '2021-03-15T20:00:00',
         price: 100,
         priceCategoryLabel: 'Cat 4',
@@ -685,6 +695,7 @@ export const endedBookingsV2ListSnap = toMutable({
       dateCreated: '2021-02-15T23:01:37.925926',
       dateUsed: null,
       expirationDate: null,
+      isArchivable: false,
       totalAmount: 1900,
       quantity: 10,
       userReaction: null,
@@ -692,6 +703,7 @@ export const endedBookingsV2ListSnap = toMutable({
       activationCode: { code: '', expirationDate: null },
       stock: {
         beginningDatetime: '2021-03-14T20:00:00',
+        isAutomaticallyUsed: false,
         offer: {
           id: 147874,
           name: 'Harry Potter',
@@ -728,6 +740,7 @@ export const ongoingBookingsV2ListSnap = toMutable({
       dateCreated: '2024-02-15T23:01:37.925926',
       dateUsed: null,
       expirationDate: null,
+      isArchivable: false,
       totalAmount: 1900,
       quantity: 10,
       userReaction: null,
@@ -735,6 +748,7 @@ export const ongoingBookingsV2ListSnap = toMutable({
       activationCode: { code: '', expirationDate: null },
       stock: {
         beginningDatetime: '2024-03-14T20:00:00',
+        isAutomaticallyUsed: false,
         offer: {
           id: 147874,
           name: 'Percy Jackson',

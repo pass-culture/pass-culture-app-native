@@ -1,11 +1,10 @@
 import { addDays, format, differenceInDays } from 'date-fns'
 
 import { BookingListItemResponse } from 'api/gen'
-import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 
 export const getEligibleBookingsForArchive = (bookings: BookingListItemResponse[]) => {
   const eligibleBookingForArchive = [
-    ...getFreeBookingsInSubCategories(bookings),
+    ...getFreeBookingsToArchive(bookings),
     ...getDigitalBookingsWithoutExpirationDate(bookings),
   ]
 
@@ -14,13 +13,13 @@ export const getEligibleBookingsForArchive = (bookings: BookingListItemResponse[
   )
 }
 
-const getFreeBookingsInSubCategories = (bookings: BookingListItemResponse[]) =>
-  bookings.filter(isFreeBookingInSubcategories)
+const getFreeBookingsToArchive = (bookings: BookingListItemResponse[]) =>
+  bookings.filter((booking) => booking.stock.isAutomaticallyUsed)
 
 export const getDigitalBookingsWithoutExpirationDate = (bookings: BookingListItemResponse[]) =>
   bookings.filter(isDigitalBookingWithoutExpirationDate)
 
-export const isBookingInList = (
+export const isBookingEligibleForArchive = (
   booking: BookingListItemResponse,
   eligibleBookingsForArchive?: BookingListItemResponse[]
 ) => eligibleBookingsForArchive?.some((b) => b.id === booking.id) ?? false
@@ -52,9 +51,7 @@ export const daysCountdown = (dateCreated: string) => {
     return endedCountdown
   }
 
-  const daysLeftUntilExpiration = differenceInDays(endDate, startDate) ?? endedCountdown
-
-  return daysLeftUntilExpiration
+  return differenceInDays(endDate, startDate) ?? endedCountdown
 }
 
 export const formattedExpirationDate = (dateCreated: string) => {
@@ -63,16 +60,11 @@ export const formattedExpirationDate = (dateCreated: string) => {
   }
   const bookingDateCreated = new Date(dateCreated)
   const expirationDate = addDays(bookingDateCreated, 30)
-  const formattedExpirationDate = format(expirationDate, 'dd/MM/yyyy')
-  return formattedExpirationDate
+  return format(expirationDate, 'dd/MM/yyyy')
 }
 
 export const isDigitalBookingWithoutExpirationDate = (booking: BookingListItemResponse) =>
   booking.stock.offer.isDigital && !booking.expirationDate
 
-export const isFreeBookingInSubcategories = (booking: BookingListItemResponse) =>
-  booking.totalAmount === 0 &&
-  FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(booking.stock.offer.subcategoryId)
-
-export const isEligibleBookingsForArchive = (booking: BookingListItemResponse) =>
-  isDigitalBookingWithoutExpirationDate(booking) || isFreeBookingInSubcategories(booking)
+export const isArchivableBooking = (booking: BookingListItemResponse) =>
+  isDigitalBookingWithoutExpirationDate(booking) || booking.isArchivable
