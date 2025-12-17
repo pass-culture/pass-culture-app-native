@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/menu'
+import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
@@ -14,6 +15,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   isSelected,
   BicolorIcon,
   badgeValue,
+  showBadge,
 }) => {
   const accessibilityLabel = menu[tabName].accessibilityLabel
   return (
@@ -22,7 +24,14 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
         <Gradient testID={accessibilityLabel ? `${accessibilityLabel} sélectionné` : undefined} />
       ) : null}
       <Spacer.Flex />
-      <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
+      <IconWrapper>
+        <StyledIcon
+          as={BicolorIcon}
+          selected={isSelected}
+          badgeValue={showBadge ? undefined : badgeValue}
+        />
+        {showBadge ? <TabBarBadge testID={`${tabName}-new-feature-badge`} /> : null}
+      </IconWrapper>
       <Spacer.Column numberOfSpaces={2.5} />
       <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
       <Spacer.Flex />
@@ -53,3 +62,7 @@ const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, 
 }))<{ selected?: boolean }>``
 
 const BicolorSelectorPlaceholder = styled.View({ height: GRADIENT_HEIGHT })
+
+const IconWrapper = styled.View({
+  position: 'relative',
+})

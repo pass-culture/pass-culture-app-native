@@ -19,7 +19,7 @@ import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { waitFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 
@@ -157,12 +157,14 @@ describe('AccessibleTabBar', () => {
     const searchButton = await screen.findByText('Recherche')
     fireEvent.click(searchButton)
 
-    expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getSearchHookConfig('SearchLanding', {
-        ...mockSearchState,
-        query: '',
-        locationFilter: mockedLocation,
-      })
+    await waitFor(() =>
+      expect(navigateFromRefSpy).toHaveBeenCalledWith(
+        ...getSearchHookConfig('SearchLanding', {
+          ...mockSearchState,
+          query: '',
+          locationFilter: mockedLocation,
+        })
+      )
     )
   })
 })

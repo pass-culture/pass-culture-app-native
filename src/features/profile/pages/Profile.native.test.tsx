@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import mockdate from 'mockdate'
 import React, { NamedExoticComponent } from 'react'
 import { Share } from 'react-native'
@@ -37,6 +38,7 @@ import {
   render,
   screen,
   userEvent,
+  waitFor,
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
@@ -109,6 +111,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 jest.useFakeTimers()
 
+const asyncStorageGetItemSpy = jest.spyOn(AsyncStorage, 'getItem')
+const asyncStorageSetItemSpy = jest.spyOn(AsyncStorage, 'setItem')
+
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -132,6 +137,11 @@ describe('Profile component', () => {
       subscriptionStepperFixture
     )
     mockServer.getApi('/v1/banner', {})
+  })
+
+  afterEach(() => {
+    asyncStorageGetItemSpy.mockClear()
+    asyncStorageSetItemSpy.mockClear()
   })
 
   it('should render correctly', async () => {
@@ -301,10 +311,38 @@ describe('Profile component', () => {
   })
 
   describe('other section', () => {
+    it('should show the "Nouveau" tag on Apparence and hide it after click when FF enabled', async () => {
+      asyncStorageGetItemSpy.mockResolvedValueOnce(null)
+      asyncStorageSetItemSpy.mockResolvedValueOnce()
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
+        RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
+        RemoteStoreFeatureFlags.DARK_MODE_GTM,
+      ])
+
+      renderProfile()
+
+      const appearanceRow = await screen.findByText('Apparence')
+
+      expect(screen.getByText('Nouveau')).toBeOnTheScreen()
+
+      await user.press(appearanceRow)
+
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'DisplayPreference',
+      })
+      expect(asyncStorageSetItemSpy).toHaveBeenCalledWith('darkModeGtmAppearanceTagSeen', 'true')
+
+      await waitFor(() => {
+        expect(screen.queryByText('Nouveau')).not.toBeOnTheScreen()
+      })
+    })
+
     it('should navigate when the display preference row is clicked', async () => {
       renderProfile()
 
-      const accessibilityButton = screen.getByText('Préférences d’affichage')
+      const accessibilityButton = screen.getByText('Apparence')
       await user.press(accessibilityButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {

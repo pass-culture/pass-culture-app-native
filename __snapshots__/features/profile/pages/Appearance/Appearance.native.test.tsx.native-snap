@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`DisplayPreference should render correctly 1`] = `
+exports[`Appearance should render correctly 1`] = `
 <View
   isLandscape={false}
   style={
@@ -146,7 +146,7 @@ exports[`DisplayPreference should render correctly 1`] = `
             }
           }
         >
-          Préférences d’affichage
+          Apparence
         </Text>
       </View>
       <View
