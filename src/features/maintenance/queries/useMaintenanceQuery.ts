@@ -2,7 +2,7 @@ import { onlineManager, useQuery } from '@tanstack/react-query'
 
 import { getMaintenance } from 'libs/firebase/firestore/getMaintenance/getMaintenance'
 import { MAINTENANCE, Maintenance, RemoteStoreMaintenance } from 'libs/firebase/firestore/types'
-import { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
+import { DocumentData } from 'libs/firebase/shims/firestore'
 import { QueryKeys } from 'libs/queryKeys'
 
 const UNKNOWN_MAINTENANCE: Maintenance = { status: MAINTENANCE.UNKNOWN, message: undefined }
@@ -14,7 +14,7 @@ export const useMaintenanceQuery = (): Maintenance => {
     staleTime: 1000 * 30,
     gcTime: 1000 * 30,
     enabled: onlineManager.isOnline(),
-    select: (data: FirebaseFirestoreTypes.DocumentData) => {
+    select: (data: DocumentData) => {
       const maintenanceIsOn = data?.[RemoteStoreMaintenance.MAINTENANCE_IS_ON]
       const rawMessage = data?.[RemoteStoreMaintenance.MAINTENANCE_MESSAGE]
 

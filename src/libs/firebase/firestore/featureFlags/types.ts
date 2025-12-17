@@ -1,5 +1,5 @@
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
+import { DocumentSnapshot } from 'libs/firebase/shims/firestore'
 
 export type squads = 'decouverte' | 'activation' | 'conversion'
 
@@ -13,4 +13,4 @@ export type FeatureFlagConfig = {
 
 export type FeatureFlagStore = Record<RemoteStoreFeatureFlags, FeatureFlagConfig>
 
-export type FeatureFlagDocument = FirebaseFirestoreTypes.DocumentSnapshot<FeatureFlagStore>
+export type FeatureFlagDocument = DocumentSnapshot<FeatureFlagStore>
