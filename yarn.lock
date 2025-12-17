@@ -11236,6 +11236,7 @@ __metadata:
     react-native-linear-gradient: ^2.8.3
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^4.0.0
+    react-native-map-link: ^3.10.1
     react-native-maps: 1.26.0
     react-native-modal: 13.0.1
     react-native-orientation-locker: ^1.7.0
@@ -23786,6 +23787,16 @@ __metadata:
     react-native: "*"
     react-native-maps: "*"
   checksum: 4afd158958290c6c2de5207efe1873ddeb9e5e794dd59c9ef4e469e18082962c6f3261445b058e11f67d1b963dee39ba1fb1c5a1aa8bab5cb4a1690dfc894085
+  languageName: node
+  linkType: hard
+
+"react-native-map-link@npm:^3.10.1":
+  version: 3.10.1
+  resolution: "react-native-map-link@npm:3.10.1"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-native: ">=0.40.0"
+  checksum: 31a250968ec465ac6a31eeb9855ae3dd53a3aba990eb0f1894b392f3369b72a5a83b6fadcdcdd362d6362d99a731dff184af5e74762b526b1c99fe8ad16ae02c
   languageName: node
   linkType: hard
 
