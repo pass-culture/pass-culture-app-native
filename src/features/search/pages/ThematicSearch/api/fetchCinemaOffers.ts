@@ -38,7 +38,6 @@ export const fetchCinemaOffers = async ({
     }),
     buildQueryHelper({
       ...commonQueryParams,
-      userLocation: undefined,
       filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.CARTES_CINEMA}" AND (offer.subcategoryId:"${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}" OR offer.subcategoryId:"${SubcategoryIdEnum.CINE_VENTE_DISTANCE}")`,
     }),
   ]
