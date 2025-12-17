@@ -1,4 +1,4 @@
-import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { firestoreRemoteStore, doc, getDoc } from 'libs/firebase/firestore/client'
 import {
   FIRESTORE_ROOT_COLLECTION,
   RemoteStoreCookies,
@@ -15,11 +15,18 @@ export const getCookiesLastUpdate = async (): Promise<
     }
   | undefined
 > => {
-  return firestoreRemoteStore
-    .collection(FIRESTORE_ROOT_COLLECTION)
-    .doc(RemoteStoreDocuments.COOKIES_LAST_UPDATE)
-    .get()
+  // 1. Create the reference using the modular syntax
+  const docRef = doc(
+    firestoreRemoteStore,
+    FIRESTORE_ROOT_COLLECTION,
+    RemoteStoreDocuments.COOKIES_LAST_UPDATE
+  )
+
+  // 2. Fetch using getDoc()
+  return getDoc(docRef)
     .then((docSnapshot) => {
+      // Note: The snapshot object itself behaves the same way,
+      // so .get() and .data() inside the callback still work.
       const lastUpdated = new Date(
         docSnapshot.get<string>(RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE)
       )

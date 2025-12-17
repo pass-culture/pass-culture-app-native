@@ -1,4 +1,13 @@
-import firestore from 'libs/firebase/shims/firestore'
+import {
+  collection,
+  doc,
+  getDoc,
+  enableNetwork,
+  disableNetwork,
+  getFirestore,
+} from 'libs/firebase/shims/firestore'
 
-export const firestoreRemoteStore = firestore()
-firestoreRemoteStore.disableNetwork()
+const firestoreRemoteStore = getFirestore()
+disableNetwork(firestoreRemoteStore)
+
+export { firestoreRemoteStore, collection, doc, getDoc, enableNetwork, disableNetwork }
