@@ -7,23 +7,34 @@ import {
   EVENT_PAGE_VIEW_NAME,
   EVENT_PAGE_VIEW_PARAM_KEY,
 } from 'libs/firebase/analytics/constants'
-import firebaseAnalyticsModule from 'libs/firebase/shims/analytics'
+// 1. Import named functions
+import {
+  getAnalytics,
+  logEvent,
+  setAnalyticsCollectionEnabled,
+  setUserId,
+} from 'libs/firebase/shims/analytics'
 import { getAppVersion } from 'libs/packageJson'
 
 import { AnalyticsProvider } from './types'
 
-const firebaseAnalytics = firebaseAnalyticsModule()
-firebaseAnalytics.setAnalyticsCollectionEnabled(false)
+// 2. Get Instance
+const firebaseAnalytics = getAnalytics()
+
+// 3. Use Functional Syntax
+setAnalyticsCollectionEnabled(firebaseAnalytics, false)
 
 export const firebaseAnalyticsProvider: AnalyticsProvider = {
   async enableCollection() {
-    firebaseAnalytics.setAnalyticsCollectionEnabled(true)
+    setAnalyticsCollectionEnabled(firebaseAnalytics, true)
   },
   async disableCollection() {
-    firebaseAnalytics.setAnalyticsCollectionEnabled(false)
+    setAnalyticsCollectionEnabled(firebaseAnalytics, false)
   },
   async getAppInstanceId() {
     if (Platform.OS === 'web') return Promise.resolve(null)
+    // The native instance is an object, so we can still access native-only methods
+    // directly if we haven't shimmed them.
     return firebaseAnalytics.getAppInstanceId()
   },
   async setDefaultEventParameters(params: Record<string, unknown> | undefined) {
@@ -33,10 +44,12 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
     }
   },
   async setUserId(userId) {
-    firebaseAnalytics.setUserId(userId.toString())
+    setUserId(firebaseAnalytics, userId.toString())
   },
   async logScreenView(screenName, locationType) {
-    firebaseAnalytics.logEvent(EVENT_PAGE_VIEW_NAME, {
+    // @ts-expect-error Firebase has overly strict event name types
+
+    logEvent(firebaseAnalytics, EVENT_PAGE_VIEW_NAME, {
       [EVENT_PAGE_VIEW_PARAM_KEY]: screenName,
       screen_class: screenName,
       locationType,
@@ -49,6 +62,7 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
       newParams['app_version'] = getAppVersion()
       newParams['app_revision'] = env.COMMIT_HASH
     }
-    return firebaseAnalytics.logEvent(name, newParams)
+    // @ts-expect-error Firebase has overly strict event name types
+    return logEvent(firebaseAnalytics, name, newParams)
   },
 }
