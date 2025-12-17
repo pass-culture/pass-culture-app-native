@@ -6255,6 +6255,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hot-updater/core@npm:0.20.15":
+  version: 0.20.15
+  resolution: "@hot-updater/core@npm:0.20.15"
+  checksum: a7e73d045967bba1a2a932dbf9e28951da3ad7e72b456120fcf8aaeaacfb8f0cb9f476e491846a553dbe16c51596c746f19abc910e188e8beffbc33f7af99eaa
+  languageName: node
+  linkType: hard
+
 "@hot-updater/firebase@npm:^0.20.11":
   version: 0.20.11
   resolution: "@hot-updater/firebase@npm:0.20.11"
@@ -6291,6 +6298,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hot-updater/plugin-core@npm:0.20.15":
+  version: 0.20.15
+  resolution: "@hot-updater/plugin-core@npm:0.20.15"
+  dependencies:
+    "@hot-updater/core": 0.20.15
+    cosmiconfig: 9.0.0
+    cosmiconfig-typescript-loader: 5.0.0
+    fast-glob: 3.3.3
+    oxc-transform: 0.82.1
+    semver: ^7.7.2
+  checksum: 4a92c407a247460d885430a4c6478793d120276497b747d7144bd19a480b48756a13708e31b3b0a589e53ec7d0e666c329ab5c7fc7ef904b0445900ba73148bc
+  languageName: node
+  linkType: hard
+
 "@hot-updater/react-native@npm:^0.20.11":
   version: 0.20.11
   resolution: "@hot-updater/react-native@npm:0.20.11"
@@ -6310,6 +6331,17 @@ __metadata:
     hot-updater:
       optional: true
   checksum: e675fa63d1e372ac49f6477732755358f187cb2a33283a572f67364e68288c17b251690ad8a54dcbab536fa19aed9c5c7434b544aab97fedaea06b4b4115b193
+  languageName: node
+  linkType: hard
+
+"@hot-updater/sentry-plugin@npm:^0.20.11":
+  version: 0.20.15
+  resolution: "@hot-updater/sentry-plugin@npm:0.20.15"
+  dependencies:
+    "@hot-updater/core": 0.20.15
+    "@hot-updater/plugin-core": 0.20.15
+    "@sentry/cli": 2.46.0
+  checksum: 8d9c61e1f0ea86df9c6b9c78d0b6ea903c653432b38260a7acc6c02c5f4528211cd34daa2bfe5f67cb4ce8216c10c3ccced8dd7df9b3aa2f25ec8f465c8a142c
   languageName: node
   linkType: hard
 
@@ -8814,6 +8846,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/cli-darwin@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-darwin@npm:2.46.0"
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
 "@sentry/cli-darwin@npm:2.53.0":
   version: 2.53.0
   resolution: "@sentry/cli-darwin@npm:2.53.0"
@@ -8825,6 +8864,13 @@ __metadata:
   version: 2.42.1
   resolution: "@sentry/cli-linux-arm64@npm:2.42.1"
   conditions: (os=linux | os=freebsd) & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@sentry/cli-linux-arm64@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-linux-arm64@npm:2.46.0"
+  conditions: (os=linux | os=freebsd | os=android) & cpu=arm64
   languageName: node
   linkType: hard
 
@@ -8842,6 +8888,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/cli-linux-arm@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-linux-arm@npm:2.46.0"
+  conditions: (os=linux | os=freebsd | os=android) & cpu=arm
+  languageName: node
+  linkType: hard
+
 "@sentry/cli-linux-arm@npm:2.53.0":
   version: 2.53.0
   resolution: "@sentry/cli-linux-arm@npm:2.53.0"
@@ -8853,6 +8906,13 @@ __metadata:
   version: 2.42.1
   resolution: "@sentry/cli-linux-i686@npm:2.42.1"
   conditions: (os=linux | os=freebsd) & (cpu=x86 | cpu=ia32)
+  languageName: node
+  linkType: hard
+
+"@sentry/cli-linux-i686@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-linux-i686@npm:2.46.0"
+  conditions: (os=linux | os=freebsd | os=android) & (cpu=x86 | cpu=ia32)
   languageName: node
   linkType: hard
 
@@ -8870,10 +8930,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/cli-linux-x64@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-linux-x64@npm:2.46.0"
+  conditions: (os=linux | os=freebsd | os=android) & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@sentry/cli-linux-x64@npm:2.53.0":
   version: 2.53.0
   resolution: "@sentry/cli-linux-x64@npm:2.53.0"
   conditions: (os=linux | os=freebsd | os=android) & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@sentry/cli-win32-arm64@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-win32-arm64@npm:2.46.0"
+  conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
@@ -8887,6 +8961,13 @@ __metadata:
 "@sentry/cli-win32-i686@npm:2.42.1":
   version: 2.42.1
   resolution: "@sentry/cli-win32-i686@npm:2.42.1"
+  conditions: os=win32 & (cpu=x86 | cpu=ia32)
+  languageName: node
+  linkType: hard
+
+"@sentry/cli-win32-i686@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-win32-i686@npm:2.46.0"
   conditions: os=win32 & (cpu=x86 | cpu=ia32)
   languageName: node
   linkType: hard
@@ -8905,10 +8986,57 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/cli-win32-x64@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli-win32-x64@npm:2.46.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@sentry/cli-win32-x64@npm:2.53.0":
   version: 2.53.0
   resolution: "@sentry/cli-win32-x64@npm:2.53.0"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@sentry/cli@npm:2.46.0":
+  version: 2.46.0
+  resolution: "@sentry/cli@npm:2.46.0"
+  dependencies:
+    "@sentry/cli-darwin": 2.46.0
+    "@sentry/cli-linux-arm": 2.46.0
+    "@sentry/cli-linux-arm64": 2.46.0
+    "@sentry/cli-linux-i686": 2.46.0
+    "@sentry/cli-linux-x64": 2.46.0
+    "@sentry/cli-win32-arm64": 2.46.0
+    "@sentry/cli-win32-i686": 2.46.0
+    "@sentry/cli-win32-x64": 2.46.0
+    https-proxy-agent: ^5.0.0
+    node-fetch: ^2.6.7
+    progress: ^2.0.3
+    proxy-from-env: ^1.1.0
+    which: ^2.0.2
+  dependenciesMeta:
+    "@sentry/cli-darwin":
+      optional: true
+    "@sentry/cli-linux-arm":
+      optional: true
+    "@sentry/cli-linux-arm64":
+      optional: true
+    "@sentry/cli-linux-i686":
+      optional: true
+    "@sentry/cli-linux-x64":
+      optional: true
+    "@sentry/cli-win32-arm64":
+      optional: true
+    "@sentry/cli-win32-i686":
+      optional: true
+    "@sentry/cli-win32-x64":
+      optional: true
+  bin:
+    sentry-cli: bin/sentry-cli
+  checksum: b4308c5746619f6a42af48f83b03592c9887cddbca242bce6a0adc28d6e1484601d110e3ee0af666046e445769780889b3c5a2dfceb4833b13309f907483085c
   languageName: node
   linkType: hard
 
@@ -11071,6 +11199,7 @@ __metadata:
     "@hot-updater/bare": ^0.20.11
     "@hot-updater/firebase": ^0.20.11
     "@hot-updater/react-native": ^0.20.11
+    "@hot-updater/sentry-plugin": ^0.20.11
     "@lhci/cli": ^0.14.0
     "@openspacelabs/react-native-zoomable-view": ^2.1.5
     "@pass-culture/design-system": 0.5.2

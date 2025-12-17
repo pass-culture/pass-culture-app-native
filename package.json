@@ -212,6 +212,7 @@
     "@chromatic-com/storybook": "^4.0.1",
     "@hot-updater/bare": "^0.20.11",
     "@hot-updater/firebase": "^0.20.11",
+    "@hot-updater/sentry-plugin": "^0.20.11",
     "@lhci/cli": "^0.14.0",
     "@react-native-community/cli": "19.1.2",
     "@react-native-community/cli-platform-android": "19.1.2",
