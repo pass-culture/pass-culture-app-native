@@ -4,12 +4,6 @@ export const profileStackNavigatorPathConfig = {
       Accessibility: {
         path: 'accessibilite',
       },
-      AccessibilityEngagement: {
-        path: 'accessibilite/engagements',
-      },
-      AccessibilityActionPlan: {
-        path: 'accessibilite/plan-d-actions',
-      },
       AccessibilityDeclarationMobileAndroid: {
         path: 'accessibilite/declaration-accessibilite-mobile-android',
       },

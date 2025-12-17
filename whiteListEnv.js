@@ -1,6 +1,7 @@
 export const whiteListEnv = (env, commitHash) => {
   const authorizedEnvVars = [
-    'ACCESSIBILITY_LINK',
+    'ACCESSIBILITY',
+    'ACCESSIBILITY_PLAN',
     'ALGOLIA_APPLICATION_ID',
     'ALGOLIA_ARTISTS_INDEX_NAME',
     'ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME',

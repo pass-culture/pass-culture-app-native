@@ -1,7 +1,8 @@
 import { Environment } from 'libs/environment/schema'
 
 export const env: Environment = {
-  ACCESSIBILITY_LINK: 'https://passculture.accessibility',
+  ACCESSIBILITY: 'https://passculture.accessibility',
+  ACCESSIBILITY_PLAN: 'https://passculture.accessibility_plan',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_ARTISTS_INDEX_NAME: 'algoliaArtistsIndexName',
   ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME: 'algoliaMostLikedOffersIndexName',

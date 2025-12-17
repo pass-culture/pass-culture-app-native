@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
@@ -12,7 +11,6 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -48,52 +46,6 @@ export function AccessibilityDeclarationWeb() {
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
         actions suivantes&nbsp;:
       </Typo.Body>
-      <StyledView>
-        <VerticalUl>
-          <BulletListItem
-            groupLabel="Engagements"
-            accessibilityRole={AccessibilityRole.BUTTON}
-            index={0}
-            total={3}>
-            <Typo.BodyXs>
-              <InternalTouchableLink
-                as={LinkInsideText}
-                wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
-                navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
-                accessibilityRole={AccessibilityRole.BUTTON}
-              />
-            </Typo.BodyXs>
-          </BulletListItem>
-          <BulletListItem
-            groupLabel="Engagements"
-            accessibilityRole={AccessibilityRole.BUTTON}
-            index={1}
-            total={3}>
-            <Typo.BodyXs>
-              <InternalTouchableLink
-                as={LinkInsideText}
-                wording="Actions réalisées depuis 2022"
-                navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
-                accessibilityRole={AccessibilityRole.BUTTON}
-              />
-            </Typo.BodyXs>
-          </BulletListItem>
-          <BulletListItem
-            groupLabel="Engagements"
-            accessibilityRole={AccessibilityRole.BUTTON}
-            index={2}
-            total={3}>
-            <Typo.BodyXs>
-              <InternalTouchableLink
-                as={LinkInsideText}
-                wording="Plan d’actions 2024"
-                navigateTo={getProfilePropConfig('AccessibilityActionPlan')}
-                accessibilityRole={AccessibilityRole.BUTTON}
-              />
-            </Typo.BodyXs>
-          </BulletListItem>
-        </VerticalUl>
-      </StyledView>
       <Typo.Body>
         Cette déclaration d’accessibilité s’applique au site internet{SPACE}
         <ExternalTouchableLink
