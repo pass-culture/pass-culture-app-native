@@ -11,9 +11,6 @@ export const getAllFeatureFlags = async (): Promise<FeatureFlagDocument | null> 
       FIRESTORE_ROOT_COLLECTION,
       RemoteStoreDocuments.FEATURE_FLAGS
     )
-
-    // Retrieve the doc and cast it to your specific type
-    // (Restoring the type safety previously provided by .collection<FeatureFlagStore>)
     return (await getDoc(docRef)) as unknown as FeatureFlagDocument
   } catch (error) {
     captureMonitoringError(getErrorMessage(error), 'firestore_not_available')

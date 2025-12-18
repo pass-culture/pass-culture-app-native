@@ -1,15 +1,20 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const onSnapshot = jest.fn().mockReturnValue(() => {})
-const get = jest.fn().mockResolvedValue({
+const mockSnapshot = {
   data: jest.fn(() => ({
     etaMessage: 'Environ 1 heure',
   })),
-})
-const doc = jest.fn().mockReturnValue({ onSnapshot, get })
-const collection = jest.fn().mockReturnValue({ doc })
+  exists: true,
+}
 
-export default () => ({
-  collection,
-  disableNetwork: jest.fn(),
-  enableNetwork: jest.fn(),
-})
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export const onSnapshot = jest.fn().mockReturnValue(() => {})
+
+export const getDoc = jest.fn().mockResolvedValue(mockSnapshot)
+
+export const doc = jest.fn().mockReturnValue({ id: 'mock-doc-id', path: 'mock/path' })
+export const collection = jest.fn().mockReturnValue({ id: 'mock-col-id', path: 'mock/path' })
+
+export const getFirestore = jest.fn(() => ({}))
+export const disableNetwork = jest.fn()
+export const enableNetwork = jest.fn()
+
+export default getFirestore

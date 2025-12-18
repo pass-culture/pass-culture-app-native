@@ -6,14 +6,12 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getMaintenance = async (): Promise<DocumentData | undefined | null> => {
   try {
-    // 1. Create reference
     const docRef = doc(
       firestoreRemoteStore,
       FIRESTORE_ROOT_COLLECTION,
       RemoteStoreDocuments.MAINTENANCE
     )
 
-    // 2. Fetch snapshot
     const docSnapshot = await getDoc(docRef)
 
     return docSnapshot.data() ?? {}
