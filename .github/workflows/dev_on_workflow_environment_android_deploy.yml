@@ -54,20 +54,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Disk usage (for debugging purposes)
-        run: df -h
-      - name: Free disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          android: true
-          tool-cache: true
-          large-packages: true
-          docker-images: true
-          swap-storage: true
-          dotnet: true
-          haskell: true
-      - name: Disk usage (for debugging purposes)
-        run: df -h
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
