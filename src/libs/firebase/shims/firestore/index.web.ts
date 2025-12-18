@@ -1,7 +1,6 @@
 import {
   getFirestore,
   initializeFirestore,
-  // New Cache Imports:
   persistentLocalCache,
   persistentMultipleTabManager,
   collection,
@@ -21,7 +20,6 @@ export { app }
 export {
   getFirestore,
   initializeFirestore,
-  // Export new cache functions
   persistentLocalCache,
   persistentMultipleTabManager,
   collection,

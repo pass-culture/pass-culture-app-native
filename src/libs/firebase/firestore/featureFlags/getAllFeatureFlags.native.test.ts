@@ -1,21 +1,23 @@
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
-import firestore from 'libs/firebase/shims/firestore'
+import { doc, getDoc, getFirestore } from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
+const mockGet = getDoc as jest.Mock
 
-const { collection } = firestore()
-const { get } = collection(FIRESTORE_ROOT_COLLECTION).doc(RemoteStoreDocuments.FEATURE_FLAGS)
-const mockGet = get as jest.Mock
+const firestoreInstance = getFirestore()
 
 describe('getAllFeatureFlags', () => {
-  it('should call the right firestore collection: featureFlags', () => {
+  it('should call the right firestore document', () => {
     getAllFeatureFlags()
 
-    expect(collection).toHaveBeenCalledWith('root')
-    expect(collection('root').doc).toHaveBeenCalledWith('featureFlags')
+    expect(doc).toHaveBeenCalledWith(
+      firestoreInstance,
+      FIRESTORE_ROOT_COLLECTION,
+      RemoteStoreDocuments.FEATURE_FLAGS
+    )
   })
 
   it('should send log to Sentry when Firestore throws an error', async () => {

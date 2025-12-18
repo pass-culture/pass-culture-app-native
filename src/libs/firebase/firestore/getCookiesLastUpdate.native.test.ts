@@ -1,43 +1,51 @@
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreCookies } from 'libs/firebase/firestore/types'
-import firestore from 'libs/firebase/shims/firestore'
+import { doc, getDoc, getFirestore } from 'libs/firebase/shims/firestore'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 
 import { getCookiesLastUpdate } from './getCookiesLastUpdate'
 
 jest.mock('@react-native-firebase/firestore')
 jest.mock('libs/monitoring/errors')
+jest.mock('libs/firebase/shims/firestore')
 
-const { collection } = firestore()
+const firestoreInstance = getFirestore()
+
+const mockGet = getDoc as jest.Mock
 
 const validFirebaseData = {
   lastUpdated: '2022-09-16',
   buildVersion: 10206000,
 }
 
-const mockGet = jest.fn()
 const mockCaptureMonitoringError = captureMonitoringError as jest.Mock
 
-const mockFirestoreDocumentGet = collection(FIRESTORE_ROOT_COLLECTION).doc(
-  RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE
-).get as jest.Mock
-
 describe('[method] getCookiesLastUpdate', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   beforeAll(() =>
-    mockFirestoreDocumentGet.mockResolvedValue({
-      get: mockGet,
-    })
+    doc(firestoreInstance, FIRESTORE_ROOT_COLLECTION, RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE)
   )
 
   it('should call the right path: cookiesLastUpdate', async () => {
+    mockGet.mockResolvedValueOnce({ get: jest.fn() })
+
     await getCookiesLastUpdate()
 
-    expect(collection('root').doc).toHaveBeenCalledWith('cookiesLastUpdate')
+    expect(doc).toHaveBeenCalledWith({}, 'root', 'cookiesLastUpdate')
   })
 
   it('should convert data: lastUpdated -> Date', async () => {
-    mockGet
+    const mockSnapshotGet = jest
+      .fn()
       .mockReturnValueOnce(validFirebaseData.lastUpdated)
       .mockReturnValueOnce(validFirebaseData.buildVersion)
+
+    mockGet.mockResolvedValueOnce({
+      exists: true,
+      get: mockSnapshotGet,
+    })
 
     const cookiesLastUpdate = await getCookiesLastUpdate()
 
@@ -48,7 +56,12 @@ describe('[method] getCookiesLastUpdate', () => {
   })
 
   it('should return undefined when data is not defined', async () => {
-    mockGet.mockReturnValueOnce(undefined).mockReturnValueOnce(undefined)
+    const mockSnapshotGet = jest.fn().mockReturnValueOnce(undefined).mockReturnValueOnce(undefined)
+
+    mockGet.mockResolvedValueOnce({
+      exists: true,
+      get: mockSnapshotGet,
+    })
 
     const cookiesLastUpdate = await getCookiesLastUpdate()
 
@@ -56,7 +69,7 @@ describe('[method] getCookiesLastUpdate', () => {
   })
 
   it('should log error when firestore cannot retrieve collection', async () => {
-    mockFirestoreDocumentGet.mockRejectedValueOnce(new Error('ERROR'))
+    mockGet.mockRejectedValueOnce(new Error('ERROR'))
 
     await getCookiesLastUpdate()
 
@@ -64,9 +77,18 @@ describe('[method] getCookiesLastUpdate', () => {
   })
 
   it.each(['', 'abc', '22-09-16', undefined])(
-    'should return undefined when last update date is invalid',
+    'should return undefined when last update date is invalid: %s',
     async (lastUpdated) => {
-      mockGet.mockReturnValueOnce(lastUpdated).mockReturnValueOnce(validFirebaseData.buildVersion)
+      const mockSnapshotGet = jest
+        .fn()
+        .mockReturnValueOnce(lastUpdated)
+        .mockReturnValueOnce(validFirebaseData.buildVersion)
+
+      mockGet.mockResolvedValueOnce({
+        exists: true,
+        get: mockSnapshotGet,
+      })
+
       const cookiesLastUpdate = await getCookiesLastUpdate()
 
       expect(cookiesLastUpdate).toBeUndefined()

@@ -7,7 +7,6 @@ import {
   EVENT_PAGE_VIEW_NAME,
   EVENT_PAGE_VIEW_PARAM_KEY,
 } from 'libs/firebase/analytics/constants'
-// 1. Import named functions
 import {
   getAnalytics,
   logEvent,
@@ -18,10 +17,8 @@ import { getAppVersion } from 'libs/packageJson'
 
 import { AnalyticsProvider } from './types'
 
-// 2. Get Instance
 const firebaseAnalytics = getAnalytics()
 
-// 3. Use Functional Syntax
 setAnalyticsCollectionEnabled(firebaseAnalytics, false)
 
 export const firebaseAnalyticsProvider: AnalyticsProvider = {
@@ -33,8 +30,6 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
   },
   async getAppInstanceId() {
     if (Platform.OS === 'web') return Promise.resolve(null)
-    // The native instance is an object, so we can still access native-only methods
-    // directly if we haven't shimmed them.
     return firebaseAnalytics.getAppInstanceId()
   },
   async setDefaultEventParameters(params: Record<string, unknown> | undefined) {
