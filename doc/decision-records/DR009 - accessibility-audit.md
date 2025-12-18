@@ -1,11 +1,11 @@
 # 🌈 Suivi des corrections d’accessibilité
 
-| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | Début 2026 |
-| ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ---------- |
-| Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | 72.09%      | ⏳         |
-|            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | 54.17%      | ⏳         |
-| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | 58.14%     | 72.09%      | ⏳         |
-|            | EN 301-549 | 20.83%     | 25.00%       | 29.17%     | 54.17%      | ⏳         |
+| Plateforme | Conformité | 07 juillet 2025 | 26 septembre 2025 | 31 octobre 2025 | 28 novembre 2025 | 2 février 2026 |
+| ---------- | ---------- | --------------- | ----------------- | --------------- | ---------------- | -------------- |
+| Android    | RAAM 1.1   | 35.71%          | 44.19%            | 62.79%          | 72.09%           | ⏳             |
+|            | EN 301-549 | 35.42%          | 37.50%            | 41.67%          | 54.17%           | ⏳             |
+| iOS        | RAAM 1.1   | 28.57%          | 41.86%            | 58.14%          | 72.09%           | ⏳             |
+|            | EN 301-549 | 20.83%          | 25.00%            | 29.17%          | 54.17%           | ⏳             |
 
 <br>
 
@@ -18,7 +18,7 @@
 
 <br>
 
-## ✅ Corrections 26 août → 26 septembre
+## ✅ Corrections 26 août 2025 → 26 septembre 2025
 
 <details>
 
@@ -229,7 +229,7 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <br>
 
-## ✅ Corrections 26 septembre → 31 octobre
+## ✅ Corrections 26 septembre 2025 → 31 octobre 2025
 
 <details>
 
@@ -594,7 +594,7 @@ Texte
 
 <br>
 
-## ✅ Corrections 31 octobre → 28 novembre
+## ✅ Corrections 31 octobre 2025 → 28 novembre 2025
 
 <br>
 
@@ -880,7 +880,7 @@ Texte
 
 <br>
 
-## ✅ Corrections 28 novembre → 15 décembre
+## ✅ Corrections 28 novembre 2025 → 02 décembre 2026
 
 <br>
 
