@@ -14,6 +14,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/location/location')
+jest.mock('react-native-map-link')
+
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }

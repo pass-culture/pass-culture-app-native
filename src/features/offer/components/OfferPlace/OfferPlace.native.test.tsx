@@ -69,6 +69,8 @@ jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => (
   useSearchVenueOffersInfiniteQuery: () => mockUseSearchVenueOffers(),
 }))
 
+jest.mock('react-native-map-link')
+
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   subcategory: mockSubcategory,
