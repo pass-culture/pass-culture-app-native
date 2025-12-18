@@ -2,7 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - scrollUntilVisible:
     element:
-        text: 'Confidentialité'
+      text: 'Confidentialité'
 - tapOn: 'Accessibilité'
 - assertVisible: 'Accessibilité'
 
@@ -12,16 +12,16 @@ appId: ${MAESTRO_APP_ID}
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
-    text: 'Les engagements du pass Culture'
+    text: 'Nouvelle fenêtre : Les engagements du pass Culture'
     index: 0
-- assertVisible: 'Les engagements du pass Culture'
-- assertVisible: 'Au pass Culture.*'
+- assertVisible: 'Accessibilité'
+- assertVisible: "L'accessibilité au pass Culture"
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn: 'Schéma pluriannuel'
-- assertVisible: 'Schéma pluriannuel'
-- assertVisible: 'Schéma pluriannuel d’accessibilité.*'
+- tapOn: 'Nouvelle fenêtre : Schéma pluriannuel'
+- assertVisible: 'Schéma pluriannuel 2025-2027'
+- assertVisible: 'Introduction'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
