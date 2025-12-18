@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// We have "require" modules to avoid hoisting issues
+// We have "require" modules to delay until the mock function is actually executed
 import 'jest-canvas-mock'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

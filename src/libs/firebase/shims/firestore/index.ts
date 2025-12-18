@@ -5,7 +5,6 @@ export type DocumentSnapshot<
   T extends FirebaseFirestoreTypes.DocumentData = FirebaseFirestoreTypes.DocumentData,
 > = FirebaseFirestoreTypes.DocumentSnapshot<T>
 export {
-  collection,
   doc,
   getDoc,
   disableNetwork,

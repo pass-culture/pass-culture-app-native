@@ -11,6 +11,6 @@ export type FeatureFlagConfig = {
   options?: Record<string, any> // Tried with unknown but got: Type 'Record<string, unknown>' is not assignable to type 'DocumentFieldType'.
 }
 
-export type FeatureFlagStore = Record<RemoteStoreFeatureFlags, FeatureFlagConfig>
+type FeatureFlagStore = Record<RemoteStoreFeatureFlags, FeatureFlagConfig>
 
 export type FeatureFlagDocument = DocumentSnapshot<FeatureFlagStore>
