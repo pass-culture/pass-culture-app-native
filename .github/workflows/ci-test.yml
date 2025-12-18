@@ -1,0 +1,26 @@
+name: "OPS TEST"
+
+on:
+    push:
+        branches:
+            - ops/test-ci
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set Android SDK root
+              run: |
+                  echo "ANDROID_SDK_ROOT=$RUNNER_TEMP/android-sdk" >> $GITHUB_ENV
+                  echo "ANDROID_HOME=$RUNNER_TEMP/android-sdk" >> $GITHUB_ENV
+                  mkdir -p "$RUNNER_TEMP/android-sdk"
+
+            - uses: android-actions/setup-android@v3
+              with:
+                  cmdline-tools-version: 11076708
+
+            - name: Env
+              run: |
+                  env
