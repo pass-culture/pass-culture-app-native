@@ -1,15 +1,10 @@
-import {
-  getAnalytics,
-  logEvent,
-  setAnalyticsCollectionEnabled,
-  setUserId,
-} from 'firebase/analytics'
+import { getAnalytics as getAnalyticsInstance } from 'firebase/analytics'
 
 import initializeApp from '../firebase-init'
 
 const app = initializeApp()
 
-const analyticsInstance = getAnalytics(app)
-const getAnalyticsInstance = () => analyticsInstance
+const analyticsInstance = getAnalyticsInstance(app)
+export const getAnalytics = () => analyticsInstance
 
-export { getAnalyticsInstance as getAnalytics, logEvent, setAnalyticsCollectionEnabled, setUserId }
+export { logEvent, setAnalyticsCollectionEnabled, setUserId } from 'firebase/analytics'
