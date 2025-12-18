@@ -77,7 +77,7 @@ describe('[method] getCookiesLastUpdate', () => {
   })
 
   it.each(['', 'abc', '22-09-16', undefined])(
-    'should return undefined when last update date is invalid: %s',
+    'should return undefined when last update date is invalid',
     async (lastUpdated) => {
       const mockSnapshotGet = jest
         .fn()

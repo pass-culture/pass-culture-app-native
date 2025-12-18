@@ -1,5 +1,4 @@
 import {
-  collection,
   doc,
   getDoc,
   enableNetwork,
@@ -10,4 +9,4 @@ import {
 const firestoreRemoteStore = getFirestore()
 disableNetwork(firestoreRemoteStore)
 
-export { firestoreRemoteStore, collection, doc, getDoc, enableNetwork, disableNetwork }
+export { firestoreRemoteStore, doc, getDoc, enableNetwork, disableNetwork }
