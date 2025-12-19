@@ -31,6 +31,8 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
       - id: gcloud-auth
         name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
