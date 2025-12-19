@@ -45,9 +45,11 @@ exports[`EndedBookings should render correctly 1`] = `
         "dateUsed": null,
         "expirationDate": null,
         "id": 987,
+        "isArchivable": false,
         "quantity": 10,
         "stock": {
           "beginningDatetime": "2021-03-14T20:00:00",
+          "isAutomaticallyUsed": false,
           "offer": {
             "address": {
               "city": "Drancy",

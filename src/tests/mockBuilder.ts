@@ -2,6 +2,9 @@ import { SearchResponse } from '@algolia/client-search'
 import { mergeWith } from 'lodash'
 
 import {
+  BookingListItemOfferResponse,
+  BookingListItemResponse,
+  BookingListItemStockResponse,
   BookingOfferResponse,
   BookingOfferResponseAddressV2,
   BookingOfferResponseV2,
@@ -15,6 +18,10 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { bookingsSnap, bookingsSnapV2 } from 'features/bookings/fixtures'
+import {
+  endedBookingsV2ListSnap,
+  ongoingBookingsV2ListSnap,
+} from 'features/bookings/fixtures/bookingsSnap'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import {
   mockedBookingOfferResponse,
@@ -87,22 +94,36 @@ const searchResponseOffer = {
   query: '',
   params: '',
 }
+const defaultBookingListItemStockResponse = ongoingBookingsV2ListSnap.bookings[0].stock
+const defaultBookingListItemOfferResponse = ongoingBookingsV2ListSnap.bookings[0].stock.offer
 
 export const mockBuilder = {
-  offerResponseV2: createMockBuilder<OfferResponseV2>(defaultOfferResponse),
-  offerVenueResponse: createMockBuilder<OfferVenueResponse>(defaultOfferResponse.venue),
-  offerStockResponse: createMockBuilder<OfferStockResponse>(defaultStock),
-  searchResponseOffer: createMockBuilder<SearchResponse<Offer>>(searchResponseOffer),
-  bookingVenueResponse: createMockBuilder<BookingVenueResponse>(mockedBookingOfferResponse.venue),
+  algoliaOfferResponse: createMockBuilder<AlgoliaOffer>(mockedAlgoliaOffer),
+  bookingListItemOfferResponse: createMockBuilder<BookingListItemOfferResponse>(
+    defaultBookingListItemOfferResponse
+  ),
+  bookingListItemStockResponse: createMockBuilder<BookingListItemStockResponse>(
+    defaultBookingListItemStockResponse
+  ),
   bookingOfferResponse: createMockBuilder<BookingOfferResponse>(mockedBookingOfferResponse),
+  bookingOfferResponseAddressV2: createMockBuilder<BookingOfferResponseAddressV2>(
+    mockedBookingOfferResponseAddressV2
+  ),
   bookingOfferResponseV2: createMockBuilder<BookingOfferResponseV2>(mockedBookingOfferResponseV2),
   bookingResponseV1: createMockBuilder<BookingReponse>(bookingsSnap.ongoing_bookings[0]),
   bookingResponseV2: createMockBuilder<BookingResponse>(bookingsSnapV2.ongoingBookings[0]),
   bookingStockResponseV2: createMockBuilder<BookingStockResponseV2>(mockedBookingStockResponseV2),
-  bookingOfferResponseAddressV2: createMockBuilder<BookingOfferResponseAddressV2>(
-    mockedBookingOfferResponseAddressV2
+  bookingVenueResponse: createMockBuilder<BookingVenueResponse>(mockedBookingOfferResponse.venue),
+  endedBookingListItemResponse: createMockBuilder<BookingListItemResponse>(
+    endedBookingsV2ListSnap.bookings[0]
   ),
-  algoliaOfferResponse: createMockBuilder<AlgoliaOffer>(mockedAlgoliaOffer),
+  offerResponseV2: createMockBuilder<OfferResponseV2>(defaultOfferResponse),
+  offerStockResponse: createMockBuilder<OfferStockResponse>(defaultStock),
+  offerVenueResponse: createMockBuilder<OfferVenueResponse>(defaultOfferResponse.venue),
+  ongoingBookingListItemResponse: createMockBuilder<BookingListItemResponse>(
+    ongoingBookingsV2ListSnap.bookings[0]
+  ),
+  searchResponseOffer: createMockBuilder<SearchResponse<Offer>>(searchResponseOffer),
 }
 
 export const dateBuilder = createDateBuilder()
