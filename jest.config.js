@@ -14,7 +14,6 @@ module.exports = {
     'android.jsx',
     'android.js',
   ],
-  testEnvironment: process.env.RUN_ALLURE === 'true' ? 'allure-jest/node' : undefined,
   testEnvironmentOptions: { customExportConditions: [''] },
   moduleNameMapper: {
     // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
@@ -82,7 +81,7 @@ module.exports = {
     ...excludeCollectCoverageFrom,
   ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
-  coverageReporters: process.env.CI === 'true' ? ['json']: ['text'],
+  coverageReporters: process.env.CI === 'true' ? ['json'] : ['text'],
   collectCoverage: false,
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
   testTimeout: 10_000,

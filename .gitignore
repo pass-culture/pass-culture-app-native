@@ -70,8 +70,6 @@ yarn-error.log
 .jest/
 coverage/
 
-allure-results/
-
 /dist
 *.back
 

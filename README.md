@@ -46,10 +46,6 @@ Access to the [storybook](https://master--61fd537ecf081f003a135235.chromatic.com
 
 To run the storybook on your browser, follow the steps [here](./doc/development/tests/storybook.md)
 
-#### 🍋 Allure report
-
-Access to the [Allure report](https://special-goggles-reogzj6.pages.github.io/).
-
 ## Development
 
 ### Debugging
