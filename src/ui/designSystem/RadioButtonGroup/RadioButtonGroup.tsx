@@ -4,7 +4,7 @@
  */
 
 import React, { FunctionComponent, ReactNode, SetStateAction } from 'react'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
@@ -55,13 +55,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
     <RadioButtonGroupContainer accessibilityRole={AccessibilityRole.GROUP}>
       <TitleContainer>
         {renderRadioGroupLabel(label, labelVariant)}
-        {description ? (
-          labelVariant === 'title2' || labelVariant === 'title3' ? (
-            <DescriptionBody>{description}</DescriptionBody>
-          ) : (
-            <DescriptionBodyS>{description}</DescriptionBodyS>
-          )
-        ) : null}
+        {renderDescription(description, labelVariant)}
         {error ? (
           <ErrorContainer>
             <ErrorIcon />
@@ -108,12 +102,7 @@ const RadioButtonListContainer = styled.View<{
 }>(({ theme, variant, display }) => ({
   flexWrap: display === 'horizontal' ? 'wrap' : 'nowrap',
   flexDirection: display === 'vertical' ? 'column' : 'row',
-  gap:
-    display === 'vertical'
-      ? variant === 'default'
-        ? theme.designSystem.size.spacing.xl
-        : theme.designSystem.size.spacing.s
-      : theme.designSystem.size.spacing.l,
+  gap: computeGap({ variant, display, theme }),
 }))
 
 const ErrorContainer = styled.View(({ theme }) => ({
@@ -134,6 +123,29 @@ const DescriptionBody = styled(Typo.Body)(({ theme }) => ({
 const DescriptionBodyS = styled(Typo.BodyS)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const renderDescription = (description?: string, labelVariant?: LabelVariant) => {
+  if (!description) return null
+
+  const isTitleVariant = labelVariant === 'title2' || labelVariant === 'title3'
+  const DescriptionComponent = isTitleVariant ? DescriptionBody : DescriptionBodyS
+
+  return <DescriptionComponent>{description}</DescriptionComponent>
+}
+
+const computeGap = ({
+  variant,
+  display,
+  theme,
+}: {
+  variant: Variant
+  display: RadioButtonGroupDisplay
+  theme: DefaultTheme
+}) => {
+  if (display === 'horizontal') return theme.designSystem.size.spacing.l
+  if (variant === 'default') return theme.designSystem.size.spacing.xl
+  return theme.designSystem.size.spacing.s
+}
 
 const ErrorText = styled(Typo.BodyXs)(({ theme }) => ({
   color: theme.designSystem.color.text.error,
