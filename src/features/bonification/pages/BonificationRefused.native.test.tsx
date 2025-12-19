@@ -14,12 +14,12 @@ describe('BonificationRefused', () => {
   describe('Parent not found', () => {
     it('should go navigate to home when pressing "Corriger les informations"', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.PARENT_NOT_FOUND },
+        params: { bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND },
       })
       render(<BonificationRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.PARENT_NOT_FOUND].primaryButton.wording
+        PAGE_CONFIG[BonificationRefusedType.CUSTODIAN_NOT_FOUND].primaryButton.wording
       )
       await userEvent.press(button)
 
@@ -46,12 +46,12 @@ describe('BonificationRefused', () => {
   describe('Child not found', () => {
     it('should go navigate to home when pressing "Renouveler ma demande"', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT },
+        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
       })
       render(<BonificationRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT].primaryButton.wording
+        PAGE_CONFIG[BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD].primaryButton.wording
       )
       await userEvent.press(button)
 
@@ -62,12 +62,12 @@ describe('BonificationRefused', () => {
   describe('Family quotient too high', () => {
     it('should go navigate to home when pressing "Revenir vers le catalogue"', async () => {
       useRoute.mockReturnValueOnce({
-        params: { bonificationRefusedType: BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH },
+        params: { bonificationRefusedType: BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
       })
       render(<BonificationRefused />)
 
       const button = screen.getByText(
-        PAGE_CONFIG[BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH].primaryButton.wording
+        PAGE_CONFIG[BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH].primaryButton.wording
       )
       await userEvent.press(button)
 
