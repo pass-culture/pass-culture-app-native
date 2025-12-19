@@ -8,15 +8,12 @@ import { getSiteMapLinks } from 'features/profile/helpers/getSiteMapLinks'
 import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getLineHeightPx } from 'libs/parsers/getLineHeightPx'
-import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
-import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Dot } from 'ui/svg/icons/Dot'
-import { Typo } from 'ui/theme'
 
 export function SiteMapScreen() {
   const { goBack } = useGoBack(...getProfileHookConfig('Accessibility'))
@@ -50,9 +47,10 @@ export function SiteMapScreen() {
                 </BulletContainer>
                 <ListText>
                   <InternalTouchableLink
-                    as={Button}
+                    as={ButtonTertiaryBlack}
                     wording={item.wording}
                     navigateTo={item.navigateTo}
+                    justifyContent="flex-start"
                   />
                 </ListText>
               </ItemContainer>
@@ -73,10 +71,10 @@ export function SiteMapScreen() {
                 </BulletContainer>
                 <ListText>
                   <InternalTouchableLink
-                    as={Button}
-                    typography="BodyAccentXs"
+                    as={ButtonTertiaryBlack}
                     wording={subPage.wording}
                     navigateTo={subPage.navigateTo}
+                    justifyContent="flex-start"
                   />
                 </ListText>
               </NestedItemContainer>
@@ -89,18 +87,6 @@ export function SiteMapScreen() {
     </SecondaryPageWithBlurHeader>
   )
 }
-
-const Button = styledButton(AppButton).attrs<BaseButtonProps>(({ theme }) => {
-  const Title = styled(Typo.Button)({
-    color: theme.designSystem.color.text.default,
-  })
-
-  return {
-    title: Title,
-    justifyContent: 'flex-start',
-    hoverUnderlineColor: theme.designSystem.color.text.default,
-  }
-})``
 
 const ItemContainer = styled.View<{ spacing?: number }>(({ theme }) => ({
   flexDirection: 'row',

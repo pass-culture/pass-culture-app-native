@@ -52,8 +52,8 @@ describe('SiteMapScreen', () => {
     await user.press(homeButton)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'Home' },
-      screen: 'TabNavigator',
+      params: undefined,
+      screen: 'Home',
     })
   })
 

@@ -5,13 +5,7 @@ export function getTabPropConfig<Screen extends TabRouteName>(
   params?: TabParamList[Screen]
 ): {
   screen: 'TabNavigator'
-  params: {
-    screen: 'TabNavigator'
-    params: { screen: Screen; params: TabParamList[Screen] }
-  }
+  params: { screen: Screen; params?: TabParamList[Screen] }
 } {
-  return {
-    screen: 'TabNavigator',
-    params: { screen: 'TabNavigator', params: { screen, params } },
-  }
+  return { screen: 'TabNavigator', params: { screen, params } }
 }
