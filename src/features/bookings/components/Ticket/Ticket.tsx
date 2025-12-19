@@ -11,8 +11,6 @@ import { formatEventDateLabel } from 'features/bookings/helpers/getBookingLabels
 import { useArchiveBookingMutation } from 'features/bookings/queries'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueBlockAddress } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
@@ -45,8 +43,7 @@ export const Ticket = ({
   display,
   ticket,
 }: TicketProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...getTabHookConfig('Bookings'))
+  const { navigate, goBack } = useNavigation<UseNavigationType>()
 
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const { mutate: archiveBooking } = useArchiveBookingMutation({
