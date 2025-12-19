@@ -56,8 +56,6 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-        with:
-          cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
       - uses: pass-culture-github-actions/cache@v1.0.0
         id: yarn-modules-cache
         with:
