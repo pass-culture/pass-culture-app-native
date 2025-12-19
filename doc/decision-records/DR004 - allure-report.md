@@ -2,6 +2,10 @@
 
 > Statut : Adopté
 
+⚠️ **MISE À JOUR** ⚠️
+
+Nous avons décidé dans un premier temps de ne plus lancer Allure Report car nous n'avons jamais réussi a le faire fonctionner comme nous le voulions. Quelques mois plus tard, nous avons eu des erreurs dans la CI qui empechaient de déployer testing. Nous avons donc décidé de supprimer Allure Report.
+
 ## Contexte
 
 L'équipe a peu de visibilité sur les tests et cela doit-être actuellement depuis l'historique de CI.
