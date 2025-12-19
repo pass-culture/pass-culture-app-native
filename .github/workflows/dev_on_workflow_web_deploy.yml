@@ -67,7 +67,7 @@ jobs:
         with:
           version: '>= 416.0.0'
       - name: 'Push debug log for testing'
-        if: ${{ inputs.ENV != 'production' }}
+        if: ${{ inputs.ENV == 'testing' }}
         run: |
           export SENTRY_LOG_LEVEL="debug"
       - name: 'Build web for input env'
