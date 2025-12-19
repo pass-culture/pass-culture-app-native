@@ -11269,8 +11269,6 @@ __metadata:
     "@welldone-software/why-did-you-render": ^7.0.1
     "@zootools/email-spell-checker": ^1.11.0
     algoliasearch: ^5.45.0
-    allure-commandline: ^2.33.0
-    allure-jest: ^3.2.0
     babel-jest: ^30.0.5
     babel-loader: ^8.2.5
     babel-plugin-macros: ^3.1.0
@@ -11672,55 +11670,6 @@ __metadata:
     "@algolia/requester-fetch": 5.45.0
     "@algolia/requester-node-http": 5.45.0
   checksum: b88bf94b8abd3886ba03b67978562561e4026d9c5c30d1ae89775ac980452293dec65662f0a504ceab7b5f1cc3f634864f1df649542bb62c98cd783888e24cea
-  languageName: node
-  linkType: hard
-
-"allure-commandline@npm:^2.33.0":
-  version: 2.33.0
-  resolution: "allure-commandline@npm:2.33.0"
-  bin:
-    allure: bin/allure
-  checksum: ed555ee2defc61659dffcf72732e019f319f4dd7d086498de3a602bf9169c83d883809fe2dac68d654820aba40a602099b7133b31ae8af0d774b8cb3a1a708ff
-  languageName: node
-  linkType: hard
-
-"allure-jest@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "allure-jest@npm:3.2.0"
-  dependencies:
-    allure-js-commons: 3.2.0
-  peerDependencies:
-    jest: ">=24.8.0"
-    jest-circus: ">=24.8.0"
-    jest-cli: ">=24.8.0"
-    jest-environment-jsdom: ">=24.8.0"
-    jest-environment-node: ">=24.8.0"
-  peerDependenciesMeta:
-    jest:
-      optional: true
-    jest-circus:
-      optional: true
-    jest-cli:
-      optional: true
-    jest-environment-jsdom:
-      optional: true
-    jest-environment-node:
-      optional: true
-  checksum: 916eb144b60066d63f98d99e5acc310db8fa149b72faccb5fee68baba7799f9dd351b5afab901b828bbdfd67a14d5424d92712c0a241fefe9b7da417c29e35bb
-  languageName: node
-  linkType: hard
-
-"allure-js-commons@npm:3.2.0":
-  version: 3.2.0
-  resolution: "allure-js-commons@npm:3.2.0"
-  dependencies:
-    md5: ^2.3.0
-  peerDependencies:
-    allure-playwright: 3.2.0
-  peerDependenciesMeta:
-    allure-playwright:
-      optional: true
-  checksum: 6d8c1fbc1692f4d18663e35c7cd636aa379ae740f81114ec6470b2de2fb18a51ef9baa64b0898c9c8c5c283bf93ce1389cd0a3c3883804834bda814ba3d245ee
   languageName: node
   linkType: hard
 
@@ -13107,13 +13056,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"charenc@npm:0.0.2":
-  version: 0.0.2
-  resolution: "charenc@npm:0.0.2"
-  checksum: 81dcadbe57e861d527faf6dd3855dc857395a1c4d6781f4847288ab23cffb7b3ee80d57c15bba7252ffe3e5e8019db767757ee7975663ad2ca0939bb8fcaf2e5
-  languageName: node
-  linkType: hard
-
 "check-error@npm:^2.1.1":
   version: 2.1.1
   resolution: "check-error@npm:2.1.1"
@@ -13983,13 +13925,6 @@ __metadata:
     shebang-command: ^2.0.0
     which: ^2.0.1
   checksum: 8d306efacaf6f3f60e0224c287664093fa9185680b2d195852ba9a863f85d02dcc737094c6e512175f8ee0161f9b87c73c6826034c2422e39de7d6569cf4503b
-  languageName: node
-  linkType: hard
-
-"crypt@npm:0.0.2":
-  version: 0.0.2
-  resolution: "crypt@npm:0.0.2"
-  checksum: baf4c7bbe05df656ec230018af8cf7dbe8c14b36b98726939cef008d473f6fe7a4fad906cfea4062c93af516f1550a3f43ceb4d6615329612c6511378ed9fe34
   languageName: node
   linkType: hard
 
@@ -18527,7 +18462,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:^1.1.5, is-buffer@npm:~1.1.6":
+"is-buffer@npm:^1.1.5":
   version: 1.1.6
   resolution: "is-buffer@npm:1.1.6"
   checksum: 4a186d995d8bbf9153b4bd9ff9fd04ae75068fe695d29025d25e592d9488911eeece84eefbd8fa41b8ddcc0711058a71d4c466dcf6f1f6e1d83830052d8ca707
@@ -20962,17 +20897,6 @@ __metadata:
   bin:
     mathjs: bin/cli.js
   checksum: 0ba0a25bf60084c1580174e556603cb8836d1f1724da4e6a86aec2625f19bece544ae7b43959c223e2e0c01206b2a466a1a50fbe7a847c53afd68002482d182c
-  languageName: node
-  linkType: hard
-
-"md5@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "md5@npm:2.3.0"
-  dependencies:
-    charenc: 0.0.2
-    crypt: 0.0.2
-    is-buffer: ~1.1.6
-  checksum: a63cacf4018dc9dee08c36e6f924a64ced735b37826116c905717c41cebeb41a522f7a526ba6ad578f9c80f02cb365033ccd67fe186ffbcc1a1faeb75daa9b6e
   languageName: node
   linkType: hard
 
