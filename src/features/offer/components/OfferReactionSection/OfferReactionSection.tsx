@@ -31,6 +31,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
   const scrollToAnchor = useScrollToAnchor()
   const hasPublishedChronicles = (chronicles?.length ?? 0) > 0
   const hasUnpublishedChronicles = (chroniclesCount ?? 0) - (chronicles?.length ?? 0) > 0
+  const chroniclesCounter = chroniclesCount ?? 0
 
   const likesCounterElement = likesCount ? (
     <LikesInfoCounter text={formatLikesCounter(likesCount)} />
@@ -45,7 +46,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
       return (
         <TouchableOpacity onPress={handleChroniclesPress} testID="chroniclesCounter">
           <ChroniclesInfoCounter
-            text={`${chronicles?.length ?? 0} avis`}
+            text={`${chroniclesCounter} avis`}
             icon={chronicleVariantInfo.SmallIcon}
           />
         </TouchableOpacity>

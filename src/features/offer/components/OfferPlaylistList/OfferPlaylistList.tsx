@@ -2,7 +2,7 @@ import { useIsFocused, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import { styled, useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -23,6 +23,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
+import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
@@ -55,6 +56,8 @@ export function OfferPlaylistList({
   onViewableItemsChanged,
 }: Readonly<OfferPlaylistListProps>) {
   const theme = useTheme()
+  const isLandscape = useIsLandscape()
+
   const route = useRoute<UseRouteType<'Offer'>>()
   const isFocused = useIsFocused()
   const fromOfferId = route.params?.fromOfferId
@@ -131,7 +134,8 @@ export function OfferPlaylistList({
         return (
           <ObservedPlaylist
             key={playlist.type}
-            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}>
+            onViewableItemsChanged={handleOfferPlaylistViewableItemsChanged(playlist.type, index)}
+            onIntersectionChange={playlist.handleChangePlaylistDisplay}>
             {({ listRef, handleViewableItemsChanged }) => (
               <StyledPassPlaylist
                 data={playlist.offers ?? []}
@@ -170,9 +174,14 @@ export function OfferPlaylistList({
           </ObservedPlaylist>
         )
       })}
+      {isLandscape ? <PlaceholderBehindButton /> : null}
     </SectionWithDivider>
   )
 }
+
+const PlaceholderBehindButton = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxxxl,
+}))
 
 const StyledPassPlaylist = styled(PassPlaylist)({
   paddingBottom: 0,

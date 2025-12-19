@@ -1,11 +1,11 @@
-import algoliasearch from 'algoliasearch'
+import { liteClient } from 'algoliasearch/lite'
 
-jest.mock('algoliasearch')
+jest.mock('algoliasearch/lite')
 
 describe('[fetchAlgolia] client', () => {
   it('should instanciate new client', () => {
     require('../fetchAlgolia/clients')
 
-    expect(algoliasearch).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
+    expect(liteClient).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
   })
 })

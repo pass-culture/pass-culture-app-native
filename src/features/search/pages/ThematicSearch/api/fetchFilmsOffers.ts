@@ -1,4 +1,4 @@
-import { MultipleQueriesQuery } from '@algolia/client-search'
+import { SearchForHits } from 'algoliasearch/lite'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
@@ -16,7 +16,7 @@ export const fetchFilmsOffers = async ({
   userLocation?: Position
   isReplicaAlgoliaIndexActive?: boolean
 }) => {
-  const queries: MultipleQueriesQuery[] = [
+  const queries: SearchForHits[] = [
     buildQueryHelper({
       indexName: isReplicaAlgoliaIndexActive
         ? env.ALGOLIA_OFFERS_INDEX_NAME_B

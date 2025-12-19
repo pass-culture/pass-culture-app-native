@@ -40,25 +40,11 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const containerProps = {
     offerHeight,
     style,
-    navigateTo: {
-      screen: 'Offer',
-      params: { id: +offer.objectID },
-    } as const,
+    navigateTo: { screen: 'Offer', params: { id: +offer.objectID } } as const,
     onBeforeNavigate: () => {
       hideModal()
-      prePopulateOffer({
-        ...offer.offer,
-        offerId: +offer.objectID,
-        categoryId,
-      })
-      triggerConsultOfferLog(
-        {
-          offerId: +offer.objectID,
-
-          ...analyticsParams,
-        },
-        segment
-      )
+      prePopulateOffer({ ...offer.offer, offerId: +offer.objectID, categoryId })
+      triggerConsultOfferLog({ offerId: +offer.objectID, ...analyticsParams }, segment)
     },
   }
 

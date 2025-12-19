@@ -7,7 +7,7 @@ import { accessibilityRoleInternalNavigation } from 'shared/accessibility/access
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
-import { AnimationObject } from 'ui/animations/type'
+import { AnimationObject, LottieColoringMode } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -57,20 +57,35 @@ export type ButtonProps = {
     }
 )
 
-type Props = PropsWithChildren<
-  {
-    withGoBack?: boolean
-    withSkipAction?: () => void
-    title: string
-    subtitle?: string
-    buttonPrimary: ButtonProps
-    buttonSecondary?: ButtonProps
-    buttonTertiary?: ButtonProps
-  } & (
-    | { illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>; animation?: never }
-    | { animation: AnimationObject; illustration?: never }
-  )
->
+type AnimationColoringProps = {
+  animationColoringMode?: LottieColoringMode
+  animationTargetShapeNames?: string[]
+  animationTargetLayerNames?: string[]
+}
+
+type AnimationProps =
+  | {
+      illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+      animation?: never
+      animationColoringMode?: never
+      animationTargetShapeNames?: never
+      animationTargetLayerNames?: never
+    }
+  | ({
+      animation: AnimationObject
+      illustration?: never
+    } & AnimationColoringProps)
+
+type Props = PropsWithChildren<{
+  withGoBack?: boolean
+  withSkipAction?: () => void
+  title: string
+  subtitle?: string
+  buttonPrimary: ButtonProps
+  buttonSecondary?: ButtonProps
+  buttonTertiary?: ButtonProps
+}> &
+  AnimationProps
 
 export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
@@ -83,6 +98,9 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   buttonSecondary,
   buttonTertiary,
   children,
+  animationColoringMode,
+  animationTargetLayerNames,
+  animationTargetShapeNames,
 }) => {
   const { isDesktopViewport, designSystem } = useTheme()
   const isLandscape = useIsLandscape()
@@ -113,7 +131,14 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
             />
           ) : null}
           {animation ? (
-            <ThemedStyledLottieView source={animation} width="100%" height="100%" />
+            <ThemedStyledLottieView
+              source={animation}
+              width="100%"
+              height="100%"
+              coloringMode={animationColoringMode}
+              targetShapeNames={animationTargetShapeNames}
+              targetLayerNames={animationTargetLayerNames}
+            />
           ) : null}
         </IllustrationContainer>
 
@@ -314,7 +339,6 @@ const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
     return (
       <ButtonTertiaryNeutralInfo
         wording="Passer"
-        accessibilityRole={accessibilityRoleInternalNavigation()}
         accessibilityLabel="Passer à la page suivante"
         onPress={withSkipAction}
         inline

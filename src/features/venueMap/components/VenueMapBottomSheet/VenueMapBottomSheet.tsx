@@ -160,6 +160,7 @@ const StyledBottomSheetView = styled(BottomSheetView)(({ theme }) => ({
 
 const StyledBottomSheet = styled(BottomSheet).attrs<BottomSheetProps>(({ theme }) => ({
   containerStyle: { zIndex: theme.zIndex.bottomSheet },
+  backgroundStyle: { backgroundColor: theme.designSystem.color.background.default },
 }))``
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({

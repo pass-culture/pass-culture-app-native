@@ -2746,6 +2746,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           </View>
           <View
             accessibilityLabel="Générer le lien"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

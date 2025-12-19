@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { useGetFontScale } from 'shared/accessibility/useGetFontScale'
 import { AppButtonInner } from 'ui/components/buttons/AppButton/AppButtonInner'
 import { DefaultLoadingIndicator } from 'ui/components/buttons/AppButton/DefaultLoadingIndicator'
@@ -53,7 +54,7 @@ export const AppButton = <T extends AppButtonProps>({
     <TouchableOpacityButton
       accessibilityLabel={accessibilityLabel || wording}
       accessibilityHint={accessibilityHint}
-      accessibilityRole={accessibilityRole}
+      accessibilityRole={accessibilityRole ?? accessibilityRoleInternalNavigation()}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}
       onPress={pressHandler}

@@ -1,11 +1,22 @@
-import { SearchClient } from 'algoliasearch'
+import { LiteClient } from 'algoliasearch/lite'
 
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 
-export const getSearchClient: SearchClient = {
+type SearchRequest = { query?: string; params?: { query?: string } | string }
+
+const hasNoQuery = (request: SearchRequest): boolean => {
+  const hasQuery = request.query || (typeof request.params === 'object' && request.params?.query)
+  return !hasQuery
+}
+
+export const getSearchClient: LiteClient = {
   ...client,
-  search(requests) {
-    if (requests.every(({ params }) => !params?.query)) {
+  search(searchMethodParams, requestOptions) {
+    const requests = (
+      Array.isArray(searchMethodParams) ? searchMethodParams : searchMethodParams.requests
+    ) as SearchRequest[]
+
+    if (requests.every(hasNoQuery)) {
       return Promise.resolve({
         results: requests.map(() => ({
           hits: [],
@@ -20,6 +31,6 @@ export const getSearchClient: SearchClient = {
         })),
       })
     }
-    return client.search(requests)
+    return client.search(searchMethodParams, requestOptions)
   },
 }

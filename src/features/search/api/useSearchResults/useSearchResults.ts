@@ -1,5 +1,5 @@
-import { SearchResponse } from '@algolia/client-search'
 import { onlineManager, useInfiniteQuery } from '@tanstack/react-query'
+import { SearchResponse } from 'algoliasearch/lite'
 import { uniqBy } from 'lodash'
 import flatten from 'lodash/flatten'
 import { useMemo } from 'react'
@@ -12,14 +12,15 @@ import { Artist, Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
-import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { algoliaAnalyticsActions } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { QueryKeys } from 'libs/queryKeys'
+import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
 type SearchOfferResponse = {
@@ -43,7 +44,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
-  const { setCurrentQueryID } = useSearchAnalyticsState()
+  const { setCurrentQueryID } = algoliaAnalyticsActions
+
   const {
     data: { aroundPrecision },
   } = useRemoteConfigQuery()
@@ -91,9 +93,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     },
     // first page is 0
     initialPageParam: 0,
-    getNextPageParam: ({ offers: { nbPages, page } }) => {
-      return page + 1 < nbPages ? page + 1 : null
-    },
+    getNextPageParam: ({ offers }) => getNextPageParam(offers),
     enabled: onlineManager.isOnline(),
   })
 
@@ -151,7 +151,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   return {
     data,
     hits,
-    nbHits: nbHits === 0 ? hits.offers.length : nbHits, // (PC-28287) there is an algolia bugs that return 0 nbHits but there are hits
+    nbHits: nbHits === 0 ? hits.offers.length : nbHits || 0, // (PC-28287) there is an algolia bugs that return 0 nbHits but there are hits
     userData,
     venuesUserData,
     facets,

@@ -1,14 +1,14 @@
-import { Hit } from '@algolia/client-search'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { Hit } from 'algoliasearch/lite'
 import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
-import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffers, FetchOffersResponse } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { algoliaAnalyticsActions } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { AlgoliaOffer, Geoloc } from 'libs/algolia/types'
 import { Position, useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -102,7 +102,8 @@ export const useSearchVenueOffersInfiniteQuery = ({
 }: UseSearchVenueOffersOptions) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
-  const { setCurrentQueryID } = useSearchAnalyticsState()
+  const { setCurrentQueryID } = algoliaAnalyticsActions
+
   const previousPageObjectIds = useRef<string[]>([])
   const { userLocation } = useLocation()
 
@@ -160,7 +161,7 @@ export const useSearchVenueOffersInfiniteQuery = ({
       return acc
     }, 0) ?? 0
 
-  const { nbHits } = data?.pages[0] ?? { nbHits: 0 }
+  const nbHits = data?.pages[0]?.nbHits ?? 0
 
   return { data, venueList, nbVenueItems, nbLoadedHits, nbHits, ...infiniteQuery }
 }

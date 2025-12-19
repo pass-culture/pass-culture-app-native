@@ -8,7 +8,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, act } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useVideoOffersQuery } from './useVideoOffersQuery'
 
@@ -49,10 +49,9 @@ describe('useVideoOffersQuery', () => {
       }
     )
 
-    await act(async () => {})
-    await act(async () => {})
-
-    expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    await waitFor(() => {
+      expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    })
   })
 
   it('should return offers when asking for specific EANs', async () => {
@@ -69,10 +68,9 @@ describe('useVideoOffersQuery', () => {
       }
     )
 
-    await act(async () => {})
-    await act(async () => {})
-
-    expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    await waitFor(() => {
+      expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    })
   })
 
   it('should return offers when only OffersModuleParameters are provided', async () => {
@@ -85,8 +83,8 @@ describe('useVideoOffersQuery', () => {
       }
     )
 
-    await act(async () => {})
-
-    expect(result.current.offers).toEqual(offersFixture)
+    await waitFor(() => {
+      expect(result.current.offers).toEqual(offersFixture)
+    })
   })
 })

@@ -21,12 +21,10 @@ export const fetchMultipleOffers = async ({
   const queries = paramsList.map((params) => ({
     indexName: params.indexName ?? env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.offerParams.query,
-    params: {
-      ...buildHitsPerPage(params.offerParams.hitsPerPage),
-      ...buildOfferSearchParameters(params.offerParams, params.locationParams, isUserUnderage),
-      attributesToHighlight: [], // We disable highlighting because we don't need it
-      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
-    },
+    ...buildHitsPerPage(params.offerParams.hitsPerPage),
+    ...buildOfferSearchParameters(params.offerParams, params.locationParams, isUserUnderage),
+    attributesToHighlight: [], // We disable highlighting because we don't need it
+    attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
   }))
 
   try {

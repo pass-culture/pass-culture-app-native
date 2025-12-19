@@ -713,6 +713,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -819,6 +820,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
             </View>
             <View
               accessibilityLabel="Rechercher"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

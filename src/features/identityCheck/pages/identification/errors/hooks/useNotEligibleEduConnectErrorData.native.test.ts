@@ -1,13 +1,10 @@
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import {
   EduConnectErrorMessageEnum,
   useNotEligibleEduConnectErrorData,
 } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
+import { env } from 'libs/environment/env'
 import { renderHook } from 'tests/utils'
-import { Email } from 'ui/svg/icons/Email'
 import { UserError } from 'ui/svg/UserError'
-
-jest.mock('features/auth/helpers/contactSupport')
 
 describe('useNotEligibleEduConnectErrorData', () => {
   const expectedDuplicatedUserData = {
@@ -18,8 +15,8 @@ describe('useNotEligibleEduConnectErrorData', () => {
     descriptionAlignment: 'center',
     primaryButton: {
       wording: 'Contacter le support',
-      icon: Email,
-      externalNav: contactSupport.forGenericQuestion,
+      externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
+      onPress: expect.any(Function),
     },
     isGoHomeTertiaryButtonVisible: true,
   }

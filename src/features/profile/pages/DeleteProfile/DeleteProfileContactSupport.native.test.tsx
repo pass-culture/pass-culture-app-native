@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { render, screen } from 'tests/utils'
+import { analytics } from 'libs/analytics/provider'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileContactSupport } from './DeleteProfileContactSupport'
 
@@ -17,5 +18,18 @@ describe('DeleteProfileContactSupport', () => {
     render(<DeleteProfileContactSupport />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should log HasClickedContactForm event when press "Contacter le support" button', async () => {
+    render(<DeleteProfileContactSupport />)
+
+    const contactSupportButton = screen.getByText('Contacter le support')
+
+    await userEvent.press(contactSupportButton)
+
+    expect(analytics.logHasClickedContactForm).toHaveBeenNthCalledWith(
+      1,
+      'DeleteProfileContactSupport'
+    )
   })
 })

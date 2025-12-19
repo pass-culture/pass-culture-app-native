@@ -22,13 +22,13 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   const context = useSubscriptionContext()
 
   function quitIdentityCheck() {
-    if (context.step) analytics.logQuitIdentityCheck(context.step)
+    if (context.step) void analytics.logQuitIdentityCheck(context.step)
     hideModal()
     navigateToHome()
   }
 
   function continueIdentityCheck() {
-    analytics.logContinueIdentityCheck()
+    void analytics.logContinueIdentityCheck()
     hideModal()
   }
 

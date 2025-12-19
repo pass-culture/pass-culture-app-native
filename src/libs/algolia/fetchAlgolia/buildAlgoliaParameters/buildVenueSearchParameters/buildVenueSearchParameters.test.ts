@@ -19,6 +19,8 @@ const disabilitiesProperties = {
   isVisualDisabilityCompliant: false,
 }
 
+const defaultFacetFilters = [['is_open_to_public:true']]
+
 describe('buildVenueSearchParameters', () => {
   it("shouldn't return a facetFilter if no disabilitiesProperties is given", () => {
     const venueSearchPredicate = buildVenueSearchParameters(buildLocationParameterParams)
@@ -26,6 +28,7 @@ describe('buildVenueSearchParameters', () => {
     expect(venueSearchPredicate).toEqual({
       aroundLatLng: '48.8566, 2.3522',
       aroundRadius: 'all',
+      facetFilters: defaultFacetFilters,
     })
   })
 
@@ -38,7 +41,7 @@ describe('buildVenueSearchParameters', () => {
     expect(venueSearchPredicate).toEqual({
       aroundLatLng: '48.8566, 2.3522',
       aroundRadius: 'all',
-      facetFilters: [['mental_disability:true'], ['motor_disability:true']],
+      facetFilters: [...defaultFacetFilters, ['mental_disability:true'], ['motor_disability:true']],
     })
   })
 })

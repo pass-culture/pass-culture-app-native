@@ -161,8 +161,11 @@ export const rootStackNavigatorPathConfig = {
       ComeBackLater: {
         path: 'identification/reviens-plus-tard',
       },
-      BonificationIntroduction: {
-        path: 'bonification/introduction',
+      BonificationExplanations: {
+        path: 'bonification/explications',
+      },
+      BonificationRequiredInformation: {
+        path: 'bonification/informations-requises',
       },
       BonificationNames: {
         path: 'bonification/noms',
@@ -181,9 +184,6 @@ export const rootStackNavigatorPathConfig = {
       },
       BonificationError: {
         path: 'bonification/erreur',
-      },
-      BonificationGranted: {
-        path: 'bonification/accordee',
       },
       BonificationRefused: {
         path: 'bonification/refuse',
@@ -405,5 +405,8 @@ export const rootStackNavigatorPathConfig = {
   _DeeplinkOnlyChronicles1: {
     path: 'chronicles/:offerId/:chronicleId',
     parse: screenParamsParser['Chronicles'],
+  },
+  BonificationGranted: {
+    path: 'bonification/accordee',
   },
 }

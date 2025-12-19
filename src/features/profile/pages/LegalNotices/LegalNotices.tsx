@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -49,14 +49,12 @@ export function LegalNotices() {
           {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
         </Typo.Body>
         <Typo.Body>
-          Nous contacter&nbsp;:
-          {SPACE}
           <ExternalTouchableLink
             as={LinkInsideText}
-            wording="support@passculture.app"
-            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
-            externalNav={contactSupport.forGenericQuestion}
+            wording="Contacter le support"
+            externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
             accessibilityRole={AccessibilityRole.LINK}
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('LegalNotices')}
           />
         </Typo.Body>
 

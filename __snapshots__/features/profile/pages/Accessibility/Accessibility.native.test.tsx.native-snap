@@ -331,8 +331,8 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Les engagements du pass Culture"
-            accessibilityRole="button"
+            accessibilityLabel="Nouvelle fenêtre : Les engagements du pass Culture"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -361,15 +361,18 @@ exports[`Accessibility should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                {
-                  "userSelect": "auto",
-                },
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                ],
                 {
                   "opacity": 1,
                 },
               ]
             }
-            testID="Les engagements du pass Culture"
+            testID="Nouvelle fenêtre : Les engagements du pass Culture"
           >
             <View
               style={
@@ -386,6 +389,23 @@ exports[`Accessibility should render correctly 1`] = `
                 ]
               }
             >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                width={20}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  {
+                    "width": 8,
+                  }
+                }
+              />
               <View
                 style={
                   {
@@ -410,23 +430,6 @@ exports[`Accessibility should render correctly 1`] = `
                   Les engagements du pass Culture
                 </Text>
               </View>
-              <View
-                style={
-                  {
-                    "alignItems": "flex-end",
-                  }
-                }
-              >
-                <View
-                  height={20}
-                  testID="section-row-navigable-icon"
-                  width={20}
-                >
-                  <Text>
-                    section-row-navigable-icon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
             </View>
           </View>
           <View
@@ -447,8 +450,8 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Schéma pluriannuel"
-            accessibilityRole="button"
+            accessibilityLabel="Nouvelle fenêtre : Schéma pluriannuel"
+            accessibilityRole="link"
             accessibilityState={
               {
                 "busy": undefined,
@@ -477,15 +480,18 @@ exports[`Accessibility should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               [
-                {
-                  "userSelect": "auto",
-                },
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                ],
                 {
                   "opacity": 1,
                 },
               ]
             }
-            testID="Schéma pluriannuel"
+            testID="Nouvelle fenêtre : Schéma pluriannuel"
           >
             <View
               style={
@@ -502,6 +508,23 @@ exports[`Accessibility should render correctly 1`] = `
                 ]
               }
             >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                width={20}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  {
+                    "width": 8,
+                  }
+                }
+              />
               <View
                 style={
                   {
@@ -525,23 +548,6 @@ exports[`Accessibility should render correctly 1`] = `
                 >
                   Schéma pluriannuel
                 </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "alignItems": "flex-end",
-                  }
-                }
-              >
-                <View
-                  height={20}
-                  testID="section-row-navigable-icon"
-                  width={20}
-                >
-                  <Text>
-                    section-row-navigable-icon-SVG-Mock
-                  </Text>
-                </View>
               </View>
             </View>
           </View>

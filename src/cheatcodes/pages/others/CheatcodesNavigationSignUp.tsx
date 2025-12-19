@@ -46,6 +46,14 @@ const signUpCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'SignupConfirmationEmailSent',
+      navigationTarget: {
+        screen: 'SignupConfirmationEmailSent',
+        params: { email: 'john@wick.com' },
+      },
+    },
+    {
+      id: uuidv4(),
       title: 'NotYetUnderageEligibility',
       navigationTarget: {
         screen: 'NotYetUnderageEligibility',

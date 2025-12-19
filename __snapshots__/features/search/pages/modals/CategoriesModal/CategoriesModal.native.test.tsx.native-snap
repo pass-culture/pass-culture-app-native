@@ -517,6 +517,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Concerts & festivals"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -535,7 +536,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -560,7 +561,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Concerts & festivals"
                   >
                     <View
                       style={
@@ -644,6 +645,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Cinéma"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -662,7 +664,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -687,7 +689,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Cinéma"
                   >
                     <View
                       style={
@@ -771,6 +773,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Films, séries et documentaires"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -789,7 +792,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -814,7 +817,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Films, séries et documentaires"
                   >
                     <View
                       style={
@@ -898,6 +901,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Livres"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -916,7 +920,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -941,7 +945,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Livres"
                   >
                     <View
                       style={
@@ -1025,6 +1029,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Musique"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1043,7 +1048,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1068,7 +1073,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Musique"
                   >
                     <View
                       style={
@@ -1152,6 +1157,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Arts & loisirs créatifs"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1170,7 +1176,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1195,7 +1201,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Arts & loisirs créatifs"
                   >
                     <View
                       style={
@@ -1279,6 +1285,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Spectacles"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1297,7 +1304,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1322,7 +1329,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Spectacles"
                   >
                     <View
                       style={
@@ -1406,6 +1413,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Musées & visites culturelles"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1424,7 +1432,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1449,7 +1457,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Musées & visites culturelles"
                   >
                     <View
                       style={
@@ -1533,6 +1541,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Jeux & jeux vidéos"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1551,7 +1560,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1576,7 +1585,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Jeux & jeux vidéos"
                   >
                     <View
                       style={
@@ -1660,6 +1669,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Médias & presse"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1678,7 +1688,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1703,7 +1713,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Médias & presse"
                   >
                     <View
                       style={
@@ -1927,6 +1937,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Conférences & rencontres"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -1945,7 +1956,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1970,7 +1981,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Conférences & rencontres"
                   >
                     <View
                       style={
@@ -2054,6 +2065,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Filtre - Évènements en ligne"
                     accessibilityRole="button"
                     accessibilityState={
                       {
@@ -2072,7 +2084,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2097,7 +2109,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="FilterRow"
+                    testID="Filtre - Évènements en ligne"
                   >
                     <View
                       style={
@@ -2197,6 +2209,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -2303,6 +2316,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="Rechercher"
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,

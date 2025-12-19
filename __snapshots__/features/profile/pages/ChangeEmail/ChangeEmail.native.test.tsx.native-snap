@@ -467,6 +467,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             >
               <View
                 accessibilityLabel="Valider la demande de modification de mon e-mail"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

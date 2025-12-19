@@ -9,6 +9,8 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -81,8 +83,9 @@ export const FeedbackInApp = () => {
                   icon: ExternalSiteFilled,
                   wording: 'Contacter le support',
                   externalNav: {
-                    url: 'https://aide.passculture.app/hc/fr/requests/new?ticket_form_id=20669662761500',
+                    url: env.SUPPORT_ACCOUNT_ISSUES_FORM,
                   },
+                  onBeforeNavigate: () => analytics.logHasClickedContactForm('FeedbackInApp'),
                 },
               ]}
             />
@@ -105,6 +108,7 @@ export const FeedbackInApp = () => {
           <ButtonPrimary
             type="submit"
             wording="Envoyer"
+            accessibilityLabel="Envoyer ma suggestion"
             onPress={handleSubmit(onSubmit)}
             disabled={!isValid}
           />

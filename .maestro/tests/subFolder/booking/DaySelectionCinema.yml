@@ -3,8 +3,7 @@ appId: ${MAESTRO_APP_ID}
 - repeat:
     while:
       notVisible:
-        id: movie-calendar-day
-        index: 3
+        text: ${output.targetDateTest}
     commands:
       - pressKey: back
       - scroll
@@ -16,9 +15,7 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     when:
       visible:
-        id: movie-calendar-day
-        index: 3
+        text: ${output.targetDateTest}
     commands:
       - tapOn:
-          id: movie-calendar-day
-          index: 3
+          text: ${output.targetDateTest}

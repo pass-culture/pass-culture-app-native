@@ -329,10 +329,8 @@ exports[`LegalNotices should render correctly 1`] = `
             }
           }
         >
-          Nous contacter :
-           
           <Text
-            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support, lien externe"
+            accessibilityLabel="Contacter le support, lien externe"
             accessibilityRole="link"
             onPress={[Function]}
             style={
@@ -346,7 +344,7 @@ exports[`LegalNotices should render correctly 1`] = `
               }
             }
           >
-            support@passculture.app
+            Contacter le support
           </Text>
         </Text>
         <View

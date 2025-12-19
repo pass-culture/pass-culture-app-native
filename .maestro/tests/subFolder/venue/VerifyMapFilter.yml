@@ -6,12 +6,12 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Voir tous les filtres : 3 filtres actifs"
 
 - assertVisible: "Filtres"
-- assertVisible: "Sorties"
-- assertVisible: "Boutiques"
-- assertVisible: "Autres"
+- assertVisible: ".*Sorties.*"
+- assertVisible: ".*Boutiques.*"
+- assertVisible: ".*Autres.*"
 
 - tapOn: "Réinitialiser"
-- tapOn: "Sorties"
+- tapOn: ".*Sorties.*"
 - tapOn: "Cinéma - Salle de projections"
 - tapOn: "Rechercher"
 

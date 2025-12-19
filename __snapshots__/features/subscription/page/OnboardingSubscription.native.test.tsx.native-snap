@@ -1448,6 +1448,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Suivre la sélection"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -1533,6 +1534,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     </View>
     <View
       accessibilityLabel="Ne pas suivre de thème"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,

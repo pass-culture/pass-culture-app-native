@@ -8,7 +8,8 @@ import React, {
   useState,
 } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
+import { DefaultTheme } from 'styled-components/native/dist/types'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -34,7 +35,7 @@ import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -62,14 +63,14 @@ const ANIMATION_DURATION = 700
 const StyledFlatList = styled(FlatList).attrs(({ theme }) => ({
   contentContainerStyle: {
     flexGrow: 1,
-    paddingBottom: theme.tabBar.height + getSpacing(4),
+    paddingBottom: theme.tabBar.height + theme.designSystem.size.spacing.l,
   },
 }))``
 
-const contentContainerStyle = {
+const contentContainerStyle = (theme: DefaultTheme) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
-}
+  paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
+})
 
 const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
@@ -79,7 +80,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
-
+  const theme = useTheme()
   const sortedFavorites = useMemo(() => {
     if (!data) {
       return
@@ -110,7 +111,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(
-    () => (sortedFavorites?.length ? <Spacer.Column numberOfSpaces={getSpacing(5)} /> : null),
+    () => (sortedFavorites?.length ? <Footer /> : null),
     [sortedFavorites?.length]
   )
 
@@ -138,7 +139,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
           ref={flatListRef}
           testID="favoritesResultsFlatlist"
           data={sortedFavorites}
-          contentContainerStyle={contentContainerStyle}
+          contentContainerStyle={contentContainerStyle(theme)}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={ListFooterComponent}
@@ -154,6 +155,8 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   )
 }
 
+const Footer = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.xxxxl }))
+
 export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
 const Container = styled.View({ flex: 1 })
@@ -161,7 +164,7 @@ const Container = styled.View({ flex: 1 })
 const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: theme.tabBar.height + getSpacing(6),
+  bottom: theme.tabBar.height + theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))
 

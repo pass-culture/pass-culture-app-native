@@ -1,26 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { Email } from 'ui/svg/icons/Email'
 import { EmailSent as InitialEmailSent } from 'ui/svg/icons/EmailSent'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
 
-import { nativeEmailProvider } from './EmailProvider'
-import { getContactSupportForDeletionProfile } from './getContactSupportForDeletionProfile'
-import { webEmailProvider } from './WebEmailProvider.web'
-
-const isWeb = Platform.OS === 'web'
-
 export const DeleteProfileContactSupport: FC = () => {
-  const emailProvider = isWeb ? webEmailProvider() : nativeEmailProvider()
-  const { requestSendMail } = getContactSupportForDeletionProfile({ emailProvider })
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabHookConfig('Profile'))
@@ -31,8 +23,8 @@ export const DeleteProfileContactSupport: FC = () => {
       title="Contacte le support"
       buttonPrimary={{
         wording: 'Contacter le support',
-        onPress: requestSendMail,
-        icon: Email,
+        externalNav: { url: env.SUPPORT_ACCOUNT_ISSUES_FORM },
+        onBeforeNavigate: () => analytics.logHasClickedContactForm('DeleteProfileContactSupport'),
       }}
       buttonTertiary={{
         wording: 'Retourner au profil',

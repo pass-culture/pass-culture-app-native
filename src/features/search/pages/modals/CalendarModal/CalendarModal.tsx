@@ -297,7 +297,8 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         testID="calendar"
         firstDay={1}
         theme={{
-          textDisabledColor: designSystem.color.text.disabled,
+          // UX decision: align with disabled background token for the muted state
+          textDisabledColor: designSystem.color.background.disabled,
           calendarBackground: designSystem.color.background.default,
           dayTextColor: designSystem.color.text.default,
           todayTextColor: designSystem.color.text.default,

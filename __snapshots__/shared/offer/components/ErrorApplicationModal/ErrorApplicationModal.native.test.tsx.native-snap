@@ -369,6 +369,7 @@ ton crédit
                 </Text>
                 <View
                   accessibilityLabel="Aller vers la section profil"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -462,6 +463,7 @@ ton crédit
                 />
                 <View
                   accessibilityLabel="Mettre en favori"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,

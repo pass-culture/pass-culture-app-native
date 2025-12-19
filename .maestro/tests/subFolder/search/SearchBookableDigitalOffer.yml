@@ -5,22 +5,22 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - scrollUntilVisible:
-        element:
-          text: "Catégorie Médias & presse"
-    - tapOn: "Catégorie Médias & presse"
+      - scrollUntilVisible:
+          element:
+            text: 'Catégorie Médias & presse'
+      - tapOn: 'Catégorie Médias & presse'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - scrollUntilVisible:
-        element:
-          text: 'Médias & presse'
-    - tapOn: 'Médias & presse'
+      - scrollUntilVisible:
+          element:
+            text: 'Médias & presse'
+      - tapOn: 'Médias & presse'
 
 - tapOn: 'Voir tous les filtres : 1 filtre actif'
-- tapOn: 'Catégorie'
+- tapOn: '.*Catégorie.*'
 
 - assertVisible: 'Médias & presse'
 - tapOn: 'Presse en ligne'

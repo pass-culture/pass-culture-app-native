@@ -74,11 +74,9 @@ export type ThematicHomeParams = BaseThematicHome &
 
 export type AccessibilityRootStackParamList = {
   Accessibility?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileHookConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
-  AccessibilityActionPlan?: undefined
   AccessibilityDeclarationMobileAndroid?: undefined
   AccessibilityDeclarationMobileIOS?: undefined
   AccessibilityDeclarationWeb?: undefined
-  AccessibilityEngagement?: undefined
   SiteMapScreen?: undefined
   RecommendedPaths?: undefined
 }
@@ -174,6 +172,7 @@ type SignupFormParams =
       email?: string
       offerId?: number
       from: StepperOrigin
+      stepIndex?: number
     }
   | undefined
 
@@ -222,6 +221,7 @@ export type RootStackParamList = {
   BookingDetails: BookingDetailsParams
   _DeeplinkOnlyBookingDetails1: BookingDetailsParams
   Bookings: { activeTab?: BookingsTab } | undefined
+  BonificationGranted: undefined
   ChangeEmailExpiredLink: undefined
   CheatcodesStackNavigator?: NavigatorScreenParams<CheatcodesStackParamList>
   Chronicles: ChroniclesParams

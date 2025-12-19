@@ -29,8 +29,8 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Ma position'
       - tapOn: 'Localisation – Liste - Élément 3 sur 3 - France entière.*'
 
-- tapOn: "Voir tous les filtres : 1 filtre actif"
-- tapOn: 'Catégorie'
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
+- tapOn: '.*Catégorie.*'
 
 - tapOn: 'Romance'
 - tapOn: 'Rechercher'

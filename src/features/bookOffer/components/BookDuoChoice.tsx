@@ -3,6 +3,7 @@ import React from 'react'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -26,7 +27,10 @@ export const BookDuoChoice = () => {
       {bookingState.step === Step.DUO ? (
         <DuoChoiceSelector />
       ) : (
-        <TouchableOpacity onPress={updateBookingStepToDuo}>
+        <TouchableOpacity
+          onPress={updateBookingStepToDuo}
+          accessibilityRole={AccessibilityRole.BUTTON}
+          accessibilityLabel={buttonTitle}>
           <Typo.Button>{buttonTitle}</Typo.Button>
         </TouchableOpacity>
       )}

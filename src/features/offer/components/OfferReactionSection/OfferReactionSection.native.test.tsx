@@ -106,7 +106,7 @@ describe('<OfferReactionSection />', () => {
         )
       )
 
-      expect(await screen.findByText('16 avis')).toBeOnTheScreen()
+      expect(await screen.findByText('4 avis')).toBeOnTheScreen()
     })
 
     it('should display published chronicles count when there is at least one published chronicle', async () => {
@@ -119,7 +119,7 @@ describe('<OfferReactionSection />', () => {
         },
       })
 
-      expect(await screen.findByText('2 avis')).toBeOnTheScreen()
+      expect(await screen.findByText('5 avis')).toBeOnTheScreen()
     })
 
     it('should scroll to chronicles section when clicking on published chronicles counter', async () => {

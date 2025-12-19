@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
@@ -212,11 +213,11 @@ export function AccessibilityDeclarationMobileBase({
           afin qu’une assistance puisse être apportée&nbsp;:{SPACE}
           <ExternalTouchableLink
             as={LinkInsideText}
-            wording="support@passculture.app"
-            accessibilityLabel="support@passculture.app - Ouvrir le gestionnaire mail pour contacter le support"
-            justifyContent="flex-start"
-            externalNav={contactSupport.forGenericQuestion}
+            wording="contacter le support"
+            externalNav={{ url: env.SUPPORT_ACCOUNT_ISSUES_FORM }}
             accessibilityRole={AccessibilityRole.LINK}
+            justifyContent="flex-start"
+            onBeforeNavigate={() => analytics.logHasClickedContactForm('AccessibilityDeclaration')}
           />
         </Typo.Body>
       </ViewGap>

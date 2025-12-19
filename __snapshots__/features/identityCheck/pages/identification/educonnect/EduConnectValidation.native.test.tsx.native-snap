@@ -396,6 +396,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         >
           <View
             accessibilityLabel="Continuer"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,

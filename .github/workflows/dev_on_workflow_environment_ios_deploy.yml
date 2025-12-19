@@ -33,7 +33,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.1.0
+        if: ${{ inputs.ENV == 'testing' }}
       - name: Setup yarn
         run: npm install -g yarn
       - name: Enable Corepack

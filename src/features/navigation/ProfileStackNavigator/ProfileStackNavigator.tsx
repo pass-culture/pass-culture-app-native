@@ -7,13 +7,12 @@ import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
-import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
 import { AccessibilityDeclarationMobileAndroid } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileAndroid'
 import { AccessibilityDeclarationMobileIOS } from 'features/profile/pages/Accessibility/AccessibilityDeclarationMobileIOS'
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
-import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
+import { Appearance } from 'features/profile/pages/Appearance/Appearance'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
@@ -32,7 +31,6 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
-import { DisplayPreference } from 'features/profile/pages/DisplayPreference/DisplayPreference'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { MandatoryUpdatePersonalData } from 'features/profile/pages/MandatoryUpdatePersonalData/MandatoryUpdatePersonalData'
@@ -55,16 +53,6 @@ type ProfileRouteConfig = {
 
 const profileScreens: ProfileRouteConfig[] = [
   { name: 'Accessibility', component: Accessibility, options: { title: 'Accessibilité' } },
-  {
-    name: 'AccessibilityEngagement',
-    component: AccessibilityEngagement,
-    options: { title: 'Engagement' },
-  },
-  {
-    name: 'AccessibilityActionPlan',
-    component: AccessibilityActionPlan,
-    options: { title: 'Plan d’actions' },
-  },
   {
     name: 'AccessibilityDeclarationMobileAndroid',
     component: AccessibilityDeclarationMobileAndroid,
@@ -218,7 +206,7 @@ const profileScreens: ProfileRouteConfig[] = [
   },
   {
     name: 'DisplayPreference',
-    component: DisplayPreference,
+    component: Appearance,
     options: { title: 'Préférence d’affichage' },
   },
   {

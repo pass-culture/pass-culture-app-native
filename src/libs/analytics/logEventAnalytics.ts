@@ -365,6 +365,17 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
+  logHasClickedContactForm: (
+    from:
+      | 'AccessibilityDeclaration'
+      | 'DeleteProfileContactSupport'
+      | 'DebugScreen'
+      | 'FeedbackInApp'
+      | 'LegalNotices'
+      | 'NotEligibleEduConnect'
+      | 'PhoneValidationTooManyAttempts'
+      | 'SignupConfirmationEmailSent'
+  ) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_CONTACT_FORM }, { from }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
   logHasClickedFakeDoorCTA: (params: { offerId: number; userId?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAKE_DOOR_CTA }, params),
@@ -452,12 +463,6 @@ export const logEventAnalytics = {
   logLoginClicked: (params: { from: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
-  logMailTo: (
-    reason:
-      | 'forGenericQuestion'
-      | 'forSignupConfirmationEmailNotReceived'
-      | 'forPhoneNumberConfirmation'
-  ) => analytics.logEvent({ firebase: AnalyticsEvent.MAIL_TO }, { reason }),
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
   logModuleDisplayed: (params: { moduleId: string; displayedOn: Referrals; venueId?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),

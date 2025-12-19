@@ -17,9 +17,9 @@ onFlowStart:
 
 - tapOn: "Films à l'affiche"
 
-- tapOn: "Voir tous les filtres : 1 filtre actif"
+- tapOn: 'Voir tous les filtres : 1 filtre actif'
 
-- tapOn: 'Catégorie'
+- tapOn: '.*Catégorie.*'
 
 - assertVisible: "Films à l'affiche"
 
@@ -31,13 +31,13 @@ onFlowStart:
     when:
       platform: Android
     commands:
-    - doubleTapOn: 'Dates'
+      - doubleTapOn: 'Dates'
 
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Dates"
+      - tapOn: 'Dates'
 
 - assertVisible: 'Dates'
 - tapOn: '${output.targetDateTest}'

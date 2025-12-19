@@ -1,11 +1,11 @@
 # 🌈 Suivi des corrections d’accessibilité
 
-| Plateforme | Conformité | 07 juillet | 26 septembre | 31 octobre | 28 novembre | Début 2026 |
-| ---------- | ---------- | ---------- | ------------ | ---------- | ----------- | ---------- |
-| Android    | RAAM 1.1   | 35.71%     | 44.19%       | 62.79%     | 72.09%      | ⏳         |
-|            | EN 301-549 | 35.42%     | 37.50%       | 41.67%     | 54.17%      | ⏳         |
-| iOS        | RAAM 1.1   | 28.57%     | 41.86%       | 58.14%     | 72.09%      | ⏳         |
-|            | EN 301-549 | 20.83%     | 25.00%       | 29.17%     | 54.17%      | ⏳         |
+| Plateforme | Conformité | 07 juillet 2025 | 26 septembre 2025 | 31 octobre 2025 | 28 novembre 2025 | 2 février 2026 |
+| ---------- | ---------- | --------------- | ----------------- | --------------- | ---------------- | -------------- |
+| Android    | RAAM 1.1   | 35.71%          | 44.19%            | 62.79%          | 72.09%           | ⏳             |
+|            | EN 301-549 | 35.42%          | 37.50%            | 41.67%          | 54.17%           | ⏳             |
+| iOS        | RAAM 1.1   | 28.57%          | 41.86%            | 58.14%          | 72.09%           | ⏳             |
+|            | EN 301-549 | 20.83%          | 25.00%            | 29.17%          | 54.17%           | ⏳             |
 
 <br>
 
@@ -18,7 +18,7 @@
 
 <br>
 
-## ✅ Corrections 26 août → 26 septembre
+## ✅ Corrections 26 août 2025 → 26 septembre 2025
 
 <details>
 
@@ -229,7 +229,7 @@ On ignore les textes/éléments ajoutés dans `accessibilityHint` pour éviter u
 
 <br>
 
-## ✅ Corrections 26 septembre → 31 octobre
+## ✅ Corrections 26 septembre 2025 → 31 octobre 2025
 
 <details>
 
@@ -594,7 +594,7 @@ Texte
 
 <br>
 
-## ✅ Corrections 31 octobre → 28 novembre
+## ✅ Corrections 31 octobre 2025 → 28 novembre 2025
 
 <br>
 
@@ -880,7 +880,7 @@ Texte
 
 <br>
 
-## ✅ Corrections 28 novembre → 15 décembre
+## ✅ Corrections 28 novembre 2025 → 02 décembre 2026
 
 <br>
 
@@ -900,6 +900,30 @@ Nous avons ajouter la gestion des rôles bouton et lien de manière automatique 
 
 **Retours audit** 🔥  
 Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 11.9 - Dans chaque écran, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) ? </summary>
+
+**RAAM** : [Critère 11.9](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-11-9)  
+**Ticket** : [PC-38765](https://passculture.atlassian.net/browse/PC-38765) & [PC-39267](https://passculture.atlassian.net/browse/PC-39267)
+**PR** : [#8994](https://github.com/pass-culture/pass-culture-app-native/pull/8994) & [#8999](https://github.com/pass-culture/pass-culture-app-native/pull/8999)
+
+**Problème** 😱
+
+- **(E02)** En format paysage, le dernier bloc est bien atteint et visible, mais il faut maintenir le défilement pour en consulter le contenu. Dès que l’on relâche, une partie des contenus se retrouve à nouveau masquée.
+- **(E09)** Aussi bien en mode portrait qu’en mode paysage, le bouton “Accéder aux séances” est positionné au-dessus des composants du bloc “Passe le bon plan”.
+- **(E11)** Passer du mode portrait au mode paysage (ou inversement) pendant l’inscription provoque un retour à la première étape du processus.
+- **(E14)** En format paysage, le bouton “Accéder aux séances” est positionné au-dessus des composants du bloc "ça peut aussi te plaire".
+
+**Correction** 💡
+
+- **(E02)(E09)(E14)** Ajout des marges nécessaires pour que tout le contenu soit visible.
+- **(E11)** L'étape de l'inscription est correctement stocké et tourner l'appareil ne cause plus de retour à la première étape.
 
 </details>
 

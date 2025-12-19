@@ -1,4 +1,4 @@
-import { SearchOptions } from '@algolia/client-search'
+import { SearchParamsObject } from 'algoliasearch/lite'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
@@ -6,7 +6,10 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia/types'
 
-const defaultFacetFilters = `${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`
+const defaultFacetFilters = [
+  [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
+  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
+]
 
 interface LocationParams extends Omit<BuildLocationParameterParams, 'userLocation'> {
   userLocation?: BuildLocationParameterParams['userLocation']
@@ -22,7 +25,7 @@ const buildParams = (
   query: string,
   attributesToHighlight: string[] = [],
   locationParams: LocationParams = defaultLocationParams,
-  options?: SearchOptions
+  options?: SearchParamsObject
 ): FetchVenuesParameters => ({
   query,
   buildLocationParameterParams: locationParams as BuildLocationParameterParams,
@@ -40,9 +43,7 @@ const buildExpected = (
   query,
   requestOptions: {
     attributesToHighlight,
-    facetFilters: facetFilters
-      ? [...[[defaultFacetFilters]], ...facetFilters]
-      : [[defaultFacetFilters]],
+    facetFilters: facetFilters ? [...defaultFacetFilters, ...facetFilters] : defaultFacetFilters,
     ...(aroundLatLng ? { aroundLatLng, aroundRadius: aroundRadius ?? 'all' } : {}),
   },
 })

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -22,7 +23,7 @@ export const useSync = (shouldSync = true) => {
   const urlParamsToSync = useRef<Record<string, unknown> | null>(null)
   const [canSwitchToAroundMe, setCanSwitchToAroundMe] = useState(false)
 
-  const { params } = useRoute<UseRouteType<'SearchLanding' | 'SearchResults' | 'SearchFilter'>>()
+  const { params } = useRoute<UseRouteType<'SearchResults' | 'SearchFilter'>>()
   const { setParams } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
@@ -76,6 +77,14 @@ export const useSync = (shouldSync = true) => {
 
     if (urlParamsToSync.current === null) return
 
+    // Avoids infinite loop when the state is initially set to the default value (for example when we go back)
+    const isInitialState = Object.keys(initialSearchState).every((key) => {
+      const currentValue = searchState[key as keyof SearchState]
+      const initialValue = initialSearchState[key as keyof SearchState]
+      return isEqual(currentValue, initialValue)
+    })
+    if (isInitialState) return
+
     const pendingParams = urlParamsToSync.current
     const stateHasUrlParams = Object.keys(pendingParams).every((key) => {
       const urlValue = pendingParams[key]
@@ -89,7 +98,6 @@ export const useSync = (shouldSync = true) => {
     if (!stateHasUrlParams) {
       return
     }
-
     urlParamsToSync.current = {}
 
     const newParams = {

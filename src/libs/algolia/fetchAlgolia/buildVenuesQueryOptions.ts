@@ -29,7 +29,8 @@ export const buildVenuesQueryOptions = (
   const hasAtLeastOneBookableOfferPredicate = [
     `${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`,
   ]
-  facetFilters.push(hasAtLeastOneBookableOfferPredicate)
+  const isOpenToPublicPredicate = [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]
+  facetFilters.push(hasAtLeastOneBookableOfferPredicate, isOpenToPublicPredicate)
 
   return {
     ...buildLocationParameter(buildLocationParameterParams),

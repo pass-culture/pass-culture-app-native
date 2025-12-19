@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { RecreditType } from 'api/gen'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -42,6 +43,28 @@ describe('useInitialScreen()', () => {
     })
 
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
+  })
+
+  it('should return BonificationGranted when logged in user has credit to show of type BonusCredit', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', true)
+    mockAuthContextWithUser(
+      {
+        ...beneficiaryUser,
+        showEligibleCard: false,
+        recreditAmountToShow: 500,
+        recreditTypeToShow: RecreditType.BonusCredit,
+      },
+      { persist: true }
+    )
+
+    const result = renderUseInitialScreen()
+
+    await waitFor(() => {
+      expect(result.current).toEqual('BonificationGranted')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'BonificationGranted')
   })
 
   it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {

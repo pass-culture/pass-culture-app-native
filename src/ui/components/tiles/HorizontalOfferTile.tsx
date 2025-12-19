@@ -7,7 +7,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getInteractionTagLabel } from 'features/offer/components/InteractionTag/getInteractionTagLabel'
 import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
+import { logClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
+import { algoliaAnalyticsSelectors } from 'libs/algolia/store/algoliaAnalyticsStore'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { getDistance } from 'libs/location/getDistance'
@@ -31,7 +32,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
 
 import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
@@ -95,7 +95,6 @@ export const HorizontalOfferTile = ({
     subcategoryId
   )
   const { categoryId, appLabel } = useSubcategory(subcategoryId)
-  const { logClickOnOffer } = useLogClickOnOffer()
 
   const offerId = Number(objectID)
 
@@ -141,8 +140,14 @@ export const HorizontalOfferTile = ({
       segment
     )
 
-    if (analyticsParams.from === 'searchresults')
-      logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })
+    if (analyticsParams.from === 'searchresults') {
+      const currentQueryID = algoliaAnalyticsSelectors.selectCurrentQueryID()
+      void logClickOnOffer({
+        objectID,
+        position: analyticsParams.index ?? 0,
+        queryID: currentQueryID,
+      })
+    }
   }
 
   const isAComingSoonOffer = getIsAComingSoonOffer(bookingAllowedDatetime)
@@ -176,7 +181,7 @@ export const HorizontalOfferTile = ({
       from={analyticsParams.from}
       style={style}>
       <StyledHorizontalTile {...horizontalTileProps} categoryId={categoryId} imageUrl={thumbUrl}>
-        <Row flex={1} gap={getSpacing(4)} testID="horizontal_offer_tile">
+        <Row flex={1} gap={16} testID="horizontal_offer_tile">
           <Column flex={1}>
             {distanceToOffer ? (
               <OfferName title={name ?? ''} />
@@ -221,12 +226,12 @@ const StyledHorizontalTile = styled(HorizontalTile)({
   flex: 1,
 })
 
-const Container = styled(InternalTouchableLink)({
+const Container = styled(InternalTouchableLink)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   outlineOffset: 0,
-  gap: getSpacing(4),
-})
+  gap: theme.designSystem.size.spacing.l,
+}))
 
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
@@ -253,9 +258,9 @@ const OfferNameContainer = styled.View({
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  marginLeft: theme.designSystem.size.spacing.xs,
 }))({
   flexShrink: 0,
-  marginLeft: getSpacing(1),
 })
 
 const DistanceTag = styled(Tag)(({ theme }) => ({

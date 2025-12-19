@@ -5,13 +5,12 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useColorScheme } from 'libs/styled/useColorScheme'
-import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -104,7 +103,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   disabled={buttonPrimary.disabled}
                   icon={buttonPrimary.icon}
                   buttonHeight="tall"
-                  accessibilityRole={accessibilityRoleInternalNavigation()}
                 />
               ) : null}
 
@@ -116,7 +114,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   isLoading={buttonTertiary.isLoading}
                   disabled={buttonTertiary.disabled}
                   icon={buttonTertiary.icon}
-                  accessibilityRole={accessibilityRoleInternalNavigation()}
                 />
               ) : null}
 
@@ -142,11 +139,11 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const IllustrationContainer = styled.View({
+const IllustrationContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledTitle = styled(Typo.Title2)({
   textAlign: 'center',
@@ -156,14 +153,14 @@ const StyledSubtitle = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const TextContainer = styled(ViewGap)({
+const TextContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: getSpacing(8),
-})
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
-const ChildrenContainer = styled.View({
-  marginBottom: getSpacing(8),
-})
+const ChildrenContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
 const ButtonContainer = styled(ViewGap)({
   alignItems: 'center',

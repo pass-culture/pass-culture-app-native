@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
+import { env } from 'libs/environment/env'
 import { checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -20,11 +20,7 @@ describe('<PhoneValidationTooManyAttempts/>', () => {
       fireEvent.click(contactSupportButton)
 
       await waitFor(() => {
-        expect(openUrl).toHaveBeenCalledWith(
-          contactSupport.forPhoneNumberConfirmation.url,
-          contactSupport.forPhoneNumberConfirmation.params,
-          true
-        )
+        expect(openUrl).toHaveBeenCalledWith(env.SUPPORT_ACCOUNT_ISSUES_FORM, undefined, true)
       })
     })
   })
