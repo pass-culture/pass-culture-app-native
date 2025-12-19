@@ -4,10 +4,18 @@
  */
 
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { render, screen } from 'tests/utils'
+import { Validate } from 'ui/svg/icons/Validate'
 
 import { SelectableAsset } from './SelectableAsset'
+
+const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.brandPrimary,
+  size: theme.icons.sizes.smaller,
+  testID: 'dummy-icon',
+}))``
 
 describe('SelectableAsset', () => {
   it('renders text variant', () => {
@@ -21,5 +29,17 @@ describe('SelectableAsset', () => {
     render(<SelectableAsset variant="tag" tag={{ label: 'TagLabel', testID: 'tag' }} />)
 
     expect(screen.getByText('TagLabel')).toBeOnTheScreen()
+  })
+
+  it('renders iconElement when provided', () => {
+    render(<SelectableAsset variant="icon" iconElement={<Validate testID="dummy-element" />} />)
+
+    expect(screen.getByTestId('dummy-element')).toBeOnTheScreen()
+  })
+
+  it('renders Icon when no iconElement is provided', () => {
+    render(<SelectableAsset variant="icon" Icon={ValidateIcon} />)
+
+    expect(screen.getByTestId('dummy-icon')).toBeOnTheScreen()
   })
 })

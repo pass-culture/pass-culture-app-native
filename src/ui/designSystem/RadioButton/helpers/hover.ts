@@ -22,7 +22,7 @@ export const getBorderHoverStyle = ({
   if (radioState.disabled) return {}
   return radioState.error && radioStateBorderColorError
     ? { borderColor: radioStateBorderColorError }
-    : getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimary, isHover })
+    : getHoverStyle({ borderColor: theme.designSystem.color.border.brandPrimaryHover, isHover })
 }
 
 export const getTextHoverStyle = ({
@@ -39,5 +39,5 @@ export const getTextHoverStyle = ({
   if (radioState.disabled) return {}
   return radioState.error && radioStateBorderColorError
     ? { borderColor: radioStateBorderColorError }
-    : getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimary, isHover })
+    : getHoverStyle({ textColor: theme.designSystem.color.text.brandPrimaryHover, isHover })
 }

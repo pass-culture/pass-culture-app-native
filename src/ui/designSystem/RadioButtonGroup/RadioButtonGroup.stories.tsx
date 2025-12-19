@@ -6,10 +6,8 @@
 import type { Meta } from '@storybook/react-vite'
 import React from 'react'
 
-import {
-  RadioButtonGroup,
-  RadioButtonGroupOption,
-} from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: Meta<typeof RadioButtonGroup> = {
