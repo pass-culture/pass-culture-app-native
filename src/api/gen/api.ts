@@ -2219,20 +2219,6 @@ export interface FavoriteResponse {
   offer: FavoriteOfferResponse
 }
 /**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum FraudCheckStatus {
-  'canceled' = 'canceled',
-  'error' = 'error',
-  'ko' = 'ko',
-  'ok' = 'ok',
-  'pending' = 'pending',
-  'started' = 'started',
-  'suspiscious' = 'suspiscious',
-}
-/**
  * @export
  * @interface GTL
  */
@@ -3837,6 +3823,22 @@ export interface ProfileUpdateRequest {
   schoolTypeId?: SchoolTypesIdEnum | null
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum QFBonificationStatus {
+  'eligible' = 'eligible',
+  'not_eligible' = 'not_eligible',
+  'started' = 'started',
+  'custodian_not_found' = 'custodian_not_found',
+  'not_in_tax_household' = 'not_in_tax_household',
+  'quotient_familial_too_high' = 'quotient_familial_too_high',
+  'too_many_retries' = 'too_many_retries',
+  'granted' = 'granted',
+  'unknown_ko' = 'unknown_ko',
+}
+/**
  * @export
  * @interface Rates
  */
@@ -4901,11 +4903,6 @@ export interface UserProfileResponse {
    */
   birthDate?: string | null
   /**
-   * @type {FraudCheckStatus}
-   * @memberof UserProfileResponse
-   */
-  bonificationStatus?: FraudCheckStatus | null
-  /**
    * @type {{ [key: string]: number; }}
    * @memberof UserProfileResponse
    */
@@ -4996,11 +4993,6 @@ export interface UserProfileResponse {
    */
   isEligibleForBeneficiaryUpgrade: boolean
   /**
-   * @type {boolean}
-   * @memberof UserProfileResponse
-   */
-  isEligibleForBonification: boolean
-  /**
    * @type {string}
    * @memberof UserProfileResponse
    */
@@ -5020,6 +5012,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   postalCode?: string | null
+  /**
+   * @type {QFBonificationStatus}
+   * @memberof UserProfileResponse
+   */
+  qfBonificationStatus?: QFBonificationStatus | null
   /**
    * @type {number}
    * @memberof UserProfileResponse

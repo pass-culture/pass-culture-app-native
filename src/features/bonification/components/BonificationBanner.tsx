@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -49,13 +49,13 @@ const BANNER_CONFIG = {
 }
 
 const BANNER_CONFIG_MAP = {
-  [FraudCheckStatus.error]: BANNER_CONFIG[BonificationBannerType.ERROR],
-  [FraudCheckStatus.ko]: BANNER_CONFIG[BonificationBannerType.ERROR],
-  [FraudCheckStatus.suspiscious]: BANNER_CONFIG[BonificationBannerType.ERROR],
-  [FraudCheckStatus.pending]: BANNER_CONFIG[BonificationBannerType.PENDING],
-  [FraudCheckStatus.ok]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-  [FraudCheckStatus.canceled]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-  [FraudCheckStatus.started]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  [QFBonificationStatus.unknown_ko]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.too_many_retries]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.custodian_not_found]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.started]: BANNER_CONFIG[BonificationBannerType.PENDING],
+  [QFBonificationStatus.eligible]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  [QFBonificationStatus.quotient_familial_too_high]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  [QFBonificationStatus.granted]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
   default: BANNER_CONFIG[BonificationBannerType.DEFAULT],
 }
 
@@ -63,7 +63,7 @@ export const BonificationBanner = ({
   bonificationStatus,
   onCloseCallback,
 }: {
-  bonificationStatus: FraudCheckStatus | undefined | null
+  bonificationStatus: QFBonificationStatus | undefined | null
   onCloseCallback: () => void
 }) => {
   const currency = useGetCurrencyToDisplay()

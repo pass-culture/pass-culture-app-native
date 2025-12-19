@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -12,7 +12,7 @@ describe('BonificationBanner', () => {
     render(
       reactQueryProviderHOC(
         <BonificationBanner
-          bonificationStatus={FraudCheckStatus.started}
+          bonificationStatus={QFBonificationStatus.eligible}
           onCloseCallback={jest.fn()}
         />
       )
@@ -29,7 +29,7 @@ describe('BonificationBanner', () => {
     render(
       reactQueryProviderHOC(
         <BonificationBanner
-          bonificationStatus={FraudCheckStatus.error}
+          bonificationStatus={QFBonificationStatus.unknown_ko}
           onCloseCallback={jest.fn()}
         />
       )
@@ -46,7 +46,7 @@ describe('BonificationBanner', () => {
     render(
       reactQueryProviderHOC(
         <BonificationBanner
-          bonificationStatus={FraudCheckStatus.pending}
+          bonificationStatus={QFBonificationStatus.started}
           onCloseCallback={jest.fn()}
         />
       )

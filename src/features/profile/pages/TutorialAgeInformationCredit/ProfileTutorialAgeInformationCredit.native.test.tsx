@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { beneficiaryUser } from 'fixtures/user'
@@ -52,7 +52,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it('should show step to connected users', () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: { ...beneficiaryUser, isEligibleForBonification: true },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -67,11 +67,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it("should show link if user is eligible and hasn't made a request for bonus credit", async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: undefined,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -87,11 +83,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it("should not show link if user isn't eligible", async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: false,
-          bonificationStatus: undefined,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.not_eligible },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -136,11 +128,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it('should not show link if bonus credit was already obtained', async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: FraudCheckStatus.ok,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.granted },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -155,11 +143,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it('should disable link if user currently has request for bonus credit', async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: FraudCheckStatus.pending,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.started },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
