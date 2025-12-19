@@ -32,7 +32,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.1.0
-        if: ${{ inputs.ENV == 'testing' }}
+        if: ${{ inputs.ENV != 'production' }}
       - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v2'
         with:
@@ -67,7 +67,7 @@ jobs:
         with:
           version: '>= 416.0.0'
       - name: 'Push debug log for testing'
-        if: ${{ inputs.ENV == 'testing' }}
+        if: ${{ inputs.ENV != 'production' }}
         run: |
           export SENTRY_LOG_LEVEL="debug"
       - name: 'Build web for input env'
