@@ -1,9 +1,9 @@
 name: '4 [on_pr] Lighthouse Web Performance test'
 
 on:
-  schedule:
-    - cron: '0 22 * * 0' # At 10PM every Sunday
-
+  push:
+    branches:
+      - safe-chain
 
 env:
   CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
