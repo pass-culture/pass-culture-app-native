@@ -922,6 +922,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     </View>
   </View>
   <View
+    flexDirection="row"
     gap={4}
     isModal={false}
     style={
