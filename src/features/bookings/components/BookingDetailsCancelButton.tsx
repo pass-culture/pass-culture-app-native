@@ -7,7 +7,6 @@ import {
   BookingDetailsButton,
   BookingDetailsButtonProps,
 } from 'features/bookings/components/BookingDetailsButton'
-import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { getBookingPropertiesV2 } from 'features/bookings/helpers'
 import { formattedExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { getCancelMessage } from 'features/bookings/helpers/getCancelMessage'
@@ -26,20 +25,23 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { user } = useAuthContext()
 
   const expirationDate = formattedExpirationDate(booking.dateCreated)
-  const isDigitalBooking = booking.stock.offer.isDigital === true && !booking.expirationDate
-  const isFreeOfferToArchive =
-    FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(booking.stock.offer.subcategoryId) &&
-    booking.totalAmount === 0
+  const isDigitalBookingWithoutExpirationDate =
+    booking.stock.offer.isDigital && !booking.expirationDate
+  const isFreeOfferToArchive = booking.stock.isAutomaticallyUsed
 
-  if (!expirationDate && ((!booking.confirmationDate && isDigitalBooking) || isFreeOfferToArchive))
+  if (
+    !expirationDate &&
+    ((!booking.confirmationDate && booking.stock.offer.isDigital) || isFreeOfferToArchive)
+  )
     return null
 
   const cancelMessage = getCancelMessage({
     confirmationDate: booking.confirmationDate,
     expirationDate,
-    isDigitalBooking,
+    isDigitalBookingWithoutExpirationDate,
     isFreeOfferToArchive,
     user,
+    displayAsEnded: !!booking.displayAsEnded,
   })
 
   const shouldDisplayButton =

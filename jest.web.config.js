@@ -5,10 +5,7 @@ module.exports = {
   ...base,
   preset: '',
   // Since RN0.73 we use this workaround : https://github.com/mswjs/jest-fixed-jsdom
-  testEnvironment:
-    process.env.RUN_ALLURE === 'true'
-      ? '<rootDir>/jest/AllureFixedJSDOMEnvironment.js'
-      : 'jest-fixed-jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: [...base.setupFiles, '<rootDir>/jest/jest.web.setup.ts'],
   setupFilesAfterEnv: [...base.setupFilesAfterEnv, '<rootDir>/jest/jest.web.setupAfterEnv.ts'],

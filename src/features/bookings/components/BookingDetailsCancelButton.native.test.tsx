@@ -282,9 +282,9 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking: BookingsResponseV2['ongoingBookings'][number] = {
       ...bookingsSnapV2.ongoingBookings[0],
       dateCreated: '',
-      totalAmount: 0,
       stock: {
         ...bookingsSnapV2.ongoingBookings[0].stock,
+        isAutomaticallyUsed: true,
         offer: {
           ...bookingsSnapV2.ongoingBookings[0].stock.offer,
           isDigital: true,
@@ -342,9 +342,9 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking: BookingsResponseV2['ongoingBookings'][number] = {
         ...bookingsSnapV2.ongoingBookings[0],
         confirmationDate: null,
-        totalAmount: 0,
         stock: {
           ...bookingsSnapV2.ongoingBookings[0].stock,
+          isAutomaticallyUsed: true,
           price: 0,
           offer: {
             ...bookingsSnapV2.ongoingBookings[0].stock.offer,
@@ -362,9 +362,9 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking: BookingsResponseV2['ongoingBookings'][number] = {
         ...bookingsSnapV2.ongoingBookings[0],
         confirmationDate: null,
-        totalAmount: 0,
         stock: {
           ...bookingsSnapV2.ongoingBookings[0].stock,
+          isAutomaticallyUsed: true,
           price: 0,
           offer: {
             ...bookingsSnapV2.ongoingBookings[0].stock.offer,
@@ -383,9 +383,9 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking: BookingsResponseV2['ongoingBookings'][number] = {
         ...bookingsSnapV2.ongoingBookings[0],
         confirmationDate: null,
-        totalAmount: 0,
         stock: {
           ...bookingsSnapV2.ongoingBookings[0].stock,
+          isAutomaticallyUsed: true,
           price: 1000,
           offer: {
             ...bookingsSnapV2.ongoingBookings[0].stock.offer,
@@ -403,9 +403,9 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking: BookingsResponseV2['ongoingBookings'][number] = {
         ...bookingsSnapV2.ongoingBookings[0],
         confirmationDate: null,
-        totalAmount: 0,
         stock: {
           ...bookingsSnapV2.ongoingBookings[0].stock,
+          isAutomaticallyUsed: true,
           price: 1000,
           offer: {
             ...bookingsSnapV2.ongoingBookings[0].stock.offer,

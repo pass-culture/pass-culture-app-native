@@ -17,21 +17,23 @@ const exBeneficiaryUser = {
 
 describe('getCancelMessage', () => {
   it.each`
-    confirmationDate | expirationDate  | isDigitalBooking | isFreeOfferToArchive | user                 | expected
-    ${undefined}     | ${'01/03/2021'} | ${false}         | ${true}              | ${undefined}         | ${'Ta réservation sera archivée le 01/03/2021'}
-    ${undefined}     | ${'01/03/2021'} | ${true}          | ${false}             | ${undefined}         | ${'Ta réservation sera archivée le 01/03/2021'}
-    ${undefined}     | ${'01/03/2021'} | ${false}         | ${false}             | ${undefined}         | ${''}
-    ${'01/01/2021'}  | ${'01/01/2021'} | ${false}         | ${false}             | ${undefined}         | ${`Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1er janvier 2021`}
-    ${'10/03/2021'}  | ${'01/03/2021'} | ${false}         | ${false}             | ${undefined}         | ${`La réservation est annulable jusqu’au\u00a03 octobre 2021`}
-    ${'01/01/2021'}  | ${'01/03/2021'} | ${false}         | ${false}             | ${exBeneficiaryUser} | ${`Ton crédit est expiré.${LINE_BREAK}Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1er janvier 2021`}
-    ${'01/01/2021'}  | ${'01/03/2021'} | ${true}          | ${false}             | ${undefined}         | ${`Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 01/03/2021`}
+    confirmationDate | expirationDate  | isDigitalBookingWithoutExpirationDate | isFreeOfferToArchive | displayAsEnded | user                 | expected
+    ${undefined}     | ${'01/03/2021'} | ${false}                              | ${true}              | ${false}       | ${undefined}         | ${'Ta réservation sera archivée le 01/03/2021'}
+    ${undefined}     | ${'01/03/2021'} | ${true}                               | ${false}             | ${false}       | ${undefined}         | ${'Ta réservation sera archivée le 01/03/2021'}
+    ${undefined}     | ${'01/03/2021'} | ${false}                              | ${false}             | ${false}       | ${undefined}         | ${''}
+    ${'01/01/2021'}  | ${'01/01/2021'} | ${false}                              | ${false}             | ${false}       | ${undefined}         | ${`Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1er janvier 2021`}
+    ${'10/03/2021'}  | ${'01/03/2021'} | ${false}                              | ${false}             | ${false}       | ${undefined}         | ${`La réservation est annulable jusqu’au\u00a03 octobre 2021`}
+    ${'01/01/2021'}  | ${'01/03/2021'} | ${false}                              | ${false}             | ${false}       | ${exBeneficiaryUser} | ${`Ton crédit est expiré.${LINE_BREAK}Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1er janvier 2021`}
+    ${'01/01/2021'}  | ${'01/03/2021'} | ${true}                               | ${false}             | ${false}       | ${undefined}         | ${`Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 01/03/2021`}
+    ${undefined}     | ${undefined}    | ${false}                              | ${false}             | ${true}        | ${undefined}         | ${'Ta réservation a été archivée mais tu peux toujours y accéder dans la section “Réservations terminées”'}
   `(
-    'getCancelMessage({ confirmationDate: $confirmationDate, expirationDate: $expirationDate , isDigitalBooking : $isDigitalBooking, isFreeOfferToArchive : $isFreeOfferToArchive , user:$user}) \t= $expected',
+    'getCancelMessage({ confirmationDate: $confirmationDate, expirationDate: $expirationDate , isDigitalBookingWithoutExpirationDate : $isDigitalBookingWithoutExpirationDate, isFreeOfferToArchive : $isFreeOfferToArchive, displayAsEnded: $displayAsEnded, user:$user}) \t= $expected',
     ({
       confirmationDate,
       expirationDate,
-      isDigitalBooking,
+      isDigitalBookingWithoutExpirationDate,
       isFreeOfferToArchive,
+      displayAsEnded,
       user,
       expected,
     }) => {
@@ -39,8 +41,9 @@ describe('getCancelMessage', () => {
         getCancelMessage({
           confirmationDate,
           expirationDate,
-          isDigitalBooking,
+          isDigitalBookingWithoutExpirationDate,
           isFreeOfferToArchive,
+          displayAsEnded,
           user,
         })
       ).toBe(expected)

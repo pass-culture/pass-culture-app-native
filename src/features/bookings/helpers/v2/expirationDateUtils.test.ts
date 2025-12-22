@@ -1,92 +1,108 @@
 import mockdate from 'mockdate'
 
-import { BookingsResponseV2, SubcategoryIdEnum } from 'api/gen'
-import { bookingsSnapV2 } from 'features/bookings/fixtures'
+import { SubcategoryIdEnum } from 'api/gen'
 import { expirationDateUtilsV2 } from 'features/bookings/helpers'
+import { mockBuilder } from 'tests/mockBuilder'
 
 describe('expirationDateUtils', () => {
-  const initialBookings = bookingsSnapV2.ongoingBookings
+  const ongoingBookings = mockBuilder.ongoingBookingListItemResponse
+  const endedBookings = mockBuilder.endedBookingListItemResponse
 
   describe('getEligibleBookingsForArchive', () => {
     it('should return an array with unique bookings when a booking appears in both categories', () => {
-      const freeBookingInSubcategorie: BookingsResponseV2['ongoingBookings'][number] = {
-        ...bookingsSnapV2.ongoingBookings[0],
-      }
-      freeBookingInSubcategorie.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
-      freeBookingInSubcategorie.totalAmount = 0
-      freeBookingInSubcategorie.id = 123
+      const freeBooking = ongoingBookings({
+        id: 123,
+        totalAmount: 0,
+        stock: mockBuilder.bookingListItemStockResponse({
+          isAutomaticallyUsed: true,
+          offer: mockBuilder.bookingListItemOfferResponse({
+            subcategoryId: SubcategoryIdEnum.CARTE_MUSEE,
+          }),
+        }),
+      })
 
-      const digitalBookingsWithoutExpirationDate = initialBookings[0]
+      const digitalBookingsWithoutExpirationDate = ongoingBookings({
+        id: 123,
+        expirationDate: null,
+        stock: mockBuilder.bookingListItemStockResponse({
+          offer: mockBuilder.bookingListItemOfferResponse({
+            isDigital: true,
+            subcategoryId: SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE,
+          }),
+        }),
+      })
 
-      const bookings = [freeBookingInSubcategorie, digitalBookingsWithoutExpirationDate]
+      const bookings = [freeBooking, digitalBookingsWithoutExpirationDate]
 
       expect(expirationDateUtilsV2.getEligibleBookingsForArchive(bookings)).toHaveLength(1)
     })
   })
 
   describe('getDigitalBookingsWithoutExpirationDate', () => {
-    it('should get an array with a booking if is digital and without expiration date', () => {
-      const initialBookingsWithDigitalBooking = [
-        {
-          ...bookingsSnapV2.ongoingBookings[0],
-          stock: {
-            ...bookingsSnapV2.ongoingBookings[0].stock,
-            offer: {
-              ...bookingsSnapV2.ongoingBookings[0].stock.offer,
-              isDigital: true,
-            },
-          },
-        },
+    it('should return an array of digital booking without expiration date', () => {
+      const digitalBookingWithExpirationDate = ongoingBookings({
+        id: 123,
+        expirationDate: '2021-03-15T23:01:37.925926',
+      })
+
+      const digitalBookingWithoutExpirationDate = ongoingBookings({
+        id: 456,
+      })
+
+      const nonDigitalBooking = ongoingBookings({
+        id: 789,
+        stock: mockBuilder.bookingListItemStockResponse({
+          offer: mockBuilder.bookingListItemOfferResponse({
+            isDigital: false,
+          }),
+        }),
+      })
+
+      const bookings = [
+        nonDigitalBooking,
+        digitalBookingWithExpirationDate,
+        digitalBookingWithoutExpirationDate,
       ]
 
-      const arrayOfBooking = [initialBookingsWithDigitalBooking[0]]
-
-      expect(
-        expirationDateUtilsV2.getDigitalBookingsWithoutExpirationDate(
-          initialBookingsWithDigitalBooking
-        )
-      ).toStrictEqual(arrayOfBooking)
-    })
-
-    it('should return an empty array', () => {
-      const invalidbooking = {
-        ...initialBookings[1],
-        stock: {
-          ...initialBookings[1].stock,
-          offer: {
-            ...initialBookings[1].stock.offer,
-            isDigital: false,
-          },
-        },
-      }
-      const arrayOfBooking = [invalidbooking]
-
-      expect(expirationDateUtilsV2.getDigitalBookingsWithoutExpirationDate(arrayOfBooking)).toEqual(
-        []
+      expect(expirationDateUtilsV2.getDigitalBookingsWithoutExpirationDate(bookings)).toStrictEqual(
+        [digitalBookingWithoutExpirationDate]
       )
     })
   })
 
-  describe('isBookingInList', () => {
-    it('should check if a booking does exist in the list of DigitalBookingWithoutExpirationDate array and return true if it exist', () => {
-      const [firstBooking] = initialBookings
-      const getDigitalBookingsWithoutExpirationDate = initialBookings
+  describe('isBookingEligibleForArchive', () => {
+    const archivableBookingsList = [
+      ongoingBookings({
+        id: 123,
+        stock: mockBuilder.bookingListItemStockResponse({
+          offer: mockBuilder.bookingListItemOfferResponse({
+            subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+          }),
+        }),
+      }),
+      ongoingBookings({
+        id: 456,
+        stock: mockBuilder.bookingListItemStockResponse({
+          offer: mockBuilder.bookingListItemOfferResponse({
+            subcategoryId: SubcategoryIdEnum.ABO_MEDIATHEQUE,
+          }),
+        }),
+      }),
+    ]
+
+    it('should be true if booking belongs to the archivable bookings list', () => {
+      const booking = ongoingBookings({ id: 123 })
 
       expect(
-        expirationDateUtilsV2.isBookingInList(firstBooking, getDigitalBookingsWithoutExpirationDate)
+        expirationDateUtilsV2.isBookingEligibleForArchive(booking, archivableBookingsList)
       ).toBeTruthy()
     })
 
-    it('should check if a booking does exist in the list of DigitalBookingWithoutExpirationDate array and return false if it does not exist', () => {
-      const [firstBooking] = initialBookings
-      const newFirstBooking = { ...firstBooking, id: 999 }
-      const getDigitalBookingsWithoutExpirationDate = initialBookings
+    it('should be false if booking does not belong to the archivable bookings list', () => {
+      const booking = ongoingBookings({ id: 789 })
 
       expect(
-        expirationDateUtilsV2.isBookingInList(
-          newFirstBooking,
-          getDigitalBookingsWithoutExpirationDate
-        )
+        expirationDateUtilsV2.isBookingEligibleForArchive(booking, archivableBookingsList)
       ).toBeFalsy()
     })
   })
@@ -160,84 +176,71 @@ describe('expirationDateUtils', () => {
 
   describe('isDigitalBookingWithoutExpirationDate', () => {
     it('should return true when booking is digital without expiration date', () => {
-      const value = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate(
-        bookingsSnapV2.endedBookings[0]
-      )
+      const booking = endedBookings()
+      const result = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate(booking)
 
-      expect(value).toEqual(true)
+      expect(result).toBe(true)
     })
 
     describe('should return false', () => {
       it('when booking is digital with expiration date', () => {
-        const value = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate({
-          ...bookingsSnapV2.endedBookings[0],
-          expirationDate: '2021-03-15T23:01:37.925926',
-        })
+        const booking = endedBookings({ expirationDate: '2021-03-15T23:01:37.925926' })
 
-        expect(value).toEqual(false)
+        const result = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate(booking)
+
+        expect(result).toBe(false)
       })
 
       it('when booking is not digital without expiration date', () => {
-        const value = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate({
-          ...bookingsSnapV2.endedBookings[0],
-          stock: {
-            ...bookingsSnapV2.endedBookings[0].stock,
-
-            offer: { ...bookingsSnapV2.endedBookings[0].stock.offer, isDigital: false },
-          },
+        const booking = endedBookings({
+          stock: mockBuilder.bookingListItemStockResponse({
+            offer: mockBuilder.bookingListItemOfferResponse({
+              isDigital: false,
+            }),
+          }),
         })
+        const result = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate(booking)
 
-        expect(value).toEqual(false)
+        expect(result).toBe(false)
       })
 
       it('when booking is not digital with expiration date', () => {
-        const value = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate({
-          ...bookingsSnapV2.endedBookings[0],
+        const booking = endedBookings({
           expirationDate: '2021-03-15T23:01:37.925926',
-          stock: {
-            ...bookingsSnapV2.endedBookings[0].stock,
-
-            offer: { ...bookingsSnapV2.endedBookings[0].stock.offer, isDigital: false },
-          },
+          stock: mockBuilder.bookingListItemStockResponse({
+            offer: mockBuilder.bookingListItemOfferResponse({
+              isDigital: false,
+            }),
+          }),
         })
+        const result = expirationDateUtilsV2.isDigitalBookingWithoutExpirationDate(booking)
 
-        expect(value).toEqual(false)
+        expect(result).toBe(false)
       })
     })
   })
 
-  describe('isFreeBookingInSubcategories', () => {
-    it('should return true when booking amount is 0 and the offer has a category that can be archived', () => {
-      const booking: BookingsResponseV2['ongoingBookings'][number] = {
-        ...bookingsSnapV2.ongoingBookings[0],
+  describe('isArchivableBooking', () => {
+    it.each`
+      bookingDesc                             | isDigital | expirationDate                  | isArchivable | expected
+      ${'digital with an expiration date'}    | ${true}   | ${'2021-03-15T23:01:37.925926'} | ${false}     | ${false}
+      ${'digital without an expiration date'} | ${true}   | ${null}                         | ${false}     | ${true}
+      ${'archivable'}                         | ${false}  | ${null}                         | ${true}      | ${true}
+      ${'not archivable'}                     | ${false}  | ${null}                         | ${false}     | ${false}
+    `(
+      'should return $expected when booking is $bookingDesc',
+      ({ expirationDate, isDigital, isArchivable, expected }) => {
+        const booking = endedBookings({
+          expirationDate,
+          isArchivable,
+          stock: mockBuilder.bookingListItemStockResponse({
+            offer: mockBuilder.bookingListItemOfferResponse({ isDigital }),
+          }),
+        })
+        const result = expirationDateUtilsV2.isArchivableBooking(booking)
+
+        expect(result).toBe(expected)
       }
-
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
-      booking.totalAmount = 0
-
-      expect(expirationDateUtilsV2.isFreeBookingInSubcategories(booking)).toBeTruthy()
-    })
-
-    it('should return false when booking amount is 0 and the offer has not a category that can be archived', () => {
-      const booking: BookingsResponseV2['ongoingBookings'][number] = {
-        ...bookingsSnapV2.ongoingBookings[0],
-      }
-
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_CONCERT
-      booking.totalAmount = 0
-
-      expect(expirationDateUtilsV2.isFreeBookingInSubcategories(booking)).toBeFalsy()
-    })
-
-    it('should return false when booking amount > 0 and the offer has a category that can be archived', () => {
-      const booking: BookingsResponseV2['ongoingBookings'][number] = {
-        ...bookingsSnapV2.ongoingBookings[0],
-      }
-
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
-      booking.totalAmount = 1000
-
-      expect(expirationDateUtilsV2.isFreeBookingInSubcategories(booking)).toBeFalsy()
-    })
+    )
   })
 })

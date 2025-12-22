@@ -55,6 +55,7 @@ export const mockedBookingOfferResponseV2: BookingOfferResponseV2 = {
 
 export const mockedBookingStockResponseV2: BookingStockResponseV2 = {
   id: 150230,
+  isAutomaticallyUsed: false,
   beginningDatetime: '2024-05-08T12:50:00Z',
   price: 400,
   priceCategoryLabel: 'Cat 4',

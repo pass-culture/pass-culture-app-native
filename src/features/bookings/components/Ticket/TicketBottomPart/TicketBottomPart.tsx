@@ -21,6 +21,7 @@ type TicketBottomPartProps = {
   completedUrl?: string
   offerId: number
   subcategoryId: SubcategoryIdEnum
+  onBeforeNavigate: VoidFunction
 }
 
 export const TicketBottomPart = ({
@@ -34,6 +35,7 @@ export const TicketBottomPart = ({
   completedUrl,
   offerId,
   subcategoryId,
+  onBeforeNavigate,
 }: TicketBottomPartProps) => {
   if (ticket.display === TicketDisplayEnum.no_ticket) return <NoTicket />
 
@@ -56,6 +58,7 @@ export const TicketBottomPart = ({
         completedUrl={completedUrl}
         offerId={offerId}
         subcategoryId={subcategoryId}
+        onBeforeNavigate={onBeforeNavigate}
       />
     )
 
@@ -89,6 +92,7 @@ export const TicketBottomPart = ({
         completedUrl={completedUrl}
         offerId={offerId}
         subcategoryId={subcategoryId}
+        onBeforeNavigate={onBeforeNavigate}
       />
     )
 

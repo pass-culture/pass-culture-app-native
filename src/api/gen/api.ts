@@ -666,7 +666,7 @@ export interface BookingListItemResponse {
    */
   dateUsed?: string | null
   /**
-   * @type {number}
+   * @type {string}
    * @memberof BookingListItemResponse
    */
   expirationDate?: string | null
@@ -675,6 +675,11 @@ export interface BookingListItemResponse {
    * @memberof BookingListItemResponse
    */
   id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemResponse
+   */
+  isArchivable?: boolean | null
   /**
    * @type {number}
    * @memberof BookingListItemResponse
@@ -706,6 +711,11 @@ export interface BookingListItemStockResponse {
    * @memberof BookingListItemStockResponse
    */
   beginningDatetime?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemStockResponse
+   */
+  isAutomaticallyUsed: boolean
   /**
    * @type {BookingListItemOfferResponse}
    * @memberof BookingListItemStockResponse
@@ -1109,6 +1119,11 @@ export interface BookingResponse {
    * @type {boolean}
    * @memberof BookingResponse
    */
+  displayAsEnded?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponse
+   */
   enablePopUpReaction: boolean
   /**
    * @type {string}
@@ -1202,6 +1217,11 @@ export interface BookingStockResponseV2 {
    * @memberof BookingStockResponseV2
    */
   id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingStockResponseV2
+   */
+  isAutomaticallyUsed: boolean
   /**
    * @type {BookingOfferResponseV2}
    * @memberof BookingStockResponseV2
@@ -5336,7 +5356,7 @@ export interface VenueResponse {
    */
   withdrawalDetails?: string | null
 }
-/**
+  /**
  * An enumeration.
  * @export
  * @enum {string}
