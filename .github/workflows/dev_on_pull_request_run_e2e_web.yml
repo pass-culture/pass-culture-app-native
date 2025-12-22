@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.1.0
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@safe-chain-setup/v1.2.0
       - name: Enable Corepack
         run: corepack enable
       - uses: pass-culture-github-actions/cache@v1.0.0
