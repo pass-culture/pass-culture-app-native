@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { Bulb } from 'ui/svg/icons/Bulb'
@@ -24,6 +25,10 @@ type CategoryListProps = {
 
 const BLOCK_HEIGHT = getSpacing(25)
 const DESKTOP_MAX_WIDTH = getSpacing(37.33)
+const DESKTOP_MIN_WIDTH = 'none'
+const MOBILE_MIN_WIDTH = '35%'
+const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
+const MOBILE_MAX_WIDTH = '50%'
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
 
@@ -34,6 +39,11 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
+  const mobileMinWidth = useFontScaleValue({
+    default: MOBILE_MIN_WIDTH,
+    at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
+  })
+
   const { designSystem } = useTheme()
   const enableHomeSatisfactionQualtrics = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_HOME_SATISFACTION_QUALTRICS
@@ -84,6 +94,7 @@ export const CategoryListModule = ({
               key={item.id}
               label={item.title}
               height={BLOCK_HEIGHT}
+              mobileMinWidth={mobileMinWidth}
               fillColor={fillFromDesignSystem || colorMapping[item.color].fill}
               borderColor={borderFromDesignSystem || colorMapping[item.color].border}
               onBeforeNavigate={() => {
@@ -148,13 +159,15 @@ const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
-const StyledCategoryButton = styled(CategoryButton)(({ theme }) => ({
-  flexGrow: 1,
-  flexShrink: 0,
-  flexBasis: 0,
-  minWidth: theme.isMobileViewport ? '35%' : 'none',
-  maxWidth: theme.isMobileViewport ? '50%' : DESKTOP_MAX_WIDTH,
-}))
+const StyledCategoryButton = styled(CategoryButton)<{ mobileMinWidth: string }>(
+  ({ theme, mobileMinWidth }) => ({
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: 0,
+    minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+    maxWidth: theme.isMobileViewport ? MOBILE_MAX_WIDTH : DESKTOP_MAX_WIDTH,
+  })
+)
 
 const BannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

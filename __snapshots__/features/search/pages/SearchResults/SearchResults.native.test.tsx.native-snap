@@ -434,7 +434,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   <View
                     style={
                       {
-                        "height": 16,
+                        "minHeight": 16,
                         "minWidth": 16,
                         "paddingHorizontal": 2,
                       }

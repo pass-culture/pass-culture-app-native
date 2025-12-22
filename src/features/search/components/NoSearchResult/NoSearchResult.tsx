@@ -105,8 +105,9 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
 }))``
 
 const Container = styled.View(({ theme }) => ({
+  width: '100%',
   paddingVertical: getSpacing(30),
-  ...(theme.isDesktopViewport ? {} : { marginHorizontal: theme.designSystem.size.spacing.xl }),
+  ...(theme.isDesktopViewport ? {} : { paddingHorizontal: theme.designSystem.size.spacing.xl }),
 }))
 
 const ContainerText = styled.View(({ theme }) => ({
