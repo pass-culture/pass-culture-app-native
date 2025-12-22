@@ -139,7 +139,7 @@ const ComplementLabel = styled(Typo.BodyAccentXs)<{ isSelected: boolean }>(
     color: isSelected
       ? theme.designSystem.color.text.brandPrimary
       : theme.designSystem.color.text.default,
-    marginLeft: getSpacing(2),
+    marginLeft: theme.designSystem.size.spacing.s,
     flexShrink: 0,
   })
 )

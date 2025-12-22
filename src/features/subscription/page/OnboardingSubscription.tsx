@@ -206,9 +206,9 @@ const StyledView = styled.View(({ theme }) => ({
   paddingBottom: getSpacing(6),
 }))
 
-const SubscriptionThematicButtonContainer = styled.View({
-  paddingVertical: getSpacing(2),
-})
+const SubscriptionThematicButtonContainer = styled.View(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.s,
+}))
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
 const Gradient = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ theme }) => ({

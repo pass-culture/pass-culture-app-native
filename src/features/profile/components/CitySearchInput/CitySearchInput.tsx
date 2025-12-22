@@ -190,4 +190,4 @@ const CitiesContainer = styled.View({
 
 const InfoBannerContainer = styled.View({ marginTop: getSpacing(4) })
 
-const StyledView = styled.View({ marginBottom: getSpacing(2) })
+const StyledView = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.s }))

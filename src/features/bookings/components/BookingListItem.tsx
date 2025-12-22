@@ -62,12 +62,12 @@ export const BookingListItem = ({
   )
 }
 
-const StyledImage = styled(Image)({
-  borderTopLeftRadius: getSpacing(2),
-  borderBottomLeftRadius: getSpacing(2),
+const StyledImage = styled(Image)(({ theme }) => ({
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.m,
+  borderBottomLeftRadius: theme.designSystem.size.borderRadius.m,
   height: FIXED_IMAGE_HEIGHT,
   width: FIXED_IMAGE_WIDTH,
-})
+}))
 
 const Ticket = styled.View(({ theme }) => ({
   height: getSpacing(36.3),

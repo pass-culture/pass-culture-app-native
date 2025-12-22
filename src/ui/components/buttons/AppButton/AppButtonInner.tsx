@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppButtonInnerProps } from 'ui/components/buttons/AppButton/types'
-import { getSpacing } from 'ui/theme'
 
 export function AppButtonInner({
   loadingIndicator: LoadingIndicator,
@@ -53,10 +52,10 @@ const Container = styled.View({
 
 const IconWrapper = styled.View({ flexShrink: 0, flexDirection: 'row' })
 
-const IconLeftWrapper = styled(IconWrapper)({
-  marginRight: getSpacing(2),
-})
+const IconLeftWrapper = styled(IconWrapper)(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.s,
+}))
 
-const IconRightWrapper = styled(IconWrapper)({
-  marginLeft: getSpacing(2),
-})
+const IconRightWrapper = styled(IconWrapper)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))

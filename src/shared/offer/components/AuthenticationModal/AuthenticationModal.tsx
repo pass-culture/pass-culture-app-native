@@ -78,11 +78,11 @@ const StyledButtonContainer = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginTop: getSpacing(2),
+  marginTop: theme.designSystem.size.spacing.s,
   marginBottom: getSpacing(6),
-})
+}))
 
 const UserIdentification = styled(InitialUserIdentification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,

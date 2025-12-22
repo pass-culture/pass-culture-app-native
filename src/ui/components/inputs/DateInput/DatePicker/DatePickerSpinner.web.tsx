@@ -66,5 +66,5 @@ const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   userSelect: 'none',
   width: '100%',
   maxWidth: theme.forms.maxWidth,
-  marginTop: getSpacing(2),
+  marginTop: theme.designSystem.size.spacing.s,
 }))

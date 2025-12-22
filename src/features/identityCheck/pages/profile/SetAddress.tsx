@@ -176,4 +176,7 @@ const AdressesContainer = styled.View({
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
 
-const Container = styled.View({ marginTop: getSpacing(5), marginBottom: getSpacing(2) })
+const Container = styled.View(({ theme }) => ({
+  marginTop: getSpacing(5),
+  marginBottom: theme.designSystem.size.spacing.s,
+}))

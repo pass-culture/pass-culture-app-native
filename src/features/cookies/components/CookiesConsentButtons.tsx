@@ -38,7 +38,7 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 const ButtonSpacer = styled.View(({ theme }) => ({
-  width: theme.appContentWidth > theme.breakpoints.xs ? getSpacing(2) : 0,
+  width: theme.appContentWidth > theme.breakpoints.xs ? theme.designSystem.size.spacing.s : 0,
   height: theme.appContentWidth > theme.breakpoints.xs ? 0 : getSpacing(4),
 }))
 

@@ -131,10 +131,10 @@ const ItemContainer = styled.View({
   paddingBottom: isWeb ? getSpacing(4) : 0,
 })
 
-const HeaderContainer = styled.View({
+const HeaderContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  paddingBottom: getSpacing(2),
-})
+  paddingBottom: theme.designSystem.size.spacing.s,
+}))
 
 const TitlesContainer = styled.View({
   alignItems: 'flex-start',

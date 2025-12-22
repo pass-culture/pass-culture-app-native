@@ -104,7 +104,7 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
 }
 
 const BaseStyleComponent = styled(View)(({ theme }) => ({
-  marginTop: getSpacing(2),
+  marginTop: theme.designSystem.size.spacing.s,
   borderRadius: theme.designSystem.size.borderRadius.m,
   flexDirection: 'row',
   alignItems: 'center',
