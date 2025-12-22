@@ -166,6 +166,21 @@ describe('getReconciledVenues', () => {
     expect(result).toEqual(expectedAlgoliaVenues)
   })
 
+  it('should return venues from offers only when venues are permanent', () => {
+    const result = getReconciledVenues(
+      [
+        ...mockedAlgoliaResponse.hits,
+        {
+          ...mockedAlgoliaResponse.hits[1],
+          venue: { ...mockedAlgoliaResponse.hits[1].venue, id: 5, isPermanent: false },
+        },
+      ],
+      []
+    )
+
+    expect(result).toEqual(expectedVenues)
+  })
+
   it('should return algoliavenues and venues from offer formatted when present and venues disjoint', () => {
     const result = getReconciledVenues(mockedAlgoliaResponse.hits, mockAlgoliaVenues)
 

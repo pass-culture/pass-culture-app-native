@@ -19,12 +19,13 @@ export const getReconciledVenues = (
 ): Array<AlgoliaVenueOfferListItem> => {
   const venueIds = venues.map((venue) => venue.objectID)
   // dedupe venues from algolia offers
-  const reconciledVenues: Array<AlgoliaVenueOfferWithGeoloc> = uniqBy(offers, 'venue.id').map(
-    (offer: AlgoliaOffer) => ({
+  const reconciledVenues: Array<AlgoliaVenueOfferWithGeoloc> = uniqBy(offers, 'venue.id')
+    .map((offer: AlgoliaOffer) => ({
       ...offer.venue,
       geoloc: offer._geoloc,
-    })
-  )
+    }))
+    .filter((venue) => venue.isPermanent)
+
   // dedupe algolia venues with venues from algolia offers
   return venueIds.length
     ? venues
