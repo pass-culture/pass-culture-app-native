@@ -37,6 +37,7 @@ export const EnvironmentSchema = yup.object({
   FAQ_LINK_DELETE_ACCOUNT: yup.string().required(),
   FAQ_LINK_EDUCONNECT_URL: yup.string().required(),
   FAQ_LINK_PERSONAL_DATA: yup.string().required(),
+  FAQ_LINK_CAF_QUOTIEN_FAMILIAL: yup.string().required(),
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: yup.string().required(),
   FAQ_LINK_RIGHT_TO_ERASURE: yup.string().required(),
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: yup.string().required(),

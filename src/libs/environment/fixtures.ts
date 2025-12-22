@@ -41,6 +41,8 @@ export const env: Environment = {
   FAQ_LINK_EDUCONNECT_URL: 'https://passculture-educonnect.faq',
   FAQ_LINK_PERSONAL_DATA:
     'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs',
+  FAQ_LINK_CAF_QUOTIEN_FAMILIAL:
+    'https://www.caf.fr/allocataires/actualites/actualites-nationales/comment-obtenir-son-quotient-familial-qf',
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: 'https://passculture-reset-password.faq',
   FAQ_LINK_RIGHT_TO_ERASURE: 'https://passculture-right-to-erasure.faq',
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: 'https://passculture-confirmation-email.faq',
