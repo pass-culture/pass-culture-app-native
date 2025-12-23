@@ -1,6 +1,7 @@
 const ALLOWED_JSX_TAGS = [
   /^.*Text$/,
-/^(Styled)?(Title[1-4]|Body(Accent(S|Xs)?)?|ButtonText(NeutralInfo|Primary|Secondary)?|Caption(NeutralInfo|Primary|Secondary)?)$/
+  /^StyledBody.*$/,
+  /^(Styled)?(Title[1-4]|Body(Accent(S|Xs)?)?|ButtonText(NeutralInfo|Primary|Secondary)?|Caption(NeutralInfo|Primary|Secondary)?)$/,
 ]
 
 const WHITESPACES_REGEX = /^\s*$/
@@ -30,20 +31,20 @@ module.exports = {
   create(context) {
     return {
       JSXElement: (node) => {
-        const openingElement = node.openingElement.name;
+        const openingElement = node.openingElement.name
 
         for (const condition of conditions) {
-          if (condition.check(openingElement)) return;
+          if (condition.check(openingElement)) return
         }
 
-        if (node.children.every(checkJSXTextAreEmpty)) return;
+        if (node.children.every(checkJSXTextAreEmpty)) return
 
-        const allowedTags = conditions.map((condition) => `<${condition.message}.***>`).join(', ');
+        const allowedTags = conditions.map((condition) => `<${condition.message}.***>`).join(', ')
 
         return context.report({
           node,
           message: `No raw text outside tags <Text>, ${allowedTags}. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
-        });
+        })
       },
     }
   },
