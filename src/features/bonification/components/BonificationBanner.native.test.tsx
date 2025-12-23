@@ -21,8 +21,8 @@ describe('BonificationBanner', () => {
       )
     )
 
-    const bannerLabel = screen.getByText(
-      'Un bonus de 50 € pourrait t’être attribué, voyons si tu peux y être éligible.'
+    const bannerLabel = screen.getByLabelText(
+      'Bonus de 50 € - Tu es peut-être éligible à ce bonus, vérifie si tu y as droit.'
     )
 
     expect(bannerLabel).toBeOnTheScreen()
@@ -95,8 +95,8 @@ describe('BonificationBanner', () => {
       )
     )
 
-    const bannerLabel = screen.getByText(
-      'Dossier en cours de vérification. On te notifiera rapidement.'
+    const bannerLabel = screen.getByLabelText(
+      'Bonus de 50 € - Ton dossier est actuellement en cours de vérification.'
     )
 
     expect(bannerLabel).toBeOnTheScreen()

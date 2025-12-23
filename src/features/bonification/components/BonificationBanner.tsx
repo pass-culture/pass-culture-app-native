@@ -9,6 +9,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Code } from 'ui/svg/icons/Code'
+import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 
 enum BonificationBannerType {
@@ -28,25 +29,27 @@ const STATUS_TO_REFUSED_TYPE: Record<string, BonificationRefusedType> = {
 const BANNER_CONFIG = {
   [BonificationBannerType.DEFAULT]: {
     type: BannerType.DEFAULT,
-    label: (amount: string) =>
-      `Un bonus de ${amount} pourrait t’être attribué, voyons si tu peux y être éligible.`,
+    label: (amount: string) => `Bonus de ${amount}`,
+    description: `Tu es peut-être éligible à ce bonus, vérifie si tu y as droit.`,
     links: () => [
       {
-        navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
-        wording: 'Je veux vérifier',
+        navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
+        wording: 'Vérifier maintenant',
       },
     ],
-    Icon: Code,
+    Icon: LogoFilled,
   },
   [BonificationBannerType.PENDING]: {
     type: BannerType.ALERT,
-    label: 'Dossier en cours de vérification. On te notifiera rapidement.',
+    label: (amount: string) => `Bonus de ${amount}`,
+    description: 'Ton dossier est actuellement en cours de vérification.',
     links: () => [],
     Icon: Code,
   },
   [BonificationBannerType.ERROR]: {
     type: BannerType.ERROR,
-    label: 'Ton dossier a été refusé.',
+    label: (amount: string) => `Bonus de ${amount}`,
+    description: 'Ton dossier a été refusé.',
     links: (refusedType: BonificationRefusedType) => [
       {
         navigateTo: getSubscriptionPropConfig('BonificationRefused', {

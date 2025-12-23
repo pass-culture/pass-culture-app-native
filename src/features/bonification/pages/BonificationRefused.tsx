@@ -50,7 +50,7 @@ export const PAGE_CONFIG: PageConfigMap = {
     title: 'Ton dossier n’a pas pu être validé',
     firstText: 'Nous avons bien reçu ton dossier, mais on ne trouve pas ton parent.',
     secondText:
-      'Il semble que nous n’ayons pas trouvé de parent lié à ton dossier. Pas de panique, c’est peut-être juste une petite erreur de saisie',
+      'Il semble que nous n’ayons pas trouvé de parent lié à ton dossier. Pas de panique, c’est peut-être juste une petite erreur de saisie.',
     bannerText:
       'Vérifie que tu as bien rempli les informations demandées sont écrites correctement comme sur les papiers officiels avant de réessayer.',
     primaryButton: { wording: 'Corriger les informations', navigateTo: navigateToHomeConfig },

@@ -73,6 +73,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
+import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { LostId } from 'ui/svg/icons/LostId'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -209,6 +210,7 @@ export const SecondaryAndBiggerIcons = {
   Lock,
   Logo,
   LogoDetailed,
+  LogoFilled,
   LostId,
   MagnifyingGlass,
   MagnifyingGlassFilled,

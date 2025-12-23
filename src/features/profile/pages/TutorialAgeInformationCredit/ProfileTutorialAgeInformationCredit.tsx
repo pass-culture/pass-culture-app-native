@@ -62,7 +62,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
       case QFBonificationStatus.granted:
         return 'Bonus obtenu'
       default:
-        return 'Tester mon éligibilité'
+        return 'Vérifier maintenant'
     }
   }
   const getDisabled = (status: QFBonificationStatus | null | undefined): boolean => {
@@ -103,7 +103,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             <BlockDescriptionItem
               key={2}
               icon={<SmallConfirmation />}
-              text="Ton éligibilité sera vérifiée à partir des infos de ton parent."
+              text="Le bonus dépend des ressources de ton foyer."
             />,
           ]}
         />
@@ -114,9 +114,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             }
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
-            onPress={() =>
-              navigate(...getSubscriptionHookConfig('BonificationRequiredInformation'))
-            }
+            onPress={() => navigate(...getSubscriptionHookConfig('BonificationExplanations'))}
             justifyContent="flex-start"
           />
         )}
