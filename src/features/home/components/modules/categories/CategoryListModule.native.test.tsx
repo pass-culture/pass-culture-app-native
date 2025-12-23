@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -7,13 +6,9 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-
-const asyncStorageSpyOn = jest.spyOn(AsyncStorage, 'getItem')
-const asyncStorageSetItemSpy = jest.spyOn(AsyncStorage, 'setItem')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -98,94 +93,5 @@ describe('CategoryListModule', () => {
     )
 
     expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
-  })
-
-  it('should not display home satisfaction qualtrics banner when enableHomeSatisfactionQualtrics FF disabled', () => {
-    render(
-      <CategoryListModule
-        id="123"
-        title="Explore les catégories"
-        categoryBlockList={categoryBlockList}
-        index={1}
-        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
-      />
-    )
-
-    expect(
-      screen.queryByText(
-        'Un avis sur cette page ? Partage-nous tes idées pour nous aider à l’améliorer !'
-      )
-    ).not.toBeOnTheScreen()
-  })
-
-  describe('When enableHomeSatisfactionQualtrics FF enabled', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_HOME_SATISFACTION_QUALTRICS])
-    })
-
-    it('should display home satisfaction qualtrics banner if not already pressed', () => {
-      asyncStorageSpyOn.mockResolvedValueOnce(null)
-
-      render(
-        <CategoryListModule
-          id="123"
-          title="Explore les catégories"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="6DCThxvbPFKAo04SVRZtwY"
-        />
-      )
-
-      expect(
-        screen.getByText(
-          'Un avis sur cette page ? Partage-nous tes idées pour nous aider à l’améliorer !'
-        )
-      ).toBeOnTheScreen()
-    })
-
-    it('should not display home satisfaction qualtrics banner if already pressed', async () => {
-      asyncStorageSpyOn.mockResolvedValueOnce('pressed')
-
-      render(
-        <CategoryListModule
-          id="123"
-          title="Explore les catégories"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="6DCThxvbPFKAo04SVRZtwY"
-        />
-      )
-
-      await waitFor(() => {
-        expect(AsyncStorage.getItem).toHaveBeenCalledWith('home_satisfaction_qualtrics_pressed')
-      })
-
-      expect(
-        screen.queryByText(
-          'Un avis sur cette page ? Partage-nous tes idées pour nous aider à l’améliorer !'
-        )
-      ).not.toBeOnTheScreen()
-    })
-
-    it('should store home satisfaction qualtrics banner press when user press "Répondre au court questionnaire" button', async () => {
-      asyncStorageSpyOn.mockResolvedValueOnce(null)
-
-      render(
-        <CategoryListModule
-          id="123"
-          title="Explore les catégories"
-          categoryBlockList={categoryBlockList}
-          index={1}
-          homeEntryId="6DCThxvbPFKAo04SVRZtwY"
-        />
-      )
-
-      await user.press(screen.getByText('Répondre au court questionnaire'))
-
-      expect(asyncStorageSetItemSpy).toHaveBeenCalledWith(
-        'home_satisfaction_qualtrics_pressed',
-        'pressed'
-      )
-    })
   })
 })
