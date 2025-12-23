@@ -5,8 +5,8 @@ import { useShouldShowAchievementSuccessModal } from 'features/achievements/hook
 import { useIsCookiesListUpToDate } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import {
   ModalDisplayState,
-  useBookingsReactionHelpers,
-} from 'features/home/components/helpers/useBookingsReactionHelpers'
+  getBookingsReactionHelpers,
+} from 'features/home/components/helpers/getBookingsReactionHelpers'
 
 export enum ModalToShow {
   PENDING = 'pending',
@@ -20,7 +20,7 @@ export const useWhichModalToShow = (
   isBookingsLoading: boolean
 ) => {
   const [modalToShow, setModalToShow] = useState<ModalToShow>(ModalToShow.PENDING)
-  const { shouldShowReactionModal, bookingsEligibleToReaction } = useBookingsReactionHelpers(
+  const { shouldShowReactionModal, bookingsEligibleToReaction } = getBookingsReactionHelpers(
     bookings,
     isBookingsLoading
   )

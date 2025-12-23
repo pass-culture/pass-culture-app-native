@@ -123,16 +123,7 @@ describe('<Offer />', () => {
     })
   })
 
-  it('should not display reaction button in header if offer is in ended bookings and FF is inactive', async () => {
-    renderOfferPage({ mockOffer: offerResponseSnap })
-
-    await screen.findByTestId('offerv2-container')
-
-    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
-  })
-
-  it('should display reaction button in header if offer is in ended bookings and FF is active', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+  it('should display reaction button in header if offer is in ended bookings', async () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
@@ -152,8 +143,7 @@ describe('<Offer />', () => {
     await waitFor(() => expect(screen.getByTestId('animated-icon-like')).toBeOnTheScreen())
   })
 
-  it('should not display reaction button in header if booking has been cancelled and FF is active', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+  it('should not display reaction button in header if booking has been cancelled', async () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
@@ -176,7 +166,6 @@ describe('<Offer />', () => {
   })
 
   it('should not display reaction button in header when user is anonymous (not logged in)', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     mockAuthContext(false)
 
     renderOfferPage({ mockOffer: offerResponseSnap })
@@ -185,7 +174,6 @@ describe('<Offer />', () => {
   })
 
   it('should open reaction modal when press on reaction button in header', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [

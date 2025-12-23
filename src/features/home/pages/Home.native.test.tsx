@@ -90,6 +90,11 @@ describe('Home page', () => {
   })
 
   it('should display onboarding subscription modal on third logged in session', async () => {
+    mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
+      endedBookings: [],
+      ongoingBookings: [],
+      hasBookingsAfter18: true,
+    })
     mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
     await storage.saveObject('logged_in_session_count', 1)
     renderHome()

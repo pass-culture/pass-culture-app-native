@@ -88,7 +88,6 @@ describe('<OfferBody />', () => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
-      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
       RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
     ])
   })

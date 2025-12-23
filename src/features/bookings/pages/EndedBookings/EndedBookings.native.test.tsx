@@ -8,7 +8,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -68,21 +67,15 @@ describe('EndedBookings', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  describe('with reaction feature flag activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-    })
+  it('should send reaction from cinema offer', async () => {
+    renderEndedBookings()
 
-    it('should send reaction from cinema offer', async () => {
-      renderEndedBookings()
+    await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
-      await user.press(await screen.findByLabelText('Réagis à ta réservation'))
+    await user.press(await screen.findByText('J’aime'))
+    await user.press(screen.getByText('Valider la réaction'))
 
-      await user.press(await screen.findByText('J’aime'))
-      await user.press(screen.getByText('Valider la réaction'))
-
-      expect(mockMutate).toHaveBeenCalledTimes(1)
-    })
+    expect(mockMutate).toHaveBeenCalledTimes(1)
   })
 })
 

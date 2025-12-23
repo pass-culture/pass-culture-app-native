@@ -32,7 +32,6 @@ export const TabBarComponent: React.FC<Props> = ({
   tabName,
   badgeValue,
 }) => {
-  const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const [hasSeenProfileBadge, setHasSeenProfileBadge] = useState<boolean | null>(null)
   const isMounted = useRef(true)
@@ -62,7 +61,7 @@ export const TabBarComponent: React.FC<Props> = ({
     AsyncStorage.setItem(DARK_MODE_BADGE_STORAGE_KEY, 'true').catch(() => null)
   }, [enableDarkModeGtm, tabName])
 
-  const BicolorIcon = mapTabRouteToIcon({ route: tabName, enableReactionFeature })
+  const BicolorIcon = mapTabRouteToIcon({ route: tabName })
   const accessibilityLabelSelected = isSelected ? 'actif' : 'inactif'
   const showProfileBadge =
     enableDarkModeGtm && tabName === 'Profile' && hasSeenProfileBadge === false
