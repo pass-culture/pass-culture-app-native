@@ -6,9 +6,7 @@ import { FilterButtonListItem } from 'ui/components/FilterButtonList'
 const MAX_VENUE_CHARACTERS = 20
 
 type Props = {
-  shouldDisplayCalendarModal: boolean
   showCalendarModal: () => void
-  showDatesHoursModal: () => void
   appliedFilters: FILTER_TYPES[]
   searchState: SearchState
   showVenueModal: () => void
@@ -21,9 +19,7 @@ type Props = {
 }
 
 export const getFilterButtonListItem = ({
-  shouldDisplayCalendarModal,
   showCalendarModal,
-  showDatesHoursModal,
   appliedFilters,
   searchState,
   showVenueModal,
@@ -36,9 +32,9 @@ export const getFilterButtonListItem = ({
 }: Props): FilterButtonListItem[] => {
   return [
     {
-      label: shouldDisplayCalendarModal ? 'Dates' : 'Dates & heures',
+      label: 'Dates',
       testID: 'datesHoursButton',
-      onPress: shouldDisplayCalendarModal ? showCalendarModal : showDatesHoursModal,
+      onPress: showCalendarModal,
       isApplied: appliedFilters.includes(FILTER_TYPES.DATES_HOURS),
     },
     {

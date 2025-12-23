@@ -504,25 +504,6 @@ describe('SearchResultsContent component', () => {
     })
   })
 
-  describe('Dates and hours filter', () => {
-    it('should display dates and hours filter button', async () => {
-      renderSearchResultContent()
-
-      expect(await screen.findByText('Dates & heures')).toBeOnTheScreen()
-    })
-
-    it('should open the type filter modal when pressing the type filter button', async () => {
-      renderSearchResultContent()
-      const datesHoursButton = screen.getByTestId('Dates & heures')
-
-      await user.press(datesHoursButton)
-
-      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
-
-      expect(fullscreenModalScrollView).toBeOnTheScreen()
-    })
-  })
-
   describe('Accessibility filter', () => {
     it('should display accessibility filter button', async () => {
       renderSearchResultContent()
@@ -1074,9 +1055,8 @@ describe('SearchResultsContent component', () => {
     })
   })
 
-  describe('When calendar filter feature flag activated', () => {
+  describe('Calendar filter', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2])
       mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })
 

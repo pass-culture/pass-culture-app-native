@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
 
-export type ValuesType = [number] | [number, number]
+type ValuesType = [number] | [number, number]
 
 interface Props {
   values?: ValuesType
