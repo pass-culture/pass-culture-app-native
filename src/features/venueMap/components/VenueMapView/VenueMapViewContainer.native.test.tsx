@@ -391,29 +391,6 @@ describe('VenueMapViewContainer', () => {
     expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
 
-  it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
-    setFeatureFlags([])
-
-    await renderVenueMapViewContainer()
-    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    await pressVenueMarker(venuesFixture[0])
-
-    await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
-  })
-
-  it('should not display offers in bottom-sheet if wipOffersInBottomSheet FF disabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
-    await renderVenueMapViewContainer()
-    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    await pressVenueMarker(venuesFixture[0])
-
-    await screen.findByTestId('venueMapPreview')
-
-    expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen()
-    expect(screen.queryByTestId('venueOfferPlaylist')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Voir les offres du lieu')).not.toBeOnTheScreen()
-  })
-
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should center map on bottom sheet animation', async () => {
     await renderVenueMapViewContainer()

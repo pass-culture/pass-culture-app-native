@@ -74,9 +74,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const shouldNavigateToVenueOnFling = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE
   )
-  const bottomSheetOffersEnabled = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
-  )
 
   const mapViewRef = useRef<Map>(null)
   const [mapLayout, setMapLayout] = useState<LayoutRectangle>()
@@ -93,9 +90,8 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
 
-  const venue = bottomSheetOffersEnabled
-    ? transformGeoLocatedVenueToVenueResponse(selectedVenue)
-    : undefined
+  const venue = transformGeoLocatedVenueToVenueResponse(selectedVenue)
+
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
   const venueSearchParams = useVenueSearchParameters(venue)
@@ -272,7 +268,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
         onClose={removeSelectedVenue}
         venue={selectedVenue}
         onFlingUp={handleFlingUp}
-        venueOffers={bottomSheetOffersEnabled ? selectedVenueOffers?.hits : undefined}
+        venueOffers={selectedVenueOffers?.hits}
         onAnimate={handleBottomSheetAnimation}
         onChange={setBottomSheetIndex}
         offersPlaylistType={offersPlaylistType}
