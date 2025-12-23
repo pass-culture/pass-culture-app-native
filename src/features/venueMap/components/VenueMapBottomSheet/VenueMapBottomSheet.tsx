@@ -19,7 +19,7 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
-import { parseType } from 'libs/parsers/venueType'
+import { parseActivity } from 'libs/parsers/activity'
 import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing } from 'ui/theme'
@@ -74,8 +74,8 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       if (!venue) {
         return []
       }
-      const venueTypeLabel = parseType(venue?.venue_type)
-      return getVenueTags({ distance: distanceToVenue, venue_type: venueTypeLabel })
+      const activityLabel = parseActivity(venue?.activity)
+      return getVenueTags({ distance: distanceToVenue, venue_type: activityLabel })
     }, [venue, distanceToVenue])
 
     const offersPlaylist = useMemo(() => {

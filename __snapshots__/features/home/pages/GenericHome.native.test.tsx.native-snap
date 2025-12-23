@@ -68,9 +68,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
             "venuesParameters": {
-              "hitsPerPage": 15,
-              "title": "Exemple de playlist de lieux",
-              "venueTypes": [
+              "activities": [
                 "Bibliothèque ou médiathèque",
                 "Arts visuels, arts plastiques et galeries",
                 "Centre culturel",
@@ -91,6 +89,8 @@ exports[`GenericHome With not displayed skeleton by default should display real 
                 "Cinéma itinérant",
                 "Autre type de lieu",
               ],
+              "hitsPerPage": 15,
+              "title": "Exemple de playlist de lieux",
             },
           },
         ]
@@ -4351,9 +4351,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
             "venuesParameters": {
-              "hitsPerPage": 15,
-              "title": "Exemple de playlist de lieux",
-              "venueTypes": [
+              "activities": [
                 "Bibliothèque ou médiathèque",
                 "Arts visuels, arts plastiques et galeries",
                 "Centre culturel",
@@ -4374,6 +4372,8 @@ exports[`GenericHome With not displayed skeleton by default should display skele
                 "Cinéma itinérant",
                 "Autre type de lieu",
               ],
+              "hitsPerPage": 15,
+              "title": "Exemple de playlist de lieux",
             },
           },
         ]

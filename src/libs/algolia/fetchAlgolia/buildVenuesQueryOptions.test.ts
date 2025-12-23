@@ -55,7 +55,7 @@ describe('buildVenuesQueryOptions', () => {
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
-      facetFilters: [['venue_type:BOOKSTORE', 'venue_type:RECORD_STORE'], ...defaultFacetFilters],
+      facetFilters: [['activity:BOOKSTORE', 'activity:RECORD_STORE'], ...defaultFacetFilters],
     })
   })
 })

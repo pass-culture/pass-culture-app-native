@@ -3,8 +3,8 @@ import { StatusBar } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { VenueMapFiltersStack } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStack'
+import { VenueMapActivityFilter } from 'features/venueMap/components/VenueMapActivityFilter/VenueMapActivityFilter'
 import { VenueMapFiltersList } from 'features/venueMap/components/VenueMapFiltersList/VenueMapFiltersList'
-import { VenueMapTypeFilter } from 'features/venueMap/components/VenueMapTypeFilter/VenueMapTypeFilter'
 
 export const VenueMapFiltersStackNavigator = () => {
   const { designSystem } = useTheme()
@@ -16,7 +16,10 @@ export const VenueMapFiltersStackNavigator = () => {
       />
       <VenueMapFiltersStack.Navigator screenOptions={{ headerShown: false }}>
         <VenueMapFiltersStack.Screen name="VenueMapFiltersList" component={VenueMapFiltersList} />
-        <VenueMapFiltersStack.Screen name="VenueMapTypeFilter" component={VenueMapTypeFilter} />
+        <VenueMapFiltersStack.Screen
+          name="VenueMapActivityFilter"
+          component={VenueMapActivityFilter}
+        />
       </VenueMapFiltersStack.Navigator>
     </React.Fragment>
   )

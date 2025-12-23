@@ -1,4 +1,4 @@
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 
 export default {
   address: '30 rue saint-andré des arts',
@@ -15,5 +15,5 @@ export default {
   publicName: 'Cinéma St André des Arts',
   timezone: 'Europe/Paris',
   accessibility: {},
-  venueTypeCode: VenueTypeCodeKey.MOVIE,
+  activity: Activity.CINEMA,
 } satisfies Omit<VenueResponse, 'isVirtual'>

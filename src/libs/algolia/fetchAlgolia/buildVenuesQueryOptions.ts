@@ -4,7 +4,7 @@ import {
   buildLocationParameter,
   BuildLocationParameterParams,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
+import { getActivityFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getActivityFacetFilters'
 import { FiltersArray } from 'libs/algolia/types'
 
 export const buildVenuesQueryOptions = (
@@ -21,8 +21,8 @@ export const buildVenuesQueryOptions = (
   }
 
   if (venueTypes.length) {
-    const venueTypesPredicate = buildVenueTypesPredicate(venueTypes.map(getVenueTypeFacetFilters))
-    facetFilters.push(venueTypesPredicate)
+    const activitiesPredicate = buildActivitiesPredicate(venueTypes.map(getActivityFacetFilters))
+    facetFilters.push(activitiesPredicate)
   }
 
   // We want to show on home page only venues that have at least one offer that is searchable in algolia
@@ -38,8 +38,8 @@ export const buildVenuesQueryOptions = (
   }
 }
 
-const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
-  venueTypes.map((venueType) => `${VENUES_FACETS_ENUM.VENUE_TYPE}:${venueType}`)
+export const buildActivitiesPredicate = (activities: string[]): string[] =>
+  activities.map((activity) => `${VENUES_FACETS_ENUM.ACTIVITY}:${activity}`)
 
 const buildTagsPredicate = (tags: string[]): string[] =>
   tags.map((tag: string) => `${VENUES_FACETS_ENUM.TAGS}:${tag}`)

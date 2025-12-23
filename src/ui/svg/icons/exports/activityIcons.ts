@@ -1,41 +1,39 @@
 import { All as Other } from 'ui/svg/icons/venueAndCategories/All'
 import { ArtMaterial } from 'ui/svg/icons/venueAndCategories/ArtMaterial'
-import { Bag } from 'ui/svg/icons/venueAndCategories/Bag'
+import { Bag as ArtSchool } from 'ui/svg/icons/venueAndCategories/Bag'
 import { Book as Library } from 'ui/svg/icons/venueAndCategories/Book'
 import { Bookstore } from 'ui/svg/icons/venueAndCategories/Bookstore'
-import { Castle as PatrimonyTourism } from 'ui/svg/icons/venueAndCategories/Castle'
-import { ChemistryTools as ScientificCulture } from 'ui/svg/icons/venueAndCategories/ChemistryTools'
-import { Cinema as Movie } from 'ui/svg/icons/venueAndCategories/Cinema'
-import { CulturalCentre as CulturalCentre } from 'ui/svg/icons/venueAndCategories/CulturalCentre'
-import { Digital } from 'ui/svg/icons/venueAndCategories/Digital'
+import { Castle as HeritageSite } from 'ui/svg/icons/venueAndCategories/Castle'
+import { ChemistryTools as ScienceCentre } from 'ui/svg/icons/venueAndCategories/ChemistryTools'
+import { Cinema } from 'ui/svg/icons/venueAndCategories/Cinema'
+import { CulturalCentre } from 'ui/svg/icons/venueAndCategories/CulturalCentre'
 import { Festival } from 'ui/svg/icons/venueAndCategories/Festival'
-import { Landscape as VisualArt } from 'ui/svg/icons/venueAndCategories/Landscape'
+import { Landscape as ArtGallery } from 'ui/svg/icons/venueAndCategories/Landscape'
 import { Museum } from 'ui/svg/icons/venueAndCategories/Museum'
 import { Opera } from 'ui/svg/icons/venueAndCategories/Opera'
 import { PerformingArts } from 'ui/svg/icons/venueAndCategories/PerformingArts'
-import { Piano as MusicalInstrumentStore } from 'ui/svg/icons/venueAndCategories/Piano'
+import { Piano as MusicInstrumentStore } from 'ui/svg/icons/venueAndCategories/Piano'
 import { Store } from 'ui/svg/icons/venueAndCategories/Store'
 import { Turntable as RecordStore } from 'ui/svg/icons/venueAndCategories/Turntable'
 import { VideoGame as Games } from 'ui/svg/icons/venueAndCategories/VideoGame'
 
-export const venueTypesIcons = {
+export const activityIcons = {
   ArtMaterial,
-  Bag,
+  ArtSchool,
   Bookstore,
+  Cinema,
   CulturalCentre,
-  Digital,
   Festival,
   Games,
   Library,
-  Movie,
   Museum,
-  MusicalInstrumentStore,
+  MusicInstrumentStore,
   Opera,
   Other,
-  PatrimonyTourism,
+  HeritageSite,
   PerformingArts,
   RecordStore,
-  ScientificCulture,
+  ScienceCentre,
   Store,
-  VisualArt,
+  ArtGallery,
 }

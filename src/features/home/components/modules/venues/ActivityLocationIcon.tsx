@@ -6,16 +6,16 @@ import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorde
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
-export const VenueTypeLocationIcon = ({
-  VenueTypeIcon,
+export const ActivityLocationIcon = ({
+  ActivityIcon,
   iconColor,
   backgroundColor,
 }: {
-  VenueTypeIcon: React.FC<AccessibleIcon>
+  ActivityIcon: React.FC<AccessibleIcon>
   iconColor?: ColorsType
   backgroundColor?: ColorsType
 }) => {
-  const StyledVenueTypeIcon = styled(VenueTypeIcon).attrs({
+  const StyledActivityIcon = styled(ActivityIcon).attrs({
     color: iconColor,
     size: getSpacing(20),
   })``
@@ -28,7 +28,7 @@ export const VenueTypeLocationIcon = ({
 
   return (
     <Container backgroundColor={backgroundColor}>
-      <StyledVenueTypeIcon />
+      <StyledActivityIcon />
       <PointerContainer>
         <StyledLocationPointerWithBorder />
       </PointerContainer>

@@ -1,20 +1,23 @@
-import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
 
-const venueTypesWithGtlPlaylist = [
-  VenueTypeCodeKey.DISTRIBUTION_STORE,
-  VenueTypeCodeKey.BOOKSTORE,
-  VenueTypeCodeKey.RECORD_STORE,
-]
+const activityWithGtlPlaylist = new Set<Activity>([
+  Activity.DISTRIBUTION_STORE,
+  Activity.BOOKSTORE,
+  Activity.RECORD_STORE,
+])
 
-const searchGroupsWithGtlPlaylist = [SearchGroupNameEnumv2.LIVRES, SearchGroupNameEnumv2.MUSIQUE]
+const searchGroupsWithGtlPlaylist = new Set<SearchGroupNameEnumv2>([
+  SearchGroupNameEnumv2.LIVRES,
+  SearchGroupNameEnumv2.MUSIQUE,
+])
 
 export const getShouldDisplayGtlPlaylist = ({
-  venueType,
+  activity,
   searchGroup,
 }: {
-  venueType?: VenueTypeCodeKey | null
+  activity?: Activity | null
   searchGroup?: SearchGroupNameEnumv2
 }) => {
-  if (venueType) return venueTypesWithGtlPlaylist.includes(venueType)
-  return searchGroup ? searchGroupsWithGtlPlaylist.includes(searchGroup) : false
+  if (activity) return activityWithGtlPlaylist.has(activity)
+  return searchGroup ? searchGroupsWithGtlPlaylist.has(searchGroup) : false
 }

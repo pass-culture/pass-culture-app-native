@@ -2,10 +2,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { VenueMapFiltersModalStackParamList } from 'features/navigation/VenueMapFiltersStackNavigator/types'
-import { VenueMapTypeFilter } from 'features/venueMap/components/VenueMapTypeFilter/VenueMapTypeFilter'
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
+import { VenueMapActivityFilter } from 'features/venueMap/components/VenueMapActivityFilter/VenueMapActivityFilter'
+import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import { useVenuesFilter, venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -13,7 +13,7 @@ const mockGoBack = jest.fn()
 
 const mockNavigation: NativeStackScreenProps<
   VenueMapFiltersModalStackParamList,
-  'VenueMapTypeFilter'
+  'VenueMapActivityFilter'
 >['navigation'] = {
   navigate: jest.fn(),
   goBack: mockGoBack,
@@ -45,14 +45,14 @@ const user = userEvent.setup()
 
 jest.useFakeTimers()
 
-describe('VenueMapTypeFilter', () => {
+describe('VenueMapActivityFilter', () => {
   it('should navigate to venue map when pressing modal close button', async () => {
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -65,11 +65,11 @@ describe('VenueMapTypeFilter', () => {
 
   it('should trigger goBack when pressing modal back button', async () => {
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -82,11 +82,11 @@ describe('VenueMapTypeFilter', () => {
 
   it('should display venue type filter title', () => {
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -97,11 +97,11 @@ describe('VenueMapTypeFilter', () => {
 
   it('should display checkboxes associated to venue type filter', () => {
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -114,13 +114,13 @@ describe('VenueMapTypeFilter', () => {
   })
 
   it('should toggle show all checkbox when complete venue type group selected', () => {
-    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_VENUE_TYPE_MAPPING['OUTINGS'])
+    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_ACTIVITY_MAPPING['OUTINGS'])
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -132,14 +132,14 @@ describe('VenueMapTypeFilter', () => {
   })
 
   it('should toggle venue type checkbox when it is included in venue filters', () => {
-    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.CONCERT_HALL])
+    mockUseVenuesFilter.mockReturnValueOnce([Activity.PERFORMANCE_HALL])
 
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -153,13 +153,13 @@ describe('VenueMapTypeFilter', () => {
   })
 
   it('should reset venue types filters when pressing show all checkbox (checked) and venue type filter is empty without the current venue type group', async () => {
-    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_VENUE_TYPE_MAPPING['OUTINGS'])
+    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_ACTIVITY_MAPPING['OUTINGS'])
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -169,20 +169,17 @@ describe('VenueMapTypeFilter', () => {
 
     await user.press(showAllCheckbox)
 
-    expect(mockRemoveVenuesFilters).toHaveBeenNthCalledWith(
-      1,
-      FILTERS_VENUE_TYPE_MAPPING['OUTINGS']
-    )
+    expect(mockRemoveVenuesFilters).toHaveBeenNthCalledWith(1, FILTERS_ACTIVITY_MAPPING['OUTINGS'])
   })
 
   it('should add venue types filters of the current group when pressing show all checkbox (not checked) and venue type filter is not empty without the current venue type group', async () => {
-    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_VENUE_TYPE_MAPPING['SHOPS'])
+    mockUseVenuesFilter.mockReturnValueOnce(FILTERS_ACTIVITY_MAPPING['SHOPS'])
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -192,17 +189,17 @@ describe('VenueMapTypeFilter', () => {
 
     await user.press(showAllCheckbox)
 
-    expect(mockAddVenuesFilters).toHaveBeenNthCalledWith(1, FILTERS_VENUE_TYPE_MAPPING['OUTINGS'])
+    expect(mockAddVenuesFilters).toHaveBeenNthCalledWith(1, FILTERS_ACTIVITY_MAPPING['OUTINGS'])
   })
 
   it('should remove venue type filter when pressing venue type checkbox (checked)', async () => {
-    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.CONCERT_HALL])
+    mockUseVenuesFilter.mockReturnValueOnce([Activity.PERFORMANCE_HALL])
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -214,17 +211,17 @@ describe('VenueMapTypeFilter', () => {
 
     await user.press(concertHallCheckbox)
 
-    expect(mockRemoveVenuesFilters).toHaveBeenNthCalledWith(1, [VenueTypeCodeKey.CONCERT_HALL])
+    expect(mockRemoveVenuesFilters).toHaveBeenNthCalledWith(1, [Activity.PERFORMANCE_HALL])
   })
 
   it('should add venue type filter when pressing venue type checkbox (not checked)', async () => {
-    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.FESTIVAL])
+    mockUseVenuesFilter.mockReturnValueOnce([Activity.FESTIVAL])
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -236,17 +233,17 @@ describe('VenueMapTypeFilter', () => {
 
     await user.press(concertHallCheckbox)
 
-    expect(mockAddVenuesFilters).toHaveBeenNthCalledWith(1, [VenueTypeCodeKey.CONCERT_HALL])
+    expect(mockAddVenuesFilters).toHaveBeenNthCalledWith(1, [Activity.PERFORMANCE_HALL])
   })
 
   it('should complete selection when some checkboxes are checked and pressing select all', async () => {
-    mockUseVenuesFilter.mockReturnValueOnce([VenueTypeCodeKey.FESTIVAL])
+    mockUseVenuesFilter.mockReturnValueOnce([Activity.FESTIVAL])
     render(
-      <VenueMapTypeFilter
+      <VenueMapActivityFilter
         navigation={mockNavigation}
         route={{
-          key: 'VenueMapTypeFilter',
-          name: 'VenueMapTypeFilter',
+          key: 'VenueMapActivityFilter',
+          name: 'VenueMapActivityFilter',
           params: { title: 'Sorties', filterGroup: 'OUTINGS' },
         }}
       />
@@ -257,7 +254,7 @@ describe('VenueMapTypeFilter', () => {
     await user.press(showAllCheckbox)
 
     expect(screen.getAllByRole('checkbox')).toHaveLength(
-      FILTERS_VENUE_TYPE_MAPPING.OUTINGS.length + 1
+      FILTERS_ACTIVITY_MAPPING.OUTINGS.length + 1
     )
   })
 })

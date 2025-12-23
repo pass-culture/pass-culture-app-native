@@ -1,19 +1,19 @@
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { OffersModuleParameters } from 'features/home/types'
 import { PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 
-const VenueTypeToContentfulLabelMapping: Partial<
-  Record<keyof typeof VenueTypeCodeKey, ContentfulLabelCategories>
+const ActivityToContentfulLabelMapping: Partial<
+  Record<keyof typeof Activity, ContentfulLabelCategories>
 > = {
-  [VenueTypeCodeKey.BOOKSTORE]: 'Livres',
-  [VenueTypeCodeKey.RECORD_STORE]: 'Musique',
+  [Activity.BOOKSTORE]: 'Livres',
+  [Activity.RECORD_STORE]: 'Musique',
 }
 
-export const getContentfulLabelByVenueType = (venueTypeCode?: VenueTypeCodeKey | null) => {
-  if (!venueTypeCode) return undefined
-  return VenueTypeToContentfulLabelMapping[venueTypeCode]
+export const getContentfulLabelByActivity = (activity?: Activity | null) => {
+  if (!activity) return undefined
+  return ActivityToContentfulLabelMapping[activity]
 }
 
 export const filterByContentfulLabel = (
@@ -22,19 +22,19 @@ export const filterByContentfulLabel = (
 ) => gtlPlaylistConfig.filter((config) => config.offersModuleParameters.categories?.[0] === label)
 
 export const getLabelFilter = (
-  venueTypeCode?: VenueTypeCodeKey | null,
+  activity?: Activity | null,
   searchGroupLabel?: ContentfulLabelCategories
 ): ContentfulLabelCategories | undefined => {
-  if (!venueTypeCode && !searchGroupLabel) return undefined
-  return searchGroupLabel || getContentfulLabelByVenueType(venueTypeCode)
+  if (!activity && !searchGroupLabel) return undefined
+  return searchGroupLabel || getContentfulLabelByActivity(activity)
 }
 
 export const filterGtlPlaylistConfigByLabel = (
   gtlPlaylistConfig: GtlPlaylistRequest[],
-  venueTypeCode?: VenueTypeCodeKey | null,
+  activity?: Activity | null,
   searchGroupLabel?: ContentfulLabelCategories
 ): GtlPlaylistRequest[] => {
-  const label = getLabelFilter(venueTypeCode, searchGroupLabel)
+  const label = getLabelFilter(activity, searchGroupLabel)
   return label ? filterByContentfulLabel(gtlPlaylistConfig, label) : gtlPlaylistConfig
 }
 
@@ -55,7 +55,7 @@ export const getGtlPlaylistsParams = (
               info: venue.city ?? '',
               label: venue.name,
               isOpenToPublic: venue.isOpenToPublic,
-              venue_type: venue.venueTypeCode,
+              activity: venue.activity,
             },
           },
         }
