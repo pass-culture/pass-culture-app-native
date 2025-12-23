@@ -316,24 +316,6 @@ describe('<OfferBody />', () => {
         ).not.toBeOnTheScreen()
       })
 
-      it('should not display venue button when wipIsOpenToPublic feature flag activated and isOpenToPublic is false', async () => {
-        const offer: OfferResponseV2 = {
-          ...offerResponseSnap,
-          venue: {
-            ...offerResponseSnap.venue,
-            isPermanent: true,
-            isOpenToPublic: false,
-          },
-        }
-        renderOfferBody({ offer })
-
-        await screen.findByText(offer.name)
-
-        expect(
-          screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-        ).not.toBeOnTheScreen()
-      })
-
       it('should not display venue button when this is a cinema offer', async () => {
         const offer: OfferResponseV2 = {
           ...offerResponseSnap,
