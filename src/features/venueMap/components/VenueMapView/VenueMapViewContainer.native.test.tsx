@@ -374,7 +374,6 @@ describe('VenueMapViewContainer', () => {
   it('should activate navigation to Venue page when bottom sheet is open, pressing venue button and venue is permanent', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
