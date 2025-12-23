@@ -18,7 +18,7 @@ import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { getTabHookConfig } from './getTabHookConfig'
 import { TabBar } from './TabBar'
@@ -137,8 +137,7 @@ describe('TabBar', () => {
     })
   })
 
-  it('render correctly when FF is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+  it('render correctly', async () => {
     renderTabBar(mockTabNavigationState)
 
     expect(await screen.findByText('99+')).toBeOnTheScreen()

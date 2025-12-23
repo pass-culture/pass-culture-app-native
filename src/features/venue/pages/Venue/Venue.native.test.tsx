@@ -123,7 +123,6 @@ describe('<Venue />', () => {
   })
 
   it('should match snapshot with headline offer', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER])
     renderVenue(venueId)
 
     await screen.findByText('À la une')

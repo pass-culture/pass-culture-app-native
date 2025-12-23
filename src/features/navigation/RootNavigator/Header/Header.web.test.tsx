@@ -8,7 +8,6 @@ import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBa
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen } from 'tests/utils/web'
 import { theme } from 'theme'
@@ -45,13 +44,6 @@ describe('Header', () => {
   })
 
   it('should render correctly', async () => {
-    renderHeader({ isLoggedIn: true, isBeneficiary: true })
-
-    expect(await screen.findByText('Favoris')).toBeInTheDocument()
-  })
-
-  it('should render correctly when FF is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     expect(await screen.findByText('Favoris')).toBeInTheDocument()

@@ -70,10 +70,7 @@ describe('<VenueMap />', () => {
 
   beforeEach(() => {
     jest.useFakeTimers()
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     venuesFilterActions.setVenuesFilters([VENUE_TYPE])
   })
 

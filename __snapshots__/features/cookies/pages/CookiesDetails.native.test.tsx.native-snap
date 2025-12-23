@@ -1406,6 +1406,314 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       }
     />
     <View
+      onLayout={[Function]}
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginRight": 8,
+              },
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
+              },
+              {
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              accessibilityLabel="Lire les contenus vidéos - Interrupteur à bascule - non coché"
+              accessibilityRole="switch"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": false,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Lire les contenus vidéos - Interrupteur à bascule - non coché"
+            >
+              <View
+                active={false}
+                style={
+                  {
+                    "backgroundColor": "#696a6f",
+                    "borderBottomLeftRadius": 16,
+                    "borderBottomRightRadius": 16,
+                    "borderTopLeftRadius": 16,
+                    "borderTopRightRadius": 16,
+                    "height": 32,
+                    "justifyContent": "center",
+                    "width": 56,
+                  }
+                }
+              >
+                <View
+                  disabled={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 32,
+                        "borderBottomRightRadius": 32,
+                        "borderTopLeftRadius": 32,
+                        "borderTopRightRadius": 32,
+                        "height": 28,
+                        "justifyContent": "center",
+                        "width": 28,
+                      },
+                      {
+                        "transform": [
+                          {
+                            "translateX": 2,
+                          },
+                        ],
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Lire les contenus vidéos - Accordéon - Développer l’accordéon"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": false,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Lire les contenus vidéos - Accordéon - Développer l’accordéon"
+        >
+          <View
+            nativeID="testUuidV4"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 24,
+                  "paddingVertical": 20,
+                },
+                {
+                  "paddingHorizontal": 0,
+                  "paddingVertical": 16,
+                },
+              ]
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                {
+                  "color": "#161617",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 17,
+                  "lineHeight": 27.2,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  }
+                }
+              >
+                Lire les contenus vidéos
+              </Text>
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "marginLeft": 8,
+                  },
+                  {
+                    "transform": [
+                      {
+                        "rotateZ": "1.5707963267948966rad",
+                      },
+                    ],
+                  },
+                ]
+              }
+              testID="accordionArrow"
+            >
+              <View
+                height={20}
+                width={20}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "overflow": "hidden",
+            },
+            {
+              "height": 0,
+            },
+          ]
+        }
+        testID="accordionBody"
+      >
+        <View
+          accessibilityLabelledBy="testUuidV4"
+          hidden={true}
+          nativeID="testUuidV4"
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "bottom": 0,
+                "display": "none",
+                "paddingBottom": 24,
+                "paddingHorizontal": 24,
+                "paddingTop": 0,
+                "position": "absolute",
+                "width": "100%",
+              },
+              {
+                "paddingBottom": 16,
+                "paddingHorizontal": 0,
+              },
+            ]
+          }
+          testID="accordionBodyContainer"
+        >
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            Ces cookies sont nécessaires pour afficher les vidéos YouTube intégrées dans l’application.
+
+Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de collecter des statistiques d’utilisation et de personnaliser ton expérience.
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "backgroundColor": "#f1f1f4",
+            "height": 1,
+            "width": "100%",
+          }
+        }
+      />
+    </View>
+    <View
       style={
         {
           "alignItems": "center",

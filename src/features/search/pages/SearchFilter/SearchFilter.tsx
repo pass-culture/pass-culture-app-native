@@ -18,8 +18,6 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -48,7 +46,6 @@ export const SearchFilter: React.FC = () => {
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
-  const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldAccessibilityFilter = useMemo(() => disabilities, [])
@@ -120,11 +117,7 @@ export const SearchFilter: React.FC = () => {
         scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
         <VerticalUl>
           <SectionWrapper isFirstSectionItem>
-            {shouldDisplayCalendarModal ? (
-              <Section.CalendarFilter onClose={onClose} />
-            ) : (
-              <Section.DateHour onClose={onClose} />
-            )}
+            <Section.CalendarFilter onClose={onClose} />
           </SectionWrapper>
           <SectionWrapper>
             <Section.Category onClose={onClose} />

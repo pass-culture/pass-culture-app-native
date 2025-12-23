@@ -123,16 +123,7 @@ describe('<Offer />', () => {
     })
   })
 
-  it('should not display reaction button in header if offer is in ended bookings and FF is inactive', async () => {
-    renderOfferPage({ mockOffer: offerResponseSnap })
-
-    await screen.findByTestId('offerv2-container')
-
-    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
-  })
-
-  it('should display reaction button in header if offer is in ended bookings and FF is active', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+  it('should display reaction button in header if offer is in ended bookings', async () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
@@ -152,8 +143,7 @@ describe('<Offer />', () => {
     await waitFor(() => expect(screen.getByTestId('animated-icon-like')).toBeOnTheScreen())
   })
 
-  it('should not display reaction button in header if booking has been cancelled and FF is active', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+  it('should not display reaction button in header if booking has been cancelled', async () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
@@ -176,7 +166,6 @@ describe('<Offer />', () => {
   })
 
   it('should not display reaction button in header when user is anonymous (not logged in)', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     mockAuthContext(false)
 
     renderOfferPage({ mockOffer: offerResponseSnap })
@@ -185,7 +174,6 @@ describe('<Offer />', () => {
   })
 
   it('should open reaction modal when press on reaction button in header', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
@@ -232,39 +220,33 @@ describe('<Offer />', () => {
     expect(await screen.findByText('Cinéma plein air')).toBeOnTheScreen()
   })
 
-  describe('When wipOfferChronicleSection FF activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION])
-    })
+  it('should display chronicles section', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
 
-    it('should display chronicles section', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
+    expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
+  })
 
-      expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
-    })
+  it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
 
-    it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
+    await screen.findByText('La reco du Ciné Club')
 
-      await screen.findByText('La reco du Ciné Club')
+    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
 
-      await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    })
+  it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
 
-    it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
+    await screen.findByText('La reco du Ciné Club')
 
-      await screen.findByText('La reco du Ciné Club')
+    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
 
-      await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
-
-      expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
-        categoryName: 'CINEMA',
-        from: 'offer',
-        offerId: '116656',
-      })
+    expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
+      categoryName: 'CINEMA',
+      from: 'offer',
+      offerId: '116656',
     })
   })
 
@@ -288,18 +270,8 @@ describe('<Offer />', () => {
         }))
       })
 
-      it('should display video player when wipVideoCookiesConsent FF deactivated', async () => {
-        renderOfferPage({ mockOffer: offerResponseSnap })
-
-        expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
-        expect(await screen.findByRole('imagebutton')).toBeOnTheScreen()
-      })
-
-      it('should display video player when wipVideoCookiesConsent FF activated and video cookies consented', async () => {
-        setFeatureFlags([
-          RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
-          RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
-        ])
+      it('should display video player when video cookies consented', async () => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
         renderOfferPage({ mockOffer: offerResponseSnap })
 
         expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
@@ -317,10 +289,7 @@ describe('<Offer />', () => {
       ]
 
       beforeEach(() => {
-        setFeatureFlags([
-          RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
-          RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
-        ])
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
 
         mockUseCookies.mockImplementation(() => ({
           ...defaultUseCookies,
@@ -347,7 +316,7 @@ describe('<Offer />', () => {
         expect(screen.queryByRole('imagebutton')).not.toBeOnTheScreen()
       })
 
-      it('should accept video cookies and display video player when pressing see video button below video player placeholder and wipVideoCookiesConsent FF activated', async () => {
+      it('should accept video cookies and display video player when pressing see video button below video player placeholder', async () => {
         renderOfferPage({ mockOffer: offerResponseSnap })
 
         await screen.findByText('Vidéo')

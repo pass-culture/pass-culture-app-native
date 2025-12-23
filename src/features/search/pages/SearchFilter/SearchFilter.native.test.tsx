@@ -8,7 +8,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -251,15 +250,7 @@ describe('<SearchFilter/>', () => {
     expect(await screen.findByText('Accessibilité')).toBeOnTheScreen()
   })
 
-  it('should display date and hour section when wipTimeFilterV2 FF deactivated', async () => {
-    renderSearchFilter()
-
-    expect(await screen.findByText('Dates & heures')).toBeOnTheScreen()
-  })
-
-  it('should display calendar section when wipTimeFilterV2 FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2])
-
+  it('should display calendar section', async () => {
     renderSearchFilter()
 
     expect(await screen.findByText('Dates')).toBeOnTheScreen()

@@ -136,8 +136,6 @@ describe('Bookings', () => {
   })
 
   it('should call updateReactions when switching from COMPLETED tab', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-
     renderBookings()
 
     await screen.findByText('Mes réservations')
@@ -149,8 +147,6 @@ describe('Bookings', () => {
   })
 
   it('should update reactions for ended bookings without user reaction', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-
     renderBookings()
 
     await user.press(await screen.findByText('Terminées'))
@@ -163,9 +159,7 @@ describe('Bookings', () => {
     )
   })
 
-  it('should display a pastille when there are bookings without user reaction if wipReactionFeature FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-
+  it('should display a pastille when there are bookings without user reaction', async () => {
     renderBookings()
 
     await screen.findByText('Mes réservations')
@@ -173,17 +167,7 @@ describe('Bookings', () => {
     expect(await screen.findByTestId('pastille')).toBeOnTheScreen()
   })
 
-  it('should not display a pastille when there are bookings without user reaction if wipReactionFeature FF deactivated', async () => {
-    renderBookings()
-
-    await screen.findByText('Mes réservations')
-
-    expect(screen.queryByTestId('pastille')).toBeNull()
-  })
-
-  it('should not display a pastille when there are not bookings without user reaction if wipReactionFeature FF activated', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-
+  it('should not display a pastille when there are not bookings without user reaction', async () => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
       ...bookingsSnapV2,
       endedBookings: [{ ...bookingsSnapV2.endedBookings[1], userReaction: ReactionTypeEnum.LIKE }],

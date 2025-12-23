@@ -4,12 +4,12 @@ import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
+  BookingListItemOfferResponse,
   BookingListItemResponse,
+  BookingsListResponseV2,
   PostOneReactionRequest,
   PostReactionRequest,
   ReactionTypeEnum,
-  BookingListItemOfferResponse,
-  BookingsListResponseV2,
 } from 'api/gen'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
@@ -18,8 +18,6 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -33,8 +31,6 @@ type Props = {
 }
 
 export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
-  const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-
   const { data: bookings = { bookings: [] } } = useEndedBookingsQuery()
 
   const { bookings: endedBookings } = bookings
@@ -146,7 +142,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
           dismissModal={closeShareModal}
         />
       ) : null}
-      {shouldDisplayReactionFeature && selectedBookingOffer ? (
+      {selectedBookingOffer ? (
         <ReactionChoiceModal
           offerId={selectedBookingOffer?.id}
           offerName={selectedBookingOffer?.name}

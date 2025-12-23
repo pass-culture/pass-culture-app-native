@@ -123,25 +123,20 @@ export const Venue: FunctionComponent = () => {
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const isVenueHeadlineOfferActive = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER
-  )
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
 
-  const headlineOfferData = isVenueHeadlineOfferActive
-    ? offerToHeadlineOfferData({
-        offer: venueOffers?.headlineOffer,
-        transformParameters: {
-          currency,
-          euroToPacificFrancRate,
-          mapping,
-          labelMapping,
-          userLocation,
-        },
-      })
-    : null
+  const headlineOfferData = offerToHeadlineOfferData({
+    offer: venueOffers?.headlineOffer,
+    transformParameters: {
+      currency,
+      euroToPacificFrancRate,
+      mapping,
+      labelMapping,
+      userLocation,
+    },
+  })
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {

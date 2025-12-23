@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 import { BookingListItemResponse, ReactionTypeEnum } from 'api/gen'
 import { SmallBadgedButton } from 'features/bookings/components/SmallBadgedButton'
 import { useReactionIcon } from 'features/bookings/helpers/useReactionIcon/useReactionIcon'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
@@ -21,8 +19,6 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
   handleShowReactionModal,
 }) => {
   const { stock, userReaction, canReact } = booking
-
-  const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const ReactionIcon = useReactionIcon(userReaction)
 
@@ -49,7 +45,7 @@ export const EndedBookingInteractionButtons: FunctionComponent<Props> = ({
           accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
         />
       </ShareContainer>
-      {canReact && shouldDisplayReactionFeature ? (
+      {canReact ? (
         <ReactionContainer>
           <ReactionButton
             iconName="like"
