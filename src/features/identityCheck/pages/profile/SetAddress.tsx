@@ -127,7 +127,6 @@ export const SetAddress = () => {
             <Typo.Title3 {...getHeadingAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
             <Container>
               <SearchInput
-                autoFocus
                 onChangeText={onChangeAddress}
                 value={query}
                 label={label}

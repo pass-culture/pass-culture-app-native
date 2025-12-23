@@ -90,7 +90,6 @@ export const ChangeEmailSetPassword = () => {
             label="Mot de passe"
             control={control}
             requiredIndicator="explicit"
-            autoFocus
             withSecurityRules
             securityRulesAlwaysVisible
           />

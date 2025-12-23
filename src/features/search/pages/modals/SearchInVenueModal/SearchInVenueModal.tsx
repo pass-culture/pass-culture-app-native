@@ -65,7 +65,6 @@ export const SearchInVenueModal = ({
       }>
       <SearchInputContainer>
         <SearchInput
-          autoFocus
           onClear={doResetVenue}
           onChangeText={setSearchInVenueQuery}
           value={searchInVenueQuery}
