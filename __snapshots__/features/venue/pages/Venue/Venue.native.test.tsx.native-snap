@@ -720,6 +720,319 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
+                  gap={2}
+                  style={
+                    {
+                      "gap": 8,
+                      "marginHorizontal": 24,
+                      "marginTop": 40,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
+                      }
+                    }
+                  >
+                    À la une
+                  </Text>
+                  <View
+                    accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "borderBottomLeftRadius": 16,
+                        "borderBottomRightRadius": 16,
+                        "borderColor": "#cbcdd2",
+                        "borderTopLeftRadius": 16,
+                        "borderTopRightRadius": 16,
+                        "borderWidth": 1,
+                        "height": 245,
+                        "justifyContent": "end",
+                        "opacity": 1,
+                        "overflow": "hidden",
+                        "userSelect": "auto",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "overflow": "hidden",
+                          },
+                          {
+                            "height": "100%",
+                            "left": 0,
+                            "position": "absolute",
+                            "top": 0,
+                            "width": "100%",
+                            "zIndex": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <FastImageView
+                        defaultSource={null}
+                        resizeMode="cover"
+                        source={
+                          {
+                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                          }
+                        }
+                        style={
+                          {
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                          }
+                        }
+                      />
+                    </View>
+                    <BVLinearGradient
+                      colors={
+                        [
+                          1447447,
+                          4279637527,
+                        ]
+                      }
+                      endPoint={
+                        {
+                          "x": 0,
+                          "y": 1,
+                        }
+                      }
+                      locations={
+                        [
+                          0,
+                          0.6,
+                        ]
+                      }
+                      startPoint={
+                        {
+                          "x": 0,
+                          "y": 0,
+                        }
+                      }
+                      style={
+                        {
+                          "bottom": 0,
+                          "height": "100%",
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "width": "100%",
+                          "zIndex": 1,
+                        }
+                      }
+                    />
+                    <View
+                      style={
+                        {
+                          "height": "100%",
+                          "position": "relative",
+                          "zIndex": 2,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexDirection": "column",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "gap": 16,
+                              },
+                              {
+                                "marginTop": "auto",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            size="small"
+                            style={
+                              {
+                                "backgroundColor": "#ffffff",
+                                "borderBottomLeftRadius": 4,
+                                "borderBottomRightRadius": 4,
+                                "borderTopLeftRadius": 4,
+                                "borderTopRightRadius": 4,
+                                "height": 96,
+                                "width": 64,
+                              }
+                            }
+                            withShadow={true}
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "overflow": "hidden",
+                                  },
+                                  {
+                                    "backgroundColor": "#f1f1f4",
+                                    "borderBottomLeftRadius": 4,
+                                    "borderBottomRightRadius": 4,
+                                    "borderTopLeftRadius": 4,
+                                    "borderTopRightRadius": 4,
+                                    "height": 96,
+                                    "width": 64,
+                                  },
+                                ]
+                              }
+                            >
+                              <FastImageView
+                                defaultSource={null}
+                                resizeMode="cover"
+                                size="small"
+                                source={
+                                  {
+                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  }
+                                }
+                                style={
+                                  {
+                                    "bottom": 0,
+                                    "left": 0,
+                                    "position": "absolute",
+                                    "right": 0,
+                                    "top": 0,
+                                  }
+                                }
+                              />
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              {
+                                "alignItems": "center",
+                                "flexBasis": 0,
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "justifyContent": "space-between",
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                {
+                                  "flexShrink": 1,
+                                  "justifyContent": "center",
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Cinéma
+                              </Text>
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                  }
+                                }
+                              >
+                                Titane - VF
+                              </Text>
+                              <Text
+                                style={
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Gratuit
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              {
+                                "alignSelf": "flex-end",
+                              }
+                            }
+                          >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
                   style={
                     {
                       "marginTop": 24,
