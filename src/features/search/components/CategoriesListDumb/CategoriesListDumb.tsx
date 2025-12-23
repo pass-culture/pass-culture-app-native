@@ -25,7 +25,7 @@ const DESKTOP_MAX_WIDTH = getSpacing(37.33)
 const DESKTOP_MIN_WIDTH = '100%'
 const MOBILE_MIN_WIDTH = '40%'
 const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
-const MOBILE_MAX_WIDTH = '50%'
+const MOBILE_MAX_WIDTH = '49%'
 
 export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
