@@ -919,6 +919,24 @@ Texte
 **Correction** 💡  
 - **(Tous les écrans)** Adaptation du nombre de lignes des textes (`numberOfLines`) en fonction du zoom que l'utilisateur a défini dans ses paramètres. 
 
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 10.1 - Dans chaque écran, l’ordre de tabulation au clavier est-il cohérent ?</summary>
+
+**RAAM** : [Critère 10.1](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-10-1)  
+**Ticket** : [PC-37499](https://passculture.atlassian.net/browse/PC-37499)  
+**PR** : [#9045](https://github.com/pass-culture/pass-culture-app-native/pull/9045)
+
+**Problème** 😱  
+- **(Tous les écrans)** Plusieurs composants interactifs ne sont pas correctement exposés aux technologies d’assistance, ce qui empêche leur accès au clavier ou via un lecteur d’écran (rôle manquant ou inapproprié).
+
+**Correction** 💡  
+- **(Tous les écrans)** Les composants interactifs sont maintenant correctement exposés aux technologies d’assistance grâce à l'ajout de rôle et labels accessibles, ce qui permet leur accès au clavier ou via un lecteur d’écran.
+
 **Retours audit** 🔥  
 Texte
 
