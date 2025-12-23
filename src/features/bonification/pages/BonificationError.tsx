@@ -6,7 +6,6 @@ import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStack
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
-import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
 export function BonificationError() {
@@ -15,17 +14,18 @@ export function BonificationError() {
       illustration={HappyFaceWithTear}
       title="Oups... Un problème est survenu&nbsp;!"
       buttonPrimary={{
-        wording: 'Retourner vers le formulaire',
+        wording: 'Revenir vers le formulaire',
         navigateTo: getSubscriptionPropConfig('BonificationNames'),
       }}
       buttonSecondary={{
-        wording: 'Retourner à l’accueil',
+        wording: 'Revenir au catalogue',
         navigateTo: navigateToHomeConfig,
-        icon: PlainArrowPrevious,
       }}>
       <ViewGap gap={4}>
-        <StyledBody>BLA BLA</StyledBody>
-        <StyledBody>BLA BLA</StyledBody>
+        <StyledBody>
+          Il semble que ta connexion ait été interrompue ou qu’un problème technique soit survenu.
+        </StyledBody>
+        <StyledBody>Tu peux réessayer d’envoyer ta demande maintenant.</StyledBody>
       </ViewGap>
     </GenericInfoPage>
   )

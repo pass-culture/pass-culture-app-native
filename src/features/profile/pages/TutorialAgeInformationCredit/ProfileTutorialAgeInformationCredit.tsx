@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -51,23 +51,24 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
-  const bonificationStatus: FraudCheckStatus | null | undefined = user?.bonificationStatus
-  const wasBonificationReceived = bonificationStatus === FraudCheckStatus.ok
+  const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+  const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
+  const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
 
-  const getWording = (status: FraudCheckStatus | null | undefined): string => {
+  const getWording = (status: QFBonificationStatus | null | undefined): string => {
     switch (status) {
-      case FraudCheckStatus.pending:
+      case QFBonificationStatus.started:
         return 'En cours de traitement'
-      case FraudCheckStatus.ok:
+      case QFBonificationStatus.granted:
         return 'Bonus obtenu'
       default:
         return 'Tester mon éligibilité'
     }
   }
-  const getDisabled = (status: FraudCheckStatus | null | undefined): boolean => {
+  const getDisabled = (status: QFBonificationStatus | null | undefined): boolean => {
     switch (status) {
-      case FraudCheckStatus.pending:
-      case FraudCheckStatus.ok:
+      case QFBonificationStatus.started:
+      case QFBonificationStatus.granted:
         return true
       default:
         return false
@@ -106,9 +107,11 @@ export const ProfileTutorialAgeInformationCredit = () => {
             />,
           ]}
         />
-        {wasBonificationReceived || !user?.isEligibleForBonification || !isLoggedIn ? null : (
+        {!isLoggedIn || !isEligibleToBonification || wasBonificationReceived ? null : (
           <ButtonTertiaryPrimary
-            icon={bonificationStatus === FraudCheckStatus.pending ? ClockFilled : PlainArrowNext}
+            icon={
+              bonificationStatus === QFBonificationStatus.started ? ClockFilled : PlainArrowNext
+            }
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
             onPress={() =>

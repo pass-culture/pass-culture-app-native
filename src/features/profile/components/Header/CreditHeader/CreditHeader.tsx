@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { DomainsCredit, EligibilityType } from 'api/gen/api'
+import { DomainsCredit, EligibilityType, QFBonificationStatus } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
@@ -46,8 +46,9 @@ export function CreditHeader({
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
 
   const { user } = useAuthContext()
+  const isEligibleToBonification = user?.qfBonificationStatus !== QFBonificationStatus.not_eligible
   const showBonificationBanner =
-    enableBonification && user?.isEligibleForBonification && !hasClosedBonificationBanner
+    enableBonification && isEligibleToBonification && !hasClosedBonificationBanner
 
   const { designSystem } = useTheme()
   const {
@@ -148,7 +149,7 @@ export function CreditHeader({
       {showBonificationBanner ? (
         <BannerContainer>
           <BonificationBanner
-            bonificationStatus={user?.bonificationStatus}
+            bonificationStatus={user?.qfBonificationStatus}
             onCloseCallback={onCloseBanner}
           />
         </BannerContainer>

@@ -16,9 +16,9 @@ import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 export enum BonificationRefusedType {
-  PARENT_NOT_FOUND = 'parent_not_found',
-  CHILD_NOT_FOUND_FOR_PARENT = 'child_not_found_for_parent',
-  FAMILY_QUOTIENT_TOO_HIGH = 'family_quotient_too_high',
+  CUSTODIAN_NOT_FOUND = 'custodian_not_found',
+  NOT_IN_TAX_HOUSEHOLD = 'not_in_tax_household',
+  QUOTIENT_FAMILY_TOO_HIGH = 'quotient_family_too_high',
   TOO_MANY_RETRIES = 'too_many_retries',
 }
 
@@ -45,7 +45,7 @@ interface PageConfigEntry {
 type PageConfigMap = Record<BonificationRefusedType, PageConfigEntry>
 
 export const PAGE_CONFIG: PageConfigMap = {
-  [BonificationRefusedType.PARENT_NOT_FOUND]: {
+  [BonificationRefusedType.CUSTODIAN_NOT_FOUND]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier n’a pas pu être validé',
     firstText: 'Nous avons bien reçu ton dossier, mais on ne trouve pas ton parent.',
@@ -60,7 +60,7 @@ export const PAGE_CONFIG: PageConfigMap = {
       Icon: Invalidate,
     },
   },
-  [BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT]: {
+  [BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD]: {
     Illustration: ErrorIllustration,
     title: 'Ton dossier n’a pas pu être validé',
     firstText:
@@ -75,7 +75,7 @@ export const PAGE_CONFIG: PageConfigMap = {
       Icon: Invalidate,
     },
   },
-  [BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH]: {
+  [BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH]: {
     Illustration: SadFace,
     title: 'Ton dossier n’a pas pu être validé',
     firstText: 'Nous avons bien reçu ton dossier, mais il n’a pas été validé.',
@@ -111,7 +111,7 @@ export const PAGE_CONFIG: PageConfigMap = {
 export function BonificationRefused() {
   const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
   const bonificationRefusedType =
-    params?.bonificationRefusedType ?? BonificationRefusedType.PARENT_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
+    params?.bonificationRefusedType ?? BonificationRefusedType.CUSTODIAN_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
 
   const pageConfig = PAGE_CONFIG[bonificationRefusedType] // refused code will come from back
   return (

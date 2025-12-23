@@ -64,23 +64,23 @@ const bonificationCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused PARENT_NOT_FOUND',
+      title: 'BonificationRefused CUSTODIAN_NOT_FOUND',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.PARENT_NOT_FOUND,
+        bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND,
       }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused CHILD_NOT_FOUND_FOR_PARENT',
+      title: 'BonificationRefused NOT_IN_TAX_HOUSEHOLD',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.CHILD_NOT_FOUND_FOR_PARENT,
+        bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
       }),
     },
     {
       id: uuidv4(),
-      title: 'BonificationRefused FAMILY_QUOTIENT_TOO_HIGH',
+      title: 'BonificationRefused QUOTIENT_FAMILY_TOO_HIGH',
       navigationTarget: getSubscriptionPropConfig('BonificationRefused', {
-        bonificationRefusedType: BonificationRefusedType.FAMILY_QUOTIENT_TOO_HIGH,
+        bonificationRefusedType: BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
       }),
     },
     {

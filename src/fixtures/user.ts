@@ -5,6 +5,7 @@ import {
   CurrencyEnum,
   DepositType,
   EligibilityType,
+  QFBonificationStatus,
   UserRole,
   YoungStatusType,
 } from 'api/gen'
@@ -12,7 +13,7 @@ import { EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 
 export const nonBeneficiaryUser: UserProfileResponseWithoutSurvey = {
-  isEligibleForBonification: false,
+  qfBonificationStatus: QFBonificationStatus.not_eligible,
   bookedOffers: {},
   domainsCredit: {
     all: { initial: 0, remaining: 0 },
