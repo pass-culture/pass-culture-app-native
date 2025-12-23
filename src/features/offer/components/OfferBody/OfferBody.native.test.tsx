@@ -86,10 +86,7 @@ jest.useFakeTimers()
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
-      RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
   })
 
   describe('Tags section', () => {

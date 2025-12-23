@@ -220,39 +220,33 @@ describe('<Offer />', () => {
     expect(await screen.findByText('Cinéma plein air')).toBeOnTheScreen()
   })
 
-  describe('When wipOfferChronicleSection FF activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION])
-    })
+  it('should display chronicles section', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
 
-    it('should display chronicles section', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
+    expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
+  })
 
-      expect(await screen.findByText('La reco du Ciné Club')).toBeOnTheScreen()
-    })
+  it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
 
-    it('should open chronicles writers modal when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
+    await screen.findByText('La reco du Ciné Club')
 
-      await screen.findByText('La reco du Ciné Club')
+    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
 
-      await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    })
+  it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
 
-    it('should trigger ClickWhatsClub log when pressing "C’est quoi le Ciné Club\u00a0?" button', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
+    await screen.findByText('La reco du Ciné Club')
 
-      await screen.findByText('La reco du Ciné Club')
+    await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
 
-      await user.press(screen.getByText('C’est quoi le Ciné Club\u00a0?'))
-
-      expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
-        categoryName: 'CINEMA',
-        from: 'offer',
-        offerId: '116656',
-      })
+    expect(analytics.logClickWhatsClub).toHaveBeenNthCalledWith(1, {
+      categoryName: 'CINEMA',
+      from: 'offer',
+      offerId: '116656',
     })
   })
 
