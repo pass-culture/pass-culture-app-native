@@ -288,18 +288,8 @@ describe('<Offer />', () => {
         }))
       })
 
-      it('should display video player when wipVideoCookiesConsent FF deactivated', async () => {
-        renderOfferPage({ mockOffer: offerResponseSnap })
-
-        expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
-        expect(await screen.findByRole('imagebutton')).toBeOnTheScreen()
-      })
-
-      it('should display video player when wipVideoCookiesConsent FF activated and video cookies consented', async () => {
-        setFeatureFlags([
-          RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
-          RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
-        ])
+      it('should display video player when video cookies consented', async () => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
         renderOfferPage({ mockOffer: offerResponseSnap })
 
         expect(await screen.findByText('Vidéo')).toBeOnTheScreen()
@@ -317,10 +307,7 @@ describe('<Offer />', () => {
       ]
 
       beforeEach(() => {
-        setFeatureFlags([
-          RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION,
-          RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT,
-        ])
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
 
         mockUseCookies.mockImplementation(() => ({
           ...defaultUseCookies,
@@ -347,7 +334,7 @@ describe('<Offer />', () => {
         expect(screen.queryByRole('imagebutton')).not.toBeOnTheScreen()
       })
 
-      it('should accept video cookies and display video player when pressing see video button below video player placeholder and wipVideoCookiesConsent FF activated', async () => {
+      it('should accept video cookies and display video player when pressing see video button below video player placeholder', async () => {
         renderOfferPage({ mockOffer: offerResponseSnap })
 
         await screen.findByText('Vidéo')

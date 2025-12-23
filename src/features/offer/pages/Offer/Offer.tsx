@@ -40,7 +40,6 @@ export function Offer() {
     RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const shouldUseVideoCookies = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT)
   const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
 
   const { isLoggedIn, user } = useAuthContext()
@@ -58,10 +57,9 @@ export function Offer() {
   const { cookiesConsent, setCookiesConsent } = useCookies()
   const segment = useABSegment()
 
-  const hasVideoCookiesConsent = shouldUseVideoCookies
-    ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
-      cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
-    : true
+  const hasVideoCookiesConsent =
+    cookiesConsent.state === ConsentState.HAS_CONSENT &&
+    cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
 
   const {
     visible: reactionModalVisible,
