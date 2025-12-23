@@ -487,15 +487,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -519,7 +520,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -580,15 +581,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -612,7 +614,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -673,15 +675,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -705,7 +708,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -766,15 +769,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -798,7 +802,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -859,15 +863,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -891,7 +896,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -952,15 +957,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -984,7 +990,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1045,15 +1051,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1077,7 +1084,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1138,15 +1145,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1170,7 +1178,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1231,15 +1239,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1263,7 +1272,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1324,15 +1333,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1356,7 +1366,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1417,15 +1427,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1449,7 +1460,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1510,15 +1521,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1542,7 +1554,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",
@@ -1603,15 +1615,16 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                       "borderWidth": 1.6,
                       "display": "flex",
                       "flexDirection": "column",
+                      "height": 144,
                       "justifyContent": "flex-end",
+                      "minHeight": 80,
                       "overflow": "hidden",
                     },
                     {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 0,
-                      "height": 144,
-                      "maxWidth": "49%",
+                      "maxWidth": "50%",
                       "minWidth": "40%",
                     },
                   ],
@@ -1635,7 +1648,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 }
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={4}
                   style={
                     {
                       "color": "#161617",

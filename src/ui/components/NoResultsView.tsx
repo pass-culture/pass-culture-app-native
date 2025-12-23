@@ -64,10 +64,11 @@ const Container = styled.View(({ theme }) => ({
 
 const ContentContainer = styled(ViewGap)(({ theme }) => ({
   height: '100%',
+  width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: theme.tabBar.height,
-  marginHorizontal: theme.contentPage.marginHorizontal,
+  paddingBottom: theme.tabBar.height,
+  paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const CaptionTitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
@@ -79,6 +80,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const ButtonContainer = styled.View({
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
   marginTop: getSpacing(2),
-})
+  width: '100%',
+}))

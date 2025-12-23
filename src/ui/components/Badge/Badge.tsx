@@ -30,7 +30,7 @@ const Container = styled.View(({ theme }) => ({
 
 const Wrapper = styled.View({
   minWidth: BADGE_SIZE,
-  height: BADGE_SIZE,
+  minHeight: BADGE_SIZE,
   paddingHorizontal: getSpacing(0.5),
 })
 

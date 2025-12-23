@@ -561,6 +561,7 @@ exports[`VenueModal should render correctly 1`] = `
           }
         >
           <View
+            flexDirection="row"
             gap={4}
             isModal={true}
             style={

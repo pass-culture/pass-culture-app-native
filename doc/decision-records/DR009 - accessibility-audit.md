@@ -880,7 +880,7 @@ Texte
 
 <br>
 
-## ✅ Corrections 28 novembre 2025 → 02 décembre 2026
+## ✅ Corrections 28 novembre 2025 → 02 février 2026
 
 <br>
 
@@ -897,6 +897,27 @@ De très nombreux composants répartis sur l’ensemble des écrans de l’appli
 
 **Correction** 💡  
 Nous avons ajouter la gestion des rôles bouton et lien de manière automatique sur nos composants, par exemple en mobile, `InternalTouchableLink` retourne un bouton et `ExternalTouchableLink` un lien.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 8.2 - Dans chaque écran, l’utilisateur peut-il augmenter la taille des caractères de 200% au moins ?</summary>
+
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
+**Ticket** : [PC-38649](https://passculture.atlassian.net/browse/PC-38649)  
+**PR** : [#9040](https://github.com/pass-culture/pass-culture-app-native/pull/9040)
+
+**Problème** 😱  
+- **(Tous les écrans)** Certains textes sont tronqués car on limite le nombre de ligne (via `numberOfLines`)
+
+**Correction** 💡  
+- **(Tous les écrans)** Adaptation du nombre de lignes des textes (`numberOfLines`) en fonction du zoom que l'utilisateur a défini dans ses paramètres. 
 
 **Retours audit** 🔥  
 Texte

@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { separateTitleAndEmojis } from 'features/home/helpers/separateTitleAndEmojis'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -19,6 +20,8 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   withMargin = true,
   accessibilityLabel,
 }) => {
+  const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
+
   const { titleText, titleEmoji } = separateTitleAndEmojis(title)
   const { titleText: accessibilityLabelTitleText } = separateTitleAndEmojis(
     accessibilityLabel ?? ''
@@ -27,7 +30,7 @@ export const AccessibleTitle: React.FC<AccessibleTitleProps> = ({
   return (
     <TitleWrapper testID="playlistTitle" withMargin={withMargin}>
       <StyledTitleComponent
-        numberOfLines={2}
+        numberOfLines={numberOfLines}
         accessibilityLabel={accessibilityLabel ? accessibilityLabelTitleText : titleText}>
         <StyledTitleComponent {...hiddenFromScreenReader()}>
           {titleText}

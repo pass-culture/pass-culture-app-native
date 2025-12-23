@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { useGetFontScale } from 'shared/accessibility/useGetFontScale'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -20,10 +20,12 @@ type Props = {
   children?: never
 }
 
-const DESKTOP_CATEGORY_BUTTON_HEIGHT = getSpacing(42)
-const MOBILE_CATEGORY_BUTTON_HEIGHT = getSpacing(36)
-const MOBILE_CATEGORY_BUTTON_HEIGHT_WITH_ZOOM = getSpacing(25)
-const FONT_SCALE_ZOOM = 1.5
+const CATEGORY_BUTTON_HEIGHT = getSpacing(36)
+const DESKTOP_MAX_WIDTH = getSpacing(37.33)
+const DESKTOP_MIN_WIDTH = '100%'
+const MOBILE_MIN_WIDTH = '40%'
+const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
+const MOBILE_MAX_WIDTH = '50%'
 
 export const CategoriesListDumb: FunctionComponent<Props> = ({
   sortedCategories,
@@ -33,8 +35,13 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
 }) => {
-  const { fontScale } = useGetFontScale()
   const { designSystem } = useTheme()
+
+  const mobileMinWidth = useFontScaleValue({
+    default: MOBILE_MIN_WIDTH,
+    at200PercentZoom: MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED,
+  })
+
   return (
     <StyledScrollView showsHorizontalScrollIndicator={false} testID="categoriesButtons">
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
@@ -61,7 +68,8 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
               {...item}
               fillColor={designSystem.color.background[item.fillColor]}
               borderColor={designSystem.color.border[item.borderColor]}
-              fontScale={fontScale}
+              mobileMinWidth={mobileMinWidth}
+              height={CATEGORY_BUTTON_HEIGHT}
             />
           )
         })}
@@ -76,21 +84,15 @@ const StyledScrollView = styled.ScrollView(({ theme }) => ({
   marginTop: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.xxl,
 }))
 
-const StyledCategoryButton = styled(CategoryButton)<{ fontScale: number }>(({
-  theme,
-  fontScale,
-}) => {
-  return {
+const StyledCategoryButton = styled(CategoryButton)<{ mobileMinWidth: string }>(
+  ({ theme, mobileMinWidth }) => ({
     flexGrow: 1,
     flexShrink: 0,
     flexBasis: 0,
-    ...(theme.isMobileViewport
-      ? fontScale > FONT_SCALE_ZOOM
-        ? { height: MOBILE_CATEGORY_BUTTON_HEIGHT_WITH_ZOOM, minWidth: '100%' }
-        : { height: MOBILE_CATEGORY_BUTTON_HEIGHT, minWidth: '40%', maxWidth: '49%' }
-      : { height: DESKTOP_CATEGORY_BUTTON_HEIGHT }),
-  }
-})
+    minWidth: theme.isMobileViewport ? mobileMinWidth : DESKTOP_MIN_WIDTH,
+    maxWidth: theme.isMobileViewport ? MOBILE_MAX_WIDTH : DESKTOP_MAX_WIDTH,
+  })
+)
 
 const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   width: '100%',

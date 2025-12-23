@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { ColorsType } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import {
@@ -31,6 +32,8 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   onBeforeNavigate,
   height,
 }) => {
+  const effectiveHeight = useFontScaleValue({ default: height, at200PercentZoom: undefined })
+
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
 
@@ -45,13 +48,15 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       baseColor={fillColor}
       borderColor={borderColor}
       style={style}
-      height={height}>
+      height={effectiveHeight}>
       <LabelContainer>
         <Label>{label.toUpperCase()}</Label>
       </LabelContainer>
     </TouchableContainer>
   )
 }
+
+const MIN_HEIGHT = getSpacing(20)
 
 const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
   onMouseDown: (e: Event) => void
@@ -61,7 +66,8 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   borderColor: ColorsType
   height?: number
 }>(({ theme, isFocus, isHover, baseColor, borderColor, height }) => ({
-  height,
+  height: height ?? undefined,
+  minHeight: MIN_HEIGHT,
   overflow: 'hidden',
   borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
@@ -71,7 +77,7 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   borderWidth: '1.6px',
   flexDirection: 'column',
   display: 'flex',
-  justifyContent: 'flex-end',
+  justifyContent: height ? 'flex-end' : undefined,
 }))
 
 const LabelContainer = styled.View({
@@ -80,7 +86,7 @@ const LabelContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 3 })(({ theme }) => ({
+const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) => ({
   textAlign: 'left',
   color: theme.designSystem.color.text.default,
 }))
