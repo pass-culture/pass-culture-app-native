@@ -264,6 +264,9 @@ exports[`<Achievements/> should match snapshot 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Barre de progression : 33%"
+                  accessibilityRole="progressbar"
+                  accessible={true}
                   style={
                     {
                       "alignItems": "center",

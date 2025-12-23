@@ -189,6 +189,9 @@ exports[`BeneficiaryAccountCreated should render correctly for 18 year-old benef
           }
         >
           <View
+            accessibilityLabel="Barre de progression : 100%"
+            accessibilityRole="progressbar"
+            accessible={true}
             style={
               {
                 "alignItems": "center",
@@ -613,6 +616,9 @@ exports[`BeneficiaryAccountCreated should render correctly for underage benefici
           }
         >
           <View
+            accessibilityLabel="Barre de progression : 100%"
+            accessibilityRole="progressbar"
+            accessible={true}
             style={
               {
                 "alignItems": "center",

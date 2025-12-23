@@ -170,18 +170,10 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         testID="close-button-container"
       />
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 1 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 1 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -935,18 +927,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         </View>
       </View>
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 2 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 2 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -1831,18 +1815,10 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         </View>
       </View>
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 3 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 3 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -2986,18 +2962,10 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         </View>
       </View>
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 4 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 4 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",

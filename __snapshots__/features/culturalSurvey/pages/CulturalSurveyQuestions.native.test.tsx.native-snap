@@ -139,6 +139,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               }
             >
               <View
+                accessibilityLabel="Barre de progression : 0%"
+                accessibilityRole="progressbar"
+                accessible={true}
                 style={
                   {
                     "alignItems": "center",
