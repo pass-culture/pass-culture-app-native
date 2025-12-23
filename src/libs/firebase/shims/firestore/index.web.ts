@@ -1,9 +1,19 @@
-import firebase from 'firebase/compat/app'
-/* eslint-disable-next-line no-restricted-imports */
-import 'firebase/compat/firestore'
+export type { DocumentData, DocumentSnapshot } from 'firebase/firestore'
 
 import initializeApp from '../firebase-init'
-initializeApp()
 
-const firestore = firebase.firestore
-export default firestore
+const app = initializeApp()
+
+export { app }
+
+export {
+  getFirestore,
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+  collection,
+  doc,
+  getDoc,
+  enableNetwork,
+  disableNetwork,
+} from 'firebase/firestore'

@@ -1,5 +1,5 @@
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
+import { DocumentSnapshot } from 'libs/firebase/shims/firestore'
 
 export type squads = 'decouverte' | 'activation' | 'conversion'
 
@@ -11,6 +11,6 @@ export type FeatureFlagConfig = {
   options?: Record<string, any> // Tried with unknown but got: Type 'Record<string, unknown>' is not assignable to type 'DocumentFieldType'.
 }
 
-export type FeatureFlagStore = Record<RemoteStoreFeatureFlags, FeatureFlagConfig>
+type FeatureFlagStore = Record<RemoteStoreFeatureFlags, FeatureFlagConfig>
 
-export type FeatureFlagDocument = FirebaseFirestoreTypes.DocumentSnapshot<FeatureFlagStore>
+export type FeatureFlagDocument = DocumentSnapshot<FeatureFlagStore>

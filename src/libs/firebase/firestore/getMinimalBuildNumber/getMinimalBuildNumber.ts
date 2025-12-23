@@ -1,4 +1,4 @@
-import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { firestoreRemoteStore, doc, getDoc } from 'libs/firebase/firestore/client'
 import {
   FIRESTORE_ROOT_COLLECTION,
   RemoteStoreAppVersion,
@@ -9,10 +9,13 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getMinimalBuildNumber = async (): Promise<number | undefined> => {
   try {
-    const docSnapshot = await firestoreRemoteStore
-      .collection(FIRESTORE_ROOT_COLLECTION)
-      .doc(RemoteStoreDocuments.APPLICATION_VERSIONS)
-      .get()
+    const docRef = doc(
+      firestoreRemoteStore,
+      FIRESTORE_ROOT_COLLECTION,
+      RemoteStoreDocuments.APPLICATION_VERSIONS
+    )
+
+    const docSnapshot = await getDoc(docRef)
 
     return docSnapshot.get<number>(RemoteStoreAppVersion.MINIMAL_BUILD_NUMBER)
   } catch (error) {

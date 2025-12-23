@@ -1,12 +1,28 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+// We have "require" modules to delay until the mock function is actually executed
 import 'jest-canvas-mock'
-import mockFirestore from 'libs/firebase/shims/firestore/index.web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.unmock('react-native-modal')
 jest.mock('libs/firebase/firestore/client.web', () => {
-  const firestoreRemoteStore = mockFirestore()
-  firestoreRemoteStore.settings({ experimentalAutoDetectLongPolling: true, merge: true })
+  const { initializeApp } = require('firebase/app')
+  const { FIREBASE_CONFIG } = require('libs/firebase/firebaseConfig')
+  const {
+    initializeFirestore,
+    persistentLocalCache,
+    persistentMultipleTabManager,
+  } = require('libs/firebase/shims/firestore/index.web')
+
+  const app = initializeApp(FIREBASE_CONFIG)
+
+  const firestoreRemoteStore = initializeFirestore(app, {
+    experimentalAutoDetectLongPolling: true,
+    localCache: persistentLocalCache({
+      tabManager: persistentMultipleTabManager(),
+    }),
+  })
+
   return {
     __esModule: true,
     default: firestoreRemoteStore,
