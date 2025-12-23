@@ -116,7 +116,7 @@ jobs:
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
       - name: Post to a Slack channel
         id: slack
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
           # channel #equipe-e2e-jeunes
           channel-id: 'C05MH81G9LY'
