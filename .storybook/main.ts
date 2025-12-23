@@ -45,7 +45,7 @@ const config: StorybookConfig = {
         },
       },
       optimizeDeps: {
-        include: ['react-native-calendars', 'react-native-map-link'],
+        include: ['react-native-calendars'],
       },
       ssr: {
         noExternal: ['react-native-calendars'],
