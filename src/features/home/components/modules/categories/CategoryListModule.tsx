@@ -26,9 +26,9 @@ type CategoryListProps = {
 const BLOCK_HEIGHT = getSpacing(25)
 const DESKTOP_MAX_WIDTH = getSpacing(37.33)
 const DESKTOP_MIN_WIDTH = 'none'
-const MOBILE_MIN_WIDTH = '35%'
+const MOBILE_MIN_WIDTH = '40%'
 const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
-const MOBILE_MAX_WIDTH = '50%'
+const MOBILE_MAX_WIDTH = '49%'
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
 
