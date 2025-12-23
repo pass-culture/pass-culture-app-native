@@ -12,14 +12,13 @@ import {
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { ThemeProvider } from 'libs/styled'
 import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { waitFor, fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 
@@ -97,8 +96,7 @@ describe('AccessibleTabBar', () => {
     mockedUseSearch.mockReturnValue(defaultUseSearch)
   })
 
-  it('renders correclty when FF is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+  it('renders correclty', async () => {
     renderTabBar()
 
     expect(await screen.findByText('99+')).toBeInTheDocument()

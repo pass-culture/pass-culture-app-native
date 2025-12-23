@@ -39,7 +39,6 @@ export function Offer() {
   const hasOfferChronicleSection = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
   )
-  const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
 
   const { isLoggedIn, user } = useAuthContext()
@@ -47,7 +46,7 @@ export function Offer() {
     offerId,
     select: (data) => ({
       ...data,
-      reactionsCount: { likes: isReactionEnabled ? data.reactionsCount.likes : 0 },
+      reactionsCount: { likes: data.reactionsCount.likes },
     }),
   })
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -73,7 +72,7 @@ export function Offer() {
   } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQuery(
     offer?.id ?? -1,
-    isLoggedIn && isReactionEnabled && !!offer?.id
+    isLoggedIn && !!offer?.id
   )
   const { mutate: saveReaction } = useReactionMutation()
   const categoryId = offer?.subcategoryId
