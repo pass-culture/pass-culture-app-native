@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ColorsType } from 'theme/types'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -30,8 +31,13 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   width = '100%',
   innerText,
 }) => {
+  const progressString = `${Math.round(progress * 100)}`
   return (
-    <Container width={width}>
+    <Container
+      width={width}
+      accessibilityLabel={`Barre de progression\u00a0: ${progressString}%`}
+      accessibilityRole={AccessibilityRole.PROGRESSBAR}
+      accessible>
       <ProgressBarContainer height={height}>
         {height === 'large' ? <BaseShadowGradient /> : null}
         <LinearGradientBar progress={progress} color={color} testID="progress-bar">

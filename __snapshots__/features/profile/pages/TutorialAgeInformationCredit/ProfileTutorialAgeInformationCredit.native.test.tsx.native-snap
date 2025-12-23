@@ -285,6 +285,9 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   </Text>
                 </Text>
                 <View
+                  accessibilityLabel="Barre de progression : 50%"
+                  accessibilityRole="progressbar"
+                  accessible={true}
                   style={
                     {
                       "alignItems": "center",
@@ -607,6 +610,9 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                   </Text>
                 </Text>
                 <View
+                  accessibilityLabel="Barre de progression : 100%"
+                  accessibilityRole="progressbar"
+                  accessible={true}
                   style={
                     {
                       "alignItems": "center",

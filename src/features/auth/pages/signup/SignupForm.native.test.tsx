@@ -88,14 +88,14 @@ const gotoStep2 = async () => {
   await user.type(await screen.findByTestId('Entrée pour l’email'), 'email@gmail.com')
 
   await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
-  await screen.findByText('Étape 2 sur 5', { includeHiddenElements: true })
+  await screen.findByLabelText('Étape 2 sur 5')
 }
 
 const gotoStep3 = async () => {
   await user.type(await screen.findByTestId('Mot de passe'), 'user@AZERTY123')
 
   await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
-  await screen.findByText('Étape 3 sur 5', { includeHiddenElements: true })
+  await screen.findByLabelText('Étape 3 sur 5')
 }
 
 const gotoStep4 = async () => {
@@ -107,7 +107,7 @@ const gotoStep4 = async () => {
 
   await user.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
 
-  await screen.findByText('Étape 4 sur 5', { includeHiddenElements: true })
+  await screen.findByLabelText('Étape 4 sur 5')
 }
 
 describe('Signup Form', () => {
@@ -142,9 +142,7 @@ describe('Signup Form', () => {
         .slice(0, step)
         .reduce((prev, current) => prev.then(() => current()), Promise.resolve())
 
-      expect(
-        await screen.findByText(`Étape ${step} sur 5`, { includeHiddenElements: true })
-      ).toBeOnTheScreen()
+      expect(await screen.findByLabelText(`Étape ${step} sur 5`)).toBeOnTheScreen()
       expect(screen).toMatchSnapshot()
     })
   })
