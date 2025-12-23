@@ -75,7 +75,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.getByText('Tester mon éligibilité')
+      const link = screen.getByText('Vérifier maintenant')
 
       expect(link).toBeOnTheScreen()
       expect(link).toBeEnabled()
@@ -91,7 +91,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.queryByText('Tester mon éligibilité')
+      const link = screen.queryByText('Vérifier maintenant')
 
       expect(link).not.toBeOnTheScreen()
     })
@@ -121,7 +121,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.queryByText('Tester mon éligibilité')
+      const link = screen.queryByText('Vérifier maintenant')
 
       expect(link).not.toBeOnTheScreen()
     })
@@ -136,7 +136,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.queryByText('Tester mon éligibilité')
+      const link = screen.queryByText('Vérifier maintenant')
 
       expect(link).not.toBeOnTheScreen()
     })
