@@ -36,9 +36,6 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const hasOfferChronicleSection = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
-  )
   const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
 
   const { isLoggedIn, user } = useAuthContext()
@@ -124,11 +121,9 @@ export function Offer() {
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
   const chronicleVariantInfo = chronicleVariant[subcategory.id]
 
-  const chronicles = hasOfferChronicleSection
-    ? offer?.chronicles?.map((value) =>
-        chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
-      )
-    : undefined
+  const chronicles = offer?.chronicles?.map((value) =>
+    chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
+  )
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
   const headlineOffersCount = shouldFetchSearchVenueOffers ? data?.headlineOffersCount : undefined
