@@ -9,6 +9,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Code } from 'ui/svg/icons/Code'
+import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 
 enum BonificationBannerType {
@@ -36,7 +37,7 @@ const BANNER_CONFIG = {
         wording: 'Je veux vérifier',
       },
     ],
-    Icon: Code,
+    Icon: LogoFilled,
   },
   [BonificationBannerType.PENDING]: {
     type: BannerType.ALERT,
