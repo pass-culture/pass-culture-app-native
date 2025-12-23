@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
+import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
@@ -16,6 +17,9 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { CheckboxGroup } from 'ui/designSystem/CheckboxGroup/CheckboxGroup'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
+
+const PRIVACY_NOTICE_TEXT =
+  'Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex\u00a0: demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.'
 
 export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   previousSignupData,
@@ -163,20 +167,14 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           onPress={onSubmit}
           isLoading={isDoingReCaptchaChallenge || isFetching}
           disabled={disabled}
-          accessibilityHint={errorMessage ?? undefined}
+          accessibilityHint={
+            errorMessage ? `${errorMessage} - ${PRIVACY_NOTICE_TEXT}` : PRIVACY_NOTICE_TEXT
+          }
         />
       </ButtonContainer>
       <InputError visible={!!errorMessage} errorMessage={errorMessage} numberOfSpacesTop={5} />
       <BottomContainer>
-        <CaptionNeutralInfo>
-          Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à
-          collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de
-          l’application et des services que nous proposons. Pour en savoir plus sur la gestion de
-          tes données et pour exercer tes droits (ex&nbsp;: demander l’accès à tes données ou leur
-          suppression), tu peux te reporter à la charte des données personnelles. Tu peux également
-          gérer certaines préférences concernant tes données depuis les paramètres de ton compte,
-          comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
-        </CaptionNeutralInfo>
+        <CaptionNeutralInfo {...hiddenFromScreenReader()}>{PRIVACY_NOTICE_TEXT}</CaptionNeutralInfo>
       </BottomContainer>
     </Form.MaxWidth>
   )
