@@ -108,8 +108,8 @@ describe('VenueMapActivityFilter', () => {
     )
 
     expect(screen.getByText('Tout sélectionner')).toBeOnTheScreen()
-    expect(screen.getByText('Musique - Salle de concerts')).toBeOnTheScreen()
-    expect(screen.getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
+    expect(screen.getByText('Salle de spectacle')).toBeOnTheScreen()
+    expect(screen.getByText('Cinéma')).toBeOnTheScreen()
     expect(screen.getByText('Musée')).toBeOnTheScreen()
   })
 
@@ -146,7 +146,7 @@ describe('VenueMapActivityFilter', () => {
     )
 
     const concertHallCheckbox = screen.getByRole('checkbox', {
-      name: 'Musique - Salle de concerts',
+      name: 'Salle de spectacle',
     })
 
     expect(concertHallCheckbox).toHaveAccessibilityState({ checked: true })
@@ -206,7 +206,7 @@ describe('VenueMapActivityFilter', () => {
     )
 
     const concertHallCheckbox = screen.getByRole('checkbox', {
-      name: 'Musique - Salle de concerts',
+      name: 'Salle de spectacle',
     })
 
     await user.press(concertHallCheckbox)
@@ -228,7 +228,7 @@ describe('VenueMapActivityFilter', () => {
     )
 
     const concertHallCheckbox = screen.getByRole('checkbox', {
-      name: 'Musique - Salle de concerts',
+      name: 'Salle de spectacle',
     })
 
     await user.press(concertHallCheckbox)

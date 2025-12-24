@@ -22,7 +22,7 @@ describe('getFilterDescription', () => {
       Activity.CINEMA,
     ])
 
-    expect(description).toEqual('Cinéma - Salle de projections, Musique - Salle de concerts')
+    expect(description).toEqual('Cinéma, Salle de spectacle')
   })
 
   it('should return an empty string when no types are selected', () => {
