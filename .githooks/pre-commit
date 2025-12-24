@@ -6,6 +6,16 @@ set -o nounset
 
 DIR=$(git rev-parse --show-toplevel)
 
+################
+## SAFE-CHAIN ##
+################
+
+command -v "safe-chain" >/dev/null 2>&1 || { echo >&2 "❌ safe-chain is not installed on the system. Follow internal knowledge base to protect against side-channel attacks."; exit 1; }
+
+####################
+## END SAFE-CHAIN ##
+####################
+
 ########################
 ## CHECK SECRET LEAKS ##
 ########################
