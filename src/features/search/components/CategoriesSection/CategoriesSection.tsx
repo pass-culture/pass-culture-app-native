@@ -11,8 +11,8 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
+import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
@@ -61,12 +61,16 @@ export function CategoriesSection<
   return (
     <VerticalUl>
       <ListItem>
-        <RadioButton
-          label={allLabel}
-          isSelected={value === allValue}
-          onSelect={() => onSelect(allValue)}
-          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
-        />
+        <RadioButtonContainer>
+          <RadioButton
+            label={allLabel}
+            value={value === allValue ? allLabel : ''}
+            setValue={() => onSelect(allValue)}
+            variant="default"
+            disabled={false}
+            error={false}
+          />
+        </RadioButtonContainer>
       </ListItem>
       {entries.map(([k, item]) => (
         <CategoriesSectionItem
@@ -86,3 +90,7 @@ export function CategoriesSection<
 const ListItem = styled(Li)({
   display: 'flex',
 })
+
+const RadioButtonContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))

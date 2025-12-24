@@ -13,7 +13,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type CategoriesMappingItem = {
@@ -51,13 +51,16 @@ export const CategoriesSectionItem = <N,>({
   return (
     <ListItem>
       {shouldHideArrow ? (
-        <RadioButton
-          label={item.label}
-          isSelected={itemKey === value}
-          onSelect={() => handleSelect(itemKey)}
-          icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-          complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
-        />
+        <RadioButtonContainer>
+          <RadioButton
+            label={item.label}
+            value={itemKey === value ? item.label : ''}
+            setValue={() => handleSelect(itemKey)}
+            variant="default"
+            disabled={false}
+            error={false}
+          />
+        </RadioButtonContainer>
       ) : (
         <FilterRowContainer>
           <FilterRow
@@ -81,4 +84,8 @@ const ListItem = styled(Li)({
 
 const FilterRowContainer = styled.View(({ theme }) => ({
   paddingVertical: theme.designSystem.size.spacing.m,
+}))
+
+const RadioButtonContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
 }))
