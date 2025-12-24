@@ -42,8 +42,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { venue, width, height } = props
   const queryClient = useQueryClient()
-  const { designSystem, tiles } = useTheme()
-  const MAX_VENUE_CAPTION_HEIGHT = tiles.maxCaptionHeight.venue
+  const { designSystem } = useTheme()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
   const distance = getDistance(
@@ -68,7 +67,6 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   return (
     <View {...getHeadingAttrs(3)}>
       <StyledTouchableLink
-        height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onBeforeNavigate={handlePressVenue}
@@ -106,12 +104,10 @@ export const VenueTile = memo(UnmemoizedVenueTile)
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.default,
 }))<{
-  height: number
   width: number
   isFocus?: boolean
-}>(({ height, width, theme, isFocus }) => ({
+}>(({ width, theme, isFocus }) => ({
   width,
-  maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),
