@@ -29,6 +29,7 @@ export const mockedAlgoliaResponse = toMutable({
         postalCode: '75000',
         city: 'Paris',
         activity: Activity.BOOKSTORE,
+        isPermanent: true,
       },
       artists: [{ id: '1', name: 'Artist 1' }],
     },
@@ -53,6 +54,7 @@ export const mockedAlgoliaResponse = toMutable({
         postalCode: '75000',
         city: 'Paris',
         activity: Activity.PERFORMANCE_HALL,
+        isPermanent: true,
       },
       artists: [
         { id: '2', name: 'Artist 2' },
@@ -80,6 +82,7 @@ export const mockedAlgoliaResponse = toMutable({
         postalCode: '75000',
         city: 'Paris',
         activity: Activity.PERFORMANCE_HALL,
+        isPermanent: true,
       },
     },
     {
@@ -102,6 +105,7 @@ export const mockedAlgoliaResponse = toMutable({
         address: '4 rue de la paix',
         postalCode: '75000',
         city: 'Paris',
+        isPermanent: true,
       },
       artists: [
         { id: '4', name: 'Artist 4' },
