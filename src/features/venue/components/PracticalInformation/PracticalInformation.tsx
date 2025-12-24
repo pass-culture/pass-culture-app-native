@@ -100,7 +100,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
   ].filter(isSectionWithBody)
 
   if (sections.length === 0) {
-    return <NoInformationPlaceholder />
+    return <NoInformationPlaceholder isOpenToPublic={venue.isOpenToPublic} />
   }
 
   return (
