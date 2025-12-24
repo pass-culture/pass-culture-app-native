@@ -103,7 +103,6 @@ export const mockVenueHits = toMutable([
       lat: 47.48635,
       lng: -3.11926,
     },
-    has_at_least_one_bookable_offer: false,
     objectID: '9898',
     _highlightResult: {
       name: {
@@ -140,7 +139,6 @@ export const mockVenueHits = toMutable([
       lat: 44.46932,
       lng: 1.68754,
     },
-    has_at_least_one_bookable_offer: false,
     objectID: '9495',
     _highlightResult: {
       name: {

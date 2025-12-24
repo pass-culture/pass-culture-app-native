@@ -14,10 +14,7 @@ jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 
-const facetFilters = [
-  [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
-  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
-]
+const facetFilters = [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]]
 
 describe('fetchVenues', () => {
   const venueFixture: AlgoliaVenue = {
