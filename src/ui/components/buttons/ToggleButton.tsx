@@ -83,6 +83,6 @@ const FlexTouchableOpacity = styled(BaseTouchableOpacity)({
 
 const StaticTouchableOpacity = styled(BaseTouchableOpacity)({})
 
-const LabelText = styled(Typo.BodyAccentXs)({
-  marginLeft: getSpacing(2),
-})
+const LabelText = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))

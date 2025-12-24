@@ -116,10 +116,10 @@ const StyledCheckBox = styled(TouchableOpacity)({
   width: '100%',
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
-  padding: getSpacing(2),
-})
+  padding: theme.designSystem.size.spacing.s,
+}))
 
 const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',

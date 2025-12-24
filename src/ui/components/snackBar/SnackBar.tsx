@@ -1,11 +1,11 @@
 import React, {
   FunctionComponent,
-  useRef,
-  useEffect,
-  useCallback,
-  useState,
   memo,
+  useCallback,
+  useEffect,
   useMemo,
+  useRef,
+  useState,
 } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -18,7 +18,7 @@ import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { CloseFilled } from 'ui/svg/icons/CloseFilled'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export type SnackBarProps = {
   visible: boolean
@@ -168,13 +168,13 @@ const ColoredAnimatableView = styled(AnimatedView)<{ backgroundColor: ColorsType
 }))
 
 const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>(
-  ({ isVisible, marginTop }) => ({
+  ({ isVisible, marginTop, theme }) => ({
     marginTop,
     flexDirection: 'row',
     alignItems: 'center',
     display: isVisible ? 'flex' : 'none',
     paddingTop: getSpacing(2) - marginTop,
-    paddingBottom: getSpacing(2),
+    paddingBottom: theme.designSystem.size.spacing.s,
     paddingHorizontal: getSpacing(5),
   })
 )

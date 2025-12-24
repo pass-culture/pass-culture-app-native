@@ -70,7 +70,7 @@ export const ForgottenPassword = () => {
         </Typo.Body>
       </Container>
       <Form.MaxWidth>
-        <EmailInputController label="Adresse e-mail" control={control} name="email" autoFocus />
+        <EmailInputController label="Adresse e-mail" control={control} name="email" />
         <ButtonContainer>
           <ButtonPrimary
             wording="Valider"
@@ -87,10 +87,10 @@ const ButtonContainer = styled.View({
   marginTop: getSpacing(8),
 })
 
-const Container = styled.View({
-  marginTop: getSpacing(2),
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
   marginBottom: getSpacing(8),
-})
+}))
 
 const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unknown>['data']) => {
   const { navigate } = useNavigation<UseNavigationType>()

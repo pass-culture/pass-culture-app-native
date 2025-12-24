@@ -39,9 +39,9 @@ const PercentageContainer = styled.View({
   alignSelf: 'center',
 })
 
-const SurveyProgressPercentage = styled(Typo.BodyAccentXs)({
-  marginLeft: getSpacing(2),
-})
+const SurveyProgressPercentage = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))
 
 const ProgressBarContainer = styled.View({
   flex: 1,

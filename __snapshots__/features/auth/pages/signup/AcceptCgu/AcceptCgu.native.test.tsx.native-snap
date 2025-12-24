@@ -548,6 +548,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   >
     <View
+      accessibilityHint="Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
       accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
       accessibilityRole="button"
       accessibilityState={
@@ -642,6 +643,8 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   >
     <Text
+      accessibilityElementsHidden={true}
+      importantForAccessibility="no"
       style={
         {
           "color": "#696a6f",
@@ -1321,6 +1324,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     }
   >
     <View
+      accessibilityHint="Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
       accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
       accessibilityRole="button"
       accessibilityState={
@@ -1415,6 +1419,8 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     }
   >
     <Text
+      accessibilityElementsHidden={true}
+      importantForAccessibility="no"
       style={
         {
           "color": "#696a6f",

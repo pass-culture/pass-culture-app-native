@@ -86,7 +86,6 @@ export const SetName = () => {
               <InputText
                 label="Prénom"
                 value={value}
-                autoFocus
                 onChangeText={onChange}
                 requiredIndicator="explicit"
                 accessibilityHint={error?.message}

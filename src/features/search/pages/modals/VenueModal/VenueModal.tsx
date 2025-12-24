@@ -65,7 +65,6 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
             testID="searchInput"
             label="Trouver un lieu culturel"
             description="Exemple&nbsp;: Cinéma, librairie, magasin…"
-            autoFocus
             onChangeText={doChangeVenue}
             onClear={doResetVenue}
             value={venueQuery}

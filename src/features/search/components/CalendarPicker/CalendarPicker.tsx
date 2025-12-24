@@ -45,7 +45,7 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
 }
 
 const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
-  marginTop: -getSpacing(2),
+  marginTop: -theme.designSystem.size.spacing.s,
   marginBottom: getSpacing(5),
   color: theme.designSystem.color.text.default,
 }))

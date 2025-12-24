@@ -11,7 +11,7 @@ import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -123,7 +123,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
-const LeftIconContainer = styled.View({ flexShrink: 0, marginRight: getSpacing(2) })
+const LeftIconContainer = styled.View(({ theme }) => ({
+  flexShrink: 0,
+  marginRight: theme.designSystem.size.spacing.s,
+}))
 
 const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
@@ -137,9 +140,9 @@ const StyledInputContainer = styled(InputContainer)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
 }))
 
-const StyledView = styled.View({
-  marginBottom: getSpacing(2),
-})
+const StyledView = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const TextFormat = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

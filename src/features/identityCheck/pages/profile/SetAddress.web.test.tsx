@@ -5,7 +5,7 @@ import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),
@@ -23,10 +23,6 @@ describe('<SetAddress/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderSetAddress()
-
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour l’adresse')).toHaveFocus()
-      })
 
       const results = await checkAccessibilityFor(container)
 

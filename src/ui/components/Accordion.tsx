@@ -205,9 +205,9 @@ const StyledTitle = styled(Typo.Title4)({
   flexShrink: 1,
 })
 
-const StyledArrowAnimatedView = styled(Animated.View)({
-  marginLeft: getSpacing(2),
-})
+const StyledArrowAnimatedView = styled(Animated.View)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))
 
 const StyledAnimatedView = styled(Animated.View)({
   overflow: 'hidden',
@@ -218,6 +218,6 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const LeftComponentView = styled.View({
-  marginRight: getSpacing(2),
-})
+const LeftComponentView = styled.View(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.s,
+}))

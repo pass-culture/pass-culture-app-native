@@ -403,6 +403,6 @@ const Warning = styled(WarningDefault).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const TextInputContainer = styled.View({
-  marginTop: getSpacing(2),
-})
+const TextInputContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))

@@ -98,7 +98,7 @@ const Background = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'flex-start',
   width: '100%',
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
   paddingLeft: getSpacing(4),
   borderRadius: theme.designSystem.size.borderRadius.m,
   backgroundColor: theme.designSystem.color.background.inverted,
@@ -109,10 +109,10 @@ const StyledText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.inverted,
 }))
 
-const StyledClearContainer = styledButton(Touchable)({
-  marginLeft: getSpacing(2),
+const StyledClearContainer = styledButton(Touchable)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
   flexShrink: 1,
-})
+}))
 
 const StyledClearIcon = styled(Clear).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.inverted,

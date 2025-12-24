@@ -31,11 +31,11 @@ const Container = styled.ScrollView.attrs({
   contentContainerStyle: {
     flexGrow: 1,
   },
-})({
-  paddingHorizontal: getSpacing(2),
+})(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.s,
   paddingVertical: getSpacing(4),
   maxHeight: 300,
-})
+}))
 
 const ResultContainer = styled.View({
   flex: 1,

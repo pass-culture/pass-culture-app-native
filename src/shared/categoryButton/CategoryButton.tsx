@@ -10,7 +10,7 @@ import {
   InternalNavigationProps,
   InternalTouchableLinkProps,
 } from 'ui/components/touchableLink/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -80,11 +80,11 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   justifyContent: height ? 'flex-end' : undefined,
 }))
 
-const LabelContainer = styled.View({
-  padding: getSpacing(2),
+const LabelContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.s,
   width: '100%',
   alignItems: 'flex-start',
-})
+}))
 
 const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 4 })(({ theme }) => ({
   textAlign: 'left',
