@@ -20,7 +20,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
-import { getSpacing } from 'ui/theme'
 
 const keyExtractor = ({ name, departementCode }: SuggestedCity) => `${name}-${departementCode}`
 
@@ -166,4 +165,4 @@ const CitiesContainer = styled.View({
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
 
-const StyledView = styled.View({ marginBottom: getSpacing(2) })
+const StyledView = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.s }))

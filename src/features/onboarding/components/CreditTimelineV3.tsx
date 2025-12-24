@@ -166,9 +166,9 @@ const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   marginHorizontal: getSpacing(1.5),
 })
 
-const StyledTitle3 = styled(Typo.Title3)({
-  marginBottom: getSpacing(2),
-})
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,

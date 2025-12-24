@@ -198,8 +198,8 @@ const PillsContainer = styled(ViewGap)({
   marginVertical: getSpacing(1),
 })
 
-const TitleContainer = styled.View({
+const TitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginTop: getSpacing(6),
-  marginBottom: getSpacing(2),
-})
+  marginBottom: theme.designSystem.size.spacing.s,
+}))

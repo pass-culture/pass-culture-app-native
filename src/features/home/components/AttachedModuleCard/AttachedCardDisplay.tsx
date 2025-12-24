@@ -139,7 +139,7 @@ const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: str
     borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
     borderWidth: BORDER_WIDTH,
     borderColor: theme.designSystem.color.border.subtle,
-    gap: getSpacing(2),
+    gap: theme.designSystem.size.spacing.s,
     flexDirection: 'row',
     padding: OFFER_CARD_PADDING,
     flexWrap: 'wrap',

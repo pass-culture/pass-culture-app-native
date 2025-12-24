@@ -287,10 +287,10 @@ const StyledVerticalUl = styled(VerticalUl)({
   gap: getSpacing(3),
 })
 
-const CaptionContainer = styled.View({
-  paddingTop: getSpacing(2),
+const CaptionContainer = styled.View(({ theme }) => ({
+  paddingTop: theme.designSystem.size.spacing.s,
   paddingBottom: getSpacing(8),
-})
+}))
 
 const FixedBottomChildrenView = styled(View)({
   alignItems: 'center',

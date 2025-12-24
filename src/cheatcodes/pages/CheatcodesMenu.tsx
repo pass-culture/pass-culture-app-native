@@ -221,7 +221,7 @@ const StyledSearchInput = styled(SearchInput).attrs({
   },
 })``
 
-const StyledView = styled.View({
+const StyledView = styled.View(({ theme }) => ({
   width: '100%',
-  marginVertical: getSpacing(2),
-})
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
