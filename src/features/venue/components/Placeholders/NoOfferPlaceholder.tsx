@@ -5,10 +5,18 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
 
-export const NoOfferPlaceholder = () => (
+type Props = {
+  isOpenToPublic: boolean
+}
+
+export const NoOfferPlaceholder = ({ isOpenToPublic }: Props) => (
   <Container gap={2}>
     <NoOfferIllustration />
-    <Text>Il n’y a pas encore d’offre disponible dans ce lieu</Text>
+    <Text>
+      {isOpenToPublic
+        ? 'Il n’y a pas encore d’offre disponible dans ce lieu'
+        : 'Cette structure ne propose pas encore d’offre'}
+    </Text>
   </Container>
 )
 
