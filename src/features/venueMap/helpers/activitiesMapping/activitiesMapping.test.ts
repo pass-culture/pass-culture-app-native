@@ -39,10 +39,10 @@ describe('activitiesMapping', () => {
     expect(shopChildren[Activity.BOOKSTORE]).toEqual(MAP_ACTIVITY_TO_LABEL[Activity.BOOKSTORE])
   })
 
-  it('should have 8 children for other venues', () => {
+  it('should have 9 children for other venues', () => {
     const otherChildren = activitiesMapping.other.children
 
-    expect(Object.keys(otherChildren)).toHaveLength(8)
+    expect(Object.keys(otherChildren)).toHaveLength(9)
   })
 
   it('should have correct child for other venues', () => {
