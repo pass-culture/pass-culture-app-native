@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { render, checkAccessibilityFor, screen, waitFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ForgottenPassword } from './ForgottenPassword'
 
@@ -18,10 +18,6 @@ describe('<ForgottenPassword/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderForgottenPassword()
-
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
-      })
 
       const results = await checkAccessibilityFor(container)
 

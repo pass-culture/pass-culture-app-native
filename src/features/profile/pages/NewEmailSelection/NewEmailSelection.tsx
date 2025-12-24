@@ -73,12 +73,7 @@ export const NewEmailSelection = () => {
   return (
     <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">
       <Form.MaxWidth flex={1}>
-        <EmailInputController
-          control={control}
-          name="newEmail"
-          label="Nouvelle adresse e-mail"
-          autoFocus
-        />
+        <EmailInputController control={control} name="newEmail" label="Nouvelle adresse e-mail" />
         <Container>
           <Banner label="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h." />
         </Container>

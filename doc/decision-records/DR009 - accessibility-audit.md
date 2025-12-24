@@ -9,6 +9,29 @@
 
 <br>
 
+## 📱 Échantillon
+
+### Écrans
+**E01** : Cookies  
+**E02** : Accueil (et localisation)  
+**E03** : Mention légales  
+**E04** : Accessibilité  
+**E05** : préférences d'affichages  
+**E06** : Plan du site  
+**E07** : Authentification  
+**E08** : Profil connecté et déconnectéokies  
+**E09** : Lieu  
+
+### Parcours
+**E10** : Onboarding  
+**E11** : Processus d’inscription  
+**E13** : Processus de déblocage du crédit (Identification)  
+**E14** : Recherche d’une offre  
+**E15** : Réservation d’une offre  
+**E16** : Réservation d’une offre (détails avant et après confirmation)  
+
+<br>
+
 ## 📋 Légende
 
 🟠 : Correction disponible à la vérification  
@@ -17,6 +40,7 @@
 ⏳ : Questions en attente de réponse
 
 <br>
+
 
 ## ✅ Corrections 26 août 2025 → 26 septembre 2025
 
@@ -936,6 +960,33 @@ Texte
 
 **Correction** 💡  
 - **(Tous les écrans)** Les composants interactifs sont maintenant correctement exposés aux technologies d’assistance grâce à l'ajout de rôle et labels accessibles, ce qui permet leur accès au clavier ou via un lecteur d’écran.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 10.2 - Dans chaque écran, l’ordre de restitution par les technologies d’assistance est-il cohérent ?</summary>
+
+**RAAM** : [Critère 10.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-10-2)  
+**Ticket** : [PC-37500](https://passculture.atlassian.net/browse/PC-37500)  
+**PR** : [#9050](https://github.com/pass-culture/pass-culture-app-native/pull/9050)
+
+**Problème** 😱  
+- **(E02)** Avec TalkBack, le balayage (swipe) ne permet pas d’atteindre certains éléments hors écran. ex. Lorsque l’on effectue un balayage avec TalkBack, l’écran ne défile pas automatiquement pour révéler les éléments suivants. Résultat : certains contenus ne sont jamais atteints par la navigation gestuelle. 
+- **(E09|E15)** L'accès aux textes "Les films à l'affiche" et "Les autres offres" ne suit pas un ordre logique. Le lecteur d'écran devrait accéder à la première section puis ensuite la seconde. Le bouton de retour à l'écran précédent et le bouton de partage (en haut de l'écran) sont atteints en fin de parcours.
+- **(E11)**  L'accès au texte "Lors de ton utilisation [...] newsletter." ne suit pas un ordre logique. Le lecteur d'écran devrait accéder au texte puis ensuite au bouton "S'inscrire".
+- **(E12)** Entre chaque étape, le focus est directement sur le champ, plutôt que sur le premier élément de la page, cela oblige à un retour manuel vers le haut de la page.
+- **(E14)**  Les composants « Catégories » affichés sur deux lignes ne sont pas tous atteignables avec la navigation par balayage (swipe) : certains éléments sont sautés si l’utilisateur ne les explore pas manuellement à l’écran.
+
+**Correction** 💡  
+- **(E02|E09|E14|E15)** Utilisation d'`accessibilityRole` pour rendre accessible des éléments qui ne l'étaient pas. 
+- **(E11)**  Ajout du texte "Lors de ton utilisation [...] newsletter." dans le `accessibilityHint` du bouton "S'inscrire" pour qu'il soit lu en même temps. 
+- **(E12)** Suppression du `autoFocus` automatique sur les champs qui obligait à un retour manuel vers le haut de la page.
 
 **Retours audit** 🔥  
 Texte
