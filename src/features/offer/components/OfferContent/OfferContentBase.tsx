@@ -298,7 +298,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             />
           )}
         </OfferHeader>
-        <ScrollViewContainer
+        <IntersectionObserverScrollView
           testID="offerv2-container"
           scrollEventThrottle={16}
           scrollIndicatorInsets={scrollIndicatorInsets}
@@ -365,7 +365,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             onViewableItemsChanged={handleViewableItemsChanged}
           />
           {children}
-        </ScrollViewContainer>
+        </IntersectionObserverScrollView>
         {theme.isMobileViewport ? (
           <FooterContainer>
             <OfferContentCTAs offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
@@ -384,13 +384,13 @@ const Container = styled.View({
   flex: 1,
 })
 
-const ScrollViewContainer = React.memo(
-  styled(IntersectionObserverScrollView)({
-    overflow: 'visible',
-  })
-)
 const FooterContainer = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xxs,
+  marginTop: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xxs,
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 2,
 }))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
