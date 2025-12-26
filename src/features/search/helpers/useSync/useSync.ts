@@ -5,10 +5,13 @@ import { useEffect, useRef, useState } from 'react'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import {
+  hasUrlParams,
+  syncLocationFromParams,
+} from 'features/search/helpers/useSync/synchronizeStates'
 import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place/types'
 
 /**
  * Synchronizes URL parameters with application state.
@@ -72,23 +75,12 @@ export const useSync = (shouldSync = true) => {
    * 2) State => URL (when state changes)
    */
   useEffect(() => {
-    if (!shouldSync) return
-
-    if (urlParamsToSync.current === null) return
-
-    const pendingParams = urlParamsToSync.current
-    const stateHasUrlParams = Object.keys(pendingParams).every((key) => {
-      const urlValue = pendingParams[key]
-      const stateValue = searchState[key as keyof SearchState]
-
-      if (urlValue === undefined || urlValue === null) return true
-      if (Array.isArray(urlValue) && urlValue.length === 0) return true
-      return isEqual(stateValue, urlValue)
-    })
-
-    if (!stateHasUrlParams) {
+    if (
+      !shouldSync ||
+      urlParamsToSync.current === null ||
+      !hasUrlParams(urlParamsToSync.current, searchState)
+    )
       return
-    }
 
     urlParamsToSync.current = {}
 
@@ -97,9 +89,7 @@ export const useSync = (shouldSync = true) => {
       accessibilityFilter: disabilities,
     }
 
-    if (!isEqual(params, newParams)) {
-      setParams(newParams)
-    }
+    if (!isEqual(params, newParams)) setParams(newParams)
   }, [shouldSync, searchState, disabilities, params, setParams])
 
   // Handle AROUND_ME (requires geoloc permission, runs only once)
@@ -123,29 +113,4 @@ export const useSync = (shouldSync = true) => {
     setAroundMeRadius,
     params?.locationFilter?.locationType,
   ])
-}
-
-function syncLocationFromParams(
-  locationFilter: SearchState['locationFilter'],
-  handlers: {
-    setPlace: (place: SuggestedPlace | null) => void
-    setSelectedPlace: (place: SuggestedPlace | null) => void
-    setSelectedLocationMode: (mode: LocationMode) => void
-    setCanSwitchToAroundMe: (value: boolean) => void
-  }
-) {
-  switch (locationFilter.locationType) {
-    case LocationMode.AROUND_PLACE:
-      handlers.setPlace(locationFilter.place)
-      handlers.setSelectedPlace(locationFilter.place)
-      handlers.setSelectedLocationMode(LocationMode.AROUND_PLACE)
-      break
-    case LocationMode.EVERYWHERE:
-      handlers.setSelectedLocationMode(LocationMode.EVERYWHERE)
-      break
-    case LocationMode.AROUND_ME:
-      // Flag to trigger AROUND_ME once geoloc is available
-      handlers.setCanSwitchToAroundMe(true)
-      break
-  }
 }
