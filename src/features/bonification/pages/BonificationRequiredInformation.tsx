@@ -37,7 +37,7 @@ export const BonificationRequiredInformation = () => {
               Quelles sont les informations requises d’un de tes parents ou représentants
               légaux&nbsp;?
             </Typo.Title3>
-            <Typo.Body>Munis toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
+            <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
               <BulletListItem groupLabel="Informations demandées" index={0} total={5}>
                 <Typo.BodyAccent>Nom de naissance</Typo.BodyAccent>
