@@ -153,9 +153,9 @@ describe('<CategoriesModal/>', () => {
       const button = await screen.findByText('Réinitialiser')
       await user.press(button)
 
-      const defaultCategoryFilterCheckbox = await screen.findByText(ALL_CATEGORIES_LABEL)
+      const defaultCategoryFilterRadioButton = screen.getByLabelText(ALL_CATEGORIES_LABEL)
 
-      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
+      expect(defaultCategoryFilterRadioButton).toBeChecked()
     })
 
     describe('should close the modal', () => {
@@ -255,9 +255,9 @@ describe('<CategoriesModal/>', () => {
       const button = screen.getByText('Réinitialiser')
       await user.press(button)
 
-      const defaultCategoryFilterCheckbox = screen.getByText(ALL_CATEGORIES_LABEL)
+      const defaultCategoryFilterRadioButton = screen.getByLabelText(ALL_CATEGORIES_LABEL)
 
-      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
+      expect(defaultCategoryFilterRadioButton).toBeChecked()
     })
 
     it('should execute search when pressing reset button', async () => {
