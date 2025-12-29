@@ -37,6 +37,7 @@ export const whiteListEnv = (env, commitHash) => {
     'DOC_PERSONAL_DATA_URL',
     'EDUCONNECT_ALLOWED_DOMAIN',
     'ENV',
+    'FAQ_BONIFICATION',
     'FAQ_LINK_CREDIT_V3',
     'FAQ_LINK_CREDIT',
     'FAQ_LINK_DELETE_ACCOUNT',
