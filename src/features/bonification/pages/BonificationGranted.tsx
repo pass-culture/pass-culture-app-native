@@ -25,7 +25,8 @@ export function BonificationGranted() {
   const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
       onSuccess: () => {
-        navigateToHomeWithReset(), void refetchUser()
+        navigateToHomeWithReset()
+        void refetchUser()
       },
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })
