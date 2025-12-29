@@ -18,6 +18,133 @@ import { EmptyResponse } from 'libs/fetch'
 import { Configuration } from './configuration'
 
 const BASE_PATH = '/'.replace(/\/+$/, '')
+export enum NativeCategoryIdEnumv2 {
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
+  'ABONNEMENTS_MUSEE' = 'ABONNEMENTS_MUSEE',
+  'ABONNEMENTS_SPECTACLE' = 'ABONNEMENTS_SPECTACLE',
+  'ACHAT_LOCATION_INSTRUMENT' = 'ACHAT_LOCATION_INSTRUMENT',
+  'ARTS_VISUELS' = 'ARTS_VISUELS',
+  'AUTRES_MEDIAS' = 'AUTRES_MEDIAS',
+  'BIBLIOTHEQUE_MEDIATHEQUE' = 'BIBLIOTHEQUE_MEDIATHEQUE',
+  'CARTES_CINEMA' = 'CARTES_CINEMA',
+  'CD' = 'CD',
+  'CONCERTS_EN_LIGNE' = 'CONCERTS_EN_LIGNE',
+  'CONCERTS_EVENEMENTS' = 'CONCERTS_EVENEMENTS',
+  'CONCOURS' = 'CONCOURS',
+  'CONFERENCES' = 'CONFERENCES',
+  'DEPRECIEE' = 'DEPRECIEE',
+  'DVD_BLU_RAY' = 'DVD_BLU_RAY',
+  'ESCAPE_GAMES' = 'ESCAPE_GAMES',
+  'EVENEMENTS_CINEMA' = 'EVENEMENTS_CINEMA',
+  'EVENEMENTS_PATRIMOINE' = 'EVENEMENTS_PATRIMOINE',
+  'FESTIVALS' = 'FESTIVALS',
+  'FESTIVAL_DU_LIVRE' = 'FESTIVAL_DU_LIVRE',
+  'JEUX_EN_LIGNE' = 'JEUX_EN_LIGNE',
+  'JEUX_PHYSIQUES' = 'JEUX_PHYSIQUES',
+  'LIVRES_AUDIO_PHYSIQUES' = 'LIVRES_AUDIO_PHYSIQUES',
+  'LIVRES_NUMERIQUE_ET_AUDIO' = 'LIVRES_NUMERIQUE_ET_AUDIO',
+  'LIVRES_PAPIER' = 'LIVRES_PAPIER',
+  'LUDOTHEQUE' = 'LUDOTHEQUE',
+  'MATERIELS_CREATIFS' = 'MATERIELS_CREATIFS',
+  'MUSIQUE_EN_LIGNE' = 'MUSIQUE_EN_LIGNE',
+  'NATIVE_CATEGORY_NONE' = 'NATIVE_CATEGORY_NONE',
+  'PARTITIONS_DE_MUSIQUE' = 'PARTITIONS_DE_MUSIQUE',
+  'PODCAST' = 'PODCAST',
+  'PRATIQUES_ET_ATELIERS_ARTISTIQUES' = 'PRATIQUES_ET_ATELIERS_ARTISTIQUES',
+  'PRATIQUE_ARTISTIQUE_EN_LIGNE' = 'PRATIQUE_ARTISTIQUE_EN_LIGNE',
+  'PRESSE_EN_LIGNE' = 'PRESSE_EN_LIGNE',
+  'RENCONTRES' = 'RENCONTRES',
+  'RENCONTRES_EN_LIGNE' = 'RENCONTRES_EN_LIGNE',
+  'RENCONTRES_EVENEMENTS' = 'RENCONTRES_EVENEMENTS',
+  'SALONS_ET_METIERS' = 'SALONS_ET_METIERS',
+  'SEANCES_DE_CINEMA' = 'SEANCES_DE_CINEMA',
+  'SPECTACLES_ENREGISTRES' = 'SPECTACLES_ENREGISTRES',
+  'SPECTACLES_REPRESENTATIONS' = 'SPECTACLES_REPRESENTATIONS',
+  'VIDEOS_ET_DOCUMENTAIRES' = 'VIDEOS_ET_DOCUMENTAIRES',
+  'VINYLES' = 'VINYLES',
+  'VISITES_CULTURELLES' = 'VISITES_CULTURELLES',
+  'VISITES_CULTURELLES_EN_LIGNE' = 'VISITES_CULTURELLES_EN_LIGNE',
+}
+
+export enum HomepageLabelNameEnumv2 {
+  'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CINEMA' = 'CINEMA',
+  'CONCERT' = 'CONCERT',
+  'COURS' = 'COURS',
+  'FESTIVAL' = 'FESTIVAL',
+  'FILMS' = 'FILMS',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'JEUX' = 'JEUX',
+  'LIVRES' = 'LIVRES',
+  'MEDIAS' = 'MEDIAS',
+  'MUSEE' = 'MUSEE',
+  'MUSIQUE' = 'MUSIQUE',
+  'NONE' = 'NONE',
+  'PLATEFORME' = 'PLATEFORME',
+  'RENCONTRES' = 'RENCONTRES',
+  'SPECTACLES' = 'SPECTACLES',
+  'STAGE_ATELIER' = 'STAGE_ATELIER',
+  'VISITES' = 'VISITES',
+}
+
+export enum CategoryIdEnum {
+  'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CINEMA' = 'CINEMA',
+  'CONFERENCE' = 'CONFERENCE',
+  'FILM' = 'FILM',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'JEU' = 'JEU',
+  'LIVRE' = 'LIVRE',
+  'MEDIA' = 'MEDIA',
+  'MUSEE' = 'MUSEE',
+  'MUSIQUE_ENREGISTREE' = 'MUSIQUE_ENREGISTREE',
+  'MUSIQUE_LIVE' = 'MUSIQUE_LIVE',
+  'PRATIQUE_ART' = 'PRATIQUE_ART',
+  'SPECTACLE' = 'SPECTACLE',
+  'TECHNIQUE' = 'TECHNIQUE',
+}
+
+export enum VenueTypeCodeKey {
+  'ARTISTIC_COURSE' = 'ARTISTIC_COURSE',
+  'BOOKSTORE' = 'BOOKSTORE',
+  'CONCERT_HALL' = 'CONCERT_HALL',
+  'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
+  'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
+  'DIGITAL' = 'DIGITAL',
+  'DISTRIBUTION_STORE' = 'DISTRIBUTION_STORE',
+  'FESTIVAL' = 'FESTIVAL',
+  'GAMES' = 'GAMES',
+  'LIBRARY' = 'LIBRARY',
+  'MOVIE' = 'MOVIE',
+  'MUSEUM' = 'MUSEUM',
+  'MUSICAL_INSTRUMENT_STORE' = 'MUSICAL_INSTRUMENT_STORE',
+  'OTHER' = 'OTHER',
+  'PATRIMONY_TOURISM' = 'PATRIMONY_TOURISM',
+  'PERFORMING_ARTS' = 'PERFORMING_ARTS',
+  'RECORD_STORE' = 'RECORD_STORE',
+  'SCIENTIFIC_CULTURE' = 'SCIENTIFIC_CULTURE',
+  'TRAVELING_CINEMA' = 'TRAVELING_CINEMA',
+  'VISUAL_ARTS' = 'VISUAL_ARTS',
+}
+
+export enum SearchGroupNameEnumv2 {
+  'ARTS_LOISIRS_CREATIFS' = 'ARTS_LOISIRS_CREATIFS',
+  'CARTES_JEUNES' = 'CARTES_JEUNES',
+  'CONCERTS_FESTIVALS' = 'CONCERTS_FESTIVALS',
+  'EVENEMENTS_EN_LIGNE' = 'EVENEMENTS_EN_LIGNE',
+  'CINEMA' = 'CINEMA',
+  'FILMS_DOCUMENTAIRES_SERIES' = 'FILMS_DOCUMENTAIRES_SERIES',
+  'JEUX_JEUX_VIDEOS' = 'JEUX_JEUX_VIDEOS',
+  'LIVRES' = 'LIVRES',
+  'MEDIA_PRESSE' = 'MEDIA_PRESSE',
+  'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
+  'MUSIQUE' = 'MUSIQUE',
+  'NONE' = 'NONE',
+  'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
+  'SPECTACLES' = 'SPECTACLES',
+}
 
 /**
  * @export
@@ -66,6 +193,52 @@ export class RequiredError extends Error {
   }
 }
 
+/**
+ * @export
+ * @interface AccessibilityData
+ */
+export interface AccessibilityData {
+  /**
+   * @type {AudioDisability}
+   * @memberof AccessibilityData
+   */
+  audioDisability: AudioDisability
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleAudioDisability: boolean
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMentalDisability: boolean
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMotorDisability: boolean
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleVisualDisability: boolean
+  /**
+   * @type {MentalDisability}
+   * @memberof AccessibilityData
+   */
+  mentalDisability: MentalDisability
+  /**
+   * @type {MotorDisability}
+   * @memberof AccessibilityData
+   */
+  motorDisability: MotorDisability
+  /**
+   * @type {VisualDisability}
+   * @memberof AccessibilityData
+   */
+  visualDisability: VisualDisability
+}
 /**
  * @export
  * @interface AccountRequest
@@ -178,8 +351,7 @@ export interface AchievementResponse {
  * @export
  * @interface AchievementsResponse
  */
-export interface AchievementsResponse extends Array<AchievementResponse> {
-}
+export type AchievementsResponse = Array<AchievementResponse>
 /**
  * @export
  * @interface ActivationCodeResponse
@@ -274,6 +446,12 @@ export interface ActivityTypesResponse {
 }
 /**
  * @export
+ * @interface Allocineid
+ */
+export interface Allocineid {
+}
+/**
+ * @export
  * @interface ArtistResponse
  */
 export interface ArtistResponse {
@@ -282,6 +460,11 @@ export interface ArtistResponse {
    * @memberof ArtistResponse
    */
   description?: string | null
+  /**
+   * @type {string}
+   * @memberof ArtistResponse
+   */
+  descriptionCredit?: string | null
   /**
    * @type {string}
    * @memberof ArtistResponse
@@ -300,14 +483,14 @@ export interface ArtistResponse {
 }
 /**
  * @export
- * @interface AudioDisabilityModel
+ * @interface AudioDisability
  */
-export interface AudioDisabilityModel {
+export interface AudioDisability {
   /**
    * @type {Array<string>}
-   * @memberof AudioDisabilityModel
+   * @memberof AudioDisability
    */
-  deafAndHardOfHearing?: Array<string>
+  deafAndHardOfHearing: Array<string>
 }
 /**
  * @export
@@ -360,27 +543,6 @@ export interface Banner {
    * @memberof Banner
    */
   title: string
-}
-/**
- * @export
- * @interface BannerMetaModel
- */
-export interface BannerMetaModel {
-  /**
-   * @type {string}
-   * @memberof BannerMetaModel
-   */
-  image_credit?: string | null
-  /**
-   * @type {string}
-   * @memberof BannerMetaModel
-   */
-  image_credit_url?: string | null
-  /**
-   * @type {boolean}
-   * @memberof BannerMetaModel
-   */
-  is_from_google?: boolean | null
 }
 /**
  * An enumeration.
@@ -1286,22 +1448,7 @@ export interface BookingVenueResponse {
    * @type {string}
    * @memberof BookingVenueResponse
    */
-  address?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingVenueResponse
-   */
   bannerUrl?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingVenueResponse
-   */
-  city?: string | null
-  /**
-   * @type {Coordinates}
-   * @memberof BookingVenueResponse
-   */
-  coordinates: Coordinates
   /**
    * @type {number}
    * @memberof BookingVenueResponse
@@ -1317,11 +1464,6 @@ export interface BookingVenueResponse {
    * @memberof BookingVenueResponse
    */
   name: string
-  /**
-   * @type {string}
-   * @memberof BookingVenueResponse
-   */
-  postalCode?: string | null
   /**
    * @type {string}
    * @memberof BookingVenueResponse
@@ -1468,28 +1610,6 @@ export interface CategoriesResponseModel {
    * @memberof CategoriesResponseModel
    */
   categories: Array<CategoryResponseModel>
-}
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum CategoryIdEnum {
-  'BEAUX_ARTS' = 'BEAUX_ARTS',
-  'CARTE_JEUNES' = 'CARTE_JEUNES',
-  'CINEMA' = 'CINEMA',
-  'CONFERENCE' = 'CONFERENCE',
-  'FILM' = 'FILM',
-  'INSTRUMENT' = 'INSTRUMENT',
-  'JEU' = 'JEU',
-  'LIVRE' = 'LIVRE',
-  'MEDIA' = 'MEDIA',
-  'MUSEE' = 'MUSEE',
-  'MUSIQUE_ENREGISTREE' = 'MUSIQUE_ENREGISTREE',
-  'MUSIQUE_LIVE' = 'MUSIQUE_LIVE',
-  'PRATIQUE_ART' = 'PRATIQUE_ART',
-  'SPECTACLE' = 'SPECTACLE',
-  'TECHNIQUE' = 'TECHNIQUE',
 }
 /**
  * @export
@@ -2030,52 +2150,6 @@ export enum ExpenseDomain {
 }
 /**
  * @export
- * @interface ExternalAccessibilityDataModel
- */
-export interface ExternalAccessibilityDataModel {
-  /**
-   * @type {AudioDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  audioDisability?: AudioDisabilityModel
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleAudioDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleMentalDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleMotorDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleVisualDisability?: boolean
-  /**
-   * @type {MentalDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  mentalDisability?: MentalDisabilityModel
-  /**
-   * @type {MotorDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  motorDisability?: MotorDisabilityModel
-  /**
-   * @type {VisualDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  visualDisability?: VisualDisabilityModel
-}
-/**
- * @export
  * @interface ExternalBookingDataResponseV2
  */
 export interface ExternalBookingDataResponseV2 {
@@ -2450,41 +2524,15 @@ export interface GtlLabels {
   level04Label?: string | null
 }
 /**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum HomepageLabelNameEnumv2 {
-  'BEAUX_ARTS' = 'BEAUX_ARTS',
-  'CARTE_JEUNES' = 'CARTE_JEUNES',
-  'CINEMA' = 'CINEMA',
-  'CONCERT' = 'CONCERT',
-  'COURS' = 'COURS',
-  'FESTIVAL' = 'FESTIVAL',
-  'FILMS' = 'FILMS',
-  'INSTRUMENT' = 'INSTRUMENT',
-  'JEUX' = 'JEUX',
-  'LIVRES' = 'LIVRES',
-  'MEDIAS' = 'MEDIAS',
-  'MUSEE' = 'MUSEE',
-  'MUSIQUE' = 'MUSIQUE',
-  'NONE' = 'NONE',
-  'PLATEFORME' = 'PLATEFORME',
-  'RENCONTRES' = 'RENCONTRES',
-  'SPECTACLES' = 'SPECTACLES',
-  'STAGE_ATELIER' = 'STAGE_ATELIER',
-  'VISITES' = 'VISITES',
-}
-/**
  * @export
  * @interface HomepageLabelResponseModelv2
  */
 export interface HomepageLabelResponseModelv2 {
   /**
-   * @type {HomepageLabelNameEnumv2}
+   * @type {string}
    * @memberof HomepageLabelResponseModelv2
    */
-  name: HomepageLabelNameEnumv2
+  name: string
   /**
    * @type {string}
    * @memberof HomepageLabelResponseModelv2
@@ -2544,40 +2592,92 @@ export interface MarkAchievementsAsSeenRequest {
 }
 /**
  * @export
- * @interface MentalDisabilityModel
+ * @interface MentalDisability
  */
-export interface MentalDisabilityModel {
+export interface MentalDisability {
   /**
    * @type {string}
-   * @memberof MentalDisabilityModel
+   * @memberof MentalDisability
    */
-  trainedPersonnel?: string
+  trainedPersonnel: string
 }
 /**
  * @export
- * @interface MotorDisabilityModel
+ * @interface MotorDisability
  */
-export interface MotorDisabilityModel {
+export interface MotorDisability {
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  entrance?: string
+  entrance: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  exterior?: string
+  exterior: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  facilities?: string
+  facilities: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  parking?: string
+  parking: string
+}
+/**
+ * @export
+ * @interface MovieCalendarResponse
+ */
+export interface MovieCalendarResponse {
+  /**
+   * @type {{ [key: string]: Array<VenueScreenings>; }}
+   * @memberof MovieCalendarResponse
+   */
+  calendar: { [key: string]: Array<VenueScreenings>; }
+}
+/**
+ * @export
+ * @interface MovieScreeningsRequest
+ */
+export interface MovieScreeningsRequest {
+  /**
+   * @type {string | null}
+   * @memberof MovieScreeningsRequest
+   */
+  allocineId?: string | null
+  /**
+   * @type {number}
+   * @memberof MovieScreeningsRequest
+   */
+  aroundRadius?: number
+  /**
+   * @type {string}
+   * @memberof MovieScreeningsRequest
+   */
+  from?: string
+  /**
+   * @type {number}
+   * @memberof MovieScreeningsRequest
+   */
+  latitude: number
+  /**
+   * @type {number}
+   * @memberof MovieScreeningsRequest
+   */
+  longitude: number
+  /**
+   * @type {string}
+   * @memberof MovieScreeningsRequest
+   */
+  to?: string
+  /**
+   * @type {string | null}
+   * @memberof MovieScreeningsRequest
+   */
+  visa?: string | null
 }
 /**
  * @export
@@ -2612,58 +2712,6 @@ export interface MusicType {
   name: string
 }
 /**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum NativeCategoryIdEnumv2 {
-  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
-  'ABONNEMENTS_MUSEE' = 'ABONNEMENTS_MUSEE',
-  'ABONNEMENTS_SPECTACLE' = 'ABONNEMENTS_SPECTACLE',
-  'ACHAT_LOCATION_INSTRUMENT' = 'ACHAT_LOCATION_INSTRUMENT',
-  'ARTS_VISUELS' = 'ARTS_VISUELS',
-  'AUTRES_MEDIAS' = 'AUTRES_MEDIAS',
-  'BIBLIOTHEQUE_MEDIATHEQUE' = 'BIBLIOTHEQUE_MEDIATHEQUE',
-  'CARTES_CINEMA' = 'CARTES_CINEMA',
-  'CD' = 'CD',
-  'CONCERTS_EN_LIGNE' = 'CONCERTS_EN_LIGNE',
-  'CONCERTS_EVENEMENTS' = 'CONCERTS_EVENEMENTS',
-  'CONCOURS' = 'CONCOURS',
-  'CONFERENCES' = 'CONFERENCES',
-  'DEPRECIEE' = 'DEPRECIEE',
-  'DVD_BLU_RAY' = 'DVD_BLU_RAY',
-  'ESCAPE_GAMES' = 'ESCAPE_GAMES',
-  'EVENEMENTS_CINEMA' = 'EVENEMENTS_CINEMA',
-  'EVENEMENTS_PATRIMOINE' = 'EVENEMENTS_PATRIMOINE',
-  'FESTIVALS' = 'FESTIVALS',
-  'FESTIVAL_DU_LIVRE' = 'FESTIVAL_DU_LIVRE',
-  'JEUX_EN_LIGNE' = 'JEUX_EN_LIGNE',
-  'JEUX_PHYSIQUES' = 'JEUX_PHYSIQUES',
-  'LIVRES_AUDIO_PHYSIQUES' = 'LIVRES_AUDIO_PHYSIQUES',
-  'LIVRES_NUMERIQUE_ET_AUDIO' = 'LIVRES_NUMERIQUE_ET_AUDIO',
-  'LIVRES_PAPIER' = 'LIVRES_PAPIER',
-  'LUDOTHEQUE' = 'LUDOTHEQUE',
-  'MATERIELS_CREATIFS' = 'MATERIELS_CREATIFS',
-  'MUSIQUE_EN_LIGNE' = 'MUSIQUE_EN_LIGNE',
-  'NATIVE_CATEGORY_NONE' = 'NATIVE_CATEGORY_NONE',
-  'PARTITIONS_DE_MUSIQUE' = 'PARTITIONS_DE_MUSIQUE',
-  'PODCAST' = 'PODCAST',
-  'PRATIQUES_ET_ATELIERS_ARTISTIQUES' = 'PRATIQUES_ET_ATELIERS_ARTISTIQUES',
-  'PRATIQUE_ARTISTIQUE_EN_LIGNE' = 'PRATIQUE_ARTISTIQUE_EN_LIGNE',
-  'PRESSE_EN_LIGNE' = 'PRESSE_EN_LIGNE',
-  'RENCONTRES' = 'RENCONTRES',
-  'RENCONTRES_EN_LIGNE' = 'RENCONTRES_EN_LIGNE',
-  'RENCONTRES_EVENEMENTS' = 'RENCONTRES_EVENEMENTS',
-  'SALONS_ET_METIERS' = 'SALONS_ET_METIERS',
-  'SEANCES_DE_CINEMA' = 'SEANCES_DE_CINEMA',
-  'SPECTACLES_ENREGISTRES' = 'SPECTACLES_ENREGISTRES',
-  'SPECTACLES_REPRESENTATIONS' = 'SPECTACLES_REPRESENTATIONS',
-  'VIDEOS_ET_DOCUMENTAIRES' = 'VIDEOS_ET_DOCUMENTAIRES',
-  'VINYLES' = 'VINYLES',
-  'VISITES_CULTURELLES' = 'VISITES_CULTURELLES',
-  'VISITES_CULTURELLES_EN_LIGNE' = 'VISITES_CULTURELLES_EN_LIGNE',
-}
-/**
  * @export
  * @interface NativeCategoryResponseModelv2
  */
@@ -2674,20 +2722,20 @@ export interface NativeCategoryResponseModelv2 {
    */
   genreType?: GenreType | null
   /**
-   * @type {NativeCategoryIdEnumv2}
+   * @type {string}
    * @memberof NativeCategoryResponseModelv2
    */
-  name: NativeCategoryIdEnumv2
+  name: string
   /**
-   * @type {Array<SearchGroupNameEnumv2>}
+   * @type {Array<string>}
    * @memberof NativeCategoryResponseModelv2
    */
-  parents: Array<SearchGroupNameEnumv2>
+  parents: Array<string>
   /**
    * @type {{ [key: string]: number; }}
    * @memberof NativeCategoryResponseModelv2
    */
-  positions?: { [key: string]: number } | null
+  positions?: { [key: string]: number; } | null
   /**
    * @type {string}
    * @memberof NativeCategoryResponseModelv2
@@ -3008,47 +3056,6 @@ export interface OfferOffererResponse {
 }
 /**
  * @export
- * @interface OfferPreviewResponse
- */
-export interface OfferPreviewResponse {
-  /**
-   * @type {number}
-   * @memberof OfferPreviewResponse
-   */
-  durationMinutes?: number | null
-  /**
-   * @type {OfferExtraDataResponse}
-   * @memberof OfferPreviewResponse
-   */
-  extraData?: OfferExtraDataResponse | null
-  /**
-   * @type {number}
-   * @memberof OfferPreviewResponse
-   */
-  id: number
-  /**
-   * @type {OfferImageResponse}
-   * @memberof OfferPreviewResponse
-   */
-  image?: OfferImageResponse | null
-  /**
-   * @type {number}
-   * @memberof OfferPreviewResponse
-   */
-  last30DaysBookings?: number | null
-  /**
-   * @type {string}
-   * @memberof OfferPreviewResponse
-   */
-  name: string
-  /**
-   * @type {Array<OfferStockResponse>}
-   * @memberof OfferPreviewResponse
-   */
-  stocks: Array<OfferStockResponse>
-}
-/**
- * @export
  * @interface OfferReportReasons
  */
 export interface OfferReportReasons {
@@ -3145,7 +3152,7 @@ export interface OfferResponse {
   isEvent: boolean
   /**
    * @type {boolean}
-   * @memberof OfferResponseV2
+   * @memberof OfferResponse
    */
   isExpired: boolean
   /**
@@ -3188,6 +3195,11 @@ export interface OfferResponse {
    * @memberof OfferResponse
    */
   name: string
+  /**
+   * @type {WeekdayOpeningHoursTimespans}
+   * @memberof OfferResponse
+   */
+  openingHours?: WeekdayOpeningHoursTimespans | null
   /**
    * @type {string}
    * @memberof OfferResponse
@@ -3354,6 +3366,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   name: string
+  /**
+   * @type {WeekdayOpeningHoursTimespans}
+   * @memberof OfferResponseV2
+   */
+  openingHours?: WeekdayOpeningHoursTimespans | null
   /**
    * @type {string}
    * @memberof OfferResponseV2
@@ -4094,25 +4111,30 @@ export enum SchoolTypesIdEnum {
   'PUBLIC_SECONDARY_SCHOOL' = 'PUBLIC_SECONDARY_SCHOOL',
 }
 /**
- * An enumeration.
  * @export
- * @enum {string}
+ * @interface Screening
  */
-export enum SearchGroupNameEnumv2 {
-  'ARTS_LOISIRS_CREATIFS' = 'ARTS_LOISIRS_CREATIFS',
-  'CARTES_JEUNES' = 'CARTES_JEUNES',
-  'CONCERTS_FESTIVALS' = 'CONCERTS_FESTIVALS',
-  'EVENEMENTS_EN_LIGNE' = 'EVENEMENTS_EN_LIGNE',
-  'CINEMA' = 'CINEMA',
-  'FILMS_DOCUMENTAIRES_SERIES' = 'FILMS_DOCUMENTAIRES_SERIES',
-  'JEUX_JEUX_VIDEOS' = 'JEUX_JEUX_VIDEOS',
-  'LIVRES' = 'LIVRES',
-  'MEDIA_PRESSE' = 'MEDIA_PRESSE',
-  'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
-  'MUSIQUE' = 'MUSIQUE',
-  'NONE' = 'NONE',
-  'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
-  'SPECTACLES' = 'SPECTACLES',
+export interface Screening {
+  /**
+   * @type {string}
+   * @memberof Screening
+   */
+  beginningDatetime: string
+  /**
+   * @type {Array<string>}
+   * @memberof Screening
+   */
+  features: Array<string>
+  /**
+   * @type {number}
+   * @memberof Screening
+   */
+  price: number
+  /**
+   * @type {number}
+   * @memberof Screening
+   */
+  stockId: number
 }
 /**
  * @export
@@ -4120,10 +4142,10 @@ export enum SearchGroupNameEnumv2 {
  */
 export interface SearchGroupResponseModelv2 {
   /**
-   * @type {SearchGroupNameEnumv2}
+   * @type {string}
    * @memberof SearchGroupResponseModelv2
    */
-  name: SearchGroupNameEnumv2
+  name: string
   /**
    * @type {string}
    * @memberof SearchGroupResponseModelv2
@@ -4464,11 +4486,7 @@ export enum SubcategoryIdEnum {
   'VISITE' = 'VISITE',
   'VOD' = 'VOD',
 }
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
+
 export enum SubcategoryIdEnumv2 {
   'ABO_BIBLIOTHEQUE' = 'ABO_BIBLIOTHEQUE',
   'ABO_CONCERT' = 'ABO_CONCERT',
@@ -4555,40 +4573,40 @@ export interface SubcategoryResponseModelv2 {
    */
   appLabel: string
   /**
-   * @type {CategoryIdEnum}
+   * @type {string}
    * @memberof SubcategoryResponseModelv2
    */
-  categoryId: CategoryIdEnum
+  categoryId: string
   /**
-   * @type {HomepageLabelNameEnumv2}
+   * @type {string}
    * @memberof SubcategoryResponseModelv2
    */
-  homepageLabelName: HomepageLabelNameEnumv2
+  homepageLabelName: string
   /**
-   * @type {SubcategoryIdEnumv2}
+   * @type {string}
    * @memberof SubcategoryResponseModelv2
    */
-  id: SubcategoryIdEnumv2
+  id: string
   /**
    * @type {boolean}
    * @memberof SubcategoryResponseModelv2
    */
   isEvent: boolean
   /**
-   * @type {NativeCategoryIdEnumv2}
+   * @type {string}
    * @memberof SubcategoryResponseModelv2
    */
-  nativeCategoryId: NativeCategoryIdEnumv2
+  nativeCategoryId?: string | null
   /**
    * @type {OnlineOfflinePlatformChoicesEnum}
    * @memberof SubcategoryResponseModelv2
    */
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum
   /**
-   * @type {SearchGroupNameEnumv2}
+   * @type {string}
    * @memberof SubcategoryResponseModelv2
    */
-  searchGroupName: SearchGroupNameEnumv2
+  searchGroupName: string
 }
 /**
  * @export
@@ -4781,7 +4799,6 @@ export interface SuspendAccountForSuspiciousLoginRequest {
  * @enum {string}
  */
 export enum TicketDisplayEnum {
-  'no_ticket' = 'no_ticket',
   'email_sent' = 'email_sent',
   'email_will_be_sent' = 'email_will_be_sent',
   'online_code' = 'online_code',
@@ -5175,8 +5192,7 @@ export interface ValidatePhoneNumberRequest {
  * @export
  * @interface ValidationError
  */
-export interface ValidationError extends Array<ValidationErrorElement> {
-}
+export type ValidationError = Array<ValidationErrorElement>
 /**
  * @export
  * @interface ValidationErrorElement
@@ -5205,55 +5221,29 @@ export interface ValidationErrorElement {
 }
 /**
  * @export
- * @interface VenueAccessibilityModel
+ * @interface VenueContact
  */
-export interface VenueAccessibilityModel {
+export interface VenueContact {
   /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
-  audioDisability?: boolean | null
+  email: string | null
   /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
-  mentalDisability?: boolean | null
+  phoneNumber: string | null
   /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
+   * @type {Map | null}
+   * @memberof VenueContact
    */
-  motorDisability?: boolean | null
+  socialMedias: Map | null
   /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
-  visualDisability?: boolean | null
-}
-/**
- * @export
- * @interface VenueContactModel
- */
-export interface VenueContactModel {
-  /**
-   * @type {string}
-   * @memberof VenueContactModel
-   */
-  email?: string | null
-  /**
-   * @type {string}
-   * @memberof VenueContactModel
-   */
-  phoneNumber?: string | null
-  /**
-   * @type {{ [key: string]: string; }}
-   * @memberof VenueContactModel
-   */
-  socialMedias?: { [key: string]: string; } | null
-  /**
-   * @type {string}
-   * @memberof VenueContactModel
-   */
-  website?: string | null
+  website: string | null
 }
 /**
  * @export
@@ -5261,60 +5251,50 @@ export interface VenueContactModel {
  */
 export interface VenueResponse {
   /**
-   * @type {VenueAccessibilityModel}
+   * @type {AccessibilityData | null}
    * @memberof VenueResponse
    */
-  accessibility: VenueAccessibilityModel
+  accessibilityData?: AccessibilityData | null
   /**
-   * @type {string}
+   * @type {string | null}
+   * @memberof VenueResponse
+   */
+  accessibilityUrl?: string | null
+  /**
+   * @type {Activity | null}
    * @memberof VenueResponse
    */
   activity: Activity | null
   /**
-   * @type {string | ModelNull}
+   * @type {string | null}
    * @memberof VenueResponse
    */
-  address?: string | null
+  bannerCredit?: string | null
   /**
-   * @type {BannerMetaModel}
+   * @type {boolean}
    * @memberof VenueResponse
    */
-  bannerMeta?: BannerMetaModel | null
+  bannerIsFromGoogle?: boolean
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
-  bannerUrl?: string | null
+  bannerUrl: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
-  city?: string | null
+  city: string | null
   /**
-   * @type {VenueContactModel}
+   * @type {VenueContact | null}
    * @memberof VenueResponse
    */
-  contact?: VenueContactModel | null
+  contact: VenueContact | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
-  description?: string | null
-  /**
-   * @type {ExternalAccessibilityDataModel}
-   * @memberof VenueResponse
-   */
-  externalAccessibilityData?: ExternalAccessibilityDataModel | null
-  /**
-   * @type {string}
-   * @memberof VenueResponse
-   */
-  externalAccessibilityId?: string | null
-  /**
-   * @type {string}
-   * @memberof VenueResponse
-   */
-  externalAccessibilityUrl?: string | null
+  description: string | null
   /**
    * @type {number}
    * @memberof VenueResponse
@@ -5329,34 +5309,19 @@ export interface VenueResponse {
    * @type {boolean}
    * @memberof VenueResponse
    */
-  isPermanent?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueResponse
-   */
-  isVirtual: boolean
-  /**
-   * @type {number}
-   * @memberof VenueResponse
-   */
-  latitude?: number | null
-  /**
-   * @type {number}
-   * @memberof VenueResponse
-   */
-  longitude?: number | null
+  isPermanent: boolean
   /**
    * @type {string}
    * @memberof VenueResponse
    */
   name: string
   /**
-   * @type {any}
+   * @type {Map | null}
    * @memberof VenueResponse
    */
-  openingHours?: any | null
+  openingHours: Map | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   postalCode?: string | null
@@ -5377,26 +5342,61 @@ export interface VenueResponse {
   timezone: string
   /**
    * @type {string}
-   * @memberof VenueResponse
+   * @memberof VenueScreenings
    */
-  withdrawalDetails?: string | null
-}
-/**
-/**
- * @export
- * @interface VisualDisabilityModel
- */
-export interface VisualDisabilityModel {
+  address: string
   /**
-   * @type {Array<string>}
-   * @memberof VisualDisabilityModel
+   * @type {Array<Screening>}
+   * @memberof VenueScreenings
    */
-  audioDescription?: Array<string>
+  dayScreenings: Array<Screening>
+  /**
+   * @type {number}
+   * @memberof VenueScreenings
+   */
+  distance: number
   /**
    * @type {string}
-   * @memberof VisualDisabilityModel
+   * @memberof VenueScreenings
    */
-  soundBeacon?: string
+  label: string
+  /**
+   * @type {Screening | null}
+   * @memberof VenueScreenings
+   */
+  nextScreening: Screening | null
+  /**
+   * @type {string | null}
+   * @memberof VenueScreenings
+   */
+  thumbUrl: string | null
+  /**
+   * @type {number}
+   * @memberof VenueScreenings
+   */
+  venueId: number
+}
+/**
+ * @export
+ * @interface Visa
+ */
+export interface Visa {
+}
+/**
+ * @export
+ * @interface VisualDisability
+ */
+export interface VisualDisability {
+  /**
+   * @type {Array<string>}
+   * @memberof VisualDisability
+   */
+  audioDescription: Array<string>
+  /**
+   * @type {string}
+   * @memberof VisualDisability
+   */
+  soundBeacon: string
 }
 /**
  * @export
@@ -5408,6 +5408,47 @@ export interface VoucherResponse {
    * @memberof VoucherResponse
    */
   data?: string | null
+}
+/**
+ * @export
+ * @interface WeekdayOpeningHoursTimespans
+ */
+export interface WeekdayOpeningHoursTimespans {
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  FRIDAY?: Array<Array<string>> | null
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  MONDAY?: Array<Array<string>> | null
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  SATURDAY?: Array<Array<string>> | null
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  SUNDAY?: Array<Array<string>> | null
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  THURSDAY?: Array<Array<string>> | null
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  TUESDAY?: Array<Array<string>> | null
+  /**
+   * @type {Array<Array<string>>}
+   * @memberof WeekdayOpeningHoursTimespans
+   */
+  WEDNESDAY?: Array<Array<string>> | null
 }
 /**
  * @export
@@ -5489,7 +5530,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter favorite_id was null or undefined when calling deleteNativeV1MeFavoritesfavoriteId.'
         )
       }
-      let pathname = `/native/v1/me/favorites/{favorite_id}`.replace(
+      const pathname = `/native/v1/me/favorites/{favorite_id}`.replace(
         `{${'favorite_id'}}`,
         encodeURIComponent(String(favorite_id))
       )
@@ -5518,7 +5559,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter reminder_id was null or undefined when calling deleteNativeV1MeRemindersreminderId.'
         )
       }
-      let pathname = `/native/v1/me/reminders/{reminder_id}`.replace(
+      const pathname = `/native/v1/me/reminders/{reminder_id}`.replace(
         `{${'reminder_id'}}`,
         encodeURIComponent(String(reminder_id))
       )
@@ -5547,11 +5588,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter token was null or undefined when calling getNativeV1AccountSuspendTokenValidationtoken.'
         )
       }
-      let pathname = `/native/v1/account/suspend/token_validation/{token}`.replace(
+      const pathname = `/native/v1/account/suspend/token_validation/{token}`.replace(
         `{${'token'}}`,
         encodeURIComponent(String(token))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5566,7 +5607,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1AccountSuspensionDate(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspension_date`
+      const pathname = `/native/v1/account/suspension_date`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5584,7 +5625,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1AccountSuspensionStatus(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspension_status`
+      const pathname = `/native/v1/account/suspension_status`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5610,11 +5651,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter artist_id was null or undefined when calling getNativeV1ArtistsartistId.'
         )
       }
-      let pathname = `/native/v1/artists/{artist_id}`.replace(
+      const pathname = `/native/v1/artists/{artist_id}`.replace(
         `{${'artist_id'}}`,
         encodeURIComponent(String(artist_id))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5658,7 +5699,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Bookings(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/bookings`
+      const pathname = `/native/v1/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5676,8 +5717,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Categories(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/categories`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/categories`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5692,7 +5733,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1CulturalSurveyQuestions(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/cultural_survey/questions`
+      const pathname = `/native/v1/cultural_survey/questions`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5718,11 +5759,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter email was null or undefined when calling getNativeV1EmailValidationRemainingResendsemail.'
         )
       }
-      let pathname = `/native/v1/email_validation_remaining_resends/{email}`.replace(
+      const pathname = `/native/v1/email_validation_remaining_resends/{email}`.replace(
         `{${'email'}}`,
         encodeURIComponent(String(email))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5737,7 +5778,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Me(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/me`
+      const pathname = `/native/v1/me`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5755,7 +5796,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1MeFavorites(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/me/favorites`
+      const pathname = `/native/v1/me/favorites`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5773,10 +5814,81 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1MeReminders(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/me/reminders`
+      const pathname = `/native/v1/me/reminders`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_movie_screenings <GET>
+     * @param {number} latitude 
+     * @param {number} longitude 
+     * @param {Allocineid} [allocineId] 
+     * @param {Visa} [visa] 
+     * @param {number} [aroundRadius] 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1MovieCalendar(latitude: number, longitude: number, allocineId?: Allocineid, visa?: Visa, aroundRadius?: number, from?: string, to?: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'latitude' is not null or undefined
+      if (latitude === null || latitude === undefined) {
+        throw new RequiredError(
+          'latitude',
+          'Required parameter latitude was null or undefined when calling getNativeV1MovieCalendar.'
+        )
+      }
+      // verify required parameter 'longitude' is not null or undefined
+      if (longitude === null || longitude === undefined) {
+        throw new RequiredError(
+          'longitude',
+          'Required parameter longitude was null or undefined when calling getNativeV1MovieCalendar.'
+        )
+      }
+      let pathname = `/native/v1/movie/calendar`
+      const queryParameters: any = {};
+
+        if (allocineId != null) {
+            queryParameters['allocineId'] = allocineId;
+        }
+
+        if (visa != null) {
+            queryParameters['visa'] = visa;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
+        }
+
+        if (longitude != null) {
+            queryParameters['longitude'] = longitude;
+        }
+
+        if (aroundRadius != null) {
+            queryParameters['aroundRadius'] = aroundRadius;
+        }
+
+        if (from != null) {
+            queryParameters['from'] = from;
+        }
+
+        if (to != null) {
+            queryParameters['to'] = to;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5791,8 +5903,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1OauthState(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/oauth/state`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/oauth/state`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5807,7 +5919,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1OfferReportReasons(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/offer/report/reasons`
+      const pathname = `/native/v1/offer/report/reasons`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5833,11 +5945,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offerer_id was null or undefined when calling getNativeV1OffereroffererIdHeadlineOffer.'
         )
       }
-      let pathname = `/native/v1/offerer/{offerer_id}/headline-offer`.replace(
+      const pathname = `/native/v1/offerer/{offerer_id}/headline-offer`.replace(
         `{${'offerer_id'}}`,
         encodeURIComponent(String(offerer_id))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5861,11 +5973,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferId.'
         )
       }
-      let pathname = `/native/v1/offer/{offer_id}`.replace(
+      const pathname = `/native/v1/offer/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5888,11 +6000,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferIdChronicles.'
         )
       }
-      let pathname = `/native/v1/offer/{offer_id}/chronicles`.replace(
+      const pathname = `/native/v1/offer/{offer_id}/chronicles`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -5907,7 +6019,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1PhoneValidationRemainingAttempts(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/phone_validation/remaining_attempts`
+      const pathname = `/native/v1/phone_validation/remaining_attempts`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5925,7 +6037,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1ProfileTokenExpiration(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/profile/token_expiration`
+      const pathname = `/native/v1/profile/token_expiration`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5943,7 +6055,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1ReactionAvailable(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/reaction/available`
+      const pathname = `/native/v1/reaction/available`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6004,7 +6116,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
       }).join('&')
       pathname += encodedQueryParams
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6019,8 +6131,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Settings(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/settings`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/settings`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6035,8 +6147,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubcategoriesV2(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subcategories/v2`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/subcategories/v2`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6051,7 +6163,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionActivityTypes(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subscription/activity_types`
+      const pathname = `/native/v1/subscription/activity_types`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6069,7 +6181,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionProfile(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subscription/profile`
+      const pathname = `/native/v1/subscription/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6095,11 +6207,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueId.'
         )
       }
-      let pathname = `/native/v1/venue/{venue_id}`.replace(
+      const pathname = `/native/v1/venue/{venue_id}`.replace(
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6114,7 +6226,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV2Bookings(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v2/bookings`
+      const pathname = `/native/v2/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6140,7 +6252,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling getNativeV2BookingsbookingId.'
         )
       }
-      let pathname = `/native/v2/bookings/{booking_id}`.replace(
+      const pathname = `/native/v2/bookings/{booking_id}`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
@@ -6169,7 +6281,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter status was null or undefined when calling getNativeV2Bookingsstatus.'
         )
       }
-      let pathname = `/native/v2/bookings/{status}`.replace(
+      const pathname = `/native/v2/bookings/{status}`.replace(
         `{${'status'}}`,
         encodeURIComponent(String(status))
       )
@@ -6198,11 +6310,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getNativeV2OfferofferId.'
         )
       }
-      let pathname = `/native/v2/offer/{offer_id}`.replace(
+      const pathname = `/native/v2/offer/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6217,7 +6329,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV2ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v2/profile/email_update/status`
+      const pathname = `/native/v2/profile/email_update/status`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6235,7 +6347,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV2SubscriptionStepper(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v2/subscription/stepper`
+      const pathname = `/native/v2/subscription/stepper`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6288,7 +6400,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling patchNativeV1Profile.'
         )
       }
-      let pathname = `/native/v1/profile`
+      const pathname = `/native/v1/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6317,8 +6429,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1Account.'
         )
       }
-      let pathname = `/native/v1/account`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/account`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6336,7 +6448,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountAnonymize(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/anonymize`
+      const pathname = `/native/v1/account/anonymize`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6354,7 +6466,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountSuspend(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspend`
+      const pathname = `/native/v1/account/suspend`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6372,7 +6484,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountSuspendForHackSuspicion(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/suspend_for_hack_suspicion`
+      const pathname = `/native/v1/account/suspend_for_hack_suspicion`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6398,8 +6510,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1AccountSuspendForSuspiciousLogin.'
         )
       }
-      let pathname = `/native/v1/account/suspend_for_suspicious_login`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/account/suspend_for_suspicious_login`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6417,7 +6529,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountUnsuspend(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/account/unsuspend`
+      const pathname = `/native/v1/account/unsuspend`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6443,7 +6555,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1AchievementsMarkAsSeen.'
         )
       }
-      let pathname = `/native/v1/achievements/mark_as_seen`
+      const pathname = `/native/v1/achievements/mark_as_seen`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6472,7 +6584,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1Bookings.'
         )
       }
-      let pathname = `/native/v1/bookings`
+      const pathname = `/native/v1/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6501,7 +6613,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling postNativeV1BookingsbookingIdCancel.'
         )
       }
-      let pathname = `/native/v1/bookings/{booking_id}/cancel`.replace(
+      const pathname = `/native/v1/bookings/{booking_id}/cancel`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
@@ -6538,7 +6650,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling postNativeV1BookingsbookingIdToggleDisplay.'
         )
       }
-      let pathname = `/native/v1/bookings/{booking_id}/toggle_display`.replace(
+      const pathname = `/native/v1/bookings/{booking_id}/toggle_display`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
@@ -6570,7 +6682,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1ChangePassword.'
         )
       }
-      let pathname = `/native/v1/change_password`
+      const pathname = `/native/v1/change_password`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6599,8 +6711,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1CookiesConsent.'
         )
       }
-      let pathname = `/native/v1/cookies_consent`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/cookies_consent`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6626,7 +6738,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1CulturalSurveyAnswers.'
         )
       }
-      let pathname = `/native/v1/cultural_survey/answers`
+      const pathname = `/native/v1/cultural_survey/answers`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6655,7 +6767,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1Feedback.'
         )
       }
-      let pathname = `/native/v1/feedback`
+      const pathname = `/native/v1/feedback`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6684,7 +6796,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1MeFavorites.'
         )
       }
-      let pathname = `/native/v1/me/favorites`
+      const pathname = `/native/v1/me/favorites`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6713,7 +6825,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1MeReminders.'
         )
       }
-      let pathname = `/native/v1/me/reminders`
+      const pathname = `/native/v1/me/reminders`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6742,8 +6854,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1OauthGoogleAccount.'
         )
       }
-      let pathname = `/native/v1/oauth/google/account`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/oauth/google/account`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6769,8 +6881,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1OauthGoogleAuthorize.'
         )
       }
-      let pathname = `/native/v1/oauth/google/authorize`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/oauth/google/authorize`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6796,7 +6908,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1Profile.'
         )
       }
-      let pathname = `/native/v1/profile`
+      const pathname = `/native/v1/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6825,8 +6937,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1ProfileEmailUpdateCancel.'
         )
       }
-      let pathname = `/native/v1/profile/email_update/cancel`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/profile/email_update/cancel`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6852,7 +6964,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1Reaction.'
         )
       }
-      let pathname = `/native/v1/reaction`
+      const pathname = `/native/v1/reaction`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -6923,8 +7035,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1RefreshAccessToken(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/refresh_access_token`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/refresh_access_token`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -6947,8 +7059,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1RequestPasswordReset.'
         )
       }
-      let pathname = `/native/v1/request_password_reset`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/request_password_reset`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -6974,8 +7086,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1ResendEmailValidation.'
         )
       }
-      let pathname = `/native/v1/resend_email_validation`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/resend_email_validation`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7001,8 +7113,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1ResetPassword.'
         )
       }
-      let pathname = `/native/v1/reset_password`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/reset_password`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7020,7 +7132,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ResetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/reset_recredit_amount_to_show`
+      const pathname = `/native/v1/reset_recredit_amount_to_show`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7046,7 +7158,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postNativeV1SendOfferLinkByPushofferId.'
         )
       }
-      let pathname = `/native/v1/send_offer_link_by_push/{offer_id}`.replace(
+      const pathname = `/native/v1/send_offer_link_by_push/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -7075,7 +7187,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postNativeV1SendOfferWebappLinkByEmailofferId.'
         )
       }
-      let pathname = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`.replace(
+      const pathname = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -7104,7 +7216,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1SendPhoneValidationCode.'
         )
       }
-      let pathname = `/native/v1/send_phone_validation_code`
+      const pathname = `/native/v1/send_phone_validation_code`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7133,8 +7245,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1Signin.'
         )
       }
-      let pathname = `/native/v1/signin`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/signin`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7160,7 +7272,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1SubscriptionBonusQuotientFamilial.'
         )
       }
-      let pathname = `/native/v1/subscription/bonus/quotient_familial`
+      const pathname = `/native/v1/subscription/bonus/quotient_familial`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7181,7 +7293,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1SubscriptionHonorStatement(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v1/subscription/honor_statement`
+      const pathname = `/native/v1/subscription/honor_statement`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7207,7 +7319,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1SubscriptionProfile.'
         )
       }
-      let pathname = `/native/v1/subscription/profile`
+      const pathname = `/native/v1/subscription/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7236,7 +7348,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1UbbleIdentification.'
         )
       }
-      let pathname = `/native/v1/ubble_identification`
+      const pathname = `/native/v1/ubble_identification`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7265,8 +7377,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1ValidateEmail.'
         )
       }
-      let pathname = `/native/v1/validate_email`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/validate_email`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7292,7 +7404,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV1ValidatePhoneNumber.'
         )
       }
-      let pathname = `/native/v1/validate_phone_number`
+      const pathname = `/native/v1/validate_phone_number`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7321,8 +7433,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV2OffersStocks.'
         )
       }
-      let pathname = `/native/v2/offers/stocks`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v2/offers/stocks`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7348,8 +7460,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV2ProfileEmailUpdateConfirm.'
         )
       }
-      let pathname = `/native/v2/profile/email_update/confirm`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v2/profile/email_update/confirm`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7375,7 +7487,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV2ProfileEmailUpdateNewEmail.'
         )
       }
-      let pathname = `/native/v2/profile/email_update/new_email`
+      const pathname = `/native/v2/profile/email_update/new_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7404,8 +7516,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling postNativeV2ProfileEmailUpdateNewPassword.'
         )
       }
-      let pathname = `/native/v2/profile/email_update/new_password`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v2/profile/email_update/new_password`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7423,7 +7535,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV2ProfileUpdateEmail(options: any = {}): Promise<FetchArgs> {
-      let pathname = `/native/v2/profile/update_email`
+      const pathname = `/native/v2/profile/update_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -7449,8 +7561,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter body was null or undefined when calling putNativeV1ProfileEmailUpdateValidate.'
         )
       }
-      let pathname = `/native/v1/profile/email_update/validate`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const pathname = `/native/v1/profile/email_update/validate`
+      const secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'PUT' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -7627,6 +7739,24 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1MeReminders(options?: any): Promise<GetRemindersResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MeReminders(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_movie_screenings <GET>
+     * @param {number} latitude 
+     * @param {number} longitude 
+     * @param {Allocineid} [allocineId] 
+     * @param {Visa} [visa] 
+     * @param {number} [aroundRadius] 
+     * @param {string} [from] 
+     * @param {string} [to] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1MovieCalendar(latitude: number, longitude: number, allocineId?: Allocineid, visa?: Visa, aroundRadius?: number, from?: string, to?: string, options?: any): Promise<MovieCalendarResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1MovieCalendar(latitude, longitude, allocineId, visa, aroundRadius, from, to, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -8569,6 +8699,24 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1MeReminders(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeReminders(options)
+  }
+  /**
+    * 
+    * @summary get_movie_screenings <GET>
+    * @param {number} latitude 
+    * @param {number} longitude 
+    * @param {Allocineid} [allocineId] 
+    * @param {Visa} [visa] 
+    * @param {number} [aroundRadius] 
+    * @param {string} [from] 
+    * @param {string} [to] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1MovieCalendar(latitude: number, longitude: number, allocineId?: Allocineid, visa?: Visa, aroundRadius?: number, from?: string, to?: string, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1MovieCalendar(latitude, longitude, allocineId, visa, aroundRadius, from, to, options)
   }
   /**
     * 

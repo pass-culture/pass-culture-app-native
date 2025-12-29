@@ -16,7 +16,6 @@ import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useO
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Spacer } from 'ui/theme'
@@ -36,7 +35,6 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
 }) => {
   const movieScreenings = getMovieScreenings(offer.stocks)
   const { goToDate, selectedDate } = useMovieCalendar()
-  const segment = useABSegment()
 
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(String(selectedDate))],
@@ -47,7 +45,6 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
 
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
-    segment,
     offer.isExternalBookingsDisabled
   )
 
