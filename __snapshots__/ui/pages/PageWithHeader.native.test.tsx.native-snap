@@ -221,7 +221,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -249,8 +249,8 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,
@@ -528,7 +528,7 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -556,8 +556,8 @@ exports[`<PageWithHeader/> should render correctly on Android, with white header
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,

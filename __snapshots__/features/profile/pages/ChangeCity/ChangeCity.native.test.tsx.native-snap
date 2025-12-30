@@ -221,7 +221,7 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -528,8 +528,8 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,
@@ -890,7 +890,7 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -1197,8 +1197,8 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,
@@ -1559,7 +1559,7 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -1866,8 +1866,8 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,

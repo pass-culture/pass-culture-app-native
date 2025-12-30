@@ -15,19 +15,16 @@ exports[`OnboardingSubscription should render correctly 1`] = `
   }
 >
   <View
+    accessibilityRole="header"
     style={
       {
-        "height": 64,
-      }
-    }
-    top={16}
-  />
-  <View
-    style={
-      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
         "position": "absolute",
+        "right": 0,
         "top": 0,
-        "width": "100%",
         "zIndex": 1,
       }
     }
@@ -44,1600 +41,1618 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     <View
       style={
         {
-          "height": 48,
-          "justifyContent": "center",
-          "paddingHorizontal": 12,
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
         }
       }
     >
       <View
-        accessibilityLabel="Revenir en arrière"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        positionInHeader="left"
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
         }
-        testID="Revenir en arrière"
+        testID="back-button-container"
       >
         <View
-          height={24}
-          testID="icon-back"
-          width={24}
-        >
-          <Text>
-            icon-back-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          style={
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
             {
-              "display": "none",
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
             }
           }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en arrière"
         >
-          Retour
-        </Text>
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
       </View>
-    </View>
-  </View>
-  <RCTScrollView
-    ListHeaderComponent={
-      <React.Fragment>
-        <Styled(Styled(Text))>
-          Choisis des thèmes à suivre
-        </Styled(Styled(Text))>
-        <Styled(Styled(Text))>
-          Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
-        </Styled(Styled(Text))>
-      </React.Fragment>
-    }
-    contentContainerStyle={
-      {
-        "alignSelf": "center",
-        "maxWidth": 500,
-        "paddingHorizontal": 24,
-        "paddingVertical": 24,
-        "width": "100%",
-      }
-    }
-    data={
-      [
-        "cinema",
-        "lecture",
-        "musique",
-        "spectacles",
-        "activites_creatives",
-        "visites",
-      ]
-    }
-    getItem={[Function]}
-    getItemCount={[Function]}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    onViewableItemsChanged={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={0.0001}
-    stickyHeaderIndices={[]}
-    viewabilityConfig={
-      {
-        "itemVisiblePercentThreshold": 100,
-      }
-    }
-    viewabilityConfigCallbackPairs={
-      [
-        {
-          "onViewableItemsChanged": [Function],
-          "viewabilityConfig": {
-            "itemVisiblePercentThreshold": 100,
-          },
-        },
-      ]
-    }
-  >
-    <View>
       <View
-        collapsable={false}
-        onLayout={[Function]}
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
       >
         <Text
           accessibilityRole="header"
+          numberOfLines={2}
           style={
             {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-              "marginBottom": 16,
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
             }
           }
         >
-          Choisis des thèmes à suivre
-        </Text>
-        <Text
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "marginBottom": 24,
-            }
-          }
-        >
-          Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
+          Thèmes
         </Text>
       </View>
       <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "paddingVertical": 8,
-            }
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
           }
-        >
-          <View
-            accessibilityLabel="Cinéma"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Cinéma"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Cinéma
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  size="small"
-                  style={
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
-                    }
-                  }
-                >
-                  <View
-                    fillColor="decorative01"
-                    style={
-                      {
-                        "backgroundColor": "#ffeae2",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      size="small"
-                      style={
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={54}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "paddingVertical": 8,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Lecture"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Lecture"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Lecture
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  size="small"
-                  style={
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
-                    }
-                  }
-                >
-                  <View
-                    fillColor="decorative05"
-                    style={
-                      {
-                        "backgroundColor": "#ffa5c0",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      size="small"
-                      style={
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={54}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "paddingVertical": 8,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Musique"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Musique"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Musique
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  size="small"
-                  style={
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
-                    }
-                  }
-                >
-                  <View
-                    fillColor="decorative03"
-                    style={
-                      {
-                        "backgroundColor": "#94f0d6",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      size="small"
-                      style={
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={54}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "paddingVertical": 8,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Spectacles"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Spectacles"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Spectacles
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  size="small"
-                  style={
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
-                    }
-                  }
-                >
-                  <View
-                    fillColor="decorative05"
-                    style={
-                      {
-                        "backgroundColor": "#ffa5c0",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      size="small"
-                      style={
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={54}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "paddingVertical": 8,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Activités créatives"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Activités créatives"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Activités créatives
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  size="small"
-                  style={
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
-                    }
-                  }
-                >
-                  <View
-                    fillColor="decorative01"
-                    style={
-                      {
-                        "backgroundColor": "#ffeae2",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      size="small"
-                      style={
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={54}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "paddingVertical": 8,
-            }
-          }
-        >
-          <View
-            accessibilityLabel="Visites et sorties"
-            accessibilityRole="checkbox"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": false,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "cursor": "pointer",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "width": "100%",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Visites et sorties"
-          >
-            <View
-              style={
-                {
-                  "alignItems": "center",
-                  "columnGap": 12,
-                  "flexDirection": "row",
-                }
-              }
-            >
-              <View
-                disabled={false}
-                isHover={false}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                state={
-                  [
-                    "default",
-                  ]
-                }
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderColor": "#90949d",
-                    "borderStyle": "solid",
-                    "borderTopLeftRadius": 4,
-                    "borderTopRightRadius": 4,
-                    "borderWidth": 2,
-                    "height": 20,
-                    "justifyContent": "center",
-                    "width": 20,
-                  }
-                }
-                variant="detailed"
-              />
-              <View
-                style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  }
-                }
-              >
-                <Text
-                  isHover={false}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  state={
-                    [
-                      "default",
-                    ]
-                  }
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    }
-                  }
-                >
-                  Visites et sorties
-                </Text>
-              </View>
-              <View
-                style={
-                  {
-                    "justifyContent": "center",
-                  }
-                }
-              >
-                <View
-                  size="small"
-                  style={
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 4,
-                      "height": 32,
-                      "overflow": "hidden",
-                      "width": 32,
-                    }
-                  }
-                >
-                  <View
-                    fillColor="decorative03"
-                    style={
-                      {
-                        "backgroundColor": "#94f0d6",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      size="small"
-                      style={
-                        {
-                          "position": "absolute",
-                          "top": -28,
-                        }
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={54}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
+        }
+        testID="close-button-container"
+      />
     </View>
-  </RCTScrollView>
-  <BVLinearGradient
-    colors={
-      [
-        16777215,
-        4294967295,
-      ]
-    }
-    endPoint={
-      {
-        "x": 0.5,
-        "y": 1,
-      }
-    }
-    locations={
-      [
-        0,
-        1,
-      ]
-    }
-    pointerEvents="none"
-    startPoint={
-      {
-        "x": 0.5,
-        "y": 0,
-      }
-    }
-    style={
-      [
-        {
-          "bottom": 136,
-          "height": 120,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-        },
-        {},
-        {},
-      ]
-    }
-  />
+  </View>
   <View
     style={
       {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "gap": 20,
-        "paddingBottom": 24,
-        "paddingLeft": 16,
-        "paddingRight": 16,
-        "paddingTop": 16,
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
   >
     <View
-      accessibilityLabel="Suivre la sélection"
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": true,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      onLayout={[Function]}
       style={
         [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#f1f1f4",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
           {
-            "opacity": 1,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopLeftRadius": 22,
+            "borderTopRightRadius": 22,
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "overflow": "scroll",
+            "paddingTop": 32,
+          },
+          {
+            "paddingBottom": 0,
           },
         ]
       }
-      testID="Suivre la sélection"
     >
       <View
         style={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 500,
+            "width": "100%",
           }
         }
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
             {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 24,
             }
           }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={{}}
         >
-          Suivre la sélection
-        </Text>
-      </View>
-    </View>
-    <View
-      accessibilityLabel="Ne pas suivre de thème"
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Ne pas suivre de thème"
-    >
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          }
-        }
-      >
+          <View>
+            <View
+              style={
+                {
+                  "height": 65,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "alignSelf": "center",
+                  "maxWidth": 500,
+                  "width": "100%",
+                }
+              }
+            >
+              <View
+                accessibilityRole="none"
+              >
+                <View
+                  gap={2}
+                  hasError={false}
+                  style={
+                    {
+                      "gap": 8,
+                      "marginBottom": 16,
+                    }
+                  }
+                >
+                  <Text
+                    accessibilityRole="header"
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 21,
+                        "lineHeight": 33.6,
+                      }
+                    }
+                  >
+                    Choisis des thèmes à suivre
+                  </Text>
+                  <Text
+                    style={
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      }
+                    }
+                  >
+                     Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
+                  </Text>
+                </View>
+                <View
+                  display="vertical"
+                  style={
+                    {
+                      "flexDirection": "column",
+                      "flexWrap": "nowrap",
+                      "gap": 8,
+                    }
+                  }
+                  variant="detailed"
+                >
+                  <View
+                    accessibilityLabel="Choisis des thèmes à suivre - Cinéma"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "cursor": "pointer",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Choisis des thèmes à suivre - Cinéma"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Cinéma
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          size="small"
+                          style={
+                            {
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 32,
+                              "overflow": "hidden",
+                              "width": 32,
+                            }
+                          }
+                        >
+                          <View
+                            fillColor="decorative01"
+                            style={
+                              {
+                                "backgroundColor": "#ffeae2",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                              }
+                            }
+                          >
+                            <View
+                              size="small"
+                              style={
+                                {
+                                  "position": "absolute",
+                                  "top": -28,
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height={92}
+                                width={54}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Choisis des thèmes à suivre - Lecture"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "cursor": "pointer",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Choisis des thèmes à suivre - Lecture"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Lecture
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          size="small"
+                          style={
+                            {
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 32,
+                              "overflow": "hidden",
+                              "width": 32,
+                            }
+                          }
+                        >
+                          <View
+                            fillColor="decorative05"
+                            style={
+                              {
+                                "backgroundColor": "#ffa5c0",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                              }
+                            }
+                          >
+                            <View
+                              size="small"
+                              style={
+                                {
+                                  "position": "absolute",
+                                  "top": -28,
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height={92}
+                                width={54}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Choisis des thèmes à suivre - Musique"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "cursor": "pointer",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Choisis des thèmes à suivre - Musique"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Musique
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          size="small"
+                          style={
+                            {
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 32,
+                              "overflow": "hidden",
+                              "width": 32,
+                            }
+                          }
+                        >
+                          <View
+                            fillColor="decorative03"
+                            style={
+                              {
+                                "backgroundColor": "#94f0d6",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                              }
+                            }
+                          >
+                            <View
+                              size="small"
+                              style={
+                                {
+                                  "position": "absolute",
+                                  "top": -28,
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height={92}
+                                width={54}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Choisis des thèmes à suivre - Spectacles"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "cursor": "pointer",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Choisis des thèmes à suivre - Spectacles"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Spectacles
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          size="small"
+                          style={
+                            {
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 32,
+                              "overflow": "hidden",
+                              "width": 32,
+                            }
+                          }
+                        >
+                          <View
+                            fillColor="decorative05"
+                            style={
+                              {
+                                "backgroundColor": "#ffa5c0",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                              }
+                            }
+                          >
+                            <View
+                              size="small"
+                              style={
+                                {
+                                  "position": "absolute",
+                                  "top": -28,
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height={92}
+                                width={54}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Choisis des thèmes à suivre - Activités créatives"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "cursor": "pointer",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Choisis des thèmes à suivre - Activités créatives"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Activités créatives
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          size="small"
+                          style={
+                            {
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 32,
+                              "overflow": "hidden",
+                              "width": 32,
+                            }
+                          }
+                        >
+                          <View
+                            fillColor="decorative01"
+                            style={
+                              {
+                                "backgroundColor": "#ffeae2",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                              }
+                            }
+                          >
+                            <View
+                              size="small"
+                              style={
+                                {
+                                  "position": "absolute",
+                                  "top": -28,
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height={92}
+                                width={54}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    accessibilityLabel="Choisis des thèmes à suivre - Visites et sorties"
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 8,
+                            "borderBottomRightRadius": 8,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "borderWidth": 1,
+                            "cursor": "pointer",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Choisis des thèmes à suivre - Visites et sorties"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        disabled={false}
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        state={
+                          [
+                            "default",
+                          ]
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 4,
+                            "borderBottomRightRadius": 4,
+                            "borderColor": "#90949d",
+                            "borderStyle": "solid",
+                            "borderTopLeftRadius": 4,
+                            "borderTopRightRadius": 4,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="detailed"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          state={
+                            [
+                              "default",
+                            ]
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Visites et sorties
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          {
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <View
+                          size="small"
+                          style={
+                            {
+                              "borderBottomLeftRadius": 4,
+                              "borderBottomRightRadius": 4,
+                              "borderTopLeftRadius": 4,
+                              "borderTopRightRadius": 4,
+                              "height": 32,
+                              "overflow": "hidden",
+                              "width": 32,
+                            }
+                          }
+                        >
+                          <View
+                            fillColor="decorative03"
+                            style={
+                              {
+                                "backgroundColor": "#94f0d6",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                              }
+                            }
+                          >
+                            <View
+                              size="small"
+                              style={
+                                {
+                                  "position": "absolute",
+                                  "top": -28,
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height={92}
+                                width={54}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
         <View
+          onLayout={[Function]}
           style={
             {
-              "flexDirection": "row",
-              "flexShrink": 0,
-              "marginRight": 8,
+              "backgroundColor": "#ffffff",
+              "bottom": 0,
+              "left": 0,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
+              "paddingTop": 12,
+              "position": "absolute",
+              "right": 0,
             }
           }
         >
           <View
-            height={20}
-            testID="button-icon-left"
-            width={20}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
+            gap={5}
+            style={
+              {
+                "alignItems": "center",
+                "gap": 20,
+              }
             }
-          }
-        >
-          Non merci
-        </Text>
+          >
+            <View
+              accessibilityLabel="Suivre la sélection"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#f1f1f4",
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Suivre la sélection"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
+                  }
+                >
+                  Suivre la sélection
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Ne pas suivre de thème"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderBottomLeftRadius": 24,
+                      "borderBottomRightRadius": 24,
+                      "borderTopLeftRadius": 24,
+                      "borderTopRightRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Ne pas suivre de thème"
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                      "marginRight": 8,
+                    }
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="button-icon-left"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-left-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    }
+                  }
+                >
+                  Non merci
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            customHeight={8}
+            enable={true}
+            style={
+              {
+                "height": 8,
+              }
+            }
+          />
+        </View>
       </View>
     </View>
+  </View>
+  <View
+    height={65}
+    style={
+      {
+        "backdropFilter": "blur(20px)",
+        "height": 65,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
   </View>
 </View>
 `;
