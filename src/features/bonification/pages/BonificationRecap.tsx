@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 
 import { GenderEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { usePostBonusQuotientFamilialMutation } from 'features/bonification/queries/usePostBonusQuotientFamilialMutation'
 import {
   legalRepresentativeActions,
@@ -21,11 +22,13 @@ export const BonificationRecap = () => {
   const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
+  const { refetchUser } = useAuthContext()
 
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
       resetLegalRepresentative()
+      void refetchUser()
     },
     onError: (_error) => {
       navigate(...getSubscriptionHookConfig('BonificationError'))

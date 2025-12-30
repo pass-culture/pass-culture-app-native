@@ -100,7 +100,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
                 bonificationStatus={props.bonificationStatus}
                 {...animatedViewProps}>
                 <View>
-                  <StyledBody>Droit à l’aide</StyledBody>
+                  <StyledBody>Bonus sous conditions</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
                   <StyledTitle3>
                     Tu peux recevoir{SPACE}

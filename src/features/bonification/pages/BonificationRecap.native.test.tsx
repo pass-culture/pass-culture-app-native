@@ -11,6 +11,11 @@ import { render, screen, userEvent } from 'tests/utils'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/jwt/jwt')
 
+const mockRefetchUser = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+}))
+
 const title = 'Monsieur'
 const firstName = 'Jean'
 const givenName = 'Dupont'
@@ -65,12 +70,20 @@ describe('BonificationRecap', () => {
       })
     })
 
-    it('should navigate to home when pressing "Envoyer"', async () => {
+    it('should navigate to home', async () => {
       prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+
+    it('should refresh the user', async () => {
+      prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
+
+      await validateAndSubmitForm()
+
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
     })
 
     it('should clear previously saved data', async () => {

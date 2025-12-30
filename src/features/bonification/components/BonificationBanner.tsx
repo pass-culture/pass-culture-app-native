@@ -91,13 +91,13 @@ export const BonificationBanner = ({
   const bannerConfig = bonificationStatus && BANNER_CONFIG_MAP[bonificationStatus]
 
   const label =
-    typeof bannerConfig.label === 'function'
-      ? bannerConfig.label(bonificationAmount)
-      : bannerConfig.label
+    typeof bannerConfig?.label === 'function'
+      ? bannerConfig?.label(bonificationAmount)
+      : bannerConfig?.label
 
   const refusedType = bonificationStatus && STATUS_TO_REFUSED_TYPE[bonificationStatus]
 
-  const links = bannerConfig.links(refusedType)
+  const links = bannerConfig?.links(refusedType)
 
   return <Banner {...bannerConfig} label={label} links={links} onClose={onClose} />
 }

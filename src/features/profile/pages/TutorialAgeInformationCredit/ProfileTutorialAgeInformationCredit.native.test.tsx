@@ -60,7 +60,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const title = screen.getByText('Droit à l’aide')
+      const title = screen.getByText('Bonus sous conditions')
 
       expect(title).toBeOnTheScreen()
     })
@@ -106,7 +106,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const title = screen.queryByText('Droit à l’aide')
+      const title = screen.queryByText('Bonus sous conditions')
 
       expect(title).toBeOnTheScreen()
     })
