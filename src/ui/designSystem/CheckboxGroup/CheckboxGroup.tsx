@@ -19,7 +19,7 @@ import {
 import { SelectableVariant } from 'ui/designSystem/types'
 import { Typo } from 'ui/theme'
 
-export const CheckboxGroup = ({
+export const CheckboxGroup = <T extends string = string>({
   label,
   labelTag = 'span',
   description,
@@ -30,7 +30,7 @@ export const CheckboxGroup = ({
   display = 'vertical',
   variant = 'default',
   disabled = false,
-}: CheckboxGroupProps) => {
+}: CheckboxGroupProps<T>) => {
   let LabelTag: ElementType
   switch (labelTag) {
     case 'h1':
@@ -48,7 +48,7 @@ export const CheckboxGroup = ({
   }
 
   const selectedValues = value ?? []
-  const handleChange = (option: CheckboxGroupOption, newValue: boolean) => {
+  const handleChange = (option: CheckboxGroupOption<T>, newValue: boolean) => {
     if (disabled) return
     const newValues = newValue
       ? [...selectedValues, option.value]

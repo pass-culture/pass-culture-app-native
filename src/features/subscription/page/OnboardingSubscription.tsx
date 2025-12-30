@@ -106,12 +106,14 @@ export const OnboardingSubscription = () => {
 
   const isValidateButtonDisabled = subscribedThemes.length === 0 || isUpdatingProfile
 
-  const checkboxOptions: CheckboxGroupOption[] = SUSBCRIPTION_THEMES.map((theme) => ({
-    label: mapSubscriptionThemeToName[theme],
-    value: theme,
-    variant: 'detailed',
-    asset: { variant: 'icon', Icon: SUBSCRIPTION_THEMATIC_ICONS[theme] },
-  }))
+  const checkboxOptions: CheckboxGroupOption<SubscriptionTheme>[] = SUSBCRIPTION_THEMES.map(
+    (theme) => ({
+      label: mapSubscriptionThemeToName[theme],
+      value: theme,
+      variant: 'detailed',
+      asset: { variant: 'icon', Icon: SUBSCRIPTION_THEMATIC_ICONS[theme] },
+    })
+  )
 
   return (
     <PageWithHeader
@@ -120,7 +122,7 @@ export const OnboardingSubscription = () => {
       scrollChildren={
         <React.Fragment>
           <CheckboxGroupContainer>
-            <CheckboxGroup
+            <CheckboxGroup<SubscriptionTheme>
               label="Choisis des thèmes à suivre"
               labelTag="h2"
               description=" Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus&nbsp;!"

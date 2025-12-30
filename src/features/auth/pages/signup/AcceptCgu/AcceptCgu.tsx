@@ -133,7 +133,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           isVisible={isDoingReCaptchaChallenge}
         />
       ) : null}
-      <CheckboxGroup
+      <CheckboxGroup<string>
         label="CGU & Données"
         options={checkboxOptions}
         value={selectedValues}
