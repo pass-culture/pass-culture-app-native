@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { CountryPicker } from 'features/bonification/components/CountryPicker'
 import { InseeCountry } from 'features/bonification/inseeCountries'
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
   legalRepresentativeActions,
@@ -66,6 +67,7 @@ export const BonificationBirthPlace = () => {
       title="Informations Personnelles"
       scrollChildren={
         <Form.MaxWidth>
+          <StyledBodyXsSteps>Étape 4 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
               {'Quel est son lieu de naissance\u00a0?'}

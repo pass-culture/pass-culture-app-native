@@ -31,7 +31,7 @@ export const BonificationExplanations = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>

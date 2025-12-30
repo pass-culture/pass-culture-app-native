@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { styled } from 'styled-components'
 
 import { BonificationNamesSchema } from 'features/bonification/schemas/BonificationNamesSchema'
 import {
@@ -64,6 +65,7 @@ export const BonificationNames = () => {
       title="Informations Personnelles"
       scrollChildren={
         <Form.MaxWidth>
+          <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>Quel est son nom et prénom&nbsp;?</Typo.Title3>
             <Banner
@@ -137,3 +139,7 @@ export const BonificationNames = () => {
     />
   )
 }
+
+export const StyledBodyXsSteps = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.disabled,
+}))

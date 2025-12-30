@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { styled } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
@@ -44,6 +45,7 @@ export const BonificationTitle = () => {
       title="Informations Personnelles"
       scrollChildren={
         <React.Fragment>
+          <StyledBodyXsSteps>Étape 2 sur 5</StyledBodyXsSteps>
           <Typo.Title3 {...getHeadingAttrs(2)}>{'Quelle est sa civilité\u00a0?'}</Typo.Title3>
           <SelectorContainer
             gap={5}

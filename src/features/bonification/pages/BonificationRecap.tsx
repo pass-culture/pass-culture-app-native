@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
+import { View } from 'react-native'
 
 import { GenderEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { usePostBonusQuotientFamilialMutation } from 'features/bonification/queries/usePostBonusQuotientFamilialMutation'
 import {
   legalRepresentativeActions,
@@ -78,7 +80,10 @@ export const BonificationRecap = () => {
       title="Informations personnelles"
       scrollChildren={
         <ViewGap gap={4}>
-          <Summary title="Ces informations sont-elles exactes&nbsp;?" data={recapData} />
+          <View>
+            <StyledBodyXsSteps>Étape 5 sur 5</StyledBodyXsSteps>
+            <Summary title="Ces informations sont-elles exactes&nbsp;?" data={recapData} />
+          </View>
           <Checkbox
             label="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
             variant="default"

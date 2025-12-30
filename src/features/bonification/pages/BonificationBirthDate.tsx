@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
@@ -61,6 +62,7 @@ export const BonificationBirthDate = () => {
       title="Informations Personnelles"
       scrollChildren={
         <Form.MaxWidth>
+          <StyledBodyXsSteps>Étape 3 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
               Quelle est sa date de naissance&nbsp;?
