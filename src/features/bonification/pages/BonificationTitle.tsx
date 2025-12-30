@@ -47,7 +47,7 @@ export const BonificationTitle = () => {
         <React.Fragment>
           <StyledBodyXsSteps>Étape 2 sur 5</StyledBodyXsSteps>
           <Typo.Title3 {...getHeadingAttrs(2)}>
-            {'Quelle est la civilité de ton représentant légal\u00a0?'}
+            Quelle est la civilité de ton représentant légal&nbsp;?
           </Typo.Title3>
           <SelectorContainer
             gap={5}
