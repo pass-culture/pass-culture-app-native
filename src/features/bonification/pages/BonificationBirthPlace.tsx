@@ -11,15 +11,19 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchNameInput } from 'features/profile/components/CitySearchInput/CitySearchNameInput'
+import { env } from 'libs/environment/env'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -114,6 +118,15 @@ export const BonificationBirthPlace = () => {
                 )}
               />
             ) : null}
+            <ButtonTertiaryPrimary
+              icon={InfoPlain}
+              wording="Je ne connais pas son lieu de naissance"
+              onPress={async () => {
+                await openUrl(env.FAQ_BONIFICATION)
+              }}
+              justifyContent="flex-start"
+              inline
+            />
           </ViewGap>
         </Form.MaxWidth>
       }

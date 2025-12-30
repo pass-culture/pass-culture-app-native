@@ -107,7 +107,7 @@ describe('BonificationRecap', () => {
       })
     })
 
-    it('should navigate to error screen when pressing "Envoyer"', async () => {
+    it('should navigate to error screen when pressing "Confirmer"', async () => {
       prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
       await validateAndSubmitForm()
@@ -129,11 +129,11 @@ describe('BonificationRecap', () => {
 
 async function validateAndSubmitForm() {
   const checkbox = screen.getByText(
-    'Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.'
+    'Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées'
   )
   await userEvent.press(checkbox)
 
-  const button = screen.getByText('Envoyer')
+  const button = screen.getByText('Confirmer')
   await userEvent.press(button)
 }
 

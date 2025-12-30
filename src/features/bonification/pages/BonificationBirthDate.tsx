@@ -10,14 +10,18 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { env } from 'libs/environment/env'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -85,6 +89,15 @@ export const BonificationBirthDate = () => {
                   minimumDate={MINIMUM_DATE}
                 />
               )}
+            />
+            <ButtonTertiaryPrimary
+              icon={InfoPlain}
+              wording="Je ne connais pas sa date de naissance"
+              onPress={async () => {
+                await openUrl(env.FAQ_BONIFICATION)
+              }}
+              justifyContent="flex-start"
+              inline
             />
           </ViewGap>
         </Form.MaxWidth>

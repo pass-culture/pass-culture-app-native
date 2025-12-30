@@ -85,7 +85,7 @@ export const BonificationRecap = () => {
             <Summary title="Vérifie les infos avant d’envoyer ta demande" data={recapData} />
           </View>
           <Checkbox
-            label="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
+            label="Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées"
             variant="default"
             isChecked={accepted}
             onPress={() => {
@@ -99,8 +99,7 @@ export const BonificationRecap = () => {
           <ButtonPrimary
             isLoading={isPending}
             type="submit"
-            wording="Envoyer"
-            accessibilityLabel="Envoyer les informations"
+            wording="Confirmer"
             onPress={submit}
             disabled={!accepted}
           />
