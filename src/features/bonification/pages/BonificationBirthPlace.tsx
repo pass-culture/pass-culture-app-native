@@ -70,7 +70,7 @@ export const BonificationBirthPlace = () => {
           <StyledBodyXsSteps>Étape 4 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
-              {'Quel est son lieu de naissance\u00a0?'}
+              {'Quel est le lieu de naissance de ton représentant légal\u00a0?'}
             </Typo.Title3>
             <Controller
               control={control}

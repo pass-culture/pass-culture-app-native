@@ -82,7 +82,7 @@ export const BonificationRecap = () => {
         <ViewGap gap={4}>
           <View>
             <StyledBodyXsSteps>Étape 5 sur 5</StyledBodyXsSteps>
-            <Summary title="Ces informations sont-elles exactes&nbsp;?" data={recapData} />
+            <Summary title="Vérifie les infos avant d’envoyer ta demande" data={recapData} />
           </View>
           <Checkbox
             label="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."

@@ -65,7 +65,7 @@ export const BonificationBirthDate = () => {
           <StyledBodyXsSteps>Étape 3 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
-              Quelle est sa date de naissance&nbsp;?
+              Quelle est la date de naissance de ton représentant légal&nbsp;?
             </Typo.Title3>
 
             <Controller

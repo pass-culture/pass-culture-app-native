@@ -67,7 +67,9 @@ export const BonificationNames = () => {
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Quel est son nom et prénom&nbsp;?</Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>
+              Quels sont les noms et prénoms de ton représentant légal&nbsp;?
+            </Typo.Title3>
             <Banner
               Icon={IdCard}
               label="Plus tu seras précis sur ces informations, plus on aura de chances de trouver la personne en question."
