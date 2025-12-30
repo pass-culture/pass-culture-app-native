@@ -221,7 +221,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -472,8 +472,8 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,
@@ -834,7 +834,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -1085,8 +1085,8 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
               "backgroundColor": "#ffffff",
               "bottom": 0,
               "left": 0,
-              "paddingBottom": 20,
-              "paddingHorizontal": 20,
+              "paddingBottom": 24,
+              "paddingHorizontal": 24,
               "paddingTop": 12,
               "position": "absolute",
               "right": 0,

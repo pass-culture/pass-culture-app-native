@@ -8,7 +8,7 @@ import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWi
 import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'ui/pages/helpers/useShouldEnableScrollView'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 interface Props {
   title: string
@@ -59,23 +59,25 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
 }
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
-const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>((props) => ({
-  keyboardShouldPersistTaps: 'handled',
-  contentContainerStyle: {
-    flexGrow: 1,
-    flexDirection: 'column',
-    paddingBottom: props.bottomChildrenViewHeight,
-    paddingHorizontal: getSpacing(5),
-  },
-}))<ChildrenScrollViewProps>({})
+const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>(
+  ({ theme, bottomChildrenViewHeight }) => ({
+    keyboardShouldPersistTaps: 'handled',
+    contentContainerStyle: {
+      flexGrow: 1,
+      flexDirection: 'column',
+      paddingBottom: bottomChildrenViewHeight,
+      paddingHorizontal: theme.contentPage.marginHorizontal,
+    },
+  })
+)<ChildrenScrollViewProps>({})
 
 const FixedBottomChildrenView = styled(View)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
   right: 0,
-  paddingBottom: getSpacing(5),
-  paddingTop: getSpacing(3),
+  paddingBottom: theme.designSystem.size.spacing.xl,
+  paddingTop: theme.designSystem.size.spacing.m,
   backgroundColor: theme.designSystem.color.background.default,
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: theme.contentPage.marginHorizontal,
 }))

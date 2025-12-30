@@ -172,7 +172,7 @@ exports[`ChangeCity should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 24px; padding-left: 24px;"
             >
               <div
                 class="css-view-175oi2r"
@@ -280,7 +280,7 @@ exports[`ChangeCity should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingInline-u9wvl5 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-qn3fzs r-paddingInline-cxgwc0 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button
               aria-label="Valider ma ville de résidence"
