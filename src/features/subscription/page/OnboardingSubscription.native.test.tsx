@@ -76,9 +76,11 @@ describe('OnboardingSubscription', () => {
   it('should check theme when user presses a category button', async () => {
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(await screen.findByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Activités créatives'))
 
-    expect(screen.getByLabelText('Activités créatives')).toHaveAccessibilityState({
+    expect(
+      await screen.findByLabelText('Choisis des thèmes à suivre - Activités créatives')
+    ).toHaveAccessibilityState({
       checked: true,
     })
   })
@@ -94,7 +96,9 @@ describe('OnboardingSubscription', () => {
     })
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    expect(await screen.findByLabelText('Musique')).toHaveAccessibilityState({ checked: true })
+    expect(
+      await screen.findByLabelText('Choisis des thèmes à suivre - Musique')
+    ).toHaveAccessibilityState({ checked: true })
   })
 
   it('should disable validate button when no theme is selected', async () => {
@@ -108,7 +112,7 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Activités créatives'))
 
     await user.press(screen.getByText('Suivre la sélection'))
 
@@ -127,7 +131,7 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Activités créatives'))
     await user.press(screen.getByText('Suivre la sélection'))
 
     expect(replace).toHaveBeenCalledWith(...homeNavigationConfig)
@@ -138,7 +142,7 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Activités créatives'))
     await user.press(screen.getByText('Suivre la sélection'))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
@@ -152,7 +156,7 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Activités créatives'))
     await user.press(screen.getByText('Suivre la sélection'))
 
     expect(analytics.logSubscriptionUpdate).toHaveBeenCalledWith({ type: 'update', from: 'home' })
@@ -174,8 +178,8 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(screen.getByLabelText('Activités créatives'))
-    await user.press(screen.getByLabelText('Suivre la sélection'))
+    await user.press(screen.getByText('Activités créatives'))
+    await user.press(screen.getByText('Suivre la sélection'))
 
     expect(screen.getByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
   })
@@ -192,10 +196,10 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await user.press(screen.getByLabelText('Activités créatives'))
-    await user.press(screen.getByLabelText('Suivre la sélection'))
+    await user.press(screen.getByText('Activités créatives'))
+    await user.press(screen.getByText('Suivre la sélection'))
     await user.press(screen.getByTestId(/Autoriser l’envoi d’e-mails - Interrupteur à bascule/))
-    await user.press(screen.getByLabelText('Valider'))
+    await user.press(screen.getByText('Valider'))
 
     expect(patchProfileSpy).toHaveBeenCalledWith({
       subscriptions: {
