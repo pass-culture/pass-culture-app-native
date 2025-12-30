@@ -2,12 +2,13 @@ import React from 'react'
 
 import { QFBonificationStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, renderHook, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
@@ -155,6 +156,29 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
       expect(link).toBeOnTheScreen()
       expect(link).toBeDisabled()
+    })
+
+    it('should reset the banner state if the user enters the bonification funnel', async () => {
+      const { result } = renderHook(() => useBonificationBannerVisibility())
+      result.current.onCloseBanner() // simulates the user closing the banner
+
+      await waitFor(() => {
+        expect(result.current.hasClosedBonificationBanner).toBeTruthy() // we make sure the value is true after onCloseBanner()
+      })
+
+      mockUseAuthContext.mockReturnValueOnce({
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = await screen.findByText('Vérifier maintenant')
+      await userEvent.press(link)
+
+      expect(result.current.hasClosedBonificationBanner).toBeFalsy()
     })
   })
 })
