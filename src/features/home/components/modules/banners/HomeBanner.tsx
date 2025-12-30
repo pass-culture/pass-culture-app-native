@@ -57,7 +57,8 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
 
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
-  const isEligibleToBonification = user?.qfBonificationStatus !== QFBonificationStatus.not_eligible
+  const isEligibleToBonification =
+    !!user?.qfBonificationStatus && user?.qfBonificationStatus !== QFBonificationStatus.not_eligible
   const showBonificationBanner =
     enableBonification && isEligibleToBonification && !hasClosedBonificationBanner
 

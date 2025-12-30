@@ -1,15 +1,22 @@
 import React from 'react'
 
 import { ApiError } from 'api/ApiError'
-import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
+import {
+  BannerName,
+  BannerResponse,
+  QFBonificationStatus,
+  SubscriptionStepperResponseV2,
+} from 'api/gen'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
+import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
@@ -178,6 +185,53 @@ describe('<HomeBanner/>', () => {
       await waitFor(() =>
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(ApiError))
       )
+    })
+
+    it('should show bonification banner if user is eligible', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BONIFICATION])
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
+      mockAuthContextWithUser(
+        {
+          ...beneficiaryUser,
+          qfBonificationStatus: QFBonificationStatus.eligible,
+        },
+        { persist: true }
+      )
+
+      renderHomeBanner({})
+
+      expect(screen.getByText('Bonus de 50\u00a0€')).toBeOnTheScreen()
+    })
+
+    it('should not show bonification banner if user has no status', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BONIFICATION])
+
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
+      mockAuthContextWithUser(
+        {
+          ...beneficiaryUser,
+          qfBonificationStatus: undefined,
+        },
+        { persist: true }
+      )
+
+      renderHomeBanner({})
+
+      expect(screen.queryByText('Bonus de 50\u00a0€')).not.toBeOnTheScreen()
     })
   })
 })

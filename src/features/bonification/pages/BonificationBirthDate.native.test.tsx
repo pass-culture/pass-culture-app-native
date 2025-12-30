@@ -4,8 +4,11 @@ import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { BonificationBirthDate } from 'features/bonification/pages/BonificationBirthDate'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('BonificationBirthDate', () => {
@@ -24,6 +27,17 @@ describe('BonificationBirthDate', () => {
       params: undefined,
       screen: 'BonificationBirthPlace',
     })
+  })
+
+  it('should navigate to FAQ if button pressed', async () => {
+    render(<BonificationBirthDate />)
+
+    const button = screen.getByText('Je ne connais pas sa date de naissance')
+    await userEvent.press(button)
+
+    expect(openUrl).toHaveBeenCalledWith(
+      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif'
+    )
   })
 
   it('should go back when pressing go back button', async () => {
