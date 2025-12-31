@@ -33,7 +33,7 @@ export type AccessibilityModalProps = {
   filterBehaviour: FilterBehaviour
 }
 
-const disabilityOptions: CheckboxGroupOption[] = [
+const disabilityOptions: CheckboxGroupOption<DisplayedDisabilitiesEnum>[] = [
   {
     label: capitalize(HandicapEnum.VISUAL),
     value: DisplayedDisabilitiesEnum.VISUAL,
@@ -141,7 +141,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
         />
       }>
       <AccessibilityFiltersContainer>
-        <CheckboxGroup
+        <CheckboxGroup<string>
           label="Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps"
           options={disabilityOptions}
           value={selectedDisabilities}
