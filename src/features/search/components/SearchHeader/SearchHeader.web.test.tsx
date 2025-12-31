@@ -7,6 +7,7 @@ import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { LocationMode } from 'libs/location/types'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
@@ -105,7 +106,23 @@ describe('SearchHeader component', () => {
     expect(mockShowSuggestions).toHaveBeenNthCalledWith(1, expect.anything())
   })
 
-  it('should reset search state on go back', async () => {
+  it('should reset search state on go back except for location filter', async () => {
+    const locationFilter = { locationType: LocationMode.AROUND_ME, aroundRadius: 15 } as const
+
+    const initialSearchStateWithLocation = {
+      ...initialSearchState,
+      locationFilter,
+    }
+
+    const modifiedSearchState = {
+      ...initialSearchStateWithLocation,
+    }
+
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: { ...modifiedSearchState, minPrice: '10', maxPrice: '300' },
+    })
+
     render(
       <SearchHeader
         searchInputID={searchInputID}
@@ -114,10 +131,13 @@ describe('SearchHeader component', () => {
         withArrow
       />
     )
-    userEvent.click(screen.getByTestId('Revenir en arrière'))
+    await userEvent.click(screen.getByTestId('Revenir en arrière'))
 
     await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_STATE', payload: initialSearchState })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: initialSearchStateWithLocation,
+      })
     })
   })
 
