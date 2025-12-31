@@ -69,7 +69,6 @@ const BANNER_CONFIG_MAP = {
   [QFBonificationStatus.quotient_familial_too_high]: BANNER_CONFIG[BonificationBannerType.ERROR],
   [QFBonificationStatus.started]: BANNER_CONFIG[BonificationBannerType.PENDING],
   [QFBonificationStatus.eligible]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-  [QFBonificationStatus.granted]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
   default: BANNER_CONFIG[BonificationBannerType.DEFAULT],
 }
 

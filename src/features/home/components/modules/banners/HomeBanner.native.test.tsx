@@ -233,6 +233,30 @@ describe('<HomeBanner/>', () => {
 
       expect(screen.queryByText('Bonus de 50\u00a0€')).not.toBeOnTheScreen()
     })
+
+    it('should not show bonification banner if user has received bonus', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BONIFICATION])
+
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
+      mockAuthContextWithUser(
+        {
+          ...beneficiaryUser,
+          qfBonificationStatus: QFBonificationStatus.granted,
+        },
+        { persist: true }
+      )
+
+      renderHomeBanner({})
+
+      expect(screen.queryByText('Bonus de 50\u00a0€')).not.toBeOnTheScreen()
+    })
   })
 })
 
