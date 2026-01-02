@@ -35,6 +35,7 @@ export const env: Environment = {
     'https://docs.passculture.app/textes-normatifs/charte-des-donnees-personnelles',
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
   ENV: 'testing',
+  FAMILY_QUOTIENT_TOO_HIGH_LINK: 'https://www.caf.fr/allocataires/ma-caf-recherche',
   FAQ_BONIFICATION: 'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif',
   FAQ_LINK_CREDIT_V3: 'https://passculture-credit-v3.faq',
   FAQ_LINK_CREDIT: 'https://passculture-credit.faq',
