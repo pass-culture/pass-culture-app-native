@@ -152,6 +152,22 @@ export function BonificationRefused() {
 
   const pageConfig = PAGE_CONFIG[bonificationRefusedType] // refused code will come from back
   const { Icon, wording, navigateTo, externalNav } = pageConfig.tertiaryButton
+  const tertiaryExternalNav =
+    Icon && wording && externalNav
+      ? {
+          icon: Icon,
+          wording: wording,
+          externalNav: externalNav,
+        }
+      : undefined
+  const tertiaryNavigateTo =
+    Icon && wording && navigateTo
+      ? {
+          icon: Icon,
+          wording: wording,
+          navigateTo: navigateTo,
+        }
+      : tertiaryExternalNav
   return (
     <GenericInfoPage
       illustration={pageConfig.Illustration}
@@ -160,22 +176,8 @@ export function BonificationRefused() {
         wording: pageConfig.primaryButton.wording,
         navigateTo: pageConfig.primaryButton.navigateTo,
       }}
-      buttonTertiary={
-        Icon && wording && navigateTo
-          ? {
-              icon: Icon,
-              wording: wording,
-              navigateTo: navigateTo,
-            }
-          : Icon && wording && externalNav
-            ? {
-                icon: Icon,
-                wording: wording,
-                externalNav: externalNav,
-              }
-            : undefined
-      }>
-      <ViewGap gap={5}>
+      buttonTertiary={tertiaryNavigateTo}>
+      <ViewGap gap={4}>
         <CenteredBody>{pageConfig.firstText}</CenteredBody>
         <View>
           <CenteredBody>{pageConfig.secondText}</CenteredBody>
