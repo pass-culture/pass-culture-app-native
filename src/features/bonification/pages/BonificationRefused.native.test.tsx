@@ -25,7 +25,7 @@ describe('BonificationRefused', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: undefined,
-        screen: 'BonificationExplanations',
+        screen: 'BonificationRequiredInformation',
       })
     })
   })
@@ -60,7 +60,7 @@ describe('BonificationRefused', () => {
 
       expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
         params: undefined,
-        screen: 'BonificationExplanations',
+        screen: 'BonificationRequiredInformation',
       })
     })
   })
