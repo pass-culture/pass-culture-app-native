@@ -42,7 +42,7 @@ export const BonificationTitle = () => {
   }
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <React.Fragment>
           <StyledBodyXsSteps>Étape 2 sur 5</StyledBodyXsSteps>

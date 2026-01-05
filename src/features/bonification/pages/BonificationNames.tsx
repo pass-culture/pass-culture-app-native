@@ -64,7 +64,7 @@ export const BonificationNames = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>

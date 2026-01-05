@@ -2,9 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import { BannerName, QFBonificationStatus } from 'api/gen'
+import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
+import { getShouldShowBonificationBanner } from 'features/bonification/getShouldShowBonificationBanner'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
@@ -53,14 +54,14 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
-  const { user } = useAuthContext()
-
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
-  const isEligibleToBonification =
-    !!user?.qfBonificationStatus && user?.qfBonificationStatus !== QFBonificationStatus.not_eligible
-  const showBonificationBanner =
-    enableBonification && isEligibleToBonification && !hasClosedBonificationBanner
+  const { user } = useAuthContext()
+  const showBonificationBanner = getShouldShowBonificationBanner({
+    enableBonification,
+    hasClosedBonificationBanner,
+    qfBonificationStatus: user?.qfBonificationStatus,
+  })
 
   const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)

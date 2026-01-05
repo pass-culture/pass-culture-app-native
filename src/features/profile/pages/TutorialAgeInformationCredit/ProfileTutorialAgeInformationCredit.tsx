@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
@@ -54,6 +55,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
+  const { resetBannerVisibility } = useBonificationBannerVisibility()
 
   const getWording = (status: QFBonificationStatus | null | undefined): string => {
     switch (status) {
@@ -114,7 +116,10 @@ export const ProfileTutorialAgeInformationCredit = () => {
             }
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
-            onPress={() => navigate(...getSubscriptionHookConfig('BonificationExplanations'))}
+            onPress={() => {
+              navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+              resetBannerVisibility()
+            }}
             justifyContent="flex-start"
           />
         )}

@@ -63,7 +63,7 @@ export const BonificationBirthDate = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
           <StyledBodyXsSteps>Étape 3 sur 5</StyledBodyXsSteps>
