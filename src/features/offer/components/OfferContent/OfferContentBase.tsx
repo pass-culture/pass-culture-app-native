@@ -386,11 +386,6 @@ const Container = styled.View({
 
 const FooterContainer = styled.View(({ theme }) => ({
   marginTop: theme.isDesktopViewport ? undefined : theme.designSystem.size.spacing.xxs,
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 2,
 }))
 
 const StyledSectionWithDivider = styled(SectionWithDivider)(({ theme }) => ({
