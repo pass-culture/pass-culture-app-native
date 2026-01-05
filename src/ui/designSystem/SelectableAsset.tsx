@@ -25,6 +25,7 @@ export const SelectableAsset = ({
   variant,
   disable = false,
   Icon,
+  iconElement,
   src,
   size = 'small',
   text,
@@ -37,7 +38,9 @@ export const SelectableAsset = ({
     : designSystem.color.icon.brandPrimary
 
   if (variant === 'icon') {
-    return <Icon color={iconColor} size={icons.sizes.standard} />
+    if (iconElement) return iconElement
+    if (Icon) return <Icon color={iconColor} size={icons.sizes.standard} />
+    return null
   }
 
   if (variant === 'image') {
