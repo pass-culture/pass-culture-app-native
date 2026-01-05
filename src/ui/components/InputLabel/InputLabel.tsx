@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { ComponentProps, FunctionComponent, PropsWithChildren } from 'react'
 
 import { Typo } from 'ui/theme'
 
-export const InputLabel = Typo.Body as React.FC<{
-  id?: string
-  accessibilityDescribedBy?: string
-  accessibilityLabel?: string
-  htmlFor: string
-  children: React.ReactNode
-}>
+type InputLabelProps = PropsWithChildren<
+  ComponentProps<typeof Typo.Body> & {
+    htmlFor: string
+  }
+>
+
+export const InputLabel: FunctionComponent<InputLabelProps> = ({ children, ...props }) => {
+  return <Typo.Body {...props}>{children}</Typo.Body>
+}
