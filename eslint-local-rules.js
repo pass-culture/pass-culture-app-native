@@ -3,7 +3,7 @@ const independentMocks = require('./eslint-custom-rules/independent-mocks')
 const nbspInText = require('./eslint-custom-rules/nbsp-in-text')
 const noDirectConsultOfferLog = require('./eslint-custom-rules/no-direct-consult-offer-log')
 const noEmptyArrowFunction = require('./eslint-custom-rules/no-empty-arrow-function')
-const noCurrencySymbols = require('./eslint-custom-rules/no-currency-symbols')
+const noCurrencySymbols = require('./eslint-custom-rules/no-euro-usage')
 const noHardcodeIdInSvg = require('./eslint-custom-rules/no-hardcoded-id-in-svg')
 const noRawText = require('./eslint-custom-rules/no-raw-text')
 const noStringCheckBeforeComponent = require('./eslint-custom-rules/use-ternary-operator-in-jsx')
@@ -29,7 +29,7 @@ module.exports = {
   'nbsp-in-text': nbspInText,
   'no-direct-consult-offer-log': noDirectConsultOfferLog,
   'no-empty-arrow-function': noEmptyArrowFunction,
-  'no-currency-symbols': noCurrencySymbols,
+  'no-euro-usage': noCurrencySymbols,
   'no-hardcoded-id-in-svg': noHardcodeIdInSvg,
   'no-raw-text': noRawText,
   'no-truthy-check-after-queryAll-matchers': noTruthyCheckAfterQueryAllMatchers,

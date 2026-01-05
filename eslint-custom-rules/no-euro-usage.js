@@ -1,18 +1,20 @@
 module.exports = {
-  name: 'no-currency-symbols',
+  name: 'no-euro-usage',
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallow the use of the euro symbol (€)',
+      description: 'Disallow the use of the euro symbol (€) and the words "euro" or "euros"',
       recommended: false,
     },
     messages: {
-      euroSymbol: 'Usage of the euro symbol (€) is not allowed.',
+      euroSymbol: 'Usage of the euro symbol (€) or the words "euro" or "euros" is not allowed.',
     },
   },
   create(context) {
+    const EURO_REGEX = /€|\b(euros?)\b/i
+
     function checkForSymbols(node, value) {
-      if (value.includes('€')) {
+      if (EURO_REGEX.test(value)) {
         context.report({ node, messageId: 'euroSymbol' })
       }
     }

@@ -1,4 +1,4 @@
-// eslint-disable-next-line local-rules/no-currency-symbols
+// eslint-disable-next-line local-rules/no-euro-usage
 export const TEST_HTML = `<!doctype html>
 <html lang="fr">
   <head>
