@@ -119,6 +119,7 @@ export const PAGE_CONFIG: PageConfigMap = {
     Illustration: SadFace,
     title: 'Tu as atteint le nombre maximum d’essais',
     firstText: (
+      // Exceptionally, we have raw text in a Fragment that will be passed to a Typo.Body
       // eslint-disable-next-line local-rules/no-raw-text
       <React.Fragment>
         Après plusieurs tentatives, nous ne pouvons plus traiter ta demande pour ce bonus. Si tu

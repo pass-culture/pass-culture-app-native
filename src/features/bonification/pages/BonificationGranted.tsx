@@ -61,8 +61,7 @@ export function BonificationGranted() {
           <Amount>{bonificationAmount}</Amount>
         </ProgressBarContainer>
         <StyledBody>
-          Ton dossier est validé&nbsp;! Tu bénéficies désormais d’un bonus de {bonificationAmount}
-          euros.
+          Ton dossier est validé&nbsp;! Tu bénéficies désormais d’un bonus de {bonificationAmount}.
         </StyledBody>
       </React.Fragment>
     </GenericInfoPage>
