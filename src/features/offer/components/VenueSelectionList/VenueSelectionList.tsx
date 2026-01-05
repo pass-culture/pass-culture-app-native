@@ -1,12 +1,14 @@
-import React, { forwardRef, useCallback } from 'react'
-import { FlatList, FlatListProps, View, ViewProps } from 'react-native'
+import React, { useMemo } from 'react'
+import { FlatListProps, View, ViewProps } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
-import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
+import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
+import {
+  RadioButtonGroup,
+  RadioButtonGroupOption,
+} from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
@@ -30,75 +32,78 @@ export type VenueSelectionListProps = ViewProps &
     onPressGeolocationBanner?: VoidFunction
   }
 
-const keyExtractor = (item: VenueListItem) => String(item.offerId)
+export const VenueSelectionList = ({
+  items,
+  nbLoadedHits,
+  nbHits,
+  selectedItem,
+  onItemSelect,
+  onEndReached,
+  refreshing,
+  onRefresh,
+  isFetchingNextPage,
+  onScroll,
+  onPress,
+  autoScrollEnabled,
+  isSharingLocation,
+  subTitle,
+  headerMessage,
+  onPressGeolocationBanner,
+  ...props
+}: VenueSelectionListProps) => {
+  const { modal } = useTheme()
 
-export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelectionListProps>(
-  (
-    {
-      items,
-      nbLoadedHits,
-      nbHits,
-      selectedItem,
-      onItemSelect,
-      onEndReached,
-      refreshing,
-      onRefresh,
-      isFetchingNextPage,
-      onScroll,
-      onPress,
-      autoScrollEnabled,
-      isSharingLocation,
-      subTitle,
-      headerMessage,
-      onPressGeolocationBanner,
-      ...props
-    },
-    ref
-  ) => {
-    const { modal } = useTheme()
+  const options: RadioButtonGroupOption[] = useMemo(
+    () =>
+      items.map((item) => ({
+        key: item.offerId.toString(),
+        label: item.title,
+        description: item.address,
+        asset:
+          isSharingLocation && item.distance
+            ? { variant: 'tag', tag: { label: item.distance } }
+            : undefined,
+      })),
+    [items, isSharingLocation]
+  )
 
-    const renderItem = useCallback(
-      ({ item }: { item: VenueListItem }) => {
-        return (
-          <ItemWrapper key={item.offerId}>
-            <VenueSelectionListItem
-              {...item}
-              distance={isSharingLocation ? item.distance : ''}
-              onSelect={() => onItemSelect(item.offerId)}
-              isSelected={selectedItem === item.offerId}
-            />
-          </ItemWrapper>
-        )
-      },
-      [onItemSelect, selectedItem, isSharingLocation]
-    )
+  const handleValueChange = (label: string) => {
+    const item = items.find((i) => i.title === label)
+    if (item) {
+      onItemSelect(item.offerId)
+    }
+  }
 
-    return (
-      <FlatList
-        accessibilityRole={AccessibilityRole.LIST}
-        listAs="ul"
-        itemAs="li"
-        ref={ref}
-        testID="offerVenuesList"
-        data={items}
-        keyExtractor={keyExtractor}
-        renderItem={renderItem}
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-        onEndReached={autoScrollEnabled ? onEndReached : undefined}
-        scrollEnabled={items.length > 0}
-        onScroll={onScroll}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-        contentContainerStyle={{ paddingHorizontal: modal.spacing.MD }}
-        ListHeaderComponent={
-          <VenueSelectionListHeader
-            headerMessage={headerMessage}
-            isSharingLocation={isSharingLocation}
-            subTitle={subTitle}
-            onPressGeolocationBanner={onPressGeolocationBanner}
+  const selectedLabel = useMemo(() => {
+    if (selectedItem === undefined) return ''
+    const item = items.find((i) => i.offerId === selectedItem)
+    return item?.title ?? ''
+  }, [selectedItem, items])
+
+  return (
+    <Container style={{ paddingHorizontal: modal.spacing.MD }} {...props}>
+      {isSharingLocation ? null : (
+        <React.Fragment>
+          <GeolocationBanner
+            title="Active ta géolocalisation"
+            subtitle="Pour trouver les lieux autour de toi"
+            analyticsFrom="offer"
+            onPress={onPressGeolocationBanner}
           />
-        }
+          <BannerSpacer />
+        </React.Fragment>
+      )}
+      <RadioButtonGroup
+        label={subTitle}
+        description={headerMessage}
+        options={options}
+        variant="detailed"
+        value={selectedLabel}
+        onValueChange={handleValueChange}
+        onEndReached={autoScrollEnabled ? onEndReached : undefined}
+        refreshing={refreshing ?? undefined}
+        onRefresh={onRefresh ?? undefined}
+        onScroll={onScroll}
         ListFooterComponent={
           <SearchListFooter
             isFetchingNextPage={isFetchingNextPage}
@@ -108,21 +113,17 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
             onPress={onPress}
           />
         }
-        {...props}
       />
-    )
-  }
-)
+    </Container>
+  )
+}
+
 VenueSelectionList.displayName = 'VenueSelectionList'
 
-/**
- * I really don't like to do these styles but since my items are
- * in a `FlatList`, if I don't apply some padding the negative
- * outline won't be visible :(
- *
- * So I have to add a padding so it's visible again.
- */
-const ItemWrapper = styled(View)(({ theme }) => ({
-  paddingHorizontal: theme.designSystem.size.spacing.xs,
-  paddingTop: theme.designSystem.size.spacing.s,
+const Container = styled(View)({
+  flex: 1,
+})
+
+const BannerSpacer = styled(View)(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
 }))

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { VenueListItem, VenueSelectionList } from './VenueSelectionList'
@@ -41,39 +42,45 @@ describe('<VenueSelectionList />', () => {
 
   it('should show list of items', () => {
     render(
-      <VenueSelectionList
-        headerMessage=""
-        subTitle=""
-        onItemSelect={jest.fn()}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation
-        onEndReached={jest.fn()}
-      />
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          headerMessage=""
+          subTitle=""
+          onItemSelect={jest.fn()}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation
+          onEndReached={jest.fn()}
+        />
+      )
     )
 
-    expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
+    expect(screen.getByText('Envie de lire')).toBeOnTheScreen()
+    expect(screen.getByText('Le Livre Éclaire')).toBeOnTheScreen()
+    expect(screen.getByText('Hachette Livre')).toBeOnTheScreen()
   })
 
   it('should select item on press', async () => {
     const onItemSelect = jest.fn()
 
     render(
-      <VenueSelectionList
-        headerMessage=""
-        subTitle=""
-        onItemSelect={onItemSelect}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation
-        onEndReached={jest.fn()}
-      />
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          headerMessage=""
+          subTitle=""
+          onItemSelect={onItemSelect}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation
+          onEndReached={jest.fn()}
+        />
+      )
     )
 
     await user.press(screen.getByText('Envie de lire'))
@@ -83,41 +90,129 @@ describe('<VenueSelectionList />', () => {
 
   it('should display distance when user share his position', () => {
     render(
-      <VenueSelectionList
-        headerMessage=""
-        subTitle=""
-        onItemSelect={jest.fn()}
-        selectedItem={1}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation
-        onEndReached={jest.fn()}
-      />
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          headerMessage=""
+          subTitle=""
+          onItemSelect={jest.fn()}
+          selectedItem={1}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation
+          onEndReached={jest.fn()}
+        />
+      )
     )
 
-    expect(screen.getByText('à 500 m')).toBeOnTheScreen()
+    expect(screen.getByText('500 m')).toBeOnTheScreen()
   })
 
   it('should not display distance when user not share his position', () => {
     render(
-      <VenueSelectionList
-        headerMessage=""
-        subTitle=""
-        onItemSelect={jest.fn()}
-        selectedItem={1}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation={false}
-        onEndReached={jest.fn()}
-      />
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          headerMessage=""
+          subTitle=""
+          onItemSelect={jest.fn()}
+          selectedItem={1}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
     )
 
-    expect(screen.queryByText('à 500 m')).not.toBeOnTheScreen()
+    expect(screen.queryByText('500 m')).not.toBeOnTheScreen()
+  })
+
+  it('should display geolocation banner when user has not a location', () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          subTitle="Sélectionner un lieu"
+          headerMessage="Lieux à proximité"
+          onItemSelect={jest.fn()}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
+    )
+
+    expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
+  })
+
+  it('should not display geolocation banner when user has a location', () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          subTitle="Sélectionner un lieu"
+          headerMessage="Lieux à proximité"
+          onItemSelect={jest.fn()}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation
+          onEndReached={jest.fn()}
+        />
+      )
+    )
+
+    expect(screen.queryByText('Active ta géolocalisation')).not.toBeOnTheScreen()
+  })
+
+  it('should display subtitle', () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          subTitle="Sélectionner un lieu"
+          headerMessage="Lieux à proximité"
+          onItemSelect={jest.fn()}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
+    )
+
+    expect(screen.getByText('Sélectionner un lieu')).toBeOnTheScreen()
+  })
+
+  it('should display header message', () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueSelectionList
+          subTitle="Sélectionner un lieu"
+          headerMessage="Lieux à proximité"
+          onItemSelect={jest.fn()}
+          items={items}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          autoScrollEnabled
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
+    )
+
+    expect(screen.getByText('Lieux à proximité')).toBeOnTheScreen()
   })
 })
