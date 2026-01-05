@@ -16,12 +16,12 @@ describe('IconWithCaption', () => {
       <IconWithCaption Icon={icon} caption={typeLabelNull} accessibilityLabel="Type de lieu" />
     )
 
-    expect(screen.getByText('Autre type de lieu')).toBeOnTheScreen()
+    expect(screen.getByText('Autre lieu')).toBeOnTheScreen()
   })
 
   it('should display correct label for venue type if type is not null', () => {
     render(<IconWithCaption Icon={icon} caption={typeLabel} accessibilityLabel="Type de lieu" />)
 
-    expect(screen.getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
+    expect(screen.getByText('Cinéma')).toBeOnTheScreen()
   })
 })

@@ -49,6 +49,7 @@ export const FILTERS_ACTIVITY_MAPPING = {
     Activity.OTHER,
     Activity.SCIENCE_CENTRE,
     Activity.TOURIST_INFORMATION_CENTRE,
+    Activity.NOT_ASSIGNED,
   ],
 }
 

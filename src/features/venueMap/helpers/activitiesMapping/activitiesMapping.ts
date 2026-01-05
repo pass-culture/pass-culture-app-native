@@ -36,6 +36,7 @@ export const activitiesMapping = {
       [Activity.SCIENCE_CENTRE]: MAP_ACTIVITY_TO_LABEL[Activity.SCIENCE_CENTRE],
       [Activity.TOURIST_INFORMATION_CENTRE]:
         MAP_ACTIVITY_TO_LABEL[Activity.TOURIST_INFORMATION_CENTRE],
+      [Activity.NOT_ASSIGNED]: MAP_ACTIVITY_TO_LABEL[Activity.NOT_ASSIGNED],
     },
   },
 }
