@@ -58,6 +58,7 @@ export const SetName = () => {
     },
     resolver: yupResolver(setNameSchema),
     mode: 'all',
+    delayError: 1000,
   })
 
   const disabled = !formState.isValid
