@@ -472,7 +472,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               }
             >
               <View
-                accessibilityLabel="Dates & heures"
+                accessibilityLabel="Dates"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -529,7 +529,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     },
                   ]
                 }
-                testID="Dates & heures"
+                testID="Dates"
               >
                 <Text
                   style={
@@ -542,7 +542,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   }
                   testID="datesHoursButtonLabel"
                 >
-                  Dates & heures
+                  Dates
                 </Text>
               </View>
             </View>

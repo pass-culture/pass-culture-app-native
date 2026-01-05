@@ -374,7 +374,6 @@ describe('VenueMapViewContainer', () => {
   it('should activate navigation to Venue page when bottom sheet is open, pressing venue button and venue is permanent', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
@@ -390,29 +389,6 @@ describe('VenueMapViewContainer', () => {
     await user.press(screen.getAllByText(venuesFixture[0].label)[0] as ReactTestInstance)
 
     expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
-  })
-
-  it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
-    setFeatureFlags([])
-
-    await renderVenueMapViewContainer()
-    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    await pressVenueMarker(venuesFixture[0])
-
-    await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
-  })
-
-  it('should not display offers in bottom-sheet if wipOffersInBottomSheet FF disabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
-    await renderVenueMapViewContainer()
-    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    await pressVenueMarker(venuesFixture[0])
-
-    await screen.findByTestId('venueMapPreview')
-
-    expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen()
-    expect(screen.queryByTestId('venueOfferPlaylist')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Voir les offres du lieu')).not.toBeOnTheScreen()
   })
 
   // eslint-disable-next-line jest/no-disabled-tests

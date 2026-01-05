@@ -4,7 +4,6 @@ import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToD
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 
@@ -21,7 +20,7 @@ const mockUseIsCookiesListUpToDate = jest
 
 describe('useWhichModalToShow', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+    setFeatureFlags()
   })
 
   it('should return pending if the cookies modal should show', () => {

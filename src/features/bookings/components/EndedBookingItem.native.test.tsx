@@ -6,7 +6,6 @@ import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/g
 import { endedBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -213,18 +212,12 @@ describe('EndedBookingItem', () => {
     })
   })
 
-  describe('when reaction feature flag is activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-    })
+  it('should handle reaction modal opening when pressing reaction button', async () => {
+    renderEndedBookingItem({ booking: { ...endedBooking, canReact: true } })
 
-    it('should handle reaction modal opening when pressing reaction button', async () => {
-      renderEndedBookingItem({ booking: { ...endedBooking, canReact: true } })
+    await user.press(await screen.findByLabelText('Réagis à ta réservation'))
 
-      await user.press(await screen.findByLabelText('Réagis à ta réservation'))
-
-      expect(mockHandleShowReactionModal).toHaveBeenCalledTimes(1)
-    })
+    expect(mockHandleShowReactionModal).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -1,6 +1,4 @@
 import { BookingResponse, BookingsResponseV2 } from 'api/gen'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export enum ModalDisplayState {
   PENDING = 'pending',
@@ -8,15 +6,13 @@ export enum ModalDisplayState {
   SHOULD_NOT_SHOW = 'shouldNotShow',
 }
 
-export const useBookingsReactionHelpers = (
+export const getBookingsReactionHelpers = (
   bookings: BookingsResponseV2 | undefined,
   isBookingsLoading: boolean
 ): {
   shouldShowReactionModal: ModalDisplayState
   bookingsEligibleToReaction: Array<BookingResponse> | undefined
 } => {
-  const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-
   const bookingsEligibleToReaction =
     bookings?.endedBookings?.filter(
       (booking) => booking.enablePopUpReaction && !booking.userReaction
@@ -31,7 +27,7 @@ export const useBookingsReactionHelpers = (
     }
   }
 
-  if (!isReactionFeatureActive || !firstBookingWithoutReaction)
+  if (!firstBookingWithoutReaction)
     return {
       shouldShowReactionModal: ModalDisplayState.SHOULD_NOT_SHOW,
       bookingsEligibleToReaction: [],
