@@ -7,12 +7,13 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
 import { Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 export function BonificationError() {
   return (
     <GenericInfoPage
       illustration={HappyFaceWithTear}
-      title="Oups... Un problème est survenu&nbsp;!"
+      title={`Oups...${LINE_BREAK} Un problème est survenu\u00a0!`}
       buttonPrimary={{
         wording: 'Revenir vers le formulaire',
         navigateTo: getSubscriptionPropConfig('BonificationNames'),

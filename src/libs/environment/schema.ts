@@ -32,6 +32,7 @@ export const EnvironmentSchema = yup.object({
   DOC_PERSONAL_DATA_URL: yup.string().required(),
   EDUCONNECT_ALLOWED_DOMAIN: yup.string().required(),
   ENV: yup.string().required(),
+  FAMILY_QUOTIENT_TOO_HIGH_LINK: yup.string().required(),
   FAQ_BONIFICATION: yup.string().required(),
   FAQ_LINK_CREDIT_V3: yup.string().required(),
   FAQ_LINK_CREDIT: yup.string().required(),

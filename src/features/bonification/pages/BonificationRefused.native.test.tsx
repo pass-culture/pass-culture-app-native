@@ -23,7 +23,10 @@ describe('BonificationRefused', () => {
       )
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'BonificationExplanations',
+      })
     })
   })
 
@@ -55,7 +58,10 @@ describe('BonificationRefused', () => {
       )
       await userEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'BonificationExplanations',
+      })
     })
   })
 
