@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
-import { getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
@@ -84,7 +83,7 @@ const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
     return {
       flex: 1,
       padding: 0,
-      paddingTop: multiline ? getSpacing(2.5) : 0,
+      paddingTop: multiline ? theme.designSystem.size.spacing.s : 0,
       height: '100%',
       ...inputStyle,
       color: editable

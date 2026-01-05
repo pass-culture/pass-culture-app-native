@@ -23,82 +23,75 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     Renseigne ta date de naissance
   </Text>
   <View
-    numberOfSpaces={4}
-    style={
-      {
-        "height": 16,
-      }
-    }
-  />
-  <View
     style={
       {
         "alignItems": "center",
+        "marginVertical": 16,
         "width": "100%",
       }
     }
   >
     <View
-      background="#f3edff"
       style={
         {
-          "alignItems": "flex-start",
-          "backgroundColor": "#f3edff",
-          "borderBottomLeftRadius": 8,
-          "borderBottomRightRadius": 8,
-          "borderTopLeftRadius": 8,
-          "borderTopRightRadius": 8,
-          "flexDirection": "row",
-          "gap": 12,
-          "paddingBottom": 16,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
+          "marginBottom": 40,
         }
       }
     >
       <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-        accessibilityRole="none"
+        background="#f3edff"
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "gap": 4,
+            "alignItems": "flex-start",
+            "backgroundColor": "#f3edff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "flexDirection": "row",
+            "gap": 12,
+            "paddingBottom": 16,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 16,
           }
         }
       >
-        <Text
+        <View
+          height={24}
+          width={24}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+          accessibilityRole="none"
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "gap": 4,
             }
           }
         >
-          Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
-        </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 14,
+                "lineHeight": 22.4,
+              }
+            }
+          >
+            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+          </Text>
+        </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={10}
-      style={
-        {
-          "height": 40,
-        }
-      }
-    />
     <View
       accessibilityLabel="Date de naissance - 1er décembre 2006"
       accessible={true}
@@ -721,107 +714,100 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       title="Select date"
     />
     <View
-      numberOfSpaces={10}
       style={
         {
-          "height": 40,
+          "paddingTop": 40,
+          "width": "100%",
         }
       }
-    />
-    <View
-      accessibilityLabel="Continuer"
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": true,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#f1f1f4",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Continuer"
     >
       <View
-        style={
+        accessibilityLabel="Continuer"
+        accessibilityRole="button"
+        accessibilityState={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": true,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#f1f1f4",
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Continuer"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             }
           }
         >
-          Continuer
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
+            }
+          >
+            Continuer
+          </Text>
+        </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        {
-          "height": 20,
-        }
-      }
-    />
   </View>
 </View>
 `;
@@ -849,104 +835,97 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     Termine ton inscription
   </Text>
   <View
-    numberOfSpaces={4}
     style={
       {
-        "height": 16,
-      }
-    }
-  />
-  <Text
-    style={
-      {
-        "color": "#161617",
-        "fontFamily": "Montserrat-Medium",
-        "fontSize": 16,
-        "lineHeight": 25.6,
+        "marginTop": 16,
       }
     }
   >
-    Ton compte Google “
-    user@gmail.com
-    ” n’est pas lié à un compte existant. Pour continuer, tu peux créer un compte.
-  </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      {
-        "height": 16,
+    <Text
+      style={
+        {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+        }
       }
-    }
-  />
+    >
+      Ton compte Google “
+      user@gmail.com
+      ” n’est pas lié à un compte existant. Pour continuer, tu peux créer un compte.
+    </Text>
+  </View>
   <View
     style={
       {
         "alignItems": "center",
+        "marginVertical": 16,
         "width": "100%",
       }
     }
   >
     <View
-      background="#f3edff"
       style={
         {
-          "alignItems": "flex-start",
-          "backgroundColor": "#f3edff",
-          "borderBottomLeftRadius": 8,
-          "borderBottomRightRadius": 8,
-          "borderTopLeftRadius": 8,
-          "borderTopRightRadius": 8,
-          "flexDirection": "row",
-          "gap": 12,
-          "paddingBottom": 16,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
+          "marginBottom": 40,
         }
       }
     >
       <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-        accessibilityRole="none"
+        background="#f3edff"
         style={
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "gap": 4,
+            "alignItems": "flex-start",
+            "backgroundColor": "#f3edff",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "flexDirection": "row",
+            "gap": 12,
+            "paddingBottom": 16,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 16,
           }
         }
       >
-        <Text
+        <View
+          height={24}
+          width={24}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+          accessibilityRole="none"
           style={
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "gap": 4,
             }
           }
         >
-          Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
-        </Text>
+          <Text
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 14,
+                "lineHeight": 22.4,
+              }
+            }
+          >
+            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+          </Text>
+        </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={10}
-      style={
-        {
-          "height": 40,
-        }
-      }
-    />
     <View
       accessibilityLabel="Date de naissance - 1er décembre 2006"
       accessible={true}
@@ -1569,107 +1548,100 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       title="Select date"
     />
     <View
-      numberOfSpaces={10}
       style={
         {
-          "height": 40,
+          "paddingTop": 40,
+          "width": "100%",
         }
       }
-    />
-    <View
-      accessibilityLabel="Continuer"
-      accessibilityRole="button"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": true,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#f1f1f4",
-              "borderBottomLeftRadius": 24,
-              "borderBottomRightRadius": 24,
-              "borderTopLeftRadius": 24,
-              "borderTopRightRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Continuer"
     >
       <View
-        style={
+        accessibilityLabel="Continuer"
+        accessibilityRole="button"
+        accessibilityState={
           {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": true,
+            "expanded": undefined,
+            "selected": undefined,
           }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#f1f1f4",
+                "borderBottomLeftRadius": 24,
+                "borderBottomRightRadius": 24,
+                "borderTopLeftRadius": 24,
+                "borderTopRightRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Continuer"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             }
           }
         >
-          Continuer
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "maxWidth": "100%",
+              }
+            }
+          >
+            Continuer
+          </Text>
+        </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        {
-          "height": 20,
-        }
-      }
-    />
   </View>
 </View>
 `;

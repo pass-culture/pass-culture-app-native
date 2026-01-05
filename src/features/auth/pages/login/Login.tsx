@@ -37,7 +37,7 @@ import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snack
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type LoginFormData = {
@@ -267,14 +267,14 @@ const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
   maxWidth: theme.buttons.maxWidth,
-  marginTop: getSpacing(5),
-  marginBottom: getSpacing(8),
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const Container = styled.View({
-  marginTop: getSpacing(7),
-  marginBottom: getSpacing(6),
-})
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.designSystem.color.text.brandSecondary,
@@ -285,6 +285,9 @@ const TitleContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,
 }))
 
-const StyledViewGap = styled(ViewGap)({ marginTop: getSpacing(4), marginBottom: getSpacing(10) })
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
-const NoSSOSpace = styled.View({ height: getSpacing(8) })
+const NoSSOSpace = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.xxl }))

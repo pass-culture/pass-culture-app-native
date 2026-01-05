@@ -17,7 +17,7 @@ import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { IdCard } from 'ui/svg/icons/IdCard'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type BirthdayForm = {
@@ -90,18 +90,17 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
     <Form.MaxWidth>
       <Typo.Title3 {...getHeadingAttrs(2)}>{pageTitle}</Typo.Title3>
       {isSSOSubscriptionFromLogin ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <StyledView>
           <Typo.Body>
             Ton compte Google “{params?.email ?? ''}” n’est pas lié à un compte existant. Pour
             continuer, tu peux créer un compte.
           </Typo.Body>
-        </React.Fragment>
+        </StyledView>
       ) : null}
-      <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
-        <Banner label={bannerMessage} Icon={IdCard} />
-        <Spacer.Column numberOfSpaces={10} />
+        <BannerContainer>
+          <Banner label={bannerMessage} Icon={IdCard} />
+        </BannerContainer>
         <Controller
           control={control}
           name="birthdate"
@@ -120,20 +119,34 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
             />
           )}
         />
-        <Spacer.Column numberOfSpaces={10} />
-        <ButtonPrimary
-          wording="Continuer"
-          accessibilityLabel={accessibilityLabelForNextStep}
-          disabled={!isValid}
-          onPress={handleSubmit(onGoToNextStep)}
-        />
-        <Spacer.Column numberOfSpaces={5} />
+        <ButtonContainer>
+          <ButtonPrimary
+            wording="Continuer"
+            accessibilityLabel={accessibilityLabelForNextStep}
+            disabled={!isValid}
+            onPress={handleSubmit(onGoToNextStep)}
+          />
+        </ButtonContainer>
       </InnerContainer>
     </Form.MaxWidth>
   )
 }
 
-const InnerContainer = styled.View({
+const StyledView = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
+
+const InnerContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
   width: '100%',
   alignItems: 'center',
-})
+}))
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
+
+const ButtonContainer = styled.View(({ theme }) => ({
+  width: '100%',
+  paddingTop: theme.designSystem.size.spacing.xxxl,
+}))
