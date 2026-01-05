@@ -19,7 +19,7 @@ import { Form } from 'ui/components/Form'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -125,15 +125,20 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   )
 }
 
-const SSOViewGap = styled(ViewGap)({
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(10),
-})
+const SSOViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
 
-const ControllersContainer = styled.View({ marginVertical: getSpacing(10) })
-
-const AuthenticationButtonContainer = styled.View({ marginBottom: getSpacing(5) })
-
-const EmailInputContainer = styled.View({ marginBottom: getSpacing(8) })
-
-const EmptySpace = styled.View({ height: getSpacing(8) })
+const ControllersContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xxxl,
+}))
+const AuthenticationButtonContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+const EmailInputContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
+const EmptySpace = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxl,
+}))

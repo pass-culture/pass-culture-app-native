@@ -523,7 +523,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                           "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,
-                          "paddingTop": 10,
+                          "paddingTop": 8,
                         }
                       }
                       testID="feedback-input"

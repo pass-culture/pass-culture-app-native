@@ -227,7 +227,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           style={
             {
               "marginBottom": 24,
-              "marginTop": 28,
+              "marginTop": 24,
             }
           }
         >
@@ -538,7 +538,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             {
               "flexDirection": "row",
               "marginBottom": 32,
-              "marginTop": 20,
+              "marginTop": 16,
               "maxWidth": 500,
               "width": "100%",
             }
