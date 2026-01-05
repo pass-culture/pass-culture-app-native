@@ -66,7 +66,7 @@ export const PAGE_CONFIG: PageConfigMap = {
     bannerLinks: undefined,
     primaryButton: {
       wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
+      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
     },
     tertiaryButton: {
       wording: 'Annuler',
@@ -91,7 +91,7 @@ export const PAGE_CONFIG: PageConfigMap = {
     ],
     primaryButton: {
       wording: 'Renouveler ma demande',
-      navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
+      navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
     },
     tertiaryButton: {
       wording: 'Annuler',
