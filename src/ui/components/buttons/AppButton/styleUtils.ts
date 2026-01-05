@@ -87,7 +87,7 @@ export const appButtonWebStyles = ({
       cursor: 'initial',
       background: 'none',
     },
-    ...customFocusOutline({ color: focusOutlineColor }),
+    ...customFocusOutline({ theme, color: focusOutlineColor }),
     ...getHoverStyle({
       underlineColor: hoverUnderlineColor ?? theme.designSystem.color.text.default,
     }),

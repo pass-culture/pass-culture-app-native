@@ -89,7 +89,7 @@ export const RoundedButton = (props: Props) => {
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.pill,
-  ...customFocusOutline({}),
+  ...customFocusOutline({ theme }),
 }))
 
 const IconContainer = styled(Animated.View)(({ theme }) => ({

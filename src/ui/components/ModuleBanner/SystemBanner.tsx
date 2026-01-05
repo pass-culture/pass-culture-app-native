@@ -149,7 +149,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean; color: ColorsType }>(({ theme, isFocus, color }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus, color }),
+  ...customFocusOutline({ theme, isFocus, color }),
 }))
 
 const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
@@ -158,14 +158,14 @@ const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
   hoverUnderlineColor: color,
 }))<{ isFocus: boolean; color: ColorsType }>(({ theme, isFocus, color }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus, color }),
+  ...customFocusOutline({ theme, isFocus, color }),
 }))
 
 const StyledTouchableOpacity = styledButton(Touchable)<{
   color: ColorsType
 }>(({ theme, color }) => ({
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ color }),
+  ...customFocusOutline({ theme, color }),
   ...getHoverStyle({ underlineColor: color }),
 }))
 

@@ -196,9 +196,9 @@ const SwitchContainer = styled.View({
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   onMouseDown: (e: Event) => void
   isFocus?: boolean
-}>(({ isFocus }) => ({
+}>(({ theme, isFocus }) => ({
   flex: 1,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
 }))
 
 const StyledTitle = styled(Typo.Title4)({

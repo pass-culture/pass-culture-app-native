@@ -201,7 +201,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   overflow: 'hidden',
   marginHorizontal: MAIN_MARGIN,
   marginBottom: theme.home.spaceBetweenModules,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
 }))
 
 const ColumnLargeScreen = styled.View(({ theme }) => ({

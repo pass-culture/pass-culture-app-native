@@ -47,7 +47,7 @@ export function HeroButtonList({
 const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus: boolean }>(
   ({ theme, isFocus }) => ({
     borderRadius: theme.designSystem.size.borderRadius.m,
-    ...customFocusOutline({ isFocus }),
+    ...customFocusOutline({ theme, isFocus }),
   })
 )
 

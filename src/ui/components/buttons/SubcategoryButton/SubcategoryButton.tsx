@@ -75,7 +75,7 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderWidth: 1.6,
   borderStyle: 'solid',
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
   textAlign: 'left',
   alignItems: 'center',
   ...(Platform.OS === 'web' && { padding: theme.designSystem.size.spacing.s }),
