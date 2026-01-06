@@ -58,7 +58,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: bo
     borderColor: theme.designSystem.color.border.default,
     borderWidth: 1,
     marginTop: theme.designSystem.size.spacing.s,
-    ...customFocusOutline({ isFocus }),
+    ...customFocusOutline({ theme, isFocus }),
   })
 )
 
@@ -68,7 +68,7 @@ const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFoc
   borderColor: theme.designSystem.color.border.default,
   borderWidth: 1,
   marginTop: theme.designSystem.size.spacing.s,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
 }))
 
 const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({

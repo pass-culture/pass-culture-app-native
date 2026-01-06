@@ -118,7 +118,7 @@ export const RadioButtonDefaultContainer = styled(TouchableOpacity)<ContainerPro
     cursor: radioState.disabled ? 'default' : 'pointer',
     width: sizing === 'fill' ? '100%' : undefined,
     alignSelf: sizing === 'hug' && isWeb ? 'flex-start' : undefined,
-    ...customFocusOutline({ isFocus }),
+    ...customFocusOutline({ theme, isFocus }),
     ...getBorderHoverStyle({ radioState, theme, isHover }),
   })
 )

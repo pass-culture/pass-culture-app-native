@@ -70,7 +70,7 @@ const TouchableContainer: typeof InternalTouchableLink = styled(InternalTouchabl
   minHeight: MIN_HEIGHT,
   overflow: 'hidden',
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
   ...getHoverStyle({ underlineColor: theme.designSystem.color.text.default, isHover }),
   backgroundColor: baseColor,
   borderColor,

@@ -49,6 +49,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
+  color: #161617;
   cursor: pointer;
 }
 
@@ -1460,6 +1461,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
+  color: #161617;
   cursor: pointer;
 }
 
