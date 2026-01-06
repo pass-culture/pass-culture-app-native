@@ -62,6 +62,14 @@ const config: StorybookConfig = {
             replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
           },
           {
+            find: 'firebase/analytics',
+            replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
+          },
+          {
+            find: 'firebase/firestore',
+            replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
+          },
+          {
             find: 'firebase/remote-config',
             replacement: path.resolve('.storybook/__mocks__/remote-config.ts'),
           },
