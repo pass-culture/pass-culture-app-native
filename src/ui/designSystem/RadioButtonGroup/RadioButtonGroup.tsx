@@ -9,29 +9,22 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
-import { BaseRadioProps, Variant } from 'ui/designSystem/RadioButton/types'
+import { Variant } from 'ui/designSystem/RadioButton/types'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { SelectableSizing } from 'ui/designSystem/types'
 import { ErrorFilled } from 'ui/svg/icons/ErrorFilled'
 import { Typo } from 'ui/theme'
 
 import { LabelVariant, renderRadioGroupLabel } from './labelUtils'
-import { RadioButtonGroupOption } from './types'
 
 type RadioButtonGroupDisplay = 'horizontal' | 'vertical'
-
-export type RadioButtonGroupOption = Omit<
-  BaseRadioProps,
-  'value' | 'setValue' | 'error' | 'variant' | 'disabled'
-> & {
-  key: string
-}
 
 type Props = {
   label: ReactNode
   description?: string
   labelVariant?: LabelVariant
   options: Array<RadioButtonGroupOption>
-  errorText?: string
+  errorText: string
   error?: boolean
   variant?: Variant
   disabled?: boolean
@@ -107,6 +100,8 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
         ) : null}
       </TitleContainer>
       <StyledFlatList
+        variant={variant}
+        display={display}
         data={options}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
@@ -135,18 +130,21 @@ const RadioButtonGroupContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
 }))
 
-const StyledFlatList = styled(FlatList)({
+const StyledFlatList = styled(FlatList)<
+  FlatListProps<RadioButtonGroupOption> & { variant: Variant; display: RadioButtonGroupDisplay }
+>(({ variant, display, theme }) => ({
   flex: 1,
   overflow: 'scroll',
-}) as typeof FlatList
+  flexWrap: display === 'horizontal' ? 'wrap' : 'nowrap',
+  flexDirection: display === 'vertical' ? 'column' : 'row',
+  gap: computeGap({ variant, display, theme }),
+  padding: theme.designSystem.size.spacing.xs,
+}))
 
 const RadioButtonItemWrapper = styled.View<{
   variant: Variant
   display: RadioButtonGroupDisplay
 }>(({ theme, variant, display }) => ({
-  flexWrap: display === 'horizontal' ? 'wrap' : 'nowrap',
-  flexDirection: display === 'vertical' ? 'column' : 'row',
-  gap: computeGap({ variant, display, theme }),
   paddingBottom:
     variant === 'default' || display === 'horizontal'
       ? theme.designSystem.size.spacing.xl

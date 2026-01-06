@@ -61,7 +61,7 @@ export const VenueSelectionList = ({
         description: item.address,
         asset:
           isSharingLocation && item.distance
-            ? { variant: 'tag', tag: { label: item.distance } }
+            ? { variant: 'tag', tag: { label: `à ${item.distance}` } }
             : undefined,
       })),
     [items, isSharingLocation]
@@ -94,12 +94,13 @@ export const VenueSelectionList = ({
         </React.Fragment>
       )}
       <RadioButtonGroup
+        errorText="Une erreur est survenue"
         label={subTitle}
         description={headerMessage}
         options={options}
         variant="detailed"
         value={selectedLabel}
-        onValueChange={handleValueChange}
+        onChange={handleValueChange}
         onEndReached={autoScrollEnabled ? onEndReached : undefined}
         refreshing={refreshing ?? undefined}
         onRefresh={onRefresh ?? undefined}
