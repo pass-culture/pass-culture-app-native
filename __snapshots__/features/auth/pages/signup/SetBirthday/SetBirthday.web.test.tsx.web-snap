@@ -50,6 +50,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
+  cursor: pointer;
 }
 
 .c2 {
@@ -1461,6 +1462,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
   font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
+  cursor: pointer;
 }
 
 <div>

@@ -143,6 +143,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
+  cursor: pointer;
 }
 
 .c7 {
@@ -1256,6 +1257,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   font-size: 1rem;
   line-height: 1.6rem;
   color: #161617;
+  cursor: pointer;
 }
 
 .c7 {

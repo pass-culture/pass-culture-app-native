@@ -13,6 +13,7 @@ type InputLabelProps = React.PropsWithChildren<{
 const StyledLabel = styled.label<{ color?: TextColorKey }>(({ theme }) => ({
   ...theme.designSystem.typography.body,
   color: theme.designSystem.color.text.default,
+  cursor: 'pointer',
 }))
 
 export const InputLabel: React.FC<InputLabelProps> = ({ children, ...props }) => {
