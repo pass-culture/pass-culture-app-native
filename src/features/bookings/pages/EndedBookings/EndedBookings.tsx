@@ -11,6 +11,7 @@ import {
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
+import { EndedBookingListItemWrapper } from 'features/bookings/components/BookingListItemWrapper'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
@@ -18,6 +19,8 @@ import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoic
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -31,6 +34,8 @@ type Props = {
 }
 
 export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
+  const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
+
   const { data: bookings = { bookings: [] } } = useEndedBookingsQuery()
 
   const { bookings: endedBookings } = bookings
@@ -111,7 +116,9 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
 
   const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
     ({ item }) => {
-      return (
+      return enableNewBookings ? (
+        <EndedBookingListItemWrapper booking={item} />
+      ) : (
         <EndedBookingItem
           booking={item}
           handleShowReactionModal={openReactionModal}
@@ -119,7 +126,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
         />
       )
     },
-    [openReactionModal, openShareModal]
+    [openReactionModal, openShareModal, enableNewBookings]
   )
 
   return (
@@ -129,7 +136,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
         data={endedBookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        ItemSeparatorComponent={StyledSeparator}
+        ItemSeparatorComponent={enableNewBookings ? null : StyledSeparator}
         ListHeaderComponent={hasEndedBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
         ListEmptyComponent={<NoBookingsView />}
       />

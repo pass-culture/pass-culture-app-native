@@ -75,10 +75,10 @@ const Ticket = styled.View(({ theme }) => ({
   borderColor: theme.designSystem.color.border.subtle,
 }))
 
-const FullTicket = styled(Ticket)(({ theme }) => ({
+const FullTicket = styled(Ticket)({
   borderWidth: 1,
-  borderRadius: theme.designSystem.size.borderRadius.s,
-}))
+  borderRadius: getSpacing(2.1),
+})
 
 const Container = styled.View({
   flexDirection: 'row',

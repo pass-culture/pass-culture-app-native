@@ -1,0 +1,161 @@
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
+
+import { BookingListItemResponse, WithdrawalTypeEnum } from 'api/gen'
+import { BookingListItem } from 'features/bookings/components/BookingListItem'
+import { BookingListItemLabel } from 'features/bookings/components/BookingListItemLabel'
+import { ENDED_BOOKING_REASONS } from 'features/bookings/constants'
+import { getEndedBookingReason } from 'features/bookings/helpers/getEndedBookingReason'
+import {
+  getEndedBookingItemProperties,
+  getOngoingBookingItemProperties,
+} from 'features/bookings/helpers/v2/getBookingItemProperties'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { useSubcategory } from 'libs/subcategories'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { useABSegment } from 'shared/useABSegment/useABSegment'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+
+type OngoingBookingProps = {
+  booking: BookingListItemResponse
+  eligibleBookingsForArchive: BookingListItemResponse[]
+}
+
+export const OngoingBookingListItemWrapper: FunctionComponent<OngoingBookingProps> = ({
+  booking,
+  eligibleBookingsForArchive,
+}) => {
+  const {
+    imageUrl,
+    isDigital,
+    name,
+    subcategoryId,
+    venue: { name: venueName },
+    withdrawalType,
+  } = booking.stock.offer
+
+  const { isEvent } = useSubcategory(subcategoryId)
+
+  const {
+    accessibilityLabel,
+    canDisplayExpirationMessage,
+    correctExpirationMessages,
+    dateLabel,
+    onBeforeNavigate,
+    navigateTo,
+    withdrawLabel,
+  } = getOngoingBookingItemProperties({ booking, isEvent, eligibleBookingsForArchive })
+
+  const label = getBookingListItemLabel({
+    canDisplayExpirationMessage,
+    correctExpirationMessages,
+    dateLabel,
+    withdrawLabel,
+  })
+
+  const icon = getBookingListItemIcon({
+    isDigital,
+    withdrawalType,
+  })
+
+  return (
+    <BookingListItemContainer
+      navigateTo={navigateTo}
+      onBeforeNavigate={onBeforeNavigate}
+      accessibilityLabel={accessibilityLabel}>
+      <BookingListItem
+        display={isEvent ? 'punched' : 'full'}
+        title={name}
+        subtitle={venueName}
+        imageUrl={imageUrl ?? ''}>
+        <BookingListItemLabel alert={!!booking.expirationDate} text={label} icon={icon} />
+      </BookingListItem>
+    </BookingListItemContainer>
+  )
+}
+
+type EndedBookingProps = {
+  booking: BookingListItemResponse
+}
+
+export const EndedBookingListItemWrapper: FunctionComponent<EndedBookingProps> = ({ booking }) => {
+  const {
+    imageUrl,
+    isDigital,
+    name,
+    subcategoryId,
+    venue: { name: venueName },
+    withdrawalType,
+  } = booking.stock.offer
+
+  const prePopulateOffer = usePrePopulateOffer()
+  const netInfo = useNetInfoContext()
+  const { showErrorSnackBar } = useSnackBarContext()
+  const segment = useABSegment()
+  const { isEvent, categoryId } = useSubcategory(subcategoryId)
+
+  const { accessibilityLabel, isBookingEligibleForArchive, handlePressOffer, navigateTo } =
+    getEndedBookingItemProperties({
+      booking,
+      categoryId,
+      netInfo,
+      prePopulateOffer,
+      segment,
+      showErrorSnackBar,
+    })
+
+  const { title } =
+    ENDED_BOOKING_REASONS[
+      getEndedBookingReason(
+        !!booking.dateUsed,
+        booking.cancellationReason,
+        isBookingEligibleForArchive
+      )
+    ]
+
+  const icon = getBookingListItemIcon({
+    isDigital,
+    withdrawalType,
+  })
+
+  return (
+    <BookingListItemContainer
+      navigateTo={navigateTo}
+      onBeforeNavigate={handlePressOffer}
+      accessibilityLabel={accessibilityLabel}>
+      <BookingListItem
+        display={isEvent ? 'punched' : 'full'}
+        title={name}
+        subtitle={venueName}
+        imageUrl={imageUrl ?? ''}>
+        <BookingListItemLabel alert={!!booking.expirationDate} text={title} icon={icon} />
+      </BookingListItem>
+    </BookingListItemContainer>
+  )
+}
+
+const getBookingListItemLabel = ({
+  dateLabel,
+  canDisplayExpirationMessage,
+  correctExpirationMessages,
+  withdrawLabel,
+}) => {
+  if (withdrawLabel) return withdrawLabel
+  if (canDisplayExpirationMessage) return correctExpirationMessages
+
+  return dateLabel
+}
+
+const getBookingListItemIcon = ({ isDigital, withdrawalType }) => {
+  if (isDigital) return 'digital'
+  if (withdrawalType === WithdrawalTypeEnum.on_site) return 'tickets'
+
+  return 'clock'
+}
+
+const BookingListItemContainer = styled(InternalTouchableLink)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
+  ...(theme.isDesktopViewport ? { maxWidth: '50%' } : undefined),
+}))

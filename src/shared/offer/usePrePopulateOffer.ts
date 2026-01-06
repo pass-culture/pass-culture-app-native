@@ -4,7 +4,7 @@ import { ExpenseDomain, OfferResponseV2, OfferStockResponse, OfferVenueResponse 
 import { OfferTileProps } from 'features/offer/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-type PartialOffer = Pick<
+export type PartialOffer = Pick<
   OfferTileProps,
   'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
 >

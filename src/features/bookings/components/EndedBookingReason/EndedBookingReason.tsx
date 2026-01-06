@@ -2,30 +2,13 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingListItemResponse } from 'api/gen'
-import {
-  getEndedBookingReason,
-  EndedBookingReasonKey,
-} from 'features/bookings/helpers/getEndedBookingReason'
+import { ENDED_BOOKING_REASONS } from 'features/bookings/constants'
+import { getEndedBookingReason } from 'features/bookings/helpers/getEndedBookingReason'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
-import { Valid } from 'ui/svg/icons/Valid'
-import { Wrong } from 'ui/svg/icons/Wrong'
 
 type Props = {
   booking: BookingListItemResponse
   isEligibleBookingsForArchiveValue?: boolean
-}
-
-type EndedBookingReason = {
-  title: string
-  icon: typeof Valid | typeof Wrong
-  type: 'Valid' | 'Error'
-}
-
-const ENDED_BOOKING_REASONS: Record<EndedBookingReasonKey, EndedBookingReason> = {
-  USED: { title: 'Réservation utilisée', icon: Valid, type: 'Valid' },
-  CANCELLED_BY_OFFERER: { title: 'Annulée', icon: Wrong, type: 'Error' },
-  ARCHIVED: { title: 'Réservation archivée', icon: Valid, type: 'Valid' },
-  CANCELLED: { title: 'Réservation annulée', icon: Wrong, type: 'Error' },
 }
 
 export const EndedBookingReason: FunctionComponent<Props> = ({
