@@ -1,7 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import {
   SubscriptionStepperResponseFixture as mockSubscriptionStepper,
@@ -13,6 +12,10 @@ import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockIdentityCheckState = mockState
 const mockRemainingAttempts = {
@@ -37,6 +40,12 @@ const mockUseGetStepperInfo = (
     title: 'Title',
     subtitle: 'Subtitle',
   },
+})
+
+mockServer.getApi('/v2/subscription/stepper', {
+  subscriptionStepsToDisplay: mockSubscriptionStepper.subscriptionStepsToDisplay,
+  title: 'Title',
+  subtitle: 'Subtitle',
 })
 
 jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery')
@@ -70,7 +79,7 @@ describe('useStepperInfo', () => {
       shouldBeOverriden: true,
       amount: '17 900 F',
     })
-    const { subtitle } = useStepperInfo()
+    const { subtitle } = renderUseStepperInfo().result.current
 
     expect(subtitle).toEqual(
       'Pour débloquer tes 17 900 F tu dois suivre les étapes suivantes\u00a0:'
@@ -78,14 +87,14 @@ describe('useStepperInfo', () => {
   })
 
   it('should return title and subtitle', () => {
-    const { title, subtitle } = useStepperInfo()
+    const { title, subtitle } = renderUseStepperInfo().result.current
 
     expect(title).toEqual('Title')
     expect(subtitle).toEqual('Subtitle')
   })
 
   it('should return 3 steps if there is no phone validation step', () => {
-    const { stepsDetails } = useStepperInfo()
+    const { stepsDetails } = renderUseStepperInfo().result.current
 
     expect(stepsDetails).toHaveLength(3)
   })
@@ -97,14 +106,14 @@ describe('useStepperInfo', () => {
           mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
       },
     })
-    const { stepsDetails } = useStepperInfo()
+    const { stepsDetails } = renderUseStepperInfo().result.current
 
     expect(stepsDetails).toHaveLength(4)
   })
 
   describe('profile step', () => {
     it('should show subtitle if user has already filled their profile', () => {
-      const { stepsDetails } = useStepperInfo()
+      const { stepsDetails } = renderUseStepperInfo().result.current
       const confirmationStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
 
       expect(confirmationStep?.subtitle).toEqual('Sous-titre Profil')
@@ -113,7 +122,7 @@ describe('useStepperInfo', () => {
 
   describe('identification step', () => {
     it('should default return "SelectIDOrigin"', () => {
-      const { stepsDetails } = useStepperInfo()
+      const { stepsDetails } = renderUseStepperInfo().result.current
       const identityStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.IDENTIFICATION
       )
@@ -134,7 +143,7 @@ describe('useStepperInfo', () => {
 
       setSettings({ enablePhoneValidation: false })
 
-      const { stepsDetails } = useStepperInfo()
+      const { stepsDetails } = renderUseStepperInfo().result.current
       const phoneValidationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
       )
@@ -142,52 +151,87 @@ describe('useStepperInfo', () => {
       expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumberWithoutValidation')
     })
 
-    it('should return "PhoneValidationTooManySMSSent" if no remaining attempts left', () => {
-      mockUseGetStepperInfo.mockReturnValueOnce({
-        data: {
-          subscriptionStepsToDisplay:
-            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-        },
-      })
-      mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-        remainingAttempts: 0,
-        counterResetDatetime: 'time',
-        isLastAttempt: false,
-      })
+    it('should return "PhoneValidationTooManySMSSent" if no remaining attempts left', async () => {
+      mockUseGetStepperInfo
+        .mockReturnValueOnce({
+          data: {
+            subscriptionStepsToDisplay:
+              mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+          },
+        })
+        .mockReturnValueOnce({
+          data: {
+            subscriptionStepsToDisplay:
+              mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+          },
+        })
+      mockUsePhoneValidationRemainingAttempts
+        .mockReturnValueOnce({
+          remainingAttempts: 0,
+          counterResetDatetime: 'time',
+          isLastAttempt: false,
+        })
+        .mockReturnValueOnce({
+          remainingAttempts: 0,
+          counterResetDatetime: 'time',
+          isLastAttempt: false,
+        })
 
-      const { stepsDetails } = useStepperInfo()
-      const phoneValidationStep = stepsDetails.find(
-        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-      )
+      const { result } = renderUseStepperInfo()
 
-      expect(phoneValidationStep?.firstScreen).toEqual('PhoneValidationTooManySMSSent')
+      await waitFor(() => {
+        const phoneValidationStep = result.current.stepsDetails.find(
+          (step) =>
+            step.name === IdentityCheckStep.PHONE_VALIDATION &&
+            step.firstScreen !== 'SetPhoneNumberWithoutValidation'
+        )
+
+        expect(phoneValidationStep?.firstScreen).toEqual('PhoneValidationTooManySMSSent')
+      })
     })
 
-    it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
-      mockUseGetStepperInfo.mockReturnValueOnce({
-        data: {
-          subscriptionStepsToDisplay:
-            mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
-        },
-      })
-      mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
-        remainingAttempts: 1,
-        counterResetDatetime: 'time',
-        isLastAttempt: false,
-      })
-      const { stepsDetails } = useStepperInfo()
+    it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', async () => {
+      mockUseGetStepperInfo
+        .mockReturnValueOnce({
+          data: {
+            subscriptionStepsToDisplay:
+              mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+          },
+        })
+        .mockReturnValueOnce({
+          data: {
+            subscriptionStepsToDisplay:
+              mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+          },
+        })
+      mockUsePhoneValidationRemainingAttempts
+        .mockReturnValueOnce({
+          remainingAttempts: 1,
+          counterResetDatetime: 'time',
+          isLastAttempt: false,
+        })
+        .mockReturnValueOnce({
+          remainingAttempts: 1,
+          counterResetDatetime: 'time',
+          isLastAttempt: false,
+        })
 
-      const phoneValidationStep = stepsDetails.find(
-        (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
-      )
+      const { result } = renderUseStepperInfo()
 
-      expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumber')
+      await waitFor(() => {
+        const phoneValidationStep = result.current.stepsDetails.find(
+          (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
+        )
+
+        expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumber')
+      })
     })
   })
 
   describe('confirmation step', () => {
     it('should have firstScreen to "IdentityCheckHonor"', () => {
-      const { stepsDetails } = useStepperInfo()
+      const { stepsDetails } = renderUseStepperInfo().result.current
+
       const confirmationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.CONFIRMATION
       )
@@ -196,3 +240,9 @@ describe('useStepperInfo', () => {
     })
   })
 })
+
+const renderUseStepperInfo = () => {
+  return renderHook(useStepperInfo, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+}

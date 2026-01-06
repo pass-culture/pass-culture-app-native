@@ -6,6 +6,7 @@ import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
@@ -65,7 +66,7 @@ describe('BookHourChoice when hour is already selected', () => {
   })
 
   it('should change step to Hour', async () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     const selectedHour = screen.getByText('20:00')
 
@@ -89,7 +90,7 @@ describe('BookHourChoice', () => {
   })
 
   it('should display filtered stocks for selected Date', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     // firstStock corresponds to 2021-03-02 stock 20h
     const firstStock = screen.queryAllByTestId('HourChoice148409-label')
@@ -104,7 +105,7 @@ describe('BookHourChoice', () => {
   })
 
   it('should select an item when pressed', async () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     // firstStock correspond to 2021-03-02 stock
     const firstStock = screen.getByTestId('HourChoice148409-label')
@@ -114,7 +115,7 @@ describe('BookHourChoice', () => {
   })
 
   it('should pass formatted hour and price props', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     const firstHour = screen.getByTestId('HourChoice148409-label')
     const firstPrice = screen.getByTestId('HourChoice148409-right-text')
@@ -131,7 +132,7 @@ describe('BookHourChoice', () => {
 
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByTestId('HourChoice148409-right-text').props.children).toBe(
       'crédit insuffisant'
@@ -155,26 +156,26 @@ describe('BookHourChoice when there are several stocks', () => {
   })
 
   it('should render only one hour choice with "dès" and the minimum price available when has several prices for an hour', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByText(`dès 190\u00a0€`)).toBeOnTheScreen()
   })
 
   it('should render only one hour choice without "dès" and the minimum price when has only one price for an hour', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
   })
 
   it('should display hour items with stock selection', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByTestId('HourChoice2023-04-01T18:00:00Z-label')).toBeOnTheScreen()
     expect(screen.getByTestId('HourChoice2023-04-01T20:00:00Z-label')).toBeOnTheScreen()
   })
 
   it('should not display hour item with stock selection', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.queryByTestId('HourChoice18755-label')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('HourChoice18756-label')).not.toBeOnTheScreen()
@@ -191,13 +192,13 @@ describe('BookHourChoice when there are several stocks', () => {
         { ...stock4, isBookable: false, remainingQuantity: 0, isSoldOut: true },
       ],
     }
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByText('épuisé')).toBeOnTheScreen()
   })
 
   it('should set the hour selected when pressing hour item', async () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     await user.press(screen.getByText('20h00'))
 
@@ -213,7 +214,7 @@ describe('BookHourChoice when there are several stocks', () => {
       stocks: [stock1],
     }
 
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     await user.press(screen.getByText('20h00'))
 
@@ -233,7 +234,7 @@ describe('BookHourChoice when there are several stocks', () => {
       ...mockOffer,
       stocks: [stock1, { ...stock1, price: 22000, priceCategoryLabel: 'Pelouse or' }],
     }
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     await user.press(screen.getByText('20h00'))
 
@@ -248,7 +249,7 @@ describe('BookHourChoice when there are several stocks', () => {
       ...mockOffer,
       isDuo: false,
     }
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     await user.press(screen.getByText('20h00'))
 
@@ -259,7 +260,7 @@ describe('BookHourChoice when there are several stocks', () => {
   })
 
   it('should not set the quantity at 1 when pressing hour item and offer is duo', async () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     await user.press(screen.getByText('20h00'))
 
@@ -286,26 +287,26 @@ describe('BookHourChoice when there is only one stock', () => {
   })
 
   it('should render only one hour choice with the minimum price', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.queryByText(`dès 210\u00a0€`)).not.toBeOnTheScreen()
     expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
   })
 
   it('should display hour item with stock selection', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByTestId('HourChoice18758-label')).toBeOnTheScreen()
   })
 
   it('should not display hour item without stock selection', () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).not.toBeOnTheScreen()
   })
 
   it('should select the stock when pressing an hour item', async () => {
-    render(<BookHourChoice />)
+    renderBookHourChoice()
     await user.press(screen.getByTestId('HourChoice18758-label'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: stock1.id })
@@ -316,8 +317,12 @@ describe('BookHourChoice when there is only one stock', () => {
       ...mockOffer,
       stocks: [{ ...stock1, isBookable: false, remainingQuantity: 0, isSoldOut: true }],
     }
-    render(<BookHourChoice />)
+    renderBookHourChoice()
 
     expect(screen.getByText('épuisé')).toBeOnTheScreen()
   })
 })
+
+function renderBookHourChoice() {
+  return render(reactQueryProviderHOC(<BookHourChoice />))
+}

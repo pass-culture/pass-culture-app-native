@@ -12,6 +12,7 @@ import { CITIES_API_URL } from 'libs/place/queries/constants'
 import { CitiesResponse } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -49,6 +50,7 @@ describe('ChangeCity', () => {
   describe('without previous screen', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { type: undefined } })
+      setSettings()
       mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     })
@@ -143,6 +145,7 @@ describe('ChangeCity', () => {
   describe('from profil personal data screen', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { type: PersonalDataTypes.PROFIL_PERSONAL_DATA } })
+      setSettings()
       mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     })
@@ -201,6 +204,7 @@ describe('ChangeCity', () => {
       useRoute.mockReturnValue({
         params: { type: PersonalDataTypes.MANDATORY_UPDATE_PERSONAL_DATA },
       })
+      setSettings()
       mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
       mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     })

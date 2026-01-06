@@ -1,13 +1,12 @@
 import React from 'react'
 
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CITIES_API_URL } from 'libs/place/queries/constants'
 import { CitiesResponse } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -22,13 +21,7 @@ jest.useFakeTimers()
 
 describe('<CitySearchInput />', () => {
   beforeEach(() => {
-    jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-      data: {
-        ...defaultSettings,
-        ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE],
-      },
-      isLoading: false,
-    })
+    setSettings({ ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE] })
   })
 
   it('should display error message when the user enters a valid postal code but no city found', async () => {

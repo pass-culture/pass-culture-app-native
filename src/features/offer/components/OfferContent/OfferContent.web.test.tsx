@@ -16,6 +16,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent, waitFor } from 'tests/utils/web'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -64,6 +65,7 @@ describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    setSettings()
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }

@@ -6,6 +6,7 @@ import { beneficiaryUser, exBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -25,10 +26,12 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
     render(
-      <ProfileHeader
-        featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={beneficiaryUser}
-      />
+      reactQueryProviderHOC(
+        <ProfileHeader
+          featureFlags={{ disableActivation: false, enablePassForAll: false }}
+          user={beneficiaryUser}
+        />
+      )
     )
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeInTheDocument()
@@ -36,10 +39,12 @@ describe('ProfileHeader', () => {
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
     render(
-      <ProfileHeader
-        featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={exBeneficiaryUser}
-      />
+      reactQueryProviderHOC(
+        <ProfileHeader
+          featureFlags={{ disableActivation: false, enablePassForAll: false }}
+          user={exBeneficiaryUser}
+        />
+      )
     )
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
@@ -47,10 +52,12 @@ describe('ProfileHeader', () => {
 
   it('should not display achievement banner', () => {
     render(
-      <ProfileHeader
-        featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={beneficiaryUser}
-      />
+      reactQueryProviderHOC(
+        <ProfileHeader
+          featureFlags={{ disableActivation: false, enablePassForAll: false }}
+          user={beneficiaryUser}
+        />
+      )
     )
 
     const achievementBannerTitle = screen.queryByText('Mes succès')

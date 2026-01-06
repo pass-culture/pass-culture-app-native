@@ -10,6 +10,7 @@ import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
@@ -26,6 +27,7 @@ mockdate.set(new Date('2022-12-01T00:00:00Z'))
 describe('HomeHeader', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
   })
 
   it('ex beneficiary users should see subtitle: Ton crédit est expiré', async () => {

@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
@@ -42,6 +43,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SuspendedAccountUponUserRequest />', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   it('should match snapshot', () => {
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 

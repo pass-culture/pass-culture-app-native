@@ -18,6 +18,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
@@ -215,12 +216,14 @@ describe('CreditHeader', () => {
 
 const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
   render(
-    <CreditHeader
-      firstName="Rosa"
-      lastName="Bonheur"
-      depositExpirationDate={dateInFuture}
-      domainsCredit={domains_credit_v3}
-      {...props}
-    />
+    reactQueryProviderHOC(
+      <CreditHeader
+        firstName="Rosa"
+        lastName="Bonheur"
+        depositExpirationDate={dateInFuture}
+        domainsCredit={domains_credit_v3}
+        {...props}
+      />
+    )
   )
 }

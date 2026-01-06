@@ -2,9 +2,6 @@ import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SettingsResponse } from 'api/gen'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -13,6 +10,7 @@ import { Properties } from 'libs/place/types'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -47,7 +45,7 @@ describe('<SetAddress/>', () => {
       'https://api-adresse.data.gouv.fr/search',
       mockedSuggestedPlaces
     )
-    mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
+    setSettings()
   })
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
@@ -128,11 +126,5 @@ describe('<SetAddress/>', () => {
 })
 
 const renderSetAddress = () => {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <SetAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<SetAddress />))
 }

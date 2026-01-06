@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -40,6 +41,7 @@ describe('<SearchResults />', () => {
 
     beforeEach(() => {
       setFeatureFlags()
+      setSettings()
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })
 

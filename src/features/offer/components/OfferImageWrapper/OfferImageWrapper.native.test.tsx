@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react'
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 describe('<OfferImageBody />', () => {
@@ -40,14 +41,16 @@ function renderOfferImageWrapper({
   imageUrl,
 }: RenderOfferImageWrapperType) {
   render(
-    <OfferImageWrapper
-      shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-      imageUrl={imageUrl}
-      imageDimensions={mockOfferImageDimensions}>
-      <OfferBodyImage
-        imageUrl="some_url_to_some_resource"
-        imageDimensions={mockOfferImageDimensions}
-      />
-    </OfferImageWrapper>
+    reactQueryProviderHOC(
+      <OfferImageWrapper
+        shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+        imageUrl={imageUrl}
+        imageDimensions={mockOfferImageDimensions}>
+        <OfferBodyImage
+          imageUrl="some_url_to_some_resource"
+          imageDimensions={mockOfferImageDimensions}
+        />
+      </OfferImageWrapper>
+    )
   )
 }

@@ -10,6 +10,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -35,6 +36,7 @@ describe('<Artist />', () => {
   describe('When enablePageArtist feature flag activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
+      setSettings()
       mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
     })
 
@@ -77,6 +79,7 @@ describe('<Artist />', () => {
   describe('When enablePageArtist feature flag deactivated', () => {
     beforeAll(() => {
       setFeatureFlags()
+      setSettings()
       mockServer.getApi(`/v1/artists/${mockArtist.id}`, mockArtist)
     })
 

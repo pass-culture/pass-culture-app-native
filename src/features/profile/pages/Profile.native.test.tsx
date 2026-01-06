@@ -30,6 +30,7 @@ import {
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import {
   act,
   bottomScrollEvent,
@@ -132,6 +133,7 @@ describe('Profile component', () => {
       RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
       RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
     ])
+    setSettings()
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture

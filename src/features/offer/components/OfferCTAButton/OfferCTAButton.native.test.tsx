@@ -13,6 +13,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -85,6 +86,7 @@ describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
       responseOptions: { data: offerResponseSnap },

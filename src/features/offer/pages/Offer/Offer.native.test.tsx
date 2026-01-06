@@ -21,6 +21,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { mockServer } from 'tests/mswServer'
+import { setSettings } from 'tests/setSettings'
 import { screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
@@ -94,6 +95,7 @@ describe('<Offer />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})

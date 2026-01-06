@@ -14,6 +14,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -75,6 +76,7 @@ const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
+      setSettings()
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })

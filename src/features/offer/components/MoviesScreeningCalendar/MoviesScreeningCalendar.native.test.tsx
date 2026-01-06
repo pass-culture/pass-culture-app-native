@@ -19,6 +19,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -62,6 +63,7 @@ describe('MoviesScreeningCalendar', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockdate.set(MOCK_DATE)
+    setSettings()
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, mockedOfferStockResponse)
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${ID}`, {
       ...offerResponseSnap,

@@ -2,7 +2,9 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { env } from 'libs/environment/env'
+import { mockServer } from 'tests/mswServer'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
@@ -26,6 +28,10 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
+    mockServer.universalGet(
+      `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
+      {}
+    )
     setSettings()
   })
 

@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -15,6 +14,8 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location/location'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -153,6 +154,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('SearchBox component', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
       key: 'Navigator',
       index: 1,
@@ -431,6 +433,10 @@ describe('SearchBox component', () => {
   })
 
   describe('shouldRedirectToThematicSearch', () => {
+    beforeEach(() => {
+      setSettings()
+    })
+
     it('should not update searchState when current route is not searchLanding', async () => {
       // TODO(PC-32646): useRoute is called every time a letter is inputted +1 (sic!)
       useRoute
@@ -515,7 +521,7 @@ describe('SearchBox component', () => {
   })
 
   describe('Without autocomplete', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       setSettings({ appEnableAutocomplete: false })
     })
 
@@ -577,7 +583,7 @@ describe('SearchBox component', () => {
   })
 
   describe('With autocomplete', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       setSettings({ appEnableAutocomplete: true })
     })
 
@@ -631,6 +637,7 @@ describe('SearchBox component', () => {
   describe('Venue previous route on search results', () => {
     beforeEach(() => {
       jest.mock('libs/firebase/analytics/analytics')
+      setSettings()
       jest.spyOn(navigationRef, 'getState').mockReturnValue({
         key: 'Navigator',
         index: 1,
@@ -704,6 +711,7 @@ describe('SearchBox component', () => {
   describe('ThematicSearch previous route on search results', () => {
     beforeEach(() => {
       jest.mock('libs/firebase/analytics/analytics')
+      setSettings()
       jest.spyOn(navigationRef, 'getState').mockReturnValue({
         key: 'Navigator',
         index: 1,
@@ -783,11 +791,9 @@ const renderSearchBox = (
   isDesktopViewport?: boolean,
   offerCategories?: SearchGroupNameEnumv2[]
 ) => {
-  return render(
-    <DummySearchBox offerCategories={offerCategories} />,
-
-    { theme: { isDesktopViewport: isDesktopViewport ?? false } }
-  )
+  return render(reactQueryProviderHOC(<DummySearchBox offerCategories={offerCategories} />), {
+    theme: { isDesktopViewport: isDesktopViewport ?? false },
+  })
 }
 
 const DummySearchBox = ({ offerCategories }: { offerCategories?: SearchGroupNameEnumv2[] }) => {

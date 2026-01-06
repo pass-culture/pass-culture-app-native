@@ -4,17 +4,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { selectIdCheckAddressAutocompletion } from 'features/identityCheck/queries/settings/selectors/selectIdCheckAddressAutocompletion'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
+import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -48,7 +49,9 @@ export const SetAddress = () => {
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
-  const { data: settings } = useSettingsContext()
+  const { data: idCheckAddressAutocompletion } = useSettingsQuery({
+    select: selectIdCheckAddressAutocompletion,
+  })
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
@@ -59,8 +62,6 @@ export const SetAddress = () => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
 
-  const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
-
   const {
     data: addresses = [],
     isLoading,
@@ -69,7 +70,7 @@ export const SetAddress = () => {
     query: debouncedQuery,
     cityCode: storedCity?.code ?? '',
     postalCode: storedCity?.postalCode ?? '',
-    enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
+    enabled: !!idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
 

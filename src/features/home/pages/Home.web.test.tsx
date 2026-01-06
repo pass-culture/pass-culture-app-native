@@ -9,6 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Home } from './Home'
@@ -35,6 +36,7 @@ jest.spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate').mockReturnValue({
 
 describe('<Home/>', () => {
   beforeEach(() => {
+    setSettings()
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })

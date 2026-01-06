@@ -10,6 +10,7 @@ import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SignupForm } from './SignupForm'
@@ -37,6 +38,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SignupForm/>', () => {
   beforeEach(() => {
+    setSettings()
     setFeatureFlags()
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
       '/v1/email_validation_remaining_resends/email%40gmail.com',

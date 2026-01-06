@@ -2,11 +2,11 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')

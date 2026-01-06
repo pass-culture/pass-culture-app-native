@@ -12,6 +12,7 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -56,6 +57,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 describe('<ThematicSearch/>', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.universalGet(
       `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
       {}

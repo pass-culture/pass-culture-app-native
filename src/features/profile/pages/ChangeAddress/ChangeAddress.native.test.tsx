@@ -3,9 +3,6 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { SettingsResponse } from 'api/gen'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -15,6 +12,7 @@ import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces
 import { Properties } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -46,7 +44,6 @@ jest.useFakeTimers()
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
-    mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
       'https://api-adresse.data.gouv.fr/search',
       mockedSuggestedPlaces
@@ -59,6 +56,9 @@ describe('<SetAddress/>', () => {
     })
 
     it('should render correctly', async () => {
+      // To avoid potential flaky snapshot due to different label based on query result
+      setSettings({ idCheckAddressAutocompletion: false })
+
       renderSetAddress()
       await screen.findByText('Modifier mon adresse')
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -68,6 +68,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should display a list of addresses when user add an address', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -87,6 +89,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should update profile when clicking on "Valider mon adresse"', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -101,6 +105,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should navigate to PersonalData when clicking on "Valider mon adresse"', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -116,6 +122,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should show snackbar on success when clicking on "Valider mon adresse"', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -131,6 +139,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should send analytics when success', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -154,6 +164,9 @@ describe('<SetAddress/>', () => {
     })
 
     it('should render correctly', async () => {
+      // To avoid potential flaky snapshot due to different label based on query result
+      setSettings({ idCheckAddressAutocompletion: false })
+
       renderSetAddress()
       await screen.findByText('Modifier mon adresse')
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -163,6 +176,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should not show snackbar on success when clicking on "Continuer"', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -175,6 +190,8 @@ describe('<SetAddress/>', () => {
     })
 
     it('should navigate to ChangeStatus when clicking on "Continuer"', async () => {
+      setSettings()
+
       renderSetAddress()
 
       const input = screen.getByTestId('Entrée pour l’adresse')
@@ -192,11 +209,5 @@ describe('<SetAddress/>', () => {
 })
 
 const renderSetAddress = () => {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <ChangeAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<ChangeAddress />))
 }

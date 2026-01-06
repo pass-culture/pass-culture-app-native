@@ -3,6 +3,7 @@ import React from 'react'
 import { UserSuspensionDateResponse } from 'api/gen'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
@@ -14,6 +15,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
+      setSettings()
       mockServer.getApi<UserSuspensionDateResponse>('/v1/account/suspension_date', {
         date: '2022-05-02',
       })

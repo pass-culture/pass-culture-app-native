@@ -21,6 +21,7 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
@@ -44,6 +45,7 @@ describe('BookingDetails', () => {
   useRoute.mockImplementation(() => ({ params: { id: 456 } }))
 
   beforeEach(() => {
+    setSettings()
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })

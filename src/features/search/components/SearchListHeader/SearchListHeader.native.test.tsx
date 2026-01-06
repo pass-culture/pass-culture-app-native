@@ -19,6 +19,7 @@ import { GeoCoordinates } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
@@ -110,12 +111,14 @@ describe('<SearchListHeader />', () => {
       })
 
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.getByText('10 résultats')).toBeOnTheScreen()
@@ -156,12 +159,14 @@ describe('<SearchListHeader />', () => {
             selectedLocationMode,
           })
           render(
-            <SearchListHeader
-              nbHits={10}
-              userData={[]}
-              venuesUserData={mockVenuesUserData}
-              venues={mockedAlgoliaVenuesItems}
-            />
+            reactQueryProviderHOC(
+              <SearchListHeader
+                nbHits={10}
+                userData={[]}
+                venuesUserData={mockVenuesUserData}
+                venues={mockedAlgoliaVenuesItems}
+              />
+            )
           )
 
           expect(screen.getByText(expectedTitle)).toBeOnTheScreen()
@@ -171,12 +176,14 @@ describe('<SearchListHeader />', () => {
 
     it('should not display the geolocation button if position is not null', () => {
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
@@ -188,12 +195,14 @@ describe('<SearchListHeader />', () => {
         selectedLocationMode: LocationMode.EVERYWHERE,
       })
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
@@ -214,7 +223,13 @@ describe('<SearchListHeader />', () => {
 
     it('should not display paddingBottom when nbHits is equal to 0', () => {
       render(
-        <SearchListHeader nbHits={0} userData={[{ message: 'message test' }]} venuesUserData={[]} />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={0}
+            userData={[{ message: 'message test' }]}
+            venuesUserData={[]}
+          />
+        )
       )
       const bannerContainer = screen.getByTestId('banner-container')
 
@@ -225,12 +240,14 @@ describe('<SearchListHeader />', () => {
 
     it('should render venue items when there are venues', () => {
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
@@ -238,12 +255,14 @@ describe('<SearchListHeader />', () => {
 
     it('should render venues nbHits', () => {
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.getByText('6 résultats')).toBeOnTheScreen()
@@ -266,12 +285,14 @@ describe('<SearchListHeader />', () => {
         })
 
         render(
-          <SearchListHeader
-            nbHits={10}
-            userData={[]}
-            venuesUserData={[]}
-            venues={mockedAlgoliaVenuesItems}
-          />
+          reactQueryProviderHOC(
+            <SearchListHeader
+              nbHits={10}
+              userData={[]}
+              venuesUserData={[]}
+              venues={mockedAlgoliaVenuesItems}
+            />
+          )
         )
 
         expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
@@ -292,12 +313,14 @@ describe('<SearchListHeader />', () => {
       })
 
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
@@ -316,12 +339,14 @@ describe('<SearchListHeader />', () => {
         },
       })
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
@@ -332,12 +357,14 @@ describe('<SearchListHeader />', () => {
         searchState: { ...mockSearchState, searchId },
       })
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       const scrollView = screen.getByTestId('search-venue-list')
@@ -358,19 +385,31 @@ describe('<SearchListHeader />', () => {
     })
 
     it('should not render venue items when there are not venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+      render(
+        reactQueryProviderHOC(
+          <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />
+        )
+      )
 
       expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
     })
 
     it('should not render venues nbHits', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+      render(
+        reactQueryProviderHOC(
+          <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />
+        )
+      )
 
       expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
     })
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are not venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+      render(
+        reactQueryProviderHOC(
+          <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />
+        )
+      )
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
     })
@@ -379,7 +418,11 @@ describe('<SearchListHeader />', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: { ...mockSearchState, searchId },
       })
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+      render(
+        reactQueryProviderHOC(
+          <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />
+        )
+      )
 
       expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
     })
@@ -396,12 +439,14 @@ describe('<SearchListHeader />', () => {
       })
 
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       await screen.findByText('Les offres')
@@ -421,12 +466,14 @@ describe('<SearchListHeader />', () => {
       })
 
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.getByText('Les offres dans des lieux accessibles')).toBeOnTheScreen()
@@ -440,12 +487,14 @@ describe('<SearchListHeader />', () => {
 
     it('should not displayed the button "Voir sur la carte"', () => {
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+          />
+        )
       )
 
       expect(screen.queryByText('Voir sur la carte')).not.toBeOnTheScreen()
@@ -458,12 +507,14 @@ describe('<SearchListHeader />', () => {
       selectedLocationMode: LocationMode.EVERYWHERE,
     })
     render(
-      <SearchListHeader
-        nbHits={10}
-        userData={[]}
-        venuesUserData={[]}
-        venues={mockedAlgoliaVenuesItems}
-      />
+      reactQueryProviderHOC(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockedAlgoliaVenuesItems}
+        />
+      )
     )
 
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
@@ -472,13 +523,15 @@ describe('<SearchListHeader />', () => {
   describe('when FF WIP_ENABLE_GRID_LIST is activated', () => {
     it('should display grid list menu', async () => {
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockedAlgoliaVenuesItems}
-          shouldDisplayGridList
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockedAlgoliaVenuesItems}
+            shouldDisplayGridList
+          />
+        )
       )
 
       await screen.findByText('Les offres')

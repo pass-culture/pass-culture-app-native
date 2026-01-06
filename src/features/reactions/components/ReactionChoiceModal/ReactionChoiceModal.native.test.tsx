@@ -7,6 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
@@ -183,16 +184,18 @@ const renderReactionChoiceModal = ({
   bodyType?: ReactionChoiceModalBodyEnum
 }) =>
   render(
-    <ReactionChoiceModal
-      offerId={mockOffer.id}
-      offerName={mockOffer.name}
-      imageUrl={mockOffer.images.image1.url}
-      subcategoryId={mockOffer.subcategoryId}
-      dateUsed="2023-05-30"
-      visible
-      closeModal={mockCloseModal}
-      onSave={onSave}
-      from={from}
-      bodyType={bodyType}
-    />
+    reactQueryProviderHOC(
+      <ReactionChoiceModal
+        offerId={mockOffer.id}
+        offerName={mockOffer.name}
+        imageUrl={mockOffer.images.image1.url}
+        subcategoryId={mockOffer.subcategoryId}
+        dateUsed="2023-05-30"
+        visible
+        closeModal={mockCloseModal}
+        onSave={onSave}
+        from={from}
+        bodyType={bodyType}
+      />
+    )
   )

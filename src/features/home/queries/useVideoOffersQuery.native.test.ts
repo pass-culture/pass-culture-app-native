@@ -1,4 +1,5 @@
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { OffersModuleParameters } from 'features/home/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
@@ -8,9 +9,25 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useVideoOffersQuery } from './useVideoOffersQuery'
+
+const transformOfferThumbUrl = (thumbUrl: string, urlPrefix: string): string => {
+  const [base, suffix] = thumbUrl.split('/thumbs')
+  return `${String(urlPrefix || base)}/thumbs${String(suffix)}`
+}
+
+const transformOffer = (offer) => {
+  return {
+    ...offer,
+    offer: {
+      ...offer.offer,
+      thumbUrl: transformOfferThumbUrl(offer.offer.thumbUrl, defaultSettings.objectStorageUrl),
+    },
+  }
+}
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
   fetchOffersByIds: jest.fn(),
@@ -35,6 +52,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('useVideoOffersQuery', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -50,7 +68,10 @@ describe('useVideoOffersQuery', () => {
     )
 
     await waitFor(() => {
-      expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+      expect(result.current.offers).toEqual([
+        transformOffer(offersFixture[0]),
+        transformOffer(offersFixture[1]),
+      ])
     })
   })
 
@@ -69,7 +90,10 @@ describe('useVideoOffersQuery', () => {
     )
 
     await waitFor(() => {
-      expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+      expect(result.current.offers).toEqual([
+        transformOffer(offersFixture[0]),
+        transformOffer(offersFixture[1]),
+      ])
     })
   })
 
@@ -84,7 +108,7 @@ describe('useVideoOffersQuery', () => {
     )
 
     await waitFor(() => {
-      expect(result.current.offers).toEqual(offersFixture)
+      expect(result.current.offers).toEqual(offersFixture.map((offer) => transformOffer(offer)))
     })
   })
 })

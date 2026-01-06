@@ -10,6 +10,7 @@ import { beneficiaryUser, exBeneficiaryUser, nonBeneficiaryUser } from 'fixtures
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -28,6 +29,7 @@ describe('ProfileHeader', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockdate.set('2021-07-01T00:00:00Z')
+    setSettings()
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture

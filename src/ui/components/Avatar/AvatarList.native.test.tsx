@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { AVATAR_LARGE, AVATAR_SMALL } from 'ui/theme/constants'
@@ -17,7 +18,7 @@ describe('<AvatarsList />', () => {
   jest.useFakeTimers()
 
   it('should display all items in the list', () => {
-    render(<AvatarList data={avatarsData} onItemPress={jest.fn()} />)
+    render(reactQueryProviderHOC(<AvatarList data={avatarsData} onItemPress={jest.fn()} />))
 
     expect(screen.getByText('Oda')).toBeOnTheScreen()
     expect(screen.getByText('MMMM')).toBeOnTheScreen()
@@ -28,11 +29,13 @@ describe('<AvatarsList />', () => {
 
   it('should display items with custom avatar config', () => {
     render(
-      <AvatarList
-        data={avatarsData}
-        onItemPress={jest.fn()}
-        avatarConfig={{ size: AVATAR_SMALL }}
-      />
+      reactQueryProviderHOC(
+        <AvatarList
+          data={avatarsData}
+          onItemPress={jest.fn()}
+          avatarConfig={{ size: AVATAR_SMALL }}
+        />
+      )
     )
 
     expect(screen.getByText('Oda')).toBeOnTheScreen()
@@ -44,27 +47,29 @@ describe('<AvatarsList />', () => {
 
   it('should force default avatar size to AVATAR_LARGE', () => {
     render(
-      <AvatarList data={avatarsData} onItemPress={jest.fn()} avatarConfig={{ size: undefined }} />
+      reactQueryProviderHOC(
+        <AvatarList data={avatarsData} onItemPress={jest.fn()} avatarConfig={{ size: undefined }} />
+      )
     )
 
     expect(screen.getAllByTestId('Avatar').at(0)).toHaveProp('size', AVATAR_LARGE)
   })
 
   it('should display custom images for avatars', () => {
-    render(<AvatarList data={avatarsData} onItemPress={jest.fn()} />)
+    render(reactQueryProviderHOC(<AvatarList data={avatarsData} onItemPress={jest.fn()} />))
 
     expect(screen.getByLabelText('Avatar de lʼartiste Oda')).toBeOnTheScreen()
     expect(screen.getByLabelText('Avatar de lʼartiste MMMM')).toBeOnTheScreen()
   })
 
   it('should handle missing images gracefully', () => {
-    render(<AvatarList data={avatarsData} onItemPress={jest.fn()} />)
+    render(reactQueryProviderHOC(<AvatarList data={avatarsData} onItemPress={jest.fn()} />))
 
     expect(screen.getByTestId('BicolorProfile')).toBeOnTheScreen()
   })
 
   it('should navigate to the artist when clicking on avatar tile', async () => {
-    render(<AvatarList data={avatarsData} onItemPress={jest.fn()} />)
+    render(reactQueryProviderHOC(<AvatarList data={avatarsData} onItemPress={jest.fn()} />))
 
     await user.press(screen.getByText('Oda'))
 

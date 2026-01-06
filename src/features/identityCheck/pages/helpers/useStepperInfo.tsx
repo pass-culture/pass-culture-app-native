@@ -2,7 +2,6 @@ import React from 'react'
 
 import { CurrencyEnum, SubscriptionStepCompletionState } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IconStepCurrent } from 'features/identityCheck/components/IconStepCurrent'
 import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisabled'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
@@ -10,11 +9,13 @@ import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
+import { selectEnablePhoneValidation } from 'features/identityCheck/queries/settings/selectors/selectEnablePhoneValidation'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -44,7 +45,9 @@ export const useStepperInfo = (): StepperInfo => {
 
   const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
-  const { data: settings } = useSettingsContext()
+  const { data: enablePhoneValidation } = useSettingsQuery({
+    select: selectEnablePhoneValidation,
+  })
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
     useOverrideCreditActivationAmount()
 
@@ -62,9 +65,8 @@ export const useStepperInfo = (): StepperInfo => {
     subscriptionMessage,
     allowedIdentityCheckMethods,
   } = data
-
   const getPhoneValidationFirstScreen = () => {
-    if (settings?.enablePhoneValidation) {
+    if (enablePhoneValidation) {
       return remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber'
     }
     return 'SetPhoneNumberWithoutValidation'

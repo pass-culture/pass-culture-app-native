@@ -11,6 +11,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -61,6 +62,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueDataTest.id}`, {
       responseOptions: { data: venueDataTest },

@@ -27,6 +27,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import * as useBookingByIdQueryAPI from 'queries/bookings/useBookingByIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -77,6 +78,7 @@ describe('BookingDetails', () => {
     endedBookings = bookingsSnap.ended_bookings[0]
     ongoingBookingV2 = bookingsSnapV2.ongoingBookings[0]
 
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   })

@@ -7,6 +7,7 @@ import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
@@ -48,14 +49,14 @@ describe('<BookingInformations />', () => {
 
   it('should return empty component when no offer', async () => {
     mockUseBookingOffer.mockReturnValueOnce(undefined)
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should return empty component when no stock', async () => {
     mockedUseBookingStock.mockReturnValueOnce(undefined)
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
@@ -66,14 +67,14 @@ describe('<BookingInformations />', () => {
       dispatch: () => null,
       dismissModal: () => null,
     })
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should render event date section when event', async () => {
     mockUseBookingOffer.mockReturnValueOnce(cinePleinAirOffer)
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(
       await screen.findByText('Mardi 1er décembre 2020 à 00h00 - Durée : 1h')
@@ -88,7 +89,7 @@ describe('<BookingInformations />', () => {
       price: 0,
       activationCode: { expirationDate: randomDatetime },
     })
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
   })
@@ -101,7 +102,7 @@ describe('<BookingInformations />', () => {
       dispatch: () => null,
       dismissModal: () => null,
     })
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(await screen.findByText('0,11 €')).toBeOnTheScreen()
   })
@@ -116,7 +117,7 @@ describe('<BookingInformations />', () => {
       priceCategoryLabel: 'A stock label',
     })
 
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.getByTestId('price-line-label')).toBeOnTheScreen()
   })
@@ -131,7 +132,7 @@ describe('<BookingInformations />', () => {
       priceCategoryLabel: undefined,
     })
 
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.queryByTestId('price-line-label')).not.toBeOnTheScreen()
   })
@@ -146,7 +147,7 @@ describe('<BookingInformations />', () => {
       features: ['VOSTFR', '3D', 'IMAX'],
     })
 
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.getByTestId('price-line-attributes')).toBeOnTheScreen()
   })
@@ -161,14 +162,14 @@ describe('<BookingInformations />', () => {
       features: [],
     })
 
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.queryByTestId('price-line-attributes')).not.toBeOnTheScreen()
   })
 
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {
     mockUseBookingOffer.mockReturnValueOnce(carteCineOfferDigital)
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(await screen.findByText('À activer avant le 1er décembre 2020')).toBeOnTheScreen()
   })
@@ -181,7 +182,7 @@ describe('<BookingInformations />', () => {
       beginningDatetime: randomDatetime,
       price: 0,
     })
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(screen.queryByText('À activer avant le 1er décembre 2020')).not.toBeOnTheScreen()
   })
@@ -196,8 +197,12 @@ describe('<BookingInformations />', () => {
       extraData: { durationMinutes: null },
     })
 
-    render(<BookingInformations />)
+    renderBookingInformations()
 
     expect(await screen.findByText('Mardi 1er décembre 2020 à 00h00')).toBeOnTheScreen()
   })
 })
+
+function renderBookingInformations() {
+  return render(reactQueryProviderHOC(<BookingInformations />))
+}

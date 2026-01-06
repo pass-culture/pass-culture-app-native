@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { setSettings } from 'features/auth/tests/setSettings'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -13,6 +12,7 @@ import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRem
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { LocationLabel } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, waitFor, within } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')

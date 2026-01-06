@@ -3,6 +3,7 @@ import React from 'react'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { BookDuoChoice } from './BookDuoChoice'
@@ -49,7 +50,7 @@ describe('BookDuoChoice', () => {
   })
 
   it('should display two blocs if offer is duo', () => {
-    render(<BookDuoChoice />)
+    render(reactQueryProviderHOC(<BookDuoChoice />))
 
     const soloChoice = screen.queryByTestId('DuoChoice1-price')
 
@@ -60,7 +61,7 @@ describe('BookDuoChoice', () => {
   })
 
   it('should select an item when pressed', async () => {
-    render(<BookDuoChoice />)
+    render(reactQueryProviderHOC(<BookDuoChoice />))
 
     const soloChoice = screen.getByTestId('DuoChoice1-price')
 
@@ -71,7 +72,7 @@ describe('BookDuoChoice', () => {
 
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
-    render(<BookDuoChoice />)
+    render(reactQueryProviderHOC(<BookDuoChoice />))
 
     expect(screen.getByTestId('DuoChoice1-price').props.children).toBe('crédit insuffisant')
   })

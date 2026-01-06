@@ -11,6 +11,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20000) // to avoid exceeded timeout
@@ -84,6 +85,7 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 describe('<SearchLanding />', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
+      setSettings()
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
       setFeatureFlags()
     })

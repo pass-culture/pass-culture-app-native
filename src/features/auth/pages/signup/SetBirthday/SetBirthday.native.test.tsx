@@ -7,10 +7,10 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, renderAsync, screen, userEvent } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'

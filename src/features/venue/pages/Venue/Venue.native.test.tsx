@@ -27,6 +27,7 @@ import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
@@ -97,6 +98,7 @@ describe('<Venue />', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})

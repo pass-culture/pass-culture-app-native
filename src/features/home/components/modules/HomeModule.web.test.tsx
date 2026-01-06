@@ -21,6 +21,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { HomeModule } from './HomeModule'
@@ -67,6 +68,7 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<HomeModule />', () => {
   beforeEach(() => {
+    setSettings()
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })

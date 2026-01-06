@@ -5,6 +5,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 let mockSearchState = initialSearchState
@@ -41,7 +42,7 @@ describe('Price component', () => {
 
   it('should display the search price description when minimum price selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }
-    render(<Price {...props} />)
+    render(reactQueryProviderHOC(<Price {...props} />))
 
     await screen.findByText('Prix')
 
@@ -50,7 +51,7 @@ describe('Price component', () => {
 
   it('should display the search price description when maximum price selected', async () => {
     mockSearchState = { ...initialSearchState, maxPrice: '10' }
-    render(<Price {...props} />)
+    render(reactQueryProviderHOC(<Price {...props} />))
 
     await screen.findByText('Prix')
 
@@ -59,7 +60,7 @@ describe('Price component', () => {
 
   it('should display the search price description when minimum and maximum prices selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5', maxPrice: '10' }
-    render(<Price {...props} />)
+    render(reactQueryProviderHOC(<Price {...props} />))
 
     await screen.findByText('Prix')
 
@@ -68,7 +69,7 @@ describe('Price component', () => {
 
   it('should display the search price description with "Gratuit" when minimum and maximum prices selected and are 0', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '0', maxPrice: '0' }
-    render(<Price {...props} />)
+    render(reactQueryProviderHOC(<Price {...props} />))
 
     await screen.findByText('Prix')
 
@@ -76,7 +77,7 @@ describe('Price component', () => {
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {
-    render(<Price {...props} />, {
+    render(reactQueryProviderHOC(<Price {...props} />), {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
 

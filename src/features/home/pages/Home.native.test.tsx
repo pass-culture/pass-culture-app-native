@@ -11,6 +11,7 @@ import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen } from 'tests/utils'
 
 import { Home } from './Home'
@@ -57,6 +58,7 @@ jest.useFakeTimers()
 describe('Home page', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     storage.clear('logged_in_session_count')

@@ -10,6 +10,7 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const offer = offersFixture[2]
@@ -55,7 +56,7 @@ describe('AttachedOfferCard', () => {
   })
 
   it('should display date if offer has one', () => {
-    render(<AttachedOfferCard offer={offer} />)
+    render(reactQueryProviderHOC(<AttachedOfferCard offer={offer} />))
 
     const date = screen.getByText(`17 novembre 2020`)
 
@@ -64,7 +65,7 @@ describe('AttachedOfferCard', () => {
 
   it('should display distance if offer and user has location', () => {
     mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
-    render(<AttachedOfferCard offer={offer} />)
+    render(reactQueryProviderHOC(<AttachedOfferCard offer={offer} />))
 
     const distance = screen.getByText('à 107 km')
 
@@ -72,7 +73,7 @@ describe('AttachedOfferCard', () => {
   })
 
   it('should display price if offer has one', () => {
-    render(<AttachedOfferCard offer={offer} />)
+    render(reactQueryProviderHOC(<AttachedOfferCard offer={offer} />))
 
     const price = screen.getByText('Dès 34 €')
 
@@ -80,7 +81,11 @@ describe('AttachedOfferCard', () => {
   })
 
   it('should display bottomBannerText if offer has one', () => {
-    render(<AttachedOfferCard offer={offer} comingSoon="Disponible le 17 février" />)
+    render(
+      reactQueryProviderHOC(
+        <AttachedOfferCard offer={offer} comingSoon="Disponible le 17 février" />
+      )
+    )
 
     const comingSoon = screen.getByText('Disponible le 17 février')
 
@@ -89,7 +94,7 @@ describe('AttachedOfferCard', () => {
 
   it('should have accessibility label', () => {
     mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
-    render(<AttachedOfferCard offer={offer} />)
+    render(reactQueryProviderHOC(<AttachedOfferCard offer={offer} />))
     const accessibilityLabel = screen.getByLabelText(
       'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: Dès 34 €. Distance : à 107 km.'
     )

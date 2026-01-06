@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
@@ -47,7 +48,7 @@ describe('MarketingBlockExclusivity', () => {
   })
 
   it('navigate to offer when pressing', async () => {
-    render(<MarketingBlockExclusivity {...props} />)
+    render(reactQueryProviderHOC(<MarketingBlockExclusivity {...props} />))
 
     const titlelink = screen.getByText('La nuit des temps')
     await user.press(titlelink)
@@ -56,7 +57,9 @@ describe('MarketingBlockExclusivity', () => {
   })
 
   it('should log consult offer when pressed', async () => {
-    render(<MarketingBlockExclusivity {...props} homeEntryId="fakeEntryId" />)
+    render(
+      reactQueryProviderHOC(<MarketingBlockExclusivity {...props} homeEntryId="fakeEntryId" />)
+    )
 
     const titlelink = screen.getByText('La nuit des temps')
     await user.press(titlelink)
@@ -75,10 +78,12 @@ describe('MarketingBlockExclusivity', () => {
   describe('bookingAllowedDatetime is after today', () => {
     it('should display a text with date when shouldDisplayPublicationDate is true', async () => {
       render(
-        <MarketingBlockExclusivity
-          {...propsWithPublicationDateTomorrow}
-          shouldDisplayBookingAllowedDatetime
-        />
+        reactQueryProviderHOC(
+          <MarketingBlockExclusivity
+            {...propsWithPublicationDateTomorrow}
+            shouldDisplayBookingAllowedDatetime
+          />
+        )
       )
       await screen.findByText('La nuit des temps')
 
@@ -87,10 +92,12 @@ describe('MarketingBlockExclusivity', () => {
 
     it('should display a generic text when shouldDisplayPublicationDate is false', async () => {
       render(
-        <MarketingBlockExclusivity
-          {...propsWithPublicationDateTomorrow}
-          shouldDisplayBookingAllowedDatetime={false}
-        />
+        reactQueryProviderHOC(
+          <MarketingBlockExclusivity
+            {...propsWithPublicationDateTomorrow}
+            shouldDisplayBookingAllowedDatetime={false}
+          />
+        )
       )
 
       await screen.findByText('La nuit des temps')
@@ -102,15 +109,17 @@ describe('MarketingBlockExclusivity', () => {
   describe('bookingAllowedDatetime is today', () => {
     it('should not display bottomBanner with comingSoon information', () => {
       render(
-        <MarketingBlockExclusivity
-          {...{
-            ...props,
-            offer: {
-              ...offersFixture[0],
-              offer: { ...offersFixture[0].offer, bookingAllowedDatetime: today },
-            },
-          }}
-        />
+        reactQueryProviderHOC(
+          <MarketingBlockExclusivity
+            {...{
+              ...props,
+              offer: {
+                ...offersFixture[0],
+                offer: { ...offersFixture[0].offer, bookingAllowedDatetime: today },
+              },
+            }}
+          />
+        )
       )
 
       expect(screen.queryByTestId('bottom-banner')).not.toBeOnTheScreen()
@@ -120,15 +129,17 @@ describe('MarketingBlockExclusivity', () => {
   describe('bookingAllowedDatetime is yesterday', () => {
     it('should not display bottomBanner with comingSoon information', () => {
       render(
-        <MarketingBlockExclusivity
-          {...{
-            ...props,
-            offer: {
-              ...offersFixture[0],
-              offer: { ...offersFixture[0].offer, bookingAllowedDatetime: yesterday },
-            },
-          }}
-        />
+        reactQueryProviderHOC(
+          <MarketingBlockExclusivity
+            {...{
+              ...props,
+              offer: {
+                ...offersFixture[0],
+                offer: { ...offersFixture[0].offer, bookingAllowedDatetime: yesterday },
+              },
+            }}
+          />
+        )
       )
 
       expect(screen.queryByTestId('bottom-banner')).not.toBeOnTheScreen()

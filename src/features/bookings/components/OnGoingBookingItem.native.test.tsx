@@ -8,6 +8,7 @@ import { BookingListItemResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from '
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { ongoingBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics/provider'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
@@ -215,6 +216,11 @@ const renderOnGoingBookingItem = (
   eligibleBookingsForArchive: BookingListItemResponse[] = []
 ) => {
   return render(
-    <OnGoingBookingItem booking={booking} eligibleBookingsForArchive={eligibleBookingsForArchive} />
+    reactQueryProviderHOC(
+      <OnGoingBookingItem
+        booking={booking}
+        eligibleBookingsForArchive={eligibleBookingsForArchive}
+      />
+    )
   )
 }

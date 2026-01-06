@@ -14,6 +14,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
@@ -82,6 +83,7 @@ jest.useFakeTimers()
 
 describe('<SearchFilter/>', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
   })

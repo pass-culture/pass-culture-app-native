@@ -4,6 +4,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
@@ -25,13 +26,15 @@ describe('<PriceModal/>', () => {
 
   it('should display mobile header modal if mobile viewport', async () => {
     render(
-      <PriceModal
-        title="Prix"
-        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-        isVisible
-        hideModal={jest.fn()}
-        filterBehaviour={FilterBehaviour.SEARCH}
-      />
+      reactQueryProviderHOC(
+        <PriceModal
+          title="Prix"
+          accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+          isVisible
+          hideModal={jest.fn()}
+          filterBehaviour={FilterBehaviour.SEARCH}
+        />
+      )
     )
 
     const pageHeader = screen.getByTestId('pageHeader')
@@ -44,13 +47,15 @@ describe('<PriceModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        <PriceModal
-          title="Prix"
-          accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-          isVisible
-          hideModal={jest.fn()}
-          filterBehaviour={FilterBehaviour.SEARCH}
-        />
+        reactQueryProviderHOC(
+          <PriceModal
+            title="Prix"
+            accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+            isVisible
+            hideModal={jest.fn()}
+            filterBehaviour={FilterBehaviour.SEARCH}
+          />
+        )
       )
       await act(async () => {
         const results = await checkAccessibilityFor(container)

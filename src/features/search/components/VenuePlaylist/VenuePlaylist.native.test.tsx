@@ -12,6 +12,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -48,7 +49,11 @@ describe('<VenuePlaylist />', () => {
   })
 
   it('should render the title and venues playlist', () => {
-    render(<VenuePlaylist venuePlaylistTitle="Test Playlist" venues={mockedAlgoliaVenuesItems} />)
+    render(
+      reactQueryProviderHOC(
+        <VenuePlaylist venuePlaylistTitle="Test Playlist" venues={mockedAlgoliaVenuesItems} />
+      )
+    )
 
     expect(screen.getByText('Test Playlist')).toBeOnTheScreen()
     expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
@@ -56,11 +61,13 @@ describe('<VenuePlaylist />', () => {
 
   it('should not display Voir sur la carte button when current view is ThematicSearch and wipVenueMap feature flag deactivated', () => {
     render(
-      <VenuePlaylist
-        venuePlaylistTitle="Test Playlist"
-        venues={mockedAlgoliaVenuesItems}
-        currentView="SearchResults"
-      />
+      reactQueryProviderHOC(
+        <VenuePlaylist
+          venuePlaylistTitle="Test Playlist"
+          venues={mockedAlgoliaVenuesItems}
+          currentView="SearchResults"
+        />
+      )
     )
 
     expect(screen.queryByText('Voir sur la carte')).toBeNull()
@@ -73,11 +80,13 @@ describe('<VenuePlaylist />', () => {
 
     it('should display Voir sur la carte button when current view is ThematicSearch', () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+          />
+        )
       )
 
       expect(screen.getByText('Voir sur la carte')).toBeOnTheScreen()
@@ -85,11 +94,13 @@ describe('<VenuePlaylist />', () => {
 
     it('should display number of results when current view is not ThematicSearch', () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="SearchResults"
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="SearchResults"
+          />
+        )
       )
 
       expect(screen.getByText('6 résultats')).toBeOnTheScreen()
@@ -97,12 +108,14 @@ describe('<VenuePlaylist />', () => {
 
     it('should set venue types filter when search group associated to venue types when pressing Voir sur la carte button', async () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.LIVRES}
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.LIVRES}
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -116,12 +129,14 @@ describe('<VenuePlaylist />', () => {
 
     it('should set venue types filter as empty array when search group not associated to venue types when pressing Voir sur la carte button', async () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -131,11 +146,13 @@ describe('<VenuePlaylist />', () => {
 
     it('should set venue types filter as empty array when no search group specified when pressing Voir sur la carte button', async () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -152,13 +169,15 @@ describe('<VenuePlaylist />', () => {
         toggleModal: jest.fn(),
       })
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
-          isLocated={false}
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.CINEMA}
+            isLocated={false}
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -168,13 +187,15 @@ describe('<VenuePlaylist />', () => {
 
     it('should navigate to venue map when pressing Voir sur la carte button and user is located', async () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
-          isLocated
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.CINEMA}
+            isLocated
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -184,13 +205,15 @@ describe('<VenuePlaylist />', () => {
 
     it('should trigger ConsultVenueMap log when pressing Voir sur la carte button and user is located', async () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
-          isLocated
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.CINEMA}
+            isLocated
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -200,13 +223,15 @@ describe('<VenuePlaylist />', () => {
 
     it('should not trigger ConsultVenueMap log when pressing Voir sur la carte button and user is not located', async () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
-          isLocated={false}
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.CINEMA}
+            isLocated={false}
+          />
+        )
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
@@ -218,14 +243,16 @@ describe('<VenuePlaylist />', () => {
   describe('Separator', () => {
     it('should display Separator when shouldDisplaySeparator is true', () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
-          isLocated={false}
-          shouldDisplaySeparator
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.CINEMA}
+            isLocated={false}
+            shouldDisplaySeparator
+          />
+        )
       )
 
       expect(screen.getByTestId('venue-playlist-separator')).toBeOnTheScreen()
@@ -233,14 +260,16 @@ describe('<VenuePlaylist />', () => {
 
     it('should not display Separator when shouldDisplaySeparator is false', () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockedAlgoliaVenuesItems}
-          currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
-          isLocated={false}
-          shouldDisplaySeparator={false}
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockedAlgoliaVenuesItems}
+            currentView="ThematicSearch"
+            offerCategory={SearchGroupNameEnumv2.CINEMA}
+            isLocated={false}
+            shouldDisplaySeparator={false}
+          />
+        )
       )
 
       expect(screen.queryByTestId('venue-playlist-separator')).not.toBeOnTheScreen()

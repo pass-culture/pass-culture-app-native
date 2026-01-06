@@ -1,9 +1,10 @@
 import React from 'react'
 
 import { AccountState } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen } from 'tests/utils'
 
 import { AccountStatusScreenHandler } from './AccountStatusScreenHandler'
@@ -39,35 +40,35 @@ describe('<AccountStatusScreenHandler />', () => {
 
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
-    render(<AccountStatusScreenHandler />)
+    renderAccountStatusScreenHandler()
 
     expect(screen.getByText('Ton compte est désactivé')).toBeOnTheScreen()
   })
 
   it('should display SuspiciousLoginSuspendedAccount component if account is suspended for suspicious login reported by user', () => {
     mockSuspensionStatus.status = AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER
-    render(<AccountStatusScreenHandler />)
+    renderAccountStatusScreenHandler()
 
     expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should display FraudulentSuspendedAccount component if account is suspended for fraud', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED
-    render(<AccountStatusScreenHandler />)
+    renderAccountStatusScreenHandler()
 
     expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should redirect to home if account is not suspended', () => {
     mockSuspensionStatus.status = AccountState.ACTIVE
-    render(<AccountStatusScreenHandler />)
+    renderAccountStatusScreenHandler()
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should call sign out function on component unmount', () => {
     mockUseCurrentRoute('TabNavigator')
-    render(<AccountStatusScreenHandler />)
+    renderAccountStatusScreenHandler()
 
     screen.unmount()
 
@@ -76,10 +77,14 @@ describe('<AccountStatusScreenHandler />', () => {
 
   it('should not call sign out function if user is redirect to reactivation success screen', () => {
     mockUseCurrentRoute('AccountReactivationSuccess')
-    render(<AccountStatusScreenHandler />)
+    renderAccountStatusScreenHandler()
 
     screen.unmount()
 
     expect(mockSignOut).not.toHaveBeenCalled()
   })
 })
+
+function renderAccountStatusScreenHandler() {
+  return render(reactQueryProviderHOC(<AccountStatusScreenHandler />))
+}

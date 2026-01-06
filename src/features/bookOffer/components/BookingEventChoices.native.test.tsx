@@ -10,6 +10,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
@@ -51,6 +52,7 @@ jest.mock('queries/offer/useBookingOfferQuery', () => ({
 
 describe('<BookingEventChoices />', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<OfferResponseV2>(`/v2/offer/116656`, offerResponseSnap)
     setFeatureFlags()
   })

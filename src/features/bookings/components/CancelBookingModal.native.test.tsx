@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -49,6 +50,7 @@ jest.useFakeTimers()
 describe('<CancelBookingModal />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
   })
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

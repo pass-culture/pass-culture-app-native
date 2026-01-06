@@ -22,6 +22,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { userEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -93,6 +94,7 @@ jest.useFakeTimers()
 
 describe('<Favorite /> component', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
     setFeatureFlags()
   })

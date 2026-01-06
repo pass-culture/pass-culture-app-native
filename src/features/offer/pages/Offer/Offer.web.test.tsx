@@ -12,6 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20_000) // to avoid exceeded timeout
@@ -74,6 +75,7 @@ jest.spyOn(Cookies, 'useCookies').mockReturnValue(defaultUseCookies)
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
+      setSettings()
       useRoute.mockReturnValue({ params: { id: mockedOffer.id } })
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
