@@ -116,8 +116,7 @@ describe('Home page', () => {
     expect(await screen.findByText('Suis tes thèmes préférés')).toBeOnTheScreen()
   })
 
-  // TODO(PC-36585): unskip this test
-  it.skip('should log analytics when onboarding subscription modal is displayed', async () => {
+  it('should log analytics when onboarding subscription modal is displayed', async () => {
     mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
     await storage.saveObject('logged_in_session_count', 3)
 

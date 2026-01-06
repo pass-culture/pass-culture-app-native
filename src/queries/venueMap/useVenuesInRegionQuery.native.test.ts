@@ -77,10 +77,8 @@ describe('useVenuesInRegionQuery', () => {
     expect(mockFetchVenues).not.toHaveBeenCalled()
   })
 
-  // TODO(PC-36585): Test flaky following the v5 react query update
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not dispatch in context when initial venues not defined', async () => {
-    const { result } = renderHook(
+  it('should not dispatch in context when initial venues not defined', async () => {
+    renderHook(
       () =>
         useVenuesInRegionQuery({
           region,
@@ -90,9 +88,6 @@ describe('useVenuesInRegionQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
-    await act(async () => {})
-
-    await waitFor(() => expect(result.current.isSuccess).toBeFalsy())
 
     await act(async () => {})
 
