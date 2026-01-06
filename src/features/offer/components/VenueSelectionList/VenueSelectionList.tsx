@@ -5,10 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { VenueDetail } from 'features/offer/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
-import {
-  RadioButtonGroup,
-  RadioButtonGroupOption,
-} from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
 export type VenueListItem = VenueDetail & {
   offerId: number

@@ -28,7 +28,7 @@ const optionsDetailed = (keyPrefix: string): Array<RadioButtonGroupOption> =>
     },
   }))
 
-const onValueChange = () => undefined
+const onChange = () => undefined
 
 const variantConfig: Variants<typeof RadioButtonGroup> = [
   {
@@ -38,7 +38,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       options: [
         { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-default-1' },
         { label: 'RadioButton_2', sizing: 'fill', key: 'radio-button-default-2' },
@@ -52,7 +52,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       disabled: true,
       options: [
         { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-disabled-1' },
@@ -67,7 +67,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       error: true,
       errorText: 'Some error text',
       options: [
@@ -84,7 +84,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       display: 'horizontal',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       options: [
         { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-horizontal-1' },
         { label: 'RadioButton_2', sizing: 'fill', key: 'radio-button-horizontal-2' },
@@ -98,7 +98,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       variant: 'detailed',
       options: optionsDetailed('radio-button-detailed'),
     },
@@ -110,7 +110,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       variant: 'detailed',
       error: true,
       errorText: 'Error mega',
@@ -124,7 +124,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       variant: 'detailed',
       disabled: true,
       options: optionsDetailed('radio-button-detailed-disabled'),
@@ -137,7 +137,7 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       value: '',
-      onValueChange,
+      onChange,
       variant: 'detailed',
       display: 'horizontal',
       options: optionsDetailed('radio-button-detailed-horizontal'),
