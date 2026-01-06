@@ -1,8 +1,6 @@
 export type { DocumentData, DocumentSnapshot } from 'firebase/firestore'
 
-import app from '../firebase-init'
-
-export { app }
+export { app } from '../firebase-init'
 
 export {
   getFirestore,

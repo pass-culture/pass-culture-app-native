@@ -4,6 +4,4 @@ import { initializeApp } from 'firebase/app'
 
 import { FIREBASE_CONFIG } from 'libs/firebase/firebaseConfig'
 
-const app = initializeApp(FIREBASE_CONFIG)
-
-export default app
+export const app = initializeApp(FIREBASE_CONFIG)
