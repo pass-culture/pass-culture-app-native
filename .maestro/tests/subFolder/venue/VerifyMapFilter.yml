@@ -12,7 +12,7 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: "Réinitialiser"
 - tapOn: ".*Sorties.*"
-- tapOn: "Cinéma - Salle de projections"
+- tapOn: "Cinéma"
 - tapOn: "Rechercher"
 
 - tapOn: "Voir tous les filtres : 1 filtre actif"
