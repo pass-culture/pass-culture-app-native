@@ -100,7 +100,7 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    expect(screen.getByText('500 m')).toBeOnTheScreen()
+    expect(screen.getByText('à 500 m')).toBeOnTheScreen()
   })
 
   it('should not display distance when user not share his position', () => {
@@ -120,7 +120,7 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    expect(screen.queryByText('500 m')).not.toBeOnTheScreen()
+    expect(screen.queryByText('à 500 m')).not.toBeOnTheScreen()
   })
 
   it('should display geolocation banner when user has not a location', () => {
