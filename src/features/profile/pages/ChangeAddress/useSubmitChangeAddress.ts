@@ -5,17 +5,18 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { getProfileHookConfig } from 'features/navigation/ProfileStackNavigator/getProfileHookConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { selectIdCheckAddressAutocompletion } from 'features/profile/queries/settings/selectors/selectIdCheckAddressAutocompletion'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
+import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -36,7 +37,9 @@ export const useSubmitChangeAddress = () => {
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
   const { user } = useAuthContext()
-  const { data: settings } = useSettingsContext()
+  const { data: idCheckAddressAutocompletion } = useSettingsQuery({
+    select: selectIdCheckAddressAutocompletion,
+  })
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()
@@ -64,8 +67,7 @@ export const useSubmitChangeAddress = () => {
   ).current
   const [debouncedQuery, setDebouncedQuery] = useState(query)
 
-  const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
-  const shouldShowAddressResults = idCheckAddressAutocompletion && debouncedQuery.length > 0
+  const shouldShowAddressResults = !!idCheckAddressAutocompletion && debouncedQuery.length > 0
 
   const {
     data: addresses = [],
