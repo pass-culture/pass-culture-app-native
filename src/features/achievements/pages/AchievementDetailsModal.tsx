@@ -6,7 +6,7 @@ import { useAchievementDetails } from 'features/achievements/hooks/useAchievemen
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
-import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -73,7 +73,7 @@ const IconsWrapper = styled.View({
 })
 
 const BodyWrapper = styled.View(({ theme }) => ({
-  paddingHorizontal: getSpacing(2),
+  paddingHorizontal: theme.designSystem.size.spacing.s,
   paddingVertical: getSpacing(1),
   borderRadius: theme.designSystem.size.borderRadius.s,
 }))

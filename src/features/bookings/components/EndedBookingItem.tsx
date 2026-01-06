@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { BookingListItemResponse } from 'api/gen'
@@ -35,6 +35,7 @@ export const EndedBookingItem = ({
   handleShowShareOfferModal,
 }: Props) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
+  const { offer } = stock
   const subcategoriesMapping = useSubcategoriesMapping()
   const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
   const prePopulateOffer = usePrePopulateOffer()
@@ -42,28 +43,25 @@ export const EndedBookingItem = ({
   const { showErrorSnackBar } = useSnackBarContext()
   const segment = useABSegment()
 
-  const isEligibleBookingsForArchiveValue =
-    expirationDateUtilsV2.isEligibleBookingsForArchive(booking)
-
-  const shouldRedirectToBooking = isEligibleBookingsForArchiveValue && !cancellationReason
+  const isBookingEligibleForArchive = !!expirationDateUtilsV2.isArchivableBooking(booking)
+  const shouldRedirectToBooking = isBookingEligibleForArchive && !cancellationReason
 
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
-    name: stock.offer.name,
+    name: offer.name,
     dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
   })
 
-  function handlePressOffer() {
-    const { offer } = stock
+  const handlePressOffer = async () => {
     if (!offer.id) return
     if (shouldRedirectToBooking)
-      analytics.logViewedBookingPage({
-        offerId: stock.offer.id,
+      await analytics.logViewedBookingPage({
+        offerId: offer.id,
         from: 'endedbookings',
       })
-    if (isEligibleBookingsForArchiveValue) return
+    if (isBookingEligibleForArchive) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       prePopulateOffer({
@@ -90,15 +88,15 @@ export const EndedBookingItem = ({
     }
   }
   const { share: shareOffer, shareContent } = getShareOffer({
-    offer: stock.offer,
+    offer,
     utmMedium: 'ended_booking',
   })
 
-  const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: stock.offer.id })
-    shareOffer()
-    handleShowShareOfferModal && handleShowShareOfferModal(shareContent)
-  }, [stock.offer.id, shareOffer, handleShowShareOfferModal, shareContent])
+  const pressShareOffer = async () => {
+    await analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: offer.id })
+    await shareOffer()
+    handleShowShareOfferModal?.(shareContent)
+  }
 
   return (
     <Container>
@@ -107,18 +105,18 @@ export const EndedBookingItem = ({
         navigateTo={
           shouldRedirectToBooking
             ? { screen: 'BookingDetails', params: { id: booking.id } }
-            : { screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }
+            : { screen: 'Offer', params: { id: offer.id, from: 'endedbookings' } }
         }
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
         <ContentContainerGap gap={4}>
-          <OfferImage imageUrl={stock.offer.imageUrl ?? ''} categoryId={subcategory.categoryId} />
+          <OfferImage imageUrl={offer.imageUrl ?? ''} categoryId={subcategory.categoryId} />
           <AttributesView>
-            <BookingItemTitle title={stock.offer.name} />
+            <BookingItemTitle title={offer.name} />
             <EndedReasonAndDate gap={1}>
               <EndedBookingReason
                 booking={booking}
-                isEligibleBookingsForArchiveValue={isEligibleBookingsForArchiveValue}
+                isEligibleBookingsForArchiveValue={isBookingEligibleForArchive}
               />
               <StyledBodyAccentXs>{endedBookingDateLabel}</StyledBodyAccentXs>
             </EndedReasonAndDate>

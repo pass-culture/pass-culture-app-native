@@ -34,7 +34,7 @@ describe('PracticalInformation', () => {
     expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
   })
 
-  it('should display placeholder when no practical information provided', async () => {
+  it('should display specific wording placeholder when no practical information provided and venue is open to public', async () => {
     const venueWithoutPracticalInformation = {
       ...venueOpenToPublic,
       withdrawalDetails: undefined,
@@ -54,6 +54,34 @@ describe('PracticalInformation', () => {
 
     expect(
       screen.getByText('Les infos pratiques ne sont pas encore renseignées pour ce lieu')
+    ).toBeOnTheScreen()
+  })
+
+  it('should display specific wording placeholder when no practical information provided and venue is not open to public', async () => {
+    const venueWithoutPracticalInformationNotOpenToPublic = {
+      ...venueOpenToPublic,
+      isOpenToPublic: false,
+      withdrawalDetails: undefined,
+      description: undefined,
+      contact: undefined,
+      externalAccessibilityUrl: undefined,
+      externalAccessibilityData: undefined,
+      openingHours: undefined,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+    }
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation venue={venueWithoutPracticalInformationNotOpenToPublic} />
+      )
+    )
+
+    expect(
+      screen.getByText('Les infos pratiques ne sont pas encore renseignées pour cette structure')
     ).toBeOnTheScreen()
   })
 

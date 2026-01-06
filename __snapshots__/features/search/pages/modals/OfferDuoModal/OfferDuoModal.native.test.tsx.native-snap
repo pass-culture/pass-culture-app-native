@@ -526,6 +526,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           }
         >
           <View
+            flexDirection="row"
             gap={4}
             isModal={true}
             style={

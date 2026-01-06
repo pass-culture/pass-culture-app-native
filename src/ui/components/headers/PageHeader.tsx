@@ -5,7 +5,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
-  numberOfLines?: 1 | 2
+  numberOfLines?: number
   subtitle?: string
   children?: React.ReactNode
 }

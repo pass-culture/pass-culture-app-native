@@ -100,5 +100,5 @@ const BufferContainer = styled(ViewGap)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
   borderRadius: theme.designSystem.size.borderRadius.xl,
   width: theme.appContentWidth > theme.breakpoints.sm ? '50%' : '100%',
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
 }))

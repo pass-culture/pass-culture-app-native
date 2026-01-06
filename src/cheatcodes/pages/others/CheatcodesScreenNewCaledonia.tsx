@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/no-currency-symbols */
+/* eslint-disable local-rules/no-euro-usage */
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 

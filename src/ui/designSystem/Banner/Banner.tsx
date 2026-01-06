@@ -42,7 +42,7 @@ type OnPressLinkProps = {
   externalNav?: never
 }
 
-type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps | OnPressLinkProps
+export type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps | OnPressLinkProps
 
 type BannerImageSize =
   | typeof LENGTH_XXS

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { Geoloc } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
@@ -10,7 +10,7 @@ export interface Venue {
   label: string
   info: string
   venueId: number | null
-  venue_type: VenueTypeCodeKey
+  activity: Activity | null
   _geoloc?: Geoloc
   banner_url?: string | null
   postalCode?: string | null

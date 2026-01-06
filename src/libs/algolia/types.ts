@@ -2,6 +2,7 @@ import { SearchParamsObject } from 'algoliasearch/lite'
 import { Hit } from 'instantsearch.js'
 
 import {
+  Activity,
   GenreType,
   GenreTypeContentModel,
   GTL,
@@ -10,7 +11,6 @@ import {
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
   VenueResponse,
-  VenueTypeCodeKey,
 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
@@ -75,14 +75,14 @@ export type AlgoliaVenueOffer = {
   isMotorDisabilityCompliant?: boolean
   isVisualDisabilityCompliant?: boolean
   isPermanent?: boolean
-  venue_type?: string
+  activity?: string
 }
 
 export type AlgoliaVenueOfferListItem = {
   objectID: string
   _geoloc: Geoloc
   banner_url: string
-  venue_type: string
+  activity: string
   name: string
   city: string
   postalCode: string
@@ -207,9 +207,8 @@ export type VenueHit = Pick<
   | 'city'
   | 'postalCode'
   | 'isOpenToPublic'
-> & {
-  venueTypeCode: VenueTypeCodeKey
-}
+  | 'activity'
+>
 
 export interface AlgoliaQueryParameters {
   query: string
@@ -256,7 +255,7 @@ export interface AlgoliaVenue {
   postalCode: string | null
   name: string
   offerer_name: string
-  venue_type: VenueTypeCodeKey
+  activity: Activity
   description: string
   audio_disability: boolean | null
   mental_disability: boolean | null

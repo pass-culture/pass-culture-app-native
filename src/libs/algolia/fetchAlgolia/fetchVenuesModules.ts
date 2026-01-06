@@ -1,4 +1,3 @@
-import { VenueTypeCodeKey } from 'api/gen'
 import { Venue, VenuesModuleParameters } from 'features/home/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
@@ -50,7 +49,7 @@ const buildVenue = (venue: AlgoliaVenue): Venue => {
     longitude: venue._geoloc.lng ?? undefined,
     name: venue.name,
     publicName: venue.name,
-    venueTypeCode: venue.venue_type as VenueTypeCodeKey,
+    activity: venue.activity,
     city: venue.city,
     postalCode: venue.postalCode,
   }

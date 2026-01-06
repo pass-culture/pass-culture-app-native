@@ -21,7 +21,7 @@ jest.useFakeTimers()
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
     mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(
-      `/v1/venue/${venueDataTest.id}`,
+      `/v2/venue/${venueDataTest.id}`,
       venueDataTest
     )
   })

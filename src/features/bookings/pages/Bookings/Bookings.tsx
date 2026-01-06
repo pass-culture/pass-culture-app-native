@@ -1,5 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { PostReactionRequest, ReactionTypeEnum } from 'api/gen'
@@ -44,7 +44,6 @@ export const Bookings = () => {
 
   const { params } = useRoute<UseRouteType<'Bookings'>>()
 
-  const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
 
@@ -114,7 +113,7 @@ export const Bookings = () => {
     [BookingsTab.COMPLETED]: <EndedBookings useEndedBookingsQuery={useActiveBookingsQuery} />,
   }
 
-  const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0
+  const shouldDisplayPastille = numberOfReactableBookings > 0
 
   return (
     <Container gap={6}>

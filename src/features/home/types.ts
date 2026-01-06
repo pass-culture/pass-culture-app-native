@@ -1,6 +1,6 @@
 import { Animated, ViewToken } from 'react-native'
 
-import { VenueAccessibilityModel, VenueContactModel, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { PlaylistOffersParams, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes, ContentfulLabelCategories, Layout } from 'libs/contentful/types'
@@ -222,7 +222,7 @@ export type VenuesModule = {
 
 export type VenuesModuleParameters = {
   title: string
-  venueTypes?: string[]
+  activities?: string[]
   tags?: string[]
   hitsPerPage: number
   isGeolocated?: boolean
@@ -246,7 +246,7 @@ export type Venue = {
   latitude?: number
   longitude?: number
   name: string
-  venueTypeCode: VenueTypeCodeKey
+  activity: Activity
   city: string
   postalCode: string | null
 }

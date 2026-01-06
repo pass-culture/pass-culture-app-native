@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BonificationBanner } from 'features/bonification/components/BonificationBanner'
+import { getShouldShowBonificationBanner } from 'features/bonification/getShouldShowBonificationBanner'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
@@ -53,12 +54,14 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
-  const { user } = useAuthContext()
-
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
-  const showBonificationBanner =
-    enableBonification && user?.isEligibleForBonification && !hasClosedBonificationBanner
+  const { user } = useAuthContext()
+  const showBonificationBanner = getShouldShowBonificationBanner({
+    enableBonification,
+    hasClosedBonificationBanner,
+    qfBonificationStatus: user?.qfBonificationStatus,
+  })
 
   const { options: remoteActivationBannerOptions, isFeatureFlagActive: disableActivation } =
     useFeatureFlagOptionsQuery(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
@@ -135,7 +138,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
       return (
         <BannerContainer>
           <BonificationBanner
-            bonificationStatus={user?.bonificationStatus}
+            bonificationStatus={user?.qfBonificationStatus}
             onCloseCallback={onCloseBanner}
           />
         </BannerContainer>
@@ -153,7 +156,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     banner.text,
     showBonificationBanner,
     renderSystemBanner,
-    user?.bonificationStatus,
+    user?.qfBonificationStatus,
     onCloseBanner,
   ])
 

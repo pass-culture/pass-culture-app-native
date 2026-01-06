@@ -21,7 +21,7 @@ export const VenueMapFiltersList: FunctionComponent<Props> = ({ navigation }) =>
   const venueFilters = useVenuesFilter()
 
   const onPress = (item: FilterGroupData) => {
-    navigation.navigate('VenueMapTypeFilter', { title: item.label, filterGroup: item.id })
+    navigation.navigate('VenueMapActivityFilter', { title: item.label, filterGroup: item.id })
   }
 
   const onClose = () => {

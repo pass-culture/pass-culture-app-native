@@ -118,13 +118,13 @@ const Body = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const Row = styled.View<{ marginRight: number; marginTop: number }>(
-  ({ marginRight, marginTop }) => ({
+  ({ marginRight, marginTop, theme }) => ({
     ...(Platform.OS === 'web' ? { flex: 1 } : {}),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop,
-    marginBottom: getSpacing(2),
+    marginBottom: theme.designSystem.size.spacing.s,
     marginLeft: getSpacing(6),
     marginRight,
   })

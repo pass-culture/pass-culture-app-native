@@ -26,18 +26,22 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { user } = useAuthContext()
 
   const expirationDate = formattedExpirationDate(booking.dateCreated)
-  const isDigitalBooking = booking.stock.offer.isDigital === true && !booking.expirationDate
+  const isDigitalBookingWithoutExpirationDate =
+    booking.stock.offer.isDigital && !booking.expirationDate
   const isFreeOfferToArchive =
     FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(booking.stock.offer.subcategoryId) &&
     booking.totalAmount === 0
 
-  if (!expirationDate && ((!booking.confirmationDate && isDigitalBooking) || isFreeOfferToArchive))
+  if (
+    !expirationDate &&
+    ((!booking.confirmationDate && booking.stock.offer.isDigital) || isFreeOfferToArchive)
+  )
     return null
 
   const cancelMessage = getCancelMessage({
     confirmationDate: booking.confirmationDate,
     expirationDate,
-    isDigitalBooking,
+    isDigitalBookingWithoutExpirationDate,
     isFreeOfferToArchive,
     user,
   })

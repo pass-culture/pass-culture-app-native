@@ -98,9 +98,9 @@ const Container = styled.View({
 
 const Separator = () => <StyledSeparator />
 
-const StyledView = styled.View({
-  gap: getSpacing(2),
+const StyledView = styled.View(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.s,
   marginVertical: getSpacing(3),
-})
+}))
 
 const StyledSeparator = styled.View({ width: getSpacing(4) })

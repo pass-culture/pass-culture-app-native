@@ -58,7 +58,7 @@ const Title = styled(Typo.Button)<{ isDisabled: boolean }>(({ isDisabled, theme 
   color: isDisabled
     ? theme.designSystem.color.text.disabled
     : theme.designSystem.color.text.inverted,
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
 }))
 
 const LegendContainer = styled.View<{ reverse?: boolean }>(({ reverse }) => ({

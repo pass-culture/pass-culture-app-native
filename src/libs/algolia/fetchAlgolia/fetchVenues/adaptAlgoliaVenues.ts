@@ -8,7 +8,7 @@ export const adaptAlgoliaVenues = (venues: AlgoliaVenue[]): Venue[] =>
     venueId: parseInt(venue.objectID),
     _geoloc: venue._geoloc,
     banner_url: venue.banner_url,
-    venue_type: venue.venue_type,
+    activity: venue.activity,
     postalCode: venue.postalCode,
     isPermanent: venue.isPermanent === undefined ? true : venue.isPermanent,
     isOpenToPublic: venue.isOpenToPublic,

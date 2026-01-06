@@ -127,7 +127,6 @@ export const ReinitializePassword = () => {
             name="newPassword"
             label="Mot de passe"
             control={control}
-            autoFocus
             withSecurityRules
             securityRulesAlwaysVisible
             onSubmitEditing={handleSubmit(submitPassword)}

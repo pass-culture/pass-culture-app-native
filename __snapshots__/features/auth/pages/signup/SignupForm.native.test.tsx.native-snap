@@ -170,18 +170,10 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         testID="close-button-container"
       />
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 1 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 1 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -935,18 +927,10 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
         </View>
       </View>
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 2 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 2 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -1098,7 +1082,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               accessibilityLabel="Champs de texte - Mot de passe - Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
               accessibilityRequired={false}
               autoCapitalize="none"
-              autoFocus={true}
               editable={true}
               isEmpty={true}
               multiline={false}
@@ -1831,18 +1814,10 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
         </View>
       </View>
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 3 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 3 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -2986,18 +2961,10 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
         </View>
       </View>
     </View>
-    <Text
-      nativeID="testUuidV4"
-      style={
-        {
-          "display": "none",
-        }
-      }
-    >
-      Étape 4 sur 5
-    </Text>
     <View
-      accessibilityDescribedBy="testUuidV4"
+      accessibilityLabel="Étape 4 sur 5"
+      accessibilityRole="progressbar"
+      accessible={true}
       style={
         {
           "backgroundColor": "#f1f1f4",
@@ -3597,6 +3564,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           }
         >
           <View
+            accessibilityHint="Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter."
             accessibilityLabel="S’inscrire et accepter les conditions générales d’utilisation et la politique de confidentialité"
             accessibilityRole="button"
             accessibilityState={
@@ -3691,6 +3659,8 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           }
         >
           <Text
+            accessibilityElementsHidden={true}
+            importantForAccessibility="no"
             style={
               {
                 "color": "#696a6f",

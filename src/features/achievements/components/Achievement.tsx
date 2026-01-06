@@ -43,7 +43,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
 
 const AchievementContainer = styled.View<{ isCompleted: boolean }>(({ theme, isCompleted }) => ({
   paddingVertical: getSpacing(6),
-  paddingHorizontal: getSpacing(2),
+  paddingHorizontal: theme.designSystem.size.spacing.s,
   border: `1px solid ${theme.designSystem.color.border.default}`,
   borderRadius: theme.designSystem.size.borderRadius.m,
   alignItems: 'center',
@@ -66,5 +66,5 @@ const TypoAchievementName = styled(Typo.Button)<{ isCompleted: boolean }>(
 const IllustrationContainer = styled.View(({ theme }) => ({
   height: theme.illustrations.sizes.small,
   width: theme.illustrations.sizes.small,
-  marginBottom: getSpacing(2),
+  marginBottom: theme.designSystem.size.spacing.s,
 }))

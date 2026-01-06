@@ -99,13 +99,22 @@ describe('<VenueOffers />', () => {
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
-  it('should display placeholder when no offers', async () => {
+  it('should display specific wording placeholder when no offers and venue open to public', async () => {
     renderVenueOffers({ venueOffers: { hits: [], nbHits: 0 } })
 
-    await screen.findByText('Il n’y a pas encore d’offre disponible dans ce lieu')
+    expect(
+      await screen.findByText('Il n’y a pas encore d’offre disponible dans ce lieu')
+    ).toBeOnTheScreen()
+  })
+
+  it('should display specific wording placeholder when no offers and venue not open to public', async () => {
+    renderVenueOffers({
+      venueOffers: { hits: [], nbHits: 0 },
+      venue: { ...venueDataTest, isOpenToPublic: false },
+    })
 
     expect(
-      screen.getByText('Il n’y a pas encore d’offre disponible dans ce lieu')
+      await screen.findByText('Cette structure ne propose pas encore d’offre')
     ).toBeOnTheScreen()
   })
 

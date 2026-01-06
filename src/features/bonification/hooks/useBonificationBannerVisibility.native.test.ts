@@ -18,4 +18,14 @@ describe('useBonificationBannerVisibility', () => {
 
     expect(result.current.hasClosedBonificationBanner).toBe(true)
   })
+
+  it('should return false after calling the reset function', async () => {
+    const { result } = renderHook(() => useBonificationBannerVisibility())
+
+    await act(() => {
+      result.current.resetBannerVisibility()
+    })
+
+    expect(result.current.hasClosedBonificationBanner).toBe(false)
+  })
 })

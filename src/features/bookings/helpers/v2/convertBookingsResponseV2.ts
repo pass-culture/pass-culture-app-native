@@ -16,6 +16,7 @@ export const convertBookingsResponseV2 = (
 const convertBooking = (booking: BookingResponse): BookingListItemResponse => ({
   ...booking,
   activationCode: booking.ticket.activationCode,
+  isArchivable: booking.stock.isAutomaticallyUsed || booking.displayAsEnded,
   stock: {
     ...booking.stock,
     offer: {

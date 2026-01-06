@@ -5,14 +5,14 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { ActivityLocationIcon } from 'features/home/components/modules/venues/ActivityLocationIcon'
 import { VenueDetails } from 'features/home/components/modules/venues/VenueDetails'
-import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
-import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
+import { mapActivityToIcon } from 'libs/parsers/activity'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
@@ -42,8 +42,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { venue, width, height } = props
   const queryClient = useQueryClient()
-  const { designSystem, tiles } = useTheme()
-  const MAX_VENUE_CAPTION_HEIGHT = tiles.maxCaptionHeight.venue
+  const { designSystem } = useTheme()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
   const distance = getDistance(
@@ -68,7 +67,6 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
   return (
     <View {...getHeadingAttrs(3)}>
       <StyledTouchableLink
-        height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onBeforeNavigate={handlePressVenue}
@@ -82,8 +80,8 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
             <ImageTile width={width} height={height} uri={venue.bannerUrl} />
           ) : (
             <VenueTypeTile width={width} height={height} testID="venue-type-tile">
-              <VenueTypeLocationIcon
-                VenueTypeIcon={mapVenueTypeToIcon(venue.venueTypeCode)}
+              <ActivityLocationIcon
+                ActivityIcon={mapActivityToIcon(venue.activity)}
                 iconColor={designSystem.color.icon.subtle}
                 backgroundColor={designSystem.color.background.subtle}
               />
@@ -106,12 +104,10 @@ export const VenueTile = memo(UnmemoizedVenueTile)
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.designSystem.color.background.default,
 }))<{
-  height: number
   width: number
   isFocus?: boolean
-}>(({ height, width, theme, isFocus }) => ({
+}>(({ width, theme, isFocus }) => ({
   width,
-  maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.designSystem.size.borderRadius.m,
   ...customFocusOutline({ isFocus }),

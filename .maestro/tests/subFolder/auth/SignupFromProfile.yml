@@ -22,10 +22,24 @@ appId: ${MAESTRO_APP_ID}
 - swipe: # months
     start: 47%, 52%
     end: 47%, 62%
-- swipe: # years
-    start: 67%, 59%
-    end: 67%, 65%
-- tapOn: 'Continuer vers l’étape CGU & Données'
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - swipe: # years
+        start: 67%, 59%
+        end: 67%, 70%
+    - tapOn: 'Continuer vers l’étape CGU & Données'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - swipe: # years
+        start: 67%, 59%
+        end: 67%, 75%
+    - tapOn: 'Continuer vers l’étape CGU & Données'
 
 - assertVisible: 'CGU & Données'
 

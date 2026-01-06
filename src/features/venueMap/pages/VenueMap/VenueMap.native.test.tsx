@@ -2,11 +2,11 @@ import { useRoute } from '@react-navigation/native'
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
+import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
@@ -63,17 +63,14 @@ jest
 
 jest.mock('features/search/context/SearchWrapper')
 
-const VENUE_TYPE = VenueTypeCodeKey.MOVIE
+const VENUE_TYPE = Activity.CINEMA
 
 describe('<VenueMap />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
     jest.useFakeTimers()
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
     venuesFilterActions.setVenuesFilters([VENUE_TYPE])
   })
 
@@ -96,7 +93,7 @@ describe('<VenueMap />', () => {
 
     expect(header).toBeOnTheScreen()
 
-    const filterKeys = Object.keys(FILTERS_VENUE_TYPE_MAPPING)
+    const filterKeys = Object.keys(FILTERS_ACTIVITY_MAPPING)
 
     // Promises array for each filter
     const filterPromises = filterKeys.map((id) => screen.findByTestId(`${id}Label`))

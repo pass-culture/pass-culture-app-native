@@ -15,7 +15,7 @@ const defaultBuildLocationParameterParams = {
   aroundPlaceRadius: 50,
 }
 
-const defaultFacetFilters = [['has_at_least_one_bookable_offer:true'], ['is_open_to_public:true']]
+const defaultFacetFilters = [['is_open_to_public:true']]
 
 describe('buildVenuesQueryOptions', () => {
   it('should fetch with default search params', () => {
@@ -50,12 +50,12 @@ describe('buildVenuesQueryOptions', () => {
     })
   })
 
-  it('should filter venue types if provided', () => {
-    const params = { ...defaultParams, venueTypes: ['Librairie', 'Musique - Disquaire'] }
+  it('should filter activities if provided', () => {
+    const params = { ...defaultParams, activities: ['Librairie', 'Disquaire'] }
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({
-      facetFilters: [['venue_type:BOOKSTORE', 'venue_type:RECORD_STORE'], ...defaultFacetFilters],
+      facetFilters: [['activity:BOOKSTORE', 'activity:RECORD_STORE'], ...defaultFacetFilters],
     })
   })
 })

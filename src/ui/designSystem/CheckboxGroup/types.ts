@@ -8,38 +8,40 @@ import { ElementType } from 'react'
 import { CheckboxProps } from 'ui/designSystem/Checkbox/Checkbox'
 import { SelectableVariant } from 'ui/designSystem/types'
 
-export type CheckboxGroupOptionSimple = Omit<
+export type CheckboxGroupOptionSimple<T = string> = Omit<
   CheckboxProps,
   'checked' | 'onChange' | 'hasError' | 'disabled' | 'variant' | 'asset' | 'onPress' | 'isChecked'
 > & {
   label: string
-  value: string
+  value: T
   variant?: 'default'
   asset?: never
 }
 
-export type CheckboxGroupOptionDetailed = Omit<
+export type CheckboxGroupOptionDetailed<T = string> = Omit<
   CheckboxProps,
   'checked' | 'onChange' | 'hasError' | 'disabled' | 'variant' | 'onPress' | 'isChecked'
 > & {
   label: string
-  value: string
+  value: T
   variant: 'detailed'
   asset?: CheckboxProps['asset']
 }
 
-export type CheckboxGroupOption = CheckboxGroupOptionSimple | CheckboxGroupOptionDetailed
+export type CheckboxGroupOption<T = string> =
+  | CheckboxGroupOptionSimple<T>
+  | CheckboxGroupOptionDetailed<T>
 
 export type CheckboxGroupDisplay = 'vertical' | 'horizontal'
 
-export type CheckboxGroupProps = {
+export type CheckboxGroupProps<T = string> = {
   label: string
   labelTag?: ElementType
   description?: string
   error?: string
-  options: CheckboxGroupOption[]
-  value: string[]
-  onChange: (value: string[]) => void
+  options: CheckboxGroupOption<T>[]
+  value: T[]
+  onChange: (value: T[]) => void
   display?: CheckboxGroupDisplay
   variant?: SelectableVariant
   disabled?: boolean

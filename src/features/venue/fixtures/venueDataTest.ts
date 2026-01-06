@@ -1,4 +1,4 @@
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 
 export const venueDataTest: Omit<VenueResponse, 'isVirtual'> = {
   accessibility: {
@@ -69,7 +69,7 @@ export const venueDataTest: Omit<VenueResponse, 'isVirtual'> = {
   },
   postalCode: '75000',
   publicName: 'Le Petit Rintintin 1',
-  venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
+  activity: Activity.BOOKSTORE,
   withdrawalDetails: 'How to withdraw, https://test.com',
   timezone: 'UTC',
 }

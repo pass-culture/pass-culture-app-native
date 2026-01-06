@@ -20,7 +20,7 @@ import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Unlock } from 'ui/svg/icons/Unlock'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
   featureFlags: { disableActivation: boolean }
@@ -212,7 +212,7 @@ export function NonBeneficiaryBanner({
 
 const BannerContainer = styled.View<{ withMarginTop?: boolean }>(
   ({ theme, withMarginTop = false }) => ({
-    marginTop: withMarginTop ? getSpacing(2) : undefined,
+    marginTop: withMarginTop ? theme.designSystem.size.spacing.s : undefined,
     paddingHorizontal: theme.contentPage.marginHorizontal,
     position: 'relative',
   })

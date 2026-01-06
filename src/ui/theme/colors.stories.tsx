@@ -60,7 +60,7 @@ const Rectangle = styled.TouchableOpacity<RectangleProps>(({ color, theme }) => 
   width: getSpacing(45),
   backgroundColor: color,
   boxShadow: `0 0 5px ${colorAlpha(theme.designSystem.color.border.default, 0.2)}`,
-  marginBottom: getSpacing(2),
+  marginBottom: theme.designSystem.size.spacing.s,
   position: 'relative',
   alignItems: 'center',
   justifyContent: 'center',
@@ -70,7 +70,7 @@ const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   position: 'absolute',
   color: theme.designSystem.color.text.success,
   backgroundColor: theme.designSystem.color.background.default,
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
   borderRadius: theme.designSystem.size.borderRadius.s,
   zIndex: 1,
 }))

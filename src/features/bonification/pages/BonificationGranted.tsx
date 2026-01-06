@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -17,12 +18,16 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export function BonificationGranted() {
   const { designSystem } = useTheme()
   const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
+  const { refetchUser } = useAuthContext()
 
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isPending: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShowMutation({
-      onSuccess: () => navigateToHomeWithReset(),
+      onSuccess: () => {
+        navigateToHomeWithReset()
+        void refetchUser()
+      },
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })
 
@@ -56,7 +61,7 @@ export function BonificationGranted() {
           <Amount>{bonificationAmount}</Amount>
         </ProgressBarContainer>
         <StyledBody>
-          Ton dossier est validé&nbsp;! Tu fais partie des jeunes qui bénéficient d’une aide.
+          Ton dossier est validé&nbsp;! Tu bénéficies désormais d’un bonus de {bonificationAmount}.
         </StyledBody>
       </React.Fragment>
     </GenericInfoPage>

@@ -1,10 +1,10 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import {
-  getReconciledVenues,
+  AlgoliaVenueOfferWithGeoloc,
   convertAlgoliaVenue2AlgoliaVenueOfferListItem,
   convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem,
-  AlgoliaVenueOfferWithGeoloc,
+  getReconciledVenues,
 } from 'features/search/helpers/searchList/getReconciledVenues'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue, AlgoliaVenueOfferListItem } from 'libs/algolia/types'
@@ -16,7 +16,7 @@ const expectedVenues = [
     postalCode: '75000',
     city: 'Paris',
     banner_url: '',
-    venue_type: VenueTypeCodeKey.BOOKSTORE,
+    activity: Activity.BOOKSTORE,
     _geoloc: { lat: 48.94374, lng: 2.48171 },
   },
   {
@@ -25,7 +25,7 @@ const expectedVenues = [
     postalCode: '75000',
     city: 'Paris',
     banner_url: '',
-    venue_type: VenueTypeCodeKey.CONCERT_HALL,
+    activity: Activity.PERFORMANCE_HALL,
     _geoloc: { lat: 48.91265, lng: 2.4513 },
   },
   {
@@ -34,7 +34,7 @@ const expectedVenues = [
     postalCode: '75000',
     city: 'Paris',
     banner_url: '',
-    venue_type: VenueTypeCodeKey.CONCERT_HALL,
+    activity: Activity.PERFORMANCE_HALL,
     _geoloc: { lat: 4.90339, lng: -52.31663 },
   },
   {
@@ -43,7 +43,7 @@ const expectedVenues = [
     postalCode: '75000',
     city: 'Paris',
     banner_url: '',
-    venue_type: VenueTypeCodeKey.OTHER,
+    activity: Activity.OTHER,
     _geoloc: { lat: 4.90339, lng: -52.31663 },
   },
 ]
@@ -59,7 +59,7 @@ const expectedAlgoliaVenues = [
     name: 'EMS 0063 (ne fonctionne pas)',
     objectID: '7931',
     postalCode: '75000',
-    venue_type: 'MOVIE',
+    activity: 'CINEMA',
   },
   {
     _geoloc: {
@@ -72,7 +72,7 @@ const expectedAlgoliaVenues = [
     name: 'ETABLISSEMENT PUBLIC DU MUSEE DU LOUVRE',
     objectID: '7929',
     postalCode: '75000',
-    venue_type: 'VISUAL_ARTS',
+    activity: 'ART_GALLERY',
   },
   {
     _geoloc: {
@@ -85,7 +85,7 @@ const expectedAlgoliaVenues = [
     name: 'culture scientifique 2',
     objectID: '7927',
     postalCode: '75000',
-    venue_type: 'SCIENTIFIC_CULTURE',
+    activity: 'SCIENCE_CENTRE',
   },
   {
     _geoloc: {
@@ -98,7 +98,7 @@ const expectedAlgoliaVenues = [
     name: 'culture scientifique 1',
     objectID: '7926',
     postalCode: '75000',
-    venue_type: 'SCIENTIFIC_CULTURE',
+    activity: 'SCIENCE_CENTRE',
   },
   {
     _geoloc: {
@@ -111,7 +111,7 @@ const expectedAlgoliaVenues = [
     name: 'musee test2',
     objectID: '7924',
     postalCode: '75000',
-    venue_type: 'MUSEUM',
+    activity: 'MUSEUM',
   },
   {
     _geoloc: {
@@ -124,7 +124,7 @@ const expectedAlgoliaVenues = [
     name: 'Le Sous-sol DATA',
     objectID: '7922',
     postalCode: '75000',
-    venue_type: 'PERFORMING_ARTS',
+    activity: 'ARTS_CENTRE',
   },
 ]
 
@@ -166,6 +166,21 @@ describe('getReconciledVenues', () => {
     expect(result).toEqual(expectedAlgoliaVenues)
   })
 
+  it('should return venues from offers only when venues are permanent', () => {
+    const result = getReconciledVenues(
+      [
+        ...mockedAlgoliaResponse.hits,
+        {
+          ...mockedAlgoliaResponse.hits[1],
+          venue: { ...mockedAlgoliaResponse.hits[1].venue, id: 5, isPermanent: false },
+        },
+      ],
+      []
+    )
+
+    expect(result).toEqual(expectedVenues)
+  })
+
   it('should return algoliavenues and venues from offer formatted when present and venues disjoint', () => {
     const result = getReconciledVenues(mockedAlgoliaResponse.hits, mockAlgoliaVenues)
 
@@ -192,7 +207,7 @@ describe('getReconciledVenues', () => {
         phone_number: null,
         snapchat: null,
         twitter: null,
-        venue_type: VenueTypeCodeKey.MOVIE,
+        activity: Activity.CINEMA,
         visual_disability: false,
         isPermanent: true,
         isOpenToPublic: true,
@@ -218,7 +233,7 @@ describe('getReconciledVenues', () => {
         phone_number: null,
         snapchat: null,
         twitter: null,
-        venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+        activity: Activity.ART_GALLERY,
         visual_disability: false,
         website: null,
         isPermanent: true,
@@ -240,7 +255,7 @@ describe('getReconciledVenues', () => {
         name: 'EMS 0063 (ne fonctionne pas)',
         objectID: '1',
         postalCode: '75000',
-        venue_type: 'MOVIE',
+        activity: 'CINEMA',
       },
       {
         _geoloc: {
@@ -253,7 +268,7 @@ describe('getReconciledVenues', () => {
         name: 'ETABLISSEMENT PUBLIC DU MUSEE DU LOUVRE',
         objectID: '3',
         postalCode: '75000',
-        venue_type: 'VISUAL_ARTS',
+        activity: 'ART_GALLERY',
       },
     ]
 
@@ -272,7 +287,7 @@ describe('convertAlgoliaVenue2AlgoliaVenueOfferListItem', () => {
       city: 'Bordeaux',
       name: 'EMS 0063 (ne fonctionne pas)',
       postalCode: '75000',
-      venue_type: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       _geoloc: { lat: 44.82186, lng: -0.56366 },
     }
 
@@ -291,7 +306,7 @@ describe('convertAlgoliaVenue2AlgoliaVenueOfferListItem', () => {
       city: 'Bordeaux',
       name: 'EMS 0063 (ne fonctionne pas)',
       postalCode: '75000',
-      venue_type: VenueTypeCodeKey.MOVIE,
+      activity: Activity.CINEMA,
       _geoloc: { lat: 44.82186, lng: -0.56366 },
     }
 
@@ -311,7 +326,7 @@ describe('convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem', () => {
       city: 'Paris',
       name: 'Lieu 1',
       postalCode: '75000',
-      venue_type: VenueTypeCodeKey.BOOKSTORE,
+      activity: Activity.BOOKSTORE,
       _geoloc: { lat: 48.94374, lng: 2.48171 },
     }
     const result = convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem({
@@ -332,7 +347,7 @@ describe('convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem', () => {
       city: '',
       name: '',
       postalCode: '',
-      venue_type: VenueTypeCodeKey.OTHER,
+      activity: Activity.OTHER,
       _geoloc: { lat: 48.94374, lng: 2.48171 },
     }
     const result = convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem(mockedAlgoliaVenueOffer)

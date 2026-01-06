@@ -11,7 +11,7 @@ import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/S
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { getVenueTypesFromSearchGroup } from 'features/search/helpers/getVenueTypesFromSearchGroup/getVenueTypesFromSearchGroup'
+import { getActivitiesFromSearchGroup } from 'features/search/helpers/getActivitiesFromSearchGroup/getActivitiesFromSearchGroup'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { AlgoliaVenue, AlgoliaVenueOfferListItem } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
@@ -121,7 +121,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   const isMapWithoutPositionAndNotLocated = !isLocated && !isWeb
 
   const handleSeeMapPress = () => {
-    setVenuesFilters(offerCategory ? getVenueTypesFromSearchGroup(offerCategory) : [])
+    setVenuesFilters(offerCategory ? getActivitiesFromSearchGroup(offerCategory) : [])
 
     if (isMapWithoutPositionAndNotLocated) {
       showVenueMapLocationModal()

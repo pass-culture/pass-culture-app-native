@@ -4,12 +4,15 @@ import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { InseeCountry } from 'features/bonification/inseeCountries'
 import { BonificationBirthPlace } from 'features/bonification/pages/BonificationBirthPlace'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { CITIES_API_URL } from 'libs/place/queries/constants'
 import { CitiesResponse, SuggestedCity } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 jest.mock('libs/firebase/analytics/analytics')
 
 const birthCountry: InseeCountry = { LIBCOG: 'France', COG: 99100 }
@@ -32,6 +35,17 @@ describe('BonificationBirthPlace', () => {
         population: 150000,
       },
     ])
+  })
+
+  it('should navigate to FAQ if button pressed', async () => {
+    renderBonificationBirthPlace()
+
+    const button = screen.getByText('Je ne connais pas son lieu de naissance')
+    await userEvent.press(button)
+
+    expect(openUrl).toHaveBeenCalledWith(
+      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif'
+    )
   })
 
   it('Should navigate to next form when pressing "Continuer" when forms are filled', async () => {

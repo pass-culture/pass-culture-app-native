@@ -5,18 +5,23 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { MINIMUM_DATE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { env } from 'libs/environment/env'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -58,12 +63,13 @@ export const BonificationBirthDate = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
+          <StyledBodyXsSteps>Étape 3 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
-              Quelle est sa date de naissance&nbsp;?
+              Quelle est la date de naissance de ton représentant légal&nbsp;?
             </Typo.Title3>
 
             <Controller
@@ -83,6 +89,15 @@ export const BonificationBirthDate = () => {
                   minimumDate={MINIMUM_DATE}
                 />
               )}
+            />
+            <ButtonTertiaryPrimary
+              icon={InfoPlain}
+              wording="Je ne connais pas sa date de naissance"
+              onPress={async () => {
+                await openUrl(env.FAQ_BONIFICATION)
+              }}
+              justifyContent="flex-start"
+              inline
             />
           </ViewGap>
         </Form.MaxWidth>

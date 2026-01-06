@@ -11,7 +11,6 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 export const DuoChoiceSelector: React.FC = () => {
   const { bookingState, dispatch } = useBookingContext()
@@ -53,10 +52,10 @@ const DuoPerson = (props: AccessibleIcon): React.JSX.Element => (
   </DuoPersonContainer>
 )
 
-const DuoChoiceContainer = styled.View({
+const DuoChoiceContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   flexWrap: 'wrap',
-  marginHorizontal: -getSpacing(2),
-})
+  marginHorizontal: -theme.designSystem.size.spacing.s,
+}))
 
 const DuoPersonContainer = styled.View({ flexDirection: 'row' })

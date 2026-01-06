@@ -52,9 +52,9 @@ const StyledButtonContainer = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const StyledButtonPrimary = styledButton(ButtonPrimary)({
-  marginBottom: getSpacing(2),
-})
+const StyledButtonPrimary = styledButton(ButtonPrimary)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

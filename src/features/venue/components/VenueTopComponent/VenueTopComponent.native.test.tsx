@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
@@ -14,6 +14,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/location/location')
+jest.mock('react-native-map-link')
+
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
@@ -35,7 +37,7 @@ describe('<VenueTopComponent />', () => {
   it('should display venue type', async () => {
     const culturalCenterVenue: Omit<VenueResponse, 'isVirtual'> = {
       ...venueOpenToPublic,
-      venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
+      activity: Activity.CULTURAL_CENTRE,
     }
     renderVenueTopComponent(culturalCenterVenue)
 

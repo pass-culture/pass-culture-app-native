@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenTrustedDeviceInfos = () => {
   const deviceInfo = useDeviceInfo()
@@ -34,13 +34,13 @@ const Data = ({ title, data }: DataProps) => (
   </DataContainer>
 )
 
-const StyledTitle3 = styled(Typo.Title3)({
-  marginBottom: getSpacing(2),
-})
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
-const DataContainer = styled.View({
-  marginVertical: getSpacing(2),
-})
+const DataContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
 
 const ButtonTextPrimary = styled(Typo.Button)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,

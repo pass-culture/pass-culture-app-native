@@ -1,20 +1,8 @@
-import { object, string } from 'yup'
+import { object } from 'yup'
 
-import { isNameValid } from 'ui/components/inputs/nameCheck'
+import { baseNameSchema } from 'shared/forms/schemas/baseNameSchema'
 
 export const setNameSchema = object().shape({
-  firstName: string()
-    .required('Le prénom est obligatoire')
-    .test(
-      'isFirstNameValid',
-      'Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.',
-      (name) => !!name && isNameValid(name)
-    ),
-  lastName: string()
-    .required('Le nom est obligatoire')
-    .test(
-      'isLastNameValid',
-      'Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.',
-      (name) => !!name && isNameValid(name)
-    ),
+  firstName: baseNameSchema.required('Le prénom est obligatoire'),
+  lastName: baseNameSchema.required('Le nom est obligatoire'),
 })

@@ -1,10 +1,10 @@
 import { difference } from 'lodash'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
-  venuesFilters: VenueTypeCodeKey[]
+  venuesFilters: Activity[]
 }
 
 const defaultState: State = {
@@ -15,12 +15,12 @@ const venuesFilterStore = createStore({
   name: 'venue-filter',
   defaultState,
   actions: (set) => ({
-    setVenuesFilters: (venuesFilters: VenueTypeCodeKey[]) => set((_) => ({ venuesFilters })),
-    addVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
+    setVenuesFilters: (venuesFilters: Activity[]) => set((_) => ({ venuesFilters })),
+    addVenuesFilters: (venueTypeCodeKeys: Activity[]) =>
       set((state: State) => ({
         venuesFilters: Array.from(new Set([...state.venuesFilters, ...venueTypeCodeKeys])),
       })),
-    removeVenuesFilters: (venueTypeCodeKeys: VenueTypeCodeKey[]) =>
+    removeVenuesFilters: (venueTypeCodeKeys: Activity[]) =>
       set((state: State) => ({
         venuesFilters: difference(state.venuesFilters, venueTypeCodeKeys),
       })),

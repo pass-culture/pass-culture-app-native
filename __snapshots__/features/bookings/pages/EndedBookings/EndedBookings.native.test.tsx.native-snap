@@ -45,9 +45,11 @@ exports[`EndedBookings should render correctly 1`] = `
         "dateUsed": null,
         "expirationDate": null,
         "id": 987,
+        "isArchivable": false,
         "quantity": 10,
         "stock": {
           "beginningDatetime": "2021-03-14T20:00:00",
+          "isAutomaticallyUsed": false,
           "offer": {
             "address": {
               "city": "Drancy",
@@ -441,6 +443,112 @@ exports[`EndedBookings should render correctly 1`] = `
                     icon-share-SVG-Mock
                   </Text>
                 </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "borderBottomLeftRadius": 999,
+                "borderBottomRightRadius": 999,
+                "borderTopLeftRadius": 999,
+                "borderTopRightRadius": 999,
+              }
+            }
+          >
+            <View>
+              <View
+                accessibilityLabel="Réagis à ta réservation"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderBottomLeftRadius": 999,
+                        "borderBottomRightRadius": 999,
+                        "borderTopLeftRadius": 999,
+                        "borderTopRightRadius": 999,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Réagis à ta réservation"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 999,
+                        "borderBottomRightRadius": 999,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 999,
+                        "borderTopRightRadius": 999,
+                        "borderWidth": 1,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": 40,
+                      },
+                      {
+                        "transform": undefined,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    testID="icon-like"
+                    width={24}
+                  >
+                    <Text>
+                      icon-like-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                height={8}
+                testID="smallBadge"
+                width={8}
+              >
+                <Text>
+                  smallBadge-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>
