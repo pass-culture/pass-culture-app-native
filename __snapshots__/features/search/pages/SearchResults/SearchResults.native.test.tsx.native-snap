@@ -1294,6 +1294,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
+                        isZoomed={true}
                         style={
                           [
                             {
@@ -1305,6 +1306,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopLeftRadius": 4,
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
+                              "maxWidth": "100%",
                               "paddingHorizontal": 8,
                               "paddingVertical": 4,
                             },
@@ -1316,9 +1318,11 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          isZoomed={true}
                           style={
                             {
                               "color": "#161617",
+                              "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
                               "lineHeight": 16,
@@ -1626,6 +1630,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
+                        isZoomed={true}
                         style={
                           [
                             {
@@ -1637,6 +1642,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopLeftRadius": 4,
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
+                              "maxWidth": "100%",
                               "paddingHorizontal": 8,
                               "paddingVertical": 4,
                             },
@@ -1648,9 +1654,11 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          isZoomed={true}
                           style={
                             {
                               "color": "#161617",
+                              "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
                               "lineHeight": 16,
@@ -1954,6 +1962,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
+                        isZoomed={true}
                         style={
                           [
                             {
@@ -1965,6 +1974,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopLeftRadius": 4,
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
+                              "maxWidth": "100%",
                               "paddingHorizontal": 8,
                               "paddingVertical": 4,
                             },
@@ -1976,9 +1986,11 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          isZoomed={true}
                           style={
                             {
                               "color": "#161617",
+                              "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
                               "lineHeight": 16,
@@ -2281,6 +2293,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                       </View>
                       <View
                         backgroundColor="#f1f1f4"
+                        isZoomed={true}
                         style={
                           [
                             {
@@ -2292,6 +2305,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                               "borderTopLeftRadius": 4,
                               "borderTopRightRadius": 4,
                               "flexDirection": "row",
+                              "maxWidth": "100%",
                               "paddingHorizontal": 8,
                               "paddingVertical": 4,
                             },
@@ -2303,9 +2317,11 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                         testID="distance_tag"
                       >
                         <Text
+                          isZoomed={true}
                           style={
                             {
                               "color": "#161617",
+                              "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
                               "lineHeight": 16,
