@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, popTo, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -15,6 +14,7 @@ import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GeoCoordinates, Position } from 'libs/location/location'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -487,7 +487,11 @@ describe('SearchBox component', () => {
 
   describe('Without autocomplete', () => {
     beforeAll(() => {
-      setSettings({ appEnableAutocomplete: false })
+      setSettingsMock({ patchSettingsWith: { appEnableAutocomplete: false } })
+    })
+
+    afterAll(() => {
+      setSettingsMock()
     })
 
     it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -548,14 +552,6 @@ describe('SearchBox component', () => {
   })
 
   describe('With autocomplete', () => {
-    beforeAll(() => {
-      setSettings({ appEnableAutocomplete: true })
-    })
-
-    afterAll(() => {
-      setSettings()
-    })
-
     it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
       mockIsFocusOnSuggestions = true
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })

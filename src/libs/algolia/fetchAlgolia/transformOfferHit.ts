@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { useObjectStorageUrl } from 'queries/settings/useSettings'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
 // to see how the data is indexed into the search client (algolia => app search)
@@ -55,11 +55,10 @@ export const transformOfferHit =
   })
 
 export const useTransformOfferHits = () => {
-  const { data: settings } = useSettingsContext()
-  const { objectStorageUrl: urlPrefix } = settings || {}
+  const { data: objectStorageUrl } = useObjectStorageUrl()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useCallback(transformOfferHit(urlPrefix), [urlPrefix])
+  return useCallback(transformOfferHit(objectStorageUrl), [objectStorageUrl])
 }
 
 export const sortHitOffersByDate = (

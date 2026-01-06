@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ChangeCity should render correctly 1`] = `
+.c2 {
+  width: 100%;
+  max-width: 500px;
+}
+
 .c0 {
   flex-direction: column;
   cursor: pointer;
@@ -30,11 +35,6 @@ exports[`ChangeCity should render correctly 1`] = `
 
 .c0:hover:disabled {
   text-decoration: none;
-}
-
-.c2 {
-  width: 100%;
-  max-width: 500px;
 }
 
 .c3 {

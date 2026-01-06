@@ -3,9 +3,9 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -16,7 +16,7 @@ type BeneficiaryCeilingsProps = {
 export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps) {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return null
   return (

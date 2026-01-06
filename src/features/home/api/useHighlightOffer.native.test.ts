@@ -7,6 +7,7 @@ import { useLocation } from 'libs/location/location'
 import { ILocationContext } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
@@ -32,6 +33,8 @@ const mockUseLocation = jest.mocked(useLocation)
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.useFakeTimers()
+
+setSettingsMock({ patchSettingsWith: { objectStorageUrl: undefined } }) // Avoid thumbUrl change
 
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {

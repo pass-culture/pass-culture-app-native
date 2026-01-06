@@ -27,6 +27,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import {
   act,
   fireEvent,
@@ -81,6 +82,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
 
 const user = userEvent.setup()
 

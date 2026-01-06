@@ -6,10 +6,10 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
@@ -20,7 +20,7 @@ export const HomeHeader: FunctionComponent = function () {
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport, designSystem } = useTheme()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
   const height = designSystem.size.spacing.xl
 

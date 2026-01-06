@@ -1,13 +1,11 @@
 import React from 'react'
 
 import { QFBonificationStatus } from 'api/gen'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Code } from 'ui/svg/icons/Code'
@@ -81,11 +79,12 @@ export const BonificationBanner = ({
   bonificationStatus: QFBonificationStatus | undefined | null
   onCloseCallback: () => void
 }) => {
-  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const formatedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
@@ -98,7 +97,7 @@ export const BonificationBanner = ({
 
   const label =
     typeof bannerConfig?.label === 'function'
-      ? bannerConfig?.label(bonificationAmount)
+      ? bannerConfig?.label(formatedBonificationAmount)
       : bannerConfig?.label
 
   const refusedType = bonificationStatus && STATUS_TO_REFUSED_TYPE[bonificationStatus]

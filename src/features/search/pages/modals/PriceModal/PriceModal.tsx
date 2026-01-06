@@ -16,10 +16,10 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { priceSchema } from 'features/search/helpers/schema/priceSchema/priceSchema'
 import { SearchState } from 'features/search/types'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { formatCurrencyFromCentsWithoutCurrencySymbol } from 'shared/currency/formatCurrencyFromCentsWithoutCurrencySymbol'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -61,7 +61,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 }) => {
   const currencyFull = useGetCurrencyToDisplay('full')
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const conversionRate = getConversionRate(currency, euroToPacificFrancRate)
 
   const [previousCurrency, setPreviousCurrency] = useState(currency)
