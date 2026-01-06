@@ -46,7 +46,7 @@ export const SearchHeader: FC<Props> = ({
   const onGoBack = () => {
     dispatch({
       type: 'SET_STATE',
-      payload: initialSearchState,
+      payload: { ...initialSearchState, locationFilter: searchState.locationFilter },
     })
     goBack()
   }
