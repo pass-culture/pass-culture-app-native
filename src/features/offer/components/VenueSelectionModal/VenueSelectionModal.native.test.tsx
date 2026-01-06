@@ -82,7 +82,9 @@ describe('<VenueSelectionModal />', () => {
       />
     )
 
-    expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
+    expect(screen.getByText('Envie de lire')).toBeOnTheScreen()
+    expect(screen.getByText('Le Livre Éclaire')).toBeOnTheScreen()
+    expect(screen.getByText('Hachette Livre')).toBeOnTheScreen()
   })
 
   it('should close modal', async () => {
