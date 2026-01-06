@@ -7,7 +7,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 
-export function useShowMandatoryUpdatePersonalData() {
+export const useShowMandatoryUpdatePersonalData = () => {
   const { isLoggedIn, user } = useAuthContext()
   const { data } = useRemoteConfigQuery()
   const displayMandatoryUpdatePersonalData = data?.displayMandatoryUpdatePersonalData

@@ -9,11 +9,11 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
-import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
-import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
-import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
-import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
+import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/types'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/types'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -279,7 +279,13 @@ export type RootStackParamList = {
   ThematicHome: ThematicHomeParams
   _DeeplinkOnlyThematicHome1: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
-  UTMParameters: undefined
+  UTMParameters:
+    | {
+        utm_campaign: string
+        utm_medium: string
+        utm_source: string
+      }
+    | undefined
   ValidateEmailChange: { token: string }
   Venue: VenueParams
   _DeeplinkOnlyVenue1: VenueParams

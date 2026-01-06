@@ -1,4 +1,4 @@
-import { useLinkProps, useNavigation } from '@react-navigation/native'
+import { useLinkProps, useNavigation, LinkProps } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 
 import { pushFromRef, navigateFromRef, resetFromRef } from 'features/navigation/navigationRef'
@@ -7,6 +7,13 @@ import { accessibilityRoleInternalNavigation } from 'shared/accessibility/access
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
+const toLinkProps = <T extends keyof RootStackParamList>(
+  screen: T,
+  params?: RootStackParamList[T]
+): LinkProps<RootStackParamList, T> => {
+  return { screen, params } as LinkProps<RootStackParamList, T>
+}
+
 export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps> = ({
   navigateTo,
   enableNavigate = true,
@@ -14,10 +21,12 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   onAfterNavigate,
   ...rest
 }) => {
-  // We use nullish operator here because TabBar uses InternalTouchableLink but navigateTo is undefined during launch
-  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
   const { navigate, push, reset } = useNavigation<UseNavigationType>()
   const { screen, params, fromRef, withPush, withReset } = navigateTo
+
+  const linkConfig = navigateTo ? toLinkProps(screen, params) : toLinkProps('TabNavigator' as const)
+
+  const internalLinkProps = useLinkProps<RootStackParamList>(linkConfig)
 
   const handleNavigation = useCallback(() => {
     if (withReset) {
@@ -33,15 +42,13 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         push(screen as any, params as any)
       }
+    } else if (fromRef) {
+      navigateFromRef(screen as keyof RootStackParamList, params)
     } else {
-      if (fromRef) {
-        navigateFromRef(screen as keyof RootStackParamList, params)
-      } else {
-        // TypeScript cannot verify union types match navigate's overloaded signature
-        // but types are correct at runtime - screen and params are validated at call site
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        navigate(screen as any, params as any)
-      }
+      // TypeScript cannot verify union types match navigate's overloaded signature
+      // but types are correct at runtime - screen and params are validated at call site
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      navigate(screen as any, params as any)
     }
   }, [navigate, push, reset, fromRef, withPush, withReset, params, screen])
 

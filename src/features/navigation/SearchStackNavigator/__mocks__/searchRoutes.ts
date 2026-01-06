@@ -1,6 +1,6 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { SearchStackParamList } from '../SearchStackTypes'
+import { SearchStackParamList } from '../types'
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
   initialRouteName: 'SearchLanding',

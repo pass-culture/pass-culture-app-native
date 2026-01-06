@@ -1,8 +1,17 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { SearchState } from 'features/search/types'
 
-export type SearchStackRouteName = keyof SearchStackParamList
+export const screensSearch = [
+  'SearchLanding',
+  'SearchResults',
+  'ThematicSearch',
+] as const satisfies ReadonlyDeep<ScreenNames>[]
+
+export type SearchStackRouteName = (typeof screensSearch)[number]
 
 export const hasAThematicSearch = [
   SearchGroupNameEnumv2.CINEMA,

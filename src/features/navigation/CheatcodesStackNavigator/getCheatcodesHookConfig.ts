@@ -1,9 +1,9 @@
 import {
   CheatcodesStackParamList,
   CheatcodesStackRouteName,
-} from 'features/navigation/CheatcodesStackNavigator/CheatcodesStackTypes'
+} from 'features/navigation/CheatcodesStackNavigator/types'
 
-export function getCheatcodesHookConfig<Screen extends CheatcodesStackRouteName>(
+export const getCheatcodesHookConfig = <Screen extends CheatcodesStackRouteName>(
   screen: Screen,
   params?: CheatcodesStackParamList[Screen]
 ): [
@@ -12,6 +12,6 @@ export function getCheatcodesHookConfig<Screen extends CheatcodesStackRouteName>
     screen: Screen
     params: CheatcodesStackParamList[Screen]
   },
-] {
+] => {
   return ['CheatcodesStackNavigator', { screen, params }]
 }

@@ -1,7 +1,7 @@
 import { NavigatorScreenParams, TabNavigationState } from '@react-navigation/native'
 
 import { BookingsTab } from 'features/bookings/enum'
-import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
