@@ -69,22 +69,25 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<RadioButtonGroupOption>) => (
-      <RadioButtonItemWrapper variant={variant} display={display}>
-        <RadioButton
-          label={item.label}
-          disabled={disabled}
-          error={error}
-          value={value}
-          setValue={disabled || value === item.label ? () => undefined : handleSetValue}
-          variant={variant}
-          description={item.description}
-          collapsed={item.collapsed}
-          asset={item.asset}
-          sizing={computedRadioButtonSizing(item.sizing, display)}
-        />
-      </RadioButtonItemWrapper>
+      <RadioButton
+        label={item.label}
+        disabled={disabled}
+        error={error}
+        value={value}
+        setValue={disabled || value === item.label ? () => undefined : handleSetValue}
+        variant={variant}
+        description={item.description}
+        collapsed={item.collapsed}
+        asset={item.asset}
+        sizing={computedRadioButtonSizing(item.sizing, display)}
+      />
     ),
     [disabled, error, value, handleSetValue, variant, display]
+  )
+
+  const ItemSeparator = useCallback(
+    () => <ItemSeparatorView variant={variant} display={display} />,
+    [variant, display]
   )
 
   return (
@@ -100,16 +103,16 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
         ) : null}
       </TitleContainer>
       <StyledFlatList
-        variant={variant}
-        display={display}
         data={options}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        horizontal={display === 'horizontal'}
         onEndReached={onEndReached}
         refreshing={refreshing}
         onRefresh={onRefresh}
         onScroll={onScroll}
         ListFooterComponent={ListFooterComponent}
+        ItemSeparatorComponent={ItemSeparator}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
       />
@@ -130,25 +133,17 @@ const RadioButtonGroupContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
 }))
 
-const StyledFlatList = styled(FlatList)<
-  FlatListProps<RadioButtonGroupOption> & { variant: Variant; display: RadioButtonGroupDisplay }
->(({ variant, display, theme }) => ({
+const StyledFlatList = styled(FlatList)<FlatListProps<RadioButtonGroupOption>>({
   flex: 1,
   overflow: 'scroll',
-  flexWrap: display === 'horizontal' ? 'wrap' : 'nowrap',
-  flexDirection: display === 'vertical' ? 'column' : 'row',
-  gap: computeGap({ variant, display, theme }),
-  padding: theme.designSystem.size.spacing.xs,
-}))
+})
 
-const RadioButtonItemWrapper = styled.View<{
+const ItemSeparatorView = styled.View<{
   variant: Variant
   display: RadioButtonGroupDisplay
 }>(({ theme, variant, display }) => ({
-  paddingBottom:
-    variant === 'default' || display === 'horizontal'
-      ? theme.designSystem.size.spacing.xl
-      : theme.designSystem.size.spacing.s,
+  height: display === 'vertical' ? computeGap({ variant, display, theme }) : undefined,
+  width: display === 'horizontal' ? computeGap({ variant, display, theme }) : undefined,
 }))
 
 const ErrorContainer = styled.View(({ theme }) => ({
