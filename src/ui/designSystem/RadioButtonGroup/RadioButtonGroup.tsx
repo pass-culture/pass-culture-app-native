@@ -4,7 +4,7 @@
  */
 
 import React, { FunctionComponent, useCallback } from 'react'
-import { FlatList, FlatListProps } from 'react-native'
+import { FlatList, FlatListProps, ListRenderItemInfo } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -69,8 +69,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
   )
 
   const renderItem = useCallback(
-    // eslint-disable-next-line react/no-unused-prop-types
-    ({ item }: { item: RadioButtonGroupOption }) => (
+    ({ item }: ListRenderItemInfo<RadioButtonGroupOption>) => (
       <RadioButtonItemWrapper variant={variant} display={display}>
         <RadioButton
           label={item.label}
@@ -139,6 +138,12 @@ const RadioButtonItemWrapper = styled.View<{
   variant: Variant
   display: RadioButtonGroupDisplay
 }>(({ theme, variant, display }) => ({
+  flexWrap: display === 'horizontal' ? 'wrap' : 'nowrap',
+  flexDirection: display === 'vertical' ? 'column' : 'row',
+  gap:
+    variant == 'default' || display === 'horizontal'
+      ? theme.designSystem.size.spacing.xl
+      : theme.designSystem.size.spacing.s,
   paddingBottom:
     variant === 'default' || display === 'horizontal'
       ? theme.designSystem.size.spacing.xl

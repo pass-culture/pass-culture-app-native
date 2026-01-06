@@ -151,7 +151,7 @@ export const OfferVenueContainer: FC<Props> = ({
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={userLocation !== null && userLocation !== undefined}
+          isSharingLocation={!!userLocation}
           subTitle="Sélectionner un lieu"
           rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
           validateButtonLabel="Choisir ce lieu"

@@ -276,6 +276,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       {formattedPriceWithEuro && isNotUserFreeStatus ? (
         <Caption {...hiddenFromScreenReader()}>{deductedAmount}</Caption>
       ) : null}
+
       {shouldDisplayOtherVenuesAvailableButton ? (
         <VenueSelectionModal
           isVisible={visible}
@@ -290,7 +291,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           nbHits={nbHits}
           nbLoadedHits={nbLoadedHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={userLocation !== null || userLocation !== undefined}
+          isSharingLocation={!!userLocation}
           subTitle="Sélectionner un lieu"
           rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
           validateButtonLabel="Choisir ce lieu"
