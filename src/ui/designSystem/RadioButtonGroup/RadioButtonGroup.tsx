@@ -133,10 +133,11 @@ const RadioButtonGroupContainer = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
 }))
 
-const StyledFlatList = styled(FlatList)<FlatListProps<RadioButtonGroupOption>>({
+const StyledFlatList = styled(FlatList)<FlatListProps<RadioButtonGroupOption>>(({ theme }) => ({
   flex: 1,
   overflow: 'scroll',
-})
+  padding: theme.designSystem.size.spacing.xs,
+}))
 
 const ItemSeparatorView = styled.View<{
   variant: Variant
