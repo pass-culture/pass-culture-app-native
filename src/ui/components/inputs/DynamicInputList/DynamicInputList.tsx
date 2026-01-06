@@ -111,7 +111,7 @@ export const DynamicInputList = ({
             <InputText
               onChangeText={(text) => handleChangeText(input.id, text)}
               requiredIndicator={index === 0 ? requiredIndicator : undefined}
-              autoFocus={index === 0 ? autoFocus : false}
+              autoFocus={autoFocus}
               errorMessage={input.value ? errors?.[index] : undefined}
               accessibilityHint={input.value ? errors?.[index] : undefined}
               {...input}

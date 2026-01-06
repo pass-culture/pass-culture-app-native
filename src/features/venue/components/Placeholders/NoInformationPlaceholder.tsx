@@ -5,10 +5,16 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { CircledClock } from 'ui/svg/icons/CircledClock'
 import { Typo } from 'ui/theme'
 
-export const NoInformationPlaceholder = () => (
+type Props = { isOpenToPublic: boolean }
+
+export const NoInformationPlaceholder = ({ isOpenToPublic }: Props) => (
   <Container gap={2}>
     <NoInfoIllustration />
-    <Text>Les infos pratiques ne sont pas encore renseignées pour ce lieu</Text>
+    <Text>
+      {isOpenToPublic
+        ? 'Les infos pratiques ne sont pas encore renseignées pour ce lieu'
+        : 'Les infos pratiques ne sont pas encore renseignées pour cette structure'}
+    </Text>
   </Container>
 )
 

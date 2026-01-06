@@ -10,8 +10,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InputText } from 'ui/designSystem/InputText/InputText'
-import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
+import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenAccesLibre = () => {
   const { designSystem } = useTheme()
@@ -77,19 +76,18 @@ export const CheatcodesScreenAccesLibre = () => {
   )
 }
 
-const SearchVenueButton = styledButton(ButtonPrimary)({
-  marginTop: getSpacing(3),
-  marginBottom: getSpacing(6),
-})
+const SearchVenueButton = styledButton(ButtonPrimary)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginTop: getSpacing(5),
-  marginBottom: getSpacing(4),
-})
-
-const StyledViewGap = styled(ViewGap)({
-  marginBottom: getSpacing(2),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const StyledView = styled.View({
   flexDirection: 'row',

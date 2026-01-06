@@ -5,7 +5,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   password: string
@@ -87,5 +86,5 @@ const RulesContainer = styled(ViewGap)<{ isVisible?: boolean }>(({ theme }) => (
   alignItems: 'flex-start',
   width: '100%',
   maxWidth: theme.forms.maxWidth,
-  paddingTop: getSpacing(2),
+  paddingTop: theme.designSystem.size.spacing.s,
 }))

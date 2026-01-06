@@ -34,7 +34,7 @@ export function LegalNotices() {
             accessibilityRole={AccessibilityRole.LINK}
           />
         </Typo.Body>
-        {/* eslint-disable-next-line local-rules/no-currency-symbols */}
+        {/* eslint-disable-next-line local-rules/no-euro-usage */}
         <Typo.Body>
           Société par actions simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€
         </Typo.Body>

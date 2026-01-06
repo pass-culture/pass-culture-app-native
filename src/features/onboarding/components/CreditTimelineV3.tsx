@@ -4,7 +4,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { DefaultTheme } from 'styled-components/dist/types'
 import styled from 'styled-components/native'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
@@ -28,7 +28,7 @@ type CreditStep = 17 | 18 | 'information' | 'optional' | 'separator'
 export type CreditComponentPropsV3 = {
   creditStep: CreditStep
   iconComponent?: React.JSX.Element
-  bonificationStatus?: FraudCheckStatus | null
+  bonificationStatus?: QFBonificationStatus | null
   children?: React.ReactNode
 }
 
@@ -100,7 +100,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
                 bonificationStatus={props.bonificationStatus}
                 {...animatedViewProps}>
                 <View>
-                  <StyledBody>Droit à l’aide</StyledBody>
+                  <StyledBody>Bonus sous conditions</StyledBody>
                   <Spacer.Column numberOfSpaces={1} />
                   <StyledTitle3>
                     Tu peux recevoir{SPACE}
@@ -166,9 +166,9 @@ const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   marginHorizontal: getSpacing(1.5),
 })
 
-const StyledTitle3 = styled(Typo.Title3)({
-  marginBottom: getSpacing(2),
-})
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.designSystem.color.text.brandSecondary,
@@ -182,17 +182,17 @@ const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const DashedStyledView = styled.View<{ bonificationStatus: FraudCheckStatus | null | undefined }>(
-  ({ theme, bonificationStatus }) => ({
-    borderColor: theme.designSystem.color.border.brandPrimary,
-    borderWidth: getSpacing(0.25),
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    borderStyle: 'dashed',
-    padding: getSpacing(4),
-    overflow: 'hidden',
-    backgroundColor: getBackgroundColorByStatus(bonificationStatus, theme),
-  })
-)
+const DashedStyledView = styled.View<{
+  bonificationStatus: QFBonificationStatus | null | undefined
+}>(({ theme, bonificationStatus }) => ({
+  borderColor: theme.designSystem.color.border.brandPrimary,
+  borderWidth: getSpacing(0.25),
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  borderStyle: 'dashed',
+  padding: getSpacing(4),
+  overflow: 'hidden',
+  backgroundColor: getBackgroundColorByStatus(bonificationStatus, theme),
+}))
 
 const SeparatorStyledAnimatedView = styled(AnimatedView)(() => ({
   overflow: 'hidden',
@@ -200,13 +200,13 @@ const SeparatorStyledAnimatedView = styled(AnimatedView)(() => ({
 }))
 
 const getBackgroundColorByStatus = (
-  status: FraudCheckStatus | null | undefined,
+  status: QFBonificationStatus | null | undefined,
   theme: DefaultTheme
 ) => {
   switch (status) {
-    case FraudCheckStatus.ok:
+    case QFBonificationStatus.granted:
       return theme.designSystem.color.background.default
-    case FraudCheckStatus.pending:
+    case QFBonificationStatus.started:
       return theme.designSystem.color.background.disabled
     default:
       return theme.designSystem.color.background.info

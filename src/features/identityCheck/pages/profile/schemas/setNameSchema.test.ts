@@ -12,14 +12,14 @@ describe('setNameSchema', () => {
     await expect(result).rejects.toEqual(new ValidationError('Le nom est obligatoire'))
   })
 
-  it('should reject when first name has a special character', async () => {
+  it('should reject when first name has a number', async () => {
     const result = setNameSchema.validate({
       firstName: 'John4',
       lastName: 'Doe',
     })
 
     await expect(result).rejects.toEqual(
-      new ValidationError('Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.')
+      new ValidationError('Ce champ ne doit pas contenir de chiffres.')
     )
   })
 
@@ -30,7 +30,7 @@ describe('setNameSchema', () => {
     })
 
     await expect(result).rejects.toEqual(
-      new ValidationError('Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.')
+      new ValidationError('Ce champ contient des caractères invalides.')
     )
   })
 

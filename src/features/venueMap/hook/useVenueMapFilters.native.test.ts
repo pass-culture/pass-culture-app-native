@@ -1,5 +1,5 @@
-import { VenueTypeCodeKey } from 'api/gen'
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
+import { Activity } from 'api/gen'
+import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import { act, renderHook } from 'tests/utils'
 
 import { useVenueMapFilters } from './useVenueMapFilters'
@@ -23,8 +23,8 @@ describe('useVenueMapFilters', () => {
     })
 
     expect(result.current.activeFilters).toMatchObject([
-      ...FILTERS_VENUE_TYPE_MAPPING.OUTINGS,
-      ...FILTERS_VENUE_TYPE_MAPPING.SHOPS,
+      ...FILTERS_ACTIVITY_MAPPING.OUTINGS,
+      ...FILTERS_ACTIVITY_MAPPING.SHOPS,
     ])
   })
 
@@ -43,7 +43,7 @@ describe('useVenueMapFilters', () => {
       result.current.removeMacroFilter('SHOPS')
     })
 
-    expect(result.current.activeFilters).toMatchObject(FILTERS_VENUE_TYPE_MAPPING.OUTINGS)
+    expect(result.current.activeFilters).toMatchObject(FILTERS_ACTIVITY_MAPPING.OUTINGS)
   })
 
   it('should toggle a filter correctly (add filter)', () => {
@@ -54,15 +54,13 @@ describe('useVenueMapFilters', () => {
     })
 
     expect(result.current.activeFilters).toMatchObject([
-      VenueTypeCodeKey.CONCERT_HALL,
-      VenueTypeCodeKey.FESTIVAL,
-      VenueTypeCodeKey.GAMES,
-      VenueTypeCodeKey.LIBRARY,
-      VenueTypeCodeKey.MOVIE,
-      VenueTypeCodeKey.MUSEUM,
-      VenueTypeCodeKey.PERFORMING_ARTS,
-      VenueTypeCodeKey.TRAVELING_CINEMA,
-      VenueTypeCodeKey.VISUAL_ARTS,
+      Activity.ART_GALLERY,
+      Activity.CINEMA,
+      Activity.FESTIVAL,
+      Activity.GAMES_CENTRE,
+      Activity.LIBRARY,
+      Activity.MUSEUM,
+      Activity.PERFORMANCE_HALL,
     ])
   })
 
@@ -90,7 +88,7 @@ describe('useVenueMapFilters', () => {
     const selectedMacros = result.current.getSelectedMacroFilters()
 
     expect(selectedMacros).toEqual(['OUTINGS'])
-    expect(result.current.activeFilters).toMatchObject([...FILTERS_VENUE_TYPE_MAPPING.OUTINGS])
+    expect(result.current.activeFilters).toMatchObject([...FILTERS_ACTIVITY_MAPPING.OUTINGS])
   })
 
   it('should return selected macros correctly', () => {

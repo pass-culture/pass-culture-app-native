@@ -15,8 +15,8 @@ const config: StorybookConfig = {
     options: {
       pluginBabelOptions: {
         babelConfig: {
-          configFile: true
-        }
+          configFile: true,
+        },
       },
     },
   },
@@ -36,6 +36,14 @@ const config: StorybookConfig = {
     }
 
     return mergeConfig(config, {
+      define: {
+        global: 'window',
+      },
+      build: {
+        commonjsOptions: {
+          transformMixedEsModules: true,
+        },
+      },
       optimizeDeps: {
         include: ['react-native-calendars'],
       },

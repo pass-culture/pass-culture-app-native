@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-native'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as SearchWrapper from 'features/search/context/SearchWrapper'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
@@ -23,7 +23,7 @@ const mockVenues = [
     info: 'info',
     venueId: 1234,
     isOpenToPublic: true,
-    venue_type: VenueTypeCodeKey.BOOKSTORE,
+    activity: Activity.BOOKSTORE,
   },
 ] as const satisfies readonly Venue[]
 

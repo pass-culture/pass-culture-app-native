@@ -62,7 +62,7 @@ module.exports = {
     'local-rules/mock-path-exists': 'error',
     'local-rules/use-the-right-test-utils': 'error',
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
-    'local-rules/no-currency-symbols': 'error',
+    'local-rules/no-euro-usage': 'error',
     'no-negated-condition': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
@@ -414,7 +414,7 @@ module.exports = {
     {
       files: ['**/*.stories.tsx'],
       rules: {
-        'local-rules/no-currency-symbols': 'off',
+        'local-rules/no-euro-usage': 'off',
         'local-rules/no-theme-from-theme': 'off',
       },
     },
@@ -427,7 +427,7 @@ module.exports = {
         'local-rules/no-theme-from-theme': 'off',
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
-        'local-rules/no-currency-symbols': 'off',
+        'local-rules/no-euro-usage': 'off',
         'local-rules/no-empty-arrow-function': 'error',
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'error',

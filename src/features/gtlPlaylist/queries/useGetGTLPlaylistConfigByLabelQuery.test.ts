@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { useGetGTLPlaylistsConfigByLabelQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistConfigByLabelQuery'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
@@ -58,7 +58,7 @@ describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
   it('should fetch gtl playlist config when a searchGroupLabel is provided', async () => {
     const { result } = renderUseGetGTLPlaylistsConfigByLabelQuery(
       'Livres',
-      VenueTypeCodeKey.CONCERT_HALL
+      Activity.PERFORMANCE_HALL
     )
 
     await waitFor(async () => expect(result.current.isFetched).toEqual(true))
@@ -67,14 +67,14 @@ describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
   })
 
   it.each`
-    venueType                              | expectedResult
-    ${VenueTypeCodeKey.BOOKSTORE}          | ${mockedReturnedConfigPlaylist}
-    ${VenueTypeCodeKey.RECORD_STORE}       | ${[]}
-    ${VenueTypeCodeKey.DISTRIBUTION_STORE} | ${mockedReturnedConfigPlaylist}
+    activity                       | expectedResult
+    ${Activity.BOOKSTORE}          | ${mockedReturnedConfigPlaylist}
+    ${Activity.RECORD_STORE}       | ${[]}
+    ${Activity.DISTRIBUTION_STORE} | ${mockedReturnedConfigPlaylist}
   `(
-    `should fetch gtl playlist config when venueType is $venueType`,
-    async ({ venueType, expectedResult }) => {
-      const { result } = renderUseGetGTLPlaylistsConfigByLabelQuery(undefined, venueType)
+    `should fetch gtl playlist config when activity is $activity`,
+    async ({ activity, expectedResult }) => {
+      const { result } = renderUseGetGTLPlaylistsConfigByLabelQuery(undefined, activity)
 
       await waitFor(async () => expect(result.current.isFetched).toEqual(true))
 
@@ -82,10 +82,10 @@ describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
     }
   )
 
-  it('should not fetch gtl playlist config for the wrong venueType and no searchGroupLabel', async () => {
+  it('should not fetch gtl playlist config for the wrong activity and no searchGroupLabel', async () => {
     const { result } = renderUseGetGTLPlaylistsConfigByLabelQuery(
       undefined,
-      VenueTypeCodeKey.CONCERT_HALL
+      Activity.PERFORMANCE_HALL
     )
 
     await act(async () => {})
@@ -96,8 +96,8 @@ describe('useGetGTLPlaylistsConfigByLabelQuery', () => {
 
 const renderUseGetGTLPlaylistsConfigByLabelQuery = (
   searchGroupLabel?: ContentfulLabelCategories,
-  venueTypeCode?: VenueTypeCodeKey | null
+  activity?: Activity | null
 ) =>
-  renderHook(() => useGetGTLPlaylistsConfigByLabelQuery(searchGroupLabel, venueTypeCode), {
+  renderHook(() => useGetGTLPlaylistsConfigByLabelQuery(searchGroupLabel, activity), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

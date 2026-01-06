@@ -4,7 +4,7 @@ import { ViewToken } from 'react-native'
 import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -123,25 +123,20 @@ export const Venue: FunctionComponent = () => {
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const isVenueHeadlineOfferActive = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER
-  )
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
   const shouldDisplayVenueCalendar = enableVenueCalendar && venueOffers?.hits.length === 1
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
 
-  const headlineOfferData = isVenueHeadlineOfferActive
-    ? offerToHeadlineOfferData({
-        offer: venueOffers?.headlineOffer,
-        transformParameters: {
-          currency,
-          euroToPacificFrancRate,
-          mapping,
-          labelMapping,
-          userLocation,
-        },
-      })
-    : null
+  const headlineOfferData = offerToHeadlineOfferData({
+    offer: venueOffers?.headlineOffer,
+    transformParameters: {
+      currency,
+      euroToPacificFrancRate,
+      mapping,
+      labelMapping,
+      userLocation,
+    },
+  })
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
@@ -150,7 +145,7 @@ export const Venue: FunctionComponent = () => {
   }, [params.from, venue?.id])
 
   const isCTADisplayed =
-    venue?.venueTypeCode !== VenueTypeCodeKey.MOVIE &&
+    venue?.activity !== Activity.CINEMA &&
     ((venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0))
 
   const VenueContentChildren = venue ? (
@@ -230,7 +225,7 @@ const getVenueFromVenueResponse = (venue?: VenueResponse): VenueType | null => {
     postalCode: venue.postalCode,
     isPermanent: venue.isPermanent,
     isOpenToPublic: venue.isOpenToPublic,
-    venue_type: venue.venueTypeCode,
+    activity: venue.activity,
     info: '',
   }
 }

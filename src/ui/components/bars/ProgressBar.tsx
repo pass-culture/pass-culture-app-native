@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getSpacing } from 'ui/theme'
 
 interface ProgressBarProps {
@@ -14,8 +15,13 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ progress, height = 1
     flex: Math.max(progress),
   }))
 
+  const progressString = `${Math.round(progress * 100)}`
+
   return (
-    <Container>
+    <Container
+      accessibilityLabel={`Barre de progression\u00a0: ${progressString}%`}
+      accessibilityRole={AccessibilityRole.PROGRESSBAR}
+      accessible>
       <ProgressBarContainer height={height}>
         <LinearGradientBar testID="progress-bar" />
       </ProgressBarContainer>

@@ -33,7 +33,7 @@ export const SectionWithDivider: FC<PropsWithChildren<SectionProps>> = ({
 }
 
 const Divider = styled.View(({ theme }) => ({
-  height: getSpacing(2),
+  height: theme.designSystem.size.spacing.s,
   backgroundColor: theme.designSystem.color.background.subtle,
 }))
 

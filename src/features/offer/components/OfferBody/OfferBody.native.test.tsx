@@ -86,11 +86,7 @@ jest.useFakeTimers()
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
-      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-      RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ARTIST_PAGE])
   })
 
   describe('Tags section', () => {
@@ -305,24 +301,6 @@ describe('<OfferBody />', () => {
           venue: {
             ...offerResponseSnap.venue,
             isPermanent: false,
-          },
-        }
-        renderOfferBody({ offer })
-
-        await screen.findByText(offer.name)
-
-        expect(
-          screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-        ).not.toBeOnTheScreen()
-      })
-
-      it('should not display venue button when wipIsOpenToPublic feature flag activated and isOpenToPublic is false', async () => {
-        const offer: OfferResponseV2 = {
-          ...offerResponseSnap,
-          venue: {
-            ...offerResponseSnap.venue,
-            isPermanent: true,
-            isOpenToPublic: false,
           },
         }
         renderOfferBody({ offer })

@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SubcategoryIdEnum } from 'api/gen'
 import { Offer } from 'shared/offer/types'
 import { toMutable } from 'shared/types/toMutable'
 
@@ -25,7 +25,8 @@ export const offersFixture = toMutable([
       address: '1 rue de la paix',
       postalCode: '75000',
       city: 'Paris',
-      venue_type: VenueTypeCodeKey.BOOKSTORE,
+      activity: Activity.BOOKSTORE,
+      isPermanent: true,
     },
     artists: [{ id: '1', name: 'Artist 1' }],
   },
@@ -49,7 +50,8 @@ export const offersFixture = toMutable([
       address: '2 rue de la paix',
       postalCode: '75000',
       city: 'Paris',
-      venue_type: VenueTypeCodeKey.CONCERT_HALL,
+      activity: Activity.PERFORMANCE_HALL,
+      isPermanent: true,
     },
     artists: [
       { id: '2', name: 'Artist 2' },
@@ -76,7 +78,8 @@ export const offersFixture = toMutable([
       address: '3 rue de la paix',
       postalCode: '75000',
       city: 'Paris',
-      venue_type: VenueTypeCodeKey.CONCERT_HALL,
+      activity: Activity.PERFORMANCE_HALL,
+      isPermanent: true,
     },
   },
   {
@@ -99,6 +102,7 @@ export const offersFixture = toMutable([
       address: '4 rue de la paix',
       postalCode: '75000',
       city: 'Paris',
+      isPermanent: true,
     },
     artists: [
       { id: '4', name: 'Artist 4' },

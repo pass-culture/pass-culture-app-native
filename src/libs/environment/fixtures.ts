@@ -35,12 +35,16 @@ export const env: Environment = {
     'https://docs.passculture.app/textes-normatifs/charte-des-donnees-personnelles',
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
   ENV: 'testing',
+  FAMILY_QUOTIENT_TOO_HIGH_LINK: 'https://www.caf.fr/allocataires/ma-caf-recherche',
+  FAQ_BONIFICATION: 'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif',
   FAQ_LINK_CREDIT_V3: 'https://passculture-credit-v3.faq',
   FAQ_LINK_CREDIT: 'https://passculture-credit.faq',
   FAQ_LINK_DELETE_ACCOUNT: 'https://passculture-delete-account.faq',
   FAQ_LINK_EDUCONNECT_URL: 'https://passculture-educonnect.faq',
   FAQ_LINK_PERSONAL_DATA:
     'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs',
+  FAQ_LINK_CAF_QUOTIEN_FAMILIAL:
+    'https://www.caf.fr/allocataires/actualites/actualites-nationales/comment-obtenir-son-quotient-familial-qf',
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: 'https://passculture-reset-password.faq',
   FAQ_LINK_RIGHT_TO_ERASURE: 'https://passculture-right-to-erasure.faq',
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: 'https://passculture-confirmation-email.faq',

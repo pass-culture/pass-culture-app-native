@@ -8,12 +8,15 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
 
 export const LocationWidgetBadge = () => {
+  const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
+
   const { place, selectedLocationMode } = useLocation()
 
   const locationTitle = getLocationTitle(place, selectedLocationMode)
@@ -42,7 +45,7 @@ export const LocationWidgetBadge = () => {
         ) : (
           <LocationPointerDefault testID="location pointer default" />
         )}
-        <LocationTitle>{locationTitle}</LocationTitle>
+        <LocationTitle numberOfLines={numberOfLines}>{locationTitle}</LocationTitle>
       </LocationButton>
       <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
     </Container>
@@ -50,7 +53,7 @@ export const LocationWidgetBadge = () => {
 }
 const Container = styled.View<{ highlighted: boolean }>(({ theme, highlighted }) => ({
   flexDirection: 'row',
-  height: theme.designSystem.size.spacing.xxl,
+  minHeight: theme.designSystem.size.spacing.xxl,
   borderRadius: theme.designSystem.size.borderRadius.l,
   paddingHorizontal: theme.designSystem.size.spacing.s,
   borderWidth: 1,
@@ -72,9 +75,7 @@ const LocationPointerDefault = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const LocationTitle = styled(Typo.BodyAccentXs).attrs({
-  numberOfLines: 1,
-})(({ theme }) => ({
+const LocationTitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.xs,
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
   color: theme.designSystem.color.text.default,

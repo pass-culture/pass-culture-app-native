@@ -51,7 +51,10 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
     date: dateLabel,
   })
 
-  const isBookingValid = expirationDateUtilsV2.isBookingInList(booking, eligibleBookingsForArchive)
+  const isBookingValid = expirationDateUtilsV2.isBookingEligibleForArchive(
+    booking,
+    eligibleBookingsForArchive
+  )
   const canDisplayExpirationMessage = !!isBookingValid && daysLeft >= 0
   const correctExpirationMessages = displayExpirationMessage(daysLeft)
 

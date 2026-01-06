@@ -45,8 +45,6 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
         label="Mot de passe"
         withSecurityRules
         securityRulesAlwaysVisible
-        autoFocus
-        nativeAutoFocus
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary

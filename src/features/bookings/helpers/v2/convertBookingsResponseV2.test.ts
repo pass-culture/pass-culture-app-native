@@ -19,6 +19,7 @@ describe('convert BookingsResponseV2 to BookingsListResponseV2', () => {
         {
           ...booking,
           activationCode: booking.ticket.activationCode,
+          isArchivable: false,
           stock: {
             ...booking.stock,
             offer: {
@@ -50,6 +51,7 @@ describe('convert BookingsResponseV2 to BookingsListResponseV2', () => {
         {
           ...booking,
           activationCode: booking.ticket.activationCode,
+          isArchivable: false,
           stock: {
             ...booking.stock,
             offer: {

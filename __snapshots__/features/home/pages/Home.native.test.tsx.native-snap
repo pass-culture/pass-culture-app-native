@@ -70,9 +70,7 @@ exports[`Home page should render correctly 1`] = `
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
             "venuesParameters": {
-              "hitsPerPage": 15,
-              "title": "Exemple de playlist de lieux",
-              "venueTypes": [
+              "activities": [
                 "Bibliothèque ou médiathèque",
                 "Arts visuels, arts plastiques et galeries",
                 "Centre culturel",
@@ -93,6 +91,8 @@ exports[`Home page should render correctly 1`] = `
                 "Cinéma itinérant",
                 "Autre type de lieu",
               ],
+              "hitsPerPage": 15,
+              "title": "Exemple de playlist de lieux",
             },
           },
         ]

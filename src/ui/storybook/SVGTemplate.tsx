@@ -80,8 +80,8 @@ const IconWrapper = styled.TouchableOpacity<{
   isIllustration: boolean
 }>(({ theme, isCopied, isIllustration }) => ({
   alignItems: 'center',
-  margin: getSpacing(2),
-  padding: getSpacing(2),
+  margin: theme.designSystem.size.spacing.s,
+  padding: theme.designSystem.size.spacing.s,
   width: isIllustration ? getSpacing(60) : getSpacing(40),
   minHeight: isIllustration ? getSpacing(40) : getSpacing(25),
   border: `2px solid ${isCopied ? theme.designSystem.color.border.success : theme.designSystem.color.border.subtle}`,
@@ -97,11 +97,11 @@ const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   position: 'absolute',
   color: theme.designSystem.color.text.success,
   backgroundColor: theme.designSystem.color.background.default,
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
   borderRadius: theme.designSystem.size.borderRadius.s,
   zIndex: 1,
 }))
 
-const StyledBodyS = styled(Typo.BodyS)({
-  marginTop: getSpacing(2),
-})
+const StyledBodyS = styled(Typo.BodyS)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))

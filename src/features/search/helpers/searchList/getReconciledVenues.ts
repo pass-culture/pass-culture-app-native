@@ -1,6 +1,6 @@
 import { uniqBy } from 'lodash'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import {
   AlgoliaOffer,
   AlgoliaVenue,
@@ -19,12 +19,13 @@ export const getReconciledVenues = (
 ): Array<AlgoliaVenueOfferListItem> => {
   const venueIds = venues.map((venue) => venue.objectID)
   // dedupe venues from algolia offers
-  const reconciledVenues: Array<AlgoliaVenueOfferWithGeoloc> = uniqBy(offers, 'venue.id').map(
-    (offer: AlgoliaOffer) => ({
+  const reconciledVenues: Array<AlgoliaVenueOfferWithGeoloc> = uniqBy(offers, 'venue.id')
+    .map((offer: AlgoliaOffer) => ({
       ...offer.venue,
       geoloc: offer._geoloc,
-    })
-  )
+    }))
+    .filter((venue) => venue.isPermanent)
+
   // dedupe algolia venues with venues from algolia offers
   return venueIds.length
     ? venues
@@ -45,7 +46,7 @@ export const convertAlgoliaVenue2AlgoliaVenueOfferListItem = (
 ): AlgoliaVenueOfferListItem => ({
   objectID: venue.objectID,
   banner_url: venue.banner_url ?? '',
-  venue_type: venue.venue_type,
+  activity: venue.activity,
   name: venue.name,
   city: venue.city,
   postalCode: venue.postalCode ?? '',
@@ -57,7 +58,7 @@ export const convertAlgoliaVenueOffer2AlgoliaVenueOfferListItem = (
 ): AlgoliaVenueOfferListItem => ({
   objectID: venue.id?.toString() ?? '',
   banner_url: venue.banner_url ?? '',
-  venue_type: venue.venue_type ?? VenueTypeCodeKey.OTHER,
+  activity: venue.activity ?? Activity.OTHER,
   name: venue.name ?? '',
   city: venue.city ?? '',
   postalCode: venue.postalCode ?? '',

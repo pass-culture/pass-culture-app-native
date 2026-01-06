@@ -4,19 +4,26 @@ appId: ${MAESTRO_APP_ID}
 - scrollUntilVisible:
     element: "OFFRES GRATUITES"
 - tapOn:
-    label: Accès à une Home N-1
+    label: Accès à la Home N-1 OFFRES GRATUITES
     text: "OFFRES GRATUITES"
-- scrollUntilVisible:
-    element: "En voir plus"
+- pressKey: back
+
 - tapOn:
-    label: Accès à la searchResult depuis une playlist
-    text: "En voir plus"
-- waitForAnimationToEnd
-- swipe:
-    from:
-      text: "Les offres"
-    direction: DOWN
+    label: Accès à la Home N-1 MUSIQUE
+    text: "MUSIQUE"
+- pressKey: back
+
 - tapOn:
-    label: Quitter la searchResult avec le backButton
-    text: "Revenir en arrière"
-- waitForAnimationToEnd
+    label: Accès à la Home N-1 LECTURE
+    text: "LECTURE"
+- pressKey: back
+
+- tapOn:
+    label: Accès à la Home N-1 SORTIES
+    text: "SORTIES"
+- pressKey: back
+
+- tapOn:
+    label: Accès à la Home N-1 SPECTACLES
+    text: "SPECTACLES"
+- pressKey: back

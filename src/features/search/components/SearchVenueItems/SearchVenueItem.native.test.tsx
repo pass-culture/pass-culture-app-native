@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext } from 'libs/location/location'
@@ -19,7 +19,7 @@ const mockAlgoliaVenue: AlgoliaVenue = {
   city: 'Paris',
   postalCode: '75000',
   offerer_name: 'séance de cinéma chandra',
-  venue_type: VenueTypeCodeKey.MOVIE,
+  activity: Activity.CINEMA,
   description: 'film',
   audio_disability: null,
   mental_disability: null,

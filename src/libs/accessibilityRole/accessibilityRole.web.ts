@@ -1,4 +1,5 @@
 export enum AccessibilityRole {
+  ALERT = 'alert',
   BUTTON = 'button',
   CHECKBOX = 'checkbox',
   DIALOG = 'dialog',
@@ -14,6 +15,7 @@ export enum AccessibilityRole {
   MAIN = 'main',
   NAVIGATION = 'navigation',
   NONE = 'none',
+  PROGRESSBAR = 'progressbar',
   RADIO = 'radio',
   RADIOGROUP = 'radiogroup',
   STATUS = 'status',
@@ -21,5 +23,6 @@ export enum AccessibilityRole {
   TAB = 'tab',
   TABLIST = 'tablist',
   TABPANEL = 'tabpanel',
+  TEXT = 'text',
   TOOLTIP = 'tooltip',
 }

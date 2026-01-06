@@ -51,9 +51,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
     refetch: refetchRemainingResends,
     isError,
     error,
-  } = useEmailValidationRemainingResendsQuery({
-    email,
-  })
+  } = useEmailValidationRemainingResendsQuery({ email }, { enabled: !!email })
 
   useEffect(() => {
     if (isError) {

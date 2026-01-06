@@ -8,7 +8,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   explanations: string
@@ -64,10 +64,11 @@ const Container = styled.View(({ theme }) => ({
 
 const ContentContainer = styled(ViewGap)(({ theme }) => ({
   height: '100%',
+  width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: theme.tabBar.height,
-  marginHorizontal: theme.contentPage.marginHorizontal,
+  paddingBottom: theme.tabBar.height,
+  paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const CaptionTitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
@@ -79,6 +80,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const ButtonContainer = styled.View({
-  marginTop: getSpacing(2),
-})
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: theme.designSystem.size.spacing.s,
+  width: '100%',
+}))

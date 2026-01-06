@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { renderHook } from 'tests/utils'
 
 import { useVenuesFilter, venuesFilterActions } from './venuesFilterStore'
@@ -11,35 +11,27 @@ describe('venuesFilterStore', () => {
   })
 
   it('should set venuesFilters', async () => {
-    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
+    venuesFilterActions.setVenuesFilters([Activity.CINEMA])
 
     const { result: state } = renderHook(() => useVenuesFilter())
 
-    expect(state.current).toEqual([VenueTypeCodeKey.MOVIE])
+    expect(state.current).toEqual([Activity.CINEMA])
   })
 
   it('should add venuesFilters', async () => {
-    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
-    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE, VenueTypeCodeKey.MUSEUM])
-    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
+    venuesFilterActions.setVenuesFilters([Activity.CINEMA])
+    venuesFilterActions.addVenuesFilters([Activity.BOOKSTORE, Activity.MUSEUM])
+    venuesFilterActions.addVenuesFilters([Activity.BOOKSTORE])
 
     const { result: state } = renderHook(() => useVenuesFilter())
 
-    expect(state.current).toEqual([
-      VenueTypeCodeKey.MOVIE,
-      VenueTypeCodeKey.BOOKSTORE,
-      VenueTypeCodeKey.MUSEUM,
-    ])
+    expect(state.current).toEqual([Activity.CINEMA, Activity.BOOKSTORE, Activity.MUSEUM])
   })
 
   it('should remove venuesFilter', async () => {
-    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
-    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
-    venuesFilterActions.removeVenuesFilters([
-      VenueTypeCodeKey.BOOKSTORE,
-      VenueTypeCodeKey.MOVIE,
-      VenueTypeCodeKey.MUSEUM,
-    ])
+    venuesFilterActions.setVenuesFilters([Activity.CINEMA])
+    venuesFilterActions.addVenuesFilters([Activity.BOOKSTORE])
+    venuesFilterActions.removeVenuesFilters([Activity.BOOKSTORE, Activity.CINEMA, Activity.MUSEUM])
 
     const { result: state } = renderHook(() => useVenuesFilter())
 
@@ -47,8 +39,8 @@ describe('venuesFilterStore', () => {
   })
 
   it('should reset venuesFilter', async () => {
-    venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
-    venuesFilterActions.addVenuesFilters([VenueTypeCodeKey.BOOKSTORE])
+    venuesFilterActions.setVenuesFilters([Activity.CINEMA])
+    venuesFilterActions.addVenuesFilters([Activity.BOOKSTORE])
     venuesFilterActions.reset()
 
     const { result: state } = renderHook(() => useVenuesFilter())

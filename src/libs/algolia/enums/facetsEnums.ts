@@ -38,8 +38,7 @@ export enum NUMERIC_FILTERS_ENUM {
 // Taken from https://www.algolia.com/apps/E2IKXJ325N/explorer/configuration/venues/facets
 export enum VENUES_FACETS_ENUM {
   TAGS = 'tags',
-  VENUE_TYPE = 'venue_type',
-  HAS_AT_LEAST_ONE_BOOKABLE_OFFER = 'has_at_least_one_bookable_offer',
+  ACTIVITY = 'activity',
   VENUE_AUDIO_DISABILITY_COMPLIANT = 'audio_disability',
   VENUE_MENTAL_DISABILITY_COMPLIANT = 'mental_disability',
   VENUE_MOTOR_DISABILITY_COMPLIANT = 'motor_disability',

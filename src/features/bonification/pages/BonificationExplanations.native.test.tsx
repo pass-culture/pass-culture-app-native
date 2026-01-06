@@ -26,13 +26,17 @@ describe('BonificationExplanations', () => {
     })
   })
 
-  it('Should navigate to FAQ when pressing "Consulter l’article d’aide"', async () => {
+  it('Should navigate to CAF when pressing "Plus d’infos sur le quotient familial"', async () => {
     render(<BonificationExplanations />)
 
-    const button = screen.getByText('Consulter l’article d’aide')
+    const button = screen.getByText('Plus d’infos sur le quotient familial')
     await userEvent.press(button)
 
-    expect(openUrl).toHaveBeenCalledWith('https://passculture.faq', undefined, true)
+    expect(openUrl).toHaveBeenCalledWith(
+      'https://www.caf.fr/allocataires/actualites/actualites-nationales/comment-obtenir-son-quotient-familial-qf',
+      undefined,
+      true
+    )
   })
 
   it('Should go back when pressing go back button', async () => {

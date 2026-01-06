@@ -21,13 +21,26 @@ describe('BonificationRequiredInformation', () => {
     })
   })
 
-  it('Should navigate to FAQ when pressing "Consulter l’article d’aide"', async () => {
+  it('Should navigate to bonification FAQ when pressing "Consulter l’article d’aide"', async () => {
     render(<BonificationRequiredInformation />)
 
     const button = screen.getByText('Consulter l’article d’aide')
     await userEvent.press(button)
 
-    expect(openUrl).toHaveBeenCalledWith('https://passculture.faq', undefined, true)
+    expect(openUrl).toHaveBeenCalledWith(
+      'https://aide.passculture.app/hc/fr/articles/24338766387100-FAQ-Bonif',
+      undefined,
+      true
+    )
+  })
+
+  it('Should navigate to personal data chart when pressing "notre charte dédiée"', async () => {
+    render(<BonificationRequiredInformation />)
+
+    const button = screen.getByText('notre charte dédiée')
+    await userEvent.press(button)
+
+    expect(openUrl).toHaveBeenCalledWith('https://passculture.data-privacy-chart', undefined, true)
   })
 
   it('Should go back when pressing go back button', async () => {

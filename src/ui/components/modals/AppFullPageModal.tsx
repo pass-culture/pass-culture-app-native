@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import { Modal, useWindowDimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
+import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 
 interface Props {
@@ -15,33 +16,41 @@ export const AppFullPageModal: FunctionComponent<Props> = ({
   testIdSuffix,
   onRequestClose,
 }) => {
-  const { height: windowHeight } = useWindowDimensions()
+  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
+  const testId = testIdSuffix ? `modal-${testIdSuffix}` : undefined
 
-  return visible ? (
+  return (
     <Modal
-      animationType="fade"
-      statusBarTranslucent
-      transparent
-      visible={visible}
-      testID={testIdSuffix ? `modal-${testIdSuffix}` : undefined}
-      onRequestClose={onRequestClose}>
-      <Container windowHeight={windowHeight}>{children}</Container>
+      isVisible={visible}
+      animationIn="fadeIn"
+      animationOut="fadeOut"
+      animationInTiming={300}
+      animationOutTiming={300}
+      backdropTransitionInTiming={300}
+      backdropTransitionOutTiming={300}
+      useNativeDriver
+      coverScreen
+      backdropOpacity={0}
+      deviceHeight={windowHeight}
+      deviceWidth={windowWidth}
+      onBackdropPress={onRequestClose}
+      onBackButtonPress={onRequestClose}
+      testID={testId}>
+      <Container>{children}</Container>
     </Modal>
-  ) : null
+  )
 }
 
-const Container = styled.View<{ windowHeight: number }>(({ windowHeight, theme }) => {
-  const maxHeight = windowHeight - theme.navTopHeight
+const Container = styled.View(({ theme }) => {
   return {
-    flex: 1,
-    position: 'absolute',
-    bottom: 0,
-    alignItems: 'center',
-    alignSelf: 'center',
     width: '100%',
     height: '100%',
     maxWidth: theme.appContentWidth,
-    maxHeight: theme.isMobileViewport ? '100%' : maxHeight,
-    backgroundColor: theme.designSystem.color.background.default,
   }
+})
+
+// https://github.com/react-native-modal/react-native-modal/issues/381
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Modal = styled(ReactNativeModal as any)({
+  margin: 0,
 })

@@ -1,4 +1,4 @@
-import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
+import { FILTERS_ACTIVITY_MAPPING } from 'features/venueMap/constant'
 import {
   getActiveMacroFilters,
   getFiltersByMacro,
@@ -9,12 +9,12 @@ export const useVenueMapFilters = () => {
   const activeFilters = useVenuesFilter()
   const { setVenuesFilters, addVenuesFilters, removeVenuesFilters } = venuesFilterActions
 
-  const addMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
+  const addMacroFilter = (macro: keyof typeof FILTERS_ACTIVITY_MAPPING) => {
     const filters = getFiltersByMacro(macro)
     setVenuesFilters([...activeFilters, ...filters])
   }
 
-  const removeMacroFilter = (macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING) => {
+  const removeMacroFilter = (macro: keyof typeof FILTERS_ACTIVITY_MAPPING) => {
     const filters = getFiltersByMacro(macro)
     setVenuesFilters(activeFilters.filter((filter) => !filters.includes(filter)))
   }
@@ -27,7 +27,7 @@ export const useVenueMapFilters = () => {
    * when true, activate all inactive values from the group
    */
   const toggleMacroFilter = (
-    macro: keyof typeof FILTERS_VENUE_TYPE_MAPPING,
+    macro: keyof typeof FILTERS_ACTIVITY_MAPPING,
     completeMode = false
   ) => {
     const filters = getFiltersByMacro(macro)

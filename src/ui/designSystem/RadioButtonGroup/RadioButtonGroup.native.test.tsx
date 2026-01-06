@@ -24,21 +24,19 @@ const baseProps: ComponentProps<typeof RadioButtonGroup> = {
   display: 'vertical',
   options,
   value: '',
-  onValueChange: () => undefined,
+  onChange: () => undefined,
 }
 
 const user = userEvent.setup()
 
-const ControlledRadioButtonGroup = (
-  props: Omit<ComponentProps<typeof RadioButtonGroup>, 'value' | 'onValueChange'>
-) => {
+const ControlledRadioGroup = (props: Partial<ComponentProps<typeof RadioButtonGroup>>) => {
   const [value, setValue] = useState('')
-  return <RadioButtonGroup {...props} value={value} onValueChange={setValue} />
+  return <RadioButtonGroup {...baseProps} {...props} value={value} onChange={setValue} />
 }
 
 describe('<RadioButtonGroup />', () => {
   it('should render a RadioButtonGroup', () => {
-    render(<RadioButtonGroup {...baseProps} />)
+    render(<ControlledRadioGroup />)
 
     expect(screen.getByText(label)).toBeOnTheScreen()
     expect(screen.getByText(description)).toBeOnTheScreen()
@@ -47,7 +45,7 @@ describe('<RadioButtonGroup />', () => {
   })
 
   it('should check only one Radiobutton', async () => {
-    render(<ControlledRadioButtonGroup {...baseProps} />)
+    render(<ControlledRadioGroup />)
     await user.press(screen.getByLabelText('RadioButton_1'))
 
     expect(screen.getByLabelText('RadioButton_1')).toBeChecked()
@@ -60,7 +58,7 @@ describe('<RadioButtonGroup />', () => {
   })
 
   it('should prevent RadioButton to be checked when disabled', async () => {
-    render(<ControlledRadioButtonGroup {...baseProps} disabled />)
+    render(<ControlledRadioGroup disabled />)
     await user.press(screen.getByLabelText('RadioButton_1'))
 
     expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
@@ -68,7 +66,7 @@ describe('<RadioButtonGroup />', () => {
   })
 
   it('should prevent RadioButton to be unchecked when already selected', async () => {
-    render(<ControlledRadioButtonGroup {...baseProps} disabled />)
+    render(<ControlledRadioGroup disabled />)
     await user.press(screen.getByLabelText('RadioButton_1'))
 
     expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
@@ -81,7 +79,7 @@ describe('<RadioButtonGroup />', () => {
   })
 
   it('should render Error text when RadioButtonGroup is in error', () => {
-    render(<RadioButtonGroup {...baseProps} error />)
+    render(<ControlledRadioGroup error />)
 
     expect(screen.getByText(label)).toBeOnTheScreen()
     expect(screen.getByText(description)).toBeOnTheScreen()

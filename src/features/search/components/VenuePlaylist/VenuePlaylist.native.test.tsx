@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
@@ -108,9 +108,9 @@ describe('<VenuePlaylist />', () => {
       await user.press(screen.getByText('Voir sur la carte'))
 
       expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [
-        VenueTypeCodeKey.BOOKSTORE,
-        VenueTypeCodeKey.DISTRIBUTION_STORE,
-        VenueTypeCodeKey.LIBRARY,
+        Activity.BOOKSTORE,
+        Activity.DISTRIBUTION_STORE,
+        Activity.LIBRARY,
       ])
     })
 

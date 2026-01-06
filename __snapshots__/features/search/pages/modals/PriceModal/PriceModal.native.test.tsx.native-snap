@@ -977,6 +977,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           }
         >
           <View
+            flexDirection="row"
             gap={4}
             isModal={true}
             style={

@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/no-currency-symbols */
+/* eslint-disable local-rules/no-euro-usage */
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'

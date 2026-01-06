@@ -55,7 +55,6 @@ function buildQueries({
     }),
     buildQueryHelper({
       ...commonQueryParams,
-      userLocation: undefined,
       filters:
         'offer.nativeCategoryId:"CARTES_CINEMA" AND (offer.subcategoryId:"CARTE_CINE_MULTISEANCES" OR offer.subcategoryId:"CINE_VENTE_DISTANCE")',
     }),

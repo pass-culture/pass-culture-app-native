@@ -1,15 +1,12 @@
 import { SearchParamsObject } from 'algoliasearch/lite'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia/types'
 
-const defaultFacetFilters = [
-  [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
-  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
-]
+const defaultFacetFilters = [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]]
 
 interface LocationParams extends Omit<BuildLocationParameterParams, 'userLocation'> {
   userLocation?: BuildLocationParameterParams['userLocation']
@@ -112,9 +109,9 @@ describe('buildFetchVenuesQueryParameters', () => {
 
   it('should handle query with more than default facet filters', () => {
     const params = buildParams('myQuery', [], defaultLocationParams, {
-      facetFilters: [[`venue_type:${VenueTypeCodeKey.CONCERT_HALL}`]],
+      facetFilters: [[`activity:${Activity.PERFORMANCE_HALL}`]],
     })
-    const expected = buildExpected('myQuery', [], '', 'all', [['venue_type:CONCERT_HALL']])
+    const expected = buildExpected('myQuery', [], '', 'all', [['activity:PERFORMANCE_HALL']])
 
     expect(buildFetchVenuesQueryParameters(params)).toEqual(expected)
   })

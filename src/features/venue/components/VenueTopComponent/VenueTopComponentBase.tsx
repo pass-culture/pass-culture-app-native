@@ -12,7 +12,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { getDistance } from 'libs/location/getDistance'
 import { useLocation } from 'libs/location/location'
-import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
+import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -40,12 +40,10 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
     { lat: venue.latitude, lng: venue.longitude },
     { userLocation, selectedPlace, selectedLocationMode }
   )
-  const venueTypeLabel = venue.venueTypeCode
-    ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
-    : undefined
+  const activityLabel = venue.activity ? MAP_ACTIVITY_TO_LABEL[venue.activity] : undefined
 
   const venueTags: string[] = []
-  venueTypeLabel && venueTags.push(venueTypeLabel)
+  activityLabel && venueTags.push(activityLabel)
   distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 
   const currentDate = new Date()

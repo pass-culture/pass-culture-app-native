@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   label: string
@@ -25,6 +25,6 @@ const Container = styled(ExternalTouchableLink)({
   minWidth: 100,
 })
 
-const Label = styled(Typo.BodyAccentXs)({
-  marginTop: getSpacing(2),
-})
+const Label = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+}))

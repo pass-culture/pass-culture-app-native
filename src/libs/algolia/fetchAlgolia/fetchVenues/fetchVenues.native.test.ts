@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
@@ -14,10 +14,7 @@ jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 
-const facetFilters = [
-  [`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`],
-  [`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`],
-]
+const facetFilters = [[`${VENUES_FACETS_ENUM.VENUE_IS_OPEN_TO_PUBLIC}:true`]]
 
 describe('fetchVenues', () => {
   const venueFixture: AlgoliaVenue = {
@@ -40,7 +37,7 @@ describe('fetchVenues', () => {
     twitter: null,
     isPermanent: true,
     isOpenToPublic: true,
-    venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+    activity: Activity.ARTS_CENTRE,
     visual_disability: false,
     website: 'https://my.website.com',
   }
@@ -96,8 +93,8 @@ describe('fetchVenues', () => {
 
   it.each`
     fixture                                             | expectedResult
-    ${{ hits: [venueFixture] }}                         | ${{ label: '[EAC] Le lieu de Moz’Art 50', info: 'Saint-Benoît', venueId: 4150, _geoloc: { lat: 48.87004, lng: 2.3785 }, banner_url: null, isPermanent: true, postalCode: '86280', venue_type: VenueTypeCodeKey.PERFORMING_ARTS, isOpenToPublic: true }}
-    ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{ label: '[EAC] Le lieu de Moz’Art 50', info: '[EAC] La structure de Moz’Art 32', venueId: 4150, _geoloc: { lat: 48.87004, lng: 2.3785 }, banner_url: null, postalCode: '86280', isPermanent: true, venue_type: VenueTypeCodeKey.PERFORMING_ARTS, isOpenToPublic: true }}
+    ${{ hits: [venueFixture] }}                         | ${{ label: '[EAC] Le lieu de Moz’Art 50', info: 'Saint-Benoît', venueId: 4150, _geoloc: { lat: 48.87004, lng: 2.3785 }, banner_url: null, isPermanent: true, postalCode: '86280', activity: Activity.ARTS_CENTRE, isOpenToPublic: true }}
+    ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{ label: '[EAC] Le lieu de Moz’Art 50', info: '[EAC] La structure de Moz’Art 32', venueId: 4150, _geoloc: { lat: 48.87004, lng: 2.3785 }, banner_url: null, postalCode: '86280', isPermanent: true, activity: Activity.ARTS_CENTRE, isOpenToPublic: true }}
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
     mockSearchForHits.mockResolvedValueOnce({ results: [fixture] })
 

@@ -3,8 +3,6 @@ import React, { ComponentProps } from 'react'
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { chronicleVariantInfoFixture } from 'features/offer/fixtures/chronicleVariantInfo'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
@@ -22,7 +20,6 @@ const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor'
 describe('<OfferReactionSection />', () => {
   describe('When FF is enabled', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
       mockIsSuccess = true
       mockScrollToAnchor.mockClear()
       useScrollToAnchorSpy.mockReturnValue(mockScrollToAnchor)
