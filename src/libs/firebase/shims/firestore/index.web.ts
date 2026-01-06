@@ -1,8 +1,6 @@
 export type { DocumentData, DocumentSnapshot } from 'firebase/firestore'
 
-import initializeApp from '../firebase-init'
-
-const app = initializeApp()
+import app from '../firebase-init'
 
 export { app }
 

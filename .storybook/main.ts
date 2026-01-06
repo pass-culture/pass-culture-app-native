@@ -58,7 +58,7 @@ const config: StorybookConfig = {
             replacement: 'styled-components/native/dist/styled-components.native.cjs.js',
           },
           {
-            find: 'firebase/compat/app',
+            find: 'firebase/app',
             replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
           },
           {

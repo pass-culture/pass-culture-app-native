@@ -1,8 +1,6 @@
 import { getAnalytics as getAnalyticsInstance } from 'firebase/analytics'
 
-import initializeApp from '../firebase-init'
-
-const app = initializeApp()
+import app from '../firebase-init'
 
 const analyticsInstance = getAnalyticsInstance(app)
 export const getAnalytics = () => analyticsInstance
