@@ -26,6 +26,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
@@ -122,6 +123,7 @@ describe('<HomeModule />', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockInView(true)
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

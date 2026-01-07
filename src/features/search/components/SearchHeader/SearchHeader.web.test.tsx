@@ -8,6 +8,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { LocationMode } from 'libs/location/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
@@ -53,12 +54,14 @@ describe('SearchHeader component', () => {
 
   it('should contain a button to go to the search suggestions view', async () => {
     render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
+      reactQueryProviderHOC(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          shouldDisplaySubtitle
+        />
+      )
     )
     await act(async () => {})
 
@@ -67,12 +70,14 @@ describe('SearchHeader component', () => {
 
   it('should focus on location widget button', async () => {
     render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
+      reactQueryProviderHOC(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          shouldDisplaySubtitle
+        />
+      )
     )
 
     await act(async () => {
@@ -88,12 +93,14 @@ describe('SearchHeader component', () => {
 
   it('should focus on suggestion when focusing and pressing enter', async () => {
     render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
+      reactQueryProviderHOC(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          shouldDisplaySubtitle
+        />
+      )
     )
 
     await act(async () => {
@@ -124,12 +131,14 @@ describe('SearchHeader component', () => {
     })
 
     render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        withArrow
-      />
+      reactQueryProviderHOC(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+          withArrow
+        />
+      )
     )
     await userEvent.click(screen.getByTestId('Revenir en arrière'))
 
@@ -143,11 +152,13 @@ describe('SearchHeader component', () => {
 
   it('should not have focus on search main input', async () => {
     render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />
+      reactQueryProviderHOC(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
     )
 
     await act(async () => {
@@ -171,12 +182,14 @@ describe('SearchHeader component', () => {
 
     it('should not render a button to focus on suggestion', async () => {
       render(
-        <SearchHeader
-          searchInputID={searchInputID}
-          addSearchHistory={jest.fn()}
-          searchInHistory={jest.fn()}
-          shouldDisplaySubtitle
-        />
+        reactQueryProviderHOC(
+          <SearchHeader
+            searchInputID={searchInputID}
+            addSearchHistory={jest.fn()}
+            searchInHistory={jest.fn()}
+            shouldDisplaySubtitle
+          />
+        )
       )
       await act(async () => {})
 

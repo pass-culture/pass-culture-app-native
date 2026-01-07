@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { DomainsCredit } from 'api/gen'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import {
   domains_credit_underage_v3,
@@ -8,6 +9,7 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 const mockUseIsUserUnderageBeneficiary = jest
@@ -22,13 +24,13 @@ describe('BeneficiaryCeilings', () => {
   })
 
   it('should not return credits if credit is exhausted', () => {
-    render(<BeneficiaryCeilings domainsCredit={domains_exhausted_credit_v3} />)
+    renderBeneficiaryCeilings(domains_exhausted_credit_v3)
 
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
   it('should return only digital credits', async () => {
-    render(<BeneficiaryCeilings domainsCredit={domains_credit_v3} />)
+    renderBeneficiaryCeilings(domains_credit_v3)
 
     const digitalCredit = screen.queryByTestId('domains-credit-digital')
 
@@ -38,15 +40,19 @@ describe('BeneficiaryCeilings', () => {
   })
 
   it('should not return credits if domains credit underage and is not user underage beneficiary', () => {
-    render(<BeneficiaryCeilings domainsCredit={domains_credit_underage_v3} />)
+    renderBeneficiaryCeilings(domains_credit_underage_v3)
 
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
   it('should not return credits if user underage beneficiary', () => {
     mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
-    render(<BeneficiaryCeilings domainsCredit={domains_credit_v3} />)
+    renderBeneficiaryCeilings(domains_credit_v3)
 
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 })
+
+function renderBeneficiaryCeilings(domainsCredit: DomainsCredit) {
+  return render(reactQueryProviderHOC(<BeneficiaryCeilings domainsCredit={domainsCredit} />))
+}

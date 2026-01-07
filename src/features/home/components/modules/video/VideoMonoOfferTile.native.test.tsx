@@ -13,6 +13,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -34,6 +35,7 @@ jest.useFakeTimers()
 
 describe('VideoMonoOfferTile', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     setFeatureFlags()
   })

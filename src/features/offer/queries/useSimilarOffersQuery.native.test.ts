@@ -10,6 +10,7 @@ import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesR
 import * as useAlgoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -30,6 +31,10 @@ jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 jest.useFakeTimers()
 
 describe('useSimilarOffersQuery', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   describe('When success API response', () => {
     beforeEach(() => {
       mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {

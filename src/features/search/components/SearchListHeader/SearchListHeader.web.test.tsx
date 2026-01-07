@@ -13,6 +13,7 @@ import { GeoCoordinates } from 'libs/location/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 const searchId = uuidv4()
@@ -82,12 +83,14 @@ describe('<SearchListHeader />', () => {
       })
 
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+          />
+        )
       )
 
       expect(
@@ -113,12 +116,14 @@ describe('<SearchListHeader />', () => {
       })
 
       render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-        />
+        reactQueryProviderHOC(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+          />
+        )
       )
 
       expect(

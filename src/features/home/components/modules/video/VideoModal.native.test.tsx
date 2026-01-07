@@ -10,6 +10,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -34,6 +35,7 @@ const user = userEvent.setup()
 describe('VideoModal', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

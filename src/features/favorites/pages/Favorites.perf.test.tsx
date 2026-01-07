@@ -13,6 +13,7 @@ import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { measurePerformance, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -42,6 +43,7 @@ jest.mock('libs/network/NetInfoWrapper')
 describe('<Favorites />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setSettings()
     mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
   })
 

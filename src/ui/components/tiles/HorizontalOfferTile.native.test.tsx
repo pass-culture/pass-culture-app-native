@@ -16,6 +16,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
@@ -91,6 +92,7 @@ jest.useFakeTimers()
 describe('HorizontalOfferTile component', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
 

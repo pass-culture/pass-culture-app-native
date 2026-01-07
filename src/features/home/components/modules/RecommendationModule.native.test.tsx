@@ -9,6 +9,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
@@ -40,6 +41,7 @@ jest.useFakeTimers()
 describe('RecommendationModule', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

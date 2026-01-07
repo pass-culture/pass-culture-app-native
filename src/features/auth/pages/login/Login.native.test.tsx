@@ -7,7 +7,6 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -26,6 +25,7 @@ import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixture
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, render, screen, simulateWebviewMessage, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
@@ -98,6 +98,8 @@ describe('<Login/>', () => {
   })
 
   it('should render correctly when feature flag is enabled', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
 
     await screen.findByText('Connecte-toi')
@@ -106,6 +108,7 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when "Se connecter" is clicked with device info', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
@@ -132,6 +135,7 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when SSO button is clicked with device info', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
@@ -159,6 +163,7 @@ describe('<Login/>', () => {
   })
 
   it('should show snackbar when SSO login fails because account is invalid', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
       responseOptions: {
         statusCode: 400,
@@ -181,6 +186,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to signup form when SSO login fails because user does not exist', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
       responseOptions: {
         statusCode: 401,
@@ -205,6 +211,8 @@ describe('<Login/>', () => {
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
 
     await act(async () => {
@@ -220,6 +228,8 @@ describe('<Login/>', () => {
   })
 
   it('should not open reCAPTCHA challenge modal when clicking on login button when feature flag is disabled', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
     const recaptchaWebviewModal = screen.queryByTestId('recaptcha-webview-modal')
 
@@ -230,6 +240,8 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home WHEN signin is successful', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
 
     await fillInputs()
@@ -243,6 +255,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home WHEN signin is successful with WIP_ENABLE_GOOGLE_SSO', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
     mockMeApiCall({
       showEligibleCard: false,
@@ -256,6 +269,7 @@ describe('<Login/>', () => {
   })
 
   it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     storage.saveObject('has_seen_eligible_card', true)
     mockMeApiCall({
       showEligibleCard: true,
@@ -269,6 +283,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     mockMeApiCall({
       showEligibleCard: true,
     } as UserProfileResponseWithoutSurvey)
@@ -281,6 +296,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     mockMeApiCall({
       showEligibleCard: true,
       recreditAmountToShow: 3000,
@@ -294,6 +310,7 @@ describe('<Login/>', () => {
   })
 
   it('should not redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow to null', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     mockMeApiCall({
       showEligibleCard: true,
       recreditAmountToShow: null,
@@ -307,6 +324,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSigninEmailNotValidated()
     renderLogin()
 
@@ -319,6 +337,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to AccountStatusScreenHandler WHEN signin is successful for inactive account', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.INACTIVE)
     renderLogin()
 
@@ -329,6 +348,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.SUSPENDED)
     renderLogin()
 
@@ -339,6 +359,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account upon user request', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.SUSPENDED_UPON_USER_REQUEST)
     renderLogin()
 
@@ -349,6 +370,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to AccountStatusScreenHandler WHEN signin is successful for suspended account suspicious login report by user', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.SUSPENDED_UPON_USER_REQUEST)
     renderLogin()
 
@@ -359,6 +381,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to AccountStatusScreenHandler WHEN signin is successful for waiting for anonymization account', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.WAITING_FOR_ANONYMIZATION)
     renderLogin()
 
@@ -369,6 +392,7 @@ describe('<Login/>', () => {
   })
 
   it('should show appropriate message if account is deleted', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.DELETED)
     renderLogin()
 
@@ -381,6 +405,7 @@ describe('<Login/>', () => {
   })
 
   it('should show appropriate message if account is anonymized', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSignin200(AccountState.ANONYMIZED)
     renderLogin()
 
@@ -393,6 +418,8 @@ describe('<Login/>', () => {
   })
 
   it('should show email error message WHEN invalid e-mail format', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
 
     const emailInput = screen.getByTestId('Entrée pour l’email')
@@ -409,6 +436,7 @@ describe('<Login/>', () => {
   })
 
   it('should show error message and error inputs WHEN signin has failed because of wrong credentials', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSigninWrongCredentials()
     renderLogin()
 
@@ -423,6 +451,7 @@ describe('<Login/>', () => {
     // With msw when we make a request that fails because of network error, it raises an error on the console
     // We want to have this error to test if we catch this error correctly
     jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
+    setSettings({ isRecaptchaEnabled: false })
     simulateSigninNetworkFailure()
     renderLogin()
 
@@ -438,6 +467,7 @@ describe('<Login/>', () => {
   })
 
   it('should show specific error message when signin rate limit is exceeded', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     simulateSigninRateLimitExceeded()
     renderLogin()
 
@@ -451,6 +481,8 @@ describe('<Login/>', () => {
   })
 
   it('should enable login button when both text inputs are filled', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
     await screen.findByText('Connecte-toi')
 
@@ -462,6 +494,7 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics on render', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.PROFILE } })
     renderLogin()
 
@@ -471,6 +504,8 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
 
     const signupButton = screen.getByText('Créer un compte')
@@ -480,6 +515,8 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when signing in', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
     await screen.findByText('Connecte-toi')
 
@@ -490,6 +527,7 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when signing in with SSO', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -504,6 +542,7 @@ describe('<Login/>', () => {
   })
 
   it('should display forced login help message when the query param is given', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
     renderLogin()
 
@@ -516,6 +555,7 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when displaying forced login help message', async () => {
+    setSettings({ isRecaptchaEnabled: false })
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
     renderLogin()
 
@@ -525,6 +565,8 @@ describe('<Login/>', () => {
   })
 
   it('should not display the login help message when the query param is not given', async () => {
+    setSettings({ isRecaptchaEnabled: false })
+
     renderLogin()
 
     await screen.findByText('Connecte-toi')
@@ -537,6 +579,7 @@ describe('<Login/>', () => {
 
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: StepperOrigin.FAVORITE } }) // first render
+      setSettings({ isRecaptchaEnabled: false })
     })
 
     it('should redirect to Offer page when signin is successful', async () => {
@@ -578,6 +621,7 @@ describe('<Login/>', () => {
 
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: StepperOrigin.BOOKING } }) // first render
+      setSettings({ isRecaptchaEnabled: false })
     })
 
     it('should redirect to the previous offer page and ask to open the booking modal', async () => {
@@ -594,7 +638,7 @@ describe('<Login/>', () => {
   })
 
   describe('Login with ReCatpcha', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       setSettings()
     })
 

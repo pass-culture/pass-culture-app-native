@@ -10,6 +10,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -65,13 +66,13 @@ describe('<BookingConfirmation />', () => {
   })
 
   it('should render correctly', () => {
-    render(<BookingConfirmation />)
+    render(reactQueryProviderHOC(<BookingConfirmation />))
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display correct amount left text', async () => {
-    render(<BookingConfirmation />)
+    render(reactQueryProviderHOC(<BookingConfirmation />))
 
     const amountLeftText = await screen.findByText(
       `Il te reste encore 20 € à dépenser sur le pass Culture.${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`
@@ -86,7 +87,7 @@ describe('<BookingConfirmation />', () => {
       eligibility: EligibilityType.free,
     })
 
-    render(<BookingConfirmation />)
+    render(reactQueryProviderHOC(<BookingConfirmation />))
 
     const amountLeftText = screen.queryByText(
       `Il te reste encore 20 € à dépenser sur le pass Culture.${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`
@@ -102,7 +103,7 @@ describe('<BookingConfirmation />', () => {
       isAvailable.mockReturnValueOnce(true)
       requestInAppReview.mockResolvedValueOnce(true)
 
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
       jest.advanceTimersByTime(3000)
 
       expect(requestInAppReview).toHaveBeenCalledTimes(1)
@@ -111,7 +112,7 @@ describe('<BookingConfirmation />', () => {
     it('should not call InAppReview Modal if isAvailable is false', () => {
       isAvailable.mockReturnValueOnce(false)
 
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
       jest.advanceTimersByTime(3000)
 
       expect(requestInAppReview).not.toHaveBeenCalled()
@@ -122,7 +123,7 @@ describe('<BookingConfirmation />', () => {
         shouldReviewBeRequested: false,
       }))
 
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
       jest.advanceTimersByTime(3000)
 
       expect(requestInAppReview).not.toHaveBeenCalled()
@@ -131,7 +132,7 @@ describe('<BookingConfirmation />', () => {
 
   describe('buttons', () => {
     it('should call display share when press share button', async () => {
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
 
       await act(async () => {
         const shareButton = await screen.findByText('Partager l’offre')
@@ -142,7 +143,7 @@ describe('<BookingConfirmation />', () => {
     })
 
     it('should log analytics when press share button', async () => {
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
 
       await act(async () => {
         const shareButton = await screen.findByText('Partager l’offre')
@@ -157,7 +158,7 @@ describe('<BookingConfirmation />', () => {
     })
 
     it('should go to Bookings when click on CTA', async () => {
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
       await userEvent.press(await screen.findByText('Voir ma réservation'))
 
       expect(reset).toHaveBeenCalledWith({
@@ -181,14 +182,14 @@ describe('<BookingConfirmation />', () => {
     })
 
     it('should log analytic logSeeMyBooking when click on CTA', async () => {
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
       await userEvent.press(await screen.findByText('Voir ma réservation'))
 
       expect(analytics.logSeeMyBooking).toHaveBeenCalledWith(mockOfferId)
     })
 
     it('should log analytic logViewedBookingPage when click on CTA', async () => {
-      render(<BookingConfirmation />)
+      render(reactQueryProviderHOC(<BookingConfirmation />))
       await userEvent.press(await screen.findByText('Voir ma réservation'))
 
       expect(analytics.logViewedBookingPage).toHaveBeenCalledWith({
@@ -200,7 +201,7 @@ describe('<BookingConfirmation />', () => {
     it.each(['Voir ma réservation', 'Retourner à l’accueil'])(
       'should track Batch event when button "%s" is clicked',
       async (buttonWording) => {
-        render(<BookingConfirmation />)
+        render(reactQueryProviderHOC(<BookingConfirmation />))
 
         await userEvent.press(await screen.findByText(buttonWording))
 

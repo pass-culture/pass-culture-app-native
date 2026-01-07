@@ -13,6 +13,7 @@ import { endedBookingsV2ListSnap } from 'features/bookings/fixtures/bookingsSnap
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EndedBookings } from './EndedBookings'
@@ -45,6 +46,7 @@ jest.mock('libs/subcategories/mappings', () => ({
 
 describe('EndedBookings', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', bookingsSnapV2)
 
     setFeatureFlags()

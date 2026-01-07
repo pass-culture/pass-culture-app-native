@@ -2,11 +2,12 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { DeactivateProfileSuccess } from './DeactivateProfileSuccess'
@@ -30,23 +31,27 @@ jest.useFakeTimers()
 
 describe('DeactivateProfileSuccess component', () => {
   beforeEach(() => {
-    setSettings()
+    setSettings({ accountUnsuspensionLimit: 60 })
   })
 
-  it('should render delete profile success', () => {
-    render(<DeactivateProfileSuccess />)
+  it('should render delete profile success', async () => {
+    render(reactQueryProviderHOC(<DeactivateProfileSuccess />))
+
+    await screen.findByText(
+      'Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.'
+    )
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should log out user', () => {
-    render(<DeactivateProfileSuccess />)
+    render(reactQueryProviderHOC(<DeactivateProfileSuccess />))
 
     expect(signOutMock).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to Home page when clicking on "Retourner à l’accueil" button', async () => {
-    render(<DeactivateProfileSuccess />)
+    render(reactQueryProviderHOC(<DeactivateProfileSuccess />))
 
     await user.press(screen.getByText(`Retourner à l’accueil`))
 
@@ -57,7 +62,7 @@ describe('DeactivateProfileSuccess component', () => {
   })
 
   it('should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button', async () => {
-    render(<DeactivateProfileSuccess />)
+    render(reactQueryProviderHOC(<DeactivateProfileSuccess />))
 
     await user.press(screen.getByText('Réactiver mon compte'))
 

@@ -9,6 +9,7 @@ import { CitiesResponse } from 'libs/place/types'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -29,6 +30,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SetCity/>', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   it('should render correctly', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 

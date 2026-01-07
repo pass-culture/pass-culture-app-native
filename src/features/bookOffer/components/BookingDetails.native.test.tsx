@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { EligibilityType, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -14,6 +15,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import * as BookingOfferAPI from 'queries/offer/useBookingOfferQuery'
+import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -48,6 +50,13 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),
 }))
+
+jest.mock('queries/settings/useSettingsQuery', () => ({
+  useSettingsQuery: jest.fn(() => mockUseSettingsQuery),
+}))
+const mockUseSettingsQuery = (useSettingsQuery as jest.Mock).mockReturnValue({
+  data: defaultSettings,
+})
 
 const mockUseBookingOffer = jest.spyOn(BookingOfferAPI, 'useBookingOfferQuery')
 mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })

@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ForgottenPassword } from './ForgottenPassword'
@@ -28,8 +29,10 @@ describe('<ForgottenPassword/>', () => {
 
 function renderForgottenPassword() {
   return render(
-    <SafeAreaProvider>
-      <ForgottenPassword />
-    </SafeAreaProvider>
+    reactQueryProviderHOC(
+      <SafeAreaProvider>
+        <ForgottenPassword />
+      </SafeAreaProvider>
+    )
   )
 }

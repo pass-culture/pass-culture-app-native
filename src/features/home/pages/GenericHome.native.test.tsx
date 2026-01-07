@@ -17,6 +17,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 // Removed: old tracking system import
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen, waitFor, within } from 'tests/utils'
 import { Typo } from 'ui/theme'
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
@@ -55,6 +56,7 @@ describe('GenericHome', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -163,6 +165,7 @@ describe('GenericHome page - Analytics', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
@@ -67,6 +68,7 @@ jest.useFakeTimers()
 describe('VenueMovies', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })

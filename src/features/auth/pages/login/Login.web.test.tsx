@@ -10,6 +10,7 @@ import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -39,6 +40,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<Login/>', () => {
   beforeEach(() => {
+    setSettings()
     setFeatureFlags()
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',

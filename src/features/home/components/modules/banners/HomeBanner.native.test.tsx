@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { ApiError } from 'api/ApiError'
 import {
   BannerName,
   BannerResponse,
@@ -19,6 +18,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -41,6 +41,7 @@ jest.useFakeTimers()
 describe('<HomeBanner/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockDepositAmounts.mockReturnValue(undefined)
     mockUseGeolocation.mockReturnValue({
       selectedLocationMode: LocationMode.EVERYWHERE,
@@ -183,7 +184,7 @@ describe('<HomeBanner/>', () => {
       renderHomeBanner({})
 
       await waitFor(() =>
-        expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(ApiError))
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(Error))
       )
     })
 

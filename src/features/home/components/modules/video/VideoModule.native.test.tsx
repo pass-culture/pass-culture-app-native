@@ -9,6 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -31,6 +32,7 @@ jest.useFakeTimers()
 describe('VideoModule', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 

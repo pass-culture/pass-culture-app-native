@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -9,6 +8,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { renderAsync, screen, simulateWebviewMessage, userEvent, waitFor } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
@@ -45,6 +45,8 @@ describe('<ForgottenPassword />', () => {
 
   it('should match snapshot', async () => {
     await renderForgottenPassword()
+
+    await screen.findByText('Valider')
 
     expect(screen).toMatchSnapshot()
   })

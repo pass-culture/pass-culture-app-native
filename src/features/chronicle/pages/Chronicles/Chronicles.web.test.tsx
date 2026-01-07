@@ -8,6 +8,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 useRoute.mockReturnValue({
@@ -22,6 +23,7 @@ jest.mock('features/navigation/helpers/openUrl')
 
 describe('Chronicles', () => {
   beforeEach(() => {
+    setSettings()
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerChroniclesFixture)
     mockServer.getApi('/v1/subcategories/v2', subcategoriesDataTest)
   })

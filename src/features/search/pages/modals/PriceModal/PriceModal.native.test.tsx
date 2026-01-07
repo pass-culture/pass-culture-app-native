@@ -10,6 +10,7 @@ import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor, waitForButtonToBePressable } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
@@ -884,13 +885,15 @@ function renderSearchPrice({
   onClose,
 }: Partial<PriceModalProps> = {}) {
   return render(
-    <PriceModal
-      title="Prix"
-      accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-      isVisible
-      hideModal={mockHideModal}
-      filterBehaviour={filterBehaviour}
-      onClose={onClose}
-    />
+    reactQueryProviderHOC(
+      <PriceModal
+        title="Prix"
+        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
+        isVisible
+        hideModal={mockHideModal}
+        filterBehaviour={filterBehaviour}
+        onClose={onClose}
+      />
+    )
   )
 }

@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 const user = userEvent.setup()
@@ -67,14 +68,16 @@ function renderVenueMapPreview({
   navigateTo = { screen: 'Venue' },
 }: RenderVenueMapPreviewType) {
   return render(
-    <VenueMapPreview
-      venueName={venueName}
-      address={address}
-      bannerUrl={bannerUrl}
-      tags={tags}
-      noBorder={noBorder}
-      navigateTo={navigateTo}
-      testID="venueMapPreview"
-    />
+    reactQueryProviderHOC(
+      <VenueMapPreview
+        venueName={venueName}
+        address={address}
+        bannerUrl={bannerUrl}
+        tags={tags}
+        noBorder={noBorder}
+        navigateTo={navigateTo}
+        testID="venueMapPreview"
+      />
+    )
   )
 }

@@ -24,6 +24,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, measurePerformance, screen } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
@@ -80,6 +81,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Offer />', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     // We mock server instead of hooks to test the real behavior of the component.
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },

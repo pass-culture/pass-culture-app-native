@@ -50,6 +50,7 @@ import * as useArtistResultsAPI from 'queries/offer/useArtistResultsQuery'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -235,6 +236,7 @@ describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    setSettings()
     spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})

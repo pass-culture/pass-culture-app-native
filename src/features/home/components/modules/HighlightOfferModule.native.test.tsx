@@ -14,6 +14,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
 const offerFixture = offersFixture[0]
 
@@ -40,6 +41,7 @@ describe('HighlightOfferModule', () => {
   beforeEach(() => {
     mockdate.set(new Date(today * 1000))
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+    setSettings()
     const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
       page: 1,
       nbFavorites: 0,

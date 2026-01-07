@@ -5,6 +5,7 @@ import { BonificationGranted } from 'features/bonification/pages/BonificationGra
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -25,7 +26,10 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 describe('BonificationGranted', () => {
-  beforeEach(() => setFeatureFlags())
+  beforeEach(() => {
+    setFeatureFlags()
+    setSettings()
+  })
 
   describe('when pressing "J’en profite" and call to reset re-credit amount to show succeeds', () => {
     it('should reset to home', async () => {

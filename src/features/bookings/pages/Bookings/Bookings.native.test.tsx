@@ -21,6 +21,7 @@ import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { Bookings } from './Bookings'
@@ -183,6 +184,7 @@ describe('Bookings', () => {
   describe('with bookings api that returns bookings by status ongoing | ended', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING])
+      setSettings()
       mockServer.getApi<BookingsListResponseV2>('/v2/bookings/ongoing', ongoingBookingsV2ListSnap)
       mockServer.getApi<BookingsListResponseV2>('/v2/bookings/ended', endedBookingsV2ListSnap)
     })

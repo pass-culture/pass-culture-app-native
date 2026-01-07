@@ -8,6 +8,7 @@ import { convertAlgoliaVenue2AlgoliaVenueOfferListItem } from 'features/search/h
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 const searchId = uuidv4()
@@ -46,11 +47,13 @@ describe('<VenuePlaylist />', () => {
 
     it('should not display Voir sur la carte button when current view is ThematicSearch', () => {
       render(
-        <VenuePlaylist
-          venuePlaylistTitle="Test Playlist"
-          venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
-          currentView="ThematicSearch"
-        />
+        reactQueryProviderHOC(
+          <VenuePlaylist
+            venuePlaylistTitle="Test Playlist"
+            venues={mockAlgoliaVenues.map(convertAlgoliaVenue2AlgoliaVenueOfferListItem)}
+            currentView="ThematicSearch"
+          />
+        )
       )
 
       expect(screen.queryByText('Voir sur la carte')).toBeNull()

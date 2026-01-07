@@ -5,6 +5,7 @@ import { BookingState, initialBookingState } from 'features/bookOffer/context/re
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 const mockInitialBookingState = initialBookingState
@@ -45,14 +46,14 @@ describe('BookPricesChoice', () => {
   })
 
   it('should render prices of stocks in parameter', () => {
-    render(<BookPricesChoice stocks={mockStocks} />)
+    render(reactQueryProviderHOC(<BookPricesChoice stocks={mockStocks} />))
 
     expect(screen.getByText('Pelouse or')).toBeOnTheScreen()
     expect(screen.getByText('Pelouse')).toBeOnTheScreen()
   })
 
   it('should select price stock when pressing a price and offer is duo', async () => {
-    render(<BookPricesChoice stocks={mockStocks} isDuo />)
+    render(reactQueryProviderHOC(<BookPricesChoice stocks={mockStocks} isDuo />))
 
     await user.press(screen.getByText('Pelouse or'))
 
@@ -61,7 +62,7 @@ describe('BookPricesChoice', () => {
   })
 
   it('should select a quantity of 1 in addition to the price stock when pressing a price and offer is not duo', async () => {
-    render(<BookPricesChoice stocks={mockStocks} />)
+    render(reactQueryProviderHOC(<BookPricesChoice stocks={mockStocks} />))
 
     await user.press(screen.getByText('Pelouse or'))
 

@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react'
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils/web'
 import { theme } from 'theme'
 
@@ -39,16 +40,18 @@ function renderOfferImageWrapper({
   isInCarousel,
 }: RenderOfferImageWrapperType) {
   render(
-    <OfferImageWrapper
-      shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-      imageUrl={imageUrl}
-      isInCarousel={isInCarousel}
-      imageDimensions={mockOfferImageDimensions}>
-      <OfferBodyImage
-        imageUrl="some_url_to_some_resource"
-        imageDimensions={mockOfferImageDimensions}
-      />
-    </OfferImageWrapper>,
+    reactQueryProviderHOC(
+      <OfferImageWrapper
+        shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+        imageUrl={imageUrl}
+        isInCarousel={isInCarousel}
+        imageDimensions={mockOfferImageDimensions}>
+        <OfferBodyImage
+          imageUrl="some_url_to_some_resource"
+          imageDimensions={mockOfferImageDimensions}
+        />
+      </OfferImageWrapper>
+    ),
     {
       theme: { ...theme, isDesktopViewport: isDesktopViewport ?? false },
     }

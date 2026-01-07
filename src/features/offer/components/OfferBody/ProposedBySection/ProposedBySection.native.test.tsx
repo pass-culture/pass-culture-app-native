@@ -3,6 +3,7 @@ import React from 'react'
 
 import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockNavigate = jest.fn()
@@ -18,11 +19,13 @@ jest.useFakeTimers()
 describe('<ProposedBySection />', () => {
   it('should display venue name', () => {
     render(
-      <ProposedBySection
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        name={venue.name}
-        imageUrl={venue.bannerUrl}
-      />
+      reactQueryProviderHOC(
+        <ProposedBySection
+          navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
+          name={venue.name}
+          imageUrl={venue.bannerUrl}
+        />
+      )
     )
 
     expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
@@ -30,11 +33,13 @@ describe('<ProposedBySection />', () => {
 
   it('should display venue image when there is one', () => {
     render(
-      <ProposedBySection
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        name={venue.name}
-        imageUrl={venue.bannerUrl}
-      />
+      reactQueryProviderHOC(
+        <ProposedBySection
+          navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
+          name={venue.name}
+          imageUrl={venue.bannerUrl}
+        />
+      )
     )
 
     expect(screen.getByTestId('VenueImage')).toBeOnTheScreen()
@@ -42,10 +47,12 @@ describe('<ProposedBySection />', () => {
 
   it('should display default image when there is no venue image', () => {
     render(
-      <ProposedBySection
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        name={venue.name}
-      />
+      reactQueryProviderHOC(
+        <ProposedBySection
+          navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
+          name={venue.name}
+        />
+      )
     )
 
     expect(screen.getByTestId('DefaultImage')).toBeOnTheScreen()
@@ -53,10 +60,12 @@ describe('<ProposedBySection />', () => {
 
   it('should navigate to the venue when navigateTo defined', async () => {
     render(
-      <ProposedBySection
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        name={venue.name}
-      />
+      reactQueryProviderHOC(
+        <ProposedBySection
+          navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
+          name={venue.name}
+        />
+      )
     )
 
     await user.press(screen.getByText('PATHE BEAUGRENELLE'))
@@ -66,17 +75,19 @@ describe('<ProposedBySection />', () => {
 
   it('should display right chevron when navigateTo defined', async () => {
     render(
-      <ProposedBySection
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        name={venue.name}
-      />
+      reactQueryProviderHOC(
+        <ProposedBySection
+          navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
+          name={venue.name}
+        />
+      )
     )
 
     expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
 
   it('should not navigate to the venue when navigateTo not defined', async () => {
-    render(<ProposedBySection name={venue.name} />)
+    render(reactQueryProviderHOC(<ProposedBySection name={venue.name} />))
 
     await user.press(screen.getByText('PATHE BEAUGRENELLE'))
 
@@ -84,7 +95,7 @@ describe('<ProposedBySection />', () => {
   })
 
   it('should not display right chevron when navigateTo not defined', async () => {
-    render(<ProposedBySection name={venue.name} />)
+    render(reactQueryProviderHOC(<ProposedBySection name={venue.name} />))
 
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })

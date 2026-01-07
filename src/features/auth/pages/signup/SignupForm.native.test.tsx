@@ -27,6 +27,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import {
   act,
   fireEvent,
@@ -120,6 +121,7 @@ describe('Signup Form', () => {
   })
 
   beforeEach(() => {
+    setSettings({ isRecaptchaEnabled: false })
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
       '/v1/email_validation_remaining_resends/email%40gmail.com',
       {

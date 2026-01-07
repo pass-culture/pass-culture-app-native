@@ -7,6 +7,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
@@ -64,6 +65,7 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
+      setSettings()
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
       mockServer.getApi(`/v2/offer/${mockOffer.id}`, mockOffer)
     })

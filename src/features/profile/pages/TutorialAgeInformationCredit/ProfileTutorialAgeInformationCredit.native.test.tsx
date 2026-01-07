@@ -8,6 +8,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, renderHook, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -29,13 +30,13 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
   })
 
   it('should render correctly', () => {
-    render(<ProfileTutorialAgeInformationCredit />)
+    renderProfileTutorialAgeInformationCredit()
 
     expect(screen).toMatchSnapshot()
   })
 
   it("should log to analytics when pressing 'Plus d’infos dans notre FAQ'", async () => {
-    render(<ProfileTutorialAgeInformationCredit />)
+    renderProfileTutorialAgeInformationCredit()
 
     const link = screen.getByText('Plus d’infos dans notre FAQ')
     await userEvent.press(link)
@@ -59,7 +60,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const title = screen.getByText('Bonus sous conditions')
 
@@ -74,7 +75,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const link = screen.getByText('Vérifier maintenant')
 
@@ -90,7 +91,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const link = screen.queryByText('Vérifier maintenant')
 
@@ -105,7 +106,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const title = screen.queryByText('Bonus sous conditions')
 
@@ -120,7 +121,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const link = screen.queryByText('Vérifier maintenant')
 
@@ -135,7 +136,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const link = screen.queryByText('Vérifier maintenant')
 
@@ -150,7 +151,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const link = screen.queryByText('En cours de traitement')
 
@@ -173,7 +174,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
         isUserLoading: false,
         refetchUser: jest.fn(),
       })
-      render(<ProfileTutorialAgeInformationCredit />)
+      renderProfileTutorialAgeInformationCredit()
 
       const link = await screen.findByText('Vérifier maintenant')
       await userEvent.press(link)
@@ -182,3 +183,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
     })
   })
 })
+
+const renderProfileTutorialAgeInformationCredit = () => {
+  return render(reactQueryProviderHOC(<ProfileTutorialAgeInformationCredit />))
+}

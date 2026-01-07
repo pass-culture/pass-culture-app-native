@@ -14,6 +14,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -79,6 +80,7 @@ describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   beforeEach(() => {
+    setSettings()
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })

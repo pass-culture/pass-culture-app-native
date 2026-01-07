@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettings } from 'tests/setSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
@@ -54,6 +55,7 @@ jest.useFakeTimers()
 describe('EndedBookings', () => {
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
     mockServer.getApi<UserProfileResponseWithoutSurvey>('/v1/me', beneficiaryUser)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi('/v1/reaction/available', availableReactionsSnap)

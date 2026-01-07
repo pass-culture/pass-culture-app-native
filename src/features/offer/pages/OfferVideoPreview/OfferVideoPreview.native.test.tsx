@@ -7,6 +7,7 @@ import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferV
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockOffer = jest.fn((): { data: OfferResponseV2 } => ({
@@ -29,14 +30,14 @@ jest.useFakeTimers()
 describe('<OfferPreview />', () => {
   it('should display offer video preview page', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-    render(<OfferVideoPreview />)
+    render(reactQueryProviderHOC(<OfferVideoPreview />))
 
     expect(screen.getByText('Vidéo Sous les étoiles de Paris - VF')).toBeOnTheScreen()
   })
 
   it('should execute go back when pressing go back button', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-    render(<OfferVideoPreview />)
+    render(reactQueryProviderHOC(<OfferVideoPreview />))
 
     await user.press(screen.getByLabelText('Revenir en arrière'))
 
@@ -44,7 +45,7 @@ describe('<OfferPreview />', () => {
   })
 
   it('should send log ConsultVideo when user taps Play on the thumbnail', async () => {
-    render(<OfferVideoPreview />)
+    render(reactQueryProviderHOC(<OfferVideoPreview />))
 
     const playButton = screen.getByRole('imagebutton')
 

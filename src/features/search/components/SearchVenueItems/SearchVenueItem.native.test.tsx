@@ -7,6 +7,7 @@ import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext } from 'libs/location/location'
 import { SuggestedPlace } from 'libs/place/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -169,12 +170,14 @@ describe('<SearchVenueItem />', () => {
 
 const renderSearchVenueItem = (venue: AlgoliaVenue, searchId?: string) => {
   render(
-    <SearchVenueItem
-      width={ITEM_WIDTH}
-      height={ITEM_HEIGHT}
-      venue={venue}
-      index={0}
-      searchId={searchId}
-    />
+    reactQueryProviderHOC(
+      <SearchVenueItem
+        width={ITEM_WIDTH}
+        height={ITEM_HEIGHT}
+        venue={venue}
+        index={0}
+        searchId={searchId}
+      />
+    )
   )
 }
