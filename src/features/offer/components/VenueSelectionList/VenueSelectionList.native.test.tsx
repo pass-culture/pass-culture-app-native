@@ -55,7 +55,9 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
+    expect(screen.getByText('Envie de lire')).toBeOnTheScreen()
+    expect(screen.getByText('Le Livre Éclaire')).toBeOnTheScreen()
+    expect(screen.getByText('Hachette Livre')).toBeOnTheScreen()
   })
 
   it('should select item on press', async () => {
@@ -119,5 +121,81 @@ describe('<VenueSelectionList />', () => {
     )
 
     expect(screen.queryByText('à 500 m')).not.toBeOnTheScreen()
+  })
+
+  it('should display geolocation banner when user has not a location', () => {
+    render(
+      <VenueSelectionList
+        subTitle="Sélectionner un lieu"
+        headerMessage="Lieux à proximité"
+        onItemSelect={jest.fn()}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
+      />
+    )
+
+    expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
+  })
+
+  it('should not display geolocation banner when user has a location', () => {
+    render(
+      <VenueSelectionList
+        subTitle="Sélectionner un lieu"
+        headerMessage="Lieux à proximité"
+        onItemSelect={jest.fn()}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+        isSharingLocation
+        onEndReached={jest.fn()}
+      />
+    )
+
+    expect(screen.queryByText('Active ta géolocalisation')).not.toBeOnTheScreen()
+  })
+
+  it('should display subtitle', () => {
+    render(
+      <VenueSelectionList
+        subTitle="Sélectionner un lieu"
+        headerMessage="Lieux à proximité"
+        onItemSelect={jest.fn()}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
+      />
+    )
+
+    expect(screen.getByText('Sélectionner un lieu')).toBeOnTheScreen()
+  })
+
+  it('should display header message', () => {
+    render(
+      <VenueSelectionList
+        subTitle="Sélectionner un lieu"
+        headerMessage="Lieux à proximité"
+        onItemSelect={jest.fn()}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
+      />
+    )
+
+    expect(screen.getByText('Lieux à proximité')).toBeOnTheScreen()
   })
 })

@@ -291,7 +291,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           nbHits={nbHits}
           nbLoadedHits={nbLoadedHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={userLocation !== null}
+          isSharingLocation={!!userLocation}
           subTitle="Sélectionner un lieu"
           rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
           validateButtonLabel="Choisir ce lieu"

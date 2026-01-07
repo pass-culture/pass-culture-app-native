@@ -12,7 +12,10 @@ import { RadioButtonGroup } from './RadioButtonGroup'
 const label = 'RadioButtonGroup'
 const description = 'A beautiful RadioButtonGroup'
 const errorText = 'An Error in RadioButtonGroup'
-const options = [{ label: 'RadioButton_1' }, { label: 'RadioButton_2' }]
+const options = [
+  { label: 'RadioButton_1', key: 'radio-button-1' },
+  { label: 'RadioButton_2', key: 'radio-button-2' },
+]
 
 const baseProps: ComponentProps<typeof RadioButtonGroup> = {
   label,
