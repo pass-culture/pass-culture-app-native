@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { FlatList, Platform, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -6,9 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics/provider'
-import { AnimatedViewRefType } from 'libs/react-native-animatable'
 import { getAge } from 'shared/user/getAge'
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
@@ -79,18 +77,15 @@ const reasonButtons = (canDelete: boolean): ReasonButton[] => [
 ]
 
 export function DeleteProfileReason() {
-  const gradientRef = useRef<AnimatedViewRefType>(null)
   const { user } = useAuthContext()
   const userIsDefinedAndAbove21 = user?.birthDate && getAge(user?.birthDate) >= 21
   const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
-  const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasons)
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
 
   return (
     <SecondaryPageWithBlurHeader onGoBack={goBack} title="Suppression de compte">
       <FlatList
-        onViewableItemsChanged={isWeb ? null : onViewableItemsChanged}
         viewabilityConfig={VIEWABILITY_CONFIG}
         ListHeaderComponent={
           <HeaderContainer>
