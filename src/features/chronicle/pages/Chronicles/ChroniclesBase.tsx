@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, PropsWithChildren, useCallback, useRef } from 'react'
-import { FlatList, InteractionManager } from 'react-native'
+import { FlatList } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -14,6 +14,7 @@ import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { analytics } from 'libs/analytics/provider'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -52,7 +53,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
 
   const handleLayout = useCallback(() => {
     if (selectedChronicle !== -1) {
-      InteractionManager.runAfterInteractions(() => {
+      runAfterInteractionsMobile(() => {
         chroniclesListRef.current?.scrollToIndex({
           index: selectedChronicle,
           animated: true,
@@ -70,7 +71,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
 
   const handleOnShowRecoButtonPress = () => {
     hideModal()
-    InteractionManager.runAfterInteractions(() => {
+    runAfterInteractionsMobile(() => {
       onShowRecoButtonPress()
     })
   }
