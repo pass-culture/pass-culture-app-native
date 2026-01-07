@@ -1,33 +1,30 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { colorSchemeActions, ColorScheme, useStoredColorScheme } from 'libs/styled/useColorScheme'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
-import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { useDebounce } from 'ui/hooks/useDebounce'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { DarkThemeIllustration } from 'ui/svg/icons/darkTheme/DarkThemeIllustration'
 import { DefaultThemeIllustration } from 'ui/svg/icons/darkTheme/DefaultThemeIllustration'
 import { SystemThemeIllustration } from 'ui/svg/icons/darkTheme/SystemThemeIllustration'
-import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Spacer } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const Appearance = () => {
-  const titleID = uuidv4()
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
 
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
@@ -42,12 +39,49 @@ export const Appearance = () => {
   const selectedTheme = useStoredColorScheme()
   const radioGroupLabel = 'Thème'
 
+  const themeOptions: Array<
+    RadioButtonGroupOption & { value: ColorScheme; label: string; description: string }
+  > = [
+    {
+      key: 'light',
+      value: ColorScheme.LIGHT,
+      label: 'Mode clair',
+      description: 'Affichage classique',
+      asset: { variant: 'icon', iconElement: <DefaultThemeIllustration /> },
+    },
+    {
+      key: 'dark',
+      value: ColorScheme.DARK,
+      label: 'Mode sombre',
+      description: 'Réduit la fatigue visuelle',
+      asset: { variant: 'icon', iconElement: <DarkThemeIllustration /> },
+    },
+    {
+      key: 'system',
+      value: ColorScheme.SYSTEM,
+      label: 'Réglages appareil',
+      description: 'Automatique selon les réglages de ton appareil',
+      asset: { variant: 'icon', iconElement: <SystemThemeIllustration /> },
+    },
+  ]
+
+  const currentSelectionLabel =
+    themeOptions.find((option) => option.value === selectedTheme)?.label ?? ''
+
+  const handleSelectTheme = (label: string) => {
+    const next = themeOptions.find((option) => option.label === label)
+    if (!next) return
+    colorSchemeActions.setColorScheme({ colorScheme: next.value })
+  }
+
+  const handleGroupChange = (label: string) => handleSelectTheme(label)
+
   return (
     <PageWithHeader
       title="Apparence"
       onGoBack={goBack}
       scrollChildren={
-        <React.Fragment>
+        <ViewGap gap={6}>
           {isWeb ? null : (
             <FilterSwitchWithLabel
               label="Permettre l’orientation"
@@ -59,64 +93,29 @@ export const Appearance = () => {
               }}
             />
           )}
+          {isWeb ? null : <GreySeparator />}
           {enableDarkMode ? (
-            <DarkThemeContainer>
-              <Typo.BodyAccentS nativeID={titleID} id={titleID} {...getHeadingAttrs(2)}>
-                {radioGroupLabel}
-              </Typo.BodyAccentS>
-              <GreySeparator />
-              <SelectorContainer
-                gap={5}
-                accessibilityRole={AccessibilityRole.RADIOGROUP}
-                accessibilityLabelledBy={titleID}>
-                <RadioSelector
-                  radioGroupLabel={radioGroupLabel}
-                  label="Mode clair"
-                  description="Affichage classique"
-                  checked={selectedTheme === ColorScheme.LIGHT}
-                  onPress={() =>
-                    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.LIGHT })
-                  }
-                  rightElement={<DefaultThemeIllustration />}
-                />
-                <RadioSelector
-                  radioGroupLabel={radioGroupLabel}
-                  label="Mode sombre"
-                  description="Réduit la fatigue visuelle"
-                  checked={selectedTheme === ColorScheme.DARK}
-                  onPress={() =>
-                    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.DARK })
-                  }
-                  rightElement={<DarkThemeIllustration />}
-                />
-                <RadioSelector
-                  radioGroupLabel={radioGroupLabel}
-                  label="Réglages appareil"
-                  description="Automatique selon les réglages de ton appareil"
-                  checked={selectedTheme === ColorScheme.SYSTEM}
-                  onPress={() =>
-                    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
-                  }
-                  rightElement={<SystemThemeIllustration />}
-                />
-              </SelectorContainer>
-            </DarkThemeContainer>
+            <View>
+              <RadioButtonGroup
+                label={radioGroupLabel}
+                description=""
+                options={themeOptions}
+                errorText=""
+                value={currentSelectionLabel}
+                onChange={handleGroupChange}
+                variant="detailed"
+                display="vertical"
+                labelVariant="title2"
+              />
+            </View>
           ) : null}
           <Spacer.BottomScreen />
-        </React.Fragment>
+        </ViewGap>
       }
     />
   )
 }
 
-const DarkThemeContainer = styled.View(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xxxl,
-}))
-
 const GreySeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.designSystem.separator.color.subtle,
-}))
-
-const SelectorContainer = styled(ViewGap)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.xl,
 }))

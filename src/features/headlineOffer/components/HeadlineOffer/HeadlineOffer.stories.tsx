@@ -19,7 +19,7 @@ const variantConfig: Variants<typeof HeadlineOffer> = [
       category: 'Livre',
       offerTitle: 'One Piece Tome 108',
       imageUrl: SHARE_APP_IMAGE_SOURCE,
-      // eslint-disable-next-line local-rules/no-currency-symbols
+      // eslint-disable-next-line local-rules/no-euro-usage
       price: '7,20\u00a0€',
       distance: '500m',
     },

@@ -1,7 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
+import { View } from 'react-native'
 
 import { GenderEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { usePostBonusQuotientFamilialMutation } from 'features/bonification/queries/usePostBonusQuotientFamilialMutation'
 import {
   legalRepresentativeActions,
@@ -21,11 +24,13 @@ export const BonificationRecap = () => {
   const { title, firstNames, commonName, givenName, birthDate, birthCity, birthCountry } =
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
+  const { refetchUser } = useAuthContext()
 
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
       resetLegalRepresentative()
+      void refetchUser()
     },
     onError: (_error) => {
       navigate(...getSubscriptionHookConfig('BonificationError'))
@@ -72,12 +77,15 @@ export const BonificationRecap = () => {
 
   return (
     <PageWithHeader
-      title="Informations personnelles"
+      title="Informations"
       scrollChildren={
         <ViewGap gap={4}>
-          <Summary title="Ces informations sont-elles exactes&nbsp;?" data={recapData} />
+          <View>
+            <StyledBodyXsSteps>Étape 5 sur 5</StyledBodyXsSteps>
+            <Summary title="Vérifie les infos avant d’envoyer ta demande" data={recapData} />
+          </View>
           <Checkbox
-            label="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
+            label="Je certifie avoir informé mon parent ou mon représentant légal des données personnelles communiquées"
             variant="default"
             isChecked={accepted}
             onPress={() => {
@@ -91,8 +99,7 @@ export const BonificationRecap = () => {
           <ButtonPrimary
             isLoading={isPending}
             type="submit"
-            wording="Envoyer"
-            accessibilityLabel="Envoyer les informations"
+            wording="Confirmer"
             onPress={submit}
             disabled={!accepted}
           />

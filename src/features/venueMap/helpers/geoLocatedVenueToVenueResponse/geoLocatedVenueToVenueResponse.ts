@@ -5,7 +5,7 @@ export const transformGeoLocatedVenueToVenueResponse = (
   data?: GeolocatedVenue | null
 ): Omit<VenueResponse, 'isVirtual'> | undefined => {
   if (data && data !== null) {
-    const { venueId, label, _geoloc, isOpenToPublic, venue_type } = data
+    const { venueId, label, _geoloc, isOpenToPublic, activity } = data
     return {
       id: venueId,
       name: label,
@@ -14,7 +14,7 @@ export const transformGeoLocatedVenueToVenueResponse = (
       accessibility: {},
       timezone: '',
       isOpenToPublic,
-      venueTypeCode: venue_type,
+      activity,
     }
   }
   return undefined

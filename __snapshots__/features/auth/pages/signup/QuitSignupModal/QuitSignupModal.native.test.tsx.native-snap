@@ -2,134 +2,176 @@
 
 exports[`QuitSignupModal should render correctly 1`] = `
 <Modal
-  animationType="fade"
+  animationType="none"
+  deviceHeight={1334}
+  deviceWidth={750}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[Function]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
   onRequestClose={[Function]}
-  statusBarTranslucent={true}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={false}
+  supportedOrientations={
+    [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
   transparent={true}
   visible={true}
 >
   <View
-    style={
+    accessibilityState={
       {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#ffffff",
-        "bottom": 0,
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "height": "100%",
-        "maxHeight": "100%",
-        "maxWidth": 960,
-        "position": "absolute",
-        "width": "100%",
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
       }
     }
-    windowHeight={1334}
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
+    }
+  />
+  <View
+    deviceHeight={1334}
+    deviceWidth={750}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[Function]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    panResponderThreshold={4}
+    pointerEvents="box-none"
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={false}
+    style={
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            {
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
+        ],
+        {
+          "opacity": 0,
+        },
+        {},
+      ]
+    }
+    supportedOrientations={
+      [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
   >
     <View
-      isLandscape={false}
       style={
         {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "marginLeft": 0,
-          "marginRight": 0,
+          "height": "100%",
+          "maxWidth": 960,
+          "width": "100%",
         }
       }
     >
       <View
-        accessibilityRole="header"
-        style={
-          [
-            {
-              "backgroundColor": "rgba(255,255,255,0)",
-              "borderBottomColor": "#cbcdd2",
-              "borderBottomWidth": 1,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-              "zIndex": 1,
-            },
-            {
-              "borderBottomWidth": 0,
-            },
-          ]
-        }
-      >
-        <View
-          customHeight={16}
-          enable={true}
-          style={
-            {
-              "height": 16,
-            }
-          }
-        />
-        <View
-          style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "minHeight": 48,
-              "paddingHorizontal": 24,
-              "width": "100%",
-            }
-          }
-        >
-          <View
-            positionInHeader="left"
-            style={
-              {
-                "alignItems": "flex-start",
-                "justifyContent": "flex-start",
-                "marginLeft": 0,
-                "marginRight": 8,
-                "minWidth": 40,
-              }
-            }
-            testID="back-button-container"
-          />
-          <View
-            positionInHeader="right"
-            style={
-              {
-                "alignItems": "center",
-                "justifyContent": "flex-end",
-                "marginLeft": 8,
-                "marginRight": 0,
-                "minWidth": 40,
-              }
-            }
-            testID="close-button-container"
-          />
-        </View>
-      </View>
-      <RCTScrollView
-        contentContainerStyle={
-          {
-            "flexGrow": 1,
-            "justifyContent": "space-between",
-          }
-        }
-        showsVerticalScrollIndicator={false}
+        isLandscape={false}
         style={
           {
+            "backgroundColor": "#ffffff",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "paddingHorizontal": 24,
-            "paddingVertical": 24,
+            "marginLeft": 0,
+            "marginRight": 0,
           }
         }
       >
-        <View>
+        <View
+          accessibilityRole="header"
+          style={
+            [
+              {
+                "backgroundColor": "rgba(255,255,255,0)",
+                "borderBottomColor": "#cbcdd2",
+                "borderBottomWidth": 1,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+                "zIndex": 1,
+              },
+              {
+                "borderBottomWidth": 0,
+              },
+            ]
+          }
+        >
           <View
-            height={16}
+            customHeight={16}
+            enable={true}
             style={
               {
                 "height": 16,
@@ -137,299 +179,367 @@ exports[`QuitSignupModal should render correctly 1`] = `
             }
           />
           <View
-            flex={1}
-            style={
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              }
-            }
-          />
-          <View
-            animation={false}
             style={
               {
                 "alignItems": "center",
-                "justifyContent": "center",
-                "marginBottom": 24,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 48,
+                "paddingHorizontal": 24,
+                "width": "100%",
               }
             }
           >
             <View
-              height={156}
-              width={200}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <View
-            gap={4}
-            style={
-              {
-                "alignItems": "center",
-                "gap": 16,
-                "marginBottom": 24,
-              }
-            }
-          >
-            <Text
-              accessibilityRole="header"
+              positionInHeader="left"
               style={
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 21,
-                  "lineHeight": 33.6,
-                  "textAlign": "center",
+                  "alignItems": "flex-start",
+                  "justifyContent": "flex-start",
+                  "marginLeft": 0,
+                  "marginRight": 8,
+                  "minWidth": 40,
                 }
               }
-            >
-              Veux-tu abandonner l’inscription ?
-            </Text>
-            <Text
-              accessibilityRole="header"
-              style={
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textAlign": "center",
-                }
-              }
-            >
-              Les informations que tu as renseignées ne seront pas enregistrées.
-            </Text>
-          </View>
-          <View
-            flex={1}
-            style={
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              }
-            }
-          />
-          <View
-            gap={4}
-            isLandscape={false}
-            style={
-              {
-                "alignItems": "center",
-                "gap": 16,
-                "marginBottom": 0,
-              }
-            }
-          >
+              testID="back-button-container"
+            />
             <View
-              accessibilityLabel="Continuer l’inscription"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              positionInHeader="right"
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#6123df",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {},
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "justifyContent": "flex-end",
+                  "marginLeft": 8,
+                  "marginRight": 0,
+                  "minWidth": 40,
+                }
               }
-              testID="Continuer l’inscription"
+              testID="close-button-container"
+            />
+          </View>
+        </View>
+        <RCTScrollView
+          contentContainerStyle={
+            {
+              "flexGrow": 1,
+              "justifyContent": "space-between",
+            }
+          }
+          showsVerticalScrollIndicator={false}
+          style={
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingHorizontal": 24,
+              "paddingVertical": 24,
+            }
+          }
+        >
+          <View>
+            <View
+              height={16}
+              style={
+                {
+                  "height": 16,
+                }
+              }
+            />
+            <View
+              flex={1}
+              style={
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
+              }
+            />
+            <View
+              animation={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "marginBottom": 24,
+                }
+              }
             >
               <View
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  }
-                }
+                height={156}
+                width={200}
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    }
-                  }
-                >
-                  Continuer l’inscription
+                <Text>
+                  undefined-SVG-Mock
                 </Text>
               </View>
             </View>
             <View
-              accessibilityLabel="Abandonner l’inscription"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              gap={4}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "borderBottomLeftRadius": 24,
-                      "borderBottomRightRadius": 24,
-                      "borderTopLeftRadius": 24,
-                      "borderTopRightRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 2,
-                      "paddingRight": 2,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "gap": 16,
+                  "marginBottom": 24,
+                }
               }
-              testID="Abandonner l’inscription"
             >
-              <View
+              <Text
+                accessibilityRole="header"
                 style={
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 21,
+                    "lineHeight": 33.6,
+                    "textAlign": "center",
                   }
                 }
+              >
+                Veux-tu abandonner l’inscription ?
+              </Text>
+              <Text
+                accessibilityRole="header"
+                style={
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Les informations que tu as renseignées ne seront pas enregistrées.
+              </Text>
+            </View>
+            <View
+              flex={1}
+              style={
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                }
+              }
+            />
+            <View
+              gap={4}
+              isLandscape={false}
+              style={
+                {
+                  "alignItems": "center",
+                  "gap": 16,
+                  "marginBottom": 0,
+                }
+              }
+            >
+              <View
+                accessibilityLabel="Continuer l’inscription"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#6123df",
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Continuer l’inscription"
               >
                 <View
                   style={
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
-                      "flexShrink": 0,
-                      "marginRight": 8,
+                    }
+                  }
+                >
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
+                    }
+                  >
+                    Continuer l’inscription
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Abandonner l’inscription"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "borderBottomLeftRadius": 24,
+                        "borderBottomRightRadius": 24,
+                        "borderTopLeftRadius": 24,
+                        "borderTopRightRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 2,
+                        "paddingRight": 2,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Abandonner l’inscription"
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
                   <View
-                    fill="#161617"
-                    height={20}
-                    testID="button-icon-left"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-left-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
+                    style={
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                        "marginRight": 8,
+                      }
                     }
-                  }
-                >
-                  Abandonner l’inscription
-                </Text>
+                  >
+                    <View
+                      fill="#161617"
+                      height={20}
+                      testID="button-icon-left"
+                      width={20}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      }
+                    }
+                  >
+                    Abandonner l’inscription
+                  </Text>
+                </View>
               </View>
             </View>
-          </View>
-          <View
-            customHeight={8}
-            enable={true}
-            style={
-              {
-                "height": 8,
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                {
+                  "height": 8,
+                }
               }
-            }
-          />
-        </View>
-      </RCTScrollView>
+            />
+          </View>
+        </RCTScrollView>
+      </View>
     </View>
   </View>
 </Modal>

@@ -15,8 +15,8 @@ const config: StorybookConfig = {
     options: {
       pluginBabelOptions: {
         babelConfig: {
-          configFile: true
-        }
+          configFile: true,
+        },
       },
     },
   },
@@ -36,6 +36,14 @@ const config: StorybookConfig = {
     }
 
     return mergeConfig(config, {
+      define: {
+        global: 'window',
+      },
+      build: {
+        commonjsOptions: {
+          transformMixedEsModules: true,
+        },
+      },
       optimizeDeps: {
         include: ['react-native-calendars'],
       },
@@ -50,7 +58,15 @@ const config: StorybookConfig = {
             replacement: 'styled-components/native/dist/styled-components.native.cjs.js',
           },
           {
-            find: 'firebase/compat/app',
+            find: 'firebase/app',
+            replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
+          },
+          {
+            find: 'firebase/analytics',
+            replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
+          },
+          {
+            find: 'firebase/firestore',
             replacement: path.resolve('.storybook/__mocks__/firebase.ts'),
           },
           {

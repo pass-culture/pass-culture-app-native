@@ -38,10 +38,10 @@ const Frame = styled.View(({ theme }) => ({
   borderWidth: 1,
 }))
 
-const ValidationContainer = styled.View({
+const ValidationContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  bottom: -getSpacing(2),
-})
+  bottom: -theme.designSystem.size.spacing.s,
+}))
 
 const ValidationMark = styled(DefaultValidationMark).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,

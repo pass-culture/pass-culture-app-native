@@ -1,18 +1,16 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { getFilterDescription } from 'features/venueMap/helpers/getFilterDescription/getFilterDescription'
 
 describe('getFilterDescription', () => {
   it('should return "Tout" when all types in the group are selected', () => {
     const description = getFilterDescription('OUTINGS', [
-      VenueTypeCodeKey.CONCERT_HALL,
-      VenueTypeCodeKey.FESTIVAL,
-      VenueTypeCodeKey.GAMES,
-      VenueTypeCodeKey.LIBRARY,
-      VenueTypeCodeKey.MOVIE,
-      VenueTypeCodeKey.MUSEUM,
-      VenueTypeCodeKey.PERFORMING_ARTS,
-      VenueTypeCodeKey.TRAVELING_CINEMA,
-      VenueTypeCodeKey.VISUAL_ARTS,
+      Activity.ART_GALLERY,
+      Activity.CINEMA,
+      Activity.FESTIVAL,
+      Activity.GAMES_CENTRE,
+      Activity.LIBRARY,
+      Activity.MUSEUM,
+      Activity.PERFORMANCE_HALL,
     ])
 
     expect(description).toEqual('Tout')
@@ -20,11 +18,11 @@ describe('getFilterDescription', () => {
 
   it('should return a comma-separated list of labels for selected types', () => {
     const description = getFilterDescription('OUTINGS', [
-      VenueTypeCodeKey.CONCERT_HALL,
-      VenueTypeCodeKey.MOVIE,
+      Activity.PERFORMANCE_HALL,
+      Activity.CINEMA,
     ])
 
-    expect(description).toEqual('Musique - Salle de concerts, Cinéma - Salle de projections')
+    expect(description).toEqual('Cinéma, Salle de spectacle')
   })
 
   it('should return an empty string when no types are selected', () => {

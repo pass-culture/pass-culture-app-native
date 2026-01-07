@@ -71,6 +71,6 @@ const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const SeeAllText = styled(Typo.BodyAccent)({
-  marginLeft: getSpacing(2),
-})
+const SeeAllText = styled(Typo.BodyAccent)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
+}))

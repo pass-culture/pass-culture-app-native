@@ -7,8 +7,6 @@ import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigatio
 import { TabParamList } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
@@ -22,7 +20,6 @@ type Props = {
 }
 
 export const Nav: React.FC<Props> = ({ maxWidth, height, routeBadgeMap }) => {
-  const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, hideSuggestions } = useSearch()
 
@@ -40,7 +37,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, routeBadgeMap }) => {
               <NavItem
                 tabName={route.name}
                 isSelected={route.isSelected}
-                BicolorIcon={mapTabRouteToIcon({ route: route.name, enableReactionFeature })}
+                BicolorIcon={mapTabRouteToIcon({ route: route.name })}
                 onBeforeNavigate={
                   route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
                 }

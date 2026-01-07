@@ -5,20 +5,25 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { CountryPicker } from 'features/bonification/components/CountryPicker'
 import { InseeCountry } from 'features/bonification/inseeCountries'
+import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { CitySearchNameInput } from 'features/profile/components/CitySearchInput/CitySearchNameInput'
+import { env } from 'libs/environment/env'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -63,12 +68,13 @@ export const BonificationBirthPlace = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
+          <StyledBodyXsSteps>Étape 4 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
-              {'Quel est son lieu de naissance\u00a0?'}
+              Quel est le lieu de naissance de ton représentant légal&nbsp;?
             </Typo.Title3>
             <Controller
               control={control}
@@ -112,6 +118,15 @@ export const BonificationBirthPlace = () => {
                 )}
               />
             ) : null}
+            <ButtonTertiaryPrimary
+              icon={InfoPlain}
+              wording="Je ne connais pas son lieu de naissance"
+              onPress={async () => {
+                await openUrl(env.FAQ_BONIFICATION)
+              }}
+              justifyContent="flex-start"
+              inline
+            />
           </ViewGap>
         </Form.MaxWidth>
       }

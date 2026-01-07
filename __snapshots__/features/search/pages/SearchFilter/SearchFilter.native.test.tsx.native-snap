@@ -233,7 +233,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Filtre - Dates & heures"
+              accessibilityLabel="Filtre - Dates"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -277,7 +277,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   },
                 ]
               }
-              testID="Filtre - Dates & heures"
+              testID="Filtre - Dates"
             >
               <View
                 style={
@@ -326,7 +326,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       }
                     }
                   >
-                    Dates & heures
+                    Dates
                   </Text>
                 </View>
               </View>
@@ -922,6 +922,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     </View>
   </View>
   <View
+    flexDirection="row"
     gap={4}
     isModal={false}
     style={

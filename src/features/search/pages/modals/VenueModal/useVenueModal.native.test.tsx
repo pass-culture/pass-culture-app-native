@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
@@ -188,7 +188,7 @@ describe('useVenueModal', () => {
           info: 'info',
           venueId: 1234,
           isOpenToPublic: true,
-          venue_type: VenueTypeCodeKey.BOOKSTORE,
+          activity: Activity.BOOKSTORE,
         })
       })
       await act(() => {

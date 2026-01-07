@@ -88,8 +88,7 @@ describe('OfferTile component', () => {
     })
   })
 
-  //TODO(PC-36585): unskip this test
-  it.skip('should prepopulate react-query cache when clicking on offer', async () => {
+  it('should prepopulate react-query cache when clicking on offer', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await user.press(screen.getByTestId('tileImage'))
 
@@ -119,6 +118,8 @@ describe('OfferTile component', () => {
       isExternalBookingsDisabled: false,
       reactionsCount: { likes: 0 },
       chronicles: [],
+      isEvent: false,
+      isHeadline: false,
     })
   })
 

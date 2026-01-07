@@ -99,6 +99,7 @@ const RadioButtonContainer = styled(RadioButtonDefaultContainer)<ContainerProps>
   })
   return {
     backgroundColor,
+    borderColor,
     borderWidth: 1,
     borderRadius: theme.designSystem.size.borderRadius.m,
     padding: theme.designSystem.size.spacing.l,

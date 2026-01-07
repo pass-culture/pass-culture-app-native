@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
+import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -8,6 +9,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
 import { Code } from 'ui/svg/icons/Code'
+import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 import { WarningFilled } from 'ui/svg/icons/WarningFilled'
 
 enum BonificationBannerType {
@@ -16,32 +18,44 @@ enum BonificationBannerType {
   DEFAULT = 'Default',
 }
 
+const STATUS_TO_REFUSED_TYPE: Record<string, BonificationRefusedType> = {
+  [QFBonificationStatus.custodian_not_found]: BonificationRefusedType.CUSTODIAN_NOT_FOUND,
+  [QFBonificationStatus.too_many_retries]: BonificationRefusedType.TOO_MANY_RETRIES,
+  [QFBonificationStatus.not_in_tax_household]: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD,
+  [QFBonificationStatus.quotient_familial_too_high]:
+    BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH,
+}
+
 const BANNER_CONFIG = {
   [BonificationBannerType.DEFAULT]: {
     type: BannerType.DEFAULT,
-    label: (amount: string) =>
-      `Un bonus de ${amount} pourrait t’être attribué, voyons si tu peux y être éligible.`,
-    links: [
+    label: (amount: string) => `Bonus de ${amount}`,
+    description: `Tu es peut-être éligible à ce bonus, vérifie si tu y as droit.`,
+    links: () => [
       {
-        navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
-        wording: 'Je veux vérifier',
+        navigateTo: getSubscriptionPropConfig('BonificationExplanations'),
+        wording: 'Vérifier maintenant',
       },
     ],
-    Icon: Code,
+    Icon: LogoFilled,
   },
   [BonificationBannerType.PENDING]: {
     type: BannerType.ALERT,
-    label: 'Dossier en cours de vérification. On te notifiera rapidement.',
-    links: [],
+    label: (amount: string) => `Bonus de ${amount}`,
+    description: 'Ton dossier est actuellement en cours de vérification.',
+    links: () => [],
     Icon: Code,
   },
   [BonificationBannerType.ERROR]: {
     type: BannerType.ERROR,
-    label: 'Nous n’avons pas trouvé de correspondance pour ce dossier.',
-    links: [
+    label: (amount: string) => `Bonus de ${amount}`,
+    description: 'Ton dossier a été refusé.',
+    links: (refusedType: BonificationRefusedType) => [
       {
-        navigateTo: getSubscriptionPropConfig('BonificationRequiredInformation'),
-        wording: 'Je veux vérifier',
+        navigateTo: getSubscriptionPropConfig('BonificationRefused', {
+          bonificationRefusedType: refusedType,
+        }),
+        wording: 'Voir plus de détails',
       },
     ],
     Icon: WarningFilled,
@@ -49,13 +63,12 @@ const BANNER_CONFIG = {
 }
 
 const BANNER_CONFIG_MAP = {
-  [FraudCheckStatus.error]: BANNER_CONFIG[BonificationBannerType.ERROR],
-  [FraudCheckStatus.ko]: BANNER_CONFIG[BonificationBannerType.ERROR],
-  [FraudCheckStatus.suspiscious]: BANNER_CONFIG[BonificationBannerType.ERROR],
-  [FraudCheckStatus.pending]: BANNER_CONFIG[BonificationBannerType.PENDING],
-  [FraudCheckStatus.ok]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-  [FraudCheckStatus.canceled]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
-  [FraudCheckStatus.started]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
+  [QFBonificationStatus.not_in_tax_household]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.too_many_retries]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.custodian_not_found]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.quotient_familial_too_high]: BANNER_CONFIG[BonificationBannerType.ERROR],
+  [QFBonificationStatus.started]: BANNER_CONFIG[BonificationBannerType.PENDING],
+  [QFBonificationStatus.eligible]: BANNER_CONFIG[BonificationBannerType.DEFAULT],
   default: BANNER_CONFIG[BonificationBannerType.DEFAULT],
 }
 
@@ -63,7 +76,7 @@ export const BonificationBanner = ({
   bonificationStatus,
   onCloseCallback,
 }: {
-  bonificationStatus: FraudCheckStatus | undefined | null
+  bonificationStatus: QFBonificationStatus | undefined | null
   onCloseCallback: () => void
 }) => {
   const currency = useGetCurrencyToDisplay()
@@ -74,14 +87,16 @@ export const BonificationBanner = ({
     onCloseCallback()
   }
 
-  const bannerConfig =
-    (bonificationStatus && BANNER_CONFIG_MAP[bonificationStatus]) ||
-    BANNER_CONFIG[BonificationBannerType.DEFAULT]
+  const bannerConfig = bonificationStatus && BANNER_CONFIG_MAP[bonificationStatus]
 
   const label =
-    typeof bannerConfig.label === 'function'
-      ? bannerConfig.label(bonificationAmount)
-      : bannerConfig.label
+    typeof bannerConfig?.label === 'function'
+      ? bannerConfig?.label(bonificationAmount)
+      : bannerConfig?.label
 
-  return <Banner {...bannerConfig} label={label} onClose={onClose} />
+  const refusedType = bonificationStatus && STATUS_TO_REFUSED_TYPE[bonificationStatus]
+
+  const links = bannerConfig?.links(refusedType)
+
+  return <Banner {...bannerConfig} label={label} links={links} onClose={onClose} />
 }

@@ -57,16 +57,16 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const EditContainer = styled.View({
-  marginTop: getSpacing(2),
+const EditContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
   flexDirection: 'row',
   justifyContent: 'space-between',
-})
+}))
 
-const EditText = styled(Typo.Body)({
+const EditText = styled(Typo.Body)(({ theme }) => ({
   flexShrink: 1,
-  marginRight: getSpacing(2),
-})
+  marginRight: theme.designSystem.size.spacing.s,
+}))
 
 const NoEditText = styled(Typo.BodyItalic)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

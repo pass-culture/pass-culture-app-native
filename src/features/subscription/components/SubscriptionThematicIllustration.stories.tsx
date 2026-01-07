@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubscriptionTheme } from 'features/subscription/types'
-import { getSpacing } from 'ui/theme'
 
 import { SubscriptionThematicIllustration } from './SubscriptionThematicIllustration'
 
@@ -47,9 +46,9 @@ export const Default: Story = {
   name: 'SubscriptionThematicIllustration',
 }
 
-const ThematicContainer = styled.View({
+const ThematicContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  gap: getSpacing(2),
-  marginVertical: getSpacing(2),
-})
+  gap: theme.designSystem.size.spacing.s,
+  marginVertical: theme.designSystem.size.spacing.s,
+}))

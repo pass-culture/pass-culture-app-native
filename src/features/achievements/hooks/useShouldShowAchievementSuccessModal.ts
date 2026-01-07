@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 
 import { AchievementResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
+import { ModalDisplayState } from 'features/home/components/helpers/getBookingsReactionHelpers'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 

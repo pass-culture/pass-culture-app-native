@@ -6,6 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -20,6 +21,7 @@ export const HomeHeader: FunctionComponent = function () {
   const { isDesktopViewport } = useTheme()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
 
   const Header = useMemo(() => {
     const welcomeTitle =
@@ -65,12 +67,21 @@ export const HomeHeader: FunctionComponent = function () {
         </React.Fragment>
       )
     }
+
     return (
-      <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
+      <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={numberOfLines}>
         {isDesktopViewport ? null : <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
-  }, [user, isLoggedIn, isDesktopViewport, availableCredit, currency, euroToPacificFrancRate])
+  }, [
+    user,
+    isLoggedIn,
+    isDesktopViewport,
+    numberOfLines,
+    availableCredit,
+    currency,
+    euroToPacificFrancRate,
+  ])
 
   return Header
 }

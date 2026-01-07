@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { InteractionManager, View } from 'react-native'
+import { View } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -25,6 +25,7 @@ import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
@@ -36,11 +37,6 @@ export function Offer() {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const hasOfferChronicleSection = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
-  )
-  const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const shouldUseVideoCookies = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VIDEO_COOKIES_CONSENT)
   const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
 
   const { isLoggedIn, user } = useAuthContext()
@@ -48,7 +44,7 @@ export function Offer() {
     offerId,
     select: (data) => ({
       ...data,
-      reactionsCount: { likes: isReactionEnabled ? data.reactionsCount.likes : 0 },
+      reactionsCount: { likes: data.reactionsCount.likes },
     }),
   })
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -58,10 +54,9 @@ export function Offer() {
   const { cookiesConsent, setCookiesConsent } = useCookies()
   const segment = useABSegment()
 
-  const hasVideoCookiesConsent = shouldUseVideoCookies
-    ? cookiesConsent.state === ConsentState.HAS_CONSENT &&
-      cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
-    : true
+  const hasVideoCookiesConsent =
+    cookiesConsent.state === ConsentState.HAS_CONSENT &&
+    cookiesConsent.value.accepted.includes(CookieNameEnum.VIDEO_PLAYBACK)
 
   const {
     visible: reactionModalVisible,
@@ -75,7 +70,7 @@ export function Offer() {
   } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQuery(
     offer?.id ?? -1,
-    isLoggedIn && isReactionEnabled && !!offer?.id
+    isLoggedIn && !!offer?.id
   )
   const { mutate: saveReaction } = useReactionMutation()
   const categoryId = offer?.subcategoryId
@@ -97,7 +92,7 @@ export function Offer() {
       categoryName: categoryId,
     })
     hideChroniclesWritersModal()
-    void InteractionManager.runAfterInteractions(() => {
+    runAfterInteractionsMobile(() => {
       navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
     })
   }
@@ -127,11 +122,9 @@ export function Offer() {
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
   const chronicleVariantInfo = chronicleVariant[subcategory.id]
 
-  const chronicles = hasOfferChronicleSection
-    ? offer?.chronicles?.map((value) =>
-        chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
-      )
-    : undefined
+  const chronicles = offer?.chronicles?.map((value) =>
+    chroniclePreviewToChronicalCardData(value, chronicleVariantInfo.subtitleItem)
+  )
 
   const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
   const headlineOffersCount = shouldFetchSearchVenueOffers ? data?.headlineOffersCount : undefined

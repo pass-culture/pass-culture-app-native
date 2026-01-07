@@ -49,6 +49,7 @@ import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
+import { Filter } from 'ui/svg/icons/Filter'
 import { France } from 'ui/svg/icons/France'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
@@ -72,6 +73,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
+import { LogoFilled } from 'ui/svg/icons/LogoFilled'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { LostId } from 'ui/svg/icons/LostId'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -163,16 +165,9 @@ export const SecondaryAndBiggerIcons = {
   ArrowNext,
   ArrowPrevious,
   ArrowRight,
-  PlainMore,
   ArrowRightNew,
   Bell,
   BellFilled,
-  LogoDetailed,
-  Search,
-  TabBarProfile,
-  Unlock,
-  Warning,
-  WarningFilled,
   Booking,
   Bookings,
   Bulb,
@@ -214,6 +209,8 @@ export const SecondaryAndBiggerIcons = {
   LocationPointerNotFilled,
   Lock,
   Logo,
+  LogoDetailed,
+  LogoFilled,
   LostId,
   MagnifyingGlass,
   MagnifyingGlassFilled,
@@ -224,20 +221,26 @@ export const SecondaryAndBiggerIcons = {
   OfferEvent,
   Offers,
   OrderPrice,
+  PlainMore,
   Profile,
   ScrollToTop,
+  Search,
   Share,
   Signal,
   SignOut,
   Smartphone,
+  TabBarProfile,
   ThumbDown,
   ThumbDownFilled,
   ThumbUp,
   ThumbUpFilled,
   Trash,
   TryAgain,
+  Unlock,
   Valid,
   Venue,
+  Warning,
+  WarningFilled,
   WorldPosition,
   Wrong,
 }
@@ -254,6 +257,7 @@ export const TertiaryAndSmallerIcons = {
   EditPen,
   EmailFilled,
   ExternalSiteFilled,
+  Filter,
   InfoPlain,
   Invalidate,
   Key,

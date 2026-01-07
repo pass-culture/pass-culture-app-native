@@ -1,6 +1,7 @@
 import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ColorsType } from 'theme/types'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
@@ -50,8 +51,14 @@ const AnimatedProgressBarComponent: React.FC<ProgressBarProps> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress, barRef, barWidth])
+
+  const progressString = `${Math.round(progress * 100)}`
+
   return (
-    <Container>
+    <Container
+      accessibilityLabel={`Barre de progression\u00a0: ${progressString}%`}
+      accessibilityRole={AccessibilityRole.PROGRESSBAR}
+      accessible>
       <IconContainer backgroundColor={color}>
         <StyledIcon testID="progress-bar-icon" />
       </IconContainer>

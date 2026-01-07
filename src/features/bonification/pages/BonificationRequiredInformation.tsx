@@ -1,24 +1,24 @@
-/* eslint-disable no-console */
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Form } from 'ui/components/Form'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { Info } from 'ui/svg/icons/Info'
 import { Typo } from 'ui/theme'
+import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationRequiredInformation = () => {
@@ -26,7 +26,7 @@ export const BonificationRequiredInformation = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>
@@ -34,19 +34,16 @@ export const BonificationRequiredInformation = () => {
               <IdCardWithMagnifyingGlass />
             </Container>
             <Typo.Title3 {...getHeadingAttrs(2)}>
-              On a besoin d’infos sur ton parent ou tuteur
+              Quelles sont les informations requises d’un de tes parents ou représentants
+              légaux&nbsp;?
             </Typo.Title3>
-            <Typo.Body>
-              Pour demander ton allocation, tu dois remplir quelques infos sur ton parent, ton
-              tuteur légal ou l’organisme qui te prend en charge.
-            </Typo.Body>
-            <Typo.Body>On va te demander&nbsp;:</Typo.Body>
+            <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
               <BulletListItem groupLabel="Informations demandées" index={0} total={5}>
-                <Typo.BodyAccent>Nom de naissance (avant mariage)</Typo.BodyAccent>
+                <Typo.BodyAccent>Nom de naissance</Typo.BodyAccent>
               </BulletListItem>
               <BulletListItem groupLabel="Informations demandées" index={1} total={5}>
-                <Typo.BodyAccent>Prénom complet</Typo.BodyAccent>
+                <Typo.BodyAccent>Prénom(s)</Typo.BodyAccent>
               </BulletListItem>
               <BulletListItem groupLabel="Informations demandées" index={2} total={5}>
                 <Typo.BodyAccent>Nom d’usage</Typo.BodyAccent>
@@ -55,16 +52,9 @@ export const BonificationRequiredInformation = () => {
                 <Typo.BodyAccent>Date de naissance</Typo.BodyAccent>
               </BulletListItem>
               <BulletListItem groupLabel="Informations demandées" index={4} total={5}>
-                <Typo.BodyAccent>Ville de naissance</Typo.BodyAccent>
+                <Typo.BodyAccent>Lieu de naissance</Typo.BodyAccent>
               </BulletListItem>
             </VerticalUl>
-            <Typo.Body>
-              Ces infos nous servirons à vérifier si tu es éligible à l’allocation.
-            </Typo.Body>
-            <Banner
-              label="Il se peut que tu ne sois pas éligible et que ta demande soit refusée."
-              Icon={Info}
-            />
           </ViewGap>
         </Form.MaxWidth>
       }
@@ -80,9 +70,21 @@ export const BonificationRequiredInformation = () => {
           <ExternalTouchableLink
             as={ButtonTertiaryBlack}
             wording="Consulter l’article d’aide"
-            externalNav={{ url: env.FAQ_LINK }}
+            externalNav={{ url: env.FAQ_BONIFICATION }}
             icon={ExternalSiteFilled}
           />
+          <StyledBodyXs>
+            Toi ou tes représentants légaux pouvez en savoir plus sur cette collecte de données et
+            vos droits (accès, opposition, rectification) en consultant {SPACE}
+            <ExternalTouchableLink
+              as={LinkInsideText}
+              typography="BodyAccentXs"
+              wording="notre charte dédiée"
+              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+              accessibilityRole={AccessibilityRole.LINK}
+            />
+            .
+          </StyledBodyXs>
         </ViewGap>
       }
     />
@@ -96,4 +98,8 @@ const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs
 
 const Container = styled.View({
   alignItems: 'center',
+})
+
+const StyledBodyXs = styled(Typo.BodyXs)({
+  textAlign: 'center',
 })

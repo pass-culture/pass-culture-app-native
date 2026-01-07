@@ -1,6 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { InteractionManager } from 'react-native'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { offerChroniclesToChronicleCardData } from 'features/chronicle/adapters/offerChroniclesToChronicleCardData/offerChroniclesToChronicleCardData'
@@ -12,6 +11,7 @@ import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chroni
 import { analytics } from 'libs/analytics/provider'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
@@ -29,14 +29,14 @@ export const Chronicles: FunctionComponent = () => {
   })
 
   const handleOnShowRecoButtonPress = () => {
-    analytics.logClickAllClubRecos({
+    void analytics.logClickAllClubRecos({
       offerId: offerId.toString(),
       from: 'chronicles',
       categoryName: offer?.subcategoryId
         ? subcategoriesMapping[offer.subcategoryId].categoryId
         : '',
     })
-    InteractionManager.runAfterInteractions(() => {
+    runAfterInteractionsMobile(() => {
       navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
     })
   }

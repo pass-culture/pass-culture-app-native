@@ -5,7 +5,7 @@ import styledNative, { DefaultTheme } from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientDeprecatedPropsProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -80,7 +80,7 @@ const genericStyle = ({ theme, fitContentWidth }: GenericStyleProps) => {
       color: theme.designSystem.color.text.disabled,
       backgroundColor: theme.designSystem.color.background.disabled,
     },
-    ...customFocusOutline({}),
+    ...customFocusOutline({ theme }),
     ...getHoverStyle({ underlineColor: theme.designSystem.color.text.inverted }),
     ...buttonWidthStyle({ fitContentWidth }),
   }
@@ -100,7 +100,7 @@ const Title = styledNative(Typo.Button)<{ isDisabled: boolean }>(({ isDisabled, 
   color: isDisabled
     ? theme.designSystem.color.text.disabled
     : theme.designSystem.color.text.inverted,
-  padding: getSpacing(2),
+  padding: theme.designSystem.size.spacing.s,
 }))
 
 const LegendContainer = styledNative.View<{ reverse?: boolean }>(({ reverse }) => ({

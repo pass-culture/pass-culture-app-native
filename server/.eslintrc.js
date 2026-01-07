@@ -28,6 +28,6 @@ module.exports = {
   },
   rules: {
     ...rules,
-    'local-rules/no-currency-symbols': 'off',
+    'local-rules/no-euro-usage': 'off',
   },
 }

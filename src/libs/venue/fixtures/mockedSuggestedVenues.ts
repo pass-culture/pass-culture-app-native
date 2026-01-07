@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import { Activity } from 'api/gen'
 import { Venue } from 'features/venue/types'
 
 export const mockedSuggestedVenue: Venue = {
@@ -9,6 +9,6 @@ export const mockedSuggestedVenue: Venue = {
   banner_url:
     'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
   postalCode: '75014',
-  venue_type: VenueTypeCodeKey.MOVIE,
+  activity: Activity.CINEMA,
   isOpenToPublic: true,
 }

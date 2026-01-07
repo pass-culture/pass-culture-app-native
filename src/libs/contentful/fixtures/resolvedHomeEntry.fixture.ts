@@ -764,7 +764,7 @@ export const resolvedHomepageEntry = {
         fields: {
           title: 'Crée un compte\u00a0!',
           firstLine: 'Crée un compte\u00a0!',
-          // eslint-disable-next-line local-rules/no-currency-symbols
+          // eslint-disable-next-line local-rules/no-euro-usage
           secondLine: 'Si tu as 18 ans, bénéficie de 300\u00a0€.',
           image: {
             sys: {

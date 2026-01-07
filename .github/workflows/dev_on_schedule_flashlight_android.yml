@@ -115,6 +115,14 @@ jobs:
             exit $TEST_EXIT_CODE
           fi
 
+      - name: Extract scenario scores
+        id: extract_scores
+        run: |
+          SCORES=$(awk '/📊 RÉCAPITULATIF DES SCORES/{flag=1;next}/^---------------------------$/{if(flag){print;flag++}else{next}}flag==2{flag=0}flag' test_output.log | sed '/^$/d')
+          echo "scores<<EOF" >> $GITHUB_OUTPUT
+          echo "$SCORES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Send Slack notification
         if: always()
         uses: slackapi/slack-github-action@v1.27.0
@@ -131,7 +139,7 @@ jobs:
                   "author_icon": "https://github.com/${{github.actor}}.png",
                   "title": "PERFORMANCE TEST ANDROID",
                   "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[job.status == 'failure'] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%"
+                  "text": "Le test de performance sur la branche `${{ steps.run_test.outputs.branch_name || github.ref_name }}` a ${{ fromJSON('[\"réussi :rocket:\", \"échoué :boom:\"]')[job.status == 'failure'] }}\n\n*Métriques :*\n*- Score:* ${{ steps.run_test.outputs.overall_score || 'N/A' }}\n*- FPS moyen:* ${{ steps.run_test.outputs.avg_fps || 'N/A' }}\n*- RAM moyenne:* ${{ steps.run_test.outputs.avg_ram || 'N/A' }} MB\n*- CPU moyen:* ${{ steps.run_test.outputs.avg_cpu || 'N/A' }}%\n\n*Scores par scénario :*\n${{ steps.extract_scores.outputs.scores }}"
                 }
               ],
               "unfurl_links": false,

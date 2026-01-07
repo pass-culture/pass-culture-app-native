@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/no-currency-symbols */
+/* eslint-disable local-rules/no-euro-usage */
 export const useDepositAmountsByAge = jest.fn().mockReturnValue({
   fifteenYearsOldDeposit: '20\u00a0€',
   sixteenYearsOldDeposit: '30\u00a0€',

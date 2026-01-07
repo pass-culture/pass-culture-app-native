@@ -29,7 +29,6 @@ import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateTo
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { CalendarModal } from 'features/search/pages/modals/CalendarModal/CalendarModal'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
-import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
@@ -159,8 +158,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const shouldDisplayGridList = enableGridList && !isWeb
   const isGridLayout = shouldDisplayGridList && gridListLayout === GridListLayout.GRID
 
-  const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
-
   const [isSearchListTab, setIsSearchListTab] = useState(true)
   const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
@@ -242,11 +239,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     visible: venueModalVisible,
     showModal: showVenueModal,
     hideModal: hideVenueModal,
-  } = useModal(false)
-  const {
-    visible: datesHoursModalVisible,
-    showModal: showDatesHoursModal,
-    hideModal: hideDatesHoursModal,
   } = useModal(false)
   const {
     visible: accesibilityFiltersModalVisible,
@@ -475,9 +467,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         <View>
           <FilterButtonList
             items={getFilterButtonListItem({
-              shouldDisplayCalendarModal,
               showCalendarModal,
-              showDatesHoursModal,
               appliedFilters,
               searchState,
               showVenueModal,
@@ -535,13 +525,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         filterBehaviour={FilterBehaviour.SEARCH}
       />
       <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-      <DatesHoursModal
-        title="Dates & heures"
-        accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
-        isVisible={datesHoursModalVisible}
-        hideModal={hideDatesHoursModal}
-        filterBehaviour={FilterBehaviour.SEARCH}
-      />
       <CalendarModal
         title="Dates"
         accessibilityLabel="Ne pas filtrer sur les dates puis retourner aux résultats"

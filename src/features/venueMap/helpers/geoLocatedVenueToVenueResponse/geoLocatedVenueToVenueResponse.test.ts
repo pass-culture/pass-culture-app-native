@@ -1,4 +1,4 @@
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, VenueResponse } from 'api/gen'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 
@@ -13,7 +13,7 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       info: 'INFO',
       venueId: 123,
       isOpenToPublic: true,
-      venue_type: VenueTypeCodeKey.BOOKSTORE,
+      activity: Activity.BOOKSTORE,
     } satisfies GeolocatedVenue
 
     const expectedVenueResponse = {
@@ -24,7 +24,7 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       accessibility: {},
       timezone: '',
       isOpenToPublic: true,
-      venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
+      activity: Activity.BOOKSTORE,
     } satisfies Omit<VenueResponse, 'isVirtual'>
 
     expect(transformGeoLocatedVenueToVenueResponse(geolocatedData)).toMatchObject(

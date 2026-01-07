@@ -3,7 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SetName } from './SetName'
 
@@ -26,10 +26,6 @@ describe('<SetName/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderSetName()
-
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour le prénom')).toHaveFocus()
-      })
 
       const results = await checkAccessibilityFor(container)
 

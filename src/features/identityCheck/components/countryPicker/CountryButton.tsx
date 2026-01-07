@@ -52,10 +52,10 @@ const CountryContainer = styled(View)({
   paddingHorizontal: getSpacing(1),
 })
 
-const CountryName = styled(Typo.BodyAccent)({
-  marginLeft: getSpacing(2),
+const CountryName = styled(Typo.BodyAccent)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
   marginRight: getSpacing(1),
-})
+}))
 
 const CountryCallingCode = styled(Typo.BodyAccent)(({ theme }) => ({
   fontFamily: theme.fontFamily.medium,

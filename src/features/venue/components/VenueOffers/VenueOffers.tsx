@@ -72,7 +72,7 @@ export function VenueOffers({
   }
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
-    return <NoOfferPlaceholder />
+    return <NoOfferPlaceholder isOpenToPublic={venue.isOpenToPublic} />
   }
 
   const hasAMovieScreeningOffer = venueOffers?.hits.some(

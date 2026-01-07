@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { FilterBehaviour } from 'features/search/enums'
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -26,6 +27,13 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   isSearchDisabled,
   isResetDisabled,
 }) => {
+  const theme = useTheme()
+  const defautlFlexDirection = theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column'
+  const flexDirection = useFontScaleValue<'row' | 'column'>({
+    default: defautlFlexDirection,
+    at200PercentZoom: 'column',
+  })
+
   let searchButtonText = ''
   switch (filterBehaviour) {
     case FilterBehaviour.SEARCH: {
@@ -39,7 +47,7 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   }
 
   return (
-    <Container isModal={isModal} gap={4}>
+    <Container isModal={isModal} flexDirection={flexDirection} gap={4}>
       <ResetButton
         wording="Réinitialiser"
         icon={Again}
@@ -55,13 +63,19 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(ViewGap)<{ isModal: boolean }>(({ isModal, theme }) => ({
-  flexDirection: theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column',
-  justifyContent: 'center',
-  paddingHorizontal: theme.modal.spacing.MD,
-  paddingTop: theme.designSystem.size.spacing.s,
-  ...(isModal ? {} : { paddingBottom: theme.modal.spacing.MD }),
-}))
+const Container = styled(ViewGap)<{ isModal: boolean; flexDirection: 'row' | 'column' }>(({
+  isModal,
+  flexDirection,
+  theme,
+}) => {
+  return {
+    flexDirection,
+    justifyContent: 'center',
+    paddingHorizontal: theme.modal.spacing.MD,
+    paddingTop: theme.designSystem.size.spacing.s,
+    ...(isModal ? {} : { paddingBottom: theme.modal.spacing.MD }),
+  }
+})
 
 const ResetButton = styledButton(ButtonQuaternaryBlack)({
   width: 'auto',

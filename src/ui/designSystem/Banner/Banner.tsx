@@ -42,7 +42,7 @@ type OnPressLinkProps = {
   externalNav?: never
 }
 
-type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps | OnPressLinkProps
+export type BannerLink = InternalTouchableLinkProps | ExternalTouchableLinkProps | OnPressLinkProps
 
 type BannerImageSize =
   | typeof LENGTH_XXS
@@ -237,7 +237,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
   flex: 1,
   gap: theme.designSystem.size.spacing.m,
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus, color }),
+  ...customFocusOutline({ theme, isFocus, color }),
 }))
 
 const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
@@ -248,7 +248,7 @@ const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
   flex: 1,
   gap: theme.designSystem.size.spacing.m,
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus, color }),
+  ...customFocusOutline({ theme, isFocus, color }),
 }))
 
 const StyledTouchableOpacity = styledButton(Touchable)<{
@@ -257,7 +257,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{
   flex: 1,
   gap: theme.designSystem.size.spacing.m,
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ color }),
+  ...customFocusOutline({ theme, color }),
   ...getHoverStyle({ underlineColor: color }),
 }))
 

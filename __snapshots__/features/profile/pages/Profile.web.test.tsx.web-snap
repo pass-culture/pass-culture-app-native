@@ -118,10 +118,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   border-color: #cbcdd2;
 }
 
-.c3:disabled {
-  background-color: #f1f1f4;
-}
-
 .c4 {
   border: none;
   cursor: pointer;
@@ -138,10 +134,15 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   line-height: 1.6rem;
 }
 
+.c3:disabled {
+  background-color: #f1f1f4;
+}
+
 .c5 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
+  color: #161617;
   cursor: pointer;
 }
 
@@ -1231,10 +1232,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   border-color: #cbcdd2;
 }
 
-.c3:disabled {
-  background-color: #f1f1f4;
-}
-
 .c4 {
   border: none;
   cursor: pointer;
@@ -1251,10 +1248,15 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   line-height: 1.6rem;
 }
 
+.c3:disabled {
+  background-color: #f1f1f4;
+}
+
 .c5 {
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
+  color: #161617;
   cursor: pointer;
 }
 

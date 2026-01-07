@@ -106,10 +106,10 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
             <StyledBody testID="date" numberOfLines={1}>
               {date}
             </StyledBody>
-            <StyledTitle1 testID="firstLine" numberOfLines={2}>
+            <StyledTitle1 testID="firstLine" numberOfLines={3}>
               {title}
             </StyledTitle1>
-            <StyledTitle4 testID="secondLine" numberOfLines={2}>
+            <StyledTitle4 testID="secondLine" numberOfLines={3}>
               {subtitle}
             </StyledTitle4>
             {callToAction ? (
@@ -139,10 +139,10 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
               <StyledCaption testID="date" numberOfLines={1}>
                 {date}
               </StyledCaption>
-              <StyledTitle3 testID="firstLine" numberOfLines={2}>
+              <StyledTitle3 testID="firstLine" numberOfLines={3}>
                 {title}
               </StyledTitle3>
-              <StyledCaption testID="secondLine" numberOfLines={2}>
+              <StyledCaption testID="secondLine" numberOfLines={3}>
                 {subtitle}
               </StyledCaption>
               {callToAction ? (
@@ -201,7 +201,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
   overflow: 'hidden',
   marginHorizontal: MAIN_MARGIN,
   marginBottom: theme.home.spaceBetweenModules,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
 }))
 
 const ColumnLargeScreen = styled.View(({ theme }) => ({
@@ -225,6 +225,7 @@ const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ the
   height,
   ...FULL_WIDTH,
   borderRadius: theme.designSystem.size.borderRadius.s,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
 const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(
@@ -232,6 +233,7 @@ const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: numbe
     height,
     width: (theme.appContentWidth - 2 * MAIN_MARGIN) / 2,
     borderRadius: theme.designSystem.size.borderRadius.s,
+    backgroundColor: theme.designSystem.color.background.brandPrimary,
   })
 )
 

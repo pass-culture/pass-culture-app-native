@@ -19,35 +19,57 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+const mockRefetchUser = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+}))
+
 describe('BonificationGranted', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should reset to home when pressing "J’en profite"', async () => {
-    mockServer.postApi('/v1/reset_recredit_amount_to_show', {
-      responseOptions: { statusCode: 200, data: {} },
+  describe('when pressing "J’en profite" and call to reset re-credit amount to show succeeds', () => {
+    it('should reset to home', async () => {
+      mockServer.postApi('/v1/reset_recredit_amount_to_show', {
+        responseOptions: { statusCode: 200, data: {} },
+      })
+
+      render(reactQueryProviderHOC(<BonificationGranted />))
+
+      const button = screen.getByText('J’en profite')
+      await userEvent.press(button)
+
+      expect(reset).toHaveBeenCalledWith({
+        index: 0,
+        routes: [{ name: 'TabNavigator' }],
+      })
     })
 
-    render(reactQueryProviderHOC(<BonificationGranted />))
+    it('should refetch user', async () => {
+      mockServer.postApi('/v1/reset_recredit_amount_to_show', {
+        responseOptions: { statusCode: 200, data: {} },
+      })
 
-    const button = screen.getByText('J’en profite')
-    await userEvent.press(button)
+      render(reactQueryProviderHOC(<BonificationGranted />))
 
-    expect(reset).toHaveBeenCalledWith({
-      index: 0,
-      routes: [{ name: 'TabNavigator' }],
+      const button = screen.getByText('J’en profite')
+      await userEvent.press(button)
+
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should show snackbar when pressing "J’en profite" but call fails', async () => {
-    mockServer.postApi('/v1/reset_recredit_amount_to_show', {
-      responseOptions: { statusCode: 500, data: {} },
+  describe('when pressing "J’en profite" and call to reset re-credit amount to show fails', () => {
+    it('should show snackbar', async () => {
+      mockServer.postApi('/v1/reset_recredit_amount_to_show', {
+        responseOptions: { statusCode: 500, data: {} },
+      })
+
+      render(reactQueryProviderHOC(<BonificationGranted />))
+
+      const button = screen.getByText('J’en profite')
+      await userEvent.press(button)
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
     })
-
-    render(reactQueryProviderHOC(<BonificationGranted />))
-
-    const button = screen.getByText('J’en profite')
-    await userEvent.press(button)
-
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
   })
 })

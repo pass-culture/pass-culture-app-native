@@ -58,6 +58,7 @@ export const SetName = () => {
     },
     resolver: yupResolver(setNameSchema),
     mode: 'all',
+    delayError: 1000,
   })
 
   const disabled = !formState.isValid
@@ -86,7 +87,6 @@ export const SetName = () => {
               <InputText
                 label="Prénom"
                 value={value}
-                autoFocus
                 onChangeText={onChange}
                 requiredIndicator="explicit"
                 accessibilityHint={error?.message}

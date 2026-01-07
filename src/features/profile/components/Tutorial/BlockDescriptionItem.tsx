@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   icon: React.ReactElement
@@ -28,7 +28,7 @@ const StyledCaption = styled(Typo.BodyAccentXs)({
 })
 
 const IconContainer = styled.View(({ theme }) => ({
-  marginRight: getSpacing(2),
+  marginRight: theme.designSystem.size.spacing.s,
   width: theme.icons.sizes.extraSmall,
   height: theme.icons.sizes.extraSmall,
 }))

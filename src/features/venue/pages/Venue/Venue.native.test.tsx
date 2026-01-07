@@ -4,7 +4,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { Activity, OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
@@ -100,7 +100,7 @@ describe('<Venue />', () => {
     getItemSpy.mockReset()
     mockServer.postApi<OffersStocksResponseV2>('/v2/offers/stocks', {})
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', {})
-    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueId}`, {
+    mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
     })
@@ -123,7 +123,6 @@ describe('<Venue />', () => {
   })
 
   it('should match snapshot with headline offer', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER])
     renderVenue(venueId)
 
     await screen.findByText('À la une')
@@ -173,9 +172,9 @@ describe('<Venue />', () => {
 
   describe('CTA', () => {
     it('should not display CTA if venueTypeCode is Movie', async () => {
-      const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
+      const mockedVenue = { ...venueDataTest, activity: Activity.CINEMA }
 
-      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueId}`, mockedVenue)
+      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, mockedVenue)
 
       renderVenue(venueId)
 
@@ -261,8 +260,8 @@ describe('<Venue />', () => {
 
     beforeEach(() => {
       // Mock API Calls
-      const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
-      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v1/venue/${venueId}`, mockedVenue)
+      const mockedVenue = { ...venueDataTest, activity: Activity.CINEMA }
+      mockServer.getApi<Omit<VenueResponse, 'isVirtual'>>(`/v2/venue/${venueId}`, mockedVenue)
       mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, {})
     })
 

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { getSpacing } from 'ui/theme'
 
 const PROGRESS_DURATION_IN_MS = 800
@@ -12,8 +11,6 @@ interface Props {
   currentStep: number
   totalStep: number
 }
-
-const accessibilityDescribedBy = uuidv4()
 
 export const ProgressBar = ({ currentStep, totalStep }: Props) => {
   const barRef = useRef<AnimatedViewRefType>(null)
@@ -31,20 +28,18 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
   if (isNotInRange) return null
 
   return (
-    <React.Fragment>
-      <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
-        {accessibilityText}
-      </HiddenAccessibleText>
-      <BarBackground accessibilityDescribedBy={accessibilityDescribedBy}>
-        <BarColorContainer
-          transition="width"
-          width={progressionRatio}
-          isFull={isComplete}
-          duration={PROGRESS_DURATION_IN_MS}
-          ref={barRef}
-        />
-      </BarBackground>
-    </React.Fragment>
+    <BarBackground
+      accessibilityLabel={accessibilityText}
+      accessibilityRole={AccessibilityRole.PROGRESSBAR}
+      accessible>
+      <BarColorContainer
+        transition="width"
+        width={progressionRatio}
+        isFull={isComplete}
+        duration={PROGRESS_DURATION_IN_MS}
+        ref={barRef}
+      />
+    </BarBackground>
   )
 }
 

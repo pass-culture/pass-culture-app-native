@@ -1,13 +1,14 @@
 import React from 'react'
 
-import { FraudCheckStatus } from 'api/gen'
+import { QFBonificationStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, renderHook, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
@@ -52,7 +53,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it('should show step to connected users', () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: { ...beneficiaryUser, isEligibleForBonification: true },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -60,18 +61,14 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const title = screen.getByText('Droit à l’aide')
+      const title = screen.getByText('Bonus sous conditions')
 
       expect(title).toBeOnTheScreen()
     })
 
     it("should show link if user is eligible and hasn't made a request for bonus credit", async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: undefined,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -79,7 +76,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.getByText('Tester mon éligibilité')
+      const link = screen.getByText('Vérifier maintenant')
 
       expect(link).toBeOnTheScreen()
       expect(link).toBeEnabled()
@@ -87,11 +84,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
     it("should not show link if user isn't eligible", async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: false,
-          bonificationStatus: undefined,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.not_eligible },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -99,7 +92,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.queryByText('Tester mon éligibilité')
+      const link = screen.queryByText('Vérifier maintenant')
 
       expect(link).not.toBeOnTheScreen()
     })
@@ -114,7 +107,7 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const title = screen.queryByText('Droit à l’aide')
+      const title = screen.queryByText('Bonus sous conditions')
 
       expect(title).toBeOnTheScreen()
     })
@@ -129,18 +122,14 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.queryByText('Tester mon éligibilité')
+      const link = screen.queryByText('Vérifier maintenant')
 
       expect(link).not.toBeOnTheScreen()
     })
 
     it('should not show link if bonus credit was already obtained', async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: FraudCheckStatus.ok,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.granted },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -148,18 +137,14 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       })
       render(<ProfileTutorialAgeInformationCredit />)
 
-      const link = screen.queryByText('Tester mon éligibilité')
+      const link = screen.queryByText('Vérifier maintenant')
 
       expect(link).not.toBeOnTheScreen()
     })
 
     it('should disable link if user currently has request for bonus credit', async () => {
       mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...beneficiaryUser,
-          isEligibleForBonification: true,
-          bonificationStatus: FraudCheckStatus.pending,
-        },
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.started },
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
@@ -171,6 +156,29 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
 
       expect(link).toBeOnTheScreen()
       expect(link).toBeDisabled()
+    })
+
+    it('should reset the banner state if the user enters the bonification funnel', async () => {
+      const { result } = renderHook(() => useBonificationBannerVisibility())
+      result.current.onCloseBanner() // simulates the user closing the banner
+
+      await waitFor(() => {
+        expect(result.current.hasClosedBonificationBanner).toBeTruthy() // we make sure the value is true after onCloseBanner()
+      })
+
+      mockUseAuthContext.mockReturnValueOnce({
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = await screen.findByText('Vérifier maintenant')
+      await userEvent.press(link)
+
+      expect(result.current.hasClosedBonificationBanner).toBeFalsy()
     })
   })
 })

@@ -7,7 +7,6 @@ import {
   VerticalStepper,
   VerticalStepperProps,
 } from 'ui/components/VerticalStepper/VerticalStepper'
-import { getSpacing } from 'ui/theme'
 
 type InternalStepProps = StepProps & VerticalStepperProps
 
@@ -40,7 +39,7 @@ const Wrapper = styled.View({
   flexDirection: 'row',
 })
 
-const Content = styled.View({
+const Content = styled.View(({ theme }) => ({
   flex: 1,
-  marginHorizontal: getSpacing(2),
-})
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))

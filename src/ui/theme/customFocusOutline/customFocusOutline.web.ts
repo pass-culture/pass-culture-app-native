@@ -2,7 +2,7 @@
 import { isSafari, browserVersion } from 'react-device-detect'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
-import { theme } from 'theme'
+
 import { CustomFocusOutlineProps } from 'ui/theme/customFocusOutline/type'
 
 /*
@@ -17,6 +17,7 @@ export function customFocusOutline({
   width,
   isFocus,
   noOffset = false,
+  theme,
 }: CustomFocusOutlineProps) {
   const outlineRules = {
     outlineColor: color ?? theme.designSystem.color.outline.default,

@@ -1,5 +1,7 @@
+import { Activity } from 'api/gen'
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { buildActivitiesPredicate } from 'libs/algolia/fetchAlgolia/buildVenuesQueryOptions'
 import { venuesFixture as mockVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -21,6 +23,8 @@ const region: Region = {
   longitude: 2.333333,
   longitudeDelta: 0.04760990854064799,
 }
+const allActivities = Object.values(Activity)
+const activityFilters = buildActivitiesPredicate(allActivities)
 
 describe('useVenuesInRegionQuery', () => {
   const spySetVenues = jest.spyOn(venueMapStore, 'setVenues')
@@ -50,6 +54,7 @@ describe('useVenuesInRegionQuery', () => {
       },
       options: {
         hitsPerPage: 1000,
+        facetFilters: [activityFilters],
       },
       query: '',
     })
@@ -72,10 +77,8 @@ describe('useVenuesInRegionQuery', () => {
     expect(mockFetchVenues).not.toHaveBeenCalled()
   })
 
-  // TODO(PC-36585): Test flaky following the v5 react query update
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not dispatch in context when initial venues not defined', async () => {
-    const { result } = renderHook(
+  it('should not dispatch in context when initial venues not defined', async () => {
+    renderHook(
       () =>
         useVenuesInRegionQuery({
           region,
@@ -85,9 +88,6 @@ describe('useVenuesInRegionQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
-    await act(async () => {})
-
-    await waitFor(() => expect(result.current.isSuccess).toBeFalsy())
 
     await act(async () => {})
 

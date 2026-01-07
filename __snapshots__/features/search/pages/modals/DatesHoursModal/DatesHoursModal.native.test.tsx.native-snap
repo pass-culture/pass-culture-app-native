@@ -699,6 +699,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
           }
         >
           <View
+            flexDirection="row"
             gap={4}
             isModal={true}
             style={

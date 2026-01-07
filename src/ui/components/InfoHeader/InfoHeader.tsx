@@ -2,6 +2,7 @@ import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useFontScaleValue } from 'shared/accessibility/useFontScaleValue'
 import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHolder'
 import { Typo } from 'ui/theme'
 
@@ -25,10 +26,17 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   children,
   style,
 }) => {
+  const titleNumberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: undefined })
+  const subtitleNumberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: undefined })
+
   const subtitleComponent = title ? (
-    <Subtitle testID="subtitileWithTitle">{subtitle}</Subtitle>
+    <Subtitle testID="subtitileWithTitle" numberOfLines={subtitleNumberOfLines}>
+      {subtitle}
+    </Subtitle>
   ) : (
-    <SubtitleWithoutTitle testID="subtitleWithoutTitle">{subtitle}</SubtitleWithoutTitle>
+    <SubtitleWithoutTitle testID="subtitleWithoutTitle" numberOfLines={subtitleNumberOfLines}>
+      {subtitle}
+    </SubtitleWithoutTitle>
   )
 
   return (
@@ -45,7 +53,7 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
         {children}
         {title ? (
           <TitleContainer testID="titleContainer">
-            <Title>{title}</Title>
+            <Title numberOfLines={titleNumberOfLines}>{title}</Title>
             {rightComponent || null}
           </TitleContainer>
         ) : null}
@@ -73,19 +81,15 @@ const TitleContainer = styled.View(({ theme }) => ({
   columnGap: theme.designSystem.size.spacing.xs,
 }))
 
-const Title = styled(Typo.BodyAccent).attrs({ numberOfLines: 1 })(({ theme }) => ({
+const Title = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.designSystem.color.text.default,
   flexShrink: 1,
 }))
 
-const Subtitle = styled(Typo.BodyAccentXs).attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({
+const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const SubtitleWithoutTitle = styled(Typo.BodyAccentS).attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({
+const SubtitleWithoutTitle = styled(Typo.BodyAccentS)(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))

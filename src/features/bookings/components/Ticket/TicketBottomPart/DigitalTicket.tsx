@@ -12,17 +12,20 @@ export const DigitalTicket = ({
   completedUrl,
   offerId,
   subcategoryId,
+  onBeforeNavigate,
 }: {
   code: string
   completedUrl: string
   offerId: number
   subcategoryId: SubcategoryIdEnum
+  onBeforeNavigate: VoidFunction
 }) => (
   <TicketCode
     code={code}
     text="Utilises le code ci-dessus pour accéder à ton offre sur le site du partenaire."
     cta={
       <ExternalTouchableLink
+        onBeforeNavigate={onBeforeNavigate}
         as={ButtonWithLinearGradientDeprecated}
         wording={getDigitalOfferBookingWording(subcategoryId)}
         icon={ExternalSiteFilledIcon}

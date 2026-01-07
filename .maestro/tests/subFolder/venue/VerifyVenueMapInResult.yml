@@ -4,6 +4,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 
     text: '.*Choisir une localisation.*'
     point: "50%,25%"
+- tapOn:
+    id: 'styled-input-container'
 - inputText: 'Paris'
 - hideKeyboard
 - tapOn: 'Paris0Paris'

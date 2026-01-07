@@ -281,7 +281,9 @@ const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   type: 'signup',
 }))``
 
-const TitleContainer = styled.View({ marginBottom: getSpacing(2) })
+const TitleContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.s,
+}))
 
 const StyledViewGap = styled(ViewGap)({ marginTop: getSpacing(4), marginBottom: getSpacing(10) })
 

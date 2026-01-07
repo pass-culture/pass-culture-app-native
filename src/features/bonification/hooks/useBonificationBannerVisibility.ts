@@ -11,5 +11,9 @@ export const useBonificationBannerVisibility = () => {
     setHasClosedBonificationBanner(true)
   }
 
-  return { hasClosedBonificationBanner, onCloseBanner }
+  const resetBannerVisibility = () => {
+    setHasClosedBonificationBanner(false)
+  }
+
+  return { hasClosedBonificationBanner, onCloseBanner, resetBannerVisibility }
 }

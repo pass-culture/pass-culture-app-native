@@ -221,7 +221,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"

@@ -271,7 +271,7 @@ export interface SearchParametersFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
 interface VenuesParametersFields {
   title: string
-  venueTypes?: string[]
+  activities?: string[]
   tags?: string[]
   hitsPerPage: number
   isGeolocated?: boolean

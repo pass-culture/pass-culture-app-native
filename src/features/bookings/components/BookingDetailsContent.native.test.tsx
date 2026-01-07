@@ -68,6 +68,8 @@ const bookingVenueNotOpenToPublic: BookingResponse = {
   },
 }
 
+jest.mock('react-native-map-link')
+
 describe('<BookingDetailsContent />', () => {
   beforeEach(() => setFeatureFlags())
 

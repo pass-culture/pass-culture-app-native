@@ -214,7 +214,7 @@ exports[`Appearance should render correctly 1`] = `
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
             }
           }
           keyboardShouldPersistTaps="handled"
@@ -231,177 +231,171 @@ exports[`Appearance should render correctly 1`] = `
               }
             />
             <View
-              inverseLayout={false}
+              gap={6}
               style={
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
+                  "gap": 24,
                 }
               }
             >
               <View
+                inverseLayout={false}
                 style={
                   {
-                    "flexShrink": 1,
-                    "marginLeft": 8,
-                    "marginRight": 24,
-                  }
-                }
-              >
-                <View
-                  accessibilityLabel="Permettre l’orientation - L’affichage en mode paysage peut être moins optimal"
-                  accessibilityRole="header"
-                  accessible={true}
-                >
-                  <Text
-                    accessibilityDescribedBy="testUuidV4"
-                    htmlFor="testUuidV4"
-                    id="testUuidV4"
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      }
-                    }
-                  >
-                    Permettre l’orientation
-                  </Text>
-                  <Text
-                    nativeID="testUuidV4"
-                    style={
-                      {
-                        "color": "#696a6f",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      }
-                    }
-                  >
-                    L’affichage en mode paysage peut être moins optimal
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
                   }
                 }
               >
                 <View
                   style={
                     {
-                      "alignItems": "center",
-                      "flexDirection": "row",
+                      "flexShrink": 1,
+                      "marginLeft": 8,
+                      "marginRight": 24,
                     }
                   }
                 >
                   <View
-                    accessibilityLabel="Permettre l’orientation - Interrupteur à bascule - non coché"
-                    accessibilityRole="switch"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
+                    accessibilityLabel="Permettre l’orientation - L’affichage en mode paysage peut être moins optimal"
+                    accessibilityRole="header"
                     accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="Permettre l’orientation - Interrupteur à bascule - non coché"
                   >
-                    <View
-                      active={false}
+                    <Text
+                      accessibilityDescribedBy="testUuidV4"
+                      htmlFor="testUuidV4"
+                      id="testUuidV4"
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                        ]
+                      }
+                    >
+                      Permettre l’orientation
+                    </Text>
+                    <Text
+                      nativeID="testUuidV4"
                       style={
                         {
-                          "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
                         }
                       }
                     >
+                      L’affichage en mode paysage peut être moins optimal
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "flexShrink": 0,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Permettre l’orientation - Interrupteur à bascule - non coché"
+                      accessibilityRole="switch"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "opacity": 1,
+                          "userSelect": "auto",
+                        }
+                      }
+                      testID="Permettre l’orientation - Interrupteur à bascule - non coché"
+                    >
                       <View
-                        collapsable={false}
-                        disabled={false}
+                        active={false}
                         style={
                           {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 32,
-                            "borderBottomRightRadius": 32,
-                            "borderTopLeftRadius": 32,
-                            "borderTopRightRadius": 32,
-                            "height": 28,
+                            "backgroundColor": "#696a6f",
+                            "borderBottomLeftRadius": 16,
+                            "borderBottomRightRadius": 16,
+                            "borderTopLeftRadius": 16,
+                            "borderTopRightRadius": 16,
+                            "height": 32,
                             "justifyContent": "center",
-                            "transform": [
-                              {
-                                "translateX": 2,
-                              },
-                            ],
-                            "width": 28,
+                            "width": 56,
                           }
                         }
-                      />
+                      >
+                        <View
+                          collapsable={false}
+                          disabled={false}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 32,
+                              "borderBottomRightRadius": 32,
+                              "borderTopLeftRadius": 32,
+                              "borderTopRightRadius": 32,
+                              "height": 28,
+                              "justifyContent": "center",
+                              "transform": [
+                                {
+                                  "translateX": 2,
+                                },
+                              ],
+                              "width": 28,
+                            }
+                          }
+                        />
+                      </View>
                     </View>
                   </View>
                 </View>
               </View>
-            </View>
-            <View
-              style={
-                {
-                  "marginVertical": 40,
-                }
-              }
-            >
-              <Text
-                accessibilityRole="header"
-                id="testUuidV4"
-                nativeID="testUuidV4"
-                style={
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 14,
-                    "lineHeight": 22.4,
-                  }
-                }
-              >
-                Thème
-              </Text>
               <View
                 style={
                   {
@@ -411,502 +405,668 @@ exports[`Appearance should render correctly 1`] = `
                   }
                 }
               />
-              <View
-                accessibilityLabelledBy="testUuidV4"
-                accessibilityRole="radiogroup"
-                gap={5}
-                style={
-                  {
-                    "gap": 20,
-                    "marginVertical": 24,
-                  }
-                }
-              >
+              <View>
                 <View
-                  accessibilityLabel="Thème - Mode clair - Affichage classique - non sélectionné"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
+                  accessibilityRole="none"
                   style={
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
+                      "flexBasis": 0,
                       "flexGrow": 1,
-                      "opacity": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                      "userSelect": "auto",
+                      "flexShrink": 1,
+                      "gap": 8,
                     }
                   }
-                  testID="Thème - Mode clair - Affichage classique - non sélectionné"
                 >
                   <View
-                    isSelected={false}
                     style={
                       {
-                        "alignItems": "center",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "height": 16,
-                        "justifyContent": "center",
-                        "marginRight": 16,
-                        "width": 16,
+                        "gap": 4,
                       }
                     }
                   >
-                    <View
-                      isSelected={false}
+                    <Text
+                      accessibilityRole="header"
                       style={
                         {
-                          "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 8,
-                          "width": 8,
-                        }
-                      }
-                    />
-                  </View>
-                  <View
-                    contentDirection="row"
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      gap={4}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 16,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 21,
+                          "lineHeight": 33.6,
                         }
                       }
                     >
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          }
-                        }
-                      >
-                        <Text
-                          isHover={false}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Mode clair
-                        </Text>
-                        <Text
-                          style={
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "marginTop": 4,
-                            }
-                          }
-                        >
-                          Affichage classique
-                        </Text>
-                      </View>
-                      <View
-                        style={{}}
-                      >
-                        <View
-                          fill="none"
-                          height="108"
-                          width="62"
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
+                      Thème
+                    </Text>
                   </View>
-                </View>
-                <View
-                  accessibilityLabel="Thème - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#cbcdd2",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "opacity": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Thème - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
-                >
-                  <View
-                    isSelected={false}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderColor": "#90949d",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "height": 16,
-                        "justifyContent": "center",
-                        "marginRight": 16,
-                        "width": 16,
-                      }
-                    }
-                  >
-                    <View
-                      isSelected={false}
-                      style={
+                  <RCTScrollView
+                    ItemSeparatorComponent={[Function]}
+                    data={
+                      [
                         {
-                          "backgroundColor": "transparent",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 8,
-                          "width": 8,
-                        }
-                      }
-                    />
-                  </View>
-                  <View
-                    contentDirection="row"
+                          "asset": {
+                            "iconElement": <DefaultThemeIllustration />,
+                            "variant": "icon",
+                          },
+                          "description": "Affichage classique",
+                          "key": "light",
+                          "label": "Mode clair",
+                          "value": "light",
+                        },
+                        {
+                          "asset": {
+                            "iconElement": <DarkThemeIllustration />,
+                            "variant": "icon",
+                          },
+                          "description": "Réduit la fatigue visuelle",
+                          "key": "dark",
+                          "label": "Mode sombre",
+                          "value": "dark",
+                        },
+                        {
+                          "asset": {
+                            "iconElement": <SystemThemeIllustration />,
+                            "variant": "icon",
+                          },
+                          "description": "Automatique selon les réglages de ton appareil",
+                          "key": "system",
+                          "label": "Réglages appareil",
+                          "value": "system",
+                        },
+                      ]
+                    }
+                    getItem={[Function]}
+                    getItemCount={[Function]}
+                    horizontal={false}
+                    keyExtractor={[Function]}
+                    keyboardDismissMode="on-drag"
+                    keyboardShouldPersistTaps="handled"
+                    onContentSizeChange={[Function]}
+                    onLayout={[Function]}
+                    onMomentumScrollBegin={[Function]}
+                    onMomentumScrollEnd={[Function]}
+                    onScroll={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    removeClippedSubviews={false}
+                    renderItem={[Function]}
+                    scrollEventThrottle={0.0001}
+                    stickyHeaderIndices={[]}
                     style={
                       {
+                        "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
+                        "overflow": "scroll",
+                        "paddingBottom": 4,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
+                        "paddingTop": 4,
                       }
                     }
+                    viewabilityConfigCallbackPairs={[]}
                   >
-                    <View
-                      gap={4}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 16,
-                        }
-                      }
-                    >
+                    <View>
                       <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          }
-                        }
-                      >
-                        <Text
-                          isHover={false}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Mode sombre
-                        </Text>
-                        <Text
-                          style={
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "marginTop": 4,
-                            }
-                          }
-                        >
-                          Réduit la fatigue visuelle
-                        </Text>
-                      </View>
-                      <View
-                        style={{}}
+                        onFocusCapture={[Function]}
+                        onLayout={[Function]}
+                        style={null}
                       >
                         <View
-                          fill="none"
-                          height="108"
-                          width="62"
+                          accessibilityLabel="Mode clair"
+                          accessibilityRole="radio"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": false,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "opacity": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "userSelect": "auto",
+                              "width": "100%",
+                            }
+                          }
+                          testID="Mode clair"
                         >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              {
+                                "alignItems": "center",
+                                "columnGap": 12,
+                                "flexDirection": "row",
+                              }
+                            }
+                          >
+                            <View
+                              isHover={false}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              radioState={
+                                {
+                                  "disabled": false,
+                                  "error": false,
+                                  "selected": false,
+                                }
+                              }
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "backgroundColor": "#ffffff",
+                                  "borderBottomLeftRadius": 20,
+                                  "borderBottomRightRadius": 20,
+                                  "borderColor": "#90949d",
+                                  "borderTopLeftRadius": 20,
+                                  "borderTopRightRadius": 20,
+                                  "borderWidth": 2,
+                                  "height": 20,
+                                  "justifyContent": "center",
+                                  "width": 20,
+                                }
+                              }
+                              variant="detailed"
+                            />
+                            <View
+                              style={
+                                {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": false,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                  }
+                                }
+                              >
+                                Mode clair
+                              </Text>
+                              <Text
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": false,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Affichage classique
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "justifyContent": "center",
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height="108"
+                                width="62"
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          display="vertical"
+                          style={
+                            {
+                              "height": 8,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                      </View>
+                      <View
+                        onFocusCapture={[Function]}
+                        onLayout={[Function]}
+                        style={null}
+                      >
+                        <View
+                          accessibilityLabel="Mode sombre"
+                          accessibilityRole="radio"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": false,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "backgroundColor": "#ffffff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#90949d",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "opacity": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "userSelect": "auto",
+                              "width": "100%",
+                            }
+                          }
+                          testID="Mode sombre"
+                        >
+                          <View
+                            style={
+                              {
+                                "alignItems": "center",
+                                "columnGap": 12,
+                                "flexDirection": "row",
+                              }
+                            }
+                          >
+                            <View
+                              isHover={false}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              radioState={
+                                {
+                                  "disabled": false,
+                                  "error": false,
+                                  "selected": false,
+                                }
+                              }
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "backgroundColor": "#ffffff",
+                                  "borderBottomLeftRadius": 20,
+                                  "borderBottomRightRadius": 20,
+                                  "borderColor": "#90949d",
+                                  "borderTopLeftRadius": 20,
+                                  "borderTopRightRadius": 20,
+                                  "borderWidth": 2,
+                                  "height": 20,
+                                  "justifyContent": "center",
+                                  "width": 20,
+                                }
+                              }
+                              variant="detailed"
+                            />
+                            <View
+                              style={
+                                {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": false,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                  }
+                                }
+                              >
+                                Mode sombre
+                              </Text>
+                              <Text
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": false,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Réduit la fatigue visuelle
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "justifyContent": "center",
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height="108"
+                                width="62"
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          display="vertical"
+                          style={
+                            {
+                              "height": 8,
+                            }
+                          }
+                          variant="detailed"
+                        />
+                      </View>
+                      <View
+                        onFocusCapture={[Function]}
+                        onLayout={[Function]}
+                        style={null}
+                      >
+                        <View
+                          accessibilityLabel="Réglages appareil"
+                          accessibilityRole="radio"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": true,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "backgroundColor": "#f3edff",
+                              "borderBottomLeftRadius": 8,
+                              "borderBottomRightRadius": 8,
+                              "borderColor": "#6123df",
+                              "borderTopLeftRadius": 8,
+                              "borderTopRightRadius": 8,
+                              "borderWidth": 1,
+                              "cursor": "pointer",
+                              "opacity": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                              "userSelect": "auto",
+                              "width": "100%",
+                            }
+                          }
+                          testID="Réglages appareil"
+                        >
+                          <View
+                            style={
+                              {
+                                "alignItems": "center",
+                                "columnGap": 12,
+                                "flexDirection": "row",
+                              }
+                            }
+                          >
+                            <View
+                              isHover={false}
+                              onMouseEnter={[Function]}
+                              onMouseLeave={[Function]}
+                              radioState={
+                                {
+                                  "disabled": false,
+                                  "error": false,
+                                  "selected": true,
+                                }
+                              }
+                              style={
+                                {
+                                  "alignItems": "center",
+                                  "backgroundColor": "#f3edff",
+                                  "borderBottomLeftRadius": 20,
+                                  "borderBottomRightRadius": 20,
+                                  "borderColor": "#6123df",
+                                  "borderTopLeftRadius": 20,
+                                  "borderTopRightRadius": 20,
+                                  "borderWidth": 2,
+                                  "height": 20,
+                                  "justifyContent": "center",
+                                  "width": 20,
+                                }
+                              }
+                              variant="detailed"
+                            >
+                              <View
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": true,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#6123df",
+                                    "borderBottomLeftRadius": 6,
+                                    "borderBottomRightRadius": 6,
+                                    "borderColor": "#6123df",
+                                    "borderTopLeftRadius": 6,
+                                    "borderTopRightRadius": 6,
+                                    "height": 10,
+                                    "justifyContent": "center",
+                                    "width": 10,
+                                  }
+                                }
+                                variant="detailed"
+                              />
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": true,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
+                                  }
+                                }
+                              >
+                                Réglages appareil
+                              </Text>
+                              <Text
+                                isHover={false}
+                                onMouseEnter={[Function]}
+                                onMouseLeave={[Function]}
+                                radioState={
+                                  {
+                                    "disabled": false,
+                                    "error": false,
+                                    "selected": true,
+                                  }
+                                }
+                                style={
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  }
+                                }
+                              >
+                                Automatique selon les réglages de ton appareil
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                {
+                                  "justifyContent": "center",
+                                }
+                              }
+                            >
+                              <View
+                                fill="none"
+                                height="108"
+                                width="62"
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
-                  </View>
-                </View>
-                <View
-                  accessibilityLabel="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
-                  accessibilityRole="radio"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": true,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 2,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "opacity": 1,
-                      "paddingBottom": 15,
-                      "paddingLeft": 15,
-                      "paddingRight": 15,
-                      "paddingTop": 15,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Thème - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
-                >
-                  <View
-                    isSelected={true}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "borderBottomLeftRadius": 8,
-                        "borderBottomRightRadius": 8,
-                        "borderColor": "#6123df",
-                        "borderStyle": "solid",
-                        "borderTopLeftRadius": 8,
-                        "borderTopRightRadius": 8,
-                        "borderWidth": 1,
-                        "height": 16,
-                        "justifyContent": "center",
-                        "marginRight": 16,
-                        "width": 16,
-                      }
-                    }
-                  >
-                    <View
-                      isSelected={true}
-                      style={
-                        {
-                          "backgroundColor": "#6123df",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 8,
-                          "width": 8,
-                        }
-                      }
-                    />
-                  </View>
-                  <View
-                    contentDirection="row"
-                    style={
-                      {
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      }
-                    }
-                  >
-                    <View
-                      gap={4}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "gap": 16,
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          }
-                        }
-                      >
-                        <Text
-                          isHover={false}
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Réglages appareil
-                        </Text>
-                        <Text
-                          style={
-                            {
-                              "color": "#696a6f",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 19.2,
-                              "marginTop": 4,
-                            }
-                          }
-                        >
-                          Automatique selon les réglages de ton appareil
-                        </Text>
-                      </View>
-                      <View
-                        style={{}}
-                      >
-                        <View
-                          fill="none"
-                          height="108"
-                          width="62"
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                  </RCTScrollView>
                 </View>
               </View>
-            </View>
-            <View
-              customHeight={8}
-              enable={true}
-              style={
-                {
-                  "height": 8,
+              <View
+                customHeight={8}
+                enable={true}
+                style={
+                  {
+                    "height": 8,
+                  }
                 }
-              }
-            />
+              />
+            </View>
           </View>
         </RCTScrollView>
       </View>

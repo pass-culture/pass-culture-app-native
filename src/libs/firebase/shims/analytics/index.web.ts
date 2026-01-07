@@ -1,9 +1,8 @@
-import firebase from 'firebase/compat/app'
-/* eslint-disable-next-line no-restricted-imports */
-import 'firebase/compat/analytics'
+import { getAnalytics as getAnalyticsInstance } from 'firebase/analytics'
 
-import initializeApp from '../firebase-init'
-initializeApp()
+import { app } from '../firebase-init'
 
-const analytics = firebase.analytics
-export default analytics
+const analyticsInstance = getAnalyticsInstance(app)
+export const getAnalytics = () => analyticsInstance
+
+export { logEvent, setAnalyticsCollectionEnabled, setUserId } from 'firebase/analytics'

@@ -11,7 +11,6 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
-import { getSpacing } from 'ui/theme'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -56,5 +55,8 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
   )
 }
 
-const Container = styled.View({ width: '100%', marginTop: -getSpacing(2) })
+const Container = styled.View(({ theme }) => ({
+  width: '100%',
+  marginTop: -theme.designSystem.size.spacing.s,
+}))
 const Wrapper = styled.View(({ theme }) => ({ marginVertical: theme.designSystem.size.spacing.xl }))

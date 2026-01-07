@@ -5,13 +5,18 @@ import { ApiError } from 'api/ApiError'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useEmailValidationRemainingResendsQuery = ({ email }: { email: string }) =>
-  useQuery<
+export const useEmailValidationRemainingResendsQuery = (
+  { email }: { email: string },
+  options?: { enabled?: boolean }
+) => {
+  return useQuery<
     EmailValidationRemainingResendsResponse,
     ApiError,
     EmailValidationRemainingResendsResponse,
-    QueryKeys[]
+    [QueryKeys.EMAIL_VALIDATION_REMAINING_ATTEMPTS, string]
   >({
-    queryKey: [QueryKeys.EMAIL_VALIDATION_REMAINING_ATTEMPTS],
+    queryKey: [QueryKeys.EMAIL_VALIDATION_REMAINING_ATTEMPTS, email],
     queryFn: () => api.getNativeV1EmailValidationRemainingResendsemail(email),
+    enabled: options?.enabled ?? true,
   })
+}

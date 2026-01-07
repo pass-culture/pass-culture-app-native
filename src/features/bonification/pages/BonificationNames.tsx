@@ -2,23 +2,26 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { styled } from 'styled-components'
 
 import { BonificationNamesSchema } from 'features/bonification/schemas/BonificationNamesSchema'
 import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DynamicInputList } from 'ui/components/inputs/DynamicInputList/DynamicInputList'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Banner } from 'ui/designSystem/Banner/Banner'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { IdCard } from 'ui/svg/icons/IdCard'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -61,15 +64,14 @@ export const BonificationNames = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
+          <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Quel est son nom et prénom&nbsp;?</Typo.Title3>
-            <Banner
-              Icon={IdCard}
-              label="Plus tu seras précis sur ces informations, plus on aura de chances de trouver la personne en question."
-            />
+            <Typo.Title3 {...getHeadingAttrs(2)}>
+              Quels sont les noms et prénoms de ton représentant légal&nbsp;?
+            </Typo.Title3>
             <Controller
               control={control}
               name="firstNames"
@@ -86,7 +88,6 @@ export const BonificationNames = () => {
                   initialValues={value}
                   onValuesChange={onChange}
                   errors={firstNameErrors}
-                  autoFocus
                 />
               )}
             />
@@ -96,6 +97,7 @@ export const BonificationNames = () => {
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <InputText
                   label="Nom de naissance"
+                  description="Le nom avant tout changement"
                   value={value}
                   onChangeText={onChange}
                   requiredIndicator="explicit"
@@ -113,6 +115,7 @@ export const BonificationNames = () => {
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <InputText
                   label="Nom d’usage"
+                  description="Le nom utilisé au quotidien"
                   value={value}
                   onChangeText={onChange}
                   accessibilityHint={error?.message}
@@ -122,6 +125,15 @@ export const BonificationNames = () => {
                   errorMessage={error?.message}
                 />
               )}
+            />
+            <ButtonTertiaryPrimary
+              icon={InfoPlain}
+              wording="Je ne connais pas son nom de naissance"
+              onPress={async () => {
+                await openUrl(env.FAQ_BONIFICATION)
+              }}
+              justifyContent="flex-start"
+              inline
             />
           </ViewGap>
         </Form.MaxWidth>
@@ -138,3 +150,7 @@ export const BonificationNames = () => {
     />
   )
 }
+
+export const StyledBodyXsSteps = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.disabled,
+}))

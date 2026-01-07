@@ -31,7 +31,7 @@ export const BonificationExplanations = () => {
 
   return (
     <PageWithHeader
-      title="Informations Personnelles"
+      title="Informations"
       scrollChildren={
         <Form.MaxWidth>
           <ViewGap gap={4}>
@@ -44,7 +44,7 @@ export const BonificationExplanations = () => {
             <Typo.Body>
               Ce bonus de
               <Typo.BodyAccent>{SPACE + bonificationAmount + SPACE}</Typo.BodyAccent>
-              est réservé aux jeunes dont la famille a un
+              est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
               <Typo.BodyAccent>
                 {` quotient familial inférieur à ${familyQuotientLevel}.`}
               </Typo.BodyAccent>
@@ -66,15 +66,15 @@ export const BonificationExplanations = () => {
             wording="Continuer"
             isLoading={false}
             type="submit"
-            accessibilityLabel="Commencer la demande"
+            accessibilityLabel="Continuer vers les informations requises"
             onPress={() =>
               navigate(...getSubscriptionHookConfig('BonificationRequiredInformation'))
             }
           />
           <ExternalTouchableLink
             as={ButtonTertiaryBlack}
-            wording="Consulter l’article d’aide"
-            externalNav={{ url: env.FAQ_LINK }}
+            wording="Plus d’infos sur le quotient familial"
+            externalNav={{ url: env.FAQ_LINK_CAF_QUOTIEN_FAMILIAL }}
             icon={ExternalSiteFilled}
           />
         </ViewGap>

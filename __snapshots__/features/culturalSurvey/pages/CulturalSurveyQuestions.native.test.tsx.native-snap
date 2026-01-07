@@ -139,6 +139,9 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               }
             >
               <View
+                accessibilityLabel="Barre de progression : 0%"
+                accessibilityRole="progressbar"
+                accessible={true}
                 style={
                   {
                     "alignItems": "center",
@@ -233,7 +236,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         "alignSelf": "center",
         "flexDirection": "column",
         "flexGrow": 1,
-        "marginTop": 20,
+        "marginTop": 12,
         "paddingBottom": 0,
         "paddingHorizontal": 24,
         "width": "100%",
@@ -246,59 +249,58 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
     testID="cultural-survey-questions-scrollview"
   >
     <View>
-      <Text
-        accessibilityRole="header"
-        style={
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 19,
-            "lineHeight": 30.4,
-          }
-        }
-      >
-        Au cours de l’année précédente, tu as/es au moins une fois ...
-      </Text>
       <View
-        style={
-          {
-            "paddingBottom": 32,
-            "paddingTop": 8,
-          }
-        }
-      >
-        <Text
-          style={
-            {
-              "color": "#696a6f",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            }
-          }
-        >
-          Tu peux sélectionner une ou plusieurs réponses.
-        </Text>
-      </View>
-      <View
-        accessibilityRole="list"
-        style={
-          {
-            "flexDirection": "column",
-            "gap": 12,
-            "paddingLeft": 0,
-          }
-        }
+        accessibilityRole="none"
       >
         <View
+          gap={2}
+          hasError={false}
           style={
             {
-              "display": "flex",
+              "gap": 8,
+              "marginBottom": 16,
             }
           }
         >
+          <Text
+            accessibilityRole="header"
+            style={
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 21,
+                "lineHeight": 33.6,
+              }
+            }
+          >
+            Au cours de l’année précédente, tu as/es au moins une fois ...
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#696a6f",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              }
+            }
+          >
+            Tu peux sélectionner une ou plusieurs réponses.
+          </Text>
+        </View>
+        <View
+          display="vertical"
+          style={
+            {
+              "flexDirection": "column",
+              "flexWrap": "nowrap",
+              "gap": 8,
+            }
+          }
+          variant="detailed"
+        >
           <View
-            accessibilityLabel="Participé à un festival,"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un festival,"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -354,7 +356,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Participé à un festival,"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un festival,"
           >
             <View
               style={
@@ -462,16 +464,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Assisté à un spectacle"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Assisté à un spectacle"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -527,7 +521,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Assisté à un spectacle"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Assisté à un spectacle"
           >
             <View
               style={
@@ -634,16 +628,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Allé à la bibliothèque"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à la bibliothèque"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -699,7 +685,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Allé à la bibliothèque"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à la bibliothèque"
           >
             <View
               style={
@@ -806,16 +792,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Participé à un jeu"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un jeu"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -871,7 +849,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Participé à un jeu"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à un jeu"
           >
             <View
               style={
@@ -978,16 +956,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Allé à un concert"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à un concert"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -1043,7 +1013,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Allé à un concert"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé à un concert"
           >
             <View
               style={
@@ -1130,16 +1100,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Allé au cinéma"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé au cinéma"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -1195,7 +1157,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Allé au cinéma"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Allé au cinéma"
           >
             <View
               style={
@@ -1282,16 +1244,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Visité un musée,"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Visité un musée,"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -1347,7 +1301,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Visité un musée,"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Visité un musée,"
           >
             <View
               style={
@@ -1454,16 +1408,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Participé à une conférence,"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à une conférence,"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -1519,7 +1465,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Participé à une conférence,"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Participé à une conférence,"
           >
             <View
               style={
@@ -1626,16 +1572,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Pris un cours"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Pris un cours"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -1691,7 +1629,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Pris un cours"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Pris un cours"
           >
             <View
               style={
@@ -1798,16 +1736,8 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
               </View>
             </View>
           </View>
-        </View>
-        <View
-          style={
-            {
-              "display": "flex",
-            }
-          }
-        >
           <View
-            accessibilityLabel="Aucune de ces sorties culturelles"
+            accessibilityLabel="Au cours de l’année précédente, tu as/es au moins une fois ... - Aucune de ces sorties culturelles"
             accessibilityRole="checkbox"
             accessibilityState={
               {
@@ -1863,7 +1793,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 },
               ]
             }
-            testID="Aucune de ces sorties culturelles"
+            testID="Au cours de l’année précédente, tu as/es au moins une fois ... - Aucune de ces sorties culturelles"
           >
             <View
               style={
@@ -1961,9 +1891,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         "alignItems": "center",
         "bottom": 0,
         "left": 0,
-        "marginLeft": "auto",
-        "marginRight": "auto",
-        "paddingBottom": 20,
+        "paddingBottom": 24,
         "paddingHorizontal": 24,
         "paddingTop": 12,
         "position": "absolute",

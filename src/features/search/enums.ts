@@ -1,5 +1,5 @@
-import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
-import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
+import { Activity, SearchGroupNameEnumv2 } from 'api/gen'
+import { MAP_ACTIVITY_TO_LABEL } from 'libs/parsers/activity'
 import { BackgroundColorKey, BorderColorKey } from 'theme/types'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
 import { Books } from 'ui/svg/icons/categories/Books'
@@ -185,94 +185,98 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
   },
 }
 
-type VenueTypeCriteria = { ALL: { label: string; facetFilter: '' } } & {
-  [venueType in VenueTypeCodeKey]: { label: string; facetFilter: VenueTypeCodeKey }
+type ActivityCriteria = { ALL: { label: string; facetFilter: '' } } & {
+  [activity in Activity]: { label: string; facetFilter: activity }
 }
 
-export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
+export const ACTIVITY_CRITERIA: ActivityCriteria = {
   ALL: {
     label: 'Tous les types de lieu',
     facetFilter: '',
   },
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.ARTISTIC_COURSE],
-    facetFilter: VenueTypeCodeKey.ARTISTIC_COURSE,
+  [Activity.ART_GALLERY]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.ART_GALLERY],
+    facetFilter: Activity.ART_GALLERY,
   },
-  [VenueTypeCodeKey.BOOKSTORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.BOOKSTORE],
-    facetFilter: VenueTypeCodeKey.BOOKSTORE,
+  [Activity.ART_SCHOOL]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.ART_SCHOOL],
+    facetFilter: Activity.ART_SCHOOL,
   },
-  [VenueTypeCodeKey.CONCERT_HALL]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CONCERT_HALL],
-    facetFilter: VenueTypeCodeKey.CONCERT_HALL,
+  [Activity.ARTS_CENTRE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.ARTS_CENTRE],
+    facetFilter: Activity.ARTS_CENTRE,
   },
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CREATIVE_ARTS_STORE],
-    facetFilter: VenueTypeCodeKey.CREATIVE_ARTS_STORE,
+  [Activity.BOOKSTORE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.BOOKSTORE],
+    facetFilter: Activity.BOOKSTORE,
   },
-  [VenueTypeCodeKey.CULTURAL_CENTRE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CULTURAL_CENTRE],
-    facetFilter: VenueTypeCodeKey.CULTURAL_CENTRE,
+  [Activity.CINEMA]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.CINEMA],
+    facetFilter: Activity.CINEMA,
   },
-  [VenueTypeCodeKey.DIGITAL]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.DIGITAL],
-    facetFilter: VenueTypeCodeKey.DIGITAL,
+  [Activity.COMMUNITY_CENTRE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.COMMUNITY_CENTRE],
+    facetFilter: Activity.COMMUNITY_CENTRE,
   },
-  [VenueTypeCodeKey.DISTRIBUTION_STORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.DISTRIBUTION_STORE],
-    facetFilter: VenueTypeCodeKey.DISTRIBUTION_STORE,
+  [Activity.CREATIVE_ARTS_STORE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.CREATIVE_ARTS_STORE],
+    facetFilter: Activity.CREATIVE_ARTS_STORE,
   },
-  [VenueTypeCodeKey.FESTIVAL]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.FESTIVAL],
-    facetFilter: VenueTypeCodeKey.FESTIVAL,
+  [Activity.CULTURAL_CENTRE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.CULTURAL_CENTRE],
+    facetFilter: Activity.CULTURAL_CENTRE,
   },
-  [VenueTypeCodeKey.GAMES]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.GAMES],
-    facetFilter: VenueTypeCodeKey.GAMES,
+  [Activity.DISTRIBUTION_STORE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.DISTRIBUTION_STORE],
+    facetFilter: Activity.DISTRIBUTION_STORE,
   },
-  [VenueTypeCodeKey.LIBRARY]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.LIBRARY],
-    facetFilter: VenueTypeCodeKey.LIBRARY,
+  [Activity.FESTIVAL]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.FESTIVAL],
+    facetFilter: Activity.FESTIVAL,
   },
-  [VenueTypeCodeKey.MUSEUM]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MUSEUM],
-    facetFilter: VenueTypeCodeKey.MUSEUM,
+  [Activity.GAMES_CENTRE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.GAMES_CENTRE],
+    facetFilter: Activity.GAMES_CENTRE,
   },
-  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE],
-    facetFilter: VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE,
+  [Activity.HERITAGE_SITE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.HERITAGE_SITE],
+    facetFilter: Activity.HERITAGE_SITE,
   },
-  [VenueTypeCodeKey.MOVIE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MOVIE],
-    facetFilter: VenueTypeCodeKey.MOVIE,
+  [Activity.LIBRARY]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.LIBRARY],
+    facetFilter: Activity.LIBRARY,
   },
-  [VenueTypeCodeKey.TRAVELING_CINEMA]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.TRAVELING_CINEMA],
-    facetFilter: VenueTypeCodeKey.TRAVELING_CINEMA,
+  [Activity.MUSEUM]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.MUSEUM],
+    facetFilter: Activity.MUSEUM,
   },
-  [VenueTypeCodeKey.OTHER]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.OTHER],
-    facetFilter: VenueTypeCodeKey.OTHER,
+  [Activity.MUSIC_INSTRUMENT_STORE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.MUSIC_INSTRUMENT_STORE],
+    facetFilter: Activity.MUSIC_INSTRUMENT_STORE,
   },
-  [VenueTypeCodeKey.PATRIMONY_TOURISM]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PATRIMONY_TOURISM],
-    facetFilter: VenueTypeCodeKey.PATRIMONY_TOURISM,
+  [Activity.NOT_ASSIGNED]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.NOT_ASSIGNED],
+    facetFilter: Activity.NOT_ASSIGNED,
   },
-  [VenueTypeCodeKey.PERFORMING_ARTS]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PERFORMING_ARTS],
-    facetFilter: VenueTypeCodeKey.PERFORMING_ARTS,
+  [Activity.OTHER]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.OTHER],
+    facetFilter: Activity.OTHER,
   },
-  [VenueTypeCodeKey.RECORD_STORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.RECORD_STORE],
-    facetFilter: VenueTypeCodeKey.RECORD_STORE,
+  [Activity.PERFORMANCE_HALL]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.PERFORMANCE_HALL],
+    facetFilter: Activity.PERFORMANCE_HALL,
   },
-  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.SCIENTIFIC_CULTURE],
-    facetFilter: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
+  [Activity.RECORD_STORE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.RECORD_STORE],
+    facetFilter: Activity.RECORD_STORE,
   },
-  [VenueTypeCodeKey.VISUAL_ARTS]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.VISUAL_ARTS],
-    facetFilter: VenueTypeCodeKey.VISUAL_ARTS,
+  [Activity.SCIENCE_CENTRE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.SCIENCE_CENTRE],
+    facetFilter: Activity.SCIENCE_CENTRE,
+  },
+  [Activity.TOURIST_INFORMATION_CENTRE]: {
+    label: MAP_ACTIVITY_TO_LABEL[Activity.TOURIST_INFORMATION_CENTRE],
+    facetFilter: Activity.TOURIST_INFORMATION_CENTRE,
   },
 }
 

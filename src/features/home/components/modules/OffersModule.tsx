@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { ViewToken } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -50,6 +50,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { user } = useAuthContext()
   const { userLocation } = useLocation()
+  const { designSystem } = useTheme()
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
     userLocation,
@@ -150,7 +151,7 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
+      void analytics.logModuleDisplayedOnHomepage({
         moduleId,
         moduleType: props.recommendationParameters ? ContentTypes.HYBRID : ContentTypes.ALGOLIA,
         index,
@@ -193,8 +194,8 @@ export const OffersModule = (props: OffersModuleProps) => {
           keyExtractor={keyExtractor}
           onEndReached={logHasSeenAllTilesOnce}
           playlistRef={listRef}
-          FlatListComponent={FlatList}
           onViewableItemsChanged={handleViewableItemsChanged}
+          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
         />
       )}
     </ObservedPlaylist>

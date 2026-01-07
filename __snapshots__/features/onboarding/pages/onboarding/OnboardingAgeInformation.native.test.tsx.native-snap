@@ -385,6 +385,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   >
                     <View
                       backgroundColor="#b9ecd0"
+                      isZoomed={true}
                       style={
                         {
                           "alignItems": "center",
@@ -395,6 +396,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "flexDirection": "row",
+                          "maxWidth": "100%",
                           "paddingHorizontal": 8,
                           "paddingVertical": 4,
                         }
@@ -402,9 +404,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       testID="tagWrapper"
                     >
                       <Text
+                        isZoomed={true}
                         style={
                           {
                             "color": "#161617",
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -619,6 +623,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   >
                     <View
                       backgroundColor="#fbebb2"
+                      isZoomed={true}
                       style={
                         {
                           "alignItems": "center",
@@ -629,6 +634,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "flexDirection": "row",
+                          "maxWidth": "100%",
                           "paddingHorizontal": 8,
                           "paddingVertical": 4,
                         }
@@ -636,9 +642,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                       testID="tagWrapper"
                     >
                       <Text
+                        isZoomed={true}
                         style={
                           {
                             "color": "#161617",
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1275,6 +1283,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   >
                     <View
                       backgroundColor="#f1f1f4"
+                      isZoomed={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1285,6 +1294,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "flexDirection": "row",
+                          "maxWidth": "100%",
                           "paddingHorizontal": 8,
                           "paddingVertical": 4,
                         }
@@ -1292,9 +1302,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       testID="tagWrapper"
                     >
                       <Text
+                        isZoomed={true}
                         style={
                           {
                             "color": "#161617",
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1512,6 +1524,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   >
                     <View
                       backgroundColor="#b9ecd0"
+                      isZoomed={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1522,6 +1535,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           "borderTopLeftRadius": 4,
                           "borderTopRightRadius": 4,
                           "flexDirection": "row",
+                          "maxWidth": "100%",
                           "paddingHorizontal": 8,
                           "paddingVertical": 4,
                         }
@@ -1529,9 +1543,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                       testID="tagWrapper"
                     >
                       <Text
+                        isZoomed={true}
                         style={
                           {
                             "color": "#161617",
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
