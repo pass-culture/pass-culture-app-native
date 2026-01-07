@@ -1,14 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- swipe:
-    from:
-      text: 'Les offres'
-    direction: UP
-- tapOn:
-    label: 'Sélection de la 1ère offre disponible'
-    text: 'Séance de cinéma'
-    index: 1
+- extractTextWithAI:
+    query: "Le titre exacte d'une des offres Cinéma visible dans les résultats de recherche"
+    outputVariable: 'offerResult'
+- tapOn: .*${offerResult}.*
 
 - waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
     timeout: 5000
