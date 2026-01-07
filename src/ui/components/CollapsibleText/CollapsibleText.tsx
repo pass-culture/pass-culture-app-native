@@ -11,6 +11,7 @@ type Props = {
   text: string
   maxChars?: number
   onAdditionalPress?: () => void
+  children?: React.ReactNode
 }
 
 function truncateText(text: string, maxChars: number) {
@@ -20,7 +21,7 @@ function truncateText(text: string, maxChars: number) {
   return truncated.slice(0, lastSpace) + '…'
 }
 
-export function CollapsibleText({ text, maxChars = 250, onAdditionalPress }: Props) {
+export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, children }: Props) {
   const [expanded, setExpanded] = useState(false)
   const isTruncated = text.length > maxChars
   const collapsedText = truncateText(text, maxChars)
@@ -39,6 +40,9 @@ export function CollapsibleText({ text, maxChars = 250, onAdditionalPress }: Pro
   return (
     <View>
       {expanded ? <Markdown>{text}</Markdown> : <Markdown>{collapsedText}</Markdown>}
+
+      {expanded && children ? children : null}
+
       {isTruncated ? (
         <ButtonContainer>
           <ButtonTertiaryBlack

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { render, screen, userEvent } from 'tests/utils'
+import { Typo } from 'ui/theme'
 
 import { CollapsibleText } from './CollapsibleText'
 
@@ -55,5 +56,35 @@ describe('CollapsibleText', () => {
 
     expect(screen.queryByText(LONG_TEXT)).not.toBeOnTheScreen()
     expect(screen.getByText(/…$/)).toBeOnTheScreen()
+  })
+
+  it('should not display additional children when not expanded', () => {
+    render(
+      <CollapsibleText text={LONG_TEXT} maxChars={100}>
+        <Typo.BodyAccentXs>
+          Additional content displayed when the text is expanded.
+        </Typo.BodyAccentXs>
+      </CollapsibleText>
+    )
+
+    expect(
+      screen.queryByText('Additional content displayed when the text is expanded.')
+    ).not.toBeOnTheScreen()
+  })
+
+  it('should display additional children when expanded', async () => {
+    render(
+      <CollapsibleText text={LONG_TEXT} maxChars={100}>
+        <Typo.BodyAccentXs>
+          Additional content displayed when the text is expanded.
+        </Typo.BodyAccentXs>
+      </CollapsibleText>
+    )
+
+    await user.press(screen.getByText('Voir plus'))
+
+    expect(
+      screen.getByText('Additional content displayed when the text is expanded.')
+    ).toBeOnTheScreen()
   })
 })
