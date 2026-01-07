@@ -14,10 +14,9 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockGoBack = jest.fn()
-jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: mockGoBack,
-  canGoBack: jest.fn(() => true),
-})
+jest
+  .spyOn(useGoBack, 'useGoBack')
+  .mockReturnValue({ goBack: mockGoBack, canGoBack: jest.fn(() => true) })
 
 const mockUseOfferQuery = jest.fn()
 mockUseOfferQuery.mockReturnValue({
@@ -30,15 +29,10 @@ mockUseOfferQuery.mockReturnValue({
     ],
   },
 })
-jest.mock('queries/offer/useOfferQuery', () => ({
-  useOffer: () => mockUseOfferQuery(),
-}))
 
-useRoute.mockReturnValue({
-  params: {
-    fromOfferId: 1,
-  },
-})
+jest.mock('queries/offer/useOfferQuery', () => ({ useOffer: () => mockUseOfferQuery() }))
+
+useRoute.mockReturnValue({ params: { fromOfferId: 1 } })
 
 jest.useFakeTimers()
 
@@ -137,6 +131,6 @@ describe('<ArtistBody />', () => {
     )
 
     expect(await screen.findByText('À propos')).toBeOnTheScreen()
-    expect(screen.getByText('Chanteuse canadienne.')).toBeOnTheScreen()
+    expect(screen.getByText(/Il s’agit d’une chanteuse canadienne/)).toBeOnTheScreen()
   })
 })

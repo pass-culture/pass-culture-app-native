@@ -13,7 +13,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
-import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -22,8 +21,6 @@ import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
-
-const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
 type Props = {
   artist: ArtistResponse
@@ -82,10 +79,9 @@ export const ArtistBody: FunctionComponent<Props> = ({
               <Description gap={1}>
                 <Typo.BodyAccent>À propos</Typo.BodyAccent>
                 <CollapsibleText
-                  numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}
-                  onExpandPress={onExpandBioPress}>
-                  {highlightLinks(capitalizedDescriptionWithDot)}
-                </CollapsibleText>
+                  text={capitalizedDescriptionWithDot}
+                  onAdditionalPress={onExpandBioPress}
+                />
               </Description>
             ) : null}
           </ViewGap>

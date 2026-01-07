@@ -1,4 +1,5 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
+import styled from 'styled-components/native'
 
 import { parseMarkdown } from 'libs/parsers/parseMarkdown/parseMarkdown'
 import { MarkdownPart } from 'ui/components/MarkdownPart/MarkdownPart'
@@ -9,12 +10,16 @@ export const Markdown: FunctionComponent<PropsWithChildren> = ({ children }) => 
     typeof children === 'string' ? parseMarkdown(children) : []
 
   return (
-    <React.Fragment>
+    <MarkdowContainer>
       {parsedText.map((part: MarkdownPartProps, index) => (
         // A text can contain several times the same part therefore has no unique identifier
         // If you have better than index you can update
         <MarkdownPart key={`markdown-part-${index}`} {...part} withIcon={false} />
       ))}
-    </React.Fragment>
+    </MarkdowContainer>
   )
 }
+
+const MarkdowContainer = styled.Text({
+  flexWrap: 'wrap',
+})

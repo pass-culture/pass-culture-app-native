@@ -104,6 +104,7 @@ export const ChronicleCardListBase = forwardRef<
             <View>
               <StyledButtonTertiaryBlack
                 wording="Voir plus"
+                accessibilityLabel={`Voir plus à propos de ${item.title}`}
                 onPress={() => onSeeMoreButtonPress(item.id)}
               />
             </View>
