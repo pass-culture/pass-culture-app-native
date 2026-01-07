@@ -1,64 +1,57 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Favorites/> should render correctly 1`] = `
 <View
+  isLandscape={false}
   style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
+    {
+      "backgroundColor": "#ffffff",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "marginLeft": 0,
+      "marginRight": 0,
+    }
   }
 >
   <View
     customHeight={16}
     enable={true}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "height": 16,
+      }
     }
   />
   <View
     style={
-      [
-        {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "marginHorizontal": 24,
-          "marginTop": 24,
-          "zIndex": 1,
-        },
-      ]
+      {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginHorizontal": 24,
+        "marginTop": 24,
+        "zIndex": 1,
+      }
     }
   >
     <View
-      gap={1}
       style={
-        [
-          {
-            "flexShrink": 1,
-          },
-        ]
+        {
+          "flexShrink": 1,
+        }
       }
     >
       <Text
+        accessibilityRole="header"
         numberOfLines={1}
         style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 28,
-              "lineHeight": 44.8,
-              "marginBottom": 4,
-            },
-          ]
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 28,
+            "lineHeight": 44.8,
+            "marginBottom": 4,
+          }
         }
       >
         Mes favoris
@@ -67,19 +60,17 @@ exports[`<Favorites/> should render correctly 1`] = `
   </View>
   <View
     style={
-      [
-        {
-          "alignSelf": "center",
-          "bottom": 88,
-          "position": "absolute",
-          "zIndex": 1,
-        },
-      ]
+      {
+        "alignSelf": "center",
+        "bottom": 88,
+        "position": "absolute",
+        "zIndex": 1,
+      }
     }
   >
     <View
       accessibilityLabel="Trier"
-      accessibilityRole="link"
+      accessibilityRole="button"
       accessibilityState={
         {
           "busy": undefined,
@@ -126,17 +117,18 @@ exports[`<Favorites/> should render correctly 1`] = `
     >
       <View
         style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "height": 40,
-              "overflow": "hidden",
-              "paddingHorizontal": 12,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#6123df",
+            "borderBottomLeftRadius": 24,
+            "borderBottomRightRadius": 24,
+            "borderTopLeftRadius": 24,
+            "borderTopRightRadius": 24,
+            "flexDirection": "row",
+            "height": 40,
+            "overflow": "hidden",
+            "paddingHorizontal": 12,
+          }
         }
       >
         <View
@@ -150,15 +142,13 @@ exports[`<Favorites/> should render correctly 1`] = `
         </View>
         <Text
           style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "paddingHorizontal": 8,
-              },
-            ]
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "paddingHorizontal": 8,
+            }
           }
         >
           Trier
@@ -169,23 +159,19 @@ exports[`<Favorites/> should render correctly 1`] = `
       customHeight={8}
       enable={true}
       style={
-        [
-          {
-            "height": 8,
-          },
-        ]
+        {
+          "height": 8,
+        }
       }
     />
   </View>
   <View
     style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
     }
     testID="FavoritesResultsPlaceHolder"
   >
@@ -194,16 +180,15 @@ exports[`<Favorites/> should render correctly 1`] = `
         {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": [],
-          "inlineStyle": InlineStyle {
+          "inlineStyle": e {
             "rules": [
               [Function],
             ],
           },
           "render": [Function],
           "shouldForwardProp": undefined,
-          "styledComponentId": "StyledNativeComponent",
+          "styledComponentId": true,
           "target": [Function],
-          "withComponent": [Function],
         }
       }
       ListHeaderComponent={<NumberOfResultsPlaceholder />}
@@ -262,11 +247,7 @@ exports[`<Favorites/> should render correctly 1`] = `
       scrollEnabled={false}
       scrollEventThrottle={0.0001}
       stickyHeaderIndices={[]}
-      style={
-        [
-          {},
-        ]
-      }
+      style={{}}
       viewabilityConfigCallbackPairs={[]}
     >
       <View>
@@ -276,38 +257,37 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              [
-                {
-                  "marginBottom": 20,
-                  "marginHorizontal": 24,
-                  "marginTop": 4,
-                },
-              ]
+              {
+                "marginBottom": 20,
+                "marginHorizontal": 24,
+                "marginTop": 4,
+              }
             }
           >
             <View
-              borderRadius={2}
+              borderRadius={4}
               height={12}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 2,
-                    "height": 12,
-                    "overflow": "hidden",
-                    "width": 80,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 12,
+                  "overflow": "hidden",
+                  "width": 80,
+                }
               }
               width={80}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -325,7 +305,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 }
                 style={
                   {
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "bottom": 0,
                     "left": 0,
                     "position": "absolute",
@@ -350,39 +330,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -419,36 +398,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -466,7 +444,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -485,36 +463,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -532,7 +509,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -551,36 +528,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -598,7 +574,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -615,37 +591,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -663,7 +634,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -684,27 +655,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -712,25 +679,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -766,13 +734,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -780,25 +746,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -841,14 +808,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -860,39 +825,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -929,36 +893,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -976,7 +939,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -995,36 +958,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1042,7 +1004,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1061,36 +1023,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1108,7 +1069,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1125,37 +1086,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1173,7 +1129,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1194,27 +1150,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -1222,25 +1174,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -1276,13 +1229,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -1290,25 +1241,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -1351,14 +1303,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -1370,39 +1320,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -1439,36 +1388,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1486,7 +1434,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1505,36 +1453,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1552,7 +1499,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1571,36 +1518,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1618,7 +1564,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1635,37 +1581,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1683,7 +1624,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -1704,27 +1645,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -1732,25 +1669,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -1786,13 +1724,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -1800,25 +1736,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -1861,14 +1798,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -1880,39 +1815,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -1949,36 +1883,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -1996,7 +1929,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2015,36 +1948,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2062,7 +1994,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2081,36 +2013,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2128,7 +2059,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2145,37 +2076,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2193,7 +2119,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2214,27 +2140,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -2242,25 +2164,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -2296,13 +2219,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -2310,25 +2231,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -2371,14 +2293,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -2390,39 +2310,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -2459,36 +2378,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2506,7 +2424,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2525,36 +2443,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2572,7 +2489,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2591,36 +2508,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2638,7 +2554,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2655,37 +2571,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -2703,7 +2614,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -2724,27 +2635,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -2752,25 +2659,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -2806,13 +2714,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -2820,25 +2726,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -2881,14 +2788,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -2900,39 +2805,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -2969,36 +2873,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3016,7 +2919,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3035,36 +2938,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3082,7 +2984,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3101,36 +3003,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3148,7 +3049,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3165,37 +3066,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3213,7 +3109,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3234,27 +3130,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -3262,25 +3154,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -3316,13 +3209,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -3330,25 +3221,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -3391,14 +3283,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -3410,39 +3300,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -3479,36 +3368,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3526,7 +3414,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3545,36 +3433,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3592,7 +3479,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3611,36 +3498,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3658,7 +3544,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3675,37 +3561,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -3723,7 +3604,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -3744,27 +3625,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -3772,25 +3649,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -3826,13 +3704,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -3840,25 +3716,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -3901,14 +3778,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -3920,39 +3795,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -3989,36 +3863,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4036,7 +3909,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4055,36 +3928,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4102,7 +3974,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4121,36 +3993,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4168,7 +4039,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4185,37 +4056,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4233,7 +4099,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4254,27 +4120,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -4282,25 +4144,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -4336,13 +4199,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -4350,25 +4211,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -4411,14 +4273,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -4430,39 +4290,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -4499,36 +4358,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4546,7 +4404,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4565,36 +4423,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4612,7 +4469,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4631,36 +4488,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4678,7 +4534,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4695,37 +4551,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -4743,7 +4594,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -4764,27 +4615,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -4792,25 +4639,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -4846,13 +4694,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -4860,25 +4706,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -4921,14 +4768,12 @@ exports[`<Favorites/> should render correctly 1`] = `
               }
             }
             style={
-              [
-                {
-                  "backgroundColor": "#f1f1f4",
-                  "height": 2,
-                  "marginHorizontal": 24,
-                  "marginVertical": 16,
-                },
-              ]
+              {
+                "backgroundColor": "#f1f1f4",
+                "height": 2,
+                "marginHorizontal": 24,
+                "marginVertical": 16,
+              }
             }
           />
         </View>
@@ -4940,39 +4785,38 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={4}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "gap": 16,
-                  "marginHorizontal": 24,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 24,
+              }
             }
           >
             <View
               borderRadius={4}
               height={96}
               style={
-                [
-                  {
-                    "backgroundColor": "#DDDDDD",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "overflow": "hidden",
-                    "width": 64,
-                  },
-                ]
+                {
+                  "backgroundColor": "#cbcdd2",
+                  "borderBottomLeftRadius": 4,
+                  "borderBottomRightRadius": 4,
+                  "borderTopLeftRadius": 4,
+                  "borderTopRightRadius": 4,
+                  "height": 96,
+                  "overflow": "hidden",
+                  "width": 64,
+                }
               }
               width={64}
             >
               <BVLinearGradient
                 colors={
                   [
-                    4292730333,
-                    4293848814,
-                    4293848814,
-                    4292730333,
+                    4291546578,
+                    4294046196,
+                    4294046196,
+                    4291546578,
                   ]
                 }
                 endPoint={
@@ -5009,36 +4853,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={3}
                 style={
-                  [
-                    {
-                      "marginBottom": 12,
-                    },
-                  ]
+                  {
+                    "marginBottom": 12,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 240,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 240,
+                    }
                   }
                   width={240}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -5056,7 +4899,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -5075,36 +4918,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={1}
                 style={
-                  [
-                    {
-                      "marginBottom": 4,
-                    },
-                  ]
+                  {
+                    "marginBottom": 4,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 120,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 120,
+                    }
                   }
                   width={120}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -5122,7 +4964,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -5141,36 +4983,35 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 marginBottom={2}
                 style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
+                  {
+                    "marginBottom": 8,
+                  }
                 }
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 160,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 160,
+                    }
                   }
                   width={160}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -5188,7 +5029,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -5205,37 +5046,32 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                style={
-                  [
-                    {
-                      "marginBottom": "NaNpx",
-                    },
-                  ]
-                }
+                style={{}}
               >
                 <View
-                  borderRadius={2}
+                  borderRadius={4}
                   height={12}
                   style={
-                    [
-                      {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 2,
-                        "height": 12,
-                        "overflow": "hidden",
-                        "width": 32,
-                      },
-                    ]
+                    {
+                      "backgroundColor": "#cbcdd2",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
+                      "height": 12,
+                      "overflow": "hidden",
+                      "width": 32,
+                    }
                   }
                   width={32}
                 >
                   <BVLinearGradient
                     colors={
                       [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
+                        4291546578,
+                        4294046196,
+                        4294046196,
+                        4291546578,
                       ]
                     }
                     endPoint={
@@ -5253,7 +5089,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                     style={
                       {
-                        "borderRadius": 2,
+                        "borderRadius": 4,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
@@ -5274,27 +5110,23 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             gap={0}
             style={
-              [
-                {
-                  "flexDirection": "row",
-                  "gap": 0,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
+              {
+                "flexDirection": "row",
+                "gap": 0,
+                "marginLeft": 24,
+                "marginRight": 24,
+                "marginTop": 24,
+              }
             }
           >
             <View
               style={
-                [
-                  {
-                    "marginRight": 20,
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "marginRight": 20,
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -5302,25 +5134,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={
@@ -5356,13 +5189,11 @@ exports[`<Favorites/> should render correctly 1`] = `
             </View>
             <View
               style={
-                [
-                  {
-                    "maxWidth": 280,
-                    "minWidth": 120,
-                    "width": "47%",
-                  },
-                ]
+                {
+                  "maxWidth": 280,
+                  "minWidth": 120,
+                  "width": "47%",
+                }
               }
             >
               <View
@@ -5370,25 +5201,26 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 24,
-                      "height": 48,
-                      "overflow": "hidden",
-                      "width": "100%",
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "borderBottomLeftRadius": 24,
+                    "borderBottomRightRadius": 24,
+                    "borderTopLeftRadius": 24,
+                    "borderTopRightRadius": 24,
+                    "height": 48,
+                    "overflow": "hidden",
+                    "width": "100%",
+                  }
                 }
                 width={160}
               >
                 <BVLinearGradient
                   colors={
                     [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
+                      4291546578,
+                      4294046196,
+                      4294046196,
+                      4291546578,
                     ]
                   }
                   endPoint={

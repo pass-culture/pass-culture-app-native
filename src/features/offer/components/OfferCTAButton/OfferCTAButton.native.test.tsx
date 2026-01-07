@@ -13,7 +13,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, renderAsync, screen, userEvent, waitFor } from 'tests/utils'
+import { renderAsync, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -121,42 +121,7 @@ describe('<OfferCTAButton />', () => {
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
 
-  it.skip('should display reservation impossible when user has already booked the offer', async () => {
-    mockAuthContextWithUser(beneficiaryUser, { persist: true })
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
-      responseOptions: { data: offerResponseSnap },
-    })
-
-    const expectedResponse: BookingsResponse = {
-      ended_bookings: [
-        {
-          ...mockedBookingApi,
-          stock: {
-            ...mockedBookingApi.stock,
-            offer: { ...mockedBookingApi.stock.offer, id: offerId },
-          },
-          dateUsed: '2023-02-14T10:10:08.800599Z',
-        },
-      ],
-      hasBookingsAfter18: false,
-      ongoing_bookings: [],
-    }
-
-    mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
-
-    const fromOfferId = 1
-    useRoute.mockReturnValueOnce({ params: { fromOfferId } })
-
-    await renderOfferCTAButton(offerNotEventCTAButtonProps)
-
-    await user.press(screen.getByText('Réserver l’offre'))
-
-    expect(await screen.findByText('Réservation impossible')).toBeOnTheScreen()
-  })
-
-  // TODO(PC-36585): Test flaky following the v5 react query update
-  // eslint-disable-next-line jest/no-disabled-tests
-  describe.skip('When offer is digital and free and not already booked', () => {
+  describe('When offer is digital and free and not already booked', () => {
     const expectedResponse: BookingsResponse = {
       ended_bookings: [],
       hasBookingsAfter18: false,
@@ -176,13 +141,11 @@ describe('<OfferCTAButton />', () => {
     describe('When booking API response is success', () => {
       beforeEach(() => {
         mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
-        mockServer.getApi<BookingsResponse>('/v1/bookings', {
-          responseOptions: { data: expectedResponse },
-        })
+        mockServer.getApi<BookingsResponse>('/v1/bookings', expectedResponse)
         mockServer.postApi<BookOfferResponse>(`/v1/bookings`, { bookingId: 123 })
       })
 
-      it("should directly book and redirect to the offer when pressing button to book the offer if offer isn't Event", async () => {
+      it('should directly book and redirect to the offer when pressing button to book the offer if offer digital and free', async () => {
         mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         await renderOfferCTAButton({
@@ -191,26 +154,7 @@ describe('<OfferCTAButton />', () => {
           subcategory: mockSubcategoryNotEvent,
         })
 
-        // userEvent.press not working correctly here
-        // eslint-disable-next-line local-rules/no-fireEvent
-        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-
-        await waitFor(() => {
-          expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
-        })
-      })
-
-      it('should open when pressing button to book the offer if offer is Event', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
-
-        await renderOfferCTAButton({
-          ...offerNotEventCTAButtonProps,
-          offer: { ...offerResponseSnap, ...offerDigitalAndFree },
-          subcategory: mockSubcategoryNotEvent,
-        })
-
-        const bookingOfferButton = await screen.findByText('Accéder à l’offre en ligne')
-        await user.press(bookingOfferButton)
+        await user.press(await screen.findByText('Accéder à l’offre en ligne'))
 
         await waitFor(() => {
           expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
@@ -225,8 +169,6 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        // userEvent.press not working correctly here
-        // eslint-disable-next-line local-rules/no-fireEvent
         await user.press(await screen.findByText('Accéder à l’offre en ligne'))
 
         jest.advanceTimersByTime(500)
@@ -319,9 +261,7 @@ describe('<OfferCTAButton />', () => {
     })
   })
 
-  // TODO(PC-36585): Test flaky following the v5 react query update
-  // eslint-disable-next-line jest/no-disabled-tests
-  describe.skip('When offer is digital and free and already booked', () => {
+  describe('When offer is digital and free and already booked', () => {
     const expectedResponse: BookingsResponse = {
       ended_bookings: [],
       hasBookingsAfter18: false,
