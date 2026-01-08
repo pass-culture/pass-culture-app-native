@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Animated, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
@@ -105,7 +105,7 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
 }))
 
-const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isActive }) => ({
+const IconContainer = styled.View<{ isActive: boolean }>(({ theme, isActive }) => ({
   width: theme.buttons.roundedButton.size,
   height: theme.buttons.roundedButton.size,
   borderRadius: theme.designSystem.size.borderRadius.pill,
