@@ -63,6 +63,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     handleSubmit,
     control,
     watch,
+    setFocus,
     setError: setFormErrors,
     formState: { isValid },
   } = useForm<LoginFormData>({
@@ -95,6 +96,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const handleSigninFailure = useCallback(
     (response: SignInResponseFailure) => {
       const failureCode = response.content?.code
+      setFocus('email')
       if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
         navigate('SignupForm', {
           accountCreationToken: response.content?.accountCreationToken,
@@ -127,7 +129,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [showErrorSnackBar, navigate, email, setFormErrors, setErrorMessage]
+    [setFocus, navigate, showErrorSnackBar, email, setFormErrors, setErrorMessage]
   )
 
   const { mutate: signIn, isPending } = useSignInMutation({

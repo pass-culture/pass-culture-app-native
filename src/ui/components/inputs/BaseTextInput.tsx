@@ -57,12 +57,11 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       multiline={!!props.multiline}
       maxLength={props.maxLength}
       ref={(ref) => {
-        if (ref) {
-          inputRef.current = ref
-          if (forwardedRef) {
-            /* @ts-expect-error Conflicts between types */
-            forwardedRef.current = ref
-          }
+        inputRef.current = ref
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(ref)
+        } else if (forwardedRef) {
+          forwardedRef.current = ref
         }
       }}
     />

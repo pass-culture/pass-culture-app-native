@@ -28,8 +28,9 @@ export const EmailInputController = <
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+      render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => (
         <Input
+          ref={ref}
           email={value}
           onEmailChange={onChange}
           onBlur={onBlur}
