@@ -15,6 +15,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -25,10 +26,15 @@ export const BonificationRecap = () => {
     useLegalRepresentative()
   const { resetLegalRepresentative } = legalRepresentativeActions
   const { refetchUser } = useAuthContext()
+  const { showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isPending } = usePostBonusQuotientFamilialMutation({
     onSuccess: () => {
       navigate('TabNavigator', { screen: 'Home' })
+      showSuccessSnackBar({
+        message: 'Tes informations ont été envoyées\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
       resetLegalRepresentative()
       void refetchUser()
     },
