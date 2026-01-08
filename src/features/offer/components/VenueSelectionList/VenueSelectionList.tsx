@@ -99,19 +99,21 @@ export const VenueSelectionList = ({
         variant="detailed"
         value={selectedLabel}
         onChange={handleValueChange}
-        onEndReached={autoScrollEnabled ? onEndReached : undefined}
-        refreshing={refreshing ?? undefined}
-        onRefresh={onRefresh ?? undefined}
-        onScroll={onScroll}
-        ListFooterComponent={
-          <SearchListFooter
-            isFetchingNextPage={isFetchingNextPage}
-            nbLoadedHits={nbLoadedHits}
-            nbHits={nbHits}
-            autoScrollEnabled={autoScrollEnabled}
-            onPress={onPress}
-          />
-        }
+        flatListProps={{
+          onEndReached: autoScrollEnabled ? onEndReached : undefined,
+          refreshing: refreshing ?? undefined,
+          onRefresh: onRefresh ?? undefined,
+          onScroll,
+          ListFooterComponent: (
+            <SearchListFooter
+              isFetchingNextPage={isFetchingNextPage}
+              nbLoadedHits={nbLoadedHits}
+              nbHits={nbHits}
+              autoScrollEnabled={autoScrollEnabled}
+              onPress={onPress}
+            />
+          ),
+        }}
       />
     </Container>
   )
