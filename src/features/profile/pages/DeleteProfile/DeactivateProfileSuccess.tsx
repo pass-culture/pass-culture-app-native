@@ -16,10 +16,9 @@ import { Typo } from 'ui/theme'
 
 export function DeactivateProfileSuccess() {
   const signOut = useLogoutRoutine()
-  const { data: accountUnsuspensionLimit } = useSettingsQuery({
+  const { data: reactivationLimit } = useSettingsQuery({
     select: selectAccountUnsuspensionLimit,
   })
-  const reactivationLimit = accountUnsuspensionLimit
 
   useEffect(() => {
     signOut()
