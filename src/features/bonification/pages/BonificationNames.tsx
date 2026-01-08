@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { styled } from 'styled-components'
+import { styled } from 'styled-components/native'
 
 import { BonificationNamesSchema } from 'features/bonification/schemas/BonificationNamesSchema'
 import {
