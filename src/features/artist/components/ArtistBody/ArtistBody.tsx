@@ -14,10 +14,13 @@ import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -80,8 +83,21 @@ export const ArtistBody: FunctionComponent<Props> = ({
                 <Typo.BodyAccent>À propos</Typo.BodyAccent>
                 <CollapsibleText
                   text={capitalizedDescriptionWithDot}
-                  onAdditionalPress={onExpandBioPress}
-                />
+                  onAdditionalPress={onExpandBioPress}>
+                  {artist.descriptionSource ? (
+                    <ViewGap gap={1}>
+                      <Credit>{artist.descriptionCredit}</Credit>
+                      <ExternalTouchableLink
+                        as={ButtonQuaternaryBlack}
+                        wording="Source&nbsp;: Wikipédia"
+                        externalNav={{ url: artist.descriptionSource }}
+                        justifyContent="flex-start"
+                        inline
+                        icon={ExternalSiteFilled}
+                      />
+                    </ViewGap>
+                  ) : null}
+                </CollapsibleText>
               </Description>
             ) : null}
           </ViewGap>
@@ -114,4 +130,9 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
 
 const Description = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const Credit = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+  color: theme.designSystem.color.text.subtle,
 }))
