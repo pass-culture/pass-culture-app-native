@@ -1,9 +1,10 @@
 import { useCallback } from 'react'
 
-import { SettingsResponse, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { selectObjectStorageUrl } from 'queries/settings/settingsSelectors'
 import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
@@ -53,8 +54,6 @@ export const transformOfferHit =
     _geoloc: parseGeoloc(hit),
     venue: hit.venue,
   })
-
-const selectObjectStorageUrl = (settings: SettingsResponse) => settings.objectStorageUrl
 
 export const useTransformOfferHits = () => {
   const { data: objectStorageUrl } = useSettingsQuery({
