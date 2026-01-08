@@ -100,6 +100,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
     clearErrors,
     setValue,
     watch,
+    setFocus,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: { email: '', isFetching: false, isDoingReCaptchaChallenge: false },
@@ -109,9 +110,10 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
   // Little helper method to make it easier to set error
   const setCustomError = useCallback(
     (message: string) => {
+      setFocus('email')
       return setError('email', { type: 'custom', message })
     },
-    [setError]
+    [setError, setFocus]
   )
 
   const onConnection = useCallback(clearErrors, [clearErrors])
