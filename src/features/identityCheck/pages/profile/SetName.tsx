@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import styled from 'styled-components/native'
 
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
@@ -11,12 +12,13 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { InputText } from 'ui/designSystem/InputText/InputText'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard } from 'ui/svg/icons/IdCard'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -77,44 +79,45 @@ export const SetName = () => {
       scrollChildren={
         <Form.MaxWidth>
           <Typo.Title3 {...getHeadingAttrs(2)}>{pageConfigByType[type].title}</Typo.Title3>
-          <Spacer.Column numberOfSpaces={5} />
-          <Banner Icon={IdCard} label={pageConfigByType[type].bannerMessage} />
-          <Spacer.Column numberOfSpaces={4} />
-          <Controller
-            control={control}
-            name="firstName"
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <InputText
-                label="Prénom"
-                value={value}
-                onChangeText={onChange}
-                requiredIndicator="explicit"
-                accessibilityHint={error?.message}
-                testID="Entrée pour le prénom"
-                textContentType="givenName"
-                autoComplete="given-name"
-                errorMessage={error?.message}
-              />
-            )}
-          />
-          <Spacer.Column numberOfSpaces={6} />
-          <Controller
-            control={control}
-            name="lastName"
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <InputText
-                label="Nom"
-                value={value}
-                onChangeText={onChange}
-                requiredIndicator="explicit"
-                accessibilityHint={error?.message}
-                testID="Entrée pour le nom"
-                textContentType="familyName"
-                autoComplete="family-name"
-                errorMessage={error?.message}
-              />
-            )}
-          />
+          <BannerContainer>
+            <Banner Icon={IdCard} label={pageConfigByType[type].bannerMessage} />
+          </BannerContainer>
+          <ViewGap gap={6}>
+            <Controller
+              control={control}
+              name="firstName"
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <InputText
+                  label="Prénom"
+                  value={value}
+                  onChangeText={onChange}
+                  requiredIndicator="explicit"
+                  accessibilityHint={error?.message}
+                  testID="Entrée pour le prénom"
+                  textContentType="givenName"
+                  autoComplete="given-name"
+                  errorMessage={error?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="lastName"
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <InputText
+                  label="Nom"
+                  value={value}
+                  onChangeText={onChange}
+                  requiredIndicator="explicit"
+                  accessibilityHint={error?.message}
+                  testID="Entrée pour le nom"
+                  textContentType="familyName"
+                  autoComplete="family-name"
+                  errorMessage={error?.message}
+                />
+              )}
+            />
+          </ViewGap>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
@@ -129,3 +132,7 @@ export const SetName = () => {
     />
   )
 }
+
+const BannerContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))

@@ -21,7 +21,6 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer } from 'ui/theme'
 
 type ChangePasswordFormData = {
   currentPassword: string
@@ -128,13 +127,14 @@ export function ChangePassword() {
       }}>
       <Container paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
         <Form.MaxWidth flex={1}>
-          <PasswordInputController
-            control={control}
-            name="currentPassword"
-            label="Mot de passe actuel"
-            requiredIndicator="explicit"
-          />
-          <Spacer.Column numberOfSpaces={7} />
+          <OldPasswordContainer>
+            <PasswordInputController
+              control={control}
+              name="currentPassword"
+              label="Mot de passe actuel"
+              requiredIndicator="explicit"
+            />
+          </OldPasswordContainer>
           <PasswordInputController
             control={control}
             name="newPassword"
@@ -142,15 +142,14 @@ export function ChangePassword() {
             withSecurityRules
             requiredIndicator="explicit"
           />
-          <Spacer.Column numberOfSpaces={5} />
-          <PasswordInputController
-            control={control}
-            name="confirmedPassword"
-            label="Confirmer le mot de passe"
-            requiredIndicator="explicit"
-          />
-          <Spacer.Column numberOfSpaces={10} />
-          {keyboardHeight ? <Spacer.Column numberOfSpaces={2} /> : null}
+          <RepeatPasswordContainer keyboardHeight={keyboardHeight}>
+            <PasswordInputController
+              control={control}
+              name="confirmedPassword"
+              label="Confirmer le mot de passe"
+              requiredIndicator="explicit"
+            />
+          </RepeatPasswordContainer>
           <ButtonPrimary
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
@@ -158,12 +157,24 @@ export function ChangePassword() {
             disabled={disabled}
           />
         </Form.MaxWidth>
-        <Spacer.Column numberOfSpaces={6} />
       </Container>
     </SecondaryPageWithBlurHeader>
   )
 }
 
-const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
   paddingBottom,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
+
+const OldPasswordContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
+
+const RepeatPasswordContainer = styled.View<{ keyboardHeight: number }>(
+  ({ theme, keyboardHeight }) => ({
+    marginTop: theme.designSystem.size.spacing.l,
+    marginBottom:
+      theme.designSystem.size.spacing.xl + (keyboardHeight ? theme.designSystem.size.spacing.s : 0),
+  })
+)
