@@ -33,7 +33,6 @@ const onChange = () => undefined
 const variantConfig: Variants<typeof RadioButtonGroup> = [
   {
     label: 'RadioButtonGroup Default',
-    minHeight: 150,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -47,7 +46,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Disabled',
-    minHeight: 150,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -62,7 +60,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Error',
-    minHeight: 170,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -78,7 +75,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Horizontal',
-    minHeight: 150,
     props: {
       label: 'Label',
       display: 'horizontal',
@@ -93,7 +89,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Detailed',
-    minHeight: 400,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -105,7 +100,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Detailed Error',
-    minHeight: 420,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -119,7 +113,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Detailed Disabled',
-    minHeight: 400,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -132,7 +125,6 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
   },
   {
     label: 'RadioButtonGroup Detailed Horizontal',
-    minHeight: 200,
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
