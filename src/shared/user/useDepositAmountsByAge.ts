@@ -1,6 +1,6 @@
 import { DepositAmountsByAge } from 'api/gen'
+import { useSettingsQuery } from 'queries/settings/settingsQuery'
 import { selectDepositAmountsByAge } from 'queries/settings/settingsSelectors'
-import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'

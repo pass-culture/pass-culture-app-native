@@ -4,8 +4,8 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { useSettingsQuery } from 'queries/settings/settingsQuery'
 import { selectObjectStorageUrl } from 'queries/settings/settingsSelectors'
-import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
 // to see how the data is indexed into the search client (algolia => app search)
