@@ -13,6 +13,7 @@ import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
@@ -57,6 +58,35 @@ export function CategoriesSection<
 
   const entries = itemsMapping ? Object.entries(itemsMapping) : []
   if (shouldSortItems) entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
+
+  const hasChildren = entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
+
+  if (!hasChildren) {
+    const options = entries.map(([k, item]) => ({
+      label: item.label,
+      value: k,
+    }))
+    options.unshift({
+      label: allLabel,
+      value: allValue as string,
+    })
+    const selectedOption = options.find((option) => option.value === value)
+    return (
+      <RadioButtonGroup
+        label="Sélectionne une option"
+        value={selectedOption?.label as string}
+        onChange={(value) =>
+          handleSelect(options.find((option) => option.label === value)?.value as N)
+        }
+        variant="default"
+        display="vertical"
+        disabled={false}
+        error={false}
+        options={options}
+        errorText="Error"
+      />
+    )
+  }
 
   return (
     <VerticalUl>
