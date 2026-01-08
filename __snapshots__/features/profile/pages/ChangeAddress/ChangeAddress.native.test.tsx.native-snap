@@ -262,7 +262,7 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                 style={
                   {
                     "marginBottom": 8,
-                    "marginTop": 20,
+                    "marginTop": 16,
                   }
                 }
               >
@@ -875,7 +875,7 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                 style={
                   {
                     "marginBottom": 8,
-                    "marginTop": 20,
+                    "marginTop": 16,
                   }
                 }
               >

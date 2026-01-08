@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useSubmitChangeCity } from './useSubmitChangeCity'
@@ -44,6 +44,6 @@ export const ChangeCity = () => {
   )
 }
 
-const Container = styled.View({
-  marginBottom: getSpacing(5),
-})
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))

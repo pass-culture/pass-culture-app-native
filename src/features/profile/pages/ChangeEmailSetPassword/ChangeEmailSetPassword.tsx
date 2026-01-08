@@ -15,8 +15,9 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -74,39 +75,42 @@ export const ChangeEmailSetPassword = () => {
   return (
     <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
       <StyledView paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
-        <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
-        <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
-          Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>
-          Ce mot de passe te permettra de te connecter avec ta nouvelle adresse e-mail.
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={10} />
+        <ViewGap gap={4}>
+          <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
+          <Typo.Body>
+            Tu t’es inscrit via Google, tu ne possèdes donc pas de mot de passe actuellement.
+          </Typo.Body>
+          <Typo.Body>
+            Ce mot de passe te permettra de te connecter avec ta nouvelle adresse e-mail.
+          </Typo.Body>
+        </ViewGap>
         <Form.MaxWidth flex={1}>
-          <PasswordInputController
-            name="newPassword"
-            label="Mot de passe"
-            control={control}
-            requiredIndicator="explicit"
-            withSecurityRules
-            securityRulesAlwaysVisible
-          />
-          <Spacer.Column numberOfSpaces={10} />
-          <PasswordInputController
-            name="confirmedPassword"
-            label="Confirmer le mot de passe"
-            control={control}
-            requiredIndicator="explicit"
-          />
-          <Spacer.Column numberOfSpaces={10} />
-          <ButtonPrimary
-            wording="Créer mon mot de passe"
-            disabled={!isValid}
-            isLoading={isPending}
-            onPress={onSubmit}
-          />
+          <Container>
+            <PasswordInputController
+              name="newPassword"
+              label="Mot de passe"
+              control={control}
+              requiredIndicator="explicit"
+              withSecurityRules
+              securityRulesAlwaysVisible
+            />
+          </Container>
+          <Container>
+            <PasswordInputController
+              name="confirmedPassword"
+              label="Confirmer le mot de passe"
+              control={control}
+              requiredIndicator="explicit"
+            />
+          </Container>
+          <Container>
+            <ButtonPrimary
+              wording="Créer mon mot de passe"
+              disabled={!isValid}
+              isLoading={isPending}
+              onPress={onSubmit}
+            />
+          </Container>
         </Form.MaxWidth>
       </StyledView>
     </SecondaryPageWithBlurHeader>
@@ -115,4 +119,8 @@ export const ChangeEmailSetPassword = () => {
 
 const StyledView = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
   paddingBottom,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxl,
 }))

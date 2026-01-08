@@ -20,7 +20,6 @@ import {
 } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing } from 'ui/theme'
 
 type FormValues = {
   newEmail: string
@@ -87,7 +86,7 @@ export const NewEmailSelection = () => {
   )
 }
 
-const Container = styled.View({
-  marginTop: getSpacing(4),
-  marginBottom: getSpacing(10),
-})
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))
