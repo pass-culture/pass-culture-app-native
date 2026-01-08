@@ -35,7 +35,7 @@ platform :ios do
       workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace",
       configuration: ENV['BUILD_CONFIGURATION'],
       sdk: "iphonesimulator",
-      destination: "generic/platform=iOS Simulator",
+      destination: "generic/platform=iOS Simulator, name=iPhone 16, OS=latest",
       derived_data_path: ENV['IOS_DERIVED_DATA_PATH'],
       skip_package_ipa: true
     )
