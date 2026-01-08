@@ -38,9 +38,9 @@ export const BonificationExplanations = () => {
             <Container>
               <StyledSpeaker />
             </Container>
-            <Typo.Title3 {...getHeadingAttrs(2)}>
+            <StyledTitle3 {...getHeadingAttrs(2)}>
               Quel est ce bonus et comment en bénéficier&nbsp;?
-            </Typo.Title3>
+            </StyledTitle3>
             <Typo.Body>
               Ce bonus de
               <Typo.BodyAccent>{SPACE + bonificationAmount + SPACE}</Typo.BodyAccent>
@@ -90,4 +90,8 @@ const StyledSpeaker = styled(Speaker).attrs(({ theme }) => ({
 
 const Container = styled.View({
   alignItems: 'center',
+})
+
+const StyledTitle3 = styled(Typo.Title3)({
+  textAlign: 'center',
 })
