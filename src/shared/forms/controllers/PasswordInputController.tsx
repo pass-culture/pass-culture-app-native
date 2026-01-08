@@ -36,7 +36,7 @@ export const PasswordInputController = <
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => {
+      render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => {
         const computedAccessibilityHint = getComputedAccessibilityLabel(
           securityRulesAccessibilityLabel,
           error?.message
@@ -45,6 +45,7 @@ export const PasswordInputController = <
         return (
           <React.Fragment>
             <PasswordInput
+              ref={ref}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}

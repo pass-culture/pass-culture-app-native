@@ -56,15 +56,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       textAlignVertical={props.multiline ? 'top' : 'center'} // Only for Android
       multiline={!!props.multiline}
       maxLength={props.maxLength}
-      ref={(ref) => {
-        if (ref) {
-          inputRef.current = ref
-          if (forwardedRef) {
-            /* @ts-expect-error Conflicts between types */
-            forwardedRef.current = ref
-          }
-        }
-      }}
+      ref={forwardedRef}
     />
   )
 })
