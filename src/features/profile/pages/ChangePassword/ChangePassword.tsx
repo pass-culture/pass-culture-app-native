@@ -51,6 +51,7 @@ export function ChangePassword() {
     reset,
     watch,
     trigger,
+    setFocus,
     formState: { isSubmitting, isValid, isValidating, isDirty },
   } = useForm<ChangePasswordFormData>({
     mode: 'onChange',
@@ -88,6 +89,7 @@ export function ChangePassword() {
             setError('currentPassword', {
               message: 'Mot de passe incorrect',
             })
+            setFocus('currentPassword')
             if (!(error instanceof ApiError)) {
               const err = new Error('ChangePasswordUnknownError')
               eventMonitoring.captureException(err, {
