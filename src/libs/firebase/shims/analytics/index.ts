@@ -1,2 +1,8 @@
 // eslint-disable-next-line no-restricted-imports
-export { default } from '@react-native-firebase/analytics'
+export {
+  logEvent,
+  logScreenView,
+  setUserId,
+  setAnalyticsCollectionEnabled,
+  getAnalytics,
+} from '@react-native-firebase/analytics'

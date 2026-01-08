@@ -7,7 +7,7 @@ import {
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import firestore from 'libs/firebase/shims/firestore'
+import { doc, getDoc, getFirestore } from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -18,9 +18,9 @@ const buildVersion = getAppBuildVersion()
 jest.mock('libs/monitoring/services')
 jest.mock('@react-native-firebase/firestore')
 
-const { collection } = firestore()
+const firestoreInstance = getFirestore()
 
-const mockGet = jest.fn()
+const mockGet = getDoc as jest.Mock
 
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
 const useRemoteConfigSpy = jest
@@ -28,14 +28,9 @@ const useRemoteConfigSpy = jest
   .mockReturnValue(remoteConfigResponseFixture)
 
 //TODO(PC-35000): unskip this test
-describe.skip('useFeatureFlagOptions', () => {
+describe.skip('useFeatureFlagOptionsQuery', () => {
   beforeAll(() =>
-    collection(FIRESTORE_ROOT_COLLECTION)
-      .doc(RemoteStoreDocuments.FEATURE_FLAGS)
-      // @ts-expect-error is a mock
-      .get.mockResolvedValue({
-        get: mockGet,
-      })
+    doc(firestoreInstance, FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments.FEATURE_FLAGS)
   )
 
   it('should deactivate FF when no build number is given', async () => {

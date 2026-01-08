@@ -43,18 +43,21 @@ export const Appearance = () => {
     RadioButtonGroupOption & { value: ColorScheme; label: string; description: string }
   > = [
     {
+      key: 'light',
       value: ColorScheme.LIGHT,
       label: 'Mode clair',
       description: 'Affichage classique',
       asset: { variant: 'icon', iconElement: <DefaultThemeIllustration /> },
     },
     {
+      key: 'dark',
       value: ColorScheme.DARK,
       label: 'Mode sombre',
       description: 'Réduit la fatigue visuelle',
       asset: { variant: 'icon', iconElement: <DarkThemeIllustration /> },
     },
     {
+      key: 'system',
       value: ColorScheme.SYSTEM,
       label: 'Réglages appareil',
       description: 'Automatique selon les réglages de ton appareil',

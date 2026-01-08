@@ -13,17 +13,17 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { capitalize } from 'libs/formatter/capitalize'
 import { ensureEndingDot } from 'libs/parsers/ensureEndingDot'
-import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
-
-const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
 type Props = {
   artist: ArtistResponse
@@ -82,9 +82,21 @@ export const ArtistBody: FunctionComponent<Props> = ({
               <Description gap={1}>
                 <Typo.BodyAccent>À propos</Typo.BodyAccent>
                 <CollapsibleText
-                  numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}
-                  onExpandPress={onExpandBioPress}>
-                  {highlightLinks(capitalizedDescriptionWithDot)}
+                  text={capitalizedDescriptionWithDot}
+                  onAdditionalPress={onExpandBioPress}>
+                  {artist.descriptionSource ? (
+                    <ViewGap gap={1}>
+                      <Credit>{artist.descriptionCredit}</Credit>
+                      <ExternalTouchableLink
+                        as={ButtonQuaternaryBlack}
+                        wording="Source&nbsp;: Wikipédia"
+                        externalNav={{ url: artist.descriptionSource }}
+                        justifyContent="flex-start"
+                        inline
+                        icon={ExternalSiteFilled}
+                      />
+                    </ViewGap>
+                  ) : null}
                 </CollapsibleText>
               </Description>
             ) : null}
@@ -118,4 +130,9 @@ const ContentContainer = styled(IntersectionObserverScrollView).attrs({
 
 const Description = styled(ViewGap)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const Credit = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.m,
+  color: theme.designSystem.color.text.subtle,
 }))

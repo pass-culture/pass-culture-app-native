@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { FlatList, FlatListProps, View } from 'react-native'
+import React, { useCallback, useMemo, useState } from 'react'
+import { FlatListProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -61,7 +61,6 @@ export function VenueSelectionModal({
 }: VenueSelectionModalProps) {
   const [selectedVenue, setSelectedVenue] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const venueListRef = useRef<FlatList<VenueListItem>>(null)
   const { top } = useCustomSafeInsets()
   const {
     permissionState,
@@ -144,7 +143,6 @@ export function VenueSelectionModal({
         onRefresh={onRefresh}
         onScroll={onScroll}
         onPress={onEndReached}
-        ref={venueListRef}
         autoScrollEnabled={autoScrollEnabled}
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}

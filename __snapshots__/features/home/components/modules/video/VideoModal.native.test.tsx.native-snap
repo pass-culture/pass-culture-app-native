@@ -288,6 +288,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             >
               <View
                 backgroundColor="#f1f1f4"
+                isZoomed={true}
                 style={
                   {
                     "alignItems": "center",
@@ -298,6 +299,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     "borderTopLeftRadius": 4,
                     "borderTopRightRadius": 4,
                     "flexDirection": "row",
+                    "maxWidth": "100%",
                     "paddingHorizontal": 8,
                     "paddingVertical": 4,
                   }
@@ -305,9 +307,11 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 testID="tagWrapper"
               >
                 <Text
+                  isZoomed={true}
                   style={
                     {
                       "color": "#161617",
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,

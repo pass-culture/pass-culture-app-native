@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { InteractionManager, View } from 'react-native'
+import { View } from 'react-native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -25,6 +25,7 @@ import { useEndedBookingFromOfferIdQuery } from 'queries/bookings'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
+import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
@@ -91,7 +92,7 @@ export function Offer() {
       categoryName: categoryId,
     })
     hideChroniclesWritersModal()
-    void InteractionManager.runAfterInteractions(() => {
+    runAfterInteractionsMobile(() => {
       navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
     })
   }
