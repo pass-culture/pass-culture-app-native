@@ -2,8 +2,8 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { env } from 'libs/environment/env'
+import { useSettingsQuery } from 'queries/settings/settingsQuery'
 import { selectImageSettings } from 'queries/settings/settingsSelectors'
-import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432
