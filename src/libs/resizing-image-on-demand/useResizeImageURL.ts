@@ -1,8 +1,8 @@
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { SettingsResponse } from 'api/gen'
 import { env } from 'libs/environment/env'
+import { selectImageSettings } from 'queries/settings/settingsSelectors'
 import { useSettingsQuery } from 'queries/settings/useSettingsQuery'
 
 const MOBILE_MAX_SIZE = 327
@@ -14,16 +14,11 @@ type Params = {
   width?: number
 }
 
-const selectSettings = (settings: SettingsResponse) => ({
-  enableFrontImageResizing: settings.depositAmountsByAge,
-  objectStorageUrl: settings.objectStorageUrl,
-})
-
 export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
   const { isDesktopViewport } = useTheme()
   const { scale: pixelRatio } = useWindowDimensions()
 
-  const { data: settings } = useSettingsQuery({ select: selectSettings })
+  const { data: settings } = useSettingsQuery({ select: selectImageSettings })
 
   if (!settings?.enableFrontImageResizing) {
     return imageURL
