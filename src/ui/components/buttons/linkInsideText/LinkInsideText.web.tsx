@@ -74,7 +74,7 @@ const webStyle = ({
     padding: 0,
     textDecoration: 'underline',
     color: color ?? theme.designSystem.color.text.brandPrimary,
-    ...customFocusOutline({ color: color ?? theme.designSystem.color.text.brandPrimary }),
+    ...customFocusOutline({ theme, color: color ?? theme.designSystem.color.text.brandPrimary }),
     ...(typography === 'BodyAccentXs'
       ? theme.designSystem.typography.bodyAccentXs
       : theme.designSystem.typography.button),

@@ -14,10 +14,9 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockGoBack = jest.fn()
-jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: mockGoBack,
-  canGoBack: jest.fn(() => true),
-})
+jest
+  .spyOn(useGoBack, 'useGoBack')
+  .mockReturnValue({ goBack: mockGoBack, canGoBack: jest.fn(() => true) })
 
 const mockUseOfferQuery = jest.fn()
 mockUseOfferQuery.mockReturnValue({
@@ -30,15 +29,12 @@ mockUseOfferQuery.mockReturnValue({
     ],
   },
 })
-jest.mock('queries/offer/useOfferQuery', () => ({
-  useOffer: () => mockUseOfferQuery(),
-}))
 
-useRoute.mockReturnValue({
-  params: {
-    fromOfferId: 1,
-  },
-})
+jest.mock('queries/offer/useOfferQuery', () => ({ useOffer: () => mockUseOfferQuery() }))
+
+useRoute.mockReturnValue({ params: { fromOfferId: 1 } })
+
+const user = userEvent.setup()
 
 jest.useFakeTimers()
 
@@ -78,7 +74,7 @@ describe('<ArtistBody />', () => {
       )
     )
     const backButton = screen.getByTestId('Revenir en arrière')
-    await userEvent.setup().press(backButton)
+    await user.press(backButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -137,6 +133,50 @@ describe('<ArtistBody />', () => {
     )
 
     expect(await screen.findByText('À propos')).toBeOnTheScreen()
-    expect(screen.getByText('Chanteuse canadienne.')).toBeOnTheScreen()
+    expect(screen.getByText(/Il s’agit d’une chanteuse canadienne/)).toBeOnTheScreen()
+  })
+
+  it('should not display source and credit description when defined and description not expanded', () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={{
+            ...mockArtist,
+            descriptionCredit: '© Contenu généré par IA',
+            descriptionSource: 'https://fr.wikipedia.org/wiki/Avril_Lavigne',
+          }}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    expect(screen.queryByText('© Contenu généré par IA')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Source : Wikipédia')).not.toBeOnTheScreen()
+  })
+
+  it('should display source and credit description when defined and description expanded', async () => {
+    render(
+      reactQueryProviderHOC(
+        <ArtistBody
+          artist={{
+            ...mockArtist,
+            descriptionCredit: '© Contenu généré par IA',
+            descriptionSource: 'https://fr.wikipedia.org/wiki/Avril_Lavigne',
+          }}
+          artistPlaylist={[]}
+          artistTopOffers={[]}
+          onViewableItemsChanged={jest.fn()}
+          onExpandBioPress={jest.fn()}
+        />
+      )
+    )
+
+    await user.press(screen.getByText('Voir plus'))
+
+    expect(screen.getByText('© Contenu généré par IA')).toBeOnTheScreen()
+    expect(screen.getByText('Source : Wikipédia')).toBeOnTheScreen()
   })
 })

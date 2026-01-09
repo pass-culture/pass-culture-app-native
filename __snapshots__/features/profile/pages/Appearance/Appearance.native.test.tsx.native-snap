@@ -267,12 +267,20 @@ exports[`Appearance should render correctly 1`] = `
                       htmlFor="testUuidV4"
                       id="testUuidV4"
                       style={
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        }
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                        ]
                       }
                     >
                       Permettre l’orientation
@@ -405,6 +413,7 @@ exports[`Appearance should render correctly 1`] = `
                       "gap": 8,
                     }
                   }
+                  useFlatList={false}
                 >
                   <View
                     style={

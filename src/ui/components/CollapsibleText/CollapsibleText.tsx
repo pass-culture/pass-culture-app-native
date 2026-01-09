@@ -1,62 +1,65 @@
-import React, { PropsWithChildren, useCallback, useMemo, useState } from 'react'
-import { NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
+import React, { useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CollapsibleTextBody } from 'ui/components/CollapsibleText/CollapsibleTextBody/CollapsibleTextBody'
-import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Markdown } from 'ui/components/Markdown/Markdown'
+import { ArrowDown } from 'ui/svg/icons/ArrowDown'
+import { ArrowUp } from 'ui/svg/icons/ArrowUp'
 
-type CollapsibleTextProps = {
-  // Minimum number of lines when collapsible is collapsed.
-  numberOfLines: number
-  onExpandPress?: VoidFunction
-} & PropsWithChildren
+type Props = {
+  text: string
+  maxChars?: number
+  onAdditionalPress?: () => void
+  children?: React.ReactNode
+}
 
-export function CollapsibleText({
-  numberOfLines,
-  onExpandPress,
-  children,
-}: Readonly<CollapsibleTextProps>) {
-  const [defaultLinesCount, setDefaultLinesCount] = useState<number>()
-  const [isExpanded, setIsExpanded] = useState<boolean>(false)
+function truncateText(text: string, maxChars: number) {
+  if (text.length <= maxChars) return text
+  const truncated = text.slice(0, maxChars)
+  const lastSpace = truncated.lastIndexOf(' ')
+  return truncated.slice(0, lastSpace) + '…'
+}
 
-  const handleOnTextLayout = useCallback(
-    (event: NativeSyntheticEvent<TextLayoutEventData>) => {
-      if (!defaultLinesCount && event.nativeEvent.lines.length) {
-        setDefaultLinesCount(event.nativeEvent.lines.length)
-      }
-    },
-    [defaultLinesCount]
-  )
+export function CollapsibleText({ text, maxChars = 250, onAdditionalPress, children }: Props) {
+  const [expanded, setExpanded] = useState(false)
+  const isTruncated = text.length > maxChars
+  const collapsedText = truncateText(text, maxChars)
 
-  const handleExpandButtonPress = () => {
-    if (!isExpanded) {
-      onExpandPress?.()
-    }
-    setIsExpanded((prevExpanded) => !prevExpanded)
+  const buttonIcon = expanded ? ArrowUp : ArrowDown
+  const buttonText = expanded ? 'Voir moins' : 'Voir plus'
+  const buttonAccessibleHint = expanded
+    ? 'Réduire le texte'
+    : 'Une fois déplié, revenir en arrière pour lire tout le texte'
+
+  const onPress = () => {
+    setExpanded((prev) => !prev)
+    if (onAdditionalPress) onAdditionalPress()
   }
 
-  const _numberOfLines = useMemo(() => {
-    if (!defaultLinesCount) {
-      return undefined
-    }
-    return isExpanded ? undefined : numberOfLines
-  }, [isExpanded, defaultLinesCount, numberOfLines])
-
-  const isCollapsible = defaultLinesCount && defaultLinesCount > numberOfLines
-
   return (
-    <Container visibility={defaultLinesCount ? 'visible' : 'hidden'}>
-      <CollapsibleTextBody onTextLayout={handleOnTextLayout} numberOfLines={_numberOfLines}>
-        {children}
-      </CollapsibleTextBody>
-      {isCollapsible ? (
-        <CollapsibleTextButton expanded={isExpanded} onPress={handleExpandButtonPress} />
+    <View>
+      {expanded ? <Markdown>{text}</Markdown> : <Markdown>{collapsedText}</Markdown>}
+
+      {expanded && children ? children : null}
+
+      {isTruncated ? (
+        <ButtonContainer>
+          <ButtonTertiaryBlack
+            accessibilityHint={buttonAccessibleHint}
+            wording={buttonText}
+            onPress={onPress}
+            icon={buttonIcon}
+            inline
+          />
+        </ButtonContainer>
       ) : null}
-    </Container>
+    </View>
   )
 }
 
-const Container = styled.View<{ visibility: 'hidden' | 'visible' }>(({ visibility }) => ({
-  visibility,
-  opacity: visibility === 'hidden' ? 0 : 1,
+const ButtonContainer = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  marginTop: theme.designSystem.size.spacing.m,
 }))

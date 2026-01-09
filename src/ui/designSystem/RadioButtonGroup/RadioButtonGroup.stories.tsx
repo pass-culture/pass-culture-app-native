@@ -16,8 +16,9 @@ const meta: Meta<typeof RadioButtonGroup> = {
 }
 export default meta
 
-const optionsDetailed: Array<RadioButtonGroupOption> = ['option1', 'option2', 'option3'].map(
-  (value, index) => ({
+const optionsDetailed = (keyPrefix: string): Array<RadioButtonGroupOption> =>
+  ['option1', 'option2', 'option3'].map((_, index) => ({
+    key: `${keyPrefix}-${index + 1}`,
     label: `RadioButton Detailed ${index + 1}`,
     description: `Detailed description ${index + 1}`,
     collapsed: false,
@@ -25,8 +26,9 @@ const optionsDetailed: Array<RadioButtonGroupOption> = ['option1', 'option2', 'o
       variant: 'image',
       src: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
     },
-  })
-)
+  }))
+
+const onChange = () => undefined
 
 const variantConfig: Variants<typeof RadioButtonGroup> = [
   {
@@ -34,9 +36,11 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       options: [
-        { label: 'RadioButton_1', sizing: 'fill' },
-        { label: 'RadioButton_2', sizing: 'fill' },
+        { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-default-1' },
+        { label: 'RadioButton_2', sizing: 'fill', key: 'radio-button-default-2' },
       ],
     },
   },
@@ -45,10 +49,12 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       disabled: true,
       options: [
-        { label: 'RadioButton_1', sizing: 'fill' },
-        { label: 'RadioButton_2', sizing: 'fill' },
+        { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-disabled-1' },
+        { label: 'RadioButton_2', sizing: 'fill', key: 'radio-button-disabled-2' },
       ],
     },
   },
@@ -57,23 +63,27 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       error: true,
       errorText: 'Some error text',
       options: [
-        { label: 'RadioButton_1', sizing: 'fill' },
-        { label: 'RadioButton_2', sizing: 'fill' },
+        { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-error-1' },
+        { label: 'RadioButton_2', sizing: 'fill', key: 'radio-button-error-2' },
       ],
     },
   },
   {
-    label: 'RadioButtonGroup Default',
+    label: 'RadioButtonGroup Horizontal',
     props: {
       label: 'Label',
       display: 'horizontal',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       options: [
-        { label: 'RadioButton_1', sizing: 'fill' },
-        { label: 'RadioButton_2', sizing: 'fill' },
+        { label: 'RadioButton_1', sizing: 'fill', key: 'radio-button-horizontal-1' },
+        { label: 'RadioButton_2', sizing: 'fill', key: 'radio-button-horizontal-2' },
       ],
     },
   },
@@ -82,8 +92,10 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       variant: 'detailed',
-      options: optionsDetailed,
+      options: optionsDetailed('radio-button-detailed'),
     },
   },
   {
@@ -91,10 +103,12 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       variant: 'detailed',
       error: true,
       errorText: 'Error mega',
-      options: optionsDetailed,
+      options: optionsDetailed('radio-button-detailed-error'),
     },
   },
   {
@@ -102,9 +116,11 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       variant: 'detailed',
       disabled: true,
-      options: optionsDetailed,
+      options: optionsDetailed('radio-button-detailed-disabled'),
     },
   },
   {
@@ -112,9 +128,11 @@ const variantConfig: Variants<typeof RadioButtonGroup> = [
     props: {
       label: 'Label',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      value: '',
+      onChange,
       variant: 'detailed',
       display: 'horizontal',
-      options: optionsDetailed,
+      options: optionsDetailed('radio-button-detailed-horizontal'),
     },
   },
 ]

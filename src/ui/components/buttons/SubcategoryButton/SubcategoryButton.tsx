@@ -7,7 +7,6 @@ import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ColorsType } from 'theme/types'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -75,13 +74,13 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   borderWidth: 1.6,
   borderStyle: 'solid',
   borderRadius: theme.designSystem.size.borderRadius.m,
-  ...customFocusOutline({ isFocus }),
+  ...customFocusOutline({ theme, isFocus }),
   textAlign: 'left',
   alignItems: 'center',
   ...(Platform.OS === 'web' && { padding: theme.designSystem.size.spacing.s }),
 }))
 
-const StyledText = styledButton(Typo.BodyAccentXs).attrs({
+const StyledText = styled(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 3,
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({

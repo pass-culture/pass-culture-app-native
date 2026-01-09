@@ -2,7 +2,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { addDays } from 'date-fns'
 import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
 import { api } from 'api/api'
 import {
@@ -230,6 +229,8 @@ const BATCH_TRIGGER_DELAY_IN_MS = 5000
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const authorLabel = `${offerResponseSnap.chronicles[0].author.firstName}, ${offerResponseSnap.chronicles[0].author.age} ans`
 
 describe('<OfferContent />', () => {
   const user = userEvent.setup()
@@ -710,10 +711,8 @@ describe('<OfferContent />', () => {
           descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
         })
 
-        const seeMoreButtons = screen.getAllByText('Voir plus')
-
-        // Using as because links is never undefined and the typing is not correct
-        await user.press(seeMoreButtons[0] as ReactTestInstance)
+        const seeMoreButton = screen.getByLabelText(`Voir plus à propos de ${authorLabel}`)
+        await user.press(seeMoreButton)
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
@@ -733,10 +732,8 @@ describe('<OfferContent />', () => {
           descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
         })
 
-        const seeMoreButtons = screen.getAllByText('Voir plus')
-
-        // Using as because links is never undefined and the typing is not correct
-        await user.press(seeMoreButtons[0] as ReactTestInstance)
+        const seeMoreButton = screen.getByLabelText(`Voir plus à propos de ${authorLabel}`)
+        await user.press(seeMoreButton)
 
         expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
           offerId: 116656,

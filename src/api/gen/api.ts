@@ -286,6 +286,16 @@ export interface ArtistResponse {
    * @type {string}
    * @memberof ArtistResponse
    */
+  descriptionCredit?: string | null
+  /**
+   * @type {string}
+   * @memberof ArtistResponse
+   */
+  descriptionSource?: string | null
+  /**
+   * @type {string}
+   * @memberof ArtistResponse
+   */
   id: string
   /**
    * @type {string}
@@ -5239,10 +5249,10 @@ export interface VenueContactModel {
    * @memberof VenueContactModel
    */
   email?: string | null
-  /**
+/**
    * @type {string}
    * @memberof VenueContactModel
-   */
+ */
   phoneNumber?: string | null
   /**
    * @type {{ [key: string]: string; }}

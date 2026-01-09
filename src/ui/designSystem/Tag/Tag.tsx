@@ -4,7 +4,7 @@
  */
 
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getTagColors } from 'ui/designSystem/Tag/helper/getTagColors'
@@ -21,6 +21,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   Icon,
   ...props
 }) => {
+  const { fontScale } = useWindowDimensions()
   const theme = useTheme()
   const { background, icon } = theme.designSystem.color
 
@@ -33,30 +34,38 @@ export const Tag: FunctionComponent<TagProps> = ({
     theme,
   })
 
+  const isZoomed = fontScale > 1
+
   return (
-    <Wrapper backgroundColor={backgroundColor} testID="tagWrapper" {...props}>
+    <Wrapper backgroundColor={backgroundColor} testID="tagWrapper" isZoomed={isZoomed} {...props}>
       {FinalIcon ? (
         <IconContainer>{renderTagIcon(iconColor, iconSize, FinalIcon)}</IconContainer>
       ) : null}
-      <LabelText color={labelColor}>{label}</LabelText>
+      <LabelText color={labelColor} isZoomed={isZoomed}>
+        {label}
+      </LabelText>
     </Wrapper>
   )
 }
 
-const Wrapper = styled.View<{ backgroundColor: string }>(({ theme, backgroundColor }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  alignSelf: 'flex-start',
-  borderRadius: theme.designSystem.size.borderRadius.s,
-  backgroundColor,
-  paddingVertical: theme.designSystem.size.spacing.xs,
-  paddingHorizontal: theme.designSystem.size.spacing.s,
-}))
+const Wrapper = styled.View<{ backgroundColor: string; isZoomed: boolean }>(
+  ({ theme, backgroundColor, isZoomed }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    maxWidth: isZoomed ? '100%' : undefined,
+    borderRadius: theme.designSystem.size.borderRadius.s,
+    backgroundColor,
+    paddingVertical: theme.designSystem.size.spacing.xs,
+    paddingHorizontal: theme.designSystem.size.spacing.s,
+  })
+)
 
-const LabelText = styled(Typo.BodyAccentXs)({
+const LabelText = styled(Typo.BodyAccentXs)<{ isZoomed: boolean }>(({ isZoomed }) => ({
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
+  flexShrink: isZoomed ? 1 : undefined,
   ...(Platform.OS === 'web' && { textWrap: 'nowrap' }),
-})
+}))
 
 const IconContainer = styled.View(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.xs,

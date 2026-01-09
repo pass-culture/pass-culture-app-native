@@ -1,4 +1,4 @@
-import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { firestoreRemoteStore, doc, getDoc } from 'libs/firebase/firestore/client'
 import {
   FIRESTORE_ROOT_COLLECTION,
   RemoteStoreCookies,
@@ -15,10 +15,13 @@ export const getCookiesLastUpdate = async (): Promise<
     }
   | undefined
 > => {
-  return firestoreRemoteStore
-    .collection(FIRESTORE_ROOT_COLLECTION)
-    .doc(RemoteStoreDocuments.COOKIES_LAST_UPDATE)
-    .get()
+  const docRef = doc(
+    firestoreRemoteStore,
+    FIRESTORE_ROOT_COLLECTION,
+    RemoteStoreDocuments.COOKIES_LAST_UPDATE
+  )
+
+  return getDoc(docRef)
     .then((docSnapshot) => {
       const lastUpdated = new Date(
         docSnapshot.get<string>(RemoteStoreCookies.COOKIES_LAST_UPDATE_DATE)

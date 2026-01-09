@@ -33,10 +33,10 @@ export const BonificationRequiredInformation = () => {
             <Container>
               <IdCardWithMagnifyingGlass />
             </Container>
-            <Typo.Title3 {...getHeadingAttrs(2)}>
+            <StyledTitle3 {...getHeadingAttrs(2)}>
               Quelles sont les informations requises d’un de tes parents ou représentants
               légaux&nbsp;?
-            </Typo.Title3>
+            </StyledTitle3>
             <Typo.Body>Munis-toi des informations suivantes pour faire ta demande&nbsp;:</Typo.Body>
             <VerticalUl>
               <BulletListItem groupLabel="Informations demandées" index={0} total={5}>
@@ -101,5 +101,9 @@ const Container = styled.View({
 })
 
 const StyledBodyXs = styled(Typo.BodyXs)({
+  textAlign: 'center',
+})
+
+const StyledTitle3 = styled(Typo.Title3)({
   textAlign: 'center',
 })

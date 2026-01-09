@@ -215,7 +215,7 @@ const CheckboxContainer = styled(TouchableOpacity)<ContainerProps>(({
       borderRadius: theme.designSystem.size.borderRadius.m,
       padding: theme.designSystem.size.spacing.l,
     }),
-    ...customFocusOutline({ isFocus }),
+    ...customFocusOutline({ theme, isFocus }),
     ...getBorderHoverStyle({ state, theme, isHover }),
   }
 })
