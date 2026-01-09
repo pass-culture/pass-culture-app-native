@@ -54,7 +54,7 @@ const SnackBarBase = (props: SnackBarProps) => {
       opacity: opacity.value,
       transform: [{ translateY: translateY.value }],
     }
-  })
+  }, [opacity, translateY])
 
   const triggerApparitionAnimation = useCallback(() => {
     setIsVisible(true)
@@ -92,13 +92,13 @@ const SnackBarBase = (props: SnackBarProps) => {
 
   // Visibility effect
   useEffect(() => {
-    if (props.visible || isVisible) {
-      firstRender.current = false
-    }
-
     // Handle initial load if visible is true
     if (firstRender.current && props.visible) {
       triggerApparitionAnimation()
+    }
+
+    if (props.visible || isVisible) {
+      firstRender.current = false
     }
 
     if (props.refresher <= 0) {

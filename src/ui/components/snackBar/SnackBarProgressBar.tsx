@@ -40,7 +40,7 @@ export const SnackBarProgressBar = (props: SnackBarProgressBarProps) => {
       width: windowWidth,
       transform: [{ translateX: translateX }, { scaleX: progress.value }],
     }
-  })
+  }, [progress, windowWidth])
 
   return (
     <StyledAnimatedView
