@@ -282,6 +282,15 @@ describe('<CategoriesModal/>', () => {
     describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
       beforeEach(() => {
         setFeatureFlags([RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS])
+        // Give native categories a genreType so they have children and display as FilterRow with counts
+        mockData = {
+          ...PLACEHOLDER_DATA,
+          nativeCategories: PLACEHOLDER_DATA.nativeCategories.map((nativeCategory) =>
+            nativeCategory.name === NativeCategoryIdEnumv2.CARTES_CINEMA
+              ? { ...nativeCategory, genreType: GenreType.MOVIE }
+              : nativeCategory
+          ),
+        }
       })
 
       it('should display number of results on each category', () => {
