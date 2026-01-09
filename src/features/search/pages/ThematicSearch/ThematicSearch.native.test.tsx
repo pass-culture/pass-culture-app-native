@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { popTo, navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
@@ -164,7 +164,7 @@ describe('<ThematicSearch/>', () => {
         await user.type(searchInput, QUERY, { submitEditing: true })
         await screen.findByText('Romans et littérature')
 
-        expect(navigate).toHaveBeenCalledWith(
+        expect(popTo).toHaveBeenCalledWith(
           'TabNavigator',
           expect.objectContaining({
             screen: 'SearchStackNavigator',

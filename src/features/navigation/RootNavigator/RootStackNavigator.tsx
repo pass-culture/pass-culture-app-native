@@ -1,3 +1,4 @@
+import { Route } from '@react-navigation/native'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
@@ -37,7 +38,6 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
-import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -422,7 +422,7 @@ const RootStackNavigator = withWebWrapper(
   }
 )
 
-export const RootNavigator: React.ComponentType = () => {
+export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ currentRoute }) => {
   const mainId = uuidv4()
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
@@ -433,7 +433,6 @@ export const RootNavigator: React.ComponentType = () => {
 
   const initialScreen = useInitialScreen()
 
-  const currentRoute = useCurrentRoute()
   const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
   const headerWithQuickAccess = showHeaderQuickAccess ? (
     <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
@@ -455,8 +454,9 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
-  const mainAccessibilityRole: AccessibilityRole | undefined =
-    determineAccessibilityRole(currentRoute)
+  const mainAccessibilityRole: AccessibilityRole | undefined = determineAccessibilityRole(
+    currentRoute ?? null
+  )
 
   return (
     <TabNavigationStateProvider>

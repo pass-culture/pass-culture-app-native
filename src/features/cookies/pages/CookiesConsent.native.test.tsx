@@ -1,3 +1,4 @@
+import { RouteProp } from '@react-navigation/native'
 import mockdate from 'mockdate'
 import React from 'react'
 
@@ -7,6 +8,7 @@ import * as Tracking from 'features/cookies/helpers/startTracking'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { campaignTracker } from 'libs/campaign/__mocks__/campaign'
 import { EmptyResponse } from 'libs/fetch'
@@ -48,11 +50,13 @@ const UTM_PARAMS = {
   utm_source: 'test',
 }
 
-jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
+const mockRoute: RouteProp<RootStackParamList, 'UTMParameters'> = {
   params: UTM_PARAMS,
-  key: 'UTMParams',
-  name: 'UTMParams',
-})
+  key: 'UTMParameters',
+  name: 'UTMParameters',
+}
+
+jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue(mockRoute)
 
 const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')
 
@@ -78,8 +82,8 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<CookiesConsent/>', () => {
-  beforeEach(() => {
-    storage.clear(COOKIES_CONSENT_KEY)
+  beforeEach(async () => {
+    await storage.clear(COOKIES_CONSENT_KEY)
     mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
     mockdate.set(Today)
     setFeatureFlags()
