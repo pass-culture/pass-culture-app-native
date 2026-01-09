@@ -12,8 +12,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useCitiesByPostalCodeQuery } from 'libs/place/queries/useCitiesByPostalCodeQuery'
 import { SuggestedCity } from 'libs/place/types'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectIneligiblePostalCodes } from 'queries/settings/settingsSelectors'
+import { useIneligiblePostalCodes } from 'queries/settings/useSettings'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { RequiredIndicator } from 'ui/components/inputs/types'
@@ -44,9 +43,7 @@ export const CitySearchInput = ({
   requiredIndicator,
 }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { data: ineligiblePostalCodes } = useSettingsQuery({
-    select: selectIneligiblePostalCodes,
-  })
+  const { data: ineligiblePostalCodes } = useIneligiblePostalCodes()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current

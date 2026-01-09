@@ -2,8 +2,7 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { env } from 'libs/environment/env'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectImageSettings } from 'queries/settings/settingsSelectors'
+import { useEnableFrontImageResizing, useObjectStorageUrl } from 'queries/settings/useSettings'
 
 const MOBILE_MAX_SIZE = 327
 const DESKTOP_MAX_SIZE = 432
@@ -18,9 +17,10 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
   const { isDesktopViewport } = useTheme()
   const { scale: pixelRatio } = useWindowDimensions()
 
-  const { data: settings } = useSettingsQuery({ select: selectImageSettings })
+  const { data: enableFrontImageResizing } = useEnableFrontImageResizing()
+  const { data: objectStorageUrl } = useObjectStorageUrl()
 
-  if (!settings?.enableFrontImageResizing) {
+  if (!enableFrontImageResizing || !objectStorageUrl) {
     return imageURL
   }
 
@@ -29,7 +29,7 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
   const sizeWithRatio = (customSize ?? imageMaxSize) * pixelRatio
 
   return imageURL.replace(
-    settings.objectStorageUrl,
+    objectStorageUrl,
     `${env.RESIZE_IMAGE_ON_DEMAND_URL}/?size=${sizeWithRatio}&filename=${env.GCP_IMAGE_COULD_STORAGE_NAME}`
   )
 }

@@ -24,8 +24,7 @@ import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectIsRecaptchaEnabled } from 'queries/settings/settingsSelectors'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -53,9 +52,7 @@ type Props = {
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   useMeasureScreenPerformanceWhenVisible(ScreenPerformance.LOGIN)
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
-  const { data: isRecaptchaEnabled } = useSettingsQuery({
-    select: selectIsRecaptchaEnabled,
-  })
+  const { data: isRecaptchaEnabled } = useIsRecaptchaEnabled()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()

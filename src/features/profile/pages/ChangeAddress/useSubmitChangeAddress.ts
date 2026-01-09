@@ -15,8 +15,7 @@ import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
 import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectIdCheckAddressAutocompletion } from 'queries/settings/settingsSelectors'
+import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -37,9 +36,7 @@ export const useSubmitChangeAddress = () => {
   const buttonWording = isMandatoryUpdatePersonalData ? 'Continuer' : 'Valider mon adresse'
 
   const { user } = useAuthContext()
-  const { data: idCheckAddressAutocompletion } = useSettingsQuery({
-    select: selectIdCheckAddressAutocompletion,
-  })
+  const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
   const { setAddress: setStoreAddress } = addressActions
   const storedCity = useCity()

@@ -17,15 +17,14 @@ export const selectIneligiblePostalCodes = (settings: SettingsResponse) =>
 export const selectAppEnableAutocomplete = (settings: SettingsResponse) =>
   settings.appEnableAutocomplete
 
-export const selectPacificFrancToEuro = (settings: SettingsResponse) =>
-  settings.rates?.pacificFrancToEuro
+export const selectPacificFrancToEuro = (settings: SettingsResponse) => {
+  return settings.rates?.pacificFrancToEuro
+}
 
 export const selectDepositAmountsByAge = (settings: SettingsResponse) =>
   settings.depositAmountsByAge
 
 export const selectObjectStorageUrl = (settings: SettingsResponse) => settings.objectStorageUrl
 
-export const selectImageSettings = (settings: SettingsResponse) => ({
-  enableFrontImageResizing: settings.enableFrontImageResizing,
-  objectStorageUrl: settings.objectStorageUrl,
-})
+export const selectEnableFrontImageResizing = (settings: SettingsResponse) =>
+  settings.enableFrontImageResizing

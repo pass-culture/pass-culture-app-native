@@ -7,8 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectIsRecaptchaEnabled } from 'queries/settings/settingsSelectors'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -27,9 +26,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   isSSOSubscription,
   signUp,
 }) => {
-  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useSettingsQuery({
-    select: selectIsRecaptchaEnabled,
-  })
+  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useIsRecaptchaEnabled()
   const networkInfo = useNetInfoContext()
 
   const [isFetching, setIsFetching] = useState(false)

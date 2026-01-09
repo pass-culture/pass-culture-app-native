@@ -24,8 +24,7 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectAppEnableAutocomplete } from 'queries/settings/settingsSelectors'
+import { useAppEnableAutocomplete } from 'queries/settings/useSettings'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -76,9 +75,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appEnableAutocomplete } = useSettingsQuery({
-    select: selectAppEnableAutocomplete,
-  })
+  const { data: appEnableAutocomplete } = useAppEnableAutocomplete()
 
   const setQuery = useCallback(
     (value: string) => {
