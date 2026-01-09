@@ -15,28 +15,28 @@ export const mapSnackBarTypeToStyle = (
       return {
         icon: AccessibleCheck,
         backgroundColor: theme.designSystem.color.background.success,
-        progressBarColor: theme.designSystem.color.background.success,
+        progressBarColor: theme.designSystem.color.icon.success,
         color: 'default',
       }
     case SnackBarType.ERROR:
       return {
         icon: AccessibleError,
         backgroundColor: theme.designSystem.color.background.error,
-        progressBarColor: theme.designSystem.color.background.error,
+        progressBarColor: theme.designSystem.color.icon.error,
         color: 'default',
       }
     case SnackBarType.INFO:
       return {
         icon: AccessibleInfo,
         backgroundColor: theme.designSystem.color.background.info,
-        progressBarColor: theme.designSystem.color.background.info,
+        progressBarColor: theme.designSystem.color.icon.info,
         color: 'default',
       }
     default:
       return {
         icon: undefined,
         backgroundColor: theme.designSystem.color.background.default,
-        progressBarColor: theme.designSystem.color.background.default,
+        progressBarColor: theme.designSystem.color.icon.default,
         color: 'default',
       }
   }

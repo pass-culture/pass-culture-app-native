@@ -8,11 +8,17 @@ import React, {
   useState,
 } from 'react'
 import { Platform, View } from 'react-native'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { scheduleOnRN } from 'react-native-worklets'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ColorsType, TextColorKey } from 'theme/types'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -38,21 +44,40 @@ const SnackBarBase = (props: SnackBarProps) => {
   const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
-  const containerRef = useRef<AnimatedViewRefType>(null)
-  const progressBarContainerRef = useRef<AnimatedViewRefType>(null)
+  const opacity = useSharedValue(0) // transparent
+  const translateY = useSharedValue(-20) // slightly above
+
   const [isVisible, setIsVisible] = useState(props.visible)
 
-  async function triggerApparitionAnimation() {
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+      transform: [{ translateY: translateY.value }],
+    }
+  }, [opacity, translateY])
+
+  const triggerApparitionAnimation = useCallback(() => {
     setIsVisible(true)
-    progressBarContainerRef.current?.fadeInDown?.(animationDuration)
-    containerRef.current?.fadeInDown?.(animationDuration)
-  }
-  async function triggerVanishAnimation() {
-    progressBarContainerRef.current?.fadeOutUp?.(animationDuration)
-    containerRef.current?.fadeOutUp?.(animationDuration).then(() => {
-      setIsVisible(false)
+    opacity.value = withTiming(1, { duration: animationDuration, easing: Easing.out(Easing.ease) })
+    translateY.value = withTiming(0, {
+      duration: animationDuration,
+      easing: Easing.out(Easing.ease),
     })
-  }
+  }, [animationDuration, opacity, translateY])
+
+  const triggerVanishAnimation = useCallback(() => {
+    opacity.value = withTiming(0, { duration: animationDuration, easing: Easing.out(Easing.ease) })
+    translateY.value = withTiming(
+      -20,
+      { duration: animationDuration, easing: Easing.out(Easing.ease) },
+      (finished) => {
+        if (finished) {
+          // Update state on JS thread
+          scheduleOnRN(setIsVisible, false)
+        }
+      }
+    )
+  }, [animationDuration, opacity, translateY])
 
   const onClose = useCallback(() => props.onClose?.(), [props])
 
@@ -67,6 +92,11 @@ const SnackBarBase = (props: SnackBarProps) => {
 
   // Visibility effect
   useEffect(() => {
+    // Handle initial load if visible is true
+    if (firstRender.current && props.visible) {
+      triggerApparitionAnimation()
+    }
+
     if (props.visible || isVisible) {
       firstRender.current = false
     }
@@ -88,22 +118,30 @@ const SnackBarBase = (props: SnackBarProps) => {
     }
     const timeout = setTimeout(props.onClose, props.timeout)
     return () => clearTimeout(timeout)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.refresher])
+  }, [
+    props.refresher,
+    props.visible,
+    isVisible,
+    props.timeout,
+    props.onClose,
+    triggerApparitionAnimation,
+    triggerVanishAnimation,
+  ])
 
   const { top } = useSafeAreaInsets()
 
   function renderProgressBar() {
     return (
-      <AnimatedView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
+      <View>
         {isVisible && props.timeout ? (
           <SnackBarProgressBar
             color={props.progressBarColor}
             timeout={props.timeout}
             refresher={props.refresher}
+            visible={props.visible}
           />
         ) : null}
-      </AnimatedView>
+      </View>
     )
   }
 
@@ -111,12 +149,10 @@ const SnackBarBase = (props: SnackBarProps) => {
   const renderContent = Platform.OS === 'web' || !firstRender.current || isVisible
   return (
     <RootContainer>
-      <ColoredAnimatableView
+      <ColoredAnimatedView
         testID="snackbar-view"
-        backgroundColor={props.backgroundColor}
-        easing="ease"
-        duration={animationDuration}
-        ref={containerRef}>
+        style={animatedStyle}
+        backgroundColor={props.backgroundColor}>
         {renderContent ? (
           <View accessibilityRole={AccessibilityRole.STATUS}>
             <SnackBarContainer
@@ -141,7 +177,7 @@ const SnackBarBase = (props: SnackBarProps) => {
           </View>
         ) : null}
         {renderProgressBar()}
-      </ColoredAnimatableView>
+      </ColoredAnimatedView>
     </RootContainer>
   )
 }
@@ -162,8 +198,7 @@ const RootContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.snackbar,
 }))
 
-// Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
-const ColoredAnimatableView = styled(AnimatedView)<{ backgroundColor: ColorsType }>((props) => ({
+const ColoredAnimatedView = styled(Animated.View)<{ backgroundColor: ColorsType }>((props) => ({
   backgroundColor: props.backgroundColor,
 }))
 

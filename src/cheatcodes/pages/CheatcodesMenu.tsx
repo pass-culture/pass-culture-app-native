@@ -62,12 +62,18 @@ export function CheatcodesMenu(): React.JSX.Element {
   const [searchValue, setSearchValue] = useState('')
   const resetSearch = () => setSearchValue('')
 
-  const { showInfoSnackBar } = useSnackBarContext()
+  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
   const onPressSentry = () => {
     const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
     eventMonitoring.captureException(new Error(message))
     showInfoSnackBar({
       message: `L’erreur ${message} a été envoyé sur Sentry`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  }
+  const onPressSnackbar = () => {
+    showErrorSnackBar({
+      message: 'Ceci est un test snackbar d’erreur',
       timeout: SNACK_BAR_TIME_OUT,
     })
   }
@@ -180,6 +186,12 @@ export function CheatcodesMenu(): React.JSX.Element {
         screen: 'CheatcodesStackNavigator',
         params: { screen: 'CheatcodesScreenNewCaledonia' },
       },
+      subscreens: [],
+    },
+    {
+      id: uuidv4(),
+      title: 'Snackbar d’erreur',
+      onPress: onPressSnackbar,
       subscreens: [],
     },
   ]
