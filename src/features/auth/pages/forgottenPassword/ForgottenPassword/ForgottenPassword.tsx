@@ -11,8 +11,7 @@ import { captureMonitoringError } from 'libs/monitoring/errors'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectIsRecaptchaEnabled } from 'queries/settings/settingsSelectors'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -31,9 +30,7 @@ type FormValues = {
 }
 
 export const ForgottenPassword = () => {
-  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useSettingsQuery({
-    select: selectIsRecaptchaEnabled,
-  })
+  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useIsRecaptchaEnabled()
 
   const {
     control,

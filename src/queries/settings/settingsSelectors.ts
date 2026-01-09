@@ -25,7 +25,11 @@ export const selectDepositAmountsByAge = (settings: SettingsResponse) =>
 
 export const selectObjectStorageUrl = (settings: SettingsResponse) => settings.objectStorageUrl
 
-export const selectImageSettings = (settings: SettingsResponse) => ({
-  enableFrontImageResizing: settings.enableFrontImageResizing,
-  objectStorageUrl: settings.objectStorageUrl,
-})
+export const selectEnableFrontImageResizing = (settings: SettingsResponse) =>
+  settings.enableFrontImageResizing
+
+export const selectBonificationBonusAmount = (settings: SettingsResponse) =>
+  settings.bonification.bonusAmount
+
+export const selectBonificationQfThreshold = (settings: SettingsResponse) =>
+  settings.bonification.qfThreshold

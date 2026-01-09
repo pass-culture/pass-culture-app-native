@@ -14,8 +14,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectIdCheckAddressAutocompletion } from 'queries/settings/settingsSelectors'
+import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -49,9 +48,7 @@ export const SetAddress = () => {
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
-  const { data: idCheckAddressAutocompletion } = useSettingsQuery({
-    select: selectIdCheckAddressAutocompletion,
-  })
+  const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions

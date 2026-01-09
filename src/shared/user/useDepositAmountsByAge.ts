@@ -1,18 +1,17 @@
 import { DepositAmountsByAge } from 'api/gen'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectDepositAmountsByAge } from 'queries/settings/settingsSelectors'
+import {
+  useGetPacificFrancToEuroRate,
+  useDepositAmountsByAge as useDepositAmountsByAgeSetting,
+} from 'queries/settings/useSettings'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 
 export function useDepositAmountsByAge() {
-  const { data: depositAmountsByAge } = useSettingsQuery({
-    select: selectDepositAmountsByAge,
-  })
+  const { data: depositAmountsByAge } = useDepositAmountsByAgeSetting()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = useGetPacificFrancToEuroRate()
 
   const getDefaultAmountByAge = (ageKey: keyof DepositAmountsByAge): number => {
     return depositAmountsByAge?.[ageKey] ?? defaultCreditByAge[ageKey]

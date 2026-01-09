@@ -9,8 +9,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectAccountUnsuspensionLimit } from 'queries/settings/settingsSelectors'
+import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -24,9 +23,7 @@ const addDaysToDate = (date: Date, days: number) => {
 
 export const SuspendedAccountUponUserRequest = () => {
   const { replace } = useNavigation<UseNavigationType>()
-  const { data: accountUnsuspensionLimit } = useSettingsQuery({
-    select: selectAccountUnsuspensionLimit,
-  })
+  const { data: accountUnsuspensionLimit } = useAccountUnsuspensionLimit()
   const { data: accountSuspensionDate } = useAccountSuspensionDateQuery()
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()

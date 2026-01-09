@@ -14,8 +14,7 @@ import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectEnablePhoneValidation } from 'queries/settings/settingsSelectors'
+import { useEnablePhoneValidation } from 'queries/settings/useSettings'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -45,9 +44,7 @@ export const useStepperInfo = (): StepperInfo => {
 
   const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
-  const { data: enablePhoneValidation } = useSettingsQuery({
-    select: selectEnablePhoneValidation,
-  })
+  const { data: enablePhoneValidation } = useEnablePhoneValidation()
   const { shouldBeOverriden: shouldCreditAmountBeOverriden, amount: overriddenCreditAmount } =
     useOverrideCreditActivationAmount()
 
