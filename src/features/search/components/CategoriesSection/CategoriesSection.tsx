@@ -62,14 +62,18 @@ export function CategoriesSection<
   const hasChildren = entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
 
   if (!hasChildren) {
-    const options = entries.map(([k, item]) => ({
-      label: item.label,
-      value: k,
-    }))
-    options.unshift({
-      label: allLabel,
-      value: allValue as string,
-    })
+    const options = [
+      {
+        key: allValue as string,
+        label: allLabel,
+        value: allValue as string,
+      },
+      ...entries.map(([k, item]) => ({
+        key: k,
+        label: item.label,
+        value: k,
+      })),
+    ]
     const selectedOption = options.find((option) => option.value === value)
     return (
       <RadioButtonGroup
