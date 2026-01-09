@@ -138,6 +138,7 @@ const SnackBarBase = (props: SnackBarProps) => {
             color={props.progressBarColor}
             timeout={props.timeout}
             refresher={props.refresher}
+            visible={props.visible}
           />
         ) : null}
       </View>
