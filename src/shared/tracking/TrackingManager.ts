@@ -168,6 +168,8 @@ class TrackingManagerService {
   private static instance: TrackingManagerService
   private readonly pageBuffers = new Map<string, TrackingBuffer>()
   private isInitialized = false
+  // Prevents duplicate sends when multiple web lifecycle events fire in cascade
+  private readonly sendingBuffers = new Set<string>()
 
   static getInstance(): TrackingManagerService {
     if (!TrackingManagerService.instance) {
@@ -310,20 +312,31 @@ class TrackingManagerService {
 
   /**
    * Send data and clear buffer
+   * Protected against duplicate sends from multiple web lifecycle events
    */
   private async sendAndClearBuffer(pageId: string) {
-    // 🚨 Log très visible pour confirmer que cette méthode est appelée
-    TrackingLogger.info('🚀 SEND_BUFFER_TRIGGERED', {
-      pageId,
-      timestamp: new Date().toISOString(),
-      message: 'sendAndClearBuffer method called - analytics will be sent',
-    })
+    // Prevent duplicate sends when multiple events fire in cascade
+    // (visibilitychange + pagehide + beforeunload, or React Native Web's AppState)
+    if (this.sendingBuffers.has(pageId)) {
+      TrackingLogger.debug('SEND_ALREADY_IN_PROGRESS', { pageId })
+      return
+    }
 
     const buffer = this.pageBuffers.get(pageId)
     if (!buffer?.hasData()) {
       TrackingLogger.debug('NO_DATA_TO_SEND', { pageId })
       return
     }
+
+    // Mark as sending to prevent concurrent sends
+    this.sendingBuffers.add(pageId)
+
+    // Visible log to confirm this method is called
+    TrackingLogger.info('SEND_BUFFER_TRIGGERED', {
+      pageId,
+      timestamp: new Date().toISOString(),
+      message: 'sendAndClearBuffer method called - analytics will be sent',
+    })
 
     const data = buffer.getData()
     const stats = buffer.getStats()
@@ -398,6 +411,9 @@ class TrackingManagerService {
         willRetry: false, // Pour l'instant, pas de retry
         dataSize: JSON.stringify(data).length,
       })
+    } finally {
+      // Always remove from sending set, even on error
+      this.sendingBuffers.delete(pageId)
     }
   }
 
@@ -433,6 +449,7 @@ class TrackingManagerService {
     if (!__DEV__) return
 
     this.pageBuffers.clear()
+    this.sendingBuffers.clear()
     this.isInitialized = false
 
     TrackingLogger.debug('TRACKING_MANAGER_RESET', {

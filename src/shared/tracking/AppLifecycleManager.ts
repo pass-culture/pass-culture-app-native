@@ -26,6 +26,15 @@ class AppLifecycleManagerService {
   private currentAppState: AppStateStatus = AppState.currentState
   private activePageId: string | null = null
   private readonly pageListeners = new Map<string, PageListener>()
+  // Web-specific properties
+  private webListenersAttached = false
+  private lastVisibilityState: DocumentVisibilityState | null = null
+  // Store bound handlers for cleanup
+  private boundWebHandlers: {
+    visibilityChange: () => void
+    pageHide: (event: PageTransitionEvent) => void
+    beforeUnload: (event: BeforeUnloadEvent) => void
+  } | null = null
 
   static getInstance(): AppLifecycleManagerService {
     if (!AppLifecycleManagerService.instance) {
@@ -57,12 +66,127 @@ class AppLifecycleManagerService {
     })
 
     AppState.addEventListener('change', this.handleAppStateChange.bind(this))
+
+    // Initialize web-specific listeners for browser tab close/navigation
+    this.initializeWebListeners()
+
     this.isInitialized = true
 
     TrackingLogger.info('APP_LIFECYCLE_READY', {
       listenersRegistered: true,
       singletonInitialized: true,
     })
+  }
+
+  /**
+   * Initialize web-specific lifecycle listeners
+   * These capture browser events that AppState doesn't handle reliably on web
+   */
+  private initializeWebListeners() {
+    // Only attach web listeners in browser environment
+    if (
+      typeof globalThis.window === 'undefined' ||
+      typeof document === 'undefined' ||
+      this.webListenersAttached
+    ) {
+      return
+    }
+
+    // Store bound handlers for later cleanup
+    this.boundWebHandlers = {
+      visibilityChange: this.handleVisibilityChange.bind(this),
+      pageHide: this.handlePageHide.bind(this),
+      beforeUnload: this.handleBeforeUnload.bind(this),
+    }
+
+    document.addEventListener('visibilitychange', this.boundWebHandlers.visibilityChange)
+    globalThis.window.addEventListener('pagehide', this.boundWebHandlers.pageHide)
+    globalThis.window.addEventListener('beforeunload', this.boundWebHandlers.beforeUnload)
+
+    this.webListenersAttached = true
+    this.lastVisibilityState = document.visibilityState
+
+    TrackingLogger.info('WEB_LIFECYCLE_LISTENERS_ATTACHED', {
+      hasVisibilityChange: true,
+      hasPageHide: true,
+      hasBeforeUnload: true,
+    })
+  }
+
+  /**
+   * Handle visibility change (tab switch, minimize, etc.)
+   */
+  private handleVisibilityChange() {
+    const currentState = document.visibilityState
+    const previousState = this.lastVisibilityState
+    this.lastVisibilityState = currentState
+
+    TrackingLogger.info('WEB_VISIBILITY_CHANGE', {
+      previousState,
+      currentState,
+      activePageId: this.activePageId,
+    })
+
+    if (previousState === 'visible' && currentState === 'hidden') {
+      this.triggerWebBackgroundEvent('visibilitychange')
+    } else if (previousState === 'hidden' && currentState === 'visible') {
+      this.notifyActivePageOnly('foreground')
+    }
+  }
+
+  /**
+   * Handle page hide (navigation, tab close)
+   */
+  private handlePageHide(event: PageTransitionEvent) {
+    TrackingLogger.info('WEB_PAGEHIDE', {
+      persisted: event.persisted,
+      activePageId: this.activePageId,
+    })
+    this.triggerWebBackgroundEvent('pagehide')
+  }
+
+  /**
+   * Handle before unload (tab close, navigation)
+   */
+  private handleBeforeUnload(_event: BeforeUnloadEvent) {
+    TrackingLogger.info('WEB_BEFOREUNLOAD', {
+      activePageId: this.activePageId,
+    })
+    this.triggerWebBackgroundEvent('beforeunload')
+  }
+
+  /**
+   * Trigger background event from web lifecycle events
+   */
+  private triggerWebBackgroundEvent(source: 'visibilitychange' | 'pagehide' | 'beforeunload') {
+    if (!this.activePageId) {
+      TrackingLogger.debug('WEB_BACKGROUND_NO_ACTIVE_PAGE', { source })
+      return
+    }
+
+    const activeListener = this.pageListeners.get(this.activePageId)
+    if (!activeListener) {
+      // Use debug level: this can happen normally if page was unregistered before web event fired
+      TrackingLogger.debug('WEB_BACKGROUND_LISTENER_NOT_FOUND', {
+        source,
+        activePageId: this.activePageId,
+      })
+      return
+    }
+
+    TrackingLogger.info('WEB_BACKGROUND_TRIGGERED', {
+      source,
+      activePageId: this.activePageId,
+    })
+
+    try {
+      activeListener.handler(this.activePageId, 'background')
+    } catch (error) {
+      TrackingLogger.error('WEB_BACKGROUND_HANDLER_ERROR', {
+        source,
+        error: error instanceof Error ? error.message : String(error),
+      })
+    }
   }
 
   /**
@@ -246,6 +370,9 @@ class AppLifecycleManagerService {
       focusedPages: Array.from(this.pageListeners.values())
         .filter((l) => l.isFocused)
         .map((l) => l.pageId),
+      // Web-specific debug info
+      webListenersAttached: this.webListenersAttached,
+      lastVisibilityState: this.lastVisibilityState,
     }
   }
 
@@ -260,8 +387,36 @@ class AppLifecycleManagerService {
     this.isInitialized = false
     this.currentAppState = AppState.currentState
 
+    // Remove web listeners before resetting
+    this.removeWebListeners()
+    // Reset web-specific properties
+    this.webListenersAttached = false
+    this.lastVisibilityState = null
+    this.boundWebHandlers = null
+
     TrackingLogger.debug('MANAGER_RESET_FOR_TESTING', {
       resetComplete: true,
+    })
+  }
+
+  /**
+   * Remove web-specific event listeners (for cleanup/testing)
+   */
+  private removeWebListeners() {
+    if (
+      typeof globalThis.window === 'undefined' ||
+      typeof document === 'undefined' ||
+      !this.boundWebHandlers
+    ) {
+      return
+    }
+
+    document.removeEventListener('visibilitychange', this.boundWebHandlers.visibilityChange)
+    globalThis.window.removeEventListener('pagehide', this.boundWebHandlers.pageHide)
+    globalThis.window.removeEventListener('beforeunload', this.boundWebHandlers.beforeUnload)
+
+    TrackingLogger.debug('WEB_LIFECYCLE_LISTENERS_REMOVED', {
+      cleanupComplete: true,
     })
   }
 }
@@ -276,6 +431,8 @@ declare global {
       getInfo: () => unknown
       reset: () => void
       setActivePage: (pageId: string) => void
+      testWebUnload: () => void
+      getWebListenerStatus: () => { attached: boolean; lastVisibility: string | null }
     }
   }
 }
@@ -285,5 +442,34 @@ if (__DEV__ && globalThis.window !== undefined) {
     getInfo: () => AppLifecycleManager.getDebugInfo(),
     reset: () => AppLifecycleManager.__resetForTesting(),
     setActivePage: (pageId: string) => AppLifecycleManager.setActivePage(pageId),
+    testWebUnload: () => {
+      // Simulate visibility change to hidden for testing
+      // Note: This temporarily overrides visibilityState for the test
+      const originalDescriptor = Object.getOwnPropertyDescriptor(document, 'visibilityState')
+      Object.defineProperty(document, 'visibilityState', {
+        value: 'hidden',
+        writable: true,
+        configurable: true,
+      })
+      try {
+        const event = new Event('visibilitychange')
+        document.dispatchEvent(event)
+      } finally {
+        // Always restore original descriptor, even if dispatch throws
+        if (originalDescriptor) {
+          Object.defineProperty(document, 'visibilityState', originalDescriptor)
+        }
+      }
+    },
+    getWebListenerStatus: () => {
+      const info = AppLifecycleManager.getDebugInfo() as {
+        webListenersAttached: boolean
+        lastVisibilityState: string | null
+      }
+      return {
+        attached: info.webListenersAttached,
+        lastVisibility: info.lastVisibilityState,
+      }
+    },
   }
 }
