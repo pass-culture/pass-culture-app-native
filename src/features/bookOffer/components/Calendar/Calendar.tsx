@@ -122,7 +122,7 @@ const RNCalendarTheme = {
   // Prevent calendar height from changing when switching month
   minHeight: 415,
   // Hack to remove unnecessary calendar horizontal margins
-  marginHorizontal: getSpacing(-2.5),
+  marginHorizontal: -getSpacing(2.5),
 }
 
 type CalendarDayProps = {

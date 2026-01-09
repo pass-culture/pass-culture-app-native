@@ -70,8 +70,8 @@ export const OfferNativeCategoryChoices = (props: Props) => {
 const BodyContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'column',
-  marginBottom: getSpacing(-3),
-  marginRight: getSpacing(-3),
+  marginBottom: -getSpacing(3),
+  marginRight: -getSpacing(3),
 })
 
 const StyledUl = styled(Ul)({

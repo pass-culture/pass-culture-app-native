@@ -127,5 +127,5 @@ const MiddleBlock = styled.View(({ theme }) => ({
   alignItems: 'center',
   height: '100%',
   width: theme.designSystem.size.spacing.xl,
-  marginLeft: getSpacing(-3),
+  marginLeft: -getSpacing(3),
 }))
