@@ -11,8 +11,9 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
+import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
@@ -58,15 +59,52 @@ export function CategoriesSection<
   const entries = itemsMapping ? Object.entries(itemsMapping) : []
   if (shouldSortItems) entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
 
+  const hasChildren = entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
+
+  if (!hasChildren) {
+    const options = [
+      {
+        key: allValue as string,
+        label: allLabel,
+        value: allValue as string,
+      },
+      ...entries.map(([k, item]) => ({
+        key: k,
+        label: item.label,
+        value: k,
+      })),
+    ]
+    const selectedOption = options.find((option) => option.value === value)
+    return (
+      <RadioButtonGroup
+        label="Sélectionne une option"
+        value={selectedOption?.label as string}
+        onChange={(value) =>
+          handleSelect(options.find((option) => option.label === value)?.value as N)
+        }
+        variant="default"
+        display="vertical"
+        disabled={false}
+        error={false}
+        options={options}
+        errorText="Error"
+      />
+    )
+  }
+
   return (
     <VerticalUl>
       <ListItem>
-        <RadioButton
-          label={allLabel}
-          isSelected={value === allValue}
-          onSelect={() => onSelect(allValue)}
-          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
-        />
+        <RadioButtonContainer>
+          <RadioButton
+            label={allLabel}
+            value={value === allValue ? allLabel : ''}
+            setValue={() => onSelect(allValue)}
+            variant="default"
+            disabled={false}
+            error={false}
+          />
+        </RadioButtonContainer>
       </ListItem>
       {entries.map(([k, item]) => (
         <CategoriesSectionItem
@@ -86,3 +124,7 @@ export function CategoriesSection<
 const ListItem = styled(Li)({
   display: 'flex',
 })
+
+const RadioButtonContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
