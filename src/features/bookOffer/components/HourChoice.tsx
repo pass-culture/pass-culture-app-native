@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 
 interface Props {
@@ -34,7 +34,7 @@ export function HourChoice({
   index,
 }: Props) {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit

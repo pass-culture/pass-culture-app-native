@@ -5,9 +5,9 @@ import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/hasEn
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { RoundUnit, convertEuroToPacificFranc } from 'shared/currency/convertEuroToPacificFranc'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 
 export type HasEnoughCredit =
   | { hasEnoughCredit: true; message?: never }
@@ -35,7 +35,7 @@ export const useHasEnoughCredit = (
 ): HasEnoughCredit => {
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   // If the offer, user, or userDomaineCredit is not available, we return false
   if (!offer || !user?.domainsCredit) return { hasEnoughCredit: false }

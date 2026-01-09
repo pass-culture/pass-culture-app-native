@@ -5,8 +5,7 @@ import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { useSettingsQuery } from 'queries/settings/settingsQuery'
-import { selectAccountUnsuspensionLimit } from 'queries/settings/settingsSelectors'
+import { useAccountUnsuspensionLimit } from 'queries/settings/useSettings'
 import { Emoji } from 'ui/components/Emoji'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -16,9 +15,7 @@ import { Typo } from 'ui/theme'
 
 export function DeactivateProfileSuccess() {
   const signOut = useLogoutRoutine()
-  const { data: reactivationLimit } = useSettingsQuery({
-    select: selectAccountUnsuspensionLimit,
-  })
+  const { data: reactivationLimit } = useAccountUnsuspensionLimit()
 
   useEffect(() => {
     signOut()

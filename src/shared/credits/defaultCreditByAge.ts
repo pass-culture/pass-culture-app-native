@@ -7,6 +7,6 @@ export const defaultCreditByAge = {
   age_16: 0,
   age_17: 50_00,
   age_18: 150_00,
-} as const satisfies ReadonlyDeep<DepositAmountsByAge>
+} satisfies ReadonlyDeep<DepositAmountsByAge>
 
 export const bonificationAmountFallbackValue = 50_00

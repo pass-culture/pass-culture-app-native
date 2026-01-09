@@ -25,8 +25,8 @@ import {
 } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const Chronicles: FunctionComponent = () => {
@@ -54,7 +54,7 @@ export const Chronicles: FunctionComponent = () => {
   const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
   const prices = getOfferPrices(offer?.stocks ?? [])
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const imageDimensions = useOfferImageContainerDimensions(offer?.subcategoryId)
 

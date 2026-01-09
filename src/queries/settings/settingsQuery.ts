@@ -13,6 +13,7 @@ const settingsQueryBaseOptions = {
   gcTime: 24 * 60 * 60 * 1000, // 1 day. More or less arbitrary.
 }
 
+// Use it only if needed, otherwise use ./useSettings.ts hooks
 export const useSettingsQuery = <TSelect = SettingsResponse>(
   options?: CustomQueryOptions<SettingsResponse, TSelect>
 ) =>

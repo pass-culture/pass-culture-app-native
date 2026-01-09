@@ -4,14 +4,16 @@ import { styled } from 'styled-components/native'
 
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import {
+  useBonificationBonusAmount,
+  useBonificationQfThreshold,
+  usePacificFrancToEuroRate,
+} from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
@@ -28,17 +30,18 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationExplanations = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useSettingsContext()
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const formattedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
-  const qfThresholdInCents = (settings?.bonification.qfThreshold || 700) * 100
+  const { data: bonificationQfThreshold } = useBonificationQfThreshold()
+  const qfThresholdInCents = (bonificationQfThreshold || 700) * 100
   const familyQuotientLevel = formatCurrencyFromCents(
     qfThresholdInCents,
     currency,
@@ -63,7 +66,7 @@ export const BonificationExplanations = () => {
             </StyledTitle3>
             <Typo.Body>
               Ce bonus de
-              <Typo.BodyAccent>{SPACE + bonificationAmount + SPACE}</Typo.BodyAccent>
+              <Typo.BodyAccent>{SPACE + formattedBonificationAmount + SPACE}</Typo.BodyAccent>
               est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
               <Typo.BodyAccent>
                 {` quotient familial inférieur ou égal à ${familyQuotientLevel}.`}
