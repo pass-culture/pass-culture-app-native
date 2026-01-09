@@ -23,7 +23,6 @@ import { VerticalUl } from 'ui/components/Ul'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { Error } from 'ui/svg/icons/Error'
-import { getSpacing } from 'ui/theme'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -188,6 +187,8 @@ const CitiesContainer = styled.View({
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
 
-const InfoBannerContainer = styled.View({ marginTop: getSpacing(4) })
+const InfoBannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const StyledView = styled.View(({ theme }) => ({ marginBottom: theme.designSystem.size.spacing.s }))
