@@ -21,6 +21,20 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
+      - name: Disk usage (for debugging purposes)
+        run: df -h
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          android: false
+          tool-cache: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+          dotnet: true
+          haskell: true
+      - name: Disk usage (for debugging purposes)
+        run: df -h
       - name: Enable Corepack
         run: corepack enable
       - name: Is deployment targeting ehp or production

@@ -92,7 +92,13 @@ end
 
 platform :android do
 
+  private_lane :clean do |options|
+    env_file = ".env.#{ENV["ENV"]}"
+    sh "cd ../#{ENV['ANDROID_PROJECT_DIR']} && export ENVFILE=#{env_file} &&./gradlew clean && cd .."
+  end
+
   lane :build do |options|
+    clean
     sh "cd ../#{ENV['ANDROID_PROJECT_DIR']} && ./gradlew #{ENV['ANDROID_GRADLE_TASK']}"
   end
 
