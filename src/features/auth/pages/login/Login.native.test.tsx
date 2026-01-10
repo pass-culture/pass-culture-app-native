@@ -7,7 +7,6 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { AccountState, FavoriteResponse, OauthStateResponse, SigninResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -26,6 +25,7 @@ import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixture
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { act, fireEvent, render, screen, simulateWebviewMessage, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
@@ -78,6 +78,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
+
+setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -595,7 +597,11 @@ describe('<Login/>', () => {
 
   describe('Login with ReCatpcha', () => {
     beforeAll(() => {
-      setSettings()
+      setSettingsMock()
+    })
+
+    afterAll(() => {
+      setSettingsMock({ patchSettingsWith: { isRecaptchaEnabled: false } })
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

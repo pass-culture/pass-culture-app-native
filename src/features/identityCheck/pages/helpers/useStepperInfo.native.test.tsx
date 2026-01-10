@@ -1,7 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import {
   SubscriptionStepperResponseFixture as mockSubscriptionStepper,
@@ -13,6 +12,7 @@ import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 
 const mockIdentityCheckState = mockState
 const mockRemainingAttempts = {
@@ -62,7 +62,7 @@ mockOverrideCreditActivationAmount.mockReturnValue({
 describe('useStepperInfo', () => {
   beforeEach(() => {
     setFeatureFlags()
-    setSettings({ enablePhoneValidation: true })
+    setSettingsMock({ patchSettingsWith: { enablePhoneValidation: true } })
   })
 
   it('should convert subtitle amount from € to CPF', () => {
@@ -132,7 +132,7 @@ describe('useStepperInfo', () => {
         },
       })
 
-      setSettings({ enablePhoneValidation: false })
+      setSettingsMock({ patchSettingsWith: { enablePhoneValidation: false } })
 
       const { stepsDetails } = useStepperInfo()
       const phoneValidationStep = stepsDetails.find(
