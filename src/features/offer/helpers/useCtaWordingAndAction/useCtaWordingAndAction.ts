@@ -276,6 +276,15 @@ export const getCtaWordingAndAction = ({
           wording: 'Réserver l’offre',
           modalToDisplay: OfferModal.BOOKING,
           isDisabled: false,
+          onPress: () => {
+            analytics.logClickBookOffer({
+              offerId: offer.id,
+              from,
+              searchId,
+              ...apiRecoParams,
+              playlistType,
+            })
+          },
         },
       ]
     }
