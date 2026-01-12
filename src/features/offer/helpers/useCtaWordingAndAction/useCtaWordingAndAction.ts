@@ -194,6 +194,58 @@ export const getCtaWordingAndAction = ({
     ]
   }
 
+  if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
+    if (subcategory.isEvent) {
+      if (!isAlreadyBookedOffer) {
+        return [
+          {
+            modalToDisplay: OfferModal.BOOKING,
+            wording: 'Réserver l’offre',
+            isDisabled: false,
+            onPress: () => {
+              analytics.logClickBookOffer({
+                offerId: offer.id,
+                from,
+                searchId,
+                ...apiRecoParams,
+                playlistType,
+              })
+            },
+          },
+        ]
+      }
+      return [
+        {
+          wording: 'Voir ma réservation',
+          isDisabled: false,
+          navigateTo: {
+            screen: 'BookingDetails',
+            params: { id: user?.bookedOffers[offer.id] },
+            fromRef: true,
+          },
+          onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
+          bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+          movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+        },
+      ]
+    }
+    return [
+      {
+        wording: getDigitalOfferBookingWording(subcategoryId),
+        isDisabled: isBookingLoading,
+        onPress() {
+          if (isAlreadyBookedOffer) {
+            openUrl(booking?.completedUrl ?? '')
+            return
+          }
+          if (offer.stocks[0]?.id) {
+            bookOffer({ quantity: 1, stockId: offer.stocks[0].id })
+          }
+        },
+      },
+    ]
+  }
+
   if (isFreeOffer) {
     if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
       return [
@@ -292,58 +344,6 @@ export const getCtaWordingAndAction = ({
       case null:
         return
     }
-  }
-
-  if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
-    if (subcategory.isEvent) {
-      if (!isAlreadyBookedOffer) {
-        return [
-          {
-            modalToDisplay: OfferModal.BOOKING,
-            wording: 'Réserver l’offre',
-            isDisabled: false,
-            onPress: () => {
-              analytics.logClickBookOffer({
-                offerId: offer.id,
-                from,
-                searchId,
-                ...apiRecoParams,
-                playlistType,
-              })
-            },
-          },
-        ]
-      }
-      return [
-        {
-          wording: 'Voir ma réservation',
-          isDisabled: false,
-          navigateTo: {
-            screen: 'BookingDetails',
-            params: { id: user?.bookedOffers[offer.id] },
-            fromRef: true,
-          },
-          onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
-          bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-          movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
-        },
-      ]
-    }
-    return [
-      {
-        wording: getDigitalOfferBookingWording(subcategoryId),
-        isDisabled: isBookingLoading,
-        onPress() {
-          if (isAlreadyBookedOffer) {
-            openUrl(booking?.completedUrl ?? '')
-            return
-          }
-          if (offer.stocks[0]?.id) {
-            bookOffer({ quantity: 1, stockId: offer.stocks[0].id })
-          }
-        },
-      },
-    ]
   }
 
   if (isAlreadyBookedOffer) {
