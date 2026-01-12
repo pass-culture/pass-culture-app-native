@@ -17,7 +17,6 @@ import { ScreenPerformance } from 'performance/ScreenPerformance'
 import { useMeasureScreenPerformanceWhenVisible } from 'performance/useMeasureScreenPerformanceWhenVisible'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
-import { RoundedCardWithPicture } from 'ui/pages/RoundedCardPicture'
 
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
@@ -56,7 +55,7 @@ export const SearchLanding = () => {
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
             />
-            <RoundedCardWithPicture />
+            {/* <RoundedCardWithPicture /> */}
           </Container>
 
           {isFocusOnSuggestions ? (

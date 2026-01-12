@@ -2,9 +2,9 @@ import React from 'react'
 import { ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
-import chevalier from 'ui/pages/Chevalierx3.avif'
-import { CalqueIllustration } from 'ui/svg/icons/Calque'
-import { RoundedCardIllustration } from 'ui/svg/icons/RoundedCardIllustration'
+// import bell from 'ui/pages/bell.avif'
+// import Alerte from 'ui/pages/Alerte.avif'
+import cake from 'ui/pages/cake.avif'
 
 type RoundedCardWithPictureProps = {
   size?: number
@@ -15,7 +15,7 @@ type RoundedCardWithPictureProps = {
 
 export const RoundedCardWithPicture: React.FC<RoundedCardWithPictureProps> = ({
   size = 406,
-  source = chevalier,
+  source = cake,
   testID,
   accessibilityLabel,
 }) => {
@@ -23,18 +23,10 @@ export const RoundedCardWithPicture: React.FC<RoundedCardWithPictureProps> = ({
 
   return (
     <Container style={{ width: size, height: size }} testID={testID}>
-      <BackgroundSvg size={size} accessibilityLabel={accessibilityLabel} />
-
-      <OverlayCalque>
-        <CalqueIllustration />
-      </OverlayCalque>
       <Overlay>
-        <CenteredImage
-          source={source}
-          imageSize={imageSize}
-          resizeMode="contain"
-          accessible={false}
-        />
+        <ImageSquare size={imageSize}>
+          <CenteredImage source={source} resizeMode="contain" accessible={false} />
+        </ImageSquare>
       </Overlay>
     </Container>
   )
@@ -42,24 +34,6 @@ export const RoundedCardWithPicture: React.FC<RoundedCardWithPictureProps> = ({
 
 const Container = styled.View({
   position: 'relative',
-})
-
-const BackgroundSvg = styled(RoundedCardIllustration).attrs(({ theme }) => ({
-  color: theme.designSystem.color.background.decorative04,
-  color2: theme.designSystem.color.background.brandPrimary,
-  width: '100%',
-  height: '100%',
-}))``
-
-const OverlayCalque = styled.View({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  justifyContent: 'center',
-  alignItems: 'center',
-  zIndex: 1,
 })
 
 const Overlay = styled.View({
@@ -73,7 +47,17 @@ const Overlay = styled.View({
   zIndex: 2,
 })
 
-const CenteredImage = styled.Image<{ imageSize: number }>(({ imageSize }) => ({
-  width: imageSize,
-  height: imageSize,
+const ImageSquare = styled.View<{ size: number }>(({ size, theme }) => ({
+  width: size,
+  height: size,
+  backgroundColor: theme.designSystem.color.background.decorative04,
+  borderTopLeftRadius: 120,
+  borderBottomRightRadius: 120,
+  justifyContent: 'center',
+  alignItems: 'center',
 }))
+
+const CenteredImage = styled.Image({
+  width: '100%',
+  height: '100%',
+})
