@@ -11,6 +11,7 @@ import("FastfileIOSSigning")
 
 platform :ios do
   before_all do
+      ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
       setup_ci
   end
 
@@ -34,8 +35,7 @@ platform :ios do
       silent: true,
       workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace",
       configuration: ENV['BUILD_CONFIGURATION'],
-      sdk: "iphonesimulator",
-      destination: "generic/platform=iOS Simulator",
+      destination: "platform=iOS Simulator,name=iPhone 15",
       derived_data_path: ENV['IOS_DERIVED_DATA_PATH'],
       skip_package_ipa: true
     )
