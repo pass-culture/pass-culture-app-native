@@ -30,7 +30,11 @@ export const EmailInputController = <
       name={name}
       render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => (
         <Input
+<<<<<<< HEAD
           ref={ref}
+=======
+          autoComplete="email"
+>>>>>>> 05354227b75b ((PC-37497) add autocomplete props to email fields)
           email={value}
           onEmailChange={onChange}
           onBlur={onBlur}
