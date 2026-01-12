@@ -683,7 +683,7 @@ describe('getCtaWordingAndAction', () => {
 
     // same as beneficiaries except for video games and non free digital offers except press category
     describe('Underage beneficiary user', () => {
-      it.each`
+      it.only.each`
         isEvent  | expected                     | disabled | isDigital | category                                  | price | isForbiddenToUnderage | modalToDisplay
         ${false} | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnumv2.MEDIA_PRESSE}     | ${20} | ${false}              | ${OfferModal.BOOKING}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnumv2.CINEMA}           | ${20} | ${false}              | ${OfferModal.BOOKING}

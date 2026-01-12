@@ -194,6 +194,16 @@ export const getCtaWordingAndAction = ({
     ]
   }
 
+  if (isEligibleFreeOffer15To16 && isNotFreeOffer) {
+    return [
+      {
+        wording: 'Réserver l’offre',
+        isDisabled: true,
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+      },
+    ]
+  }
+
   if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
     if (subcategory.isEvent) {
       if (!isAlreadyBookedOffer) {
@@ -269,16 +279,6 @@ export const getCtaWordingAndAction = ({
         },
       ]
     }
-  }
-
-  if (isEligibleFreeOffer15To16 && isNotFreeOffer) {
-    return [
-      {
-        wording: 'Réserver l’offre',
-        isDisabled: true,
-        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
-      },
-    ]
   }
 
   if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
