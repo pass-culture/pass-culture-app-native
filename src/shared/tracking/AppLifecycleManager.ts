@@ -85,8 +85,8 @@ class AppLifecycleManagerService {
   private initializeWebListeners() {
     // Only attach web listeners in browser environment
     if (
-      typeof globalThis.window === 'undefined' ||
-      typeof document === 'undefined' ||
+      globalThis.window === undefined ||
+      globalThis.document === undefined ||
       this.webListenersAttached
     ) {
       return
@@ -404,8 +404,8 @@ class AppLifecycleManagerService {
    */
   private removeWebListeners() {
     if (
-      typeof globalThis.window === 'undefined' ||
-      typeof document === 'undefined' ||
+      globalThis.window === undefined ||
+      globalThis.document === undefined ||
       !this.boundWebHandlers
     ) {
       return
