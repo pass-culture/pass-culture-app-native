@@ -194,45 +194,37 @@ export const getCtaWordingAndAction = ({
     ]
   }
 
-  if (isEligibleFreeOffer15To16) {
-    if (isProfileIncomplete) {
-      if (isFreeOffer) {
-        return [
-          {
-            wording: 'Réserver l’offre',
-            isDisabled: false,
-            navigateTo: getSubscriptionPropConfig(
-              storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-              { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
-            ),
-          },
-        ]
-      }
-
+  if (isFreeOffer) {
+    if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
       return [
         {
           wording: 'Réserver l’offre',
-          isDisabled: true,
-          bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+          isDisabled: false,
+          navigateTo: getSubscriptionPropConfig(
+            storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
+            { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
+          ),
         },
       ]
     }
-
-    if (isNotFreeOffer) {
+    if (!isProfileIncomplete) {
+      // If the profile is complete we consider they can book a free offer
       return [
         {
           wording: 'Réserver l’offre',
-          isDisabled: true,
-          bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+          modalToDisplay: OfferModal.BOOKING,
+          isDisabled: false,
         },
       ]
     }
+  }
 
+  if (isEligibleFreeOffer15To16 && isNotFreeOffer) {
     return [
       {
         wording: 'Réserver l’offre',
-        modalToDisplay: OfferModal.BOOKING,
-        isDisabled: false,
+        isDisabled: true,
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
       },
     ]
   }
