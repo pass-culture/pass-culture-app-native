@@ -12,6 +12,7 @@ import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chr
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
 import { chronicleVariant } from 'features/offer/helpers/chronicleVariant/chronicleVariant'
+import { OfferArtistsModal } from 'features/offer/pages/OfferArtistsModal/OfferArtistsModal'
 import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCountQuery'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -38,6 +39,7 @@ export function Offer() {
   const offerId = route.params?.id
 
   const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
+  const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
 
   const { isLoggedIn, user } = useAuthContext()
   const { data: offer, isLoading } = useOfferQuery({
@@ -67,6 +69,11 @@ export function Offer() {
     visible: chroniclesWritersModalVisible,
     hideModal: hideChroniclesWritersModal,
     showModal: showChroniclesWritersModal,
+  } = useModal(false)
+  const {
+    visible: offerArtistsModalVisible,
+    hideModal: hideOfferArtistsModal,
+    showModal: showOfferArtistsModal,
   } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQuery(
     offer?.id ?? -1,
@@ -156,6 +163,14 @@ export function Offer() {
             variantInfo={chronicleVariantInfo}
           />
         ) : null}
+        {offer.artists.length > 1 ? (
+          <OfferArtistsModal
+            isVisible={offerArtistsModalVisible}
+            closeModal={hideOfferArtistsModal}
+            artists={offer.artists}
+            navigateTo={{ screen: 'Artist' }}
+          />
+        ) : null}
       </View>
 
       <OfferContent
@@ -173,6 +188,8 @@ export function Offer() {
         onVideoConsentPress={handleOnVideoConsentPress}
         segment={segment}
         enableVideoABTesting={enableVideoABTesting}
+        isMultiArtistsEnabled={isMultiArtistsEnabled}
+        onShowOfferArtistsModal={showOfferArtistsModal}
       />
     </Page>
   )

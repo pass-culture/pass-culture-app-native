@@ -64,6 +64,7 @@ type OfferContentBaseProps = OfferContentProps &
     BodyWrapper: FunctionComponent
     onOfferPreviewPress: (index?: number) => void
     onShowChroniclesWritersModal: () => void
+    onShowOfferArtistsModal: () => void
     onVideoConsentPress?: () => void
     chronicles?: ChronicleCardData[]
     likesCount?: number
@@ -98,6 +99,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   onVideoConsentPress,
   segment,
   enableVideoABTesting,
+  isMultiArtistsEnabled,
+  onShowOfferArtistsModal,
   children,
 }) => {
   const theme = useTheme()
@@ -330,7 +333,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
-              enableVideoABTesting={enableVideoABTesting}>
+              enableVideoABTesting={enableVideoABTesting}
+              isMultiArtistsEnabled={isMultiArtistsEnabled}
+              onShowOfferArtistsModal={onShowOfferArtistsModal}>
               {theme.isDesktopViewport ? (
                 <OfferContentCTAs offer={offer} {...favoriteButtonProps}>
                   {offerCtaButton}
