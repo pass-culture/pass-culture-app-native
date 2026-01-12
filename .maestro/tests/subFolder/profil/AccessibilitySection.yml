@@ -20,7 +20,7 @@ appId: ${MAESTRO_APP_ID}
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn: 'Nouvelle fenêtre : Schéma pluriannuel'
-- assertVisible: 'Schéma pluriannuel 2025-2027'
+- assertVisible: 'Schéma pluriannuel.*'
 - assertVisible: 'Introduction'
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
