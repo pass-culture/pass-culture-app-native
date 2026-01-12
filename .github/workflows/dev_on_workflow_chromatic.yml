@@ -24,6 +24,12 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - name: Restore git history for Chromatic
+        run: |
+          if $(git rev-parse --is-shallow-repository); then
+            git fetch --unshallow
+          fi
+          git fetch --all
       - name: Install dependencies
         run: yarn install
       - name: Build Storybook 🔧
