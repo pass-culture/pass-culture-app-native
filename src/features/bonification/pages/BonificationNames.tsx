@@ -70,7 +70,7 @@ export const BonificationNames = () => {
           <StyledBodyXsSteps>Étape 1 sur 5</StyledBodyXsSteps>
           <ViewGap gap={4}>
             <Typo.Title3 {...getHeadingAttrs(2)}>
-              Quels sont les noms et prénoms du représentant légal&nbsp;?
+              Quels sont les noms et prénoms de ton représentant légal&nbsp;?
             </Typo.Title3>
             <Controller
               control={control}
