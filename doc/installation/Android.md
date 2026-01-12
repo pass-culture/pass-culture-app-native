@@ -81,9 +81,22 @@ This will also start the metro server. If not, run in another tab :
 yarn start
 ```
 
-### Emulator
+#### Android real device
 
-#### Download Android image
+First, go to the phone setting and activate developpement mode, then put the device on debug mode.
+
+Connect your device to the computer and run:
+
+  ```sh
+  yarn android:testing --deviceName
+  ```
+
+Click 'transfert de fichier' on the pop up that appeared
+
+
+#### Emulator
+
+##### Download Android image
 
 If you have a pass Culture's computer, the process below works if you are using the SDK 33.
 
