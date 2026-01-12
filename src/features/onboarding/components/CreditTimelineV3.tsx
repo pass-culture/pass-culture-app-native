@@ -8,9 +8,9 @@ import { QFBonificationStatus } from 'api/gen'
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
+import { useGetPacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
@@ -41,7 +41,7 @@ interface Props {
 export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   const { seventeenYearsOldDeposit, eighteenYearsOldDeposit } = useDepositAmountsByAge()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
 
   const depositsByAge = new Map<Props['age'], string>([

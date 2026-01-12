@@ -7,9 +7,9 @@ import {
   MovieScreeningBookingData,
   MovieScreeningUserData,
 } from 'features/offer/components/MovieScreeningCalendar/types'
+import { useGetPacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
@@ -113,7 +113,7 @@ export const useSelectedDateScreening = (
   isExternalBookingsDisabled = false
 ) => {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = useGetPacificFrancToEuroRate()
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
   const selectedDateScreenings = useCallback(
     (

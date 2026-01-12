@@ -21,9 +21,9 @@ import {
 } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { useGetPacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
@@ -74,7 +74,7 @@ export const HorizontalOfferTile = ({
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = useGetPacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
   const segment = useABSegment()
 

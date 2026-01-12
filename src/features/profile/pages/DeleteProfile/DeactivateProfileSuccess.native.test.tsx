@@ -2,7 +2,6 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
@@ -29,10 +28,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('DeactivateProfileSuccess component', () => {
-  beforeEach(() => {
-    setSettings()
-  })
-
   it('should render delete profile success', () => {
     render(<DeactivateProfileSuccess />)
 

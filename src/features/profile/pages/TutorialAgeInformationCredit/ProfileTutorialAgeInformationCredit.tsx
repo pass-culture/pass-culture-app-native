@@ -20,9 +20,9 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useGetPacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -50,7 +50,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const headerHeight = useGetHeaderHeight()
   const headerTitle = 'Comment ça marche\u00a0?'
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
