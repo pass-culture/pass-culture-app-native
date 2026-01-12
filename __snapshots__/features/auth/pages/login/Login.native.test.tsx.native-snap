@@ -227,7 +227,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           style={
             {
               "marginBottom": 24,
-              "marginTop": 24,
+              "marginTop": 32,
             }
           }
         >

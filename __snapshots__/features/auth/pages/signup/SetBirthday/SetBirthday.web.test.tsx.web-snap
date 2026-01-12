@@ -159,40 +159,38 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
       Renseigne ta date de naissance
     </h2>
     <div
-      class="css-view-175oi2r r-height-10ptun7"
-    />
-    <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+      class="css-view-175oi2r r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        class="css-view-175oi2r r-marginBottom-8d26hk"
       >
         <div
-          class="css-view-175oi2r"
+          class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
         >
           <div
-            class="css-text-146c3p1"
-            dir="ltr"
+            class="css-view-175oi2r"
           >
-            undefined-SVG-Mock
+            <div
+              class="css-text-146c3p1"
+              dir="ltr"
+            >
+              undefined-SVG-Mock
+            </div>
           </div>
-        </div>
-        <div
-          aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
-          role="presentation"
-        >
           <div
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-            dir="ltr"
+            aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+            role="presentation"
           >
-            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+            <div
+              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+              dir="ltr"
+            >
+              Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="css-view-175oi2r r-height-eu3ka"
-      />
       <div
         class="css-view-175oi2r r-flexDirection-18u37iz r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         data-testid="date-picker-dropdown"
@@ -1384,29 +1382,27 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
         class="css-view-175oi2r r-height-10ptun7"
       />
       <div
-        class="css-view-175oi2r r-height-eu3ka"
-      />
-      <button
-        aria-label="Continuer"
-        class="c8 c9"
-        data-testid="Continuer"
-        disabled=""
-        type="button"
+        class="css-view-175oi2r r-paddingTop-1ur9v65 r-width-13qz1uu"
       >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+        <button
+          aria-label="Continuer"
+          class="c8 c9"
+          data-testid="Continuer"
+          disabled=""
+          type="button"
         >
           <div
-            class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
-            dir="ltr"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
           >
-            Continuer
+            <div
+              class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+              dir="ltr"
+            >
+              Continuer
+            </div>
           </div>
-        </div>
-      </button>
-      <div
-        class="css-view-175oi2r r-height-z80fyv"
-      />
+        </button>
+      </div>
     </div>
   </form>
 </div>
@@ -1478,40 +1474,38 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
       Renseigne ta date de naissance
     </h2>
     <div
-      class="css-view-175oi2r r-height-10ptun7"
-    />
-    <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+      class="css-view-175oi2r r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        class="css-view-175oi2r r-marginBottom-8d26hk"
       >
         <div
-          class="css-view-175oi2r"
+          class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
         >
           <div
-            class="css-text-146c3p1"
-            dir="ltr"
+            class="css-view-175oi2r"
           >
-            undefined-SVG-Mock
+            <div
+              class="css-text-146c3p1"
+              dir="ltr"
+            >
+              undefined-SVG-Mock
+            </div>
           </div>
-        </div>
-        <div
-          aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
-          role="presentation"
-        >
           <div
-            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
-            dir="ltr"
+            aria-label="Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations."
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+            role="presentation"
           >
-            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+            <div
+              class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1o4mh9l r-lineHeight-kmu5yi"
+              dir="ltr"
+            >
+              Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="css-view-175oi2r r-height-eu3ka"
-      />
       <div
         aria-label="Date de naissance - 1er décembre 2006"
         class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -2488,29 +2482,27 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-view-175oi2r r-height-eu3ka"
-      />
-      <button
-        aria-label="Continuer"
-        class="c2 c3"
-        data-testid="Continuer"
-        disabled=""
-        type="button"
+        class="css-view-175oi2r r-paddingTop-1ur9v65 r-width-13qz1uu"
       >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+        <button
+          aria-label="Continuer"
+          class="c2 c3"
+          data-testid="Continuer"
+          disabled=""
+          type="button"
         >
           <div
-            class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
-            dir="ltr"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
           >
-            Continuer
+            <div
+              class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+              dir="ltr"
+            >
+              Continuer
+            </div>
           </div>
-        </div>
-      </button>
-      <div
-        class="css-view-175oi2r r-height-z80fyv"
-      />
+        </button>
+      </div>
     </div>
   </form>
 </div>

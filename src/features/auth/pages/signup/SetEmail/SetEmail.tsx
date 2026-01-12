@@ -134,7 +134,7 @@ const ControllersContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xxxl,
 }))
 const AuthenticationButtonContainer = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 const EmailInputContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,

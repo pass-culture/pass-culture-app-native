@@ -107,6 +107,6 @@ const AdressesContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.l,
+  marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.s,
 }))

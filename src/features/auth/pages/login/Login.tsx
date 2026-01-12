@@ -274,7 +274,7 @@ const ButtonContainer = styled.View(({ theme }) => ({
 }))
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xxl,
   marginBottom: theme.designSystem.size.spacing.xl,
 }))
 

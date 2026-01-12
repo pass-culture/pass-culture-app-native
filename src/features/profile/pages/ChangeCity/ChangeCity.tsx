@@ -45,5 +45,5 @@ export const ChangeCity = () => {
 }
 
 const Container = styled.View(({ theme }) => ({
-  marginBottom: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))

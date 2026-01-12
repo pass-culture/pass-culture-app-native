@@ -82,7 +82,7 @@ const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
     return {
       flex: 1,
       padding: 0,
-      paddingTop: multiline ? theme.designSystem.size.spacing.s : 0,
+      paddingTop: multiline ? theme.designSystem.size.spacing.m : 0,
       height: '100%',
       ...inputStyle,
       color: editable

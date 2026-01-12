@@ -591,7 +591,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
         <View
           style={
             {
-              "marginBottom": 16,
+              "marginBottom": 24,
             }
           }
         >
