@@ -22,6 +22,7 @@ type DynamicInputListProps = {
   onValuesChange?: (values: string[]) => void
   autoFocus?: boolean
   errors?: (string | undefined)[]
+  autocomplete?: TextInputProps['autoComplete']
 }
 
 type VisibleInput = {
@@ -38,6 +39,7 @@ export const DynamicInputList = ({
   onValuesChange,
   autoFocus,
   errors,
+  autocomplete,
 }: DynamicInputListProps) => {
   const { icons, designSystem } = useTheme()
 
@@ -115,6 +117,7 @@ export const DynamicInputList = ({
               errorMessage={input.value ? errors?.[index] : undefined}
               accessibilityHint={input.value ? errors?.[index] : undefined}
               {...input}
+              autoComplete={autocomplete}
             />
           </InputFieldContainer>
           {index > 0 ? (

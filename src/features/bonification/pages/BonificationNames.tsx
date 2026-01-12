@@ -88,6 +88,7 @@ export const BonificationNames = () => {
                   initialValues={value}
                   onValuesChange={onChange}
                   errors={firstNameErrors}
+                  autocomplete="given-name"
                 />
               )}
             />
