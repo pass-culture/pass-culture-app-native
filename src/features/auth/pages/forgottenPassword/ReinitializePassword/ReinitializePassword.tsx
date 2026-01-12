@@ -131,6 +131,7 @@ export const ReinitializePassword = () => {
             securityRulesAlwaysVisible
             onSubmitEditing={handleSubmit(submitPassword)}
             requiredIndicator="explicit"
+            autocomplete="new-password"
           />
         </Container>
         <Container>
@@ -140,6 +141,7 @@ export const ReinitializePassword = () => {
             control={control}
             onSubmitEditing={handleSubmit(submitPassword)}
             requiredIndicator="explicit"
+            autocomplete="new-password"
           />
         </Container>
         <Container>

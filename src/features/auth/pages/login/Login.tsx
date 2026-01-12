@@ -234,6 +234,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           <PasswordInputController
             name="password"
             control={control}
+            autocomplete="current-password"
             onSubmitEditing={handleSubmit(onSubmit)}
             requiredIndicator="explicit"
           />

@@ -8,10 +8,11 @@ import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 
 export interface Props extends Omit<TextInputProps, 'label'> {
   label?: string
+  autocomplete: 'new-password' | 'current-password'
 }
 
 const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
-  { label, ...inputProps },
+  { label, autocomplete, ...inputProps },
   forwardedRef
 ) => {
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
@@ -24,7 +25,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> =
     <TextInput
       label={label ?? 'Mot de passe'}
       autoCapitalize="none"
-      textContentType="password"
+      autoComplete={autocomplete}
       secureTextEntry={shouldHidePassword}
       testID={label ?? 'Mot de passe'}
       {...inputProps}
