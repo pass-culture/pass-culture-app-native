@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -51,30 +51,8 @@ export const TextPlaceholder = ({
   )
 }
 
-const FilterPillsPlaceholder = () => {
-  const { designSystem } = useTheme()
-  const pillsWidth = [8, 17.5, 28, 30.5, 14.5, 19.5]
-  return (
-    <PillsContainer gap={1}>
-      {pillsWidth.map((width) => (
-        <SkeletonTile
-          borderRadius={designSystem.size.borderRadius.xl}
-          height={getSpacing(8)}
-          width={getSpacing(width)}
-          key={`pill-${width}`}
-        />
-      ))}
-    </PillsContainer>
-  )
-}
-
-export const HeaderSearchResultsPlaceholder = ({
-  displayNewSearchHeader,
-}: {
-  displayNewSearchHeader: boolean
-}) => (
+export const HeaderSearchResultsPlaceholder: FC = () => (
   <React.Fragment>
-    {displayNewSearchHeader ? null : <FilterPillsPlaceholder />}
     <TitleContainer>
       <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
     </TitleContainer>
@@ -191,12 +169,6 @@ const FirstButtonContainer = styled(ButtonContainer)({
 const TextPlaceholderContainer = styled.View<{ marginBottom?: number }>(({ marginBottom }) => ({
   marginBottom: marginBottom ? getSpacing(marginBottom) : undefined,
 }))
-
-const PillsContainer = styled(ViewGap)({
-  flexDirection: 'row',
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(1),
-})
 
 const TitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),

@@ -8,7 +8,6 @@ import { LocationWidgetBadge } from 'features/location/components/LocationWidget
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
 import { SearchView } from 'features/search/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -28,15 +27,9 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   const route = useRoute()
   const currentView = route.name
 
-  const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
-
   const shouldDisplayMobileLocationBigWidget = isMobileViewport && shouldDisplaySubtitle
   const shouldDisplayMobileLocationSmallWidget =
-    displayNewSearchHeader &&
-    isMobileViewport &&
-    (currentView === SearchView.Results || currentView === SearchView.Thematic)
+    isMobileViewport && (currentView === SearchView.Results || currentView === SearchView.Thematic)
 
   return (
     <TitleAndWidgetContainer>
