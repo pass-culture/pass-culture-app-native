@@ -55,6 +55,7 @@ export const SearchLanding = () => {
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
             />
+            {/* <RoundedCardWithPicture /> */}
           </Container>
 
           {isFocusOnSuggestions ? (

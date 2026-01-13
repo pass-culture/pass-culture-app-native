@@ -3,15 +3,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
+import { RoundedCardWithPicture } from 'ui/pages/RoundedCardPicture'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotConnectedFavorites = () => {
   const { bottom } = useSafeAreaInsets()
@@ -23,37 +20,9 @@ export const NotConnectedFavorites = () => {
 
   return (
     <Page>
-      <ScrollContainer bottom={bottom} showsVerticalScrollIndicator={false}>
-        <Spacer.Flex flex={1} />
-        <IllustrationContainer>
-          <Illustration />
-        </IllustrationContainer>
-        <TextContainer gap={4}>
-          <StyledTitle2 {...getHeadingAttrs(1)}>
-            Identifie-toi pour retrouver tes favoris
-          </StyledTitle2>
-          <StyledBody {...getHeadingAttrs(2)}>
-            Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
-          </StyledBody>
-        </TextContainer>
-        <ButtonContainer gap={4}>
-          <InternalTouchableLink
-            key={1}
-            as={ButtonPrimary}
-            wording="Créer un compte"
-            navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
-            onBeforeNavigate={onBeforeSignupNavigate}
-          />
-          <StyledAuthenticationButton
-            key={2}
-            type="login"
-            onAdditionalPress={() => analytics.logSignInFromFavorite()}
-            params={{ from: StepperOrigin.FAVORITE }}
-          />
-        </ButtonContainer>
-        <Spacer.Flex flex={1} />
-        <Spacer.TabBar />
-      </ScrollContainer>
+      <Spacer.TabBar />
+      <RoundedCardWithPicture />
+      <Spacer.TabBar />
     </Page>
   )
 }

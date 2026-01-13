@@ -63,9 +63,11 @@ type AnimationColoringProps = {
   animationTargetLayerNames?: string[]
 }
 
+type IllustrationProp = React.FC<AccessibleIcon | AccessibleRectangleIcon> | React.ReactNode
+
 type AnimationProps =
   | {
-      illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+      illustration: IllustrationProp
       animation?: never
       animationColoringMode?: never
       animationTargetShapeNames?: never
@@ -90,7 +92,7 @@ type Props = PropsWithChildren<{
 export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
   withSkipAction,
-  illustration: IllustrationComponent,
+  illustration,
   animation,
   title,
   subtitle,
@@ -124,12 +126,14 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         <Spacer.Flex flex={1} />
 
         <IllustrationContainer animation={!!animation}>
-          {IllustrationComponent ? (
-            <IllustrationComponent
-              size={illustrationSizes.fullPage}
-              color={designSystem.color.icon.brandPrimary}
-            />
-          ) : null}
+          {typeof illustration === 'function'
+            ? illustration({
+                size: illustrationSizes.fullPage,
+                color: designSystem.color.icon.brandPrimary,
+              })
+            : illustration
+              ? illustration
+              : null}
           {animation ? (
             <ThemedStyledLottieView
               source={animation}
