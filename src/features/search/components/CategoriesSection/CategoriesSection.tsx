@@ -3,12 +3,13 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
-import { sortCategoriesPredicate } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import {
-  MappedGenreTypes,
-  MappedNativeCategories,
-  MappingTree,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+  buildCategoryOptions,
+  CategoriesMapping,
+  checkHasChildrenCategories,
+  getSortedCategoriesEntries,
+} from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
@@ -16,7 +17,7 @@ import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
+export type { CategoriesMapping }
 
 export interface CategoriesSectionProps<
   T extends CategoriesMapping,
@@ -56,24 +57,11 @@ export function CategoriesSection<
     onSubmit?.()
   }
 
-  const entries = itemsMapping ? Object.entries(itemsMapping) : []
-  if (shouldSortItems) entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
-
-  const hasChildren = entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
+  const entries = getSortedCategoriesEntries(itemsMapping, shouldSortItems)
+  const hasChildren = checkHasChildrenCategories(entries)
 
   if (!hasChildren) {
-    const options = [
-      {
-        key: allValue as string,
-        label: allLabel,
-        value: allValue as string,
-      },
-      ...entries.map(([k, item]) => ({
-        key: k,
-        label: item.label,
-        value: k,
-      })),
-    ]
+    const options = buildCategoryOptions(entries, allLabel, allValue as string)
     const selectedOption = options.find((option) => option.value === value)
     return (
       <RadioButtonGroup
