@@ -21,7 +21,6 @@ type Props = {
   title?: string
   shouldDisplaySubtitle?: boolean
   withArrow?: boolean
-  placeholder?: string
   withFilterButton?: boolean
   shouldDisplayHeader?: boolean
 }
@@ -34,7 +33,6 @@ export const SearchHeader: FC<Props> = ({
   withArrow = false,
   title = 'Rechercher',
   offerCategories,
-  placeholder,
   withFilterButton = false,
   shouldDisplayHeader = true,
 }: Props) => {
@@ -75,7 +73,6 @@ export const SearchHeader: FC<Props> = ({
               addSearchHistory={addSearchHistory}
               searchInHistory={searchInHistory}
               offerCategories={offerCategories}
-              placeholder={placeholder}
             />
           </SearchBoxContainer>
           {withFilterButton ? (

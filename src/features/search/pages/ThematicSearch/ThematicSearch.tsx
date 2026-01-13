@@ -172,10 +172,7 @@ export const ThematicSearch: React.FC = () => {
 
   return (
     <Page>
-      <ThematicSearchBar
-        offerCategories={offerCategories}
-        placeholder={`${titles[offerCategory]}...`}
-        title={titles[offerCategory]}>
+      <ThematicSearchBar offerCategories={offerCategories} title={titles[offerCategory]}>
         <IntersectionObserverScrollView>
           <SubcategoryButtonListWrapper offerCategory={offerCategory} />
           {shouldDisplayVenuesPlaylist ? (
