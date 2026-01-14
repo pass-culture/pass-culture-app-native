@@ -2,9 +2,11 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { env } from 'libs/environment/env'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -24,10 +26,15 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BonificationExplanations = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
-  const familyQuotientLevel = 'XX' // get from backend?
+  const bonificationAmount = formatCurrencyFromCents(
+    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+    currency,
+    euroToPacificFrancRate
+  )
+  const familyQuotientLevel = settings?.bonification.qfThreshold || 700
 
   return (
     <PageWithHeader

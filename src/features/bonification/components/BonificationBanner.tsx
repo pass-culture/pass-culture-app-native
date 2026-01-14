@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { QFBonificationStatus } from 'api/gen'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -79,9 +81,14 @@ export const BonificationBanner = ({
   bonificationStatus: QFBonificationStatus | undefined | null
   onCloseCallback: () => void
 }) => {
+  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
+  const bonificationAmount = formatCurrencyFromCents(
+    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+    currency,
+    euroToPacificFrancRate
+  )
 
   const onClose = () => {
     onCloseCallback()

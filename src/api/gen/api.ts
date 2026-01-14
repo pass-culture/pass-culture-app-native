@@ -427,6 +427,22 @@ export interface BannerResponse {
 }
 /**
  * @export
+ * @interface Bonification
+ */
+export interface Bonification {
+  /**
+   * @type {number}
+   * @memberof Bonification
+   */
+  bonusAmount: number
+  /**
+   * @type {number}
+   * @memberof Bonification
+   */
+  qfThreshold: number
+}
+/**
+ * @export
  * @interface BonusCreditRequest
  */
 export interface BonusCreditRequest {
@@ -4171,6 +4187,11 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   appEnableAutocomplete: boolean
+  /**
+   * @type {Bonification}
+   * @memberof SettingsResponse
+   */
+  bonification: Bonification
   /**
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse

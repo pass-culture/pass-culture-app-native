@@ -2,8 +2,10 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -31,9 +33,14 @@ export function BonificationGranted() {
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })
 
+  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
+  const bonificationAmount = formatCurrencyFromCents(
+    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+    currency,
+    euroToPacificFrancRate
+  )
 
   return (
     <GenericInfoPage

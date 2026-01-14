@@ -25,4 +25,8 @@ export const defaultSettings: SettingsResponse = {
   wipEnableCreditV3: true,
   ineligiblePostalCodes: [],
   depositAmountsByAge: defaultCreditByAge,
+  bonification: {
+    bonusAmount: 50_00,
+    qfThreshold: 700,
+  },
 }
