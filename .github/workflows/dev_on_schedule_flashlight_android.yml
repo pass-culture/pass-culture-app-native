@@ -117,7 +117,7 @@ jobs:
 
       - name: Send Slack notification
         if: always()
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
           channel-id: 'C05MH81G9LY' # channel #equipe-e2e-jeunes
           payload: |
