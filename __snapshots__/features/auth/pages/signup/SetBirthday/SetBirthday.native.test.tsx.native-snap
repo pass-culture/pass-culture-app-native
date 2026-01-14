@@ -478,13 +478,17 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                 "lineHeight": "19.2px",
               },
               "bodyItalic": {
-                "fontFamily": "Montserrat-MediumItalic",
+                "fontFamily": "Montserrat",
                 "fontSize": "16px",
+                "fontStyle": "italic",
+                "fontWeight": "500",
                 "lineHeight": "25.6px",
               },
               "bodyItalicAccent": {
-                "fontFamily": "Montserrat-SemiBoldItalic",
+                "fontFamily": "Montserrat",
                 "fontSize": "16px",
+                "fontStyle": "italic",
+                "fontWeight": "600",
                 "lineHeight": "25.6px",
               },
               "bodyS": {
@@ -1312,13 +1316,17 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                 "lineHeight": "19.2px",
               },
               "bodyItalic": {
-                "fontFamily": "Montserrat-MediumItalic",
+                "fontFamily": "Montserrat",
                 "fontSize": "16px",
+                "fontStyle": "italic",
+                "fontWeight": "500",
                 "lineHeight": "25.6px",
               },
               "bodyItalicAccent": {
-                "fontFamily": "Montserrat-SemiBoldItalic",
+                "fontFamily": "Montserrat",
                 "fontSize": "16px",
+                "fontStyle": "italic",
+                "fontWeight": "600",
                 "lineHeight": "25.6px",
               },
               "bodyS": {

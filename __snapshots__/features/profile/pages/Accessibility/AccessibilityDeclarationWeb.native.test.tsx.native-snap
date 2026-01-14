@@ -1400,8 +1400,10 @@ exports[`AccessibilityDeclarationWeb should render correctly 1`] = `
           style={
             {
               "color": "#161617",
-              "fontFamily": "Montserrat-MediumItalic",
+              "fontFamily": "Montserrat",
               "fontSize": 16,
+              "fontStyle": "italic",
+              "fontWeight": "500",
               "lineHeight": 25.6,
             }
           }
