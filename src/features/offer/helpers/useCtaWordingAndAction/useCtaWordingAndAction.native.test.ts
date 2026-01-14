@@ -154,11 +154,14 @@ describe('getCtaWordingAndAction', () => {
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
+      const { onPress } = result?.[0] || {}
+
       expect(result).toEqual([
         {
           isDisabled: false,
           wording: 'Réserver l’offre',
           modalToDisplay: OfferModal.BOOKING,
+          onPress: onPress,
         },
       ])
     })
