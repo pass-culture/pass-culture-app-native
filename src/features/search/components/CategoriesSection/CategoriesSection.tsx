@@ -70,7 +70,7 @@ export function CategoriesSection<
         value={getLabelForValue(radioOptions, value)}
         onChange={(newLabel) => {
           const selectedValue = getValueForLabel(radioOptions, newLabel)
-          if (!selectedValue) return
+          if (selectedValue === undefined) return
           handleSelect(selectedValue)
         }}
         variant="default"
