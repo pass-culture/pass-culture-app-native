@@ -6,6 +6,8 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 const active = false
 const toggle = jest.fn()
 
+jest.mock('libs/hooks/useHandleFocus')
+
 describe('<FilterSwitch />', () => {
   it('should call toggle when pressing Spacebar on focused switch', () => {
     render(<FilterSwitch active={active} toggle={toggle} />)
