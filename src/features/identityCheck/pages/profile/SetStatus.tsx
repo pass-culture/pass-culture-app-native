@@ -60,8 +60,8 @@ export const SetStatus = () => {
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
       setIsLoading(true)
-      await setStoreStatus(formValues.selectedStatus)
-      await navigate(...getSubscriptionHookConfig('ActivationProfileRecap', { type }))
+      setStoreStatus(formValues.selectedStatus)
+      navigate(...getSubscriptionHookConfig('ActivationProfileRecap', { type }))
       setIsLoading(false)
     },
     [navigate, setStoreStatus, type]

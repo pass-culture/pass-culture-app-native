@@ -769,7 +769,7 @@ exports[`DebugScreen should render correctly 1`] = `
                         "paddingBottom": 0,
                         "paddingLeft": 0,
                         "paddingRight": 0,
-                        "paddingTop": 10,
+                        "paddingTop": 12,
                       }
                     }
                     testID="problem-description-input"

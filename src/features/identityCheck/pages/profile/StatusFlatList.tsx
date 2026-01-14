@@ -66,20 +66,21 @@ export function StatusFlatList({
       key={item.label}
       accessibilityRole={AccessibilityRole.RADIOGROUP}
       accessibilityLabelledBy={titleID}>
-      <Controller
-        control={control}
-        name="selectedStatus"
-        render={({ field: { value, onChange } }) => (
-          <RadioSelector
-            radioGroupLabel="Statut"
-            label={item.label}
-            checked={item.id === value}
-            description={item.description}
-            onPress={() => onChange(item.id)}
-          />
-        )}
-      />
-      <Spacer.Column numberOfSpaces={3} />
+      <ControllerWrapper>
+        <Controller
+          control={control}
+          name="selectedStatus"
+          render={({ field: { value, onChange } }) => (
+            <RadioSelector
+              radioGroupLabel="Statut"
+              label={item.label}
+              checked={item.id === value}
+              description={item.description}
+              onPress={() => onChange(item.id)}
+            />
+          )}
+        />
+      </ControllerWrapper>
     </Li>
   )
 
@@ -98,9 +99,9 @@ export function StatusFlatList({
             ListHeaderComponent={
               <React.Fragment>
                 <HeaderHeightSpacer headerHeight={headerHeight} />
-                <Spacer.Column numberOfSpaces={2} />
-                <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionne ton statut</Typo.Title3>
-                <Spacer.Column numberOfSpaces={8} />
+                <Container>
+                  <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionne ton statut</Typo.Title3>
+                </Container>
               </React.Fragment>
             }
             renderItem={renderItem}
@@ -130,6 +131,11 @@ export function StatusFlatList({
     </Page>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.s,
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))
 
 const flatListStyles: ViewStyle = {
   paddingHorizontal: theme.contentPage.marginHorizontal,
@@ -181,4 +187,8 @@ const Gradient = styled(AnimatedGradient).attrs<{ colors?: string[]; bottomViewH
   left: 0,
   right: 0,
   bottom: bottomViewHeight,
+}))
+
+const ControllerWrapper = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.m,
 }))
