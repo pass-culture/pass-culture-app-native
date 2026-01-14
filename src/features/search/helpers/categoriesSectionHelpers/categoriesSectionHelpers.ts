@@ -1,10 +1,10 @@
 import { sortCategoriesPredicate } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import {
-  BaseCategory,
   MappedGenreTypes,
   MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
 export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
 
@@ -16,44 +16,44 @@ type CategoriesMappingItem = {
 
 export type CategoryEntry = [string, CategoriesMappingItem]
 
-type CategoryOption = {
+export type RadioOption<K> = {
   key: string
   label: string
-  value: string
+  value: K
 }
 
-export function getSortedCategoriesEntries<T extends CategoriesMapping>(
+export const getSortedCategoriesEntries = <T extends CategoriesMapping>(
   itemsMapping: T | undefined,
   shouldSortItems: boolean
-): CategoryEntry[] {
-  const entries: CategoryEntry[] = itemsMapping
-    ? (Object.entries(itemsMapping) as CategoryEntry[])
-    : []
+): CategoryEntry[] => {
+  const entries: CategoryEntry[] = itemsMapping ? Object.entries(itemsMapping) : []
   if (shouldSortItems) {
     entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
   }
   return entries
 }
 
-export function checkHasChildrenCategories(entries: CategoryEntry[]): boolean {
-  return entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
-}
+export const checkHasChildrenCategories = (entries: CategoryEntry[]): boolean =>
+  entries.some(([, item]) => Object.keys(item.children ?? {}).length > 0)
 
-export function buildCategoryOptions<T extends BaseCategory>(
-  entries: [string, T][],
+export const buildRadioOptions = <K>(
+  entries: CategoryEntry[],
   allLabel: string,
-  allValue: string
-): CategoryOption[] {
-  return [
-    {
-      key: allValue,
-      label: allLabel,
-      value: allValue,
-    },
-    ...entries.map(([k, item]) => ({
-      key: k,
-      label: item.label,
-      value: k,
-    })),
-  ]
-}
+  allValue: K
+): RadioOption<K>[] => [
+  { key: String(allValue), label: allLabel, value: allValue },
+  ...entries.map(([key, item]) => ({
+    key,
+    label: item.label,
+    value: key as K,
+  })),
+]
+
+export const toRadioButtonGroupOptions = <K>(options: RadioOption<K>[]): RadioButtonGroupOption[] =>
+  options.map(({ key, label }) => ({ key, label }))
+
+export const getLabelForValue = <K>(options: RadioOption<K>[], value: K): string =>
+  options.find((opt) => opt.value === value)?.label ?? ''
+
+export const getValueForLabel = <K>(options: RadioOption<K>[], label: string): K | undefined =>
+  options.find((opt) => opt.label === label)?.value

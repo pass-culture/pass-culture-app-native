@@ -1,8 +1,11 @@
 import {
   CategoryEntry,
-  buildCategoryOptions,
+  buildRadioOptions,
   checkHasChildrenCategories,
+  getLabelForValue,
   getSortedCategoriesEntries,
+  getValueForLabel,
+  toRadioButtonGroupOptions,
 } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 
 describe('getSortedCategoriesEntries', () => {
@@ -85,25 +88,93 @@ describe('checkHasChildrenCategories', () => {
   })
 })
 
-describe('buildCategoryOptions', () => {
+describe('buildRadioOptions', () => {
   it('should return only all option when entries is empty', () => {
-    const result = buildCategoryOptions([], 'Toutes les catégories', 'ALL')
+    const result = buildRadioOptions([], 'Toutes les catégories', 'ALL')
 
     expect(result).toEqual([{ key: 'ALL', label: 'Toutes les catégories', value: 'ALL' }])
   })
 
   it('should return all option followed by entries options', () => {
-    const entries: [string, { label: string }][] = [
+    const entries: CategoryEntry[] = [
       ['cat_a', { label: 'Category A' }],
       ['cat_b', { label: 'Category B' }],
     ]
 
-    const result = buildCategoryOptions(entries, 'Tout', 'NONE')
+    const result = buildRadioOptions(entries, 'Tout', 'NONE')
 
     expect(result).toEqual([
       { key: 'NONE', label: 'Tout', value: 'NONE' },
       { key: 'cat_a', label: 'Category A', value: 'cat_a' },
       { key: 'cat_b', label: 'Category B', value: 'cat_b' },
     ])
+  })
+})
+
+describe('toRadioButtonGroupOptions', () => {
+  it('should convert RadioOption array to RadioButtonGroupOption array', () => {
+    const options = [
+      { key: 'ALL', label: 'All', value: 'ALL' },
+      { key: 'cat_a', label: 'Category A', value: 'cat_a' },
+    ]
+
+    const result = toRadioButtonGroupOptions(options)
+
+    expect(result).toEqual([
+      { key: 'ALL', label: 'All' },
+      { key: 'cat_a', label: 'Category A' },
+    ])
+  })
+})
+
+describe('getLabelForValue', () => {
+  const options = [
+    { key: 'ALL', label: 'Toutes', value: null },
+    { key: 'cat_a', label: 'Category A', value: 'cat_a' },
+    { key: 'cat_b', label: 'Category B', value: 'cat_b' },
+  ]
+
+  it('should return label for matching value', () => {
+    const result = getLabelForValue(options, 'cat_a')
+
+    expect(result).toBe('Category A')
+  })
+
+  it('should return label for null value', () => {
+    const result = getLabelForValue(options, null)
+
+    expect(result).toBe('Toutes')
+  })
+
+  it('should return empty string for non-existing value', () => {
+    const result = getLabelForValue(options, 'unknown')
+
+    expect(result).toBe('')
+  })
+})
+
+describe('getValueForLabel', () => {
+  const options = [
+    { key: 'ALL', label: 'Toutes', value: null },
+    { key: 'cat_a', label: 'Category A', value: 'cat_a' },
+    { key: 'cat_b', label: 'Category B', value: 'cat_b' },
+  ]
+
+  it('should return value for matching label', () => {
+    const result = getValueForLabel(options, 'Category A')
+
+    expect(result).toBe('cat_a')
+  })
+
+  it('should return null value for matching label', () => {
+    const result = getValueForLabel(options, 'Toutes')
+
+    expect(result).toBeNull()
+  })
+
+  it('should return undefined for non-existing label', () => {
+    const result = getValueForLabel(options, 'Unknown')
+
+    expect(result).toBeUndefined()
   })
 })

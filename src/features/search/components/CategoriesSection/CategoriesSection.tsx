@@ -5,10 +5,13 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import {
-  buildCategoryOptions,
+  buildRadioOptions,
   CategoriesMapping,
   checkHasChildrenCategories,
+  getLabelForValue,
   getSortedCategoriesEntries,
+  getValueForLabel,
+  toRadioButtonGroupOptions,
 } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
@@ -59,20 +62,22 @@ export function CategoriesSection<
   const hasChildren = checkHasChildrenCategories(entries)
 
   if (!hasChildren) {
-    const options = buildCategoryOptions(entries, allLabel, allValue as string)
-    const selectedOption = options.find((option) => option.value === value)
+    const radioOptions = buildRadioOptions<N>(entries, allLabel, allValue)
+
     return (
       <RadioButtonGroup
         label="Sélectionne une option"
-        value={selectedOption?.label as string}
-        onChange={(value) =>
-          handleSelect(options.find((option) => option.label === value)?.value as N)
-        }
+        value={getLabelForValue(radioOptions, value)}
+        onChange={(newLabel) => {
+          const selectedValue = getValueForLabel(radioOptions, newLabel)
+          if (!selectedValue) return
+          handleSelect(selectedValue)
+        }}
         variant="default"
         display="vertical"
         disabled={false}
         error={false}
-        options={options}
+        options={toRadioButtonGroupOptions(radioOptions)}
         errorText="Error"
       />
     )
