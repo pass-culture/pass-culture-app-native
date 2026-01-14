@@ -50,7 +50,6 @@ module.exports = {
         '@react-navigation',
         '@react-native',
         '@ptomasroos/react-native-multi-slider',
-        'react-navigation',
         '@react-native-firebase/analytics',
         '@react-native-firebase/app',
         '@react-native-firebase/remote-config',

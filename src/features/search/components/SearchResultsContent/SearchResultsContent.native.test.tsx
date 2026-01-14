@@ -4,7 +4,7 @@ import { uniqBy } from 'lodash'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, popTo } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   defaultDisabilitiesProperties,
@@ -722,7 +722,7 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+      expect(popTo).toHaveBeenNthCalledWith(1, 'TabNavigator', {
         params: {
           params: expect.objectContaining({ ...mockSearchState, query }),
           screen: 'SearchResults',

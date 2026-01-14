@@ -1,13 +1,15 @@
 import { useReduxDevToolsExtension } from '@react-navigation/devtools'
 import {
+  DefaultTheme,
   DocumentTitleOptions,
   NavigationContainer,
   NavigationState,
+  Route,
   Theme,
 } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { Platform, StatusBar } from 'react-native'
-import { DefaultTheme, useTheme } from 'styled-components/native'
+import { DefaultTheme as NativeDefaultThemeType, useTheme } from 'styled-components/native'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking/linking'
@@ -20,9 +22,10 @@ import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
 
-const getNavThemeConfig = (theme: DefaultTheme) =>
+const getNavThemeConfig = (theme: NativeDefaultThemeType) =>
   ({
     colors: { background: theme.designSystem.color.background.default },
+    fonts: DefaultTheme.fonts,
   }) as Theme
 const SECONDARY_TITLE = author?.name || 'pass Culture'
 const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
@@ -43,6 +46,7 @@ export const AppNavigationContainer = () => {
 
   const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
+  const [currentRoute, setCurrentRoute] = useState<Route<string> | undefined>()
 
   useEffect(() => {
     async function restoreNavStateOnReload() {
@@ -67,6 +71,12 @@ export const AppNavigationContainer = () => {
     }
   }, [isNavReady, hideSplashScreen])
 
+  const handleStateChange = (state: NavigationState | undefined) => {
+    onNavigationStateChange(state)
+    const route = state?.routes[state.routes.length - 1]
+    setCurrentRoute(route as Route<string> | undefined)
+  }
+
   if (!isNavReady) {
     return <LoadingPage />
   }
@@ -75,7 +85,7 @@ export const AppNavigationContainer = () => {
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
-      onStateChange={onNavigationStateChange}
+      onStateChange={handleStateChange}
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
@@ -88,7 +98,7 @@ export const AppNavigationContainer = () => {
             : theme.designSystem.color.background.locked
         }
       />
-      <RootNavigator />
+      <RootNavigator currentRoute={currentRoute} />
     </NavigationContainer>
   )
 }
