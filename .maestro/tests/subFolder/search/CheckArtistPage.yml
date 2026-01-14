@@ -1,0 +1,11 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Rechercher'
+- runFlow: ../../subFolder/cloud/commands/SetEverywhere.yml
+- extractTextWithAI:
+    query: "Le nom exacte du premier artiste visible dans les résultats de recherche"
+    outputVariable: 'artistName'
+- tapOn: .*${artistName}.*
+- assertVisible: 'Ses oeuvres populaires'
+- scrollUntilVisible:
+    element: 'Toutes ses offres disponibles'
