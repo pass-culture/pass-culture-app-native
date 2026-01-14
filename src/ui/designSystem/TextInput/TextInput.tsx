@@ -16,23 +16,23 @@ import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { BaseTextInput } from 'ui/components/inputs/BaseTextInput'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import {
-  getCustomInputTextProps,
+  getCustomTextInputProps,
   getRNTextInputProps,
-  InputTextProps,
+  TextInputProps,
 } from 'ui/components/inputs/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { InputTextContainer } from 'ui/designSystem/InputText/InputTextContainer'
+import { TextInputContainer } from 'ui/designSystem/TextInput/TextInputContainer'
 import { ErrorFilled } from 'ui/svg/icons/ErrorFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
-const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextProps> = (
+const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
   { ...props },
   forwardedRef
 ) => {
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const [textLength, setTextLength] = useState(0)
   const nativeProps = getRNTextInputProps(props)
-  const customProps = getCustomInputTextProps(props)
+  const customProps = getCustomTextInputProps(props)
   const textInputID = nativeProps.testID ?? uuidv4()
 
   const theme = useTheme()
@@ -91,7 +91,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
         </LabelContainer>
       </FlexInputLabel>
 
-      <InputTextContainer
+      <TextInputContainer
         isFocused={isFocus}
         isError={!!customProps.errorMessage}
         isDisabled={customProps.disabled}
@@ -121,7 +121,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
             <Icon size={theme.icons.sizes.small} />
           </IconTouchableOpacity>
         ) : null}
-      </InputTextContainer>
+      </TextInputContainer>
       {customProps.errorMessage || customProps.characterCount ? (
         <FooterContainer>
           {customProps.errorMessage ? (
@@ -141,7 +141,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, InputTextPro
   )
 }
 
-export const InputText = forwardRef<RNTextInput, InputTextProps>(WithRefTextInput)
+export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
 
 const Container = styled.View({
   alignItems: 'flex-start',

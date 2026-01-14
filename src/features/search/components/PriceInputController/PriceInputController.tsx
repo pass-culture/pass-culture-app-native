@@ -1,10 +1,10 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 
 interface Props<TFieldValues extends FieldValues, TName>
-  extends Omit<React.ComponentProps<typeof InputText>, 'value' | 'onChangeText'> {
+  extends Omit<React.ComponentProps<typeof TextInput>, 'value' | 'onChangeText'> {
   name: TName
   control: Control<TFieldValues>
   label: string
@@ -29,7 +29,7 @@ export const PriceInputController = <
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-        <InputText
+        <TextInput
           value={value}
           onChangeText={onChange}
           onBlur={onBlur}
