@@ -52,7 +52,7 @@ import { SuspenseSubscriptionStackNavigator } from 'features/navigation/Subscrip
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
-import { Offer } from 'features/offer/pages/Offer/Offer'
+import { OfferPageBridge } from 'features/offer/bridge/OfferPageBridge'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -343,7 +343,7 @@ const rootScreens: RouteConfig[] = [
 // For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
 // Youtube player in fullscreen opens and closes 1 second later automatically
 const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
-const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
+const OfferWithBridgeAndBoundary = withAsyncErrorBoundary(OfferPageBridge)
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
@@ -394,19 +394,19 @@ const RootStackNavigator = withWebWrapper(
           ))}
           <RootStackNavigatorBase.Screen
             name="Offer"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer1"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer2"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer3"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="OfferVideoPreview"
