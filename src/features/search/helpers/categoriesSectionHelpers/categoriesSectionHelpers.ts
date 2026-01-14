@@ -16,7 +16,7 @@ type CategoriesMappingItem = {
 
 export type CategoryEntry = [string, CategoriesMappingItem]
 
-export type RadioOption<K> = {
+type RadioOption<K> = {
   key: string
   label: string
   value: K
@@ -41,7 +41,7 @@ export const buildRadioOptions = <K>(
   allLabel: string,
   allValue: K
 ): RadioOption<K>[] => [
-  { key: String(allValue), label: allLabel, value: allValue },
+  { key: allLabel, label: allLabel, value: allValue },
   ...entries.map(([key, item]) => ({
     key,
     label: item.label,

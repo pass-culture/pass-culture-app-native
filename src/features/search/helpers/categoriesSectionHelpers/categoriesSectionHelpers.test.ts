@@ -92,7 +92,9 @@ describe('buildRadioOptions', () => {
   it('should return only all option when entries is empty', () => {
     const result = buildRadioOptions([], 'Toutes les catégories', 'ALL')
 
-    expect(result).toEqual([{ key: 'ALL', label: 'Toutes les catégories', value: 'ALL' }])
+    expect(result).toEqual([
+      { key: 'Toutes les catégories', label: 'Toutes les catégories', value: 'ALL' },
+    ])
   })
 
   it('should return all option followed by entries options', () => {
@@ -104,7 +106,7 @@ describe('buildRadioOptions', () => {
     const result = buildRadioOptions(entries, 'Tout', 'NONE')
 
     expect(result).toEqual([
-      { key: 'NONE', label: 'Tout', value: 'NONE' },
+      { key: 'Tout', label: 'Tout', value: 'NONE' },
       { key: 'cat_a', label: 'Category A', value: 'cat_a' },
       { key: 'cat_b', label: 'Category B', value: 'cat_b' },
     ])
