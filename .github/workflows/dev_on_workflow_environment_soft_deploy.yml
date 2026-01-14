@@ -28,7 +28,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
-        if: ${{ inputs.ENV == 'testing' }}
+        if: ${{ inputs.ENV != 'production' }}
       - name: Setup java
         uses: actions/setup-java@v4
         with:
