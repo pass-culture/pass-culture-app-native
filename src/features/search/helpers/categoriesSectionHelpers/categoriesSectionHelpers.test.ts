@@ -1,4 +1,5 @@
 import {
+  CategoryEntry,
   buildCategoryOptions,
   checkHasChildrenCategories,
   getSortedCategoriesEntries,
@@ -54,7 +55,7 @@ describe('getSortedCategoriesEntries', () => {
 
 describe('checkHasChildrenCategories', () => {
   it('should return false when entries array is empty', () => {
-    const entries: [string, { label: string }][] = []
+    const entries: ReturnType<typeof getSortedCategoriesEntries> = []
 
     const result = checkHasChildrenCategories(entries)
 
@@ -62,7 +63,7 @@ describe('checkHasChildrenCategories', () => {
   })
 
   it('should return false when no entries have children', () => {
-    const entries: [string, { label: string; children?: Record<string, unknown> }][] = [
+    const entries: CategoryEntry[] = [
       ['cat_a', { label: 'A' }],
       ['cat_b', { label: 'B', children: {} }],
     ]
@@ -73,7 +74,7 @@ describe('checkHasChildrenCategories', () => {
   })
 
   it('should return true when at least one entry has children', () => {
-    const entries: [string, { label: string; children?: Record<string, unknown> }][] = [
+    const entries: CategoryEntry[] = [
       ['cat_a', { label: 'A' }],
       ['cat_b', { label: 'B', children: { sub: { label: 'Sub' } } }],
     ]

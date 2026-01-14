@@ -16,7 +16,7 @@ type CategoriesMappingItem = {
 
 export type CategoryEntry = [string, CategoriesMappingItem]
 
-export type CategoryOption = {
+type CategoryOption = {
   key: string
   label: string
   value: string
