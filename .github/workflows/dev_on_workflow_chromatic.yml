@@ -17,13 +17,17 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      # - uses: pass-culture/common-workflows/actions/setup-safe-chain@main (TODO (PC-39443))
+      - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
+      - name: Restore git history for Chromatic
+        run: |
+          if $(git rev-parse --is-shallow-repository); then
+            git fetch --unshallow
+          fi
+          git fetch --all
       - name: Install dependencies
         run: yarn install
       - name: Build Storybook 🔧

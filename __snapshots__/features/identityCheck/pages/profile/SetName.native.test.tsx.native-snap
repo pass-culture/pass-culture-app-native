@@ -259,308 +259,301 @@ exports[`<SetName/> should render correctly 1`] = `
                 Comment t’appelles-tu ?
               </Text>
               <View
-                numberOfSpaces={5}
                 style={
                   {
-                    "height": 20,
-                  }
-                }
-              />
-              <View
-                background="#f3edff"
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "backgroundColor": "#f3edff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "flexDirection": "row",
-                    "gap": 12,
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
+                    "marginVertical": 24,
                   }
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  accessibilityLabel="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite."
-                  accessibilityRole="none"
+                  background="#f3edff"
                   style={
                     {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "gap": 4,
-                    }
-                  }
-                >
-                  <Text
-                    style={
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 14,
-                        "lineHeight": 22.4,
-                      }
-                    }
-                  >
-                    Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  {
-                    "height": 16,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View>
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no"
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "width": "100%",
-                      }
-                    }
-                  >
-                    <View>
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        Prénom
-                      </Text>
-                    </View>
-                    <Text
-                      style={
-                        {
-                          "color": "#696a6f",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
-                        }
-                      }
-                    >
-                      Obligatoire
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  isDisabled={false}
-                  isError={false}
-                  isFocused={false}
-                  isHover={false}
-                  size="small"
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
+                      "alignItems": "flex-start",
+                      "backgroundColor": "#f3edff",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
-                      "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 40,
-                      "marginTop": 4,
-                      "paddingBottom": 0,
-                      "paddingLeft": 9,
-                      "paddingRight": 9,
-                      "paddingTop": 0,
-                      "width": "100%",
+                      "gap": 12,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
                     }
                   }
-                  testID="styled-input-container"
                 >
-                  <TextInput
-                    accessibilityLabel="Champs de texte - Prénom - Obligatoire"
-                    accessibilityRequired={true}
-                    autoComplete="given-name"
-                    editable={true}
-                    isEmpty={true}
-                    multiline={false}
-                    nativeID="Entrée pour le prénom"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder=""
-                    placeholderTextColor="#696a6f"
-                    returnKeyType="next"
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    accessibilityLabel="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite."
+                    accessibilityRole="none"
                     style={
                       {
-                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      }
-                    }
-                    testID="Entrée pour le prénom"
-                    textAlignVertical="center"
-                    textContentType="givenName"
-                    value=""
-                  />
-                </View>
-              </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  {
-                    "height": 24,
-                  }
-                }
-              />
-              <View
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View>
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no"
-                    style={
-                      {
-                        "alignItems": "flex-end",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "width": "100%",
+                        "gap": 4,
                       }
                     }
                   >
-                    <View>
-                      <Text
-                        style={
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          }
-                        }
-                      >
-                        Nom
-                      </Text>
-                    </View>
                     <Text
                       style={
                         {
-                          "color": "#696a6f",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "fontSize": 14,
+                          "lineHeight": 22.4,
                         }
                       }
                     >
-                      Obligatoire
+                      Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                     </Text>
                   </View>
                 </View>
+              </View>
+              <View
+                gap={6}
+                style={
+                  {
+                    "gap": 24,
+                  }
+                }
+              >
                 <View
-                  isDisabled={false}
-                  isError={false}
-                  isFocused={false}
-                  isHover={false}
-                  size="small"
                   style={
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderBottomLeftRadius": 8,
-                      "borderBottomRightRadius": 8,
-                      "borderColor": "#90949d",
-                      "borderStyle": "solid",
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "marginTop": 4,
-                      "paddingBottom": 0,
-                      "paddingLeft": 9,
-                      "paddingRight": 9,
-                      "paddingTop": 0,
+                      "alignItems": "flex-start",
                       "width": "100%",
                     }
                   }
-                  testID="styled-input-container"
                 >
-                  <TextInput
-                    accessibilityLabel="Champs de texte - Nom - Obligatoire"
-                    accessibilityRequired={true}
-                    autoComplete="family-name"
-                    editable={true}
-                    isEmpty={true}
-                    multiline={false}
-                    nativeID="Entrée pour le nom"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder=""
-                    placeholderTextColor="#696a6f"
-                    returnKeyType="next"
+                  <View>
+                    <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
+                      style={
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Prénom
+                        </Text>
+                      </View>
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Obligatoire
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
                     style={
                       {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "marginTop": 4,
                         "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
                         "paddingTop": 0,
+                        "width": "100%",
                       }
                     }
-                    testID="Entrée pour le nom"
-                    textAlignVertical="center"
-                    textContentType="familyName"
-                    value=""
-                  />
+                    testID="styled-input-container"
+                  >
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Prénom - Obligatoire"
+                      accessibilityRequired={true}
+                      autoComplete="given-name"
+                      editable={true}
+                      isEmpty={true}
+                      multiline={false}
+                      nativeID="Entrée pour le prénom"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="next"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        }
+                      }
+                      testID="Entrée pour le prénom"
+                      textAlignVertical="center"
+                      textContentType="givenName"
+                      value=""
+                    />
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "alignItems": "flex-start",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View>
+                    <View
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no"
+                      style={
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <View>
+                        <Text
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Nom
+                        </Text>
+                      </View>
+                      <Text
+                        style={
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          }
+                        }
+                      >
+                        Obligatoire
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    isDisabled={false}
+                    isError={false}
+                    isFocused={false}
+                    isHover={false}
+                    size="small"
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderBottomLeftRadius": 8,
+                        "borderBottomRightRadius": 8,
+                        "borderColor": "#90949d",
+                        "borderStyle": "solid",
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "marginTop": 4,
+                        "paddingBottom": 0,
+                        "paddingLeft": 9,
+                        "paddingRight": 9,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      }
+                    }
+                    testID="styled-input-container"
+                  >
+                    <TextInput
+                      accessibilityLabel="Champs de texte - Nom - Obligatoire"
+                      accessibilityRequired={true}
+                      autoComplete="family-name"
+                      editable={true}
+                      isEmpty={true}
+                      multiline={false}
+                      nativeID="Entrée pour le nom"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder=""
+                      placeholderTextColor="#696a6f"
+                      returnKeyType="next"
+                      style={
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        }
+                      }
+                      testID="Entrée pour le nom"
+                      textAlignVertical="center"
+                      textContentType="familyName"
+                      value=""
+                    />
+                  </View>
                 </View>
               </View>
             </View>

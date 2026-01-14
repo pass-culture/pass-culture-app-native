@@ -11,7 +11,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Spinner } from 'ui/components/Spinner'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useSubmitChangeAddress } from './useSubmitChangeAddress'
@@ -107,6 +107,6 @@ const AdressesContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: getSpacing(5),
+  marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.s,
 }))

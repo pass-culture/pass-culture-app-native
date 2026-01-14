@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
-import { getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
@@ -58,12 +57,11 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       multiline={!!props.multiline}
       maxLength={props.maxLength}
       ref={(ref) => {
-        if (ref) {
-          inputRef.current = ref
-          if (forwardedRef) {
-            /* @ts-expect-error Conflicts between types */
-            forwardedRef.current = ref
-          }
+        inputRef.current = ref
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(ref)
+        } else if (forwardedRef) {
+          forwardedRef.current = ref
         }
       }}
     />
@@ -84,7 +82,7 @@ const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
     return {
       flex: 1,
       padding: 0,
-      paddingTop: multiline ? getSpacing(2.5) : 0,
+      paddingTop: multiline ? theme.designSystem.size.spacing.m : 0,
       height: '100%',
       ...inputStyle,
       color: editable

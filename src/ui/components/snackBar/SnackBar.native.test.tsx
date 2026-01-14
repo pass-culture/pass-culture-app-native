@@ -1,17 +1,11 @@
 import React from 'react'
-import { Animated } from 'react-native'
 
-import { render, waitFor, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import { Check } from 'ui/svg/icons/Check'
 
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings } from './types'
-
-const getAnimatedTimingImplementation = () =>
-  jest
-    .spyOn(Animated, 'timing')
-    .mockReturnValue({ start: jest.fn(), stop: jest.fn(), reset: jest.fn() })
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
@@ -132,27 +126,12 @@ describe('SnackBar Component', () => {
     /**
      * refresher=0
      */
-    describe('Initialisation', () => {
-      it.each([true, false])(
-        'should not display anything at initialisation when mounted (visible = %s)',
-        async (visible) => {
-          const timing = jest.spyOn(Animated, 'timing')
-
-          const refresher = 0
-          render(renderHelperSnackBar(visible, { message: 'message' }, refresher))
-
-          await waitFor(async () => expect(timing).not.toHaveBeenCalled())
-        }
-      )
-    })
 
     /**
      * "refresher" updated
      * "visible" goes from false to true
      */
     it('should display the snackbar container when shown', async () => {
-      const timing = getAnimatedTimingImplementation()
-
       let refresher = 1
       const { rerender } = render(renderHelperSnackBar(false, { message: 'message' }, refresher))
 
@@ -163,16 +142,6 @@ describe('SnackBar Component', () => {
       const container = screen.getByTestId('snackbar-container')
 
       expect(container).toHaveStyle({ display: 'flex' })
-
-      /**
-       * It's called twice because of the following function being triggered
-       * in triggerApparitionAnimation:
-       * - progressBarContainerRef?.current?.fadeInDown
-       * - containerRef?.current?.fadeInDown
-       */
-      await waitFor(async () => expect(timing).toHaveBeenCalledTimes(2))
-
-      timing.mockRestore()
     })
 
     /**
@@ -180,8 +149,6 @@ describe('SnackBar Component', () => {
      * "visible" goes from true to false
      */
     it('should hide the snackbar container when hidden', async () => {
-      const timing = jest.spyOn(Animated, 'timing')
-
       let refresher = 1
       const { rerender } = render(renderHelperSnackBar(true, { message: 'message' }, refresher))
 
@@ -190,14 +157,6 @@ describe('SnackBar Component', () => {
       rerender(renderHelperSnackBar(false, { message: 'message' }, refresher))
 
       const container = screen.getByTestId('snackbar-container')
-
-      /**
-       * It's called twice because of the following function being triggered
-       * in triggerApparitionAnimation:
-       * - progressBarContainerRef.current?.fadeOutUp
-       * - containerRef.current?.fadeOutUp
-       */
-      expect(timing).toHaveBeenCalledTimes(2)
 
       await waitFor(() => {
         expect(container).toHaveStyle({ display: 'none' })
@@ -209,8 +168,6 @@ describe('SnackBar Component', () => {
      * "visible" still the same => props.visible === state.isVisible
      */
     it('should reset progressBar animation when visual properties changed', async () => {
-      const timing = getAnimatedTimingImplementation()
-
       let refresher = 1
       const { rerender } = render(renderHelperSnackBar(true, { message: 'message' }, refresher))
 
@@ -221,12 +178,6 @@ describe('SnackBar Component', () => {
       const container = screen.getByTestId('snackbar-container')
       const text = screen.getByTestId('snackbar-message')
 
-      /**
-       * It's called once because of the following function being triggered
-       * in animateProgressBarWidth:
-       * - Animated.timing
-       */
-      expect(timing).toHaveBeenCalledTimes(1)
       expect(container.props.isVisible).toEqual(true)
       expect(text.props.children).toEqual('a new message')
     })

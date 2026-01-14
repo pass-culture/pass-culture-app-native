@@ -20,7 +20,7 @@ import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -83,13 +83,13 @@ export const ForgottenPassword = () => {
     </SecondaryPageWithBlurHeader>
   )
 }
-const ButtonContainer = styled.View({
-  marginTop: getSpacing(8),
-})
+const ButtonContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxl,
+}))
 
 const Container = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.s,
-  marginBottom: getSpacing(8),
+  marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
 const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unknown>['data']) => {
@@ -100,6 +100,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
     clearErrors,
     setValue,
     watch,
+    setFocus,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: { email: '', isFetching: false, isDoingReCaptchaChallenge: false },
@@ -109,9 +110,10 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
   // Little helper method to make it easier to set error
   const setCustomError = useCallback(
     (message: string) => {
+      setFocus('email')
       return setError('email', { type: 'custom', message })
     },
-    [setError]
+    [setError, setFocus]
   )
 
   const onConnection = useCallback(clearErrors, [clearErrors])
