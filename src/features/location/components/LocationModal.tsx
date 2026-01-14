@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
@@ -13,8 +12,8 @@ import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
+import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -69,18 +68,6 @@ export const LocationModal = ({
 }: LocationModalProps) => {
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
-  const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
-    ? 'brandPrimary'
-    : 'default'
-
-  const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
-    ? 'brandPrimary'
-    : 'default'
-
-  const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
-    ? 'brandPrimary'
-    : 'default'
-
   const shouldShowAroundPlaceRadiusSlider =
     shouldShowRadiusSlider &&
     tempAroundPlaceRadius &&
@@ -109,7 +96,8 @@ export const LocationModal = ({
     isCurrentLocationMode(LocationMode.AROUND_ME)
   )
 
-  const AROUND_PLACE_TITLE = 'Choisir une localisation'
+  const AROUND_PLACE_TITLE = 'Choisir une zone géographique'
+  const AROUND_PLACE_SUBTITLE = 'Ville, code postal, adresse'
   const accessibilityLabelAroundPlace = buildAccessibilityLabel(
     AROUND_PLACE_TITLE,
     LOCATION_PLACEHOLDER,
@@ -151,29 +139,33 @@ export const LocationModal = ({
         />
       }>
       <StyledScrollView>
-        <VerticalUl>
+        <StyledVerticalUl>
           <Li
             groupLabel={groupLabel}
             accessibilityLabel={accessibilityLabelAroundMe}
             accessibilityRole={AccessibilityRole.BUTTON}
             index={0}
             total={3}>
-            <LocationModalButton
-              onPress={selectLocationMode(LocationMode.AROUND_ME)}
-              icon={PositionFilled}
-              color={geolocationModeColor}
-              title={AROUND_ME_TITLE}
-              subtitle={AROUND_ME_SUBTITLE}
+            <RadioButton
+              label={AROUND_ME_TITLE}
+              value={isCurrentLocationMode(LocationMode.AROUND_ME) ? AROUND_ME_TITLE : ''}
+              setValue={selectLocationMode(LocationMode.AROUND_ME)}
+              description={AROUND_ME_SUBTITLE}
+              variant="detailed"
+              disabled={false}
+              error={false}
+              asset={{ variant: 'icon', Icon: PositionFilled }}
+              collapsed={
+                shouldShowAroundMeRadiusSlider ? (
+                  <SliderContainer>
+                    <LocationSearchFilters
+                      aroundRadius={tempAroundMeRadius}
+                      onValuesChange={onTempAroundMeRadiusValueChange}
+                    />
+                  </SliderContainer>
+                ) : null
+              }
             />
-            {shouldShowAroundMeRadiusSlider ? (
-              <SliderContainer>
-                <LocationSearchFilters
-                  aroundRadius={tempAroundMeRadius}
-                  onValuesChange={onTempAroundMeRadiusValueChange}
-                />
-              </SliderContainer>
-            ) : null}
-            <StyledSeparator />
           </Li>
           <Li
             groupLabel={groupLabel}
@@ -181,33 +173,38 @@ export const LocationModal = ({
             accessibilityRole={AccessibilityRole.BUTTON}
             index={1}
             total={3}>
-            <LocationModalButton
-              onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
-              icon={MagnifyingGlassFilled}
-              color={customLocationModeColor}
-              title={AROUND_PLACE_TITLE}
-            />
-            {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
-              <React.Fragment>
-                <LocationSearchInput
-                  selectedPlace={selectedPlace}
-                  setSelectedPlace={setSelectedPlace}
-                  placeQuery={placeQuery}
-                  setPlaceQuery={setPlaceQuery}
-                  onResetPlace={onResetPlace}
-                  onSetSelectedPlace={onSetSelectedPlace}
-                />
-                {shouldShowAroundPlaceRadiusSlider ? (
-                  <SliderContainer>
-                    <LocationSearchFilters
-                      aroundRadius={tempAroundPlaceRadius}
-                      onValuesChange={onTempAroundPlaceRadiusValueChange}
+            <RadioButton
+              label={AROUND_PLACE_TITLE}
+              description={AROUND_PLACE_SUBTITLE}
+              value={isCurrentLocationMode(LocationMode.AROUND_PLACE) ? AROUND_PLACE_TITLE : ''}
+              setValue={selectLocationMode(LocationMode.AROUND_PLACE)}
+              variant="detailed"
+              disabled={false}
+              error={false}
+              asset={{ variant: 'icon', Icon: MagnifyingGlassFilled }}
+              collapsed={
+                isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
+                  <React.Fragment>
+                    <LocationSearchInput
+                      selectedPlace={selectedPlace}
+                      setSelectedPlace={setSelectedPlace}
+                      placeQuery={placeQuery}
+                      setPlaceQuery={setPlaceQuery}
+                      onResetPlace={onResetPlace}
+                      onSetSelectedPlace={onSetSelectedPlace}
                     />
-                  </SliderContainer>
-                ) : null}
-              </React.Fragment>
-            ) : null}
-            <StyledSeparator />
+                    {shouldShowAroundPlaceRadiusSlider ? (
+                      <SliderContainer>
+                        <LocationSearchFilters
+                          aroundRadius={tempAroundPlaceRadius}
+                          onValuesChange={onTempAroundPlaceRadiusValueChange}
+                        />
+                      </SliderContainer>
+                    ) : null}
+                  </React.Fragment>
+                ) : null
+              }
+            />
           </Li>
           {shouldDisplayEverywhereSection ? (
             <Li
@@ -216,15 +213,22 @@ export const LocationModal = ({
               accessibilityRole={AccessibilityRole.BUTTON}
               index={2}
               total={3}>
-              <LocationModalButton
-                onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-                icon={WorldPosition}
-                color={everywhereLocationModeColor}
-                title={LocationLabel.everywhereLabel}
+              <RadioButton
+                label={LocationLabel.everywhereLabel}
+                value={
+                  isCurrentLocationMode(LocationMode.EVERYWHERE)
+                    ? LocationLabel.everywhereLabel
+                    : ''
+                }
+                setValue={selectLocationMode(LocationMode.EVERYWHERE)}
+                variant="detailed"
+                disabled={false}
+                error={false}
+                asset={{ variant: 'icon', Icon: WorldPosition }}
               />
             </Li>
           ) : null}
-        </VerticalUl>
+        </StyledVerticalUl>
       </StyledScrollView>
     </AppModal>
   )
@@ -244,6 +248,6 @@ const SliderContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  marginVertical: theme.designSystem.size.spacing.l,
+const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.s,
 }))
