@@ -17,8 +17,6 @@ import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export type { CategoriesMapping }
-
 export interface CategoriesSectionProps<
   T extends CategoriesMapping,
   N = T extends MappingTree ? keyof MappingTree : keyof T | null,

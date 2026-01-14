@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { CategoriesMapping } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import {
   getDescription,
   getNbResultsFacetLabel,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { CategoriesMapping } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
