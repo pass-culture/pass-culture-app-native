@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -20,6 +21,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -44,6 +46,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { navigate } = useNavigation<UseNavigationType>()
   const { user, isLoggedIn } = useAuthContext()
+  const { data: settings } = useSettingsContext()
   const { designSystem } = useTheme()
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { onScroll, headerTransition } = useOpacityTransition()
@@ -51,7 +54,11 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const headerTitle = 'Comment ça marche\u00a0?'
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
+  const bonificationAmount = formatCurrencyFromCents(
+    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+    currency,
+    euroToPacificFrancRate
+  )
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
