@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchState } from 'features/search/types'
@@ -69,13 +69,11 @@ export const NoSearchResult = ({
             </ErrorDescription>
           </ErrorDescriptionContainer>
         </ContainerText>
-        <View>
-          <ButtonPrimary
-            wording={props.ctaWording}
-            onPress={props.onPress}
-            accessibilityRole={AccessibilityRole.BUTTON}
-          />
-        </View>
+        <ButtonPrimary
+          wording={props.ctaWording}
+          onPress={props.onPress}
+          accessibilityRole={AccessibilityRole.BUTTON}
+        />
       </Container>
     </NoSearchResultsWrapper>
   )
@@ -106,6 +104,7 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
 
 const Container = styled.View(({ theme }) => ({
   width: '100%',
+  alignItems: 'center',
   paddingVertical: getSpacing(30),
   ...(theme.isDesktopViewport ? {} : { paddingHorizontal: theme.designSystem.size.spacing.xl }),
 }))
