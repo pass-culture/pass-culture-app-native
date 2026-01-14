@@ -401,7 +401,6 @@ exports[`ChangeCity from mandatory udpate personal data screen should render cor
                       }
                       testID="Entrée pour la ville"
                       textAlignVertical="center"
-                      textContentType="postalCode"
                       value="75001"
                     />
                     <View
@@ -1070,7 +1069,6 @@ exports[`ChangeCity from profil personal data screen should render correctly 1`]
                       }
                       testID="Entrée pour la ville"
                       textAlignVertical="center"
-                      textContentType="postalCode"
                       value="75001"
                     />
                     <View
@@ -1739,7 +1737,6 @@ exports[`ChangeCity without previous screen should render correctly 1`] = `
                       }
                       testID="Entrée pour la ville"
                       textAlignVertical="center"
-                      textContentType="postalCode"
                       value="75001"
                     />
                     <View

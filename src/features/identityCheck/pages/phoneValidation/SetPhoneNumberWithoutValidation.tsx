@@ -99,7 +99,6 @@ export const SetPhoneNumberWithoutValidation = () => {
                     value={field.value}
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}
-                    textContentType="telephoneNumber"
                     accessibilityHint={fieldState.error?.message}
                     leftComponent={
                       <Controller

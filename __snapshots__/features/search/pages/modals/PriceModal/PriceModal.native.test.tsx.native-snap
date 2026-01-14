@@ -849,7 +849,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                       testID="Entrée pour le prix minimum"
                       textAlignVertical="center"
-                      textContentType="none"
                       value=""
                     />
                   </View>
@@ -970,7 +969,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     }
                     testID="Entrée pour le prix maximum"
                     textAlignVertical="center"
-                    textContentType="none"
                     value=""
                   />
                 </View>

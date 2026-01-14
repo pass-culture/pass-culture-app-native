@@ -403,7 +403,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                         }
                         testID="Entrée pour la ville"
                         textAlignVertical="center"
-                        textContentType="postalCode"
                         value=""
                       />
                     </View>

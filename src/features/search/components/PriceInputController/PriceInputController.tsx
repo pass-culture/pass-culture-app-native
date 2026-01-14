@@ -40,7 +40,6 @@ export const PriceInputController = <
           keyboardType="numeric"
           autoCapitalize="none"
           autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
-          textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
           errorMessage={error?.message}
           testID={testID ?? 'Entrée pour un prix'}
           {...textInputProps}

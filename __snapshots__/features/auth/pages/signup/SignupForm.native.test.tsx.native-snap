@@ -375,7 +375,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                   }
                   testID="Entrée pour l’email"
                   textAlignVertical="center"
-                  textContentType="emailAddress"
                   value=""
                 />
               </View>
@@ -1083,6 +1082,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 accessibilityLabel="Champs de texte - Mot de passe - Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et un caractère spécial"
                 accessibilityRequired={false}
                 autoCapitalize="none"
+                autoComplete="current-password"
                 editable={true}
                 isEmpty={true}
                 multiline={false}
@@ -1113,7 +1113,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 }
                 testID="Mot de passe"
                 textAlignVertical="center"
-                textContentType="password"
                 value=""
               />
               <View

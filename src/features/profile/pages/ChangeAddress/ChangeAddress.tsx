@@ -58,7 +58,6 @@ export const ChangeAddress = () => {
                     label={label}
                     description="Exemple&nbsp;: 34 avenue de l’Opéra"
                     autoComplete="street-address"
-                    textContentType="fullStreetAddress"
                     accessibilityHint={errorMessage}
                     onClear={resetSearch}
                     returnKeyType="next"

@@ -20,7 +20,6 @@ const WithRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, EmailInputP
       keyboardType="email-address"
       onChangeText={onEmailChange}
       description="Exemple&nbsp;: tonadresse@email.com"
-      textContentType="emailAddress"
       value={email}
       maxLength={120}
       testID="Entrée pour l’email"

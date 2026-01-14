@@ -438,7 +438,6 @@ exports[`<SetName/> should render correctly 1`] = `
                       }
                       testID="Entrée pour le prénom"
                       textAlignVertical="center"
-                      textContentType="givenName"
                       value=""
                     />
                   </View>
@@ -554,7 +553,6 @@ exports[`<SetName/> should render correctly 1`] = `
                       }
                       testID="Entrée pour le nom"
                       textAlignVertical="center"
-                      textContentType="familyName"
                       value=""
                     />
                   </View>

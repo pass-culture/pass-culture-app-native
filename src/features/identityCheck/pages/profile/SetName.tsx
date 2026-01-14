@@ -94,7 +94,6 @@ export const SetName = () => {
                   requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le prénom"
-                  textContentType="givenName"
                   autoComplete="given-name"
                   errorMessage={error?.message}
                 />
@@ -111,7 +110,6 @@ export const SetName = () => {
                   requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le nom"
-                  textContentType="familyName"
                   autoComplete="family-name"
                   errorMessage={error?.message}
                 />

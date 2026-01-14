@@ -104,7 +104,6 @@ export const BonificationNames = () => {
                   requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le nom"
-                  textContentType="familyName"
                   autoComplete="family-name"
                   errorMessage={error?.message}
                 />
@@ -121,7 +120,6 @@ export const BonificationNames = () => {
                   onChangeText={onChange}
                   accessibilityHint={error?.message}
                   testID="Entrée pour le nom d’usage"
-                  textContentType="familyName"
                   autoComplete="family-name"
                   errorMessage={error?.message}
                 />

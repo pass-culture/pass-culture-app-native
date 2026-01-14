@@ -126,7 +126,6 @@ export const SetPhoneNumber = () => {
                   label="Numéro de téléphone"
                   value={phoneNumber}
                   onChangeText={onChangeText}
-                  textContentType="telephoneNumber"
                   onSubmitEditing={requestSendPhoneValidationCode}
                   accessibilityHint={invalidPhoneNumberMessage}
                   leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}
