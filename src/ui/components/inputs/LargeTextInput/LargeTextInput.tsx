@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput, TextStyle } from 'react-native'
 
-import { InputTextProps } from 'ui/components/inputs/types'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInputProps } from 'ui/components/inputs/types'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { getSpacing } from 'ui/theme'
 
-interface LargeTextInputProps extends Omit<InputTextProps, 'value' | 'onChangeText'> {
+interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
   labelStyle?: TextStyle
   value: string
@@ -31,7 +31,7 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
   const maxValueLength = maxLength ?? 800
 
   return (
-    <InputText
+    <TextInput
       label={label}
       labelStyle={labelStyle}
       value={value}

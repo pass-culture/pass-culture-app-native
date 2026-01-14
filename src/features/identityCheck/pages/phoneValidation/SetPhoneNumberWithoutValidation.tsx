@@ -21,7 +21,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -90,7 +90,7 @@ export const SetPhoneNumberWithoutValidation = () => {
               control={control}
               render={({ field, fieldState }) => (
                 <ViewGap gap={2}>
-                  <InputText
+                  <TextInput
                     autoComplete="tel"
                     autoCapitalize="none"
                     keyboardType="number-pad"

@@ -18,7 +18,7 @@ import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrima
 import { Form } from 'ui/components/Form'
 import { DynamicInputList } from 'ui/components/inputs/DynamicInputList/DynamicInputList'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -95,7 +95,7 @@ export const BonificationNames = () => {
               control={control}
               name="givenName"
               render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
+                <TextInput
                   label="Nom de naissance"
                   description="Le nom avant tout changement"
                   value={value}
@@ -113,7 +113,7 @@ export const BonificationNames = () => {
               control={control}
               name="commonName"
               render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
+                <TextInput
                   label="Nom d’usage"
                   description="Le nom utilisé au quotidien"
                   value={value}

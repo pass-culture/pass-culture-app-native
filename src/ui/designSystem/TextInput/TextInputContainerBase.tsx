@@ -7,7 +7,7 @@ import React, { FunctionComponent } from 'react'
 import { Platform, View } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { InputSize, InputTextContainerBaseProps } from 'ui/designSystem/InputText/types'
+import { InputSize, TextInputContainerBaseProps } from 'ui/designSystem/TextInput/types'
 import { getSpacing, padding } from 'ui/theme'
 
 const SIZE_TO_HEIGHT = (theme: DefaultTheme) => ({
@@ -18,7 +18,7 @@ const SIZE_TO_HEIGHT = (theme: DefaultTheme) => ({
 
 const BORDER_FOCUS_INCREASE = 0.25
 
-export const InputTextContainerBase: FunctionComponent<InputTextContainerBaseProps> = ({
+export const TextInputContainerBase: FunctionComponent<TextInputContainerBaseProps> = ({
   children,
   inputSize = 'small',
   isDisabled = false,

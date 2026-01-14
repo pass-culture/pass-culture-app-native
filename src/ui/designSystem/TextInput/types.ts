@@ -8,7 +8,7 @@ import { ViewStyle } from 'react-native'
 
 export type InputSize = 'small' | 'regular' | 'tall'
 
-export type InputTextContainerBaseProps = PropsWithChildren<{
+export type TextInputContainerBaseProps = PropsWithChildren<{
   isError?: boolean
   isFocused?: boolean
   isDisabled?: boolean

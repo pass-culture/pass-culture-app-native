@@ -13,7 +13,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { getSpacing } from 'ui/theme'
 
 const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
@@ -89,7 +89,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
           onPress={navigateToAccountSecurityBuffer}
           disabled={value.length < 1}
         />
-        <InputText onChangeText={setValue} label="Token" />
+        <TextInput onChangeText={setValue} label="Token" />
       </BufferContainer>
     </CheatcodesTemplateScreen>
   )

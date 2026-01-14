@@ -7,15 +7,15 @@ import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
 import { render, screen } from 'tests/utils'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Search } from 'ui/svg/icons/Search'
 
-describe('<InputText />', () => {
+describe('<TextInput />', () => {
   const myRef = React.createRef<RNTextInput>()
 
   it('should display label with asterisk when input required with symbol', () => {
     render(
-      <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="symbol" />
+      <TextInput onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="symbol" />
     )
 
     expect(screen.getByText('E-mail *', { hidden: true })).toBeOnTheScreen()
@@ -23,7 +23,7 @@ describe('<InputText />', () => {
 
   it('should display mandatory label when input required with text', () => {
     render(
-      <InputText onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="explicit" />
+      <TextInput onChangeText={jest.fn()} ref={myRef} label="E-mail" requiredIndicator="explicit" />
     )
 
     expect(screen.getByText('Obligatoire', { hidden: true })).toBeOnTheScreen()
@@ -31,7 +31,7 @@ describe('<InputText />', () => {
 
   it('should display format when defined', () => {
     render(
-      <InputText
+      <TextInput
         onChangeText={jest.fn()}
         ref={myRef}
         label="E-mail"
@@ -44,7 +44,7 @@ describe('<InputText />', () => {
 
   it('should display left icon when defined', () => {
     render(
-      <InputText
+      <TextInput
         label="E-mail"
         onChangeText={jest.fn()}
         ref={myRef}
@@ -57,7 +57,7 @@ describe('<InputText />', () => {
 
   it('should display right button when defined', () => {
     render(
-      <InputText
+      <TextInput
         label="E-mail"
         onChangeText={jest.fn()}
         ref={myRef}
@@ -70,14 +70,14 @@ describe('<InputText />', () => {
 
   it('should display error message when defined', () => {
     render(
-      <InputText label="E-mail" onChangeText={jest.fn()} ref={myRef} errorMessage="Error !!!" />
+      <TextInput label="E-mail" onChangeText={jest.fn()} ref={myRef} errorMessage="Error !!!" />
     )
 
     expect(screen.getByText('Error !!!')).toBeOnTheScreen()
   })
 
   it('should display character count when defined', () => {
-    render(<InputText label="E-mail" onChangeText={jest.fn()} ref={myRef} characterCount={10} />)
+    render(<TextInput label="E-mail" onChangeText={jest.fn()} ref={myRef} characterCount={10} />)
 
     expect(screen.getByText('0/10')).toBeOnTheScreen()
   })

@@ -12,7 +12,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Separator } from 'ui/components/Separator'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { getSpacing, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
@@ -59,7 +59,7 @@ export const CheatcodesScreenNewCaledonia = () => {
       <Typo.Body>Taux de change par défaut côté frontend&nbsp;:</Typo.Body>
       <Typo.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</Typo.Title3>
       <StyledSeparator />
-      <InputText
+      <TextInput
         label="Montant en&nbsp;€ pour conversion&nbsp;:"
         autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
         autoCapitalize="none"
