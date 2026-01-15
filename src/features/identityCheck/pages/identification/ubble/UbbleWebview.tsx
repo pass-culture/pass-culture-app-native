@@ -25,7 +25,15 @@ export const UbbleWebview: React.FC = () => {
     const parsedUrlParams = parseUrlParams(url)
     // See https://ubbleai.github.io/developer-documentation/#step-3-manage-user-return
     const status = parsedUrlParams['status']
-    if (status === 'aborted') {
+    const event = parsedUrlParams['event']
+    if (event === 'identity_verification_capture_aborted') {
+      analytics.logIdentityCheckAbort({
+        method: IdentityCheckMethod.ubble,
+        reason: event,
+        errorType: parsedUrlParams['response_code'] ?? null,
+      })
+      navigateToHome()
+    } else if (status === 'aborted') {
       analytics.logIdentityCheckAbort({
         method: IdentityCheckMethod.ubble,
         reason: parsedUrlParams['return_reason'] ?? null,
