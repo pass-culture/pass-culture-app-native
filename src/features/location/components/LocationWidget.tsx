@@ -87,9 +87,9 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   )
 }
 
-const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth }) => ({
+const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth, theme }) => ({
   position: 'absolute',
-  top: WIDGET_HEIGHT + getSpacing(2),
+  top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
   right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
   width: TOOLTIP_WIDTH,
 }))

@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { TextPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -12,7 +11,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
   const { designSystem } = useTheme()
   return (
     <View testID="OfferContentPlaceholder">
-      <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
+      <Spacer.Column numberOfSpaces={designSystem.size.spacing.xxl} />
       <ImageContainer>
         <TextPlaceholder height={getSpacing(95)} width={getSpacing(60)} />
       </ImageContainer>
@@ -34,17 +33,17 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={5} />
         <TextPlaceholder height={getSpacing(4)} width={getSpacing(33)} />
         <Spacer.Column numberOfSpaces={3.5} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(82)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(67)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(67)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(82)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(67)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(67)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(82)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(82)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
         <Spacer.Column numberOfSpaces={8} />
       </BodyContainer>
       <SectionWithDivider visible margin gap={0}>
@@ -53,7 +52,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={8} />
         <TextPlaceholder height={getSpacing(4)} width={getSpacing(33)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(2)} width={getSpacing(58)} />
+        <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(58)} />
         <Spacer.Column numberOfSpaces={6} />
         <TextPlaceholder height={getSpacing(6)} width={getSpacing(16)} />
         <Spacer.Column numberOfSpaces={4} />
