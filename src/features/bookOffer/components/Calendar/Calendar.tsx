@@ -118,13 +118,6 @@ export const getDayDescription = (
   return dayDescription
 }
 
-const RNCalendarTheme = {
-  // Prevent calendar height from changing when switching month
-  minHeight: 415,
-  // Hack to remove unnecessary calendar horizontal margins
-  marginHorizontal: -getSpacing(2.5),
-}
-
 type CalendarDayProps = {
   date?: string & DateData
   marking?: MarkingProps
@@ -236,6 +229,12 @@ export const Calendar: React.FC<Props> = ({
       minDate,
     ]
   )
+  const RNCalendarTheme = {
+    // Prevent calendar height from changing when switching month
+    minHeight: 415,
+    // Hack to remove unnecessary calendar horizontal margins
+    marginHorizontal: -theme.designSystem.size.spacing.m,
+  }
 
   return (
     <RNCalendar
