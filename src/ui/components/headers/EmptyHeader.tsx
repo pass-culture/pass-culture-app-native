@@ -41,8 +41,8 @@ const HeaderContainer = styled.View(({ theme }) => ({
   top: 0,
 }))
 
-const GoBackContainer = styled.View({
+const GoBackContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
   height: HEADER_HEIGHT,
-  paddingHorizontal: getSpacing(3),
-})
+  paddingHorizontal: theme.designSystem.size.spacing.m,
+}))

@@ -47,11 +47,11 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(4),
 })
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'flex-start',
-  paddingVertical: getSpacing(3),
-})
+  paddingVertical: theme.designSystem.size.spacing.m,
+}))
 
 const TextContainer = styled.View({
   alignItems: 'center',

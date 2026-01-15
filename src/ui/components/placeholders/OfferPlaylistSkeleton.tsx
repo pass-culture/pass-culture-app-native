@@ -82,7 +82,7 @@ export const TextPlaceholder = ({ width, height }: { width: number; height?: num
   const { designSystem } = useTheme()
   return (
     <SkeletonTile
-      height={height ?? getSpacing(3)}
+      height={height ?? designSystem.size.spacing.m}
       width={width}
       borderRadius={designSystem.size.borderRadius.m}
     />
@@ -100,7 +100,7 @@ const Separator = () => <StyledSeparator />
 
 const StyledView = styled.View(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
-  marginVertical: getSpacing(3),
+  marginVertical: theme.designSystem.size.spacing.m,
 }))
 
 const StyledSeparator = styled.View({ width: getSpacing(4) })

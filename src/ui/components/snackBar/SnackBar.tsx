@@ -214,11 +214,11 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
   })
 )
 
-const StyledBody = styled(Typo.Body)({
-  marginHorizontal: getSpacing(3),
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.m,
   flexGrow: 0,
   flexWrap: 'wrap',
-})
+}))
 
 const Close = memo(
   styled(CloseFilled).attrs(({ theme }) => ({
