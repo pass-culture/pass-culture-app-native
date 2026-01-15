@@ -11,8 +11,8 @@ import {
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
-import { EndedBookingListItemWrapper } from 'features/bookings/components/BookingListItemWrapper'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
+import { EndedBookingListItemWrapper } from 'features/bookings/components/EndedBookingListItemWrapper'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'

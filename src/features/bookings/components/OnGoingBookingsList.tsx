@@ -4,7 +4,7 @@ import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingListItemResponse, BookingsListResponseV2 } from 'api/gen'
-import { OngoingBookingListItemWrapper } from 'features/bookings/components/BookingListItemWrapper'
+import { OngoingBookingListItemWrapper } from 'features/bookings/components/OngoingBookingListItemWrapper'
 import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { BookingListItemResponse, WithdrawalTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
-import { getOngoingBookingItemProperties } from 'features/bookings/helpers/v2/getBookingItemProperties'
+import { getOngoingBookingItemProperties } from 'features/bookings/helpers/v2/getOngoingBookingItemProperties'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'

@@ -1,13 +1,8 @@
-import { NetInfoState } from '@react-native-community/netinfo/lib/typescript/src/internal/types'
+// eslint-disable-next-line no-restricted-imports
+import { NetInfoState } from '@react-native-community/netinfo'
 
 import { BookingListItemResponse, CategoryIdEnum } from 'api/gen'
-import {
-  daysCountdown,
-  displayExpirationMessage,
-  expirationDateUtilsV2,
-  getBookingLabelsV2,
-  getBookingListItemProperties,
-} from 'features/bookings/helpers'
+import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -16,56 +11,6 @@ import { PartialOffer } from 'shared/offer/usePrePopulateOffer'
 import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-
-type OngoingBookingItem = {
-  booking: BookingListItemResponse
-  isEvent: boolean
-  eligibleBookingsForArchive: BookingListItemResponse[]
-}
-export const getOngoingBookingItemProperties = ({
-  booking,
-  isEvent,
-  eligibleBookingsForArchive,
-}: OngoingBookingItem) => {
-  const bookingProperties = getBookingListItemProperties(booking, isEvent)
-  const { dateLabel, withdrawLabel } = getBookingLabelsV2.getBookingLabels(
-    booking,
-    bookingProperties
-  )
-  const daysLeft = daysCountdown(booking.dateCreated)
-
-  const isBookingValid = expirationDateUtilsV2.isBookingEligibleForArchive(
-    booking,
-    eligibleBookingsForArchive
-  )
-
-  const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
-    name: booking.stock.offer.name,
-    properties: bookingProperties,
-    date: dateLabel,
-  })
-
-  const onBeforeNavigate = async () => {
-    await analytics.logViewedBookingPage({
-      offerId: booking.stock.offer.id,
-      from: 'bookings',
-    })
-  }
-  const navigateTo = { screen: 'BookingDetails', params: { id: booking.id } } as const
-
-  return {
-    accessibilityLabel,
-    canDisplayExpirationMessage: !!isBookingValid && daysLeft >= 0,
-    correctExpirationMessages: displayExpirationMessage(daysLeft),
-    daysLeft,
-    dateLabel,
-    isBookingValid,
-    isDuo: bookingProperties.isDuo,
-    onBeforeNavigate,
-    navigateTo,
-    withdrawLabel,
-  }
-}
 
 type EndedBookingItem = {
   booking: BookingListItemResponse
