@@ -37,9 +37,9 @@ export const ChoiceBloc: React.FC<Props> = ({
   children,
   disabled,
 }) => {
-  const { appContentWidth } = useTheme()
+  const { appContentWidth, designSystem } = useTheme()
   const buttonWidth =
-    (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
+    (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * designSystem.size.spacing.s) /
     CHOICE_BLOCS_BY_LINE
 
   const label = selected ? `${accessibilityLabel} sélectionné` : accessibilityLabel

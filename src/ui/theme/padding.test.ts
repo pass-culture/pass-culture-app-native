@@ -1,14 +1,14 @@
-import { padding } from './padding'
-import { getSpacing } from './spacing'
+import { theme } from 'theme'
 
-describe('padding', () => {
+import { padding } from './padding'
+;-describe('padding', () => {
   it('only top should return all four sides the same', () => {
     const actualPaddingProps = padding(1)
     const expectedPaddingProps = {
-      paddingTop: getSpacing(1),
-      paddingRight: getSpacing(1),
-      paddingBottom: getSpacing(1),
-      paddingLeft: getSpacing(1),
+      paddingTop: theme.designSystem.size.spacing.xs,
+      paddingRight: theme.designSystem.size.spacing.xs,
+      paddingBottom: theme.designSystem.size.spacing.xs,
+      paddingLeft: theme.designSystem.size.spacing.xs,
     }
 
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
@@ -17,10 +17,10 @@ describe('padding', () => {
   it('only top and right should define vertical and horizontal', () => {
     const actualPaddingProps = padding(1, 2)
     const expectedPaddingProps = {
-      paddingTop: getSpacing(1),
-      paddingRight: getSpacing(2),
-      paddingBottom: getSpacing(1),
-      paddingLeft: getSpacing(2),
+      paddingTop: theme.designSystem.size.spacing.xs,
+      paddingRight: theme.designSystem.size.spacing.s,
+      paddingBottom: theme.designSystem.size.spacing.xs,
+      paddingLeft: theme.designSystem.size.spacing.s,
     }
 
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
@@ -29,10 +29,10 @@ describe('padding', () => {
   it('only top, right and bottom should define top, horizontal and bottom', () => {
     const actualPaddingProps = padding(1, 2, 3)
     const expectedPaddingProps = {
-      paddingTop: getSpacing(1),
-      paddingRight: getSpacing(2),
-      paddingBottom: getSpacing(3),
-      paddingLeft: getSpacing(2),
+      paddingTop: theme.designSystem.size.spacing.xs,
+      paddingRight: theme.designSystem.size.spacing.s,
+      paddingBottom: theme.designSystem.size.spacing.m,
+      paddingLeft: theme.designSystem.size.spacing.s,
     }
 
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
@@ -41,10 +41,10 @@ describe('padding', () => {
   it('top, right bottom and left should define all sides', () => {
     const actualPaddingProps = padding(1, 2, 3, 4)
     const expectedPaddingProps = {
-      paddingTop: getSpacing(1),
-      paddingRight: getSpacing(2),
-      paddingBottom: getSpacing(3),
-      paddingLeft: getSpacing(4),
+      paddingTop: theme.designSystem.size.spacing.xs,
+      paddingRight: theme.designSystem.size.spacing.s,
+      paddingBottom: theme.designSystem.size.spacing.m,
+      paddingLeft: theme.designSystem.size.spacing.l,
     }
 
     expect(expectedPaddingProps).toEqual(actualPaddingProps)

@@ -25,7 +25,6 @@ const MOBILE_MIN_WIDTH = '40%'
 const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
 const MOBILE_MAX_WIDTH = '49%'
 const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
-const MOBILE_GAPS_AND_PADDINGS = getSpacing(2)
 
 export const CategoryListModule = ({
   id,
@@ -100,8 +99,8 @@ const StyledView = styled.View(({ theme }) => ({
   ...(theme.isMobileViewport
     ? {
         flexWrap: 'wrap',
-        gap: MOBILE_GAPS_AND_PADDINGS,
-        paddingVertical: MOBILE_GAPS_AND_PADDINGS,
+        gap: theme.designSystem.size.spacing.s,
+        paddingVertical: theme.designSystem.size.spacing.s,
       }
     : {
         gap: DESKTOP_GAPS_AND_PADDINGS,

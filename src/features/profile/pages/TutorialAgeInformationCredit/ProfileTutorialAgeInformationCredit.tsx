@@ -92,7 +92,9 @@ export const ProfileTutorialAgeInformationCredit = () => {
       <React.Fragment>
         <RowView>
           <CreditProgressBar progress={1} width="70%" />
-          <Typo.BodyAccent style={{ paddingHorizontal: getSpacing(2) }}>+</Typo.BodyAccent>
+          <Typo.BodyAccent style={{ paddingHorizontal: designSystem.size.spacing.s }}>
+            +
+          </Typo.BodyAccent>
           <CreditProgressBar
             progress={1}
             width="18%"

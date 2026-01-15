@@ -8,7 +8,6 @@ import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferImageRenderer } from 'features/offer/components/OfferImageContainer/OfferImageRenderer'
-import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -18,7 +17,6 @@ import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing } from 'ui/theme'
 
 import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 
@@ -43,7 +41,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   segment,
   enableVideoABTesting,
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const headerHeight = useGetHeaderHeight()
 
   const progressValue = useSharedValue<number>(0)
@@ -81,7 +79,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       <OfferImageHeaderWrapper
         imageHeight={imageDimensions.backgroundHeight}
         imageUrl={placeholderImage}
-        paddingTop={getSpacing(offerImageContainerMarginTop)}>
+        paddingTop={designSystem.size.spacing.xxl * 4}>
         {children}
       </OfferImageHeaderWrapper>
     )

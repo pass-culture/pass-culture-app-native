@@ -89,7 +89,7 @@ const TitleContainer = styled.View(({ theme }) => ({
 
 const HeaderActionContainer = styled.View<{ justifyContent: 'left' | 'right' }>(
   ({ theme, justifyContent }) => {
-    const headerActionSize = theme.icons.sizes.smaller + getSpacing(2)
+    const headerActionSize = theme.icons.sizes.smaller + theme.designSystem.size.spacing.s
     return {
       flexDirection: 'row',
       alignItems: 'flex-start',
