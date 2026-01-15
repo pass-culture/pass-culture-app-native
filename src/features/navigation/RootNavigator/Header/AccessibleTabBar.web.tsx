@@ -1,4 +1,5 @@
-import React from 'react'
+import { Route } from '@react-navigation/native'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import nativeStyled from 'styled-components/native'
 
@@ -10,14 +11,16 @@ import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigatio
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
-export const AccessibleTabBar = ({ id }: { id: string }) => {
+
+export const AccessibleTabBar: FC<{ id: string; currentRoute?: Route<string> }> = ({
+  id,
+  currentRoute,
+}) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, hideSuggestions } = useSearch()
   const routeBadgeMap = useTabBarItemBadges()
 
-  const isInTabNavigator = tabRoutes.some((route) => route.isSelected)
-
-  if (!isInTabNavigator) return null
+  if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
   return (
     <AccessibleTabBarContainer id={id}>
