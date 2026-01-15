@@ -28,7 +28,6 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
-import { getSpacing } from 'ui/theme'
 
 const isMatching = (searchValue: string, str: string): boolean =>
   str.toLowerCase().includes(searchValue.toLowerCase())
@@ -227,11 +226,11 @@ export function CheatcodesMenu(): React.JSX.Element {
   )
 }
 
-const StyledSearchInput = styled(SearchInput).attrs({
+const StyledSearchInput = styled(SearchInput).attrs(({ theme }) => ({
   containerStyle: {
-    marginBottom: getSpacing(4),
+    marginBottom: theme.designSystem.size.spacing.l,
   },
-})``
+}))``
 
 const StyledView = styled.View(({ theme }) => ({
   width: '100%',

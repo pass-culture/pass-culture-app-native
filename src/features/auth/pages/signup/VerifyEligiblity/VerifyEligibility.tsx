@@ -13,7 +13,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericOfficialPage } from 'ui/pages/GenericOfficialPage'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   useEffect(() => {
@@ -63,5 +63,5 @@ export const VerifyEligibility: FunctionComponent = () => {
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginBottom: getSpacing(4),
+  marginBottom: theme.designSystem.size.spacing.l,
 }))
