@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { DotSize, FirstOrLastProps, StepVariantProps } from 'ui/components/types'
 import { AutomaticVerticalDots } from 'ui/components/VerticalDots/AutomaticVerticalDots'
@@ -146,9 +146,12 @@ interface IconWrapperProps {
   shouldHaveNoSpacing?: boolean
 }
 
-const getVerticalSpacing = ({ addMoreSpacingToIcons, shouldHaveNoSpacing }: IconWrapperProps) => {
+const getVerticalSpacing = (
+  { addMoreSpacingToIcons, shouldHaveNoSpacing }: IconWrapperProps,
+  theme: DefaultTheme
+) => {
   if (addMoreSpacingToIcons) {
-    return getSpacing(2.5)
+    return theme.designSystem.size.spacing.m
   }
   if (shouldHaveNoSpacing) {
     return 0
@@ -156,8 +159,8 @@ const getVerticalSpacing = ({ addMoreSpacingToIcons, shouldHaveNoSpacing }: Icon
   return getSpacing(0.5)
 }
 
-const IconWrapper = styled.View<IconWrapperProps>((props) => ({
-  marginVertical: getVerticalSpacing(props),
+const IconWrapper = styled.View<IconWrapperProps>(({ theme, ...props }) => ({
+  marginVertical: getVerticalSpacing(props, theme),
 }))
 
 const StepperValidateSuccess = styled(StepperValidate).attrs(({ theme }) => ({
