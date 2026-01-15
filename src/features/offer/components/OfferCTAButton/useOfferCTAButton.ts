@@ -74,7 +74,7 @@ export const useOfferCTAButton = (
 
   const onPress = () => {
     onPressCTA?.()
-    showOfferModal()
+    if (modalToDisplay) showOfferModal()
   }
 
   const onPressSecondary = () => {
