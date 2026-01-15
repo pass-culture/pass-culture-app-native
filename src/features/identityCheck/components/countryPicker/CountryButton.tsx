@@ -45,12 +45,12 @@ export const CountryButton = ({ country, selectedCountry, onCountrySelect }: Pro
   )
 }
 
-const CountryContainer = styled(View)({
+const CountryContainer = styled(View)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingVertical: getSpacing(3),
+  paddingVertical: theme.designSystem.size.spacing.m,
   paddingHorizontal: getSpacing(1),
-})
+}))
 
 const CountryName = styled(Typo.BodyAccent)(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.s,

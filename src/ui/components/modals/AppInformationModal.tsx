@@ -73,7 +73,7 @@ const Container = styled(ViewGap)(({ theme }) => ({
   paddingBottom: getSpacing(8),
   width: theme.isMobileViewport
     ? theme.appContentWidth - getSpacing(8)
-    : theme.breakpoints.sm - getSpacing(3),
+    : theme.breakpoints.sm - theme.designSystem.size.spacing.m,
 }))
 
 const Content = styled.View(({ theme }) => ({

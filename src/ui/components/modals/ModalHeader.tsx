@@ -82,7 +82,7 @@ const Container = styled(View)<{ modalSpacing?: ModalSpacing }>(({ modalSpacing 
 
 const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
-  paddingHorizontal: getSpacing(3),
+  paddingHorizontal: theme.designSystem.size.spacing.m,
   flex: 1,
   zIndex: theme.zIndex.modalHeader,
 }))
