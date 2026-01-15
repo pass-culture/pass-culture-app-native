@@ -466,7 +466,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
       </Main>
       {showTabBar ? (
         <View accessibilityRole={AccessibilityRole.FOOTER}>
-          <AccessibleTabBar id={tabBarId} />
+          <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} />
         </View>
       ) : null}
       {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
