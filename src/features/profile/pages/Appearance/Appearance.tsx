@@ -1,14 +1,20 @@
 import React from 'react'
-import { Platform, View } from 'react-native'
+import { Platform, View, useColorScheme as useSystemColorScheme } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
+import { getPlatformLabel } from 'libs/analytics/getPlatformLabel'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { colorSchemeActions, ColorScheme, useStoredColorScheme } from 'libs/styled/useColorScheme'
+import {
+  colorSchemeActions,
+  ColorScheme,
+  getResolvedColorScheme,
+  useStoredColorScheme,
+} from 'libs/styled/useColorScheme'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -37,6 +43,7 @@ export const Appearance = () => {
   )
 
   const selectedTheme = useStoredColorScheme()
+  const systemScheme = useSystemColorScheme()
   const radioGroupLabel = 'Thème'
 
   const themeOptions: Array<
@@ -71,7 +78,15 @@ export const Appearance = () => {
   const handleSelectTheme = (label: string) => {
     const next = themeOptions.find((option) => option.label === label)
     if (!next) return
+    if (next.value === selectedTheme) return
+
     colorSchemeActions.setColorScheme({ colorScheme: next.value })
+    const themeSetting = getResolvedColorScheme(next.value, systemScheme)
+
+    const systemTheme = systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
+    const platform = getPlatformLabel()
+
+    void analytics.logUpdateAppTheme({ themeSetting, systemTheme, platform })
   }
 
   const handleGroupChange = (label: string) => handleSelectTheme(label)

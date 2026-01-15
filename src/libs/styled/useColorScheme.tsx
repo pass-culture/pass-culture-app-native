@@ -36,6 +36,16 @@ const colorSchemeStore = createStore({
 export const colorSchemeActions = colorSchemeStore.actions
 export const useStoredColorScheme: () => ColorScheme = colorSchemeStore.hooks.useColorScheme
 
+export const getResolvedColorScheme = (
+  storedScheme: ColorScheme,
+  systemScheme: 'light' | 'dark' | null | undefined
+): ColorSchemeType => {
+  if (storedScheme === ColorScheme.LIGHT || storedScheme === ColorScheme.DARK) {
+    return storedScheme
+  }
+  return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
+}
+
 export const useColorScheme = (): ColorSchemeType => {
   const storedScheme = useStoredColorScheme()
   const systemScheme = useSystemColorScheme()
@@ -47,9 +57,5 @@ export const useColorScheme = (): ColorSchemeType => {
 
   const userPreference = storedScheme ?? ColorScheme.SYSTEM
 
-  if (userPreference === ColorScheme.SYSTEM) {
-    return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
-  }
-
-  return userPreference
+  return getResolvedColorScheme(userPreference, systemScheme)
 }
