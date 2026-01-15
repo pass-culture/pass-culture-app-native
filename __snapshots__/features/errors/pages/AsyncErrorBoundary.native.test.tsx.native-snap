@@ -52,7 +52,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
           {
             "left": 24,
             "position": "absolute",
-            "top": 30,
+            "top": 32,
             "zIndex": 1,
           },
         ],

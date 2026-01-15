@@ -109,14 +109,14 @@ const ContentContainer = styled.View(({ theme }) => ({
 
 const LeftContainer = styled(ContentContainer)(({ theme }) => ({
   borderLeftWidth: 1,
-  borderTopLeftRadius: theme.designSystem.size.spacing.s,
-  borderBottomLeftRadius: theme.designSystem.size.spacing.s,
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.m,
+  borderBottomLeftRadius: theme.designSystem.size.borderRadius.m,
 }))
 
 const RightContainer = styled(ContentContainer)(({ theme }) => ({
   borderRightWidth: 1,
-  borderTopRightRadius: theme.designSystem.size.spacing.s,
-  borderBottomRightRadius: theme.designSystem.size.spacing.s,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.m,
+  borderBottomRightRadius: theme.designSystem.size.borderRadius.m,
   flex: 1,
   paddingLeft: theme.designSystem.size.spacing.xs,
 }))
