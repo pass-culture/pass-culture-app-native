@@ -68,7 +68,6 @@ export const CountryPicker: React.FC<{
         accessibilityHint={error?.message}
         testID="Entrée pour le pays de naissance"
         autoComplete="country"
-        textContentType="countryName"
         requiredIndicator="explicit"
       />
       {valueInput && valueInput.length != 0 ? (

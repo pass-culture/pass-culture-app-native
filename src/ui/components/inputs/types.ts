@@ -100,7 +100,6 @@ export type RNTextInputProps = Pick<
   | 'secureTextEntry'
   | 'selectionColor'
   | 'selectTextOnFocus'
-  | 'textContentType'
   | 'value'
   | 'multiline'
   | 'enablesReturnKeyAutomatically'
@@ -178,7 +177,6 @@ export function getRNTextInputProps(props: TextInputNativeProps): RNTextInputPro
     secureTextEntry: props.secureTextEntry,
     selectionColor: props.selectionColor,
     selectTextOnFocus: props.selectTextOnFocus,
-    textContentType: props.textContentType,
     testID: props.testID,
     value: props.value,
     nativeAutoFocus: props.nativeAutoFocus,

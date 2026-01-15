@@ -89,6 +89,7 @@ export const ChangeEmailSetPassword = () => {
             <PasswordInputController
               name="newPassword"
               label="Mot de passe"
+              autocomplete="new-password"
               control={control}
               requiredIndicator="explicit"
               withSecurityRules
@@ -98,6 +99,7 @@ export const ChangeEmailSetPassword = () => {
           <Container>
             <PasswordInputController
               name="confirmedPassword"
+              autocomplete="new-password"
               label="Confirmer le mot de passe"
               control={control}
               requiredIndicator="explicit"

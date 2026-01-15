@@ -14,6 +14,7 @@ interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputPr
   control: Control<TFieldValues>
   withSecurityRules?: boolean
   securityRulesAlwaysVisible?: boolean
+  autocomplete: 'new-password' | 'current-password'
 }
 
 export const PasswordInputController = <
@@ -24,6 +25,7 @@ export const PasswordInputController = <
   control,
   withSecurityRules = false,
   securityRulesAlwaysVisible = false,
+  autocomplete,
   ...otherPasswordInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   const passwordInputErrorId = uuidv4()
@@ -46,6 +48,7 @@ export const PasswordInputController = <
           <React.Fragment>
             <PasswordInput
               ref={ref}
+              autocomplete={autocomplete}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}

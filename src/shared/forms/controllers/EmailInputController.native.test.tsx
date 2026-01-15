@@ -96,6 +96,7 @@ const renderEmailInputController = ({
       <EmailInputController
         control={control}
         name="email"
+        autoComplete="email"
         label="ton adresse email"
         withSpellingHelp={withSpellingHelp}
         onSpellingHelpPress={onSpellingHelpPress}

@@ -395,7 +395,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
                       }
                       testID="Entrée pour l’adresse"
                       textAlignVertical="center"
-                      textContentType="fullStreetAddress"
                       value=""
                     />
                   </View>

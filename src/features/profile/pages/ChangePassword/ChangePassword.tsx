@@ -135,12 +135,14 @@ export function ChangePassword() {
               name="currentPassword"
               label="Mot de passe actuel"
               requiredIndicator="explicit"
+              autocomplete="current-password"
             />
           </OldPasswordContainer>
           <PasswordInputController
             control={control}
             name="newPassword"
             label="Nouveau mot de passe"
+            autocomplete="new-password"
             withSecurityRules
             requiredIndicator="explicit"
           />
@@ -148,6 +150,7 @@ export function ChangePassword() {
             <PasswordInputController
               control={control}
               name="confirmedPassword"
+              autocomplete="new-password"
               label="Confirmer le mot de passe"
               requiredIndicator="explicit"
             />

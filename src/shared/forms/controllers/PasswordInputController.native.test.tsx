@@ -98,6 +98,7 @@ const renderPasswordInputController = ({
     error && setError('password', error)
     return (
       <PasswordInputController
+        autocomplete="current-password"
         control={control}
         name="password"
         withSecurityRules={withSecurityRules}

@@ -154,7 +154,6 @@ export const SetPhoneValidationCode = () => {
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
                 autoComplete="one-time-code"
-                textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
                 accessibilityHint={errorMessage}
                 testID="Entrée pour le code reçu par sms"

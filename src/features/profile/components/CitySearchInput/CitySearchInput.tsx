@@ -142,7 +142,6 @@ export const CitySearchInput = ({
                 accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
                 autoComplete="postal-code"
-                textContentType="postalCode"
                 requiredIndicator={requiredIndicator}
               />
               <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
