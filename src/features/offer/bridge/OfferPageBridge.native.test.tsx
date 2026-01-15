@@ -12,7 +12,7 @@ jest.mock('features/offer/pages/Offer/Offer', () => ({
   },
 }))
 
-jest.mock('features/offerRefacto/pages/Offer/Offer', () => ({
+jest.mock('features/offerRefacto/pages/OfferPage', () => ({
   Offer: () => {
     const { View } = jest.requireActual('react-native')
     return <View testID="offerRefacto" />
