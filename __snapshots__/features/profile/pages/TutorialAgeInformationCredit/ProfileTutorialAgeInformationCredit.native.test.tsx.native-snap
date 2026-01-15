@@ -142,7 +142,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 shouldHaveNoSpacing={false}
                 style={
                   {
-                    "marginVertical": 10,
+                    "marginVertical": 12,
                   }
                 }
               >
@@ -467,7 +467,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 shouldHaveNoSpacing={false}
                 style={
                   {
-                    "marginVertical": 10,
+                    "marginVertical": 12,
                   }
                 }
               >
@@ -870,7 +870,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 shouldHaveNoSpacing={false}
                 style={
                   {
-                    "marginVertical": 10,
+                    "marginVertical": 12,
                   }
                 }
               >

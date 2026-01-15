@@ -87,7 +87,7 @@ const ContainerStrokedLine = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   justifyContent: 'center',
   alignContent: 'center',
-  paddingHorizontal: getSpacing(3.5),
+  paddingHorizontal: theme.designSystem.size.spacing.l,
 }))
 
 const ContentBlock = styled.View(({ theme }) => ({

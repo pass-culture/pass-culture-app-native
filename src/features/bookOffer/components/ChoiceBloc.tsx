@@ -87,7 +87,7 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
     backgroundColor: selected
       ? theme.designSystem.color.background.brandPrimary
       : theme.designSystem.color.background.default,
-    paddingHorizontal: getSpacing(3.25),
+    paddingHorizontal: theme.designSystem.size.spacing.m,
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: selected ? undefined : getSpacing(5),

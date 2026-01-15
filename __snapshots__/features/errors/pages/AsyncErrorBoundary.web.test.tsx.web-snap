@@ -73,7 +73,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
 
 .c1 {
   position: absolute;
-  top: 30px;
+  top: 32px;
   left: 24px;
   z-index: 1;
 }
