@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { styled } from 'styled-components/native'
 
+import { CurrencyEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
@@ -27,6 +29,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const BonificationExplanations = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings } = useSettingsContext()
+  const { user } = useAuthContext()
+  const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const bonificationAmount = formatCurrencyFromCents(
@@ -35,6 +39,10 @@ export const BonificationExplanations = () => {
     euroToPacificFrancRate
   )
   const familyQuotientLevel = settings?.bonification.qfThreshold || 700
+
+  const bannerLabel = isUserRegisteredInPacificFrancRegion
+    ? 'Si tu habites en Nouvelle-Calédonie, tu ne pourras malheureusement pas bénéficier du bonus.'
+    : 'Si ce n’est pas ton cas, ta demande sera refusée.'
 
   return (
     <PageWithHeader
@@ -56,10 +64,7 @@ export const BonificationExplanations = () => {
                 {` quotient familial inférieur à ${familyQuotientLevel}.`}
               </Typo.BodyAccent>
             </Typo.Body>
-            <Banner
-              label="Si ce n’est pas ton cas, ta demande sera refusée."
-              Icon={WarningFilled}
-            />
+            <Banner label={bannerLabel} Icon={WarningFilled} />
             <Typo.Body>
               Remplis les informations de ton parent ou représentant légal pour savoir si tu peux en
               bénéficier.
