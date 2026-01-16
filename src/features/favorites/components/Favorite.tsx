@@ -180,21 +180,13 @@ export const Favorite: React.FC<Props> = (props) => {
           accessibilityLabel={accessibilityLabel}
           as={ButtonPrimary}
           icon={ExternalSite}
-          buttonHeight="tall"
         />
       )
     const onPressBookingButton = () => {
       buttonProperties?.onPress?.()
       showBookOfferModal()
     }
-    return (
-      <ButtonPrimary
-        wording={wording}
-        disabled={disabled}
-        onPress={onPressBookingButton}
-        buttonHeight="tall"
-      />
-    )
+    return <ButtonPrimary wording={wording} disabled={disabled} onPress={onPressBookingButton} />
   }, [buttonProperties, showBookOfferModal])
 
   return (
@@ -235,7 +227,6 @@ export const Favorite: React.FC<Props> = (props) => {
                 wording="Supprimer"
                 accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
                 onPress={onRemove}
-                buttonHeight="tall"
                 disabled={isPending}
               />
             </ButtonContainer>

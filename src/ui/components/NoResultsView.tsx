@@ -37,21 +37,20 @@ export const NoResultsView = ({
         </Container>
       ) : null}
       <ContentContainer gap={4} {...props}>
-        {Icon ? (
-          <Icon color={designSystem.color.icon.subtle} size={illustrations.sizes.fullPage} />
-        ) : null}
-        <StyledBody>{explanations}</StyledBody>
+        <ContainerText>
+          {Icon ? (
+            <Icon color={designSystem.color.icon.subtle} size={illustrations.sizes.fullPage} />
+          ) : null}
+          <StyledBody>{explanations}</StyledBody>
+        </ContainerText>
         {offline ? null : (
-          <ButtonContainer>
-            <InternalTouchableLink
-              as={ButtonPrimary}
-              navigateTo={getSearchPropConfig('SearchLanding')}
-              wording="Découvrir le catalogue"
-              onBeforeNavigate={onPressExploreOffers}
-              buttonHeight="tall"
-              icon={MagnifyingGlass}
-            />
-          </ButtonContainer>
+          <InternalTouchableLink
+            as={ButtonPrimary}
+            navigateTo={getSearchPropConfig('SearchLanding')}
+            wording="Découvrir le catalogue"
+            onBeforeNavigate={onPressExploreOffers}
+            icon={MagnifyingGlass}
+          />
         )}
       </ContentContainer>
     </React.Fragment>
@@ -80,8 +79,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const ButtonContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-  marginTop: theme.designSystem.size.spacing.s,
-  width: '100%',
+const ContainerText = styled.View(({ theme }) => ({
+  alignItems: 'center',
+  marginBottom: theme.designSystem.size.spacing.l,
+  maxWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
 }))
