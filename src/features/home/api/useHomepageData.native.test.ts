@@ -36,26 +36,26 @@ describe('getHomepageId', () => {
   })
 
   it.each`
-    isLoggedIn | isFreeBeneficiary | isBeneficiary | hasBookings | onboardingRole                 | expectedHomeEntry
-    ${true}    | ${false}          | ${true}       | ${true}     | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdBeneficiary}
-    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.EIGHTEEN} | ${mockConfig.homeEntryIdBeneficiary}
-    ${true}    | ${false}          | ${true}       | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdWithoutBooking}
-    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNDERAGE} | ${mockConfig.homeEntryIdFreeBeneficiary}
-    ${true}    | ${true}           | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdFreeBeneficiary}
-    ${false}   | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
-    ${true}    | ${false}          | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+    isLoggedIn | isFreeBeneficiaryOrEligible | isBeneficiary | hasBookings | onboardingRole                 | expectedHomeEntry
+    ${true}    | ${false}                    | ${true}       | ${true}     | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdBeneficiary}
+    ${false}   | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.EIGHTEEN} | ${mockConfig.homeEntryIdBeneficiary}
+    ${true}    | ${false}                    | ${true}       | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdWithoutBooking}
+    ${false}   | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNDERAGE} | ${mockConfig.homeEntryIdFreeBeneficiary}
+    ${true}    | ${true}                     | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdFreeBeneficiary}
+    ${false}   | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
+    ${true}    | ${false}                    | ${false}      | ${false}    | ${UserOnboardingRole.UNKNOWN}  | ${mockConfig.homeEntryIdGeneral}
   `(
-    `should return remote config $expectedHomeEntry when isLoggedIn=$isLoggedIn, isFreeBeneficiary=$isFreeBeneficiary, isBeneficiary, hasBookings=$hasBookings, onboardingRole=$onboardingRole`,
+    `should return remote config $expectedHomeEntry when isLoggedIn=$isLoggedIn, isFreeBeneficiaryOrEligible=$isFreeBeneficiaryOrEligible, isBeneficiary, hasBookings=$hasBookings, onboardingRole=$onboardingRole`,
     ({
       isLoggedIn,
-      isFreeBeneficiary,
+      isFreeBeneficiaryOrEligible,
       isBeneficiary,
       hasBookings,
       onboardingRole,
       expectedHomeEntry,
     }: {
       isLoggedIn: boolean
-      isFreeBeneficiary: boolean
+      isFreeBeneficiaryOrEligible: boolean
       isBeneficiary: boolean
       hasBookings: boolean
       onboardingRole: UserOnboardingRole
@@ -64,7 +64,7 @@ describe('getHomepageId', () => {
       const homeId = getHomepageId(
         {
           isLoggedIn,
-          isFreeBeneficiary,
+          isFreeBeneficiaryOrEligible,
           isBeneficiary,
           hasBookings,
           onboardingRole,
