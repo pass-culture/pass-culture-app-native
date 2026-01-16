@@ -27,21 +27,21 @@ export const UbbleWebview: React.FC = () => {
     const status = parsedUrlParams['status']
     const event = parsedUrlParams['event']
     if (event === 'identity_verification_capture_aborted') {
-      analytics.logIdentityCheckAbort({
+      void analytics.logIdentityCheckAbort({
         method: IdentityCheckMethod.ubble,
         reason: event,
         errorType: parsedUrlParams['response_code'] ?? null,
       })
-      navigateToHome()
+      navigate(...getSubscriptionHookConfig('Stepper'))
     } else if (status === 'aborted') {
-      analytics.logIdentityCheckAbort({
+      void analytics.logIdentityCheckAbort({
         method: IdentityCheckMethod.ubble,
         reason: parsedUrlParams['return_reason'] ?? null,
         errorType: parsedUrlParams['error_type'] ?? null,
       })
       navigateToHome()
     } else if (url.includes(REDIRECT_URL_UBBLE)) {
-      analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
+      void analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
       navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
     }
   }
