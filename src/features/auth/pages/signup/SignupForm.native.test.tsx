@@ -738,17 +738,19 @@ describe('Signup Form', () => {
     })
 
     it('should directly go to birthday step when account creation token is in route params', async () => {
-      useRoute.mockReturnValueOnce({
+      // eslint-disable-next-line local-rules/independent-mocks
+      useRoute.mockReturnValue({
         params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
       })
 
       await renderSignupForm()
 
-      expect(await screen.findByText('Renseigne ta date de naissance')).toBeOnTheScreen()
+      expect(await screen.findByText('Date de naissance')).toBeOnTheScreen()
     })
 
     it('should create SSO account when clicking on AcceptCgu button and coming from login', async () => {
-      useRoute.mockReturnValueOnce({
+      // eslint-disable-next-line local-rules/independent-mocks
+      useRoute.mockReturnValue({
         params: {
           accountCreationToken: 'accountCreationToken',
           email: 'user@gmail.com',

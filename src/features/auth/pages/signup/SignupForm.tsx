@@ -53,11 +53,11 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
     (newStepIndex: number | ((prev: number) => number)) => {
       setStepIndex((prev) => {
         const value = typeof newStepIndex === 'function' ? newStepIndex(prev) : newStepIndex
-        setParams({ ...params, stepIndex: value })
+        setParams({ stepIndex: value })
         return value
       })
     },
-    [params, setParams]
+    [setParams]
   )
 
   const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)
@@ -98,10 +98,10 @@ export const SignupForm: FunctionComponent<{ currentStep?: number }> = ({ curren
   const stepperAnalyticsType = isSSOSubscription ? ssoType : undefined
 
   useEffect(() => {
-    if (accountCreationToken) {
+    if (accountCreationToken && isFirstStep) {
       goToNextStep({ accountCreationToken })
     }
-  }, [accountCreationToken, goToNextStep])
+  }, [accountCreationToken, goToNextStep, isFirstStep])
 
   useEffect(() => {
     if (params?.from && stepConfig?.name) {
