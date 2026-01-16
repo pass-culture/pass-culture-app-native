@@ -97,7 +97,7 @@ const FooterComponent = ({
     return (
       <React.Fragment>
         <footer>
-          <AccessibilityFooter />
+          <AccessibilityFooter withHorizontalMargin />
         </footer>
         <Spacer.TabBar />
       </React.Fragment>
