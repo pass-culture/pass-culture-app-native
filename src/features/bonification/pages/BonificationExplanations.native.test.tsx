@@ -18,7 +18,7 @@ describe('BonificationExplanations', () => {
     setFeatureFlags()
   })
 
-  it('Should navigate to form when pressing "Continuer"', async () => {
+  it('should navigate to form when pressing "Continuer"', async () => {
     render(<BonificationExplanations />)
 
     const button = screen.getByText('Continuer')
@@ -30,7 +30,7 @@ describe('BonificationExplanations', () => {
     })
   })
 
-  it('Should navigate to CAF when pressing "Plus d’infos sur le quotient familial"', async () => {
+  it('should navigate to CAF when pressing "Plus d’infos sur le quotient familial"', async () => {
     render(<BonificationExplanations />)
 
     const button = screen.getByText('Plus d’infos sur le quotient familial')
@@ -43,7 +43,7 @@ describe('BonificationExplanations', () => {
     )
   })
 
-  it('Should go back when pressing go back button', async () => {
+  it('should go back when pressing go back button', async () => {
     render(<BonificationExplanations />)
 
     const button = screen.getByLabelText('Revenir en arrière')
@@ -52,13 +52,13 @@ describe('BonificationExplanations', () => {
     expect(goBack).toHaveBeenCalledTimes(1)
   })
 
-  it('Should show banner to users with euro currency', async () => {
+  it('should show banner to users with euro currency', async () => {
     render(<BonificationExplanations />)
 
     expect(screen.getByText('Si ce n’est pas ton cas, ta demande sera refusée.')).toBeTruthy()
   })
 
-  it('Should show banner to users with pacific franc currency', async () => {
+  it('should show banner to users with pacific franc currency', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       currency: CurrencyEnum.XPF,
