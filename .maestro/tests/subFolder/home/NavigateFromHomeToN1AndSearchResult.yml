@@ -14,6 +14,11 @@ appId: ${MAESTRO_APP_ID}
 - pressKey: back
 
 - tapOn:
+    label: Accès à la Home N-1 CINÉMA
+    text: "CINÉMA"
+- pressKey: back
+
+- tapOn:
     label: Accès à la Home N-1 LECTURE
     text: "LECTURE"
 - pressKey: back
