@@ -7,17 +7,14 @@ import { BeneficiaryAndEligibleForUpgradeHeader } from 'features/profile/compone
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { getAge } from 'shared/user/getAge'
 import { Spacer } from 'ui/theme'
 
 type ProfileHeaderProps = {
-  featureFlags: {
-    disableActivation: boolean
-    enablePassForAll: boolean
-  }
   user?: UserProfileResponseWithoutSurvey
-}
+} & ProfileFeatureFlagsProps
 
 export function ProfileHeader(props: ProfileHeaderProps) {
   const { featureFlags, user } = props
@@ -25,7 +22,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
-      return <LoggedOutHeader featureFlags={{ enablePassForAll: featureFlags.enablePassForAll }} />
+      return <LoggedOutHeader featureFlags={featureFlags} />
     }
 
     if (
@@ -67,6 +64,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           domainsCredit={user.domainsCredit}
           depositExpirationDate={user.depositExpirationDate ?? undefined}
           eligibility={user.eligibility}
+          featureFlags={featureFlags}
         />
         <Spacer.Column numberOfSpaces={4} />
       </React.Fragment>

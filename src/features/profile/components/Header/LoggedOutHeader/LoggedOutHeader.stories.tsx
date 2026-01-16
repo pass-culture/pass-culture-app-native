@@ -12,7 +12,16 @@ const meta: Meta<typeof LoggedOutHeader> = {
 export default meta
 
 const variantConfig: Variants<typeof LoggedOutHeader> = [
-  { label: 'LoggedOutHeader', props: { featureFlags: { enablePassForAll: true } } },
+  {
+    label: 'LoggedOutHeader',
+    props: {
+      featureFlags: {
+        enablePassForAll: true,
+        enableProfileV2: false,
+        disableActivation: false,
+      },
+    },
+  },
 ]
 
 export const Template: VariantsStory<typeof LoggedOutHeader> = {

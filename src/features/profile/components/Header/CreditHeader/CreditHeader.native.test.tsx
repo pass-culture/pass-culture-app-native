@@ -220,6 +220,7 @@ const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
       lastName="Bonheur"
       depositExpirationDate={dateInFuture}
       domainsCredit={domains_credit_v3}
+      featureFlags={{ enablePassForAll: false, enableProfileV2: false, disableActivation: false }}
       {...props}
     />
   )

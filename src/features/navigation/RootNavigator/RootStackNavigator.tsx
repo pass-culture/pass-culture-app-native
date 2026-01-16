@@ -1,7 +1,7 @@
 import { Route } from '@react-navigation/native'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -464,11 +464,7 @@ export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ curr
       <Main nativeID={mainId} accessibilityRole={mainAccessibilityRole}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
-      {showTabBar ? (
-        <View accessibilityRole={AccessibilityRole.FOOTER}>
-          <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} />
-        </View>
-      ) : null}
+      {showTabBar ? <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} /> : null}
       {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden ? <PrivacyPolicy /> : null}
     </TabNavigationStateProvider>

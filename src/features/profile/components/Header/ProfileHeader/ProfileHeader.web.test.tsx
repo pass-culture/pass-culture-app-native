@@ -17,6 +17,12 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+const featureFlags = {
+  disableActivation: false,
+  enablePassForAll: false,
+  enableProfileV2: false,
+}
+
 describe('ProfileHeader', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -24,34 +30,19 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    render(
-      <ProfileHeader
-        featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={beneficiaryUser}
-      />
-    )
+    render(<ProfileHeader featureFlags={featureFlags} user={beneficiaryUser} />)
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeInTheDocument()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    render(
-      <ProfileHeader
-        featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={exBeneficiaryUser}
-      />
-    )
+    render(<ProfileHeader featureFlags={featureFlags} user={exBeneficiaryUser} />)
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
   })
 
   it('should not display achievement banner', () => {
-    render(
-      <ProfileHeader
-        featureFlags={{ disableActivation: false, enablePassForAll: false }}
-        user={beneficiaryUser}
-      />
-    )
+    render(<ProfileHeader featureFlags={featureFlags} user={beneficiaryUser} />)
 
     const achievementBannerTitle = screen.queryByText('Mes succès')
 

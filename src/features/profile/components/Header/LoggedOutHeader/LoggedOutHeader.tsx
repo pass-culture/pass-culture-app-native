@@ -1,32 +1,28 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
-  analytics.logProfilSignUp()
-  analytics.logSignUpClicked({ from: 'profile' })
+  void analytics.logProfilSignUp()
+  void analytics.logSignUpClicked({ from: 'profile' })
 }
 
-type Props = {
-  featureFlags: {
-    enablePassForAll: boolean
-  }
-}
-
-export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
+export const LoggedOutHeader = ({ featureFlags }: ProfileFeatureFlagsProps) => {
   const { isDesktopViewport, designSystem } = useTheme()
 
   return (
     <HeaderWithGreyContainer
       title="Mon profil"
-      subtitle={featureFlags.enablePassForAll ? undefined : 'Tu as 17 ou 18 ans\u00a0?'}>
+      subtitle={featureFlags.enablePassForAll ? undefined : 'Tu as 17 ou 18 ans\u00a0?'}
+      featureFlags={featureFlags}>
       <Typo.Body>
         Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18
         ans&nbsp;?

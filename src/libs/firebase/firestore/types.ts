@@ -42,10 +42,11 @@ export type Maintenance =
     }
 
 export enum RemoteStoreFeatureFlags {
-  DISABLE_ACTIVATION = 'disableActivation',
+  DARK_MODE_GTM = 'darkModeGTM',
   DISABLE_ACHIEVEMENTS_SUCCESS_MODAL = 'disableAchievementsSuccessModal',
-  ENABLE_BOOKING_FREE_OFFER_15_16 = 'enableBookingFreeOfferFifteenSixteen',
+  DISABLE_ACTIVATION = 'disableActivation',
   ENABLE_BONIFICATION = 'enableBonification',
+  ENABLE_BOOKING_FREE_OFFER_15_16 = 'enableBookingFreeOfferFifteenSixteen',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_DEBUG_SECTION = 'enableDebugSection',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
@@ -53,6 +54,7 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_MANDATORY_UPDATE_PERSONAL_DATA = 'enableMandatoryUpdatePersonalData',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
+  ENABLE_PROFILE_V2 = 'enableProfileV2',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   ENABLE_VENUES_FROM_OFFER_INDEX = 'enableVenuesFromOfferIndex',
   ENABLE_VIDEO_AB_TESTING = 'enableVideoABTesting',
@@ -71,9 +73,8 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_IS_OPEN_TO_PUBLIC = 'wipIsOpenToPublic',
-  DARK_MODE_GTM = 'darkModeGTM',
-  WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
+  WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
   WIP_OFFER_MULTI_ARTISTS = 'wipOfferMultiArtists',
   WIP_OFFER_REFACTO = 'wipOfferRefacto',

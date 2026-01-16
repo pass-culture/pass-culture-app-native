@@ -15,6 +15,7 @@ import { HeaderWithGreyContainer } from 'features/profile/components/Header/Head
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { setDateOneDayEarlier } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -33,7 +34,7 @@ export type CreditHeaderProps = {
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
   eligibility?: EligibilityType | null
-}
+} & ProfileFeatureFlagsProps
 
 export function CreditHeader({
   firstName,
@@ -42,6 +43,7 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
   eligibility,
+  featureFlags,
 }: CreditHeaderProps) {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
@@ -105,7 +107,8 @@ export function CreditHeader({
         title={name}
         bannerText={bannerText}
         subtitle={<Subtitle {...subtitleProps} />}
-        withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
+        withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}
+        featureFlags={featureFlags}>
         {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (
           <InternalTouchableLink
             navigateTo={{
