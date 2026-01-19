@@ -34,7 +34,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@main
-        if: ${{ inputs.ENV != 'production' }}
       - name: Setup yarn
         run: npm install -g yarn
       - name: Enable Corepack
