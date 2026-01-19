@@ -39,6 +39,7 @@ import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'l
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { LocationMode } from 'libs/location/types'
+import { ColorSchemeType } from 'libs/styled/useColorScheme'
 import { PageTrackingInfo } from 'shared/tracking/TrackingManager'
 
 type ConsultHomeParams = { homeEntryId: string }
@@ -96,6 +97,19 @@ export const logEventAnalytics = {
     venueId?: number
     apiRecoParams?: RecommendationApiParams
   }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
+  logAppThemeStatus: (params: {
+    themeSetting: ColorSchemeType
+    systemTheme: ColorSchemeType
+    platform: typeof Platform.OS
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.APP_THEME_STATUS },
+      {
+        platform: params.platform,
+        system_theme: params.systemTheme,
+        theme_setting: params.themeSetting,
+      }
+    ),
   logApplyVenueMapFilter: (params: { venueType: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.APPLY_VENUE_MAP_FILTER }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
@@ -301,6 +315,7 @@ export const logEventAnalytics = {
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
   logCopyAddress: (params: { from: Referrals; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.COPY_ADDRESS }, params),
+
   logCulturalSurveyScrolledToBottom: (params: { questionId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>
@@ -666,6 +681,19 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logUpdateAddress: (params: { newAddress: string; oldAddress: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.UPDATE_ADDRESS }, params),
+  logUpdateAppTheme: (params: {
+    themeSetting: ColorSchemeType
+    systemTheme: ColorSchemeType
+    platform: typeof Platform.OS
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.UPDATE_APP_THEME },
+      {
+        platform: params.platform,
+        system_theme: params.systemTheme,
+        theme_setting: params.themeSetting,
+      }
+    ),
   logUpdatePostalCode: (params: {
     oldCity: string
     oldPostalCode: string

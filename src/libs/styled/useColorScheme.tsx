@@ -4,13 +4,12 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { createStore } from 'libs/store/createStore'
 
-export enum ColorScheme {
-  LIGHT = 'light',
-  DARK = 'dark',
-  SYSTEM = 'system',
-}
+import { getResolvedColorScheme } from './getResolvedColorScheme'
+import { ColorScheme, ColorSchemeType } from './types'
 
-export type ColorSchemeType = ColorScheme.LIGHT | ColorScheme.DARK
+export { ColorScheme } from './types'
+export type { ColorSchemeType } from './types'
+export { getResolvedColorScheme } from './getResolvedColorScheme'
 
 type State = { colorScheme: ColorScheme }
 
@@ -47,9 +46,5 @@ export const useColorScheme = (): ColorSchemeType => {
 
   const userPreference = storedScheme ?? ColorScheme.SYSTEM
 
-  if (userPreference === ColorScheme.SYSTEM) {
-    return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
-  }
-
-  return userPreference
+  return getResolvedColorScheme(userPreference, systemScheme)
 }
