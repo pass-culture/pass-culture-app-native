@@ -1,8 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useEffect, useRef } from 'react'
-import { useColorScheme as useSystemColorScheme } from 'react-native'
+import { Platform, useColorScheme as useSystemColorScheme } from 'react-native'
 
-import { getPlatformLabel } from 'libs/analytics/getPlatformLabel'
 import { analytics } from 'libs/analytics/provider'
 import { ThemeProvider } from 'libs/styled'
 import {
@@ -53,8 +52,8 @@ export const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children
         systemScheme
       )
       const systemTheme = systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
-      const platform = getPlatformLabel()
-      void analytics.logAppThemeStatus({ themeSetting, systemTheme, platform })
+
+      void analytics.logAppThemeStatus({ themeSetting, systemTheme, platform: Platform.OS })
       hasLoggedThemeOnLaunch.current = true
     }
 

@@ -68,7 +68,7 @@ describe('Appearance', () => {
     await user.press(screen.getByLabelText('Mode sombre'))
 
     expect(logUpdateAppThemeSpy).toHaveBeenCalledWith({
-      platform: 'iOS',
+      platform: 'ios',
       systemTheme: ColorScheme.DARK,
       themeSetting: ColorScheme.DARK,
     })

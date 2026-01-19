@@ -4,12 +4,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
 
-import {
-  ColorScheme,
-  colorSchemeActions,
-  getResolvedColorScheme,
-  useColorScheme,
-} from './useColorScheme'
+import { ColorScheme, colorSchemeActions, useColorScheme } from './useColorScheme'
 
 const useColorSchemeSpy = jest.spyOn(ReactNative, 'useColorScheme')
 useColorSchemeSpy.mockReturnValue(ColorScheme.LIGHT)
@@ -90,28 +85,6 @@ describe('useColorScheme', () => {
       const { result } = renderHook(() => useColorScheme())
 
       expect(result.current).toBe(ColorScheme.LIGHT)
-    })
-  })
-
-  describe('getResolvedColorScheme', () => {
-    it('should return stored light when stored scheme is light', () => {
-      expect(getResolvedColorScheme(ColorScheme.LIGHT, 'dark')).toBe(ColorScheme.LIGHT)
-    })
-
-    it('should return stored dark when stored scheme is dark', () => {
-      expect(getResolvedColorScheme(ColorScheme.DARK, 'light')).toBe(ColorScheme.DARK)
-    })
-
-    it('should return light when system scheme is light and stored is system', () => {
-      expect(getResolvedColorScheme(ColorScheme.SYSTEM, 'light')).toBe(ColorScheme.LIGHT)
-    })
-
-    it('should return dark when system scheme is dark and stored is system', () => {
-      expect(getResolvedColorScheme(ColorScheme.SYSTEM, 'dark')).toBe(ColorScheme.DARK)
-    })
-
-    it('should return light when system scheme is undefined and stored is system', () => {
-      expect(getResolvedColorScheme(ColorScheme.SYSTEM, undefined)).toBe(ColorScheme.LIGHT)
     })
   })
 })

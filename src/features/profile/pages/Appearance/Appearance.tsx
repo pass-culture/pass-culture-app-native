@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
-import { getPlatformLabel } from 'libs/analytics/getPlatformLabel'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -84,9 +83,8 @@ export const Appearance = () => {
     const themeSetting = getResolvedColorScheme(next.value, systemScheme)
 
     const systemTheme = systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
-    const platform = getPlatformLabel()
 
-    void analytics.logUpdateAppTheme({ themeSetting, systemTheme, platform })
+    void analytics.logUpdateAppTheme({ themeSetting, systemTheme, platform: Platform.OS })
   }
 
   const handleGroupChange = (label: string) => handleSelectTheme(label)

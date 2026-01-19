@@ -100,7 +100,7 @@ export const logEventAnalytics = {
   logAppThemeStatus: (params: {
     themeSetting: ColorSchemeType
     systemTheme: ColorSchemeType
-    platform: 'iOS' | 'Android' | 'Web'
+    platform: typeof Platform.OS
   }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.APP_THEME_STATUS },
@@ -684,7 +684,7 @@ export const logEventAnalytics = {
   logUpdateAppTheme: (params: {
     themeSetting: ColorSchemeType
     systemTheme: ColorSchemeType
-    platform: 'iOS' | 'Android' | 'Web'
+    platform: typeof Platform.OS
   }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.UPDATE_APP_THEME },
