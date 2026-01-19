@@ -18,7 +18,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { ChronicleSectionProps } from './types'
 
 export const ChronicleSection = (props: ChronicleSectionProps) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const {
     data,
     variantInfo,
@@ -49,7 +49,11 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
                   navigateTo={navigateTo}
                   // If i use styled-component in that case (i.e using "as" prop), i have an error in web :'(
                   // eslint-disable-next-line react-native/no-inline-styles
-                  style={{ width: 'auto', borderWidth: 0, paddingLeft: getSpacing(2) }}
+                  style={{
+                    width: 'auto',
+                    borderWidth: 0,
+                    paddingLeft: designSystem.size.spacing.s,
+                  }}
                   onBeforeNavigate={onBeforeNavigate}
                 />
               ) : null}

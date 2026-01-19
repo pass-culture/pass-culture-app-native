@@ -18,7 +18,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const playerRef = useRef<YoutubePlayerRef>(null)
@@ -131,7 +131,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   top: theme.designSystem.size.spacing.l,
   right: theme.designSystem.size.spacing.l,
   borderRadius: theme.designSystem.size.borderRadius.pill,
-  padding: getSpacing(2.5),
+  padding: theme.designSystem.size.spacing.m,
   backgroundColor: theme.designSystem.color.background.default,
 }))
 

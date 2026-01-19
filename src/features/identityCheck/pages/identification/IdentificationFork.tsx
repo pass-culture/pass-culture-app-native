@@ -83,10 +83,10 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(1),
-  marginVertical: getSpacing(3),
-})
+  marginVertical: theme.designSystem.size.spacing.m,
+}))
 
 const BannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
@@ -96,10 +96,10 @@ const StyledSeparatorWithText = styled.View({
   marginVertical: getSpacing(6),
 })
 
-const StyledExternalTouchableLinkContainer = styled.View({
+const StyledExternalTouchableLinkContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
-  marginTop: getSpacing(3),
-})
+  marginTop: theme.designSystem.size.spacing.m,
+}))
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

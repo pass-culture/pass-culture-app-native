@@ -39,7 +39,7 @@ export const ContentHeader = ({
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
-  const marginTopHeader = Platform.OS === 'ios' ? top : top + getSpacing(2)
+  const marginTopHeader = Platform.OS === 'ios' ? top : top + theme.designSystem.size.spacing.s
 
   return (
     <HeaderContainer style={containerStyle} height={headerHeight}>

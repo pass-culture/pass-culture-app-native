@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Variant<Props extends Record<string, unknown>> = {
   label: string
@@ -83,7 +83,7 @@ const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight?: n
 )
 
 const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  marginTop: getSpacing(3),
+  marginTop: theme.designSystem.size.spacing.m,
   color: theme.designSystem.color.text.lockedInverted,
   fontStyle: 'italic',
 }))

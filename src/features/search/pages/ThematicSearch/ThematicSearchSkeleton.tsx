@@ -114,11 +114,11 @@ const VenuePlaylistTitlesContainer = styled.View(({ theme }) => ({
   gap: getSpacing(5),
 }))
 
-const SkeletonTileContainer = styled.View({
-  paddingRight: getSpacing(2.5),
-})
+const SkeletonTileContainer = styled.View(({ theme }) => ({
+  paddingRight: theme.designSystem.size.spacing.m,
+}))
 
-const StyledViewGap = styled(ViewGap)({
-  paddingRight: getSpacing(2.5),
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  paddingRight: theme.designSystem.size.spacing.m,
   marginBottom: getSpacing(5),
-})
+}))

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
@@ -31,7 +32,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
   openInBoxAnalytics,
 }) => {
   const isMailAppAvailable = useIsMailAppAvailable()
-
+  const { designSystem } = useTheme()
   return (
     <ViewGap gap={4}>
       <IllustrationContainer>
@@ -51,7 +52,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
         icon={ExternalSiteFilled}
         justifyContent="flex-start"
       />
-      <StyledView marginBottom={additionalCTA ? getSpacing(2) : getSpacing(6)}>
+      <StyledView marginBottom={additionalCTA ? designSystem.size.spacing.s : getSpacing(6)}>
         {additionalCTA}
       </StyledView>
       {isMailAppAvailable ? <OpenInboxButton onAdditionalPress={openInBoxAnalytics} /> : null}

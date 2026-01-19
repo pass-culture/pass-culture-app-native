@@ -494,7 +494,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                               {
                                 "borderRightColor": "#90949d",
                                 "borderRightWidth": 1,
-                                "paddingVertical": 10,
+                                "paddingVertical": 12,
                               }
                             }
                           />

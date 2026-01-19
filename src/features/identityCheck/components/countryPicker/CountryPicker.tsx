@@ -86,7 +86,7 @@ const StyledTouchable = styledButton(Touchable)({
 })
 
 const VerticalSeparator = styled.View(({ theme }) => ({
-  paddingVertical: getSpacing(2.5),
+  paddingVertical: theme.designSystem.size.spacing.m,
   borderRightWidth: getSpacing(0.25),
   borderRightColor: theme.designSystem.color.border.default,
 }))

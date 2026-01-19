@@ -24,7 +24,7 @@ const StyledA: React.FC<{ href: string; children: string }> = displayOnFocus(
     alignSelf: 'center',
     '&:focus': {
       height: `${getSpacingString(11)} !important`,
-      margin: getSpacing(2),
+      margin: theme.designSystem.size.spacing.s,
       paddingLeft: getSpacing(4),
       paddingRight: getSpacing(4),
       outlineOffset: 0,

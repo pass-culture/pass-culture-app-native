@@ -65,6 +65,6 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
 const Label = styled(Typo.BodyAccent)<{ selected: boolean }>(({ theme, selected }) => ({
   marginLeft: selected ? undefined : getSpacing(5),
   marginRight: selected ? theme.designSystem.size.spacing.s : getSpacing(5),
-  marginVertical: getSpacing(2.5),
+  marginVertical: theme.designSystem.size.spacing.m,
   color: selected ? theme.designSystem.color.text.inverted : theme.designSystem.color.text.default,
 }))

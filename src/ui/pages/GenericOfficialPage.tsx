@@ -152,7 +152,7 @@ const LogoPassCultureContainer = styled.View({
 })
 
 const EmptyContainer = styled.View(({ theme }) => ({
-  paddingVertical: getSpacing(3),
+  paddingVertical: theme.designSystem.size.spacing.m,
   borderBottomColor: theme.designSystem.color.border.default,
   borderBottomWidth: getSpacing(0.25),
 }))

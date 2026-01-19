@@ -71,7 +71,7 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',
-  left: getSpacing(3),
-})
+  left: theme.designSystem.size.spacing.m,
+}))
