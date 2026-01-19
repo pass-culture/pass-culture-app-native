@@ -114,7 +114,7 @@ describe('SearchHeader component', () => {
     beforeEach(() => {
       jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValueOnce({
         ...remoteConfigResponseFixture,
-        data: { ...DEFAULT_REMOTE_CONFIG, displayNewSearchHeader: true },
+        data: { ...DEFAULT_REMOTE_CONFIG },
       })
       mockUseRoute.mockReturnValueOnce({ name: SearchView.Results })
     })
