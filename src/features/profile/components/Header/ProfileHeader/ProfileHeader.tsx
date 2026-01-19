@@ -15,6 +15,7 @@ type ProfileHeaderProps = {
   featureFlags: {
     disableActivation: boolean
     enablePassForAll: boolean
+    enableProfileV2: boolean
   }
   user?: UserProfileResponseWithoutSurvey
 }
@@ -25,7 +26,14 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
-      return <LoggedOutHeader featureFlags={{ enablePassForAll: featureFlags.enablePassForAll }} />
+      return (
+        <LoggedOutHeader
+          featureFlags={{
+            enablePassForAll: featureFlags.enablePassForAll,
+            enableProfileV2: featureFlags.enableProfileV2,
+          }}
+        />
+      )
     }
 
     if (
@@ -67,6 +75,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           domainsCredit={user.domainsCredit}
           depositExpirationDate={user.depositExpirationDate ?? undefined}
           eligibility={user.eligibility}
+          featureFlags={{ enableProfileV2: featureFlags.enableProfileV2 }}
         />
         <Spacer.Column numberOfSpaces={4} />
       </React.Fragment>

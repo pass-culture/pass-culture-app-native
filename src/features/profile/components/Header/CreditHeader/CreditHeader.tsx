@@ -33,6 +33,7 @@ export type CreditHeaderProps = {
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
   eligibility?: EligibilityType | null
+  featureFlags: { enableProfileV2: boolean }
 }
 
 export function CreditHeader({
@@ -42,6 +43,7 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
   eligibility,
+  featureFlags,
 }: CreditHeaderProps) {
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { hasClosedBonificationBanner, onCloseBanner } = useBonificationBannerVisibility()
@@ -105,7 +107,8 @@ export function CreditHeader({
         title={name}
         bannerText={bannerText}
         subtitle={<Subtitle {...subtitleProps} />}
-        withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
+        withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}
+        featureFlags={featureFlags}>
         {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (
           <InternalTouchableLink
             navigateTo={{

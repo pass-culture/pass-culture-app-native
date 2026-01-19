@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
 import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
@@ -16,10 +17,16 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
-export const AccessibilityFooter = () => {
+type Props = {
+  withHorizontalMargin?: boolean
+}
+
+export const AccessibilityFooter = ({ withHorizontalMargin = false }: Props) => {
   if (isWeb) {
     return (
-      <AccessibilityFooterContainer>
+      <AccessibilityFooterContainer
+        withHorizontalMargin={withHorizontalMargin}
+        accessibilityRole={AccessibilityRole.FOOTER}>
         <Separator.Horizontal />
         <Container gap={5}>
           <LogoContainer>
@@ -63,9 +70,11 @@ export const AccessibilityFooter = () => {
   return null
 }
 
-const AccessibilityFooterContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
+const AccessibilityFooterContainer = styled.View<{ withHorizontalMargin?: boolean }>(
+  ({ theme, withHorizontalMargin }) => ({
+    marginHorizontal: withHorizontalMargin ? theme.contentPage.marginHorizontal : 0,
+  })
+)
 
 const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : undefined,

@@ -7,7 +7,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import * as useVersion from 'ui/hooks/useVersion.web'
 
-import { Profile } from './Profile'
+import { ProfileV1 } from './ProfileV1'
 
 jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
@@ -20,7 +20,7 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
-describe('<Profile/>', () => {
+describe('<ProfileV1 />', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
@@ -47,7 +47,7 @@ describe('<Profile/>', () => {
   })
 
   it('should render correctly on desktop', async () => {
-    const { container } = render(reactQueryProviderHOC(<Profile />), {
+    const { container } = render(reactQueryProviderHOC(<ProfileV1 />), {
       theme: { isDesktopViewport: true },
     })
 
@@ -57,7 +57,7 @@ describe('<Profile/>', () => {
   })
 
   it('should render correctly on mobile browser', async () => {
-    const { container } = render(reactQueryProviderHOC(<Profile />), {
+    const { container } = render(reactQueryProviderHOC(<ProfileV1 />), {
       theme: { isDesktopViewport: false },
     })
 
@@ -67,7 +67,7 @@ describe('<Profile/>', () => {
   })
 
   it('should not display display preference section when feature flag disable', () => {
-    render(reactQueryProviderHOC(<Profile />))
+    render(reactQueryProviderHOC(<ProfileV1 />))
 
     const displayPreferenceSection = screen.queryByText('Apparence')
 
@@ -75,4 +75,4 @@ describe('<Profile/>', () => {
   })
 })
 
-const renderProfile = () => render(reactQueryProviderHOC(<Profile />))
+const renderProfile = () => render(reactQueryProviderHOC(<ProfileV1 />))

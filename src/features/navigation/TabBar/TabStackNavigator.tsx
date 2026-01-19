@@ -8,7 +8,7 @@ import { Home } from 'features/home/pages/Home'
 import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
 import { TabStackNavigatorBase } from 'features/navigation/TabBar/TabStackNavigatorBase'
-import { Profile } from 'features/profile/pages/Profile'
+import { Profile } from 'features/profile/pages/Profile/Profile'
 import { useColorScheme } from 'libs/styled/useColorScheme'
 
 import { TabBar } from './TabBar'

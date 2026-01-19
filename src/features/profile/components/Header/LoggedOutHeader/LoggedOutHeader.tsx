@@ -10,14 +10,12 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
-  analytics.logProfilSignUp()
-  analytics.logSignUpClicked({ from: 'profile' })
+  void analytics.logProfilSignUp()
+  void analytics.logSignUpClicked({ from: 'profile' })
 }
 
 type Props = {
-  featureFlags: {
-    enablePassForAll: boolean
-  }
+  featureFlags: { enablePassForAll: boolean; enableProfileV2: boolean }
 }
 
 export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
@@ -26,7 +24,8 @@ export const LoggedOutHeader: FunctionComponent<Props> = ({ featureFlags }) => {
   return (
     <HeaderWithGreyContainer
       title="Mon profil"
-      subtitle={featureFlags.enablePassForAll ? undefined : 'Tu as 17 ou 18 ans\u00a0?'}>
+      subtitle={featureFlags.enablePassForAll ? undefined : 'Tu as 17 ou 18 ans\u00a0?'}
+      featureFlags={{ enableProfileV2: featureFlags.enableProfileV2 }}>
       <Typo.Body>
         Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18
         ans&nbsp;?

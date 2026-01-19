@@ -1,0 +1,16 @@
+import React from 'react'
+
+import { ProfileV1 } from 'features/profile/pages/Profile/ProfileV1/ProfileV1'
+import { ProfileV2 } from 'features/profile/pages/Profile/ProfileV2/ProfileV2'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+
+export const Profile = () => {
+  const featureFlags = {
+    enableProfileV2: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2),
+    enablePassForAll: useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL),
+  }
+
+  if (featureFlags.enableProfileV2) return <ProfileV2 featureFlags={featureFlags} />
+  else return <ProfileV1 />
+}

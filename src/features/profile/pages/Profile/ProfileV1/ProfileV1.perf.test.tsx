@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
-import { Profile } from 'features/profile/pages/Profile'
+import { ProfileV1 } from 'features/profile/pages/Profile/ProfileV1/ProfileV1'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -28,7 +28,7 @@ const TEST_TIMEOUT_IN_MS = 30_000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
 jest.useFakeTimers()
 
-describe('<Profile />', () => {
+describe('<ProfileV1 />', () => {
   it('Performance test for Profile page', async () => {
     setFeatureFlags()
     storage.saveString('access_token', 'token')
@@ -36,7 +36,7 @@ describe('<Profile />', () => {
     await measurePerformance(
       reactQueryProviderHOC(
         <AuthWrapper>
-          <Profile />
+          <ProfileV1 />
         </AuthWrapper>
       ),
       {
