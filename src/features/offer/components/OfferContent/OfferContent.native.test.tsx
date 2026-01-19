@@ -901,6 +901,7 @@ function renderOfferContent({
           onVideoConsentPress={jest.fn()}
           segment={segment}
           enableVideoABTesting={enableVideoABTesting}
+          onShowOfferArtistsModal={jest.fn()}
         />
       </NavigationContainer>
     ),
