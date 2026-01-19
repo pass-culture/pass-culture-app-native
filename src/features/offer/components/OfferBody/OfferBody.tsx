@@ -47,7 +47,8 @@ type Props = {
   subcategory: Subcategory
   children: ReactNode
   chronicleVariantInfo: ChronicleVariantInfo
-  onVideoConsentPress: VoidFunction
+  onVideoConsentPress: () => void
+  onShowOfferArtistsModal: () => void
   likesCount?: number
   chroniclesCount?: number | null
   distance?: string | null
@@ -57,6 +58,7 @@ type Props = {
   isVideoSectionEnabled?: boolean
   hasVideoCookiesConsent?: boolean
   enableVideoABTesting?: boolean
+  isMultiArtistsEnabled?: boolean
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -72,7 +74,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   userId,
   isVideoSectionEnabled,
   hasVideoCookiesConsent,
+  isMultiArtistsEnabled,
   onVideoConsentPress,
+  onShowOfferArtistsModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
@@ -106,7 +110,9 @@ export const OfferBody: FunctionComponent<Props> = ({
     { fractionDigits: 2 }
   )
 
-  const hasAccessToArtistPage = hasArtistPage && artists.length === 1
+  const hasAccessToArtistPage = isMultiArtistsEnabled
+    ? hasArtistPage
+    : hasArtistPage && artists.length === 1
 
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
@@ -129,15 +135,19 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const handleArtistLinkPress = () => {
     if (!artists[0]) return
-    const mainArtistName = artists[0].name
-    const mainArtistId = artists[0].id
-    void analytics.logConsultArtist({
-      offerId: offer.id.toString(),
-      artistId: mainArtistId,
-      artistName: mainArtistName,
-      from: 'offer',
-    })
-    navigate('Artist', { id: artists[0].id })
+
+    if (artists.length === 1) {
+      void analytics.logConsultArtist({
+        offerId: offer.id.toString(),
+        artistId: artists[0].id,
+        artistName: artists[0].name,
+        from: 'offer',
+      })
+      navigate('Artist', { id: artists[0].id })
+      return
+    }
+
+    onShowOfferArtistsModal()
   }
 
   const handleManageCookiesPress = () => {
@@ -159,6 +169,8 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const hasVenuePage = offer.venue.isPermanent
 
+  const artistsNames = artists.map((artist) => artist.name)
+
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -169,7 +181,8 @@ export const OfferBody: FunctionComponent<Props> = ({
               <OfferTitle offerName={offer.name} />
               {artists.length > 0 ? (
                 <OfferArtists
-                  artists={artists.map((artist) => artist.name).join(', ')}
+                  artistsNames={artistsNames}
+                  isMultiArtistsEnabled={isMultiArtistsEnabled}
                   onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
                 />
               ) : null}

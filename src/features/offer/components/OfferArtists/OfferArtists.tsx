@@ -1,54 +1,84 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getArtistsButtonLabel } from 'features/offer/core/offerArtists'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  artists: string
+  artistsNames: string[]
+  isMultiArtistsEnabled?: boolean
   onPressArtistLink?: () => void
 }
-export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistLink }) => {
+
+export const OfferArtists: FunctionComponent<Props> = ({
+  artistsNames,
+  isMultiArtistsEnabled,
+  onPressArtistLink,
+}) => {
   const artistLinkEnabled = !!onPressArtistLink
   const prefix = 'de'
+
+  const artists = isMultiArtistsEnabled
+    ? getArtistsButtonLabel(artistsNames)
+    : artistsNames.join(', ')
+
+  const artistsText = (
+    <Container gap={2}>
+      <Prefix>{prefix}</Prefix>
+      <ArtistText
+        allowFontScaling={false}
+        numberOfLines={2}
+        {...getHeadingAttrs(1)}
+        {...accessibilityAndTestId(`Nom de l’artiste\u00a0: ${artists}`)}>
+        {artists}
+      </ArtistText>
+      {artistLinkEnabled ? <StyledRightFilled testID="right-icon" /> : null}
+    </Container>
+  )
+
   return (
-    <ArtistInfoContainer gap={2}>
-      <StyledPrefix>{prefix}</StyledPrefix>
+    <React.Fragment>
       {artistLinkEnabled ? (
-        <ButtonTertiaryBlack
-          wording={artists}
-          icon={ArrowNext}
-          inline
-          buttonHeight="extraSmall"
-          accessibilityLabel={`Accéder à la page de ${artists}`}
-          iconPosition="right"
-          onPress={onPressArtistLink}
-        />
+        <InternalTouchableLink
+          navigateTo={{ screen: 'Artist' }}
+          enableNavigate={false}
+          onBeforeNavigate={onPressArtistLink}
+          accessibilityLabel={
+            artistsNames.length === 1
+              ? `Accéder à la page de ${artists}`
+              : 'Ouvrir la liste des artistes'
+          }>
+          {artistsText}
+        </InternalTouchableLink>
       ) : (
-        <ArtistsText
-          allowFontScaling={false}
-          numberOfLines={2}
-          {...getHeadingAttrs(1)}
-          {...accessibilityAndTestId(`Nom de l’artiste\u00a0: ${artists}`)}>
-          {artists}
-        </ArtistsText>
+        artistsText
       )}
-    </ArtistInfoContainer>
+    </React.Fragment>
   )
 }
 
-const ArtistsText = styled(Typo.BodyAccent)({
-  flex: 1,
-})
-
-const ArtistInfoContainer = styled(ViewGap)({
+const Container = styled(ViewGap)({
   flexDirection: 'row',
 })
 
-const StyledPrefix = styled(Typo.BodyAccent)(({ theme }) => ({
+const ArtistText = styled(Typo.BodyAccent)({
+  flexShrink: 1,
+  alignItems: 'center',
+})
+
+const Prefix = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const StyledRightFilled = styled(RightFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.default,
+}))({
+  flexShrink: 0,
+  alignSelf: 'center',
+})

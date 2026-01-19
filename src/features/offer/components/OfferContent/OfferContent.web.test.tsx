@@ -184,6 +184,7 @@ const renderOfferContent = ({
         onShowChroniclesWritersModal={jest.fn()}
         onVideoConsentPress={jest.fn()}
         segment={segment}
+        onShowOfferArtistsModal={jest.fn()}
       />,
       setupQueryClient
     ),

@@ -473,82 +473,151 @@ describe('<OfferBody />', () => {
     })
   })
 
-  it('should redirect to artist page when FF is enabled', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      artists: [{ id: '1', name: 'Stephen King' }],
-    }
+  describe('Artists button', () => {
+    it('should redirect to artist page when FF is enabled', async () => {
+      const offer: OfferResponseV2 = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [{ id: '1', name: 'Stephen King' }],
+      }
 
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+      })
+
+      await user.press(await screen.findByText('Stephen King'))
+
+      expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
     })
 
-    await user.press(await screen.findByText('Stephen King'))
+    it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
+      const offer: OfferResponseV2 = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [{ id: '1', name: 'Stephen King' }],
+      }
 
-    expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
-  })
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+      })
 
-  it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      artists: [{ id: '1', name: 'Stephen King' }],
-    }
+      await user.press(await screen.findByText('Stephen King'))
 
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
+      expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+        offerId: offerResponseSnap.id.toString(),
+        artistName: 'Stephen King',
+        artistId: '1',
+        from: 'offer',
+      })
     })
 
-    await user.press(await screen.findByText('Stephen King'))
+    it('should not log ConsultArtist when pressing artist name if offer has several artists and FF is enabled', async () => {
+      const offer: OfferResponseV2 = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [
+          { id: '1', name: 'Stephen King' },
+          { id: '2', name: 'Robert McCammon' },
+        ],
+      }
 
-    expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
-      offerId: offerResponseSnap.id.toString(),
-      artistName: 'Stephen King',
-      artistId: '1',
-      from: 'offer',
-    })
-  })
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+      })
 
-  it('should not log ConsultArtist when pressing artist name if offer has several artists and FF is enabled', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      artists: [
-        { id: '1', name: 'Stephen King' },
-        { id: '2', name: 'Robert McCammon' },
-      ],
-    }
+      await user.press(await screen.findByText('Stephen King, Robert McCammon'))
 
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
+      expect(analytics.logConsultArtist).not.toHaveBeenCalled()
     })
 
-    await user.press(await screen.findByText('Stephen King, Robert McCammon'))
+    it('should not redirect to artist page when FF is disabled', async () => {
+      const offer: OfferResponseV2 = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [{ id: '1', name: 'Stephen King' }],
+      }
 
-    expect(analytics.logConsultArtist).not.toHaveBeenCalled()
-  })
+      setFeatureFlags()
 
-  it('should not redirect to artist page when FF is disabled', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      artists: [{ id: '1', name: 'Stephen King' }],
-    }
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+      })
 
-    setFeatureFlags()
+      await user.press(await screen.findByText('Stephen King'))
 
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
+      expect(mockNavigate).not.toHaveBeenCalled()
     })
 
-    await user.press(await screen.findByText('Stephen King'))
+    it('should can not press artists names if offer has several artists and wipOfferMultiArtists FF deactivated', async () => {
+      const offer: OfferResponseV2 = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        artists: [
+          { id: '1', name: 'Stephen King' },
+          { id: '2', name: 'Robert McCammon' },
+        ],
+      }
 
-    expect(mockNavigate).not.toHaveBeenCalled()
+      const mockOnShowOfferArtistsModal = jest.fn()
+      renderOfferBody({
+        offer,
+        subcategory: mockSubcategoryBook,
+        onShowOfferArtistsModal: mockOnShowOfferArtistsModal,
+      })
+
+      await screen.findByText('Stephen King, Robert McCammon')
+
+      expect(screen.queryByLabelText('Ouvrir la liste des artistes')).not.toBeOnTheScreen()
+    })
+
+    describe('When wipOfferMultiArtists FF activated', () => {
+      it('should trigger artists modal opening when pressing artists names if offer has several artists', async () => {
+        const offer: OfferResponseV2 = {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          artists: [
+            { id: '1', name: 'Stephen King' },
+            { id: '2', name: 'Robert McCammon' },
+          ],
+        }
+
+        const mockOnShowOfferArtistsModal = jest.fn()
+        renderOfferBody({
+          offer,
+          subcategory: mockSubcategoryBook,
+          isMultiArtistsEnabled: true,
+          onShowOfferArtistsModal: mockOnShowOfferArtistsModal,
+        })
+
+        await user.press(await screen.findByLabelText('Ouvrir la liste des artistes'))
+
+        expect(mockOnShowOfferArtistsModal).toHaveBeenCalledTimes(1)
+      })
+
+      it('should open artist page when pressing artist name if offer has only one artist', async () => {
+        const offer: OfferResponseV2 = {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          artists: [{ id: '1', name: 'Stephen King' }],
+        }
+
+        const mockOnShowOfferArtistsModal = jest.fn()
+        renderOfferBody({
+          offer,
+          subcategory: mockSubcategoryBook,
+          isMultiArtistsEnabled: true,
+          onShowOfferArtistsModal: mockOnShowOfferArtistsModal,
+        })
+
+        await user.press(await screen.findByLabelText('Accéder à la page de Stephen King'))
+
+        expect(mockNavigate).toHaveBeenCalledTimes(1)
+      })
+    })
   })
 
   it('should redirect to cookies management when pressing manage cookies button', async () => {
@@ -573,6 +642,8 @@ describe('<OfferBody />', () => {
     distance,
     isVideoSectionEnabled,
     hasVideoCookiesConsent,
+    isMultiArtistsEnabled,
+    onShowOfferArtistsModal = jest.fn(),
     children,
   }: RenderOfferBodyType) {
     render(
@@ -584,7 +655,9 @@ describe('<OfferBody />', () => {
           chronicleVariantInfo={chronicleVariantInfoFixture}
           isVideoSectionEnabled={isVideoSectionEnabled}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
-          onVideoConsentPress={jest.fn()}>
+          onVideoConsentPress={jest.fn()}
+          onShowOfferArtistsModal={onShowOfferArtistsModal}
+          isMultiArtistsEnabled={isMultiArtistsEnabled}>
           {children}
         </OfferBody>
       ),

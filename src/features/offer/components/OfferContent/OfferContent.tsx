@@ -29,6 +29,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   onVideoConsentPress,
   segment,
   enableVideoABTesting,
+  isMultiArtistsEnabled,
+  onShowOfferArtistsModal,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -65,7 +67,9 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         hasVideoCookiesConsent={hasVideoCookiesConsent}
         onVideoConsentPress={onVideoConsentPress}
         segment={segment}
-        enableVideoABTesting={enableVideoABTesting}>
+        enableVideoABTesting={enableVideoABTesting}
+        onShowOfferArtistsModal={onShowOfferArtistsModal}
+        isMultiArtistsEnabled={isMultiArtistsEnabled}>
         {comingSoonFooterHeight ? (
           <ComingSoonFooterOffset
             testID="coming-soon-footer-offset"
