@@ -13,7 +13,7 @@ import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/default
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Separator } from 'ui/components/Separator'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const CheatcodesScreenNewCaledonia = () => {
@@ -40,7 +40,7 @@ export const CheatcodesScreenNewCaledonia = () => {
       <StyledTitle3 active={enablePacificFrancCurrency}>
         {enablePacificFrancCurrency === true ? 'Actif' : 'Inactif'}
       </StyledTitle3>
-      <StyledSeparator />
+      <Separator.HorizontalWithMargin />
       <Typo.Body>Localisation de l’utilisateur&nbsp;:</Typo.Body>
       <Typo.Title3>{selectedPlace ? selectedPlace?.info : 'Non localisé'}</Typo.Title3>
       <Typo.Body>Code postal renseigné par l’utilisateur&nbsp;:</Typo.Body>
@@ -49,16 +49,16 @@ export const CheatcodesScreenNewCaledonia = () => {
       </Typo.Title3>
       <Typo.Body>Devise renvoyé par l’API&nbsp;:</Typo.Body>
       <Typo.Title3>{user?.currency ? `${user.currency}` : 'Non connecté'}</Typo.Title3>
-      <StyledSeparator />
+      <Separator.HorizontalWithMargin />
       <Typo.Body>Devise affichée à l’utilisateur&nbsp;:</Typo.Body>
       <Typo.Title3>{currency}</Typo.Title3>
-      <StyledSeparator />
+      <Separator.HorizontalWithMargin />
       <Typo.Body>Taux de change depuis le backend&nbsp;:</Typo.Body>
       <Typo.Title3>{pacificFrancToEuroRate}</Typo.Title3>
-      <StyledSeparator />
+      <Separator.HorizontalWithMargin />
       <Typo.Body>Taux de change par défaut côté frontend&nbsp;:</Typo.Body>
       <Typo.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</Typo.Title3>
-      <StyledSeparator />
+      <Separator.HorizontalWithMargin />
       <TextInput
         label="Montant en&nbsp;€ pour conversion&nbsp;:"
         autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
@@ -75,7 +75,7 @@ export const CheatcodesScreenNewCaledonia = () => {
       <Typo.Title3>
         {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
       </Typo.Title3>
-      <StyledSeparator />
+      <Separator.HorizontalWithMargin />
     </CheatcodesTemplateScreen>
   )
 }
@@ -84,10 +84,6 @@ const StyledTitle3 = styled(Typo.Title3)<{ active: boolean }>(({ theme, active }
   color: active ? theme.designSystem.color.text.success : theme.designSystem.color.text.error,
 }))
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-})
-
-const StyledText = styled(Typo.Body)({
-  marginTop: getSpacing(4),
-})
+const StyledText = styled(Typo.Body)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
