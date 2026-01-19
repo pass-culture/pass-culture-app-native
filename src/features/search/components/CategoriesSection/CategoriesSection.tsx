@@ -3,19 +3,22 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
-import { sortCategoriesPredicate } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import {
-  MappedGenreTypes,
-  MappedNativeCategories,
-  MappingTree,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+  buildRadioOptions,
+  CategoriesMapping,
+  checkHasChildrenCategories,
+  getLabelForValue,
+  getSortedCategoriesEntries,
+  getValueForLabel,
+  toRadioButtonGroupOptions,
+} from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
+import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-
-export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
 
 export interface CategoriesSectionProps<
   T extends CategoriesMapping,
@@ -55,18 +58,44 @@ export function CategoriesSection<
     onSubmit?.()
   }
 
-  const entries = itemsMapping ? Object.entries(itemsMapping) : []
-  if (shouldSortItems) entries.sort(([, a], [, b]) => sortCategoriesPredicate(a, b))
+  const entries = getSortedCategoriesEntries(itemsMapping, shouldSortItems)
+  const hasChildren = checkHasChildrenCategories(entries)
+
+  if (!hasChildren) {
+    const radioOptions = buildRadioOptions<N>(entries, allLabel, allValue)
+
+    return (
+      <RadioButtonGroup
+        label="Sélectionne une option"
+        value={getLabelForValue(radioOptions, value)}
+        onChange={(newLabel) => {
+          const selectedValue = getValueForLabel(radioOptions, newLabel)
+          if (selectedValue === undefined) return
+          handleSelect(selectedValue)
+        }}
+        variant="default"
+        display="vertical"
+        disabled={false}
+        error={false}
+        options={toRadioButtonGroupOptions(radioOptions)}
+        errorText="Error"
+      />
+    )
+  }
 
   return (
     <VerticalUl>
       <ListItem>
-        <RadioButton
-          label={allLabel}
-          isSelected={value === allValue}
-          onSelect={() => onSelect(allValue)}
-          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
-        />
+        <RadioButtonContainer>
+          <RadioButton
+            label={allLabel}
+            value={value === allValue ? allLabel : ''}
+            setValue={() => onSelect(allValue)}
+            variant="default"
+            disabled={false}
+            error={false}
+          />
+        </RadioButtonContainer>
       </ListItem>
       {entries.map(([k, item]) => (
         <CategoriesSectionItem
@@ -86,3 +115,7 @@ export function CategoriesSection<
 const ListItem = styled(Li)({
   display: 'flex',
 })
+
+const RadioButtonContainer = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.s,
+}))
