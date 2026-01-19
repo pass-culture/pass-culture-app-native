@@ -6,6 +6,8 @@ import { render, fireEvent, screen } from 'tests/utils/web'
 const onChange = jest.fn()
 const name = 'testUnit'
 
+jest.mock('libs/hooks/useHandleFocus')
+
 describe('<ControlledFilterSwitch />', () => {
   it('should call onChange when pressing Spacebar on focused switch', () => {
     render(<ControlledFilterSwitch onChange={onChange} name={name} />)
