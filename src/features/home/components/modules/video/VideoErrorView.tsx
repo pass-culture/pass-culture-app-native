@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const VideoErrorView: React.FC<{
   style: StyleProp<ViewStyle>
@@ -23,11 +23,11 @@ export const VideoErrorView: React.FC<{
   )
 }
 
-const VideoPlayerErrorViewContainer = styled(View)({
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
+const VideoPlayerErrorViewContainer = styled(View)(({ theme }) => ({
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.l,
   overflow: 'hidden',
-})
+}))
 
 const ErrorMessageContainer = styled(ViewGap)(({ theme }) => ({
   flex: 1,
