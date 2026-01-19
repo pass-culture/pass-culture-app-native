@@ -4,9 +4,12 @@ import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingListItemResponse, BookingsListResponseV2 } from 'api/gen'
+import { OngoingBookingListItemWrapper } from 'features/bookings/components/OngoingBookingListItemWrapper'
 import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -31,6 +34,8 @@ type Props = {
 
 export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookingsQuery }) => {
   const netInfo = useNetInfoContext()
+
+  const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
   const {
     data: bookings = { bookings: [] },
@@ -66,14 +71,18 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
   const eligibleBookingsForArchive =
     expirationDateUtilsV2.getEligibleBookingsForArchive(ongoingBookings)
 
-  const renderItem: ListRenderItem<BookingListItemResponse> = useCallback(
-    ({ item }) => (
-      <OnGoingBookingItem booking={item} eligibleBookingsForArchive={eligibleBookingsForArchive} />
-    ),
-    [eligibleBookingsForArchive]
-  )
-
   if (showSkeleton) return <BookingsPlaceholder />
+
+  const renderItem: ListRenderItem<BookingListItemResponse> = ({ item }) => {
+    return enableNewBookings ? (
+      <OngoingBookingListItemWrapper
+        booking={item}
+        eligibleBookingsForArchive={eligibleBookingsForArchive}
+      />
+    ) : (
+      <OnGoingBookingItem booking={item} eligibleBookingsForArchive={eligibleBookingsForArchive} />
+    )
+  }
 
   return (
     <FlatList
@@ -86,7 +95,7 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
       contentContainerStyle={contentContainerStyle}
       ListHeaderComponent={hasBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
       ListEmptyComponent={<NoBookingsView />}
-      ItemSeparatorComponent={ItemSeparatorComponent}
+      ItemSeparatorComponent={enableNewBookings ? null : ItemSeparatorComponent}
       onScroll={onScroll}
       scrollEventThrottle={16}
     />
@@ -131,7 +140,7 @@ const ItemSeparatorContainer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,
 }))
 
-function ItemSeparatorComponent() {
+const ItemSeparatorComponent = () => {
   return (
     <ItemSeparatorContainer>
       <Separator.Horizontal />

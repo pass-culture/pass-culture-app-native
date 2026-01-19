@@ -46,6 +46,7 @@ const BookingDetailsContainerOld = ({ bookingId }: { bookingId: number }) => {
   } = useOngoingOrEndedBookingQuery(bookingId)
 
   const mapping = useSubcategoriesMapping()
+
   const { logType } = useLogTypeFromRemoteConfig()
 
   if ((isLoading || !dataUpdatedAt) && !booking) {
