@@ -51,14 +51,17 @@ export const TextPlaceholder = ({
   )
 }
 
-export const HeaderSearchResultsPlaceholder: FC = () => (
-  <React.Fragment>
-    <TitleContainer>
-      <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
-    </TitleContainer>
-    <NumberOfResultsPlaceholder />
-  </React.Fragment>
-)
+export const HeaderSearchResultsPlaceholder: FC = () => {
+  const { designSystem } = useTheme()
+  return (
+    <React.Fragment>
+      <TitleContainer>
+        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(50)} />
+      </TitleContainer>
+      <NumberOfResultsPlaceholder />
+    </React.Fragment>
+  )
+}
 
 export const NumberOfResultsPlaceholder = () => {
   const { designSystem } = useTheme()

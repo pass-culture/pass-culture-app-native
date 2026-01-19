@@ -513,7 +513,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
               style={
                 {
                   "gap": 20,
-                  "marginTop": 18,
+                  "marginTop": 24,
                 }
               }
             >
