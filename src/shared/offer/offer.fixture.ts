@@ -4,6 +4,8 @@ import { Activity, SubcategoryIdEnum } from 'api/gen'
 import { Offer } from 'shared/offer/types'
 import { toMutable } from 'shared/types/toMutable'
 
+const TIMESTAMP_NOV_17_2020 = 1605643200
+
 export const offersFixture = toMutable([
   {
     offer: {
@@ -60,7 +62,7 @@ export const offersFixture = toMutable([
   },
   {
     offer: {
-      dates: [1605643200.0],
+      dates: [TIMESTAMP_NOV_17_2020],
       isDigital: false,
       isDuo: true,
       name: 'Un lit sous une rivière',
