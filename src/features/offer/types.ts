@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import {
+  ArtistResponse,
   CategoryIdEnum,
   FavoriteResponse,
   OfferResponseV2,
@@ -103,4 +104,9 @@ export type OfferImageContainerDimensions = {
 export type Duration = {
   label: string
   accessibilityLabel: string
+}
+
+// Artist that may or may not have a dedicated page on Pass Culture
+export type OfferArtist = Omit<ArtistResponse, 'id'> & {
+  id?: string | null
 }
