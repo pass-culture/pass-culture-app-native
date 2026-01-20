@@ -8,6 +8,7 @@ import { FlatList, FlatListProps, ListRenderItemInfo } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { Variant } from 'ui/designSystem/RadioButton/types'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
@@ -42,6 +43,31 @@ type Props = {
   flatListProps?: RadioButtonGroupFlatListProps
 }
 
+const extractLabelString = (label: ReactNode): string | undefined => {
+  if (typeof label === 'string') return label
+  return undefined
+}
+
+const generateRadioAccessibilityLabel = (
+  groupLabel: ReactNode,
+  item: RadioButtonGroupOption,
+  index: number,
+  total: number,
+  isSelected: boolean
+): string => {
+  const groupLabelString = extractLabelString(groupLabel)
+  const positionLabel = `Élément ${index + 1} sur ${total}`
+  const selectionLabel = isSelected ? 'sélectionné' : 'non sélectionné'
+  return getComputedAccessibilityLabel(
+    groupLabelString,
+    'Liste',
+    positionLabel,
+    item.label,
+    item.description,
+    selectionLabel
+  )
+}
+
 export const RadioButtonGroup: FunctionComponent<Props> = ({
   label,
   description,
@@ -57,6 +83,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
   flatListProps,
 }: Props) => {
   const keyExtractor = useCallback((item: RadioButtonGroupOption) => item.key, [])
+  const totalOptions = options.length
 
   const handleSetValue = useCallback(
     (next: SetStateAction<string>) => {
@@ -68,26 +95,36 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
   )
 
   const renderRadioButton = useCallback(
-    (item: RadioButtonGroupOption) => (
-      <RadioButton
-        key={item.key}
-        label={item.label}
-        disabled={disabled}
-        error={error}
-        value={value}
-        setValue={disabled || value === item.label ? () => undefined : handleSetValue}
-        variant={variant}
-        description={item.description}
-        collapsed={item.collapsed}
-        asset={item.asset}
-        sizing={computedRadioButtonSizing(item.sizing, display)}
-      />
-    ),
-    [disabled, error, value, handleSetValue, variant, display]
+    (item: RadioButtonGroupOption, index: number) => {
+      const isSelected = value === item.label
+      return (
+        <RadioButton
+          key={item.key}
+          label={item.label}
+          disabled={disabled}
+          error={error}
+          value={value}
+          setValue={disabled || isSelected ? () => undefined : handleSetValue}
+          variant={variant}
+          description={item.description}
+          collapsed={item.collapsed}
+          asset={item.asset}
+          sizing={computedRadioButtonSizing(item.sizing, display)}
+          accessibilityLabel={generateRadioAccessibilityLabel(
+            label,
+            item,
+            index,
+            totalOptions,
+            isSelected
+          )}
+        />
+      )
+    },
+    [disabled, error, value, handleSetValue, variant, display, label, totalOptions]
   )
 
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<RadioButtonGroupOption>) => renderRadioButton(item),
+    ({ item, index }: ListRenderItemInfo<RadioButtonGroupOption>) => renderRadioButton(item, index),
     [renderRadioButton]
   )
 
@@ -118,7 +155,7 @@ export const RadioButtonGroup: FunctionComponent<Props> = ({
 
     return (
       <OptionsContainer display={display} variant={variant}>
-        {options.map(renderRadioButton)}
+        {options.map((item, index) => renderRadioButton(item, index))}
       </OptionsContainer>
     )
   }

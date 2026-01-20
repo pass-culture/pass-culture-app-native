@@ -1,19 +1,16 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
-import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationState } from 'features/location/types'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
-import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { VerticalUl } from 'ui/components/Ul'
-import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
+import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -41,6 +38,22 @@ type LocationModalProps = {
   onTempAroundMeRadiusValueChange?: (newValues: number[]) => void
   tempAroundPlaceRadius?: LocationState['tempAroundPlaceRadius']
   onTempAroundPlaceRadiusValueChange?: (newValues: number[]) => void
+}
+
+const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
+const AROUND_PLACE_TITLE = 'Choisir une zone géographique'
+const AROUND_PLACE_SUBTITLE = 'Ville, code postal, adresse'
+
+const LABEL_TO_MODE_MAP: Record<string, LocationMode> = {
+  [AROUND_ME_TITLE]: LocationMode.AROUND_ME,
+  [AROUND_PLACE_TITLE]: LocationMode.AROUND_PLACE,
+  [LocationLabel.everywhereLabel]: LocationMode.EVERYWHERE,
+}
+
+const MODE_TO_LABEL_MAP: Record<LocationMode, string> = {
+  [LocationMode.AROUND_ME]: AROUND_ME_TITLE,
+  [LocationMode.AROUND_PLACE]: AROUND_PLACE_TITLE,
+  [LocationMode.EVERYWHERE]: LocationLabel.everywhereLabel,
 }
 
 export const LocationModal = ({
@@ -80,37 +93,88 @@ export const LocationModal = ({
     onTempAroundMeRadiusValueChange &&
     isCurrentLocationMode(LocationMode.AROUND_ME)
 
-  const buildAccessibilityLabel = (
-    title: string,
-    subtitle: string | undefined,
-    isSelected: boolean
-  ) => {
-    return `${title}${subtitle ? `, ${subtitle}` : ''}, ${isSelected ? 'sélectionné' : 'non sélectionné'}`
+  const groupLabel = 'Sélectionne ta localisation'
+
+  const options: RadioButtonGroupOption[] = useMemo(() => {
+    const baseOptions: RadioButtonGroupOption[] = [
+      {
+        key: LocationMode.AROUND_ME,
+        label: AROUND_ME_TITLE,
+        description: hasGeolocPosition ? undefined : 'Géolocalisation désactivée',
+        asset: { variant: 'icon', Icon: PositionFilled },
+        collapsed: shouldShowAroundMeRadiusSlider ? (
+          <SliderContainer>
+            <LocationSearchFilters
+              aroundRadius={tempAroundMeRadius}
+              onValuesChange={onTempAroundMeRadiusValueChange}
+            />
+          </SliderContainer>
+        ) : null,
+      },
+      {
+        key: LocationMode.AROUND_PLACE,
+        label: AROUND_PLACE_TITLE,
+        description: AROUND_PLACE_SUBTITLE,
+        asset: { variant: 'icon', Icon: MagnifyingGlassFilled },
+        collapsed:
+          tempLocationMode === LocationMode.AROUND_PLACE ? (
+            <React.Fragment>
+              <LocationSearchInput
+                selectedPlace={selectedPlace}
+                setSelectedPlace={setSelectedPlace}
+                placeQuery={placeQuery}
+                setPlaceQuery={setPlaceQuery}
+                onResetPlace={onResetPlace}
+                onSetSelectedPlace={onSetSelectedPlace}
+              />
+              {shouldShowAroundPlaceRadiusSlider ? (
+                <SliderContainer>
+                  <LocationSearchFilters
+                    aroundRadius={tempAroundPlaceRadius}
+                    onValuesChange={onTempAroundPlaceRadiusValueChange}
+                  />
+                </SliderContainer>
+              ) : null}
+            </React.Fragment>
+          ) : null,
+      },
+    ]
+
+    if (shouldDisplayEverywhereSection) {
+      baseOptions.push({
+        key: LocationMode.EVERYWHERE,
+        label: LocationLabel.everywhereLabel,
+        asset: { variant: 'icon', Icon: WorldPosition },
+      })
+    }
+
+    return baseOptions
+  }, [
+    hasGeolocPosition,
+    shouldShowAroundMeRadiusSlider,
+    tempAroundMeRadius,
+    onTempAroundMeRadiusValueChange,
+    tempLocationMode,
+    selectedPlace,
+    setSelectedPlace,
+    placeQuery,
+    setPlaceQuery,
+    onResetPlace,
+    onSetSelectedPlace,
+    shouldShowAroundPlaceRadiusSlider,
+    tempAroundPlaceRadius,
+    onTempAroundPlaceRadiusValueChange,
+    shouldDisplayEverywhereSection,
+  ])
+
+  const currentValue = tempLocationMode ? MODE_TO_LABEL_MAP[tempLocationMode] : ''
+
+  const handleChange = (label: string) => {
+    const mode = LABEL_TO_MODE_MAP[label]
+    if (mode) {
+      selectLocationMode(mode)()
+    }
   }
-
-  const AROUND_ME_TITLE = 'Utiliser ma position actuelle'
-  const AROUND_ME_SUBTITLE = hasGeolocPosition ? undefined : 'Géolocalisation désactivée'
-  const accessibilityLabelAroundMe = buildAccessibilityLabel(
-    AROUND_ME_TITLE,
-    AROUND_ME_SUBTITLE,
-    isCurrentLocationMode(LocationMode.AROUND_ME)
-  )
-
-  const AROUND_PLACE_TITLE = 'Choisir une zone géographique'
-  const AROUND_PLACE_SUBTITLE = 'Ville, code postal, adresse'
-  const accessibilityLabelAroundPlace = buildAccessibilityLabel(
-    AROUND_PLACE_TITLE,
-    LOCATION_PLACEHOLDER,
-    isCurrentLocationMode(LocationMode.AROUND_PLACE)
-  )
-
-  const accessibilityLabelEverywhere = buildAccessibilityLabel(
-    LocationLabel.everywhereLabel,
-    undefined,
-    isCurrentLocationMode(LocationMode.EVERYWHERE)
-  )
-
-  const groupLabel = 'Localisation'
 
   return (
     <AppModal
@@ -124,7 +188,7 @@ export const LocationModal = ({
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
-            title={groupLabel}
+            title="Localisation"
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onClose}
@@ -139,96 +203,14 @@ export const LocationModal = ({
         />
       }>
       <StyledScrollView>
-        <StyledVerticalUl>
-          <Li
-            groupLabel={groupLabel}
-            accessibilityLabel={accessibilityLabelAroundMe}
-            accessibilityRole={AccessibilityRole.BUTTON}
-            index={0}
-            total={3}>
-            <RadioButton
-              label={AROUND_ME_TITLE}
-              value={isCurrentLocationMode(LocationMode.AROUND_ME) ? AROUND_ME_TITLE : ''}
-              setValue={selectLocationMode(LocationMode.AROUND_ME)}
-              description={AROUND_ME_SUBTITLE}
-              variant="detailed"
-              disabled={false}
-              error={false}
-              asset={{ variant: 'icon', Icon: PositionFilled }}
-              collapsed={
-                shouldShowAroundMeRadiusSlider ? (
-                  <SliderContainer>
-                    <LocationSearchFilters
-                      aroundRadius={tempAroundMeRadius}
-                      onValuesChange={onTempAroundMeRadiusValueChange}
-                    />
-                  </SliderContainer>
-                ) : null
-              }
-            />
-          </Li>
-          <Li
-            groupLabel={groupLabel}
-            accessibilityLabel={accessibilityLabelAroundPlace}
-            accessibilityRole={AccessibilityRole.BUTTON}
-            index={1}
-            total={3}>
-            <RadioButton
-              label={AROUND_PLACE_TITLE}
-              description={AROUND_PLACE_SUBTITLE}
-              value={isCurrentLocationMode(LocationMode.AROUND_PLACE) ? AROUND_PLACE_TITLE : ''}
-              setValue={selectLocationMode(LocationMode.AROUND_PLACE)}
-              variant="detailed"
-              disabled={false}
-              error={false}
-              asset={{ variant: 'icon', Icon: MagnifyingGlassFilled }}
-              collapsed={
-                isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
-                  <React.Fragment>
-                    <LocationSearchInput
-                      selectedPlace={selectedPlace}
-                      setSelectedPlace={setSelectedPlace}
-                      placeQuery={placeQuery}
-                      setPlaceQuery={setPlaceQuery}
-                      onResetPlace={onResetPlace}
-                      onSetSelectedPlace={onSetSelectedPlace}
-                    />
-                    {shouldShowAroundPlaceRadiusSlider ? (
-                      <SliderContainer>
-                        <LocationSearchFilters
-                          aroundRadius={tempAroundPlaceRadius}
-                          onValuesChange={onTempAroundPlaceRadiusValueChange}
-                        />
-                      </SliderContainer>
-                    ) : null}
-                  </React.Fragment>
-                ) : null
-              }
-            />
-          </Li>
-          {shouldDisplayEverywhereSection ? (
-            <Li
-              groupLabel={groupLabel}
-              accessibilityLabel={accessibilityLabelEverywhere}
-              accessibilityRole={AccessibilityRole.BUTTON}
-              index={2}
-              total={3}>
-              <RadioButton
-                label={LocationLabel.everywhereLabel}
-                value={
-                  isCurrentLocationMode(LocationMode.EVERYWHERE)
-                    ? LocationLabel.everywhereLabel
-                    : ''
-                }
-                setValue={selectLocationMode(LocationMode.EVERYWHERE)}
-                variant="detailed"
-                disabled={false}
-                error={false}
-                asset={{ variant: 'icon', Icon: WorldPosition }}
-              />
-            </Li>
-          ) : null}
-        </StyledVerticalUl>
+        <RadioButtonGroup
+          label={groupLabel}
+          options={options}
+          value={currentValue}
+          onChange={handleChange}
+          variant="detailed"
+          errorText=""
+        />
       </StyledScrollView>
     </AppModal>
   )
@@ -246,8 +228,4 @@ const HeaderContainer = styled.View(({ theme }) => ({
 
 const SliderContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
-}))
-
-const StyledVerticalUl = styled(VerticalUl)(({ theme }) => ({
-  gap: theme.designSystem.size.spacing.s,
 }))
