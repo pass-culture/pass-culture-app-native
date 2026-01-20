@@ -157,10 +157,9 @@ const RadioButtonGroupContainer = styled.View<{ useFlatList: boolean }>(
   })
 )
 
-const StyledFlatList = styled(FlatList)<FlatListProps<RadioButtonGroupOption>>(({ theme }) => ({
+const StyledFlatList = styled(FlatList)<FlatListProps<RadioButtonGroupOption>>(() => ({
   flex: 1,
   overflow: 'scroll',
-  padding: theme.designSystem.size.spacing.xs,
 }))
 
 const OptionsContainer = styled.View<{ variant: Variant; display: RadioButtonGroupDisplay }>(
