@@ -163,10 +163,7 @@ export function Slider(props: Props) {
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
         </CenteredText>
       ) : null}
-      <SliderWrapper
-        ref={setStyledViewRef}
-        testID="slider"
-        shouldShowMinMaxValues={shouldShowMinMaxValues}>
+      <SliderWrapper ref={setStyledViewRef} testID="slider">
         <StyledMultiSlider
           values={values}
           allowOverlap
@@ -233,8 +230,6 @@ const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(
-  ({ shouldShowMinMaxValues, theme }) => ({
-    marginTop: getSpacing(4),
-  })
-)
+const SliderWrapper = styled(View)({
+  marginTop: getSpacing(4),
+})
