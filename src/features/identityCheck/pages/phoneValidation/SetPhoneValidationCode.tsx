@@ -18,7 +18,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 import { Typo } from 'ui/theme'
@@ -146,7 +146,7 @@ export const SetPhoneValidationCode = () => {
           <Container>
             <StyledBody>{enterCodeInstructions}</StyledBody>
             <InputContainer>
-              <InputText
+              <TextInput
                 autoCapitalize="none"
                 keyboardType="number-pad"
                 label="Code de validation"
@@ -154,7 +154,6 @@ export const SetPhoneValidationCode = () => {
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
                 autoComplete="one-time-code"
-                textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
                 accessibilityHint={errorMessage}
                 testID="Entrée pour le code reçu par sms"

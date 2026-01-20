@@ -344,8 +344,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-MediumItalic",
+                    "fontFamily": "Montserrat",
                     "fontSize": 16,
+                    "fontStyle": "italic",
+                    "fontWeight": "500",
                     "height": "100%",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
@@ -355,7 +357,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 }
                 testID="Entrée pour l’email"
                 textAlignVertical="center"
-                textContentType="emailAddress"
                 value=""
               />
             </View>
@@ -443,6 +444,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               accessibilityLabel="Champs de texte - Mot de passe - Obligatoire"
               accessibilityRequired={true}
               autoCapitalize="none"
+              autoComplete="current-password"
               editable={true}
               isEmpty={true}
               multiline={false}
@@ -461,8 +463,10 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "fontFamily": "Montserrat-MediumItalic",
+                  "fontFamily": "Montserrat",
                   "fontSize": 16,
+                  "fontStyle": "italic",
+                  "fontWeight": "500",
                   "height": "100%",
                   "paddingBottom": 0,
                   "paddingLeft": 0,
@@ -472,7 +476,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
               testID="Mot de passe"
               textAlignVertical="center"
-              textContentType="password"
               value=""
             />
             <View
@@ -777,7 +780,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
-                  "marginHorizontal": 10,
+                  "marginHorizontal": 12,
                 }
               }
             >

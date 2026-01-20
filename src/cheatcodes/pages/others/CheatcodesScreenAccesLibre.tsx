@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenAccesLibre = () => {
@@ -30,7 +30,7 @@ export const CheatcodesScreenAccesLibre = () => {
 
   return (
     <CheatcodesTemplateScreen title="AccesLibre 🌈" flexDirection="column">
-      <InputText
+      <TextInput
         label="Rentrer un ID de lieu avec AccesLibre"
         keyboardType="number-pad"
         value={value}

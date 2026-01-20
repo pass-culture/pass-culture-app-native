@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
-import { InputTextProps, RequiredIndicator } from 'ui/components/inputs/types'
+import { TextInputProps, RequiredIndicator } from 'ui/components/inputs/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Trash } from 'ui/svg/icons/Trash'
 
 type InputItem = {
   label: string
   value?: string
-} & Partial<InputTextProps>
+} & Partial<TextInputProps>
 
 type DynamicInputListProps = {
   inputs: InputItem[]
@@ -22,13 +22,14 @@ type DynamicInputListProps = {
   onValuesChange?: (values: string[]) => void
   autoFocus?: boolean
   errors?: (string | undefined)[]
+  autocomplete?: TextInputProps['autoComplete']
 }
 
 type VisibleInput = {
   id: number
   label: string
   value: string
-} & Partial<InputTextProps>
+} & Partial<TextInputProps>
 
 export const DynamicInputList = ({
   inputs,
@@ -38,6 +39,7 @@ export const DynamicInputList = ({
   onValuesChange,
   autoFocus,
   errors,
+  autocomplete,
 }: DynamicInputListProps) => {
   const { icons, designSystem } = useTheme()
 
@@ -108,13 +110,14 @@ export const DynamicInputList = ({
       {visibleInputs.map((input, index) => (
         <InputWrapper key={input.label}>
           <InputFieldContainer>
-            <InputText
+            <TextInput
               onChangeText={(text) => handleChangeText(input.id, text)}
               requiredIndicator={index === 0 ? requiredIndicator : undefined}
               autoFocus={autoFocus}
               errorMessage={input.value ? errors?.[index] : undefined}
               accessibilityHint={input.value ? errors?.[index] : undefined}
               {...input}
+              autoComplete={autocomplete}
             />
           </InputFieldContainer>
           {index > 0 ? (

@@ -2,16 +2,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { GenreType, SearchGroupNameEnumv2 } from 'api/gen'
-import {
-  CategoriesMapping,
-  CategoriesSectionProps,
-} from 'features/search/components/CategoriesSection/CategoriesSection'
+import { CategoriesSectionProps } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { CategoriesMapping } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
+import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
 import { Typo } from 'ui/theme'
 
 export function BookCategoriesSection<
@@ -55,9 +53,11 @@ export function BookCategoriesSection<
       <ListItem>
         <RadioButton
           label={allLabel}
-          isSelected={value === allValue}
-          onSelect={() => onSelect(allValue)}
-          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
+          value={value === allValue ? allLabel : ''}
+          setValue={() => onSelect(allValue)}
+          variant="default"
+          disabled={false}
+          error={false}
         />
       </ListItem>
       <Title>{'Livres papier'}</Title>

@@ -39,7 +39,7 @@ const productionConfig: KnipConfig = {
   project: [
     'src/**/*.{ts,tsx}!',
     '!src/**/*[fF]ixture*.{ts,tsx}',
-    '!src/**/{tests,storybook}/**/*.{ts,tsx}',
+    '!src/**/{tests,storybook,__tests__}/**/*.{ts,tsx}',
     '!src/**/*.{test, stories}.{ts,tsx}',
   ],
   ignore: [

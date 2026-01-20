@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.372.1",
-  "build": 10372001,
+  "version": "1.373.0",
+  "build": 10373000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -95,7 +95,7 @@
     "@hookform/resolvers": "^2.9.11",
     "@hot-updater/react-native": "^0.20.11",
     "@openspacelabs/react-native-zoomable-view": "^2.1.5",
-    "@pass-culture/design-system": "0.5.2",
+    "@pass-culture/design-system": "0.6.0",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-clipboard/clipboard": "^1.16.2",
@@ -107,10 +107,10 @@
     "@react-native-firebase/perf": "^22.2.1",
     "@react-native-firebase/remote-config": "^22.2.1",
     "@react-native-google-signin/google-signin": "^10.1.0",
-    "@react-navigation/bottom-tabs": "^6.6.1",
-    "@react-navigation/devtools": "^7.0.38",
-    "@react-navigation/native": "^6.1.17",
-    "@react-navigation/native-stack": "6.9.13",
+    "@react-navigation/bottom-tabs": "^7.8.5",
+    "@react-navigation/devtools": "^7.0.40",
+    "@react-navigation/native": "^7.1.20",
+    "@react-navigation/native-stack": "^7.6.3",
     "@react-oauth/google": "^0.11.1",
     "@sentry/react": "^8.55.0",
     "@sentry/react-native": "^6.22.0",
@@ -164,7 +164,7 @@
     "react-native-lottie-splash-screen": "^1.1.2",
     "react-native-map-clustering": "^4.0.0",
     "react-native-map-link": "^3.10.1",
-    "react-native-maps": "1.26.0",
+    "react-native-maps": "1.24.16",
     "react-native-modal": "13.0.1",
     "react-native-orientation-locker": "^1.7.0",
     "react-native-performance": "^5.1.4",
@@ -321,7 +321,6 @@
     "vite-plugin-html": "^3.2.2"
   },
   "resolutions": {
-    "@react-navigation/core": "^6.4.10",
     "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0",
     "ansi-regex": "^5.0.1",
     "color-name": "1.1.*",

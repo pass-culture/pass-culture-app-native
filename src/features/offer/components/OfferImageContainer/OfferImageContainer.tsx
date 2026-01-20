@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
+import { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -15,7 +15,6 @@ import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { AnchorNames } from 'ui/components/anchor/anchor-name'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing } from 'ui/theme'
 
 import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 import { OfferImageRenderer } from './OfferImageRenderer'
@@ -45,6 +44,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { showInfoSnackBar } = useSnackBarContext()
   const { cookiesConsent } = useCookies()
+  const { designSystem } = useTheme()
   const scrollToAnchor = useScrollToAnchor()
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
   const hasConsent =
@@ -72,7 +72,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
     <OfferImageHeaderWrapper
       imageHeight={imageDimensions.backgroundHeight}
       imageUrl={placeholderImage}
-      paddingTop={getSpacing(offerImageContainerMarginTop)}>
+      paddingTop={designSystem.size.spacing.xxl * 4}>
       <OfferImageRenderer
         offerImages={images}
         placeholderImage={placeholderImage}

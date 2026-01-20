@@ -390,8 +390,10 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontFamily": "Montserrat",
                             "fontSize": 16,
+                            "fontStyle": "italic",
+                            "fontWeight": "500",
                             "height": "100%",
                             "paddingBottom": 0,
                             "paddingLeft": 0,
@@ -401,7 +403,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         }
                         testID="Entrée pour le code reçu par sms"
                         textAlignVertical="center"
-                        textContentType="oneTimeCode"
                         value=""
                       />
                     </View>

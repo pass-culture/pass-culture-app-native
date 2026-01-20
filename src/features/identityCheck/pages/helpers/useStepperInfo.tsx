@@ -91,13 +91,13 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: hasUserCompletedInfo
         ? ProfileTypes.RECAP_EXISTING_DATA
         : ProfileTypes.IDENTITY_CHECK,
-      subtitle: hasUserCompletedInfo ? 'Confirme tes informations' : undefined,
+      subtitle: hasUserCompletedInfo ? undefined : 'Confirme tes informations',
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: {
-        disabled: () => <IconStepDisabled Icon={Profile} testID="identification-step-disabled" />,
-        current: () => <IconStepCurrent Icon={Profile} testID="identification-step-current" />,
+        disabled: () => <IconStepDisabled Icon={IdCard} testID="identification-step-disabled" />,
+        current: () => <IconStepCurrent Icon={IdCard} testID="identification-step-current" />,
         completed: () => <IconStepDone Icon={IdCard} testID="identification-step-done" />,
         retry: () => <IconStepRetry Icon={IdCard} testID="identification-retry-step" />,
       },

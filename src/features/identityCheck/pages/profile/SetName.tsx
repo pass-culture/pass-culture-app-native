@@ -14,7 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard } from 'ui/svg/icons/IdCard'
@@ -87,14 +87,13 @@ export const SetName = () => {
               control={control}
               name="firstName"
               render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
+                <TextInput
                   label="Prénom"
                   value={value}
                   onChangeText={onChange}
                   requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le prénom"
-                  textContentType="givenName"
                   autoComplete="given-name"
                   errorMessage={error?.message}
                 />
@@ -104,14 +103,13 @@ export const SetName = () => {
               control={control}
               name="lastName"
               render={({ field: { onChange, value }, fieldState: { error } }) => (
-                <InputText
+                <TextInput
                   label="Nom"
                   value={value}
                   onChangeText={onChange}
                   requiredIndicator="explicit"
                   accessibilityHint={error?.message}
                   testID="Entrée pour le nom"
-                  textContentType="familyName"
                   autoComplete="family-name"
                   errorMessage={error?.message}
                 />

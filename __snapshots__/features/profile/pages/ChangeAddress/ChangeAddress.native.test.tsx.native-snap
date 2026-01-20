@@ -393,7 +393,6 @@ exports[`<SetAddress/> from mandatory udpate personal data screen should render 
                       }
                       testID="Entrée pour l’adresse"
                       textAlignVertical="center"
-                      textContentType="fullStreetAddress"
                       value="1 rue Poissonnière"
                     />
                     <View
@@ -1006,7 +1005,6 @@ exports[`<SetAddress/> without previous screen should render correctly 1`] = `
                       }
                       testID="Entrée pour l’adresse"
                       textAlignVertical="center"
-                      textContentType="fullStreetAddress"
                       value="1 rue Poissonnière"
                     />
                     <View

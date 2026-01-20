@@ -387,7 +387,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   }
                   testID="Entrée pour l’email"
                   textAlignVertical="center"
-                  textContentType="emailAddress"
                   value="email@domain.ext"
                 />
               </View>

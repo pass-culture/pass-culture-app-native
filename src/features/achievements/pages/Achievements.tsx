@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FC, useEffect } from 'react'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AchievementEnum } from 'api/gen'
 import { Achievement } from 'features/achievements/components/Achievement'
@@ -35,7 +35,7 @@ export const Achievements = () => {
     achievements: achievementData,
     completedAchievements: user?.achievements || [],
   })
-
+  const theme = useTheme()
   useEffect(() => {
     if (params?.from) {
       track(params.from)
@@ -74,7 +74,7 @@ export const Achievements = () => {
                 contentContainerStyle={{
                   gap: getSpacing(6),
                   rowGap: getSpacing(6),
-                  paddingHorizontal: getSpacing(2),
+                  paddingHorizontal: theme.designSystem.size.spacing.s,
                 }}
                 columnWrapperStyle={{
                   gap: getSpacing(6),

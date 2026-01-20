@@ -11,11 +11,11 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { Eye } from 'ui/svg/icons/Eye'
 import { Search } from 'ui/svg/icons/Search'
 
-import { InputText } from './InputText'
+import { TextInput } from './TextInput'
 
-const meta: Meta<typeof InputText> = {
-  title: 'design system/inputs/InputText',
-  component: InputText,
+const meta: Meta<typeof TextInput> = {
+  title: 'design system/inputs/TextInput',
+  component: TextInput,
 }
 export default meta
 
@@ -29,33 +29,33 @@ const baseProps = {
   description: 'Format',
 }
 
-const variantConfig: Variants<typeof InputText> = [
+const variantConfig: Variants<typeof TextInput> = [
   {
-    label: 'InputText',
+    label: 'TextInput',
     props: { ...baseProps },
   },
   {
-    label: 'InputText with icon',
+    label: 'TextInput with icon',
     props: { ...baseProps, leftComponent: <SearchIcon /> },
   },
   {
-    label: 'Disabled InputText',
+    label: 'Disabled TextInput',
     props: { ...baseProps, disabled: true },
   },
   {
-    label: 'Required InputText with symbol',
+    label: 'Required TextInput with symbol',
     props: { ...baseProps, requiredIndicator: 'symbol' },
   },
   {
-    label: 'Required InputText with text',
+    label: 'Required TextInput with text',
     props: { ...baseProps, requiredIndicator: 'explicit' },
   },
   {
-    label: 'InputText with error',
+    label: 'TextInput with error',
     props: { ...baseProps, errorMessage: 'Error message' },
   },
   {
-    label: 'InputText with long error',
+    label: 'TextInput with long error',
     props: {
       ...baseProps,
       errorMessage:
@@ -63,7 +63,7 @@ const variantConfig: Variants<typeof InputText> = [
     },
   },
   {
-    label: 'InputText with inside rightButton',
+    label: 'TextInput with inside rightButton',
     props: {
       ...baseProps,
       rightButton: {
@@ -74,15 +74,15 @@ const variantConfig: Variants<typeof InputText> = [
     },
   },
   {
-    label: 'InputText with character count',
+    label: 'TextInput with character count',
     props: { ...baseProps, characterCount: 10 },
   },
   {
-    label: 'InputText with character count and error message',
+    label: 'TextInput with character count and error message',
     props: { ...baseProps, characterCount: 10, errorMessage: 'Error message' },
   },
   {
-    label: 'InputText with character count and long error message',
+    label: 'TextInput with character count and long error message',
     props: {
       ...baseProps,
       characterCount: 10,
@@ -92,9 +92,9 @@ const variantConfig: Variants<typeof InputText> = [
   },
 ]
 
-export const Template: VariantsStory<typeof InputText> = {
-  name: 'InputText',
+export const Template: VariantsStory<typeof TextInput> = {
+  name: 'TextInput',
   render: (props) => (
-    <VariantsTemplate variants={variantConfig} Component={InputText} defaultProps={{ ...props }} />
+    <VariantsTemplate variants={variantConfig} Component={TextInput} defaultProps={{ ...props }} />
   ),
 }

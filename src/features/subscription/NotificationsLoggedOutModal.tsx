@@ -41,7 +41,6 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
             analytics.logSignUpClicked({ from })
             dismissModal()
           }}
-          buttonHeight="tall"
         />
         <StyledAuthenticationButton
           type="login"

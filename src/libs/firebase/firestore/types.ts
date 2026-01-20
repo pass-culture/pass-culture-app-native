@@ -75,6 +75,8 @@ export enum RemoteStoreFeatureFlags {
   WIP_NEW_BOOKINGS_ENDED_ONGOING = 'wipNewBookingsEndedOngoing',
   WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
+  WIP_OFFER_MULTI_ARTISTS = 'wipOfferMultiArtists',
+  WIP_OFFER_REFACTO = 'wipOfferRefacto',
   WIP_OFFER_VIDEO_SECTION = 'wipOfferVideoSection',
   WIP_OFFERS_IN_BOTTOM_SHEET = 'wipOffersInBottomSheet',
   WIP_REACTION_FEATURE = 'wipReactionFeature',

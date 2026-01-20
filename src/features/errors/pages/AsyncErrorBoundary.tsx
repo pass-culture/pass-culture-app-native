@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { FallbackProps } from 'react-error-boundary'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
@@ -21,6 +21,7 @@ interface AsyncFallbackProps extends FallbackProps {
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
   const { goBack, canGoBack } = useGoBack(...homeNavigationConfig)
   const { top } = useCustomSafeInsets()
+  const { designSystem } = useTheme()
 
   return (
     <AsyncErrorBoundaryWithoutNavigation
@@ -29,7 +30,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
         canGoBack() ? (
           <HeaderContainer
             onPress={goBack}
-            top={top + getSpacing(3.5)}
+            top={top + designSystem.size.spacing.l}
             accessibilityLabel="Revenir en arrière">
             <StyledArrowPrevious />
           </HeaderContainer>

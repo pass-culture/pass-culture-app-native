@@ -5,9 +5,11 @@ import { DefaultTheme } from 'styled-components/dist/types'
 import styled from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
+import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -40,9 +42,14 @@ interface Props {
 
 export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   const { seventeenYearsOldDeposit, eighteenYearsOldDeposit } = useDepositAmountsByAge()
+  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(5000, currency, euroToPacificFrancRate) // get amount from backend
+  const bonificationAmount = formatCurrencyFromCents(
+    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+    currency,
+    euroToPacificFrancRate
+  )
 
   const depositsByAge = new Map<Props['age'], string>([
     [17, seventeenYearsOldDeposit],

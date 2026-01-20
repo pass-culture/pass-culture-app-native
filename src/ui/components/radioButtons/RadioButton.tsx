@@ -120,7 +120,7 @@ const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
 
 const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   minHeight: theme.icons.sizes.small,
-  paddingVertical: getSpacing(3),
+  paddingVertical: theme.designSystem.size.spacing.m,
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: theme.isMobileViewport ? 'space-between' : undefined,

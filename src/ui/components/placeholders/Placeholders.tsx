@@ -44,7 +44,7 @@ export const TextPlaceholder = ({
     <TextPlaceholderContainer marginBottom={marginBottom}>
       <SkeletonTile
         borderRadius={designSystem.size.borderRadius.s}
-        height={height ?? getSpacing(3)}
+        height={height ?? designSystem.size.spacing.m}
         width={width}
       />
     </TextPlaceholderContainer>
@@ -88,7 +88,7 @@ export const NumberOfResultsPlaceholder = () => {
     <Container>
       <SkeletonTile
         width={getSpacing(20)}
-        height={getSpacing(3)}
+        height={designSystem.size.spacing.m}
         borderRadius={designSystem.size.borderRadius.s}
       />
     </Container>
@@ -101,7 +101,7 @@ export const NumberOfBookingsPlaceholder = () => {
     <Container>
       <SkeletonTile
         width={getSpacing(42)}
-        height={getSpacing(3)}
+        height={designSystem.size.spacing.m}
         borderRadius={designSystem.size.borderRadius.s}
       />
     </Container>

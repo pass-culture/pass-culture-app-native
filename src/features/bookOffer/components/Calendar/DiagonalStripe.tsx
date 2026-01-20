@@ -7,7 +7,7 @@ export const DiagonalStripe = styled(LinearGradient).attrs<{ colors?: string[] }
     theme.designSystem.color.text.disabled,
     theme.designSystem.color.text.inverted,
   ],
-  start: { x: 0.0, y: 0.0 },
-  end: { x: 1.0, y: 1.0 },
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 1 },
   locations: [0.48, 0.5, 0.52],
 }))``

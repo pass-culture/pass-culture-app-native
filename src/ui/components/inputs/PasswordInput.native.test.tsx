@@ -10,7 +10,7 @@ jest.useFakeTimers()
 
 describe('<PasswordInput />', () => {
   it('should change accessibilityLabel when password is hidden or it was displayed', async () => {
-    render(<PasswordInput />)
+    render(<PasswordInput autocomplete="new-password" />)
 
     expect(screen.getByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Cacher le mot de passe')).not.toBeOnTheScreen()
@@ -25,7 +25,7 @@ describe('<PasswordInput />', () => {
 
   it('should render ref correctly', () => {
     const myRef = React.createRef<RNTextInput>()
-    render(<PasswordInput ref={myRef} />)
+    render(<PasswordInput ref={myRef} autocomplete="new-password" />)
 
     expect(myRef.current).toBeTruthy()
   })

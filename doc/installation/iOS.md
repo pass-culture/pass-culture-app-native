@@ -65,14 +65,16 @@ In order to launch the app in the Simulator or on your external Apple device, yo
 
    1. It might ask your session password twice to continue, it might also ask you to do the previous step twice.
 
-### 🚀 Run the app with yarn
+### 🚀 Run the app 
 
-- For Apple External Device
+## For Apple External Device
 
-  Connect your device to the computer and run:
+  First, activate deloppement mode in your device setting
+
+  Then, connect your device to the computer and run:
 
   ```sh
-  yarn ios:testing --device
+  yarn ios:testing --deviceName
   ```
 
   or use the Xcode interface. Choose a scheme (like testing), then a device and click the `Run` button in the toolbar.

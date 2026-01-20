@@ -442,7 +442,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                               {
                                 "borderRightColor": "#90949d",
                                 "borderRightWidth": 1,
-                                "paddingVertical": 10,
+                                "paddingVertical": 12,
                               }
                             }
                           />
@@ -471,8 +471,10 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontFamily": "Montserrat",
                             "fontSize": 16,
+                            "fontStyle": "italic",
+                            "fontWeight": "500",
                             "height": "100%",
                             "paddingBottom": 0,
                             "paddingLeft": 0,
@@ -482,7 +484,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         }
                         testID="Entrée pour le numéro de téléphone"
                         textAlignVertical="center"
-                        textContentType="telephoneNumber"
                         value=""
                       />
                     </View>

@@ -5,13 +5,11 @@ import { useTheme } from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { getSpacing } from '../theme'
-
 import { AccessibleIcon } from './icons/types'
 
 const NotMemoizedRectangle: React.FC<Omit<AccessibleIcon, 'color'> & { height?: number }> = ({
   size = 32,
-  height = getSpacing(2),
+  height = 8,
   accessibilityLabel,
   testID,
 }) => {
@@ -32,7 +30,7 @@ const NotMemoizedRectangle: React.FC<Omit<AccessibleIcon, 'color'> & { height?: 
         </LinearGradient>
       </Defs>
       <G fill="none">
-        <G stroke={fill} strokeWidth={getSpacing(2)} transform="translate(0 -309)">
+        <G stroke={fill} strokeWidth={designSystem.size.spacing.s} transform="translate(0 -309)">
           <Path d="M4 313H371V314H4z" />
         </G>
       </G>

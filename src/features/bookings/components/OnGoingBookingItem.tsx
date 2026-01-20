@@ -1,22 +1,13 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { BookingListItemResponse, WithdrawalTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
-import {
-  getBookingLabelsV2,
-  getBookingListItemProperties,
-  expirationDateUtilsV2,
-} from 'features/bookings/helpers'
-import {
-  daysCountdown,
-  displayExpirationMessage,
-} from 'features/bookings/helpers/expirationDateUtils'
+import { getOngoingBookingItemProperties } from 'features/bookings/helpers/v2/getOngoingBookingItemProperties'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
-import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -28,35 +19,26 @@ import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   booking: BookingListItemResponse
-  eligibleBookingsForArchive?: BookingListItemResponse[]
+  eligibleBookingsForArchive: BookingListItemResponse[]
 }
 
 export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Props) => {
-  const { stock, dateCreated } = booking
+  const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
+
+  const {
+    accessibilityLabel,
+    canDisplayExpirationMessage,
+    correctExpirationMessages,
+    dateLabel,
+    isDuo,
+    onBeforeNavigate,
+    navigateTo,
+    withdrawLabel,
+  } = getOngoingBookingItemProperties({ booking, isEvent, eligibleBookingsForArchive })
+  const { stock } = booking
   const { offer } = stock
 
-  const daysLeft = daysCountdown(dateCreated)
-  const { isEvent } = useSubcategory(offer.subcategoryId)
   const categoryId = useCategoryId(offer.subcategoryId)
-
-  const bookingProperties = getBookingListItemProperties(booking, isEvent)
-  const { dateLabel, withdrawLabel } = getBookingLabelsV2.getBookingLabels(
-    booking,
-    bookingProperties
-  )
-
-  const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
-    name: stock.offer.name,
-    properties: bookingProperties,
-    date: dateLabel,
-  })
-
-  const isBookingValid = expirationDateUtilsV2.isBookingEligibleForArchive(
-    booking,
-    eligibleBookingsForArchive
-  )
-  const canDisplayExpirationMessage = !!isBookingValid && daysLeft >= 0
-  const correctExpirationMessages = displayExpirationMessage(daysLeft)
 
   const {
     visible: shareOfferModalVisible,
@@ -69,28 +51,23 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Prop
     utmMedium: 'booking',
   })
 
-  const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'bookings', offerId: offer.id })
-    shareOffer()
+  const pressShareOffer = async () => {
+    await analytics.logShare({ type: 'Offer', from: 'bookings', offerId: offer.id })
+    await shareOffer()
     showShareOfferModal()
-  }, [offer.id, shareOffer, showShareOfferModal])
+  }
 
   return (
     <React.Fragment>
       <ContentContainer
-        navigateTo={{ screen: 'BookingDetails', params: { id: booking.id } }}
-        onBeforeNavigate={() => {
-          analytics.logViewedBookingPage({
-            offerId: stock.offer.id,
-            from: 'bookings',
-          })
-        }}
+        navigateTo={navigateTo}
+        onBeforeNavigate={onBeforeNavigate}
         accessibilityLabel={accessibilityLabel}>
         <OfferImage imageUrl={stock.offer.imageUrl ?? ''} categoryId={categoryId} size="tall" />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
           {dateLabel ? <DateLabel>{dateLabel}</DateLabel> : null}
-          {bookingProperties.isDuo ? <Duo /> : null}
+          {isDuo ? <Duo /> : null}
           <Spacer.Flex />
           {withdrawLabel ? (
             <React.Fragment>

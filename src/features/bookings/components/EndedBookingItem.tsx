@@ -5,19 +5,16 @@ import { BookingListItemResponse } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { EndedBookingInteractionButtons } from 'features/bookings/components/EndedBookingInteractionButtons/EndedBookingInteractionButtons'
 import { EndedBookingReason } from 'features/bookings/components/EndedBookingReason/EndedBookingReason'
-import { expirationDateUtilsV2 } from 'features/bookings/helpers'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
+import { getEndedBookingItemProperties } from 'features/bookings/helpers/v2/getEndedBookingItemProperties'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ShareContent } from 'libs/share/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useABSegment } from 'shared/useABSegment/useABSegment'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -34,7 +31,7 @@ export const EndedBookingItem = ({
   handleShowReactionModal,
   handleShowShareOfferModal,
 }: Props) => {
-  const { cancellationDate, cancellationReason, dateUsed, stock } = booking
+  const { cancellationDate, dateUsed, stock } = booking
   const { offer } = stock
   const subcategoriesMapping = useSubcategoriesMapping()
   const subcategory = subcategoriesMapping[stock.offer.subcategoryId]
@@ -43,50 +40,18 @@ export const EndedBookingItem = ({
   const { showErrorSnackBar } = useSnackBarContext()
   const segment = useABSegment()
 
-  const isBookingEligibleForArchive = !!expirationDateUtilsV2.isArchivableBooking(booking)
-  const shouldRedirectToBooking = isBookingEligibleForArchive && !cancellationReason
-
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
-  const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
-    name: offer.name,
-    dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
-    cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
-  })
+  const { accessibilityLabel, isBookingEligibleForArchive, handlePressOffer, navigateTo } =
+    getEndedBookingItemProperties({
+      booking,
+      categoryId: subcategory.categoryId,
+      netInfo,
+      prePopulateOffer,
+      segment,
+      showErrorSnackBar,
+    })
 
-  const handlePressOffer = async () => {
-    if (!offer.id) return
-    if (shouldRedirectToBooking)
-      await analytics.logViewedBookingPage({
-        offerId: offer.id,
-        from: 'endedbookings',
-      })
-    if (isBookingEligibleForArchive) return
-    if (netInfo.isConnected) {
-      // We pre-populate the query-cache with the data from the search result for a smooth transition
-      prePopulateOffer({
-        ...offer,
-        categoryId: subcategory.categoryId,
-        thumbUrl: offer.imageUrl ?? '',
-        name: offer.name,
-        offerId: offer.id,
-      })
-
-      triggerConsultOfferLog(
-        {
-          offerId: offer.id,
-          from: 'endedbookings',
-        },
-        segment
-      )
-    } else {
-      showErrorSnackBar({
-        message:
-          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    }
-  }
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
     utmMedium: 'ended_booking',
@@ -102,11 +67,7 @@ export const EndedBookingItem = ({
     <Container>
       <ContentContainer
         enableNavigate={!!netInfo.isConnected}
-        navigateTo={
-          shouldRedirectToBooking
-            ? { screen: 'BookingDetails', params: { id: booking.id } }
-            : { screen: 'Offer', params: { id: offer.id, from: 'endedbookings' } }
-        }
+        navigateTo={navigateTo}
         onBeforeNavigate={handlePressOffer}
         accessibilityLabel={accessibilityLabel}>
         <ContentContainerGap gap={4}>

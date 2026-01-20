@@ -7,12 +7,12 @@ import React, { forwardRef } from 'react'
 import { Insets, Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { InputTextProps } from 'ui/components/inputs/types'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInputProps } from 'ui/components/inputs/types'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Search } from 'ui/svg/icons/Search'
 
-type SearchInputBaseProps = Omit<InputTextProps, 'leftComponent' | 'rightButton'> & {
+type SearchInputBaseProps = Omit<TextInputProps, 'leftComponent' | 'rightButton'> & {
   disableClearButton?: boolean
   onClear?: () => void
 }
@@ -46,13 +46,13 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputBaseProps>(functio
     onClear?.()
   }
 
-  const resolvedReturnKeyType: NonNullable<InputTextProps['returnKeyType']> =
+  const resolvedReturnKeyType: NonNullable<TextInputProps['returnKeyType']> =
     returnKeyType ?? 'search'
-  const resolvedKeyboardType: InputTextProps['keyboardType'] =
+  const resolvedKeyboardType: TextInputProps['keyboardType'] =
     keyboardType ?? (Platform.OS === 'web' ? 'web-search' : undefined)
 
   return (
-    <InputText
+    <TextInput
       ref={ref}
       disabled={disabled}
       value={value}

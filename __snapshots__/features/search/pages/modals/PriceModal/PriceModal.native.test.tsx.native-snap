@@ -836,8 +836,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontFamily": "Montserrat",
                           "fontSize": 16,
+                          "fontStyle": "italic",
+                          "fontWeight": "500",
                           "height": "100%",
                           "paddingBottom": 0,
                           "paddingLeft": 0,
@@ -847,7 +849,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                       testID="Entrée pour le prix minimum"
                       textAlignVertical="center"
-                      textContentType="none"
                       value=""
                     />
                   </View>
@@ -955,8 +956,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontFamily": "Montserrat",
                         "fontSize": 16,
+                        "fontStyle": "italic",
+                        "fontWeight": "500",
                         "height": "100%",
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -966,7 +969,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     }
                     testID="Entrée pour le prix maximum"
                     textAlignVertical="center"
-                    textContentType="none"
                     value=""
                   />
                 </View>

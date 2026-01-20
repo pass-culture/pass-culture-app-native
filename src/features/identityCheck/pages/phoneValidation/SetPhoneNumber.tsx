@@ -28,7 +28,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -119,14 +119,13 @@ export const SetPhoneNumber = () => {
                 Tu vas recevoir un code de validation pour confirmer ton numéro.
               </StyledBody>
               <InputContainer invalidPhoneNumberMessage={invalidPhoneNumberMessage}>
-                <InputText
+                <TextInput
                   autoComplete="tel"
                   autoCapitalize="none"
                   keyboardType="number-pad"
                   label="Numéro de téléphone"
                   value={phoneNumber}
                   onChangeText={onChangeText}
-                  textContentType="telephoneNumber"
                   onSubmitEditing={requestSendPhoneValidationCode}
                   accessibilityHint={invalidPhoneNumberMessage}
                   leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}

@@ -946,6 +946,22 @@ Texte
 </details>
 
 <br>
+<details>
+
+<summary> 🟠 Critère 9.12 -Pour chaque champ qui attend une donnée personnelle de l’utilisateur, la saisie est-elle facilitée ?</summary>
+
+**RAAM** : [Critère 8.2](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-8-2)  
+**Ticket** : [PC-37497](https://passculture.atlassian.net/browse/PC-37497)  
+**PR** : [#9102](https://github.com/pass-culture/pass-culture-app-native/pull/9102)
+
+**Problème** 😱  
+- **(Tous les écrans)** Pour au moins un champ qui attend une donnée personnelle de l'utilisateur, la nature de la saisie n'est pas identifiée correctement.
+
+**Correction** 💡  
+- **E07, E11, E12** Ajout de la propriété autocomplete et suppression de la propriété textContentType qui entrait en concurrence.
+
+</details>
+<br>
 
 <details>
 

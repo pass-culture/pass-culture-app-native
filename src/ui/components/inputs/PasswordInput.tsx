@@ -1,17 +1,18 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { InputTextProps } from 'ui/components/inputs/types'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInputProps } from 'ui/components/inputs/types'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 
-export interface Props extends Omit<InputTextProps, 'label'> {
+export interface Props extends Omit<TextInputProps, 'label'> {
   label?: string
+  autocomplete: 'new-password' | 'current-password'
 }
 
 const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
-  { label, ...inputProps },
+  { label, autocomplete, ...inputProps },
   forwardedRef
 ) => {
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
@@ -21,10 +22,10 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> =
   }
 
   return (
-    <InputText
+    <TextInput
       label={label ?? 'Mot de passe'}
       autoCapitalize="none"
-      textContentType="password"
+      autoComplete={autocomplete}
       secureTextEntry={shouldHidePassword}
       testID={label ?? 'Mot de passe'}
       {...inputProps}

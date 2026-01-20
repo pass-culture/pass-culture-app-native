@@ -109,7 +109,7 @@ const Container = styled.View(({ theme }) => {
   const modalWidth =
     theme.isMobileViewport && !theme.isTabletViewport
       ? theme.appContentWidth - getSpacing(8)
-      : theme.breakpoints.sm - getSpacing(3)
+      : theme.breakpoints.sm - theme.designSystem.size.spacing.m
   return {
     backgroundColor: theme.designSystem.color.background.default,
     alignItems: 'center',

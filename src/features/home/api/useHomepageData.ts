@@ -4,7 +4,7 @@ import { Homepage } from 'features/home/types'
 import { UserOnboardingRole } from 'features/onboarding/enums'
 import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRoleFromOnboarding'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { isUserFreeBeneficiary } from 'features/profile/helpers/isUserFreeBeneficiary'
+import { isUserFreeBeneficiaryOrEligible } from 'features/profile/helpers/isUserFreeBeneficiaryOrEligible'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useUserHasBookingsQuery } from 'queries/bookings'
@@ -18,7 +18,7 @@ enum HomepageType {
 
 type HomeCriterias = {
   isLoggedIn: boolean
-  isFreeBeneficiary: boolean
+  isFreeBeneficiaryOrEligible: boolean
   isBeneficiary: boolean
   hasBookings: boolean
   onboardingRole: UserOnboardingRole
@@ -33,7 +33,7 @@ export const EMPTY_HOMEPAGE: Homepage = {
 
 const getHomepageType = ({
   isLoggedIn,
-  isFreeBeneficiary,
+  isFreeBeneficiaryOrEligible,
   isBeneficiary,
   hasBookings,
   onboardingRole,
@@ -48,14 +48,20 @@ const getHomepageType = ({
     return HomepageType.GENERAL
   }
 
-  if (isFreeBeneficiary) return HomepageType.FREE_BENEFICIARY
+  if (isFreeBeneficiaryOrEligible) return HomepageType.FREE_BENEFICIARY
   if (isBeneficiary) return hasBookings ? HomepageType.BENEFICIARY : HomepageType.WITHOUT_BOOKING
 
   return HomepageType.GENERAL
 }
 
 export const getHomepageId = (
-  { isLoggedIn, isFreeBeneficiary, isBeneficiary, hasBookings, onboardingRole }: HomeCriterias,
+  {
+    isLoggedIn,
+    isFreeBeneficiaryOrEligible,
+    isBeneficiary,
+    hasBookings,
+    onboardingRole,
+  }: HomeCriterias,
   remoteConfig: CustomRemoteConfig
 ): string => {
   const homePageRemoteConfig: Record<HomepageType, string> = {
@@ -66,7 +72,7 @@ export const getHomepageId = (
   }
   const homepageType = getHomepageType({
     isLoggedIn,
-    isFreeBeneficiary,
+    isFreeBeneficiaryOrEligible,
     isBeneficiary,
     hasBookings,
     onboardingRole,
@@ -82,7 +88,7 @@ export const useHomepageData = (): Homepage => {
   const homepageId = getHomepageId(
     {
       isLoggedIn: isLoggedIn && !!user,
-      isFreeBeneficiary: isUserFreeBeneficiary(user),
+      isFreeBeneficiaryOrEligible: isUserFreeBeneficiaryOrEligible(user),
       isBeneficiary: isUserBeneficiary(user),
       hasBookings: userHasBookings,
       onboardingRole,

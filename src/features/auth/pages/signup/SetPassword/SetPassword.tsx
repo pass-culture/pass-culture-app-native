@@ -43,6 +43,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
         <PasswordInputController
           control={control}
           name="password"
+          autocomplete="current-password"
           label="Mot de passe"
           withSecurityRules
           securityRulesAlwaysVisible

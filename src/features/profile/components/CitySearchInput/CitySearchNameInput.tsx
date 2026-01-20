@@ -125,7 +125,6 @@ export const CitySearchNameInput = ({
                 accessibilityHint={error?.message}
                 testID="Entrée pour la ville"
                 autoComplete="postal-address-locality"
-                textContentType="addressCity"
                 requiredIndicator={requiredIndicator}
               />
               <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />

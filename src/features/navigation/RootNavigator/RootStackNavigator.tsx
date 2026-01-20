@@ -1,3 +1,4 @@
+import { Route } from '@react-navigation/native'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
@@ -37,7 +38,6 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { SuspenseCheatcodesStackNavigator } from 'features/navigation/CheatcodesStackNavigator/SuspenseCheatcodesStackNavigator'
-import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseOnboardingStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -52,7 +52,7 @@ import { SuspenseSubscriptionStackNavigator } from 'features/navigation/Subscrip
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabNavigator } from 'features/navigation/TabBar/TabStackNavigator'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
-import { Offer } from 'features/offer/pages/Offer/Offer'
+import { OfferPageBridge } from 'features/offer/bridge/OfferPageBridge'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { OfferVideoPreview } from 'features/offer/pages/OfferVideoPreview/OfferVideoPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -343,7 +343,7 @@ const rootScreens: RouteConfig[] = [
 // For some reason, inlining "withAsyncErrorBoundary" directly in the Screen's component prop causes unexpected behavior with a Youtube player when pressing fullscreen button
 // Youtube player in fullscreen opens and closes 1 second later automatically
 const OfferVideoPreviewWithAsyncErrorBoundry = withAsyncErrorBoundary(OfferVideoPreview)
-const OfferWithAsyncErrorBoundry = withAsyncErrorBoundary(Offer)
+const OfferWithBridgeAndBoundary = withAsyncErrorBoundary(OfferPageBridge)
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
@@ -394,19 +394,19 @@ const RootStackNavigator = withWebWrapper(
           ))}
           <RootStackNavigatorBase.Screen
             name="Offer"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer1"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer2"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="_DeeplinkOnlyOffer3"
-            component={OfferWithAsyncErrorBoundry}
+            component={OfferWithBridgeAndBoundary}
             options={{ title: 'Offre' }}></RootStackNavigatorBase.Screen>
           <RootStackNavigatorBase.Screen
             name="OfferVideoPreview"
@@ -422,7 +422,7 @@ const RootStackNavigator = withWebWrapper(
   }
 )
 
-export const RootNavigator: React.ComponentType = () => {
+export const RootNavigator: React.FC<{ currentRoute?: Route<string> }> = ({ currentRoute }) => {
   const mainId = uuidv4()
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
@@ -433,7 +433,6 @@ export const RootNavigator: React.ComponentType = () => {
 
   const initialScreen = useInitialScreen()
 
-  const currentRoute = useCurrentRoute()
   const showHeaderQuickAccess = currentRoute && currentRoute.name === 'TabNavigator'
   const headerWithQuickAccess = showHeaderQuickAccess ? (
     <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
@@ -455,8 +454,9 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
-  const mainAccessibilityRole: AccessibilityRole | undefined =
-    determineAccessibilityRole(currentRoute)
+  const mainAccessibilityRole: AccessibilityRole | undefined = determineAccessibilityRole(
+    currentRoute ?? null
+  )
 
   return (
     <TabNavigationStateProvider>
@@ -466,7 +466,7 @@ export const RootNavigator: React.ComponentType = () => {
       </Main>
       {showTabBar ? (
         <View accessibilityRole={AccessibilityRole.FOOTER}>
-          <AccessibleTabBar id={tabBarId} />
+          <AccessibleTabBar id={tabBarId} currentRoute={currentRoute} />
         </View>
       ) : null}
       {/* The components below are those for which we do not want their rendering to happen while the splash is displayed. */}

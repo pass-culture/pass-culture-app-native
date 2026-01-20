@@ -76,6 +76,7 @@ export type OfferContentProps = {
   chronicleVariantInfo: ChronicleVariantInfo
   subcategory: Subcategory
   onShowChroniclesWritersModal: () => void
+  onShowOfferArtistsModal: () => void
   segment: SegmentResult
   chronicles?: ChronicleCardData[]
   headlineOffersCount?: number
@@ -85,6 +86,7 @@ export type OfferContentProps = {
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
   enableVideoABTesting?: boolean
+  isMultiArtistsEnabled?: boolean
 }
 
 export type OfferImageContainerDimensions = {

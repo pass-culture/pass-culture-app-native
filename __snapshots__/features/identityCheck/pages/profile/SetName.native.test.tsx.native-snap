@@ -425,8 +425,10 @@ exports[`<SetName/> should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontFamily": "Montserrat",
                           "fontSize": 16,
+                          "fontStyle": "italic",
+                          "fontWeight": "500",
                           "height": "100%",
                           "paddingBottom": 0,
                           "paddingLeft": 0,
@@ -436,7 +438,6 @@ exports[`<SetName/> should render correctly 1`] = `
                       }
                       testID="Entrée pour le prénom"
                       textAlignVertical="center"
-                      textContentType="givenName"
                       value=""
                     />
                   </View>
@@ -539,8 +540,10 @@ exports[`<SetName/> should render correctly 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontFamily": "Montserrat",
                           "fontSize": 16,
+                          "fontStyle": "italic",
+                          "fontWeight": "500",
                           "height": "100%",
                           "paddingBottom": 0,
                           "paddingLeft": 0,
@@ -550,7 +553,6 @@ exports[`<SetName/> should render correctly 1`] = `
                       }
                       testID="Entrée pour le nom"
                       textAlignVertical="center"
-                      textContentType="familyName"
                       value=""
                     />
                   </View>

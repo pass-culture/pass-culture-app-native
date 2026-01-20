@@ -32,7 +32,7 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { InputText } from 'ui/designSystem/InputText/InputText'
+import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
 import { getSpacing, Typo } from 'ui/theme'
@@ -195,7 +195,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     return (
       <TextInputContainer key={name}>
         {config.type === 'string' ? (
-          <InputText
+          <TextInput
             label={label}
             onBlur={onBlurValidate}
             onChangeText={onChangeText}
@@ -204,7 +204,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           />
         ) : null}
         {config.type === 'stringArray' ? (
-          <InputText label={label} onBlur={onBlurValidate} onChangeText={onChangeStringArray} />
+          <TextInput label={label} onBlur={onBlurValidate} onChangeText={onChangeStringArray} />
         ) : null}
         {config.type === 'boolean' ? (
           <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />

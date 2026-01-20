@@ -4,7 +4,7 @@ import { Insets, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-na
 // eslint-disable-next-line local-rules/no-theme-from-theme
 import { theme } from 'theme'
 import { ColorsType } from 'theme/types'
-import { InputSize } from 'ui/designSystem/InputText/types'
+import { InputSize } from 'ui/designSystem/TextInput/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type InputProps = {
@@ -12,7 +12,7 @@ type InputProps = {
   focusOutlineColor?: ColorsType
 }
 
-type CustomTextInputProps = InputProps & {
+type CustomTextInputBaseProps = InputProps & {
   label?: string
   isError?: boolean
   format?: string
@@ -33,7 +33,7 @@ type CustomTextInputProps = InputProps & {
 
 export type RequiredIndicator = 'symbol' | 'explicit'
 
-type CustomInputTextProps = InputProps & {
+type CustomTextInputProps = InputProps & {
   label: string
   labelStyle?: TextStyle
   errorMessage?: string
@@ -100,7 +100,6 @@ export type RNTextInputProps = Pick<
   | 'secureTextEntry'
   | 'selectionColor'
   | 'selectTextOnFocus'
-  | 'textContentType'
   | 'value'
   | 'multiline'
   | 'enablesReturnKeyAutomatically'
@@ -110,9 +109,9 @@ export type RNTextInputProps = Pick<
     testID?: string
   }
 
-type TextInputProps = CustomTextInputProps & RNTextInputProps
+type TextInputNativeProps = CustomTextInputBaseProps & RNTextInputProps
 
-export type InputTextProps = CustomInputTextProps & Omit<RNTextInputProps, 'placeholder'>
+export type TextInputProps = CustomTextInputProps & Omit<RNTextInputProps, 'placeholder'>
 
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
@@ -123,7 +122,7 @@ function getInputProps<Props extends InputProps>(props: Props): InputProps {
   }
 }
 
-export function getCustomInputTextProps(props: InputTextProps): CustomInputTextProps {
+export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
   return {
     ...getInputProps(props),
     label: props.label,
@@ -154,7 +153,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
   }
 }
 
-export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
+export function getRNTextInputProps(props: TextInputNativeProps): RNTextInputProps {
   return {
     accessibilityLabel: props.accessibilityLabel,
     autoCapitalize: props.autoCapitalize,
@@ -178,7 +177,6 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     secureTextEntry: props.secureTextEntry,
     selectionColor: props.selectionColor,
     selectTextOnFocus: props.selectTextOnFocus,
-    textContentType: props.textContentType,
     testID: props.testID,
     value: props.value,
     nativeAutoFocus: props.nativeAutoFocus,

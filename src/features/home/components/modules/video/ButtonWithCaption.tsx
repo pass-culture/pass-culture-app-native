@@ -7,7 +7,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type ButtonWithCaptionProps = {
   onPress: () => void
@@ -54,12 +54,12 @@ const ButtonCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.pill,
-  padding: getSpacing(2.5),
+  padding: theme.designSystem.size.spacing.m,
   backgroundColor: theme.designSystem.color.background.locked,
 }))
 
 const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.pill,
-  padding: getSpacing(2.5),
+  padding: theme.designSystem.size.spacing.m,
   backgroundColor: theme.designSystem.color.background.locked,
 }))

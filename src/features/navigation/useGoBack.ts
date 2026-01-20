@@ -15,7 +15,7 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
     ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
     : [RouteName] | [RouteName, RootStackParamList[RouteName]]
 ) {
-  const { canGoBack, goBack, navigate } = useNavigation<UseNavigationType>()
+  const { canGoBack, goBack, popTo } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
 
   function customGoBack() {
@@ -28,7 +28,7 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
       // TypeScript cannot verify that our union type matches navigate's overloaded signature
       // but the types are structurally correct - we're using the same conditional type pattern
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      navigate(...(navigateParams as any))
+      popTo(navigateParams[0] as any, navigateParams[1])
     }
   }
 
