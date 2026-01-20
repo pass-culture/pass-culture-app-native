@@ -122,20 +122,20 @@ export function DeleteProfileReason() {
   )
 }
 
-const ItemContainer = styled.View({
-  paddingBottom: isWeb ? getSpacing(4) : 0,
-})
+const ItemContainer = styled.View(({ theme }) => ({
+  paddingBottom: isWeb ? theme.designSystem.size.spacing.l : 0,
+}))
 
 const HeaderContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   paddingBottom: theme.designSystem.size.spacing.s,
 }))
 
-const TitlesContainer = styled.View({
+const TitlesContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
-  gap: getSpacing(4),
+  gap: theme.designSystem.size.spacing.l,
   width: '100%',
-})
+}))
 
 const flatListStyles: ViewStyle = {
   paddingHorizontal: theme.contentPage.marginHorizontal,
@@ -143,7 +143,7 @@ const flatListStyles: ViewStyle = {
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',
-  gap: getSpacing(4), //works only on mobile
+  gap: theme.designSystem.size.spacing.l, //works only on mobile
 }
 
 const StyledIcon = styled(SadFace).attrs(({ theme }) => ({

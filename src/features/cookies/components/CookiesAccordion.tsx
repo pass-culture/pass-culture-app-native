@@ -97,16 +97,16 @@ const StyledInfo = styled(InfoPlain).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const StyledAccordionItem = styled(Accordion).attrs({
+const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
   titleStyle: {
-    paddingVertical: getSpacing(4),
+    paddingVertical: theme.designSystem.size.spacing.l,
     paddingHorizontal: 0,
   },
   bodyStyle: {
-    paddingBottom: getSpacing(4),
+    paddingBottom: theme.designSystem.size.spacing.l,
     paddingHorizontal: 0,
   },
-})``
+}))``
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

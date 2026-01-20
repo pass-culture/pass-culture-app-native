@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const TicketCodeTitle = ({
   accessibilityLabel,
@@ -25,7 +25,7 @@ const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
 
 const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.designSystem.color.text.brandPrimary,
+  marginBottom: theme.designSystem.size.spacing.l,
 }))({
-  marginBottom: getSpacing(4),
   alignSelf: 'center',
 })

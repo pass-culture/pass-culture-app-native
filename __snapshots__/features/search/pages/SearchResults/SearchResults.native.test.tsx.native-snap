@@ -505,6 +505,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               testID="searchFilterBadge"
             >
               <View
+                BADGE_SIZE={16}
                 style={
                   {
                     "minHeight": 16,
@@ -514,6 +515,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <Text
+                  BADGE_SIZE={16}
                   style={
                     {
                       "color": "#ffffff",

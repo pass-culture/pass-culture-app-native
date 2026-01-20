@@ -331,7 +331,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                           style={
                             {
                               "alignSelf": "center",
-                              "marginBottom": 16,
                               "opacity": 1,
                               "userSelect": "auto",
                             }

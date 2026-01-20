@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { getSpacing, getSpacingString } from 'ui/theme'
+import { getSpacingString } from 'ui/theme'
 import { displayOnFocus } from 'ui/web/displayOnFocus/displayOnFocus'
 
 type QuickAccessProps = {
@@ -25,8 +25,8 @@ const StyledA: React.FC<{ href: string; children: string }> = displayOnFocus(
     '&:focus': {
       height: `${getSpacingString(11)} !important`,
       margin: theme.designSystem.size.spacing.s,
-      paddingLeft: getSpacing(4),
-      paddingRight: getSpacing(4),
+      paddingLeft: theme.designSystem.size.spacing.l,
+      paddingRight: theme.designSystem.size.spacing.l,
       outlineOffset: 0,
       borderWidth: 1,
       borderStyle: 'solid',

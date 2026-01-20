@@ -10,7 +10,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   url: string
@@ -93,13 +93,13 @@ const FlexContainer = styled.View(({ theme }) => ({
   }),
 }))
 
-const StyledAccordionItem = styled(Accordion).attrs({
+const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
   titleStyle: {
-    paddingVertical: getSpacing(4),
+    paddingVertical: theme.designSystem.size.spacing.l,
     paddingHorizontal: 0,
   },
   bodyStyle: {
-    paddingBottom: getSpacing(4),
+    paddingBottom: theme.designSystem.size.spacing.l,
     paddingHorizontal: 0,
   },
-})``
+}))``

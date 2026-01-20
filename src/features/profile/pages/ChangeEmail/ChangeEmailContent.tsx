@@ -10,7 +10,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Banner } from 'ui/designSystem/Banner/Banner'
-import { getSpacing } from 'ui/theme'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -64,11 +63,11 @@ export function ChangeEmailContent({
   )
 }
 
-const CenteredContainer = styled.View({
+const CenteredContainer = styled.View(({ theme }) => ({
   flex: 1,
   alignItems: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
   paddingBottom,
@@ -76,8 +75,13 @@ const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom 
   width: '100%',
 }))
 
-const DisclaimerContainer = styled.View({ marginBottom: getSpacing(4) })
+const DisclaimerContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
-const InfoBannerContainer = styled.View({ marginTop: getSpacing(4), marginBottom: getSpacing(12) })
+const InfoBannerContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+  marginBottom: theme.designSystem.size.spacing.xxxxl,
+}))
 
-const Container = styled.View({ marginTop: getSpacing(6) })
+const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))

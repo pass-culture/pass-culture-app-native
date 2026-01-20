@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Warning as InitialWarning } from 'ui/svg/icons/Warning'
@@ -10,14 +10,14 @@ interface Props {
   text: string
 }
 
-const PADDING_VERTICAL = getSpacing(4)
-
 export const BottomBanner = ({ text, ...props }: Props) => {
   const { bottom } = useSafeAreaInsets()
-  const paddingBottom = bottom === 0 ? PADDING_VERTICAL : bottom
+  const { designSystem } = useTheme()
+  const paddingVertical = designSystem.size.spacing.l
+  const paddingBottom = bottom === 0 ? paddingVertical : bottom
 
   return (
-    <Container gap={4} paddingBottom={paddingBottom} {...props}>
+    <Container gap={4} paddingBottom={paddingBottom} paddingVertical={paddingVertical} {...props}>
       <IconContainer>
         <Warning />
       </IconContainer>
@@ -28,16 +28,18 @@ export const BottomBanner = ({ text, ...props }: Props) => {
   )
 }
 
-const Container = styled(ViewGap)<{ paddingBottom: number }>(({ paddingBottom, theme }) => ({
-  borderTopColor: theme.designSystem.color.border.subtle,
-  borderTopWidth: getSpacing(0.25),
-  paddingVertical: PADDING_VERTICAL,
-  paddingHorizontal: theme.designSystem.size.spacing.xl,
-  flexDirection: 'row',
-  alignItems: 'center',
-  backgroundColor: theme.designSystem.color.background.default,
-  paddingBottom,
-}))
+const Container = styled(ViewGap)<{ paddingBottom: number; paddingVertical: number }>(
+  ({ paddingBottom, paddingVertical, theme }) => ({
+    borderTopColor: theme.designSystem.color.border.subtle,
+    borderTopWidth: getSpacing(0.25),
+    paddingVertical,
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: theme.designSystem.color.background.default,
+    paddingBottom,
+  })
+)
 
 const IconContainer = styled.View({
   flexShrink: 0,
