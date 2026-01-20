@@ -43,42 +43,110 @@ describe('<RadioButtonGroup />', () => {
 
     expect(screen.getByText(label)).toBeOnTheScreen()
     expect(screen.getByText(description)).toBeOnTheScreen()
-    expect(screen.getByLabelText('RadioButton_1')).toBeOnTheScreen()
-    expect(screen.getByLabelText('RadioButton_2')).toBeOnTheScreen()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    ).toBeOnTheScreen()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should check only one Radiobutton', async () => {
     render(<ControlledRadioGroup />)
-    await user.press(screen.getByLabelText('RadioButton_1'))
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    )
 
-    expect(screen.getByLabelText('RadioButton_1')).toBeChecked()
-    expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - sélectionné'
+      )
+    ).toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    ).not.toBeChecked()
 
-    await user.press(screen.getByLabelText('RadioButton_2'))
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    )
 
-    expect(screen.getByLabelText('RadioButton_2')).toBeChecked()
-    expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - sélectionné'
+      )
+    ).toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    ).not.toBeChecked()
   })
 
   it('should prevent RadioButton to be checked when disabled', async () => {
     render(<ControlledRadioGroup disabled />)
-    await user.press(screen.getByLabelText('RadioButton_1'))
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    )
 
-    expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
-    expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    ).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    ).not.toBeChecked()
   })
 
   it('should prevent RadioButton to be unchecked when already selected', async () => {
     render(<ControlledRadioGroup disabled />)
-    await user.press(screen.getByLabelText('RadioButton_1'))
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    )
 
-    expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
-    expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    ).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    ).not.toBeChecked()
 
-    await user.press(screen.getByLabelText('RadioButton_1'))
+    await user.press(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    )
 
-    expect(screen.getByLabelText('RadioButton_1')).not.toBeChecked()
-    expect(screen.getByLabelText('RadioButton_2')).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 1 sur 2 - RadioButton_1 - non sélectionné'
+      )
+    ).not.toBeChecked()
+    expect(
+      screen.getByLabelText(
+        'RadioButtonGroup - Liste - Élément 2 sur 2 - RadioButton_2 - non sélectionné'
+      )
+    ).not.toBeChecked()
   })
 
   it('should render Error text when RadioButtonGroup is in error', () => {

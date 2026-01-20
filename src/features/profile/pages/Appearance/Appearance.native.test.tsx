@@ -65,7 +65,11 @@ describe('Appearance', () => {
     render(<Appearance />)
 
     await screen.findByText('Apparence')
-    await user.press(screen.getByLabelText('Mode sombre'))
+    await user.press(
+      screen.getByLabelText(
+        'Thème - Liste - Élément 2 sur 3 - Mode sombre - Réduit la fatigue visuelle - non sélectionné'
+      )
+    )
 
     expect(logUpdateAppThemeSpy).toHaveBeenCalledWith({
       platform: 'ios',
