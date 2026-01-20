@@ -273,7 +273,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
           items={filterButtonListItems}
           horizontal={isMobileViewport}
           contentContainerStyle={
-            isDesktopViewport ? { marginHorizontal: getSpacing(2) } : undefined
+            isDesktopViewport ? { marginHorizontal: designSystem.size.spacing.s } : undefined
           }
         />
       </View>

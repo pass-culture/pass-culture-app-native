@@ -371,6 +371,6 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const IconContainer = styled.View(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.xxl,
-  padding: getSpacing(2.5),
+  padding: theme.designSystem.size.spacing.m,
   backgroundColor: theme.designSystem.color.background.locked,
 }))

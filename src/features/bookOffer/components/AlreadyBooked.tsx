@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
@@ -13,7 +13,7 @@ import { getSpacing, Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
-
+  const { designSystem } = useTheme()
   // Change step to confirmation
   useEffect(() => {
     if (bookingState.step === Step.DATE) {
@@ -36,7 +36,7 @@ export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
         url={env.BOOKING_LIMIT_EXCEEDED_URL}
         primary
       />
-      <Spacer.Column numberOfSpaces={getSpacing(3)} />
+      <Spacer.Column numberOfSpaces={designSystem.size.spacing.m} />
       <InternalTouchableLink
         as={ButtonPrimary}
         wording="Mes réservations terminées"

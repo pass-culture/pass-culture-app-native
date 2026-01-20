@@ -107,16 +107,16 @@ const ContentContainer = styled.View(({ theme }) => ({
   borderBottomWidth: 1,
 }))
 
-const LeftContainer = styled(ContentContainer)({
+const LeftContainer = styled(ContentContainer)(({ theme }) => ({
   borderLeftWidth: 1,
-  borderTopLeftRadius: getSpacing(2.1),
-  borderBottomLeftRadius: getSpacing(2.1),
-})
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.m,
+  borderBottomLeftRadius: theme.designSystem.size.borderRadius.m,
+}))
 
 const RightContainer = styled(ContentContainer)(({ theme }) => ({
   borderRightWidth: 1,
-  borderTopRightRadius: getSpacing(2.1),
-  borderBottomRightRadius: getSpacing(2.1),
+  borderTopRightRadius: theme.designSystem.size.borderRadius.m,
+  borderBottomRightRadius: theme.designSystem.size.borderRadius.m,
   flex: 1,
   paddingLeft: theme.designSystem.size.spacing.xs,
 }))
@@ -127,5 +127,5 @@ const MiddleBlock = styled.View(({ theme }) => ({
   alignItems: 'center',
   height: '100%',
   width: theme.designSystem.size.spacing.xl,
-  marginLeft: -getSpacing(3),
+  marginLeft: -theme.designSystem.size.spacing.m,
 }))

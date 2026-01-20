@@ -29,7 +29,6 @@ interface AttachedCardDisplayProps {
 const BORDER_WIDTH = getSpacing(0.25)
 const OFFER_CARD_HEIGHT = getSpacing(25)
 const OFFER_CARD_PADDING = getSpacing(4)
-const BORDER_RADIUS = getSpacing(3)
 
 export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   title,
@@ -90,8 +89,8 @@ const BottomBanner = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxxl,
   gap: theme.designSystem.size.spacing.s,
   backgroundColor: theme.designSystem.color.background.warning,
-  borderBottomLeftRadius: BORDER_RADIUS,
-  borderBottomRightRadius: BORDER_RADIUS,
+  borderBottomLeftRadius: theme.designSystem.size.spacing.m,
+  borderBottomRightRadius: theme.designSystem.size.spacing.m,
   flexDirection: 'row',
   alignItems: 'center',
 }))
@@ -133,10 +132,10 @@ const ImageContainer = styled.View({
 const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: string }>(
   ({ theme, shouldFixHeight, bottomBannerText }) => ({
     backgroundColor: theme.designSystem.color.background.default,
-    borderTopLeftRadius: BORDER_RADIUS,
-    borderTopRightRadius: BORDER_RADIUS,
-    borderBottomLeftRadius: bottomBannerText ? 0 : BORDER_RADIUS,
-    borderBottomRightRadius: bottomBannerText ? 0 : BORDER_RADIUS,
+    borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+    borderTopRightRadius: theme.designSystem.size.borderRadius.l,
+    borderBottomLeftRadius: bottomBannerText ? 0 : theme.designSystem.size.borderRadius.l,
+    borderBottomRightRadius: bottomBannerText ? 0 : theme.designSystem.size.borderRadius.l,
     borderWidth: BORDER_WIDTH,
     borderColor: theme.designSystem.color.border.subtle,
     gap: theme.designSystem.size.spacing.s,

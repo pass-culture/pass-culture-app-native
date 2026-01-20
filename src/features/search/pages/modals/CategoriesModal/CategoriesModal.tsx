@@ -29,7 +29,6 @@ import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -58,7 +57,7 @@ export const CategoriesModal = ({
   facets,
 }: CategoriesModalProps) => {
   const { data = PLACEHOLDER_DATA } = useSubcategoriesQuery()
-  const { modal } = useTheme()
+  const { modal, designSystem } = useTheme()
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
@@ -268,7 +267,7 @@ export const CategoriesModal = ({
           isResetDisabled={hasDefaultValue}
         />
       }>
-      <Form.MaxWidth marginTop={getSpacing(3)}>
+      <Form.MaxWidth marginTop={designSystem.size.spacing.m}>
         {currentView === CategoriesModalView.CATEGORIES ? (
           <CategoriesSection
             itemsMapping={tree}

@@ -46,7 +46,7 @@ export const SurveyModal = ({
       customModalHeader={modalHeader}
       visible={visible}
       onBackdropPress={hideModal}>
-      <ContentContainer gap={getSpacing(2)}>
+      <ContentContainer gap={theme.designSystem.size.spacing.s}>
         {surveyDescription ? <StyledBody>{surveyDescription}</StyledBody> : null}
 
         <Icon

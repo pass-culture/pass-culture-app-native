@@ -491,7 +491,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
-                      "marginHorizontal": 10,
+                      "marginHorizontal": 12,
                     }
                   }
                 >

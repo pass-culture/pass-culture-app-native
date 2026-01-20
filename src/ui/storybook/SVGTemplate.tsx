@@ -65,9 +65,9 @@ export const SVGTemplate: React.FC<SVGTemplateProps> = ({
   )
 }
 
-const StyledTitle2 = styled(Typo.Title2)({
-  marginVertical: getSpacing(3),
-})
+const StyledTitle2 = styled(Typo.Title2)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.m,
+}))
 
 const GridContainer = styled.View({
   flexDirection: 'row',

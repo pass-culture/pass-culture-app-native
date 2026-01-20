@@ -81,12 +81,14 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
   )
 }
 
-const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(({ pointerDirection }) => ({
-  position: 'relative',
-  alignSelf: 'flex-end',
-  right: getSpacing(3.5),
-  transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
-}))
+const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(
+  ({ pointerDirection, theme }) => ({
+    position: 'relative',
+    alignSelf: 'flex-end',
+    right: theme.designSystem.size.spacing.l,
+    transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
+  })
+)
 
 const StyledAnimatedView = styled(AnimatedView)<Pick<Props, 'pointerDirection'>>(
   ({ pointerDirection }) => ({
