@@ -11462,7 +11462,7 @@ __metadata:
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^4.0.0
     react-native-map-link: ^3.10.1
-    react-native-maps: 1.24.16
+    react-native-maps: 1.24.2
     react-native-modal: 13.0.1
     react-native-orientation-locker: ^1.7.0
     react-native-performance: ^5.1.4
@@ -23969,9 +23969,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-maps@npm:1.24.16":
-  version: 1.24.16
-  resolution: "react-native-maps@npm:1.24.16"
+"react-native-maps@npm:1.24.2":
+  version: 1.24.2
+  resolution: "react-native-maps@npm:1.24.2"
   dependencies:
     "@types/geojson": ^7946.0.13
   peerDependencies:
@@ -23981,7 +23981,23 @@ __metadata:
   peerDependenciesMeta:
     react-native-web:
       optional: true
-  checksum: 4e5c9f06af55b510585cac17c7d5e51abfc5637f65d06f0bad9ad8a207ba247ed95d1171a973b9228e852c985f25be679664eedc4bc3a920a53081c1c0d4fb01
+  checksum: b1c76c56e2dbab03f124d68c7e3c54f840248991de75d4fdf0c96a51d872cca1c9e4e673e9e9e48f9deb00556909aebafcc8e848d05bbef25a2b45d818cc2094
+  languageName: node
+  linkType: hard
+
+"react-native-maps@patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch::locator=PassCulture%40workspace%3A.":
+  version: 1.24.2
+  resolution: "react-native-maps@patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch::version=1.24.2&hash=22e8b6&locator=PassCulture%40workspace%3A."
+  dependencies:
+    "@types/geojson": ^7946.0.13
+  peerDependencies:
+    react: ">= 18.3.1"
+    react-native: ">= 0.76.0"
+    react-native-web: ">= 0.11"
+  peerDependenciesMeta:
+    react-native-web:
+      optional: true
+  checksum: 27981397315920eeb7245d0cbf3e2e4244db067591629a7702e6168f5b9225042f5a76ae55c1d86449e5d2af8cd13097b71434b050d691ff2185bc665a0a21ee
   languageName: node
   linkType: hard
 
