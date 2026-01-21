@@ -8,7 +8,7 @@ import {
   getVenueBlockProps,
   getVenueSectionTitle,
   getVenueSelectionHeaderMessage,
-} from 'features/offerRefacto/core'
+} from 'features/offerRefacto/helpers'
 import { LocationMode } from 'libs/location/types'
 
 describe('getVenueSectionTitle', () => {

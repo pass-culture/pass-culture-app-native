@@ -1,4 +1,4 @@
-import { getMetadata } from 'features/offerRefacto/core'
+import { getMetadata } from 'features/offerRefacto/helpers'
 
 describe('getMetadata', () => {
   it('should return an empty array when extraData is undefined', () => {

@@ -1,5 +1,9 @@
 import { OfferResponseV2 } from 'api/gen'
-import { extractStockDates, formatDuration, getOfferLocationName } from 'features/offerRefacto/core'
+import {
+  extractStockDates,
+  formatDuration,
+  getOfferLocationName,
+} from 'features/offerRefacto/helpers'
 import { capitalize } from 'libs/formatter/capitalize'
 import { getFormattedDates } from 'libs/parsers/formatDates'
 import { formatFullAddress } from 'shared/address/addressFormatter'

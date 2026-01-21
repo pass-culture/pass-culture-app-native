@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { getIsAComingSoonOffer } from 'features/offerRefacto/core'
+import { getIsAComingSoonOffer } from 'features/offerRefacto/helpers'
 
 describe('getIsAComingSoonOffer', () => {
   const fixedNow = new Date('2025-07-28T12:00:00Z')

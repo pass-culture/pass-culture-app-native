@@ -1,4 +1,4 @@
-import { getBookingId } from 'features/offerRefacto/core'
+import { getBookingId } from 'features/offerRefacto/helpers'
 
 describe('getBookingId', () => {
   const bookedOffer = { 1090: 32927191, 2663: 32927185 }

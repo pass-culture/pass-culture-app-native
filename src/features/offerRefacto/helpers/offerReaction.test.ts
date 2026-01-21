@@ -1,4 +1,4 @@
-import { formatLikesCounter, getRecommendationText } from 'features/offerRefacto/core'
+import { formatLikesCounter, getRecommendationText } from 'features/offerRefacto/helpers'
 
 describe('formatLikesCounter', () => {
   it('should display exact number when likes counter < 1_000', () => {

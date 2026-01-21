@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { getOfferSummaryInfoData } from 'features/offerRefacto/core'
+import { getOfferSummaryInfoData } from 'features/offerRefacto/helpers'
 
 mockdate.set(CURRENT_DATE)
 

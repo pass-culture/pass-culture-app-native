@@ -7,7 +7,7 @@ import {
   getIsFreeDigitalOffer,
   getIsFreeOffer,
   getPrice,
-} from 'features/offerRefacto/core'
+} from 'features/offerRefacto/helpers'
 
 describe('getAllPrices', () => {
   it('should return all bookable prices if defined', () => {

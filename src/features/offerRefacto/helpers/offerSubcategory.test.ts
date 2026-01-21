@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { getIsMusicSupport } from 'features/offerRefacto/core'
+import { getIsMusicSupport } from 'features/offerRefacto/helpers'
 
 describe('getIsMusicSupport', () => {
   it('should return false if subcategoryId is undefined', () => {

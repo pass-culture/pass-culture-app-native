@@ -4,7 +4,7 @@ import {
   expandList,
   getListToDisplay,
   hasReachedEnd,
-} from 'features/offerRefacto/core'
+} from 'features/offerRefacto/helpers'
 
 const baseList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 

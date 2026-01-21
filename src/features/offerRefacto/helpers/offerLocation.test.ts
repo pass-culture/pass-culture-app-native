@@ -1,5 +1,5 @@
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { determineLocation, getRoundedPosition } from 'features/offerRefacto/core'
+import { determineLocation, getRoundedPosition } from 'features/offerRefacto/helpers'
 
 describe('getRoundedPosition', () => {
   it('should return undefined if latitude is undefined', () => {

@@ -2,7 +2,7 @@ import { SubcategoryIdEnumv2 } from 'api/gen'
 import {
   getBatchEventForSubcategory,
   isSubcategoryEligibleForBatchSurvey,
-} from 'features/offerRefacto/core'
+} from 'features/offerRefacto/helpers'
 import { BatchEvent } from 'libs/react-native-batch'
 
 describe('getBatchEventForSubcategory', () => {

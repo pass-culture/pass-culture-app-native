@@ -1,5 +1,5 @@
 import { PORTRAIT_DIMENSIONS, RATIO_PORTRAIT, RATIO_SQUARE } from 'features/offerRefacto/constants'
-import { calculateCarouselIndex, computeImageStyle } from 'features/offerRefacto/core'
+import { calculateCarouselIndex, computeImageStyle } from 'features/offerRefacto/helpers'
 
 describe('calculateCarouselIndex', () => {
   it('should increase the index by 1', () => {

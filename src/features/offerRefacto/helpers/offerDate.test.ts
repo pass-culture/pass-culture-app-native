@@ -1,7 +1,7 @@
 import { startOfDay } from 'date-fns'
 import mockdate from 'mockdate'
 
-import { getInitialSelectedDate, updateSelectedDate } from 'features/offerRefacto/core'
+import { getInitialSelectedDate, updateSelectedDate } from 'features/offerRefacto/helpers'
 
 mockdate.set(new Date(2025, 10, 5, 14, 0))
 

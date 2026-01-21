@@ -7,7 +7,7 @@ import {
   convertDomainCreditToPacificFranc,
   getMinRemainingCreditForOffer,
   hasEnoughCredit,
-} from 'features/offerRefacto/core'
+} from 'features/offerRefacto/helpers'
 import { beneficiaryUser } from 'fixtures/user'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 

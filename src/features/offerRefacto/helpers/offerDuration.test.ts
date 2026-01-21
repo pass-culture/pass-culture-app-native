@@ -1,4 +1,4 @@
-import { formatDuration } from 'features/offerRefacto/core'
+import { formatDuration } from 'features/offerRefacto/helpers'
 
 describe('formatDuration', () => {
   describe('unit=min', () => {

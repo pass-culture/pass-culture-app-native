@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { getInteractionTagLabel, getTags } from 'features/offerRefacto/core'
+import { getInteractionTagLabel, getTags } from 'features/offerRefacto/helpers'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 
 describe('getTags', () => {

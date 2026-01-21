@@ -1,6 +1,9 @@
 import { ChroniclePreview } from 'api/gen'
 import { BOOK_CLUB_SUBCATEGORIES, CINE_CLUB_SUBCATEGORIES } from 'features/offer/constant'
-import { chroniclePreviewToChronicalCardData, chronicleVariant } from 'features/offerRefacto/core'
+import {
+  chroniclePreviewToChronicalCardData,
+  chronicleVariant,
+} from 'features/offerRefacto/helpers'
 
 describe('chronicleVariant', () => {
   it('should define all Book Club subcategories', () => {

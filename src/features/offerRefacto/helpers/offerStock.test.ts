@@ -1,5 +1,5 @@
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { extractStockDates } from 'features/offerRefacto/core'
+import { extractStockDates } from 'features/offerRefacto/helpers'
 
 describe('extractStockDates', () => {
   it('should return an empty array for an offer without stocks', () => {

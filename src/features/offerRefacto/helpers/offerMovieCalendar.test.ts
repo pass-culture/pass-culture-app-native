@@ -8,7 +8,7 @@ import {
   getCalendarLabels,
   getScreeningStatus,
   handleMovieCalendarScroll,
-} from 'features/offerRefacto/core'
+} from 'features/offerRefacto/helpers'
 
 describe('handleMovieCalendarScroll', () => {
   const itemWidth = 100
