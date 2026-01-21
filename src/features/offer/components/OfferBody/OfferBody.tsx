@@ -190,7 +190,9 @@ export const OfferBody: FunctionComponent<Props> = ({
           </ViewGap>
         </GroupWithoutGap>
 
-        {prices ? <Typo.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</Typo.Title3> : null}
+        {prices.length > 0 ? (
+          <Typo.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</Typo.Title3>
+        ) : null}
 
         <OfferReactionSection
           likesCount={likesCount}
