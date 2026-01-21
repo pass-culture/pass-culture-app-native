@@ -25,7 +25,7 @@ const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
 
 const StyledTouchable = styledButton(Touchable).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.designSystem.color.text.brandPrimary,
+}))(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
-}))({
   alignSelf: 'center',
-})
+}))

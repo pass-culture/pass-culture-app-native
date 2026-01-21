@@ -13,11 +13,11 @@ type Params = {
 export const useCenterOnLocation = ({ currentRegion, mapViewRef, mapHeight }: Params) => {
   const { width } = useWindowDimensions()
   const { designSystem } = useTheme()
+  const CENTER_PIN_THRESHOLD = designSystem.size.spacing.l
 
   return useCallback(
     async (latitude: number, longitude: number, previewHeight = 0) => {
       if (!currentRegion || !mapViewRef?.current) return
-      const CENTER_PIN_THRESHOLD = designSystem.size.spacing.l
 
       const region = { ...currentRegion, latitude, longitude }
       const point = await mapViewRef.current.pointForCoordinate({ latitude, longitude })
@@ -31,6 +31,6 @@ export const useCenterOnLocation = ({ currentRegion, mapViewRef, mapHeight }: Pa
         mapViewRef.current.animateToRegion(region)
       }
     },
-    [currentRegion, mapViewRef, designSystem.size.spacing.l, mapHeight, width]
+    [currentRegion, mapViewRef, mapHeight, CENTER_PIN_THRESHOLD, width]
   )
 }
