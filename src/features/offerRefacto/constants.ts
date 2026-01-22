@@ -1,4 +1,5 @@
 import { SubcategoryIdEnumv2 } from 'api/gen'
+import { ChronicleVariantInfo } from 'features/offer/components/OfferContent/ChronicleSection/types'
 import { BatchEvent } from 'libs/react-native-batch'
 import { getSpacing } from 'ui/theme'
 
@@ -26,3 +27,13 @@ export const BATCH_EVENT_BY_SUBCATEGORY: Partial<Record<SubcategoryIdEnumv2, Bat
 }
 
 export const ANIMATION_DURATION = 700
+
+export const DEFAULT_CHRONICLE_VARIANT_INFO: ChronicleVariantInfo = {
+  labelReaction: '',
+  subtitleItem: '',
+  titleSection: '',
+  subtitleSection: '',
+  modalTitle: '',
+  modalWording: '',
+  modalButtonLabel: '',
+}

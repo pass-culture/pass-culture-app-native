@@ -30,7 +30,6 @@ import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { runAfterInteractionsMobile } from 'shared/runAfterInteractionsMobile/runAfterInteractionsMobile'
-import { SegmentResult, useABSegment } from 'shared/useABSegment/useABSegment'
 import { useModal } from 'ui/components/modals/useModal'
 
 type SubmitReactionArgs = {
@@ -43,7 +42,6 @@ interface OfferPageViewModel {
   offer?: OfferResponseV2
   user?: UserProfileResponseWithoutSurvey
   subcategories?: SubcategoriesResponseModelv2
-  segment: SegmentResult
   booking?: BookingReponse | null
   subcategory?: SubcategoryResponseModelv2
   chronicleVariantInfo?: ChronicleVariantInfo
@@ -56,7 +54,6 @@ interface OfferPageViewModel {
   reactionModalVisible: boolean
   chroniclesWritersModalVisible: boolean
   offerArtistsModalVisible: boolean
-  enableVideoABTesting?: boolean
   isMultiArtistsEnabled?: boolean
 
   // Actions
@@ -76,7 +73,6 @@ export const useOfferPageViewModel = (): OfferPageViewModel => {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = route.params?.id
 
-  const enableVideoABTesting = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_VIDEO_AB_TESTING)
   const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
 
   const { isLoggedIn, user } = useAuthContext()
@@ -92,7 +88,6 @@ export const useOfferPageViewModel = (): OfferPageViewModel => {
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { cookiesConsent, setCookiesConsent } = useCookies()
-  const segment = useABSegment()
 
   const hasVideoCookiesConsent =
     cookiesConsent.state === ConsentState.HAS_CONSENT &&
@@ -176,7 +171,6 @@ export const useOfferPageViewModel = (): OfferPageViewModel => {
     offer,
     user,
     subcategories,
-    segment,
     booking,
     subcategory,
     chronicleVariantInfo,
@@ -187,7 +181,6 @@ export const useOfferPageViewModel = (): OfferPageViewModel => {
     reactionModalVisible,
     chroniclesWritersModalVisible,
     offerArtistsModalVisible,
-    enableVideoABTesting,
     isMultiArtistsEnabled,
     showReactionModal,
     hideReactionModal,
