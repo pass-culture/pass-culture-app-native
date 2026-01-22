@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off should render correctly 1`] = `
+exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOING is off should render correctly 1`] = `
 <View
   isLandscape={false}
   style={

@@ -7,10 +7,7 @@ import { BookingDetailsContent } from 'features/bookings/components/BookingDetai
 import { BookingDetailsContent as OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsContent'
 import { getBookingProperties, getBookingPropertiesV2 } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
-import {
-  useOngoingOrEndedBookingQuery,
-  useOngoingOrEndedBookingQueryV2,
-} from 'features/bookings/queries'
+import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { convertBookingResponseDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -25,9 +22,11 @@ import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const BookingDetails = () => {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
-  const enableNewBookingPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE)
   const { user } = useAuthContext()
-  return enableNewBookingPage ? (
+
+  const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
+
+  return enableNewBookings ? (
     <BookingDetailsContainer bookingId={params.id} user={user} />
   ) : (
     <BookingDetailsContainerOld bookingId={params.id} />
@@ -96,15 +95,6 @@ const BookingDetailsContainer = ({
   bookingId: number
   user: UserProfileResponseWithoutSurvey | undefined
 }) => {
-  const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
-
-  const useBooking = () =>
-    useBookingByIdQuery(bookingId, { select: convertBookingResponseDateToTimezone })
-
-  const useOngoingOrEndedBookings = () => useOngoingOrEndedBookingQueryV2(bookingId)
-
-  const useActiveBookingsQuery = enableNewBookings ? useBooking : useOngoingOrEndedBookings
-
   const {
     data: booking,
     status,
@@ -113,7 +103,7 @@ const BookingDetailsContainer = ({
     isError,
     error,
     dataUpdatedAt,
-  } = useActiveBookingsQuery()
+  } = useBookingByIdQuery(bookingId, { select: convertBookingResponseDateToTimezone })
 
   const mapping = useSubcategoriesMapping()
   const { logType } = useLogTypeFromRemoteConfig()
@@ -150,7 +140,6 @@ const BookingDetailsContainer = ({
   )
 
   // FIXME(PC-36440): To remove when no need for Old/new container
-
   return (properties.isPhysical || properties.isEvent || properties.isDigital) && user ? (
     <BookingDetailsContent
       user={user}
