@@ -42,6 +42,28 @@ describe('SelectIDStatus', () => {
     })
   })
 
+  it('should navigate to IdentityCheckPending when pressing "J’ai ma pièce d’identité en cours de validité" button and backend returns an error', async () => {
+    mockServer.postApi('/v1/ubble_identification', {
+      responseOptions: {
+        data: {
+          code: 'IDCHECK_ALREADY_PROCESSED',
+          message: 'Identity check already processed',
+        },
+        statusCode: 400,
+      },
+    })
+
+    render(reactQueryProviderHOC(<SelectIDStatus />))
+
+    const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
+    await user.press(button)
+
+    expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+      params: undefined,
+      screen: 'IdentityCheckPending',
+    })
+  })
+
   it('should navigate to ComeBackLater when pressing "Je n’ai pas ma pièce d’identité originale" button', async () => {
     render(reactQueryProviderHOC(<SelectIDStatus />))
 
