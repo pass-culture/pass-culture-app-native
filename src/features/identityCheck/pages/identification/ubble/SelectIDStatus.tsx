@@ -1,7 +1,14 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { ApiError } from 'api/ApiError'
+import { MaintenancePageType } from 'api/gen'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
+import { useUbbleIdentificationMutation } from 'features/identityCheck/queries/useUbbleIdentificationMutation'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -14,9 +21,65 @@ import { NoId as InitialNoId } from 'ui/svg/icons/NoId'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const SelectIDStatus: FunctionComponent = () => (
-  <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
-)
+export const SelectIDStatus: FunctionComponent = () => {
+  const { data: subscription } = useGetStepperInfoQuery()
+  const { navigate, replace } = useNavigation<UseNavigationType>()
+
+  const { mutateAsync: mutateUbbleIdentification } = useUbbleIdentificationMutation({
+    onError: (err) => {
+      const error = (err as ApiError)?.content.code
+      if (error === 'IDCHECK_ALREADY_PROCESSED') {
+        navigate(...getSubscriptionHookConfig('IdentityCheckPending'))
+      } else {
+        const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
+        replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
+      }
+    },
+  })
+
+  return (
+    <PageWithHeader
+      title="Identification"
+      scrollChildren={
+        <Container>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledText>
+            <Typo.Body>Tu dois avoir ta pièce d’identité </Typo.Body>
+            <Typo.BodyAccent>originale </Typo.BodyAccent>
+            <Typo.Body>et </Typo.Body>
+            <Typo.BodyAccent>en cours de validité </Typo.BodyAccent>
+            <Typo.Body>avec toi.</Typo.Body>
+          </StyledText>
+          <Spacer.Column numberOfSpaces={12} />
+          <HeroButtonList
+            accessibilityLabel={accessibilityLabel}
+            Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
+            Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
+            Icon={<IdCard />}
+            onPress={async () => {
+              const IdentificationSessionResponse = await mutateUbbleIdentification()
+              navigate(
+                ...getSubscriptionHookConfig('UbbleWebview', {
+                  identificationUrl: IdentificationSessionResponse.identificationUrl,
+                })
+              )
+            }}
+          />
+          <Spacer.Column numberOfSpaces={7} />
+          <SeparatorWithText label="ou" />
+          <Spacer.Column numberOfSpaces={7} />
+          <AccessibleUnorderedList
+            items={[FirstOtherOption, SecondOtherOption]}
+            Separator={buttonListSeparator}
+            withPadding
+          />
+        </Container>
+      }
+    />
+  )
+}
 
 const IdCard = styled(InitialIdCard).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
@@ -25,16 +88,6 @@ const IdCard = styled(InitialIdCard).attrs(({ theme }) => ({
 const title = 'J’ai ma pièce d’identité en cours de validité'
 const subtitle = 'Les copies ne sont pas acceptées'
 const accessibilityLabel = getComputedAccessibilityLabel(title, subtitle)
-
-const MainOptionButton = (
-  <HeroButtonList
-    accessibilityLabel={accessibilityLabel}
-    Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
-    Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
-    Icon={<IdCard />}
-    navigateTo={getSubscriptionPropConfig('UbbleWebview')}
-  />
-)
 
 const NoId = styled(InitialNoId).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
@@ -61,33 +114,6 @@ const SecondOtherOption = (
 )
 
 const buttonListSeparator = <Spacer.Column numberOfSpaces={9} />
-
-const SelectIDStatusContent: FunctionComponent = () => {
-  return (
-    <Container>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledText>
-        <Typo.Body>Tu dois avoir ta pièce d’identité </Typo.Body>
-        <Typo.BodyAccent>originale </Typo.BodyAccent>
-        <Typo.Body>et </Typo.Body>
-        <Typo.BodyAccent>en cours de validité </Typo.BodyAccent>
-        <Typo.Body>avec toi.</Typo.Body>
-      </StyledText>
-      <Spacer.Column numberOfSpaces={12} />
-      {MainOptionButton}
-      <Spacer.Column numberOfSpaces={7} />
-      <SeparatorWithText label="ou" />
-      <Spacer.Column numberOfSpaces={7} />
-      <AccessibleUnorderedList
-        items={[FirstOtherOption, SecondOtherOption]}
-        Separator={buttonListSeparator}
-        withPadding
-      />
-    </Container>
-  )
-}
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xs,

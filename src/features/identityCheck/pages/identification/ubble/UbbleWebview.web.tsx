@@ -1,11 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
-import { useIdentificationUrlMutation } from 'features/identityCheck/queries/useIdentificationUrlMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { Helmet } from 'libs/react-helmet/Helmet'
@@ -29,7 +28,8 @@ interface AbortEvent {
 // https://ubbleai.github.io/developer-documentation/#webview-integration
 // If you get a double navigation bar on the web version at the end of the Ubble identity check it is potentially because of our mock. Please try the identity check without the mock before creating a ticket (using the XXXXXXX+ubble_test@XXXX.XX pattern for the mail used to register to bypass the age check).
 export const UbbleWebview: React.FC = () => {
-  const identificationUrl = useIdentificationUrlMutation()
+  const { params } = useRoute<UseRouteType<'UbbleWebview'>>()
+  const identificationUrl = params?.identificationUrl
   const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
@@ -42,13 +42,13 @@ export const UbbleWebview: React.FC = () => {
         identificationUrl,
         events: {
           onComplete({ redirectUrl }: CompleteEvent) {
-            analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
+            void analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
             ubbleIDV.destroy()
             if (redirectUrl.includes(REDIRECT_URL_UBBLE))
               navigate(...getSubscriptionHookConfig('IdentityCheckEnd'))
           },
           onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
-            analytics.logIdentityCheckAbort({
+            void analytics.logIdentityCheckAbort({
               method: IdentityCheckMethod.ubble,
               reason,
               errorType: new URL(redirectUrl).searchParams.get('error_type') ?? null,
@@ -59,8 +59,7 @@ export const UbbleWebview: React.FC = () => {
         },
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [identificationUrl])
+  }, [identificationUrl, navigate])
 
   if (!identificationUrl) {
     return <LoadingPage />

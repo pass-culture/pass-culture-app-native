@@ -42,7 +42,7 @@ type TouchableLinkGenericProps = {
   onAfterNavigate?: (event: GestureResponderEvent | MouseEvent) => void | Promise<void>
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
   hoverUnderlineColor?: ColorsType // Color to be used for underline effect on hover. Black if not specified
-} & Omit<TouchableOpacityProps, 'onPress'> &
+} & TouchableOpacityProps &
   AsProps
 
 export type ExternalTouchableLinkProps = TouchableLinkGenericProps & ExternalNavigationProps
@@ -57,7 +57,7 @@ export type TouchableLinkProps = TouchableLinkGenericProps & {
     accessibilityRole?: 'link'
     target?: string
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onPress?: (...args: any[]) => void
+    onPress?: (...args: any[]) => void | Promise<void>
   }
 }
 
