@@ -24,3 +24,5 @@ export const BATCH_EVENT_BY_SUBCATEGORY: Partial<Record<SubcategoryIdEnumv2, Bat
   [SubcategoryIdEnumv2.EVENEMENT_MUSIQUE]: BatchEvent.hasSeenConcertForSurvey,
   [SubcategoryIdEnumv2.ABO_CONCERT]: BatchEvent.hasSeenConcertForSurvey,
 }
+
+export const ANIMATION_DURATION = 700
