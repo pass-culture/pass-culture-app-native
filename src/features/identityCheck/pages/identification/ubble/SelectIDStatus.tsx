@@ -25,17 +25,27 @@ export const SelectIDStatus: FunctionComponent = () => {
   const { data: subscription } = useGetStepperInfoQuery()
   const { navigate, replace } = useNavigation<UseNavigationType>()
 
-  const { mutateAsync: mutateUbbleIdentification } = useUbbleIdentificationMutation({
-    onError: (err) => {
-      const error = (err as ApiError)?.content.code
+  const { mutateAsync: mutateUbbleIdentification } = useUbbleIdentificationMutation()
+
+  const onPress = async () => {
+    try {
+      const IdentificationSessionResponse = await mutateUbbleIdentification()
+
+      navigate(
+        ...getSubscriptionHookConfig('UbbleWebview', {
+          identificationUrl: IdentificationSessionResponse.identificationUrl,
+        })
+      )
+    } catch (err) {
+      const error = (err as ApiError)?.content?.code
       if (error === 'IDCHECK_ALREADY_PROCESSED') {
         navigate(...getSubscriptionHookConfig('IdentityCheckPending'))
       } else {
         const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
         replace(...getSubscriptionHookConfig('IdentityCheckUnavailable', { withDMS }))
       }
-    },
-  })
+    }
+  }
 
   return (
     <PageWithHeader
@@ -58,14 +68,7 @@ export const SelectIDStatus: FunctionComponent = () => {
             Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
             Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
             Icon={<IdCard />}
-            onPress={async () => {
-              const IdentificationSessionResponse = await mutateUbbleIdentification()
-              navigate(
-                ...getSubscriptionHookConfig('UbbleWebview', {
-                  identificationUrl: IdentificationSessionResponse.identificationUrl,
-                })
-              )
-            }}
+            onPress={onPress}
           />
           <Spacer.Column numberOfSpaces={7} />
           <SeparatorWithText label="ou" />
