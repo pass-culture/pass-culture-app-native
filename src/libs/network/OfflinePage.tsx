@@ -42,11 +42,11 @@ const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
   textAlign: 'center',
 })
 
-const Content = styled.View({
+const Content = styled.View(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  paddingHorizontal: getSpacing(4),
+  paddingHorizontal: theme.designSystem.size.spacing.l,
   maxWidth: getSpacing(90),
-})
+}))

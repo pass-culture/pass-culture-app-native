@@ -30,7 +30,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotificationsSettings = () => {
@@ -239,9 +239,9 @@ export const NotificationsSettings = () => {
   )
 }
 
-const SectionWithSwitchContainer = styled.View({
-  paddingVertical: getSpacing(4),
-})
+const SectionWithSwitchContainer = styled.View(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.l,
+}))
 
 const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,

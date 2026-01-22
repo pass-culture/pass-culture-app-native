@@ -9,7 +9,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const FADE_IN_DURATION = 300
 
@@ -101,7 +101,7 @@ const Background = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
   padding: theme.designSystem.size.spacing.s,
-  paddingLeft: getSpacing(4),
+  paddingLeft: theme.designSystem.size.spacing.l,
   borderRadius: theme.designSystem.size.borderRadius.m,
   backgroundColor: theme.designSystem.color.background.inverted,
 }))

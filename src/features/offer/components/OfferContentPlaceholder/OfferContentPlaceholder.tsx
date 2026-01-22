@@ -23,15 +23,15 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
           <TextPlaceholder height={getSpacing(6)} width={getSpacing(22)} />
         </Row>
         <Spacer.Column numberOfSpaces={5} />
-        <TextPlaceholder height={getSpacing(4)} width={getSpacing(74)} />
+        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(74)} />
         <Spacer.Column numberOfSpaces={2} />
-        <TextPlaceholder height={getSpacing(4)} width={getSpacing(40)} />
+        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(40)} />
         <Spacer.Column numberOfSpaces={10} />
         <TextPlaceholder height={getSpacing(5)} width={getSpacing(22)} />
         <Spacer.Column numberOfSpaces={10} />
         <TextPlaceholder height={getSpacing(5)} width={getSpacing(63)} />
         <Spacer.Column numberOfSpaces={5} />
-        <TextPlaceholder height={getSpacing(4)} width={getSpacing(33)} />
+        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(33)} />
         <Spacer.Column numberOfSpaces={3.5} />
         <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(82)} />
         <Spacer.Column numberOfSpaces={2} />
@@ -50,7 +50,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={8} />
         <TextPlaceholder height={getSpacing(5)} width={getSpacing(63)} />
         <Spacer.Column numberOfSpaces={8} />
-        <TextPlaceholder height={getSpacing(4)} width={getSpacing(33)} />
+        <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(33)} />
         <Spacer.Column numberOfSpaces={2} />
         <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(58)} />
         <Spacer.Column numberOfSpaces={6} />

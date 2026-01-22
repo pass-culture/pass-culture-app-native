@@ -15,5 +15,8 @@ const Vertical = styled.View<{ color?: ColorsType; height?: number }>(
     height: height ?? '100%',
   })
 )
+const HorizontalWithMargin = styled(Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))
 
-export const Separator = { Horizontal, Vertical }
+export const Separator = { Horizontal, Vertical, HorizontalWithMargin }

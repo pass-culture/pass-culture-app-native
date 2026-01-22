@@ -52,7 +52,7 @@ export const ModuleTitlePlaceholder = () => {
   return (
     <SkeletonTile
       width={getSpacing(50)}
-      height={getSpacing(4)}
+      height={designSystem.size.spacing.l}
       borderRadius={designSystem.size.borderRadius.m}
     />
   )
@@ -103,4 +103,4 @@ const StyledView = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.m,
 }))
 
-const StyledSeparator = styled.View({ width: getSpacing(4) })
+const StyledSeparator = styled.View(({ theme }) => ({ width: theme.designSystem.size.spacing.l }))

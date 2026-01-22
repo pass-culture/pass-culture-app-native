@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { UserIdentification as InitialUserIdentification } from 'ui/svg/UserIdentification'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   visible: boolean
@@ -73,15 +73,15 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
-const StyledButtonContainer = styled.View({
+const StyledButtonContainer = styled.View(({ theme }) => ({
   width: '100%',
-  marginBottom: getSpacing(4),
-})
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   marginTop: theme.designSystem.size.spacing.s,
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const UserIdentification = styled(InitialUserIdentification).attrs(({ theme }) => ({

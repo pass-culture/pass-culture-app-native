@@ -24,7 +24,6 @@ const DESKTOP_MIN_WIDTH = 'none'
 const MOBILE_MIN_WIDTH = '40%'
 const MOBILE_MIN_WIDTH_WHEN_FONT_ZOOMED = '100%'
 const MOBILE_MAX_WIDTH = '49%'
-const DESKTOP_GAPS_AND_PADDINGS = getSpacing(4)
 
 export const CategoryListModule = ({
   id,
@@ -92,21 +91,25 @@ export const CategoryListModule = ({
   )
 }
 
-const StyledView = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  width: '100%',
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  ...(theme.isMobileViewport
-    ? {
-        flexWrap: 'wrap',
-        gap: theme.designSystem.size.spacing.s,
-        paddingVertical: theme.designSystem.size.spacing.s,
-      }
-    : {
-        gap: DESKTOP_GAPS_AND_PADDINGS,
-        paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
-      }),
-}))
+const StyledView = styled.View(({ theme }) => {
+  const MOBILE_GAPS_AND_PADDINGS = theme.designSystem.size.spacing.s
+  const DESKTOP_GAPS_AND_PADDINGS = theme.designSystem.size.spacing.l
+  return {
+    flexDirection: 'row',
+    width: '100%',
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    ...(theme.isMobileViewport
+      ? {
+          flexWrap: 'wrap',
+          gap: MOBILE_GAPS_AND_PADDINGS,
+          paddingVertical: MOBILE_GAPS_AND_PADDINGS,
+        }
+      : {
+          gap: DESKTOP_GAPS_AND_PADDINGS,
+          paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
+        }),
+  }
+})
 
 const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xl,

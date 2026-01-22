@@ -235,7 +235,7 @@ const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(
   ({ shouldShowMinMaxValues, theme }) => ({
-    marginTop: getSpacing(4),
+    marginTop: theme.designSystem.size.spacing.l,
     paddingLeft: shouldShowMinMaxValues ? theme.slider.markerSize / 2 : undefined,
   })
 )

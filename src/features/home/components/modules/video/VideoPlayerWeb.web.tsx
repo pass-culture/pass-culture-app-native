@@ -15,7 +15,6 @@ import { VideoErrorView } from 'features/home/components/modules/video/VideoErro
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'
-import { getSpacing } from 'ui/theme'
 
 interface VideoPlayerWebProps extends VideoPlayerProps {
   playerRef: RefObject<YouTube | null>
@@ -117,7 +116,7 @@ export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
 
 const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
+  borderTopLeftRadius: theme.designSystem.size.borderRadius.l,
+  borderTopRightRadius: theme.designSystem.size.borderRadius.l,
   overflow: 'hidden',
 }))

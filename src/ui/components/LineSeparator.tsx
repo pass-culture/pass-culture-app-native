@@ -6,5 +6,5 @@ export const LineSeparator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.designSystem.color.background.subtle,
   marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
+  marginVertical: theme.designSystem.size.spacing.l,
 }))

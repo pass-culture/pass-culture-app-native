@@ -1133,10 +1133,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             style={
                               {
+                                "alignSelf": "center",
                                 "backgroundColor": "#f1f1f4",
                                 "height": 20,
-                                "marginLeft": 16,
-                                "marginRight": 12,
+                                "marginHorizontal": 16,
                                 "width": 1,
                               }
                             }
@@ -4559,10 +4559,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           <View
                             style={
                               {
+                                "alignSelf": "center",
                                 "backgroundColor": "#f1f1f4",
                                 "height": 20,
-                                "marginLeft": 16,
-                                "marginRight": 12,
+                                "marginHorizontal": 16,
                                 "width": 1,
                               }
                             }

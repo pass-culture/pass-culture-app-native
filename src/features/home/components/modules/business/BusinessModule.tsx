@@ -239,7 +239,7 @@ const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: numbe
 
 const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingTop: getSpacing(4.5),
+  paddingTop: theme.designSystem.size.spacing.xl,
   gap: theme.designSystem.size.spacing.s,
   marginBottom: theme.designSystem.size.spacing.xl,
 }))

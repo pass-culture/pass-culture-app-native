@@ -6,7 +6,7 @@ import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   artistName: string
@@ -43,7 +43,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
       data={items}
       keyExtractor={keyExtractor}
       ListHeaderComponent={<StyledTitle3>Ses oeuvres populaires</StyledTitle3>}
-      ItemSeparatorComponent={StyledSeparator}
+      ItemSeparatorComponent={Separator.HorizontalWithMargin}
       contentContainerStyle={{ marginHorizontal: contentPage.marginHorizontal }}
       scrollEnabled={false}
       renderItem={({ item }) => renderItem({ item, artistName })}
@@ -54,7 +54,3 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
-
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-})

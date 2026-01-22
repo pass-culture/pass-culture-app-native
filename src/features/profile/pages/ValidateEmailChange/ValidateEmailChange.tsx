@@ -17,7 +17,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { PhonePending } from 'ui/svg/icons/PhonePending'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type ValidateEmailChangeProps = NativeStackScreenProps<
   RootStackParamList & ProfileStackParamList,
@@ -104,7 +104,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       <Wrapper>
         <Typo.Body>Nouvelle adresse e-mail&nbsp;:</Typo.Body>
         <Typo.BodyAccent>{emailUpdateStatus?.newEmail}</Typo.BodyAccent>
-        <StyledSeparator />
+        <Separator.HorizontalWithMargin />
         <StyledCaption>
           En cliquant sur valider, tu seras déconnecté.e. Tu devras te reconnecter avec ta nouvelle
           adresse e-mail.
@@ -114,16 +114,12 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   )
 }
 
-const Wrapper = styled.View({
-  marginTop: getSpacing(4),
+const Wrapper = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-})
+}))
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.designSystem.color.text.subtle,
 }))
-
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-})

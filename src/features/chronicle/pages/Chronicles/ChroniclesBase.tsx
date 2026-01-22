@@ -40,7 +40,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const chronicleId = route.params?.chronicleId
   const { navigate } = useNavigation<UseNavigationType>()
-  const { contentPage, appBarHeight, isDesktopViewport } = useTheme()
+  const { contentPage, appBarHeight, isDesktopViewport, designSystem } = useTheme()
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
@@ -114,7 +114,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
               ? { paddingBottom: headerHeight }
               : {
                   paddingBottom: getSpacing(10),
-                  marginTop: getSpacing(4),
+                  marginTop: designSystem.size.spacing.l,
                   marginHorizontal: contentPage.marginHorizontal,
                 }),
           }}

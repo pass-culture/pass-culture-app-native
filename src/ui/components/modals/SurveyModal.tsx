@@ -9,7 +9,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -72,12 +72,12 @@ export const SurveyModal = ({
   )
 }
 
-const StyledBody = styled(Typo.Body)({
-  marginHorizontal: getSpacing(4),
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.l,
   textAlign: 'center',
-})
+}))
 
-const ContentContainer = styled(ViewGap)({
-  marginHorizontal: getSpacing(4),
+const ContentContainer = styled(ViewGap)(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-})
+}))

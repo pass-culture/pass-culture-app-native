@@ -25,16 +25,16 @@ export function SummaryInfo({ Icon, title, subtitle }: Readonly<SummaryInfoProps
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginVertical: getSpacing(4),
+  marginVertical: theme.designSystem.size.spacing.l,
   alignItems: 'center',
   width: '100%',
-})
+}))
 
-const IconContainer = styled.View({
-  marginHorizontal: getSpacing(4),
-})
+const IconContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.l,
+}))
 
 const TextContainer = styled.View({
   flexShrink: 1,

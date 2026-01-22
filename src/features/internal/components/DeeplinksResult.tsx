@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   result?: string
@@ -33,7 +33,7 @@ const Container = styled.ScrollView.attrs({
   },
 })(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.s,
-  paddingVertical: getSpacing(4),
+  paddingVertical: theme.designSystem.size.spacing.l,
   maxHeight: 300,
 }))
 
