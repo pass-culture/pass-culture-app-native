@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -60,10 +61,11 @@ export function HeroButtonList({
     )
   } else {
     return (
-      <TouchableLink
+      <StyledTouchableLink
         {...focusProps}
         testID="HeroButtonList"
         accessibilityLabel={accessibilityLabel}
+        accessibilityRole={accessibilityRoleInternalNavigation()}
         onPress={onPress}>
         <GenericBanner LeftIcon={Icon}>
           <TextWrapper>
@@ -71,7 +73,7 @@ export function HeroButtonList({
             {Subtitle ? <SubtitleContainer>{Subtitle}</SubtitleContainer> : null}
           </TextWrapper>
         </GenericBanner>
-      </TouchableLink>
+      </StyledTouchableLink>
     )
   }
 }
@@ -82,6 +84,11 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus: boo
     ...customFocusOutline({ theme, isFocus }),
   })
 )
+
+const StyledTouchableLink = styled(TouchableLink)<{ isFocus: boolean }>(({ theme, isFocus }) => ({
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  ...customFocusOutline({ theme, isFocus }),
+}))
 
 const TextWrapper = styled.View({
   minHeight: getSpacing(14.5),
