@@ -271,7 +271,7 @@ describe('<AppModal />', () => {
 
       const modalContainer = screen.getByTestId('modalContainer')
 
-      expect(modalContainer.props.height).toEqual(428)
+      expect(modalContainer.props.height).toEqual(440)
     })
 
     it("should adapt to the content's height", () => {
@@ -285,7 +285,7 @@ describe('<AppModal />', () => {
         modalScrollView.props.onContentSizeChange(scrollViewContentWidth, scrollViewContentHeight)
       })
 
-      expect(modalContainer.props.height).toEqual(328)
+      expect(modalContainer.props.height).toEqual(340)
     })
 
     describe('should adapt when virtual keyboard is', () => {
@@ -315,7 +315,7 @@ describe('<AppModal />', () => {
           })
         })
 
-        expect(modalContainer.props.height).toEqual(720)
+        expect(modalContainer.props.height).toEqual(732)
       })
 
       it('hidden', () => {
@@ -339,7 +339,7 @@ describe('<AppModal />', () => {
           })
         })
 
-        expect(modalContainer.props.height).toEqual(428)
+        expect(modalContainer.props.height).toEqual(440)
       })
     })
 
@@ -352,7 +352,7 @@ describe('<AppModal />', () => {
         modalHeader.props.onLayout({ nativeEvent: { layout: { height: 40 } } })
       })
 
-      expect(modalContainer.props.height).toEqual(418)
+      expect(modalContainer.props.height).toEqual(430)
     })
 
     it('should display a custom modal header if specified', () => {

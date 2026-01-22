@@ -241,7 +241,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           style={
             {
               "flexDirection": "column",
-              "gap": 20,
+              "gap": 24,
               "marginTop": 4,
               "paddingHorizontal": 24,
             }
@@ -1137,7 +1137,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           style={
             {
               "flexDirection": "column",
-              "gap": 20,
+              "gap": 24,
               "marginTop": 4,
               "paddingHorizontal": 24,
             }
@@ -2302,7 +2302,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           style={
             {
               "flexDirection": "column",
-              "gap": 20,
+              "gap": 24,
               "marginTop": 4,
               "paddingHorizontal": 24,
             }
@@ -3400,7 +3400,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           style={
             {
               "flexDirection": "column",
-              "gap": 20,
+              "gap": 24,
               "marginTop": 4,
               "paddingHorizontal": 24,
             }

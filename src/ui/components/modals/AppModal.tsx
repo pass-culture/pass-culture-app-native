@@ -108,7 +108,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom, top, right, left } = useCustomSafeInsets()
-  const { isSmallScreen, modal, isDesktopViewport } = useTheme()
+  const { isSmallScreen, modal, isDesktopViewport, designSystem } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -146,15 +146,16 @@ export const AppModal: FunctionComponent<Props> = ({
   const scrollViewPaddingBottom = keyboardHeight || bottom
   const modalHeight = useMemo(() => {
     const SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL = 10
+    const MODAL_PADDING = designSystem.size.spacing.xl
     return (
       scrollViewContentHeight +
       scrollViewPaddingBottom +
       headerHeight +
-      SPACE_BETWEEN_HEADER_AND_CONTENT +
+      designSystem.size.spacing.xl +
       2 * MODAL_PADDING +
       SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
     )
-  }, [scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
+  }, [designSystem.size.spacing.xl, scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
 
   const updateHeaderHeight = useCallback(
     ({ nativeEvent }: LayoutChangeEvent): void => {
@@ -309,10 +310,9 @@ const contentContainerStyle = Platform.select({
     : {},
 })
 
-const SPACE_BETWEEN_HEADER_AND_CONTENT = getSpacing(5)
-const SpacerBetweenHeaderAndContent = styled.View({
-  height: SPACE_BETWEEN_HEADER_AND_CONTENT,
-})
+const SpacerBetweenHeaderAndContent = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
 
 const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,
@@ -324,7 +324,6 @@ const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ the
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))
 
-const MODAL_PADDING = getSpacing(5)
 // https://github.com/react-native-modal/react-native-modal/issues/381
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const StyledModal = styled(ReactNativeModal as any)(({ theme }) => {

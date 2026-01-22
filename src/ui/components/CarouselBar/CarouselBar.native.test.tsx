@@ -21,7 +21,7 @@ describe('<CarouselBar/>', () => {
 
     expect(screen.getByTestId('carousel-bar')).toHaveStyle({
       backgroundColor: greyMedium,
-      width: 20,
+      width: 24,
     })
   })
 })

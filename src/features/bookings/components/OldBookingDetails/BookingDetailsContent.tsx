@@ -248,11 +248,11 @@ export const BookingDetailsContent = ({
   )
 }
 
-const StyledScrollView = styled.ScrollView.attrs({
+const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingBottom: getSpacing(5),
+    paddingBottom: theme.designSystem.size.spacing.xl,
   },
-})``
+}))``
 
 const OfferRules = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

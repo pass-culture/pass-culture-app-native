@@ -1,11 +1,12 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/GenericSuspendedAccount/GenericSuspendedAccount'
 import { analytics } from 'libs/analytics/provider'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const SuspiciousLoginSuspendedAccount = () => {
+  const { designSystem } = useTheme()
   const onBeforeNavigateContactFraudTeam = () => {
     analytics.logContactFraudTeam({ from: 'suspiciousloginsuspendedaccount' })
   }
@@ -13,7 +14,7 @@ export const SuspiciousLoginSuspendedAccount = () => {
   return (
     <GenericSuspendedAccount onBeforeNavigateContactFraudTeam={onBeforeNavigateContactFraudTeam}>
       <StyledBody>En raison d’une activité suspicieuse, ton compte a été suspendu.</StyledBody>
-      <StyledBody marginTop={getSpacing(5)}>
+      <StyledBody marginTop={designSystem.size.spacing.xl}>
         Si tu souhaites revoir cette décision, tu peux contacter le service fraude.
       </StyledBody>
     </GenericSuspendedAccount>

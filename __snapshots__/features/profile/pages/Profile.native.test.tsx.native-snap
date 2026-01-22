@@ -2504,7 +2504,7 @@ exports[`Profile component should render correctly 1`] = `
                           "justifyContent": "flex-start",
                           "marginTop": 0,
                           "maxWidth": 500,
-                          "minHeight": 20,
+                          "minHeight": 24,
                           "paddingBottom": 0,
                           "paddingLeft": 0,
                           "paddingRight": 0,

@@ -144,7 +144,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -157,7 +157,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -301,7 +301,7 @@ pour réserver cette offre
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -633,7 +633,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -646,7 +646,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -790,7 +790,7 @@ pour réserver cette offre
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -1122,7 +1122,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1135,7 +1135,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -1279,7 +1279,7 @@ pour réserver cette offre
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"

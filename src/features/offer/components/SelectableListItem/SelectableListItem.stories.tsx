@@ -4,7 +4,7 @@ import { action } from 'storybook/actions'
 import styled from 'styled-components/native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
 
@@ -47,7 +47,7 @@ const variantConfig: Variants<typeof SelectableListItem> = [
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
-  fontSize: getSpacing(5),
+  fontSize: theme.designSystem.size.spacing.xl,
 }))
 
 export const Template: VariantsStory<typeof SelectableListItem> = {

@@ -398,13 +398,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 "marginRight": 8,
               },
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingHorizontal": 24,
-                "paddingVertical": 20,
-              },
-              {
                 "paddingHorizontal": 0,
                 "paddingVertical": 16,
               },
@@ -562,7 +555,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "paddingHorizontal": 24,
-                  "paddingVertical": 20,
+                  "paddingVertical": 24,
                 },
                 {
                   "paddingHorizontal": 0,
@@ -746,13 +739,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 "marginRight": 8,
               },
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingHorizontal": 24,
-                "paddingVertical": 20,
-              },
-              {
                 "paddingHorizontal": 0,
                 "paddingVertical": 16,
               },
@@ -910,7 +896,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "paddingHorizontal": 24,
-                  "paddingVertical": 20,
+                  "paddingVertical": 24,
                 },
                 {
                   "paddingHorizontal": 0,
@@ -1094,13 +1080,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 "marginRight": 8,
               },
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingHorizontal": 24,
-                "paddingVertical": 20,
-              },
-              {
                 "paddingHorizontal": 0,
                 "paddingVertical": 16,
               },
@@ -1258,7 +1237,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "paddingHorizontal": 24,
-                  "paddingVertical": 20,
+                  "paddingVertical": 24,
                 },
                 {
                   "paddingHorizontal": 0,
@@ -1445,13 +1424,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   "marginRight": 8,
                 },
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingHorizontal": 24,
-                  "paddingVertical": 20,
-                },
-                {
                   "paddingHorizontal": 0,
                   "paddingVertical": 16,
                 },
@@ -1609,7 +1581,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "paddingHorizontal": 24,
-                    "paddingVertical": 20,
+                    "paddingVertical": 24,
                   },
                   {
                     "paddingHorizontal": 0,
@@ -1748,13 +1720,6 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
             [
               {
                 "marginRight": 8,
-              },
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingHorizontal": 24,
-                "paddingVertical": 20,
               },
               {
                 "paddingHorizontal": 0,
@@ -1923,7 +1888,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "paddingHorizontal": 24,
-                  "paddingVertical": 20,
+                  "paddingVertical": 24,
                 },
                 {
                   "paddingHorizontal": 0,

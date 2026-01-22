@@ -144,7 +144,7 @@ exports[`<AuthenticationModal /> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -157,7 +157,7 @@ exports[`<AuthenticationModal /> should render correctly 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -300,7 +300,7 @@ exports[`<AuthenticationModal /> should render correctly 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"

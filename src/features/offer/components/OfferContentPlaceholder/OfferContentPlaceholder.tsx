@@ -27,9 +27,9 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={2} />
         <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(40)} />
         <Spacer.Column numberOfSpaces={10} />
-        <TextPlaceholder height={getSpacing(5)} width={getSpacing(22)} />
+        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
         <Spacer.Column numberOfSpaces={10} />
-        <TextPlaceholder height={getSpacing(5)} width={getSpacing(63)} />
+        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(63)} />
         <Spacer.Column numberOfSpaces={5} />
         <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(33)} />
         <Spacer.Column numberOfSpaces={3.5} />
@@ -48,7 +48,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
       </BodyContainer>
       <SectionWithDivider visible margin gap={0}>
         <Spacer.Column numberOfSpaces={8} />
-        <TextPlaceholder height={getSpacing(5)} width={getSpacing(63)} />
+        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(63)} />
         <Spacer.Column numberOfSpaces={8} />
         <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(33)} />
         <Spacer.Column numberOfSpaces={2} />

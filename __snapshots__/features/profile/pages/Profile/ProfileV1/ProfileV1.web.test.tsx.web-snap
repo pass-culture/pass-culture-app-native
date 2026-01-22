@@ -79,7 +79,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   padding: 2px;
   padding-left: 0;
   padding-right: 0;
-  min-height: 20px;
+  min-height: 24px;
   width: auto;
   max-width: 500px;
   border-width: 0;
@@ -1194,7 +1194,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   padding: 2px;
   padding-left: 0;
   padding-right: 0;
-  min-height: 20px;
+  min-height: 24px;
   width: auto;
   max-width: 500px;
   border-width: 0;

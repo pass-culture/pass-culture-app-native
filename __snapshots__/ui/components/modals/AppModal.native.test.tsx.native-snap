@@ -150,7 +150,7 @@ exports[`<AppModal /> on big screen 1`] = `
           "maxWidth": 520,
         }
       }
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -163,7 +163,7 @@ exports[`<AppModal /> on big screen 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxWidth": 520,
           "paddingBottom": 32,
@@ -245,7 +245,7 @@ exports[`<AppModal /> on big screen 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -433,7 +433,7 @@ exports[`<AppModal /> on small screen 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -446,7 +446,7 @@ exports[`<AppModal /> on small screen 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 400,
@@ -529,7 +529,7 @@ exports[`<AppModal /> on small screen 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -671,7 +671,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -684,7 +684,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -767,7 +767,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -955,7 +955,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -968,7 +968,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -1051,7 +1051,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -1239,7 +1239,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1252,7 +1252,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -1335,7 +1335,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -1523,7 +1523,7 @@ exports[`<AppModal /> with left icon render 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1536,7 +1536,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -1687,7 +1687,7 @@ exports[`<AppModal /> with left icon render 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -1875,7 +1875,7 @@ exports[`<AppModal /> with minimal props 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -1888,7 +1888,7 @@ exports[`<AppModal /> with minimal props 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -1971,7 +1971,7 @@ exports[`<AppModal /> with minimal props 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -2159,7 +2159,7 @@ exports[`<AppModal /> with right icon render 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -2172,7 +2172,7 @@ exports[`<AppModal /> with right icon render 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -2315,7 +2315,7 @@ exports[`<AppModal /> with right icon render 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -2503,7 +2503,7 @@ exports[`<AppModal /> without children 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={440}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -2516,7 +2516,7 @@ exports[`<AppModal /> without children 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 440,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -2599,7 +2599,7 @@ exports[`<AppModal /> without children 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"

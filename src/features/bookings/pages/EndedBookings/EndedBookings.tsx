@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import {
   BookingListItemOfferResponse,
@@ -34,6 +34,7 @@ type Props = {
 }
 
 export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery }) => {
+  const { designSystem } = useTheme()
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
   const { data: bookings = { bookings: [] } } = useEndedBookingsQuery()
@@ -132,7 +133,10 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   return (
     <React.Fragment>
       <FlatList
-        contentContainerStyle={contentContainerStyle}
+        contentContainerStyle={{
+          paddingHorizontal: designSystem.size.spacing.xl,
+          ...contentContainerStyle,
+        }}
         data={endedBookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
@@ -170,7 +174,6 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
 
 const contentContainerStyle = {
   flexGrow: 1,
-  paddingHorizontal: getSpacing(5),
   paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
 }
 

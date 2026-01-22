@@ -44,7 +44,7 @@ export const SeeMoreWithEye = ({ title, onPressSeeMore, titleSeeMoreLink }: Prop
 
 const TitleSeparator = styled.View(({ theme }) => ({
   width: 1,
-  height: getSpacing(5),
+  height: theme.designSystem.size.spacing.xl,
   backgroundColor: theme.designSystem.color.background.subtle,
   marginHorizontal: theme.designSystem.size.spacing.l,
   alignSelf: 'center',

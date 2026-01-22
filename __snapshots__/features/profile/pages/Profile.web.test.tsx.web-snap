@@ -79,7 +79,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
   padding: 2px;
   padding-left: 0;
   padding-right: 0;
-  min-height: 20px;
+  min-height: 24px;
   width: auto;
   max-width: 500px;
   border-width: 0;
@@ -953,7 +953,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-16pcm1t r-paddingBlock-dd0y9b"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-16pcm1t r-paddingBlock-zo2zu6"
               >
                 <div
                   class="css-view-175oi2r r-width-1glkqn6"
@@ -1193,7 +1193,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
   padding: 2px;
   padding-left: 0;
   padding-right: 0;
-  min-height: 20px;
+  min-height: 24px;
   width: auto;
   max-width: 500px;
   border-width: 0;
@@ -2067,7 +2067,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
               />
               <div
-                class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-16pcm1t r-paddingBlock-dd0y9b"
+                class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-16pcm1t r-paddingBlock-zo2zu6"
               >
                 <div
                   class="css-view-175oi2r r-width-1glkqn6"
