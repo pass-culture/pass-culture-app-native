@@ -29,11 +29,11 @@ export const SelectIDStatus: FunctionComponent = () => {
 
   const onPress = async () => {
     try {
-      const IdentificationSessionResponse = await mutateUbbleIdentification()
+      const identificationSessionResponse = await mutateUbbleIdentification()
 
       navigate(
         ...getSubscriptionHookConfig('UbbleWebview', {
-          identificationUrl: IdentificationSessionResponse.identificationUrl,
+          identificationUrl: identificationSessionResponse.identificationUrl,
         })
       )
     } catch (err) {
