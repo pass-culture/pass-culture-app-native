@@ -10,6 +10,7 @@ type Variant<Props extends Record<string, unknown>> = {
   label: string
   props?: Partial<Props>
   withBackground?: boolean
+  backgroundColor?: string
   minHeight?: number
 }
 
@@ -52,7 +53,10 @@ export const VariantsTemplate = <
         <React.Fragment key={variant.label}>
           <Typo.BodyAccentXs>{variant.label}</Typo.BodyAccentXs>
 
-          <ComponentContainer withBackground={variant.withBackground} minHeight={variant.minHeight}>
+          <ComponentContainer
+            withBackground={variant.withBackground}
+            backgroundColor={variant.backgroundColor}
+            minHeight={variant.minHeight}>
             <Component {...props} />
             {variant.withBackground ? (
               <StyledBody>Le background ne fait pas partie du composant</StyledBody>
@@ -71,16 +75,18 @@ export type VariantsStory<
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
 > = StoryObj<ComponentType>
 
-const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight?: number }>(
-  ({ withBackground, minHeight, theme }) => ({
-    backgroundColor: withBackground
-      ? theme.designSystem.color.background.brandSecondary
-      : 'transparent',
-    padding: theme.designSystem.size.spacing.s,
-    borderRadius: theme.designSystem.size.borderRadius.m,
-    minHeight,
-  })
-)
+const ComponentContainer = styled.View<{
+  withBackground?: boolean
+  backgroundColor?: string
+  minHeight?: number
+}>(({ withBackground, backgroundColor, minHeight, theme }) => ({
+  backgroundColor: withBackground
+    ? (backgroundColor ?? theme.designSystem.color.background.brandSecondary)
+    : 'transparent',
+  padding: theme.designSystem.size.spacing.s,
+  borderRadius: theme.designSystem.size.borderRadius.m,
+  minHeight,
+}))
 
 const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.m,

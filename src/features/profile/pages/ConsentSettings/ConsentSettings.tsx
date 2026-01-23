@@ -24,7 +24,6 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -33,6 +32,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/ButtonDS/Button'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -228,19 +228,17 @@ export const ConsentSettings = () => {
             onRightIconPress={hideModal}
           />
         }>
-        <ViewGap gap={6}>
+        <ModalContainer gap={6}>
           <ModalDescription>{modalDescription}</ModalDescription>
-          <ButtonPrimary
-            wording="Enregistrer mes choix"
-            accessibilityRole={AccessibilityRole.BUTTON}
-            onPress={handleSaveChoices}
-          />
-          <ButtonTertiaryBlack
+          <Button wording="Enregistrer mes choix" onPress={handleSaveChoices} fullWidth />
+          <Button
             icon={Invalidate}
             wording="Quitter sans enregistrer"
             onPress={handleDiscardAndGoBack}
+            variant="tertiary"
+            color="neutral"
           />
-        </ViewGap>
+        </ModalContainer>
       </AppModal>
     </React.Fragment>
   )
@@ -267,3 +265,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 const SaveButton = styledButton(ButtonPrimary)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.l,
 }))
+
+const ModalContainer = styled(ViewGap)({
+  alignItems: 'center',
+})
