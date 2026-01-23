@@ -28,15 +28,16 @@ const maxPriceValidationSchema = ({ initialCredit, currency }: PriceValidationPa
     })
 
 const minPriceWithConditions = ({ initialCredit, currency }: PriceValidationParams) =>
-  maxPriceValidationSchema({ initialCredit, currency }).when(['maxPrice'], {
-    is: (maxPrice: string) => !!maxPrice && maxPrice.trim().length > 0, // Vérifie si maxPrice est non vide
-    then: (schema) =>
-      schema.test('validMinPrice', minPriceError, (value, schema) => {
-        if (!value) return true
-        const minPrice = Number(value.trim().replace(',', '.'))
-        const maxPrice = Number(schema.parent.maxPrice.trim().replace(',', '.'))
-        return minPrice <= maxPrice
-      }),
+  maxPriceValidationSchema({ initialCredit, currency }).when(['maxPrice'], (maxPrice, schema) => {
+    if (!!maxPrice && maxPrice.trim().length > 0) {
+      return schema.test('validMinPrice', minPriceError, (minPrice) => {
+        if (!minPrice) return true
+        const min = Number(minPrice.trim().replace(',', '.'))
+        const max = Number(maxPrice.trim().replace(',', '.'))
+        return min <= max
+      })
+    }
+    return schema
   })
 
 export const priceSchema = ({ initialCredit, currency }: PriceValidationParams) =>
