@@ -5087,6 +5087,11 @@ export interface UserProfileResponse {
    */
   recreditTypeToShow?: RecreditType | null
   /**
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  remainingBonusAttempts?: number | null
+  /**
    * @type {boolean}
    * @memberof UserProfileResponse
    */
