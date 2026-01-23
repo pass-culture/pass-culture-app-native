@@ -22,11 +22,14 @@ import {
   variantHoverKeys,
 } from './variants'
 
-const getBackgroundFromKey = (
+const getBackgroundColor = (
   background: BackgroundColor,
   key?: BackgroundColorKey | 'transparent'
-): ButtonColorValue | undefined =>
-  key === 'transparent' ? 'transparent' : key ? background[key] : undefined
+): ButtonColorValue | undefined => {
+  if (!key) return undefined
+  if (key === 'transparent') return 'transparent'
+  return background[key]
+}
 
 const getHoverIconColor = ({
   color,
@@ -90,8 +93,10 @@ const getBaseColors = ({
     variant === 'primary' && color === 'neutral' ? 'inverted' : backgroundKey
   const finalBorderKey = variant === 'primary' && color === 'neutral' ? 'inverted' : borderKey
 
+  const backgroundColor = getBackgroundColor(background, finalBackgroundKey)
+
   return {
-    backgroundColor: getBackgroundFromKey(background, finalBackgroundKey),
+    backgroundColor,
     textColor: text[textKey],
     iconColor: icon[iconKey],
     borderColor: variant === 'tertiary' ? undefined : border[finalBorderKey ?? paletteKeys.border],

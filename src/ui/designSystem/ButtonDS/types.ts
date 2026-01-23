@@ -76,6 +76,3 @@ type ButtonWebEvents = {
 
 export type ButtonNativeProps = (IconButtonProps | TextButtonProps) & ButtonNativeEvents
 export type ButtonWebProps = (IconButtonProps | TextButtonProps) & ButtonWebEvents
-export type ButtonProps = ButtonNativeProps
-
-export type ButtonPropsWithoutVariant = Omit<ButtonNativeProps, 'variant'>
