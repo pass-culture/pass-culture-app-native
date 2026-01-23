@@ -270,7 +270,7 @@ export const Template: VariantsStory<typeof Button> = {
   render: (props) => {
     const variantsWithBackground = variantConfig.map((variant) =>
       variant.withBackground
-        ? { ...variant, backgroundColor: theme.designSystem.color.background.decorative03 }
+        ? { ...variant, backgroundColor: theme.designSystem.color.background.decorative04 }
         : variant
     )
     return (

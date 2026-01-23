@@ -25,7 +25,7 @@ import {
   getSpacingGap,
   getTypographyForSize,
 } from './Button.layout'
-import { ButtonColorValue, ButtonProps } from './types'
+import { ButtonColorValue, ButtonNativeProps } from './types'
 
 export const Button = ({
   variant = 'primary',
@@ -46,7 +46,7 @@ export const Button = ({
   onPress,
   onLongPress,
   isLoading,
-}: ButtonProps) => {
+}: ButtonNativeProps) => {
   const theme = useTheme()
   const hoverProps = useHandleHover()
   const isDisabled = disabled === true
