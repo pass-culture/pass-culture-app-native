@@ -12,7 +12,7 @@ const getDatesFromTimeRangeAndDate = (date: Date, timeRange: Range<number>): Ran
 }
 
 const getDateAtGivenTime = (date: Date, hours: number): Date => {
-  const dateWithTime = new Date(date.getTime())
+  const dateWithTime = new Date(date)
   dateWithTime.setHours(hours)
   dateWithTime.setMinutes(0)
   dateWithTime.setSeconds(0)
