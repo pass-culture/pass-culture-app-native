@@ -220,16 +220,16 @@ const CenteredText = styled(Typo.BodyAccent)<{ width?: number }>(({ width, theme
   textAlign: 'center',
 }))
 
-const MinMaxContainer = styled.View({
+const MinMaxContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  marginTop: getSpacing(1),
-})
+  marginTop: theme.designSystem.size.spacing.xs,
+}))
 
 const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const SliderWrapper = styled(View)({
-  marginTop: getSpacing(4),
-})
+const SliderWrapper = styled(View)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

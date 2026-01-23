@@ -209,7 +209,6 @@ export const LocationModal = ({
           value={currentValue}
           onChange={handleChange}
           variant="detailed"
-          errorText=""
         />
       </StyledScrollView>
     </AppModal>

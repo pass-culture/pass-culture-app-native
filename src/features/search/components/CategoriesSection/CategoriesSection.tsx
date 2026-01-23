@@ -76,9 +76,7 @@ export function CategoriesSection<
         variant="default"
         display="vertical"
         disabled={false}
-        error={false}
         options={toRadioButtonGroupOptions(radioOptions)}
-        errorText="Error"
       />
     )
   }
