@@ -129,7 +129,9 @@ describe('SearchLocationModal', () => {
 
     await user.press(geolocPositionButton)
 
-    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#161617' })
+    expect(screen.getByLabelText(/Utiliser ma position actuelle/)).toHaveAccessibilityState({
+      checked: true,
+    })
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
@@ -281,7 +283,9 @@ describe('SearchLocationModal', () => {
       const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
       await user.press(geolocPositionButton)
 
-      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#161617' })
+      expect(screen.getByLabelText(/Utiliser ma position actuelle/)).toHaveAccessibilityState({
+        checked: true,
+      })
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
