@@ -296,6 +296,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         markedDates={markedDates}
         testID="calendar"
         firstDay={1}
+        customProps={{ marginTop: designSystem.size.spacing.l }}
         theme={{
           // UX decision: align with disabled background token for the muted state
           textDisabledColor: designSystem.color.background.disabled,
@@ -318,13 +319,14 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   )
 }
 
-const StyledCalendarList = styled(CalendarList).attrs({
-  calendarStyle: {
-    width: '100%',
-  },
-})({
-  marginTop: getSpacing(4),
-})
+const StyledCalendarList = styled(CalendarList).attrs<{ customProps?: { marginTop: number } }>(
+  ({ customProps }) => ({
+    calendarStyle: {
+      width: '100%',
+    },
+    marginTop: customProps?.marginTop,
+  })
+)``
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 interface Props {
   onPressAcceptAll: () => void
@@ -39,7 +39,7 @@ const Container = styled.View(({ theme }) => ({
 
 const ButtonSpacer = styled.View(({ theme }) => ({
   width: theme.appContentWidth > theme.breakpoints.xs ? theme.designSystem.size.spacing.s : 0,
-  height: theme.appContentWidth > theme.breakpoints.xs ? 0 : getSpacing(4),
+  height: theme.appContentWidth > theme.breakpoints.xs ? 0 : theme.designSystem.size.spacing.l,
 }))
 
 const Row = styled.View(({ theme }) => ({

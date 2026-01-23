@@ -99,11 +99,11 @@ const Right = styled.View({
   flex: 1,
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   paddingTop: getSpacing(6),
-  paddingBottom: getSpacing(4),
-})
+  paddingBottom: theme.designSystem.size.spacing.l,
+}))
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,

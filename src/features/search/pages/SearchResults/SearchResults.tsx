@@ -19,7 +19,6 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -52,10 +51,6 @@ export const SearchResults = () => {
   const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
 
   const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
-
-  const {
     hits,
     hasNextPage,
     fetchNextPage,
@@ -67,7 +62,6 @@ export const SearchResults = () => {
     isFetchingNextPage,
     userData,
     venuesUserData,
-    facets,
     offerVenues,
   } = useSearchResults()
 
@@ -127,8 +121,6 @@ export const SearchResults = () => {
 
   const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
-  const shouldDisplayHeader = !displayNewSearchHeader || !isFocusOnSuggestions
-
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -141,14 +133,14 @@ export const SearchResults = () => {
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
-          <Container displayNewSearchHeader={displayNewSearchHeader}>
+          <Container>
             <SearchHeader
               searchInputID={searchInputID}
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
-              withFilterButton={displayNewSearchHeader}
-              withArrow={displayNewSearchHeader}
-              shouldDisplayHeader={shouldDisplayHeader}
+              withFilterButton
+              withArrow
+              shouldDisplayHeader={!isFocusOnSuggestions}
             />
           </Container>
           {isFocusOnSuggestions ? (
@@ -169,7 +161,6 @@ export const SearchResults = () => {
               isFetchingNextPage={isFetchingNextPage}
               userData={userData}
               venuesUserData={venuesUserData}
-              facets={facets}
               offerVenues={offerVenues}
               onViewableItemsChanged={handleViewableItemsChanged}
             />
@@ -180,10 +171,6 @@ export const SearchResults = () => {
   )
 }
 
-const Container = styled.View<{ displayNewSearchHeader: boolean }>(
-  ({ theme, displayNewSearchHeader }) => ({
-    marginBottom: displayNewSearchHeader
-      ? theme.designSystem.size.spacing.l
-      : theme.designSystem.size.spacing.s,
-  })
-)
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))

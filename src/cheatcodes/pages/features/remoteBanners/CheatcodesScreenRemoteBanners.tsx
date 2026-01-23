@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
@@ -11,7 +10,7 @@ import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenRemoteBanners = () => {
   const { options: showGenericBannerOptions } = useFeatureFlagOptionsQuery(
@@ -58,7 +57,7 @@ export const CheatcodesScreenRemoteBanners = () => {
           />
         ) : null}
 
-        <StyledSeparator />
+        <Separator.HorizontalWithMargin />
 
         <Typo.Title3>RemoteActivationBanner</Typo.Title3>
         {disableActivationOptions ? (
@@ -77,7 +76,3 @@ export const CheatcodesScreenRemoteBanners = () => {
     </CheatcodesTemplateScreen>
   )
 }
-
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-})

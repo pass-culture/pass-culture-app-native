@@ -16,7 +16,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { PlaylistType } from 'features/offer/enums'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
-import { getSpacing } from 'ui/theme'
 
 export type ItemDimensions = { width: number; height: number }
 
@@ -55,8 +54,6 @@ type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
 
 const isWeb = Platform.OS === 'web' ? true : undefined
 
-const ITEM_SEPARATOR_WIDTH = getSpacing(4)
-const HORIZONTAL_MARGIN = getSpacing(6)
 const PLAYLIST_VIEWABILITY_CONFIG = {
   waitForInteraction: true,
   viewAreaCoveragePercentThreshold: 20,
@@ -64,6 +61,7 @@ const PLAYLIST_VIEWABILITY_CONFIG = {
 } satisfies ViewabilityConfig
 
 const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) {
+  const { designSystem } = useTheme()
   const {
     data,
     itemWidth,
@@ -79,8 +77,8 @@ const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) 
     onViewableItemsChanged,
     FlatListComponent = FlashList,
     tileType = 'offer',
-    itemSeparatorSize = ITEM_SEPARATOR_WIDTH,
-    horizontalMargin = HORIZONTAL_MARGIN,
+    itemSeparatorSize = designSystem.size.spacing.l,
+    horizontalMargin = designSystem.size.spacing.xl,
     contentContainerStyle,
   } = props
 

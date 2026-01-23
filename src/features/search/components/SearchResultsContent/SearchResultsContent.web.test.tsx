@@ -7,7 +7,7 @@ import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { AlgoliaOffer, AlgoliaVenue, FacetData } from 'libs/algolia/types'
+import { AlgoliaOffer, AlgoliaVenue } from 'libs/algolia/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { remoteConfigResponseFixture } from 'libs/firebase/remoteConfig/fixtures/remoteConfigResponse.fixture'
@@ -27,7 +27,6 @@ const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
   onEndReached: jest.fn(),
   onSearchResultsRefresh: jest.fn(),
   venuesUserData: [],
-  facets: {} as FacetData,
   offerVenues: venuesFixture,
   hits: {
     offers: mockedAlgoliaResponse.hits.map(transformOfferHit('')),

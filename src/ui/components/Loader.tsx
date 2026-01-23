@@ -28,6 +28,6 @@ const LoaderIndicator = styled(ActivityIndicator).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const StyledBodyAccent = styled(Typo.BodyAccent)({
-  marginTop: getSpacing(4),
-})
+const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

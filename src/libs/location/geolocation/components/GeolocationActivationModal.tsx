@@ -67,15 +67,15 @@ const FirstInformationText = styled(InformationText)({
   marginTop: getSpacing(10),
 })
 
-const SecondInformationText = styled(InformationText)({
-  marginTop: getSpacing(4),
-})
+const SecondInformationText = styled(InformationText)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))
 
 const LocationPointer = styled(InitialLocationPointer).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,
   size: theme.illustrations.sizes.small,
 }))``
 
-const StyledButtonPrimary = styledButton(ButtonPrimary)({
-  marginTop: getSpacing(6),
-})
+const StyledButtonPrimary = styledButton(ButtonPrimary)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))

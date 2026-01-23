@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useCallback, useEffect } from 'react'
 import { FlatList } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Checkbox } from 'ui/designSystem/Checkbox/Checkbox'
-import { getSpacing, padding, Typo } from 'ui/theme'
+import { padding, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
   history: Readonly<string[]>
@@ -25,7 +25,7 @@ export const DeeplinksHistory = ({
   rehydrateHistory,
 }: DeeplinksHistoryProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
-
+  const { designSystem } = useTheme()
   const onToggleKeepHistory = useCallback(() => {
     async function toggle() {
       const newKeepHistory = !keepHistory
@@ -81,7 +81,7 @@ export const DeeplinksHistory = ({
     <Container>
       <StyledTitle4>Historique</StyledTitle4>
       <FlatList
-        style={flatListStyle}
+        style={{ marginVertical: designSystem.size.spacing.l }}
         data={history}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
@@ -107,8 +107,6 @@ const renderItem = ({ item, index }: { item: string; index: number }) => {
   )
 }
 
-const flatListStyle = { marginVertical: getSpacing(4) }
-
 const StyledCheckBox = styled(TouchableOpacity)({
   display: 'flex',
   flexDirection: 'row',
@@ -128,7 +126,7 @@ const StyledTitle4 = styled(Typo.Title4)({
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginVertical: getSpacing(4),
+  marginVertical: theme.designSystem.size.spacing.l,
 }))
 
 const BottomContainer = styled.View(({ theme }) => ({

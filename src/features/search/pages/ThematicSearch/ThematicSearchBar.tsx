@@ -10,7 +10,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { env } from 'libs/environment/env'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { Spacer } from 'ui/theme'
 
 const searchInputID = uuidv4()
@@ -20,18 +19,13 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 type Props = {
   offerCategories: SearchGroupNameEnumv2[]
   title: string
-  placeholder?: string
 }
 export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
   children,
   offerCategories,
   title,
-  placeholder,
 }) => {
   const { isFocusOnSuggestions } = useSearch()
-  const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
 
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
@@ -48,8 +42,6 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
         ]
       : []
 
-  const shouldDisplayHeader = !displayNewSearchHeader || !isFocusOnSuggestions
-
   return (
     <InstantSearch
       searchClient={getSearchClient}
@@ -59,13 +51,12 @@ export const ThematicSearchBar: FC<PropsWithChildren<Props>> = ({
       <Configure facetFilters={[facetFilters]} clickAnalytics hitsPerPage={5} />
       <SearchHeader
         title={title}
-        withArrow={displayNewSearchHeader}
-        shouldDisplayHeader={shouldDisplayHeader}
+        withArrow
+        shouldDisplayHeader={!isFocusOnSuggestions}
         searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
         offerCategories={offerCategories}
-        placeholder={placeholder}
       />
       <Spacer.Column numberOfSpaces={2} />
       {isFocusOnSuggestions ? (

@@ -1,37 +1,25 @@
 import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
 import { debounce } from 'lodash'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, useWindowDimensions, View, ViewToken } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
+import styled from 'styled-components/native'
 
-import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
-import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { NoSearchResult } from 'features/search/components/NoSearchResult/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour } from 'features/search/enums'
-import { getFilterButtonListItem } from 'features/search/helpers/getFilterButtonListItem'
 import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
-import { useAppliedFilters } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
-import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
-import { CalendarModal } from 'features/search/pages/modals/CalendarModal/CalendarModal'
-import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
-import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
-import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
-import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useGridListLayout } from 'features/search/store/gridListLayoutStore'
 import { GridListLayout, VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -48,11 +36,9 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
-import { FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location/location'
 import { LocationMode } from 'libs/location/types'
@@ -60,8 +46,6 @@ import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { useViewableItemsTracker } from 'shared/tracking/useViewableItemsTracker'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { FilterButtonList } from 'ui/components/FilterButtonList'
-import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import {
   HeaderSearchResultsPlaceholder,
@@ -94,7 +78,6 @@ export type SearchResultsContentProps = {
   isFetchingNextPage?: boolean
   userData: unknown
   venuesUserData: VenuesUserData
-  facets: FacetData
   offerVenues: Venue[]
   onViewableItemsChanged?: (
     items: Pick<ViewToken, 'key' | 'index'>[],
@@ -115,11 +98,8 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   isFetchingNextPage,
   userData,
   venuesUserData,
-  facets,
   offerVenues,
 }) => {
-  const { designSystem } = useTheme()
-
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { listRef: searchListRef, handleViewableItemsChanged } = useViewableItemsTracker<
     FlashListRef<Offer>
@@ -141,16 +121,11 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
-  const { user } = useAuthContext()
   const { geolocPosition, selectedLocationMode, selectedPlace, onResetPlace } = useLocation()
   const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
-
-  const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
 
   const gridListLayout = useGridListLayout()
 
@@ -163,8 +138,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
 
   const initialRegion = useVenueMapStore((state) => state.initialRegion)
-
-  const isVenue = !!searchState.venue
 
   // Initial copy of location filters
   const stringifySearchStateWithoutLocation = useRef(
@@ -210,53 +183,20 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      analytics.logPerformSearch(searchState, disabilities, nbHits, 'SearchResults')
+      void analytics.logPerformSearch(searchState, disabilities, nbHits, 'SearchResults')
       if (nbHits === 0) {
-        analytics.logNoSearchResult(searchState.query, searchState.searchId)
+        void analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
   }, [isLoading, nbHits, previousIsLoading, searchState, disabilities])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
-  const appliedFilters = useAppliedFilters(searchState)
-  const {
-    visible: categoriesModalVisible,
-    showModal: showCategoriesModal,
-    hideModal: hideCategoriesModal,
-  } = useModal(false)
-  const {
-    visible: searchPriceModalVisible,
-    showModal: showSearchPriceModal,
-    hideModal: hideSearchPriceModal,
-  } = useModal(false)
-  const {
-    visible: offerDuoModalVisible,
-    showModal: showOfferDuoModal,
-    hideModal: hideOfferDuoModal,
-  } = useModal(false)
-  const {
-    visible: venueModalVisible,
-    showModal: showVenueModal,
-    hideModal: hideVenueModal,
-  } = useModal(false)
-  const {
-    visible: accesibilityFiltersModalVisible,
-    showModal: showAccessibilityModal,
-    hideModal: hideAccessibilityModal,
-  } = useModal(false)
   const {
     visible: venueMapLocationModalVisible,
     showModal: showVenueMapLocationModal,
     hideModal: hideVenueMapLocationModal,
   } = useModal(false)
-  const {
-    visible: calendarModalVisible,
-    showModal: showCalendarModal,
-    hideModal: hideCalendarModal,
-  } = useModal(false)
-
-  const activeFiltersCount = useFilterCount(searchState)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -328,13 +268,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     [isGridLayout, tileWidth, width, nbrOfTilesToDisplay, searchState.searchId, searchState.query]
   )
 
-  const hasDuoOfferToggle = useMemo(() => {
-    const isBeneficiary = !!user?.isBeneficiary
-    const hasRemainingCredit = !!user?.domainsCredit?.all?.remaining
-
-    return isBeneficiary && hasRemainingCredit
-  }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
-
   const triggerMapTab = () => {
     removeSelectedVenue()
     setDefaultTab(Tab.MAP)
@@ -343,7 +276,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
       return
     }
 
-    analytics.logConsultVenueMap({
+    void analytics.logConsultVenueMap({
       from: 'search',
       searchId: searchState.searchId,
     })
@@ -362,7 +295,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   }
 
   const handleOnArtistPlaylistItemPress = (artistId: string, artistName: string) => {
-    analytics.logConsultArtist({
+    void analytics.logConsultArtist({
       artistId,
       artistName,
       searchId: searchState.searchId,
@@ -463,34 +396,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
-      {displayNewSearchHeader ? null : (
-        <View>
-          <FilterButtonList
-            items={getFilterButtonListItem({
-              showCalendarModal,
-              appliedFilters,
-              searchState,
-              showVenueModal,
-              isVenue,
-              showCategoriesModal,
-              showSearchPriceModal,
-              hasDuoOfferToggle,
-              showOfferDuoModal,
-              showAccessibilityModal,
-            })}
-            contentContainerStyle={{
-              marginBottom: designSystem.size.spacing.s,
-              paddingHorizontal: designSystem.size.spacing.l,
-            }}>
-            <StyledLi>
-              <FilterButton
-                activeFilters={activeFiltersCount}
-                navigateTo={{ screen: 'SearchFilter' }}
-              />
-            </StyledLi>
-          </FilterButtonList>
-        </View>
-      )}
       <Container testID="searchResults">{renderSearchList()}</Container>
       {shouldRenderScrollToTopButton ? (
         <ScrollToTopContainer>
@@ -503,42 +408,6 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           <Spacer.BottomScreen />
         </ScrollToTopContainer>
       ) : null}
-      <CategoriesModal
-        accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
-        isVisible={categoriesModalVisible}
-        hideModal={hideCategoriesModal}
-        filterBehaviour={FilterBehaviour.SEARCH}
-        facets={facets}
-      />
-      <PriceModal
-        title="Prix"
-        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-        isVisible={searchPriceModalVisible}
-        hideModal={hideSearchPriceModal}
-        filterBehaviour={FilterBehaviour.SEARCH}
-      />
-      <OfferDuoModal
-        title="Duo"
-        accessibilityLabel="Ne pas filtrer sur les offres duo et retourner aux résultats"
-        isVisible={offerDuoModalVisible}
-        hideModal={hideOfferDuoModal}
-        filterBehaviour={FilterBehaviour.SEARCH}
-      />
-      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-      <CalendarModal
-        title="Dates"
-        accessibilityLabel="Ne pas filtrer sur les dates puis retourner aux résultats"
-        isVisible={calendarModalVisible}
-        hideModal={hideCalendarModal}
-        filterBehaviour={FilterBehaviour.SEARCH}
-      />
-      <AccessibilityFiltersModal
-        title="Accessibilité"
-        accessibilityLabel="Ne pas filtrer sur les lieux accessibles puis retourner aux résultats"
-        isVisible={accesibilityFiltersModalVisible}
-        hideModal={hideAccessibilityModal}
-        filterBehaviour={FilterBehaviour.SEARCH}
-      />
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
         dismissModal={dismissVenueMapLocationModal}
@@ -571,12 +440,6 @@ const StyledHorizontalOfferTile = styled(HorizontalOfferTile)(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
-const StyledLi = styled(Li)(({ theme }) => ({
-  marginLeft: theme.designSystem.size.spacing.xs,
-  marginTop: theme.designSystem.size.spacing.xs,
-  marginBottom: theme.designSystem.size.spacing.xs,
-}))
-
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
@@ -602,9 +465,6 @@ const SearchResultsPlaceHolder = () => {
     ),
     []
   )
-  const {
-    data: { displayNewSearchHeader },
-  } = useRemoteConfigQuery()
 
   return (
     <Container>
@@ -612,9 +472,7 @@ const SearchResultsPlaceHolder = () => {
         data={FAVORITE_LIST_PLACEHOLDER}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
-        ListHeaderComponent={
-          <HeaderSearchResultsPlaceholder displayNewSearchHeader={displayNewSearchHeader} />
-        }
+        ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
         ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />

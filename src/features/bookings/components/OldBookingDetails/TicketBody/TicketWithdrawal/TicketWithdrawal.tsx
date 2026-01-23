@@ -7,7 +7,7 @@ import {
   getStartMessage,
 } from 'features/bookings/components/OldBookingDetails/TicketBody/ticketBodyMessages'
 import { EmailSent as InitialEmailSent } from 'ui/svg/icons/EmailSent'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   withdrawalType: Exclude<WithdrawalTypeEnum, WithdrawalTypeEnum.no_ticket>
@@ -42,7 +42,7 @@ export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, wit
 const IconContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   width: '100%',
-  marginTop: -getSpacing(4),
+  marginTop: -theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.m,
 }))
 

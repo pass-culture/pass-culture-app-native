@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { CircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/CircledCheck'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const NoTicket: FunctionComponent = () => (
   <TicketContainer testID="withdrawal-info-no-ticket">
@@ -27,7 +27,7 @@ const StyledBody = styled(Typo.Body)({
 const IconContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   width: '100%',
-  marginTop: -getSpacing(4),
+  marginTop: -theme.designSystem.size.spacing.l,
   marginBottom: theme.designSystem.size.spacing.m,
 }))
 

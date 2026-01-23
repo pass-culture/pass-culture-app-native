@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.373.0",
-  "build": 10373000,
+  "version": "1.374.0",
+  "build": 10374000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -164,7 +164,7 @@
     "react-native-lottie-splash-screen": "^1.1.2",
     "react-native-map-clustering": "^4.0.0",
     "react-native-map-link": "^3.10.1",
-    "react-native-maps": "1.24.16",
+    "react-native-maps": "1.24.2",
     "react-native-modal": "13.0.1",
     "react-native-orientation-locker": "^1.7.0",
     "react-native-performance": "^5.1.4",
@@ -340,7 +340,8 @@
     "@babel/plugin-syntax-typescript": "^7.23.3",
     "@babel/types": "^7.23.6",
     "tar-fs": "3.1.1",
-    "path-to-regexp": "8.0.0"
+    "path-to-regexp": "8.0.0",
+    "react-native-maps@1.24.2": "patch:react-native-maps@npm%3A1.24.2#./.yarn/patches/react-native-maps-npm-1.24.2-83a01f59cc.patch"
   },
   "exports": {
     ".": "./index.js",

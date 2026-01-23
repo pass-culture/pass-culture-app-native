@@ -185,7 +185,7 @@ const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
   borderWidth: getSpacing(0.25),
   borderRadius: theme.designSystem.size.borderRadius.m,
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
   overflow: 'hidden',
 }))
 
@@ -196,7 +196,7 @@ const DashedStyledView = styled.View<{
   borderWidth: getSpacing(0.25),
   borderRadius: theme.designSystem.size.borderRadius.m,
   borderStyle: 'dashed',
-  padding: getSpacing(4),
+  padding: theme.designSystem.size.spacing.l,
   overflow: 'hidden',
   backgroundColor: getBackgroundColorByStatus(bonificationStatus, theme),
 }))

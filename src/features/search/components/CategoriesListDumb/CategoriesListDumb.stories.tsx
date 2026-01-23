@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { theme } from 'theme'
-import { getSpacing } from 'ui/theme'
 
 import { CategoriesListDumb } from './CategoriesListDumb'
 
@@ -15,9 +14,9 @@ const meta: Meta<typeof CategoriesListDumb> = {
 }
 export default meta
 
-const BodyWrapper = styled.View({
-  marginHorizontal: -getSpacing(4),
-})
+const BodyWrapper = styled.View(({ theme }) => ({
+  marginHorizontal: -theme.designSystem.size.spacing.l,
+}))
 
 type Story = StoryObj<typeof CategoriesListDumb>
 

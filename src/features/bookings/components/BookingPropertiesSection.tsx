@@ -100,9 +100,10 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
     </View>
   )
 }
-const StyledViewGap = styled(ViewGap)({
-  marginTop: getSpacing(4.5),
-})
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))
+
 const TitleNameContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',

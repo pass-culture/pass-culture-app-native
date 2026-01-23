@@ -9,7 +9,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { RingingBellOff } from 'ui/svg/RingingBellOff'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -41,12 +41,12 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledButtonContainer = styled(ViewGap)({
+const StyledButtonContainer = styled(ViewGap)(({ theme }) => ({
   width: '100%',
-  marginTop: getSpacing(6),
-  marginBottom: getSpacing(4),
+  marginTop: theme.designSystem.size.spacing.xl,
+  marginBottom: theme.designSystem.size.spacing.l,
   alignItems: 'center',
-})
+}))
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
