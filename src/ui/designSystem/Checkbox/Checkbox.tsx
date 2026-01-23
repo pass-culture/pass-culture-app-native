@@ -117,6 +117,24 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   const computedAccessibilityLabel = accessibilityLabel ?? label
   const Label = isCheckedState || isIndeterminate ? StyledBodyAccent : StyledBody
 
+  const renderCheckboxMark = () => {
+    if (isIndeterminate) {
+      return (
+        <CheckboxMarkIndeterminate
+          color={colorMark}
+          width={checkboxMarkSize}
+          height={checkboxMarkSize}
+        />
+      )
+    }
+    if (isCheckedState) {
+      return (
+        <CheckboxMarkChecked color={colorMark} width={checkboxMarkSize} height={checkboxMarkSize} />
+      )
+    }
+    return null
+  }
+
   return (
     <CheckboxContainer
       {...accessibleCheckboxProps({
@@ -133,19 +151,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
       {...hoverProps}>
       <ContentContainer>
         <LeftBox state={state} variant={variant} disabled={isDisabled} {...hoverProps}>
-          {isIndeterminate ? (
-            <CheckboxMarkIndeterminate
-              color={colorMark}
-              width={checkboxMarkSize}
-              height={checkboxMarkSize}
-            />
-          ) : isCheckedState ? (
-            <CheckboxMarkChecked
-              color={colorMark}
-              width={checkboxMarkSize}
-              height={checkboxMarkSize}
-            />
-          ) : null}
+          {renderCheckboxMark()}
         </LeftBox>
         <RightBox>
           <Label state={state} {...hoverProps}>
