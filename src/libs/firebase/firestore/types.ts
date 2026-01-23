@@ -67,7 +67,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_DARK_MODE = 'wipEnableDarkMode',
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GRID_LIST = 'wipEnableGridList',
-  WIP_ENABLE_LOAN_FAKEDOOR = 'wipEnableLoanFakedoor',
   WIP_ENABLE_VENUE_CALENDAR = 'wipEnableVenueCalendar',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_IS_OPEN_TO_PUBLIC = 'wipIsOpenToPublic',

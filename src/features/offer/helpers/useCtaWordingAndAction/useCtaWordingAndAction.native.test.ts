@@ -14,8 +14,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'
@@ -57,13 +55,11 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      expect(result).toEqual([
-        {
-          wording: 'Accéder au site partenaire',
-          externalNav: { url: 'https://url-externe' },
-          isDisabled: false,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Accéder au site partenaire',
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+      })
     })
 
     it('should display "Réserver l’offre" wording and modal "authentication" when offer has no external url', () => {
@@ -75,17 +71,13 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      const { onPress } = result?.[0] || {}
-
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          modalToDisplay: OfferModal.AUTHENTICATION,
-          wording: 'Réserver l’offre',
-          movieScreeningUserData: { isUserLoggedIn: false },
-          onPress,
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.AUTHENTICATION,
+        wording: 'Réserver l’offre',
+        movieScreeningUserData: { isUserLoggedIn: false },
+        ...result,
+      })
     })
   })
 
@@ -100,19 +92,17 @@ describe('getCtaWordingAndAction', () => {
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          wording: 'Réserver l’offre',
-          navigateTo: {
-            params: {
-              params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-              screen: 'SetName',
-            },
-            screen: 'SubscriptionStackNavigator',
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        navigateTo: {
+          params: {
+            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+            screen: 'SetName',
           },
+          screen: 'SubscriptionStackNavigator',
         },
-      ])
+      })
     })
 
     it('should display "Réserver l’offre" wording with navigate to ProfileInformationValidationCreate screen and params type', () => {
@@ -130,19 +120,17 @@ describe('getCtaWordingAndAction', () => {
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          wording: 'Réserver l’offre',
-          navigateTo: {
-            screen: 'SubscriptionStackNavigator',
-            params: {
-              screen: 'ProfileInformationValidationCreate',
-              params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-            },
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        navigateTo: {
+          screen: 'SubscriptionStackNavigator',
+          params: {
+            screen: 'ProfileInformationValidationCreate',
+            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
           },
         },
-      ])
+      })
     })
 
     it('should display "Réserver l’offre" wording and open booking modal when user profile complete', () => {
@@ -154,16 +142,12 @@ describe('getCtaWordingAndAction', () => {
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
-      const { onPress } = result?.[0] || {}
-
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          wording: 'Réserver l’offre',
-          modalToDisplay: OfferModal.BOOKING,
-          onPress: onPress,
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        ...result,
+      })
     })
 
     it('should disable CTA with bottom banner when profile is incomplete and offer is not free', () => {
@@ -175,13 +159,11 @@ describe('getCtaWordingAndAction', () => {
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
-      expect(result).toEqual([
-        {
-          isDisabled: true,
-          wording: 'Réserver l’offre',
-          bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: true,
+        wording: 'Réserver l’offre',
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+      })
     })
 
     it('should disable CTA with "Réserver l’offre" wording when profile is complete and offer is not free', () => {
@@ -193,13 +175,11 @@ describe('getCtaWordingAndAction', () => {
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
-      expect(result).toEqual([
-        {
-          isDisabled: true,
-          wording: 'Réserver l’offre',
-          bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: true,
+        wording: 'Réserver l’offre',
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+      })
     })
   })
 
@@ -211,17 +191,15 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      expect(result).toEqual([
-        {
-          isDisabled: true,
-          bottomBannerText:
-            'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
-          movieScreeningUserData: {
-            isUserEligible: false,
-          },
-          wording: 'Réserver l’offre',
+      expect(result).toEqual({
+        isDisabled: true,
+        bottomBannerText:
+          'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+        movieScreeningUserData: {
+          isUserEligible: false,
         },
-      ])
+        wording: 'Réserver l’offre',
+      })
     })
 
     it('should display "Accéder au site partenaire" wording when external url', () => {
@@ -231,13 +209,11 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      expect(result).toEqual([
-        {
-          externalNav: { url: 'https://url-externe' },
-          isDisabled: false,
-          wording: 'Accéder au site partenaire',
-        },
-      ])
+      expect(result).toEqual({
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+        wording: 'Accéder au site partenaire',
+      })
     })
 
     it('should display "Accéder au site partenaire" wording when external url and offer is digital and free', () => {
@@ -251,13 +227,11 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      expect(result).toEqual([
-        {
-          externalNav: { url: 'https://url-externe' },
-          isDisabled: false,
-          wording: 'Accéder au site partenaire',
-        },
-      ])
+      expect(result).toEqual({
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+        wording: 'Accéder au site partenaire',
+      })
     })
   })
 
@@ -273,17 +247,13 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      const { onPress } = result?.[0] || {}
-
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
-          wording: 'Réserver l’offre',
-          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-          onPress,
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+        wording: 'Réserver l’offre',
+        movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
+        ...result,
+      })
     })
 
     it('should return application pending modal when user is waiting for his application to complete', () => {
@@ -297,17 +267,12 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      const { onPress } = result?.[0] || {}
-
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          modalToDisplay: OfferModal.APPLICATION_PROCESSING,
-          wording: 'Réserver l’offre',
-          onPress,
-          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+        wording: 'Réserver l’offre',
+        ...result,
+      })
     })
 
     it('should return application error modal when user has an issue with his application', () => {
@@ -321,17 +286,12 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({}),
       })
 
-      const { onPress } = result?.[0] || {}
-
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          modalToDisplay: OfferModal.ERROR_APPLICATION,
-          wording: 'Réserver l’offre',
-          onPress,
-          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.ERROR_APPLICATION,
+        wording: 'Réserver l’offre',
+        ...result,
+      })
     })
   })
 
@@ -357,14 +317,14 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
         })
-        const { wording, onPress, navigateTo, externalNav } = result?.[0] || {}
+        const { wording, onPress, navigateTo, externalNav } = result || {}
 
         expect(wording).toEqual(expected)
         expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
           disabled
         )
-        expect(result?.[0]?.externalNav?.url).toEqual(url)
-        expect(result?.[0]?.modalToDisplay).toEqual(modalToDisplay)
+        expect(result?.externalNav?.url).toEqual(url)
+        expect(result?.modalToDisplay).toEqual(modalToDisplay)
       }
     )
 
@@ -377,13 +337,11 @@ describe('getCtaWordingAndAction', () => {
           subcategory: buildSubcategory({}),
         })
 
-        expect(result).toEqual([
-          {
-            wording: 'Accéder au site partenaire',
-            externalNav: { url: 'https://url-externe' },
-            isDisabled: false,
-          },
-        ])
+        expect(result).toEqual({
+          wording: 'Accéder au site partenaire',
+          externalNav: { url: 'https://url-externe' },
+          isDisabled: false,
+        })
       })
     })
   })
@@ -412,14 +370,14 @@ describe('getCtaWordingAndAction', () => {
           subcategory,
           hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
         })
-        const { wording, onPress, navigateTo, externalNav } = result?.[0] || {}
+        const { wording, onPress, navigateTo, externalNav } = result || {}
 
         expect(wording).toEqual(expected)
         expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
           disabled
         )
-        expect(result?.[0]?.externalNav?.url).toEqual(url)
-        expect(result?.[0]?.modalToDisplay).toEqual(modalToDisplay)
+        expect(result?.externalNav?.url).toEqual(url)
+        expect(result?.modalToDisplay).toEqual(modalToDisplay)
       }
     )
   })
@@ -441,81 +399,63 @@ describe('getCtaWordingAndAction', () => {
 
         isUnderageBeneficiary: true,
         ...parameters,
-      })
+      }) || { wording: '' }
 
     it('CTA="Offre épuisée" if offer is sold out', () => {
       const result = getCta({ isSoldOut: true })
 
-      expect(result).toEqual([
-        {
-          wording: 'Offre épuisée',
-          isDisabled: true,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Offre épuisée',
+        isDisabled: true,
+      })
     })
 
     it('CTA="Offre expirée" if offer is expired and sold out', () => {
       const result = getCta({ isExpired: true, isSoldOut: true })
 
-      expect(result).toEqual([
-        {
-          wording: 'Offre expirée',
-          isDisabled: true,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
+      })
     })
 
     it('CTA="Offre expirée" if offer is expired', () => {
       const result = getCta({ isExpired: true })
 
-      expect(result).toEqual([
-        {
-          wording: 'Offre expirée',
-          isDisabled: true,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
+      })
     })
 
     it('CTA="Offre expirée" if offer is not released', () => {
       const result = getCta({ isReleased: false })
 
-      expect(result).toEqual([
-        {
-          wording: 'Offre expirée',
-          isDisabled: true,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
+      })
     })
 
     it('CTA="Réserver l’offre" if offer is an ended booking', () => {
       const result = getCta({}, { isEndedUsedBooking: true })
 
-      const { onPress } = result?.[0] || {}
-
-      expect(result).toEqual([
-        {
-          wording: 'Réserver l’offre',
-          modalToDisplay: OfferModal.BOOKING,
-          isDisabled: false,
-          onPress,
-          bottomBannerText: undefined,
-          movieScreeningUserData: { bookings: undefined },
-          isEndedUsedBooking: true,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        isDisabled: false,
+        ...result,
+      })
     })
 
     it('CTA="Accéder à l’offre en ligne" when offer is digital and free', () => {
       const result = getCta({ isDigital: true, stocks: [{ ...baseOffer.stocks[0], price: 0 }] })
-      const { onPress } = result?.[0] || {}
 
-      expect(result).toEqual([
-        {
-          wording: 'Accéder à l’offre en ligne',
-          isDisabled: false,
-          onPress,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Accéder à l’offre en ligne',
+        isDisabled: false,
+        ...result,
+      })
     })
 
     it('CTA="Réserver l’offre" when offer is a free digital event', () => {
@@ -524,30 +464,23 @@ describe('getCtaWordingAndAction', () => {
         {},
         { isEvent: true }
       )
-      const { onPress } = result?.[0] || {}
 
-      expect(result).toEqual([
-        {
-          wording: 'Réserver l’offre',
-          isDisabled: false,
-          onPress,
-          modalToDisplay: 2,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Réserver l’offre',
+        isDisabled: false,
+        ...result,
+      })
     })
 
     it('CTA="Réserver l’offre" when offer is digital and not free', () => {
       const result = getCta({ isDigital: true, stocks: [{ ...baseOffer.stocks[0], price: 100 }] })
-      const { onPress } = result?.[0] || {}
 
-      expect(result).toEqual([
-        {
-          wording: 'Réserver l’offre',
-          modalToDisplay: OfferModal.BOOKING,
-          isDisabled: false,
-          onPress,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        isDisabled: false,
+        ...result,
+      })
     })
 
     it('CTA="Accéder au site partenaire" when user does not have enough credit and offer has external url', () => {
@@ -559,13 +492,11 @@ describe('getCtaWordingAndAction', () => {
         }
       )
 
-      expect(result).toEqual([
-        {
-          wording: 'Accéder au site partenaire',
-          externalNav: { url: 'https://url-externe' },
-          isDisabled: false,
-        },
-      ])
+      expect(result).toEqual({
+        wording: 'Accéder au site partenaire',
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+      })
     })
 
     // offer price is 5
@@ -581,17 +512,13 @@ describe('getCtaWordingAndAction', () => {
           { hasEnoughCreditData: { hasEnoughCredit }, isUnderageBeneficiary: false },
           { isEvent }
         )
-        const { onPress, movieScreeningUserData } = result?.[0] || {}
 
-        expect(result).toEqual([
-          {
-            wording,
-            modalToDisplay,
-            isDisabled,
-            onPress,
-            movieScreeningUserData,
-          },
-        ])
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
@@ -618,16 +545,13 @@ describe('getCtaWordingAndAction', () => {
           { hasEnoughCreditData: { hasEnoughCredit }, isUnderageBeneficiary },
           { isEvent: false }
         )
-        const { onPress } = result?.[0] || {}
 
-        expect(result).toEqual([
-          {
-            wording,
-            modalToDisplay,
-            isDisabled,
-            onPress,
-          },
-        ])
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
@@ -642,19 +566,13 @@ describe('getCtaWordingAndAction', () => {
       'check if Credit is enough for the category | $isEvent | creditThing=$creditThing | creditEvent=$creditEvent => $wording',
       ({ isDisabled, wording, hasEnoughCredit, isEvent, modalToDisplay }) => {
         const result = getCta({}, { hasEnoughCreditData: { hasEnoughCredit } }, { isEvent })
-        const { onPress, movieScreeningUserData } = result?.[0] || {
-          onPress: undefined,
-        }
 
-        expect(result).toEqual([
-          {
-            wording,
-            modalToDisplay,
-            isDisabled,
-            onPress,
-            movieScreeningUserData,
-          },
-        ])
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
@@ -671,16 +589,13 @@ describe('getCtaWordingAndAction', () => {
           { hasEnoughCreditData: { hasEnoughCredit }, isUnderageBeneficiary: false },
           { isEvent: false }
         )
-        const { onPress } = result?.[0] || {}
 
-        expect(result).toEqual([
-          {
-            wording,
-            modalToDisplay,
-            isDisabled,
-            onPress,
-          },
-        ])
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
@@ -707,7 +622,7 @@ describe('getCtaWordingAndAction', () => {
           isForbiddenToUnderage,
           modalToDisplay: mustShowBookingModal,
         }) => {
-          const result = getCta(
+          const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
             {
               isDigital,
               isForbiddenToUnderage,
@@ -727,7 +642,6 @@ describe('getCtaWordingAndAction', () => {
             { isUnderageBeneficiary: true },
             { isEvent, searchGroupName: category }
           )
-          const { wording, onPress, navigateTo, externalNav, modalToDisplay } = result?.[0] || {}
 
           expect(wording).toEqual(expected)
 
@@ -753,19 +667,19 @@ describe('getCtaWordingAndAction', () => {
       const offer = buildOffer({ externalTicketOfficeUrl: 'https://www.google.com' })
       const subcategory = buildSubcategory({ isEvent: false })
 
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...beneficiaryUser, depositExpirationDate: '2023-11-19T11:00:00Z' },
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer,
-        subcategory,
-        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...beneficiaryUser, depositExpirationDate: '2023-11-19T11:00:00Z' },
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
 
-        apiRecoParams: defaultApiRecoParams,
-        playlistType: defaultPlaylistType,
-      })
-      const { onPress } = result?.[0] || {}
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
+        }) || {}
 
       onPress?.()
 
@@ -804,23 +718,23 @@ describe('getCtaWordingAndAction', () => {
       })
       const subcategory = buildSubcategory({ isEvent: true })
 
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        isLoggedIn: true,
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer,
-        subcategory,
-        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          isLoggedIn: true,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
 
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
-        apiRecoParams: defaultApiRecoParams,
-        playlistType: defaultPlaylistType,
-      })
-      const { onPress } = result?.[0] || {}
+          isUnderageBeneficiary: false,
+          bookOffer: jest.fn(),
+          isBookingLoading: false,
+          booking: undefined,
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
+        }) || {}
 
       onPress?.()
 
@@ -836,20 +750,20 @@ describe('getCtaWordingAndAction', () => {
       const subcategory = buildSubcategory({ isEvent: true })
       const booking = mockBuilder.bookingResponseV1({ id: offer.id })
 
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...beneficiaryUser, bookedOffers: { [offer.id]: offer.id } },
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer,
-        subcategory,
-        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...beneficiaryUser, bookedOffers: { [offer.id]: offer.id } },
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
 
-        booking,
-        apiRecoParams: defaultApiRecoParams,
-        playlistType: defaultPlaylistType,
-      })
-      const { onPress } = result?.[0] || {}
+          booking,
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
+        }) || {}
 
       onPress?.()
 
@@ -863,20 +777,20 @@ describe('getCtaWordingAndAction', () => {
       const offer = buildOffer({ externalTicketOfficeUrl: 'https://www.google.com' })
       const subcategory = buildSubcategory({ isEvent: true })
 
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        isLoggedIn: true,
-        user: { ...beneficiaryUser, depositExpirationDate: '2023-11-19T11:00:00Z' },
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer,
-        subcategory,
-        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          isLoggedIn: true,
+          user: { ...beneficiaryUser, depositExpirationDate: '2023-11-19T11:00:00Z' },
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
 
-        apiRecoParams: defaultApiRecoParams,
-        playlistType: defaultPlaylistType,
-      })
-      const { onPress } = result?.[0] || {}
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
+        }) || {}
 
       onPress?.()
 
@@ -891,18 +805,18 @@ describe('getCtaWordingAndAction', () => {
       const offer = buildOffer({})
       const subcategory = buildSubcategory({ isEvent: true })
 
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...beneficiaryUser },
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer,
-        subcategory,
-        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...beneficiaryUser },
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
 
-        isBookingLoading: false,
-      })
-      const { onPress } = result?.[0] || {}
+          isBookingLoading: false,
+        }) || {}
 
       onPress?.()
 
@@ -910,34 +824,35 @@ describe('getCtaWordingAndAction', () => {
     })
 
     it('logs event ConsultFinishSubscriptionModal when we click CTA "Réserver l’offre" with has_to_complete_subscription status', () => {
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...nonBeneficiaryUser },
-        userStatus: {
-          statusType: YoungStatusType.eligible,
-          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
-        },
-        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
-        subcategory: buildSubcategory({}),
-      })
-      const { onPress } = result?.[0] || {}
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...nonBeneficiaryUser },
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+          },
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+        }) || {}
+
       onPress?.()
 
       expect(analytics.logConsultFinishSubscriptionModal).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
 
     it('logs event ConsultApplicationProcessingModal when we click CTA "Réserver l’offre" with has_subscription_pending status', () => {
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...nonBeneficiaryUser },
-        userStatus: {
-          statusType: YoungStatusType.eligible,
-          subscriptionStatus: SubscriptionStatus.has_subscription_pending,
-        },
-        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
-        subcategory: buildSubcategory({}),
-      })
-      const { onPress } = result?.[0] || {}
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...nonBeneficiaryUser },
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_pending,
+          },
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+        }) || {}
 
       onPress?.()
 
@@ -948,17 +863,17 @@ describe('getCtaWordingAndAction', () => {
     })
 
     it('logs event ConsultErrorApplicationModal when we click CTA "Réserver l’offre" with has_subscription_issues status', () => {
-      const result = getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...nonBeneficiaryUser },
-        userStatus: {
-          statusType: YoungStatusType.eligible,
-          subscriptionStatus: SubscriptionStatus.has_subscription_issues,
-        },
-        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
-        subcategory: buildSubcategory({}),
-      })
-      const { onPress } = result?.[0] || {}
+      const { onPress } =
+        getCtaWordingAndAction({
+          ...defaultParameters,
+          user: { ...nonBeneficiaryUser },
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_issues,
+          },
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+        }) || {}
 
       onPress?.()
 
@@ -974,17 +889,15 @@ describe('getCtaWordingAndAction', () => {
         subcategory: buildSubcategory({ isEvent: true }),
       })
 
-      expect(result).toEqual([
-        {
-          bottomBannerText:
-            'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
-          wording: undefined,
-          isDisabled: true,
-          movieScreeningUserData: {
-            isUserEligible: false,
-          },
+      expect(result).toEqual({
+        bottomBannerText:
+          'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+        wording: undefined,
+        isDisabled: true,
+        movieScreeningUserData: {
+          isUserEligible: false,
         },
-      ])
+      })
     })
 
     it('should return bottomBannerText and no wording if user has expired credit', async () => {
@@ -997,15 +910,13 @@ describe('getCtaWordingAndAction', () => {
         isDepositExpired: true,
       })
 
-      expect(result).toEqual([
-        {
-          bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit a expiré.',
-          wording: undefined,
-          movieScreeningUserData: {
-            isUserCreditExpired: true,
-          },
+      expect(result).toEqual({
+        bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit a expiré.',
+        wording: undefined,
+        movieScreeningUserData: {
+          isUserCreditExpired: true,
         },
-      ])
+      })
     })
 
     it('should return bottomBannerText and no wording if user has not enough credit', async () => {
@@ -1018,17 +929,15 @@ describe('getCtaWordingAndAction', () => {
         hasEnoughCreditData: { hasEnoughCredit: false },
       })
 
-      expect(result).toEqual([
-        {
-          bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit est insuffisant.',
-          movieScreeningUserData: {
-            hasEnoughCredit: false,
-            isUserLoggedIn: true,
-          },
-          wording: undefined,
-          isDisabled: true,
+      expect(result).toEqual({
+        bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit est insuffisant.',
+        movieScreeningUserData: {
+          hasEnoughCredit: false,
+          isUserLoggedIn: true,
         },
-      ])
+        wording: undefined,
+        isDisabled: true,
+      })
     })
 
     it.each<{ isEvent: boolean }>([{ isEvent: true }, { isEvent: false }])(
@@ -1045,27 +954,25 @@ describe('getCtaWordingAndAction', () => {
         })
 
         expect(JSON.stringify(result)).toEqual(
-          JSON.stringify([
-            {
-              wording: 'Voir ma réservation',
-              isDisabled: false,
-              navigateTo: {
-                screen: 'BookingDetails',
-                params: {
-                  id: 116656,
-                },
-                fromRef: true,
+          JSON.stringify({
+            wording: 'Voir ma réservation',
+            isDisabled: false,
+            navigateTo: {
+              screen: 'BookingDetails',
+              params: {
+                id: 116656,
               },
-              onPress: () => {
-                analytics.logViewedBookingPage({ offerId: CineScreeningOffer.id, from: 'offer' })
-              },
-              bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
-              movieScreeningUserData: {
-                bookings: undefined,
-                hasBookedOffer: true,
-              },
+              fromRef: true,
             },
-          ])
+            onPress: () => {
+              analytics.logViewedBookingPage({ offerId: CineScreeningOffer.id, from: 'offer' })
+            },
+            bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
+            movieScreeningUserData: {
+              bookings: undefined,
+              hasBookedOffer: true,
+            },
+          })
         )
       }
     )
@@ -1079,17 +986,13 @@ describe('getCtaWordingAndAction', () => {
         offer: buildOffer({}),
         subcategory: buildSubcategory({ isEvent: true }),
       })
-      const { onPress, movieScreeningUserData } = result?.[0] || {}
 
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          modalToDisplay: OfferModal.AUTHENTICATION,
-          wording: 'Réserver l’offre',
-          onPress,
-          movieScreeningUserData,
-        },
-      ])
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.AUTHENTICATION,
+        wording: 'Réserver l’offre',
+        ...result,
+      })
     })
 
     it('should return application pending modal when user is waiting for his application to complete', () => {
@@ -1104,59 +1007,11 @@ describe('getCtaWordingAndAction', () => {
         offer: CineScreeningOffer,
         subcategory: buildSubcategory({ isEvent: true }),
       })
-      const { onPress } = result?.[0] || {}
 
-      expect(result).toEqual([
-        {
-          isDisabled: false,
-          modalToDisplay: OfferModal.APPLICATION_PROCESSING,
-          onPress,
-          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-        },
-      ])
-    })
-  })
-
-  describe('CTA - Fake door loan', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_LOAN_FAKEDOOR])
-    })
-
-    const getCta = (
-      partialOffer: Partial<OfferResponseV2>,
-      parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>,
-      partialSubcategory?: Partial<Subcategory>
-    ) =>
-      getCtaWordingAndAction({
-        ...defaultParameters,
-        user: { ...beneficiaryUser },
-        userStatus: { statusType: YoungStatusType.beneficiary },
-        isBeneficiary: true,
-        offer: buildOffer({ ...partialOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER }),
-        subcategory: buildSubcategory(partialSubcategory || {}),
-        hasEnoughCreditData: { hasEnoughCredit: true, message: undefined },
-
-        isUnderageBeneficiary: true,
-        featureFlags: { wipEnableLoanFakeDoor: true, enableBookingFreeOfferFifteenSixteen: false },
-        ...parameters,
-      })
-
-    it('should return two CTAs for the fake door loan when offer is a book and FF is enabled', async () => {
-      const result = getCta(baseOffer)
-
-      expect(result?.length).toEqual(2)
-    })
-
-    it('should trigger analytics event when user clicks on Emprunter CTA', async () => {
-      const result = getCta(baseOffer)
-
-      const { onPress } = result?.[1] || {}
-
-      onPress?.()
-
-      expect(analytics.logHasClickedFakeDoorCTA).toHaveBeenNthCalledWith(1, {
-        offerId: baseOffer.id,
-        userId: nonBeneficiaryUser.id,
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+        ...result,
       })
     })
   })
