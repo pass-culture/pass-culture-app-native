@@ -71,6 +71,7 @@ const OnlineProfile: React.FC = () => {
   const enableDarkModeGtm = useFeatureFlag(RemoteStoreFeatureFlags.DARK_MODE_GTM)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
+  const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
   const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -193,7 +194,7 @@ const OnlineProfile: React.FC = () => {
   const accessibilityLabel = `Apparence - ${tabLabel}`
 
   return (
-    <Page>
+    <Page testID="profile-V1">
       <ScrollView
         bounces
         ref={scrollViewRef}
@@ -202,7 +203,10 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
+            <ProfileHeader
+              featureFlags={{ disableActivation, enablePassForAll, enableProfileV2 }}
+              user={user}
+            />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
@@ -362,9 +366,7 @@ const OnlineProfile: React.FC = () => {
                   <Spacer.Column numberOfSpaces={4} />
                 </Section>
               )}
-              <Section title="Suivre le pass Culture">
-                <SocialNetwork />
-              </Section>
+              <SocialNetwork />
               {isLoggedIn ? (
                 <Section>
                   <Spacer.Column numberOfSpaces={4} />
@@ -402,11 +404,7 @@ const OnlineProfile: React.FC = () => {
               {isWeb ? null : <Spacer.TabBar />}
             </ProfileContainer>
           </View>
-          {isWeb ? (
-            <View accessibilityRole={AccessibilityRole.FOOTER}>
-              <AccessibilityFooter />
-            </View>
-          ) : null}
+          {isWeb ? <AccessibilityFooter withHorizontalMargin /> : null}
         </ScrollViewContentContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
@@ -414,7 +412,7 @@ const OnlineProfile: React.FC = () => {
   )
 }
 
-export function Profile() {
+export function ProfileV1() {
   const netInfo = useNetInfoContext()
   if (netInfo.isConnected) {
     return <OnlineProfile />

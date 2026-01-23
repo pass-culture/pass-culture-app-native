@@ -24,6 +24,7 @@ exports[`<Favorites/> should render correctly 1`] = `
     }
   />
   <View
+    enableProfileV2={false}
     style={
       {
         "flexDirection": "row",

@@ -5,3 +5,11 @@ export type NotificationsSettingsState = {
   allowPush?: boolean
   themePreferences: SubscriptionTheme[]
 }
+
+export type ProfileFeatureFlagsProps = {
+  featureFlags: {
+    enablePassForAll: boolean
+    enableProfileV2: boolean
+    disableActivation: boolean
+  }
+}

@@ -1,0 +1,2231 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
+.c0 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 16px;
+  padding-right: 16px;
+  min-height: 32px;
+  width: 100%;
+  background-color: transparent;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:hover {
+  text-decoration: underline;
+  text-decoration-color: #6123df;
+}
+
+.c0:hover:disabled {
+  text-decoration: none;
+}
+
+.c2 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #6123df;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  text-decoration: underline;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  text-decoration: none;
+}
+
+.c7 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c7:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c7:hover {
+  text-decoration: underline;
+  text-decoration-color: #696a6f;
+}
+
+.c7:hover:disabled {
+  text-decoration: none;
+}
+
+.c1 {
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 2px;
+}
+
+.c1:disabled {
+  border-color: #cbcdd2;
+}
+
+.c4 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: #320096;
+  font-family: Montserrat-Bold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c3:disabled {
+  background-color: #f1f1f4;
+}
+
+.c5 {
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c8 {
+  background-color: transparent;
+}
+
+.c6 {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+<div>
+  <div
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
+    data-testid="profile-V1"
+  >
+    <div
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      data-testid="profile-scrollview"
+    >
+      <div
+        class="css-view-175oi2r"
+      >
+        <div
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        >
+          <main
+            class="css-view-175oi2r"
+            role="main"
+          >
+            <div
+              class="css-view-175oi2r r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+            >
+              <button
+                aria-label="Cheatcodes"
+                class="c0 c1"
+                data-testid="Cheatcodes"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                >
+                  <div
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    dir="ltr"
+                  >
+                    Cheatcodes
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-10ptun7"
+            />
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginInline-14mg64r r-marginTop-11c0sde r-zIndex-184en5c"
+            >
+              <div
+                class="css-view-175oi2r r-flexShrink-1wbh5a2"
+              >
+                <h1
+                  aria-level="1"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Mon profil
+                </h1>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-marginBottom-1peese0 r-marginInline-14mg64r r-marginTop-14gqq1x"
+            >
+              <div
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                dir="ltr"
+              >
+                Tu as 17 ou 18 ans ?
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-rs99b7 r-marginBottom-5oul0u r-marginInline-14mg64r r-minWidth-68jxh1 r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
+            >
+              <div
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                dir="ltr"
+              >
+                Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
+              </div>
+              <div
+                class="css-view-175oi2r r-height-z80fyv"
+              />
+              <div
+                class="css-view-175oi2r r-flexDirection-18u37iz"
+              >
+                <button
+                  aria-label="Créer un compte"
+                  class="c2 c3"
+                  data-testid="Créer un compte"
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      Créer un compte
+                    </div>
+                  </div>
+                </button>
+                <div
+                  class="css-view-175oi2r r-borderRightColor-q65h00 r-borderRightWidth-13l2t4g r-marginInline-14mg64r"
+                />
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Déjà un compte ?
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-text-146c3p1"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <button
+                      class="c4"
+                      color="#320096"
+                      type="button"
+                    >
+                      Se connecter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
+            >
+              <div
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Paramètres de l’application
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Notifications"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Notifications"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Notifications
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj r-marginBlock-12kyg2d"
+                    role="listitem"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <label
+                          class="c5"
+                          for="testUuidV4"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Activer ma géolocalisation
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-label="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            aria-labelledby="testUuidV4"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                            data-testid="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                style="transform: translateX(2px);"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="testUuidV4"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      role="alert"
+                    />
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Aides
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Comment ça marche ?"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Comment ça marche ?"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Comment ça marche ?
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <a
+                      aria-label="Nouvelle fenêtre : Centre d’aide"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Nouvelle fenêtre : Centre d’aide"
+                      href="https://passculture.faq"
+                      role="link"
+                      style="transition-duration: 0s;"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          aria-label="Nouvelle fenêtre"
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Centre d’aide
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Autres
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Accessibilité"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Accessibilité"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Accessibilité
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Informations légales"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Informations légales"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Informations légales
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Confidentialité"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Confidentialité"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Confidentialité
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Suivre le pass Culture
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <div
+                  class="css-view-175oi2r r-maxWidth-1ik5qf4 r-width-13qz1uu"
+                >
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                  >
+                    <ul
+                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                      role="list"
+                    >
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                          href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              Instagram
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
+                          href="https://twitter.com/pass_Culture"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              X
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                          href="https://www.tiktok.com/@passcultureofficiel"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              Tiktok
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                          href="https://www.facebook.com/passCultureofficiel/"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              Facebook
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <div
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBlock-12kyg2d"
+                  dir="ltr"
+                >
+                  Version 1.10.5
+                  -13371337
+                </div>
+              </div>
+            </div>
+          </main>
+          <footer
+            class="c6"
+          >
+            <div
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+            />
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-16pcm1t r-paddingBlock-zo2zu6"
+            >
+              <div
+                class="css-view-175oi2r r-width-1glkqn6"
+              >
+                <div
+                  aria-label="pass culture"
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1v74nt2"
+              >
+                <div
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  role="link"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    dir="ltr"
+                  >
+                    Accessibilité : partiellement conforme
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  role="link"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    dir="ltr"
+                  >
+                    Plan du site
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  role="link"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    dir="ltr"
+                  >
+                    Informations légales
+                  </div>
+                </div>
+                <a
+                  aria-label="CGU utilisateurs"
+                  class="c7 c8"
+                  data-testid="CGU utilisateurs"
+                  href="https://passculture.cgu"
+                  tabindex="0"
+                  target="_blank"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      CGU utilisateurs
+                    </div>
+                  </div>
+                </a>
+                <a
+                  aria-label="Charte des données personnelles"
+                  class="c7 c8"
+                  data-testid="Charte des données personnelles"
+                  href="https://passculture.privacy"
+                  tabindex="0"
+                  target="_blank"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      Charte des données personnelles
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="css-view-175oi2r r-width-1glkqn6"
+              >
+                <div
+                  aria-label="République Française - Liberté Égalité Fraternité"
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-wy61xf"
+            />
+          </footer>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-10ptun7 r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj"
+    />
+  </div>
+</div>
+`;
+
+exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
+.c0 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 16px;
+  padding-right: 16px;
+  min-height: 32px;
+  width: 100%;
+  background-color: transparent;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:hover {
+  text-decoration: underline;
+  text-decoration-color: #6123df;
+}
+
+.c0:hover:disabled {
+  text-decoration: none;
+}
+
+.c2 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #6123df;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  text-decoration: underline;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  text-decoration: none;
+}
+
+.c7 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c7:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c7:hover {
+  text-decoration: underline;
+  text-decoration-color: #696a6f;
+}
+
+.c7:hover:disabled {
+  text-decoration: none;
+}
+
+.c1 {
+  border-style: solid;
+  border-color: #6123df;
+  border-width: 2px;
+}
+
+.c1:disabled {
+  border-color: #cbcdd2;
+}
+
+.c4 {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  color: #320096;
+  font-family: Montserrat-Bold;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.c3:disabled {
+  background-color: #f1f1f4;
+}
+
+.c5 {
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c8 {
+  background-color: transparent;
+}
+
+.c6 {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+<div>
+  <div
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginLeft-11wrixw r-marginRight-61z16t"
+    data-testid="profile-V1"
+  >
+    <div
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      data-testid="profile-scrollview"
+    >
+      <div
+        class="css-view-175oi2r"
+      >
+        <div
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        >
+          <main
+            class="css-view-175oi2r"
+            role="main"
+          >
+            <div
+              class="css-view-175oi2r r-position-u8s1d r-right-yj30ev r-top-9dmdro r-zIndex-1ym3atv"
+            >
+              <button
+                aria-label="Cheatcodes"
+                class="c0 c1"
+                data-testid="Cheatcodes"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                >
+                  <div
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    dir="ltr"
+                  >
+                    Cheatcodes
+                  </div>
+                </div>
+              </button>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-10ptun7"
+            />
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginInline-14mg64r r-marginTop-11c0sde r-zIndex-184en5c"
+            >
+              <div
+                class="css-view-175oi2r r-flexShrink-1wbh5a2"
+              >
+                <h1
+                  aria-level="1"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Mon profil
+                </h1>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-marginBottom-1peese0 r-marginInline-14mg64r r-marginTop-14gqq1x"
+            >
+              <div
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                dir="ltr"
+              >
+                Tu as 17 ou 18 ans ?
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderColor-w7parf r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-borderWidth-rs99b7 r-marginBottom-5oul0u r-marginInline-14mg64r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
+            >
+              <div
+                class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                dir="ltr"
+              >
+                Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
+              </div>
+              <div
+                class="css-view-175oi2r r-height-z80fyv"
+              />
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr"
+              >
+                <button
+                  aria-label="Créer un compte"
+                  class="c2 c3"
+                  data-testid="Créer un compte"
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      Créer un compte
+                    </div>
+                  </div>
+                </button>
+                <div
+                  class="css-view-175oi2r r-height-z80fyv"
+                />
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Déjà un compte ?
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-9aw3ui"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-text-146c3p1"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <button
+                      class="c4"
+                      color="#320096"
+                      type="button"
+                    >
+                      Se connecter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexDirection-eqz5dr r-paddingInline-cxgwc0"
+            >
+              <div
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Paramètres de l’application
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Notifications"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Notifications"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Notifications
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj r-marginBlock-12kyg2d"
+                    role="listitem"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-justifyContent-1h0z5md"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <label
+                          class="c5"
+                          for="testUuidV4"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Activer ma géolocalisation
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-label="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            aria-labelledby="testUuidV4"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                            data-testid="Activer ma géolocalisation - Interrupteur à bascule - non coché"
+                            role="switch"
+                            style="transition-duration: 0s;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-h0d30l r-justifyContent-1777fci r-width-1iww7jx"
+                                style="transform: translateX(2px);"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            hidden=""
+                            id="testUuidV4"
+                            readonly=""
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      role="alert"
+                    />
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Aides
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Comment ça marche ?"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Comment ça marche ?"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Comment ça marche ?
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <a
+                      aria-label="Nouvelle fenêtre : Centre d’aide"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Nouvelle fenêtre : Centre d’aide"
+                      href="https://passculture.faq"
+                      role="link"
+                      style="transition-duration: 0s;"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          aria-label="Nouvelle fenêtre"
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Centre d’aide
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Autres
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Accessibilité"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Accessibilité"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Accessibilité
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Informations légales"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Informations légales"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Informations légales
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      aria-label="Confidentialité"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="Confidentialité"
+                      role="link"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-146c3p1"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1jg9483"
+                        />
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            dir="ltr"
+                          >
+                            Confidentialité
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-alignItems-obd0qt"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="section-row-navigable-icon"
+                          >
+                            <div
+                              class="css-text-146c3p1"
+                              dir="ltr"
+                            >
+                              section-row-navigable-icon-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Suivre le pass Culture
+                </h2>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <div
+                  class="css-view-175oi2r r-marginBottom-1qahzrx r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1t01tom r-maxWidth-1ik5qf4 r-width-13qz1uu"
+                >
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                  >
+                    <ul
+                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                      role="list"
+                    >
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                          href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              Instagram
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
+                          href="https://twitter.com/pass_Culture"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              X
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                          href="https://www.tiktok.com/@passcultureofficiel"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              Tiktok
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li
+                        class="css-view-175oi2r r-display-ixj5dj"
+                        role="listitem"
+                      >
+                        <a
+                          aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                          data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                          href="https://www.facebook.com/passCultureofficiel/"
+                          role="link"
+                          style="transition-duration: 0s;"
+                        >
+                          <div
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                            >
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-text-146c3p1"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                              dir="ltr"
+                            >
+                              Facebook
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-paddingTop-tskmnb"
+              >
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
+                />
+                <div
+                  class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBlock-12kyg2d"
+                  dir="ltr"
+                >
+                  Version 1.10.5
+                  -13371337
+                </div>
+              </div>
+            </div>
+          </main>
+          <footer
+            class="c6"
+          >
+            <div
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+            />
+            <div
+              class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-16pcm1t r-paddingBlock-zo2zu6"
+            >
+              <div
+                class="css-view-175oi2r r-width-1glkqn6"
+              >
+                <div
+                  aria-label="pass culture"
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginInline-1j93nrh"
+              >
+                <div
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  role="link"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    dir="ltr"
+                  >
+                    Accessibilité : partiellement conforme
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  role="link"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    dir="ltr"
+                  >
+                    Plan du site
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  role="link"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                    dir="ltr"
+                  >
+                    Informations légales
+                  </div>
+                </div>
+                <a
+                  aria-label="CGU utilisateurs"
+                  class="c7 c8"
+                  data-testid="CGU utilisateurs"
+                  href="https://passculture.cgu"
+                  tabindex="0"
+                  target="_blank"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      CGU utilisateurs
+                    </div>
+                  </div>
+                </a>
+                <a
+                  aria-label="Charte des données personnelles"
+                  class="c7 c8"
+                  data-testid="Charte des données personnelles"
+                  href="https://passculture.privacy"
+                  tabindex="0"
+                  target="_blank"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginRight-1kb76zh"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-146c3p1"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      Charte des données personnelles
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="css-view-175oi2r r-width-1glkqn6"
+              >
+                <div
+                  aria-label="République Française - Liberté Égalité Fraternité"
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-wy61xf"
+            />
+          </footer>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-10ptun7 r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj"
+    />
+  </div>
+</div>
+`;
