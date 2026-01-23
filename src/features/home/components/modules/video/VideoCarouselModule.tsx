@@ -54,7 +54,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
+  const [isPlaying, setIsPlaying] = useState(!!autoplay)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   useEffect(() => {
