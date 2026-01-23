@@ -47,19 +47,19 @@ const styles = StyleSheet.create({
     borderWidth: getSpacing(0.25),
     borderRadius: theme.designSystem.size.borderRadius.m,
     borderColor: theme.designSystem.color.border.default,
-    padding: getSpacing(4),
+    padding: theme.designSystem.size.spacing.l,
     width: '100%',
   },
 })
 
-const DescriptionContainer = styled.View({
+const DescriptionContainer = styled.View(({ theme }) => ({
   flexShrink: 1,
   flexGrow: 1,
-  marginRight: getSpacing(4),
+  marginRight: theme.designSystem.size.spacing.l,
   textAlign: 'start',
-})
+}))
 
-const IconContainer = styled.View({
+const IconContainer = styled.View(({ theme }) => ({
   alignContent: 'center',
-  marginRight: getSpacing(4),
-})
+  marginRight: theme.designSystem.size.spacing.l,
+}))

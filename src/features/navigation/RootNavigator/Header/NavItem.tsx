@@ -113,7 +113,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: b
   alignItems: 'center',
   alignSelf: 'center',
   height: getSpacing(11),
-  paddingHorizontal: getSpacing(4),
+  paddingHorizontal: theme.designSystem.size.spacing.l,
   borderWidth: 1,
   borderColor: isSelected
     ? theme.designSystem.color.border.brandPrimary

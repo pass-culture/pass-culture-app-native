@@ -129,12 +129,12 @@ const BottomContent = styled.View({
   maxWidth: getSpacing(100),
 })
 
-const HeaderContainer = styled.View({
+const HeaderContainer = styled.View(({ theme }) => ({
   maxWidth: getSpacing(100),
   width: '100%',
-  paddingTop: getSpacing(4),
+  paddingTop: theme.designSystem.size.spacing.l,
   paddingHorizontal: getSpacing(6),
-})
+}))
 
 const IllustrationsContainer = styled.View({
   flexDirection: 'row',
@@ -169,7 +169,7 @@ const BottomContainer = styled.View(({ theme }) => ({
   ...(theme.isTouch
     ? {
         justifyContent: 'flex-end',
-        marginBottom: getSpacing(4),
+        marginBottom: theme.designSystem.size.spacing.l,
       }
     : {
         marginTop: getSpacing(25),

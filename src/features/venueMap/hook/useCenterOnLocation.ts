@@ -1,10 +1,8 @@
 import { RefObject, useCallback } from 'react'
 import { useWindowDimensions } from 'react-native'
+import { useTheme } from 'styled-components'
 
 import type { Region, Map } from 'libs/maps/maps'
-import { getSpacing } from 'ui/theme'
-
-const CENTER_PIN_THRESHOLD = getSpacing(4)
 
 type Params = {
   currentRegion?: Region
@@ -14,6 +12,8 @@ type Params = {
 
 export const useCenterOnLocation = ({ currentRegion, mapViewRef, mapHeight }: Params) => {
   const { width } = useWindowDimensions()
+  const { designSystem } = useTheme()
+  const CENTER_PIN_THRESHOLD = designSystem.size.spacing.l
 
   return useCallback(
     async (latitude: number, longitude: number, previewHeight = 0) => {
@@ -31,6 +31,6 @@ export const useCenterOnLocation = ({ currentRegion, mapViewRef, mapHeight }: Pa
         mapViewRef.current.animateToRegion(region)
       }
     },
-    [currentRegion, mapViewRef, mapHeight, width]
+    [currentRegion, mapViewRef, mapHeight, CENTER_PIN_THRESHOLD, width]
   )
 }

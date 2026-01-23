@@ -38,7 +38,12 @@ export const BonificationExplanations = () => {
     currency,
     euroToPacificFrancRate
   )
-  const familyQuotientLevel = settings?.bonification.qfThreshold || 700
+  const qfThresholdInCents = (settings?.bonification.qfThreshold || 700) * 100
+  const familyQuotientLevel = formatCurrencyFromCents(
+    qfThresholdInCents,
+    currency,
+    euroToPacificFrancRate
+  )
 
   const bannerLabel = isUserRegisteredInPacificFrancRegion
     ? 'Si tu habites en Nouvelle-Calédonie, tu ne pourras malheureusement pas bénéficier du bonus.'
@@ -61,7 +66,7 @@ export const BonificationExplanations = () => {
               <Typo.BodyAccent>{SPACE + bonificationAmount + SPACE}</Typo.BodyAccent>
               est réservé aux jeunes dont la famille ou les tuteurs légaux ont un
               <Typo.BodyAccent>
-                {` quotient familial inférieur à ${familyQuotientLevel}.`}
+                {` quotient familial inférieur ou égal à ${familyQuotientLevel}.`}
               </Typo.BodyAccent>
             </Typo.Body>
             <Banner label={bannerLabel} Icon={WarningFilled} />

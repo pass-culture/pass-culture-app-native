@@ -132,7 +132,7 @@ jobs:
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
 
       - name: Upload and run android tests with Maestro cloud
-        uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
+        uses: mobile-dev-inc/action-maestro-cloud@v2.0.1
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
           project-id: proj_01javz1ncreqb9dcshv3y4da44

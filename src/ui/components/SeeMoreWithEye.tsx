@@ -46,8 +46,8 @@ const TitleSeparator = styled.View(({ theme }) => ({
   width: 1,
   height: getSpacing(5),
   backgroundColor: theme.designSystem.color.background.subtle,
-  marginLeft: getSpacing(4),
-  marginRight: theme.designSystem.size.spacing.m,
+  marginHorizontal: theme.designSystem.size.spacing.l,
+  alignSelf: 'center',
 }))
 
 const StyledTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(

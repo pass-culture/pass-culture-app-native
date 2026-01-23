@@ -43,9 +43,9 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const Container = styled.View({
-  paddingHorizontal: getSpacing(4),
-})
+const Container = styled.View(({ theme }) => ({
+  paddingHorizontal: theme.designSystem.size.spacing.l,
+}))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'column',

@@ -18,12 +18,11 @@ export const TabBarContainer = ({ children }: { children: React.ReactNode }) => 
   )
 }
 
-const RowContainer = styled.View({
+const RowContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-evenly',
-  paddingHorizontal: getSpacing(4),
-})
-
+  paddingHorizontal: theme.designSystem.size.spacing.l,
+}))
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
   height: safeHeight,
 }))

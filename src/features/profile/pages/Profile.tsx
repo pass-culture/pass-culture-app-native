@@ -433,9 +433,9 @@ const ScrollViewContentContainer = styled.View({
   flexDirection: 'column',
 })
 
-const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
-  paddingVertical: getSpacing(4),
-})
+const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.l,
+}))
 
 const TitleWithTag = styled.View(({ theme }) => ({
   flexDirection: 'row',
@@ -458,19 +458,19 @@ const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
 
 const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
-  marginVertical: getSpacing(4),
+  marginVertical: theme.designSystem.size.spacing.l,
 }))
 
-const DebugButtonContainer = styled.View({
-  marginBottom: getSpacing(4),
-})
+const DebugButtonContainer = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
-const LogoFrenchRepublicContainer = styled.View({
+const LogoFrenchRepublicContainer = styled.View(({ theme }) => ({
   width: getSpacing(40),
   height: getSpacing(28),
-  marginBottom: getSpacing(4),
-})
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
-const LiWithMarginVertical = styled(Li)({
-  marginVertical: getSpacing(4),
-})
+const LiWithMarginVertical = styled(Li)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))

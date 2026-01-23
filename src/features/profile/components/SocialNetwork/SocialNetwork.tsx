@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Ul } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
 
 export function SocialNetwork() {
   return (
@@ -35,11 +34,11 @@ const NetworkRow = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const NetworkRowContainer = styled.View({
+const NetworkRowContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingVertical: getSpacing(4),
+  paddingVertical: theme.designSystem.size.spacing.l,
   justifyContent: 'space-between',
-})
+}))
 
 const StyledUl = styled(Ul)({
   flex: 1,

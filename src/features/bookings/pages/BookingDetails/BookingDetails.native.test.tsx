@@ -6,8 +6,6 @@ import {
   BookingReponse,
   BookingResponse,
   BookingsResponse,
-  BookingsResponseV2,
-  RefreshResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   TicketDisplayEnum,
@@ -81,7 +79,7 @@ describe('BookingDetails', () => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   })
 
-  describe('OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off', () => {
+  describe('OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOING is off', () => {
     beforeEach(() => {
       setFeatureFlags()
     })
@@ -581,13 +579,13 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('BookingDetails : when FF WIP_NEW_BOOKING_PAGE is on', () => {
+  describe('BookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOING is on', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING])
     })
 
     it('should render BookingDetails', async () => {
-      renderBookingDetailsV2(ongoingBookingV2)
+      renderBookingDetailsWithBookingById(ongoingBookingV2)
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
@@ -599,7 +597,7 @@ describe('BookingDetails', () => {
         .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent: true })
 
-      renderBookingDetailsV2(ongoingBookingV2)
+      renderBookingDetailsWithBookingById(ongoingBookingV2)
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
@@ -611,7 +609,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display banner warning about disposal', async () => {
-      renderBookingDetailsV2(ongoingBookingV2)
+      renderBookingDetailsWithBookingById(ongoingBookingV2)
 
       await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
@@ -623,7 +621,7 @@ describe('BookingDetails', () => {
     it("should render organizer's indications", async () => {
       const withdrawalDetails = 'Une explication de l’organisateur'
 
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         ticket: {
           ...ongoingBookingV2.ticket,
@@ -642,7 +640,7 @@ describe('BookingDetails', () => {
     it('should render message to contact organizer', async () => {
       const organizerEmail = 'toto@email.com'
 
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         stock: {
           ...ongoingBookingV2.stock,
@@ -672,7 +670,7 @@ describe('BookingDetails', () => {
     it("should render organizer's email", async () => {
       const organizerEmail = 'toto@email.com'
 
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         stock: {
           ...ongoingBookingV2.stock,
@@ -697,7 +695,7 @@ describe('BookingDetails', () => {
 
     it('should log analytics on `Contacter l’organisateur` press', async () => {
       const organizerEmail = 'toto@email.com'
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         stock: {
           ...ongoingBookingV2.stock,
@@ -716,8 +714,8 @@ describe('BookingDetails', () => {
     })
 
     it('should redirect to the Offer page and log event', async () => {
-      const booking: BookingsResponseV2['ongoingBookings'][number] = ongoingBookingV2
-      renderBookingDetailsV2(booking)
+      const booking = ongoingBookingV2
+      renderBookingDetailsWithBookingById(booking)
 
       const text = screen.getByText('Voir l’offre')
 
@@ -742,7 +740,7 @@ describe('BookingDetails', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
-      renderBookingDetailsV2(ongoingBookingV2)
+      renderBookingDetailsWithBookingById(ongoingBookingV2)
 
       const text = screen.getByText('Voir l’offre')
 
@@ -762,7 +760,7 @@ describe('BookingDetails', () => {
     })
 
     it('should render correctly when offer is not digital withdrawal type is no ticket', async () => {
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         stock: {
           ...ongoingBookingV2.stock,
@@ -779,7 +777,7 @@ describe('BookingDetails', () => {
           },
         },
       })
-      await screen.findAllByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
@@ -787,7 +785,7 @@ describe('BookingDetails', () => {
     })
 
     it('should not render error message when booking is no ticket', async () => {
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         quantity: 2,
         ticket: {
@@ -806,7 +804,7 @@ describe('BookingDetails', () => {
     })
 
     it('should render error message with plural when booking is duo', async () => {
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         quantity: 2,
         ticket: {
@@ -825,7 +823,7 @@ describe('BookingDetails', () => {
     })
 
     it('should render error message singular when booking is not duo', async () => {
-      renderBookingDetailsV2({
+      renderBookingDetailsWithBookingById({
         ...ongoingBookingV2,
         quantity: 1,
         stock: {
@@ -852,11 +850,11 @@ describe('BookingDetails', () => {
 
     describe('Ticket', () => {
       beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE])
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING])
       })
 
       it('should render External Booking Component when externalbooking data is present', async () => {
-        renderBookingDetailsV2({
+        renderBookingDetailsWithBookingById({
           ...ongoingBookingV2,
           stock: {
             ...ongoingBookingV2.stock,
@@ -879,7 +877,7 @@ describe('BookingDetails', () => {
       })
 
       it('should render cinema booking ticket if voucher is present', async () => {
-        renderBookingDetailsV2({
+        renderBookingDetailsWithBookingById({
           ...ongoingBookingV2,
           stock: {
             ...ongoingBookingV2.stock,
@@ -902,7 +900,7 @@ describe('BookingDetails', () => {
 
       describe('Digital Booking', () => {
         it('should render activation code when offer is digital and activation code is present', async () => {
-          renderBookingDetailsV2({
+          renderBookingDetailsWithBookingById({
             ...ongoingBookingV2,
             stock: {
               ...ongoingBookingV2.stock,
@@ -926,13 +924,13 @@ describe('BookingDetails', () => {
             completedUrl: 'https://example.com',
           })
 
-          await screen.findAllByText(ongoingBookings.stock.offer.name)
+          await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
           expect(screen.getByText('test-activation-code')).toBeOnTheScreen()
         })
 
         it('should render token when offer is digital and token is present', async () => {
-          renderBookingDetailsV2({
+          renderBookingDetailsWithBookingById({
             ...ongoingBookingV2,
             stock: {
               ...ongoingBookingV2.stock,
@@ -951,7 +949,7 @@ describe('BookingDetails', () => {
               withdrawal: {},
             },
           })
-          await screen.findAllByText(ongoingBookings.stock.offer.name)
+          await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
           expect(await screen.findByText('TEST12')).toBeOnTheScreen()
         })
@@ -969,7 +967,7 @@ describe('BookingDetails', () => {
           contentSize: { height: 1600 },
         }
 
-        renderBookingDetailsV2(ongoingBookingV2)
+        renderBookingDetailsWithBookingById(ongoingBookingV2)
 
         await screen.findAllByText(ongoingBookingV2.stock.offer.name)
 
@@ -989,28 +987,6 @@ describe('BookingDetails', () => {
       })
     })
   })
-
-  describe('BookingDetails: WIP_NEW_BOOKINGS_ONGOING_ENDED', () => {
-    beforeEach(() => {
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE,
-        RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING,
-      ])
-      mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {
-        responseOptions: {
-          statusCode: 200,
-        },
-      })
-    })
-
-    it('should render correctly', async () => {
-      renderBookingDetailsWithBookingById(ongoingBookingV2)
-
-      await screen.findAllByText(ongoingBookingV2.stock.offer.name)
-
-      expect(await screen.findByTestId('ticket-punched')).toBeOnTheScreen()
-    })
-  })
 })
 
 const renderBookingDetails = (booking?: Booking, options = {}) => {
@@ -1023,29 +999,7 @@ const renderBookingDetails = (booking?: Booking, options = {}) => {
     error: undefined,
     ...options,
   } as unknown as UseQueryResult<BookingReponse | null, Error>)
-  return render(reactQueryProviderHOC(<BookingDetails />))
-}
 
-const renderBookingDetailsV2 = (booking?: BookingResponse, options = {}) => {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
-    data: booking,
-    isLoading: false,
-    isFetching: false,
-    isSuccess: true,
-    isError: false,
-    error: undefined,
-    ...options,
-  } as unknown as UseQueryResult<BookingResponse | null, Error>)
-
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQueryV1').mockReturnValue({
-    data: booking,
-    isLoading: false,
-    isFetching: false,
-    isSuccess: true,
-    isError: false,
-    error: undefined,
-    ...options,
-  } as unknown as UseQueryResult<BookingReponse | null, Error>)
   return render(reactQueryProviderHOC(<BookingDetails />))
 }
 

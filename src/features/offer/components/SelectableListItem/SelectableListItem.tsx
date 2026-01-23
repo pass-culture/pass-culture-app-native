@@ -5,7 +5,6 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface ChildrenProps {
@@ -58,7 +57,7 @@ export function SelectableListItem({
 const selectedStyles = (theme: DefaultTheme): CSSProperties => ({
   borderWidth: 2,
   borderColor: theme.designSystem.color.border.default,
-  padding: getSpacing(4) - 1, // to avoid getting a jumping component
+  padding: theme.designSystem.size.spacing.l - 1, // to avoid getting a jumping component
 })
 
 const unselectedStyles = (theme: DefaultTheme, disabled?: boolean): CSSProperties => ({

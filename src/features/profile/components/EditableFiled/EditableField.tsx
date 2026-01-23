@@ -5,7 +5,7 @@ import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type EditableFieldProps = {
   label: string
@@ -72,6 +72,6 @@ const NoEditText = styled(Typo.BodyItalic)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-})
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.l,
+}))

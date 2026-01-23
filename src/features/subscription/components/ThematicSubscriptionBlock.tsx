@@ -5,7 +5,7 @@ import { SubscribeButton } from 'features/subscription/components/buttons/Subscr
 import { SubscriptionThematicIllustration } from 'features/subscription/components/SubscriptionThematicIllustration'
 import { mapSubscriptionThematicToBlockTitles } from 'features/subscription/helpers/mapSubscriptionThematicToBlockTitles'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -37,12 +37,12 @@ export const ThematicSubscriptionBlock = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginHorizontal: getSpacing(4),
-  marginVertical: getSpacing(6),
-  gap: getSpacing(4),
-})
+  marginHorizontal: theme.designSystem.size.spacing.l,
+  marginVertical: theme.designSystem.size.spacing.xl,
+  gap: theme.designSystem.size.spacing.l,
+}))
 
 const ContentContainer = styled.View({
   flexShrink: 1,

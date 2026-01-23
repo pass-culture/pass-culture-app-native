@@ -47,10 +47,10 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledButtonContainer = styled.View({
+const StyledButtonContainer = styled.View(({ theme }) => ({
   width: '100%',
-  marginBottom: getSpacing(4),
-})
+  marginBottom: theme.designSystem.size.spacing.l,
+}))
 
 const StyledButtonPrimary = styledButton(ButtonPrimary)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,
@@ -62,7 +62,7 @@ const StyledBody = styled(Typo.Body)({
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
   textAlign: 'center',
-  marginTop: getSpacing(4),
+  marginTop: theme.designSystem.size.spacing.l,
   marginBottom: getSpacing(6),
 }))
 

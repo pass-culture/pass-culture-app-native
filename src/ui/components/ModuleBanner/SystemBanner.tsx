@@ -16,7 +16,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -178,22 +178,22 @@ const Container = styled.View<{ backgroundColor: ColorsType; borderColor: Colors
     borderStyle: 'solid',
     borderWidth: 1,
     flexDirection: 'row',
-    padding: getSpacing(4),
+    padding: theme.designSystem.size.spacing.l,
     width: '100%',
   })
 )
 
-const IconContainer = styled.View({
+const IconContainer = styled.View(({ theme }) => ({
   alignContent: 'center',
-  marginRight: getSpacing(4),
-})
+  marginRight: theme.designSystem.size.spacing.l,
+}))
 
-const DescriptionContainer = styled(ViewGap)({
+const DescriptionContainer = styled(ViewGap)(({ theme }) => ({
   flexShrink: 1,
   flexGrow: 1,
-  marginRight: getSpacing(4),
+  marginRight: theme.designSystem.size.spacing.l,
   textAlign: 'start',
-})
+}))
 
 const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme, color }) => ({
   size: theme.icons.sizes.small,

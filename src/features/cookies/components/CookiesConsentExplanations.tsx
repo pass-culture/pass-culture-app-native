@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const CookiesConsentExplanations = () => (
   <StyledView>
@@ -25,7 +25,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const StyledView = styled.View({
-  gap: getSpacing(4),
-  paddingBottom: getSpacing(4),
-})
+const StyledView = styled.View(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.l,
+  paddingBottom: theme.designSystem.size.spacing.l,
+}))

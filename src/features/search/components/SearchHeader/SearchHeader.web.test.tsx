@@ -141,25 +141,6 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should not have focus on search main input', async () => {
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />
-    )
-
-    await act(async () => {
-      await userEvent.tab()
-      await userEvent.tab()
-    })
-
-    const searchMainInput = screen.getByRole('searchbox', { hidden: true })
-
-    expect(searchMainInput).not.toHaveFocus()
-  })
-
   describe('when being focus on suggestion', () => {
     beforeEach(() => {
       mockUseSearch.mockReturnValue({

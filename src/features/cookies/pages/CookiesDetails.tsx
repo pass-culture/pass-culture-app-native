@@ -57,11 +57,11 @@ const StyledAccordionItem = styled(Accordion).attrs<{ title?: React.JSX.Element 
   title: <Typo.BodyAccent>Qu’est-ce que les cookies&nbsp;?</Typo.BodyAccent>,
   titleStyle: {
     backgroundColor: theme.designSystem.color.background.subtle,
-    paddingVertical: getSpacing(4),
+    paddingVertical: theme.designSystem.size.spacing.l,
   },
   bodyStyle: {
     backgroundColor: theme.designSystem.color.background.subtle,
-    paddingBottom: getSpacing(4),
+    paddingBottom: theme.designSystem.size.spacing.l,
   },
 }))``
 

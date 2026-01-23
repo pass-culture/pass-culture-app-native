@@ -12,6 +12,19 @@ jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
   default: mockUseWindowDimensions,
 }))
 
+jest.mock('styled-components', () => ({
+  ...jest.requireActual('styled-components'),
+  useTheme: () => ({
+    designSystem: {
+      size: {
+        spacing: {
+          l: 16,
+        },
+      },
+    },
+  }),
+}))
+
 const currentRegion = {
   latitude: 48.8566,
   longitude: 2.3522,
