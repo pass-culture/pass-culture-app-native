@@ -169,9 +169,9 @@ const Container = styled.View({
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
-}))({
-  marginHorizontal: getSpacing(1.5),
-})
+}))(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))
 
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,

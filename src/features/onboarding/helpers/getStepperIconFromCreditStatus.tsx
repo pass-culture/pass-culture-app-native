@@ -5,7 +5,6 @@ import { CreditStatus } from 'features/onboarding/enums'
 import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
-import { getSpacing } from 'ui/theme'
 
 export const getStepperIconFromCreditStatus = (creditStatus: CreditStatus): React.ReactElement => {
   switch (creditStatus) {
@@ -33,12 +32,12 @@ const AnimatedOngoingLock = () => {
 
 const ComingLock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
-}))({
-  marginHorizontal: getSpacing(1.5),
-})
+}))(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))
 
 const GoneLock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
-}))({
-  marginHorizontal: getSpacing(1.5),
-})
+}))(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))

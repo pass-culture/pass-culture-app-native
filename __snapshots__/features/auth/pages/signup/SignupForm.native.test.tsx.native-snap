@@ -177,7 +177,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -935,7 +935,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -1816,7 +1816,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }
@@ -2953,7 +2953,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
       style={
         {
           "backgroundColor": "#f1f1f4",
-          "height": 6,
+          "height": 8,
           "justifyContent": "flex-start",
           "width": "100%",
         }

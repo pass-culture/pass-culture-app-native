@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   title: string
@@ -18,11 +18,12 @@ export const InformationStepContent = ({ title, subtitle }: Props) => {
   )
 }
 
-const StyledButtonText = styled(Typo.BodyAccent).attrs({ numberOfLines: 3 })({
-  marginLeft: getSpacing(1.5),
+const StyledButtonText = styled(Typo.BodyAccent).attrs({ numberOfLines: 3 })(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
   justifyContent: 'center',
-})
-const StyledCaption = styled(Typo.BodyAccentXs)({
-  marginLeft: getSpacing(1.5),
+}))
+
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.s,
   justifyContent: 'center',
-})
+}))

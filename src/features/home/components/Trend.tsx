@@ -27,7 +27,7 @@ export const Trend = ({ image, title, ...rest }: TrendProps) => {
 
 const Item = styled(InternalTouchableLink)(({ theme }) => ({
   gap: theme.designSystem.size.spacing.s,
-  padding: theme.isDesktopViewport ? getSpacing(1.5) : getSpacing(0.75),
+  padding: theme.isDesktopViewport ? theme.designSystem.size.spacing.s : getSpacing(0.75),
   alignItems: 'center',
 }))
 

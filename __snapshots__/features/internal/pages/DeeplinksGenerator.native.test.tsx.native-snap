@@ -2740,7 +2740,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
-                  "paddingVertical": 6,
+                  "paddingVertical": 8,
                 }
               }
             >
