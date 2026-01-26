@@ -87,7 +87,7 @@ export const FavoritesSorts: React.FC = () => {
 }
 
 const RadioButtonGroupContainer = styled.View(({ theme }) => ({
-  paddingTop: theme.designSystem.size.spacing['3xl'],
+  paddingTop: theme.designSystem.size.spacing.xxxl,
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({
