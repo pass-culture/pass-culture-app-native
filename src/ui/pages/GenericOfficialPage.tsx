@@ -173,6 +173,6 @@ const BottomContainer = styled.View(({ theme }) => ({
       }
     : {
         marginTop: getSpacing(25),
-        maxHeight: getSpacing(1),
+        maxHeight: theme.designSystem.size.spacing.xs,
       }),
 }))

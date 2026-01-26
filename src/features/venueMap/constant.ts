@@ -9,7 +9,7 @@ import { Store } from 'ui/svg/icons/venueAndCategories/Store'
 import { getSpacing } from 'ui/theme'
 
 export const FILTER_BANNER_HEIGHT = getSpacing(12)
-export const MARKER_LABEL_MARGIN_TOP = getSpacing(1)
+export const MARKER_LABEL_MARGIN_TOP = theme.designSystem.size.spacing.xs
 export const MARKER_SIZE = { width: 44, height: 50 }
 export const MARKER_LABEL_VISIBILITY_LIMIT = {
   altitude: 4000,

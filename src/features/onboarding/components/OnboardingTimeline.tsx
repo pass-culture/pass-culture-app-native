@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/onboarding/components/CreditTimeline'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Typo, getSpacing, getSpacingString } from 'ui/theme'
+import { Typo, getSpacingString } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
@@ -46,6 +46,6 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
 const DescriptionText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
   lineHeight: getSpacingString(3),
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
   color: theme.designSystem.color.text.subtle,
 }))

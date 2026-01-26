@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export enum ToggleButtonSize {
   SMALL = 'small',
@@ -65,7 +65,7 @@ const BaseTouchableOpacity = styled(TouchableOpacity)<{ size: ToggleButtonSize }
       ? theme.designSystem.size.borderRadius.xl
       : theme.designSystem.size.borderRadius.l,
     paddingHorizontal: isMedium ? theme.designSystem.size.spacing.m : 0,
-    paddingVertical: isMedium ? getSpacing(1) : 0,
+    paddingVertical: isMedium ? theme.designSystem.size.spacing.xs : 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

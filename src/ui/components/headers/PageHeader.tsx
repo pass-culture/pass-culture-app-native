@@ -45,9 +45,9 @@ const TitleContainer = styled.View({
   flexShrink: 1,
 })
 
-const TitleText = styled(Typo.Title1)({
-  marginBottom: getSpacing(1),
-})
+const TitleText = styled(Typo.Title1)(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

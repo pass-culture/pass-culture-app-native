@@ -129,12 +129,14 @@ const contentContainerStyle = {
   paddingHorizontal: MOVIE_CALENDAR_PADDING,
 }
 
-const FadeComponent = styled(LinearGradient)`
+const FadeComponent = styled(LinearGradient)(
+  ({ theme }) => `
   position: absolute;
   top: 0;
-  bottom: ${getSpacing(1)}px;
+  bottom: ${theme.designSystem.size.spacing.xs}px;
   width: ${getSpacing(20)}px;
 `
+)
 
 const FadeLeft = styled(FadeComponent).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [

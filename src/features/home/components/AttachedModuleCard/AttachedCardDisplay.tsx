@@ -157,6 +157,6 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const BottomRightElementContainer = styled.View({
-  marginTop: getSpacing(1),
-})
+const BottomRightElementContainer = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xs,
+}))

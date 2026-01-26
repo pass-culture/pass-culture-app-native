@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -21,7 +21,7 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
       numberOfLinesTitle={2}
       onCloseIconPress={hideModal}>
       <React.Fragment>
-        <Spacer.Column numberOfSpaces={getSpacing(1)} />
+        <Spacer.Column numberOfSpaces={designSystem.size.spacing.xs} />
         <Info size={illustrations.sizes.medium} color={designSystem.color.icon.brandPrimary} />
         <ModalBodyText>
           En quittant la réservation, elle ne sera pas annulée{LINE_BREAK}

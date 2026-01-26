@@ -8,7 +8,6 @@ import { getTagVariantFromCreditStatus } from 'features/onboarding/helpers/getTa
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
 import { Tag } from 'ui/designSystem/Tag/Tag'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   creditStatus: CreditStatus
@@ -59,7 +58,7 @@ const Container = styled.View<{
   borderRadius: theme.designSystem.size.borderRadius.s,
   padding: theme.designSystem.size.spacing.l,
   overflow: 'hidden',
-  marginHorizontal: status === CreditStatus.ONGOING ? 0 : getSpacing(1),
+  marginHorizontal: status === CreditStatus.ONGOING ? 0 : theme.designSystem.size.spacing.xs,
 }))
 
 const TagContainer = styled.View({

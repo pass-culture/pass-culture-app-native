@@ -84,7 +84,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
 }
 
 const Container = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(1),
+  marginHorizontal: theme.designSystem.size.spacing.xs,
   marginVertical: theme.designSystem.size.spacing.m,
 }))
 
