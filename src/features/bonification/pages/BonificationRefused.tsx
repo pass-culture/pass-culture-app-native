@@ -183,8 +183,8 @@ export function BonificationRefused() {
       buttonsSurtitle={
         showNumberOfRemainingRetries ? (
           <StyledBodyXs>
-            Attention, il te reste&nbsp;: {user?.remainingBonusAttempts}{' '}
-            <StyledBodyXsDark>demandes</StyledBodyXsDark>
+            Attention, il te reste&nbsp;:{' '}
+            <StyledBodyXsDark>{user?.remainingBonusAttempts} demandes</StyledBodyXsDark>
           </StyledBodyXs>
         ) : null
       }
