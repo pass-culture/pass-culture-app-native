@@ -494,10 +494,10 @@ export const useOfferPageViewModel = (): OfferPageViewModel => {
   // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
   const images: ImageWithCredit[] = useMemo(
     () =>
-      offer && offer.metadata && offer.images
+      offer?.metadata && offer?.images
         ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images)
         : [],
-    [offer]
+    [offer?.images, offer?.metadata]
   )
 
   const cachedOffer = queryClient.getQueryData<OfferResponseV2>([QueryKeys.OFFER, offer?.id])

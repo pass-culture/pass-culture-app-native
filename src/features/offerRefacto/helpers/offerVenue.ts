@@ -72,5 +72,5 @@ export const mergeVenueData =
     contact: {},
     timezone: '',
     isOpenToPublic: venue.isOpenToPublic,
-    ...(prevData ?? {}),
+    ...prevData,
   })
