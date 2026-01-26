@@ -78,7 +78,7 @@ export const BonificationExplanations = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ViewGap gap={3}>
+        <ViewGap gap={4}>
           <ButtonPrimary
             wording="Continuer"
             isLoading={false}
@@ -94,6 +94,10 @@ export const BonificationExplanations = () => {
             externalNav={{ url: env.FAQ_LINK_CAF_QUOTIEN_FAMILIAL }}
             icon={ExternalSiteFilled}
           />
+          <StyledBodyS>
+            Si tu es en <Typo.BodyAccentS>situation de handicap</Typo.BodyAccentS>, un peu de
+            patience, ton cas sera pris en compte prochainement.
+          </StyledBodyS>
         </ViewGap>
       }
     />
@@ -110,5 +114,9 @@ const Container = styled.View({
 })
 
 const StyledTitle3 = styled(Typo.Title3)({
+  textAlign: 'center',
+})
+
+const StyledBodyS = styled(Typo.BodyS)({
   textAlign: 'center',
 })
