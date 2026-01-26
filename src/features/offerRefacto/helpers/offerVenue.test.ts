@@ -1,4 +1,4 @@
-import { SubcategoryIdEnum } from 'api/gen'
+import { Activity, SubcategoryIdEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerVenueResponseSnap } from 'features/offer/fixtures/offerVenueReponse'
 import {
@@ -8,7 +8,10 @@ import {
   getVenueBlockProps,
   getVenueSectionTitle,
   getVenueSelectionHeaderMessage,
+  mergeVenueData,
 } from 'features/offerRefacto/helpers'
+import { PartialVenue } from 'features/offerRefacto/types'
+import venueResponse from 'fixtures/venueResponse'
 import { LocationMode } from 'libs/location/types'
 
 describe('getVenueSectionTitle', () => {
@@ -145,5 +148,38 @@ describe('getOfferLocationName', () => {
 
       expect(locationName).toEqual('Le Grande Rex - name')
     })
+  })
+})
+
+describe('mergeVenueData', () => {
+  const partialVenue: PartialVenue = {
+    id: 123,
+    name: 'Lieu de Test',
+    description: 'Une superbe description',
+    isOpenToPublic: true,
+  }
+
+  it('should create a complete VenueResponse from PartialVenue when prevData is undefined', () => {
+    const result = mergeVenueData(partialVenue)(undefined)
+
+    expect(result).toEqual({
+      id: 123,
+      name: 'Lieu de Test',
+      description: 'Une superbe description',
+      isOpenToPublic: true,
+      accessibility: {},
+      contact: {},
+      timezone: '',
+      activity: Activity.OTHER,
+    })
+  })
+
+  it('should let prevData properties override the initial partial venue values', () => {
+    const result = mergeVenueData(partialVenue)({ ...venueResponse, isVirtual: false })
+
+    expect(result.id).toEqual(venueResponse.id)
+    expect(result.name).toEqual(venueResponse.name)
+    expect(result.activity).toEqual(venueResponse.activity)
+    expect(result.description).toEqual('Une superbe description')
   })
 })

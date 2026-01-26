@@ -1,5 +1,12 @@
-import { OfferAddressResponse, OfferVenueResponse, SubcategoryIdEnum } from 'api/gen'
+import {
+  Activity,
+  OfferAddressResponse,
+  OfferVenueResponse,
+  SubcategoryIdEnum,
+  VenueResponse,
+} from 'api/gen'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { PartialVenue } from 'features/offerRefacto/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
@@ -52,3 +59,18 @@ export const getDisplayedDataVenueBlock = (
 
 export const getOfferLocationName = (venue: OfferVenueResponse, isDigital: boolean): string =>
   isDigital ? venue.offerer.name : venue.name
+
+export const mergeVenueData =
+  (venue: PartialVenue) =>
+  (prevData: VenueResponse | undefined): Omit<VenueResponse, 'isVirtual'> => ({
+    id: venue.id,
+    name: venue.name,
+    // Info not available in OfferVenueResponse so we fallback to OTHER
+    activity: Activity.OTHER,
+    description: venue.description,
+    accessibility: {},
+    contact: {},
+    timezone: '',
+    isOpenToPublic: venue.isOpenToPublic,
+    ...(prevData ?? {}),
+  })
