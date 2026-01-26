@@ -8,7 +8,6 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 
-const BORDER_WIDTH = getSpacing(0.25)
 export const EVENT_CARD_HEIGHT = getSpacing(19)
 export const EVENT_CARD_WIDTH = getSpacing(30)
 
@@ -67,8 +66,12 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
   )
 }
 
-const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
-  ({ theme, disabled }) => ({
+const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(({
+  theme,
+  disabled,
+}) => {
+  const BORDER_WIDTH = theme.designSystem.size.spacing.xxs
+  return {
     minWidth: EVENT_CARD_WIDTH,
     minHeight: EVENT_CARD_HEIGHT,
     boxSizing: 'border-box',
@@ -80,8 +83,8 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
     backgroundColor: disabled
       ? theme.designSystem.color.background.disabled
       : theme.designSystem.color.background.default,
-  })
-)
+  }
+})
 
 const Title = styled(Typo.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,

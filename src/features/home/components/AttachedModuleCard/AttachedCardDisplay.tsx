@@ -26,7 +26,6 @@ interface AttachedCardDisplayProps {
   bottomBannerText?: string
 }
 
-const BORDER_WIDTH = getSpacing(0.25)
 const OFFER_CARD_HEIGHT = getSpacing(25)
 
 export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
@@ -107,7 +106,7 @@ const CentralColumn = styled.View(({ theme }) => ({
 }))
 
 const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightElement: boolean }>(
-  ({ hasRightTagLabel, hasBottomRightElement }) => {
+  ({ hasRightTagLabel, hasBottomRightElement, theme }) => {
     let justifyContent: 'space-between' | 'flex-start' | 'flex-end'
 
     if (hasRightTagLabel && hasBottomRightElement) {
@@ -120,7 +119,7 @@ const RightColumn = styled.View<{ hasRightTagLabel: boolean; hasBottomRightEleme
 
     return {
       alignItems: 'flex-end',
-      marginVertical: getSpacing(0.25),
+      marginVertical: theme.designSystem.size.spacing.xxs,
       justifyContent,
     }
   }
@@ -135,6 +134,8 @@ const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText?: str
   ({ theme, shouldFixHeight, bottomBannerText }) => {
     const OFFER_CARD_PADDING = theme.designSystem.size.spacing.l
     const BORDER_RADIUS = theme.designSystem.size.borderRadius.l
+    const BORDER_WIDTH = theme.designSystem.size.spacing.xxs
+
     return {
       backgroundColor: theme.designSystem.color.background.default,
       borderTopLeftRadius: BORDER_RADIUS,

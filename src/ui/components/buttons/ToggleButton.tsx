@@ -60,7 +60,7 @@ const BaseTouchableOpacity = styled(TouchableOpacity)<{ size: ToggleButtonSize }
     borderColor: isMedium
       ? theme.designSystem.color.border.default
       : theme.designSystem.color.border.inverted,
-    borderWidth: getSpacing(0.25),
+    borderWidth: theme.designSystem.size.spacing.xxs,
     borderRadius: isMedium
       ? theme.designSystem.size.borderRadius.xl
       : theme.designSystem.size.borderRadius.l,

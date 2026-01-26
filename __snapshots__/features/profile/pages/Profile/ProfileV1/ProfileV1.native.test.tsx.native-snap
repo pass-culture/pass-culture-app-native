@@ -1763,7 +1763,7 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                             "borderColor": "#90949d",
                             "borderRadius": 8,
                             "borderStyle": "solid",
-                            "borderWidth": 1,
+                            "borderWidth": 2,
                             "flexDirection": "row",
                             "padding": 16,
                             "width": "100%",

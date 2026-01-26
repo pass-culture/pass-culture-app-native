@@ -69,7 +69,9 @@ const StyledView = styled(View)<{
     return height === 'regular' ? theme.inputs.height.regular : theme.inputs.height.tall
   }
 
-  const borderWidth = isFocus ? getSpacing(0.25 + BORDER_FOCUS_INCREASE) : getSpacing(0.25)
+  const borderWidth = isFocus
+    ? getSpacing(0.25 + BORDER_FOCUS_INCREASE)
+    : theme.designSystem.size.spacing.xxs
   const horizontalPadding = isFocus ? 4 : 4 + BORDER_FOCUS_INCREASE
   const tallHorizontalPadding = isFocus ? 3 : 3 + BORDER_FOCUS_INCREASE
 

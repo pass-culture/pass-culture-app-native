@@ -94,7 +94,7 @@ exports[`<GenericOfficialPage /> should render correctly 1`] = `
         style={
           {
             "borderBottomColor": "#90949d",
-            "borderBottomWidth": 1,
+            "borderBottomWidth": 2,
             "paddingVertical": 12,
           }
         }

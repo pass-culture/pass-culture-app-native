@@ -2010,7 +2010,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   "borderStyle": "solid",
                   "borderTopLeftRadius": 24,
                   "borderTopRightRadius": 24,
-                  "borderWidth": 1,
+                  "borderWidth": 2,
                   "flexDirection": "row",
                   "height": 40,
                   "paddingBottom": 0,
