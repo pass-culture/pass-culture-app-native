@@ -326,19 +326,17 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           <View
             style={
               {
-                "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "justifyContent": "center",
               }
             }
           >
             <View
               style={
                 {
-                  "alignItems": "center",
+                  "alignItems": "flex-end",
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 1,
