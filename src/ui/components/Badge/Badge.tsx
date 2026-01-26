@@ -30,10 +30,10 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
-const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE }) => ({
+const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({
   minWidth: BADGE_SIZE,
   minHeight: BADGE_SIZE,
-  paddingHorizontal: getSpacing(0.5),
+  paddingHorizontal: theme.designSystem.size.spacing.xxs,
 }))
 
 const Caption = styled(Typo.BodyAccentXs)<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({

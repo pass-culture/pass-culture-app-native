@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   testID?: string
@@ -17,7 +17,7 @@ export const TabBarBadge: React.FC<Props> = ({ testID, children }) => (
 
 const BadgeDot = styled.View(({ theme }) => ({
   position: 'absolute',
-  top: -getSpacing(0.5),
+  top: -theme.designSystem.size.spacing.xxs,
   right: -getSpacing(1),
   minWidth: theme.designSystem.size.spacing.m,
   minHeight: theme.designSystem.size.spacing.m,
