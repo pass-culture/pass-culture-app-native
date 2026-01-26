@@ -1,6 +1,6 @@
 output.button = {
     ios: {
-        booking: 'Réserver l’offre'
+        booking: '50%,93%'
     },
     android: {
         
