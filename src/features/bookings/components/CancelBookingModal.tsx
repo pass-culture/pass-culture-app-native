@@ -105,7 +105,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 }
 
 const ModalContent = styled.View(({ theme }) => ({
-  paddingHorizontal: getSpacing(5.5),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   marginBottom: theme.designSystem.size.spacing.xs,
 }))
