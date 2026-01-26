@@ -101,7 +101,7 @@ const StrikeLine = styled.View<{ parentWidth: number }>(({ parentWidth, theme })
   return {
     transform: `rotate(-${strikeLineAngle}deg)`,
     height: `${LINE_THICKNESS}px`,
-    width: `${parentWidth + getSpacing(6)}px`,
+    width: `${parentWidth + theme.designSystem.size.spacing.xl}px`,
     backgroundColor: theme.designSystem.color.background.subtle,
     borderRadius: theme.designSystem.size.borderRadius.s,
     position: 'absolute',

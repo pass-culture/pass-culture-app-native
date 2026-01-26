@@ -12,7 +12,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Parameters } from 'ui/svg/icons/Parameters'
 import { RingingBell } from 'ui/svg/RingingBell'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -63,7 +63,7 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
   textAlign: 'center',
   marginTop: theme.designSystem.size.spacing.l,
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const StyledIcon = styled(RingingBell).attrs(({ theme }) => ({

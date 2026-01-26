@@ -40,7 +40,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Offers } from 'ui/svg/icons/Offers'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCredit = () => {
@@ -246,7 +246,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingHorizontal: getSpacing(6),
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',

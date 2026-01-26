@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { UserError } from 'ui/svg/UserError'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -60,7 +60,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

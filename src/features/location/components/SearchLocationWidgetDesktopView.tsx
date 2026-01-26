@@ -1,15 +1,15 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { SearchLocationWidgetDesktop } from 'features/location/components/SearchLocationWidgetDesktop'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 export const SearchLocationWidgetDesktopView = () => {
+  const { designSystem } = useTheme()
   return (
     <StyledViewGap gap={4}>
-      <Separator.Vertical height={getSpacing(6)} />
+      <Separator.Vertical height={designSystem.size.spacing.xl} />
       <SearchLocationWidgetDesktop />
     </StyledViewGap>
   )

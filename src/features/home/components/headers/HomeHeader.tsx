@@ -13,19 +13,19 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
-
   const Header = useMemo(() => {
     const welcomeTitle =
       user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
+    const height = designSystem.size.spacing.xl
 
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
@@ -58,7 +58,7 @@ export const HomeHeader: FunctionComponent = function () {
             <TitleContainer>
               <Title testID="web-location-widget">
                 <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
-                <StyledSeparator height={getSpacing(6)} />
+                <StyledSeparator height={height} />
                 <LocationWidgetDesktop />
               </Title>
               <Subtitle>{getSubtitle()}</Subtitle>
@@ -76,6 +76,7 @@ export const HomeHeader: FunctionComponent = function () {
   }, [
     user,
     isLoggedIn,
+    designSystem.size.spacing.xl,
     isDesktopViewport,
     numberOfLines,
     availableCredit,

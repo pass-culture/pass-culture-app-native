@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { FlatListProps, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import {
   VenueListItem,
@@ -15,7 +15,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = Pick<
@@ -37,8 +36,6 @@ type VenueSelectionModalProps = Pick<
   validateButtonLabel: string
   headerMessage: string
 }
-
-const HEIGHT_CONTAINER = getSpacing(6)
 
 export function VenueSelectionModal({
   isVisible,
@@ -62,6 +59,7 @@ export function VenueSelectionModal({
   const [selectedVenue, setSelectedVenue] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const { top } = useCustomSafeInsets()
+  const { designSystem } = useTheme()
   const {
     permissionState,
     requestGeolocPermission,
@@ -92,6 +90,7 @@ export function VenueSelectionModal({
       await requestGeolocPermission()
     }
   }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
+  const HEIGHT_CONTAINER = designSystem.size.spacing.xl
 
   const customHeader = useMemo(() => {
     return (
@@ -105,7 +104,7 @@ export function VenueSelectionModal({
         />
       </ModalHeaderContainer>
     )
-  }, [onClosePress, title, top])
+  }, [HEIGHT_CONTAINER, onClosePress, title, top])
 
   return (
     <AppModal

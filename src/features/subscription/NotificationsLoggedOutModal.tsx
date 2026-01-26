@@ -9,7 +9,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { UserNotification } from 'ui/svg/UserNotification'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -63,10 +63,10 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
-const InformationText = styled(Typo.Body)({
+const InformationText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledIcon = styled(UserNotification).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,

@@ -2,8 +2,6 @@ import React, { ReactNode } from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
 type Props = {
   children?: ReactNode
 }
@@ -40,7 +38,7 @@ const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
 
 const CenteredWebContainer = styled.View(({ theme }) => ({
   ...(Platform.OS === 'web' && !theme.isMobileViewport
-    ? { maxHeight: '100%', paddingBottom: getSpacing(6) }
+    ? { maxHeight: '100%', paddingBottom: theme.designSystem.size.spacing.xl }
     : { flex: 1 }),
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,

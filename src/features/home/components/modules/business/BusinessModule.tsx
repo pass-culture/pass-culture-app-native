@@ -20,7 +20,6 @@ import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
-const MAIN_MARGIN = getSpacing(6)
 const FULL_HEIGHT = { height: '100%' }
 const FULL_WIDTH = { width: '100%' }
 
@@ -169,12 +168,15 @@ export const BusinessModule = memo(UnmemoizedBusinessModule)
 
 const BlankSpace = styled.View(({ theme }) => ({ height: theme.designSystem.size.spacing.l }))
 
-const FlexRow = styled.View(({ theme }) => ({
-  borderRadius: theme.designSystem.size.borderRadius.m,
-  flexDirection: 'row',
-  width: theme.appContentWidth - 2 * MAIN_MARGIN,
-  ...FULL_HEIGHT,
-}))
+const FlexRow = styled.View(({ theme }) => {
+  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
+  return {
+    borderRadius: theme.designSystem.size.borderRadius.m,
+    flexDirection: 'row',
+    width: theme.appContentWidth - 2 * MAIN_MARGIN,
+    ...FULL_HEIGHT,
+  }
+})
 
 const StyledLinearGradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   angle: 0,
@@ -193,16 +195,19 @@ const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs<{ colors?: 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   onMouseDown: (e: Event) => void
   isFocus?: boolean
-}>(({ theme, isFocus }) => ({
-  textDecoration: 'none',
-  borderRadius: theme.designSystem.size.borderRadius.m,
-  height: FIXED_SIZE,
-  flexWrap: 'wrap',
-  overflow: 'hidden',
-  marginHorizontal: MAIN_MARGIN,
-  marginBottom: theme.home.spaceBetweenModules,
-  ...customFocusOutline({ theme, isFocus }),
-}))
+}>(({ theme, isFocus }) => {
+  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
+  return {
+    textDecoration: 'none',
+    borderRadius: theme.designSystem.size.borderRadius.m,
+    height: FIXED_SIZE,
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    marginHorizontal: MAIN_MARGIN,
+    marginBottom: theme.home.spaceBetweenModules,
+    ...customFocusOutline({ theme, isFocus }),
+  }
+})
 
 const ColumnLargeScreen = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.lockedInverted,
@@ -228,14 +233,18 @@ const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ the
   backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
-const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(
-  ({ height, theme }) => ({
+const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(({
+  height,
+  theme,
+}) => {
+  const MAIN_MARGIN = theme.designSystem.size.spacing.xl
+  return {
     height,
     width: (theme.appContentWidth - 2 * MAIN_MARGIN) / 2,
     borderRadius: theme.designSystem.size.borderRadius.s,
     backgroundColor: theme.designSystem.color.background.brandPrimary,
-  })
-)
+  }
+})
 
 const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
