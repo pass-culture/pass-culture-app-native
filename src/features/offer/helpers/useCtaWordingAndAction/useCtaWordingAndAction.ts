@@ -85,7 +85,7 @@ type Props = {
   apiRecoParams?: RecommendationApiParams
   playlistType?: PlaylistType
   storedProfileInfos?: ValidStoredProfileInfos
-  featureFlags: { enableBookingFreeOfferFifteenSixteen: boolean; wipEnableLoanFakeDoor?: boolean }
+  featureFlags: { enableBookingFreeOfferFifteenSixteen: boolean }
 }
 
 export type ICTAWordingAndAction = {
@@ -99,7 +99,6 @@ export type ICTAWordingAndAction = {
   isDisabled?: boolean
   movieScreeningUserData?: MovieScreeningUserData
 }
-type OneOrTwoCTAs = [ICTAWordingAndAction] | [ICTAWordingAndAction, ICTAWordingAndAction]
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
 export const getCtaWordingAndAction = ({
@@ -122,18 +121,15 @@ export const getCtaWordingAndAction = ({
   playlistType,
   storedProfileInfos,
   featureFlags,
-}: Props): OneOrTwoCTAs | undefined => {
+}: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
 
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, user?.bookedOffers)
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
   const isMovieScreeningOffer = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  const enableLoanCTA =
-    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER && featureFlags.wipEnableLoanFakeDoor
 
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
   const { hasEnoughCredit, message: hasEnoughCreditMessage } = hasEnoughCreditData
-  const wording = enableLoanCTA ? 'Acheter' : 'Réserver l’offre'
 
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
@@ -146,138 +142,47 @@ export const getCtaWordingAndAction = ({
   const shouldBeRedirectedToExternalUrl =
     externalTicketOfficeUrl && (userWithNotEnoughCredit || isExBeneficiary)
 
-  const bookLoanModal = {
-    modalToDisplay: OfferModal.SURVEY,
-    wording: 'Emprunter',
-    isDisabled: false,
-    onPress: () => analytics.logHasClickedFakeDoorCTA({ offerId: offer.id, userId: user?.id }),
-  }
-
   if (!isLoggedIn) {
-    if (externalTicketOfficeUrl)
-      return [
-        {
+    return externalTicketOfficeUrl
+      ? {
           wording: 'Accéder au site partenaire',
           externalNav: { url: externalTicketOfficeUrl },
           isDisabled: false,
-        },
-      ]
-    if (enableLoanCTA)
-      return [
-        {
+        }
+      : {
           modalToDisplay: OfferModal.AUTHENTICATION,
-          wording: isMovieScreeningOffer ? undefined : wording,
+          wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
           isDisabled: false,
           onPress: () => analytics.logConsultAuthenticationModal(offer.id),
           movieScreeningUserData: { isUserLoggedIn: isLoggedIn },
-        },
-        bookLoanModal,
-      ]
-    return [
-      {
-        modalToDisplay: OfferModal.AUTHENTICATION,
-        wording: isMovieScreeningOffer ? undefined : wording,
-        isDisabled: false,
-        onPress: () => analytics.logConsultAuthenticationModal(offer.id),
-        movieScreeningUserData: { isUserLoggedIn: isLoggedIn },
-      },
-    ]
+        }
   }
 
   if (shouldBeRedirectedToExternalUrl) {
-    return [
-      {
-        wording: 'Accéder au site partenaire',
-        externalNav: { url: externalTicketOfficeUrl },
-        isDisabled: false,
-      },
-    ]
+    return {
+      wording: 'Accéder au site partenaire',
+      externalNav: { url: externalTicketOfficeUrl },
+      isDisabled: false,
+    }
   }
 
   if (isEligibleFreeOffer15To16 && isNotFreeOffer) {
-    return [
-      {
-        wording: 'Réserver l’offre',
-        isDisabled: true,
-        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
-      },
-    ]
+    return {
+      wording: 'Réserver l’offre',
+      isDisabled: true,
+      bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
+    }
   }
 
   if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
     if (subcategory.isEvent) {
       if (!isAlreadyBookedOffer) {
-        return [
-          {
-            modalToDisplay: OfferModal.BOOKING,
-            wording: 'Réserver l’offre',
-            isDisabled: false,
-            onPress: () => {
-              analytics.logClickBookOffer({
-                offerId: offer.id,
-                from,
-                searchId,
-                ...apiRecoParams,
-                playlistType,
-              })
-            },
-          },
-        ]
-      }
-      return [
-        {
-          wording: 'Voir ma réservation',
-          isDisabled: false,
-          navigateTo: {
-            screen: 'BookingDetails',
-            params: { id: user?.bookedOffers[offer.id] },
-            fromRef: true,
-          },
-          onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
-          bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-          movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
-        },
-      ]
-    }
-    return [
-      {
-        wording: getDigitalOfferBookingWording(subcategoryId),
-        isDisabled: isBookingLoading,
-        onPress() {
-          if (isAlreadyBookedOffer) {
-            openUrl(booking?.completedUrl ?? '')
-            return
-          }
-          if (offer.stocks[0]?.id) {
-            bookOffer({ quantity: 1, stockId: offer.stocks[0].id })
-          }
-        },
-      },
-    ]
-  }
-
-  if (isFreeOffer) {
-    if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
-      return [
-        {
-          wording: 'Réserver l’offre',
-          isDisabled: false,
-          navigateTo: getSubscriptionPropConfig(
-            storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
-            { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
-          ),
-        },
-      ]
-    }
-    if (!isProfileIncomplete) {
-      // If the profile is complete we consider they can book a free offer
-      return [
-        {
-          wording: 'Réserver l’offre',
+        return {
           modalToDisplay: OfferModal.BOOKING,
+          wording: 'Réserver l’offre',
           isDisabled: false,
           onPress: () => {
-            analytics.logClickBookOffer({
+            void analytics.logClickBookOffer({
               offerId: offer.id,
               from,
               searchId,
@@ -285,79 +190,9 @@ export const getCtaWordingAndAction = ({
               playlistType,
             })
           },
-        },
-      ]
-    }
-  }
-
-  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
-    return [
-      {
-        wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
-        bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
-        isDisabled: true,
-        movieScreeningUserData: { isUserEligible: false },
-      },
-    ]
-  }
-
-  if (isEndedUsedBooking) {
-    return [
-      {
-        modalToDisplay: OfferModal.BOOKING,
-        wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
-        isEndedUsedBooking,
-        isDisabled: false,
-        bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
-        movieScreeningUserData: { bookings: booking as BookingReponse },
-      },
-    ]
-  }
-
-  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
-    const common = {
-      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
-      isDisabled: false,
-    }
-    switch (userStatus.subscriptionStatus) {
-      case SubscriptionStatus.has_to_complete_subscription:
-        return [
-          {
-            ...common,
-            modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
-            onPress: () => analytics.logConsultFinishSubscriptionModal(offer.id),
-            movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-          },
-        ]
-
-      case SubscriptionStatus.has_subscription_pending:
-        return [
-          {
-            ...common,
-            modalToDisplay: OfferModal.APPLICATION_PROCESSING,
-            onPress: () => analytics.logConsultApplicationProcessingModal(offer.id),
-            movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-          },
-        ]
-
-      case SubscriptionStatus.has_subscription_issues:
-        return [
-          {
-            ...common,
-            modalToDisplay: OfferModal.ERROR_APPLICATION,
-            onPress: () => analytics.logConsultErrorApplicationModal(offer.id),
-            movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
-          },
-        ]
-      case undefined:
-      case null:
-        return
-    }
-  }
-
-  if (isAlreadyBookedOffer) {
-    return [
-      {
+        }
+      }
+      return {
         wording: 'Voir ma réservation',
         isDisabled: false,
         navigateTo: {
@@ -368,132 +203,206 @@ export const getCtaWordingAndAction = ({
         onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
         bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
         movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+      }
+    }
+    return {
+      wording: getDigitalOfferBookingWording(subcategoryId),
+      isDisabled: isBookingLoading,
+      onPress() {
+        if (isAlreadyBookedOffer) {
+          openUrl(booking?.completedUrl ?? '')
+          return
+        }
+        if (offer.stocks[0]?.id) {
+          bookOffer({ quantity: 1, stockId: offer.stocks[0].id })
+        }
       },
-    ]
+    }
+  }
+
+  if (isFreeOffer) {
+    if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
+      return {
+        wording: 'Réserver l’offre',
+        isDisabled: false,
+        navigateTo: getSubscriptionPropConfig(
+          storedProfileInfos ? 'ProfileInformationValidationCreate' : 'SetName',
+          { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 }
+        ),
+      }
+    }
+    if (!isProfileIncomplete) {
+      // If the profile is complete we consider they can book a free offer
+      return {
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        isDisabled: false,
+        onPress: () => {
+          void analytics.logClickBookOffer({
+            offerId: offer.id,
+            from,
+            searchId,
+            ...apiRecoParams,
+            playlistType,
+          })
+        },
+      }
+    }
+  }
+
+  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
+    return {
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
+      bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
+      isDisabled: true,
+      movieScreeningUserData: { isUserEligible: false },
+    }
+  }
+
+  if (isEndedUsedBooking) {
+    return {
+      modalToDisplay: OfferModal.BOOKING,
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
+      isEndedUsedBooking,
+      isDisabled: false,
+      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      movieScreeningUserData: { bookings: booking as BookingReponse },
+    }
+  }
+
+  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
+    const common = {
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
+      isDisabled: false,
+    }
+    switch (userStatus.subscriptionStatus) {
+      case SubscriptionStatus.has_to_complete_subscription:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+          onPress: () => analytics.logConsultFinishSubscriptionModal(offer.id),
+          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
+        }
+
+      case SubscriptionStatus.has_subscription_pending:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+          onPress: () => analytics.logConsultApplicationProcessingModal(offer.id),
+          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
+        }
+
+      case SubscriptionStatus.has_subscription_issues:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.ERROR_APPLICATION,
+          onPress: () => analytics.logConsultErrorApplicationModal(offer.id),
+          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
+        }
+
+      case undefined:
+      case null:
+        return
+    }
+  }
+
+  if (isAlreadyBookedOffer) {
+    return {
+      wording: 'Voir ma réservation',
+      isDisabled: false,
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: user?.bookedOffers[offer.id] },
+        fromRef: true,
+      },
+      onPress: () => analytics.logViewedBookingPage({ offerId: offer.id, from: 'offer' }),
+      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      movieScreeningUserData: { hasBookedOffer: true, bookings: booking as BookingReponse },
+    }
   }
 
   // Non beneficiary or educational offer or unavailable offer for user
   const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
   if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
-    if (!externalTicketOfficeUrl) return [{ wording: undefined }]
+    if (!externalTicketOfficeUrl) return { wording: undefined }
 
-    return [
-      {
-        wording: 'Accéder au site partenaire',
-        externalNav: { url: externalTicketOfficeUrl },
-        isDisabled: false,
-      },
-    ]
+    return {
+      wording: 'Accéder au site partenaire',
+      externalNav: { url: externalTicketOfficeUrl },
+      isDisabled: false,
+    }
   }
 
   // Beneficiary
   if (isDepositExpired && isMovieScreeningOffer)
-    return [
-      {
-        bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
-        movieScreeningUserData: { isUserCreditExpired: true },
-      },
-    ]
+    return {
+      bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
+      movieScreeningUserData: { isUserCreditExpired: true },
+    }
 
-  if (!offer.isReleased || offer.isExpired) return [{ wording: 'Offre expirée', isDisabled: true }]
+  if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée', isDisabled: true }
   if (offer.isSoldOut)
-    return [{ wording: isMovieScreeningOffer ? undefined : 'Offre épuisée', isDisabled: true }]
+    return { wording: isMovieScreeningOffer ? undefined : 'Offre épuisée', isDisabled: true }
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
       if (offer.isDigital && !isUnderageBeneficiary)
-        return [
-          {
-            wording: 'Crédit numérique insuffisant',
-            isDisabled: true,
-            bottomBannerText: hasEnoughCreditMessage,
-          },
-        ]
-      if (enableLoanCTA)
-        return [
-          {
-            wording: 'Crédit insuffisant',
-            isDisabled: true,
-            bottomBannerText: hasEnoughCreditMessage,
-          },
-          bookLoanModal,
-        ]
-      return [
-        {
-          wording: 'Crédit insuffisant',
+        return {
+          wording: 'Crédit numérique insuffisant',
           isDisabled: true,
           bottomBannerText: hasEnoughCreditMessage,
-        },
-      ]
+        }
+
+      return {
+        wording: 'Crédit insuffisant',
+        isDisabled: true,
+        bottomBannerText: hasEnoughCreditMessage,
+      }
     }
 
-    if (enableLoanCTA)
-      return [
-        {
-          modalToDisplay: OfferModal.BOOKING,
-          wording,
-          isDisabled: false,
-          onPress: () => {
-            analytics.logClickBookOffer({
-              offerId: offer.id,
-              from,
-              searchId,
-              ...apiRecoParams,
-              playlistType,
-            })
-          },
-        },
-        bookLoanModal,
-      ]
-    return [
-      {
-        modalToDisplay: OfferModal.BOOKING,
-        wording: 'Réserver l’offre',
-        isDisabled: false,
-        onPress: () => {
-          analytics.logClickBookOffer({
-            offerId: offer.id,
-            from,
-            searchId,
-            ...apiRecoParams,
-            playlistType,
-          })
-        },
+    return {
+      modalToDisplay: OfferModal.BOOKING,
+      wording: 'Réserver l’offre',
+      isDisabled: false,
+      onPress: () => {
+        void analytics.logClickBookOffer({
+          offerId: offer.id,
+          from,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       },
-    ]
+    }
   }
 
   if (subcategory.isEvent) {
     if (!hasEnoughCredit)
-      return [
-        {
-          wording: isMovieScreeningOffer ? undefined : 'Crédit insuffisant',
-          bottomBannerText: isMovieScreeningOffer
-            ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT
-            : hasEnoughCreditMessage,
-          movieScreeningUserData: { isUserLoggedIn: isLoggedIn, hasEnoughCredit },
-          isDisabled: true,
-        },
-      ]
+      return {
+        wording: isMovieScreeningOffer ? undefined : 'Crédit insuffisant',
+        bottomBannerText: isMovieScreeningOffer
+          ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT
+          : hasEnoughCreditMessage,
+        movieScreeningUserData: { isUserLoggedIn: isLoggedIn, hasEnoughCredit },
+        isDisabled: true,
+      }
 
-    return [
-      {
-        modalToDisplay: OfferModal.BOOKING,
-        wording: isMovieScreeningOffer ? undefined : 'Voir les disponibilités',
-        isDisabled: false,
-        onPress: () => {
-          analytics.logConsultAvailableDates(offer.id)
-          analytics.logClickBookOffer({
-            offerId: offer.id,
-            from,
-            searchId,
-            ...apiRecoParams,
-            playlistType,
-          })
-        },
-        movieScreeningUserData: { hasEnoughCredit },
+    return {
+      modalToDisplay: OfferModal.BOOKING,
+      wording: isMovieScreeningOffer ? undefined : 'Voir les disponibilités',
+      isDisabled: false,
+      onPress: () => {
+        void analytics.logConsultAvailableDates(offer.id)
+        void analytics.logClickBookOffer({
+          offerId: offer.id,
+          from,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       },
-    ]
+      movieScreeningUserData: { hasEnoughCredit },
+    }
   }
   return undefined
 }
@@ -502,8 +411,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
-
-  const wipEnableLoanFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_LOAN_FAKEDOOR)
 
   const storedProfileInfos = useStoredProfileInfos()
 
@@ -548,13 +455,13 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     )
 
     if (booking) {
-      openUrl(booking.completedUrl ?? '')
+      void openUrl(booking.completedUrl ?? '')
     }
   }
 
   const { mutate: bookOffer, isPending: isBookingLoading } = useBookOfferMutation({
     onSuccess(data) {
-      analytics.logBookingConfirmation({
+      void analytics.logBookingConfirmation({
         ...apiRecoParams,
         offerId: offerId.toString(),
         bookingId: data.bookingId.toString(),
@@ -563,7 +470,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
         playlistType,
       })
 
-      redirectToBookingAction(data)
+      void redirectToBookingAction(data)
     },
     onError() {
       const message = 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.'
@@ -601,7 +508,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     isDepositExpired,
     apiRecoParams,
     playlistType,
-    featureFlags: { enableBookingFreeOfferFifteenSixteen, wipEnableLoanFakeDoor },
+    featureFlags: { enableBookingFreeOfferFifteenSixteen },
     storedProfileInfos,
   })
 }

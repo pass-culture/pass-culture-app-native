@@ -13,25 +13,16 @@ type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
-  secondaryCtaWordingAndAction?: ICTAWordingAndAction
 }
 
 export const StickyBookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
-  secondaryCtaWordingAndAction,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
-  const {
-    wording: secondaryWording,
-    onPress: onPressSecondary,
-    navigateTo: secondaryNavigateTo,
-    externalNav: secondaryExternalNav,
-    isDisabled: secondaryIsDisabled,
-  } = secondaryCtaWordingAndAction ?? {}
 
   if (!wording && !bottomBannerText) {
     return null
@@ -53,19 +44,6 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
                 isLoggedIn={isLoggedIn}
               />
             </ButtonWrapper>
-            {secondaryCtaWordingAndAction ? (
-              <ButtonWrapper>
-                <CTAButton
-                  wording={secondaryWording ?? ''}
-                  onPress={onPressSecondary}
-                  navigateTo={secondaryNavigateTo}
-                  externalNav={secondaryExternalNav}
-                  isDisabled={secondaryIsDisabled}
-                  isFreeDigitalOffer={isFreeDigitalOffer}
-                  isLoggedIn={isLoggedIn}
-                />
-              </ButtonWrapper>
-            ) : null}
           </CallToActionContainer>
         </BlurryWrapper>
       ) : null}
