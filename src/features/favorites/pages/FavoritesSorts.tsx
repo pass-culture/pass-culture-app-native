@@ -31,7 +31,7 @@ export const FavoritesSorts: React.FC = () => {
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
 
   const currentLabel = getLabelFromSortBy(stagedSelectedSortBy)
-  const hasGeolocError = Boolean(geolocPositionError)
+  const hasGeolocError = !!geolocPositionError
 
   const onSortBySelection = async (sortBy: FavoriteSortBy) => {
     const updateSortBySelection = () => {
