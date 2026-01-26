@@ -15,7 +15,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Button } from './Button'
 
 const meta: Meta<typeof Button> = {
-  title: 'design system/ButtonDS',
+  title: 'design system/Button',
   component: Button,
 }
 export default meta
@@ -266,7 +266,7 @@ const variantConfig: Variants<typeof Button> = [
 ]
 
 export const Template: VariantsStory<typeof Button> = {
-  name: 'ButtonDS',
+  name: 'Button',
   render: (props) => {
     const variantsWithBackground = variantConfig.map((variant) =>
       variant.withBackground
