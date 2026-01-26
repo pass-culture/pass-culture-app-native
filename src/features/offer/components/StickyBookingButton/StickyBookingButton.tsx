@@ -33,15 +33,17 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
       {wording ? (
         <BlurryWrapper>
           <CallToActionContainer testID="sticky-booking-button" accessible>
-            <CTAButton
-              wording={wording}
-              onPress={onPress}
-              navigateTo={navigateTo}
-              externalNav={externalNav}
-              isDisabled={isDisabled}
-              isFreeDigitalOffer={isFreeDigitalOffer}
-              isLoggedIn={isLoggedIn}
-            />
+            <ButtonWrapper>
+              <CTAButton
+                wording={wording}
+                onPress={onPress}
+                navigateTo={navigateTo}
+                externalNav={externalNav}
+                isDisabled={isDisabled}
+                isFreeDigitalOffer={isFreeDigitalOffer}
+                isLoggedIn={isLoggedIn}
+              />
+            </ButtonWrapper>
           </CallToActionContainer>
         </BlurryWrapper>
       ) : null}
@@ -66,3 +68,8 @@ const CallToActionContainer = styled.View(({ theme }) => ({
 const StyledBottomBanner = styled(BottomBanner)({
   width: '100%',
 })
+
+const ButtonWrapper = styled.View(({ theme }) => ({
+  flex: 1,
+  marginHorizontal: theme.designSystem.size.spacing.xs,
+}))
