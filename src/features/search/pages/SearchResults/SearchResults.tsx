@@ -138,7 +138,7 @@ export const SearchResults = () => {
               searchInputID={searchInputID}
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
-              withFilterButton
+              withFilterButton={!isFocusOnSuggestions}
               withArrow
               shouldDisplayHeader={!isFocusOnSuggestions}
             />
