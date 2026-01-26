@@ -6,7 +6,7 @@
 import { FunctionComponent } from 'react'
 import { AccessibilityRole } from 'react-native'
 
-import { BackgroundValue, ColorsType } from 'theme/types'
+import { BackgroundColorValue, ColorsType } from 'theme/types'
 import { AppButtonEventNative, AppButtonEventWeb } from 'ui/components/buttons/AppButton/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -14,7 +14,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'tertiary'
 export type ButtonSize = 'default' | 'small'
 export type ButtonColor = 'brand' | 'neutral'
 
-export type ButtonColorValue = BackgroundValue | 'transparent'
+export type ButtonColorValue = BackgroundColorValue | 'transparent'
 
 export type ButtonColors = {
   backgroundColor?: ButtonColorValue
