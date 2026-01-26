@@ -6,9 +6,12 @@ import {
   BonificationRefusedType,
   PAGE_CONFIG,
 } from 'features/bonification/pages/BonificationRefused'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/auth/context/AuthContext')
 
 describe('BonificationRefused', () => {
   describe('Parent not found', () => {
@@ -28,6 +31,32 @@ describe('BonificationRefused', () => {
         screen: 'BonificationRequiredInformation',
       })
     })
+
+    it('should show number of remaining retries if equal or under 5', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 5 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.getByText('Attention, il te reste : 5 demandes')
+
+      expect(remainingAttemptsText).toBeOnTheScreen()
+    })
+
+    it('should not show number of remaining retries if over 5', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.CUSTODIAN_NOT_FOUND },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.queryByText('Attention, il te reste : 6 demandes')
+
+      expect(remainingAttemptsText).not.toBeOnTheScreen()
+    })
   })
 
   describe('Too many retries', () => {
@@ -43,6 +72,19 @@ describe('BonificationRefused', () => {
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+
+    it('should not show number of remaining retries', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 0 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.queryByText('Attention, il te reste : 0 demandes')
+
+      expect(remainingAttemptsText).not.toBeOnTheScreen()
     })
   })
 
@@ -63,6 +105,32 @@ describe('BonificationRefused', () => {
         screen: 'BonificationRequiredInformation',
       })
     })
+
+    it('should show number of remaining retries if equal or under 5', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 5 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.getByText('Attention, il te reste : 5 demandes')
+
+      expect(remainingAttemptsText).toBeOnTheScreen()
+    })
+
+    it('should not show number of remaining retries if over 5', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 6 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.queryByText('Attention, il te reste : 6 demandes')
+
+      expect(remainingAttemptsText).not.toBeOnTheScreen()
+    })
   })
 
   describe('Family quotient too high', () => {
@@ -78,6 +146,19 @@ describe('BonificationRefused', () => {
       await userEvent.press(button)
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Home' })
+    })
+
+    it('should not show number of remaining retries', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
+      })
+      mockAuthContextWithUser({ ...beneficiaryUser, remainingBonusAttempts: 4 })
+
+      render(<BonificationRefused />)
+
+      const remainingAttemptsText = screen.queryByText('Attention, il te reste : 4 demandes')
+
+      expect(remainingAttemptsText).not.toBeOnTheScreen()
     })
   })
 })
