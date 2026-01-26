@@ -30,7 +30,7 @@ export const CarouselBar: React.FunctionComponent<Props> = ({ animValue, index }
 }
 
 const Bar = styled(Animated.View)(({ theme }) => ({
-  width: getSpacing(5),
+  width: theme.designSystem.size.spacing.xl,
   height: 3,
   borderRadius: theme.designSystem.size.borderRadius.pill,
   backgroundColor: theme.designSystem.color.background.subtle,

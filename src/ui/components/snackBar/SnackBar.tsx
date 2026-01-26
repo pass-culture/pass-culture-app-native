@@ -210,7 +210,7 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
     display: isVisible ? 'flex' : 'none',
     paddingTop: theme.designSystem.size.spacing.s - marginTop,
     paddingBottom: theme.designSystem.size.spacing.s,
-    paddingHorizontal: getSpacing(5),
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
   })
 )
 

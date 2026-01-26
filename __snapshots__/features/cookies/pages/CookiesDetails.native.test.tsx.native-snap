@@ -84,7 +84,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "backgroundColor": "#f1f1f4",
@@ -381,14 +381,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -548,7 +546,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -729,14 +727,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -896,7 +892,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -1077,14 +1073,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -1244,7 +1238,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -1428,14 +1422,12 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           style={
             [
               {
-                "marginRight": 8,
-              },
-              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
+                "marginRight": 8,
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,
@@ -1595,7 +1587,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "paddingHorizontal": 24,
-                  "paddingVertical": 20,
+                  "paddingVertical": 24,
                 },
                 {
                   "paddingHorizontal": 0,
@@ -1733,14 +1725,12 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
         style={
           [
             {
-              "marginRight": 8,
-            },
-            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginRight": 8,
               "paddingHorizontal": 24,
-              "paddingVertical": 20,
+              "paddingVertical": 24,
             },
             {
               "paddingHorizontal": 0,
@@ -1909,7 +1899,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "paddingHorizontal": 24,
-                "paddingVertical": 20,
+                "paddingVertical": 24,
               },
               {
                 "paddingHorizontal": 0,

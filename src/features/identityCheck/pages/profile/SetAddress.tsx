@@ -24,7 +24,7 @@ import { Spinner } from 'ui/components/Spinner'
 import { SearchInput } from 'ui/designSystem/SearchInput/SearchInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const snackbarMessage =
@@ -175,6 +175,6 @@ const AdressesContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: getSpacing(5),
+  marginTop: theme.designSystem.size.spacing.xl,
   marginBottom: theme.designSystem.size.spacing.s,
 }))

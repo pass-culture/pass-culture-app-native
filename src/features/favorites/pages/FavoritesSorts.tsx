@@ -16,7 +16,7 @@ import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
@@ -107,6 +107,6 @@ const TitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const ButtonContainer = styled.View({
-  padding: getSpacing(5),
-})
+const ButtonContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xl,
+}))

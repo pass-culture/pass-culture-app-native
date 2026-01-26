@@ -20,7 +20,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -121,5 +121,5 @@ const Refund = styled(Typo.Body)(({ theme }) => ({
 
 const CancelButtonContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.xxl,
-  marginBottom: getSpacing(5),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))

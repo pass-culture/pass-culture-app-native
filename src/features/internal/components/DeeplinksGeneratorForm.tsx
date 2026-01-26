@@ -385,14 +385,14 @@ const StyledTitle4 = styled(Typo.Title4)({
 })
 
 const BottomContainer = styled.View(({ theme }) => ({
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   paddingVertical: theme.designSystem.size.spacing.l,
   alignItems: 'center',
 }))
 
-const PaddingContainer = styled.View({
-  padding: getSpacing(5),
-})
+const PaddingContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,

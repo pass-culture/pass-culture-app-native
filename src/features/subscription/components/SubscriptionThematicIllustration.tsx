@@ -35,9 +35,9 @@ const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme
   overflow: 'hidden',
 }))
 
-const IllustrationWrapper = styled.View<{ size: 'medium' | 'small' }>(({ size }) => ({
+const IllustrationWrapper = styled.View<{ size: 'medium' | 'small' }>(({ size, theme }) => ({
   position: 'absolute',
-  top: size === 'medium' ? -getSpacing(5) : -getSpacing(7),
+  top: size === 'medium' ? -theme.designSystem.size.spacing.xl : -getSpacing(7),
 }))
 
 const StyledView = styled.View<{ fillColor: BackgroundColorKey }>(({ fillColor, theme }) => ({

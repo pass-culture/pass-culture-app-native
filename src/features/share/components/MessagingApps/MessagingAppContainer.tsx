@@ -18,7 +18,7 @@ export const MessagingAppContainer = styled(Li)(({ theme }) => {
     flexShrink: 0,
     flexBasis: `${100 / nbOfButtonsInRow}%`,
     maxWidth: MESSAGING_BUTTON_WIDTH,
-    marginBottom: getSpacing(5),
+    marginBottom: theme.designSystem.size.spacing.xl,
     marginHorizontal: getSpacing(1),
   }
 })

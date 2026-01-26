@@ -148,12 +148,11 @@ export const FavoriteHitPlaceholder = () => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginTop: getSpacing(1),
-  marginBottom: getSpacing(5),
-})
-
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 const Row = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
@@ -165,9 +164,9 @@ const ButtonContainer = styled.View({
   maxWidth: getSpacing(70),
   width: '47%',
 })
-const FirstButtonContainer = styled(ButtonContainer)({
-  marginRight: getSpacing(5),
-})
+const FirstButtonContainer = styled(ButtonContainer)(({ theme }) => ({
+  marginRight: theme.designSystem.size.spacing.xl,
+}))
 
 const TextPlaceholderContainer = styled.View<{ marginBottom?: number }>(({ marginBottom }) => ({
   marginBottom: marginBottom ? getSpacing(marginBottom) : undefined,
