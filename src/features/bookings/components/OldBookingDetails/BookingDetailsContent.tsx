@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -85,19 +85,22 @@ export const BookingDetailsContent = ({
   // Allows to display a message in case of refresh specifying the cancellation
   // of the reservation being consulted if it is made via Flask Admin
   // and booking is not archived
-  const cancellationConsultedBooking: BookingReponse[] = endedBookings.filter(
+  const cancellationConsultedBooking = endedBookings.find(
     (item: BookingReponse) => item.id === paramsId && !isEligibleBookingsForArchive(item)
   )
-  const nameCanceledBooking = cancellationConsultedBooking[0]?.stock.offer.name
+  const nameCanceledBooking = cancellationConsultedBooking?.stock.offer.name
 
-  if (nameCanceledBooking) {
+  useEffect(() => {
+    if (!nameCanceledBooking) return
+
     showInfoSnackBar({
       message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
 
     navigate('Bookings')
-  }
+  }, [nameCanceledBooking, navigate, showInfoSnackBar])
+
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )

@@ -84,11 +84,6 @@ export const ReCaptcha: React.FC<Props> = (props) => {
     }
   }
 
-  function handleShouldStartLoadWithRequest(event: ShouldStartLoadRequest) {
-    // prevent navigation on iOS
-    return event.navigationType === 'other'
-  }
-
   return (
     <Modal
       onRequestClose={handleClose}
@@ -120,6 +115,11 @@ export const ReCaptcha: React.FC<Props> = (props) => {
       ) : null}
     </Modal>
   )
+}
+
+function handleShouldStartLoadWithRequest(event: ShouldStartLoadRequest) {
+  // prevent navigation on iOS
+  return event.navigationType === 'other'
 }
 
 const StyledWebview = styled(WebView)<{ marginTop: number }>(({ marginTop, theme }) => ({
