@@ -172,7 +172,6 @@ const StyledView = styled.View({
   paddingHorizontal: 16,
 })
 
-const HANDLE_STROKE = getSpacing(0.75)
 const HANDLE_LENGTH = getSpacing(14)
 
 const HandleComponent: FunctionComponent<BottomSheetHandleProps> = () => {
@@ -192,8 +191,11 @@ const HandleContainer = styled.View(({ theme }) => ({
   paddingBottom: 8,
 }))
 
-const Handle = styled.View(({ theme }) => ({
-  width: HANDLE_LENGTH,
-  height: HANDLE_STROKE,
-  backgroundColor: theme.designSystem.color.border.subtle,
-}))
+const Handle = styled.View(({ theme }) => {
+  const HANDLE_STROKE = theme.designSystem.size.spacing.xs
+  return {
+    width: HANDLE_LENGTH,
+    height: HANDLE_STROKE,
+    backgroundColor: theme.designSystem.color.border.subtle,
+  }
+})
