@@ -75,6 +75,14 @@ describe('SnackBarStore', () => {
 
       expect(getSnackbars()).toHaveLength(0)
     })
+
+    it('should not remove snackbar if id is not found', () => {
+      snackBarStore.actions.open('Message', 'success')
+
+      snackBarStore.actions.close('non-existent-id')
+
+      expect(getSnackbars()).toHaveLength(1)
+    })
   })
 })
 

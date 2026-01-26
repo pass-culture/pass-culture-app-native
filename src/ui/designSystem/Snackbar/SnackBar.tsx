@@ -8,7 +8,7 @@ import { styled } from 'styled-components/native'
 
 import { SnackBarDefault } from 'ui/designSystem/Snackbar/SnackBarDefault'
 import { SnackBarLarge } from 'ui/designSystem/Snackbar/SnackBarLarge'
-import { ErrorPlain } from 'ui/svg/icons/ErrorPlain'
+import { ErrorFilled } from 'ui/svg/icons/ErrorFilled'
 import { Validate } from 'ui/svg/icons/Validate'
 
 export type SnackBarProps = {
@@ -31,12 +31,10 @@ export const SnackBar: FC<SnackBarProps> = ({ variant = 'default', ...props }) =
 
 const IconSuccess = styled(Validate).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.success,
-  color2: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.smaller,
 }))``
 
-const IconError = styled(ErrorPlain).attrs(({ theme }) => ({
+const IconError = styled(ErrorFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.error,
-  color2: theme.designSystem.color.icon.inverted,
   size: theme.icons.sizes.smaller,
 }))``

@@ -16,7 +16,7 @@ import { SnackBarWrapper } from 'ui/designSystem/Snackbar/SnackBarWrapper'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 
 const meta: Meta<typeof SnackBar> = {
-  title: 'design system/inputs/SnackBar',
+  title: 'design system/SnackBar',
   component: SnackBar,
   args: {
     label: 'Texte de la snackbar',

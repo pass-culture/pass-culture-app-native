@@ -14,8 +14,7 @@ type Snackbar = {
   animationDuration: number
 }
 
-type Id = string
-type State = { snackbars: Record<Id, Snackbar> }
+type State = { snackbars: Record<string, Snackbar> }
 
 const defaultState: State = { snackbars: {} }
 
@@ -47,7 +46,7 @@ export const snackBarStore = createStore({
         clearTimeout(timeout)
       }, animationDuration)
     },
-    close: (id: Id) => {
+    close: (id: string) => {
       set((state) => {
         if (!snackBarStore.selectors.selectById(id)) {
           return state
@@ -61,7 +60,7 @@ export const snackBarStore = createStore({
     reset: () => set(() => defaultState),
   }),
   selectors: {
-    selectById: (id: Id) => (state) => state.snackbars[id],
+    selectById: (id: string) => (state) => state.snackbars[id],
     selectSnackbarProps:
       () =>
       (state): SnackBarProps[] => {
