@@ -14,6 +14,7 @@ const defaultConfig: KnipConfig = {
     'src/ui/designSystem/RadioButtonGroup/**', // TODO(PC-37009): remove
     'src/ui/svg/CutoutVertical.tsx', // TODO(PC-35897): remove
     'src/ui/svg/StrokeVertical.tsx', // TODO(PC-35897): remove
+    'src/ui/designSystem/Snackbar/**', // TODO(PC-39606): remove
     // TODO(PC-36439): should delete those lines
     'src/features/bookings/queries/useOngoingOrEndedBookingQuery.ts',
     'src/queries/bookings/useUserHasBookingsQuery.ts',
