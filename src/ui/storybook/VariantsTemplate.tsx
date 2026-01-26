@@ -2,6 +2,7 @@ import type { StoryObj } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 import styled from 'styled-components/native'
 
+import { BackgroundColorValue, TextColorValue } from 'theme/types'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -10,7 +11,8 @@ type Variant<Props extends Record<string, unknown>> = {
   label: string
   props?: Partial<Props>
   withBackground?: boolean
-  backgroundColor?: string
+  backgroundColor?: BackgroundColorValue
+  color?: TextColorValue
   minHeight?: number
 }
 
@@ -59,7 +61,9 @@ export const VariantsTemplate = <
             minHeight={variant.minHeight}>
             <Component {...props} />
             {variant.withBackground ? (
-              <StyledBody>Le background ne fait pas partie du composant</StyledBody>
+              <StyledBody color={variant.color}>
+                Le background ne fait pas partie du composant
+              </StyledBody>
             ) : null}
           </ComponentContainer>
 
@@ -77,7 +81,7 @@ export type VariantsStory<
 
 const ComponentContainer = styled.View<{
   withBackground?: boolean
-  backgroundColor?: string
+  backgroundColor?: BackgroundColorValue
   minHeight?: number
 }>(({ withBackground, backgroundColor, minHeight, theme }) => ({
   backgroundColor: withBackground
@@ -88,8 +92,8 @@ const ComponentContainer = styled.View<{
   minHeight,
 }))
 
-const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const StyledBody = styled(Typo.BodyAccentXs)<{ color?: TextColorValue }>(({ theme, color }) => ({
   marginTop: theme.designSystem.size.spacing.m,
-  color: theme.designSystem.color.text.lockedInverted,
+  color: color ?? theme.designSystem.color.text.lockedInverted,
   fontStyle: 'italic',
 }))
