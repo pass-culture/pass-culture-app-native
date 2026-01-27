@@ -47,7 +47,6 @@ const variantConfig: Variants<typeof SelectableListItem> = [
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.brandPrimary,
-  fontSize: theme.designSystem.size.spacing.xl,
 }))
 
 export const Template: VariantsStory<typeof SelectableListItem> = {

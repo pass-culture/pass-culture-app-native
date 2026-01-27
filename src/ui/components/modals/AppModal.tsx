@@ -142,11 +142,11 @@ export const AppModal: FunctionComponent<Props> = ({
       setKeyboardHeight(0)
     },
   })
+  const SPACE_BETWEEN_HEADER_AND_CONTENT = designSystem.size.spacing.xl
 
   const scrollViewPaddingBottom = keyboardHeight || bottom
   const modalHeight = useMemo(() => {
     const SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL = 10
-    const SPACE_BETWEEN_HEADER_AND_CONTENT = designSystem.size.spacing.xl
     return (
       scrollViewContentHeight +
       scrollViewPaddingBottom +
@@ -155,7 +155,12 @@ export const AppModal: FunctionComponent<Props> = ({
       2 * MODAL_PADDING +
       SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
     )
-  }, [designSystem.size.spacing.xl, scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
+  }, [
+    scrollViewContentHeight,
+    scrollViewPaddingBottom,
+    headerHeight,
+    SPACE_BETWEEN_HEADER_AND_CONTENT,
+  ])
 
   const updateHeaderHeight = useCallback(
     ({ nativeEvent }: LayoutChangeEvent): void => {
