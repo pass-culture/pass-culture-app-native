@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { useMemo } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
@@ -97,5 +98,5 @@ const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
 
 // UX decision: align with disabled background token for the muted state
 const DisabledCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
-  color: theme.designSystem.color.background.disabled,
+  color: colorAlpha(theme.designSystem.color.text.disabled, 0.4),
 }))
