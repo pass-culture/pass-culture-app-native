@@ -25,6 +25,7 @@ const defaultConfig: KnipConfig = {
     'src/**/fixtures/**',
     'src/**/__mocks__/**',
     'src/features/offerRefacto/**',
+    'src/shared/useABSegment/**',
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
