@@ -26,8 +26,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   headlineOffersCount,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
 }) => {
@@ -36,9 +34,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
   const isVideoSectionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION)
-  const shouldShowVideoSection = enableVideoABTesting
-    ? isVideoSectionEnabled && segment === 'A'
-    : isVideoSectionEnabled
 
   const offerImages: ImageWithCredit[] = useMemo(
     () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
@@ -80,7 +75,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           chronicleVariantInfo={chronicleVariantInfo}
           onOfferPreviewPress={handlePreviewPress}
-          isVideoSectionEnabled={shouldShowVideoSection}
+          isVideoSectionEnabled={isVideoSectionEnabled}
           BodyWrapper={BodyWrapper}
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
@@ -89,8 +84,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onShowChroniclesWritersModal={onShowChroniclesWritersModal}
           hasVideoCookiesConsent={hasVideoCookiesConsent}
           onVideoConsentPress={onVideoConsentPress}
-          segment={segment}
-          enableVideoABTesting={enableVideoABTesting}
           isMultiArtistsEnabled={isMultiArtistsEnabled}
           onShowOfferArtistsModal={onShowOfferArtistsModal}>
           {comingSoonFooterHeight ? (

@@ -16,7 +16,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { NAVIGATION_METHOD } from 'shared/constants'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 
 type ValueOf<T> = T[keyof T]
 type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>
@@ -77,7 +76,6 @@ export type OfferContentProps = {
   subcategory: Subcategory
   onShowChroniclesWritersModal: () => void
   onShowOfferArtistsModal: () => void
-  segment: SegmentResult
   chronicles?: ChronicleCardData[]
   headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
@@ -85,7 +83,6 @@ export type OfferContentProps = {
   userId?: number
   hasVideoCookiesConsent?: boolean
   onVideoConsentPress: VoidFunction
-  enableVideoABTesting?: boolean
   isMultiArtistsEnabled?: boolean
 }
 

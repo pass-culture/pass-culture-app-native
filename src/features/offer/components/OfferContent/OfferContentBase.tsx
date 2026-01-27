@@ -97,8 +97,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   userId,
   hasVideoCookiesConsent,
   onVideoConsentPress,
-  segment,
-  enableVideoABTesting,
   isMultiArtistsEnabled,
   onShowOfferArtistsModal,
   children,
@@ -317,8 +315,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               placeholderImage={placeholderImage}
               imageDimensions={imageDimensions}
               offer={offer}
-              segment={segment}
-              enableVideoABTesting={enableVideoABTesting}
             />
             <OfferBody
               offer={offer}
@@ -333,7 +329,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               isVideoSectionEnabled={isVideoSectionEnabled}
               hasVideoCookiesConsent={hasVideoCookiesConsent}
               onVideoConsentPress={onVideoConsentPress}
-              enableVideoABTesting={enableVideoABTesting}
               isMultiArtistsEnabled={isMultiArtistsEnabled}
               onShowOfferArtistsModal={onShowOfferArtistsModal}>
               {theme.isDesktopViewport ? (

@@ -137,7 +137,6 @@ describe('OfferEventCardList', () => {
 
     expect(mockUseSelectedDateScreening).toHaveBeenCalledWith(
       [defaultOffer.stocks[0]],
-      'B',
       defaultOffer.isExternalBookingsDisabled
     )
   })
