@@ -51,9 +51,9 @@ const Color: FunctionComponent<ColorProps> = ({ name, color }) => {
   )
 }
 
-const ColorContainer = styled.View({
-  margin: getSpacing(5),
-})
+const ColorContainer = styled.View(({ theme }) => ({
+  margin: theme.designSystem.size.spacing.xl,
+}))
 
 const Rectangle = styled.TouchableOpacity<RectangleProps>(({ color, theme }) => ({
   height: getSpacing(15),

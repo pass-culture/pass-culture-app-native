@@ -237,7 +237,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
 }))
 
 const SingleItemContainer = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(5),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
   marginVertical: theme.designSystem.size.spacing.l,
 }))
 

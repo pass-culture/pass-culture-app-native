@@ -92,7 +92,7 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
     paddingHorizontal: theme.designSystem.size.spacing.m,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: selected ? undefined : getSpacing(5),
+    paddingLeft: selected ? undefined : theme.designSystem.size.spacing.xl,
   })
 )
 

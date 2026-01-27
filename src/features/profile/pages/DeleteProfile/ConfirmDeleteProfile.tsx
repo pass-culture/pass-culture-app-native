@@ -14,7 +14,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
@@ -108,6 +108,6 @@ const LinkInsideTextBlack = styled(LinkInsideText).attrs(({ theme }) => ({
   color: theme.designSystem.color.text.default,
 }))``
 
-const StyledBodyAccent = styled(Typo.BodyAccent)({
-  marginTop: getSpacing(5),
-})
+const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
+}))

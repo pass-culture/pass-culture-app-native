@@ -295,16 +295,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 <View
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 24,
-                        "paddingVertical": 20,
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    }
                   }
                 >
                   <Text
@@ -1631,16 +1628,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 <View
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 24,
-                        "paddingVertical": 20,
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    }
                   }
                 >
                   <Text
@@ -1828,10 +1822,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -1919,16 +1913,13 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 <View
                   nativeID="testUuidV4"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "paddingHorizontal": 24,
-                        "paddingVertical": 20,
-                      },
-                      undefined,
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 24,
+                    }
                   }
                 >
                   <Text
@@ -2116,10 +2107,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2257,10 +2248,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2398,10 +2389,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2539,10 +2530,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2681,10 +2672,10 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   <View
                     style={
                       {
-                        "paddingBottom": 20,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 20,
+                        "paddingBottom": 24,
+                        "paddingLeft": 24,
+                        "paddingRight": 24,
+                        "paddingTop": 24,
                       }
                     }
                   >
@@ -2719,7 +2710,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           style={
             {
               "alignItems": "center",
-              "paddingHorizontal": 20,
+              "paddingHorizontal": 24,
               "paddingVertical": 16,
             }
           }

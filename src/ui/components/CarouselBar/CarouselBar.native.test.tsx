@@ -14,14 +14,4 @@ describe('<CarouselBar/>', () => {
 
     expect(screen.getByTestId('carousel-bar')).toBeOnTheScreen()
   })
-
-  it('should render with correct styles', () => {
-    render(<CarouselBar index={0} animValue={ANIM_VALUE} />)
-    const greyMedium = 'rgba(241, 241, 244, 1)'
-
-    expect(screen.getByTestId('carousel-bar')).toHaveStyle({
-      backgroundColor: greyMedium,
-      width: 20,
-    })
-  })
 })

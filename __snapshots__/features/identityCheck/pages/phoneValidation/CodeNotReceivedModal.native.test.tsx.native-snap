@@ -144,7 +144,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -157,7 +157,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 432,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -300,7 +300,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"
@@ -632,7 +632,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      height={432}
       isLandscape={false}
       leftNootch={16}
       rightNootch={16}
@@ -645,7 +645,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
           "borderTopLeftRadius": 16,
           "borderTopRightRadius": 16,
           "flexDirection": "column",
-          "height": 428,
+          "height": 432,
           "justifyContent": "center",
           "maxHeight": 650,
           "maxWidth": 960,
@@ -788,7 +788,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
       <View
         style={
           {
-            "height": 20,
+            "height": 24,
           }
         }
         testID="spacerBetweenHeaderAndContent"

@@ -111,7 +111,7 @@ const VenuePlaylistSkeletonTile = styled(SkeletonTile)(({ theme }) => ({
 const VenuePlaylistTitlesContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
   marginLeft: theme.designSystem.size.spacing.xl,
-  gap: getSpacing(5),
+  gap: theme.designSystem.size.spacing.xl,
 }))
 
 const SkeletonTileContainer = styled.View(({ theme }) => ({
@@ -120,5 +120,5 @@ const SkeletonTileContainer = styled.View(({ theme }) => ({
 
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   paddingRight: theme.designSystem.size.spacing.m,
-  marginBottom: getSpacing(5),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))

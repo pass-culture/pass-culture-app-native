@@ -921,7 +921,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                   "justifyContent": "center",
                   "marginTop": 0,
                   "maxWidth": 500,
-                  "minHeight": 20,
+                  "minHeight": 24,
                   "opacity": 1,
                   "paddingBottom": 0,
                   "paddingLeft": 0,

@@ -4,7 +4,7 @@ import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const ButtonQuaternaryPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, theme, ...rest }) => {
@@ -33,7 +33,7 @@ export const ButtonQuaternaryPrimary = styledButton(AppButton).attrs<BaseButtonP
 
     return {
       ...rest,
-      inlineHeight: getSpacing(5),
+      inlineHeight: theme.designSystem.size.spacing.xl,
       icon: Icon,
       loadingIndicator: LoadingIndicator,
       title: Title,

@@ -20,7 +20,6 @@ import { getSpacing, Typo } from 'ui/theme'
 export const LOCATION_TITLE_MAX_WIDTH = getSpacing(25)
 const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
 const TOOLTIP_WIDTH = getSpacing(58)
-const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
 type Props = {
   screenOrigin: ScreenOrigin
@@ -87,12 +86,15 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
   )
 }
 
-const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth, theme }) => ({
-  position: 'absolute',
-  top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
-  right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
-  width: TOOLTIP_WIDTH,
-}))
+const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ widgetWidth, theme }) => {
+  const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = theme.designSystem.size.spacing.xl
+  return {
+    position: 'absolute',
+    top: WIDGET_HEIGHT + theme.designSystem.size.spacing.s,
+    right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
+    width: TOOLTIP_WIDTH,
+  }
+})
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   alignItems: 'center',

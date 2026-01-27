@@ -395,7 +395,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "justifyContent": "center",
                         "marginTop": 0,
                         "maxWidth": 500,
-                        "minHeight": 20,
+                        "minHeight": 24,
                         "opacity": 1,
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -1135,7 +1135,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               {
                                 "alignSelf": "center",
                                 "backgroundColor": "#f1f1f4",
-                                "height": 20,
+                                "height": 24,
                                 "marginHorizontal": 16,
                                 "width": 1,
                               }
@@ -2261,7 +2261,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     style={
                       {
                         "position": "absolute",
-                        "top": -20,
+                        "top": -24,
                       }
                     }
                   >
@@ -2473,7 +2473,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2579,7 +2579,7 @@ Instagram
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2685,7 +2685,7 @@ WhatsApp
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -2791,7 +2791,7 @@ iMessage
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -3821,7 +3821,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "justifyContent": "center",
                         "marginTop": 0,
                         "maxWidth": 500,
-                        "minHeight": 20,
+                        "minHeight": 24,
                         "opacity": 1,
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -4561,7 +4561,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               {
                                 "alignSelf": "center",
                                 "backgroundColor": "#f1f1f4",
-                                "height": 20,
+                                "height": 24,
                                 "marginHorizontal": 16,
                                 "width": 1,
                               }
@@ -5687,7 +5687,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                     style={
                       {
                         "position": "absolute",
-                        "top": -20,
+                        "top": -24,
                       }
                     }
                   >
@@ -5899,7 +5899,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6005,7 +6005,7 @@ Instagram
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6111,7 +6111,7 @@ WhatsApp
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -6217,7 +6217,7 @@ iMessage
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -7247,7 +7247,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "justifyContent": "center",
                         "marginTop": 0,
                         "maxWidth": 500,
-                        "minHeight": 20,
+                        "minHeight": 24,
                         "opacity": 1,
                         "paddingBottom": 0,
                         "paddingLeft": 0,
@@ -8823,7 +8823,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                     style={
                       {
                         "position": "absolute",
-                        "top": -20,
+                        "top": -24,
                       }
                     }
                   >
@@ -9035,7 +9035,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9141,7 +9141,7 @@ Instagram
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9247,7 +9247,7 @@ WhatsApp
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
@@ -9353,7 +9353,7 @@ iMessage
                             "flexBasis": "8.333333333333334%",
                             "flexGrow": 1,
                             "flexShrink": 0,
-                            "marginBottom": 20,
+                            "marginBottom": 24,
                             "marginHorizontal": 4,
                             "maxWidth": 76,
                           },
