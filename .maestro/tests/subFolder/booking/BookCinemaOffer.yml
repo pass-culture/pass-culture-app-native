@@ -68,12 +68,3 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Annuler ma réservation'
 
 - waitForAnimationToEnd
-
-- runFlow:
-    when:
-      visible: 'Voir le détail de l’offre'
-    commands:
-      - tapOn:
-          text: 'Voir le détail de l’offre'
-      - pressKey: back
-      - pressKey: back
