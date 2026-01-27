@@ -57,7 +57,6 @@ export enum RemoteStoreFeatureFlags {
   ENABLE_PROFILE_V2 = 'enableProfileV2',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   ENABLE_VENUES_FROM_OFFER_INDEX = 'enableVenuesFromOfferIndex',
-  ENABLE_VIDEO_AB_TESTING = 'enableVideoABTesting',
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
   SHOW_TECHNICAL_PROBLEM_BANNER = 'showTechnicalProblemBanner',
   WIP_ARTIST_PAGE = 'wipArtistPage',

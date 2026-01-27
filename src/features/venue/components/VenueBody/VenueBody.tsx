@@ -15,7 +15,6 @@ import { analytics } from 'libs/analytics/provider'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
@@ -51,7 +50,6 @@ export const VenueBody: FunctionComponent<Props> = ({
 }) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const segment = useABSegment()
 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -61,15 +59,12 @@ export const VenueBody: FunctionComponent<Props> = ({
   const SectionContainer = isLargeScreen ? View : SectionWithDivider
 
   const handleOnBeforeNavigate = (headlineOfferData: HeadlineOfferData) => {
-    triggerConsultOfferLog(
-      {
-        offerId: Number(headlineOfferData.id),
-        from: 'venue',
-        venueId: venue.id,
-        isHeadline: true,
-      },
-      segment
-    )
+    triggerConsultOfferLog({
+      offerId: Number(headlineOfferData.id),
+      from: 'venue',
+      venueId: venue.id,
+      isHeadline: true,
+    })
   }
 
   const tabPanels = {

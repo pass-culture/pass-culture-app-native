@@ -10,7 +10,6 @@ import {
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 const mapScreeningsToEventCardProps = (
@@ -19,7 +18,6 @@ const mapScreeningsToEventCardProps = (
   setBookingData: Dispatch<SetStateAction<MovieScreeningBookingData | undefined>>,
   currency: Currency,
   euroToPacificFrancRate: number,
-  segment: SegmentResult,
   onPressOfferCTA?: () => void,
   movieScreeningUserData?: MovieScreeningUserData,
   isExternalBookingsDisabled = false
@@ -97,7 +95,6 @@ const mapScreeningsToEventCardProps = (
     title: formatHour(beginningDatetime).replace(':', 'h'),
     subtitleLeft,
     subtitleRight,
-    segment,
   }
 }
 
@@ -109,7 +106,6 @@ export const convertToMinutes = (time: string): number => {
 
 export const useSelectedDateScreening = (
   selectedScreeningStock: OfferStockResponse[] | undefined,
-  segment: SegmentResult,
   isExternalBookingsDisabled = false
 ) => {
   const currency = useGetCurrencyToDisplay()
@@ -133,7 +129,6 @@ export const useSelectedDateScreening = (
             setBookingData,
             currency,
             euroToPacificFrancRate,
-            segment,
             onPressOfferCTA,
             movieScreeningUserData,
             isExternalBookingsDisabled
@@ -148,7 +143,7 @@ export const useSelectedDateScreening = (
           return convertToMinutes(a.title) - convertToMinutes(b.title)
         })
     },
-    [selectedScreeningStock, currency, euroToPacificFrancRate, isExternalBookingsDisabled, segment]
+    [selectedScreeningStock, currency, euroToPacificFrancRate, isExternalBookingsDisabled]
   )
 
   return {
