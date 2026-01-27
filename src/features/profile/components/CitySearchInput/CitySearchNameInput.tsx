@@ -134,9 +134,6 @@ export const CitySearchNameInput = ({
             </StyledView>
           )}
         />
-      </Form.MaxWidth>
-
-      <React.Fragment>
         {isLoading ? <Spinner /> : null}
         <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
           <VerticalUl>
@@ -156,7 +153,7 @@ export const CitySearchNameInput = ({
             })}
           </VerticalUl>
         </CitiesContainer>
-      </React.Fragment>
+      </Form.MaxWidth>
     </React.Fragment>
   )
 }
