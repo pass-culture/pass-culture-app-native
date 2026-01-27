@@ -49,6 +49,7 @@ export const CitySearchNameInput = ({
     watch,
     setError,
     reset: resetForm,
+    setValue,
   } = useForm<CityNameForm>({
     resolver: yupResolver(object().shape({ cityName: string() })),
     defaultValues: { cityName: city?.name ?? '' },
@@ -96,6 +97,7 @@ export const CitySearchNameInput = ({
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
     onCitySelected?.(city)
+    if (city?.name) setValue('cityName', city.name)
     Keyboard.dismiss()
   }
 
