@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { getSpacing } from 'ui/theme'
 
 type GenericBannerProps = {
   LeftIcon?: ReactElement
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderStyle: 'solid',
-    borderWidth: theme.designSystem.size.spacing.xxs,
+    borderWidth: getSpacing(0.25),
     borderRadius: theme.designSystem.size.borderRadius.m,
     borderColor: theme.designSystem.color.border.default,
     padding: theme.designSystem.size.spacing.l,
