@@ -75,10 +75,11 @@ export const CitySearchNameInput = ({
 
   const onSubmit = useCallback(
     ({ cityName }: CityNameForm) => {
-      onCitySelected?.()
       debouncedSetCityName(cityName)
+      const city = cities.find((suggestedCity: SuggestedCity) => suggestedCity.name === cityName)
+      onCitySelected?.(city)
     },
-    [debouncedSetCityName, onCitySelected]
+    [cities, debouncedSetCityName, onCitySelected]
   )
 
   const handleCityNameChange = (cityName: string) => {
