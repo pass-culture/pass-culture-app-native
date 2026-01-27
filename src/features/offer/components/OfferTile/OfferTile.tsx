@@ -11,7 +11,6 @@ import { useLocation } from 'libs/location/location'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { NAVIGATION_METHOD } from 'shared/constants'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -43,7 +42,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
-  const segment = useABSegment()
 
   const { offerId, name, date, price, categoryId, thumbUrl, offerLocation, subcategoryId } = props
 
@@ -73,23 +71,20 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   }, [offer, prePopulateOffer])
 
   function handlePressOffer() {
-    triggerConsultOfferLog(
-      {
-        ...apiRecoParams,
-        offerId,
-        from: fromOfferId ? 'similar_offer' : analyticsFrom,
-        moduleName,
-        moduleId,
-        venueId,
-        homeEntryId,
-        fromOfferId,
-        playlistType,
-        searchId,
-        index,
-        artistName,
-      },
-      segment
-    )
+    triggerConsultOfferLog({
+      ...apiRecoParams,
+      offerId,
+      from: fromOfferId ? 'similar_offer' : analyticsFrom,
+      moduleName,
+      moduleId,
+      venueId,
+      homeEntryId,
+      fromOfferId,
+      playlistType,
+      searchId,
+      index,
+      artistName,
+    })
   }
 
   return (

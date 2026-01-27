@@ -142,10 +142,10 @@ describe('getEndedBookingItemProperties', () => {
           name: initialBooking.stock.offer.name,
         })
       )
-      expect(triggerConsultOfferLog).toHaveBeenCalledWith(
-        { offerId: initialBooking.stock.offer.id, from: 'endedbookings' },
-        mockSegment
-      )
+      expect(triggerConsultOfferLog).toHaveBeenCalledWith({
+        offerId: initialBooking.stock.offer.id,
+        from: 'endedbookings',
+      })
     })
 
     it('should show error snackbar on press if disconnected', async () => {

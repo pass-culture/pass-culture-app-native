@@ -26,7 +26,6 @@ import { getOfferDates } from 'shared/date/getOfferDates'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -76,7 +75,6 @@ export const HorizontalOfferTile = ({
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const prePopulateOffer = usePrePopulateOffer()
-  const segment = useABSegment()
 
   const userPosition =
     currentRoute === 'SearchResults' &&
@@ -131,14 +129,11 @@ export const HorizontalOfferTile = ({
       offerId,
     })
 
-    triggerConsultOfferLog(
-      {
-        offerId,
+    triggerConsultOfferLog({
+      offerId,
 
-        ...analyticsParams,
-      },
-      segment
-    )
+      ...analyticsParams,
+    })
 
     if (analyticsParams.from === 'searchresults') {
       const currentQueryID = algoliaAnalyticsSelectors.selectCurrentQueryID()

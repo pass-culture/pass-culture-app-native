@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
-import { SegmentResult } from 'shared/useABSegment/useABSegment'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
@@ -18,7 +17,6 @@ export type EventCardProps = {
   isDisabled: boolean
   title: string
   subtitleLeft: string
-  segment: SegmentResult
   subtitleRight?: string
   analyticsFrom?: Referrals
 }
@@ -31,12 +29,11 @@ export const EventCard: React.FC<EventCardProps & { offerId?: number }> = ({
   subtitleRight,
   analyticsFrom,
   offerId,
-  segment,
 }) => {
   const hasSubtitleRight = !!subtitleRight
   const handleEventCardPress = () => {
     if (analyticsFrom === 'venue' && offerId !== undefined) {
-      triggerConsultOfferLog({ offerId, from: analyticsFrom }, segment)
+      triggerConsultOfferLog({ offerId, from: analyticsFrom })
     }
     onPress()
   }

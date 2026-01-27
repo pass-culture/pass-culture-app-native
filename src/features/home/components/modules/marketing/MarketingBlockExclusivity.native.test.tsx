@@ -68,7 +68,6 @@ describe('MarketingBlockExclusivity', () => {
       moduleName: 'La nuit des temps',
       offerId: '102280',
       isHeadline: false,
-      displayVideo: true,
     })
   })
 

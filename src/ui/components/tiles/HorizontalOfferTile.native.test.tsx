@@ -125,7 +125,6 @@ describe('HorizontalOfferTile component', () => {
       index: 0,
       searchId: '539b285e',
       isHeadline: false,
-      displayVideo: true,
     })
   })
 
