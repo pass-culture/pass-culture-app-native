@@ -21,6 +21,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import Animated, { LinearTransition } from 'libs/react-native-reanimated'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -218,7 +219,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               .trim()
           )
         ) {
-          analytics.logHasSearchedCinemaQuery()
+          void analytics.logHasSearchedCinemaQuery()
         }
       }
 
@@ -268,7 +269,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               <BackButton onGoBack={unfocus} />
             </StyledView>
           ) : null}
-          <FlexView>
+          <FlexView layout={LinearTransition.duration(250)}>
             <HiddenSuggestionsButton />
             <SearchInput
               label="Rechercher dans le catalogue"
@@ -321,7 +322,7 @@ const StyledView = styled.View(({ theme }) => ({
   height: theme.designSystem.size.spacing.xxxl,
 }))
 
-const FlexView = styled.View({
+const FlexView = styled(Animated.View)({
   flex: 1,
   flexDirection: 'row',
 })
