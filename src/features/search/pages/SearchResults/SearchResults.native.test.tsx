@@ -340,6 +340,14 @@ describe('<SearchResults/>', () => {
       expect(screen.queryByText('Rechercher')).not.toBeOnTheScreen()
     })
 
+    it('should not display filter button', async () => {
+      render(reactQueryProviderHOC(<SearchResults />))
+
+      await screen.findByTestId('searchInput')
+
+      expect(screen.queryByLabelText(/Voir tous les filtres/)).not.toBeOnTheScreen()
+    })
+
     it('should dismiss keyboard on scroll', async () => {
       const scrollEventBottom = {
         nativeEvent: {

@@ -839,30 +839,10 @@ describe('<OfferContent />', () => {
   })
 
   describe('Video section', () => {
-    it('should display video section when AB Testing segment is A, video and AB Testing FF activated', async () => {
+    it('should display video section when video FF activated', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
 
       renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('Vidéo')).toBeOnTheScreen()
-    })
-
-    it('should not display video section when AB Testing segment is not A, video and AB Testing FF activated', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
-      renderOfferContent({ segment: 'B' })
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.queryByText('Vidéo')).not.toBeOnTheScreen()
-    })
-
-    it('should display video section when AB Testing segment is not A, video FF activated and AB Testing FF deactivated', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFER_VIDEO_SECTION])
-
-      renderOfferContent({ segment: 'B', enableVideoABTesting: false })
 
       await screen.findByText('Réserver l’offre')
 
@@ -880,8 +860,6 @@ function renderOfferContent({
   subcategory = mockSubcategory,
   isDesktopViewport,
   chronicles,
-  segment = 'A',
-  enableVideoABTesting = true,
 }: RenderOfferContentType) {
   const subtitle = 'Membre du Book Club'
   const chroniclesData =
@@ -899,8 +877,6 @@ function renderOfferContent({
           onShowChroniclesWritersModal={jest.fn()}
           hasVideoCookiesConsent
           onVideoConsentPress={jest.fn()}
-          segment={segment}
-          enableVideoABTesting={enableVideoABTesting}
           onShowOfferArtistsModal={jest.fn()}
         />
       </NavigationContainer>

@@ -323,7 +323,6 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
-        displayVideo: true,
       })
     })
 
@@ -731,7 +730,6 @@ describe('BookingDetails', () => {
         offerId: String(offerId),
         from: 'bookings',
         isHeadline: false,
-        displayVideo: true,
       })
     })
 

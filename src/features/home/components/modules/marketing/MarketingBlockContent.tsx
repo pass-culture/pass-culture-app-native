@@ -71,9 +71,9 @@ const StyledAll = styled(All).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
 }))``
 
-const AttachedOfferCardContainer = styled.View({
-  padding: getSpacing(5),
+const AttachedOfferCardContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xl,
   position: 'absolute',
   width: '100%',
   bottom: 0,
-})
+}))

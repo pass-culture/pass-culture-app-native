@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren } from 'react'
+import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
 import { AccessibilityRole } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -81,6 +81,7 @@ type Props = PropsWithChildren<{
   withSkipAction?: () => void
   title: string
   subtitle?: string
+  buttonsSurtitle?: ReactNode
   buttonPrimary: ButtonProps
   buttonSecondary?: ButtonProps
   buttonTertiary?: ButtonProps
@@ -94,6 +95,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
   animation,
   title,
   subtitle,
+  buttonsSurtitle,
   buttonPrimary,
   buttonSecondary,
   buttonTertiary,
@@ -152,6 +154,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
         {isDesktopViewport ? null : <Spacer.Flex flex={1} />}
 
         <ButtonContainer gap={4} isLandscape={isLandscape}>
+          {buttonsSurtitle}
           {buttonPrimary.onPress ? (
             <ButtonPrimary
               key={1}

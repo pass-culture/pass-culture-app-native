@@ -5,7 +5,6 @@ import {
   LayoutChangeEvent,
   Platform,
   StyleProp,
-  StyleSheet,
   TextProps,
   View,
   ViewStyle,
@@ -127,9 +126,7 @@ export const Accordion = ({
     <React.Fragment>
       <SwitchContainer>
         {leftComponent ? (
-          <LeftComponentView style={[styles.titleContainer, titleStyle]}>
-            {leftComponent}
-          </LeftComponentView>
+          <LeftComponentView style={titleStyle}>{leftComponent}</LeftComponentView>
         ) : null}
         <StyledTouchableOpacity
           accessibilityLabel={computedAccessibilityLabel}
@@ -140,14 +137,14 @@ export const Accordion = ({
           onMouseDown={(e) => e.preventDefault()}
           {...focusProps}
           {...accessibilityProps}>
-          <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
+          <StyledTitleContainer nativeID={accordionLabelId} style={titleStyle}>
             <Title {...getHeadingAttrs(2)}>{title}</Title>
             <StyledArrowAnimatedView
               style={{ transform: [{ rotateZ: arrowAngle }] }}
               testID="accordionArrow">
               <ArrowNext />
             </StyledArrowAnimatedView>
-          </View>
+          </StyledTitleContainer>
         </StyledTouchableOpacity>
       </SwitchContainer>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
@@ -167,16 +164,14 @@ export const Accordion = ({
   )
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: getSpacing(5),
-    paddingHorizontal: getSpacing(6),
-    ...(isWeb ? { cursor: 'pointer' } : {}),
-  },
-})
+const StyledTitleContainer = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingVertical: theme.designSystem.size.spacing.xl,
+  paddingHorizontal: getSpacing(6),
+  ...(isWeb ? { cursor: 'pointer' } : {}),
+}))
 
 const StyledView = styled(View)<{ hidden: boolean }>(({ hidden }) => ({
   display: hidden ? 'none' : 'flex',
@@ -218,6 +213,6 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.default,
 }))``
 
-const LeftComponentView = styled.View(({ theme }) => ({
+const LeftComponentView = styled(StyledTitleContainer)(({ theme }) => ({
   marginRight: theme.designSystem.size.spacing.s,
 }))

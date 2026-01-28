@@ -1,5 +1,3 @@
-export {}
-
 type NotAny<T> = 0 extends 1 & T ? never : T
 
 type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N

@@ -24,6 +24,7 @@ exports[`<Favorites/> should render correctly 1`] = `
     }
   />
   <View
+    enableProfileV2={false}
     style={
       {
         "flexDirection": "row",
@@ -258,7 +259,7 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             style={
               {
-                "marginBottom": 20,
+                "marginBottom": 24,
                 "marginHorizontal": 24,
                 "marginTop": 4,
               }
@@ -667,7 +668,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -1162,7 +1163,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -1657,7 +1658,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -2152,7 +2153,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -2647,7 +2648,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -3142,7 +3143,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -3637,7 +3638,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -4132,7 +4133,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -4627,7 +4628,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",
@@ -5122,7 +5123,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               style={
                 {
-                  "marginRight": 20,
+                  "marginRight": 24,
                   "maxWidth": 280,
                   "minWidth": 120,
                   "width": "47%",

@@ -108,7 +108,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom, top, right, left } = useCustomSafeInsets()
-  const { isSmallScreen, modal, isDesktopViewport } = useTheme()
+  const { isSmallScreen, modal, isDesktopViewport, designSystem } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -142,6 +142,7 @@ export const AppModal: FunctionComponent<Props> = ({
       setKeyboardHeight(0)
     },
   })
+  const SPACE_BETWEEN_HEADER_AND_CONTENT = designSystem.size.spacing.xl
 
   const scrollViewPaddingBottom = keyboardHeight || bottom
   const modalHeight = useMemo(() => {
@@ -154,7 +155,12 @@ export const AppModal: FunctionComponent<Props> = ({
       2 * MODAL_PADDING +
       SMALL_BUFFER_TO_AVOID_UNNECESSARY_SCROLL
     )
-  }, [scrollViewContentHeight, scrollViewPaddingBottom, headerHeight])
+  }, [
+    scrollViewContentHeight,
+    scrollViewPaddingBottom,
+    headerHeight,
+    SPACE_BETWEEN_HEADER_AND_CONTENT,
+  ])
 
   const updateHeaderHeight = useCallback(
     ({ nativeEvent }: LayoutChangeEvent): void => {
@@ -309,10 +315,9 @@ const contentContainerStyle = Platform.select({
     : {},
 })
 
-const SPACE_BETWEEN_HEADER_AND_CONTENT = getSpacing(5)
-const SpacerBetweenHeaderAndContent = styled.View({
-  height: SPACE_BETWEEN_HEADER_AND_CONTENT,
-})
+const SpacerBetweenHeaderAndContent = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xl,
+}))
 
 const ScrollViewContainer = styled.View.attrs<{ backdropColor?: string }>(({ theme }) => ({
   backdropColor: theme.designSystem.color.background.overlay,

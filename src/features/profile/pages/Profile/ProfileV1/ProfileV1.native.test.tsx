@@ -42,7 +42,7 @@ import {
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
-import { Profile } from './Profile'
+import { ProfileV1 } from './ProfileV1'
 
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
@@ -114,7 +114,7 @@ jest.useFakeTimers()
 const asyncStorageGetItemSpy = jest.spyOn(AsyncStorage, 'getItem')
 const asyncStorageSetItemSpy = jest.spyOn(AsyncStorage, 'setItem')
 
-describe('Profile component', () => {
+describe('<ProfileV1 />', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   beforeAll(() => {
@@ -537,5 +537,5 @@ const defaultOptions = {
 
 function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  render(reactQueryProviderHOC(<Profile />), { wrapper })
+  render(reactQueryProviderHOC(<ProfileV1 />), { wrapper })
 }

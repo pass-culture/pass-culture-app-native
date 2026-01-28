@@ -14,7 +14,11 @@ jest.useFakeTimers()
 
 describe('LoggedOutHeader', () => {
   it('should navigate to the SignupForm page', async () => {
-    render(<LoggedOutHeader featureFlags={{ enablePassForAll: false }} />)
+    render(
+      <LoggedOutHeader
+        featureFlags={{ enablePassForAll: false, disableActivation: false, enableProfileV2: false }}
+      />
+    )
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -25,7 +29,11 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should navigate to the Login page', async () => {
-    render(<LoggedOutHeader featureFlags={{ enablePassForAll: false }} />)
+    render(
+      <LoggedOutHeader
+        featureFlags={{ enablePassForAll: false, disableActivation: false, enableProfileV2: false }}
+      />
+    )
 
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
@@ -36,7 +44,11 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte"', async () => {
-    render(<LoggedOutHeader featureFlags={{ enablePassForAll: false }} />)
+    render(
+      <LoggedOutHeader
+        featureFlags={{ enablePassForAll: false, disableActivation: false, enableProfileV2: false }}
+      />
+    )
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -46,7 +58,11 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should display subtitle with credit', () => {
-    render(<LoggedOutHeader featureFlags={{ enablePassForAll: false }} />)
+    render(
+      <LoggedOutHeader
+        featureFlags={{ enablePassForAll: false, disableActivation: false, enableProfileV2: false }}
+      />
+    )
 
     const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
@@ -54,7 +70,11 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should not display subtitle with passForAll enabled', () => {
-    render(<LoggedOutHeader featureFlags={{ enablePassForAll: true }} />)
+    render(
+      <LoggedOutHeader
+        featureFlags={{ enablePassForAll: true, disableActivation: false, enableProfileV2: false }}
+      />
+    )
 
     const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 

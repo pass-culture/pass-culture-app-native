@@ -190,7 +190,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
               style="transform: translateY(0px);"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-flexDirection-eqz5dr r-height-1ln4yuo r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
+                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-flexDirection-eqz5dr r-height-11p5hdz r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
                 data-testid="modalContainer"
               >
                 <div
@@ -240,7 +240,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-height-z80fyv"
+                  class="css-view-175oi2r r-height-1472mwg"
                   data-testid="spacerBetweenHeaderAndContent"
                 />
                 <div

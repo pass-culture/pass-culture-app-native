@@ -62,10 +62,10 @@ const BackIcon: React.FC<BackButtonProps> = (props) => {
   )
 }
 
-const BarContainer = styled.View({
+const BarContainer = styled.View(({ theme }) => ({
   flex: 1,
-  marginRight: getSpacing(5),
-})
+  marginRight: theme.designSystem.size.spacing.xl,
+}))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,

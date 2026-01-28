@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -8,13 +9,20 @@ type Props = {
   numberOfLines?: number
   subtitle?: string
   children?: React.ReactNode
+  featureFlags?: ProfileFeatureFlagsProps['featureFlags']
 }
 
-export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Props) => {
+export const PageHeader = ({
+  title,
+  numberOfLines = 1,
+  subtitle,
+  featureFlags,
+  children,
+}: Props) => {
   return (
     <React.Fragment>
-      <Spacer.TopScreen />
-      <HeaderContainer>
+      {featureFlags?.enableProfileV2 ? null : <Spacer.TopScreen />}
+      <HeaderContainer enableProfileV2={featureFlags?.enableProfileV2 ?? false}>
         <TitleContainer>
           <TitleText numberOfLines={numberOfLines}>{title}</TitleText>
           {subtitle ? <StyledBodyAccentXs>{subtitle}</StyledBodyAccentXs> : null}
@@ -25,10 +33,10 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
   )
 }
 
-const HeaderContainer = styled.View(({ theme }) => ({
+const HeaderContainer = styled.View<{ enableProfileV2: boolean }>(({ theme, enableProfileV2 }) => ({
   flexDirection: 'row',
-  marginTop: getSpacing(6),
-  marginHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: enableProfileV2 ? 0 : getSpacing(6),
+  marginHorizontal: enableProfileV2 ? 0 : theme.contentPage.marginHorizontal,
   justifyContent: 'space-between',
   zIndex: theme.zIndex.header,
 }))

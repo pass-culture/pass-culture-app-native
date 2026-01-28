@@ -63,15 +63,13 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           />
         ) : null}
         {propertiesLabels.dateLabel?.length > 0 ? (
-          <React.Fragment>
-            <SectionRow
-              title={propertiesLabels.dateLabel}
-              renderTitle={renderRowTitle}
-              type="clickable"
-              icon={Calendar}
-              accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
-            />
-          </React.Fragment>
+          <SectionRow
+            title={propertiesLabels.dateLabel}
+            renderTitle={renderRowTitle}
+            type="clickable"
+            icon={Calendar}
+            accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
+          />
         ) : null}
         {propertiesLabels.locationLabel ? (
           <SectionRow

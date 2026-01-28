@@ -28,7 +28,7 @@ exports[`EndedBookings should render correctly 1`] = `
     {
       "flexGrow": 1,
       "paddingBottom": 98,
-      "paddingHorizontal": 20,
+      "paddingHorizontal": 24,
     }
   }
   data={

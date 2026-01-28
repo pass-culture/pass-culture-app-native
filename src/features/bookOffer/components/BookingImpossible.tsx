@@ -10,7 +10,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -23,7 +22,6 @@ export const BookingImpossible: React.FC = () => {
   const favorite = useFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()
   const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSentMutation()
-  const segment = useABSegment()
 
   useEffect(() => {
     if (typeof offerId == 'undefined') return
@@ -56,7 +54,7 @@ export const BookingImpossible: React.FC = () => {
     dismissModal()
 
     const from = 'bookingimpossible'
-    triggerConsultOfferLog({ offerId, from }, segment)
+    triggerConsultOfferLog({ offerId, from })
     navigate('Offer', { id: offerId, from })
   }
 

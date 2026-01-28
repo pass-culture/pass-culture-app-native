@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { styled } from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -19,6 +20,7 @@ export const CheatcodesScreenGenericInfoPage = () => {
       illustration={MaintenanceCone}
       title="Title"
       subtitle="Subtitle"
+      buttonsSurtitle={<StyledBodyXs>Attention&nbsp;: ceci est un surtitre</StyledBodyXs>}
       buttonPrimary={{
         wording: 'ButtonPrimary',
         navigateTo: {
@@ -44,3 +46,8 @@ export const CheatcodesScreenGenericInfoPage = () => {
     </GenericInfoPage>
   )
 }
+
+const StyledBodyXs = styled(Typo.BodyXs)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.designSystem.color.text.disabled,
+}))

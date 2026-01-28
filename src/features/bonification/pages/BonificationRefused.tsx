@@ -3,6 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { styled } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -148,6 +149,12 @@ export const PAGE_CONFIG: PageConfigMap = {
 
 export function BonificationRefused() {
   const { params } = useRoute<UseRouteType<'BonificationRefused'>>()
+  const { user } = useAuthContext()
+  const showNumberOfRemainingRetries =
+    (params?.bonificationRefusedType === BonificationRefusedType.CUSTODIAN_NOT_FOUND ||
+      params?.bonificationRefusedType === BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD) &&
+    user?.remainingBonusAttempts &&
+    user?.remainingBonusAttempts <= 5
   const bonificationRefusedType =
     params?.bonificationRefusedType ?? BonificationRefusedType.CUSTODIAN_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
 
@@ -173,6 +180,14 @@ export function BonificationRefused() {
     <GenericInfoPage
       illustration={pageConfig.Illustration}
       title={pageConfig.title}
+      buttonsSurtitle={
+        showNumberOfRemainingRetries ? (
+          <StyledBodyXs>
+            Attention, il te reste&nbsp;:{' '}
+            <StyledBodyXsDark>{user?.remainingBonusAttempts} demandes</StyledBodyXsDark>
+          </StyledBodyXs>
+        ) : null
+      }
       buttonPrimary={{
         wording: pageConfig.primaryButton.wording,
         navigateTo: pageConfig.primaryButton.navigateTo,
@@ -194,3 +209,13 @@ export function BonificationRefused() {
 const CenteredBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const StyledBodyXs = styled(Typo.BodyXs)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.designSystem.color.text.disabled,
+}))
+
+const StyledBodyXsDark = styled(Typo.BodyXs)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.designSystem.color.text.default,
+}))

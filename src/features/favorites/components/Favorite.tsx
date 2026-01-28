@@ -22,7 +22,6 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -64,7 +63,6 @@ export const Favorite: React.FC<Props> = (props) => {
   )
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const segment = useABSegment()
 
   const displayPrice = getFavoriteDisplayPrice({
     currency,
@@ -116,7 +114,7 @@ export const Favorite: React.FC<Props> = (props) => {
       offerId: offer.id,
     })
 
-    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' }, segment)
+    triggerConsultOfferLog({ offerId: offer.id, from: 'favorites' })
   }
 
   function onRemove() {

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -26,7 +26,6 @@ import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { useBookingsQuery } from 'queries/bookings'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -60,7 +59,6 @@ export const BookingDetailsContent = ({
 }) => {
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const netInfo = useNetInfoContext()
-  const segment = useABSegment()
 
   const prePopulateOffer = usePrePopulateOffer()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -85,19 +83,22 @@ export const BookingDetailsContent = ({
   // Allows to display a message in case of refresh specifying the cancellation
   // of the reservation being consulted if it is made via Flask Admin
   // and booking is not archived
-  const cancellationConsultedBooking: BookingReponse[] = endedBookings.filter(
+  const cancellationConsultedBooking = endedBookings.find(
     (item: BookingReponse) => item.id === paramsId && !isEligibleBookingsForArchive(item)
   )
-  const nameCanceledBooking = cancellationConsultedBooking[0]?.stock.offer.name
+  const nameCanceledBooking = cancellationConsultedBooking?.stock.offer.name
 
-  if (nameCanceledBooking) {
+  useEffect(() => {
+    if (!nameCanceledBooking) return
+
     showInfoSnackBar({
       message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
 
     navigate('Bookings')
-  }
+  }, [nameCanceledBooking, navigate, showInfoSnackBar])
+
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
@@ -131,7 +132,7 @@ export const BookingDetailsContent = ({
         offerId: offer.id,
       })
 
-      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' }, segment)
+      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
     } else {
       showErrorSnackBar({
         message:

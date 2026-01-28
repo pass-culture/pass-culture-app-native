@@ -75,7 +75,6 @@ const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   subcategory: mockSubcategory,
   isOfferAtSameAddressAsVenue: true,
-  segment: 'A',
 }
 
 const DEFAULT_USER_LOCATION = { latitude: 5, longitude: -52 }
@@ -317,7 +316,6 @@ describe('<OfferPlace />', () => {
       fromMultivenueOfferId: '146112',
       offerId: '2',
       isHeadline: false,
-      displayVideo: true,
     })
   })
 
@@ -645,7 +643,6 @@ const renderOfferPlace = ({
           subcategory={subcategory}
           distance={distance}
           isOfferAtSameAddressAsVenue
-          segment="A"
         />
       </OfferCTAProvider>
     ),

@@ -117,7 +117,6 @@ describe('EndedBookingItem', () => {
       offerId: '147874',
       from: 'endedbookings',
       isHeadline: false,
-      displayVideo: true,
     })
   })
 

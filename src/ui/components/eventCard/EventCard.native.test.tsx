@@ -14,7 +14,6 @@ describe('EventCard', () => {
     title: 'Film 1',
     subtitleLeft: '19h00',
     subtitleRight: 'VO',
-    segment: 'A',
   }
 
   describe('analytics', () => {
@@ -27,7 +26,6 @@ describe('EventCard', () => {
         offerId: '1',
         from: 'venue',
         isHeadline: false,
-        displayVideo: true,
       })
     })
 

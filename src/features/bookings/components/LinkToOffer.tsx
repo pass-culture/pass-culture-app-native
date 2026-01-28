@@ -5,7 +5,6 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useABSegment } from 'shared/useABSegment/useABSegment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -21,7 +20,6 @@ export const LinkToOffer = ({
   const netInfo = useNetInfoContext()
   const prePopulateOffer = usePrePopulateOffer()
   const { showErrorSnackBar } = useSnackBarContext()
-  const segment = useABSegment()
 
   const onNavigateToOfferPress = () => {
     if (netInfo.isConnected) {
@@ -33,7 +31,7 @@ export const LinkToOffer = ({
         offerId: offer.id,
       })
 
-      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' }, segment)
+      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
     } else {
       showErrorSnackBar({
         message:

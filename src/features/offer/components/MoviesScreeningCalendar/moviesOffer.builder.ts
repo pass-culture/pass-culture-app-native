@@ -246,6 +246,6 @@ const getEarliestDate = (stocks: OfferStockResponse[]) => {
   return stocks?.reduce((earliest, stock) => {
     if (!stock.beginningDatetime) return earliest
     const stockDate = new Date(stock.beginningDatetime).getTime()
-    return stockDate < earliest ? stockDate : earliest
+    return Math.min(stockDate, earliest)
   }, Infinity)
 }

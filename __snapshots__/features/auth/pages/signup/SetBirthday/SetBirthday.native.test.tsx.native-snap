@@ -707,7 +707,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             "width": 310,
           },
           {
-            "marginTop": 20,
+            "marginTop": 24,
           },
         ]
       }
@@ -1545,7 +1545,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             "width": 310,
           },
           {
-            "marginTop": 20,
+            "marginTop": 24,
           },
         ]
       }

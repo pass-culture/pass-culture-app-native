@@ -2,29 +2,32 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Li } from 'ui/components/Li'
+import { Section } from 'ui/components/Section'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Ul } from 'ui/components/Ul'
 
 export function SocialNetwork() {
   return (
-    <NetworkRow>
-      <NetworkRowContainer>
-        <StyledUl>
-          <Li>
-            <SocialNetworkCard network="instagram" />
-          </Li>
-          <Li>
-            <SocialNetworkCard network="x" />
-          </Li>
-          <Li>
-            <SocialNetworkCard network="tiktok" />
-          </Li>
-          <Li>
-            <SocialNetworkCard network="facebook" />
-          </Li>
-        </StyledUl>
-      </NetworkRowContainer>
-    </NetworkRow>
+    <Section title="Suivre le pass Culture">
+      <NetworkRow>
+        <NetworkRowContainer>
+          <StyledUl>
+            <Li>
+              <SocialNetworkCard network="instagram" />
+            </Li>
+            <Li>
+              <SocialNetworkCard network="x" />
+            </Li>
+            <Li>
+              <SocialNetworkCard network="tiktok" />
+            </Li>
+            <Li>
+              <SocialNetworkCard network="facebook" />
+            </Li>
+          </StyledUl>
+        </NetworkRowContainer>
+      </NetworkRow>
+    </Section>
   )
 }
 
