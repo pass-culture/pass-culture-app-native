@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { QFBonificationStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
+import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -179,6 +181,50 @@ describe('<ProfileTutorialAgeInformationCredit />', () => {
       await userEvent.press(link)
 
       expect(result.current.hasClosedBonificationBanner).toBeFalsy()
+    })
+
+    it('should navigate to the bonification funnel', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: { ...beneficiaryUser, qfBonificationStatus: QFBonificationStatus.eligible },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = await screen.findByText('Vérifier maintenant')
+      await userEvent.press(link)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: undefined,
+        screen: 'BonificationExplanations',
+      })
+    })
+
+    it('should navigate to the bonification refused', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        user: {
+          ...beneficiaryUser,
+          qfBonificationStatus: QFBonificationStatus.eligible,
+          remainingBonusAttempts: 0,
+        },
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      })
+      render(<ProfileTutorialAgeInformationCredit />)
+
+      const link = await screen.findByText('Vérifier maintenant')
+      await userEvent.press(link)
+
+      expect(navigate).toHaveBeenCalledWith('SubscriptionStackNavigator', {
+        params: {
+          bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+        },
+        screen: 'BonificationRefused',
+      })
     })
   })
 })

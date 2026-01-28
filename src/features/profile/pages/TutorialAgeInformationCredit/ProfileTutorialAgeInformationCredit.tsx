@@ -6,6 +6,7 @@ import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
+import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
@@ -60,6 +61,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
     euroToPacificFrancRate
   )
   const bonificationStatus: QFBonificationStatus | null | undefined = user?.qfBonificationStatus
+  const bonificationTooManyRetries = user?.remainingBonusAttempts === 0
   const wasBonificationReceived = bonificationStatus === QFBonificationStatus.granted
   const isEligibleToBonification = bonificationStatus !== QFBonificationStatus.not_eligible
   const { resetBannerVisibility } = useBonificationBannerVisibility()
@@ -126,7 +128,15 @@ export const ProfileTutorialAgeInformationCredit = () => {
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
             onPress={() => {
-              navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+              if (bonificationTooManyRetries) {
+                navigate(
+                  ...getSubscriptionHookConfig('BonificationRefused', {
+                    bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
+                  })
+                )
+              } else {
+                navigate(...getSubscriptionHookConfig('BonificationExplanations'))
+              }
               resetBannerVisibility()
             }}
             justifyContent="flex-start"
