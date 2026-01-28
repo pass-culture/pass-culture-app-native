@@ -65,6 +65,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
   WIP_ENABLE_ACCES_LIBRE = 'wipEnableAccesLibre',
+  WIP_ENABLE_APPLE_SSO = 'wipEnableAppleSSO',
   WIP_ENABLE_DARK_MODE = 'wipEnableDarkMode',
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GRID_LIST = 'wipEnableGridList',
