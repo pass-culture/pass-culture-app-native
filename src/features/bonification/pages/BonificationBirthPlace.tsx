@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { InseeCountry } from 'api/gen'
 import { CountryPicker } from 'features/bonification/components/CountryPicker'
-import { InseeCountry } from 'features/bonification/inseeCountries'
 import { StyledBodyXsSteps } from 'features/bonification/pages/BonificationNames'
 import { BonificationBirthPlaceSchema } from 'features/bonification/schemas/BonificationBirthPlaceSchema'
 import {
@@ -45,7 +45,7 @@ export const BonificationBirthPlace = () => {
     defaultValues: {
       birthCountrySelection: birthCountry ?? {},
       birthCity: birthCity ?? {},
-      birthCountryInput: birthCountry?.LIBCOG ?? '',
+      birthCountryInput: birthCountry?.libcog ?? '',
     },
     resolver: yupResolver(BonificationBirthPlaceSchema),
     mode: 'onChange',
@@ -56,7 +56,7 @@ export const BonificationBirthPlace = () => {
   async function saveBirthPlaceAndNavigate({ birthCountrySelection, birthCity }: FormValues) {
     if (disabled) return
     setBirthCountry(birthCountrySelection)
-    if (birthCountrySelection.LIBCOG === 'France' && birthCity) {
+    if (birthCountrySelection.libcog === 'France' && birthCity) {
       setBirthCity(birthCity)
     } else {
       setBirthCity(null)

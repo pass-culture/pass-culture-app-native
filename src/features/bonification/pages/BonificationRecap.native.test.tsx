@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'api/gen'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import { mockServer } from 'tests/mswServer'
@@ -30,7 +30,7 @@ const title = 'Monsieur'
 const firstName = 'Jean'
 const givenName = 'Dupont'
 const birthDate = '1975-10-10T00:00:00.000Z'
-const birthCountry: InseeCountry = { LIBCOG: 'Belgique', COG: 99131 }
+const birthCountry: InseeCountry = { libcog: 'Belgique', cog: 99131 }
 
 describe('BonificationRecap', () => {
   beforeEach(() => {
@@ -54,7 +54,7 @@ describe('BonificationRecap', () => {
     prepareDataAndRender(title, firstName, givenName, birthDate, birthCountry)
 
     const nameField = screen.getByText('Monsieur Jean DUPONT')
-    const countryField = screen.getByText(birthCountry.LIBCOG)
+    const countryField = screen.getByText(birthCountry.libcog)
     const birthDateField = screen.getByText(new Date(birthDate).toLocaleDateString())
 
     expect(nameField).toBeTruthy()

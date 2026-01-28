@@ -2549,6 +2549,33 @@ export enum IdentityCheckMethod {
   'ubble' = 'ubble',
 }
 /**
+ * @export
+ * @interface InseeCountries
+ */
+export interface InseeCountries {
+  /**
+   * @type {Array<InseeCountry>}
+   * @memberof InseeCountries
+   */
+  countries: Array<InseeCountry>
+}
+/**
+ * @export
+ * @interface InseeCountry
+ */
+export interface InseeCountry {
+  /**
+   * @type {number}
+   * @memberof InseeCountry
+   */
+  cog: number
+  /**
+   * @type {string}
+   * @memberof InseeCountry
+   */
+  libcog: string
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -5723,6 +5750,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_countries <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1Countries(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/countries`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_cultural_survey_questions <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -7612,6 +7657,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_countries <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1Countries(options?: any): Promise<InseeCountries> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Countries(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_cultural_survey_questions <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -8549,6 +8605,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1Categories(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Categories(options)
+  }
+  /**
+    * 
+    * @summary get_countries <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1Countries(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1Countries(options)
   }
   /**
     * 
