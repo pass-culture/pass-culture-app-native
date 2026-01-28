@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
@@ -6,9 +6,8 @@ import styled from 'styled-components/native'
 import { IdentityCheckMethod } from 'api/gen'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { parseUrlParams } from 'features/identityCheck/pages/helpers/parseUrlParams'
-import { useIdentificationUrlMutation } from 'features/identityCheck/queries/useIdentificationUrlMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { analytics } from 'libs/analytics/provider'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -18,7 +17,8 @@ import { Spacer } from 'ui/theme'
 const ORIGIN_WHITELIST = ['*']
 
 export const UbbleWebview: React.FC = () => {
-  const identificationUrl = useIdentificationUrlMutation()
+  const { params } = useRoute<UseRouteType<'UbbleWebview'>>()
+  const identificationUrl = params?.identificationUrl
   const { navigate } = useNavigation<UseNavigationType>()
 
   function onNavigationStateChange({ url }: { url: string }) {
