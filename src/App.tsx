@@ -22,7 +22,6 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
-import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
@@ -55,8 +54,7 @@ const App: FunctionComponent = function () {
   useOrientationLocked()
 
   useEffect(() => {
-    eventMonitoring.init({ enabled: !__DEV__ })
-    getIsMaestro().then((isMaestro) => isMaestro && LogBox.ignoreAllLogs())
+    void eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
   useEffect(() => {

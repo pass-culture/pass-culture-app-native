@@ -1,5 +1,4 @@
 import React from 'react'
-import { LogBox } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -13,9 +12,6 @@ jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => (
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
 
-jest.mock('libs/e2e/getIsMaestro', () => ({
-  getIsMaestro: () => Promise.resolve(true),
-}))
 jest.mock('libs/campaign/campaign')
 jest.mock('@hot-updater/react-native')
 jest.mock('react-native/Libraries/LogBox/LogBox')
@@ -65,14 +61,6 @@ describe('<App /> with mocked RootNavigator', () => {
         webClientId: 'GOOGLE_CLIENT_ID',
         offlineAccess: true,
       })
-    })
-  })
-
-  it('should disable log box when maestro tests are running', async () => {
-    renderApp()
-
-    await waitFor(() => {
-      expect(LogBox.ignoreAllLogs).toHaveBeenCalledTimes(1)
     })
   })
 })
