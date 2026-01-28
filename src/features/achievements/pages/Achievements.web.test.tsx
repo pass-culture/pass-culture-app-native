@@ -1,8 +1,7 @@
 import React from 'react'
 
+import Achievements from 'features/achievements/pages/Achievements'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
-
-import { Achievements } from './Achievements'
 
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),

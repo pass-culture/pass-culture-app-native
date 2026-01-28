@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getProfilePropConfig } from 'features/navigation/ProfileStackNavigator/getProfilePropConfig'
-import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
+import { getProfilePropConfig } from 'features/navigation/navigators/ProfileStackNavigator/getProfilePropConfig'
+import { ProfileNavigateParams } from 'features/navigation/navigators/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { Separator } from 'ui/components/Separator'
 import { Typo } from 'ui/theme'

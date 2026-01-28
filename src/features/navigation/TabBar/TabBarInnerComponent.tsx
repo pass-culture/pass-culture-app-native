@@ -3,10 +3,10 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { TabInnerComponentProps } from 'features/navigation/navigators/TabNavigator/types'
 import { menu } from 'features/navigation/TabBar/menu'
 import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
-import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
 import { Spacer } from 'ui/theme'
 

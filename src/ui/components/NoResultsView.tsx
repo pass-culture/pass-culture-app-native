@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
+import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'

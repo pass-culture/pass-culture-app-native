@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList } from 'features/navigation/navigators/RootNavigator/types'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'

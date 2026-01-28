@@ -1,4 +1,4 @@
-import { TabRouteName } from 'features/navigation/TabBar/TabStackNavigatorTypes'
+import { TabRouteName } from 'features/navigation/navigators/TabNavigator/types'
 
 export const menu: Record<
   Exclude<TabRouteName, '_DeeplinkOnlyHome1' | '_DeeplinkOnlyBookings1'>,

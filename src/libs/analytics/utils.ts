@@ -1,7 +1,7 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/SearchStackTypes'
+import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'

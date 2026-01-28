@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin } from 'features/navigation/navigators/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'

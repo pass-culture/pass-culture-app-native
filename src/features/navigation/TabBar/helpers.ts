@@ -1,5 +1,6 @@
+import { TabRouteName } from '../navigators/TabNavigator/types'
+
 import { getTabHookConfig } from './getTabHookConfig'
-import { TabRouteName } from './TabStackNavigatorTypes'
 
 export function getShouldDisplayTab({
   isLoggedIn,

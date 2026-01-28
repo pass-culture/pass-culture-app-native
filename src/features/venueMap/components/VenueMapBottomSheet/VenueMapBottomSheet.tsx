@@ -11,7 +11,7 @@ import { Directions, FlingGesture, Gesture, GestureDetector } from 'react-native
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { VenueMapOfferPlaylist } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapOfferPlaylist'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'

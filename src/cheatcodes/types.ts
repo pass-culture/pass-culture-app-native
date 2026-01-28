@@ -1,4 +1,7 @@
-import { RootScreenNames, RootStackParamList } from 'features/navigation/RootNavigator/types'
+import {
+  RootScreenNames,
+  RootStackParamList,
+} from 'features/navigation/navigators/RootNavigator/types'
 
 /**
  * A dedicated object for all navigation-related data.

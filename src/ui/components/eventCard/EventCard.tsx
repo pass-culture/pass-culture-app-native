@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { styledButton } from 'ui/components/buttons/styledButton'

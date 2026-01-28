@@ -10,7 +10,7 @@ import {
   userCompletedMovieBooking,
 } from 'features/achievements/data/AchievementData'
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
-import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useModal } from 'ui/components/modals/useModal'
 

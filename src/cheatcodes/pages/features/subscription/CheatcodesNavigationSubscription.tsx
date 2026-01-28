@@ -5,7 +5,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToCheatcodesScreen } from 'cheatcodes/components/LinkToCheatcodesScreen'
 import { CheatcodeCategory } from 'cheatcodes/types'
-import { getCheatcodesHookConfig } from 'features/navigation/CheatcodesStackNavigator/getCheatcodesHookConfig'
+import { getCheatcodesHookConfig } from 'features/navigation/navigators/CheatcodesStackNavigator/getCheatcodesHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'

@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchHookConfig } from 'features/navigation/SearchStackNavigator/getSearchHookConfig'
+import { UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
+import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'

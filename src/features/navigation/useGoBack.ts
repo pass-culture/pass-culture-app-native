@@ -2,7 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/navigators/RootNavigator/types'
 
 /**
  * Go back to the previous route in history,
@@ -11,7 +14,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
  * @param ...navigateParams - Same parameters as navigate(...) function.
  */
 export function useGoBack<RouteName extends keyof RootStackParamList>(
-  ...navigateParams: undefined extends RootStackParamList[RouteName]
+  ..._navigateParams: undefined extends RootStackParamList[RouteName]
     ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
     : [RouteName] | [RouteName, RootStackParamList[RouteName]]
 ) {
@@ -28,7 +31,7 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
       // TypeScript cannot verify that our union type matches navigate's overloaded signature
       // but the types are structurally correct - we're using the same conditional type pattern
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      popTo(navigateParams[0] as any, navigateParams[1])
+      popTo(_navigateParams[0] as any, _navigateParams[1])
     }
   }
 
@@ -43,5 +46,5 @@ export function useGoBack<RouteName extends keyof RootStackParamList>(
     return can
   }
 
-  return { goBack: customGoBack, canGoBack: customCanGoBack }
+  return { goBack, canGoBack: customCanGoBack }
 }
