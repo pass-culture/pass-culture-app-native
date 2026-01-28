@@ -301,15 +301,13 @@ const RowContainer = styled.View({
 
 const SearchInputContainer = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
   flex: 1,
 })
 
 const SearchInputA11yContainer = styled.View({
   flex: 1,
   flexDirection: 'row',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 })
 
 const StyledView = styled.View(({ theme }) => ({
