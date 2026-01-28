@@ -10,6 +10,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment/env'
+import { plural } from 'libs/plural'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -155,6 +156,7 @@ export function BonificationRefused() {
       params?.bonificationRefusedType === BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD) &&
     user?.remainingBonusAttempts &&
     user?.remainingBonusAttempts <= 5
+  const lastRemainingRetry = user?.remainingBonusAttempts == 0
   const bonificationRefusedType =
     params?.bonificationRefusedType ?? BonificationRefusedType.CUSTODIAN_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
 
@@ -182,9 +184,17 @@ export function BonificationRefused() {
       title={pageConfig.title}
       buttonsSurtitle={
         showNumberOfRemainingRetries ? (
-          <StyledBodyXs>
+          <StyledBodyXs lastRemainingRetry={lastRemainingRetry}>
             Attention, il te reste&nbsp;:{' '}
-            <StyledBodyXsDark>{user?.remainingBonusAttempts} demandes</StyledBodyXsDark>
+            <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry}>
+              {user?.remainingBonusAttempts}{' '}
+              {user?.remainingBonusAttempts
+                ? plural(user?.remainingBonusAttempts, {
+                    plural: ' demandes',
+                    singular: ' demande',
+                  })
+                : undefined}
+            </StyledBodyXsDark>
           </StyledBodyXs>
         ) : null
       }
@@ -205,17 +215,25 @@ export function BonificationRefused() {
     </GenericInfoPage>
   )
 }
-
+type StyledBodyXsProps = {
+  lastRemainingRetry?: boolean
+}
 const CenteredBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const StyledBodyXs = styled(Typo.BodyXs)(({ theme }) => ({
+const StyledBodyXs = styled(Typo.BodyXs)<StyledBodyXsProps>(({ theme, lastRemainingRetry }) => ({
   textAlign: 'center',
-  color: theme.designSystem.color.text.disabled,
+  color: lastRemainingRetry
+    ? theme.designSystem.color.text.error
+    : theme.designSystem.color.text.disabled,
 }))
 
-const StyledBodyXsDark = styled(Typo.BodyXs)(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.designSystem.color.text.default,
-}))
+const StyledBodyXsDark = styled(Typo.BodyXs)<StyledBodyXsProps>(
+  ({ theme, lastRemainingRetry }) => ({
+    textAlign: 'center',
+    color: lastRemainingRetry
+      ? theme.designSystem.color.text.error
+      : theme.designSystem.color.text.disabled,
+  })
+)

@@ -128,9 +128,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
             wording={getWording(bonificationStatus)}
             disabled={getDisabled(bonificationStatus)}
             onPress={() => {
-              console.log({ bonificationTooManyRetries })
               if (bonificationTooManyRetries) {
-                console.log('enter')
                 navigate(
                   ...getSubscriptionHookConfig('BonificationRefused', {
                     bonificationRefusedType: BonificationRefusedType.TOO_MANY_RETRIES,
