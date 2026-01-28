@@ -1,7 +1,7 @@
 import { FavoriteSortBy } from 'features/favorites/types'
 import { RadioButtonGroupOption } from 'ui/designSystem/RadioButtonGroup/types'
 
-export const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
+const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
   RECENTLY_ADDED: 'Ajouté récemment',
   ASCENDING_PRICE: 'Prix croissant',
   AROUND_ME: 'Proximité géographique',
