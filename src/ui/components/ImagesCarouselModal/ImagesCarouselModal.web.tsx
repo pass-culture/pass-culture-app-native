@@ -16,7 +16,6 @@ import { Breakpoints } from 'ui/theme/grid'
 
 const MODAL_MAX_WIDTH = Breakpoints.LG
 const MODAL_PADDING = { x: getSpacing(10), y: getSpacing(10) }
-const MODAL_HEADER_HEIGHT = getSpacing(7)
 
 type CarouselSize = { width: number; height: number }
 
@@ -43,7 +42,7 @@ export const ImagesCarouselModal = ({
   const carouselRef = useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
   const { width: windowWidth, height: windowHeight } = useWindowDimensions()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
 
   const getTitleLabel = useCallback(
     (progressValue: number) => `${Math.round(progressValue) + 1}/${imagesURL.length}`,
@@ -130,6 +129,7 @@ export const ImagesCarouselModal = ({
     }),
     [windowWidth, windowHeight]
   )
+  const MODAL_HEADER_HEIGHT = designSystem.size.spacing.xxl
 
   return (
     <AppModal

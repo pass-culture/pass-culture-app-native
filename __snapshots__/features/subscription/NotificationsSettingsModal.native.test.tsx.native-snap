@@ -490,9 +490,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -503,6 +503,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                               },
                             ]
                           }
+                          toggleWidth={32}
                         />
                       </View>
                     </View>
@@ -654,9 +655,9 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -667,6 +668,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                               },
                             ]
                           }
+                          toggleWidth={32}
                         />
                       </View>
                     </View>

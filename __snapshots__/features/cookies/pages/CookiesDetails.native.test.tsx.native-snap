@@ -350,9 +350,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -363,6 +363,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleWidth={32}
               />
             </View>
           </View>
@@ -471,9 +472,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -484,6 +485,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleWidth={32}
               />
             </View>
           </View>
@@ -817,9 +819,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -830,6 +832,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleWidth={32}
               />
             </View>
           </View>
@@ -1163,9 +1166,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -1176,6 +1179,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleWidth={32}
               />
             </View>
           </View>
@@ -1512,9 +1516,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                         "borderBottomRightRadius": 32,
                         "borderTopLeftRadius": 32,
                         "borderTopRightRadius": 32,
-                        "height": 28,
+                        "height": 32,
                         "justifyContent": "center",
-                        "width": 28,
+                        "width": 32,
                       },
                       {
                         "transform": [
@@ -1525,6 +1529,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  toggleWidth={32}
                 />
               </View>
             </View>
@@ -1815,19 +1820,20 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
                         {
-                          "translateX": 26,
+                          "translateX": 30,
                         },
                       ],
                     },
                   ]
                 }
+                toggleWidth={32}
               >
                 <View
                   height={16}

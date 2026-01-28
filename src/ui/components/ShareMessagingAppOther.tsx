@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { IconWithCaption } from 'ui/components/IconWithCaption'
 import { MessagingAppButtonContainer } from 'ui/components/ShareMessagingApp'
 import { Share } from 'ui/svg/icons/Share'
-import { getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface ShareMessagingAppOtherProps {
@@ -21,9 +20,13 @@ export const ShareMessagingAppOther: React.FC<ShareMessagingAppOtherProps> = ({ 
 
 const Icon = () => (
   <IconWrapper>
-    <Share size={getSpacing(7)} />
+    <StyledShare />
   </IconWrapper>
 )
+
+const StyledShare = styled(Share)(({ theme }) => ({
+  size: theme.designSystem.size.spacing.xxl,
+}))
 
 const IconWrapper = styled.View(({ theme }) => ({
   borderColor: theme.designSystem.color.border.subtle,

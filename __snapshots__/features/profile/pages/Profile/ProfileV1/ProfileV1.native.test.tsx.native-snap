@@ -647,19 +647,20 @@ exports[`<ProfileV1 /> should render correctly 1`] = `
                                     "borderBottomRightRadius": 32,
                                     "borderTopLeftRadius": 32,
                                     "borderTopRightRadius": 32,
-                                    "height": 28,
+                                    "height": 32,
                                     "justifyContent": "center",
-                                    "width": 28,
+                                    "width": 32,
                                   },
                                   {
                                     "transform": [
                                       {
-                                        "translateX": 26,
+                                        "translateX": 30,
                                       },
                                     ],
                                   },
                                 ]
                               }
+                              toggleWidth={32}
                             >
                               <View
                                 height={16}

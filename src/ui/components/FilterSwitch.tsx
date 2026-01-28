@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
-import styled, { DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -23,14 +23,15 @@ interface FilterSwitchProps {
   testID?: string
 }
 
-const TOGGLE_WIDTH = getSpacing(7)
-const TOGGLE_PATH_START = 2
-const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
-
 const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { toggle, active = false, disabled = false, checkboxID, testID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
+  const { designSystem } = useTheme()
+
+  const TOGGLE_WIDTH = designSystem.size.spacing.xxl
+  const TOGGLE_PATH_START = designSystem.size.spacing.xxs
+  const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
   const translateX = animatedValue.interpolate({
     inputRange: [0, 1],
@@ -73,7 +74,10 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         accessibilityState={{ checked: active }}
         accessibilityChecked={active}>
         <StyledBackgroundColor active={active}>
-          <StyledToggle style={{ transform: [{ translateX }] }} disabled={disabled}>
+          <StyledToggle
+            style={{ transform: [{ translateX }] }}
+            disabled={disabled}
+            toggleWidth={TOGGLE_WIDTH}>
             {disabled ? <Lock /> : null}
             {!!active && !disabled ? <Check /> : null}
           </StyledToggle>
@@ -100,15 +104,17 @@ const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active 
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme }) => ({
-  aspectRatio: '1',
-  width: TOGGLE_WIDTH,
-  height: getSpacing(7),
-  backgroundColor: theme.designSystem.color.background.default,
-  borderRadius: theme.designSystem.size.borderRadius.xxl,
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
+const StyledToggle = styled(Animated.View)<{ disabled: boolean; toggleWidth: number }>(
+  ({ theme, toggleWidth }) => ({
+    aspectRatio: '1',
+    width: toggleWidth,
+    height: theme.designSystem.size.spacing.xxl,
+    backgroundColor: theme.designSystem.color.background.default,
+    borderRadius: theme.designSystem.size.borderRadius.xxl,
+    alignItems: 'center',
+    justifyContent: 'center',
+  })
+)
 
 const Lock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
