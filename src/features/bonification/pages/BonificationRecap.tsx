@@ -79,7 +79,11 @@ export const BonificationRecap = () => {
     recapData.push({ title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() })
   if (birthCountry)
     recapData.push({ title: 'Pays de naissance', value: birthCountry.LIBCOG.toString() })
-  if (birthCity?.name) recapData.push({ title: 'Ville de naissance', value: birthCity?.name })
+  if (birthCity?.name)
+    recapData.push({
+      title: 'Ville de naissance',
+      value: `${birthCity?.name} (${birthCity.departementCode})`,
+    })
 
   return (
     <PageWithHeader
