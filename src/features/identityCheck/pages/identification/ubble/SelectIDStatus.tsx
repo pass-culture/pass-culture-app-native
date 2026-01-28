@@ -88,10 +88,10 @@ const SelectIDStatusContent: FunctionComponent = () => {
   )
 }
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(1),
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xs,
   marginVertical: getSpacing(8),
-})
+}))
 
 const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',

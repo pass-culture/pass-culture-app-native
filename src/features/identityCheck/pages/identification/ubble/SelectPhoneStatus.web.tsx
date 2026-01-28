@@ -52,12 +52,12 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   height: '100%',
   alignItems: 'center',
-  marginHorizontal: getSpacing(1),
+  marginHorizontal: theme.designSystem.size.spacing.xs,
   marginVertical: getSpacing(8),
-})
+}))
 
 const PhonePending = styled(InitialPhonePending).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.brandPrimary,

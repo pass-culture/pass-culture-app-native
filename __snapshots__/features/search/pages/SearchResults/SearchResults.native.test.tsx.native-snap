@@ -490,7 +490,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     "borderStyle": "solid",
                     "borderTopLeftRadius": 16,
                     "borderTopRightRadius": 16,
-                    "borderWidth": 1,
+                    "borderWidth": 2,
                   },
                   {
                     "backgroundColor": "#161617",

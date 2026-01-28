@@ -11,7 +11,7 @@ import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationFor
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   country: Country
@@ -49,12 +49,12 @@ const CountryContainer = styled(View)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   paddingVertical: theme.designSystem.size.spacing.m,
-  paddingHorizontal: getSpacing(1),
+  paddingHorizontal: theme.designSystem.size.spacing.xs,
 }))
 
 const CountryName = styled(Typo.BodyAccent)(({ theme }) => ({
   marginLeft: theme.designSystem.size.spacing.s,
-  marginRight: getSpacing(1),
+  marginRight: theme.designSystem.size.spacing.xs,
 }))
 
 const CountryCallingCode = styled(Typo.BodyAccent)(({ theme }) => ({

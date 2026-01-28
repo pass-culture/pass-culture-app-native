@@ -441,7 +441,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                             style={
                               {
                                 "borderRightColor": "#90949d",
-                                "borderRightWidth": 1,
+                                "borderRightWidth": 2,
                                 "paddingVertical": 12,
                               }
                             }

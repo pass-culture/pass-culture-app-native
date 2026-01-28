@@ -150,9 +150,10 @@ export const FavoriteHitPlaceholder = () => {
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(1),
   marginBottom: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
+
 const Row = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',

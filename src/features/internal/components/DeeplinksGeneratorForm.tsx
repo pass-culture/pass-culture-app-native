@@ -375,7 +375,7 @@ const ErrorContainer = styled(ViewGap)({
 })
 
 const ErrorText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  paddingVertical: getSpacing(1.5),
+  paddingVertical: theme.designSystem.size.spacing.s,
   color: theme.designSystem.color.text.error,
 }))
 

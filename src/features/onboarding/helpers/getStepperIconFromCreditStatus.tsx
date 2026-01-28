@@ -40,5 +40,7 @@ const ComingLock = styled(LockFilled).attrs(({ theme }) => ({
 const GoneLock = styled(LockFilled).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.disabled,
 }))({
+  // ds value does not exist yet and breaks design with spacing.s
+  // eslint-disable-next-line local-rules/no-get-spacing
   marginHorizontal: getSpacing(1.5),
 })

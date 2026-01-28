@@ -54,10 +54,10 @@ const SelectIDOriginContent: FunctionComponent = () => {
   )
 }
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(1),
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xs,
   marginVertical: getSpacing(8),
-})
+}))
 
 const StyledIconContainer = styled.View({
   alignItems: 'center',

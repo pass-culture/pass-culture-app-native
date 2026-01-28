@@ -13,7 +13,7 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { Warning } from 'ui/svg/icons/Warning'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type Age = 15 | 16 | 17 | 18
 
@@ -120,6 +120,6 @@ const Container = styled.View({
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.smaller,
-}))({
-  marginHorizontal: getSpacing(1.5),
-})
+}))(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))

@@ -474,7 +474,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     "borderColor": "#cbcdd2",
                     "borderTopLeftRadius": 16,
                     "borderTopRightRadius": 16,
-                    "borderWidth": 1,
+                    "borderWidth": 2,
                     "flexDirection": "row",
                     "flexWrap": "wrap",
                     "gap": 8,
@@ -613,7 +613,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     {
                       "alignItems": "flex-end",
                       "justifyContent": "flex-end",
-                      "marginVertical": 1,
+                      "marginVertical": 2,
                     }
                   }
                 />

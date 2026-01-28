@@ -93,7 +93,7 @@ const Container = styled.View(({ theme }) => ({
   flexDirection: 'column',
   paddingHorizontal: getSpacing(6),
   gap: theme.designSystem.size.spacing.xl,
-  marginTop: getSpacing(1),
+  marginTop: theme.designSystem.size.spacing.xs,
 }))
 
 const Separator = () => <StyledSeparator />

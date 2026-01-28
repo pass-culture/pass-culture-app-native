@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   value: number
@@ -23,17 +23,17 @@ export const Badge: FunctionComponent<Props> = ({ value, ...props }) => {
 
 const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  borderWidth: getSpacing(0.25),
+  borderWidth: theme.designSystem.size.spacing.xxs,
   borderStyle: 'solid',
   borderColor: theme.designSystem.color.border.inverted,
   borderRadius: theme.designSystem.size.borderRadius.l,
   backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
-const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE }) => ({
+const Wrapper = styled.View<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({
   minWidth: BADGE_SIZE,
   minHeight: BADGE_SIZE,
-  paddingHorizontal: getSpacing(0.5),
+  paddingHorizontal: theme.designSystem.size.spacing.xxs,
 }))
 
 const Caption = styled(Typo.BodyAccentXs)<{ BADGE_SIZE: number }>(({ BADGE_SIZE, theme }) => ({

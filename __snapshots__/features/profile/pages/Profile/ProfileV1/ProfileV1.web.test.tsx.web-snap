@@ -259,7 +259,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   </div>
                 </button>
                 <div
-                  class="css-view-175oi2r r-borderRightColor-q65h00 r-borderRightWidth-13l2t4g r-marginInline-14mg64r"
+                  class="css-view-175oi2r r-borderRightColor-q65h00 r-borderRightWidth-18p6if4 r-marginInline-14mg64r"
                 />
                 <div
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-9aw3ui r-justifyContent-1777fci"

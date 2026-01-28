@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export type SummaryInfoProps = {
   Icon: ReactElement
@@ -36,12 +36,11 @@ const IconContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.l,
 }))
 
-const TextContainer = styled.View({
+const TextContainer = styled.View(({ theme }) => ({
   flexShrink: 1,
   flexGrow: 1,
-  gap: getSpacing(1),
-})
-
+  gap: theme.designSystem.size.spacing.xs,
+}))
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))

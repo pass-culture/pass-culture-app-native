@@ -16,7 +16,7 @@ export const SearchLocationWidgetDesktopView = () => {
 }
 
 const StyledViewGap = styled(ViewGap)(({ theme }) => ({
-  marginTop: getSpacing(1) / 2,
+  marginTop: theme.designSystem.size.spacing.xxs,
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'flex-start',

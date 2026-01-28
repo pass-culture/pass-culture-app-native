@@ -14,7 +14,6 @@ import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
-import { getSpacing } from 'ui/theme'
 
 const trustedDeviceCheatcodeCategory: CheatcodeCategory = {
   id: uuidv4(),
@@ -96,7 +95,7 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
 }
 
 const BufferContainer = styled(ViewGap)(({ theme }) => ({
-  borderWidth: getSpacing(0.5),
+  borderWidth: theme.designSystem.size.spacing.xxs,
   borderColor: theme.designSystem.color.border.default,
   borderRadius: theme.designSystem.size.borderRadius.xl,
   width: theme.appContentWidth > theme.breakpoints.sm ? '50%' : '100%',
