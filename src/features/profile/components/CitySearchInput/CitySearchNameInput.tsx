@@ -30,7 +30,7 @@ type CitySearchInputProps = {
   requiredIndicator?: RequiredIndicator
 }
 
-type CityNameForm = { cityName: string }
+type CityNameForm = { cityName: string; cityDepartementCode: string }
 
 export const CitySearchNameInput = ({
   city,
@@ -52,7 +52,7 @@ export const CitySearchNameInput = ({
     setValue,
   } = useForm<CityNameForm>({
     resolver: yupResolver(object().shape({ cityName: string() })),
-    defaultValues: { cityName: city?.name ?? '' },
+    defaultValues: { cityName: city?.name ?? '', cityDepartementCode: city?.departementCode ?? '' },
   })
 
   useEffect(() => {
@@ -75,9 +75,12 @@ export const CitySearchNameInput = ({
   }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
 
   const onSubmit = useCallback(
-    ({ cityName }: CityNameForm) => {
+    ({ cityName, cityDepartementCode }: CityNameForm) => {
       debouncedSetCityName(cityName)
-      const city = cities.find((suggestedCity: SuggestedCity) => suggestedCity.name === cityName)
+      const city = cities.find(
+        (suggestedCity: SuggestedCity) =>
+          suggestedCity.name === cityName && suggestedCity.departementCode === cityDepartementCode
+      )
       onCitySelected?.(city)
     },
     [cities, debouncedSetCityName, onCitySelected]
@@ -96,13 +99,16 @@ export const CitySearchNameInput = ({
     const city = cities.find(
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
+    if (city?.name) {
+      setValue('cityName', city.name)
+      setValue('cityDepartementCode', city.departementCode)
+    }
     onCitySelected?.(city)
-    if (city?.name) setValue('cityName', city.name)
     Keyboard.dismiss()
   }
 
   const resetSearch = () => {
-    resetForm({ cityName: '' })
+    resetForm({ cityName: '', cityDepartementCode: '' })
     setCityNameQuery('')
     onCitySelected?.()
   }
