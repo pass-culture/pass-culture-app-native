@@ -186,7 +186,7 @@ const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
   textTransform: 'uppercase',
-  fontSize: getSpacing(6.5),
+  fontSize: theme.designSystem.size.spacing.xl,
   padding: theme.designSystem.size.spacing.l,
 }))
 
