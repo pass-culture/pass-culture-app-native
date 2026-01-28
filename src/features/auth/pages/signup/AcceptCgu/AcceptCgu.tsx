@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useState, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useSignupRecaptcha } from 'features/auth/helpers/useSignupRecaptcha'
 import { PreValidationSignupLastStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -26,7 +26,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   isSSOSubscription,
   signUp,
 }) => {
-  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
+  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useIsRecaptchaEnabled()
   const networkInfo = useNetInfoContext()
 
   const [isFetching, setIsFetching] = useState(false)
@@ -100,7 +100,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       setErrorMessage('Tu dois accepter les CGU et la charte des données.')
       return
     }
-    if (settings?.isRecaptchaEnabled) {
+    if (isRecaptchaEnabled) {
       openReCaptchaChallenge()
     } else {
       handleSignup('dummyToken', isChecked.marketingEmailSubscription)
@@ -109,7 +109,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     isChecked.acceptCgu,
     isChecked.acceptDataCharter,
     isChecked.marketingEmailSubscription,
-    settings?.isRecaptchaEnabled,
+    isRecaptchaEnabled,
     openReCaptchaChallenge,
     handleSignup,
   ])
@@ -124,7 +124,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
 
   return (
     <Form.MaxWidth>
-      {settings?.isRecaptchaEnabled ? (
+      {isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}

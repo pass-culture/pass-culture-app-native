@@ -2,13 +2,14 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
 import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import {
+  useGetBonificationBonusAmount,
+  useGetPacificFrancToEuroRate,
+} from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import FrenchRepublicAnimation from 'ui/animations/french_republic_animation.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -33,11 +34,11 @@ export function BonificationGranted() {
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })
 
-  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+  const { data: euroToPacificFrancRate } = useGetPacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useGetBonificationBonusAmount()
+  const formattedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
@@ -56,7 +57,7 @@ export function BonificationGranted() {
       }}>
       <React.Fragment>
         <StyledBody>
-          {bonificationAmount} ont été ajoutés à ton crédit pour explorer la culture.
+          {formattedBonificationAmount} ont été ajoutés à ton crédit pour explorer la culture.
         </StyledBody>
         <ProgressBarContainer>
           <AnimatedProgressBar
@@ -65,10 +66,11 @@ export function BonificationGranted() {
             icon={categoriesIcons.Show}
             isAnimated
           />
-          <Amount>{bonificationAmount}</Amount>
+          <Amount>{formattedBonificationAmount}</Amount>
         </ProgressBarContainer>
         <StyledBody>
-          Ton dossier est validé&nbsp;! Tu bénéficies désormais d’un bonus de {bonificationAmount}.
+          Ton dossier est validé&nbsp;! Tu bénéficies désormais d’un bonus de{' '}
+          {formattedBonificationAmount}.
         </StyledBody>
       </React.Fragment>
     </GenericInfoPage>

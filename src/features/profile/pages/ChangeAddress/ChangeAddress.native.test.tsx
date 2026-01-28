@@ -3,9 +3,6 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { SettingsResponse } from 'api/gen'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { PersonalDataTypes } from 'features/navigation/ProfileStackNavigator/enums'
 import { ChangeAddress } from 'features/profile/pages/ChangeAddress/ChangeAddress'
 import { UserProfileResponseWithoutSurvey } from 'features/share/types'
@@ -46,7 +43,6 @@ jest.useFakeTimers()
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
-    mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
       'https://api-adresse.data.gouv.fr/search',
       mockedSuggestedPlaces
@@ -192,11 +188,5 @@ describe('<SetAddress/>', () => {
 })
 
 const renderSetAddress = () => {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <ChangeAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<ChangeAddress />))
 }
