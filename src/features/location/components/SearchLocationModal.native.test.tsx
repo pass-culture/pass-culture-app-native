@@ -88,7 +88,7 @@ describe('SearchLocationModal', () => {
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
-    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    const openLocationModalButton = screen.getByText('Choisir une zone géographique')
     await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
@@ -129,7 +129,9 @@ describe('SearchLocationModal', () => {
 
     await user.press(geolocPositionButton)
 
-    expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
+    expect(screen.getByLabelText(/Utiliser ma position actuelle/)).toHaveAccessibilityState({
+      checked: true,
+    })
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
@@ -193,7 +195,7 @@ describe('SearchLocationModal', () => {
     it("should display default radius if it wasn't set previously", async () => {
       renderSearchLocationModal()
 
-      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
       await user.press(openLocationModalButton)
 
       await act(async () => {
@@ -213,7 +215,7 @@ describe('SearchLocationModal', () => {
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
-      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
       await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
@@ -256,7 +258,7 @@ describe('SearchLocationModal', () => {
         slider.props.onValuesChange([mockAroundMeRadius])
       })
 
-      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
       await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
@@ -281,7 +283,9 @@ describe('SearchLocationModal', () => {
       const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
       await user.press(geolocPositionButton)
 
-      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#6123df' })
+      expect(screen.getByLabelText(/Utiliser ma position actuelle/)).toHaveAccessibilityState({
+        checked: true,
+      })
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
@@ -319,7 +323,7 @@ describe('SearchLocationModal', () => {
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
-      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      const openLocationModalButton = screen.getByText('Choisir une zone géographique')
       await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')

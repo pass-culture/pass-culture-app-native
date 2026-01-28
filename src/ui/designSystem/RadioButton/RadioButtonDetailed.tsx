@@ -30,6 +30,7 @@ export const RadioButtonDetailed = ({
   asset,
   sizing,
   setValue,
+  accessibilityLabel,
 }: DetailedRadioProps) => {
   const selected = value === label
   const focusProps = useHandleFocus()
@@ -50,7 +51,7 @@ export const RadioButtonDetailed = ({
       sizing={sizing}
       collapsed={collapsed}
       onPress={onToggle}
-      {...accessibleRadioProps({ checked: selected, label })}
+      {...accessibleRadioProps({ checked: selected, label, accessibilityLabel })}
       {...focusProps}
       {...hoverProps}>
       <ContentContainer>
