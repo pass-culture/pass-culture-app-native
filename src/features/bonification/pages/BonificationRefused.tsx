@@ -184,7 +184,7 @@ export function BonificationRefused() {
       title={pageConfig.title}
       buttonsSurtitle={
         showNumberOfRemainingRetries ? (
-          <StyledBodyXs lastRemainingRetry={lastRemainingRetry}>
+          <StyledBodyXs>
             Attention, il te reste&nbsp;:{' '}
             <StyledBodyXsDark lastRemainingRetry={lastRemainingRetry}>
               {user?.remainingBonusAttempts}{' '}
@@ -222,11 +222,9 @@ const CenteredBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const StyledBodyXs = styled(Typo.BodyXs)<StyledBodyXsProps>(({ theme, lastRemainingRetry }) => ({
+const StyledBodyXs = styled(Typo.BodyXs)(({ theme }) => ({
   textAlign: 'center',
-  color: lastRemainingRetry
-    ? theme.designSystem.color.text.error
-    : theme.designSystem.color.text.disabled,
+  color: theme.designSystem.color.text.disabled,
 }))
 
 const StyledBodyXsDark = styled(Typo.BodyXs)<StyledBodyXsProps>(
