@@ -24,7 +24,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 
 const keyExtractor: (item: BookingListItemResponse) => string = (item) => item.id.toString()
@@ -132,10 +132,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   return (
     <React.Fragment>
       <FlatList
-        contentContainerStyle={{
-          paddingHorizontal: designSystem.size.spacing.xl,
-          ...contentContainerStyle,
-        }}
+        contentContainerStyle={contentContainerStyle(designSystem)}
         data={endedBookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
@@ -171,10 +168,11 @@ export const EndedBookings: FunctionComponent<Props> = ({ useEndedBookingsQuery 
   )
 }
 
-const contentContainerStyle = {
+const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
-}
+  paddingHorizontal: designSystem.size.spacing.xl,
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing.xxl,
+})
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.l,

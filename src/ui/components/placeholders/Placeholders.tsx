@@ -89,29 +89,35 @@ export const NumberOfBookingsPlaceholder = () => {
   )
 }
 
-export const HitPlaceholder = () => (
-  <Row gap={4}>
-    <BasePlaceholder height={imageHeight} width={imageWidth} />
-    <View>
-      <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
-      <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
-      <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-      <TextPlaceholder width={getSpacing(8)} />
-    </View>
-  </Row>
-)
+export const HitPlaceholder = () => {
+  const { designSystem } = useTheme()
+  return (
+    <Row gap={4}>
+      <BasePlaceholder height={imageHeight} width={imageWidth} />
+      <View>
+        <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
+        <TextPlaceholder width={designSystem.size.spacing.xxl} />
+      </View>
+    </Row>
+  )
+}
 
-export const BookingHitPlaceholder = () => (
-  <Row gap={4}>
-    <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
-    <View>
-      <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
-      <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
-      <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
-      <TextPlaceholder width={getSpacing(8)} marginBottom={2} />
-    </View>
-  </Row>
-)
+export const BookingHitPlaceholder = () => {
+  const { designSystem } = useTheme()
+  return (
+    <Row gap={4}>
+      <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
+      <View>
+        <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
+        <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
+        <TextPlaceholder width={designSystem.size.spacing.xxl} marginBottom={2} />
+      </View>
+    </Row>
+  )
+}
 
 export const FavoriteHitPlaceholder = () => {
   const { designSystem } = useTheme()
@@ -123,7 +129,7 @@ export const FavoriteHitPlaceholder = () => {
           <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
           <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
           <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-          <TextPlaceholder width={getSpacing(8)} />
+          <TextPlaceholder width={designSystem.size.spacing.xxl} />
         </View>
       </Row>
       <FavoriteButtonsContainer gap={0}>

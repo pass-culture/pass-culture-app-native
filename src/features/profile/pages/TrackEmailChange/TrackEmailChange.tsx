@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform, ScrollView } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -9,18 +9,18 @@ import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-const HEADER_HEIGHT = getSpacing(8)
-
 export function TrackEmailChange() {
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
+  const { designSystem } = useTheme()
+  const HEADER_HEIGHT = designSystem.size.spacing.xxl
 
   return (
     <StyledScrollViewContainer>
       <TopSpacer height={HEADER_HEIGHT + top} />
       <HeaderContainer>
         <Spacer.TopScreen />
-        <GoBackContainer>
+        <GoBackContainer height={HEADER_HEIGHT}>
           <BackButton onGoBack={goBack} />
         </GoBackContainer>
       </HeaderContainer>
@@ -42,10 +42,11 @@ const HeaderContainer = styled.View(({ theme }) => ({
   marginBottom: getSpacing(6),
 }))
 
-const GoBackContainer = styled.View({
+const GoBackContainer = styled.View<{ height: number }>(({ height }) => ({
   justifyContent: 'center',
-  height: HEADER_HEIGHT,
-})
+  height,
+}))
+
 const StyledScrollViewContainer = styled(ScrollView)({
   padding: getSpacing(6),
   overflow: 'hidden',

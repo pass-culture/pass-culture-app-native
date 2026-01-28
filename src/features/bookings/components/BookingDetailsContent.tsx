@@ -12,7 +12,6 @@ import { BookingPrecisions } from 'features/bookings/components/BookingPrecision
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { Ticket } from 'features/bookings/components/Ticket/Ticket'
 import {
-  EXTRA_ANDROID_MARGIN,
   MARGIN_TOP_TICKET,
   computeHeaderImageHeight,
 } from 'features/bookings/helpers/computeHeaderImageHeight'
@@ -41,17 +40,20 @@ export const BookingDetailsContent = ({
   mapping: SubcategoriesMapping
   user: UserProfileResponseWithoutSurvey
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, designSystem } = useTheme()
   const { height: windowHeight } = useWindowDimensions()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
   const display = properties.isEvent === true ? 'punched' : 'full'
+  const EXTRA_ANDROID_MARGIN = designSystem.size.spacing.xxl
+
   const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
     topBlockHeight,
     windowHeight,
     display,
     isAndroid: Platform.OS === 'android',
+    ticketFullMiddleHeight: designSystem.size.spacing.xxl,
+    extraAndroidMargin: EXTRA_ANDROID_MARGIN,
   })
-
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,
@@ -96,7 +98,11 @@ export const BookingDetailsContent = ({
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <StyledHeaderWithImage imageHeight={headerImageHeight} imageUrl={offer.image?.url} />
+        <StyledHeaderWithImage
+          imageHeight={headerImageHeight}
+          imageUrl={offer.image?.url}
+          extraAndroidMargin={EXTRA_ANDROID_MARGIN}
+        />
         {isDesktopViewport ? (
           <BookingDetailsContentDesktop
             headerImageHeight={headerImageHeight}
@@ -176,6 +182,8 @@ const MainContainer = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const StyledHeaderWithImage = styled(HeaderWithImage)({
-  marginBottom: MARGIN_TOP_TICKET + (Platform.OS === 'android' ? EXTRA_ANDROID_MARGIN : 0),
-})
+const StyledHeaderWithImage = styled(HeaderWithImage)<{ extraAndroidMargin: number }>(
+  ({ extraAndroidMargin }) => ({
+    marginBottom: MARGIN_TOP_TICKET + (Platform.OS === 'android' ? extraAndroidMargin : 0),
+  })
+)

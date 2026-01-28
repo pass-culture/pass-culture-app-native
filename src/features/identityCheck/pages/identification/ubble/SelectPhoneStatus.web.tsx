@@ -8,7 +8,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { NoPhone } from 'ui/svg/icons/NoPhone'
 import { PhonePending as InitialPhonePending } from 'ui/svg/icons/PhonePending'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
@@ -56,7 +56,7 @@ const Container = styled.View(({ theme }) => ({
   height: '100%',
   alignItems: 'center',
   marginHorizontal: theme.designSystem.size.spacing.xs,
-  marginVertical: getSpacing(8),
+  marginVertical: theme.designSystem.size.spacing.xxl,
 }))
 
 const PhonePending = styled(InitialPhonePending).attrs(({ theme }) => ({
