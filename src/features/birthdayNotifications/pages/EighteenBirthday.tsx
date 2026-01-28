@@ -4,8 +4,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { storage } from 'libs/storage'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import BirthdayCake from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { RoundedCardWithPicture } from 'ui/pages/RoundedCardPicture'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 
 export function EighteenBirthday() {
@@ -18,7 +18,7 @@ export function EighteenBirthday() {
 
   return (
     <GenericInfoPage
-      animation={BirthdayCake}
+      illustration={<RoundedCardWithPicture />}
       animationColoringMode="targeted"
       animationTargetShapeNames={['Fond 1', 'Gradient Fill 1']}
       title="Tu as 18 ans&nbsp;!"

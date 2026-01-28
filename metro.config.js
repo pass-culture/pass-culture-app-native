@@ -1,8 +1,9 @@
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
-const { withSentryConfig } = require("@sentry/react-native/metro");
+const { withSentryConfig } = require('@sentry/react-native/metro')
 const path = require('path')
 
 const defaultConfig = getDefaultConfig(__dirname)
+const { resolver } = defaultConfig
 
 /**
  * Metro configuration
@@ -12,6 +13,8 @@ const defaultConfig = getDefaultConfig(__dirname)
  */
 const config = {
   resolver: {
+    ...resolver,
+    assetExts: [...resolver.assetExts, 'webp', 'avif'],
     resolveRequest: (context, moduleName, platform) => {
       // Mock @vercel/oidc - this package is not compatible with React Native
       // It's a transitive dependency of instantsearch.js -> ai-sdk
