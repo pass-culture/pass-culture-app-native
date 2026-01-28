@@ -68,6 +68,52 @@ export class RequiredError extends Error {
 
 /**
  * @export
+ * @interface AccessibilityData
+ */
+export interface AccessibilityData {
+  /**
+   * @type {AudioDisability}
+   * @memberof AccessibilityData
+   */
+  audioDisability?: AudioDisability
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleAudioDisability?: boolean
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMentalDisability?: boolean
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMotorDisability?: boolean
+  /**
+   * @type {boolean}
+   * @memberof AccessibilityData
+   */
+  isAccessibleVisualDisability?: boolean
+  /**
+   * @type {MentalDisability}
+   * @memberof AccessibilityData
+   */
+  mentalDisability?: MentalDisability
+  /**
+   * @type {MotorDisability}
+   * @memberof AccessibilityData
+   */
+  motorDisability?: MotorDisability
+  /**
+   * @type {VisualDisability}
+   * @memberof AccessibilityData
+   */
+  visualDisability?: VisualDisability
+}
+/**
+ * @export
  * @interface AccountRequest
  */
 export interface AccountRequest {
@@ -310,14 +356,14 @@ export interface ArtistResponse {
 }
 /**
  * @export
- * @interface AudioDisabilityModel
+ * @interface AudioDisability
  */
-export interface AudioDisabilityModel {
+export interface AudioDisability {
   /**
    * @type {Array<string>}
-   * @memberof AudioDisabilityModel
+   * @memberof AudioDisability
    */
-  deafAndHardOfHearing?: Array<string>
+  deafAndHardOfHearing: Array<string>
 }
 /**
  * @export
@@ -370,27 +416,6 @@ export interface Banner {
    * @memberof Banner
    */
   title: string
-}
-/**
- * @export
- * @interface BannerMetaModel
- */
-export interface BannerMetaModel {
-  /**
-   * @type {string}
-   * @memberof BannerMetaModel
-   */
-  image_credit?: string | null
-  /**
-   * @type {string}
-   * @memberof BannerMetaModel
-   */
-  image_credit_url?: string | null
-  /**
-   * @type {boolean}
-   * @memberof BannerMetaModel
-   */
-  is_from_google?: boolean | null
 }
 /**
  * An enumeration.
@@ -2056,52 +2081,6 @@ export enum ExpenseDomain {
 }
 /**
  * @export
- * @interface ExternalAccessibilityDataModel
- */
-export interface ExternalAccessibilityDataModel {
-  /**
-   * @type {AudioDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  audioDisability?: AudioDisabilityModel
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleAudioDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleMentalDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleMotorDisability?: boolean
-  /**
-   * @type {boolean}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  isAccessibleVisualDisability?: boolean
-  /**
-   * @type {MentalDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  mentalDisability?: MentalDisabilityModel
-  /**
-   * @type {MotorDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  motorDisability?: MotorDisabilityModel
-  /**
-   * @type {VisualDisabilityModel}
-   * @memberof ExternalAccessibilityDataModel
-   */
-  visualDisability?: VisualDisabilityModel
-}
-/**
- * @export
  * @interface ExternalBookingDataResponseV2
  */
 export interface ExternalBookingDataResponseV2 {
@@ -2570,40 +2549,40 @@ export interface MarkAchievementsAsSeenRequest {
 }
 /**
  * @export
- * @interface MentalDisabilityModel
+ * @interface MentalDisability
  */
-export interface MentalDisabilityModel {
+export interface MentalDisability {
   /**
    * @type {string}
-   * @memberof MentalDisabilityModel
+   * @memberof MentalDisability
    */
-  trainedPersonnel?: string
+  trainedPersonnel: string
 }
 /**
  * @export
- * @interface MotorDisabilityModel
+ * @interface MotorDisability
  */
-export interface MotorDisabilityModel {
+export interface MotorDisability {
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  entrance?: string
+  entrance: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  exterior?: string
+  exterior: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  facilities?: string
+  facilities: string
   /**
    * @type {string}
-   * @memberof MotorDisabilityModel
+   * @memberof MotorDisability
    */
-  parking?: string
+  parking: string
 }
 /**
  * @export
@@ -5241,53 +5220,27 @@ export interface ValidationErrorElement {
 }
 /**
  * @export
- * @interface VenueAccessibilityModel
+ * @interface VenueContact
  */
-export interface VenueAccessibilityModel {
+export interface VenueContact {
   /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  audioDisability?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  mentalDisability?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  motorDisability?: boolean | null
-  /**
-   * @type {boolean}
-   * @memberof VenueAccessibilityModel
-   */
-  visualDisability?: boolean | null
-}
-/**
- * @export
- * @interface VenueContactModel
- */
-export interface VenueContactModel {
-  /**
-   * @type {string}
-   * @memberof VenueContactModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
   email?: string | null
-/**
-   * @type {string}
-   * @memberof VenueContactModel
- */
+  /**
+   * @type {string | null}
+   * @memberof VenueContact
+   */
   phoneNumber?: string | null
   /**
-   * @type {{ [key: string]: string; }}
-   * @memberof VenueContactModel
+   * @type { [key: string]: string; } | null}
+   * @memberof VenueContact
    */
   socialMedias?: { [key: string]: string; } | null
   /**
-   * @type {string}
-   * @memberof VenueContactModel
+   * @type {string | null}
+   * @memberof VenueContact
    */
   website?: string | null
 }
@@ -5297,50 +5250,50 @@ export interface VenueContactModel {
  */
 export interface VenueResponse {
   /**
-   * @type {VenueAccessibilityModel}
+   * @type {AccessibilityData | null}
    * @memberof VenueResponse
    */
-  accessibility: VenueAccessibilityModel
+  accessibilityData?: AccessibilityData | null
   /**
-   * @type {string}
+   * @type {Activity | null}
    * @memberof VenueResponse
    */
   activity: Activity | null
   /**
-   * @type {string | ModelNull}
+   * @type {string | null}
    * @memberof VenueResponse
    */
-  address?: string | null
+  bannerCredit?: string | null
   /**
-   * @type {BannerMetaModel}
+   * @type {boolean}
    * @memberof VenueResponse
    */
-  bannerMeta?: BannerMetaModel | null
+  bannerIsFromGoogle?: boolean
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   bannerUrl?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   city?: string | null
   /**
-   * @type {VenueContactModel}
+   * @type {VenueContact | null}
    * @memberof VenueResponse
    */
-  contact?: VenueContactModel | null
+  contact?: VenueContact | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   description?: string | null
-  /**
-   * @type {ExternalAccessibilityDataModel}
+    /**
+   * @type {AccessibilityData}
    * @memberof VenueResponse
    */
-  externalAccessibilityData?: ExternalAccessibilityDataModel | null
+  externalAccessibilityData?: AccessibilityData | null
   /**
    * @type {string}
    * @memberof VenueResponse
@@ -5365,19 +5318,14 @@ export interface VenueResponse {
    * @type {boolean}
    * @memberof VenueResponse
    */
-  isPermanent?: boolean | null
+  isPermanent: boolean
   /**
-   * @type {boolean}
-   * @memberof VenueResponse
-   */
-  isVirtual: boolean
-  /**
-   * @type {number}
+   * @type {number | null}
    * @memberof VenueResponse
    */
   latitude?: number | null
   /**
-   * @type {number}
+   * @type {number | null}
    * @memberof VenueResponse
    */
   longitude?: number | null
@@ -5387,22 +5335,17 @@ export interface VenueResponse {
    */
   name: string
   /**
-   * @type {any}
+   * @type {any | null}
    * @memberof VenueResponse
    */
   openingHours?: any | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   postalCode?: string | null
-/**
-   * @type {string}
-   * @memberof VenueResponse
- */
-  publicName?: string | null
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   street?: string | null
@@ -5412,27 +5355,26 @@ export interface VenueResponse {
    */
   timezone: string
   /**
-   * @type {string}
+   * @type {string | null}
    * @memberof VenueResponse
    */
   withdrawalDetails?: string | null
 }
 /**
-/**
  * @export
- * @interface VisualDisabilityModel
+ * @interface VisualDisability
  */
-export interface VisualDisabilityModel {
+export interface VisualDisability {
   /**
    * @type {Array<string>}
-   * @memberof VisualDisabilityModel
+   * @memberof VisualDisability
    */
-  audioDescription?: Array<string>
+  audioDescription: Array<string>
   /**
    * @type {string}
-   * @memberof VisualDisabilityModel
+   * @memberof VisualDisability
    */
-  soundBeacon?: string
+  soundBeacon: string
 }
 /**
  * @export
