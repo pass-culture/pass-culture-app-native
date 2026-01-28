@@ -211,9 +211,9 @@ const profileScreens: ProfileRouteConfig[] = [
     options: { title: 'Formulaire de suggestion' },
   },
   {
-    name: 'DisplayPreference',
+    name: 'Appearance',
     component: Appearance,
-    options: { title: 'Préférence d’affichage' },
+    options: { title: 'Apparence' },
   },
   {
     name: 'ProfileTutorialAgeInformationCredit',

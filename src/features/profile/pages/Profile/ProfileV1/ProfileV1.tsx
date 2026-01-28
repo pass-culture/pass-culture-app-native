@@ -303,7 +303,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Apparence"
                         type="navigable"
-                        navigateTo={getProfilePropConfig('DisplayPreference')}
+                        navigateTo={getProfilePropConfig('Appearance')}
                         accessibilityLabel={
                           enableDarkModeGtm && !hasSeenAppearanceTag
                             ? accessibilityLabel

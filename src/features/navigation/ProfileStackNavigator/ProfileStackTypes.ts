@@ -27,7 +27,7 @@ export type ProfileStackParamList = {
   DeleteProfileEmailHacked: undefined
   DeleteProfileReason: undefined
   DeleteProfileSuccess: undefined
-  DisplayPreference: undefined
+  Appearance: undefined
   FeedbackInApp: undefined
   LegalNotices: undefined
   NotificationsSettings: undefined
