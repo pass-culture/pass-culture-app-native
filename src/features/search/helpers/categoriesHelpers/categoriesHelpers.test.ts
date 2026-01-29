@@ -12,7 +12,6 @@ import {
   getFacetTypeFromGenreTypeKey,
   getNativeCategories,
   getNativeCategoryFromEnum,
-  getNbResultsFacetLabel,
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
   isOnlyOnline,
@@ -38,9 +37,7 @@ let mockSearchState: SearchState = {
   ...initialSearchState,
 }
 
-const mockedFacets = undefined
-
-const tree = createMappingTree(subcategoriesDataTest, mockedFacets)
+const tree = createMappingTree(subcategoriesDataTest)
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -419,32 +416,6 @@ describe('categoriesHelpers', () => {
       const result = getFacetTypeFromGenreTypeKey(GenreType.MOVIE)
 
       expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES)
-    })
-  })
-
-  describe('getNbResultsFacetLabel', () => {
-    it('should display "+10000" when the number of result facets is greater than 10000', () => {
-      const result = getNbResultsFacetLabel(10001)
-
-      expect(result).toEqual('+10000')
-    })
-
-    it('should display the exact number of result facets is less than 10000', () => {
-      const result = getNbResultsFacetLabel(5)
-
-      expect(result).toEqual('5')
-    })
-
-    it('should display "0" when the number of result facets is equal to 0', () => {
-      const result = getNbResultsFacetLabel(0)
-
-      expect(result).toEqual('0')
-    })
-
-    it('should return undefined when the number of result facets is undefined', () => {
-      const result = getNbResultsFacetLabel(undefined)
-
-      expect(result).toEqual(undefined)
     })
   })
 

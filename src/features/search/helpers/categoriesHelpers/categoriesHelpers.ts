@@ -10,7 +10,6 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
@@ -349,10 +348,9 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategoriesQuery()
-  const { facets } = useSearchResults()
   if (!searchGroup || !subcategories) return []
 
-  const tree = createMappingTree(subcategories, facets)
+  const tree = createMappingTree(subcategories)
   if (searchGroup === SearchGroupNameEnumv2.NONE || !tree[searchGroup].children) return []
 
   const nativeCategories = typedEntries(tree[searchGroup].children)
@@ -557,16 +555,6 @@ export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
     case GenreType.MOVIE:
     default:
       return FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
-  }
-}
-
-export function getNbResultsFacetLabel(nbResultsFacet?: number) {
-  if (nbResultsFacet === undefined) {
-    return undefined
-  } else if (nbResultsFacet > 10000) {
-    return '+10000'
-  } else {
-    return `${nbResultsFacet}`
   }
 }
 

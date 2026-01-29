@@ -1,15 +1,11 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { GenreType, SearchGroupNameEnumv2 } from 'api/gen'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
-import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
-import { FacetData } from 'libs/algolia/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -278,45 +274,6 @@ describe('<CategoriesModal/>', () => {
         payload: expectedSearchParams,
       })
     })
-
-    describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS])
-        // Give native categories a genreType so they have children and display as FilterRow with counts
-        mockData = {
-          ...PLACEHOLDER_DATA,
-          nativeCategories: PLACEHOLDER_DATA.nativeCategories.map((nativeCategory) =>
-            nativeCategory.name === NativeCategoryIdEnumv2.CARTES_CINEMA
-              ? { ...nativeCategory, genreType: GenreType.MOVIE }
-              : nativeCategory
-          ),
-        }
-      })
-
-      it('should display number of results on each category', () => {
-        renderCategories()
-
-        // Cartes cinéma
-        expect(screen.getByText('7')).toBeOnTheScreen()
-        // Séances de cinéma
-        expect(screen.getByText('54')).toBeOnTheScreen()
-      })
-    })
-
-    describe('When wipDisplaySearchNbFacetResults feature flag is not activated', () => {
-      beforeEach(() => {
-        setFeatureFlags()
-      })
-
-      it('should not display number of results on each category', () => {
-        renderCategories()
-
-        // Cartes cinéma
-        expect(screen.queryByText('7')).not.toBeOnTheScreen()
-        // Séances de cinéma
-        expect(screen.queryByText('54')).not.toBeOnTheScreen()
-      })
-    })
   })
 
   describe('new book native categories section', () => {
@@ -541,7 +498,6 @@ function renderCategories({
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
       onClose={onClose}
-      facets={algoliaFacets.facets as FacetData}
       {...props}
     />
   )
