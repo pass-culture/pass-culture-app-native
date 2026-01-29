@@ -423,7 +423,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                             tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
                             >
                               <div
                                 class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -1538,7 +1538,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                             tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-1pp923h r-borderBottomRightRadius-1moyyf3 r-borderTopLeftRadius-c67a83 r-borderTopRightRadius-1qk6wnv r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+                              class="css-view-175oi2r r-backgroundColor-1ru0s5g r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-1r8g8re r-justifyContent-1777fci r-width-7a29px"
                             >
                               <div
                                 class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-backgroundColor-14lw9ot r-borderBottomLeftRadius-17st2r6 r-borderBottomRightRadius-1dcumfp r-borderTopLeftRadius-1xhec65 r-borderTopRightRadius-1y08a0c r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"

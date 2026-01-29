@@ -342,15 +342,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={false}
@@ -377,7 +378,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                       },
                     ]
                   }
-                  toggleWidth={32}
+                  toggleSize={32}
                 />
               </View>
             </View>
@@ -464,15 +465,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={false}
@@ -499,7 +501,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                       },
                     ]
                   }
-                  toggleWidth={32}
+                  toggleSize={32}
                 />
               </View>
             </View>
@@ -811,15 +813,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={false}
@@ -846,7 +849,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                       },
                     ]
                   }
-                  toggleWidth={32}
+                  toggleSize={32}
                 />
               </View>
             </View>
@@ -1158,15 +1161,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={false}
@@ -1193,7 +1197,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                       },
                     ]
                   }
-                  toggleWidth={32}
+                  toggleSize={32}
                 />
               </View>
             </View>
@@ -1508,15 +1512,16 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                   style={
                     {
                       "backgroundColor": "#696a6f",
-                      "borderBottomLeftRadius": 16,
-                      "borderBottomRightRadius": 16,
-                      "borderTopLeftRadius": 16,
-                      "borderTopRightRadius": 16,
-                      "height": 32,
+                      "borderBottomLeftRadius": 32,
+                      "borderBottomRightRadius": 32,
+                      "borderTopLeftRadius": 32,
+                      "borderTopRightRadius": 32,
+                      "height": 36,
                       "justifyContent": "center",
-                      "width": 56,
+                      "width": 64,
                     }
                   }
+                  toggleSize={32}
                 >
                   <View
                     disabled={false}
@@ -1543,7 +1548,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    toggleWidth={32}
+                    toggleSize={32}
                   />
                 </View>
               </View>
@@ -1812,15 +1817,16 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                 style={
                   {
                     "backgroundColor": "#15884f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={true}
@@ -1847,7 +1853,7 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                       },
                     ]
                   }
-                  toggleWidth={32}
+                  toggleSize={32}
                 >
                   <View
                     height={16}

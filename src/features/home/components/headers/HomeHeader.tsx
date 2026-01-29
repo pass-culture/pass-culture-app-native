@@ -22,10 +22,11 @@ export const HomeHeader: FunctionComponent = function () {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const numberOfLines = useFontScaleValue({ default: 2, at200PercentZoom: 3 })
+  const height = designSystem.size.spacing.xl
+
   const Header = useMemo(() => {
     const welcomeTitle =
       user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
-    const height = designSystem.size.spacing.xl
 
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
@@ -76,12 +77,12 @@ export const HomeHeader: FunctionComponent = function () {
   }, [
     user,
     isLoggedIn,
-    designSystem.size.spacing.xl,
     isDesktopViewport,
     numberOfLines,
     availableCredit,
     currency,
     euroToPacificFrancRate,
+    height,
   ])
 
   return Header

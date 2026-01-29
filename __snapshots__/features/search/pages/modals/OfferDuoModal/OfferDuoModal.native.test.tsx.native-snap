@@ -472,15 +472,16 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={false}
@@ -507,7 +508,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       />
                     </View>
                   </View>

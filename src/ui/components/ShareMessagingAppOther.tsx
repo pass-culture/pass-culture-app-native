@@ -24,9 +24,9 @@ const Icon = () => (
   </IconWrapper>
 )
 
-const StyledShare = styled(Share)(({ theme }) => ({
+const StyledShare = styled(Share).attrs(({ theme }) => ({
   size: theme.designSystem.size.spacing.xxl,
-}))
+}))``
 
 const IconWrapper = styled.View(({ theme }) => ({
   borderColor: theme.designSystem.color.border.subtle,

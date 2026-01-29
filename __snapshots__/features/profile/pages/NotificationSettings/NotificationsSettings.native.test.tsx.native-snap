@@ -375,15 +375,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={false}
@@ -410,7 +411,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       />
                     </View>
                   </View>
@@ -552,15 +553,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={false}
@@ -587,7 +589,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       />
                     </View>
                   </View>
@@ -825,15 +827,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -860,7 +863,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -1007,15 +1010,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -1042,7 +1046,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -1181,15 +1185,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -1216,7 +1221,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -1355,15 +1360,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -1390,7 +1396,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -1529,15 +1535,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -1564,7 +1571,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -1703,15 +1710,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -1738,7 +1746,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -1877,15 +1885,16 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -1912,7 +1921,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -2498,15 +2507,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -2533,7 +2543,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -2672,15 +2682,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -2707,7 +2718,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -2892,15 +2903,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -2927,7 +2939,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -3074,15 +3086,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -3109,7 +3122,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -3248,15 +3261,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -3283,7 +3297,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -3422,15 +3436,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -3457,7 +3472,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -3596,15 +3611,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -3631,7 +3647,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -3770,15 +3786,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -3805,7 +3822,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
@@ -3944,15 +3961,16 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       style={
                         {
                           "backgroundColor": "#696a6f",
-                          "borderBottomLeftRadius": 16,
-                          "borderBottomRightRadius": 16,
-                          "borderTopLeftRadius": 16,
-                          "borderTopRightRadius": 16,
-                          "height": 32,
+                          "borderBottomLeftRadius": 32,
+                          "borderBottomRightRadius": 32,
+                          "borderTopLeftRadius": 32,
+                          "borderTopRightRadius": 32,
+                          "height": 36,
                           "justifyContent": "center",
-                          "width": 56,
+                          "width": 64,
                         }
                       }
+                      toggleSize={32}
                     >
                       <View
                         disabled={true}
@@ -3979,7 +3997,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                             },
                           ]
                         }
-                        toggleWidth={32}
+                        toggleSize={32}
                       >
                         <View
                           height={16}
