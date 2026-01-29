@@ -34,7 +34,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   })
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
-  const { bannerUrl, bannerMeta } = venue
+  const { bannerUrl, bannerIsFromGoogle, bannerCredit } = venue
 
   const distanceToVenue = getDistance(
     { lat: venue.latitude, lng: venue.longitude },
@@ -54,7 +54,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
     <TopContainer>
       <VenueBanner
         bannerUrl={bannerUrl}
-        bannerMeta={bannerMeta}
+        bannerCredit={bannerCredit}
+        bannerIsFromGoogle={bannerIsFromGoogle}
         handleImagePress={onPressBannerImage}
       />
       <MarginContainer>
@@ -127,6 +128,7 @@ const getVenue = (venue: Omit<VenueResponse, 'isVirtual'>): VenueBlockVenue => {
   return {
     ...venue,
     bannerUrl: venue.bannerUrl ?? undefined,
+    address: venue.street,
     coordinates: {},
   }
 }

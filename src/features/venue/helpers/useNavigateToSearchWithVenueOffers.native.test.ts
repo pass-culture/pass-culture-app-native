@@ -13,7 +13,7 @@ const venueSearchParamsMock: SearchState = {
     locationType: LocationMode.EVERYWHERE,
   },
   venue: {
-    label: venueDataTest.publicName || '',
+    label: venueDataTest.name || '',
     info: venueDataTest.city || '',
     _geoloc: {
       lat: venueDataTest.latitude,

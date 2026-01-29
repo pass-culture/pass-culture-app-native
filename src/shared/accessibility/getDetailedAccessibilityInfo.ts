@@ -1,9 +1,9 @@
 import {
-  AudioDisabilityModel,
-  ExternalAccessibilityDataModel,
-  MentalDisabilityModel,
-  MotorDisabilityModel,
-  VisualDisabilityModel,
+  AccessibilityData,
+  AudioDisability,
+  MentalDisability,
+  MotorDisability,
+  VisualDisability,
 } from 'api/gen'
 import {
   HandicapCategory,
@@ -22,10 +22,11 @@ const descriptionTranslations: Record<string, string> = {
 }
 
 type DisabilityModel =
-  | AudioDisabilityModel
-  | MentalDisabilityModel
-  | MotorDisabilityModel
-  | VisualDisabilityModel
+  | AudioDisability
+  | MentalDisability
+  | MotorDisability
+  | VisualDisability
+  | null
 
 const translateDescriptions = (descriptions?: DisabilityModel): Record<string, string> => {
   if (descriptions) {
@@ -40,7 +41,7 @@ const translateDescriptions = (descriptions?: DisabilityModel): Record<string, s
 }
 
 export const getDetailedAccessibilityInfo = (
-  accessibilities: ExternalAccessibilityDataModel | null | undefined
+  accessibilities: AccessibilityData | null | undefined
 ) => {
   if (accessibilities)
     return [
