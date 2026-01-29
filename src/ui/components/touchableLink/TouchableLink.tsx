@@ -93,7 +93,7 @@ export function TouchableLink({
       onBlur={onLinkBlur}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onPress={disabled ? undefined : (rest.onPress ?? handlePress)}
+      onPress={disabled ? undefined : handlePress}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
     </TouchableLinkComponent>
