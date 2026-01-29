@@ -77,8 +77,7 @@ export function AutocompleteOfferItem({
   const isNativeCategoryRelatedToSearchGroup = useMemo(() => {
     return mappedNativeCategories.some(
       (searchGroupNativeCategory) =>
-        orderedNativeCategories[0] &&
-        searchGroupNativeCategory[0] === orderedNativeCategories[0].value
+        searchGroupNativeCategory[0] === orderedNativeCategories[0]?.value
     )
   }, [mappedNativeCategories, orderedNativeCategories])
 
