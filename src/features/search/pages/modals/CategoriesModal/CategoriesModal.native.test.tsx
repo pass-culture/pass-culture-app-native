@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { GenreType, SearchGroupNameEnumv2 } from 'api/gen'
+import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
@@ -45,10 +45,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<CategoriesModal/>', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
-
   afterEach(() => {
     mockData = PLACEHOLDER_DATA
   })
