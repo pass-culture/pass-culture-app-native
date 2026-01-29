@@ -274,13 +274,43 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   }
                 >
                   <View
-                    style={
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
                       {
                         "flexBasis": 0,
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
                       }
+                    }
+                    layout={
+                      LinearTransition {
+                        "build": [Function],
+                        "durationV": 250,
+                        "randomizeDelay": false,
+                        "reduceMotionV": "system",
+                      }
+                    }
+                    nativeID="0"
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
                     }
                   >
                     <View
