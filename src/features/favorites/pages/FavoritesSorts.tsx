@@ -68,27 +68,21 @@ export const FavoritesSorts: React.FC = () => {
 
   return (
     <SecondaryPageWithBlurHeader title="Trier" onGoBack={goBack}>
-      <RadioButtonGroupContainer>
-        <RadioButtonGroup
-          label="Trier par"
-          labelVariant="title3"
-          options={sortOptions}
-          value={currentLabel}
-          onChange={handleSortChange}
-          error={hasGeolocError}
-          errorText={geolocPositionError?.message ?? ''}
-        />
-      </RadioButtonGroupContainer>
+      <RadioButtonGroup
+        label="Trier par"
+        labelVariant="title2"
+        options={sortOptions}
+        value={currentLabel}
+        onChange={handleSortChange}
+        error={hasGeolocError}
+        errorText={geolocPositionError?.message ?? ''}
+      />
       <ButtonContainer>
         <ButtonPrimary wording="Valider" onPress={onValidation} center />
       </ButtonContainer>
     </SecondaryPageWithBlurHeader>
   )
 }
-
-const RadioButtonGroupContainer = styled.View(({ theme }) => ({
-  paddingTop: theme.designSystem.size.spacing.xxxl,
-}))
 
 const ButtonContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.xl,
