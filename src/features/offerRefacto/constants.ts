@@ -2,8 +2,6 @@ import { SubcategoryIdEnumv2 } from 'api/gen'
 import { BatchEvent } from 'libs/react-native-batch'
 import { getSpacing } from 'ui/theme'
 
-export const MOVIE_CALENDAR_PADDING = getSpacing(6)
-
 export const RATIO_PORTRAIT = 2 / 3
 export const RATIO_SQUARE = 1
 

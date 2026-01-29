@@ -21,7 +21,6 @@ import { IdCard } from 'ui/svg/icons/IdCard'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Smartphone } from 'ui/svg/icons/Smartphone'
-
 type StepperInfo = {
   stepsDetails: StepExtendedDetails[]
   title: string
@@ -78,6 +77,8 @@ export const useStepperInfo = (): StepperInfo => {
     !!user?.city &&
     !!user?.activityId
 
+  const getProfileSubtitle = () => (hasUserCompletedInfo ? undefined : 'Confirme tes informations')
+
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
@@ -91,7 +92,7 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: hasUserCompletedInfo
         ? ProfileTypes.RECAP_EXISTING_DATA
         : ProfileTypes.IDENTITY_CHECK,
-      subtitle: hasUserCompletedInfo ? undefined : 'Confirme tes informations',
+      subtitle: getProfileSubtitle(),
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,

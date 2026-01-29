@@ -52,7 +52,9 @@ export const ContentHeader = ({
           </BlurNativeContainer>
         )
       }
-      <Row marginRight={RightElement ? getSpacing(6) : getSpacing(16)} marginTop={marginTopHeader}>
+      <Row
+        marginRight={RightElement ? theme.designSystem.size.spacing.xl : getSpacing(16)}
+        marginTop={marginTopHeader}>
         <RoundedButton
           animationState={animationState}
           iconName="back"
@@ -125,7 +127,7 @@ const Row = styled.View<{ marginRight: number; marginTop: number }>(
     justifyContent: 'space-between',
     marginTop,
     marginBottom: theme.designSystem.size.spacing.s,
-    marginLeft: getSpacing(6),
+    marginLeft: theme.designSystem.size.spacing.xl,
     marginRight,
   })
 )

@@ -11,7 +11,7 @@ import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -52,7 +52,8 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
         icon={ExternalSiteFilled}
         justifyContent="flex-start"
       />
-      <StyledView marginBottom={additionalCTA ? designSystem.size.spacing.s : getSpacing(6)}>
+      <StyledView
+        marginBottom={additionalCTA ? designSystem.size.spacing.s : designSystem.size.spacing.xl}>
         {additionalCTA}
       </StyledView>
       {isMailAppAvailable ? <OpenInboxButton onAdditionalPress={openInBoxAnalytics} /> : null}

@@ -550,9 +550,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -563,6 +563,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                               },
                             ]
                           }
+                          toggleWidth={32}
                         />
                       </View>
                     </View>
@@ -711,9 +712,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -724,6 +725,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                               },
                             ]
                           }
+                          toggleWidth={32}
                         />
                       </View>
                     </View>

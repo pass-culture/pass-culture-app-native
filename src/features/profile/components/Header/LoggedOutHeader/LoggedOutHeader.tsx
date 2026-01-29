@@ -8,7 +8,7 @@ import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
   void analytics.logProfilSignUp()
@@ -59,6 +59,6 @@ const Container = styled.View(({ theme }) => ({
 
 const VerticalSeparator = styled.View(({ theme }) => ({
   borderRightWidth: theme.designSystem.size.spacing.xxs,
-  marginHorizontal: getSpacing(6),
+  marginHorizontal: theme.designSystem.size.spacing.xl,
   borderRightColor: theme.designSystem.color.border.default,
 }))

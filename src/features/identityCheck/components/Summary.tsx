@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type InfoListItemProps = {
@@ -41,7 +41,7 @@ const AccessibleTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs())``
 
 const BodyContainer = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
-  paddingHorizontal: getSpacing(6),
   paddingVertical: theme.designSystem.size.spacing.xxl,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   borderRadius: theme.designSystem.size.borderRadius.m,
 }))

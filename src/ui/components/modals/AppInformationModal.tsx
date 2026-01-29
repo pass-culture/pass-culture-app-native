@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -69,8 +69,8 @@ const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: 'center',
   alignSelf: 'center',
   borderRadius: theme.designSystem.size.borderRadius.s,
-  padding: getSpacing(6),
   paddingBottom: theme.designSystem.size.spacing.xxl,
+  padding: theme.designSystem.size.spacing.xl,
   width: theme.isMobileViewport
     ? theme.appContentWidth - theme.designSystem.size.spacing.xxl
     : theme.breakpoints.sm - theme.designSystem.size.spacing.m,

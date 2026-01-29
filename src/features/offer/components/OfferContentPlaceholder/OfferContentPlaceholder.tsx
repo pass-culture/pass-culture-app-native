@@ -18,9 +18,9 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={8} />
       <BodyContainer>
         <Row>
-          <TextPlaceholder height={getSpacing(6)} width={getSpacing(22)} />
+          <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
           <Spacer.Row numberOfSpaces={2} />
-          <TextPlaceholder height={getSpacing(6)} width={getSpacing(22)} />
+          <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(22)} />
         </Row>
         <Spacer.Column numberOfSpaces={5} />
         <TextPlaceholder height={designSystem.size.spacing.l} width={getSpacing(74)} />
@@ -54,7 +54,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={2} />
         <TextPlaceholder height={designSystem.size.spacing.s} width={getSpacing(58)} />
         <Spacer.Column numberOfSpaces={6} />
-        <TextPlaceholder height={getSpacing(6)} width={getSpacing(16)} />
+        <TextPlaceholder height={designSystem.size.spacing.xl} width={getSpacing(16)} />
         <Spacer.Column numberOfSpaces={4} />
       </SectionWithDivider>
       <BodyContainer>
@@ -74,9 +74,9 @@ const ImageContainer = styled.View({
   alignItems: 'center',
 })
 
-const BodyContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-})
+const BodyContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xl,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',

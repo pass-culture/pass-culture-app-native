@@ -125,7 +125,7 @@ const Container = styled.View(({ theme }) => {
 const Content = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
-  padding: getSpacing(6),
+  padding: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.xxl,
   maxWidth: theme.contentPage.maxWidth,
 }))

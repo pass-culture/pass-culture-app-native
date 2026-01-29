@@ -13,9 +13,10 @@ import {
 describe('handleMovieCalendarScroll', () => {
   const itemWidth = 100
   const flatListWidth = 400
+  const movieCalendarPadding = 24
 
   it('should return an offset of 0 when currentIndex is 0', () => {
-    const result = handleMovieCalendarScroll(0, flatListWidth, itemWidth)
+    const result = handleMovieCalendarScroll(0, flatListWidth, itemWidth, movieCalendarPadding)
 
     expect(result.offset).toEqual(0)
   })
@@ -24,7 +25,7 @@ describe('handleMovieCalendarScroll', () => {
     // shift = 400/2 - 16 = 184
     // centerOfSelectedElement = 0 * 100 + 50 = 50
     // 50 - 184 < 0 -> doit retourner 0
-    const result = handleMovieCalendarScroll(0, flatListWidth, itemWidth)
+    const result = handleMovieCalendarScroll(0, flatListWidth, itemWidth, movieCalendarPadding)
 
     expect(result.offset).toEqual(0)
   })
@@ -37,7 +38,12 @@ describe('handleMovieCalendarScroll', () => {
     // shift = 400 / 2 - 24 = 176
     // center = 5 * 100 + 50 = 550
     // offset = 550 - 176 = 374
-    const result = handleMovieCalendarScroll(currentIndex, customFlatListWidth, customItemWidth)
+    const result = handleMovieCalendarScroll(
+      currentIndex,
+      customFlatListWidth,
+      customItemWidth,
+      movieCalendarPadding
+    )
 
     expect(result.offset).toEqual(374)
   })

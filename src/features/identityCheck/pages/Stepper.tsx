@@ -153,7 +153,7 @@ const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
 const Container = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingHorizontal: getSpacing(6),
+    paddingHorizontal: theme.designSystem.size.spacing.xl,
     paddingBottom: getSpacing(9),
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',

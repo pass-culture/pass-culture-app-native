@@ -17,7 +17,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
 import { UbbleDark } from 'ui/svg/icons/UbbleDark'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   return (
@@ -92,9 +92,9 @@ const BannerContainer = styled.View(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,
 }))
 
-const StyledSeparatorWithText = styled.View({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparatorWithText = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledExternalTouchableLinkContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',

@@ -37,7 +37,8 @@ const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme
 
 const IllustrationWrapper = styled.View<{ size: 'medium' | 'small' }>(({ size, theme }) => ({
   position: 'absolute',
-  top: size === 'medium' ? -theme.designSystem.size.spacing.xl : -getSpacing(7),
+  top:
+    size === 'medium' ? -theme.designSystem.size.spacing.xl : -theme.designSystem.size.spacing.xxl,
 }))
 
 const StyledView = styled.View<{ fillColor: BackgroundColorKey }>(({ fillColor, theme }) => ({

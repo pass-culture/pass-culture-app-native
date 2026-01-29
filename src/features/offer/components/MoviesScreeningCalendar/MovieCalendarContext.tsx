@@ -9,6 +9,7 @@ import React, {
   useState,
 } from 'react'
 import { View, ViewStyle } from 'react-native'
+import { useTheme } from 'styled-components'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { useDaysSelector } from 'features/offer/helpers/useDaysSelector/useDaysSelector'
@@ -42,17 +43,23 @@ export const MovieCalendarProvider: React.FC<{
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
   const scrollToAnchor = useScrollToAnchor()
   const [isVisible, setIsVisible] = useState<boolean>(true)
-
+  const { designSystem } = useTheme()
+  const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
-      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
+      const { offset } = handleMovieCalendarScroll(
+        currentIndex,
+        flatListWidth,
+        itemWidth,
+        MOVIE_CALENDAR_PADDING
+      )
 
       flatListRef.current?.scrollToOffset({
         animated: true,
         offset,
       })
     },
-    [flatListRef, flatListWidth, itemWidth]
+    [MOVIE_CALENDAR_PADDING, flatListWidth, itemWidth]
   )
 
   useEffect(() => {

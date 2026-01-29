@@ -75,7 +75,7 @@ const Content = styled.View(({ theme }) => ({
   alignItems: 'center',
   bottom: 0,
   backgroundColor: theme.designSystem.color.background.default,
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.xxl,
 }))
 
