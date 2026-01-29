@@ -1,5 +1,7 @@
 import React from 'react'
+import { ScrollView } from 'react-native'
 
+import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { ProfileOnline } from 'features/profile/containers/ProfileOnline/ProfileOnline'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -11,6 +13,13 @@ import { act, bottomScrollEvent, fireEvent, middleScrollEvent, render, screen } 
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
+
+const mockFavoritesState = initialFavoritesState
+jest.mock('features/favorites/context/FavoritesWrapper', () => ({
+  useFavoritesState: () => ({ ...mockFavoritesState, dispatch: jest.fn() }),
+}))
+
+jest.useFakeTimers()
 
 describe('<ProfileOnline />', () => {
   setFeatureFlags([
@@ -46,6 +55,22 @@ describe('<ProfileOnline />', () => {
     await act(async () => fireEvent.scroll(scrollContainer, bottomScrollEvent))
 
     expect(analytics.logProfilScrolledToBottom).toHaveBeenCalledTimes(1)
+  })
+
+  it('should scroll to top when user logs out', async () => {
+    mockAuthContextWithUser(beneficiaryUser)
+    await renderProfileOnline()
+
+    const scrollToSpy = jest.spyOn(ScrollView.prototype, 'scrollTo').mockImplementation(jest.fn())
+
+    mockAuthContextWithoutUser()
+    render(reactQueryProviderHOC(<ProfileOnline />))
+
+    await act(async () => jest.advanceTimersByTime(400))
+
+    expect(scrollToSpy).toHaveBeenCalledWith({ y: 0, animated: true })
+
+    scrollToSpy.mockRestore()
   })
 })
 

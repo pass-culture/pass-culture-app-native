@@ -578,6 +578,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     "width": "100%",
                   }
                 }
+                withPadding={true}
               >
                 <View
                   style={

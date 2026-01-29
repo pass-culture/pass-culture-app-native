@@ -206,6 +206,7 @@ exports[`Accessibility should render correctly 1`] = `
             "width": "100%",
           }
         }
+        withPadding={true}
       >
         <View
           style={

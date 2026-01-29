@@ -104,6 +104,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
         </RowView>
         <Spacer.Column numberOfSpaces={6} />
         <AccessibleUnorderedList
+          withPadding
           Separator={<Spacer.Column numberOfSpaces={4} />}
           items={[
             <BlockDescriptionItem
@@ -183,6 +184,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
                 text="Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire."
               />,
             ]}
+            withPadding
           />
         </React.Fragment>
       ),

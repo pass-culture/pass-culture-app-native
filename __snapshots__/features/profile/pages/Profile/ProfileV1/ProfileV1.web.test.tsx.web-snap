@@ -767,169 +767,165 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
-                  class="css-view-175oi2r r-maxWidth-1ik5qf4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-1ik5qf4 r-paddingBlock-w7s2jr r-width-13qz1uu"
                 >
-                  <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                  <ul
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                    role="list"
                   >
-                    <ul
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-                      role="list"
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
                     >
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                      <a
+                        aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                        href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
-                          href="https://www.instagram.com/passcultureofficiel/?hl=fr"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              Instagram
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Instagram
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
+                    >
+                      <a
+                        aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
+                        href="https://twitter.com/pass_Culture"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
-                          href="https://twitter.com/pass_Culture"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              X
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            X
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
+                    >
+                      <a
+                        aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                        href="https://www.tiktok.com/@passcultureofficiel"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
-                          href="https://www.tiktok.com/@passcultureofficiel"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              Tiktok
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Tiktok
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
+                    >
+                      <a
+                        aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                        href="https://www.facebook.com/passCultureofficiel/"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
-                          href="https://www.facebook.com/passCultureofficiel/"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              Facebook
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Facebook
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div
@@ -1882,169 +1878,165 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
-                  class="css-view-175oi2r r-marginBottom-1qahzrx r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1t01tom r-maxWidth-1ik5qf4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-1qahzrx r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1t01tom r-maxWidth-1ik5qf4 r-paddingBlock-w7s2jr r-width-13qz1uu"
                 >
-                  <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBlock-w7s2jr"
+                  <ul
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                    role="list"
                   >
-                    <ul
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-                      role="list"
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
                     >
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                      <a
+                        aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
+                        href="https://www.instagram.com/passcultureofficiel/?hl=fr"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager Instagram - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager Instagram - Ouvre dans une nouvelle fenêtre"
-                          href="https://www.instagram.com/passcultureofficiel/?hl=fr"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              Instagram
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Instagram
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
+                    >
+                      <a
+                        aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
+                        href="https://twitter.com/pass_Culture"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager X - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager X - Ouvre dans une nouvelle fenêtre"
-                          href="https://twitter.com/pass_Culture"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              X
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            X
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
+                    >
+                      <a
+                        aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
+                        href="https://www.tiktok.com/@passcultureofficiel"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager Tiktok - Ouvre dans une nouvelle fenêtre"
-                          href="https://www.tiktok.com/@passcultureofficiel"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              Tiktok
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Tiktok
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li
+                      class="css-view-175oi2r r-display-ixj5dj"
+                      role="listitem"
+                    >
+                      <a
+                        aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                        data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
+                        href="https://www.facebook.com/passCultureofficiel/"
+                        role="link"
+                        style="transition-duration: 0s;"
                       >
-                        <a
-                          aria-label="Partager Facebook - Ouvre dans une nouvelle fenêtre"
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="Partager Facebook - Ouvre dans une nouvelle fenêtre"
-                          href="https://www.facebook.com/passCultureofficiel/"
-                          role="link"
-                          style="transition-duration: 0s;"
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
                           >
                             <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r"
+                                class="css-text-146c3p1"
+                                dir="ltr"
                               >
-                                <div
-                                  class="css-text-146c3p1"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
+                                undefined-SVG-Mock
                               </div>
                             </div>
-                            <div
-                              class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
-                              dir="ltr"
-                            >
-                              Facebook
-                            </div>
                           </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                          <div
+                            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Facebook
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div

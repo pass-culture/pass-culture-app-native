@@ -706,6 +706,7 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                       "width": "100%",
                     }
                   }
+                  withPadding={true}
                 >
                   <View
                     style={

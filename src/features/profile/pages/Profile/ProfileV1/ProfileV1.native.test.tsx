@@ -330,7 +330,7 @@ describe('<ProfileV1 />', () => {
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: undefined,
-        screen: 'DisplayPreference',
+        screen: 'Appearance',
       })
       expect(asyncStorageSetItemSpy).toHaveBeenCalledWith('darkModeGtmAppearanceTagSeen', 'true')
 
@@ -347,7 +347,7 @@ describe('<ProfileV1 />', () => {
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: undefined,
-        screen: 'DisplayPreference',
+        screen: 'Appearance',
       })
     })
 
@@ -394,7 +394,10 @@ describe('<ProfileV1 />', () => {
       const achievementBanner = await screen.findByText('Mes succès')
       await user.press(achievementBanner)
 
-      expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        screen: 'Achievements',
+        params: { from: 'profile' },
+      })
     })
 
     it('should not display achievement section when is not beneficiary user', async () => {

@@ -15,7 +15,7 @@ describe('accessibilityList', () => {
     ({ itemList, numberOfSeparator }) => {
       const Separator = <Spacer.Column numberOfSpaces={6} testID="accessibility-list-separator" />
 
-      render(<AccessibleUnorderedList items={itemList} Separator={Separator} />)
+      render(<AccessibleUnorderedList items={itemList} Separator={Separator} withPadding />)
 
       const separatorList = screen.queryAllByTestId('accessibility-list-separator')
 
