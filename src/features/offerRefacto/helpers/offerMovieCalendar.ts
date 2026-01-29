@@ -15,7 +15,6 @@ export const handleMovieCalendarScroll = (
   itemWidth: number,
   movieCalendarPadding: number
 ) => {
-  //const MOVIE_CALENDAR_PADDING = theme.designSystem.size.spacing.xl
   const shift = flatListWidth / 2 - movieCalendarPadding
   const centerOfSelectedElement = currentIndex * itemWidth + itemWidth / 2
 

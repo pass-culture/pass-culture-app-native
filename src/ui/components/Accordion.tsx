@@ -173,7 +173,7 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
   ...(isWeb ? { cursor: 'pointer' } : {}),
 }))
 
-const StyledView = styled(View)<{ hidden: boolean }>(({ hidden }) => ({ theme }) => ({
+const StyledView = styled(View)<{ hidden: boolean }>(({ hidden, theme }) => ({
   display: hidden ? 'none' : 'flex',
   position: 'absolute',
   bottom: 0,

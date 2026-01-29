@@ -9,7 +9,6 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckFilled } from 'ui/svg/icons/CheckFilled'
 import { LockFilled } from 'ui/svg/icons/LockFilled'
-import { getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface FilterSwitchProps {
@@ -29,9 +28,9 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
   const { designSystem } = useTheme()
 
-  const TOGGLE_WIDTH = designSystem.size.spacing.xxl
+  const TOGGLE_SIZE = designSystem.size.spacing.xxl
   const TOGGLE_PATH_START = designSystem.size.spacing.xxs
-  const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
+  const TOGGLE_PATH_END = TOGGLE_SIZE - TOGGLE_PATH_START
 
   const translateX = animatedValue.interpolate({
     inputRange: [0, 1],
@@ -73,11 +72,11 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         accessibilityLabel={accessibilityLabel}
         accessibilityState={{ checked: active }}
         accessibilityChecked={active}>
-        <StyledBackgroundColor active={active}>
+        <StyledBackgroundColor active={active} toggleSize={TOGGLE_SIZE}>
           <StyledToggle
             style={{ transform: [{ translateX }] }}
             disabled={disabled}
-            toggleWidth={TOGGLE_WIDTH}>
+            toggleSize={TOGGLE_SIZE}>
             {disabled ? <Lock /> : null}
             {!!active && !disabled ? <Check /> : null}
           </StyledToggle>
@@ -94,21 +93,24 @@ const getBackgroundColor = (theme: DefaultTheme, active: boolean) => {
   return theme.designSystem.color.icon.subtle
 }
 
-const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active }) => ({
+const StyledBackgroundColor = styled.View<{
+  active: boolean
+  toggleSize: number
+}>(({ theme, active, toggleSize }) => ({
   backgroundColor: getBackgroundColor(theme, active),
-  width: getSpacing(14),
-  height: theme.designSystem.size.spacing.xxl,
-  borderRadius: theme.designSystem.size.borderRadius.l,
+  width: toggleSize * 2,
+  height: toggleSize + theme.designSystem.size.spacing.xs,
+  borderRadius: theme.designSystem.size.borderRadius.xxl,
   justifyContent: 'center',
 }))
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)<{ disabled: boolean; toggleWidth: number }>(
-  ({ theme, toggleWidth }) => ({
+const StyledToggle = styled(Animated.View)<{ disabled: boolean; toggleSize: number }>(
+  ({ theme, toggleSize }) => ({
     aspectRatio: '1',
-    width: toggleWidth,
-    height: theme.designSystem.size.spacing.xxl,
+    width: toggleSize,
+    height: toggleSize,
     backgroundColor: theme.designSystem.color.background.default,
     borderRadius: theme.designSystem.size.borderRadius.xxl,
     alignItems: 'center',
