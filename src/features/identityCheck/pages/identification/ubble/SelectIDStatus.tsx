@@ -12,7 +12,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { getSubscriptionPropConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionPropConfig'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
+import { HeroButtonListWithOnPress } from 'ui/components/buttons/HeroButtonListWithOnPress'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard as InitialIdCard } from 'ui/svg/icons/IdCard'
@@ -63,7 +63,7 @@ export const SelectIDStatus: FunctionComponent = () => {
             <Typo.Body>avec toi.</Typo.Body>
           </StyledText>
           <Spacer.Column numberOfSpaces={12} />
-          <HeroButtonList
+          <HeroButtonListWithOnPress
             accessibilityLabel={accessibilityLabel}
             Title={<Typo.BodyAccent>{title}</Typo.BodyAccent>}
             Subtitle={<Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs>}
