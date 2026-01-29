@@ -236,7 +236,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           variant="default"
         >
           <View
-            accessibilityLabel="Ajouté récemment"
+            accessibilityLabel="Trier par - Liste - Élément 1 sur 3 - Ajouté récemment - sélectionné"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -279,7 +279,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Ajouté récemment"
+            testID="Trier par - Liste - Élément 1 sur 3 - Ajouté récemment - sélectionné"
           >
             <View
               style={
@@ -381,7 +381,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Prix croissant"
+            accessibilityLabel="Trier par - Liste - Élément 2 sur 3 - Prix croissant - non sélectionné"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -424,7 +424,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Prix croissant"
+            testID="Trier par - Liste - Élément 2 sur 3 - Prix croissant - non sélectionné"
           >
             <View
               style={
@@ -498,7 +498,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
             </View>
           </View>
           <View
-            accessibilityLabel="Proximité géographique"
+            accessibilityLabel="Trier par - Liste - Élément 3 sur 3 - Proximité géographique - non sélectionné"
             accessibilityRole="radio"
             accessibilityState={
               {
@@ -541,7 +541,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Proximité géographique"
+            testID="Trier par - Liste - Élément 3 sur 3 - Proximité géographique - non sélectionné"
           >
             <View
               style={
