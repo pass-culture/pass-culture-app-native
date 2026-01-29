@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { InseeCountry } from 'features/bonification/inseeCountries'
+import { InseeCountry } from 'api/gen'
 import { BonificationRecap } from 'features/bonification/pages/BonificationRecap'
 import { legalRepresentativeActions } from 'features/bonification/store/legalRepresentativeStore'
 import { mockServer } from 'tests/mswServer'
@@ -31,7 +31,7 @@ const firstName = 'Jean'
 const givenName = 'Dupont'
 const commonName = 'Dubois'
 const birthDate = '1975-10-10T00:00:00.000Z'
-const birthCountry: InseeCountry = { LIBCOG: 'Belgique', COG: 99131 }
+const birthCountry: InseeCountry = { libcog: 'Belgique', cog: 99131 }
 
 describe('BonificationRecap', () => {
   beforeEach(() => {
