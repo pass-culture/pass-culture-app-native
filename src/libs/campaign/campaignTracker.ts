@@ -4,7 +4,6 @@ import { getTrackingStatus, TrackingStatus } from 'react-native-tracking-transpa
 import { analytics } from 'libs/analytics/provider'
 import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
 import { logOpenApp } from 'libs/campaign/logOpenApp'
-import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/requestIdfaTrackingConsent'
@@ -58,16 +57,6 @@ async function logEvent(event: CampaignEvents, params: Record<string, unknown>):
   if (canLogEvent) {
     try {
       await appsFlyer.logEvent(event, params)
-      if (await getIsMaestro()) {
-        const MOCK_ANALYTICS_SERVER_URL = 'http://localhost:4001' // NOSONAR(typescript:S5332) maestro is run locally, we don't use HTTPS
-        await fetch(MOCK_ANALYTICS_SERVER_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ analyticsKey: event, params }),
-        })
-      }
     } catch (error) {
       // Intentionally left empty to ignore errors
     }

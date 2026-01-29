@@ -11,7 +11,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { IdCard as InitialIdCard } from 'ui/svg/icons/IdCard'
 import { LostId as InitialLostId } from 'ui/svg/icons/LostId'
 import { NoId as InitialNoId } from 'ui/svg/icons/NoId'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDStatus: FunctionComponent = () => (
@@ -88,10 +88,10 @@ const SelectIDStatusContent: FunctionComponent = () => {
   )
 }
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(1),
-  marginVertical: getSpacing(8),
-})
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xs,
+  marginVertical: theme.designSystem.size.spacing.xxl,
+}))
 
 const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',

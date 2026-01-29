@@ -111,9 +111,7 @@ export const Appearance = () => {
             <View>
               <RadioButtonGroup
                 label={radioGroupLabel}
-                description=""
                 options={themeOptions}
-                errorText=""
                 value={currentSelectionLabel}
                 onChange={handleGroupChange}
                 variant="detailed"

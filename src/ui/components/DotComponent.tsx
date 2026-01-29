@@ -4,7 +4,6 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { ColorsType } from 'theme/types'
 import { Dot as DotIcon } from 'ui/svg/icons/Dot'
-import { getSpacing } from 'ui/theme'
 
 function getDotColors(
   theme: DefaultTheme,
@@ -72,8 +71,8 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   )
 }
 
-const DotContainer = styled.View({
+const DotContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  marginLeft: getSpacing(1),
-  marginRight: getSpacing(1),
-})
+  marginLeft: theme.designSystem.size.spacing.xs,
+  marginRight: theme.designSystem.size.spacing.xs,
+}))

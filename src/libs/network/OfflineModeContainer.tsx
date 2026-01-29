@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 const THIRTY_SECONDS = 15000
 
@@ -53,7 +53,7 @@ const FlexView = styled.View({
 
 const OfflineModeBanner = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.inverted,
-  padding: getSpacing(1.5),
+  padding: theme.designSystem.size.spacing.s,
   justifyContent: 'center',
   alignItems: 'center',
 }))

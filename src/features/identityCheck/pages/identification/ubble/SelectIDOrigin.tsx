@@ -10,7 +10,7 @@ import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Earth as InitialEarth } from 'ui/svg/icons/Earth'
 import { France as FranceIcon } from 'ui/svg/icons/France'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDOrigin: FunctionComponent = () => (
@@ -54,10 +54,10 @@ const SelectIDOriginContent: FunctionComponent = () => {
   )
 }
 
-const Container = styled.View({
-  marginHorizontal: getSpacing(1),
-  marginVertical: getSpacing(8),
-})
+const Container = styled.View(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.xs,
+  marginVertical: theme.designSystem.size.spacing.xxl,
+}))
 
 const StyledIconContainer = styled.View({
   alignItems: 'center',

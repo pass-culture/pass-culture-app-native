@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
@@ -25,12 +25,12 @@ export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
     <Container>
       <StyledBody>Tu as déjà réservé&nbsp;:</StyledBody>
       <Bold>{offer.name}</Bold>
-      <Spacer.Column numberOfSpaces={getSpacing(1)} />
+      <Spacer.Column numberOfSpaces={designSystem.size.spacing.xs} />
       <StyledBody>
         Tu ne peux donc pas réserver cette offre à nouveau. Pour en savoir plus, n’hésite pas à
         consulter notre article.
       </StyledBody>
-      <Spacer.Column numberOfSpaces={getSpacing(1)} />
+      <Spacer.Column numberOfSpaces={designSystem.size.spacing.xs} />
       <ExternalLink
         text="Pourquoi limiter les réservations&nbsp;?"
         url={env.BOOKING_LIMIT_EXCEEDED_URL}

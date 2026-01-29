@@ -14,7 +14,7 @@ import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
@@ -139,7 +139,7 @@ const TitlesContainer = styled.View(({ theme }) => ({
 
 const flatListStyles: ViewStyle = {
   paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingBottom: getSpacing(8),
+  paddingBottom: theme.designSystem.size.spacing.xxl,
   maxWidth: theme.contentPage.maxWidth,
   width: '100%',
   alignSelf: 'center',

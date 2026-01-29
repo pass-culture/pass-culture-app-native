@@ -2,8 +2,6 @@ import React from 'react'
 import Animated, { SharedValue, interpolateColor, useAnimatedStyle } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
 type Props = {
   index: number
   animValue: SharedValue<number>
@@ -35,5 +33,5 @@ const Bar = styled(Animated.View)(({ theme }) => ({
   borderRadius: theme.designSystem.size.borderRadius.pill,
   backgroundColor: theme.designSystem.color.background.subtle,
   overflow: 'hidden',
-  margin: getSpacing(1),
+  margin: theme.designSystem.size.spacing.xs,
 }))

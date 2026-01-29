@@ -76,7 +76,7 @@ const Content = styled.View(({ theme }) => ({
   bottom: 0,
   backgroundColor: theme.designSystem.color.background.default,
   paddingHorizontal: getSpacing(6),
-  paddingBottom: getSpacing(8),
+  paddingBottom: theme.designSystem.size.spacing.xxl,
 }))
 
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({

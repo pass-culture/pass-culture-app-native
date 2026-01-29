@@ -293,7 +293,7 @@ const ProgressBar = styled(AnimatedGradient).attrs<{ colors?: string[] }>(({ the
   angle: 90,
   useAngle: true,
 }))(({ theme }) => ({
-  height: getSpacing(1),
+  height: theme.designSystem.size.spacing.xs,
   borderRadius: theme.designSystem.size.borderRadius.xxl,
 }))
 

@@ -26,8 +26,8 @@ export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: 
 }
 
 const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ theme, size }) => ({
-  height: size === 'medium' ? getSpacing(12) : getSpacing(8),
-  width: size === 'medium' ? getSpacing(12) : getSpacing(8),
+  height: size === 'medium' ? getSpacing(12) : theme.designSystem.size.spacing.xxl,
+  width: size === 'medium' ? getSpacing(12) : theme.designSystem.size.spacing.xxl,
   borderRadius:
     size === 'medium'
       ? theme.designSystem.size.borderRadius.m

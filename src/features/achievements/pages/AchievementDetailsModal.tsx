@@ -74,7 +74,7 @@ const IconsWrapper = styled.View({
 
 const BodyWrapper = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.s,
-  paddingVertical: getSpacing(1),
+  paddingVertical: theme.designSystem.size.spacing.xs,
   borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 

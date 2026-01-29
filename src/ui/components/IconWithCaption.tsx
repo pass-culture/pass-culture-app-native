@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
   Icon: React.FC<AccessibleIcon>
@@ -42,9 +42,9 @@ const Container = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const IconContainer = styled.View({
-  padding: getSpacing(1),
-})
+const IconContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xs,
+}))
 
 const Caption = styled(Typo.BodyAccentXs)<{ disabled?: boolean }>(({ disabled, theme }) => ({
   color: disabled ? theme.designSystem.color.text.disabled : theme.designSystem.color.text.default,

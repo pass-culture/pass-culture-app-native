@@ -30,7 +30,7 @@ type CitySearchInputProps = {
   requiredIndicator?: RequiredIndicator
 }
 
-type CityNameForm = { cityName: string }
+type CityNameForm = { cityName: string; cityDepartementCode: string }
 
 export const CitySearchNameInput = ({
   city,
@@ -49,9 +49,10 @@ export const CitySearchNameInput = ({
     watch,
     setError,
     reset: resetForm,
+    setValue,
   } = useForm<CityNameForm>({
     resolver: yupResolver(object().shape({ cityName: string() })),
-    defaultValues: { cityName: city?.name ?? '' },
+    defaultValues: { cityName: city?.name ?? '', cityDepartementCode: city?.departementCode ?? '' },
   })
 
   useEffect(() => {
@@ -74,11 +75,15 @@ export const CitySearchNameInput = ({
   }, [isSuccess, isError, cities.length, setError, showErrorSnackBar])
 
   const onSubmit = useCallback(
-    ({ cityName }: CityNameForm) => {
-      onCitySelected?.()
+    ({ cityName, cityDepartementCode }: CityNameForm) => {
       debouncedSetCityName(cityName)
+      const city = cities.find(
+        (suggestedCity: SuggestedCity) =>
+          suggestedCity.name === cityName && suggestedCity.departementCode === cityDepartementCode
+      )
+      onCitySelected?.(city)
     },
-    [debouncedSetCityName, onCitySelected]
+    [cities, debouncedSetCityName, onCitySelected]
   )
 
   const handleCityNameChange = (cityName: string) => {
@@ -94,67 +99,66 @@ export const CitySearchNameInput = ({
     const city = cities.find(
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
+    if (city?.name) {
+      setValue('cityName', city.name)
+      setValue('cityDepartementCode', city.departementCode)
+    }
     onCitySelected?.(city)
     Keyboard.dismiss()
   }
 
   const resetSearch = () => {
-    resetForm({ cityName: '' })
+    resetForm({ cityName: '', cityDepartementCode: '' })
     setCityNameQuery('')
     onCitySelected?.()
   }
 
   return (
-    <React.Fragment>
-      <Form.MaxWidth>
-        <Controller
-          control={control}
-          name="cityName"
-          render={({ field: { value, onChange }, fieldState: { error } }) => (
-            <StyledView>
-              <SearchInput
-                onChangeText={(text) => {
-                  onChange(text)
-                  handleCityNameChange(text)
-                }}
-                value={value}
-                label={label ?? 'Indique le nom de la ville'}
-                description="Exemple&nbsp;: Paris"
-                onClear={resetSearch}
-                keyboardType="default"
-                accessibilityHint={error?.message}
-                testID="Entrée pour la ville"
-                autoComplete="postal-address-locality"
-                requiredIndicator={requiredIndicator}
-              />
-              <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
-            </StyledView>
-          )}
-        />
-      </Form.MaxWidth>
-
-      <React.Fragment>
-        {isLoading ? <Spinner /> : null}
-        <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
-          <VerticalUl>
-            {cities.map((cityOption, index) => {
-              const cityLabel = `${cityOption.name} (${cityOption.departementCode})`
-              return (
-                <Li key={cityLabel}>
-                  <AddressOption
-                    label={cityLabel}
-                    selected={city ? keyExtractor(cityOption) === keyExtractor(city) : false}
-                    onPressOption={onPressOption}
-                    optionKey={keyExtractor(cityOption)}
-                    accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${cityLabel}`}
-                  />
-                </Li>
-              )
-            })}
-          </VerticalUl>
-        </CitiesContainer>
-      </React.Fragment>
-    </React.Fragment>
+    <Form.MaxWidth>
+      <Controller
+        control={control}
+        name="cityName"
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <StyledView>
+            <SearchInput
+              onChangeText={(text) => {
+                onChange(text)
+                handleCityNameChange(text)
+              }}
+              value={value}
+              label={label ?? 'Indique le nom de la ville'}
+              description="Exemple&nbsp;: Paris"
+              onClear={resetSearch}
+              keyboardType="default"
+              accessibilityHint={error?.message}
+              testID="Entrée pour la ville"
+              autoComplete="postal-address-locality"
+              requiredIndicator={requiredIndicator}
+            />
+            <InputError errorMessage={error?.message} numberOfSpacesTop={2} visible={!!error} />
+          </StyledView>
+        )}
+      />
+      {isLoading ? <Spinner /> : null}
+      <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
+        <VerticalUl>
+          {cities.map((cityOption, index) => {
+            const cityLabel = `${cityOption.name} (${cityOption.departementCode})`
+            return (
+              <Li key={cityLabel}>
+                <AddressOption
+                  label={cityLabel}
+                  selected={city ? keyExtractor(cityOption) === keyExtractor(city) : false}
+                  onPressOption={onPressOption}
+                  optionKey={keyExtractor(cityOption)}
+                  accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${cityLabel}`}
+                />
+              </Li>
+            )
+          })}
+        </VerticalUl>
+      </CitiesContainer>
+    </Form.MaxWidth>
   )
 }
 

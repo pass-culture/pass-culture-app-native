@@ -7,7 +7,7 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ModalIconProps } from './types'
@@ -100,9 +100,9 @@ const HeaderActionContainer = styled.View<{ justifyContent: 'left' | 'right' }>(
   }
 )
 
-const HeaderAction = styledButton(Touchable)({
-  padding: getSpacing(1),
-})
+const HeaderAction = styledButton(Touchable)(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xs,
+}))
 
 const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',

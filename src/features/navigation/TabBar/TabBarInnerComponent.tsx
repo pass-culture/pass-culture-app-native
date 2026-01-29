@@ -8,7 +8,7 @@ import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { TabInnerComponentProps } from 'features/navigation/TabBar/TabStackNavigatorTypes'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   tabName,
@@ -40,8 +40,6 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   )
 }
 
-const GRADIENT_HEIGHT = getSpacing(0.5)
-
 const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme }) => ({
   colors: [
     colorAlpha(theme.designSystem.color.icon.brandPrimary, 0),
@@ -51,7 +49,7 @@ const Gradient = styled(LinearGradient).attrs<{ colors?: string[] }>(({ theme })
   ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-}))({ height: GRADIENT_HEIGHT, width: '100%' })
+}))(({ theme }) => ({ height: theme.designSystem.size.spacing.xxs, width: '100%' }))
 
 const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected
@@ -61,7 +59,9 @@ const StyledIcon = styled(LogoDetailed).attrs<{ selected?: boolean }>(({ theme, 
   thin: true,
 }))<{ selected?: boolean }>``
 
-const BicolorSelectorPlaceholder = styled.View({ height: GRADIENT_HEIGHT })
+const BicolorSelectorPlaceholder = styled.View(({ theme }) => ({
+  height: theme.designSystem.size.spacing.xxs,
+}))
 
 const IconWrapper = styled.View({
   position: 'relative',

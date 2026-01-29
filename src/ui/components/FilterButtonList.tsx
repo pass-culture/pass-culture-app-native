@@ -6,7 +6,6 @@ import { SingleFilterButton } from 'features/search/components/Buttons/SingleFil
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { Check } from 'ui/svg/icons/Check'
-import { getSpacing } from 'ui/theme'
 
 export type FilterButtonListItem = {
   label: string
@@ -56,11 +55,11 @@ const StyledUl = styled(Ul)(({ theme }) => ({
   justifyContent: theme.isDesktopViewport ? 'center' : undefined,
 }))
 
-const StyledLi = styled(Li)({
-  marginLeft: getSpacing(1),
-  marginTop: getSpacing(1),
-  marginBottom: getSpacing(1),
-})
+const StyledLi = styled(Li)(({ theme }) => ({
+  marginLeft: theme.designSystem.size.spacing.xs,
+  marginTop: theme.designSystem.size.spacing.xs,
+  marginBottom: theme.designSystem.size.spacing.xs,
+}))
 
 const FilterSelectedIcon = styled(Check).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,

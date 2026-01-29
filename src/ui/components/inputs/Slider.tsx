@@ -163,10 +163,7 @@ export function Slider(props: Props) {
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
         </CenteredText>
       ) : null}
-      <SliderWrapper
-        ref={setStyledViewRef}
-        testID="slider"
-        shouldShowMinMaxValues={shouldShowMinMaxValues}>
+      <SliderWrapper ref={setStyledViewRef} testID="slider">
         <StyledMultiSlider
           values={values}
           allowOverlap
@@ -194,7 +191,7 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     width: theme.slider.markerSize,
     borderRadius: theme.designSystem.size.borderRadius.xxl,
     borderColor: theme.designSystem.color.border.default,
-    borderWidth: getSpacing(0.5),
+    borderWidth: theme.designSystem.size.spacing.xxs,
     backgroundColor: theme.designSystem.color.background.default,
     shadowOpacity: 0,
   }
@@ -211,9 +208,9 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     unselectedStyle: {
       backgroundColor: theme.designSystem.color.background.default,
       borderColor: theme.designSystem.color.border.default,
-      borderWidth: getSpacing(0.5),
+      borderWidth: theme.designSystem.size.spacing.xxs,
     },
-    containerStyle: { height: getSpacing(8) },
+    containerStyle: { height: theme.designSystem.size.spacing.xxl },
     sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
 })``
@@ -223,19 +220,16 @@ const CenteredText = styled(Typo.BodyAccent)<{ width?: number }>(({ width, theme
   textAlign: 'center',
 }))
 
-const MinMaxContainer = styled.View({
+const MinMaxContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  marginTop: getSpacing(1),
-})
+  marginTop: theme.designSystem.size.spacing.xs,
+}))
 
 const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(
-  ({ shouldShowMinMaxValues, theme }) => ({
-    marginTop: theme.designSystem.size.spacing.l,
-    paddingLeft: shouldShowMinMaxValues ? theme.slider.markerSize / 2 : undefined,
-  })
-)
+const SliderWrapper = styled(View)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.l,
+}))

@@ -448,7 +448,7 @@ exports[`Appearance should render correctly 1`] = `
                     variant="detailed"
                   >
                     <View
-                      accessibilityLabel="Mode clair"
+                      accessibilityLabel="Thème - Liste - Élément 1 sur 3 - Mode clair - Affichage classique - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -496,7 +496,7 @@ exports[`Appearance should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
-                      testID="Mode clair"
+                      testID="Thème - Liste - Élément 1 sur 3 - Mode clair - Affichage classique - non sélectionné"
                     >
                       <View
                         style={
@@ -609,7 +609,7 @@ exports[`Appearance should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Mode sombre"
+                      accessibilityLabel="Thème - Liste - Élément 2 sur 3 - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -657,7 +657,7 @@ exports[`Appearance should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
-                      testID="Mode sombre"
+                      testID="Thème - Liste - Élément 2 sur 3 - Mode sombre - Réduit la fatigue visuelle - non sélectionné"
                     >
                       <View
                         style={
@@ -770,7 +770,7 @@ exports[`Appearance should render correctly 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Réglages appareil"
+                      accessibilityLabel="Thème - Liste - Élément 3 sur 3 - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
                       accessibilityRole="radio"
                       accessibilityState={
                         {
@@ -818,7 +818,7 @@ exports[`Appearance should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
-                      testID="Réglages appareil"
+                      testID="Thème - Liste - Élément 3 sur 3 - Réglages appareil - Automatique selon les réglages de ton appareil - sélectionné"
                     >
                       <View
                         style={

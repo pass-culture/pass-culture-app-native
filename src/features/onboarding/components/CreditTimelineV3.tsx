@@ -19,7 +19,7 @@ import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
 import { Warning } from 'ui/svg/icons/Warning'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
@@ -169,9 +169,9 @@ const Container = styled.View({
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
-}))({
-  marginHorizontal: getSpacing(1.5),
-})
+}))(({ theme }) => ({
+  marginHorizontal: theme.designSystem.size.spacing.s,
+}))
 
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.s,
@@ -183,7 +183,7 @@ const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) 
 
 const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
   borderColor: theme.designSystem.color.border.default,
-  borderWidth: getSpacing(0.25),
+  borderWidth: theme.designSystem.size.spacing.xxs,
   borderRadius: theme.designSystem.size.borderRadius.m,
   padding: theme.designSystem.size.spacing.l,
   overflow: 'hidden',
@@ -193,7 +193,7 @@ const DashedStyledView = styled.View<{
   bonificationStatus: QFBonificationStatus | null | undefined
 }>(({ theme, bonificationStatus }) => ({
   borderColor: theme.designSystem.color.border.brandPrimary,
-  borderWidth: getSpacing(0.25),
+  borderWidth: theme.designSystem.size.spacing.xxs,
   borderRadius: theme.designSystem.size.borderRadius.m,
   borderStyle: 'dashed',
   padding: theme.designSystem.size.spacing.l,

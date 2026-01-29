@@ -27,6 +27,7 @@ export type BaseRadioProps = {
   collapsed?: React.ReactNode | null
   asset?: SelectableAssetProps | null
   sizing?: SelectableSizing
+  accessibilityLabel?: string
 }
 
 export type DefaultRadioProps = Omit<BaseRadioProps, 'description' | 'asset' | 'collapsed'> & {

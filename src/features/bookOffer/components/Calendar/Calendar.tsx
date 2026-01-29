@@ -144,7 +144,7 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
   minDate,
 }) => {
   const { price, status, selected } = marking as Marking
-
+  const { designSystem } = useTheme()
   if (!date) {
     eventMonitoring.captureException('Calendar displayed without selectable day', {
       extra: { offerId, stocks, markedDates, minDate, selectDay, date, marking },
@@ -183,7 +183,7 @@ const CalendarDay: React.FC<CalendarDayProps> = ({
           {getDayDescription(price, currency, euroToPacificFrancRate, hasSeveralPrices)}
         </Caption>
       ) : (
-        <Spacer.Column numberOfSpaces={getSpacing(1)} />
+        <Spacer.Column numberOfSpaces={designSystem.size.spacing.xs} />
       )}
     </Container>
   )

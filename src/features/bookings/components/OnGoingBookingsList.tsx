@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query'
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BookingListItemResponse, BookingsListResponseV2 } from 'api/gen'
 import { OngoingBookingListItemWrapper } from 'features/bookings/components/OngoingBookingListItemWrapper'
@@ -34,7 +34,7 @@ type Props = {
 
 export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookingsQuery }) => {
   const netInfo = useNetInfoContext()
-
+  const { designSystem } = useTheme()
   const enableNewBookings = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKINGS_ENDED_ONGOING)
 
   const {
@@ -92,7 +92,7 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
       renderItem={renderItem}
       refreshing={isRefreshing}
       onRefresh={onRefetch}
-      contentContainerStyle={contentContainerStyle}
+      contentContainerStyle={contentContainerStyle(designSystem)}
       ListHeaderComponent={hasBookings ? <Spacer.Column numberOfSpaces={6} /> : null}
       ListEmptyComponent={<NoBookingsView />}
       ItemSeparatorComponent={enableNewBookings ? null : ItemSeparatorComponent}
@@ -104,10 +104,10 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ useOngoingBookin
 
 const keyExtractor = (item: BookingListItemResponse) => item.id.toString()
 
-const contentContainerStyle = {
+const contentContainerStyle = (designSystem) => ({
   flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
-}
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + designSystem.size.spacing.xxl,
+})
 
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(52) })
 const BOOKINGS_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
@@ -115,6 +115,7 @@ const BOOKINGS_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => (
 }))
 
 function BookingsPlaceholder() {
+  const { designSystem } = useTheme()
   const renderPlaceholder = useCallback(() => <BookingHitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfBookingsPlaceholder />, [])
   const ListFooterComponent = useMemo(() => <Footer />, [])
@@ -124,7 +125,7 @@ function BookingsPlaceholder() {
       <FlatList
         data={BOOKINGS_LIST_PLACEHOLDER}
         renderItem={renderPlaceholder}
-        contentContainerStyle={contentContainerStyle}
+        contentContainerStyle={contentContainerStyle(designSystem)}
         ListHeaderComponent={ListHeaderComponent}
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListFooterComponent={ListFooterComponent}

@@ -45,6 +45,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,
@@ -926,6 +927,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,
@@ -1818,6 +1820,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,
@@ -2688,6 +2691,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,
@@ -3794,6 +3798,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,
@@ -4922,6 +4927,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,
@@ -6039,6 +6045,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         }
       />
       <View
+        height={32}
         style={
           {
             "height": 32,

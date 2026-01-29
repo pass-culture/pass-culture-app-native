@@ -30,7 +30,7 @@ export const getVenueOffersArtists = (
       ['desc', 'asc']
     )
     .flatten()
-    .uniqBy((artist) => artist.name.trim().toLowerCase())
+    .uniqBy((artist) => artist.id)
     .slice(0, 30)
     .value()
 

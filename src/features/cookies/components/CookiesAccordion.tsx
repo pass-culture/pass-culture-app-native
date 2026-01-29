@@ -11,7 +11,7 @@ import { Accordion } from 'ui/components/Accordion'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Separator } from 'ui/components/Separator'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const CookiesAccordion = ({
   cookie,
@@ -83,10 +83,12 @@ const InfoCaption: React.FC<PropsWithChildren> = ({ children }) => (
   </View>
 )
 
-const SPACER_BETWEEN_ICON_AND_TEXT = getSpacing(1)
-const IconSpacer = styled.View(({ theme }) => ({
-  width: theme.icons.sizes.extraSmall + SPACER_BETWEEN_ICON_AND_TEXT,
-}))
+const IconSpacer = styled.View(({ theme }) => {
+  const SPACER_BETWEEN_ICON_AND_TEXT = theme.designSystem.size.spacing.xs
+  return {
+    width: theme.icons.sizes.extraSmall + SPACER_BETWEEN_ICON_AND_TEXT,
+  }
+})
 
 const IconContainer = styled.View({
   position: 'absolute',

@@ -47,14 +47,14 @@ export const BonificationRecap = () => {
   const [accepted, setAccepted] = useState(false)
 
   const submit = () => {
-    if (title && firstNames && givenName && birthDate && birthCountry?.COG) {
+    if (title && firstNames && givenName && birthDate && birthCountry?.cog) {
       mutate({
         gender: title === 'Madame' ? GenderEnum.Mme : GenderEnum['M.'],
         firstNames,
         commonName,
         lastName: givenName,
         birthDate: new Date(birthDate).toISOString().substring(0, 10),
-        birthCountryCogCode: birthCountry.COG.toString(),
+        birthCountryCogCode: birthCountry.cog.toString(),
         birthCityCogCode: birthCity?.code,
       })
     } else {
@@ -78,8 +78,12 @@ export const BonificationRecap = () => {
   if (birthDate)
     recapData.push({ title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() })
   if (birthCountry)
-    recapData.push({ title: 'Pays de naissance', value: birthCountry.LIBCOG.toString() })
-  if (birthCity?.name) recapData.push({ title: 'Ville de naissance', value: birthCity?.name })
+    recapData.push({ title: 'Pays de naissance', value: birthCountry.libcog.toString() })
+  if (birthCity?.name)
+    recapData.push({
+      title: 'Ville de naissance',
+      value: `${birthCity?.name} (${birthCity.departementCode})`,
+    })
 
   return (
     <PageWithHeader

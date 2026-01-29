@@ -9,7 +9,7 @@ import { Accordion } from 'ui/components/Accordion'
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -74,6 +74,10 @@ const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const CookiesSettingsContainer = styled.View({ paddingVertical: getSpacing(8) })
+const CookiesSettingsContainer = styled.View(({ theme }) => ({
+  paddingVertical: theme.designSystem.size.spacing.xxl,
+}))
 
-const StyledView = styled.View({ marginBottom: getSpacing(8) })
+const StyledView = styled.View(({ theme }) => ({
+  marginBottom: theme.designSystem.size.spacing.xxl,
+}))

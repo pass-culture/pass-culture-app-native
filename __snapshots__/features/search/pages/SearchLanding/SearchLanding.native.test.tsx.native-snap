@@ -255,19 +255,17 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               <View
                 style={
                   {
-                    "alignItems": "center",
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "justifyContent": "center",
                   }
                 }
               >
                 <View
                   style={
                     {
-                      "alignItems": "center",
+                      "alignItems": "flex-end",
                       "flexBasis": 0,
                       "flexDirection": "row",
                       "flexGrow": 1,
@@ -276,13 +274,43 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   }
                 >
                   <View
-                    style={
+                    collapsable={false}
+                    jestAnimatedProps={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestAnimatedStyle={
+                      {
+                        "value": {},
+                      }
+                    }
+                    jestInlineStyle={
                       {
                         "flexBasis": 0,
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
                       }
+                    }
+                    layout={
+                      LinearTransition {
+                        "build": [Function],
+                        "durationV": 250,
+                        "randomizeDelay": false,
+                        "reduceMotionV": "system",
+                      }
+                    }
+                    nativeID="0"
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
                     }
                   >
                     <View

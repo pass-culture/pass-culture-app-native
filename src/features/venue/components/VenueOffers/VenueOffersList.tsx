@@ -35,8 +35,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
 
-const OFFERS_PLAYLIST_SIMILAR_SPACING = Platform.OS === 'android' ? getSpacing(8) : getSpacing(14)
-
 type VenueOffersListProps = VenueOffersProps & {
   mapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
@@ -225,9 +223,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
 
 const Container = styled.View(({ theme }) => ({ marginTop: theme.designSystem.size.spacing.xl }))
 
-const ArtistsPlaylistContainer = styled(ViewGap)({
-  paddingBottom: OFFERS_PLAYLIST_SIMILAR_SPACING,
-})
+const ArtistsPlaylistContainer = styled(ViewGap)(({ theme }) => ({
+  paddingBottom: Platform.OS === 'android' ? theme.designSystem.size.spacing.xxl : getSpacing(14),
+}))
 
 const ArtistsPlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))(({ theme }) => ({
   marginHorizontal: theme.designSystem.size.spacing.xl,
