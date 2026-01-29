@@ -108,7 +108,7 @@ const MAX_MODAL_HEIGHT = 650
 const Container = styled.View(({ theme }) => {
   const modalWidth =
     theme.isMobileViewport && !theme.isTabletViewport
-      ? theme.appContentWidth - getSpacing(8)
+      ? theme.appContentWidth - theme.designSystem.size.spacing.xxl
       : theme.breakpoints.sm - theme.designSystem.size.spacing.m
   return {
     backgroundColor: theme.designSystem.color.background.default,
@@ -126,7 +126,7 @@ const Content = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
   padding: getSpacing(6),
-  paddingBottom: getSpacing(8),
+  paddingBottom: theme.designSystem.size.spacing.xxl,
   maxWidth: theme.contentPage.maxWidth,
 }))
 

@@ -210,7 +210,7 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
       borderColor: theme.designSystem.color.border.default,
       borderWidth: theme.designSystem.size.spacing.xxs,
     },
-    containerStyle: { height: getSpacing(8) },
+    containerStyle: { height: theme.designSystem.size.spacing.xxl },
     sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
 })``

@@ -443,7 +443,7 @@ const TitleWithTag = styled.View(({ theme }) => ({
 }))
 
 const ShareAppContainer = styled(ViewGap)(({ theme }) => ({
-  paddingRight: theme.isSmallScreen ? 0 : getSpacing(8),
+  paddingRight: theme.isSmallScreen ? 0 : theme.designSystem.size.spacing.xxl,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

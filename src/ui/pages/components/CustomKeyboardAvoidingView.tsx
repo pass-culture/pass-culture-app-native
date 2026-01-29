@@ -33,7 +33,7 @@ const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   backgroundColor: theme.designSystem.color.background.default,
   borderTopLeftRadius: 22,
   borderTopRightRadius: 22,
-  paddingTop: getSpacing(8),
+  paddingTop: theme.designSystem.size.spacing.xxl,
   alignItems: 'center',
   overflow: 'scroll',
 }))

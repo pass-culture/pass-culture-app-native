@@ -20,7 +20,6 @@ const THUMBNAIL_HEIGHT = getSpacing(52.5)
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(24)
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER = getSpacing(38.5)
-const MONO_OFFER_CARD_VERTICAL_SPACING = getSpacing(8)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const { designSystem } = useTheme()
@@ -28,6 +27,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   const numberOfLines = useFontScaleValue({ default: 1, at200PercentZoom: 3 })
 
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
+  const MONO_OFFER_CARD_VERTICAL_SPACING = designSystem.size.spacing.xxl
 
   const COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER =
     MONO_OFFER_CARD_VERTICAL_SPACING + monoOfferCardHeight

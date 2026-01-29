@@ -6,7 +6,6 @@ import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
 import { getSpacing } from 'ui/theme'
 
-export const TICKET_FULL_MIDDLE_HEIGHT = getSpacing(8)
 export const TICKET_PUNCHED_MIDDLE_HEIGHT = getSpacing(10)
 
 type TicketContentProps = {
@@ -25,6 +24,7 @@ export const TicketDisplay = ({
   onTopBlockLayout,
 }: TicketContentProps) => {
   const { designSystem } = useTheme()
+
   const backgroundColor = designSystem.color.background.default
   const borderColor = designSystem.color.border.subtle
 
@@ -77,7 +77,7 @@ export const TicketDisplay = ({
 }
 
 const FullContainerStrokedLine = styled.View(({ theme }) => ({
-  height: TICKET_FULL_MIDDLE_HEIGHT,
+  height: theme.designSystem.size.spacing.xxl,
   backgroundColor: theme.designSystem.color.background.default,
   justifyContent: 'center',
 }))

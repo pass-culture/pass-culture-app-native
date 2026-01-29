@@ -70,9 +70,9 @@ const Container = styled(ViewGap)(({ theme }) => ({
   alignSelf: 'center',
   borderRadius: theme.designSystem.size.borderRadius.s,
   padding: getSpacing(6),
-  paddingBottom: getSpacing(8),
+  paddingBottom: theme.designSystem.size.spacing.xxl,
   width: theme.isMobileViewport
-    ? theme.appContentWidth - getSpacing(8)
+    ? theme.appContentWidth - theme.designSystem.size.spacing.xxl
     : theme.breakpoints.sm - theme.designSystem.size.spacing.m,
 }))
 

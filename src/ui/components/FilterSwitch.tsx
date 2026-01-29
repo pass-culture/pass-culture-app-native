@@ -93,7 +93,7 @@ const getBackgroundColor = (theme: DefaultTheme, active: boolean) => {
 const StyledBackgroundColor = styled.View<{ active: boolean }>(({ theme, active }) => ({
   backgroundColor: getBackgroundColor(theme, active),
   width: getSpacing(14),
-  height: getSpacing(8),
+  height: theme.designSystem.size.spacing.xxl,
   borderRadius: theme.designSystem.size.borderRadius.l,
   justifyContent: 'center',
 }))

@@ -42,6 +42,6 @@ const AccessibleTitle3 = styled(Typo.Title3).attrs(getNoHeadingAttrs())``
 const BodyContainer = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.subtle,
   paddingHorizontal: getSpacing(6),
-  paddingVertical: getSpacing(8),
+  paddingVertical: theme.designSystem.size.spacing.xxl,
   borderRadius: theme.designSystem.size.borderRadius.m,
 }))
