@@ -1,30 +1,22 @@
 import React, { useState } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import {
+  buildSortRadioOptions,
+  getLabelFromSortBy,
+  getSortByFromLabel,
+} from 'features/favorites/helpers/sortOptions'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InputError } from 'ui/components/inputs/InputError'
-import { Li } from 'ui/components/Li'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { VerticalUl } from 'ui/components/Ul'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
-  RECENTLY_ADDED: 'Ajouté récemment',
-  ASCENDING_PRICE: 'Prix croissant',
-  AROUND_ME: 'Proximité géographique',
-}
-const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
+const sortOptions = buildSortRadioOptions()
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Favorites'))
@@ -37,12 +29,15 @@ export const FavoritesSorts: React.FC = () => {
   } = useLocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
-  const titleID = uuidv4()
 
-  async function onSortBySelection(sortBy: FavoriteSortBy) {
-    function updateSortBySelection() {
+  const currentLabel = getLabelFromSortBy(stagedSelectedSortBy)
+  const hasGeolocError = !!geolocPositionError
+
+  const onSortBySelection = async (sortBy: FavoriteSortBy) => {
+    const updateSortBySelection = () => {
       setStagedSelectedSortBy(sortBy)
     }
+
     if (sortBy === 'AROUND_ME') {
       if (!geolocPosition && permissionState === GeolocPermissionState.GRANTED) {
         return
@@ -58,54 +53,36 @@ export const FavoritesSorts: React.FC = () => {
     return updateSortBySelection()
   }
 
-  function onValidation() {
-    analytics.logHasAppliedFavoritesSorting({ sortBy: stagedSelectedSortBy })
+  const handleSortChange = (label: string) => {
+    const sortBy = getSortByFromLabel(label)
+    if (sortBy) {
+      void onSortBySelection(sortBy)
+    }
+  }
+
+  const onValidation = () => {
+    void analytics.logHasAppliedFavoritesSorting({ sortBy: stagedSelectedSortBy })
     dispatch({ type: 'SET_SORT_BY', payload: stagedSelectedSortBy })
     goBack()
   }
 
   return (
     <SecondaryPageWithBlurHeader title="Trier" onGoBack={goBack}>
-      <View>
-        <TitleContainer>
-          <Spacer.Column numberOfSpaces={12} />
-          <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>
-            Trier par
-          </Typo.Title4>
-        </TitleContainer>
-        <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
-          <VerticalUl>
-            {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
-              return (
-                <Li key={sortBy}>
-                  <RadioButton
-                    label={label}
-                    isSelected={stagedSelectedSortBy === sortBy}
-                    onSelect={() => onSortBySelection(sortBy)}
-                    accessibilityLabel={`Trier par ${label}`}
-                  />
-                  <InputError
-                    visible={!!(sortBy === 'AROUND_ME' && geolocPositionError)}
-                    errorMessage={geolocPositionError?.message}
-                    numberOfSpacesTop={1}
-                  />
-                </Li>
-              )
-            })}
-          </VerticalUl>
-        </View>
-      </View>
+      <RadioButtonGroup
+        label="Trier par"
+        labelVariant="title2"
+        options={sortOptions}
+        value={currentLabel}
+        onChange={handleSortChange}
+        error={hasGeolocError}
+        errorText={geolocPositionError?.message ?? ''}
+      />
       <ButtonContainer>
         <ButtonPrimary wording="Valider" onPress={onValidation} center />
       </ButtonContainer>
     </SecondaryPageWithBlurHeader>
   )
 }
-
-const TitleContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
 
 const ButtonContainer = styled.View(({ theme }) => ({
   padding: theme.designSystem.size.spacing.xl,
