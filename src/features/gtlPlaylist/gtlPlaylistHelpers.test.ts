@@ -17,10 +17,10 @@ const mockVenue: Omit<VenueResponse, 'isVirtual'> = {
   name: 'Une librairie',
   city: 'Jest',
   id: 123,
-  accessibility: {},
   timezone: 'Europe/Paris',
   activity: Activity.DISTRIBUTION_STORE,
   isOpenToPublic: true,
+  isPermanent: true,
 }
 
 const defaultDisplayParameters: DisplayParametersFields = {
