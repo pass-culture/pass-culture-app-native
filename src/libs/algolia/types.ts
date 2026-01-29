@@ -15,7 +15,6 @@ import {
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Artist, Venue } from 'features/venue/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { GtlLevel } from 'shared/gtl/types'
@@ -274,25 +273,6 @@ export interface AlgoliaVenue {
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }
-
-type FacetKeys =
-  | FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE
-  | FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
-  | FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE
-  | FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
-  | FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE
-
-type NativeCategoryFacets = Record<NativeCategoryIdEnumv2, number>
-type GenreTypeFacets = Record<GenreType, number>
-
-export type NativeCategoryFacetData = Record<
-  FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY,
-  NativeCategoryFacets
->
-
-type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
-
-export type FacetData = NativeCategoryFacetData | GenreTypeFacetData
 
 export type MultipleOffersResult = {
   hits: AlgoliaOffer[]

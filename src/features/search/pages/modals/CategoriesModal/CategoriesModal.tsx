@@ -22,7 +22,6 @@ import {
   createMappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
-import { FacetData } from 'libs/algolia/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Form } from 'ui/components/Form'
@@ -38,7 +37,6 @@ export interface CategoriesModalProps {
   hideModal: VoidFunction
   filterBehaviour: FilterBehaviour
   onClose?: VoidFunction
-  facets?: FacetData
 }
 
 export type CategoriesModalFormProps = {
@@ -54,15 +52,14 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   onClose,
-  facets,
 }: CategoriesModalProps) => {
   const { data = PLACEHOLDER_DATA } = useSubcategoriesQuery()
   const { modal, designSystem } = useTheme()
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
-    return createMappingTree(data, facets)
-  }, [data, facets])
+    return createMappingTree(data)
+  }, [data])
 
   const {
     formState: { isSubmitting },

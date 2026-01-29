@@ -92,33 +92,6 @@ export const fetchSearchResults = async ({
       ),
       clickAnalytics: true,
     },
-    // Facets
-    // this request should be reworked because we have a problem on genreType view
-    {
-      indexName: offersIndex,
-      query: parameters.query || '',
-      page: 0,
-      ...buildHitsPerPage(parameters.hitsPerPage),
-      ...buildOfferSearchParameters(
-        {
-          ...parameters,
-          offerCategories: [],
-          offerNativeCategories: undefined,
-          offerGenreTypes: undefined,
-        },
-        buildLocationParameterParams,
-        isUserUnderage,
-        disabilitiesProperties,
-        true
-      ),
-      facets: [
-        'offer.bookMacroSection',
-        'offer.movieGenres',
-        'offer.musicType',
-        'offer.nativeCategoryId',
-        'offer.showType',
-      ],
-    },
     // Offers without duplication limit
     {
       indexName: offersIndex,
@@ -146,19 +119,13 @@ export const fetchSearchResults = async ({
   ]
 
   try {
-    const [
-      offersResponse,
-      venuesResponse,
-      facetsResponse,
-      duplicatedOffersResponse,
-      offerArtistsResponse,
-    ] = (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
-      SearchResponse<Offer>,
-      SearchResponse<AlgoliaVenue>,
-      SearchResponse<Offer>,
-      SearchResponse<Offer>,
-      SearchResponse<Offer>,
-    ]
+    const [offersResponse, venuesResponse, duplicatedOffersResponse, offerArtistsResponse] =
+      (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
+        SearchResponse<Offer>,
+        SearchResponse<AlgoliaVenue>,
+        SearchResponse<Offer>,
+        SearchResponse<Offer>,
+      ]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
     const { renderingContent } = offersResponse
@@ -167,7 +134,6 @@ export const fetchSearchResults = async ({
     return {
       offersResponse,
       venuesResponse,
-      facetsResponse,
       duplicatedOffersResponse,
       offerArtistsResponse,
       redirectUrl,
@@ -177,7 +143,6 @@ export const fetchSearchResults = async ({
     return {
       offersResponse: getDefaultReponse<Offer>(),
       venuesResponse: getDefaultReponse<AlgoliaVenue>(),
-      facetsResponse: {},
       offerArtistsResponse: getDefaultReponse<Offer>(),
       duplicatedOffersResponse: getDefaultReponse<Offer>(),
       redirectUrl: undefined,

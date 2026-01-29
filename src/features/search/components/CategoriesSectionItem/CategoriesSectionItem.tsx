@@ -3,14 +3,9 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import {
-  getDescription,
-  getNbResultsFacetLabel,
-} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getDescription } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesMapping } from 'features/search/helpers/categoriesSectionHelpers/categoriesSectionHelpers'
 import { DescriptionContext } from 'features/search/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesQuery } from 'queries/subcategories/useSubcategoriesQuery'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/designSystem/RadioButton/RadioButton'
@@ -18,7 +13,6 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type CategoriesMappingItem = {
   label: string
-  nbResultsFacet?: number
   children?: CategoriesMapping
 }
 
@@ -40,13 +34,9 @@ export const CategoriesSectionItem = <N,>({
   handleGetIcon,
 }: CategoriesSectionItemProps<N>) => {
   const { data: subcategoriesData } = useSubcategoriesQuery()
-  const displaySearchNbFacetResults = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
-  )
 
   const shouldHideArrow = !Object.keys(item.children ?? {})?.length
   const itemKey = k as N
-  const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
 
   return (
     <ListItem>
@@ -70,7 +60,6 @@ export const CategoriesSectionItem = <N,>({
             description={getDescription(subcategoriesData, descriptionContext, k)}
             onPress={() => handleSelect(itemKey)}
             captionId={k}
-            complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
           />
         </FilterRowContainer>
       )}
