@@ -7,6 +7,7 @@ import { IconStepDisabled } from 'features/identityCheck/components/IconStepDisa
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { IconStepRetry } from 'features/identityCheck/components/IconStepRetry'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
+import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
@@ -41,6 +42,7 @@ export const useStepperInfo = (): StepperInfo => {
 
   const { user } = useAuthContext()
   const isUserRegisteredInPacificFrancRegion = user?.currency === CurrencyEnum.XPF
+  const storedProfileInfos = useStoredProfileInfos()
 
   const { remainingAttempts } = usePhoneValidationRemainingAttemptsQuery()
   const { data } = useGetStepperInfoQuery()
@@ -77,6 +79,23 @@ export const useStepperInfo = (): StepperInfo => {
     !!user?.city &&
     !!user?.activityId
 
+  const hasStoredProfileInfo =
+    !!storedProfileInfos?.address ||
+    !!storedProfileInfos?.name ||
+    !!storedProfileInfos?.status ||
+    !!storedProfileInfos?.city
+
+  const userAlreadyGaveInfos = hasUserCompletedInfo || hasStoredProfileInfo
+  const isFirstStepProfileNotCompleted =
+    subscriptionStepsToDisplay[0]?.name === 'profile-completion' &&
+    subscriptionStepsToDisplay[0].completionState !== SubscriptionStepCompletionState.completed
+  const isSecondStepProfileNotCompleted =
+    subscriptionStepsToDisplay[1]?.name === 'profile-completion' &&
+    subscriptionStepsToDisplay[1].completionState !== SubscriptionStepCompletionState.completed
+
+  const shouldDisplayValidateYourInformation =
+    userAlreadyGaveInfos && (isSecondStepProfileNotCompleted || isFirstStepProfileNotCompleted)
+
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
@@ -90,7 +109,7 @@ export const useStepperInfo = (): StepperInfo => {
       firstScreenType: hasUserCompletedInfo
         ? ProfileTypes.RECAP_EXISTING_DATA
         : ProfileTypes.IDENTITY_CHECK,
-      subtitle: hasUserCompletedInfo ? undefined : 'Confirme tes informations',
+      subtitle: shouldDisplayValidateYourInformation ? 'Confirme tes informations' : undefined,
     },
     [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,

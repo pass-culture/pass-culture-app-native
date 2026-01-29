@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query'
 
-import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { ActivityIdEnum, SubscriptionStepperResponseV2 } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import {
   SubscriptionStepperResponseFixture as mockSubscriptionStepper,
@@ -10,8 +10,10 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { setSettingsMock } from 'tests/settings/mockSettings'
 
 const mockIdentityCheckState = mockState
@@ -22,6 +24,20 @@ const mockRemainingAttempts = {
 }
 
 jest.mock('features/auth/context/AuthContext')
+
+const mockUseStoredProfileInfos = {
+  name: 'Jeanne',
+  city: 'Aubervilliers',
+  address: '7 rue des Lilas ',
+  status: ActivityIdEnum.STUDENT,
+}
+jest.mock('features/identityCheck/pages/helpers/useStoredProfileInfos', () => ({
+  useStoredProfileInfos: jest.fn(() => mockUseStoredProfileInfos),
+}))
+
+jest.mock('features/auth/context/AuthContext')
+const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
+mockAuthContextWithUser(mockUser)
 
 jest.mock('features/identityCheck/queries/useGetStepperInfoQuery', () => ({
   useGetStepperInfoQuery: jest.fn(() => mockUseGetStepperInfo),
@@ -103,7 +119,7 @@ describe('useStepperInfo', () => {
   })
 
   describe('profile step', () => {
-    it('should show subtitle if user has already filled their profile', () => {
+    it('should show subtitle when given', () => {
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
 
