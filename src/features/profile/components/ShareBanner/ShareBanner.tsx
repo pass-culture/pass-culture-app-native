@@ -7,7 +7,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
-import { Section } from 'ui/components/Section'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
@@ -22,20 +21,18 @@ export const ShareBanner = () => {
   }, [])
 
   return (
-    <Section title="Partager le pass Culture">
-      <BannerWithBackgroundContainer>
-        <BannerWithBackground
-          backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-          onPress={onShareBannerPress}
-          accessibilityRole={AccessibilityRole.BUTTON}
-          accessibilityLabel={accessibilityLabel}>
-          <ShareAppContainer gap={1}>
-            <StyledBodyAccent>{shareBannerTitle}</StyledBodyAccent>
-            <StyledBody>{shareBannerDescription}</StyledBody>
-          </ShareAppContainer>
-        </BannerWithBackground>
-      </BannerWithBackgroundContainer>
-    </Section>
+    <BannerWithBackgroundContainer>
+      <BannerWithBackground
+        backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
+        onPress={onShareBannerPress}
+        accessibilityRole={AccessibilityRole.BUTTON}
+        accessibilityLabel={accessibilityLabel}>
+        <ShareAppContainer gap={1}>
+          <StyledBodyAccent>{shareBannerTitle}</StyledBodyAccent>
+          <StyledBody>{shareBannerDescription}</StyledBody>
+        </ShareAppContainer>
+      </BannerWithBackground>
+    </BannerWithBackgroundContainer>
   )
 }
 

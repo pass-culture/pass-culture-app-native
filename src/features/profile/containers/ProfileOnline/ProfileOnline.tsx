@@ -40,7 +40,7 @@ export const ProfileOnline = () => {
           {isUserLoggedIn ? (
             <ProfileLoggedIn featureFlags={featureFlags} user={user} />
           ) : (
-            <ProfileLoggedOut featureFlags={featureFlags} />
+            <ProfileLoggedOut featureFlags={featureFlags} user={user} />
           )}
         </Main>
         <Footer />

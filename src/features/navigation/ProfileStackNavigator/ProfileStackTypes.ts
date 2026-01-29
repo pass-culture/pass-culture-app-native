@@ -6,6 +6,7 @@ interface PersonalDataType {
 }
 
 export type ProfileStackParamList = {
+  Achievements: { from: 'profile' | 'success' } | undefined
   ChangeAddress: PersonalDataType | undefined
   ChangeCity: PersonalDataType | undefined
   ChangeEmail: { showModal: boolean } | undefined

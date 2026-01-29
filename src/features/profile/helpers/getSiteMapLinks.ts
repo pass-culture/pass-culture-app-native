@@ -62,7 +62,7 @@ export const getSiteMapLinks = (
       },
       {
         wording: 'Mes succès',
-        navigateTo: { screen: 'Achievements' },
+        navigateTo: getProfilePropConfig('Achievements'),
         isLoggedIn: true,
       },
       {
@@ -81,8 +81,8 @@ export const getSiteMapLinks = (
         isLoggedIn: true,
       },
       {
-        wording: 'Préférence d’affichage',
-        navigateTo: getProfilePropConfig('DisplayPreference'),
+        wording: 'Apparence',
+        navigateTo: getProfilePropConfig('Appearance'),
         isLoggedIn: false,
       },
       {

@@ -1,6 +1,7 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import React from 'react'
 
+import { Achievements } from 'features/achievements/pages/Achievements'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { ProfileStackNavigatorBase } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigatorBase'
 import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStackTypes'
@@ -67,6 +68,11 @@ const profileScreens: ProfileRouteConfig[] = [
     name: 'AccessibilityDeclarationWeb',
     component: AccessibilityDeclarationWeb,
     options: { title: 'Déclaration d’accessibilité - web' },
+  },
+  {
+    name: 'Achievements',
+    component: Achievements,
+    options: { title: 'Mes succès' },
   },
   {
     name: 'RecommendedPaths',
