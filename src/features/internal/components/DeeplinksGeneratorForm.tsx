@@ -1,5 +1,5 @@
 import { omit } from 'lodash'
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -17,6 +17,7 @@ import {
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
+import { getScreenForLabel, SCREEN_OPTIONS } from 'features/internal/helpers/screenOptionsHelpers'
 import { getUniversalLink } from 'features/navigation/RootNavigator/linking/getUniversalLink'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
@@ -28,10 +29,10 @@ import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
@@ -48,7 +49,7 @@ type DeeplinksAppParams = Record<string, unknown> & {
   maxPrice?: string
 }
 
-export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
+export const getDefaultScreenParams = (screenName: ScreensUsedByMarketing) => {
   if (screenName === 'SearchResults') {
     return {
       locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 'all' },
@@ -62,28 +63,21 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const { appContentWidth, isMobileViewport } = useTheme()
   const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Home')
   const [screenParams, setScreenParams] = useState<Record<string, unknown>>({
+    ...getDefaultScreenParams('Home'),
     utm_gen: 'marketing',
   })
 
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const renderScreenItem = (screenName: ScreensUsedByMarketing) => {
-    const onSelectScreenName = () => {
-      setSelectedScreen(screenName)
-      setScreenParams((prev) => ({ ...getDefaultScreenParams(screenName), utm_gen: prev.utm_gen }))
-    }
-
-    return (
-      <React.Fragment key={screenName}>
-        <RadioButton
-          label={screenName}
-          isSelected={selectedScreen === screenName}
-          onSelect={onSelectScreenName}
-        />
-        <Separator.Horizontal />
-      </React.Fragment>
-    )
-  }
+  const handleScreenChange = useCallback((label: string) => {
+    const screen = getScreenForLabel(label)
+    if (!screen) return
+    setSelectedScreen(screen)
+    setScreenParams((prev) => ({
+      ...getDefaultScreenParams(screen),
+      utm_gen: prev.utm_gen,
+    }))
+  }, [])
 
   const renderScreenParam = (name: string, config: ParamConfig) => {
     function validate(value: unknown) {
@@ -311,7 +305,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       <Container>
         <StyledTitle4>Besoin d’un lien&nbsp;?</StyledTitle4>
         <Accordion title="Pages" defaultOpen>
-          {Object.keys(SCREENS_CONFIG).map((key) => renderScreenItem(key))}
+          <RadioButtonGroup
+            label="Sélectionne une page"
+            options={SCREEN_OPTIONS}
+            value={selectedScreen}
+            onChange={handleScreenChange}
+          />
         </Accordion>
         {paramsCount > 0 ? (
           <Accordion title={'Paramètres applicatifs' + ` (${paramsCount})`} defaultOpen>
