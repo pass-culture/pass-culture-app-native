@@ -1193,9 +1193,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     {
                       "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
+                      "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "lineHeight": 22,
                       "maxWidth": "100%",
                     }
                   }

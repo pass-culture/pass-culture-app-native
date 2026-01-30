@@ -502,9 +502,14 @@ exports[`<SetBirthday /> should render correctly 1`] = `
                 "lineHeight": "19.2px",
               },
               "button": {
-                "fontFamily": "Montserrat-Bold",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": "16px",
-                "lineHeight": "25.6px",
+                "lineHeight": "22px",
+              },
+              "buttonS": {
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": "14px",
+                "lineHeight": "14px",
               },
               "title1": {
                 "fontFamily": "Montserrat-Bold",
@@ -800,9 +805,9 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             style={
               {
                 "color": "#696a6f",
-                "fontFamily": "Montserrat-Bold",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
-                "lineHeight": 25.6,
+                "lineHeight": 22,
                 "maxWidth": "100%",
               }
             }
@@ -1340,9 +1345,14 @@ exports[`<SetBirthday /> should render correctly when account creation token and
                 "lineHeight": "19.2px",
               },
               "button": {
-                "fontFamily": "Montserrat-Bold",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": "16px",
-                "lineHeight": "25.6px",
+                "lineHeight": "22px",
+              },
+              "buttonS": {
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": "14px",
+                "lineHeight": "14px",
               },
               "title1": {
                 "fontFamily": "Montserrat-Bold",
@@ -1638,9 +1648,9 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             style={
               {
                 "color": "#696a6f",
-                "fontFamily": "Montserrat-Bold",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
-                "lineHeight": 25.6,
+                "lineHeight": 22,
                 "maxWidth": "100%",
               }
             }

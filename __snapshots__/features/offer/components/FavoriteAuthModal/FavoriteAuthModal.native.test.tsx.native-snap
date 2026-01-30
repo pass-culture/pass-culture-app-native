@@ -446,9 +446,9 @@ retrouver tes favoris
                         style={
                           {
                             "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
+                            "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "lineHeight": 22,
                             "maxWidth": "100%",
                           }
                         }
@@ -509,9 +509,9 @@ retrouver tes favoris
                         {
                           "color": "#320096",
                           "cursor": "pointer",
-                          "fontFamily": "Montserrat-Bold",
+                          "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "lineHeight": 22,
                           "textDecorationLine": "underline",
                         }
                       }
