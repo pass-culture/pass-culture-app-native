@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
@@ -42,14 +43,16 @@ export const useOfferQuery = <T = OfferResponseV2>({
 
   const query = useQuery({
     queryKey: [QueryKeys.OFFER, offerId],
-    queryFn: async () => {
-      const offer = await getOfferById(offerId, logType)
-      queryClient.setQueryData([QueryKeys.OFFER, QueryKeys.PREVIEW, offerId], false)
-      return offer
-    },
+    queryFn: () => getOfferById(offerId, logType),
     enabled: !!offerId,
     select,
   })
+
+  useEffect(() => {
+    if (query.data) {
+      queryClient.setQueryData([QueryKeys.OFFER, QueryKeys.PREVIEW, offerId], false)
+    }
+  }, [query.data, offerId, queryClient])
 
   return query
 }

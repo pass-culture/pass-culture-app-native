@@ -77,6 +77,19 @@ export const MovieCalendar: React.FC<Props> = ({
     [onTabChange, scrollToMiddleElement]
   )
 
+  const renderItem = useCallback(
+    ({ item }: { item: Date }) => (
+      <MovieCalendarDay
+        onLayout={onItemLayout}
+        date={item}
+        selectedDate={selectedDate}
+        onTabChange={onInternalTabChange}
+        disabled={disabledDates?.includes(item)}
+      />
+    ),
+    [onItemLayout, selectedDate, onInternalTabChange, disabledDates]
+  )
+
   return (
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
@@ -98,15 +111,7 @@ export const MovieCalendar: React.FC<Props> = ({
           onScroll={onScroll}
           onContentSizeChange={onContentSizeChange}
           testID="movie-calendar-flat-list"
-          renderItem={({ item: date }) => (
-            <MovieCalendarDay
-              onLayout={onItemLayout}
-              date={date}
-              selectedDate={selectedDate}
-              onTabChange={onInternalTabChange}
-              disabled={disabledDates?.includes(date)}
-            />
-          )}
+          renderItem={renderItem}
         />
         {isDesktopViewport ? (
           <React.Fragment>

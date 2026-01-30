@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { Ref, useEffect } from 'react'
+import React, { Ref, useCallback, useEffect } from 'react'
 import { Platform, StyleProp, ViewStyle, ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -74,6 +74,8 @@ const renderVenueItem = (
 
 const isWeb = Platform.OS === 'web'
 
+const venuePlaylistContentContainerStyle = { paddingHorizontal: getSpacing(6) }
+
 export const VenuePlaylist: React.FC<Props> = ({
   venuePlaylistTitle,
   venues = [],
@@ -134,6 +136,21 @@ export const VenuePlaylist: React.FC<Props> = ({
 
   const shouldDisplaySeeOnMapButton = enabledVenueMap && currentView === 'ThematicSearch' && !isWeb
 
+  const renderItemCallback = useCallback(
+    ({
+      item,
+      height,
+      width,
+      index,
+    }: {
+      item: AlgoliaVenue
+      height: number
+      width: number
+      index: number
+    }) => renderVenueItem({ item, height, width, index }, searchId, searchGroupLabel),
+    [searchId, searchGroupLabel]
+  )
+
   return (
     <React.Fragment>
       <Container style={style}>
@@ -156,15 +173,13 @@ export const VenuePlaylist: React.FC<Props> = ({
           scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
           itemHeight={VENUE_ITEM_HEIGHT}
           itemWidth={VENUE_ITEM_WIDTH}
-          renderItem={({ item, height, width, index }) =>
-            renderVenueItem({ item, height, width, index }, searchId, searchGroupLabel)
-          }
+          renderItem={renderItemCallback}
           renderHeader={undefined}
           renderFooter={undefined}
           keyExtractor={keyExtractor}
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
-          contentContainerStyle={{ paddingHorizontal: getSpacing(6) }}
+          contentContainerStyle={venuePlaylistContentContainerStyle}
           ref={playlistRef}
           onViewableItemsChanged={onViewableItemsChanged}
         />

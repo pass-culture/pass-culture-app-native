@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
 
-import { ReactionTypeEnum } from 'api/gen'
+import { OfferResponseV2, ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ConsentState, CookieNameEnum } from 'features/cookies/enums'
@@ -42,12 +42,16 @@ export function Offer() {
   const isMultiArtistsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_MULTI_ARTISTS)
 
   const { isLoggedIn, user } = useAuthContext()
-  const { data: offer, isLoading } = useOfferQuery({
-    offerId,
-    select: (data) => ({
+  const selectOffer = useCallback(
+    (data: OfferResponseV2) => ({
       ...data,
       reactionsCount: { likes: data.reactionsCount.likes },
     }),
+    []
+  )
+  const { data: offer, isLoading } = useOfferQuery({
+    offerId,
+    select: selectOffer,
   })
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategoriesQuery()
