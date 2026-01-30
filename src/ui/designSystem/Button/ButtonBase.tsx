@@ -16,6 +16,7 @@ import { getButtonColors } from './Button.colors'
 import {
   getBorderWidth,
   getIconElement,
+  getIconSizeKeyForButton,
   getInteractiveColors,
   getLabelStyle,
   getLabelText,
@@ -99,7 +100,8 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
 
-  const iconSize = theme.icons.sizes.extraSmall
+  const iconSizeKey = getIconSizeKeyForButton(size)
+  const iconSize = theme.icons.sizes[iconSizeKey]
   const getPositionedIcon = (position: 'left' | 'right') =>
     iconPosition === position ? getIconElement({ icon, color: iconColor, size: iconSize }) : null
 

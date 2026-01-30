@@ -41,8 +41,10 @@ export const getLabelStyle = (
 
 export const getSpacingGap = (hasLabel: boolean, spacing: number) => (hasLabel ? spacing : 0)
 
-export const getTypographyForSize = (size: ButtonSize) =>
-  size === 'small' ? 'BodyAccentXs' : 'BodyAccent'
+export const getTypographyForSize = (size: ButtonSize) => (size === 'small' ? 'ButtonS' : 'Button')
+
+export const getIconSizeKeyForButton = (size: ButtonSize) =>
+  size === 'small' ? 'extraSmall' : 'smaller'
 
 export const getIconElement = ({
   icon: Icon,
