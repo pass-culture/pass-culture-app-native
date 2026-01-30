@@ -450,9 +450,9 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               style={
                 {
                   "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
+                  "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "lineHeight": 22,
                   "maxWidth": "100%",
                 }
               }
@@ -557,9 +557,9 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
               style={
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
+                  "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "lineHeight": 22,
                   "maxWidth": "100%",
                 }
               }
