@@ -64,7 +64,7 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(
       1,
-      'https://webapp-v2.example.com/accueil?utm_gen=product&utm_campaign=campaign&utm_source=source&utm_medium=medium'
+      'https://webapp-v2.example.com/accueil?from=deeplink&utm_gen=product&utm_campaign=campaign&utm_source=source&utm_medium=medium'
     )
   })
 
