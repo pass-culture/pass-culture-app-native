@@ -133,6 +133,11 @@ export const OffersModule = (props: OffersModuleProps) => {
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
 
+  const contentContainerStyle = useMemo(
+    () => ({ paddingHorizontal: designSystem.size.spacing.xl }),
+    [designSystem.size.spacing.xl]
+  )
+
   const hybridPlaylistItems = useMemo(
     () => [...playlistItems, ...recommandationOffers],
     [recommandationOffers, playlistItems]
@@ -195,7 +200,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           onEndReached={logHasSeenAllTilesOnce}
           playlistRef={listRef}
           onViewableItemsChanged={handleViewableItemsChanged}
-          contentContainerStyle={{ paddingHorizontal: designSystem.size.spacing.xl }}
+          contentContainerStyle={contentContainerStyle}
         />
       )}
     </ObservedPlaylist>

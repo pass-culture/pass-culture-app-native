@@ -13,6 +13,8 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
 
+const EMPTY_IDS: string[] = []
+
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
   subcategories: SubcategoryIdEnumv2[]
@@ -83,7 +85,7 @@ export const useHomeRecommendedOffers = (
     userId,
   })
 
-  const ids = data?.playlistRecommendedOffers ?? []
+  const ids = data?.playlistRecommendedOffers ?? EMPTY_IDS
   return {
     offers:
       useAlgoliaSimilarOffersQuery(ids, true, [QueryKeys.RECOMMENDATION_HITS, moduleId, ids]) || [],

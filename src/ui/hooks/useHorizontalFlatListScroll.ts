@@ -33,8 +33,8 @@ export const useHorizontalFlatListScroll = <T = unknown>({
     [isActive]
   )
 
-  const onContentSizeChange = useCallback((contentWidth: number, _contentHeight: number) => {
-    setContentWidth(contentWidth)
+  const onContentSizeChange = useCallback((newContentWidth: number, _contentHeight: number) => {
+    setContentWidth((prev) => (prev === newContentWidth ? prev : newContentWidth))
   }, [])
 
   const onScroll = useCallback(
