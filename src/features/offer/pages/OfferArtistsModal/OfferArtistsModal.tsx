@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { styled, useTheme } from 'styled-components/native'
 
-import { ArtistResponse } from 'api/gen'
 import { OfferArtistItem } from 'features/offer/components/OfferArtistItem/OfferArtistItem'
+import { OfferArtist } from 'features/offer/types'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
@@ -12,7 +12,7 @@ import { Close } from 'ui/svg/icons/Close'
 type Props = {
   isVisible: boolean
   closeModal: VoidFunction
-  artists: ArtistResponse[]
+  artists: OfferArtist[]
   navigateTo: InternalNavigationProps['navigateTo']
 }
 
@@ -43,19 +43,27 @@ export const OfferArtistsModal: FunctionComponent<Props> = ({
       noPadding
       isUpToStatusBar>
       <Container>
-        {artists.map((artist, index) => (
-          <React.Fragment key={artist.id}>
-            <OfferArtistItem
-              artist={artist}
-              navigateTo={{
-                ...navigateTo,
-                params: { id: artist.id },
-              }}
-              onBeforeNavigate={closeModal}
-            />
-            {index < artists.length - 1 ? <StyledSeparator /> : null}
-          </React.Fragment>
-        ))}
+        {artists.map((artist, index) => {
+          const key = artist.id ?? `no-id-${artist.name}-${index}`
+
+          return (
+            <React.Fragment key={key}>
+              <OfferArtistItem
+                artist={artist}
+                navigateTo={
+                  artist.id
+                    ? {
+                        ...navigateTo,
+                        params: { id: artist.id },
+                      }
+                    : undefined
+                }
+                onBeforeNavigate={artist.id ? closeModal : undefined}
+              />
+              {index < artists.length - 1 ? <StyledSeparator /> : null}
+            </React.Fragment>
+          )
+        })}
       </Container>
     </AppModal>
   )
