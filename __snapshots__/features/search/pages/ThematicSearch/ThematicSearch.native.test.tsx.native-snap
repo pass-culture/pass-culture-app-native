@@ -1766,14 +1766,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_BIBLIOTHEQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -1863,7 +1862,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -1879,14 +1878,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_MEDIATHEQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -1976,7 +1974,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -1992,14 +1990,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_LIVRE_NUMERIQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2089,7 +2086,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2105,14 +2102,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_LUDOTHEQUE",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2202,7 +2198,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2218,14 +2214,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_CONCERT",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2315,7 +2310,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2331,14 +2326,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                           "subcategoryId": "ABO_JEU_VIDEO",
                         },
                         "venue": {
-                          "accessibility": {
-                            "audioDisability": false,
-                            "mentalDisability": false,
-                            "motorDisability": false,
-                            "visualDisability": true,
+                          "accessibilityData": {
+                            "isAccessibleAudioDisability": false,
+                            "isAccessibleMentalDisability": false,
+                            "isAccessibleMotorDisability": false,
+                            "isAccessibleVisualDisability": true,
                           },
                           "activity": "BOOKSTORE",
-                          "address": "1 boulevard Poissonnière",
                           "city": "Paris",
                           "contact": {
                             "email": "contact@venue.com",
@@ -2428,7 +2422,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             ],
                           },
                           "postalCode": "75000",
-                          "publicName": "Le Petit Rintintin 1",
+                          "street": "1 boulevard Poissonnière",
                           "timezone": "UTC",
                           "withdrawalDetails": "How to withdraw, https://test.com",
                         },
@@ -2673,14 +2667,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_BIBLIOTHEQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -2770,7 +2763,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
@@ -2956,14 +2949,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_MEDIATHEQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -3053,7 +3045,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
@@ -3239,14 +3231,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_LIVRE_NUMERIQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -3336,7 +3327,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },
@@ -3522,14 +3513,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               "subcategoryId": "ABO_LUDOTHEQUE",
                             },
                             "venue": {
-                              "accessibility": {
-                                "audioDisability": false,
-                                "mentalDisability": false,
-                                "motorDisability": false,
-                                "visualDisability": true,
+                              "accessibilityData": {
+                                "isAccessibleAudioDisability": false,
+                                "isAccessibleMentalDisability": false,
+                                "isAccessibleMotorDisability": false,
+                                "isAccessibleVisualDisability": true,
                               },
                               "activity": "BOOKSTORE",
-                              "address": "1 boulevard Poissonnière",
                               "city": "Paris",
                               "contact": {
                                 "email": "contact@venue.com",
@@ -3619,7 +3609,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 ],
                               },
                               "postalCode": "75000",
-                              "publicName": "Le Petit Rintintin 1",
+                              "street": "1 boulevard Poissonnière",
                               "timezone": "UTC",
                               "withdrawalDetails": "How to withdraw, https://test.com",
                             },

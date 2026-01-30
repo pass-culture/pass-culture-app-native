@@ -195,7 +195,7 @@ export type Geoloc = AlgoliaGeoloc
 
 export type VenueHit = Pick<
   VenueResponse,
-  | 'accessibility'
+  | 'accessibilityData'
   | 'bannerUrl'
   | 'contact'
   | 'description'
@@ -203,11 +203,11 @@ export type VenueHit = Pick<
   | 'latitude'
   | 'longitude'
   | 'name'
-  | 'publicName'
   | 'city'
   | 'postalCode'
   | 'isOpenToPublic'
   | 'activity'
+  | 'isPermanent'
 >
 
 export interface AlgoliaQueryParameters {

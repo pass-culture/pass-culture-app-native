@@ -18,10 +18,10 @@ const defaultVenue: Omit<VenueResponse, 'isVirtual'> = {
   name: 'Une librairie',
   city: 'Jest',
   id: 123,
-  accessibility: {},
   timezone: 'Europe/Paris',
   activity: Activity.BOOKSTORE,
   isOpenToPublic: true,
+  isPermanent: true,
 }
 
 const mockLocationMode = LocationMode.AROUND_ME

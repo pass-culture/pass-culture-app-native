@@ -24,7 +24,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
     description,
     contact,
     isOpenToPublic,
-    accessibility,
+    accessibilityData,
     openingHours,
     externalAccessibilityData,
     externalAccessibilityId,
@@ -40,8 +40,8 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
 
   const shouldDisplayBasicAccessibility =
     !!isOpenToPublic &&
-    !!accessibility &&
-    Object.values(accessibility).some((value) => value != null)
+    !!accessibilityData &&
+    Object.values(accessibilityData).some((value) => value != null)
 
   const accessibilitySection = useMemo(() => {
     if (shouldDisplayDetailedAccessibility) {
@@ -54,7 +54,16 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
       )
     }
     if (shouldDisplayBasicAccessibility) {
-      return <BasicAccessibilityInfo accessibility={accessibility} />
+      return (
+        <BasicAccessibilityInfo
+          accessibility={{
+            audioDisability: accessibilityData.isAccessibleAudioDisability,
+            mentalDisability: accessibilityData.isAccessibleMentalDisability,
+            motorDisability: accessibilityData.isAccessibleMotorDisability,
+            visualDisability: accessibilityData.isAccessibleVisualDisability,
+          }}
+        />
+      )
     }
     return null
   }, [
@@ -63,7 +72,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAc
     externalAccessibilityUrl,
     externalAccessibilityData,
     externalAccessibilityId,
-    accessibility,
+    accessibilityData,
   ])
 
   const shouldDisplayOpeningHours =

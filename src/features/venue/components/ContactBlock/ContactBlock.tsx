@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueContactModel, VenueResponse } from 'api/gen'
+import { VenueContact, VenueResponse } from 'api/gen'
 import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -27,8 +27,8 @@ export const ContactBlock: React.FC<{ venue: Omit<VenueResponse, 'isVirtual'> }>
   )
     return null
 
-  const logAnalytics = (type: keyof VenueContactModel) => {
-    analytics.logVenueContact({ type, venueId: venue.id })
+  const logAnalytics = (type: keyof VenueContact) => {
+    void analytics.logVenueContact({ type, venueId: venue.id })
   }
 
   return (

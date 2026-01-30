@@ -43,12 +43,7 @@ describe('PracticalInformation', () => {
       externalAccessibilityUrl: undefined,
       externalAccessibilityData: undefined,
       openingHours: undefined,
-      accessibility: {
-        audioDisability: null,
-        mentalDisability: null,
-        motorDisability: null,
-        visualDisability: null,
-      },
+      accessibilityData: undefined,
     }
     render(reactQueryProviderHOC(<PracticalInformation venue={venueWithoutPracticalInformation} />))
 
@@ -148,12 +143,7 @@ describe('PracticalInformation', () => {
               ...venueOpenToPublic,
               externalAccessibilityUrl: undefined,
               externalAccessibilityData: undefined,
-              accessibility: {
-                audioDisability: null,
-                mentalDisability: null,
-                motorDisability: null,
-                visualDisability: null,
-              },
+              accessibilityData: undefined,
             }}
           />
         )
