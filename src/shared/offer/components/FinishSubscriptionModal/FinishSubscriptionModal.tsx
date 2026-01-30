@@ -9,7 +9,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -71,10 +71,10 @@ const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
   </StyledBody>
 )
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,

@@ -10,7 +10,6 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { getSpacing } from 'ui/theme'
 import { Typo } from 'ui/theme/typography'
 
 interface RadioButtonProps {
@@ -115,7 +114,7 @@ const LabelContainerFlex = styled.View.attrs({
 const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
+  marginRight: theme.isMobileViewport ? 0 : theme.designSystem.size.spacing.xl,
 }))
 
 const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({

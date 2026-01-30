@@ -5,7 +5,7 @@ import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/ani
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -91,7 +91,7 @@ const Container = styled.View(({ theme }) => ({
 
 const ButtonsContainer = styled(AnimatedView)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
-  paddingVertical: getSpacing(6),
+  paddingVertical: theme.designSystem.size.spacing.xl,
   backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
 }))

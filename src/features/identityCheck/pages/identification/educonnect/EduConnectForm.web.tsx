@@ -10,7 +10,7 @@ import { Banner } from 'ui/designSystem/Banner/Banner'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const EduConnectForm = () => {
   const { error, openEduConnectTab } = useEduConnectLoginMutation()
@@ -69,10 +69,10 @@ const IdCardWithMagnifyingGlass = styled(InitialIdCardWithMagnifyingGlass).attrs
   color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
-const Center = styled.View({
+const Center = styled.View(({ theme }) => ({
   alignSelf: 'center',
-  padding: getSpacing(7),
-})
+  padding: theme.designSystem.size.spacing.xxl,
+}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',

@@ -6,7 +6,7 @@ import { useAchievementDetails } from 'features/achievements/hooks/useAchievemen
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { Tag } from 'ui/designSystem/Tag/Tag'
 import { TagVariant } from 'ui/designSystem/Tag/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -62,11 +62,11 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  padding: getSpacing(6),
-})
+  padding: theme.designSystem.size.spacing.xl,
+}))
 const IconsWrapper = styled.View({
   alignItems: 'center',
   justifyContent: 'center',

@@ -302,23 +302,23 @@ const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
 }))
 
-const Calque = styled(LinearGradient)({
+const Calque = styled(LinearGradient)(({ theme }) => ({
   position: 'absolute',
-  left: -getSpacing(6),
-  right: -getSpacing(6),
+  left: -theme.designSystem.size.spacing.xl,
+  right: -theme.designSystem.size.spacing.xl,
   top: 0,
   bottom: 0,
   alignItems: 'center',
   justifyContent: 'center',
-})
+}))
 
-const PressListener = styled.Pressable({
+const PressListener = styled.Pressable(({ theme }) => ({
   position: 'absolute',
-  left: -getSpacing(6),
-  right: -getSpacing(6),
+  left: -theme.designSystem.size.spacing.xl,
+  right: -theme.designSystem.size.spacing.xl,
   top: 0,
   flexDirection: 'row',
-})
+}))
 
 const ButtonsContainer = styled.View({
   justifyContent: 'center',

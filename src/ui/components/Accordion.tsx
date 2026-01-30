@@ -23,7 +23,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
-import { getSpacing, Typo } from '../theme'
+import { Typo } from '../theme'
 
 interface AccordionProps {
   title: React.JSX.Element | string
@@ -169,17 +169,17 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   paddingVertical: theme.designSystem.size.spacing.xl,
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   ...(isWeb ? { cursor: 'pointer' } : {}),
 }))
 
-const StyledView = styled(View)<{ hidden: boolean }>(({ hidden }) => ({
+const StyledView = styled(View)<{ hidden: boolean }>(({ hidden, theme }) => ({
   display: hidden ? 'none' : 'flex',
   position: 'absolute',
   bottom: 0,
   width: '100%',
-  paddingBottom: getSpacing(6),
-  paddingHorizontal: getSpacing(6),
+  paddingBottom: theme.designSystem.size.spacing.xl,
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   paddingTop: 0,
 }))
 

@@ -8,7 +8,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -58,7 +58,7 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const ModalContent = styled.View({
-  gap: getSpacing(6),
+const ModalContent = styled.View(({ theme }) => ({
+  gap: theme.designSystem.size.spacing.xl,
   width: '100%',
-})
+}))

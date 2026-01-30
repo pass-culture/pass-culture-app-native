@@ -93,7 +93,7 @@ const ContainerStrokedLine = styled.View(({ theme }) => ({
 const ContentBlock = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   gap: theme.designSystem.size.spacing.xl,
-  paddingHorizontal: getSpacing(7.5),
+  paddingHorizontal: theme.designSystem.size.spacing.xxl,
   borderColor: theme.designSystem.color.border.subtle,
   borderLeftWidth: 1,
   borderRightWidth: 1,
@@ -105,18 +105,18 @@ const FullBlock = styled(ContentBlock)(({ theme }) => ({
   borderWidth: 1,
 }))
 
-const BottomBlock = styled(ContentBlock)({
+const BottomBlock = styled(ContentBlock)(({ theme }) => ({
   justifyContent: 'center',
   borderBottomWidth: 1,
-  borderBottomLeftRadius: getSpacing(6),
-  borderBottomRightRadius: getSpacing(6),
-})
-const TopBlock = styled(ContentBlock)({
-  borderTopWidth: 1,
-  borderTopLeftRadius: getSpacing(6),
-  borderTopRightRadius: getSpacing(6),
-})
+  borderBottomLeftRadius: theme.designSystem.size.spacing.xl,
+  borderBottomRightRadius: theme.designSystem.size.spacing.xl,
+}))
 
+const TopBlock = styled(ContentBlock)(({ theme }) => ({
+  borderTopWidth: 1,
+  borderTopLeftRadius: theme.designSystem.size.spacing.xl,
+  borderTopRightRadius: theme.designSystem.size.spacing.xl,
+}))
 const MiddleBlock = styled.View({
   flexDirection: 'row',
   height: TICKET_PUNCHED_MIDDLE_HEIGHT,

@@ -528,15 +528,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         style={
                           {
                             "backgroundColor": "#696a6f",
-                            "borderBottomLeftRadius": 16,
-                            "borderBottomRightRadius": 16,
-                            "borderTopLeftRadius": 16,
-                            "borderTopRightRadius": 16,
-                            "height": 32,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
                             "justifyContent": "center",
-                            "width": 56,
+                            "width": 64,
                           }
                         }
+                        toggleSize={32}
                       >
                         <View
                           disabled={false}
@@ -550,9 +551,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -563,6 +564,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                               },
                             ]
                           }
+                          toggleSize={32}
                         />
                       </View>
                     </View>
@@ -689,15 +691,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         style={
                           {
                             "backgroundColor": "#696a6f",
-                            "borderBottomLeftRadius": 16,
-                            "borderBottomRightRadius": 16,
-                            "borderTopLeftRadius": 16,
-                            "borderTopRightRadius": 16,
-                            "height": 32,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
                             "justifyContent": "center",
-                            "width": 56,
+                            "width": 64,
                           }
                         }
+                        toggleSize={32}
                       >
                         <View
                           disabled={false}
@@ -711,9 +714,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                                 "borderBottomRightRadius": 32,
                                 "borderTopLeftRadius": 32,
                                 "borderTopRightRadius": 32,
-                                "height": 28,
+                                "height": 32,
                                 "justifyContent": "center",
-                                "width": 28,
+                                "width": 32,
                               },
                               {
                                 "transform": [
@@ -724,6 +727,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                               },
                             ]
                           }
+                          toggleSize={32}
                         />
                       </View>
                     </View>

@@ -328,15 +328,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -350,9 +351,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -363,6 +364,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -449,15 +451,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -471,9 +474,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -484,6 +487,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -795,15 +799,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -817,9 +822,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -830,6 +835,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -1141,15 +1147,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
               style={
                 {
                   "backgroundColor": "#696a6f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={false}
@@ -1163,9 +1170,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
@@ -1176,6 +1183,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                     },
                   ]
                 }
+                toggleSize={32}
               />
             </View>
           </View>
@@ -1490,15 +1498,16 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                 style={
                   {
                     "backgroundColor": "#696a6f",
-                    "borderBottomLeftRadius": 16,
-                    "borderBottomRightRadius": 16,
-                    "borderTopLeftRadius": 16,
-                    "borderTopRightRadius": 16,
-                    "height": 32,
+                    "borderBottomLeftRadius": 32,
+                    "borderBottomRightRadius": 32,
+                    "borderTopLeftRadius": 32,
+                    "borderTopRightRadius": 32,
+                    "height": 36,
                     "justifyContent": "center",
-                    "width": 56,
+                    "width": 64,
                   }
                 }
+                toggleSize={32}
               >
                 <View
                   disabled={false}
@@ -1512,9 +1521,9 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                         "borderBottomRightRadius": 32,
                         "borderTopLeftRadius": 32,
                         "borderTopRightRadius": 32,
-                        "height": 28,
+                        "height": 32,
                         "justifyContent": "center",
-                        "width": 28,
+                        "width": 32,
                       },
                       {
                         "transform": [
@@ -1525,6 +1534,7 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
                       },
                     ]
                   }
+                  toggleSize={32}
                 />
               </View>
             </View>
@@ -1793,15 +1803,16 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
               style={
                 {
                   "backgroundColor": "#15884f",
-                  "borderBottomLeftRadius": 16,
-                  "borderBottomRightRadius": 16,
-                  "borderTopLeftRadius": 16,
-                  "borderTopRightRadius": 16,
-                  "height": 32,
+                  "borderBottomLeftRadius": 32,
+                  "borderBottomRightRadius": 32,
+                  "borderTopLeftRadius": 32,
+                  "borderTopRightRadius": 32,
+                  "height": 36,
                   "justifyContent": "center",
-                  "width": 56,
+                  "width": 64,
                 }
               }
+              toggleSize={32}
             >
               <View
                 disabled={true}
@@ -1815,19 +1826,20 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
                       "borderBottomRightRadius": 32,
                       "borderTopLeftRadius": 32,
                       "borderTopRightRadius": 32,
-                      "height": 28,
+                      "height": 32,
                       "justifyContent": "center",
-                      "width": 28,
+                      "width": 32,
                     },
                     {
                       "transform": [
                         {
-                          "translateX": 26,
+                          "translateX": 30,
                         },
                       ],
                     },
                   ]
                 }
+                toggleSize={32}
               >
                 <View
                   height={16}

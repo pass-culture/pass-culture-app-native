@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BookingHold } from 'ui/svg/BookingHold'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -59,7 +59,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))

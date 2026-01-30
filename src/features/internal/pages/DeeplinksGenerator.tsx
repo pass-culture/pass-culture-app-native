@@ -10,7 +10,6 @@ import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Page } from 'ui/pages/Page'
-import { getSpacing } from 'ui/theme'
 
 const linksInitialState: Array<string> = []
 
@@ -101,7 +100,7 @@ const Right = styled.View({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  paddingTop: getSpacing(6),
+  paddingTop: theme.designSystem.size.spacing.xl,
   paddingBottom: theme.designSystem.size.spacing.l,
 }))
 

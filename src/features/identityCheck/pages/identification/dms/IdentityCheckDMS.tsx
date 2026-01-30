@@ -78,9 +78,9 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 
 const ButtonContainer = styled.View({ padding: getSpacing(10) })
 
-const StyledSeparatorWithText = styled.View({
-  marginVertical: getSpacing(6),
-})
+const StyledSeparatorWithText = styled.View(({ theme }) => ({
+  marginVertical: theme.designSystem.size.spacing.xl,
+}))
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',

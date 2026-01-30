@@ -358,15 +358,16 @@ exports[`Appearance should render correctly 1`] = `
                         style={
                           {
                             "backgroundColor": "#696a6f",
-                            "borderBottomLeftRadius": 16,
-                            "borderBottomRightRadius": 16,
-                            "borderTopLeftRadius": 16,
-                            "borderTopRightRadius": 16,
-                            "height": 32,
+                            "borderBottomLeftRadius": 32,
+                            "borderBottomRightRadius": 32,
+                            "borderTopLeftRadius": 32,
+                            "borderTopRightRadius": 32,
+                            "height": 36,
                             "justifyContent": "center",
-                            "width": 56,
+                            "width": 64,
                           }
                         }
+                        toggleSize={32}
                       >
                         <View
                           collapsable={false}
@@ -380,16 +381,17 @@ exports[`Appearance should render correctly 1`] = `
                               "borderBottomRightRadius": 32,
                               "borderTopLeftRadius": 32,
                               "borderTopRightRadius": 32,
-                              "height": 28,
+                              "height": 32,
                               "justifyContent": "center",
                               "transform": [
                                 {
                                   "translateX": 2,
                                 },
                               ],
-                              "width": 28,
+                              "width": 32,
                             }
                           }
+                          toggleSize={32}
                         />
                       </View>
                     </View>

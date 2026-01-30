@@ -97,7 +97,7 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const StyledTitle = styled(Typo.Title3)({
+const StyledTitle = styled(Typo.Title3)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
