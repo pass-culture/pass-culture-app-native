@@ -6,9 +6,9 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -18,7 +18,7 @@ export const DuoChoiceSelector: React.FC = () => {
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const getChoiceInfosForQuantity = (quantity: 1 | 2) => {
     const enoughCredit = stock ? quantity * stock.price <= offerCredit : false

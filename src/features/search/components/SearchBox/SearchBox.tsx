@@ -14,7 +14,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -22,6 +21,7 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import Animated, { LinearTransition } from 'libs/react-native-reanimated'
+import { useAppEnableAutocomplete } from 'queries/settings/useSettings'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -66,8 +66,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appSettings } = useSettingsContext()
-  const appEnableAutocomplete = appSettings?.appEnableAutocomplete
+  const { data: appEnableAutocomplete } = useAppEnableAutocomplete()
 
   const setQuery = useCallback(
     (value: string) => {

@@ -6,13 +6,13 @@ import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { object, string } from 'yup'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useCitiesByPostalCodeQuery } from 'libs/place/queries/useCitiesByPostalCodeQuery'
 import { SuggestedCity } from 'libs/place/types'
+import { useIneligiblePostalCodes } from 'queries/settings/useSettings'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { RequiredIndicator } from 'ui/components/inputs/types'
@@ -42,7 +42,7 @@ export const CitySearchInput = ({
   requiredIndicator,
 }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { data: settings } = useSettingsContext()
+  const { data: ineligiblePostalCodes } = useIneligiblePostalCodes()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current
@@ -95,8 +95,8 @@ export const CitySearchInput = ({
 
   const handlePostalCodeChange = (postalCode: string) => {
     setPostalCodeQuery(postalCode)
-    if (settings) {
-      setIsPostalCodeIneligible(settings.ineligiblePostalCodes.includes(postalCode))
+    if (ineligiblePostalCodes) {
+      setIsPostalCodeIneligible(ineligiblePostalCodes.includes(postalCode))
     }
   }
 

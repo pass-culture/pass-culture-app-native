@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native'
-import { UseQueryResult } from '@tanstack/react-query'
 import React, { useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
@@ -7,13 +6,12 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
-import { SettingsResponse } from 'api/gen'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
+import { useIsRecaptchaEnabled } from 'queries/settings/useSettings'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -32,7 +30,7 @@ type FormValues = {
 }
 
 export const ForgottenPassword = () => {
-  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
+  const { data: isRecaptchaEnabled, isLoading: areSettingsLoading } = useIsRecaptchaEnabled()
 
   const {
     control,
@@ -46,14 +44,14 @@ export const ForgottenPassword = () => {
     openReCaptchaChallenge,
     requestPasswordReset,
     shouldDisableValidateButton,
-  } = useForgottenPasswordForm(settings)
+  } = useForgottenPasswordForm(!!isRecaptchaEnabled)
 
   return (
     <SecondaryPageWithBlurHeader
       title="Oubli de mot de passe"
       shouldDisplayBackButton
       onGoBack={onBackNavigation}>
-      {settings?.isRecaptchaEnabled ? (
+      {isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
@@ -74,7 +72,7 @@ export const ForgottenPassword = () => {
         <ButtonContainer>
           <ButtonPrimary
             wording="Valider"
-            onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
+            onPress={isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
             isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
             disabled={shouldDisableValidateButton}
           />
@@ -92,7 +90,7 @@ const Container = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxl,
 }))
 
-const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unknown>['data']) => {
+const useForgottenPasswordForm = (isRecaptchaEnabled: boolean) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
     control,
@@ -142,7 +140,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
         setValue('isFetching', true)
         await api.postNativeV1RequestPasswordReset({
           email,
-          token: settings?.isRecaptchaEnabled ? token : undefined,
+          token: isRecaptchaEnabled ? token : undefined,
         })
         replace('ResetPasswordEmailSent', { email })
       } catch (error) {
@@ -154,7 +152,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
         setValue('isFetching', false)
       }
     },
-    [clearErrors, email, replace, setCustomError, setValue, settings]
+    [clearErrors, email, replace, setCustomError, setValue, isRecaptchaEnabled]
   )
 
   const openReCaptchaChallenge = useCallback(

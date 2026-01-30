@@ -5,14 +5,12 @@ import { DefaultTheme } from 'styled-components/dist/types'
 import styled from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
@@ -42,11 +40,11 @@ interface Props {
 
 export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   const { seventeenYearsOldDeposit, eighteenYearsOldDeposit } = useDepositAmountsByAge()
-  const { data: settings } = useSettingsContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const formattedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
@@ -111,7 +109,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
                   <Spacer.Column numberOfSpaces={1} />
                   <StyledTitle3>
                     Tu peux recevoir{SPACE}
-                    <TitleSecondary>{`${bonificationAmount} supplémentaires`}</TitleSecondary>
+                    <TitleSecondary>{`${formattedBonificationAmount} supplémentaires`}</TitleSecondary>
                   </StyledTitle3>
                   {props.children}
                 </View>

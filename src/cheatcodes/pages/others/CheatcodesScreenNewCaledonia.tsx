@@ -7,17 +7,17 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location/location'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { convertEuroToPacificFranc, RoundUnit } from 'shared/currency/convertEuroToPacificFranc'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Separator } from 'ui/components/Separator'
 import { TextInput } from 'ui/designSystem/TextInput/TextInput'
 import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const CheatcodesScreenNewCaledonia = () => {
-  const pacificFrancToEuroRate = useGetPacificFrancToEuroRate()
+  const { data: pacificFrancToEuroRate } = usePacificFrancToEuroRate()
   const enablePacificFrancCurrency = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY
   )

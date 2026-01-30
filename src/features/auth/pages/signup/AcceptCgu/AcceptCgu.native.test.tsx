@@ -2,7 +2,6 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -52,10 +51,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<AcceptCgu/>', () => {
-  beforeEach(() => {
-    setSettings()
-  })
-
   it('should render correctly', () => {
     renderAcceptCGU()
 
