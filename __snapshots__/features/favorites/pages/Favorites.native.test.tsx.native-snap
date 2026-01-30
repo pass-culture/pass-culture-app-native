@@ -76,7 +76,7 @@ exports[`<Favorites/> should render correctly 1`] = `
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -104,9 +104,24 @@ exports[`<Favorites/> should render correctly 1`] = `
             {
               "userSelect": "auto",
             },
-            {},
             {
-              "overflow": "hidden",
+              "alignItems": "center",
+              "backgroundColor": "#6123df",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "borderColor": "#6123df",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 8,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 8,
+              "width": "auto",
             },
           ],
           {
@@ -117,25 +132,19 @@ exports[`<Favorites/> should render correctly 1`] = `
       testID="Trier"
     >
       <View
+        gap={8}
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#6123df",
-            "borderBottomLeftRadius": 24,
-            "borderBottomRightRadius": 24,
-            "borderTopLeftRadius": 24,
-            "borderTopRightRadius": 24,
+            "columnGap": 8,
             "flexDirection": "row",
-            "height": 40,
-            "overflow": "hidden",
-            "paddingHorizontal": 12,
           }
         }
       >
         <View
           fill="#ffffff"
-          height={32}
-          width={32}
+          height={20}
+          width={20}
         >
           <Text>
             undefined-SVG-Mock
@@ -143,13 +152,19 @@ exports[`<Favorites/> should render correctly 1`] = `
         </View>
         <Text
           style={
-            {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 16,
-              "lineHeight": 22,
-              "paddingHorizontal": 8,
-            }
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 16,
+                "lineHeight": 22,
+              },
+              {
+                "color": "#ffffff",
+                "maxWidth": "100%",
+                "textAlign": undefined,
+              },
+            ]
           }
         >
           Trier

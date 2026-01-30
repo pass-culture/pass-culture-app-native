@@ -14,7 +14,6 @@ import { DefaultTheme } from 'styled-components/native/dist/types'
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { Sort } from 'features/favorites/components/Buttons/Sort'
 import { Favorite } from 'features/favorites/components/Favorite'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
@@ -35,6 +34,9 @@ import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Button } from 'ui/designSystem/Button/Button'
+import { Sort as SortIcon } from 'ui/svg/icons/Sort'
 import { Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -127,7 +129,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
       ) : null}
       {sortedFavorites && sortedFavorites.length > 0 ? (
         <SortContainer>
-          <Sort />
+          <SortButton />
           <Spacer.BottomScreen />
         </SortContainer>
       ) : null}
@@ -179,7 +181,7 @@ const FavoritesResultsPlaceHolder = () => {
   return (
     <React.Fragment>
       <SortContainer>
-        <Sort />
+        <SortButton />
         <Spacer.BottomScreen />
       </SortContainer>
       <Container testID="FavoritesResultsPlaceHolder">
@@ -194,3 +196,14 @@ const FavoritesResultsPlaceHolder = () => {
     </React.Fragment>
   )
 }
+
+const SortButton = () => (
+  <InternalTouchableLink
+    navigateTo={{ screen: 'FavoritesSorts' }}
+    accessibilityLabel="Trier"
+    as={Button}
+    wording="Trier"
+    variant="primary"
+    icon={SortIcon}
+  />
+)

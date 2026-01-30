@@ -12,7 +12,7 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState, useLocation } from 'libs/location/location'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Button } from 'ui/designSystem/Button/Button'
 import { RadioButtonGroup } from 'ui/designSystem/RadioButtonGroup/RadioButtonGroup'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
@@ -78,7 +78,7 @@ export const FavoritesSorts: React.FC = () => {
         errorText={geolocPositionError?.message ?? ''}
       />
       <ButtonContainer>
-        <ButtonPrimary wording="Valider" onPress={onValidation} center />
+        <Button wording="Valider" onPress={onValidation} />
       </ButtonContainer>
     </SecondaryPageWithBlurHeader>
   )

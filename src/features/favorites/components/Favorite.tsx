@@ -23,9 +23,6 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { LineSeparator } from 'ui/components/LineSeparator'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -33,8 +30,10 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { Share } from 'ui/svg/icons/Share'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
@@ -176,7 +175,7 @@ export const Favorite: React.FC<Props> = (props) => {
           externalNav={externalNav}
           wording={wording}
           accessibilityLabel={accessibilityLabel}
-          as={ButtonPrimary}
+          as={Button}
           icon={ExternalSite}
         />
       )
@@ -184,7 +183,7 @@ export const Favorite: React.FC<Props> = (props) => {
       buttonProperties?.onPress?.()
       showBookOfferModal()
     }
-    return <ButtonPrimary wording={wording} disabled={disabled} onPress={onPressBookingButton} />
+    return <Button wording={wording} disabled={disabled} onPress={onPressBookingButton} />
   }, [buttonProperties, showBookOfferModal])
 
   return (
@@ -212,19 +211,22 @@ export const Favorite: React.FC<Props> = (props) => {
               </Row>
             </StyledTouchableLink>
             <ShareContainer>
-              <RoundedButton
-                iconName="share"
+              <Button
+                variant="secondary"
+                color="neutral"
                 onPress={pressShareOffer}
+                icon={Share}
                 accessibilityLabel={`Partager l’offre ${offer.name}`}
               />
             </ShareContainer>
           </Container>
           <FavoriteButtonsContainer gap={5}>
             <ButtonContainer>
-              <ButtonSecondary
+              <Button
                 wording="Supprimer"
-                accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
+                variant="secondary"
                 onPress={onRemove}
+                accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
                 disabled={isPending}
               />
             </ButtonContainer>
