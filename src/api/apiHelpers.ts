@@ -27,7 +27,7 @@ function navigateToLogin(params?: Record<string, unknown>) {
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
-  if (options && options.credentials === 'omit') return {}
+  if (options?.credentials === 'omit') return {}
 
   const accessToken = await storage.readString('access_token')
   return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
