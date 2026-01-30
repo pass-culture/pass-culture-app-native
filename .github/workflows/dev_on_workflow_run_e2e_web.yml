@@ -1,7 +1,12 @@
-name: 'E2E Web SmokeTest'
+name: '2 [on_workflow] E2E Web tests suite on Staging'
 
 on:
-  push:
+  workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 permissions:
   contents: read
@@ -10,7 +15,7 @@ permissions:
 
 jobs:
   run_e2e_web:
-    name: 'Smoke test Staging Web'
+    name: 'E2E test Staging Web'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
@@ -50,6 +55,7 @@ jobs:
           secrets: |-
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
             MAESTRO_CLOUD_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-maestro-cloud-api-key
+            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
 
       - name: Determine latest Maestro version
         run: |
@@ -61,6 +67,14 @@ jobs:
           echo "Cleaning up any previous Maestro CLI installation..."
           rm -rf $HOME/.maestro
 
+      - name: Generate Maestro Web upload name
+        id: generate_web_name
+        run: |
+          DATE=$(date +"%d/%m/%Y")
+          COMMIT_HASH=$(git rev-parse --short=8 HEAD)
+          CUSTOM_NAME="[Web]_Staging_du_${DATE}_(${COMMIT_HASH})"
+          echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_ENV
+
       - name: Install latest Maestro CLI
         run: |
           echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
@@ -71,13 +85,12 @@ jobs:
         env:
           MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
 
-      - name: Start a web staging server
-        run: yarn start:web:staging --host > /dev/null 2>&1 &
-
-      - name: Run Maestro E2E Web Tests
+      - name: Run Maestro E2E Web Tests in cloud on Staging
         env:
           MAESTRO_PASSWORD: ${{ steps.maestro_secrets.outputs.MAESTRO_PASSWORD }}
           MAESTRO_CLOUD_API_KEY: ${{ steps.maestro_secrets.outputs.MAESTRO_CLOUD_API_KEY }}
+          ROBIN_API_KEY: ${{ steps.maestro_secrets.outputs.ROBIN_API_KEY }}
+          ROBIN_PROJECT_ID: proj_01javz1ncreqb9dcshv3y4da44
           MAESTRO_VALID_IOS_EMAIL: dev-tests-e2e-ios@passculture.team
           MAESTRO_VALID_ANDROID_EMAIL: dev-tests-e2e-android@passculture.team
           MAESTRO_INVALID_EMAIL: dev-tests-e2e-invalid@passculture.team
@@ -86,56 +99,6 @@ jobs:
           MAESTRO_RUN_CLOUD_COMMANDS: false
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 60000
         run: |
-          echo "Running Maestro tests from your branch on web Staging build"
+          echo "Running Maestro tests on last released web Staging"
           export PATH=$HOME/.maestro/bin:$PATH
-          yarn test:e2e:web:staging --headless
-
-      - name: Logs & screenshots from errors (Download link ⬇️)
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: maestro-artifacts
-          path: /home/runner/.maestro/tests/
-
-  slack_notify:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    if: always()
-    needs: run_e2e_web
-    steps:
-      - name: Connect to Secret Manager
-        uses: 'google-github-actions/auth@v2'
-        with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Get secrets for Slack
-        id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v3'
-        with:
-          secrets: |-
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
-      - name: Post to a Slack channel
-        id: slack
-        uses: slackapi/slack-github-action@v1.27.0
-        with:
-          # channel #equipe-e2e-jeunes
-          channel-id: 'C05MH81G9LY'
-          payload: |
-            {
-              "attachments": [
-                  {
-                      "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[needs.run_e2e_web.result == 'failure'] }}",
-                      "author_name": "${{github.actor}}",
-                      "author_link": "https://github.com/${{github.actor}}",
-                      "author_icon": "https://github.com/${{github.actor}}.png",
-                      "title": "SMOKETEST E2E-WEB",
-                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le smoke test Web sur la branche `${{ github.ref_name }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[needs.run_e2e_web.result == 'failure'] }}"
-                  }
-              ],
-              "unfurl_links": false,
-              "unfurl_media": false
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+          yarn test:e2e:web:staging:cloud --name "$CUSTOM_NAME"

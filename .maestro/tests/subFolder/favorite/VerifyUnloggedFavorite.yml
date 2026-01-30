@@ -1,5 +1,6 @@
 appId: team.passculture.app.staging
 ---
+- tapOn: 'Favoris'
 - assertVisible: "Identifie-toi pour retrouver tes favoris"
 - assertVisible: "Créer un compte"
 - assertVisible: "Se connecter"
