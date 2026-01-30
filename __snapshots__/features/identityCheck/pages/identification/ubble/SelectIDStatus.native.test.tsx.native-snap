@@ -390,7 +390,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       {
                         "userSelect": "auto",
                       },
-                      {},
                       {
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
