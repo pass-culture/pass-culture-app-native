@@ -1,15 +1,10 @@
 import React from 'react'
 
-import { SectionRow } from 'ui/components/SectionRow'
+import { StyledSectionRow } from 'features/profile/components/SectionRowWithPaddingVertical/SectionRowWithPaddingVertical'
 import { SignOut } from 'ui/svg/icons/SignOut'
-import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
-export const LoggedOutButton = ({ onPress }: { onPress: () => Promise<void> }) => (
-  <SectionRow
-    title="Déconnexion"
-    onPress={onPress}
-    type="clickable"
-    icon={SignOut}
-    iconSize={SECTION_ROW_ICON_SIZE}
-  />
+type LoggedOutButtonProps = { onPress: () => Promise<void> }
+
+export const LoggedOutButton = ({ onPress }: LoggedOutButtonProps) => (
+  <StyledSectionRow title="Déconnexion" onPress={onPress} type="clickable" icon={SignOut} />
 )
