@@ -156,7 +156,7 @@ export function BonificationRefused() {
       params?.bonificationRefusedType === BonificationRefusedType.NOT_IN_TAX_HOUSEHOLD) &&
     user?.remainingBonusAttempts &&
     user?.remainingBonusAttempts <= 5
-  const lastRemainingRetry = user?.remainingBonusAttempts == 0
+  const lastRemainingRetry = user?.remainingBonusAttempts == 1
   const bonificationRefusedType =
     params?.bonificationRefusedType ?? BonificationRefusedType.CUSTODIAN_NOT_FOUND // fallback if param is undefined (which should never happen) but is necessary in SubscriptionStackTypes.ts to put BonificationRefused?: { ... } to satify typing of components using navigateTo
 
