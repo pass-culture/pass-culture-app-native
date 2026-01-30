@@ -73,6 +73,7 @@ const OnlineProfile: React.FC = () => {
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableProfileV2 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PROFILE_V2)
   const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
+  const enableChatbot = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CHATBOT)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
@@ -252,6 +253,16 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Aides">
                 <VerticalUl>
+                  {enableChatbot ? (
+                    <Li>
+                      <Row
+                        title="Poser une question"
+                        type="navigable"
+                        navigateTo={getProfilePropConfig('Chatbot')}
+                        icon={LifeBuoy}
+                      />
+                    </Li>
+                  ) : null}
                   {shouldDisplayTutorial ? (
                     <Li>
                       <Row
