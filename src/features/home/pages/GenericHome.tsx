@@ -129,7 +129,7 @@ const buildModulesHandlingVideoCarouselPosition = (
   thematicHeader?: ThematicHeader
 ) => {
   if (thematicHeader) return modules
-  if (modules[0] && modules[0].type === HomepageModuleType.VideoCarouselModule) {
+  if (modules[0]?.type === HomepageModuleType.VideoCarouselModule) {
     return without(modules, modules[0])
   }
   return modules

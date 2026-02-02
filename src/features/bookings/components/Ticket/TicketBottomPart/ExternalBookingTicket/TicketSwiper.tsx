@@ -67,7 +67,7 @@ export const TicketSwiper = ({ data }: TicketsProps) => {
     ...(displaySideBySideTickets ? { flex: 1, justifyContent: 'center' } : {}),
   }
 
-  return data && data.length === 1 && data[0] ? (
+  return data?.length === 1 && data[0] ? (
     <React.Fragment key={data[0].barcode}>
       <QrCodeWithSeat seat={data[0].seat ?? undefined} barcode={data[0].barcode} />
       <TicketText>{`RÉF ${data[0].barcode}`}</TicketText>
