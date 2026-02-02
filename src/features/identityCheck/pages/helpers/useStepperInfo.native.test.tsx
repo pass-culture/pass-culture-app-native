@@ -10,10 +10,8 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useOverrideCreditActivationAmount } from 'shared/user/useOverrideCreditActivationAmount'
-import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { setSettingsMock } from 'tests/settings/mockSettings'
 
 const mockIdentityCheckState = mockState
@@ -34,10 +32,6 @@ const mockUseStoredProfileInfos = {
 jest.mock('features/identityCheck/pages/helpers/useStoredProfileInfos', () => ({
   useStoredProfileInfos: jest.fn(() => mockUseStoredProfileInfos),
 }))
-
-jest.mock('features/auth/context/AuthContext')
-const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
-mockAuthContextWithUser(mockUser)
 
 jest.mock('features/identityCheck/queries/useGetStepperInfoQuery', () => ({
   useGetStepperInfoQuery: jest.fn(() => mockUseGetStepperInfo),
@@ -79,6 +73,36 @@ describe('useStepperInfo', () => {
   beforeEach(() => {
     setFeatureFlags()
     setSettingsMock({ patchSettingsWith: { enablePhoneValidation: true } })
+  })
+
+  it('should return empty stepsDetails and empty title if no data', () => {
+    mockUseGetStepperInfo.mockReturnValueOnce({ data: undefined })
+    const { stepsDetails, title } = useStepperInfo()
+
+    expect(stepsDetails).toEqual([])
+    expect(title).toBe('')
+  })
+
+  it('should return errorMessage if subscriptionMessage is present', () => {
+    mockUseGetStepperInfo.mockReturnValueOnce({
+      data: {
+        ...mockSubscriptionStepper,
+        subscriptionMessage: { messageSummary: 'Erreur test', userMessage: '' },
+      },
+    })
+    const { errorMessage } = useStepperInfo()
+
+    expect(errorMessage).toBe('Erreur test')
+  })
+
+  it('should use fallback subtitle if shouldCreditAmountBeOverriden and no amount', () => {
+    mockOverrideCreditActivationAmount.mockReturnValueOnce({
+      shouldBeOverriden: true,
+      amount: undefined,
+    })
+    const { subtitle } = useStepperInfo()
+
+    expect(subtitle).toBe('Pour débloquer ton crédit tu dois suivre les étapes suivantes\u00a0:')
   })
 
   it('should convert subtitle amount from € to CPF', () => {
