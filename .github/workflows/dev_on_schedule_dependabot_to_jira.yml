@@ -3,6 +3,10 @@ name: '[on_schedule] Dependabot alerts to Jira'
 on:
   schedule:
     - cron: '0 7 * * *' # Tous les jours à 7h UTC (8h Paris)
+  # TODO: Supprimer ce trigger avant merge
+  push:
+    branches:
+      - 'feat/dependabot-jira-alerts'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -73,9 +77,12 @@ jobs:
           JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_PROJECT_KEY: ${{ env.JIRA_PROJECT_KEY }}
           TEAM_NAME: ${{ steps.rotation.outputs.team_name }}
-          DRY_RUN: ${{ inputs.dry_run || 'false' }}
-          PROCESS_ALL: ${{ inputs.process_all || 'false' }}
-          MAX_ALERTS: ${{ inputs.max_alerts || '0' }}
+          # Push trigger = toujours dry_run + process_all pour tester
+          # Schedule = production (dry_run: false)
+          # workflow_dispatch = choix utilisateur
+          DRY_RUN: ${{ github.event_name == 'push' && 'true' || inputs.dry_run || 'false' }}
+          PROCESS_ALL: ${{ github.event_name == 'push' && 'true' || inputs.process_all || 'false' }}
+          MAX_ALERTS: ${{ github.event_name == 'push' && '3' || inputs.max_alerts || '0' }}
         with:
           script: |
             const script = require('./.github/scripts/dependabot-to-jira.js')
