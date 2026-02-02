@@ -527,14 +527,14 @@ describe('<ProfileV1 />', () => {
   })
 
   describe('chatbot CTA', () => {
-    it('should display chatbot CTA when FF enableChatbot is on', async () => {
+    it('should display chatbot CTA when FF enableChatbot is activated', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CHATBOT])
       renderProfile()
 
       expect(await screen.findByText('Poser une question')).toBeOnTheScreen()
     })
 
-    it('should not display chatbot CTA when FF enableChatbot is on', async () => {
+    it('should not display chatbot CTA when FF enableChatbot is deactivated', async () => {
       setFeatureFlags([])
       renderProfile()
 
