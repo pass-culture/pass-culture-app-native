@@ -60,6 +60,8 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   iconPosition = 'left',
   iconButton = false,
   wording,
+  numberOfLines,
+  ellipsizeMode,
   accessibilityLabel,
   accessibilityHint,
   accessibilityRole,
@@ -96,7 +98,8 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
     accessibilityHint
   )
   const gap = getSpacingGap(!!labelText, theme.designSystem.size.spacing.s)
-  const labelStyle = getLabelStyle(textColor, fullWidth)
+  const isMultiline = typeof numberOfLines === 'number' && numberOfLines > 1
+  const labelStyle = getLabelStyle(textColor, fullWidth, isMultiline)
   const typographyKey = getTypographyForSize(size)
   const LabelTypo = Typo[typographyKey]
 
@@ -111,13 +114,20 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   const resolvedAccessibilityRole = accessibilityRole ?? defaultAccessibilityRole
 
   const content = (
-    <Content gap={gap}>
+    <Content gap={gap} fullWidth={fullWidth} isMultiline={isMultiline}>
       {isLoading ? (
         <ButtonLoadingIndicator color={iconColor} size={iconSize} testID="button-loading" />
       ) : (
         <React.Fragment>
           {leftIcon}
-          {labelText ? <LabelTypo style={labelStyle}>{labelText}</LabelTypo> : null}
+          {labelText ? (
+            <LabelTypo
+              style={labelStyle}
+              numberOfLines={numberOfLines}
+              ellipsizeMode={ellipsizeMode}>
+              {labelText}
+            </LabelTypo>
+          ) : null}
           {rightIcon}
         </React.Fragment>
       )}
@@ -142,8 +152,15 @@ export const ButtonBase: FunctionComponent<ButtonBaseProps> = ({
   })
 }
 
-const Content = styled.View<{ gap: number }>(({ gap }) => ({
+const Content = styled.View<{
+  gap: number
+  fullWidth?: boolean
+  isMultiline?: boolean
+}>(({ gap, fullWidth, isMultiline }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   columnGap: gap,
+  flexWrap: isMultiline ? 'wrap' : undefined,
+  width: fullWidth ? '100%' : undefined,
+  justifyContent: fullWidth ? 'center' : undefined,
 }))

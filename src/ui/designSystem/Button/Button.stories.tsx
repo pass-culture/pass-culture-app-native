@@ -67,6 +67,15 @@ const primaryCases: Variants<typeof Button> = [
     props: { wording: baseLabel, variant: 'primary', fullWidth: true },
   },
   {
+    label: 'Primary numberOfLines=2',
+    props: {
+      wording: 'Découvrir le catalogue et profiter des offres culturelles',
+      variant: 'primary',
+      fullWidth: true,
+      numberOfLines: 2,
+    },
+  },
+  {
     label: 'Primary loading',
     props: { wording: baseLabel, variant: 'primary', isLoading: true, fullWidth: true },
   },

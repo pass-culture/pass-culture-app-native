@@ -4,7 +4,7 @@
  */
 
 import { FunctionComponent } from 'react'
-import { AccessibilityRole } from 'react-native'
+import { AccessibilityRole, TextProps } from 'react-native'
 
 import { BackgroundColorValue, ColorsType } from 'theme/types'
 import { AppButtonEventNative, AppButtonEventWeb } from 'ui/components/buttons/AppButton/types'
@@ -35,6 +35,8 @@ type ButtonBaseProps = {
   accessibilityRole?: AccessibilityRole
   testID?: string
   fullWidth?: boolean
+  numberOfLines?: TextProps['numberOfLines']
+  ellipsizeMode?: TextProps['ellipsizeMode']
 }
 
 type ButtonVariantProps = {
