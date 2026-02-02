@@ -106,7 +106,7 @@ exports[`<Favorites/> should render correctly 1`] = `
             },
             {
               "alignItems": "center",
-              "backgroundColor": "#6123df",
+              "backgroundColor": "#ffffff",
               "borderBottomLeftRadius": 8,
               "borderBottomRightRadius": 8,
               "borderColor": "#6123df",
@@ -142,7 +142,7 @@ exports[`<Favorites/> should render correctly 1`] = `
         }
       >
         <View
-          fill="#ffffff"
+          fill="#6123df"
           height={20}
           width={20}
         >
@@ -160,7 +160,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 "lineHeight": 22,
               },
               {
-                "color": "#ffffff",
+                "color": "#6123df",
                 "maxWidth": "100%",
                 "textAlign": undefined,
               },

@@ -225,6 +225,7 @@ export const Favorite: React.FC<Props> = (props) => {
               <Button
                 wording="Supprimer"
                 variant="secondary"
+                color="neutral"
                 onPress={onRemove}
                 accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
                 disabled={isPending}

@@ -85,5 +85,5 @@ export const FavoritesSorts: React.FC = () => {
 }
 
 const ButtonContainer = styled.View(({ theme }) => ({
-  padding: theme.designSystem.size.spacing.xl,
+  marginTop: theme.designSystem.size.spacing.xl,
 }))

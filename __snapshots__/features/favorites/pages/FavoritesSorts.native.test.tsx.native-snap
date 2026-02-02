@@ -619,10 +619,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       <View
         style={
           {
-            "paddingBottom": 24,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
+            "marginTop": 24,
           }
         }
       >
