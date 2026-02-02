@@ -91,6 +91,7 @@ export const BonificationBirthDate = () => {
               )}
             />
             <ButtonTertiaryPrimary
+              numberOfLines={2}
               icon={InfoPlain}
               wording="Je ne connais pas sa date de naissance"
               onPress={async () => {

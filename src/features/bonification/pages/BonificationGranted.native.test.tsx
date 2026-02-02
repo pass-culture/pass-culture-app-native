@@ -71,5 +71,34 @@ describe('BonificationGranted', () => {
 
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
     })
+
+    it('should reset to home', async () => {
+      mockServer.postApi('/v1/reset_recredit_amount_to_show', {
+        responseOptions: { statusCode: 500, data: {} },
+      })
+
+      render(reactQueryProviderHOC(<BonificationGranted />))
+
+      const button = screen.getByText('J’en profite')
+      await userEvent.press(button)
+
+      expect(reset).toHaveBeenCalledWith({
+        index: 0,
+        routes: [{ name: 'TabNavigator' }],
+      })
+    })
+
+    it('should refetch user', async () => {
+      mockServer.postApi('/v1/reset_recredit_amount_to_show', {
+        responseOptions: { statusCode: 500, data: {} },
+      })
+
+      render(reactQueryProviderHOC(<BonificationGranted />))
+
+      const button = screen.getByText('J’en profite')
+      await userEvent.press(button)
+
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
+    })
   })
 })
