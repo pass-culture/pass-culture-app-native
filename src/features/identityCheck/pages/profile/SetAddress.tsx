@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
@@ -15,6 +14,7 @@ import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStack
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddressesQuery } from 'libs/place/queries/useAddressesQuery'
+import { useIdCheckAddressAutocompletion } from 'queries/settings/useSettings'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -48,7 +48,7 @@ export const SetAddress = () => {
     [ProfileTypes.RECAP_EXISTING_DATA]: identityCheckAndRecapExistingDataConfig,
   }
 
-  const { data: settings } = useSettingsContext()
+  const { data: idCheckAddressAutocompletion } = useIdCheckAddressAutocompletion()
   const storedAddress = useAddress()
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
@@ -59,8 +59,6 @@ export const SetAddress = () => {
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
 
-  const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
-
   const {
     data: addresses = [],
     isLoading,
@@ -69,7 +67,7 @@ export const SetAddress = () => {
     query: debouncedQuery,
     cityCode: storedCity?.code ?? '',
     postalCode: storedCity?.postalCode ?? '',
-    enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
+    enabled: !!idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
 

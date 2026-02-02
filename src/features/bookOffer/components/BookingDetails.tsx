@@ -24,11 +24,11 @@ import { useLocation } from 'libs/location/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useBookingOfferQuery } from 'queries/offer/useBookingOfferQuery'
 import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { hiddenFromScreenReader } from 'shared/accessibility/hiddenFromScreenReader'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Loader } from 'ui/components/Loader'
@@ -67,7 +67,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const selectedStock = useBookingStock()
   const offer = useBookingOfferQuery()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const isUserUnderage = useIsUserUnderage()
   const mapping = useSubcategoriesMapping()
   const { quantity } = bookingState

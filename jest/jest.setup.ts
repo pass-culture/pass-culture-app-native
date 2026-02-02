@@ -37,6 +37,9 @@ jest.mock('shared/accessibility/useGetFontScale', () => ({
   useGetFontScale: () => ({ fontScale: 1 }),
 }))
 
+// impacts to much tests and risks launching unhandled requests that are difficult to detect and can create unstable tests.
+jest.mock('queries/settings/settingsQuery')
+
 // It would be better to put it in the __mocks__ folder, but I haven't been able to do that.
 // Mock Keyboard.addListener to avoid "TypeError: Cannot read property 'remove' of undefined"
 jest.spyOn(Keyboard, 'addListener').mockImplementation(

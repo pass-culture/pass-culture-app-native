@@ -19,8 +19,8 @@ import {
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { ObservedPlaylist } from 'shared/ObservedPlaylist/ObservedPlaylist'
 import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { useIsLandscape } from 'shared/useIsLandscape/useIsLandscape'
@@ -65,7 +65,7 @@ export function OfferPlaylistList({
   const labelMapping = useCategoryHomeLabelMapping()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const { logSameCategoryPlaylistVerticalScroll, logOtherCategoriesPlaylistVerticalScroll } =
     useLogPlaylist({

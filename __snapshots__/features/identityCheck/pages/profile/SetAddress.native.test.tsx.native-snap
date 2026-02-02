@@ -298,7 +298,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                             }
                           }
                         >
-                          Entre ton adresse
+                          Recherche et sélectionne ton adresse
                         </Text>
                         <Text
                           style={
@@ -363,7 +363,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                       </View>
                     </View>
                     <TextInput
-                      accessibilityLabel="Champs de texte - Entre ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                      accessibilityLabel="Champs de texte - Recherche et sélectionne ton adresse - Exemple : 34 avenue de l’Opéra - Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
                       accessibilityRequired={false}
                       autoComplete="street-address"
                       editable={true}

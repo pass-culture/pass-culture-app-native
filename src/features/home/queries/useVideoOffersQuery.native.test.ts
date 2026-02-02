@@ -8,6 +8,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { setSettingsMock } from 'tests/settings/mockSettings'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useVideoOffersQuery } from './useVideoOffersQuery'
@@ -32,6 +33,8 @@ const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
 const mockOffers = mockedAlgoliaResponse.hits
 
 jest.mock('libs/firebase/analytics/analytics')
+
+setSettingsMock({ patchSettingsWith: { objectStorageUrl: undefined } }) // Avoid thumbUrl change
 
 describe('useVideoOffersQuery', () => {
   beforeEach(() => {

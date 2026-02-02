@@ -20,12 +20,12 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -196,7 +196,7 @@ export const Calendar: React.FC<Props> = ({
   hasSeveralPrices,
 }) => {
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()

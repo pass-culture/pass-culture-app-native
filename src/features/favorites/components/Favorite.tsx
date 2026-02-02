@@ -18,8 +18,8 @@ import { useLocation } from 'libs/location/location'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
@@ -62,7 +62,7 @@ export const Favorite: React.FC<Props> = (props) => {
     offer.subcategoryId
   )
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
 
   const displayPrice = getFavoriteDisplayPrice({
     currency,

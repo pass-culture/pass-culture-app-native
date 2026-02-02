@@ -14,11 +14,11 @@ import {
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { accessibilityRoleInternalNavigation } from 'shared/accessibility/accessibilityRoleInternalNavigation'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/getComputedAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -38,7 +38,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const labelMapping = useCategoryHomeLabelMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()

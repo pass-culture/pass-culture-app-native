@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { setSettings } from 'features/auth/tests/setSettings'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -32,7 +31,6 @@ describe('<RecreditBirthdayNotification />', () => {
 
   beforeEach(() => {
     setFeatureFlags()
-    setSettings()
   })
 
   it('should have correct credit text', async () => {

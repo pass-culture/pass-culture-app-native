@@ -9,7 +9,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundaryWithoutNavigation'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -58,35 +57,33 @@ export function App() {
         <StylesheetManagerWrapper>
           <SupportedBrowsersGate>
             <SafeAreaProvider>
-              <SettingsWrapper>
-                {/* @ts-expect-error - type incompatibility with React 19 */}
-                <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-                  <AuthWrapper>
-                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <AppWebHead />
-                                    <ScreenErrorProvider>
-                                      <Suspense fallback={<LoadingPage />}>
-                                        <AppNavigationContainer />
-                                      </Suspense>
-                                    </ScreenErrorProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </ErrorBoundary>
-                  </AuthWrapper>
-                </GoogleOAuthProvider>
-              </SettingsWrapper>
+              {/* @ts-expect-error - type incompatibility with React 19 */}
+              <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                <AuthWrapper>
+                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                    <LocationWrapper>
+                      <AccessibilityFiltersWrapper>
+                        <FavoritesWrapper>
+                          <SearchWrapper>
+                            <SnackBarProvider>
+                              <CulturalSurveyContextProvider>
+                                <SubscriptionContextProvider>
+                                  <AppWebHead />
+                                  <ScreenErrorProvider>
+                                    <Suspense fallback={<LoadingPage />}>
+                                      <AppNavigationContainer />
+                                    </Suspense>
+                                  </ScreenErrorProvider>
+                                </SubscriptionContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </SnackBarProvider>
+                          </SearchWrapper>
+                        </FavoritesWrapper>
+                      </AccessibilityFiltersWrapper>
+                    </LocationWrapper>
+                  </ErrorBoundary>
+                </AuthWrapper>
+              </GoogleOAuthProvider>
             </SafeAreaProvider>
           </SupportedBrowsersGate>
         </StylesheetManagerWrapper>

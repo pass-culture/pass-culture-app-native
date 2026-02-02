@@ -10,9 +10,9 @@ import {
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
@@ -28,7 +28,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const titleID = uuidv4()
   const selectedHour = bookingState.hour ?? ''
 

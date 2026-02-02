@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { QFBonificationStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useBonificationBannerVisibility } from 'features/bonification/hooks/useBonificationBannerVisibility'
 import { BonificationRefusedType } from 'features/bonification/pages/BonificationRefused'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -22,10 +21,9 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { bonificationAmountFallbackValue } from 'shared/credits/defaultCreditByAge'
+import { useBonificationBonusAmount, usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -47,16 +45,16 @@ export const ProfileTutorialAgeInformationCredit = () => {
   const { goBack } = useGoBack(...getTabHookConfig('Profile'))
   const { navigate } = useNavigation<UseNavigationType>()
   const { user, isLoggedIn } = useAuthContext()
-  const { data: settings } = useSettingsContext()
   const { designSystem } = useTheme()
   const enableBonification = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_BONIFICATION)
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
   const headerTitle = 'Comment ça marche\u00a0?'
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const bonificationAmount = formatCurrencyFromCents(
-    settings?.bonification.bonusAmount || bonificationAmountFallbackValue,
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
+  const { data: bonificationBonusAmount } = useBonificationBonusAmount()
+  const formattedBonificationAmount = formatCurrencyFromCents(
+    bonificationBonusAmount,
     currency,
     euroToPacificFrancRate
   )
@@ -100,7 +98,7 @@ export const ProfileTutorialAgeInformationCredit = () => {
           <CreditProgressBar
             progress={1}
             width="18%"
-            innerText={bonificationAmount}
+            innerText={formattedBonificationAmount}
             color={designSystem.color.background.brandSecondary}
           />
         </RowView>

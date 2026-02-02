@@ -34,9 +34,9 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { usePageTracking } from 'shared/tracking/usePageTracking'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -120,7 +120,7 @@ export const Venue: FunctionComponent = () => {
   const { isDesktopViewport } = useTheme()
 
   const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const enableVenueCalendar = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_VENUE_CALENDAR)
