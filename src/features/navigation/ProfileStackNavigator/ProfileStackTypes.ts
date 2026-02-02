@@ -11,6 +11,7 @@ export type ProfileStackParamList = {
   ChangeEmail: { showModal: boolean } | undefined
   ChangePassword: undefined
   ChangeStatus: PersonalDataType | undefined
+  Chatbot: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
   MandatoryUpdatePersonalData: undefined
   UpdatePersonalDataConfirmation: undefined
