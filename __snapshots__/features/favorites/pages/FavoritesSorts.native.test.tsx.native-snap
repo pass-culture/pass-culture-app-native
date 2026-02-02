@@ -687,6 +687,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         >
           <View
             gap={8}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
@@ -706,7 +707,11 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   },
                   {
                     "color": "#ffffff",
+                    "flexBasis": undefined,
+                    "flexGrow": undefined,
+                    "flexShrink": 1,
                     "maxWidth": "100%",
+                    "minWidth": 0,
                     "textAlign": undefined,
                   },
                 ]

@@ -174,12 +174,16 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           testID="Créer un compte"
         >
           <View
+            fullWidth={true}
             gap={8}
+            isMultiline={false}
             style={
               {
                 "alignItems": "center",
                 "columnGap": 8,
                 "flexDirection": "row",
+                "justifyContent": "center",
+                "width": "100%",
               }
             }
           >
@@ -194,7 +198,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
                   },
                   {
                     "color": "#ffffff",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "maxWidth": "100%",
+                    "minWidth": 0,
                     "textAlign": "center",
                   },
                 ]
