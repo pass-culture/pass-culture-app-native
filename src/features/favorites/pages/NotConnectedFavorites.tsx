@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { Page } from 'ui/pages/Page'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Spacer, Typo } from 'ui/theme'
@@ -19,6 +19,10 @@ export const NotConnectedFavorites = () => {
   const onBeforeSignupNavigate = () => {
     analytics.logSignUpFromFavorite()
     analytics.logSignUpClicked({ from: 'favorite' })
+  }
+
+  const onBeforeLoginNavigate = () => {
+    analytics.logSignInFromFavorite()
   }
 
   return (
@@ -39,15 +43,16 @@ export const NotConnectedFavorites = () => {
         <ButtonContainer gap={4}>
           <InternalTouchableLink
             key={1}
-            as={ButtonPrimary}
+            as={Button}
             wording="Créer un compte"
             navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
             onBeforeNavigate={onBeforeSignupNavigate}
+            fullWidth
           />
           <StyledAuthenticationButton
             key={2}
             type="login"
-            onAdditionalPress={() => analytics.logSignInFromFavorite()}
+            onAdditionalPress={onBeforeLoginNavigate}
             params={{ from: StepperOrigin.FAVORITE }}
           />
         </ButtonContainer>

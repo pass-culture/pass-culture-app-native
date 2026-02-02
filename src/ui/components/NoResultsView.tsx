@@ -3,9 +3,9 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getSearchPropConfig } from 'features/navigation/SearchStackNavigator/getSearchPropConfig'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Button } from 'ui/designSystem/Button/Button'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
@@ -45,7 +45,7 @@ export const NoResultsView = ({
         </ContainerText>
         {offline ? null : (
           <InternalTouchableLink
-            as={ButtonPrimary}
+            as={Button}
             navigateTo={getSearchPropConfig('SearchLanding')}
             wording="Découvrir le catalogue"
             onBeforeNavigate={onPressExploreOffers}
