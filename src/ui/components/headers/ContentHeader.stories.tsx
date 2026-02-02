@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { ContentHeader } from './ContentHeader'
 
@@ -55,4 +55,8 @@ export const Default: Story = {
 }
 
 const Container = styled.View({ height: 400 })
-const Content = styled.View({ height: 200, backgroundColor: 'blue', marginBottom: getSpacing(10) })
+const Content = styled.View(({ theme }) => ({
+  height: 200,
+  backgroundColor: 'blue',
+  marginBottom: theme.designSystem.size.spacing.xxxl,
+}))

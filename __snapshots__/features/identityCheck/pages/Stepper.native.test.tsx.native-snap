@@ -20,7 +20,7 @@ exports[`Stepper navigation should render correctly 1`] = `
         "alignSelf": "center",
         "flexGrow": 1,
         "maxWidth": 500,
-        "paddingBottom": 36,
+        "paddingBottom": 40,
         "paddingHorizontal": 24,
         "width": "100%",
       }

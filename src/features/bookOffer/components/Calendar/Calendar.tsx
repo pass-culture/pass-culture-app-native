@@ -265,7 +265,10 @@ const Caption = styled(Typo.BodyAccentXs)<{ status: OfferStatus }>(({ status, th
 
 const Container = styled(TouchableOpacity).attrs({ hitSlop })(({ theme }) => ({
   alignItems: 'center',
-  width: theme.appContentWidth < theme.breakpoints.xs ? getSpacing(9.5) : getSpacing(11),
+  width:
+    theme.appContentWidth < theme.breakpoints.xs
+      ? theme.designSystem.size.spacing.xxxl
+      : getSpacing(11),
 }))
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({

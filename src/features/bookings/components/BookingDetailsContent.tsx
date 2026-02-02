@@ -53,7 +53,9 @@ export const BookingDetailsContent = ({
     isAndroid: Platform.OS === 'android',
     ticketFullMiddleHeight: designSystem.size.spacing.xxl,
     extraAndroidMargin: EXTRA_ANDROID_MARGIN,
+    ticket_punched_middle_height: designSystem.size.spacing.xxxxl,
   })
+
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,

@@ -8,7 +8,6 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing } from 'ui/theme'
 
 interface HeaderIconProps {
   onGoBack?: () => void
@@ -26,14 +25,15 @@ export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
   )
 }
 
-export const BACK_BUTTON_MAX_SIZE = getSpacing(10)
-
-const StyledTouchable = styledButton(Touchable)({
-  flexGrow: 1,
-  maxWidth: BACK_BUTTON_MAX_SIZE,
-  height: BACK_BUTTON_MAX_SIZE,
-  justifyContent: 'center',
-  alignItems: 'center',
+const StyledTouchable = styledButton(Touchable)(({ theme }) => {
+  const BACK_BUTTON_MAX_SIZE = theme.designSystem.size.spacing.xxxl
+  return {
+    flexGrow: 1,
+    maxWidth: BACK_BUTTON_MAX_SIZE,
+    height: BACK_BUTTON_MAX_SIZE,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 })
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color?: ColorsType }>(

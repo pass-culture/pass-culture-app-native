@@ -3,7 +3,6 @@ import React from 'react'
 
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { getSpacing } from 'ui/theme'
 
 import { PlaylistArrowButton } from './PlaylistArrowButton'
 
@@ -17,12 +16,12 @@ const variantConfig: Variants<typeof PlaylistArrowButton> = [
   {
     label: 'PlaylistArrowButton left',
     props: { direction: 'left', top: theme.designSystem.size.spacing.xl },
-    minHeight: getSpacing(10),
+    minHeight: theme.designSystem.size.spacing.xxxl,
   },
   {
     label: 'PlaylistArrowButton  right',
     props: { direction: 'right', top: theme.designSystem.size.spacing.xl },
-    minHeight: getSpacing(10),
+    minHeight: theme.designSystem.size.spacing.xxxl,
   },
 ]
 

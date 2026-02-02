@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HEADER_HEIGHT } from 'shared/header/useGetHeaderHeight'
-import { BACK_BUTTON_MAX_SIZE, BackButton } from 'ui/components/headers/BackButton'
+import { BackButton } from 'ui/components/headers/BackButton'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -94,6 +94,7 @@ const Container = styled.View(({ theme }) => ({
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left', theme }) => {
+    const BACK_BUTTON_MAX_SIZE = theme.designSystem.size.spacing.xxxl
     const isLeftComponent = positionInHeader === 'left'
     const marginHorizontal = theme.designSystem.size.spacing.s
     return {

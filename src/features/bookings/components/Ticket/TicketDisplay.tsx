@@ -4,9 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CutoutHorizontal } from 'ui/svg/CutoutHorizontal'
 import { Stroke } from 'ui/svg/Stroke'
-import { getSpacing } from 'ui/theme'
-
-export const TICKET_PUNCHED_MIDDLE_HEIGHT = getSpacing(10)
 
 type TicketContentProps = {
   bottomContent: React.JSX.Element
@@ -117,7 +114,7 @@ const TopBlock = styled(ContentBlock)(({ theme }) => ({
   borderTopLeftRadius: theme.designSystem.size.spacing.xl,
   borderTopRightRadius: theme.designSystem.size.spacing.xl,
 }))
-const MiddleBlock = styled.View({
+const MiddleBlock = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  height: TICKET_PUNCHED_MIDDLE_HEIGHT,
-})
+  height: theme.designSystem.size.spacing.xxxl,
+}))

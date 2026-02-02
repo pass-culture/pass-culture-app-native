@@ -15,7 +15,6 @@ import { getSpacing } from 'ui/theme'
 import { Breakpoints } from 'ui/theme/grid'
 
 const MODAL_MAX_WIDTH = Breakpoints.LG
-const MODAL_PADDING = { x: getSpacing(10), y: getSpacing(10) }
 
 type CarouselSize = { width: number; height: number }
 
@@ -122,12 +121,17 @@ export const ImagesCarouselModal = ({
     return <CarouselImage source={{ uri: String(imagesURL[0]) }} accessibilityLabel="Image 1" />
   }, [carouselSize, imagesURL, defaultIndex, handlePressButton, handleProgressChange])
 
+  const MODAL_PADDING = {
+    x: designSystem.size.spacing.xxxl,
+    y: designSystem.size.spacing.xxxl,
+  }
+
   const desktopConstraints = useMemo(
     () => ({
       maxWidth: Math.min(windowWidth, MODAL_MAX_WIDTH) - 2 * MODAL_PADDING.x,
       maxHeight: windowHeight - 2 * MODAL_PADDING.y,
     }),
-    [windowWidth, windowHeight]
+    [windowWidth, MODAL_PADDING.x, MODAL_PADDING.y, windowHeight]
   )
   const MODAL_HEADER_HEIGHT = designSystem.size.spacing.xxl
 

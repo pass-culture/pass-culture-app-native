@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { LocationPointer as InitialLocationPointer } from 'ui/svg/icons/LocationPointer'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   hideGeolocPermissionModal: () => void
@@ -63,9 +63,9 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const FirstInformationText = styled(InformationText)({
-  marginTop: getSpacing(10),
-})
+const FirstInformationText = styled(InformationText)(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xxxl,
+}))
 
 const SecondInformationText = styled(InformationText)(({ theme }) => ({
   marginTop: theme.designSystem.size.spacing.l,

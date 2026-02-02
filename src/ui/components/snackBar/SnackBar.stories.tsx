@@ -5,7 +5,6 @@ import { computedTheme } from 'tests/computedTheme'
 import { mapSnackBarTypeToStyle } from 'ui/components/snackBar/mapSnackBarTypeToStyle'
 import { SnackBarType } from 'ui/components/snackBar/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { getSpacing } from 'ui/theme'
 
 import { SnackBar } from './SnackBar'
 
@@ -23,7 +22,7 @@ const variantConfig: Variants<typeof SnackBar> = [
       message: 'Une petite snackbar de succès',
       ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.SUCCESS),
     },
-    minHeight: getSpacing(10),
+    minHeight: 40,
   },
   {
     label: 'SnackBar info',
@@ -32,7 +31,7 @@ const variantConfig: Variants<typeof SnackBar> = [
       message: 'Une petite snackbar d’info',
       ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.INFO),
     },
-    minHeight: getSpacing(10),
+    minHeight: 40,
   },
   {
     label: 'SnackBar error',
@@ -41,7 +40,7 @@ const variantConfig: Variants<typeof SnackBar> = [
       message: 'Une petite snackbar d’erreur',
       ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.ERROR),
     },
-    minHeight: getSpacing(10),
+    minHeight: 40,
   },
 ]
 

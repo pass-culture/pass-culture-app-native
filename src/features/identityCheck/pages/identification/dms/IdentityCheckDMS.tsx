@@ -10,7 +10,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
   const onDMSFrenchCitizenPress = () => {
@@ -76,7 +76,9 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
 
-const ButtonContainer = styled.View({ padding: getSpacing(10) })
+const ButtonContainer = styled.View(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xxxl,
+}))
 
 const StyledSeparatorWithText = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.xl,
