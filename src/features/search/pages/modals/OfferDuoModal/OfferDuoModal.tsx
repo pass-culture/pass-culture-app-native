@@ -12,7 +12,6 @@ import { SearchState } from 'features/search/types'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
 
 type SearchTypeFormData = {
   offerIsDuo: boolean
@@ -38,7 +37,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
-  const { modal } = useTheme()
+  const { modal, designSystem } = useTheme()
 
   const {
     handleSubmit,
@@ -156,7 +155,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
           isResetDisabled={hasDefaultValue}
         />
       }>
-      <Form.MaxWidth marginTop={getSpacing(6)}>
+      <Form.MaxWidth marginTop={designSystem.size.spacing.xl}>
         <Controller control={control} name="offerIsDuo" render={ToggleOfferDuoController} />
       </Form.MaxWidth>
     </AppModal>

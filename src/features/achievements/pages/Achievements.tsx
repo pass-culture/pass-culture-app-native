@@ -72,12 +72,12 @@ export const Achievements = () => {
                 numColumns={2}
                 keyExtractor={(item) => item.name}
                 contentContainerStyle={{
-                  gap: getSpacing(6),
-                  rowGap: getSpacing(6),
+                  gap: theme.designSystem.size.spacing.xl,
+                  rowGap: theme.designSystem.size.spacing.xl,
                   paddingHorizontal: theme.designSystem.size.spacing.s,
                 }}
                 columnWrapperStyle={{
-                  gap: getSpacing(6),
+                  gap: theme.designSystem.size.spacing.xl,
                 }}
                 renderItem={({ item }) =>
                   item.illustration ? (

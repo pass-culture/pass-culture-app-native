@@ -1,7 +1,7 @@
 import { isPlainObject } from 'lodash'
 import React from 'react'
 import { FlatList } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -11,7 +11,7 @@ import { GenericRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.typ
 import { LinkInsideText } from 'ui/components/buttons/linkInsideText/LinkInsideText'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfig }) => (
   <React.Fragment>
@@ -22,7 +22,7 @@ const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfi
 
 export const CheatcodesScreenRemoteConfig = () => {
   const { data: remoteConfig } = useRemoteConfigQuery()
-
+  const { designSystem } = useTheme()
   const sortedRemoteConfigEntries = Object.entries(remoteConfig).sort(([keyA], [keyB]) =>
     keyA.localeCompare(keyB)
   ) as unknown as [string, GenericRemoteConfig][]
@@ -92,7 +92,7 @@ export const CheatcodesScreenRemoteConfig = () => {
         keyExtractor={([label]) => label}
         renderItem={renderConfigItem}
         ItemSeparatorComponent={ItemSeparator}
-        contentContainerStyle={{ marginTop: getSpacing(6) }}
+        contentContainerStyle={{ marginTop: designSystem.size.spacing.xl }}
       />
     </CheatcodesTemplateScreen>
   )

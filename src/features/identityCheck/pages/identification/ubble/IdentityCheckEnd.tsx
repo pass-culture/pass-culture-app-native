@@ -8,7 +8,7 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { Page } from 'ui/pages/Page'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -62,17 +62,17 @@ const Container = styled.View(({ theme }) => ({
   overflow: 'scroll',
 }))
 
-const IllustrationContainer = styled.View<{ animation?: boolean }>(({ animation }) => ({
+const IllustrationContainer = styled.View<{ animation?: boolean }>(({ animation, theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
   ...(animation && { height: '30%' }),
 }))
 
-const TextContainer = styled.View({
+const TextContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',

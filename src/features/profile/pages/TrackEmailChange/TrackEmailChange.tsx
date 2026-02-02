@@ -6,7 +6,7 @@ import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export function TrackEmailChange() {
@@ -39,7 +39,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
   width: '100%',
   position: 'absolute',
   top: 0,
-  marginBottom: getSpacing(6),
+  marginBottom: theme.designSystem.size.spacing.xl,
 }))
 
 const GoBackContainer = styled.View<{ height: number }>(({ height }) => ({
@@ -47,11 +47,11 @@ const GoBackContainer = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
 
-const StyledScrollViewContainer = styled(ScrollView)({
-  padding: getSpacing(6),
+const StyledScrollViewContainer = styled(ScrollView)(({ theme }) => ({
+  padding: theme.designSystem.size.spacing.xl,
   overflow: 'hidden',
   flex: 1,
-})
+}))
 
 const StyledTitleText = styled(Typo.Title1)({
   ...(Platform.OS === 'web' ? { textAlign: 'center' } : {}),

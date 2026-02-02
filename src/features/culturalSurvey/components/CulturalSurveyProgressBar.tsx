@@ -29,11 +29,11 @@ const VerticalContainer = styled.View({
   flexGrow: 1,
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-start',
-  height: getSpacing(6),
-})
+  height: theme.designSystem.size.spacing.xl,
+}))
 
 const PercentageContainer = styled.View({
   alignSelf: 'center',

@@ -73,7 +73,7 @@ const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
   ({ theme, statusBarHeight }) => ({
     position: 'absolute',
     zIndex: theme.zIndex.header,
-    top: statusBarHeight + getSpacing(6),
+    top: statusBarHeight + theme.designSystem.size.spacing.xl,
     right: theme.designSystem.size.spacing.xl,
   })
 )

@@ -9,7 +9,6 @@ import { ScreenError, AsyncError } from 'libs/monitoring/errors'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
@@ -48,6 +47,6 @@ const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
 const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
   position: 'absolute',
   top,
-  left: getSpacing(6),
+  left: theme.designSystem.size.spacing.xl,
   zIndex: theme.zIndex.floatingButton,
 }))

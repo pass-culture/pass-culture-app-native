@@ -286,8 +286,8 @@ const ButtonContainer = styled.View({
   flex: 1,
 })
 
-const DEFAULT_MARGIN = getSpacing(6)
 export const FavoriteButtonsContainer = styled(ViewGap)(({ theme }) => {
+  const DEFAULT_MARGIN = theme.designSystem.size.spacing.xl
   const WEB_MARGIN_LEFT =
     DEFAULT_MARGIN + theme.tiles.sizes.small.width + getSpacing(SPACER_BETWEEN_IMAGE_AND_CONTENT)
   return {

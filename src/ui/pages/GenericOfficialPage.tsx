@@ -115,25 +115,25 @@ const Content = styled.View(({ theme }) => ({
   flexShrink: theme.isNative ? 1 : 0,
   flexBasis: 'auto',
   justifyContent: 'center',
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   maxWidth: getSpacing(100),
 }))
 
-const BottomContent = styled.View({
+const BottomContent = styled.View(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
   flexBasis: 'auto',
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
   width: '100%',
   maxWidth: getSpacing(100),
-})
+}))
 
 const HeaderContainer = styled.View(({ theme }) => ({
   maxWidth: getSpacing(100),
   width: '100%',
   paddingTop: theme.designSystem.size.spacing.l,
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: theme.designSystem.size.spacing.xl,
 }))
 
 const IllustrationsContainer = styled.View({

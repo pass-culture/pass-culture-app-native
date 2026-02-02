@@ -379,10 +379,10 @@ const ErrorText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.error,
 }))
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   textAlign: 'center',
-  marginBottom: getSpacing(6),
-})
+  marginBottom: theme.designSystem.size.spacing.xl,
+}))
 
 const BottomContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xl,

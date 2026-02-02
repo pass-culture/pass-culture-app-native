@@ -20,7 +20,6 @@ import {
 } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 const FlatlistSkeleton: React.FC<{
   numberOfTiles: number
@@ -90,7 +89,7 @@ export const ThematicSearchSkeleton = () => {
       <FlatlistSkeleton
         numberOfTiles={6}
         renderPlaceholder={() => renderVenuePlaylistSkeleton(theme)}
-        paddingBottom={getSpacing(6)}
+        paddingBottom={theme.designSystem.size.spacing.xl}
       />
       <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
     </View>

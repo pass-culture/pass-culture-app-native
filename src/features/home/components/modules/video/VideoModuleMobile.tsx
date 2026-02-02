@@ -139,11 +139,10 @@ const TextContainer = styled.View({
   right: 0,
 })
 
-const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
+const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
   textAlign: 'center',
   textTransform: 'uppercase',
-  fontSize: getSpacing(6.5),
   padding: theme.designSystem.size.spacing.l,
 }))
 

@@ -41,11 +41,13 @@ const BarAndTitle = styled.View({
   flex: 1,
 })
 
-const Title = styled(Typo.Title4).attrs(() => ({ ...getHeadingAttrs(1), numberOfLines: 1 }))({
-  flex: 1,
-  marginRight: getSpacing(6),
-  textAlign: 'right',
-})
+const Title = styled(Typo.Title4).attrs(() => ({ ...getHeadingAttrs(1), numberOfLines: 1 }))(
+  ({ theme }) => ({
+    flex: 1,
+    marginRight: theme.designSystem.size.spacing.xl,
+    textAlign: 'right',
+  })
+)
 
 interface BackButtonProps {
   onGoBack?: () => void

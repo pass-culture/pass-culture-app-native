@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   children: React.ReactNode
@@ -44,7 +43,7 @@ const Container = styled.View({
   width: '100%',
 })
 
-const ChildrenWrapper = styled.View({
-  marginTop: getSpacing(6),
+const ChildrenWrapper = styled.View(({ theme }) => ({
+  marginTop: theme.designSystem.size.spacing.xl,
   alignItems: 'center',
-})
+}))
