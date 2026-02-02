@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ChatbotContainer should render webview correctly 1`] = `
+[
+  <View
+    accessibilityRole="header"
+    style={
+      {
+        "backgroundColor": "rgba(255,255,255,0)",
+        "borderBottomColor": "#cbcdd2",
+        "borderBottomWidth": 1,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        {
+          "height": 16,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 24,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        positionInHeader="left"
+        style={
+          {
+            "alignItems": "flex-start",
+            "justifyContent": "flex-start",
+            "marginLeft": 0,
+            "marginRight": 8,
+            "minWidth": 40,
+          }
+        }
+        testID="back-button-container"
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexGrow": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 40,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "display": "none",
+              }
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexShrink": 1,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="header"
+          numberOfLines={2}
+          style={
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 17,
+              "lineHeight": 27.2,
+              "textAlign": "center",
+            }
+          }
+        >
+          J’ai une question
+        </Text>
+      </View>
+      <View
+        positionInHeader="right"
+        style={
+          {
+            "alignItems": "center",
+            "justifyContent": "flex-end",
+            "marginLeft": 8,
+            "marginRight": 0,
+            "minWidth": 40,
+          }
+        }
+        testID="close-button-container"
+      />
+    </View>
+  </View>,
+  <View
+    height={65}
+    style={
+      {
+        "height": 65,
+      }
+    }
+  />,
+  <View
+    allowsInlineMediaPlayback={true}
+    domStorageEnabled={true}
+    javaScriptEnabled={true}
+    originWhitelist={
+      [
+        "*",
+      ]
+    }
+    source={
+      {
+        "baseUrl": "https://genii-script.tolk.ai",
+        "html": "
+  <!DOCTYPE html>
+  <html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <title>Chatbot</title>
+      <style>
+        * {
+          margin: 0 !important;
+          padding: 0 !important;
+          box-sizing: border-box !important;
+          outline: none !important;
+        }
+        
+        html, body {
+          height: 100vh !important;
+          width: 100vw !important;
+          overflow: hidden !important;
+        }
+
+        #genii-widget-container,
+        #lightchat-container,
+        .chatbot-wrapper_genii,
+        #genii-iframe-core {
+          height: 100% !important;
+          width: 100% !important;
+        }
+      
+      </style>
+    </head>
+    <body>
+      <script
+        type="module"
+        project-id="6811b250-212c-4365-8c46-20cc3082d042"
+        template="fullscreen"
+        src="https://genii-script.tolk.ai/lightchat.js"
+        id="lightchat-bot">
+      </script>
+
+    </body>
+  </html>
+",
+      }
+    }
+    testID="chatbot-webview"
+  />,
+]
+`;
