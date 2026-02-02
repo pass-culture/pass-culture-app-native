@@ -1,0 +1,13 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      visible: 'Poser une question'
+    commands:
+      - tapOn: 'Poser une question'
+      - assertVisible: 'Assistant virtuel du pass culture'
+
+      - runFlow:
+          file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+      - assertVisible: 'Poser une question'

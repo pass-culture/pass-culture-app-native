@@ -14,6 +14,7 @@ onFlowStart:
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 
 - runFlow: subFolder/profil/HelpCenter.yml
+- runFlow: subFolder/profil/Chatbot.yml
 - runFlow: subFolder/profil/AccessibilitySection.yml
 - runFlow: subFolder/profil/LegalInfoSection.yml
 - runFlow: subFolder/profil/ConfidentialitySection.yml
