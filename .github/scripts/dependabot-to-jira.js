@@ -15,6 +15,32 @@ module.exports = async ({ github, context, core }) => {
   const processAll = PROCESS_ALL === 'true'
   const maxAlerts = parseInt(MAX_ALERTS || '0', 10)
 
+  // Retry helper pour les appels Jira (max 2 retries, délais courts pour limiter le temps CI)
+  const fetchWithRetry = async (url, options, maxRetries = 2) => {
+    const delays = [1000, 2000] // 1s puis 2s
+    let lastError
+
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        const response = await fetch(url, options)
+        // Ne pas retry sur les erreurs client (4xx) - seulement sur les erreurs serveur (5xx)
+        if (response.ok || (response.status >= 400 && response.status < 500)) {
+          return response
+        }
+        lastError = new Error(`HTTP ${response.status}`)
+      } catch (error) {
+        lastError = error
+      }
+
+      if (attempt < maxRetries) {
+        console.log(`⏳ Retry ${attempt + 1}/${maxRetries} dans ${delays[attempt] / 1000}s...`)
+        await new Promise((resolve) => setTimeout(resolve, delays[attempt]))
+      }
+    }
+
+    return { ok: false, text: async () => lastError.message }
+  }
+
   // Filtrer sur "hier" pour capturer toutes les alertes de la journée précédente
   // (le workflow tourne à 7h UTC, donc on traite les alertes de la veille complète)
   const yesterday = new Date()
@@ -30,12 +56,25 @@ module.exports = async ({ github, context, core }) => {
   }
 
   // 1. Récupérer les alertes Dependabot ouvertes
-  const { data: allAlerts } = await github.rest.dependabot.listAlertsForRepo({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    state: 'open',
-    per_page: 100,
-  })
+  let allAlerts
+  try {
+    const response = await github.rest.dependabot.listAlertsForRepo({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      state: 'open',
+      per_page: 100,
+    })
+    allAlerts = response.data
+  } catch (error) {
+    console.error(`❌ Erreur lors de la récupération des alertes Dependabot: ${error.message}`)
+    if (error.status === 403) {
+      console.error('💡 Vérifiez que le workflow a les permissions "security-events: read"')
+    } else if (error.status === 404) {
+      console.error('💡 Vérifiez que Dependabot est activé sur ce repository')
+    }
+    core.setFailed(`Impossible de récupérer les alertes: ${error.message}`)
+    return
+  }
 
   // 2. Filtrer les alertes selon le mode
   let alertsToProcess
@@ -106,8 +145,8 @@ _Ticket créé automatiquement - Équipe assignée: ${TEAM_NAME}_`
       continue
     }
 
-    // Création du ticket Jira
-    const response = await fetch(`${JIRA_BASE_URL}/rest/api/2/issue`, {
+    // Création du ticket Jira (avec retry sur erreurs serveur)
+    const response = await fetchWithRetry(`${JIRA_BASE_URL}/rest/api/2/issue`, {
       method: 'POST',
       headers: {
         Authorization: `Basic ${jiraAuth}`,
