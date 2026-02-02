@@ -10,6 +10,16 @@ on:
         required: false
         default: 'false'
         type: boolean
+      process_all:
+        description: 'Traiter TOUTES les alertes ouvertes (pas juste hier)'
+        required: false
+        default: 'false'
+        type: boolean
+      max_alerts:
+        description: 'Nombre max d alertes à traiter (0 = illimité)'
+        required: false
+        default: '0'
+        type: string
 
 env:
   JIRA_BASE_URL: https://passculture.atlassian.net
@@ -64,6 +74,8 @@ jobs:
           JIRA_PROJECT_KEY: ${{ env.JIRA_PROJECT_KEY }}
           TEAM_NAME: ${{ steps.rotation.outputs.team_name }}
           DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          PROCESS_ALL: ${{ inputs.process_all || 'false' }}
+          MAX_ALERTS: ${{ inputs.max_alerts || '0' }}
         with:
           script: |
             const script = require('./.github/scripts/dependabot-to-jira.js')

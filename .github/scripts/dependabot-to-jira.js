@@ -6,16 +6,20 @@ module.exports = async ({ github, context, core }) => {
     JIRA_PROJECT_KEY,
     TEAM_NAME,
     DRY_RUN,
+    PROCESS_ALL,
+    MAX_ALERTS,
   } = process.env
 
   const jiraAuth = Buffer.from(`${JIRA_USER_EMAIL}:${JIRA_API_TOKEN}`).toString('base64')
   const dryRun = DRY_RUN === 'true'
+  const processAll = PROCESS_ALL === 'true'
+  const maxAlerts = parseInt(MAX_ALERTS || '0', 10)
 
   // Filtrer sur "hier" pour capturer toutes les alertes de la journée précédente
   // (le workflow tourne à 7h UTC, donc on traite les alertes de la veille complète)
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
-  const yesterdayStr = yesterday.toISOString().split('T')[0] // "2026-02-01"
+  const yesterdayStr = yesterday.toISOString().split('T')[0]
 
   // Mapping sévérité → priorité Jira
   const priorityMap = {
@@ -33,19 +37,32 @@ module.exports = async ({ github, context, core }) => {
     per_page: 100,
   })
 
-  // 2. Filtrer uniquement les alertes créées hier
-  const yesterdayAlerts = allAlerts.filter((alert) => alert.created_at.startsWith(yesterdayStr))
+  // 2. Filtrer les alertes selon le mode
+  let alertsToProcess
+  if (processAll) {
+    alertsToProcess = allAlerts
+    console.log(`📊 ${allAlerts.length} alertes ouvertes (mode: TOUTES)`)
+  } else {
+    alertsToProcess = allAlerts.filter((alert) => alert.created_at.startsWith(yesterdayStr))
+    console.log(`📊 ${allAlerts.length} alertes ouvertes, ${alertsToProcess.length} créées hier (${yesterdayStr})`)
+  }
 
-  console.log(`📊 ${allAlerts.length} alertes ouvertes, ${yesterdayAlerts.length} créées hier (${yesterdayStr})`)
+  // 3. Limiter le nombre si max_alerts > 0
+  if (maxAlerts > 0 && alertsToProcess.length > maxAlerts) {
+    console.log(`🔢 Limitation à ${maxAlerts} alertes (sur ${alertsToProcess.length})`)
+    alertsToProcess = alertsToProcess.slice(0, maxAlerts)
+  }
 
-  if (yesterdayAlerts.length === 0) {
-    console.log('✅ Aucune nouvelle alerte hier')
+  if (alertsToProcess.length === 0) {
+    console.log('✅ Aucune alerte à traiter')
     return
   }
 
+  console.log(`\n🎯 ${alertsToProcess.length} alerte(s) à traiter${dryRun ? ' (DRY-RUN)' : ''}`)
+
   let created = 0
 
-  for (const alert of yesterdayAlerts) {
+  for (const alert of alertsToProcess) {
     const alertData = {
       number: alert.number,
       package: alert.security_vulnerability?.package?.name || 'unknown',
