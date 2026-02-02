@@ -69,6 +69,17 @@ jobs:
           echo "team_name=$team_name" >> $GITHUB_OUTPUT
           echo "📅 Jour $day_of_year → Équipe: $team_name"
 
+      # Auth GitHub App pour accéder aux alertes Dependabot
+      - name: Authenticate through GitHub App
+        uses: actions/create-github-app-token@v2
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+          private-key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: pass-culture-app-native
+          permission-vulnerability-alerts: read
+
       - name: Create Jira tickets for yesterday's alerts
         uses: actions/github-script@v7
         env:
@@ -76,7 +87,8 @@ jobs:
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
           JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_PROJECT_KEY: ${{ env.JIRA_PROJECT_KEY }}
-          TEAM_NAME: ${{ steps.rotation.outputs.team_name }}
+          # Push trigger = équipe fixe "Découverte" pour les tests
+          TEAM_NAME: ${{ github.event_name == 'push' && 'Découverte' || steps.rotation.outputs.team_name }}
           # Push trigger = toujours dry_run + process_all pour tester
           # Schedule = production (dry_run: false)
           # workflow_dispatch = choix utilisateur
@@ -84,6 +96,7 @@ jobs:
           PROCESS_ALL: ${{ github.event_name == 'push' && 'true' || inputs.process_all || 'false' }}
           MAX_ALERTS: ${{ github.event_name == 'push' && '3' || inputs.max_alerts || '0' }}
         with:
+          github-token: ${{ steps.github-app-token.outputs.token }}
           script: |
             const script = require('./.github/scripts/dependabot-to-jira.js')
             await script({ github, context, core })
