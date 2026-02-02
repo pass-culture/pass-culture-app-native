@@ -129,9 +129,9 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
   padding: 0;
   text-decoration: underline;
   color: #320096;
-  font-family: Montserrat-Bold;
+  font-family: Montserrat-SemiBold;
   font-size: 1rem;
-  line-height: 1.6rem;
+  line-height: 1.375rem;
 }
 
 .c3:disabled {
@@ -188,7 +188,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Cheatcodes
@@ -251,7 +251,7 @@ exports[`<ProfileV1 /> should render correctly on desktop 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
                       dir="ltr"
                     >
                       Créer un compte
@@ -1244,9 +1244,9 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
   padding: 0;
   text-decoration: underline;
   color: #320096;
-  font-family: Montserrat-Bold;
+  font-family: Montserrat-SemiBold;
   font-size: 1rem;
-  line-height: 1.6rem;
+  line-height: 1.375rem;
 }
 
 .c3:disabled {
@@ -1303,7 +1303,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                    class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1l73kk8 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Cheatcodes
@@ -1366,7 +1366,7 @@ exports[`<ProfileV1 /> should render correctly on mobile browser 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
                     <div
-                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                      class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
                       dir="ltr"
                     >
                       Créer un compte

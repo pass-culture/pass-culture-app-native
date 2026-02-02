@@ -336,9 +336,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                       {
                         "color": "#161617",
                         "cursor": "pointer",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
-                        "lineHeight": 25.6,
+                        "lineHeight": 22,
                         "textDecorationLine": "underline",
                       }
                     }
@@ -582,9 +582,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               style={
                 {
                   "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
+                  "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "lineHeight": 22,
                   "maxWidth": "100%",
                 }
               }
@@ -689,9 +689,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               style={
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
+                  "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 16,
-                  "lineHeight": 25.6,
+                  "lineHeight": 22,
                   "maxWidth": "100%",
                 }
               }

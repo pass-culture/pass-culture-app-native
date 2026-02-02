@@ -2243,9 +2243,9 @@ Ils permettent à YouTube d’assurer le bon fonctionnement de la lecture, de co
             style={
               {
                 "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
+                "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
-                "lineHeight": 25.6,
+                "lineHeight": 22,
                 "maxWidth": "100%",
               }
             }

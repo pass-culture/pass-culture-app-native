@@ -255,7 +255,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-7sbvxv r-maxWidth-dnmrzs"
                   dir="ltr"
                 >
                   Ouvrir un onglet ÉduConnect

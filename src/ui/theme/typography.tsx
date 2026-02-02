@@ -43,6 +43,7 @@ const BodyAccentXs = createStyledText('bodyAccentXs')
 const BodyItalic = createStyledText('bodyItalic')
 const BodyItalicAccent = createStyledText('bodyItalicAccent')
 const Button = createStyledText('button')
+const ButtonS = createStyledText('buttonS')
 
 export const Typo = {
   Title1,
@@ -58,4 +59,5 @@ export const Typo = {
   BodyItalic,
   BodyItalicAccent,
   Button,
+  ButtonS,
 }
