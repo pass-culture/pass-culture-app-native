@@ -4,15 +4,14 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Localisation'
     commands:
-    - tapOn: 
-        text: '.*Choisir une localisation.*'
-        point: "50%,25%"
-    - tapOn:
-        id: 'styled-input-container'
-    - inputText: 'Paris'
-    - tapOn: 'Paris Paris'
-    - tapOn: 'Valider et voir sur la carte'
-
+      - tapOn:
+          text: '.*Choisir une zone géographique.*'
+          point: '50%,25%'
+      - tapOn:
+          id: 'styled-input-container'
+      - inputText: 'Paris'
+      - tapOn: 'Paris Paris'
+      - tapOn: 'Valider et voir sur la carte'
 
 - assertVisible:
     text: 'Carte des lieux'

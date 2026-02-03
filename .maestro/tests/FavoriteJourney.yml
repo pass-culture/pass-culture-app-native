@@ -9,7 +9,7 @@ onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
 ---
-- runFlow: subFolder/commons/LaunchApp.yml
+- runFlow: subFolder/commons/LaunchAppWithAllPermissions.yml
 - runFlow: subFolder/commons/StopApp.yml
 - runFlow: subFolder/links/DeepLinksToProfile.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
