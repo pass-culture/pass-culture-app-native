@@ -48,7 +48,7 @@ describe('<SetAddress/>', () => {
     mockServer.patchApi<UserProfileResponseWithoutSurvey>('/v1/profile', beneficiaryUser)
     mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
-      'https://api-adresse.data.gouv.fr/search',
+      'https://data.geopf.fr/geocodage/search',
       mockedSuggestedPlaces
     )
   })

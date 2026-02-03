@@ -44,7 +44,7 @@ useRoute.mockReturnValue({
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
-      'https://api-adresse.data.gouv.fr/search',
+      'https://data.geopf.fr/geocodage/search',
       mockedSuggestedPlaces
     )
     mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)

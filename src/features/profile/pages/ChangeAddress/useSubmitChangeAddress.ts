@@ -22,7 +22,7 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
-const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
+const exception = 'Failed to fetch data from API: https://data.geopf.fr/geocodage/search'
 
 type AddressForm = {
   address: string
