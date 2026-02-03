@@ -33,7 +33,7 @@ describe('useSortedSearchCategories', () => {
   it("should format category's label", () => {
     const { result } = renderHook(useSortedSearchCategories)
 
-    expect(result.current[0]?.label).toEqual('Concerts & festivals')
+    expect(result.current[0]?.label).toEqual('Cartes jeunes')
   })
 
   it('should sort search group names by the key position', () => {
@@ -42,6 +42,7 @@ describe('useSortedSearchCategories', () => {
     const actualCategoriesLabels = result.current.map((category) => category.label)
 
     expect(actualCategoriesLabels).toEqual([
+      'Cartes jeunes',
       'Concerts & festivals',
       'Cinéma',
       'Films, séries et documentaires',
@@ -52,7 +53,6 @@ describe('useSortedSearchCategories', () => {
       'Musées & visites culturelles',
       'Jeux & jeux vidéos',
       'Médias & presse',
-      'Cartes jeunes',
       'Conférences & rencontres',
       'Évènements en ligne',
     ])
@@ -66,7 +66,7 @@ describe('useSortedSearchCategories', () => {
         params: {
           params: {
             isFullyDigitalOffersCategory: false,
-            offerCategories: ['CONCERTS_FESTIVALS'],
+            offerCategories: ['CARTES_JEUNES'],
             searchId: 'testUuidV4',
           },
           screen: 'SearchResults',
@@ -97,7 +97,7 @@ describe('useSortedSearchCategories', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS])
       const { result } = renderHook(useSortedSearchCategories)
 
-      expect(result.current[0]?.navigateTo.params).toEqual({
+      expect(result.current[1]?.navigateTo.params).toEqual({
         params: {
           params: {
             isFullyDigitalOffersCategory: false,
@@ -114,7 +114,7 @@ describe('useSortedSearchCategories', () => {
       setFeatureFlags()
       const { result } = renderHook(useSortedSearchCategories)
 
-      expect(result.current[0]?.navigateTo.params).toEqual({
+      expect(result.current[1]?.navigateTo.params).toEqual({
         params: {
           params: {
             isFullyDigitalOffersCategory: false,

@@ -539,6 +539,144 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   style={
                     {
+                      "marginVertical": 8,
+                    }
+                  }
+                >
+                  <View
+                    accessibilityLabel="Cartes jeunes"
+                    accessibilityRole="radio"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "cursor": "pointer",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Cartes jeunes"
+                  >
+                    <View
+                      style={
+                        {
+                          "alignItems": "center",
+                          "columnGap": 12,
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        isHover={false}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        radioState={
+                          {
+                            "disabled": false,
+                            "error": false,
+                            "selected": false,
+                          }
+                        }
+                        style={
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffffff",
+                            "borderBottomLeftRadius": 20,
+                            "borderBottomRightRadius": 20,
+                            "borderColor": "#90949d",
+                            "borderTopLeftRadius": 20,
+                            "borderTopRightRadius": 20,
+                            "borderWidth": 2,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "width": 20,
+                          }
+                        }
+                        variant="default"
+                      />
+                      <View
+                        style={
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          }
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          radioState={
+                            {
+                              "disabled": false,
+                              "error": false,
+                              "selected": false,
+                            }
+                          }
+                          style={
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            }
+                          }
+                        >
+                          Cartes jeunes
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "display": "flex",
+                    },
+                    {
+                      "display": "flex",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    {
                       "paddingVertical": 12,
                     }
                   }
@@ -1819,144 +1957,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   style={
                     {
-                      "marginVertical": 8,
-                    }
-                  }
-                >
-                  <View
-                    accessibilityLabel="Cartes jeunes"
-                    accessibilityRole="radio"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "cursor": "pointer",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Cartes jeunes"
-                  >
-                    <View
-                      style={
-                        {
-                          "alignItems": "center",
-                          "columnGap": 12,
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <View
-                        isHover={false}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        radioState={
-                          {
-                            "disabled": false,
-                            "error": false,
-                            "selected": false,
-                          }
-                        }
-                        style={
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderBottomLeftRadius": 20,
-                            "borderBottomRightRadius": 20,
-                            "borderColor": "#90949d",
-                            "borderTopLeftRadius": 20,
-                            "borderTopRightRadius": 20,
-                            "borderWidth": 2,
-                            "height": 20,
-                            "justifyContent": "center",
-                            "width": 20,
-                          }
-                        }
-                        variant="default"
-                      />
-                      <View
-                        style={
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          }
-                        }
-                      >
-                        <Text
-                          isHover={false}
-                          onMouseEnter={[Function]}
-                          onMouseLeave={[Function]}
-                          radioState={
-                            {
-                              "disabled": false,
-                              "error": false,
-                              "selected": false,
-                            }
-                          }
-                          style={
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            }
-                          }
-                        >
-                          Cartes jeunes
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                    {
-                      "display": "flex",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    {
                       "paddingVertical": 12,
                     }
                   }
@@ -2418,9 +2418,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "color": "#ffffff",
-                      "fontFamily": "Montserrat-SemiBold",
+                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
-                      "lineHeight": 22,
+                      "lineHeight": 25.6,
                       "maxWidth": "100%",
                     }
                   }
