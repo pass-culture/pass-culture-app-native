@@ -1,9 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Localisation'
-- tapOn: 
-    text: '.*Choisir une localisation.*'
-    point: "50%,25%"
+- tapOn:
+    text: '.*Choisir une zone géographique.*'
+    point: '50%,25%'
 - tapOn:
     id: 'styled-input-container'
 - inputText: 'Paris'

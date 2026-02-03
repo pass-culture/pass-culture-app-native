@@ -6,9 +6,9 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Ma position'
     commands:
       - tapOn: 'Ma position'
-      - tapOn: 
-          text: '.*Choisir une localisation.*'
-          point: "50%,25%"
+      - tapOn:
+          text: '.*Choisir une zone géographique.*'
+          point: '50%,25%'
       - tapOn:
           id: 'styled-input-container'
       - inputText: 'Paris'
@@ -21,12 +21,11 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
       - tapOn: 'France entière - Ouvrir la modale de localisation'
-      - tapOn: 
-          text: '.*Choisir une localisation.*'
-          point: "50%,25%"
+      - tapOn:
+          text: '.*Choisir une zone géographique.*'
+          point: '50%,25%'
       - tapOn:
           id: 'styled-input-container'
       - inputText: 'Paris'
       - tapOn: 'Paris Paris'
       - tapOn: 'Valider la localisation'
-

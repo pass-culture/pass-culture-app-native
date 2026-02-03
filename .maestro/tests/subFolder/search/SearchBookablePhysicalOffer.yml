@@ -32,7 +32,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Voir tous les filtres : 1 filtre actif'
 - tapOn: '.*Catégorie.*'
 
-- tapOn: 'Romance'
+- tapOn: '.*Romance.*'
 - tapOn: 'Rechercher'
 
 - swipe:
