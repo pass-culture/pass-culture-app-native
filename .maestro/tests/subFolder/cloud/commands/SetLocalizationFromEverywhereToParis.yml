@@ -5,9 +5,9 @@ appId: ${MAESTRO_APP_ID}
       visible: 'France entière'
     commands:
       - tapOn: 'France entière'
-      - tapOn: 
-          text: '.*Choisir une localisation.*'
-          point: "50%,25%"
+      - tapOn:
+          text: '.*Choisir une zone géographique.*'
+          point: '50%,25%'
       - tapOn:
           id: 'styled-input-container'
       - inputText: 'Paris'

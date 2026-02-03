@@ -1,0 +1,10 @@
+appId: ${MAESTRO_APP_ID}
+---
+- launchApp:
+    appId: ${MAESTRO_APP_ID}
+    clearState: true
+    permissions:
+      all: allow
+      location: always
+
+- waitForAnimationToEnd

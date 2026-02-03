@@ -14,8 +14,17 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: 'Mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
-- hideKeyboard
-- tapOn: 'Se connecter' # Android
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - hideKeyboard
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Connecte-toi' # Pour fermer le clavier iOS
+- tapOn: 'Se connecter'
 
 - waitForAnimationToEnd
 

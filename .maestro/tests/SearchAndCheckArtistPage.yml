@@ -5,7 +5,6 @@ tags:
   - nightlyIOS
   - nightlyAndroid
   - squad-decouverte
-
 onFlowStart:
   - runScript: subFolder/links/DeepLinks.js
   - runScript: subFolder/commons/Button.js
@@ -17,7 +16,7 @@ onFlowStart:
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - tapOn: 'Catégorie Livres'
-- tapOn: 'Mangas'
+- tapOn: 'BD & comics'
 - runFlow: subFolder/search/CheckArtistPage.yml
 
 - runFlow: subFolder/commons/StopApp.yml
