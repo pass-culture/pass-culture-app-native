@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
@@ -20,7 +21,6 @@ type DynamicInputListProps = {
   requiredIndicator?: RequiredIndicator
   initialValues?: string[]
   onValuesChange?: (values: string[]) => void
-  autoFocus?: boolean
   errors?: (string | undefined)[]
   autocomplete?: TextInputProps['autoComplete']
 }
@@ -37,10 +37,11 @@ export const DynamicInputList = ({
   requiredIndicator,
   initialValues,
   onValuesChange,
-  autoFocus,
   errors,
   autocomplete,
 }: DynamicInputListProps) => {
+  const inputRefs = useRef<Array<RNTextInput | null>>([])
+
   const { icons, designSystem } = useTheme()
 
   const [visibleInputs, setVisibleInputs] = useState<VisibleInput[]>(() => {
@@ -71,25 +72,31 @@ export const DynamicInputList = ({
   const canAddMoreInputs = maxVisibleInputsLength < maxInputsLength
 
   const handleAddInput = () => {
-    if (canAddMoreInputs) {
-      const nextInput = inputs[maxVisibleInputsLength]
-      if (!nextInput) return
-      const updated = [
-        ...visibleInputs,
-        {
-          id: maxVisibleInputsLength,
-          value: initialValues?.[maxVisibleInputsLength]?.trim() || '',
-          ...nextInput,
-        },
-      ]
-      setVisibleInputs(updated)
-      onValuesChange?.(updated.map((i) => i.value.trim()).filter((v) => v !== ''))
-    }
+    if (!canAddMoreInputs) return
+
+    const nextInput = inputs[maxVisibleInputsLength]
+    if (!nextInput) return
+
+    const updated = [
+      ...visibleInputs,
+      {
+        id: maxVisibleInputsLength,
+        value: initialValues?.[maxVisibleInputsLength]?.trim() || '',
+        ...nextInput,
+      },
+    ]
+
+    setVisibleInputs(updated)
+
+    onValuesChange?.(updated.map((i) => i.value.trim()).filter((v) => v !== ''))
+
+    requestAnimationFrame(() => inputRefs.current[maxVisibleInputsLength]?.focus())
   }
 
   const handleRemoveInput = (id: number) => {
     setVisibleInputs((prev) => {
       const updated = prev.filter((input) => input.id !== id)
+      inputRefs.current = inputRefs.current.slice(0, updated.length)
       onValuesChange?.(updated.map((i) => i.value.trim()).filter((v) => v !== ''))
       return updated
     })
@@ -111,9 +118,11 @@ export const DynamicInputList = ({
         <InputWrapper key={input.label}>
           <InputFieldContainer>
             <TextInput
+              ref={(ref) => {
+                inputRefs.current[index] = ref
+              }}
               onChangeText={(text) => handleChangeText(input.id, text)}
               requiredIndicator={index === 0 ? requiredIndicator : undefined}
-              autoFocus={autoFocus}
               errorMessage={input.value ? errors?.[index] : undefined}
               accessibilityHint={input.value ? errors?.[index] : undefined}
               {...input}

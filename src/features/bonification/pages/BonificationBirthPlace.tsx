@@ -119,6 +119,7 @@ export const BonificationBirthPlace = () => {
               />
             ) : null}
             <ButtonTertiaryPrimary
+              numberOfLines={2}
               icon={InfoPlain}
               wording="Je ne connais pas son lieu de naissance"
               onPress={async () => {

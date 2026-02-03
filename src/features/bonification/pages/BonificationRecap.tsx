@@ -10,7 +10,7 @@ import {
   legalRepresentativeActions,
   useLegalRepresentative,
 } from 'features/bonification/store/legalRepresentativeStore'
-import { Summary } from 'features/identityCheck/components/Summary'
+import { InfoListItemProps, Summary } from 'features/identityCheck/components/Summary'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -62,28 +62,63 @@ export const BonificationRecap = () => {
     }
   }
 
-  const recapData = [
-    {
-      title: 'Erreur',
-      value: 'Nous ne retrouvons pas les données du formulaire',
-    },
-  ]
+  const recapData: InfoListItemProps[] = []
 
-  if (title && firstNames?.length && givenName)
-    recapData.splice(0, 1, {
-      title: 'Nom',
-      value: `${title} ${firstNames?.join(' ')} ${givenName.toUpperCase()}`,
+  if (title) {
+    recapData.push({
+      title: 'Civilité',
+      value: title,
     })
-  if (commonName) recapData.push({ title: 'Nom d’usage', value: commonName.toUpperCase() })
-  if (birthDate)
-    recapData.push({ title: 'Date de naissance', value: new Date(birthDate).toLocaleDateString() })
-  if (birthCountry)
-    recapData.push({ title: 'Pays de naissance', value: birthCountry.libcog.toString() })
-  if (birthCity?.name)
+  }
+
+  if (givenName) {
+    recapData.push({
+      title: 'Nom de naissance',
+      value: givenName.toUpperCase(),
+    })
+  }
+
+  if (firstNames?.length) {
+    recapData.push({
+      title: 'Prénom(s)',
+      value: firstNames.join(', '),
+    })
+  }
+
+  if (commonName) {
+    recapData.push({
+      title: 'Nom d’usage',
+      value: commonName.toUpperCase(),
+    })
+  }
+
+  if (birthDate) {
+    recapData.push({
+      title: 'Date de naissance',
+      value: new Date(birthDate).toLocaleDateString(),
+    })
+  }
+
+  if (birthCountry) {
+    recapData.push({
+      title: 'Pays de naissance',
+      value: birthCountry.libcog.toString(),
+    })
+  }
+
+  if (birthCity?.name) {
     recapData.push({
       title: 'Ville de naissance',
-      value: `${birthCity?.name} (${birthCity.departementCode})`,
+      value: `${birthCity.name}, ${birthCity.postalCode}`,
     })
+  }
+
+  if (!recapData.length) {
+    recapData.push({
+      title: 'Erreur',
+      value: 'Nous ne retrouvons pas les données du formulaire',
+    })
+  }
 
   return (
     <PageWithHeader

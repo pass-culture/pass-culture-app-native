@@ -144,6 +144,7 @@ const InnerContainer = styled.View(({ theme }) => ({
 
 const BannerContainer = styled.View(({ theme }) => ({
   marginBottom: theme.designSystem.size.spacing.xxxl,
+  width: '100%',
 }))
 
 const ButtonContainer = styled.View(({ theme }) => ({

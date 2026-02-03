@@ -126,6 +126,7 @@ export const BonificationNames = () => {
               )}
             />
             <ButtonTertiaryPrimary
+              numberOfLines={2}
               icon={InfoPlain}
               wording="Je ne connais pas son nom de naissance"
               onPress={async () => {

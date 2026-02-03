@@ -162,7 +162,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-marginBottom-8d26hk"
+        class="css-view-175oi2r r-marginBottom-8d26hk r-width-13qz1uu"
       >
         <div
           class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
@@ -1477,7 +1477,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-marginBlock-12kyg2d r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-marginBottom-8d26hk"
+        class="css-view-175oi2r r-marginBottom-8d26hk r-width-13qz1uu"
       >
         <div
           class="css-view-175oi2r r-alignItems-1habvwh r-backgroundColor-1k962jn r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-borderTopLeftRadius-1vznrp2 r-borderTopRightRadius-3f7b68 r-flexDirection-18u37iz r-gap-1ssbvtb r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
