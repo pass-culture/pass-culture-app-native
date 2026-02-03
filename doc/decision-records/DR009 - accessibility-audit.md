@@ -1037,6 +1037,54 @@ Texte
 
 <br>
 
+
+
+## ✅ Corrections 02 février 2026 → xxx
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 3.7 - Chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés ?</summary>
+
+**RAAM** : [Critère 3.7](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-7)  
+**Ticket** : [PC-37469](https://passculture.atlassian.net/browse/PC-37469)  
+
+**Problème** 😱  
+E02 : La vidéo du bloc "Lujipeka répond à vos questions sur la tournée[...]" n'a pas de sous-titres synchronisés
+E15 : Non-conformité de typologie similaire à celle décrite sur l'écran "E02". Présente également ici, mais non redétaillée.
+
+**Correction** 💡  
+E02 : Ajout de la vidéo de l'interview Orelsan et Clara Choï qui a des sous-titres syncronisées. Les sous-titres sont fait manuellement et non générés par IA.
+E15 : Ce sont des vidéos qui seront ajoutées par les partenaires culturels 
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
+<details>
+
+<summary> 🟠 Critère 3.8 - Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ceux-ci sont-ils pertinents ?</summary>
+
+**RAAM** : [Critère 3.8](https://accessibilite.public.lu/fr/raam1.1/referentiel-technique.html#crit-3-8)  
+**Ticket** : [37470](https://passculture.atlassian.net/browse/PC-37470)  
+
+**Problème** 😱  
+E02 : Les sous-titres de la vidéo du bloc "Le festival de rock" ne sont pas pertinents. Il faut compléter les sous-titres et les corriger avec les informations sonores manquantes présentes dans la vidéo.
+
+**Correction** 💡  
+E02 : Ajout de la vidéo de l'interview Orelsan et Clara Choï qui a des sous-titres pertinents. Les sous-titres sont fait manuellement et non générés par IA.
+
+**Retours audit** 🔥  
+Texte
+
+</details>
+
+<br>
+
 ## 💡 Questions
 
 </details>
