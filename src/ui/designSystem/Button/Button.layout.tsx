@@ -32,10 +32,15 @@ export const getLabelText = (iconButton: boolean, wording?: string) =>
 
 export const getLabelStyle = (
   textColor: ColorsType,
-  fullWidth?: boolean
+  fullWidth?: boolean,
+  isMultiline?: boolean
 ): StyleProp<TextStyle> => ({
   color: textColor,
   maxWidth: '100%',
+  minWidth: 0,
+  flexShrink: 1,
+  flexGrow: fullWidth || isMultiline ? 1 : undefined,
+  flexBasis: fullWidth || isMultiline ? 0 : undefined,
   textAlign: fullWidth ? 'center' : undefined,
 })
 

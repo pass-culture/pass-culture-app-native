@@ -203,7 +203,7 @@ const SortButton = () => (
     accessibilityLabel="Trier"
     as={Button}
     wording="Trier"
-    variant="primary"
+    variant="secondary"
     icon={SortIcon}
   />
 )
