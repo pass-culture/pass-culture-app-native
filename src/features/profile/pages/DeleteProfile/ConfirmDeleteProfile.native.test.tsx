@@ -2,6 +2,7 @@ import React from 'react'
 
 import { reset, goBack } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { Adjust } from 'libs/adjust/adjust'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
@@ -18,6 +19,8 @@ jest.mock('features/auth/context/AuthContext', () => ({
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('libs/adjust/adjust')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -58,6 +61,15 @@ describe('ConfirmDeleteProfile component', () => {
         },
       ],
     })
+  })
+
+  it('should call Adjust.gdprForgetMe when clicking on "Supprimer mon compte" button', async () => {
+    mockServer.postApi('/v1/account/suspend', {})
+    renderConfirmDeleteProfile()
+
+    await user.press(screen.getByText('Supprimer mon compte'))
+
+    expect(Adjust.gdprForgetMe).toHaveBeenCalledTimes(1)
   })
 
   it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', async () => {

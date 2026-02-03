@@ -2,6 +2,7 @@ export const whiteListEnv = (env, commitHash) => {
   const authorizedEnvVars = [
     'ACCESSIBILITY',
     'ACCESSIBILITY_PLAN',
+    'ADJUST_APP_TOKEN',
     'ALGOLIA_APPLICATION_ID',
     'ALGOLIA_ARTISTS_INDEX_NAME',
     'ALGOLIA_MOST_LIKED_OFFERS_INDEX_NAME',
@@ -19,7 +20,6 @@ export const whiteListEnv = (env, commitHash) => {
     'APP_DISPLAY_NAME',
     'APP_PUBLIC_URL',
     'APPLE_STORE_URL',
-    'APPS_FLYER_DEV_PUBLIC_KEY',
     'APPS_FLYER_WEB_PUBLIC_KEY',
     'BATCH_API_PUBLIC_KEY_ANDROID',
     'BATCH_API_PUBLIC_KEY_IOS',

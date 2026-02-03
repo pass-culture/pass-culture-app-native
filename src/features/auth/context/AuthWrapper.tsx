@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { AuthContext } from 'features/auth/context/AuthContext'
+import { useAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
 import { useUserProfileInfoQuery } from 'features/auth/queries/useUserProfileInfoQuery'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -33,6 +34,8 @@ export const AuthWrapper = memo(function AuthWrapper({
     refetch: refetchUser,
     isLoading: isUserLoading,
   } = useUserProfileInfoQuery(isLoggedIn)
+
+  useAdjustBeneficiaryEvent(user)
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {

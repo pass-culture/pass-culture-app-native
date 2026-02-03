@@ -40,7 +40,6 @@ import {
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('libs/campaign/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -410,8 +409,6 @@ describe('Signup Form', () => {
           password: 'user@AZERTY123',
           birthdate: '2003-12-01',
           token: 'dummyToken',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
           firebasePseudoId: 'firebase_pseudo_id',
           trustedDevice: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
@@ -630,8 +627,6 @@ describe('Signup Form', () => {
           marketingEmailSubscription: false,
           birthdate: '2003-12-01',
           token: 'dummyToken',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
           firebasePseudoId: 'firebase_pseudo_id',
           trustedDevice: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
@@ -799,8 +794,6 @@ describe('Signup Form', () => {
           marketingEmailSubscription: false,
           birthdate: '2003-12-01',
           token: 'dummyToken',
-          appsFlyerPlatform: 'ios',
-          appsFlyerUserId: 'uniqueCustomerId',
           firebasePseudoId: 'firebase_pseudo_id',
           trustedDevice: {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
